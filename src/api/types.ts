@@ -28,7 +28,8 @@ export type Leaderboard =
   | 'qm_3v3'
   | 'qm_4v4'
 
-export type StatsLeaderboard = 'rm_solo' | 'qm_1v1' | 'rm_2v2' | 'rm_3v3' | 'rm_4v4'
+export type StatsLeaderboard =
+  'rm_solo' | 'qm_1v1' | 'rm_2v2' | 'rm_3v3' | 'rm_4v4' | 'qm_2v2' | 'qm_3v3' | 'qm_4v4'
 
 export type GameResult = 'win' | 'loss' | null
 
@@ -202,7 +203,8 @@ export interface CivStatEntry {
   civilization: string
   win_rate: number
   pick_rate: number
-  win_count: number
+  /** Omitted by AoE4World's map-specific civ endpoint. */
+  win_count?: number
   games_count: number
   player_games_count: number
   duration_median: number
@@ -228,6 +230,17 @@ export interface MapStatEntry {
   duration_average: number
   /** The single civ with the highest win rate on this map (API gives only one). */
   highest_win_rate_civilization?: string | null
+  /** Present when the endpoint is requested with `include_civs=true`. */
+  civilizations?: Record<string, MapCivStatEntry>
+}
+
+/** Civilization slice embedded in a map-stats response. */
+export interface MapCivStatEntry {
+  win_rate: number
+  games_count: number
+  player_games_count: number
+  duration_median: number
+  duration_average: number
 }
 
 export interface MapStatsResponse {
@@ -255,6 +268,24 @@ export interface MatchupStatsResponse {
   rating: string | null
   patch: string | null
   data: MatchupEntry[]
+}
+
+/** Exact civilization combinations for 2v2 team modes. */
+export interface TeamStatsEntry {
+  civilization: string[]
+  win_rate: number
+  win_count: number
+  games_count: number
+  player_games_count: number
+  duration_median?: number | null
+  duration_average?: number | null
+}
+
+export interface TeamStatsResponse {
+  kind: string
+  rating: string | null
+  patch: string | null
+  data: TeamStatsEntry[]
 }
 
 /**

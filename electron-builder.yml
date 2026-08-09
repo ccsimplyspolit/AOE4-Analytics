@@ -11,6 +11,13 @@ files:
   - out/**/*
   - package.json
 
+# Produced from the pinned aoe4world/replays-api revision by
+# `npm run prepare:replays-api` immediately before packaging. The process is
+# bound to 127.0.0.1 and launched only as a parser fallback.
+extraResources:
+  - from: build/replays-api
+    to: replays-api
+
 # Native binaries must live outside the asar archive so they can be loaded at
 # runtime. Disable directory-level auto-unpacking so the packages' JavaScript
 # and source files stay inside the archive.

@@ -6,6 +6,7 @@ import {
   normalizeMapName,
   resolveForLeaderboard,
 } from '../rankedMapPool'
+import { parseOfficialMapPoolPost } from '../rankedMapPoolParser'
 
 describe('ranked map pool', () => {
   it('normalizes display names consistently', () => {
@@ -36,5 +37,25 @@ describe('ranked map pool', () => {
   it('keeps the snapshot provenance explicit', () => {
     expect(CURRENT_RANKED_MAP_POOL.sourceUrl).toContain('reddit.com')
     expect(CURRENT_RANKED_MAP_POOL.supportingSourceUrl).toContain('ageofempires.com')
+  })
+
+  it('parses the official patch-post map-pool structure', () => {
+    const snapshot = parseOfficialMapPoolPost({
+      id: 123,
+      link: 'https://www.ageofempires.com/news/example/',
+      title: 'Age of Empires IV – Patch 16.2.10604',
+      date: '2026-06-01T10:00:00Z',
+      content: `
+        <h3>Ranked Map Pool</h3>
+        <h5>1v1:</h5>
+        <ul>${['A','B','C','D','E','F','G','H','I'].map((map) => `<li>${map}</li>`).join('')}</ul>
+        <h5>Team Game:</h5>
+        <ul>${['J','K','L','M','N','O','P','Q','R'].map((map) => `<li>${map}</li>`).join('')}</ul>
+      `,
+    })
+    expect(snapshot?.source).toBe('official-rotation-notice')
+    expect(snapshot?.solo).toEqual(['A','B','C','D','E','F','G','H','I'])
+    expect(snapshot?.team).toEqual(['J','K','L','M','N','O','P','Q','R'])
+    expect(snapshot?.effectiveUntil).toBe('2026-07-01')
   })
 })

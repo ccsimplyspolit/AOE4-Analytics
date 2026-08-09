@@ -11,14 +11,41 @@ const reference: BuildOrder = {
   civilization: 'English',
   build_order: [
     { population_count: 6, villager_count: 6, age: 1, resources: R, notes: ['Open'] },
-    { population_count: 10, villager_count: 10, age: 1, resources: R, notes: ['More vills'], time: '2:30' },
-    { population_count: 14, villager_count: 13, age: 2, resources: R, notes: ['Age up'], time: '5:00' },
-    { population_count: 30, villager_count: 26, age: 3, resources: R, notes: ['Castle'], time: '11:00' },
+    {
+      population_count: 10,
+      villager_count: 10,
+      age: 1,
+      resources: R,
+      notes: ['More vills'],
+      time: '2:30',
+    },
+    {
+      population_count: 14,
+      villager_count: 13,
+      age: 2,
+      resources: R,
+      notes: ['Age up'],
+      time: '5:00',
+    },
+    {
+      population_count: 30,
+      villager_count: 26,
+      age: 3,
+      resources: R,
+      notes: ['Castle'],
+      time: '11:00',
+    },
   ],
 }
 
 function ev(timeSec: number, category: BuildEvent['category'], name: string): BuildEvent {
-  return { timeSec, playerId: 1, category, blueprint: name.toLowerCase().replace(/\s+/g, '_'), name }
+  return {
+    timeSec,
+    playerId: 1,
+    category,
+    blueprint: name.toLowerCase().replace(/\s+/g, '_'),
+    name,
+  }
 }
 
 /** N villagers, one every `gapSec` seconds starting at t0. */
@@ -50,7 +77,9 @@ describe('gradeBuildFollow', () => {
       blueprint: 'worker_elephant_byz_ha_mac',
     }
     const report = gradeBuildFollow({ reference, events: [worker], civ: 'english' })
-    const checkpoint = report.checkpoints.find((c) => c.kind === 'villagers' && c.targetTimeSec === 150)!
+    const checkpoint = report.checkpoints.find(
+      (c) => c.kind === 'villagers' && c.targetTimeSec === 150,
+    )!
     expect(checkpoint.actualVillagers).toBe(7)
   })
 
@@ -112,11 +141,54 @@ describe('gradeBuildFollow', () => {
     const report = gradeBuildFollow({ reference, events, civ: 'english' })
     const gradeable = report.checkpoints.filter((c) => c.ok !== null)
     const passed = gradeable.filter((c) => c.ok).length
-    expect(report.score).toBe(Math.round((passed / gradeable.length) * 100))
+    expect(report.score).toBe(Math.round((passed / report.checkpoints.length) * 100))
 
     const empty = gradeBuildFollow({ reference, events: [], civ: null })
     // no villager events at all → villager checkpoints ungradeable, no landmarks
     expect(empty.score).toBeNull()
+  })
+
+  it('uses authoritative STPD age-up timings before landmark event matching', () => {
+    const report = gradeBuildFollow({
+      reference,
+      events: villagers(20, 20, 22),
+      civ: 'english',
+      ageUpTimes: { 2: 300, 3: null },
+    })
+
+    const feudal = report.checkpoints.find((c) => c.kind === 'ageup' && c.ageUpTo === 2)!
+    expect(feudal.actualTimeSec).toBe(300)
+    expect(feudal.ok).toBe(true)
+  })
+
+  it('does not grade the opening villager count as an observed checkpoint', () => {
+    const baselineOnly: BuildOrder = {
+      ...reference,
+      build_order: [reference.build_order[0]!],
+    }
+    const report = gradeBuildFollow({
+      reference: baselineOnly,
+      events: villagers(1, 20, 25),
+      civ: 'english',
+    })
+
+    expect(report.checkpoints).toEqual([])
+    expect(report.score).toBeNull()
+  })
+
+  it('keeps a one-checkpoint sample unscored', () => {
+    const oneTimedCheckpoint: BuildOrder = {
+      ...reference,
+      build_order: reference.build_order.slice(0, 2),
+    }
+    const report = gradeBuildFollow({
+      reference: oneTimedCheckpoint,
+      events: villagers(6, 20, 22),
+      civ: 'english',
+    })
+
+    expect(report.checkpoints.filter((checkpoint) => checkpoint.ok != null)).toHaveLength(1)
+    expect(report.score).toBeNull()
   })
 
   it('returns no checkpoints for a reference without timed steps', () => {
@@ -125,7 +197,11 @@ describe('gradeBuildFollow', () => {
       civilization: 'English',
       build_order: [{ population_count: 6, villager_count: 6, age: 1, resources: R, notes: [] }],
     }
-    const report = gradeBuildFollow({ reference: untimed, events: villagers(5, 20, 25), civ: 'english' })
+    const report = gradeBuildFollow({
+      reference: untimed,
+      events: villagers(5, 20, 25),
+      civ: 'english',
+    })
     expect(report.checkpoints).toEqual([])
     expect(report.score).toBeNull()
   })

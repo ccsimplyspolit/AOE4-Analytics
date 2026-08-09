@@ -48,10 +48,23 @@ const PRIMARY_RANK = new Map<string, number>(PRIMARY_FILE_ORDER.map((file, index
 const JSON_BUILD_MODULES = import.meta.glob('./**/*.json', {
   eager: true,
   import: 'default',
-}) as Record<string, BuildOrder>
+}) as Record<string, unknown>
 
-function evidenceKey(civilization: string | string[]): string {
-  const label = Array.isArray(civilization) ? (civilization[0] ?? '') : civilization
+/** The importer also writes metadata snapshots beside build JSON files. */
+function isBuildOrder(value: unknown): value is BuildOrder {
+  if (value == null || typeof value !== 'object') return false
+  const candidate = value as Record<string, unknown>
+  const civilization = candidate.civilization
+  return (
+    typeof candidate.name === 'string' &&
+    (typeof civilization === 'string' ||
+      (Array.isArray(civilization) && civilization.every((item) => typeof item === 'string'))) &&
+    Array.isArray(candidate.build_order)
+  )
+}
+
+function evidenceKey(civilization: string | string[] | null | undefined): string {
+  const label = Array.isArray(civilization) ? (civilization[0] ?? '') : (civilization ?? '')
   return label.toLocaleLowerCase().replace(/[^a-z0-9]+/g, '')
 }
 
@@ -66,6 +79,7 @@ const RAW_BUNDLED_BUILD_ORDERS = Object.entries(JSON_BUILD_MODULES)
     )
   })
   .map(([, build]) => build)
+  .filter(isBuildOrder)
 
 function buildIdentity(build: BuildOrder): string {
   const civilizations = Array.isArray(build.civilization)
@@ -89,7 +103,11 @@ const NORMALIZED_BUILD_ORDERS: BuildOrder[] = []
 const BUILD_INDEX_BY_ID = new Map<string, number>()
 for (const rawBuild of RAW_BUNDLED_BUILD_ORDERS) {
   const normalized = normalizeBuildOrder(rawBuild)
-  const build = normalized.ok ? normalized.value : rawBuild
+  // A source synchronizer can leave manifests or partially-written JSON next
+  // to real builds. They are not build orders and must never reach the runtime
+  // catalog, otherwise a missing civilization/name can crash main at startup.
+  if (!normalized.ok) continue
+  const build = normalized.value
   const identity = buildIdentity(build)
   const existingIndex = BUILD_INDEX_BY_ID.get(identity)
   if (existingIndex == null) {

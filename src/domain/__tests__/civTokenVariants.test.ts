@@ -11,3 +11,17 @@ describe('Macedonian Dynasty token aliases', () => {
     expect(resolveReplayCiv('byzantine_ha_mac').slug).toBe('macedonian_dynasty')
   })
 })
+
+describe('Order of the Dragon token aliases', () => {
+  it.each(['hre_ha_01', 'holy_roman_empire_ha_01', 'order_of_the_dragon', 'od'])(
+    'maps %s to Order of the Dragon',
+    (token) => {
+      expect(civFromToken(token)).toBe('order_of_the_dragon')
+    },
+  )
+
+  it('resolves the replay variant instead of generic HRE', () => {
+    expect(resolveReplayCiv('hre_ha_01').slug).toBe('order_of_the_dragon')
+    expect(resolveReplayCiv('od').slug).toBe('order_of_the_dragon')
+  })
+})

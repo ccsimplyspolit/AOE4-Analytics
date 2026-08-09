@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, readFileSync, renameSync, statSync, unlinkSync, 
 import { join } from 'node:path'
 import { parseReplayHeader } from '@domain/replay'
 import { parseReplayCommandStream, type ReplayAnalysisResult } from '@domain/replayCommand'
+import { readCachedReplayAnalysis, writeCachedReplayAnalysis } from './replayAnalysisCacheService'
 
 /** Full replay files are usually small, but a long team game can be large. */
 export const MAX_CACHED_REPLAY_BYTES = 100 * 1024 * 1024
@@ -63,16 +64,22 @@ export function analyzeCachedReplay(gameId: number): ReplayAnalysisResult | null
   const cached = getCachedReplayInfo(gameId)
   if (!cached.cached || !cached.path) return null
   try {
-    const bytes = new Uint8Array(readFileSync(cached.path))
     const stat = statSync(cached.path)
-    return {
+    const recordedAtMs = stat.mtimeMs
+    const analysisKey = `cached:${gameId}`
+    const previous = readCachedReplayAnalysis(analysisKey, cached.path, recordedAtMs)
+    if (previous) return previous
+    const bytes = new Uint8Array(readFileSync(cached.path))
+    const result: ReplayAnalysisResult = {
       id: `cached:${gameId}`,
       source: 'cached',
       sourcePath: cached.path,
-      recordedAtMs: stat.mtimeMs,
+      recordedAtMs,
       info: parseReplayHeader(bytes),
       commandStream: parseReplayCommandStream(bytes),
     }
+    writeCachedReplayAnalysis(analysisKey, result)
+    return result
   } catch {
     return null
   }

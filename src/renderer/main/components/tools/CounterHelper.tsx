@@ -20,7 +20,7 @@ import {
   type ContextualMatchupResult,
 } from '@domain/unitCounterModel'
 import type { VendoredUnit } from '@data/gameData'
-import { useCivMeta } from '../../queries/useCivMeta'
+import { useCivMeta, useRankedMapPool } from '../../queries/useCivMeta'
 import { useI18n } from '../../../i18n'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
@@ -28,10 +28,20 @@ import { formatCount, formatDurationShort } from '@shared/format'
 
 function MapCounterCalculator() {
   const { tt, gameName } = useI18n()
+  const [mapScope, setMapScope] = useState<'pool' | 'all'>('pool')
   const [mapId, setMapId] = useState<number | null>(null)
-  const meta = useCivMeta({ leaderboard: 'rm_solo', mapId: mapId ?? undefined })
+  const poolQuery = useRankedMapPool()
+  const meta = useCivMeta({
+    leaderboard: 'rm_solo',
+    mapId: mapId ?? undefined,
+    mapPoolOnly: mapScope === 'pool',
+  })
   const data = meta.data?.ok ? meta.data.data : null
   const civs = data?.mapCivs ?? data?.civs ?? []
+  const mapPool = data?.mapPool ?? (poolQuery.data?.ok ? poolQuery.data.data : null)
+  const poolIsCurrent = mapPool?.status === 'current'
+  const selection = mapId == null ? (mapScope === 'pool' ? '__pool__' : '__all__') : String(mapId)
+  const maps = data?.maps ?? []
   return (
     <Card>
       <CardContent className="space-y-3 p-4">
@@ -40,24 +50,54 @@ function MapCounterCalculator() {
             <div className="rts-section-title">{tt('Map Counter Calculator')}</div>
             <p className="text-xs text-muted-foreground">
               {tt(
-                'Choose a current ladder map to rank the best-performing civilizations from live AoE4World data.',
+                'The current solo map pool is selected by default. Choose one map for a map-specific ranking or switch to all maps for a broader comparison.',
               )}
             </p>
           </div>
-          <Badge variant="outline">{tt('Ranked 1v1')}</Badge>
+          <div className="flex flex-wrap justify-end gap-1.5">
+            <Badge variant="outline">{tt('Ranked 1v1')}</Badge>
+            <Badge variant={poolIsCurrent ? 'secondary' : 'outline'}>
+              {poolIsCurrent
+                ? `${tt('Current solo map pool')} · ${mapPool?.maps.length ?? 0}`
+                : tt('Map pool unavailable or stale')}
+            </Badge>
+          </div>
         </div>
         <select
-          value={mapId ?? ''}
-          onChange={(event) => setMapId(event.target.value ? Number(event.target.value) : null)}
+          value={selection}
+          onChange={(event) => {
+            const value = event.target.value
+            if (value === '__pool__') {
+              setMapScope('pool')
+              setMapId(null)
+            } else if (value === '__all__') {
+              setMapScope('all')
+              setMapId(null)
+            } else {
+              // A named map is an explicit override, including maps outside
+              // the current rotation when the user is in the all-maps mode.
+              setMapScope('all')
+              setMapId(Number(value))
+            }
+          }}
           className="h-9 w-full rounded-md border border-border bg-background px-3 text-sm"
         >
-          <option value="">{tt('All maps')}</option>
-          {(data?.maps ?? []).map((map) => (
+          <option value="__pool__">
+            {tt('Current solo map pool')} · {mapPool?.maps.length ?? 9} {tt('maps')}
+          </option>
+          <option value="__all__">{tt('All maps')}</option>
+          {maps.map((map) => (
             <option key={map.mapId} value={map.mapId}>
               {map.map} · {formatCount(map.games)} {tt('games')}
             </option>
           ))}
         </select>
+        {mapScope === 'pool' && poolIsCurrent && (
+          <p className="text-[11px] text-muted-foreground">
+            {tt('Using only the active ranked rotation')}:{' '}
+            {mapPool?.maps.join(' · ')}
+          </p>
+        )}
         {meta.isLoading && (
           <p className="text-xs text-muted-foreground">{tt('Loading live meta…')}</p>
         )}
@@ -96,7 +136,9 @@ function MapCounterCalculator() {
         )}
         <p className="text-[11px] text-muted-foreground">
           {tt(
-            'This is a map-level meta recommendation, not a guaranteed matchup result; low-sample civilizations need caution.',
+            mapScope === 'pool'
+              ? 'This ranking is weighted across the active ranked map pool, not a guaranteed matchup result; low-sample civilizations need caution.'
+              : 'This is a map-level meta recommendation, not a guaranteed matchup result; low-sample civilizations need caution.',
           )}
         </p>
       </CardContent>

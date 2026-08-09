@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { comparePlayerToBuild, selectReferenceBuild } from '../buildOrderComparison'
+import { compareMatchPlayers, comparePlayerToBuild, selectReferenceBuild } from '../buildOrderComparison'
 import type { BuildOrder } from '../buildOrderSchema'
 import type { PlayerSummary } from '../statsSummary'
 
@@ -110,6 +110,40 @@ describe('comparePlayerToBuild', () => {
     expect(audit.strengths.some((finding) => finding.kind === 'timing')).toBe(true)
     expect(audit.improvements.every((issue) => issue.kind !== 'coverage')).toBe(true)
   })
+
+  it('does not report a perfect score when a timing checkpoint is unavailable', () => {
+    const multiCheckpointReference: BuildOrder = {
+      ...reference,
+      build_order: [
+        reference.build_order[0]!,
+        { ...reference.build_order[0]!, villager_count: 8, population_count: 8, time: '1:00' },
+        { ...reference.build_order[0]!, villager_count: 10, population_count: 10, time: '2:00' },
+        {
+          ...reference.build_order[0]!,
+          villager_count: 9,
+          population_count: 9,
+          age: 2,
+          time: '3:00',
+        },
+      ],
+    }
+    const audit = comparePlayerToBuild({
+      player: player([
+        { timeSec: 30, playerId: 1, category: 'unit', blueprint: 'unit_villager_1_eng', name: 'Villager' },
+        { timeSec: 90, playerId: 1, category: 'unit', blueprint: 'unit_villager_1_eng', name: 'Villager' },
+        { timeSec: 150, playerId: 1, category: 'unit', blueprint: 'unit_villager_1_eng', name: 'Villager' },
+        { timeSec: 210, playerId: 1, category: 'unit', blueprint: 'unit_villager_1_eng', name: 'Villager' },
+        { timeSec: 270, playerId: 1, category: 'unit', blueprint: 'unit_villager_1_eng', name: 'Villager' },
+      ]),
+      civ: 'english',
+      reference: multiCheckpointReference,
+    })
+
+    expect(audit.report?.score).toBe(75)
+    expect(audit.coverage.gradeableCheckpoints).toBe(3)
+    expect(audit.coverage.timedCheckpoints).toBe(4)
+    expect(audit.coverage.confidence).toBe('medium')
+  })
 })
 
 describe('selectReferenceBuild', () => {
@@ -164,5 +198,36 @@ describe('selectReferenceBuild', () => {
 
     expect(selection.reference?.name).toBe('VOD extracted opener')
     expect(selection.reason).toBe('video')
+  })
+})
+
+describe('compareMatchPlayers', () => {
+  it('audits each player from that player row instead of reusing the subject timeline', () => {
+    const multiCheckpointReference: BuildOrder = {
+      ...reference,
+      build_order: [
+        reference.build_order[0]!,
+        { ...reference.build_order[0]!, villager_count: 7, population_count: 7, time: '1:00' },
+        { ...reference.build_order[0]!, villager_count: 8, population_count: 8, time: '2:00' },
+      ],
+    }
+    const first = player([
+      { timeSec: 30, playerId: 1, category: 'unit', blueprint: 'unit_villager_1_eng', name: 'Villager' },
+      { timeSec: 90, playerId: 1, category: 'unit', blueprint: 'unit_villager_1_eng', name: 'Villager' },
+    ])
+    const second = { ...player([]), playerId: 2, profileId: 20, name: 'Opponent' }
+    const audits = compareMatchPlayers({
+      players: [first, second],
+      builds: [multiCheckpointReference],
+      myCiv: 'english',
+      myProfileId: 10,
+    })
+
+    expect(audits).toHaveLength(2)
+    expect(audits[0]?.player.profileId).toBe(10)
+    expect(audits[0]?.report?.score).toBe(100)
+    expect(audits[1]?.player.profileId).toBe(20)
+    expect(audits[1]?.report?.score).toBeNull()
+    expect(audits[1]?.coverage.eventCount).toBe(0)
   })
 })

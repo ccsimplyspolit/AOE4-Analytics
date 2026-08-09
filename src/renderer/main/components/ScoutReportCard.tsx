@@ -22,7 +22,7 @@ export function ScoutReportCard({
   report: ScoutReport
   showProfileLink?: boolean
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const topCiv = report.topCivs[0]
   const topGames = topCiv?.games ?? 1
   const counterPlan = counterPlanForCiv(topCiv?.civ)
@@ -68,7 +68,7 @@ export function ScoutReportCard({
           <FormPips form={report.recentForm} />
           {report.recentForm.avgDurationSec != null && (
             <div className="mt-1 text-xs text-muted-foreground">
-              Avg game {formatDurationShort(report.recentForm.avgDurationSec)}
+              {tt('Average game')} {formatDurationShort(report.recentForm.avgDurationSec)}
             </div>
           )}
         </section>
@@ -82,7 +82,7 @@ export function ScoutReportCard({
             <div className="space-y-1.5">
               {report.topCivs.map((c) => (
                 <div key={c.civ} className="flex items-center gap-3">
-                  <span className="w-32 shrink-0 truncate text-sm">{c.civName}</span>
+                  <span className="w-32 shrink-0 truncate text-sm">{gameName(c.civName)}</span>
                   <div className="h-2 flex-1 overflow-hidden rounded-sm bg-secondary">
                     <div
                       className={`h-full rounded-sm ${CIV_BAR_FILL[winRateTone(c.winRate)]}`}
@@ -102,18 +102,21 @@ export function ScoutReportCard({
           <section>
             <h3 className="rts-ledger-head mb-1.5 flex items-center gap-1.5">
               <ShieldCheck className="h-3.5 w-3.5" />
-              How to beat their {topCiv.civName}
+              {tt('How to counter their {civ}').replace('{civ}', gameName(topCiv.civName))}
             </h3>
             <p className="rounded-md border border-win/20 bg-win/5 px-3 py-2 text-sm leading-relaxed">
-              Build{' '}
+              {tt('Build')}{' '}
               <span className="font-semibold text-win">
                 {counterPlan.counters
                   .slice(0, 2)
-                  .map((c) => c.label)
+                  .map((c) => gameName(c.label))
                   .join(' + ')}
               </span>{' '}
               <span className="text-muted-foreground">
-                — answers their {counterPlan.keyUnits.map((u) => u.name).join(' & ')}.
+                — {tt('Answers their {units}.').replace(
+                  '{units}',
+                  counterPlan.keyUnits.map((u) => gameName(u.name)).join(' & '),
+                )}
               </span>
             </p>
           </section>
@@ -123,7 +126,7 @@ export function ScoutReportCard({
           <section>
             <h3 className="rts-ledger-head mb-2 flex items-center gap-1.5">
               <MapIcon className="h-3.5 w-3.5" />
-              Favourite maps
+              {tt('Favourite maps')}
             </h3>
             <div className="flex flex-wrap gap-1.5">
               {report.topMaps.map((m) => (
@@ -138,13 +141,46 @@ export function ScoutReportCard({
         <section>
           <h3 className="rts-ledger-head mb-1.5 flex items-center gap-1.5">
             <Info className="h-3.5 w-3.5" />
-            What to expect
+            {tt('What to expect')}
           </h3>
           <p className="rounded-md border border-primary/20 bg-primary/5 px-3 py-2 text-sm leading-relaxed">
-            {report.note}
+            {localizedScoutNote(report, tt, gameName)}
           </p>
         </section>
       </CardContent>
     </Card>
   )
+}
+
+function localizedScoutNote(
+  report: ScoutReport,
+  tt: (value: string) => string,
+  gameName: (value: string) => string,
+): string {
+  const { topCivs, recentForm } = report
+  if (topCivs.length === 0) return tt('No recent public games to scout. Play your standard opening and scout in-game to read their plan.')
+
+  const main = topCivs[0]!
+  const win = main.winRate != null
+    ? tt(', {rate}% win').replace('{rate}', String(main.winRate))
+    : ''
+  const parts = [
+    tt('Mostly plays {civ} ({games} of last {total}{win}).')
+      .replace('{civ}', gameName(main.civName))
+      .replace('{games}', String(main.games))
+      .replace('{total}', String(recentForm.games))
+      .replace('{win}', win),
+  ]
+  if (topCivs.length > 1) {
+    parts.push(
+      tt('Also seen on: {civs}.').replace(
+        '{civs}',
+        topCivs.slice(1).map((civ) => gameName(civ.civName)).join(', '),
+      ),
+    )
+  }
+  if (recentForm.streak <= -3) parts.push(tt('On a losing streak — may play it safe or tilt.'))
+  else if (recentForm.streak >= 3) parts.push(tt('On a win streak — likely confident and aggressive.'))
+  parts.push(tt('Scout early, deny their key economy, and prepare a counter to their main composition. (Civ-specific counters arrive in Phase 2.)'))
+  return parts.join(' ')
 }

@@ -2,7 +2,7 @@
 
 - **Source:** [aoe4world/data](https://github.com/aoe4world/data)
 - **Pinned commit:** `b2cd38222deae40ba2db18171edf494f81410c69`
-- **Fetched:** 2026-08-09T02:22:28Z
+- **Fetched:** 2026-08-09T12:06:06Z
 - **Raw research copy:** `data/research/aoe4world-data/` (ignored)
 - **Projection:** 205 military units plus 755 buildings, technologies and upgrades.
 

@@ -43,7 +43,18 @@ export function BuildTrainerCard({
   const me = selectTrainerPlayer(summary.players, myProfileId, myCiv)
   if (!reference || !me) return null
 
-  const report = gradeBuildFollow({ reference, events: me.buildOrder, civ: myCiv })
+  const report = gradeBuildFollow({
+    reference,
+    events: me.buildOrder,
+    civ: myCiv,
+    ageUpTimes: me.totals
+      ? {
+          2: me.totals.age2Sec,
+          3: me.totals.age3Sec,
+          4: me.totals.age4Sec,
+        }
+      : undefined,
+  })
   if (report.checkpoints.length === 0) return null
   const recovery = buildRecoveryPlan(report)
 
@@ -66,7 +77,7 @@ export function BuildTrainerCard({
           </div>
           {recovery.length > 0 && <RecoveryPlan recommendations={recovery} />}
           <p className="text-[11px] text-muted-foreground">
-            {tt("Villager counts assume the reference's opening villagers plus your production (the stat file doesn't record losses); age-ups are read from when your landmark went down.")}
+            {tt("Villager counts assume the reference's opening villagers plus your production (the stat file doesn't record losses); age-ups use the authoritative match summary when available, with landmark events as a fallback.")}
           </p>
         </CardContent>
       </Card>

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   Activity,
   AlertTriangle,
+  ClipboardCheck,
   ChevronLeft,
   ChevronRight,
   CloudDownload,
@@ -23,9 +24,13 @@ import type {
   ReplayArchivePage,
   ReplayAnalysisTarget,
   ReplayAnalysisResult,
+  FullReplayAnalysis,
 } from '@ipc/contract'
 import { normalizeTeams } from '@api/types'
+import { BUILD_CATALOG } from '@data/buildCatalog'
 import { civDisplayName } from '@domain/civ'
+import { civFromToken } from '@domain/statsSummary'
+import { compareMatchPlayers } from '@domain/buildOrderComparison'
 import { formatDuration } from '@domain/format'
 import type { TwitchVodFinderInput } from '@domain/twitchVodFinder'
 import { ipc } from '@shared/ipc'
@@ -42,6 +47,7 @@ import {
   useCacheReplay,
   useCacheReplays,
   useCacheSummaries,
+  useDownloadAndAnalyzeReplay,
   useReplayAnalysis,
   useReplays,
 } from '../queries/useReplays'
@@ -58,6 +64,40 @@ const ACCOUNT_PAGE_SIZE = 20
 type AutoAnalysisState = {
   done: number
   total: number
+  errors: number
+}
+
+type BulkCacheMode = 'replays' | 'summaries'
+
+type BulkCacheProgress = {
+  mode: BulkCacheMode
+  scanned: number
+  eligible: number
+  completed: number
+}
+
+type ArchiveAuditRow = {
+  gameId: number
+  startedAt: string
+  map: string
+  playerName: string
+  isMe: boolean
+  civ: string | null
+  result: 'win' | 'loss' | null
+  reference: string | null
+  score: number | null
+  improvements: number
+  strengths: number
+  matchedActions: number
+  expectedActions: number
+  confidence: 'high' | 'medium' | 'low' | 'none'
+}
+
+type ArchiveAuditProgress = {
+  done: number
+  total: number
+  eligible: number
+  unavailable: number
   errors: number
 }
 
@@ -150,9 +190,17 @@ export function ReplayLab() {
   const [source, setSource] = useState<'local' | 'account'>('local')
   const [localPage, setLocalPage] = useState(1)
   const [accountPage, setAccountPage] = useState(1)
+  const [accountRefreshVersion, setAccountRefreshVersion] = useState(0)
   const [autoCache, setAutoCache] = useState(true)
   const [autoAnalyze, setAutoAnalyze] = useState(true)
   const [cacheMessage, setCacheMessage] = useState<string | null>(null)
+  const [bulkCacheMode, setBulkCacheMode] = useState<BulkCacheMode | null>(null)
+  const [bulkCacheProgress, setBulkCacheProgress] = useState<BulkCacheProgress | null>(null)
+  const [fullAnalysis, setFullAnalysis] = useState<AutoAnalysisState | null>(null)
+  const [fullAnalysisRunning, setFullAnalysisRunning] = useState(false)
+  const [archiveAuditRows, setArchiveAuditRows] = useState<ArchiveAuditRow[]>([])
+  const [archiveAuditProgress, setArchiveAuditProgress] = useState<ArchiveAuditProgress | null>(null)
+  const [archiveAuditRunning, setArchiveAuditRunning] = useState(false)
   const [autoAnalysis, setAutoAnalysis] = useState<AutoAnalysisState | null>(null)
   const [autoAnalysisResults, setAutoAnalysisResults] = useState<
     Record<string, ReplayAnalysisResult>
@@ -163,9 +211,11 @@ export function ReplayLab() {
   const autoAnalysisKey = useRef<string | null>(null)
   const autoAnalysisRun = useRef(0)
   const autoAnalysisTargetsRef = useRef<AutoAnalysisTarget[]>([])
+  const fullAnalysisRun = useRef(0)
+  const archiveAuditRun = useRef(0)
   const consent = settings.data?.localData.consentGranted ?? false
   const local = useReplays(localPage, LOCAL_PAGE_SIZE)
-  const account = useAccountReplays(accountPage, ACCOUNT_PAGE_SIZE)
+  const account = useAccountReplays(accountPage, ACCOUNT_PAGE_SIZE, accountRefreshVersion > 0)
   const cacheOne = useCacheReplay()
   const cacheMany = useCacheReplays()
   const cacheSummaries = useCacheSummaries()
@@ -223,6 +273,233 @@ export function ReplayLab() {
     },
     [account, cacheSummaries],
   )
+
+  const cacheWholeAccount = useCallback(
+    async (mode: BulkCacheMode) => {
+      if (bulkCacheMode != null || !steam.data?.connected) return
+      setBulkCacheMode(mode)
+      setCacheMessage(null)
+      try {
+        // This is intentionally a main-process bulk read. It uses the complete
+        // persisted snapshot and refreshes AoE4World/Relic once, so the action
+        // cannot stop at the currently visible 20-row page.
+        const archive = await ipc.listAllAccountReplays(true)
+        if (!archive.ok) {
+          setCacheMessage(archive.error.message)
+          return
+        }
+        const eligibleIds = archive.data.items
+          .filter((item) =>
+            mode === 'replays'
+              ? item.replayAvailable && item.cacheStatus !== 'cached'
+              : item.summaryAvailable && !item.summaryCached,
+          )
+          .map((item) => item.game.game_id)
+        setBulkCacheProgress({
+          mode,
+          scanned: archive.data.totalCount,
+          eligible: eligibleIds.length,
+          completed: 0,
+        })
+
+        const totals = { cached: 0, alreadyCached: 0, unavailable: 0 }
+        const chunkSize = 50
+        for (let offset = 0; offset < eligibleIds.length; offset += chunkSize) {
+          const chunk = eligibleIds.slice(offset, offset + chunkSize)
+          const result =
+            mode === 'replays'
+              ? await cacheMany.mutateAsync(chunk)
+              : await cacheSummaries.mutateAsync(chunk)
+          if (!result.ok) {
+            setCacheMessage(result.error.message)
+            return
+          }
+          totals.cached += result.data.cached
+          totals.alreadyCached += result.data.alreadyCached
+          totals.unavailable += result.data.unavailable
+          setBulkCacheProgress((previous) =>
+            previous
+              ? { ...previous, completed: Math.min(offset + chunk.length, eligibleIds.length) }
+              : previous,
+          )
+        }
+
+        const label = mode === 'replays' ? 'replays' : 'summaries'
+        setCacheMessage(
+          `${tt('Full archive scanned')}: ${archive.data.totalCount} · ${label} ${eligibleIds.length} · ` +
+            `${tt('cached')} ${totals.cached} · ${tt('already cached')} ${totals.alreadyCached} · ` +
+            `${tt('unavailable')} ${totals.unavailable}.`,
+        )
+        await account.refetch()
+      } catch (error) {
+        setCacheMessage(error instanceof Error ? error.message : tt('Full archive sync failed.'))
+      } finally {
+        setBulkCacheMode(null)
+      }
+    },
+    [account, bulkCacheMode, cacheMany, cacheSummaries, steam.data?.connected, tt],
+  )
+
+  const analyzeWholeAccount = useCallback(async () => {
+    if (fullAnalysisRunning || fullAnalysisRun.current !== 0) return
+    const runId = Date.now()
+    fullAnalysisRun.current = runId
+    setFullAnalysisRunning(true)
+    setCacheMessage(null)
+    try {
+      const archive = await ipc.listAllAccountReplays(false)
+      if (!archive.ok) {
+        setCacheMessage(archive.error.message)
+        return
+      }
+      const targets = archive.data.items
+        .filter((item) => item.cacheStatus === 'cached')
+        .map((item) => ({ key: `account:${item.game.game_id}`, gameId: item.game.game_id }))
+      setFullAnalysis({ done: 0, total: targets.length, errors: 0 })
+      let errors = 0
+      for (const [index, target] of targets.entries()) {
+        if (fullAnalysisRun.current !== runId) return
+        try {
+          const result = await ipc.analyzeReplay({ gameId: target.gameId })
+          const analysisResult = result.ok ? result.data : null
+          if (analysisResult == null) {
+            errors += 1
+          } else {
+            setAutoAnalysisResults((previous) => ({ ...previous, [target.key]: analysisResult }))
+          }
+        } catch {
+          errors += 1
+        }
+        setFullAnalysis({ done: index + 1, total: targets.length, errors })
+      }
+      setCacheMessage(
+        `${tt('Full archive analysis')}: ${targets.length} · ${tt('errors')} ${errors}.`,
+      )
+    } catch (error) {
+      setCacheMessage(error instanceof Error ? error.message : tt('Full archive analysis failed.'))
+    } finally {
+      if (fullAnalysisRun.current === runId) {
+        fullAnalysisRun.current = 0
+        setFullAnalysisRunning(false)
+      }
+    }
+  }, [fullAnalysisRunning, tt])
+
+  const auditWholeAccount = useCallback(async () => {
+    if (archiveAuditRunning || archiveAuditRun.current !== 0 || bulkCacheMode != null) return
+    const profileId = settings.data?.profileId ?? null
+    if (profileId == null) return
+    const runId = Date.now()
+    archiveAuditRun.current = runId
+    setArchiveAuditRunning(true)
+    setArchiveAuditRows([])
+    setArchiveAuditProgress(null)
+    setCacheMessage(null)
+    try {
+      const archive = await ipc.listAllAccountReplays(false)
+      if (!archive.ok) {
+        setCacheMessage(archive.error.message)
+        return
+      }
+      const eligible = archive.data.items.filter((item) => item.summaryCached)
+      setArchiveAuditProgress({
+        done: 0,
+        total: archive.data.totalCount,
+        eligible: eligible.length,
+        unavailable: archive.data.totalCount - eligible.length,
+        errors: 0,
+      })
+      let errors = 0
+      let auditedPlayers = 0
+      for (const [index, item] of eligible.entries()) {
+        if (archiveAuditRun.current !== runId) return
+        try {
+          const summaryResult = await ipc.getGameSummary(String(item.game.game_id))
+          const summary = summaryResult.ok ? summaryResult.data : null
+          const roster = normalizeTeams(item.game).flat()
+          const accountPlayer = roster.find((player) => player.profile_id === profileId) ?? null
+          const summaryPlayer =
+            summary?.players.find((player) => player.profileId === profileId) ??
+            summary?.players.find((player) =>
+              roster.some(
+                (rosterPlayer) =>
+                  rosterPlayer.name.trim().toLowerCase() === (player.name ?? '').trim().toLowerCase(),
+              ),
+            ) ??
+            null
+          if (!summary || summary.players.length === 0) {
+            errors += 1
+          } else {
+            const myCiv = accountPlayer?.civilization ?? (summaryPlayer ? civFromToken(summaryPlayer.civToken) : null)
+            const audits = compareMatchPlayers({
+              players: summary.players,
+              builds: BUILD_CATALOG.map((entry) => entry.build),
+              myCiv,
+              myProfileId: profileId,
+              myPlayerId: summaryPlayer?.playerId ?? null,
+              myName: accountPlayer?.name ?? summaryPlayer?.name,
+              map: item.game.map,
+              patch: item.game.patch == null ? null : String(item.game.patch),
+            })
+            if (audits.length === 0) {
+              errors += 1
+            } else {
+              auditedPlayers += audits.length
+              setArchiveAuditRows((previous) => [
+                ...previous,
+                ...audits.map((audit) => {
+                  const rosterPlayer = roster.find(
+                    (player) =>
+                      (audit.player.profileId != null && player.profile_id === audit.player.profileId) ||
+                      player.name.trim().toLowerCase() === (audit.player.name ?? '').trim().toLowerCase(),
+                  )
+                  const isMe =
+                    (summaryPlayer != null && audit.player.playerId === summaryPlayer.playerId) ||
+                    (accountPlayer != null && rosterPlayer?.profile_id === accountPlayer.profile_id)
+                  return {
+                    gameId: item.game.game_id,
+                    startedAt: item.game.started_at,
+                    map: item.game.map,
+                    playerName: audit.player.name ?? rosterPlayer?.name ?? tt('Unknown'),
+                    isMe,
+                    civ: rosterPlayer?.civilization ?? audit.civ,
+                    result: rosterPlayer?.result ?? null,
+                    reference: audit.reference?.name ?? null,
+                    score: audit.report?.score ?? null,
+                    improvements: audit.improvements.length,
+                    strengths: audit.strengths.length,
+                    matchedActions: audit.coverage.matchedActions,
+                    expectedActions: audit.coverage.expectedActions,
+                    confidence: audit.coverage.confidence,
+                  }
+                }),
+              ])
+            }
+          }
+        } catch {
+          errors += 1
+        }
+        setArchiveAuditProgress({
+          done: index + 1,
+          total: archive.data.totalCount,
+          eligible: eligible.length,
+          unavailable: archive.data.totalCount - eligible.length,
+          errors,
+        })
+      }
+      setCacheMessage(
+        `${tt('Full archive audit')}: ${eligible.length} ${tt('summaries')} · ` +
+          `${auditedPlayers} ${tt('players')} · ${tt('errors')} ${errors}.`,
+      )
+    } catch (error) {
+      setCacheMessage(error instanceof Error ? error.message : tt('Full archive audit failed.'))
+    } finally {
+      if (archiveAuditRun.current === runId) {
+        archiveAuditRun.current = 0
+        setArchiveAuditRunning(false)
+      }
+    }
+  }, [archiveAuditRunning, bulkCacheMode, settings.data?.profileId, tt])
 
   useEffect(() => {
     if (
@@ -401,14 +678,21 @@ export function ReplayLab() {
           isLoading={account.isLoading}
           isError={account.isError}
           cacheMessage={cacheMessage}
-          availableIds={availableIds}
-          summaryIds={summaryIds}
           cacheOne={cacheOne}
           cacheMany={cacheMany}
           cacheSummaries={cacheSummaries}
-          onRetry={() => void account.refetch()}
-          onCacheAll={() => void cacheAvailable(availableIds)}
-          onCacheSummaries={() => void cacheAvailableSummaries(summaryIds)}
+          bulkCacheMode={bulkCacheMode}
+          bulkCacheProgress={bulkCacheProgress}
+          fullAnalysis={fullAnalysis}
+          fullAnalysisRunning={fullAnalysisRunning}
+          archiveAuditRows={archiveAuditRows}
+          archiveAuditProgress={archiveAuditProgress}
+          archiveAuditRunning={archiveAuditRunning}
+          onRetry={() => setAccountRefreshVersion((value) => value + 1)}
+          onCacheAll={() => void cacheWholeAccount('replays')}
+          onCacheSummaries={() => void cacheWholeAccount('summaries')}
+          onAnalyzeAll={() => void analyzeWholeAccount()}
+          onAuditAll={() => void auditWholeAccount()}
           autoAnalysis={autoAnalysis}
           autoAnalysisResults={autoAnalysisResults}
           page={accountPage}
@@ -638,16 +922,23 @@ function AccountArchive({
   isLoading,
   isError,
   cacheMessage,
-  availableIds,
-  summaryIds,
   cacheOne,
   cacheMany,
   cacheSummaries,
+  bulkCacheMode,
+  bulkCacheProgress,
+  fullAnalysis,
+  fullAnalysisRunning,
+  archiveAuditRows,
+  archiveAuditProgress,
+  archiveAuditRunning,
   autoAnalysis,
   autoAnalysisResults,
   onRetry,
   onCacheAll,
   onCacheSummaries,
+  onAnalyzeAll,
+  onAuditAll,
   page,
   onPage,
 }: {
@@ -657,16 +948,23 @@ function AccountArchive({
   isLoading: boolean
   isError: boolean
   cacheMessage: string | null
-  availableIds: number[]
-  summaryIds: number[]
   cacheOne: ReturnType<typeof useCacheReplay>
   cacheMany: ReturnType<typeof useCacheReplays>
   cacheSummaries: ReturnType<typeof useCacheSummaries>
+  bulkCacheMode: BulkCacheMode | null
+  bulkCacheProgress: BulkCacheProgress | null
+  fullAnalysis: AutoAnalysisState | null
+  fullAnalysisRunning: boolean
+  archiveAuditRows: ArchiveAuditRow[]
+  archiveAuditProgress: ArchiveAuditProgress | null
+  archiveAuditRunning: boolean
   autoAnalysis: AutoAnalysisState | null
   autoAnalysisResults: Record<string, ReplayAnalysisResult>
   onRetry: () => void
   onCacheAll: () => void
   onCacheSummaries: () => void
+  onAnalyzeAll: () => void
+  onAuditAll: () => void
   page: number
   onPage: (page: number) => void
 }) {
@@ -705,29 +1003,51 @@ function AccountArchive({
                 onClick={onRetry}
                 className="inline-flex h-8 items-center gap-1.5 rounded-md border border-border px-2.5 text-xs hover:bg-secondary"
               >
-                <RefreshCw className="h-3.5 w-3.5" /> {tt('Refresh')}
+                <RefreshCw className="h-3.5 w-3.5" /> {tt('Sync full history')}
               </button>
               <button
                 type="button"
-                disabled={!steamConnected || availableIds.length === 0 || cacheMany.isPending}
+                disabled={!steamConnected || data.totalCount === 0 || cacheMany.isPending || bulkCacheMode != null}
                 onClick={onCacheAll}
                 className="inline-flex h-8 items-center gap-1.5 rounded-md border border-primary/40 px-2.5 text-xs text-primary hover:bg-primary/10 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 <HardDriveDownload className="h-3.5 w-3.5" />
-                {cacheMany.isPending
-                  ? tt('Caching…')
-                  : `${tt('Cache')} ${availableIds.length} ${tt('available')}`}
+                {bulkCacheMode === 'replays' || cacheMany.isPending
+                  ? tt('Caching full archive…')
+                  : tt('Cache all available')}
               </button>
               <button
                 type="button"
-                disabled={!steamConnected || summaryIds.length === 0 || cacheSummaries.isPending}
+                disabled={!steamConnected || data.totalCount === 0 || cacheSummaries.isPending || bulkCacheMode != null}
                 onClick={onCacheSummaries}
                 className="inline-flex h-8 items-center gap-1.5 rounded-md border border-border px-2.5 text-xs hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-40"
               >
                 <ListChecks className="h-3.5 w-3.5" />
-                {cacheSummaries.isPending
-                  ? tt('Caching…')
-                  : `${tt('Cache summaries')} ${summaryIds.length}`}
+                {bulkCacheMode === 'summaries' || cacheSummaries.isPending
+                  ? tt('Caching full archive…')
+                  : tt('Cache all summaries')}
+              </button>
+              <button
+                type="button"
+                disabled={data.totalCount === 0 || fullAnalysisRunning || bulkCacheMode != null}
+                onClick={onAnalyzeAll}
+                className="inline-flex h-8 items-center gap-1.5 rounded-md border border-border px-2.5 text-xs hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                <ScanLine className="h-3.5 w-3.5" />
+                {fullAnalysisRunning ? tt('Analyzing full archive…') : tt('Analyze full cached archive')}
+              </button>
+              <button
+                type="button"
+                disabled={
+                  data.totalCount === 0 ||
+                  archiveAuditRunning ||
+                  bulkCacheMode != null
+                }
+                onClick={onAuditAll}
+                className="inline-flex h-8 items-center gap-1.5 rounded-md border border-primary/40 px-2.5 text-xs text-primary hover:bg-primary/10 disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                <ClipboardCheck className="h-3.5 w-3.5" />
+                {archiveAuditRunning ? tt('Auditing full archive…') : tt('Audit all cached summaries')}
               </button>
             </div>
           </div>
@@ -739,13 +1059,37 @@ function AccountArchive({
             </p>
           )}
           {cacheMessage && <p className="text-xs text-primary">{cacheMessage}</p>}
+          {bulkCacheProgress && (
+            <p className="text-[11px] text-muted-foreground">
+              {tt('Full archive scan')}: {formatCount(bulkCacheProgress.scanned)} ·{' '}
+              {bulkCacheProgress.mode === 'replays' ? tt('replays') : tt('summaries')} {formatCount(bulkCacheProgress.completed)}/
+              {formatCount(bulkCacheProgress.eligible)}
+            </p>
+          )}
+          {fullAnalysis && (
+            <p className="text-[11px] text-muted-foreground">
+              {tt('Full archive analysis')}: {formatCount(fullAnalysis.done)}/
+              {formatCount(fullAnalysis.total)}
+              {fullAnalysis.errors > 0 ? ` · ${fullAnalysis.errors} ${tt('errors')}` : ''}
+            </p>
+          )}
+          {archiveAuditProgress && (
+            <p className="text-[11px] text-muted-foreground">
+              {tt('Full archive audit')}: {formatCount(archiveAuditProgress.done)}/
+              {formatCount(archiveAuditProgress.eligible)} · {tt('not cached')}{' '}
+              {formatCount(archiveAuditProgress.unavailable)}
+              {archiveAuditProgress.errors > 0
+                ? ` · ${archiveAuditProgress.errors} ${tt('errors')}`
+                : ''}
+            </p>
+          )}
           {autoAnalysis && (
             <p className="text-xs text-primary">
               {tt('Automatic replay analysis')}: {autoAnalysis.done}/{autoAnalysis.total}
               {autoAnalysis.errors > 0 ? ` · ${autoAnalysis.errors} ${tt('errors')}` : ''}
               {autoAnalysis.done < autoAnalysis.total
                 ? ` · ${tt('summaries are cached automatically when available')}`
-                : ''}
+                : ` · ${tt('saved locally and reused after restart')}`}
             </p>
           )}
           <p className="text-[11px] text-muted-foreground">
@@ -754,6 +1098,7 @@ function AccountArchive({
           </p>
         </CardContent>
       </Card>
+      {archiveAuditRows.length > 0 && <ArchiveAuditCard rows={archiveAuditRows} />}
       {data.items.length === 0 ? (
         <EmptyBox>{tt('No account games returned for this page.')}</EmptyBox>
       ) : (
@@ -772,6 +1117,113 @@ function AccountArchive({
   )
 }
 
+function ArchiveAuditCard({ rows }: { rows: ArchiveAuditRow[] }) {
+  const { tt, gameName } = useI18n()
+  const gameCount = new Set(rows.map((row) => row.gameId)).size
+  const scoredRows = rows.filter((row) => row.score != null)
+  const averageScore =
+    scoredRows.length === 0
+      ? null
+      : Math.round(
+          scoredRows.reduce((total, row) => total + (row.score ?? 0), 0) / scoredRows.length,
+        )
+  const playersWithIssues = rows.filter((row) => row.improvements > 0).length
+  const matchedActions = rows.reduce((total, row) => total + row.matchedActions, 0)
+  const expectedActions = rows.reduce((total, row) => total + row.expectedActions, 0)
+  const references = rows.filter((row) => row.reference != null).length
+
+  return (
+    <Card>
+      <CardContent className="space-y-3 p-4">
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <div>
+            <div className="rts-section-title">{tt('Build-order audit history')}</div>
+            <p className="mt-1 text-xs text-muted-foreground">
+              {tt(
+                'Every cached account summary is compared against the normalized build catalogue.',
+              )}
+            </p>
+          </div>
+          <Badge variant="outline">
+            {formatCount(gameCount)} {tt('games')} · {formatCount(rows.length)} {tt('players')}
+          </Badge>
+        </div>
+        <div className="grid gap-2 sm:grid-cols-4">
+          <Metric
+            label={tt('Average audit score')}
+            value={averageScore == null ? '—' : `${averageScore}%`}
+          />
+          <Metric label={tt('Players with issues')} value={formatCount(playersWithIssues)} />
+          <Metric
+            label={tt('Evidence matched')}
+            value={`${formatCount(matchedActions)}/${formatCount(expectedActions)}`}
+          />
+          <Metric label={tt('Reference builds')} value={formatCount(references)} />
+        </div>
+        <div className="overflow-x-auto rounded-md border border-border/60">
+          <table className="w-full min-w-[900px] text-left text-xs">
+            <thead className="bg-secondary/30 text-[10px] uppercase tracking-wide text-muted-foreground">
+              <tr>
+                <th className="px-3 py-2 font-medium">{tt('Date')}</th>
+                <th className="px-3 py-2 font-medium">{tt('Map')}</th>
+                <th className="px-3 py-2 font-medium">{tt('Player')}</th>
+                <th className="px-3 py-2 font-medium">{tt('Reference build')}</th>
+                <th className="px-3 py-2 font-medium">{tt('Score')}</th>
+                <th className="px-3 py-2 font-medium">{tt('Issues')}</th>
+                <th className="px-3 py-2 font-medium">{tt('Evidence')}</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border/50">
+              {rows.map((row) => (
+                <tr key={row.gameId} className="hover:bg-secondary/20">
+                  <td className="whitespace-nowrap px-3 py-2 text-muted-foreground">
+                    {new Date(row.startedAt).toLocaleDateString()}
+                  </td>
+                  <td className="px-3 py-2">
+                    <div>{row.map || tt('Unknown map')}</div>
+                    <div className="text-[10px] text-muted-foreground">
+                      {row.civ == null ? tt('Unknown civilization') : gameName(civDisplayName(row.civ))}
+                      {row.result
+                        ? ` · ${row.result === 'win' ? tt('Win') : tt('Loss')}`
+                        : ''}
+                    </div>
+                  </td>
+                  <td className="px-3 py-2">
+                    <div className={row.isMe ? 'font-semibold text-primary' : 'font-medium'}>
+                      {row.playerName}
+                      {row.isMe ? ` · ${tt('You')}` : ''}
+                    </div>
+                  </td>
+                  <td className="max-w-[240px] px-3 py-2">
+                    <div className="truncate" title={row.reference ?? undefined}>
+                      {row.reference ?? tt('No compatible build')}
+                    </div>
+                    <Badge variant="outline" className="mt-1 text-[10px]">
+                      {tt(row.confidence)}
+                    </Badge>
+                  </td>
+                  <td className="px-3 py-2 font-medium tabular-nums">
+                    {row.score == null ? '—' : `${Math.round(row.score)}%`}
+                  </td>
+                  <td className="px-3 py-2 tabular-nums">
+                    <span className={row.improvements > 0 ? 'text-amber-300' : 'text-win'}>
+                      {formatCount(row.improvements)}
+                    </span>
+                    <span className="text-muted-foreground"> · {formatCount(row.strengths)} ✓</span>
+                  </td>
+                  <td className="px-3 py-2 tabular-nums text-muted-foreground">
+                    {formatCount(row.matchedActions)}/{formatCount(row.expectedActions)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+
 function AccountReplayRow({
   item,
   profileId,
@@ -786,14 +1238,17 @@ function AccountReplayRow({
   const { tt } = useI18n()
   const [showAnalysis, setShowAnalysis] = useState(false)
   const [showSummary, setShowSummary] = useState(false)
+  const [fullResult, setFullResult] = useState<FullReplayAnalysis | null>(null)
   const analysis = useReplayAnalysis()
+  const fullAnalysis = useDownloadAndAnalyzeReplay()
   const videoAnalyses = useVideoAnalyses()
   const game = item.game
   const summaryQuery = useGameSummary(String(game.game_id), { enabled: showSummary })
   const summary = summaryQuery.data?.ok ? summaryQuery.data.data : null
   const summaryError =
     summaryQuery.data && !summaryQuery.data.ok ? summaryQuery.data.error.message : null
-  const displayedAnalysis = analysis.data ?? autoResult
+  const displayedAnalysis = fullResult?.replay ?? analysis.data ?? autoResult
+  const displayedSummary = fullResult?.summary ?? summary
   const myPlayer = normalizeTeams(game)
     .flat()
     .find((player) => profileId != null && player.profile_id === profileId)
@@ -858,6 +1313,28 @@ function AccountReplayRow({
             </div>
           </div>
           <div className="flex items-center gap-2">
+            {(item.replayAvailable || item.cacheStatus === 'cached') && (
+              <button
+                type="button"
+                disabled={fullAnalysis.isPending}
+                onClick={() => {
+                  void fullAnalysis
+                    .mutateAsync(game.game_id)
+                    .then((result) => {
+                      setFullResult(result)
+                      setShowAnalysis(result.replay != null)
+                      setShowSummary(result.summary != null)
+                    })
+                    .catch(() => undefined)
+                }}
+                className="inline-flex h-8 items-center gap-1.5 rounded-md border border-primary/40 px-2.5 text-xs text-primary hover:bg-primary/10 disabled:opacity-40"
+              >
+                <ScanLine className="h-3.5 w-3.5" />
+                {fullAnalysis.isPending
+                  ? tt('Downloading and analyzing…')
+                  : tt('Download + full analysis')}
+              </button>
+            )}
             {item.replayAvailable && item.cacheStatus !== 'cached' && (
               <button
                 type="button"
@@ -936,8 +1413,18 @@ function AccountReplayRow({
             ? ` ${tt('Cached size')}: ${(item.cacheSizeBytes / 1024 / 1024).toFixed(1)} MB.`
             : ''}
         </p>
-        {analysis.error && !autoResult && (
+        {fullAnalysis.error && (
+          <p className="text-xs text-loss">{fullAnalysis.error.message}</p>
+        )}
+        {analysis.error && !autoResult && !fullResult && (
           <p className="text-xs text-loss">{analysis.error.message}</p>
+        )}
+        {fullResult && (
+          <p className="border-t border-border/60 pt-2 text-[11px] text-muted-foreground">
+            {tt('Full replay analysis')}: {fullResult.download.status} ·{' '}
+            {tt('Replay stream')} {fullResult.coverage.replay} · {tt('Summary')}{' '}
+            {fullResult.coverage.summary ? tt('available') : tt('unavailable')}
+          </p>
         )}
         {displayedAnalysis && (
           <ReplayAnalysisPanel
@@ -946,20 +1433,20 @@ function AccountReplayRow({
             onToggle={() => setShowAnalysis((value) => !value)}
           />
         )}
-        {item.summaryAvailable && showSummary && (
+        {(item.summaryAvailable || displayedSummary != null) && showSummary && (
           <div className="border-t border-border/60 pt-3">
             {summaryQuery.isFetching && <Spinner label={tt('Loading summary…')} />}
             {summaryError && <p className="text-xs text-loss">{summaryError}</p>}
-            {!summaryQuery.isFetching && !summaryError && !summary && (
+            {!summaryQuery.isFetching && !summaryError && !displayedSummary && (
               <p className="text-xs text-muted-foreground">
                 {tt('Relic summary is not available for this match yet.')}
               </p>
             )}
-            {summary && (
+            {displayedSummary && (
               <div className="space-y-4">
                 <TwitchVodCard input={myPlayer ? twitchVodInput : null} />
                 <BuildOrderComparisonCard
-                  summary={summary}
+                  summary={displayedSummary}
                   myCiv={myPlayer?.civilization ?? null}
                   myProfileId={profileId}
                   myName={myPlayer?.name ?? null}
@@ -970,7 +1457,7 @@ function AccountReplayRow({
                   verifiedVod={verifiedVod}
                 />
                 <GameSummaryPanel
-                  summary={summary}
+                  summary={displayedSummary}
                   myCiv={myPlayer?.civilization ?? null}
                   myProfileId={profileId}
                 />

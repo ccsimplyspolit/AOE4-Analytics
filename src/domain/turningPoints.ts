@@ -34,6 +34,8 @@ export interface TurningPointInput {
   summary: MatchSummary
   myProfileId: number | null
   myCiv: string | null
+  /** Stable summary row id used for local/AI players without a profile id. */
+  myPlayerId?: number | null
 }
 
 interface RankedTurningPoint {
@@ -67,7 +69,7 @@ const AGE_NAMES = new Map<number, string>([
  * summary does not identify team membership. Team games use only the user's row.
  */
 export function deriveTurningPoints(input: TurningPointInput): TurningPoint[] {
-  const me = summaryPlayerForMe(input.summary, input.myProfileId, input.myCiv)
+  const me = summaryPlayerForMe(input.summary, input.myProfileId, input.myCiv, input.myPlayerId)
   if (!me) return []
 
   const opponent =

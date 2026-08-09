@@ -36,6 +36,11 @@ describe('parseDuration', () => {
     expect(parseDuration('1:01:01')).toBe(3661)
   })
 
+  it('reads AoE4Guides rich-text and worked-out timestamps', () => {
+    expect(parseDuration('~4:05')).toBe(245)
+    expect(parseDuration('<span>~4:05</span><br>')).toBe(245)
+  })
+
   it('returns null for malformed input', () => {
     expect(parseDuration('')).toBeNull()
     expect(parseDuration('abc')).toBeNull()

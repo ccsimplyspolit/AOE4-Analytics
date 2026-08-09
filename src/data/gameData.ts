@@ -1,4 +1,5 @@
 import unitsJson from './vendor/aoe4world-data/units.json'
+import essenceProvenanceJson from './vendor/aoe4world-data/essence-provenance.json'
 import { civCode } from './civs'
 
 /** Provenance for the versioned snapshot consumed by Production Calculator. */
@@ -6,6 +7,33 @@ export const GAME_DATA_SOURCE = 'aoe4world/data'
 export const GAME_DATA_COMMIT = 'b2cd38222deae40ba2db18171edf494f81410c69'
 export const GAME_DATA_CAPTURED_AT = '2026-08-08T19:51:51Z'
 export const GAME_DATA_VERSION = `${GAME_DATA_SOURCE}@${GAME_DATA_COMMIT.slice(0, 12)}`
+
+export interface EssenceProvenance {
+  schemaVersion: number
+  source: string
+  sourceUrl: string
+  sourceRevision: string | null
+  capturedAt: string | null
+  status: 'not-run' | 'ready' | 'dry-run' | 'decoded' | 'inventoried' | 'unavailable' | string
+  input: {
+    path: string | null
+    kind: string | null
+    name?: string | null
+    bytes?: number | null
+    effectivePath?: string
+  }
+  counts: Record<string, number>
+  actions: string[]
+  projection?: {
+    status?: string
+    sourceRevision?: string | null
+    counts?: Record<string, number>
+    path?: string
+  } | null
+}
+
+/** Optional local-game snapshot provenance produced by AOEMods.Essence. */
+export const ESSENCE_PROVENANCE = essenceProvenanceJson as EssenceProvenance
 
 export interface VendoredUnit {
   id: string

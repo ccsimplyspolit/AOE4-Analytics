@@ -117,8 +117,9 @@ export function deriveMatchReview(
   myProfileId: number | null,
   myCiv: string | null,
   perPlayer: PerPlayerMatchStats[] = [],
+  myPlayerId: number | null = null,
 ): MatchReview | null {
-  const me = identifyPlayer(summary, myProfileId, myCiv)
+  const me = identifyPlayer(summary, myProfileId, myCiv, myPlayerId)
   if (!me) return null
 
   const isOneVsOne = summary.players.length === 2
@@ -245,7 +246,12 @@ function identifyPlayer(
   summary: MatchSummary,
   myProfileId: number | null,
   myCiv: string | null,
+  myPlayerId: number | null = null,
 ): PlayerSummary | null {
+  if (myPlayerId != null) {
+    const byPlayerId = summary.players.find((player) => player.playerId === myPlayerId)
+    if (byPlayerId) return byPlayerId
+  }
   if (myProfileId != null) {
     const byId = summary.players.find((player) => player.profileId === myProfileId)
     if (byId) return byId

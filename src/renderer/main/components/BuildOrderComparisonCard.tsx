@@ -11,10 +11,9 @@ import type { PerPlayerMatchStats } from '@domain/analysis'
 import type { MatchSummary, PlayerSummary } from '@domain/statsSummary'
 import type { VideoAnalysisRecord } from '@domain/videoAnalysis'
 import type { TwitchVodReference } from '@domain/twitchVodFinder'
-import { civFromToken } from '@domain/statsSummary'
 import {
-  comparePlayerToBuild,
-  selectReferenceBuild,
+  compareMatchPlayers,
+  isPlayerSubject,
   type BuildAuditStatus,
   type PlayerBuildAudit,
 } from '@domain/buildOrderComparison'
@@ -32,6 +31,7 @@ export function BuildOrderComparisonCard({
   summary,
   myCiv,
   myProfileId,
+  myPlayerId,
   myName,
   summaryLoading = false,
   map,
@@ -41,10 +41,13 @@ export function BuildOrderComparisonCard({
   perPlayer,
   linkedVideoAnalysis,
   verifiedVod,
+  showSubjectBadge = true,
 }: {
   summary: MatchSummary | null
   myCiv: string | null
   myProfileId: number | null
+  /** Stable summary row id used when the selected player has no profile id. */
+  myPlayerId?: number | null
   myName?: string | null
   summaryLoading?: boolean
   map?: string | null
@@ -56,6 +59,8 @@ export function BuildOrderComparisonCard({
   linkedVideoAnalysis?: VideoAnalysisRecord
   /** Exact-game Twitch association, even before caption/build extraction. */
   verifiedVod?: TwitchVodReference | null
+  /** Set false when a match viewer is focused on somebody other than its owner. */
+  showSubjectBadge?: boolean
 }) {
   const { tt, gameName } = useI18n()
   const players = summary?.players ?? EMPTY_PLAYERS
@@ -69,50 +74,25 @@ export function BuildOrderComparisonCard({
       : null
   const audits = useMemo(
     () =>
-      players.map((player) => {
-        const playerIsMe = isMe(player, myProfileId, myCiv, myName, players)
-        const civ = playerIsMe ? myCiv : civFromToken(player.civToken)
-        const playerStats = perPlayer?.find((row) => row.profileId === player.profileId) ?? null
-        const hasOpponentTeamIds = Boolean(
-          playerStats?.teamId != null &&
-          perPlayer?.some((row) => row.teamId != null && row.teamId !== playerStats.teamId),
-        )
-        const opponentCivilizations = players
-          .filter((other) => {
-            if (other.playerId === player.playerId) return false
-            const otherStats = perPlayer?.find((row) => row.profileId === other.profileId) ?? null
-            if (!hasOpponentTeamIds) return true
-            return otherStats?.teamId != null && otherStats.teamId !== playerStats?.teamId
-          })
-          .map((other) => civFromToken(other.civToken))
-          .filter((value): value is string => value != null)
-        const selection = selectReferenceBuild(BUNDLED_BUILD_ORDERS, {
-          civ,
-          map,
-          patch,
-          pinnedName: playerIsMe ? referenceBuildName : null,
-          preferredBuild:
-            playerIsMe && extractedVideoBuild?.build_order.length ? extractedVideoBuild : null,
-          player,
-          opponentCivilizations,
-        })
-        return comparePlayerToBuild({
-          player,
-          civ,
-          reference: selection.reference,
-          referenceCandidates: selection.candidates,
-          referenceReason: selection.reason,
-          referenceFitScore: selection.observedFitScore,
-          referenceMatchedActions: selection.observedMatchedActions,
-          referenceExpectedActions: selection.observedExpectedActions,
-          referenceConfidence: selection.observedConfidence,
-        })
+      compareMatchPlayers({
+        players,
+        builds: BUNDLED_BUILD_ORDERS,
+        myCiv,
+        myProfileId,
+        myPlayerId,
+        myName,
+        map,
+        patch,
+        referenceBuildName,
+        perPlayer,
+        preferredBuild: extractedVideoBuild,
       }),
     [
       extractedVideoBuild,
       map,
       myCiv,
       myName,
+      myPlayerId,
       myProfileId,
       patch,
       perPlayer,
@@ -149,8 +129,36 @@ export function BuildOrderComparisonCard({
       </section>
     )
   }
-  if (audits.length === 0) return null
-  const comparable = audits.filter((audit) => audit.report != null)
+  // Keep the anchor mounted even when the summary contains no player rows.
+  // GameDetail's "Open build audit" action targets this id; returning null
+  // here made the button appear inert for partially decoded/corrupt summaries.
+  if (audits.length === 0) {
+    return (
+      <section id="build-order-audit" className="scroll-mt-4 space-y-2">
+        <h2 className="flex items-center gap-2 text-lg font-semibold tracking-tight">
+          <ClipboardCheck className="h-4 w-4 text-primary" />
+          {tt('Build-order audit · all players')}
+        </h2>
+        <Card>
+          <CardContent className="space-y-2 p-4 text-sm">
+            <p className="font-medium">{tt('No player rows were decoded for this match.')}</p>
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              {tt(
+                'The match can still be reviewed after syncing its summary or importing the local replay.',
+              )}
+            </p>
+          </CardContent>
+        </Card>
+      </section>
+    )
+  }
+  const comparable = audits.filter((audit) => audit.reference != null)
+  const withEvidence = audits.filter(
+    (audit) =>
+      audit.coverage.gradeableCheckpoints > 0 ||
+      audit.coverage.matchedActions > 0 ||
+      audit.coverage.eventCount > 0,
+  )
 
   return (
     <section id="build-order-audit" className="scroll-mt-4 space-y-3">
@@ -161,6 +169,8 @@ export function BuildOrderComparisonCard({
         </h2>
         <span className="text-xs text-muted-foreground">
           {comparable.length}/{audits.length} {tt('players matched to a reference build')}
+          {' · '}
+          {withEvidence.length}/{audits.length} {tt('players with decoded evidence')}
           {map && <> · {map}</>}
           {format && <> · {format}</>}
         </span>
@@ -193,9 +203,11 @@ export function BuildOrderComparisonCard({
                     key={audit.player.playerId}
                     audit={audit}
                     myProfileId={myProfileId}
+                    myPlayerId={myPlayerId ?? null}
                     myCiv={myCiv}
                     myName={myName}
                     allPlayers={players}
+                    showSubjectBadge={showSubjectBadge}
                   />
                 ))}
               </tbody>
@@ -204,7 +216,17 @@ export function BuildOrderComparisonCard({
 
           <div className="space-y-2">
             {audits.map((audit) => (
-              <AuditDetail key={audit.player.playerId} audit={audit} gameName={gameName} />
+              <AuditDetail
+                key={audit.player.playerId}
+                audit={audit}
+                gameName={gameName}
+                open={
+                  (myPlayerId != null && audit.player.playerId === myPlayerId) ||
+                  (myPlayerId == null &&
+                    audit.player.profileId != null &&
+                    audit.player.profileId === myProfileId)
+                }
+              />
             ))}
           </div>
 
@@ -272,25 +294,29 @@ function ExactVodEvidence({
 function AuditSummaryRow({
   audit,
   myProfileId,
+  myPlayerId,
   myCiv,
   myName,
   allPlayers,
+  showSubjectBadge,
 }: {
   audit: PlayerBuildAudit
   myProfileId: number | null
+  myPlayerId: number | null
   myCiv: string | null
   myName?: string | null
   allPlayers: PlayerSummary[]
+  showSubjectBadge: boolean
 }) {
   const { tt, gameName } = useI18n()
-  const me = isMe(audit.player, myProfileId, myCiv, myName, allPlayers)
+  const me = isPlayerSubject(audit.player, myProfileId, myCiv, myName, allPlayers, myPlayerId)
   const name = audit.player.name || `Player ${audit.player.playerId}`
   const score = audit.report?.score
   return (
     <tr className="border-b border-border/50 last:border-b-0">
       <td className="px-3 py-2 font-medium">
         {name}
-        {me && (
+        {me && showSubjectBadge && (
           <Badge className="ml-2 text-[10px]" variant="outline">
             {tt('You')}
           </Badge>
@@ -303,7 +329,14 @@ function AuditSummaryRow({
         {audit.reference?.name ?? tt('No compatible build')}
       </td>
       <td className="px-2 py-2 text-right">
-        {score == null ? <span className="text-muted-foreground">—</span> : <Score score={score} />}
+        <div className="flex flex-col items-end gap-0.5">
+          {score == null ? <span className="text-muted-foreground">—</span> : <Score score={score} />}
+          {audit.coverage.timedCheckpoints > 0 && (
+            <span className="text-[10px] text-muted-foreground">
+              {audit.coverage.gradeableCheckpoints}/{audit.coverage.timedCheckpoints}
+            </span>
+          )}
+        </div>
       </td>
       <td className="px-2 py-2 text-right tabular-nums text-win">{audit.strengths.length}</td>
       <td className="px-3 py-2 text-right tabular-nums">
@@ -318,15 +351,17 @@ function AuditSummaryRow({
 function AuditDetail({
   audit,
   gameName,
+  open = false,
 }: {
   audit: PlayerBuildAudit
   gameName: (value: string) => string
+  open?: boolean
 }) {
   const { tt } = useI18n()
   const name = audit.player.name || `Player ${audit.player.playerId}`
   const title = audit.civ ? `${name} · ${gameName(civDisplayName(audit.civ))}` : name
   return (
-    <details className="rounded-md border border-border/70 bg-background/20">
+    <details open={open} className="rounded-md border border-border/70 bg-background/20">
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-sm font-medium [&::-webkit-details-marker]:hidden">
         <span className="truncate">{title}</span>
         <span className="flex shrink-0 items-center gap-2 text-xs">
@@ -652,19 +687,4 @@ function Status({ status }: { status: BuildAuditStatus }) {
       {label}
     </span>
   )
-}
-
-function isMe(
-  player: PlayerSummary,
-  myProfileId: number | null,
-  myCiv: string | null,
-  myName: string | null | undefined,
-  allPlayers: PlayerSummary[],
-): boolean {
-  if (myProfileId != null && player.profileId != null) return player.profileId === myProfileId
-  if (myName && player.name && player.name.toLowerCase() === myName.toLowerCase()) return true
-  if (myCiv == null || civFromToken(player.civToken) !== myCiv) return false
-  // A civ-only fallback is safe for a unique civ, but not for mirror matches
-  // or team games where several players can share the same civilization.
-  return allPlayers.filter((candidate) => civFromToken(candidate.civToken) === myCiv).length === 1
 }

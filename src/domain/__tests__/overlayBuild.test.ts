@@ -49,6 +49,17 @@ describe('overlayBuild', () => {
     }
   })
 
+  it('preserves icon tokens when importing an overlay JSON build', () => {
+    const parsed = parseOverlayBuild(
+      JSON.stringify({
+        ...build,
+        build_order: [{ ...build.build_order[0]!, notes: ['@buildings/house@ then 2 to gold'] }],
+      }),
+    )
+    expect(parsed.ok).toBe(true)
+    if (parsed.ok) expect(parsed.value.build_order[0]?.notes[0]).toContain('@buildings/house@')
+  })
+
   it('rejects an empty TXT export', () => {
     expect(parseSimpleBuildOrder(' # notes only\n[metadata]')).toEqual({
       ok: false,

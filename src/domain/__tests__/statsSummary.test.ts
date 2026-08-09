@@ -21,7 +21,7 @@ const MY_RESOURCES = [
 const MY_SCORES = [scoreEntry(0, 10, 0, 5, 0, 15), scoreEntry(20, 40, 10, 8, 5, 63)]
 
 /** Build STLI → STLS(build order) + STPL → STLP → STPD(header+timelines) for two players. */
-function summaryFile(myStpd?: Uint8Array): Uint8Array {
+function summaryFile(myStpd?: Uint8Array, buildOnlyEvents: Uint8Array[] = []): Uint8Array {
   const stls = chunk(
     'DATA',
     'STLS',
@@ -31,6 +31,7 @@ function summaryFile(myStpd?: Uint8Array): Uint8Array {
       createdEntity(120, 1003, 'upgrade_wood_gather_1', 52),
       createdEntity(0, 1007, 'building_town_center_capital_eng', 19),
       createdEntity(30, 1007, 'unit_villager_1_eng', 46),
+      ...buildOnlyEvents,
     ]),
     { version: 2003 },
   )
@@ -84,6 +85,13 @@ describe('parseStatsSummary', () => {
     expect(s).not.toBeNull()
     expect(s!.gameLengthSec).toBe(600)
     expect(s!.players).toHaveLength(2)
+    expect(s!.parser).toMatchObject({
+      source: 'aoe4world/replays-api',
+      revision: 'efc391296451da352c3660daf814403e37e787e8',
+      stpdVersions: [2034],
+      coverage: 'full-summary',
+      remote: false,
+    })
 
     const me = s!.players.find((p) => p.playerId === 1003)!
     expect(me.name).toBe('1.1.1.1.2')
@@ -124,6 +132,48 @@ describe('parseStatsSummary', () => {
     const opp = s!.players.find((p) => p.playerId === 1007)!
     expect(opp.civToken).toBe('english')
     expect(opp.buildOrder.map((e) => e.name)).toEqual(['Town Center', 'Villager'])
+  })
+
+  it('keeps Order of the Dragon when STPD reports the base HRE token', () => {
+    const hreHeader = stpdData(1003, '1.1.1.1.2', MY_RESOURCES, MY_SCORES, {
+      profileId: 22223074,
+      civ: 'hre',
+      resourcesGathered: [3501.45, 1650, 1739.09, 0],
+      resourcesSpent: [2663.75, 1380, 1357.5, 0],
+      unitsProduced: 34,
+      unitsKilled: 12,
+      unitsLost: 3,
+      techResearched: 6,
+      relicsCaptured: 3,
+      villagerHigh: 30,
+      ageMsec: [433974, 829395, 0],
+    })
+    const s = parseStatsSummary(
+      summaryFile(hreHeader, [
+        createdEntity(10, 1003, 'unit_villager_1_od', 46),
+        createdEntity(20, 1003, 'unit_scout_1_od', 47),
+        createdEntity(30, 1003, 'building_house_control_od', 19),
+      ]),
+    )!
+    const me = s.players.find((p) => p.playerId === 1003)!
+
+    expect(me.civToken).toBe('od')
+    expect(civFromToken(me.civToken)).toBe('order_of_the_dragon')
+  })
+
+  it('keeps build-only participants when a partial summary has no STPD fold for them', () => {
+    const s = parseStatsSummary(
+      summaryFile(undefined, [createdEntity(45, 1011, 'unit_villager_1_fre', 46)]),
+    )!
+    const buildOnly = s.players.find((player) => player.playerId === 1011)
+
+    expect(buildOnly).toMatchObject({
+      playerId: 1011,
+      profileId: null,
+      civToken: 'fre',
+      totals: null,
+    })
+    expect(buildOnly?.buildOrder.map((event) => event.name)).toEqual(['Villager'])
   })
 
   it('decodes the authoritative header totals (the game’s own end-game numbers)', () => {

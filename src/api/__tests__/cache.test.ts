@@ -36,6 +36,7 @@ describe('DiskCache', () => {
     cache.set('key1', { n: 1 })
     clock.t += 6000
     expect(cache.get('key1', 5000)).toBeNull()
+    expect(cache.getStale<{ n: number }>('key1')).toEqual({ n: 1 })
   })
 
   it('ignores a corrupt cache file (returns null, no throw)', () => {

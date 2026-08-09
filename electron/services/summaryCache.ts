@@ -51,6 +51,12 @@ function fileFor(gameId: string): string | null {
   return safe ? join(cacheDir(), `${safe}.rgs.gz`) : null
 }
 
+/** Normalized result from the optional upstream-compatible parser service. */
+function parsedFileFor(gameId: string): string | null {
+  const safe = safeGameId(gameId)
+  return safe ? join(cacheDir(), `${safe}.replays-api.json`) : null
+}
+
 export interface CachedSummaryInfo {
   cached: boolean
   sizeBytes: number | null
@@ -136,6 +142,19 @@ export function readCachedSummary(gameId: string): Uint8Array | null {
 
 /** The cached summary parsed once per process, or null when absent/unreadable. */
 export function readCachedParsedSummary(gameId: string): MatchSummary | null {
+  const parsedFile = parsedFileFor(gameId)
+  if (parsedFile && existsSync(parsedFile)) {
+    try {
+      const parsed = JSON.parse(readFileSync(parsedFile, 'utf8')) as MatchSummary
+      if (Array.isArray(parsed.players) && parsed.parser?.remote === true) return parsed
+    } catch {
+      try {
+        rmSync(parsedFile, { force: true })
+      } catch {
+        /* malformed optional result must not block normal parsing */
+      }
+    }
+  }
   const entry = readCachedEntry(gameId)
   if (!entry) return null
   if (!('parsed' in entry)) {
@@ -147,6 +166,22 @@ export function readCachedParsedSummary(gameId: string): MatchSummary | null {
 
 export function hasCachedSummary(gameId: string): boolean {
   return getCachedSummaryInfo(gameId).cached
+}
+
+/**
+ * Persists a normalized fallback result beside its raw gzip. This keeps all
+ * offline summary consumers (Replay Lab, reports and landmarks) on the same
+ * parser result after an upstream sidecar decoded a newer layout.
+ */
+export function writeCachedReplaysApiSummary(gameId: string, summary: MatchSummary): void {
+  const file = parsedFileFor(gameId)
+  if (!file || summary.parser?.remote !== true) return
+  try {
+    mkdirSync(cacheDir(), { recursive: true })
+    writeFileSync(file, JSON.stringify(summary), 'utf8')
+  } catch {
+    /* optional parser result cache is never fatal */
+  }
 }
 
 /**
@@ -189,6 +224,8 @@ export function writeCachedSummary(gameId: string, bytes: Uint8Array): void {
   try {
     mkdirSync(cacheDir(), { recursive: true })
     writeFileSync(file, gzipSync(Buffer.from(bytes)))
+    const parsedFile = parsedFileFor(gameId)
+    if (parsedFile) rmSync(parsedFile, { force: true })
     const stat = statSync(file)
     memoize(file, { mtimeMs: stat.mtimeMs, size: stat.size, bytes })
     clearSummaryUnavailable(gameId)

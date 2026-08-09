@@ -30,10 +30,24 @@ const outputDir = path.resolve(root, String(args.get('--output-dir') ?? 'src/dat
 const nativePngRoot = args.has('--native-png-root')
   ? path.resolve(String(args.get('--native-png-root')))
   : null
+const includeEssenceReport = !args.has('--skip-essence-report')
+const essenceReportPath = path.resolve(
+  String(args.get('--essence-report') ?? 'data/research/essence/latest.json'),
+)
+const essenceReportReference = path.relative(root, essenceReportPath).replaceAll('\\', '/')
 const download = !args.has('--no-download')
 const kinds = ['units', 'buildings', 'technologies', 'upgrades']
 const sourceCommit = 'b2cd38222deae40ba2db18171edf494f81410c69'
 const cdnRoot = 'https://data.aoe4world.com/images'
+
+let essenceReport = null
+if (includeEssenceReport && existsSync(essenceReportPath)) {
+  try {
+    essenceReport = JSON.parse(await readFile(essenceReportPath, 'utf8'))
+  } catch {
+    essenceReport = null
+  }
+}
 
 function json(value) {
   return JSON.stringify(value, null, 2) + '\n'
@@ -187,8 +201,18 @@ if (nativePngRoot) {
     if (!nativeRelative) continue
     const destination = path.join(outputDir, 'native', nativeRelative)
     await ensureDir(path.dirname(destination))
-    await copyFile(file, destination)
+    if (path.resolve(file) !== path.resolve(destination)) await copyFile(file, destination)
     nativeAssets.push({ source: relative, asset: `native/${nativeRelative}` })
+  }
+} else {
+  // Preserve the previously generated native catalogue when a caller only
+  // refreshes AoE4World/data entity icons. Without this fallback a plain
+  // `sync:icons` silently regenerated a manifest with zero native aliases.
+  const existingNativeRoot = path.join(outputDir, 'native')
+  for (const file of await walkPngs(existingNativeRoot)) {
+    const relative = path.relative(existingNativeRoot, file).replaceAll('\\', '/')
+    if (!relative) continue
+    nativeAssets.push({ source: `existing/${relative}`, asset: `native/${relative}` })
   }
 }
 
@@ -357,6 +381,13 @@ export function resolveAoE4Icon(value: string): string | null {
     const byCategory = AOE4_ICON_ALIASES[(categoryKey && (categoryAliases[categoryKey] ?? categoryKey)) + '/' + stem]
     if (byCategory) return byCategory
   }
+  // The game uses a shared worker token (unit_worker/villager) while the
+  // public catalogue stores civilization-specific villager art. Keep the
+  // resolver deterministic and offline by selecting the canonical Abbasid
+  // worker icon when no generic asset was published.
+  if (stem === 'villager') {
+    return AOE4_ICON_ALIASES['abbasid/villager-1'] ?? AOE4_ICON_ALIASES['gilded-villager-1'] ?? null
+  }
   return AOE4_ICON_ALIASES[stem] ?? null
 }
 `
@@ -376,6 +407,14 @@ await writeFile(
     aliasCount: aliases.length,
     downloaded,
     reused,
+    essence: essenceReport
+      ? {
+          status: essenceReport.status ?? null,
+          sourceRevision: essenceReport.sourceRevision ?? null,
+          counts: essenceReport.counts ?? {},
+          report: essenceReportReference,
+        }
+      : null,
   }),
 )
 await writeFile(
@@ -389,6 +428,9 @@ await writeFile(
     `- Pinned data commit: \`${sourceCommit}\``,
     `- Entity icons: ${uniquePaths.length} unique PNGs`,
     `- Native UI icons extracted with [AOEMods.Essence](https://github.com/aoemods/AOEMods.Essence): ${nativeAssets.length}`,
+    essenceReport
+      ? `- Essence adapter status: \`${essenceReport.status ?? 'unknown'}\` (${essenceReport.sourceRevision ?? 'unversioned'})`
+      : '- Essence adapter report: not supplied for this run',
     `- Generated at: ${new Date().toISOString()}`,
     '',
     'The resolver is offline-first. It checks the bundled static catalogue before any caller may use a network CDN fallback.',

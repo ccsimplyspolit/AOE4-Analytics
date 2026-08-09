@@ -1,15 +1,21 @@
 import { Download, ExternalLink, Monitor, MonitorX } from 'lucide-react'
 import type { BuildOrder, BuildStep } from '@domain/buildOrderSchema'
-import { parseNote, buildOrderCivLabel } from '@domain/buildOrderSchema'
+import { buildOrderCivLabel } from '@domain/buildOrderSchema'
+import {
+  parseBuildOrderDisplayNote,
+  type BuildOrderDisplayNotePart,
+} from '@domain/buildOrderNotes'
 import { serializeOverlayBuild } from '@domain/overlayBuild'
 import { evidenceLabel } from '@domain/videoEvidence'
 import { CIV_PROFILES } from '@data/civProfiles'
 import { AGE_ICON, RES_ICON } from '@/overlay/resourceGlyphs'
 import { resolveAoE4Icon } from '@data/vendor/aoe4-icons/manifest'
+import { videoUrlsFromBuild } from '@domain/videoEmbed'
 import { ipc } from '@shared/ipc'
 import { useSettings, useUpdateSettings } from '../queries/useProfile'
 import { useI18n } from '../../i18n'
 import { VideoPlayer } from './VideoPlayer'
+import { BuildOrderInsights } from './BuildOrderInsights'
 
 const AGE_NAMES: Record<number, string> = { 1: 'Dark', 2: 'Feudal', 3: 'Castle', 4: 'Imperial' }
 
@@ -21,42 +27,78 @@ function focusForBuild(bo: BuildOrder): string | null {
 
 /** Some provider exports put the sole YouTube URL in the description field. */
 function guideVideoUrl(bo: BuildOrder): string | null {
-  if (bo.video?.trim()) return bo.video
-  return (
-    bo.description?.match(/https?:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)\/[^\s)]+/i)?.[0] ?? null
-  )
+  return videoUrlsFromBuild(bo)[0] ?? null
 }
 
-/** Renders a note's text with the same offline-first icon resolver used by the overlay. */
+type RenderNotePart = BuildOrderDisplayNotePart | { type: 'separator' }
+
+function splitNoteParts(note: string): RenderNotePart[] {
+  const parts: RenderNotePart[] = []
+  for (const part of parseBuildOrderDisplayNote(note)) {
+    if (part.type !== 'text') {
+      parts.push(part)
+      continue
+    }
+    const chunks = part.text.split('|')
+    chunks.forEach((text, index) => {
+      if (text) parts.push({ type: 'text', text })
+      if (index < chunks.length - 1) parts.push({ type: 'separator' })
+    })
+  }
+  return parts
+}
+
+function iconLabel(path: string): string {
+  const stem = path
+    .split('/')
+    .pop()
+    ?.replace(/\.\w+$/, '')
+    .replace(/[-_]/g, ' ')
+    .trim()
+  const aliases: Record<string, string> = {
+    villager: 'Villager',
+    repair: 'Repair',
+    rally: 'Rally point',
+    'resource food': 'Food',
+    'resource wood': 'Wood',
+    'resource gold': 'Gold',
+    'resource stone': 'Stone',
+  }
+  return aliases[stem ?? ''] ?? stem ?? 'Icon'
+}
+
+/** Renders notes with normalized provider tokens and deliberate spacing. */
 function renderNote(note: string, tt: (value: string) => string) {
-  return parseNote(note).map((part, i) =>
-    part.type === 'text' ? (
-      <span key={i}>{tt(part.text)}</span>
-    ) : resolveAoE4Icon(part.path) ? (
-      <img
-        key={i}
-        src={resolveAoE4Icon(part.path) ?? undefined}
-        alt={
-          part.path
-            .split('/')
-            .pop()
-            ?.replace(/\.\w+$/, '')
-            .replace(/[-_]/g, ' ') ?? 'icon'
+  return (
+    <span className="whitespace-pre-wrap break-words">
+      {splitNoteParts(note).map((part, i) => {
+        if (part.type === 'separator') {
+          return (
+            <span key={i} className="mx-1 text-primary/70" aria-hidden="true">
+              •
+            </span>
+          )
         }
-        title={part.path}
-        className="mx-0.5 inline-block h-5 w-5 object-contain align-[-0.2em]"
-      />
-    ) : (
-      <span key={i} className="font-medium text-primary">
-        {tt(
-          part.path
-            .split('/')
-            .pop()
-            ?.replace(/\.\w+$/, '')
-            .replace(/[-_]/g, ' ') ?? 'icon',
-        )}
-      </span>
-    ),
+        if (part.type === 'text') {
+          return <span key={i}>{tt(part.text.replace(/\s+/g, ' '))}</span>
+        }
+        const src = resolveAoE4Icon(part.path)
+        const label = part.type === 'icon' ? part.label : iconLabel(part.path)
+        return src ? (
+          <span key={i} className="mx-0.5 inline-flex align-[-0.2em]" title={tt(label)}>
+            <img src={src} alt={tt(label)} className="h-4 w-4 object-contain" />
+          </span>
+        ) : (
+          <span
+            key={i}
+            className="mx-0.5 inline-block rounded bg-secondary px-1 text-xs font-medium text-primary"
+            title={tt(label)}
+          >
+            {tt(label)}
+          </span>
+        )
+      })}
+    </span>
   )
 }
 
@@ -203,6 +245,7 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
           <span className="font-medium text-primary">{tt('Win condition:')}</span> {tt(focus)}
         </div>
       )}
+      <BuildOrderInsights bo={bo} />
       {guideVideo && (
         <div className="border-b border-border bg-secondary/20 px-4 py-3">
           <VideoPlayer url={guideVideo} title={bo.name} className="max-w-2xl" />
@@ -396,7 +439,9 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
           <li key={i} className="flex gap-3 px-4 py-2.5 text-sm">
             <div className="flex w-14 shrink-0 flex-col items-center gap-1">
               <span className="font-mono text-xs text-muted-foreground">
-                {step.time ?? `#${i + 1}`}
+                {step.time
+                  ? `${step.timeProvenance === 'derived' ? '~' : ''}${step.time}`
+                  : `#${i + 1}`}
               </span>
               <span className="rounded bg-secondary px-1.5 py-0.5 text-[10px] text-muted-foreground">
                 {AGE_ICON[step.age] && (
@@ -417,9 +462,11 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
                 </span>
                 <ResourceSplit r={step.resources} />
               </div>
-              <ul className="space-y-0.5 leading-snug">
+              <ul className="space-y-1 leading-relaxed text-[13px]">
                 {step.notes.map((n, j) => (
-                  <li key={j}>{renderNote(n, tt)}</li>
+                  <li key={j} className="max-w-[100ch]">
+                    {renderNote(n, tt)}
+                  </li>
                 ))}
               </ul>
             </div>

@@ -18,7 +18,17 @@ export function formatDuration(seconds: number): string {
  * Returns `null` for malformed input or out-of-range seconds/minutes.
  */
 export function parseDuration(value: string): number | null {
-  const parts = value.trim().split(':')
+  // AoE4Guides stores worked-out times as `~4:05` and rich-text edits can leave
+  // `<br>`/`&nbsp;` around the timestamp. Keep the original string for display,
+  // but make every consumer read the same normalized clock value.
+  const normalized = value
+    .replace(/<br\s*\/?\s*>/gi, ' ')
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/[~≈]/g, '')
+    .replace(/\s+/g, '')
+    .trim()
+  const parts = normalized.split(':')
   if (parts.length < 2 || parts.length > 3) return null
 
   const nums = parts.map((p) => (/^\d+$/.test(p) ? Number(p) : Number.NaN))

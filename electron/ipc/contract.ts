@@ -20,6 +20,7 @@ import type { SessionSummary } from '@domain/session'
 import type { StoredMatch } from '@store/historyStore'
 import type { MatchSummary } from '@domain/statsSummary'
 import type { BuildAuditHistoryRow } from '@domain/buildOrderHistory'
+import type { MatchCorpusReport } from '@domain/matchCorpus'
 import type { PerPlayerMatchStats } from '@domain/analysis'
 import type { LocalMatch } from '@domain/localMatch'
 import type { SteamAccount } from '@domain/steamAccounts'
@@ -30,9 +31,12 @@ import type { GlobalMatchupSummary } from '@domain/matchupLab'
 import type { LastMatchCoachContext } from '@domain/coachContext'
 import type { TwitchVodFinderInput, TwitchVodLookupResult } from '@domain/twitchVodFinder'
 import type { VideoAnalysisInput, VideoAnalysisRecord } from '@domain/videoAnalysis'
+import type { GameplayAutoInput, GameplayAutoResult } from '@domain/gameplayAuto'
 import type { BuildOrder } from '@domain/buildOrderSchema'
 import type { SourceSyncOptions, SourceSyncResult } from '@domain/sourceSync'
 import type { RankedMapPoolResolution } from '@domain/rankedMapPool'
+import type { SimilarMatchCandidate, SimilarMatchQuery } from '@domain/similarMatch'
+import type { ScoutMetaContext, ScoutMetaMatch, ScoutMetaPlayer } from '@domain/scoutMeta'
 import type { Game, Leaderboard, RankLevel, StatsLeaderboard } from '@api/types'
 import type {
   TranslationBatchInput,
@@ -40,6 +44,8 @@ import type {
   TranslationConfigInput,
   TranslationStatus,
 } from '../services/translationService'
+import type { ExternalApiConfigInput, ExternalApiStatus } from '../services/externalApiService'
+import type { ReplaysApiStatus } from '../services/replaysApiService'
 
 export type Platform = 'win32' | 'darwin' | 'linux' | (string & {})
 
@@ -168,6 +174,7 @@ export const IpcChannels = {
   profileDashboard: 'profile:dashboard',
   scoutGet: 'scout:get',
   scoutHistoryGet: 'scout:historyGet',
+  scoutMetaGet: 'scout:metaGet',
   tinctureCoachGet: 'tincture:coachGet',
   settingsGet: 'settings:get',
   settingsUpdate: 'settings:update',
@@ -182,6 +189,7 @@ export const IpcChannels = {
   analysisHistory: 'analysis:history',
   analysisGameSummary: 'analysis:gameSummary',
   analysisBuildAuditHistory: 'analysis:buildAuditHistory',
+  analysisCorpusReport: 'analysis:corpusReport',
   analysisDeleteMatch: 'analysis:deleteMatch',
   civLandmarkRecord: 'civ:landmarkRecord',
   civLandmarkStats: 'civ:landmarkStats',
@@ -202,6 +210,8 @@ export const IpcChannels = {
   // poll loop while a match is live; null on match end.
   overlayGameClock: 'overlay:gameClock',
   overlayApm: 'overlay:apm',
+  /** Main-process live-detection diagnostics for the overlay status pill. */
+  overlayDetection: 'overlay:detection',
   // Phase 4.5
   localDataStatus: 'localData:status',
   // Phase 5
@@ -238,13 +248,18 @@ export const IpcChannels = {
   replayLatest: 'replay:latest',
   replayList: 'replay:list',
   replayAccount: 'replay:account',
+  replayAccountAll: 'replay:accountAll',
   replayCache: 'replay:cache',
   replayCacheBatch: 'replay:cacheBatch',
   summaryCache: 'summary:cache',
   summaryCacheBatch: 'summary:cacheBatch',
+  /** Readiness and provenance of the optional aoe4world/replays-api decoder. */
+  replaysApiStatus: 'replaysApi:status',
   replayAnalyze: 'replay:analyze',
+  replayFullAnalyze: 'replay:fullAnalyze',
   matchupWinRate: 'matchup:winRate',
   publicGameGet: 'publicGame:get',
+  similarMatchesFind: 'similarMatches:find',
   onlineSearch: 'online:search',
   dumpCatalogGet: 'dumpCatalog:get',
   sourceSync: 'source:sync',
@@ -263,10 +278,14 @@ export const IpcChannels = {
   /** Best-effort caption/transcript extraction and build/tactic distillation. */
   videoAnalysisExtract: 'video:analysisExtract',
   videoAnalysisList: 'video:analysisList',
+  gameplayAutoFind: 'gameplay:autoFind',
   translationStatus: 'translation:status',
   translationConfigure: 'translation:configure',
   translationBatch: 'translation:batch',
   translationClearCache: 'translation:clearCache',
+  externalApiStatus: 'externalApi:status',
+  externalApiConfigure: 'externalApi:configure',
+  externalApiClear: 'externalApi:clear',
 } as const
 
 // Live-match + replay types live in the domain (so they're pure + unit-tested)
@@ -337,6 +356,16 @@ export interface AccountReplayPage {
   relicOnlyCount: number
 }
 
+/** Complete persisted account history, with cache availability refreshed. */
+export interface AccountReplayArchive {
+  items: AccountReplayItem[]
+  totalCount: number
+  cachedAt: string
+  aoe4WorldCount: number
+  relicCount: number
+  relicOnlyCount: number
+}
+
 export interface ReplayCacheResult {
   gameId: number
   status: 'cached' | 'already_cached' | 'unavailable'
@@ -369,6 +398,20 @@ export interface SummaryCacheBatchResult {
 
 export type ReplayAnalysisTarget = { localId: string } | { gameId: number }
 
+/** Combined online replay package: raw replay download + command stream + post-game summary. */
+export interface FullReplayAnalysis {
+  gameId: number
+  download: ReplayCacheResult
+  replay: ReplayAnalysisResult | null
+  summary: MatchSummary | null
+  summaryStatus: 'available' | 'unavailable'
+  /** Explicit coverage keeps a missing Relic upload from looking like an empty replay. */
+  coverage: {
+    replay: 'full' | 'partial' | 'header-only' | 'unavailable'
+    summary: boolean
+  }
+}
+
 export interface LaunchResult {
   ok: boolean
   message?: string
@@ -385,6 +428,15 @@ export interface LocalDataStatus {
 }
 
 export type OverlayMatchState = 'idle' | 'ongoing' | 'ended'
+
+/** Why the overlay is still waiting, without exposing local paths or secrets. */
+export interface OverlayDetectionPayload {
+  processRunning: boolean | null
+  localInMatch: boolean | null
+  liveSource: string
+  profileConfigured: boolean
+  localDataEnabled: boolean
+}
 
 /** Post-game results card shown on the overlay after a match (win/loss + coaching). */
 export interface PostGameSummary {
@@ -474,11 +526,23 @@ export interface CivMetaResult {
   totalCivGames: number
   /** AoE4World patch ids represented by this live stats slice. */
   patch?: string | null
+  /** Whether civ rows cover all maps or only the active ranked rotation. */
+  metaScope: 'all-maps' | 'ranked-map-pool'
+  /** Number of active rotation maps included in pool-weighted civ rows. */
+  metaPoolMapCount: number | null
+  /** Top civilization rows for each active map when pool weighting is available. */
+  poolMapRankings?: PoolMapCivRanking[]
   /** Full civ ranking for the selected map, when mapId was requested. */
   mapCivs?: CivTier[]
   selectedMap?: string | null
   /** Provenance and effective dates for the current ranked rotation. */
   mapPool?: RankedMapPoolResolution | null
+}
+
+export interface PoolMapCivRanking {
+  mapId: number
+  map: string
+  civs: CivTier[]
 }
 
 export interface MatchupLabQuery {
@@ -608,6 +672,20 @@ export interface ScoutHistoryData {
   headToHead: IpcResult<HeadToHeadData> | null
 }
 
+/** Public aggregate context for the current live match, modelled after Scout. */
+export interface ScoutMetaQuery {
+  leaderboard?: StatsLeaderboard
+  rankLevel?: RankLevel | null
+  rating?: string | null
+  patch?: string | null
+  map?: string | null
+  /** Public current-match facts used by the Scout summary (never hidden game state). */
+  match?: ScoutMetaMatch
+  teams: ScoutMetaPlayer[][]
+}
+
+export type { ScoutMetaContext, ScoutMetaPlayer }
+
 export interface PublicGameQuery {
   profileId: number
   gameId: number
@@ -642,6 +720,10 @@ export interface OnlineSearchQuery {
   provider?: 'all' | OnlineSearchProvider
   liveOnly?: boolean
   limit?: number
+  /** Restrict provider video results to the latest N days; 0 means no date filter. */
+  dateRangeDays?: number
+  /** Sort provider videos by publication time or view count. */
+  sort?: 'recent' | 'views'
 }
 
 export interface OnlineSearchResult {
@@ -727,7 +809,10 @@ export interface RtslyticsApi {
     profileId: number,
     query?: ScoutHistoryQuery,
   ): Promise<IpcResult<ScoutHistoryData>>
+  getScoutMeta(query: ScoutMetaQuery): Promise<IpcResult<ScoutMetaContext>>
   getPublicGame(query: PublicGameQuery): Promise<IpcResult<PublicGameDetail>>
+  /** Finds public games with the same map/civilization matchup for coaching comparison. */
+  findSimilarMatches(query: SimilarMatchQuery): Promise<IpcResult<SimilarMatchCandidate[]>>
   getLastMatchCoach(profileId: number): Promise<IpcResult<LastMatchCoachContext>>
   getSettings(): Promise<AppSettings>
   updateSettings(patch: AppSettingsPatch): Promise<AppSettings>
@@ -749,6 +834,8 @@ export interface RtslyticsApi {
   getGameSummary(matchId: string): Promise<IpcResult<MatchSummary | null>>
   /** Build adherence rows for recent games using local/cached summaries only. */
   getBuildAuditHistory(limit?: number): Promise<IpcResult<BuildAuditHistoryRow[]>>
+  /** Detailed aggregate of every visible stored match and its local/cached evidence. */
+  getMatchCorpusReport(limit?: number): Promise<IpcResult<MatchCorpusReport>>
   /** Permanently removes one game from the local history (e.g. a desynced match the game never recorded). */
   deleteMatch(matchId: string): Promise<IpcResult<null>>
   /** Your own per-landmark W/L for a civ, from your synced games' summaries. */
@@ -794,6 +881,7 @@ export interface RtslyticsApi {
   onOverlayGameClock(cb: (clock: GameClock | null) => void): () => void
   /** Live APM (actions in the last 60s), pushed while in a match; null when idle/off. */
   onOverlayApm(cb: (apm: number | null) => void): () => void
+  onOverlayDetection(cb: (payload: OverlayDetectionPayload) => void): () => void
   // Phase 4.5
   getLocalDataStatus(): Promise<LocalDataStatus>
   // Phase 5
@@ -832,17 +920,27 @@ export interface RtslyticsApi {
   getLatestReplay(): Promise<LatestReplay | null>
   /** Paginated local archive, including match-history games without replay.rec. */
   listReplays(page?: number, pageSize?: number): Promise<ReplayArchivePage>
-  /** Paginated account history from AoE4World, enriched with Relic replay availability. */
-  listAccountReplays(page?: number, pageSize?: number): Promise<IpcResult<AccountReplayPage>>
+  /** Saved account history; `forceRefresh` explicitly fetches fresh AoE4World/Relic metadata. */
+  listAccountReplays(
+    page?: number,
+    pageSize?: number,
+    forceRefresh?: boolean,
+  ): Promise<IpcResult<AccountReplayPage>>
+  /** Returns the complete persisted account archive in one main-process call. */
+  listAllAccountReplays(forceRefresh?: boolean): Promise<IpcResult<AccountReplayArchive>>
   /** Download one available online replay through the authenticated Relic session. */
   cacheReplay(gameId: number): Promise<IpcResult<ReplayCacheResult>>
-  /** Cache all available replays from the currently visible account-history page. */
+  /** Cache the supplied replay ids; Replay Lab batches the complete archive in chunks. */
   cacheReplays(gameIds: number[]): Promise<IpcResult<ReplayCacheBatchResult>>
-  /** Download and persist datatype-1 summaries for the visible account page. */
+  /** Download and persist datatype-1 summaries for the supplied game ids. */
   cacheSummary(gameId: number): Promise<IpcResult<SummaryCacheResult>>
   cacheSummaries(gameIds: number[]): Promise<IpcResult<SummaryCacheBatchResult>>
+  /** Verifies the configured or bundled upstream-compatible replay parser. */
+  getReplaysApiStatus(): Promise<ReplaysApiStatus>
   /** Decode the recorded command stream from a local replay or cached Relic replay. */
   analyzeReplay(target: ReplayAnalysisTarget): Promise<IpcResult<ReplayAnalysisResult | null>>
+  /** Download an online replay (when needed), fetch its summary, and decode it in one pass. */
+  downloadAndAnalyzeReplay(gameId: number): Promise<IpcResult<FullReplayAnalysis>>
   /** Historical win rate (%) of your civ vs the opponent's civ; null if unknown. */
   getMatchupWinRate(civ: string, oppCiv: string): Promise<number | null>
   /** Search current Twitch/YouTube videos and streamers without exposing API keys. */
@@ -859,6 +957,8 @@ export interface RtslyticsApi {
   extractVideoAnalysis(input: VideoAnalysisInput): Promise<IpcResult<VideoAnalysisRecord>>
   /** Lists locally persisted video/VOD analyses, newest first. */
   listVideoAnalyses(): Promise<IpcResult<VideoAnalysisRecord[]>>
+  /** Finds public gameplay, downloads it when yt-dlp is available, and extracts analysis. */
+  autoFindGameplay(input: GameplayAutoInput): Promise<IpcResult<GameplayAutoResult>>
   /** Returns translation-provider state without exposing the stored API key. */
   getTranslationStatus(): Promise<TranslationStatus>
   /** Stores translation provider settings; the API key is encrypted in the main process. */
@@ -867,6 +967,12 @@ export interface RtslyticsApi {
   translateBatch(input: TranslationBatchInput): Promise<TranslationBatchResult>
   /** Clears the local translation cache. */
   clearTranslationCache(): Promise<TranslationStatus>
+  /** Returns configured third-party provider state without exposing credentials. */
+  getExternalApiStatus(): Promise<ExternalApiStatus>
+  /** Stores Twitch/YouTube credentials encrypted by the operating system. */
+  configureExternalApis(input: ExternalApiConfigInput): Promise<ExternalApiStatus>
+  /** Clears persisted Twitch and YouTube credentials. */
+  clearExternalApis(): Promise<ExternalApiStatus>
   /** Local browser-source tournament graphics and StreamDeck-compatible controls. */
   getStreamManagerStatus(): Promise<StreamManagerStatus>
   startStreamManager(port?: number): Promise<StreamManagerStatus>
@@ -877,12 +983,9 @@ export interface RtslyticsApi {
   importStreamDraft(url: string): Promise<IpcResult<StreamDraftImport>>
   /** Imports the text export served by an AOE4 Builds build-order URL. */
   importCommunityBuild(url: string): Promise<IpcResult<BuildOrder>>
-  /** Lists the server-rendered AOE4 Builds catalogue without executing page scripts. */
-  listCommunityBuilds(
-    query?: string,
-    page?: number,
-  ): Promise<IpcResult<{ items: CommunityBuildSummary[]; page: number; hasNext: boolean }>>
-  /** Lists a bounded, typed slice of the public AoE4Guides build API. */
+  /** Lists the full server-rendered AOE4 Builds catalogue without executing page scripts. */
+  listCommunityBuilds(query?: string): Promise<IpcResult<{ items: CommunityBuildSummary[] }>>
+  /** Lists the typed result set returned by the public AoE4Guides build API. */
   listAoe4GuidesBuilds(
     query?: string,
     civilization?: string,

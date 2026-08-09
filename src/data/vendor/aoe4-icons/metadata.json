@@ -1,12 +1,27 @@
 {
-  "generatedAt": "2026-08-08T22:19:26.052Z",
+  "generatedAt": "2026-08-09T12:06:07.352Z",
   "source": "aoe4world/data",
   "sourceCommit": "b2cd38222deae40ba2db18171edf494f81410c69",
   "cdnRoot": "https://data.aoe4world.com/images",
   "entityCount": 983,
   "uniqueEntityIcons": 976,
-  "nativeAssetCount": 112,
-  "aliasCount": 4398,
+  "nativeAssetCount": 237,
+  "aliasCount": 4770,
   "downloaded": 0,
-  "reused": 976
+  "reused": 976,
+  "essence": {
+    "status": "inventoried",
+    "sourceRevision": null,
+    "counts": {
+      "sga": 1,
+      "rgd": 0,
+      "rrtex": 0,
+      "rrgeom": 0,
+      "rrmaterial": 0,
+      "png": 0,
+      "files": 1,
+      "projectedRgd": 2958
+    },
+    "report": "data/research/essence/latest.json"
+  }
 }

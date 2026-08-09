@@ -29,7 +29,12 @@ import { civDisplayName } from '@domain/civ'
 import { formatDurationShort, relativeTime } from '@shared/format'
 import { cn } from '@shared/lib/utils'
 import { Card, CardContent } from '@shared/components/ui/card'
-import { useBuildAuditHistory, useHistory, useAnalyzeRecent } from '../queries/useHistory'
+import {
+  useBuildAuditHistory,
+  useHistory,
+  useAnalyzeRecent,
+  useMatchCorpusReport,
+} from '../queries/useHistory'
 import { useDashboard, useSettings, useUpdateSettings } from '../queries/useProfile'
 import { WinRateBar } from '../components/WinRateBar'
 import { RatingChart } from '../components/RatingChart'
@@ -39,6 +44,7 @@ import { CivOverviewTable, ProfileIdentityCard } from '../components/ProfileOver
 import { PageHead } from '../components/PageHead'
 import { BenchmarkLens } from '../components/BenchmarkLens'
 import { EmptyBox, Spinner, ErrorBox } from '../components/feedback'
+import { CorpusAnalysisCard } from '../components/CorpusAnalysisCard'
 import { useI18n } from '../../i18n'
 
 export function Stats() {
@@ -48,6 +54,7 @@ export function Stats() {
   const { data: dash } = useDashboard(settings?.profileId != null)
   const { data: buildAudit } = useBuildAuditHistory(50)
   const analyze = useAnalyzeRecent()
+  const corpus = useMatchCorpusReport()
   const updateSettings = useUpdateSettings()
   const excludeAi = settings?.localData.excludeAiFromStats ?? false
   const matches = useMemo(
@@ -112,6 +119,19 @@ export function Stats() {
         </p>
       )}
 
+      <CorpusAnalysisCard
+        report={corpus.data?.ok ? corpus.data.data : null}
+        isPending={corpus.isPending}
+        error={
+          corpus.data && !corpus.data.ok
+            ? corpus.data.error.message
+            : corpus.error instanceof Error
+              ? corpus.error.message
+              : null
+        }
+        onRun={() => corpus.mutate(undefined)}
+      />
+
       {isLoading && <Spinner />}
       {!isLoading && data && !data.ok && (
         <ErrorBox message={data.error.message} onRetry={() => refetch()} />
@@ -121,7 +141,9 @@ export function Stats() {
         <EmptyBox>
           <div className="space-y-1">
             <p>{tt('No analyzed games yet.')}</p>
-            <p className="text-xs">{tt('Click “Sync all account games” to pull and analyze your matches.')}</p>
+            <p className="text-xs">
+              {tt('Click “Sync all account games” to pull and analyze your matches.')}
+            </p>
           </div>
         </EmptyBox>
       )}
@@ -257,7 +279,9 @@ function Content({
               {tt('Performance')}
             </h3>
             <span className="text-[11px] tabular-nums text-muted-foreground">
-              {tt('Last 2 weeks')}: {r.games} {tt('games')} · {r.wins}{tt('W')}–{r.losses}{tt('L')}
+              {tt('Last 2 weeks')}: {r.games} {tt('games')} · {r.wins}
+              {tt('W')}–{r.losses}
+              {tt('L')}
               {recentWr != null ? ` · ${recentWr}%` : ''} · {r.hours}h {tt('played')}
             </span>
           </div>
@@ -307,13 +331,11 @@ function Content({
               title={tt('By game length')}
               icon={<Hourglass className="h-4 w-4 text-primary" />}
               rows={s.byGameLength}
-              keepOrder
             />
             <BreakdownCard
               title={tt('By time of day')}
               icon={<Clock className="h-4 w-4 text-primary" />}
               rows={s.byTimeOfDay}
-              keepOrder
             />
           </div>
         </div>
@@ -327,7 +349,9 @@ function Content({
       </section>
 
       <p className="text-xs text-muted-foreground">
-        {tt('Computed from your {games} synced games. Small samples are noisy — treat a low game count with caution.').replace('{games}', String(s.totalGames))}
+        {tt(
+          'Computed from your {games} synced games. Small samples are noisy — treat a low game count with caution.',
+        ).replace('{games}', String(s.totalGames))}
       </p>
     </>
   )
@@ -345,17 +369,36 @@ function BuildAuditHistoryCard({ rows }: { rows: BuildAuditHistoryRow[] }) {
           {tt('Build adherence across games')}
         </h2>
         <span className="text-xs text-muted-foreground">
-          {summary.scored}/{summary.games} {tt('games scored')} · {summary.available}/{summary.games} {tt('with decoded evidence')}
+          {summary.scored}/{summary.games} {tt('games scored')} · {summary.available}/
+          {summary.games} {tt('with decoded evidence')}
         </span>
       </div>
       <Card>
         <CardContent className="space-y-3 p-4">
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
-            <AuditMetric label={tt('Average build score')} value={summary.averageScore == null ? '—' : `${summary.averageScore}%`} />
-            <AuditMetric label={tt('Confirmed issues')} value={String(summary.confirmedIssues)} tone={summary.confirmedIssues > 0 ? 'loss' : 'win'} />
-            <AuditMetric label={tt('Review items')} value={String(summary.reviewItems)} tone="warn" />
-            <AuditMetric label={tt('Good checkpoints')} value={String(summary.strengths)} tone="win" />
-            <AuditMetric label={tt('Evidence available')} value={`${summary.available}/${summary.games}`} />
+            <AuditMetric
+              label={tt('Average build score')}
+              value={summary.averageScore == null ? '—' : `${summary.averageScore}%`}
+            />
+            <AuditMetric
+              label={tt('Confirmed issues')}
+              value={String(summary.confirmedIssues)}
+              tone={summary.confirmedIssues > 0 ? 'loss' : 'win'}
+            />
+            <AuditMetric
+              label={tt('Review items')}
+              value={String(summary.reviewItems)}
+              tone="warn"
+            />
+            <AuditMetric
+              label={tt('Good checkpoints')}
+              value={String(summary.strengths)}
+              tone="win"
+            />
+            <AuditMetric
+              label={tt('Evidence available')}
+              value={`${summary.available}/${summary.games}`}
+            />
           </div>
           <div className="overflow-x-auto rounded-md border border-border/70">
             <table className="w-full min-w-[700px] text-xs">
@@ -372,19 +415,36 @@ function BuildAuditHistoryCard({ rows }: { rows: BuildAuditHistoryRow[] }) {
                 </tr>
               </thead>
               <tbody>
-                {rows.slice(0, 12).map((row) => (
+                {rows.map((row) => (
                   <tr key={row.matchId} className="border-b border-border/50 last:border-b-0">
-                    <td className="px-2 py-2 text-muted-foreground">{relativeTime(row.playedAt)}</td>
+                    <td className="px-2 py-2 text-muted-foreground">
+                      {relativeTime(row.playedAt)}
+                    </td>
                     <td className="px-2 py-2">{gameName(civDisplayName(row.civ))}</td>
                     <td className="px-2 py-2 text-muted-foreground">{row.map || '—'}</td>
-                    <td className="max-w-[220px] truncate px-2 py-2 text-muted-foreground">{row.referenceBuild ?? tt('No compatible build')}</td>
-                    <td className="px-2 py-2 text-right tabular-nums"><AuditScore score={row.score} /></td>
-                    <td className="px-2 py-2 text-right tabular-nums text-win">{row.strengths || '—'}</td>
-                    <td className={cn('px-2 py-2 text-right tabular-nums', row.confirmedIssues > 0 ? 'text-loss' : 'text-muted-foreground')}>
+                    <td className="max-w-[220px] truncate px-2 py-2 text-muted-foreground">
+                      {row.referenceBuild ?? tt('No compatible build')}
+                    </td>
+                    <td className="px-2 py-2 text-right tabular-nums">
+                      <AuditScore score={row.score} />
+                    </td>
+                    <td className="px-2 py-2 text-right tabular-nums text-win">
+                      {row.strengths || '—'}
+                    </td>
+                    <td
+                      className={cn(
+                        'px-2 py-2 text-right tabular-nums',
+                        row.confirmedIssues > 0 ? 'text-loss' : 'text-muted-foreground',
+                      )}
+                    >
                       {row.confirmedIssues + row.reviewItems || '—'}
                     </td>
                     <td className="px-2 py-2">
-                      <Link to={`/game/${row.matchId}`} className="inline-flex items-center text-primary hover:underline" title={tt('Open full post-game breakdown')}>
+                      <Link
+                        to={`/game/${row.matchId}`}
+                        className="inline-flex items-center text-primary hover:underline"
+                        title={tt('Open full post-game breakdown')}
+                      >
                         <ChevronRight className="h-3.5 w-3.5" />
                       </Link>
                     </td>
@@ -394,7 +454,9 @@ function BuildAuditHistoryCard({ rows }: { rows: BuildAuditHistoryRow[] }) {
             </table>
           </div>
           <p className="text-[11px] text-muted-foreground">
-            {tt('Only local or cached summaries are included. A missing summary is unavailable evidence, not a zero score.')}
+            {tt(
+              'Only local or cached summaries are included. A missing summary is unavailable evidence, not a zero score.',
+            )}
           </p>
         </CardContent>
       </Card>
@@ -402,11 +464,28 @@ function BuildAuditHistoryCard({ rows }: { rows: BuildAuditHistoryRow[] }) {
   )
 }
 
-function AuditMetric({ label, value, tone }: { label: string; value: string; tone?: 'win' | 'loss' | 'warn' }) {
+function AuditMetric({
+  label,
+  value,
+  tone,
+}: {
+  label: string
+  value: string
+  tone?: 'win' | 'loss' | 'warn'
+}) {
   return (
     <div className="rounded-md border border-border/60 bg-secondary/20 px-2.5 py-2">
       <div className="text-[10px] uppercase tracking-wide text-muted-foreground">{label}</div>
-      <div className={cn('mt-0.5 text-lg font-semibold tabular-nums', tone === 'win' && 'text-win', tone === 'loss' && 'text-loss', tone === 'warn' && 'text-warn')}>{value}</div>
+      <div
+        className={cn(
+          'mt-0.5 text-lg font-semibold tabular-nums',
+          tone === 'win' && 'text-win',
+          tone === 'loss' && 'text-loss',
+          tone === 'warn' && 'text-warn',
+        )}
+      >
+        {value}
+      </div>
     </div>
   )
 }
@@ -414,7 +493,20 @@ function AuditMetric({ label, value, tone }: { label: string; value: string; ton
 function AuditScore({ score }: { score: number | null }) {
   const { tt } = useI18n()
   if (score == null) return <span className="text-muted-foreground">{tt('Unavailable')}</span>
-  return <span className={cn('rounded-sm px-1.5 py-0.5 font-semibold', score >= 80 ? 'bg-win/15 text-win' : score >= 50 ? 'bg-warn/15 text-warn' : 'bg-loss/15 text-loss')}>{score}%</span>
+  return (
+    <span
+      className={cn(
+        'rounded-sm px-1.5 py-0.5 font-semibold',
+        score >= 80
+          ? 'bg-win/15 text-win'
+          : score >= 50
+            ? 'bg-warn/15 text-warn'
+            : 'bg-loss/15 text-loss',
+      )}
+    >
+      {score}%
+    </span>
+  )
 }
 
 /** Overall performance tiles from real per-game data (- when unavailable). */
@@ -439,7 +531,11 @@ function PerformanceTilesRow({
       />
       <StatTile label="APM" value={tiles.avgApm ?? '-'} sub={tt('avg, Relic counters')} />
       <StatTile label="K/D" value={tiles.avgKd ?? '-'} sub={tt('units, avg')} />
-      <StatTile label={tt('Units / game')} value={tiles.avgUnitsProduced ?? '-'} sub={tt('produced, avg')} />
+      <StatTile
+        label={tt('Units / game')}
+        value={tiles.avgUnitsProduced ?? '-'}
+        sub={tt('produced, avg')}
+      />
       <StatTile label={tt('Kills / game')} value={tiles.avgKills ?? '-'} sub={tt('avg')} />
       <StatTile
         label={tt('Eco pace')}
@@ -455,16 +551,14 @@ function BreakdownCard({
   icon,
   rows,
   emptyHint,
-  keepOrder,
 }: {
   title: string
   icon: ReactNode
   rows: Breakdown[]
   emptyHint?: string
-  keepOrder?: boolean
 }) {
   const { tt } = useI18n()
-  const display = keepOrder ? rows : rows.slice(0, 10)
+  const display = rows
   return (
     <Card>
       <CardContent className="space-y-2.5 p-4">
@@ -474,7 +568,8 @@ function BreakdownCard({
         </h3>
         {display.length === 0 ? (
           <p className="text-xs text-muted-foreground">
-            {tt('No data yet')}{emptyHint ? ` — ${emptyHint}` : ''}.
+            {tt('No data yet')}
+            {emptyHint ? ` — ${emptyHint}` : ''}.
           </p>
         ) : (
           <div className="space-y-2">
@@ -482,9 +577,6 @@ function BreakdownCard({
               <WinRateRow key={b.key} b={b} />
             ))}
           </div>
-        )}
-        {!keepOrder && rows.length > display.length && (
-          <p className="text-[11px] text-muted-foreground">+{rows.length - display.length} more</p>
         )}
       </CardContent>
     </Card>
@@ -552,7 +644,11 @@ function MatchCard({ match, profileId }: { match: StoredMatch; profileId: number
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2 text-sm">
               <span className="font-medium">{myLabel}</span>
-              {oppLabel && <span className="text-muted-foreground">{tt('vs')} {oppLabel}</span>}
+              {oppLabel && (
+                <span className="text-muted-foreground">
+                  {tt('vs')} {oppLabel}
+                </span>
+              )}
               {match.custom && (
                 <span className="rounded-sm bg-secondary px-1.5 py-0.5 text-[10px] text-muted-foreground">
                   {match.vsAI ? tt('vs AI') : tt('Custom')}

@@ -2,7 +2,7 @@
 // by the live game clock + the build order pinned from Guides ("Show in overlay").
 import { useState } from 'react'
 import type { BuildOrder } from '@domain/buildOrderSchema'
-import { parseNote } from '@domain/buildOrderSchema'
+import { parseBuildOrderDisplayNote } from '@domain/buildOrderNotes'
 import { liveBuildForkPlan } from '@domain/adaptiveBuild'
 import { formatDuration } from '@domain/format'
 import {
@@ -71,32 +71,27 @@ function BuildIcon({ target, size = 30 }: { target: BuildTarget; size?: number }
 }
 
 function renderNote(note: string) {
-  return parseNote(note).map((part, i) =>
-    part.type === 'text' ? (
-      <span key={i}>{part.text}</span>
-    ) : (
-      <span key={i}>
-        {noteTokenIcon(part.path) ? (
+  return parseBuildOrderDisplayNote(note).map((part, i) => {
+    if (part.type === 'text') return <span key={i}>{part.text}</span>
+    const icon = noteTokenIcon(part.path)
+    const label = part.type === 'icon' ? part.label : part.path.split('/').pop()?.replace(/\.\w+$/, '') ?? 'icon'
+    return (
+      <span key={i} className="mx-0.5 inline-flex align-[-0.2em]">
+        {icon ? (
           <img
-            src={noteTokenIcon(part.path) ?? undefined}
-            alt={
-              part.path
-                .split('/')
-                .pop()
-                ?.replace(/\.\w+$/, '') ?? 'icon'
-            }
-            className="inline-block h-5 w-5 object-contain align-[-0.2em]"
+            src={icon}
+            alt={label}
+            title={label}
+            className="inline-block h-5 w-5 object-contain"
           />
         ) : (
-          (noteTokenGlyph(part.path) ??
-          part.path
-            .split('/')
-            .pop()
-            ?.replace(/\.\w+$/, ''))
+          <span title={label} className="rounded bg-white/10 px-1 text-[10px] text-white/80">
+            {noteTokenGlyph(part.path) ?? label}
+          </span>
         )}
       </span>
-    ),
-  )
+    )
+  })
 }
 
 /** First sentence of a note, trimmed — used for the dim "next" preview. */
@@ -109,15 +104,17 @@ function firstClause(s: string | undefined): string {
 /** Plain-text counterpart of the icon-token note renderer used by the legacy TXT view. */
 function plainNote(s: string | undefined): string {
   if (!s) return ''
-  return parseNote(s)
+  return parseBuildOrderDisplayNote(s)
     .map((part) =>
       part.type === 'text'
         ? part.text
-        : part.path
-            .split('/')
-            .pop()
-            ?.replace(/\.[^.]+$/, '')
-            .replace(/[-_]/g, ' ') ?? '',
+        : part.type === 'icon'
+          ? part.label
+          : part.path
+              .split('/')
+              .pop()
+              ?.replace(/\.[^.]+$/, '')
+              .replace(/[-_]/g, ' ') ?? '',
     )
     .join('')
     .replace(/\s+/g, ' ')

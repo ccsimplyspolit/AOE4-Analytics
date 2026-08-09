@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { useQueryClient } from '@tanstack/react-query'
 import {
   Building2,
@@ -24,6 +25,11 @@ import tinctureMetaJson from '@data/tinctureMeta.json'
 import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
 import { buildPatchAudit } from '@domain/patchAudit'
 import { VIDEO_EVIDENCE_BY_CIV } from '@data/videoEvidence.generated'
+import {
+  CURATED_CONTENT_COUNTS,
+  searchCuratedContent,
+  type CuratedContentItem,
+} from '@data/curatedContent'
 import { civDisplayName } from '@domain/civ'
 import { PageHead } from '../components/PageHead'
 import { Card, CardContent } from '@shared/components/ui/card'
@@ -60,7 +66,19 @@ const TINCTURE_META = tinctureMetaJson as TinctureMetaSnapshot
 
 export function Explorer() {
   const { tt } = useI18n()
-  const [tab, setTab] = useState<Tab>('units')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const rawTab = searchParams.get('tab')
+  const tab: Tab = TABS.some((item) => item.id === rawTab) ? (rawTab as Tab) : 'units'
+  const setTab = (nextTab: Tab) =>
+    setSearchParams(
+      (previous) => {
+        const next = new URLSearchParams(previous)
+        if (nextTab === 'units') next.delete('tab')
+        else next.set('tab', nextTab)
+        return next
+      },
+      { replace: true },
+    )
 
   return (
     <div className="animate-fade-in space-y-6">
@@ -714,7 +732,7 @@ function DumpExplorer() {
         </CardContent>
       </Card>
 
-      <div className="grid gap-3 md:grid-cols-2">
+      <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
         <DumpCard
           title={tt('Game entities')}
           description={tt(
@@ -737,6 +755,15 @@ function DumpExplorer() {
           count={`${Object.keys(VIDEO_EVIDENCE_BY_CIV).length} ${tt('civilizations')}`}
           onJson={() => downloadSnapshot('rtslytics-video-evidence.json', VIDEO_EVIDENCE_BY_CIV)}
           onCsv={() => downloadVideoCsv()}
+        />
+        <DumpCard
+          title={tt('AoE4World curated')}
+          description={tt(
+            'Approved guides, analysed games and videos with source links, creators, tags and civilization references.',
+          )}
+          count={`${CURATED_CONTENT_COUNTS.items} ${tt('entries')} · ${CURATED_CONTENT_COUNTS.featured} ${tt('featured')}`}
+          onJson={() => downloadSnapshot('rtslytics-aoe4world-curated.json', curatedSnapshotForExport())}
+          onCsv={() => downloadCuratedCsv()}
         />
       </div>
       <div className="text-xs text-muted-foreground">
@@ -857,6 +884,36 @@ function downloadVideoCsv(): void {
   )
 }
 
+function curatedSnapshotForExport(): object {
+  return {
+    source: 'https://github.com/aoe4world/curated',
+    counts: CURATED_CONTENT_COUNTS,
+    items: searchCuratedContent('', 'all'),
+  }
+}
+
+function downloadCuratedCsv(): void {
+  const rows: Array<Array<string | number | boolean | null>> = [
+    ['id', 'title', 'type', 'creator', 'civilizations', 'tags', 'featured', 'url'],
+  ]
+  for (const item of searchCuratedContent('', 'all')) {
+    rows.push([
+      item.id,
+      item.title,
+      item.type,
+      item.creator,
+      item.civilizations.join('|'),
+      item.tags.join('|'),
+      item.featured,
+      item.url,
+    ])
+  }
+  downloadBlob(
+    'rtslytics-aoe4world-curated.csv',
+    new Blob([toCsv(rows)], { type: 'text/csv;charset=utf-8' }),
+  )
+}
+
 function toCsv(rows: Array<Array<unknown>>): string {
   return rows
     .map((row) => row.map((value) => `"${String(value ?? '').replaceAll('"', '""')}"`).join(','))
@@ -882,6 +939,8 @@ function VideoExplorer() {
   const [onlineQuery, setOnlineQuery] = useState('')
   const [onlineProvider, setOnlineProvider] = useState<'all' | 'twitch' | 'youtube'>('all')
   const [onlineLiveOnly, setOnlineLiveOnly] = useState(false)
+  const [onlinePeriod, setOnlinePeriod] = useState<'30' | '0'>('30')
+  const [onlineSort, setOnlineSort] = useState<'recent' | 'views'>('recent')
   const [onlineLoading, setOnlineLoading] = useState(false)
   const [onlineData, setOnlineData] = useState<OnlineSearchData | null>(null)
   const [onlineError, setOnlineError] = useState<string | null>(null)
@@ -942,6 +1001,10 @@ function VideoExplorer() {
         return right.source.publishedAt.localeCompare(left.source.publishedAt)
       })
   }, [civFilter, opponentFilter, query, sort, sources])
+  const curatedItems = useMemo(
+    () => searchCuratedContent(query, civFilter),
+    [civFilter, query],
+  )
 
   const runOnlineSearch = useCallback(async () => {
     if (onlineQuery.trim().length < 2) return
@@ -952,7 +1015,9 @@ function VideoExplorer() {
         query: onlineQuery,
         provider: onlineProvider,
         liveOnly: onlineLiveOnly,
-        limit: 12,
+        limit: 100,
+        dateRangeDays: Number(onlinePeriod),
+        sort: onlineSort,
       })
       if (result.ok) setOnlineData(result.data)
       else setOnlineError(result.error.message)
@@ -961,7 +1026,7 @@ function VideoExplorer() {
     } finally {
       setOnlineLoading(false)
     }
-  }, [onlineLiveOnly, onlineProvider, onlineQuery])
+  }, [onlineLiveOnly, onlinePeriod, onlineProvider, onlineQuery, onlineSort])
 
   const analyzeOnlineVideo = useCallback(
     async (result: OnlineSearchResult) => {
@@ -989,11 +1054,12 @@ function VideoExplorer() {
     if (onlineQuery.trim().length < 2) return
     const timer = window.setTimeout(() => void runOnlineSearch(), 650)
     return () => window.clearTimeout(timer)
-  }, [onlineQuery, onlineProvider, onlineLiveOnly, runOnlineSearch])
+  }, [onlineQuery, onlineProvider, onlineLiveOnly, onlinePeriod, onlineSort, runOnlineSearch])
 
   return (
     <div className="space-y-4">
       <CuratedMatchPack />
+      <CuratedSourcePanel items={curatedItems} />
       <Card>
         <CardContent className="space-y-3 p-4">
           <div className="flex flex-wrap items-start justify-between gap-3">
@@ -1045,6 +1111,24 @@ function VideoExplorer() {
                 />{' '}
                 {tt('Live only')}
               </label>
+              <select
+                value={onlinePeriod}
+                onChange={(event) => setOnlinePeriod(event.target.value as typeof onlinePeriod)}
+                className="h-9 rounded-md border border-border bg-background px-2 text-sm"
+                aria-label={tt('Date range')}
+              >
+                <option value="30">{tt('Last 30 days')}</option>
+                <option value="0">{tt('Any date')}</option>
+              </select>
+              <select
+                value={onlineSort}
+                onChange={(event) => setOnlineSort(event.target.value as typeof onlineSort)}
+                className="h-9 rounded-md border border-border bg-background px-2 text-sm"
+                aria-label={tt('Sort online results')}
+              >
+                <option value="recent">{tt('Most recent')}</option>
+                <option value="views">{tt('Most viewed')}</option>
+              </select>
               <button
                 type="button"
                 disabled={onlineLoading || onlineQuery.trim().length < 2}
@@ -1228,7 +1312,7 @@ function VideoExplorer() {
         </CardContent>
       </Card>
       <div className="grid gap-3 lg:grid-cols-2">
-        {filtered.slice(0, 80).map(({ source, civs: sourceCivs }) => (
+        {filtered.map(({ source, civs: sourceCivs }) => (
           <Card key={source.id}>
             <CardContent className="space-y-3 p-4">
               <div className="flex items-center justify-between gap-2">
@@ -1280,12 +1364,93 @@ function VideoExplorer() {
         ))}
       </div>
       {filtered.length === 0 && <EmptyRecord />}
-      {filtered.length > 80 && (
-        <div className="text-center text-xs text-muted-foreground">
-          {tt('Showing the first 80 matches. Refine the filters to narrow the corpus.')}
-        </div>
-      )}
     </div>
+  )
+}
+
+function CuratedSourcePanel({ items }: { items: readonly CuratedContentItem[] }) {
+  const { tt, gameName } = useI18n()
+  const visible = items
+  return (
+    <Card className="border-primary/20">
+      <CardContent className="space-y-3 p-4">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <div className="flex flex-wrap items-center gap-2 text-sm font-semibold">
+              <Sparkles className="h-4 w-4 text-primary" />
+              {tt('AoE4World curated library')}
+              <Badge variant="outline">{tt('reviewed reference')}</Badge>
+            </div>
+            <p className="mt-1 max-w-3xl text-xs leading-relaxed text-muted-foreground">
+              {tt(
+                'Guides, analysed games and videos selected by the AoE4World community. Use them as reference evidence, not as a replacement for current ranked statistics.',
+              )}
+            </p>
+          </div>
+          <div className="text-right text-[11px] text-muted-foreground">
+            {CURATED_CONTENT_COUNTS.items} {tt('entries')} · {CURATED_CONTENT_COUNTS.featured}{' '}
+            {tt('featured')}
+          </div>
+        </div>
+        {visible.length > 0 ? (
+          <div className="grid gap-2 md:grid-cols-2">
+            {visible.map((item) => (
+              <a
+                key={item.id}
+                href={item.url}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex gap-2 rounded-md border border-border/70 p-2 transition-colors hover:border-primary/60 hover:bg-primary/5"
+              >
+                {item.thumbnail && (
+                  <img
+                    src={item.thumbnail}
+                    alt=""
+                    loading="lazy"
+                    className="h-14 w-24 shrink-0 rounded object-cover"
+                  />
+                )}
+                <div className="min-w-0">
+                  <div className="flex items-start gap-1.5">
+                    <div className="line-clamp-2 text-xs font-medium group-hover:text-primary">
+                      {item.title}
+                    </div>
+                    {item.featured && (
+                      <Badge variant="success" className="shrink-0 text-[9px]">
+                        {tt('Featured')}
+                      </Badge>
+                    )}
+                  </div>
+                  <div className="mt-1 truncate text-[10px] text-muted-foreground">
+                    {item.type} · {item.creator ?? tt('AoE4World community')}
+                    {item.youtube.durationSec != null
+                      ? ` · ${formatDurationShort(item.youtube.durationSec)}`
+                      : ''}
+                  </div>
+                  <div className="mt-1 flex flex-wrap gap-1">
+                    {item.civilizations.slice(0, 2).map((civ) => (
+                      <span key={civ} className="rounded bg-secondary px-1.5 py-0.5 text-[9px]">
+                        {gameName(civ)}
+                      </span>
+                    ))}
+                    {item.tags.slice(0, 2).map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded border border-border px-1.5 py-0.5 text-[9px] text-muted-foreground"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <p className="text-xs text-muted-foreground">{tt('No curated references match.')}</p>
+        )}
+      </CardContent>
+    </Card>
   )
 }
 

@@ -6,7 +6,15 @@ node_modules/
 out/
 dist/
 release/
+release-*/
+_build-stage-*/
+/RTSLytics-*.exe
+/_tmp_*.json
+/scripts/essence-selective-unpack/bin/
+/scripts/essence-selective-unpack/obj/
 coverage/
+build/replays-api/
+build/third-party/
 
 # Logs
 *.log
@@ -35,3 +43,10 @@ Thumbs.db
 /data/research/attrib/
 /data/research/cookies*.txt
 /data/research/aoe4world-data/
+# AOEMods.Essence raw game trees are local staging only; the reviewed
+# provenance and compact RGD projection remain versioned.
+/data/research/essence/extracted/
+/data/research/essence/rgd/
+/data/research/essence/selective-uiart/
+/data/research/essence/*.stderr.log
+/data/research/essence/*.stdout.log

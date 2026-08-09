@@ -45,14 +45,12 @@ const DIFFICULTY_VARIANT = {
 export function CivDetail() {
   const { slug = '' } = useParams()
   const { tt, gameName } = useI18n()
-  const [visibleBuildCount, setVisibleBuildCount] = useState(6)
   const [loadHeavySections, setLoadHeavySections] = useState(false)
   const profile = CIV_PROFILES[slug]
 
   // Let the first paint settle before starting the public stats and landmark
   // queries. Deep-linking to a civ should never monopolise the renderer.
   useEffect(() => {
-    setVisibleBuildCount(6)
     setLoadHeavySections(false)
     const timer = window.setTimeout(() => setLoadHeavySections(true), 250)
     return () => window.clearTimeout(timer)
@@ -72,7 +70,6 @@ export function CivDetail() {
   const builds = BUNDLED_BUILD_ORDERS.filter(
     (bo) => String(bo.civilization).toLowerCase() === profile.name.toLowerCase(),
   ) as unknown as BuildOrder[]
-  const visibleBuilds = builds.slice(0, visibleBuildCount)
   const units = unitsForCiv(slug)
   const keyUnits = pickKeyUnits(units)
 
@@ -161,18 +158,9 @@ export function CivDetail() {
       {builds.length > 0 && (
         <section className="space-y-3">
           <h2 className="text-lg font-semibold tracking-tight">{tt('Recommended build orders')}</h2>
-          {visibleBuilds.map((bo, i) => (
+          {builds.map((bo, i) => (
             <BuildOrderViewer key={i} bo={bo} />
           ))}
-          {builds.length > visibleBuilds.length && (
-            <button
-              type="button"
-              onClick={() => setVisibleBuildCount((count) => Math.min(count + 6, builds.length))}
-              className="w-full rounded-lg border border-border bg-card/60 px-4 py-3 text-sm text-primary transition-colors hover:bg-secondary"
-            >
-              {tt('Show more build orders')} ({visibleBuilds.length}/{builds.length})
-            </button>
-          )}
         </section>
       )}
 

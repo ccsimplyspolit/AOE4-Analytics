@@ -12,19 +12,38 @@
 
 /** One path row from the analytics response (only the fields we read). */
 export interface AgeupPathRow {
+  map_id?: number | null
+  map_custom_id?: string | null
   civilization: string | null
   player_games_count: number
   win_count: number | null
   win_rate: number | null
+  duration_average?: number | null
   age2_pbgid?: number | null
   age2_name?: string | null
   age2_finished_at_average?: number | null
+  age2_finished_at_minimum?: number | null
+  age2_finished_at_mode?: number | null
   age3_pbgid?: number | null
   age3_name?: string | null
   age3_finished_at_average?: number | null
+  age3_finished_at_minimum?: number | null
+  age3_finished_at_mode?: number | null
   age4_pbgid?: number | null
   age4_name?: string | null
   age4_finished_at_average?: number | null
+  age4_finished_at_minimum?: number | null
+  age4_finished_at_mode?: number | null
+}
+
+export interface AgeupFilter {
+  leaderboard?: string | null
+  kind?: string | null
+  rank_level?: string | null
+  rating?: string | null
+  civilization?: string[] | null
+  patch?: string | null
+  pbg_ids?: Record<string, number> | null
 }
 
 export interface AgeupMetadata {
@@ -38,6 +57,7 @@ export interface AgeupMetadata {
 }
 
 export interface AgeupStatsResponse {
+  filter?: AgeupFilter
   data: Record<string, AgeupPathRow[] | AgeupPathRow | undefined>
   ageups_metadata?: AgeupMetadata[]
 }

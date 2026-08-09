@@ -12,7 +12,7 @@ export async function searchPlayers(query: string): Promise<IpcResult<PlayerSear
   if (q.length < 3) return ok([])
   try {
     const res = await getClient().searchPlayers(q)
-    const hits: PlayerSearchHit[] = res.players.slice(0, 15).map((p) => {
+    const hits: PlayerSearchHit[] = res.players.map((p) => {
       const primary = pickPrimaryMode(p.leaderboards)
       return {
         profileId: p.profile_id,

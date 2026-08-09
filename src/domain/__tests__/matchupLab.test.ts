@@ -1,7 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import type { MatchupStatsResponse } from '../../api/types'
 import type { StoredMatch } from '../../store/historyStore'
-import { buildGlobalMatchup, buildPersonalMatchup, isMatchupCivilization } from '../matchupLab'
+import {
+  buildGlobalMatchup,
+  buildPersonalMatchup,
+  isGlobalMatchupLeaderboard,
+  isMatchupCivilization,
+} from '../matchupLab'
 
 const response: MatchupStatsResponse = {
   leaderboard: 'rm_solo',
@@ -56,6 +61,15 @@ describe('isMatchupCivilization', () => {
     expect(isMatchupCivilization('constructor')).toBe(false)
     expect(isMatchupCivilization('toString')).toBe(false)
     expect(isMatchupCivilization('x'.repeat(65))).toBe(false)
+  })
+})
+
+describe('global matchup endpoint support', () => {
+  it('only enables queues with a published AoE4World matchup matrix', () => {
+    expect(isGlobalMatchupLeaderboard('rm_solo')).toBe(true)
+    expect(isGlobalMatchupLeaderboard('qm_1v1')).toBe(true)
+    expect(isGlobalMatchupLeaderboard('rm_3v3')).toBe(false)
+    expect(isGlobalMatchupLeaderboard('qm_4v4')).toBe(false)
   })
 })
 

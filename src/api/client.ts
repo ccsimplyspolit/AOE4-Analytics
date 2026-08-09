@@ -1,6 +1,10 @@
 import { type DiskCache } from './cache'
 import { type RateLimiter } from './rateLimiter'
-import { fetchWithTimeout } from './fetchWithTimeout'
+import {
+  fetchWithTimeout,
+  getRateLimitGate,
+  type FetchWithTimeoutOptions,
+} from './fetchWithTimeout'
 import type { AgeupStatsResponse } from '@domain/landmarkStats'
 import type {
   SearchResponse,
@@ -15,6 +19,7 @@ import type {
   LeaderboardPlayer,
   StatsLeaderboard,
   RankLevel,
+  TeamStatsResponse,
 } from './types'
 
 /** Honest, non-spoofed User-Agent (D9 / A2). Single source of truth. */
@@ -54,6 +59,8 @@ export interface ClientOptions {
   /** Injectable fetch (defaults to global fetch). */
   fetchFn?: typeof fetch
   baseUrl?: string
+  /** Injectable retry gate for deterministic request tests. */
+  fetchOptions?: FetchWithTimeoutOptions
 }
 
 export interface GamesQuery {
@@ -74,6 +81,30 @@ export interface StatsQuery {
   /** AoE4World rating bucket, e.g. `1100-1199` or `>1400`. */
   rating?: string
   patch?: string
+  /** Include per-civilization map slices for pool-aware meta aggregation. */
+  includeCivs?: boolean
+}
+
+export interface GlobalGamesQuery {
+  /** AoE4World game kind, e.g. rm_1v1 or qm_2v2. */
+  leaderboard?: string
+  page?: number
+  perPage?: number
+  profileIds?: number[]
+  since?: string
+  order?: 'started_at' | 'updated_at'
+  fresh?: boolean
+}
+
+/** Parameters supported by aoe4world/overlay for the current-game endpoint. */
+export interface LastGameQuery {
+  /** Include the player's linked alternate profiles in the matchup. */
+  includeAlts?: boolean
+  /** Allow the overlay API to return a visible custom game when available. */
+  includeCustom?: boolean
+  /** Optional AoE4World overlay key, kept out of the renderer. */
+  apiKey?: string
+  fresh?: boolean
 }
 
 /**
@@ -86,6 +117,7 @@ export class Aoe4WorldClient {
   private readonly rateLimiter: RateLimiter
   private readonly fetchFn: typeof fetch
   private readonly baseUrl: string
+  private readonly fetchOptions: FetchWithTimeoutOptions
   /** One network/parse pipeline per URL so concurrent cache misses share work. */
   private readonly inFlight = new Map<string, Promise<unknown>>()
 
@@ -94,12 +126,21 @@ export class Aoe4WorldClient {
     this.rateLimiter = options.rateLimiter
     this.fetchFn = options.fetchFn ?? globalThis.fetch.bind(globalThis)
     this.baseUrl = options.baseUrl ?? API_BASE
+    this.fetchOptions = options.fetchOptions ?? {}
   }
 
   private async getJson<T>(path: string, ttlMs: number): Promise<T> {
     const url = this.baseUrl + path
     const cached = this.cache.get<T>(url, ttlMs)
     if (cached !== null) return cached
+    // Do not turn an upstream rate limit into an empty/error state when the
+    // same endpoint has a recent, valid cached response. The in-flight request
+    // that triggered the cooldown keeps retrying and refreshes this cache.
+    const rateLimitGate = this.fetchOptions.rateLimitGate ?? getRateLimitGate(url)
+    if (rateLimitGate.isCoolingDown()) {
+      const stale = this.cache.getStale<T>(url)
+      if (stale !== null) return stale
+    }
 
     const existing = this.inFlight.get(url)
     if (existing) return (await existing) as T
@@ -111,6 +152,7 @@ export class Aoe4WorldClient {
           url,
           { headers: { 'User-Agent': USER_AGENT, Accept: 'application/json' } },
           REQUEST_TIMEOUT_MS,
+          this.fetchOptions,
         ),
       )
       if (!res.ok) throw new ApiError(res.status, url)
@@ -122,6 +164,21 @@ export class Aoe4WorldClient {
     this.inFlight.set(url, request)
     try {
       return await request
+    } catch (error) {
+      // A stale successful response is more useful than an empty screen when
+      // AoE4World is temporarily unavailable. Do not hide a permanent 4xx
+      // (notably the unsupported team-matchup endpoints) behind old data.
+      const isPermanentClientError =
+        error instanceof ApiError &&
+        error.status >= 400 &&
+        error.status < 500 &&
+        error.status !== 408 &&
+        error.status !== 429
+      if (!isPermanentClientError) {
+        const stale = this.cache.getStale<T>(url)
+        if (stale !== null) return stale
+      }
+      throw error
     } finally {
       if (this.inFlight.get(url) === request) this.inFlight.delete(url)
     }
@@ -187,12 +244,37 @@ export class Aoe4WorldClient {
     return [...unique.values()].slice(0, maxGames)
   }
 
-  getLastGame(profileId: number): Promise<Game> {
-    return this.getJson(`/players/${profileId}/games/last`, TTL.lastGame)
+  getLastGame(profileId: number, query: LastGameQuery = {}): Promise<Game> {
+    const params = new URLSearchParams()
+    if (query.includeAlts != null) params.set('include_alts', String(query.includeAlts))
+    if (query.includeCustom != null) params.set('include_custom', String(query.includeCustom))
+    if (query.apiKey) params.set('api_key', query.apiKey)
+    const suffix = params.toString() ? `?${params.toString()}` : ''
+    return this.getJson(
+      `/players/${profileId}/games/last${suffix}`,
+      query.fresh ? 0 : TTL.lastGame,
+    )
   }
 
   getGame(profileId: number, gameId: number): Promise<Game> {
     return this.getJson(`/players/${profileId}/games/${gameId}`, TTL.game)
+  }
+
+  /**
+   * Bounded global game feed used by similarity search. The caller must keep
+   * the page count small; AoE4World explicitly limits this endpoint to page
+   * 20 and asks clients to use since/order cursors and local caching.
+   */
+  getGames(query: GlobalGamesQuery = {}): Promise<GamesResponse> {
+    const params = new URLSearchParams({
+      page: String(Math.max(1, Math.min(20, Math.floor(query.page ?? 1)))),
+      per_page: String(Math.max(1, Math.min(50, Math.floor(query.perPage ?? 50)))),
+    })
+    if (query.leaderboard) params.set('leaderboard', query.leaderboard)
+    if (query.profileIds?.length) params.set('profile_ids', query.profileIds.join(','))
+    if (query.since) params.set('since', query.since)
+    if (query.order) params.set('order', query.order)
+    return this.getJson(`/games?${params.toString()}`, query.fresh ? 0 : TTL.games)
   }
 
   getLeaderboard(
@@ -201,7 +283,8 @@ export class Aoe4WorldClient {
   ): Promise<LeaderboardResponse> {
     const params = new URLSearchParams({ page: String(query.page ?? 1) })
     if (query.country) params.set('country', query.country)
-    if (query.limit != null) params.set('limit', String(Math.max(1, Math.min(100, Math.floor(query.limit)))))
+    if (query.limit != null)
+      params.set('limit', String(Math.max(1, Math.min(100, Math.floor(query.limit)))))
     return this.getJson(
       `/leaderboards/${leaderboard}?${params.toString()}`,
       query.fresh ? 0 : TTL.leaderboard,
@@ -214,7 +297,10 @@ export class Aoe4WorldClient {
     options: { country?: string; pageSize?: number; maxPlayers?: number; fresh?: boolean } = {},
   ): Promise<LeaderboardPlayer[]> {
     const pageSize = Math.max(1, Math.min(100, Math.floor(options.pageSize ?? 100)))
-    const maxPlayers = Math.max(pageSize, Math.min(100_000, Math.floor(options.maxPlayers ?? 100_000)))
+    const maxPlayers = Math.max(
+      pageSize,
+      Math.min(100_000, Math.floor(options.maxPlayers ?? 100_000)),
+    )
     const first = await this.getLeaderboard(leaderboard, {
       country: options.country,
       limit: pageSize,
@@ -224,7 +310,10 @@ export class Aoe4WorldClient {
     const rows = [...first.players]
     const reportedPageSize = first.per_page && first.per_page > 0 ? first.per_page : pageSize
     const total = Number.isSafeInteger(first.total_count) ? first.total_count : rows.length
-    const pageCount = Math.min(Math.ceil(total / reportedPageSize), Math.ceil(maxPlayers / reportedPageSize))
+    const pageCount = Math.min(
+      Math.ceil(total / reportedPageSize),
+      Math.ceil(maxPlayers / reportedPageSize),
+    )
     for (let page = 2; page <= pageCount && rows.length < maxPlayers; page++) {
       const response = await this.getLeaderboard(leaderboard, {
         country: options.country,
@@ -271,18 +360,25 @@ export class Aoe4WorldClient {
    * win-rate and age-up completion times. INTERNAL AoE4World endpoint (their
    * notice says subject to change) — callers must treat failures as "no data".
    */
-  getAgeupStats(civilization: string, kind = 'rm_solo'): Promise<AgeupStatsResponse> {
+  getAgeupStats(
+    civilization: string,
+    kind = 'rm_solo',
+    query: StatsQuery = {},
+  ): Promise<AgeupStatsResponse> {
     const params = new URLSearchParams({ kind, civilization })
+    if (query.leaderboard) params.set('leaderboard', query.leaderboard)
+    if (query.rankLevel) params.set('rank_level', query.rankLevel)
+    if (query.rating) params.set('rating', query.rating)
+    if (query.patch) params.set('patch', query.patch)
     return this.getJson(`/stats/analytics/ageups?${params.toString()}`, TTL.analytics)
   }
 
   getMatchupStats(query: StatsQuery = {}): Promise<MatchupStatsResponse> {
     const lb = query.leaderboard ?? 'rm_solo'
     const params = new URLSearchParams()
-    // AoE4World currently exposes rank-band slices only for the 1v1 stats
-    // ladders. Omitting it on team ladders avoids implying a filter the source
-    // cannot apply.
-    if (query.rankLevel && (lb === 'rm_solo' || lb === 'qm_1v1')) {
+    // Rank bands are available for every Ranked Match queue, but not for
+    // Quick Match.
+    if (query.rankLevel && lb.startsWith('rm_')) {
       params.set('rank_level', query.rankLevel)
     }
     if (query.rating) params.set('rating', query.rating)
@@ -291,12 +387,23 @@ export class Aoe4WorldClient {
     return this.getJson(`/stats/${lb}/matchups${qs ? `?${qs}` : ''}`, TTL.stats)
   }
 
+  /** Exact civilization-pair statistics, currently exposed for 2v2 only. */
+  getTeamStats(query: StatsQuery = {}): Promise<TeamStatsResponse> {
+    const lb = query.leaderboard === 'qm_2v2' ? 'qm_2v2' : 'rm_2v2'
+    const params = new URLSearchParams()
+    if (query.rating) params.set('rating', query.rating)
+    if (query.patch) params.set('patch', query.patch)
+    const qs = params.toString()
+    return this.getJson(`/stats/${lb}/teams${qs ? `?${qs}` : ''}`, TTL.stats)
+  }
+
   getMapStats(query: StatsQuery = {}): Promise<MapStatsResponse> {
     const lb = query.leaderboard ?? 'rm_solo'
     const params = new URLSearchParams()
     if (query.rankLevel) params.set('rank_level', query.rankLevel)
     if (query.rating) params.set('rating', query.rating)
     if (query.patch) params.set('patch', query.patch)
+    if (query.includeCivs) params.set('include_civs', 'true')
     const qs = params.toString()
     return this.getJson(`/stats/${lb}/maps${qs ? `?${qs}` : ''}`, TTL.stats)
   }

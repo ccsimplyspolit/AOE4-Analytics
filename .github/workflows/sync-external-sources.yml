@@ -55,7 +55,13 @@ jobs:
           git add \
             src/data/buildOrders/imported \
             src/data/vendor/aoe4world-data/units.json \
+            src/data/vendor/aoe4world-data/explorer.json \
+            src/data/vendor/aoe4world-data/source-snapshot.json \
             src/data/vendor/aoe4world-data/SOURCE.md \
+            src/data/vendor/aoe4world-curated/content.json \
+            data/research/aoe4world-curated.json \
+            data/research/aoe4-upstream-revisions.json \
+            data/research/aoe4-source-sync.json \
             src/data/vendor/aoe4-icons \
             src/data/tinctureMeta.json \
             src/data/tinctureHistory.json

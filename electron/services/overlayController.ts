@@ -3,6 +3,7 @@ import { screen, type BrowserWindow } from 'electron'
 import {
   IpcChannels,
   type OverlayControlAction,
+  type OverlayDetectionPayload,
   type OverlayMatchState,
   type OverlayUpdatePayload,
 } from '@ipc/contract'
@@ -31,6 +32,7 @@ export class OverlayController {
   private lastMatchState: OverlayMatchState = 'idle'
   /** The last full update payload, re-sent after a renderer crash/reload. */
   private lastUpdatePayload: OverlayUpdatePayload | null = null
+  private lastDetectionPayload: OverlayDetectionPayload | null = null
   /** Set once the renderer has produced its first frame (ready-to-show). */
   private painted = false
   /** Set on a crash/hang reload so did-finish-load knows to restore state. */
@@ -87,6 +89,9 @@ export class OverlayController {
       this.win!.webContents.send(IpcChannels.overlayLock, this.locked)
       if (this.lastUpdatePayload) {
         this.win!.webContents.send(IpcChannels.overlayUpdate, this.lastUpdatePayload)
+      }
+      if (this.lastDetectionPayload) {
+        this.win!.webContents.send(IpcChannels.overlayDetection, this.lastDetectionPayload)
       }
       this.painted = true
       this.reconcile()
@@ -409,6 +414,12 @@ export class OverlayController {
   sendApm(apm: number | null): void {
     if (this.alive()) this.win!.webContents.send(IpcChannels.overlayApm, apm)
     getMainWindow()?.webContents.send(IpcChannels.overlayApm, apm)
+  }
+
+  /** Sends explainable process/log detection state without changing overlay visibility. */
+  sendDetection(payload: OverlayDetectionPayload): void {
+    this.lastDetectionPayload = payload
+    if (this.alive()) this.win!.webContents.send(IpcChannels.overlayDetection, payload)
   }
 
   /**

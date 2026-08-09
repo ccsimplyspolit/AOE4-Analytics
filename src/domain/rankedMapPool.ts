@@ -6,6 +6,14 @@ export type RankedMapPoolQueue = 'solo' | 'team'
 
 export type RankedMapPoolStatus = 'current' | 'stale'
 
+export type RankedMapPoolRefreshStatus = 'bundled' | 'cached' | 'checked' | 'updated' | 'error'
+
+export interface RankedMapPoolRefreshInfo {
+  status: RankedMapPoolRefreshStatus
+  lastCheckedAt: string | null
+  lastError: string | null
+}
+
 /**
  * A dated, auditable map-pool snapshot.
  *
@@ -23,6 +31,8 @@ export interface RankedMapPoolSnapshot {
   effectiveFrom: string
   effectiveUntil: string
   patch: string | null
+  /** Ranked season associated with this rotation when known. */
+  season?: number | null
   solo: readonly string[]
   team: readonly string[]
 }
@@ -32,6 +42,7 @@ export interface RankedMapPoolResolution {
   snapshot: RankedMapPoolSnapshot
   queue: RankedMapPoolQueue
   maps: readonly string[]
+  autoRefresh?: RankedMapPoolRefreshInfo
 }
 
 /**
@@ -47,12 +58,13 @@ export const CURRENT_RANKED_MAP_POOL: RankedMapPoolSnapshot = {
   schemaVersion: 1,
   snapshotId: 'ranked-rotation-2026-08',
   source: 'community-verified',
-  sourceUrl: 'https://www.reddit.com/r/aoe4/comments/1vdxk4s/new_map_pool/',
+  sourceUrl: 'https://www.reddit.com/r/aoe4/comments/1vdlnix/new_map_pool/',
   supportingSourceUrl: 'https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/',
   capturedAt: '2026-08-09T00:00:00.000Z',
   effectiveFrom: '2026-08-02',
   effectiveUntil: '2026-09-01',
   patch: '16.2.10604–11308',
+  season: 13,
   solo: [
     'Ancient Spires',
     'Dry Arabia',
@@ -109,17 +121,25 @@ export function mapsForQueue(
  * snapshot is returned for diagnostics but must not be used to hide maps.
  */
 export function resolveRankedMapPool(now = new Date()): RankedMapPoolResolution {
-  const queue: RankedMapPoolQueue = 'solo'
-  const status =
-    dateKey(now) >= CURRENT_RANKED_MAP_POOL.effectiveFrom &&
-    dateKey(now) < CURRENT_RANKED_MAP_POOL.effectiveUntil
-      ? 'current'
-      : 'stale'
+  return {
+    ...resolveSnapshotForLeaderboard(CURRENT_RANKED_MAP_POOL, 'rm_solo', now)!,
+  }
+}
+
+export function resolveSnapshotForLeaderboard(
+  snapshot: RankedMapPoolSnapshot,
+  leaderboard: StatsLeaderboard,
+  now = new Date(),
+): RankedMapPoolResolution | null {
+  const queue = queueForLeaderboard(leaderboard)
+  if (!queue) return null
+  const today = dateKey(now)
+  const status = today >= snapshot.effectiveFrom && today < snapshot.effectiveUntil ? 'current' : 'stale'
   return {
     status,
-    snapshot: CURRENT_RANKED_MAP_POOL,
+    snapshot,
     queue,
-    maps: mapsForQueue(CURRENT_RANKED_MAP_POOL, queue),
+    maps: mapsForQueue(snapshot, queue),
   }
 }
 
@@ -127,10 +147,7 @@ export function resolveForLeaderboard(
   leaderboard: StatsLeaderboard,
   now = new Date(),
 ): RankedMapPoolResolution | null {
-  const queue = queueForLeaderboard(leaderboard)
-  if (!queue) return null
-  const base = resolveRankedMapPool(now)
-  return { ...base, queue, maps: mapsForQueue(base.snapshot, queue) }
+  return resolveSnapshotForLeaderboard(CURRENT_RANKED_MAP_POOL, leaderboard, now)
 }
 
 export function filterMapStatsByPool(

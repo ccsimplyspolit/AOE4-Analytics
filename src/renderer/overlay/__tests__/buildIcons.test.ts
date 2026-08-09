@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
 import { extractBuildTargets } from '../buildIcons'
 
 describe('extractBuildTargets', () => {
@@ -33,4 +34,33 @@ describe('extractBuildTargets', () => {
     expect(t[0]!.url).toMatch(/barracks\.png$/)
     expect(t[0]!.url).not.toMatch(/^https:/)
   })
+
+  it('extracts localized Russian buildings and units', () => {
+    const targets = extractBuildTargets([
+      'Построй дом и казарму, поставь ТЦ и конюшню, затем подготовь копейщиков и лучника.',
+    ], 8)
+
+    expect(targets.map((target) => target.label)).toEqual(
+      expect.arrayContaining(['Дом', 'Казармы', 'Городской центр', 'Конюшня', 'Копейщик', 'Лучник']),
+    )
+    expect(targets.every((target) => !target.url.startsWith('https:'))).toBe(true)
+  })
+
+  it('uses the shared entity parser for long-tail units and buildings', () => {
+    const targets = extractBuildTargets(['Repair the Varangian Warcamp, then train Mangudai.'])
+
+    expect(targets.map((target) => target.label)).toEqual(
+      expect.arrayContaining(['Varangian Warcamp', 'Mangudai']),
+    )
+    expect(targets.every((target) => !target.url.startsWith('https:'))).toBe(true)
+  })
+
+  it('keeps every bundled build step offline-renderable', () => {
+    const steps = BUNDLED_BUILD_ORDERS.flatMap((build) => build.build_order)
+    const targets = steps.flatMap((step) => extractBuildTargets(step.notes))
+
+    expect(steps.length).toBeGreaterThan(0)
+    expect(targets.length).toBeGreaterThan(0)
+    expect(targets.every((target) => !target.url.startsWith('https:'))).toBe(true)
+  }, 30_000)
 })

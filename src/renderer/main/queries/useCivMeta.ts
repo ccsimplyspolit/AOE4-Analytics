@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { ipc } from '@shared/ipc'
 import type { CivMetaQuery, MatchupLabQuery } from '@ipc/contract'
+import { isGlobalMatchupLeaderboard } from '@domain/matchupLab'
 
 export function useCivMeta(query: CivMetaQuery) {
   return useQuery({
@@ -38,6 +39,9 @@ export function useMatchupLab(query: MatchupLabQuery) {
       query.opponentCivilization,
     ],
     queryFn: () => ipc.getMatchupLab(query),
+    // Team queues do not have a global AoE4World matchup endpoint. The screen
+    // still renders personal/local history, but there is no request to retry.
+    enabled: isGlobalMatchupLeaderboard(query.leaderboard ?? 'rm_solo'),
     staleTime: 6 * 60 * 60 * 1000,
   })
 }

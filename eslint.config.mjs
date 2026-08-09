@@ -9,8 +9,13 @@ export default tseslint.config(
   {
     ignores: [
       'out/**',
+      '**/out/**',
       'dist/**',
       'release/**',
+      'release-*/**',
+      '_build-stage-*/**',
+      '**/_build-stage-*/**',
+      '**/win-unpacked*/**',
       'coverage/**',
       'node_modules/**',
       'src/data/vendor/**',

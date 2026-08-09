@@ -146,6 +146,7 @@ export function estimateBuildOrderTimes(
     build_order: build.build_order.map((step, stepIndex) => ({
       ...step,
       time: formatDuration(estimated[stepIndex] ?? 0),
+      timeProvenance: rawTimes[stepIndex] != null ? step.timeProvenance : 'derived',
     })),
   }
 }

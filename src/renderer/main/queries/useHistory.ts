@@ -36,6 +36,13 @@ export function useBuildAuditHistory(limit = 50) {
   })
 }
 
+/** Full cross-match forensic report; runs on demand because it decodes all local summaries. */
+export function useMatchCorpusReport() {
+  return useMutation({
+    mutationFn: (limit?: number) => ipc.getMatchCorpusReport(limit),
+  })
+}
+
 /** The full stat summary (build order + economy/score) for a game, or null. */
 export function useGameSummary(matchId: string | undefined, options?: { enabled?: boolean }) {
   return useQuery({

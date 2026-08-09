@@ -14,13 +14,13 @@ export function useReplays(page = 1, pageSize = 25) {
   })
 }
 
-/** Account history uses AoE4World pagination and Relic upload metadata. */
-export function useAccountReplays(page = 1, pageSize = 20) {
+/** Account history starts from the local archive; only the explicit refresh fetches it again. */
+export function useAccountReplays(page = 1, pageSize = 20, forceRefresh = false) {
   const settings = useSettings()
   return useQuery<AccountReplayPage | null>({
-    queryKey: ['account-replays', settings.data?.profileId, page, pageSize],
+    queryKey: ['account-replays', settings.data?.profileId, page, pageSize, forceRefresh],
     queryFn: async () => {
-      const result = await ipc.listAccountReplays(page, pageSize)
+      const result = await ipc.listAccountReplays(page, pageSize, forceRefresh)
       return result.ok ? result.data : Promise.reject(new Error(result.error.message))
     },
     enabled: settings.isSuccess && settings.data.profileId != null,
@@ -67,5 +67,18 @@ export function useReplayAnalysis() {
       if (!result.ok) throw new Error(result.error.message)
       return result.data
     },
+  })
+}
+
+/** Downloads (if needed) and combines the online replay with its Relic summary. */
+export function useDownloadAndAnalyzeReplay() {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: async (gameId: number) => {
+      const result = await ipc.downloadAndAnalyzeReplay(gameId)
+      if (!result.ok) throw new Error(result.error.message)
+      return result.data
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['account-replays'] }),
   })
 }

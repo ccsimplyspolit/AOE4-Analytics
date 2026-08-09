@@ -11,6 +11,9 @@ import {
   Pipette,
   Move,
   Languages as LanguagesIcon,
+  KeyRound,
+  ArrowDown,
+  ArrowUp,
 } from 'lucide-react'
 import type { Leaderboard } from '@api/types'
 import {
@@ -26,7 +29,7 @@ import { useDebounce } from '@shared/hooks/useDebounce'
 import { ACCENT_PRESETS, currentAccentHex } from '@shared/accent'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
-import { buildOrderCivLabel } from '@domain/buildOrderSchema'
+import { buildOrderCivLabel, type BuildOrder } from '@domain/buildOrderSchema'
 import { useSettings, useUpdateSettings, useRemoveAccount } from '../queries/useProfile'
 import { PageHead } from '../components/PageHead'
 import { SteamConnectCard } from '../components/SteamConnectCard'
@@ -45,6 +48,7 @@ const POLL_OPTIONS = [
 const SETTINGS_SECTIONS = [
   ['settings-appearance', 'Appearance'],
   ['settings-account', 'Account'],
+  ['settings-integrations', 'Integrations'],
   ['settings-overlay', 'Overlay'],
   ['settings-polling', 'Polling'],
   ['settings-stats', 'Stats'],
@@ -89,6 +93,24 @@ export function Settings() {
   const [liveOpacity, setLiveOpacity] = useState<number | null>(null)
   const debouncedOpacity = useDebounce(liveOpacity, 200)
   const { mutate: commitSettings } = update
+  const overlayBuilds = (() => {
+    const seen = new Set<string>()
+    return [
+      ...(settings?.overlay.customBuildOrders ?? []),
+      ...(BUNDLED_BUILD_ORDERS as BuildOrder[]),
+    ].filter((build) => {
+      if (!build?.name || seen.has(build.name)) return false
+      seen.add(build.name)
+      return true
+    })
+  })()
+  const cycleNames = settings?.overlay.buildOrderCycle ?? []
+  const orderedOverlayBuildNames = [
+    ...cycleNames.filter((name) => overlayBuilds.some((build) => build.name === name)),
+    ...overlayBuilds
+      .map((build) => build.name)
+      .filter((name) => !cycleNames.includes(name)),
+  ]
   useEffect(() => {
     if (debouncedOpacity == null) return
     commitSettings(
@@ -206,6 +228,12 @@ export function Settings() {
       </Card>
 
       <TranslationApiCard onSaved={refreshTranslationStatus} />
+      <ExternalApisCard />
+      <ReplaysApiCard
+        value={settings?.replaysApiUrl ?? null}
+        saving={update.isPending}
+        onSave={(replaysApiUrl) => update.mutateAsync({ replaysApiUrl })}
+      />
 
       <div id="settings-account" className="scroll-mt-14 space-y-6">
         <Card>
@@ -682,9 +710,12 @@ export function Settings() {
                     className="h-9 w-full rounded-md border border-border bg-background px-2 text-xs disabled:opacity-50"
                   >
                     <option value="">{tt('No build selected')}</option>
-                    {BUNDLED_BUILD_ORDERS.map((build) => (
+                    {overlayBuilds.map((build) => (
                       <option key={build.name} value={build.name}>
                         {build.name} · {buildOrderCivLabel(build)}
+                        {settings?.overlay.customBuildOrders.some((item) => item.name === build.name)
+                          ? ` · ${tt('custom')}`
+                          : ''}
                       </option>
                     ))}
                   </select>
@@ -782,6 +813,84 @@ export function Settings() {
                     )
                   }
                 />
+              </div>
+            </div>
+            <div className="space-y-2 border-t border-border pt-3">
+              <div>
+                <div className="text-sm font-medium">{tt('Build-order cycle library')}</div>
+                <p className="mt-0.5 text-[11px] text-muted-foreground">
+                  {tt(
+                    'Imported builds and the bundled catalog are all available. Uncheck a build to skip it while cycling; use the arrows to set the order.',
+                  )}
+                </p>
+              </div>
+              <div className="max-h-72 space-y-1 overflow-y-auto rounded-md border border-border/70 bg-background/30 p-2">
+                {orderedOverlayBuildNames.map((name, index) => {
+                  const build = overlayBuilds.find((item) => item.name === name)
+                  if (!build) return null
+                  const disabled = settings?.overlay.buildOrderDisabled.includes(name) ?? false
+                  const custom = settings?.overlay.customBuildOrders.some(
+                    (item) => item.name === name,
+                  )
+                  const move = (direction: -1 | 1) => {
+                    if (!settings) return
+                    const next = [...orderedOverlayBuildNames]
+                    const target = index + direction
+                    if (target < 0 || target >= next.length) return
+                    ;[next[index], next[target]] = [next[target]!, next[index]!]
+                    update.mutate(
+                      { overlay: { buildOrderCycle: next } },
+                      { onSuccess: () => void ipc.applyOverlaySettings() },
+                    )
+                  }
+                  return (
+                    <div
+                      key={name}
+                      className="flex items-center gap-2 rounded border border-border/60 px-2 py-1.5 text-xs"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={!disabled}
+                        onChange={(event) => {
+                          if (!settings) return
+                          const nextDisabled = new Set(settings.overlay.buildOrderDisabled)
+                          if (event.target.checked) nextDisabled.delete(name)
+                          else nextDisabled.add(name)
+                          update.mutate(
+                            { overlay: { buildOrderDisabled: [...nextDisabled] } },
+                            { onSuccess: () => void ipc.applyOverlaySettings() },
+                          )
+                        }}
+                        className="h-4 w-4 shrink-0 accent-[hsl(var(--primary))]"
+                        aria-label={`${tt('Cycle')} ${name}`}
+                      />
+                      <span className={cn('min-w-0 flex-1 truncate', disabled && 'text-muted-foreground line-through')}>
+                        {name}
+                      </span>
+                      <span className="shrink-0 text-[10px] text-muted-foreground">
+                        {custom ? tt('custom') : tt('bundled')}
+                      </span>
+                      <button
+                        type="button"
+                        disabled={index === 0}
+                        onClick={() => move(-1)}
+                        className="rounded border border-border p-1 text-muted-foreground hover:bg-secondary disabled:opacity-30"
+                        title={tt('Move up')}
+                      >
+                        <ArrowUp className="h-3 w-3" />
+                      </button>
+                      <button
+                        type="button"
+                        disabled={index === orderedOverlayBuildNames.length - 1}
+                        onClick={() => move(1)}
+                        className="rounded border border-border p-1 text-muted-foreground hover:bg-secondary disabled:opacity-30"
+                        title={tt('Move down')}
+                      >
+                        <ArrowDown className="h-3 w-3" />
+                      </button>
+                    </div>
+                  )
+                })}
               </div>
             </div>
             <HotkeyInput
@@ -1036,6 +1145,332 @@ function OverlayToggle({
         />
       </button>
     </div>
+  )
+}
+
+type ExternalApiStatus = Awaited<ReturnType<typeof ipc.getExternalApiStatus>>
+
+function ExternalApisCard() {
+  const { tt } = useI18n()
+  const [status, setStatus] = useState<ExternalApiStatus | null>(null)
+  const [twitchClientId, setTwitchClientId] = useState('')
+  const [twitchClientSecret, setTwitchClientSecret] = useState('')
+  const [youtubeApiKey, setYoutubeApiKey] = useState('')
+  const [saving, setSaving] = useState(false)
+  const [message, setMessage] = useState<string | null>(null)
+
+  useEffect(() => {
+    void ipc.getExternalApiStatus().then(setStatus)
+  }, [])
+
+  const save = async () => {
+    setSaving(true)
+    setMessage(null)
+    try {
+      const next = await ipc.configureExternalApis({
+        twitchClientId: twitchClientId.trim() || undefined,
+        twitchClientSecret: twitchClientSecret.trim() || undefined,
+        youtubeApiKey: youtubeApiKey.trim() || undefined,
+      })
+      setStatus(next)
+      setTwitchClientId('')
+      setTwitchClientSecret('')
+      setYoutubeApiKey('')
+      setMessage(tt('External API settings saved.'))
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : tt('External API settings failed.'))
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  const clear = async () => {
+    const next = await ipc.clearExternalApis()
+    setStatus(next)
+    setMessage(tt('External API credentials cleared.'))
+  }
+
+  return (
+    <Card id="settings-integrations" className="scroll-mt-14">
+      <CardContent className="space-y-3 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h2 className="flex items-center gap-2 text-base font-semibold">
+              <KeyRound className="h-4 w-4 text-primary" />
+              {tt('External API integrations')}
+            </h2>
+            <p className="mt-1 max-w-2xl text-xs text-muted-foreground">
+              {tt(
+                'Optional official Twitch and YouTube APIs add current VODs, dates, durations, and view counts to the video explorer.',
+              )}
+            </p>
+          </div>
+          <span className="rounded bg-secondary px-2 py-1 text-[10px] text-muted-foreground">
+            {status?.twitch.configured || status?.youtube.configured
+              ? tt('At least one provider ready')
+              : tt('Optional')}
+          </span>
+        </div>
+
+        <div className="grid gap-3 md:grid-cols-2">
+          <div className="space-y-2 rounded-md border border-border/60 bg-secondary/20 p-3">
+            <div className="flex items-center justify-between text-sm font-medium">
+              <span>{tt('Twitch official API')}</span>
+              <span className="text-[11px] text-muted-foreground">
+                {status?.twitch.configured ? tt('Ready') : tt('Not configured')}
+              </span>
+            </div>
+            <input
+              value={twitchClientId}
+              onChange={(event) => setTwitchClientId(event.target.value)}
+              placeholder={tt('Twitch Client ID')}
+              className="h-9 w-full rounded-md border border-border bg-background px-2 text-sm text-foreground"
+              autoComplete="off"
+              spellCheck={false}
+            />
+            <input
+              type="password"
+              value={twitchClientSecret}
+              onChange={(event) => setTwitchClientSecret(event.target.value)}
+              placeholder={tt('Twitch Client Secret')}
+              className="h-9 w-full rounded-md border border-border bg-background px-2 text-sm text-foreground"
+              autoComplete="new-password"
+              spellCheck={false}
+            />
+            <p className="text-[11px] text-muted-foreground">
+              {tt(
+                'Used for official VOD search. A client-credentials OAuth token is refreshed automatically.',
+              )}
+            </p>
+          </div>
+
+          <div className="space-y-2 rounded-md border border-border/60 bg-secondary/20 p-3">
+            <div className="flex items-center justify-between text-sm font-medium">
+              <span>{tt('YouTube Data API')}</span>
+              <span className="text-[11px] text-muted-foreground">
+                {status?.youtube.configured ? tt('Ready') : tt('Not configured')}
+              </span>
+            </div>
+            <input
+              type="password"
+              value={youtubeApiKey}
+              onChange={(event) => setYoutubeApiKey(event.target.value)}
+              placeholder={tt('YouTube API key')}
+              className="h-9 w-full rounded-md border border-border bg-background px-2 text-sm text-foreground"
+              autoComplete="new-password"
+              spellCheck={false}
+            />
+            <p className="text-[11px] text-muted-foreground">
+              {tt(
+                'Adds recent/popular videos plus duration and view-count metadata. Captions remain optional.',
+              )}
+            </p>
+          </div>
+        </div>
+
+        <p className="text-[11px] text-muted-foreground">
+          {tt(
+            'Credentials are encrypted by the operating system and never exposed to the renderer, overlay, or OBS source.',
+          )}
+        </p>
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={() => void save()}
+            disabled={saving}
+            className="rounded-md border border-primary/50 bg-primary/10 px-3 py-2 text-xs text-primary hover:bg-primary/20 disabled:opacity-50"
+          >
+            {saving ? tt('Saving…') : tt('Save external API settings')}
+          </button>
+          <button
+            type="button"
+            onClick={() => void clear()}
+            className="rounded-md border border-border px-3 py-2 text-xs hover:bg-secondary"
+          >
+            {tt('Clear external API credentials')}
+          </button>
+          {message && <span className="text-xs text-muted-foreground">{message}</span>}
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+
+function ReplaysApiCard({
+  value,
+  saving,
+  onSave,
+}: {
+  value: string | null
+  saving: boolean
+  onSave: (url: string | null) => Promise<unknown>
+}) {
+  const { tt } = useI18n()
+  const [draft, setDraft] = useState(value ?? '')
+  const [message, setMessage] = useState<string | null>(null)
+  const [status, setStatus] = useState<Awaited<ReturnType<typeof ipc.getReplaysApiStatus>> | null>(
+    null,
+  )
+  const [checking, setChecking] = useState(false)
+
+  useEffect(() => setDraft(value ?? ''), [value])
+
+  const refreshStatus = async () => {
+    setChecking(true)
+    try {
+      setStatus(await ipc.getReplaysApiStatus())
+    } catch {
+      setStatus({
+        source: 'none',
+        baseUrl: null,
+        available: false,
+        detail: 'Replay parser status could not be checked.',
+      })
+    } finally {
+      setChecking(false)
+    }
+  }
+
+  useEffect(() => {
+    void refreshStatus()
+  }, [])
+
+  const saveValue = async (next: string | null) => {
+    await onSave(next)
+    await refreshStatus()
+  }
+
+  const save = async () => {
+    const next = draft.trim() || null
+    if (next) {
+      try {
+        const parsed = new URL(next)
+        if (
+          (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') ||
+          parsed.username ||
+          parsed.password ||
+          parsed.search ||
+          parsed.hash
+        ) {
+          throw new Error('invalid')
+        }
+      } catch {
+        setMessage(tt('Use a plain http(s) base URL without credentials or a query string.'))
+        return
+      }
+    }
+    try {
+      await saveValue(next)
+      setMessage(next ? tt('External replays-api URL saved.') : tt('Bundled local sidecar selected.'))
+    } catch {
+      setMessage(tt('Replay parser setting could not be saved.'))
+    }
+  }
+
+  const sourceLabel = (source: NonNullable<typeof status>['source']) => {
+    if (source === 'bundled') return tt('Bundled local sidecar')
+    if (source === 'environment') return tt('Environment setting')
+    if (source === 'settings') return tt('External URL')
+    return tt('Not available')
+  }
+
+  return (
+    <Card className="scroll-mt-14">
+      <CardContent className="space-y-3 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h2 className="text-base font-semibold">{tt('AoE4 replay parser')}</h2>
+            <p className="mt-1 max-w-2xl text-xs text-muted-foreground">
+              {tt(
+                'Unsupported replay summaries fall back to aoe4world/replays-api. Leave this blank to use the bundled local service on this computer.',
+              )}
+            </p>
+          </div>
+          <span className="rounded bg-secondary px-2 py-1 text-[10px] text-muted-foreground">
+            {value ? tt('External URL') : tt('Bundled local sidecar')}
+          </span>
+        </div>
+
+        <label className="space-y-1 text-xs">
+          <span className="block text-muted-foreground">{tt('External replays-api URL (optional)')}</span>
+          <input
+            type="url"
+            value={draft}
+            onChange={(event) => setDraft(event.target.value)}
+            placeholder="https://replays-api.example.com"
+            className="h-9 w-full rounded-md border border-border bg-background px-2 text-sm text-foreground"
+            autoComplete="off"
+            spellCheck={false}
+          />
+        </label>
+        <p className="text-[11px] text-muted-foreground">
+          {tt(
+            'A remote URL is used only after local parsing fails and receives a short-lived signed summary URL. A loopback URL (localhost/127.0.0.1) receives a private local file instead.',
+          )}
+        </p>
+        <div
+          className={cn(
+            'rounded-md border px-3 py-2 text-xs',
+            status?.available
+              ? 'border-emerald-500/30 bg-emerald-500/5 text-emerald-400'
+              : 'border-amber-500/30 bg-amber-500/5 text-amber-300',
+          )}
+        >
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <span className="font-medium">
+              {checking
+                ? tt('Checking replay parser…')
+                : status?.available
+                  ? tt('Replay parser is ready.')
+                  : tt('Replay parser is unavailable.')}
+            </span>
+            {status && (
+              <span className="rounded bg-background/40 px-1.5 py-0.5 text-[10px]">
+                {sourceLabel(status.source)}
+              </span>
+            )}
+          </div>
+          {status && (
+            <p className="mt-1 text-[11px] text-muted-foreground">
+              {tt(status.detail)}
+              {status.baseUrl ? ` · ${status.baseUrl}` : ''}
+            </p>
+          )}
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={save}
+            disabled={saving}
+            className="rounded-md border border-primary/50 bg-primary/10 px-3 py-2 text-xs text-primary hover:bg-primary/20 disabled:opacity-50"
+          >
+            {saving ? tt('Saving…') : tt('Save replay parser setting')}
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setDraft('')
+              void saveValue(null)
+                .then(() => setMessage(tt('Bundled local sidecar selected.')))
+                .catch(() => setMessage(tt('Replay parser setting could not be saved.')))
+            }}
+            disabled={saving}
+            className="rounded-md border border-border px-3 py-2 text-xs hover:bg-secondary disabled:opacity-50"
+          >
+            {tt('Use bundled local sidecar')}
+          </button>
+          <button
+            type="button"
+            onClick={() => void refreshStatus()}
+            disabled={checking}
+            className="rounded-md border border-border px-3 py-2 text-xs hover:bg-secondary disabled:opacity-50"
+          >
+            {checking ? tt('Checking…') : tt('Check parser status')}
+          </button>
+          {message && <span className="text-xs text-muted-foreground">{message}</span>}
+        </div>
+      </CardContent>
+    </Card>
   )
 }
 

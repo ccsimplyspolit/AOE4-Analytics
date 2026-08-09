@@ -2,8 +2,9 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { mkdtempSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { Aoe4WorldClient, ApiError, USER_AGENT } from '../client'
+import { Aoe4WorldClient, ApiError, TTL, USER_AGENT } from '../client'
 import { DiskCache } from '../cache'
+import { RateLimitGate } from '../fetchWithTimeout'
 import { RateLimiter } from '../rateLimiter'
 import { loadFixture } from './fixtures'
 
@@ -134,11 +135,142 @@ describe('Aoe4WorldClient', () => {
     expect(fake.calls.length).toBe(2)
   })
 
+  it('keeps the request pending and retries an AoE4World rate limit', async () => {
+    const delays: number[] = []
+    let now = 0
+    const gate = new RateLimitGate({
+      now: () => now,
+      delay: async (ms) => {
+        delays.push(ms)
+        now += ms
+      },
+    })
+    const responses = [
+      {
+        ok: false,
+        status: 429,
+        headers: new Headers({ 'Retry-After': '2' }),
+        json: async () => ({ error: 'rate limited' }),
+      },
+      {
+        ok: true,
+        status: 200,
+        headers: new Headers(),
+        json: async () => loadFixture('player-10240693.json'),
+      },
+    ]
+    const fetchFn = (async () => {
+      const response = responses.shift()
+      if (!response) throw new Error('Unexpected request')
+      return response
+    }) as unknown as typeof fetch
+    const client = new Aoe4WorldClient({
+      cache: new DiskCache({ baseDir: dir }),
+      rateLimiter: new RateLimiter({ minIntervalMs: 0 }),
+      fetchFn,
+      baseUrl: 'https://aoe4world.com/api/v0',
+      fetchOptions: { rateLimitGate: gate },
+    })
+
+    const player = await client.getPlayer(10240693)
+
+    expect(player.profile_id).toBe(10240693)
+    expect(delays).toEqual([2_000])
+  })
+
+  it('uses a recent stale response while AoE4World is cooling down', async () => {
+    let now = 0
+    const cache = new DiskCache({ baseDir: dir, now: () => now })
+    const gate = new RateLimitGate({ now: () => now, delay: async () => {} })
+    const url = 'https://aoe4world.com/api/v0/players/10240693'
+    const cachedPlayer = loadFixture('player-10240693.json')
+    cache.set(url, cachedPlayer)
+    now += TTL.profile + 1
+    gate.defer(new Headers({ 'Retry-After': '2' }))
+    const fetchFn = (async () => {
+      throw new Error('A stale response must avoid another request during cooldown')
+    }) as unknown as typeof fetch
+    const client = new Aoe4WorldClient({
+      cache,
+      rateLimiter: new RateLimiter({ minIntervalMs: 0 }),
+      fetchFn,
+      baseUrl: 'https://aoe4world.com/api/v0',
+      fetchOptions: { rateLimitGate: gate },
+    })
+
+    const player = await client.getPlayer(10240693)
+
+    expect(player.profile_id).toBe(10240693)
+  })
+
+  it('falls back to the persisted response after a transient upstream failure', async () => {
+    let now = 0
+    const cache = new DiskCache({ baseDir: dir, now: () => now })
+    let calls = 0
+    const fetchFn = (async () => {
+      calls += 1
+      if (calls === 1) {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => loadFixture('player-10240693.json'),
+        }
+      }
+      return { ok: false, status: 503, json: async () => ({ error: 'busy' }) }
+    }) as unknown as typeof fetch
+    const client = new Aoe4WorldClient({
+      cache,
+      rateLimiter: new RateLimiter({ minIntervalMs: 0 }),
+      fetchFn,
+      baseUrl: 'https://aoe4world.com/api/v0',
+    })
+
+    await client.getPlayer(10240693)
+    now += TTL.profile + 1
+    const stale = await client.getPlayer(10240693)
+
+    expect(stale.profile_id).toBe(10240693)
+    expect(calls).toBe(2)
+  })
+
+  it('retries transient server responses when enabled by the production client', async () => {
+    const responses = [
+      { ok: false, status: 503, json: async () => ({ error: 'busy' }) },
+      { ok: true, status: 200, json: async () => loadFixture('player-10240693.json') },
+    ]
+    const fetchFn = (async () => responses.shift()!) as unknown as typeof fetch
+    const client = new Aoe4WorldClient({
+      cache: new DiskCache({ baseDir: dir }),
+      rateLimiter: new RateLimiter({ minIntervalMs: 0 }),
+      fetchFn,
+      baseUrl: 'https://aoe4world.com/api/v0',
+      fetchOptions: { transientRetries: 1, transientSleep: async () => {} },
+    })
+
+    const player = await client.getPlayer(10240693)
+
+    expect(player.profile_id).toBe(10240693)
+  })
+
   it('parses games/last into a Game with ongoing=false', async () => {
     const client = makeClient(fakeFetch(loadFixture('games-last-10240693.json')).fetch)
     const game = await client.getLastGame(10240693)
     expect(game.ongoing).toBe(false)
     expect(game.teams.length).toBe(2)
+  })
+
+  it('passes the AoE4World overlay current-game options', async () => {
+    const fake = fakeFetch(loadFixture('games-last-10240693.json'))
+    const client = makeClient(fake.fetch)
+    await client.getLastGame(10240693, {
+      includeAlts: true,
+      includeCustom: true,
+      fresh: true,
+    })
+    const url = new URL(fake.calls[0]!.url)
+    expect(url.pathname).toBe('/api/v0/players/10240693/games/last')
+    expect(url.searchParams.get('include_alts')).toBe('true')
+    expect(url.searchParams.get('include_custom')).toBe('true')
   })
 
   it('throws ApiError on a non-2xx response', async () => {
@@ -210,30 +342,38 @@ describe('Aoe4WorldClient', () => {
     expect(fake.calls[0]!.url).toContain('opponent_profile_id=4635035')
   })
 
-  it('filters matchup stats by supported ladder, rank, and patch', async () => {
+  it('filters quick-match matchup stats by supported rating and patch', async () => {
     const fake = fakeFetch(loadFixture('stats-rmsolo-matchups.json'))
     const client = makeClient(fake.fetch)
 
     await Promise.all([
-      client.getMatchupStats({ leaderboard: 'qm_1v1', rankLevel: 'gold', rating: '1100-1199', patch: '12.1' }),
-      client.getMatchupStats({ leaderboard: 'qm_1v1', rankLevel: 'gold', rating: '1100-1199', patch: '12.1' }),
+      client.getMatchupStats({
+        leaderboard: 'qm_1v1',
+        rating: '1100-1199',
+        patch: '12.1',
+      }),
+      client.getMatchupStats({
+        leaderboard: 'qm_1v1',
+        rating: '1100-1199',
+        patch: '12.1',
+      }),
     ])
 
     expect(fake.calls).toHaveLength(1)
     expect(fake.calls[0]!.url).toContain('/stats/qm_1v1/matchups?')
-    expect(fake.calls[0]!.url).toContain('rank_level=gold')
+    expect(fake.calls[0]!.url).not.toContain('rank_level')
     expect(fake.calls[0]!.url).toContain('rating=1100-1199')
     expect(fake.calls[0]!.url).toContain('patch=12.1')
   })
 
-  it('does not claim unsupported rank filtering on team matchup stats', async () => {
+  it('sends rank filtering for ranked team matchup stats', async () => {
     const fake = fakeFetch(loadFixture('stats-rmsolo-matchups.json'))
     const client = makeClient(fake.fetch)
 
     await client.getMatchupStats({ leaderboard: 'rm_2v2', rankLevel: 'gold' })
 
     expect(fake.calls[0]!.url).toContain('/stats/rm_2v2/matchups')
-    expect(fake.calls[0]!.url).not.toContain('rank_level')
+    expect(fake.calls[0]!.url).toContain('rank_level=gold')
   })
 
   it('requests the full civilization-by-map slice', async () => {

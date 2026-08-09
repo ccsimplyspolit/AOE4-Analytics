@@ -1,6 +1,16 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react'
 import { Check, Keyboard, RotateCcw, Shuffle, X } from 'lucide-react'
 import { EXPLORER_RECORDS_BY_KIND } from '@data/explorerData'
+import {
+  DEFAULT_KEYBOARD_LAYOUT,
+  keyboardLayoutFor,
+  normalizeShortcut,
+  shortcutFromKeyInput,
+  shortcutKey,
+  type KeyboardLayout,
+  type ShortcutDisplayStyle,
+  type ShortcutLayoutId,
+} from '@domain/shortcutTrainer'
 import { Badge } from '@shared/components/ui/badge'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { useI18n } from '../../../i18n'
@@ -13,6 +23,10 @@ type TrainerStore = {
   attempts: number
   streak: number
   bestStreak: number
+  layout: ShortcutLayoutId
+  customLayout: KeyboardLayout
+  displayStyle: ShortcutDisplayStyle
+  showKeyLabels: boolean
 }
 
 type Feedback = { kind: 'correct' | 'wrong' | 'missing'; message: string } | null
@@ -23,6 +37,10 @@ const EMPTY_STORE: TrainerStore = {
   attempts: 0,
   streak: 0,
   bestStreak: 0,
+  layout: 'QWERTY',
+  customLayout: DEFAULT_KEYBOARD_LAYOUT,
+  displayStyle: 'SINGLE',
+  showKeyLabels: true,
 }
 
 function loadStore(): TrainerStore {
@@ -30,10 +48,46 @@ function loadStore(): TrainerStore {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (!raw) return EMPTY_STORE
     const parsed = JSON.parse(raw) as Partial<TrainerStore>
+    const layout =
+      parsed.layout === 'QWERTY' ||
+      parsed.layout === 'QWERTZ' ||
+      parsed.layout === 'AZERTY' ||
+      parsed.layout === 'DVORAK' ||
+      parsed.layout === 'CUSTOM'
+        ? parsed.layout
+        : EMPTY_STORE.layout
+    const displayStyle =
+      parsed.displayStyle === 'SINGLE' ||
+      parsed.displayStyle === 'GRID' ||
+      parsed.displayStyle === 'NAME'
+        ? parsed.displayStyle
+        : EMPTY_STORE.displayStyle
+    const customLayout = Array.from({ length: 3 }, (_, rowIndex) =>
+      Array.from({ length: 4 }, (_, columnIndex) => {
+        const value = Array.isArray(parsed.customLayout?.[rowIndex])
+          ? parsed.customLayout[rowIndex]?.[columnIndex]
+          : null
+        return typeof value === 'string' && value.trim()
+          ? value.trim().toUpperCase()
+          : DEFAULT_KEYBOARD_LAYOUT[rowIndex]![columnIndex]!
+      }),
+    )
+    const shortcuts =
+      parsed.shortcuts && typeof parsed.shortcuts === 'object'
+        ? Object.fromEntries(
+            Object.entries(parsed.shortcuts)
+              .filter((entry): entry is [string, string] => typeof entry[1] === 'string')
+              .map(([id, value]) => [id, normalizeShortcut(value)]),
+          )
+        : {}
     return {
       ...EMPTY_STORE,
       ...parsed,
-      shortcuts: parsed.shortcuts && typeof parsed.shortcuts === 'object' ? parsed.shortcuts : {},
+      layout,
+      customLayout,
+      displayStyle,
+      showKeyLabels: parsed.showKeyLabels !== false,
+      shortcuts,
       correct: Number.isFinite(parsed.correct) ? Math.max(0, Math.floor(parsed.correct!)) : 0,
       attempts: Number.isFinite(parsed.attempts) ? Math.max(0, Math.floor(parsed.attempts!)) : 0,
       streak: Number.isFinite(parsed.streak) ? Math.max(0, Math.floor(parsed.streak!)) : 0,
@@ -44,10 +98,6 @@ function loadStore(): TrainerStore {
   } catch {
     return EMPTY_STORE
   }
-}
-
-function normalizeShortcut(value: string): string {
-  return value.trim().replace(/\s+/g, ' ').toUpperCase()
 }
 
 export function ShortcutTrainer() {
@@ -65,8 +115,19 @@ export function ShortcutTrainer() {
   const [currentId, setCurrentId] = useState(() => records[0]?.id ?? '')
   const [shortcut, setShortcut] = useState('')
   const [feedback, setFeedback] = useState<Feedback>(null)
+  const [editingCell, setEditingCell] = useState<[number, number] | null>(null)
 
   const current = records.find((record) => record.id === currentId) ?? records[0]
+  const keyboardLayout = keyboardLayoutFor(store.layout, store.customLayout)
+  const mappedByKey = useMemo(() => {
+    const mapped = new Map<string, (typeof records)[number]>()
+    for (const [recordId, value] of Object.entries(store.shortcuts)) {
+      const key = shortcutKey(value)
+      const record = records.find((candidate) => candidate.id === recordId)
+      if (key && record && !mapped.has(key)) mapped.set(key, record)
+    }
+    return mapped
+  }, [records, store.shortcuts])
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(store))
@@ -76,6 +137,28 @@ export function ShortcutTrainer() {
     setShortcut(current ? (store.shortcuts[current.id] ?? '') : '')
     setFeedback(null)
   }, [current, store.shortcuts])
+
+  useEffect(() => {
+    if (!editingCell) return
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        setEditingCell(null)
+        return
+      }
+      const value = shortcutFromKeyInput(event)
+      if (!value || value.includes('+')) return
+      event.preventDefault()
+      setStore((previous) => {
+        const customLayout = previous.customLayout.map((row) => [...row])
+        customLayout[editingCell[0]]![editingCell[1]] = value
+        return { ...previous, layout: 'CUSTOM', customLayout }
+      })
+      setEditingCell(null)
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [editingCell])
 
   const nextPrompt = () => {
     if (records.length < 2) return
@@ -98,6 +181,29 @@ export function ShortcutTrainer() {
           ),
     }))
     setFeedback({ kind: 'missing', message: tt('Shortcut saved. Press Check when you are ready.') })
+  }
+
+  const captureShortcut = (event: ReactKeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      setShortcut('')
+      setFeedback(null)
+      return
+    }
+    const value = shortcutFromKeyInput(event)
+    if (!value) return
+    event.preventDefault()
+    setShortcut(value)
+    setFeedback(null)
+  }
+
+  const changeLayout = (layout: ShortcutLayoutId) => {
+    setEditingCell(null)
+    setStore((previous) => ({ ...previous, layout }))
+  }
+
+  const changeDisplayStyle = (displayStyle: ShortcutDisplayStyle) => {
+    setStore((previous) => ({ ...previous, displayStyle }))
   }
 
   const checkAnswer = () => {
@@ -130,6 +236,7 @@ export function ShortcutTrainer() {
     setStore(EMPTY_STORE)
     setShortcut('')
     setFeedback(null)
+    setEditingCell(null)
   }
 
   return (
@@ -147,6 +254,89 @@ export function ShortcutTrainer() {
           <Keyboard className="h-3.5 w-3.5" /> {records.length} {tt('buildings')}
         </Badge>
       </div>
+
+      <Card>
+        <CardContent className="space-y-3 p-4">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <div>
+              <h3 className="text-sm font-semibold">{tt('Keyboard profile')}</h3>
+              <p className="mt-1 text-xs text-muted-foreground">
+                {tt('Choose the keyboard layout used by your AoE4 profile.')}
+              </p>
+            </div>
+            {editingCell && (
+              <span className="rounded-md bg-primary/10 px-2 py-1 text-xs text-primary">
+                {tt('Press one key to rebind the selected cell. Escape cancels.')}
+              </span>
+            )}
+          </div>
+          <div className="flex flex-wrap items-end gap-3">
+            <div className="grid gap-1 text-xs text-muted-foreground">
+              <span>{tt('Current layout')}</span>
+              <div className="flex flex-wrap gap-1 rounded-md border border-border p-1">
+                {(
+                  [
+                    ['QWERTY', 'QWERTY'],
+                    ['QWERTZ', 'QWERTZ'],
+                    ['AZERTY', 'AZERTY'],
+                    ['DVORAK', 'Dvorak'],
+                    ['CUSTOM', tt('Custom')],
+                  ] as const
+                ).map(([value, label]) => (
+                  <button
+                    key={value}
+                    type="button"
+                    onClick={() => changeLayout(value)}
+                    className={`rounded px-2 py-1.5 text-xs transition-colors ${
+                      store.layout === value
+                        ? 'bg-primary/15 text-primary'
+                        : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="grid gap-1 text-xs text-muted-foreground">
+              <span>{tt('Display options')}</span>
+              <div className="flex flex-wrap gap-1 rounded-md border border-border p-1">
+                {(
+                  [
+                    ['SINGLE', tt('Icon + name')],
+                    ['GRID', tt('Icon in grid')],
+                    ['NAME', tt('Name only')],
+                  ] as const
+                ).map(([value, label]) => (
+                  <button
+                    key={value}
+                    type="button"
+                    onClick={() => changeDisplayStyle(value)}
+                    className={`rounded px-2 py-1.5 text-xs transition-colors ${
+                      store.displayStyle === value
+                        ? 'bg-primary/15 text-primary'
+                        : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <label className="mb-1 inline-flex items-center gap-2 text-xs text-muted-foreground">
+              <input
+                type="checkbox"
+                checked={store.showKeyLabels}
+                onChange={(event) =>
+                  setStore((previous) => ({ ...previous, showKeyLabels: event.target.checked }))
+                }
+                className="h-4 w-4 accent-primary"
+              />
+              {tt('Show key labels')}
+            </label>
+          </div>
+        </CardContent>
+      </Card>
 
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_280px]">
         <Card>
@@ -174,15 +364,45 @@ export function ShortcutTrainer() {
                 </p>
               )}
             </div>
+            {store.displayStyle === 'SINGLE' && current?.icon && (
+              <img
+                src={current.icon}
+                alt=""
+                className="mx-auto h-16 w-16 object-contain"
+                loading="lazy"
+              />
+            )}
+            <KeyboardMap
+              layout={keyboardLayout}
+              layoutId={store.layout}
+              displayStyle={store.displayStyle}
+              showKeyLabels={store.showKeyLabels}
+              editingCell={editingCell}
+              currentId={current?.id ?? null}
+              mappedByKey={mappedByKey}
+              onCellClick={(row, column, key) => {
+                if (store.layout === 'CUSTOM') {
+                  setEditingCell([row, column])
+                  return
+                }
+                setShortcut(key)
+                setFeedback(null)
+              }}
+            />
             <div className="grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]">
               <input
                 value={shortcut}
-                onChange={(event) => setShortcut(event.target.value)}
+                readOnly
                 onKeyDown={(event) => {
-                  if (event.key === 'Enter') checkAnswer()
+                  if (event.key === 'Enter') {
+                    event.preventDefault()
+                    checkAnswer()
+                    return
+                  }
+                  captureShortcut(event)
                 }}
-                placeholder={tt('Example: Q, Ctrl+1, Shift+A')}
-                className="h-10 rounded-md border border-border bg-background px-3 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                placeholder={tt('Press a shortcut, for example Ctrl+1')}
+                className="h-10 cursor-text rounded-md border border-border bg-background px-3 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                 aria-label={tt('Shortcut')}
               />
               <div className="flex gap-2">
@@ -224,7 +444,7 @@ export function ShortcutTrainer() {
             )}
             <p className="text-xs text-muted-foreground">
               {tt(
-                'Tip: enter the shortcut exactly as you use it. Case and extra spaces are normalized.',
+                'Focus the field and press the real shortcut. Escape clears it; Enter checks the answer.',
               )}
             </p>
           </CardContent>
@@ -272,6 +492,94 @@ export function ShortcutTrainer() {
               <code className="shrink-0 text-xs text-primary">{store.shortcuts[record.id]}</code>
             </button>
           ))}
+      </div>
+    </div>
+  )
+}
+
+function KeyboardMap({
+  layout,
+  layoutId,
+  displayStyle,
+  showKeyLabels,
+  editingCell,
+  currentId,
+  mappedByKey,
+  onCellClick,
+}: {
+  layout: KeyboardLayout
+  layoutId: ShortcutLayoutId
+  displayStyle: ShortcutDisplayStyle
+  showKeyLabels: boolean
+  editingCell: [number, number] | null
+  currentId: string | null
+  mappedByKey: Map<string, (typeof EXPLORER_RECORDS_BY_KIND.building)[number]>
+  onCellClick: (row: number, column: number, key: string) => void
+}) {
+  const { tt } = useI18n()
+  return (
+    <div className="rounded-md border border-border/70 bg-background/40 p-3">
+      <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+        <span className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+          {tt('Keyboard layout')}
+        </span>
+        <span className="text-[11px] text-muted-foreground">
+          {tt(
+            layoutId === 'CUSTOM'
+              ? 'Click a key, then press a replacement to rebind the custom grid.'
+              : 'Click a key to use it; choose Custom to rebind the grid.',
+          )}
+        </span>
+      </div>
+      <div className="mx-auto grid max-w-xl gap-1.5">
+        {layout.map((row, rowIndex) => (
+          <div key={rowIndex} className="grid grid-cols-4 gap-1.5">
+            {row.map((key, columnIndex) => {
+              const mapped = mappedByKey.get(key)
+              const editing = editingCell?.[0] === rowIndex && editingCell?.[1] === columnIndex
+              return (
+                <button
+                  key={`${rowIndex}-${columnIndex}`}
+                  type="button"
+                  onClick={() => onCellClick(rowIndex, columnIndex, key)}
+                  title={mapped ? `${key}: ${mapped.name}` : key}
+                  className={`flex min-h-14 min-w-0 flex-col items-center justify-center rounded-md border px-2 py-1 text-center transition-colors ${
+                    editing
+                      ? 'border-primary bg-primary/15 text-primary ring-1 ring-primary'
+                      : mapped?.id === currentId
+                        ? 'border-primary/60 bg-primary/10 text-foreground'
+                        : 'border-border bg-secondary/30 text-muted-foreground hover:border-primary/50 hover:text-foreground'
+                  }`}
+                >
+                  {showKeyLabels && (
+                    <kbd className="font-mono text-sm font-semibold">{editing ? '…' : key}</kbd>
+                  )}
+                  {displayStyle === 'GRID' && mapped?.icon && (
+                    <img
+                      src={mapped.icon}
+                      alt=""
+                      className="mt-1 h-7 w-7 object-contain"
+                      loading="lazy"
+                    />
+                  )}
+                  {displayStyle === 'GRID' && mapped ? (
+                    <span className="mt-1 max-w-full truncate text-[10px] leading-tight">
+                      {mapped.name}
+                    </span>
+                  ) : displayStyle === 'NAME' && mapped ? (
+                    <span className="mt-1 max-w-full truncate text-[10px] leading-tight">
+                      {mapped.name}
+                    </span>
+                  ) : displayStyle === 'SINGLE' && mapped ? (
+                    <span className="mt-1 max-w-full truncate text-[10px] leading-tight text-primary">
+                      {mapped.name}
+                    </span>
+                  ) : null}
+                </button>
+              )
+            })}
+          </div>
+        ))}
       </div>
     </div>
   )

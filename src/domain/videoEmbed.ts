@@ -12,6 +12,55 @@ export interface EmbeddedVideo {
   embedUrl: string
 }
 
+const VIDEO_URL_PATTERN =
+  /https?:\/\/(?:www\.)?(?:youtube\.com|youtu\.be|twitch\.tv)\/[^\s<>"'`]+/gi
+
+function cleanVideoUrl(value: string): string {
+  return value.replace(/[.,!?;:]+$/g, '')
+}
+
+/**
+ * Convert provider-specific player/share URLs into one stable public link.
+ * AoE4Guides exports many YouTube URLs as `/embed/<id>`; keeping those raw
+ * made the external link open a bare player and caused duplicate catalog
+ * values for the same video. The player itself still derives its safe embed
+ * URL only when the user presses Watch.
+ */
+export function canonicalVideoUrl(value: string | null | undefined): string | null {
+  const video = embeddedVideoFromUrl(cleanVideoUrl(value ?? ''))
+  if (!video) return null
+  return video.provider === 'youtube'
+    ? `https://www.youtube.com/watch?v=${video.videoId}`
+    : `https://www.twitch.tv/videos/${video.videoId}`
+}
+
+/** Extracts all supported YouTube/Twitch links from a provider description. */
+export function videoUrlsFromText(value: string | null | undefined): string[] {
+  if (!value) return []
+  return [...value.matchAll(VIDEO_URL_PATTERN)]
+    .map((match) => canonicalVideoUrl(match[0]))
+    .filter((url): url is string => url != null)
+}
+
+/** Returns direct build video metadata plus links embedded in its description. */
+export function videoUrlsFromBuild(input: {
+  video?: string | null
+  description?: string | null
+}): string[] {
+  const candidates = [
+    ...(input.video ? [input.video.trim()] : []),
+    ...videoUrlsFromText(input.description),
+  ]
+  const seen = new Set<string>()
+  return candidates
+    .map((url) => canonicalVideoUrl(url))
+    .filter((url): url is string => {
+      if (!url || seen.has(url)) return false
+      seen.add(url)
+      return true
+    })
+}
+
 const YOUTUBE_ID = /^[A-Za-z0-9_-]{11}$/
 
 /** Returns a trusted embed description when a URL names a valid YouTube video. */

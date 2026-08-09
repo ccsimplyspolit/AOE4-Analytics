@@ -1,8 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { Calculator, Download, FileUp, FlaskConical, Plus, Search, Trash2 } from 'lucide-react'
-import type { RankLevel, StatsLeaderboard } from '@api/types'
-import type { CivMetaResult, CommunityBuildSummary } from '@ipc/contract'
 import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
 import { BUILD_CATALOG } from '@data/buildCatalog'
 import { CIV_SLUGS } from '@data/civs'
@@ -15,7 +13,7 @@ import {
 import tinctureHistoryJson from '@data/tinctureHistory.json'
 import tinctureMetaJson from '@data/tinctureMeta.json'
 import { buildCatalogEntries, type BuildCatalogEntry } from '@domain/buildCatalog'
-import { fuzzyMatches } from '@domain/fuzzySearch'
+import { matchesBuildArchiveTextFilters } from '@domain/buildLibraryFilters'
 import type { BuildOrder } from '@domain/buildOrderSchema'
 import { parseOverlayBuild, parseSimpleBuildOrder } from '@domain/overlayBuild'
 import {
@@ -24,8 +22,6 @@ import {
 } from '@domain/buildOrderValidation'
 import { civDisplayName } from '@domain/civ'
 import { formatDuration } from '@domain/format'
-import { tierForWinRate } from '@domain/tierList'
-import { buildPatchAudit } from '@domain/patchAudit'
 import { formatCount } from '@shared/format'
 import { ipc } from '@shared/ipc'
 import {
@@ -47,44 +43,23 @@ import {
   type ResourceAmounts,
 } from '@domain/productionCalculator'
 import { productionModifiersForCiv } from '@domain/productionModifiers'
-import { counterRowsForCivs } from '@domain/unitCounterModel'
 import { PageHead } from '../components/PageHead'
 import { BuildOrderViewer } from '../components/BuildOrderViewer'
 import { BuildEditor } from '../components/BuildEditor'
-import { CommunityBuildSources } from '../components/CommunityBuildSources'
 import { VideoAnalysisImporter } from '../components/VideoAnalysisImporter'
 import { VideoAnalysisPanel } from '../components/VideoAnalysisPanel'
 import type { VideoAnalysisRecord } from '@domain/videoAnalysis'
 import { LastMatchCoach } from '../components/LastMatchCoach'
-import { LiveMatchCard } from '../components/LiveMatchCard'
-import { ErrorBox, EmptyBox } from '../components/feedback'
+import { EmptyBox } from '../components/feedback'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
 import { Input } from '@shared/components/ui/input'
-import { useCivMeta } from '../queries/useCivMeta'
-import { useLiveMatch } from '../queries/useLiveMatch'
 import { useVideoAnalyses } from '../queries/useVideoAnalyses'
 import { cn } from '@shared/lib/utils'
 import { useI18n } from '../../i18n'
 import { resolveAoE4Icon } from '@data/vendor/aoe4-icons/manifest'
 
-type TinctureTab = 'ledger' | 'production' | 'cellar' | 'editor' | 'brief' | 'coach'
-
-const LADDERS: { label: string; value: StatsLeaderboard }[] = [
-  { label: 'Ranked 1v1', value: 'rm_solo' },
-  { label: 'Quick Match 1v1', value: 'qm_1v1' },
-  { label: 'Ranked 2v2', value: 'rm_2v2' },
-  { label: 'Ranked 3v3', value: 'rm_3v3' },
-  { label: 'Ranked 4v4', value: 'rm_4v4' },
-]
-
-const BRACKETS: { label: string; value: RankLevel | undefined }[] = [
-  { label: 'All ranks', value: undefined },
-  { label: 'Gold', value: 'gold' },
-  { label: 'Platinum', value: 'platinum' },
-  { label: 'Diamond', value: 'diamond' },
-  { label: 'Conqueror', value: 'conqueror' },
-]
+type TinctureTab = 'ledger' | 'production' | 'cellar' | 'editor' | 'coach'
 
 const RESOURCE_LABELS: Record<ProductionResource, string> = {
   food: 'Food',
@@ -96,6 +71,9 @@ const RESOURCE_LABELS: Record<ProductionResource, string> = {
 const FOOD_SOURCES = Object.keys(DEFAULT_GATHER_RATES)
 const TINCTURE_HISTORY = tinctureHistoryJson as TinctureHistoryDocument
 const TINCTURE_META = tinctureMetaJson as TinctureMetaDocument
+const TINCTURE_DEFAULT_SLICE =
+  TINCTURE_META.slices.find((slice) => slice.leaderboard === 'rm_solo' && slice.rankLevel == null) ??
+  null
 
 function unitForCalculator(unit: VendoredUnit): ProductionUnitLike | null {
   if (!unit.costs || unit.costs.time <= 0 || unit.producedBy.length === 0) return null
@@ -140,36 +118,6 @@ function buildCivSlug(build: { civilization: string | string[] }): string | null
   )
 }
 
-function buildCountForCiv(civ: string): number {
-  return BUNDLED_BUILD_ORDERS.filter((build) => buildCivSlug(build) === civ).length
-}
-
-function fallbackMetaForSlice(
-  leaderboard: StatsLeaderboard,
-  rankLevel: RankLevel | null,
-): CivMetaResult | null {
-  const slice = TINCTURE_META.slices.find(
-    (item) => item.leaderboard === leaderboard && item.rankLevel === rankLevel,
-  )
-  if (!slice) return null
-  return {
-    civs: slice.civs.map((civ) => ({
-      civ: civ.civ,
-      civName: civ.civName,
-      tier: tierForWinRate(civ.winRate),
-      winRate: civ.winRate,
-      pickRate: civ.pickRate,
-      games: civ.games,
-      lowSample: civ.games < 150,
-    })),
-    maps: [],
-    leaderboard: slice.leaderboard,
-    rankLevel: slice.rankLevel,
-    totalCivGames: slice.totalGames,
-    patch: slice.patch ?? null,
-  }
-}
-
 export function Tincture() {
   const { tt } = useI18n()
   const [searchParams, setSearchParams] = useSearchParams()
@@ -178,14 +126,9 @@ export function Tincture() {
     rawTab === 'production' ||
     rawTab === 'cellar' ||
     rawTab === 'editor' ||
-    rawTab === 'brief' ||
     rawTab === 'coach'
       ? rawTab
       : 'ledger'
-  const [leaderboard, setLeaderboard] = useState<StatsLeaderboard>('rm_solo')
-  const [rankLevel, setRankLevel] = useState<RankLevel | undefined>()
-  const meta = useCivMeta({ leaderboard, rankLevel })
-
   const setTab = (next: TinctureTab) =>
     setSearchParams(
       (prev) => {
@@ -214,7 +157,7 @@ export function Tincture() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex gap-1" role="tablist" aria-label={tt('Tincture sections')}>
           <TabButton active={tab === 'ledger'} onClick={() => setTab('ledger')}>
-            {tt('Meta Ledger')}
+            {tt('Decision Summary')}
           </TabButton>
           <TabButton active={tab === 'production'} onClick={() => setTab('production')}>
             {tt('Production Calculator')}
@@ -225,61 +168,18 @@ export function Tincture() {
           <TabButton active={tab === 'editor'} onClick={() => setTab('editor')}>
             {tt('Build Builder')}
           </TabButton>
-          <TabButton active={tab === 'brief'} onClick={() => setTab('brief')}>
-            {tt('Match Brief')}
-          </TabButton>
           <TabButton active={tab === 'coach'} onClick={() => setTab('coach')}>
             {tt('Match Coach')}
           </TabButton>
         </div>
-        {tab === 'ledger' && (
-          <div className="flex flex-wrap gap-2">
-            <select
-              value={leaderboard}
-              onChange={(event) => setLeaderboard(event.target.value as StatsLeaderboard)}
-              aria-label={tt('Leaderboard')}
-              className="h-9 rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              {LADDERS.map((ladder) => (
-                <option key={ladder.value} value={ladder.value}>
-                  {tt(ladder.label)}
-                </option>
-              ))}
-            </select>
-            <select
-              value={rankLevel ?? ''}
-              disabled={leaderboard !== 'rm_solo' && leaderboard !== 'qm_1v1'}
-              onChange={(event) =>
-                setRankLevel((event.target.value || undefined) as RankLevel | undefined)
-              }
-              aria-label={tt('Rank bracket')}
-              className="h-9 rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
-            >
-              {BRACKETS.map((bracket) => (
-                <option key={bracket.label} value={bracket.value ?? ''}>
-                  {tt(bracket.label)}
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
       </div>
 
       {tab === 'ledger' ? (
-        <MetaLedger
-          result={meta.data}
-          isLoading={meta.isLoading}
-          isFetching={meta.isFetching}
-          leaderboard={leaderboard}
-          rankLevel={rankLevel ?? null}
-          onRetry={() => void meta.refetch()}
-        />
+        <DecisionSummary />
       ) : tab === 'cellar' ? (
         <BuildCellar />
       ) : tab === 'editor' ? (
         <BuildEditor />
-      ) : tab === 'brief' ? (
-        <MatchBrief />
       ) : tab === 'coach' ? (
         <LastMatchCoach />
       ) : (
@@ -316,156 +216,50 @@ function TabButton({
   )
 }
 
-function MatchBrief() {
-  const { tt, gameName } = useI18n()
-  const liveQuery = useLiveMatch()
-  const live = liveQuery.data
-  const enemyCivs = useMemo(() => {
-    if (!live) return []
-    const roster = live.teams?.slice(1).flatMap((team) => team) ?? []
-    const fallback = live.opponent ? [{ civ: live.opponent.civ }] : []
-    return [
-      ...new Set(
-        [...roster, ...fallback]
-          .map((player) => player.civ)
-          .filter((civ): civ is string => typeof civ === 'string' && civ.length > 0),
-      ),
-    ]
-  }, [live])
-  const counterRows = useMemo(
-    () =>
-      live?.myCiv ? enemyCivs.flatMap((civ) => counterRowsForCivs(civ, live.myCiv!, 4, 3)) : [],
-    [enemyCivs, live],
-  )
-
-  if (liveQuery.isLoading)
-    return <EmptyBox>{tt('Reading the current overlay match state…')}</EmptyBox>
-  if (!live || !live.isLive) {
-    return (
-      <div className="space-y-4">
-        <LiveMatchCard />
-        <EmptyBox>
-          {tt('Match Brief becomes active when the main-process match detector sees a game.')}
-        </EmptyBox>
-      </div>
-    )
-  }
-
-  return (
-    <div className="space-y-4">
-      <LiveMatchCard />
-      <Card>
-        <CardContent className="space-y-3 p-4">
-          <div>
-            <div className="rts-section-title">{tt('Overlay match brief')}</div>
-            <p className="text-xs text-muted-foreground">
-              {tt(
-                'The same main-process roster used by the AoE4World/local overlay path, with immediate unit-level responses for the detected enemy civilizations.',
-              )}
-            </p>
-          </div>
-          <div className="grid gap-3 text-sm sm:grid-cols-3">
-            <div>
-              <div className="rts-ledger-head">{tt('Your civ')}</div>
-              <div className="mt-1 font-medium">
-                {gameName(civDisplayName(live.myCiv ?? 'unknown'))}
-              </div>
-            </div>
-            <div>
-              <div className="rts-ledger-head">{tt('Enemy civs')}</div>
-              <div className="mt-1 font-medium">
-                {enemyCivs.length > 0
-                  ? enemyCivs.map((civ) => gameName(civDisplayName(civ))).join(' · ')
-                  : 'unknown'}
-              </div>
-            </div>
-            <div>
-              <div className="rts-ledger-head">{tt('Source')}</div>
-              <div className="mt-1 font-medium">{live.source}</div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-      {counterRows.length > 0 && (
-        <Card>
-          <CardContent className="space-y-3 p-4">
-            <div className="rts-section-title">{tt('Immediate counter read')}</div>
-            <div className="grid gap-2 md:grid-cols-2">
-              {counterRows.map((row) => (
-                <div key={row.target.id} className="rounded-md border border-border/70 p-3">
-                  <div className="text-sm font-medium">{row.target.name}</div>
-                  <div className="mt-1 text-xs text-muted-foreground">
-                    {row.candidates.length > 0
-                      ? row.candidates.map((candidate) => candidate.unit.name).join(' · ')
-                      : tt('No local unit response')}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      )}
-    </div>
-  )
-}
-
-function MetaLedger({
-  result,
-  isLoading,
-  isFetching,
-  leaderboard,
-  rankLevel,
-  onRetry,
-}: {
-  result: ReturnType<typeof useCivMeta>['data']
-  isLoading: boolean
-  isFetching: boolean
-  leaderboard: StatsLeaderboard
-  rankLevel: RankLevel | null
-  onRetry: () => void
-}) {
+function DecisionSummary() {
   const { tt } = useI18n()
-  const [query, setQuery] = useState('')
-  const fallback = fallbackMetaForSlice(leaderboard, rankLevel)
-  const data = result?.ok ? result.data : fallback
-  const civs = data?.civs ?? []
-  const patchAudit = useMemo(
-    () =>
-      buildPatchAudit({
-        sourcePatch: data?.patch,
-        buildPatches: BUILD_CATALOG.map((entry) => entry.patch),
-      }),
-    [data],
-  )
+  const data = TINCTURE_DEFAULT_SLICE
   const historySnapshot = [...TINCTURE_HISTORY.snapshots]
     .sort((left, right) => right.capturedAt.localeCompare(left.capturedAt))
     .find((snapshot) =>
-      snapshot.slices.some(
-        (slice) => slice.leaderboard === leaderboard && slice.rankLevel === rankLevel,
-      ),
+      snapshot.slices.some((slice) => slice.leaderboard === 'rm_solo' && slice.rankLevel == null),
     )
   const historyStale = isTinctureHistoryStale(TINCTURE_META.generatedAt)
-  const filtered = civs.filter((civ) =>
-    civ.civName.toLocaleLowerCase().includes(query.toLocaleLowerCase()),
+  const civMetaHref = '/civ-meta?tab=stats'
+  const notableDeltas = useMemo(
+    () => {
+      const civs = data?.civs ?? []
+      return historySnapshot
+        ? civs
+            .map((civ) => ({
+              civ,
+              delta: tinctureDelta(
+                TINCTURE_HISTORY,
+                historySnapshot,
+                'rm_solo',
+                null,
+                civ.civ,
+              ),
+            }))
+            .filter(({ delta }) => delta.winRate != null || delta.pickRate != null)
+            .sort(
+              (left, right) =>
+                Math.abs(right.delta.winRate ?? 0) - Math.abs(left.delta.winRate ?? 0),
+            )
+            .slice(0, 3)
+        : []
+    },
+    [data, historySnapshot],
   )
 
-  if (isLoading)
-    return (
-      <div className="rounded-lg border border-border bg-card/40 px-4 py-12 text-center text-sm text-muted-foreground">
-        {tt('Loading live meta…')}
-      </div>
-    )
-  if (result && !result.ok && !fallback) {
-    return <ErrorBox message={result.error.message} onRetry={onRetry} />
-  }
   if (!data) return <EmptyBox>{tt('AoE4World meta is unavailable.')}</EmptyBox>
 
   return (
-    <div className={cn('space-y-4', isFetching && 'opacity-60')}>
+    <div className="space-y-4">
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <LedgerStat
-          label={result?.ok ? tt('Live games in slice') : tt('Saved games in slice')}
-          value={formatCount(data.totalCivGames)}
+          label={tt('Saved games in snapshot')}
+          value={formatCount(data.totalGames)}
         />
         <LedgerStat label={tt('Civilizations')} value={String(data.civs.length)} />
         <LedgerStat
@@ -488,190 +282,78 @@ function MetaLedger({
         )}
       >
         {historyStale
-          ? tt('Historical snapshot is stale or unavailable; live values remain authoritative.')
+          ? tt('Historical snapshot is stale or unavailable; open Civ Meta for current values.')
           : tt('Last distill: {date}. Deltas compare against the previous saved snapshot.').replace(
               '{date}',
               new Date(TINCTURE_META.generatedAt!).toLocaleString(),
             )}
       </div>
-      <PatchAuditCard audit={patchAudit} />
       <Card>
-        <CardContent className="space-y-3 p-0">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-4 py-3">
+        <CardContent className="space-y-4 p-4">
+          <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <div className="rts-section-title">{tt('Current slice')}</div>
+              <div className="rts-section-title">{tt('Decision summary')}</div>
               <p className="text-xs text-muted-foreground">
-                {result?.ok
-                  ? tt('Live win/pick rates plus the local build cellar.')
-                  : tt('Last saved win/pick rates plus the local build cellar.')}
+                {tt('Saved snapshot context plus local build coverage.')}
               </p>
             </div>
-            <label className="relative block w-56">
-              <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder={tt('Filter civilizations')}
-                className="h-8 pl-8 text-xs"
-              />
-            </label>
+            <Link
+              to={civMetaHref}
+              className="inline-flex items-center rounded-md border border-primary/40 px-3 py-1.5 text-xs text-primary hover:bg-primary/10"
+            >
+              {tt('Open full Civ Meta')}
+            </Link>
           </div>
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[680px] text-sm">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="rts-ledger-head px-4 py-2.5 text-left">{tt('Civilization')}</th>
-                  <th className="rts-ledger-head px-2 py-2.5 text-right">{tt('WR')}</th>
-                  <th className="rts-ledger-head px-2 py-2.5 text-right">{tt('Pick')}</th>
-                  <th className="rts-ledger-head px-2 py-2.5 text-right">{tt('Games')}</th>
-                  <th className="rts-ledger-head px-2 py-2.5 text-right">{tt('Builds')}</th>
-                  <th className="rts-ledger-head px-4 py-2.5 text-right">{tt('Sample')}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filtered.map((civ) => {
-                  const delta = historySnapshot
-                    ? tinctureDelta(
-                        TINCTURE_HISTORY,
-                        historySnapshot,
-                        leaderboard,
-                        rankLevel,
-                        civ.civ,
-                      )
-                    : null
-                  return (
-                    <tr
-                      key={civ.civ}
-                      className="border-b border-border/60 last:border-0 hover:bg-secondary/40"
-                    >
-                      <td className="px-4 py-2.5 font-medium">{civ.civName}</td>
-                      <td
-                        className={cn(
-                          'px-2 py-2.5 text-right font-semibold tabular-nums',
-                          civ.winRate >= 52 ? 'text-win' : civ.winRate < 48 ? 'text-loss' : '',
-                        )}
-                      >
-                        <span>{civ.winRate}%</span>
-                        {delta?.winRate != null && (
-                          <span
-                            className={cn(
-                              'ml-1 text-[10px]',
-                              delta.winRate > 0
-                                ? 'text-win'
-                                : delta.winRate < 0
-                                  ? 'text-loss'
-                                  : 'text-muted-foreground',
-                            )}
-                          >
-                            {delta.winRate > 0 ? '+' : ''}
-                            {delta.winRate.toFixed(1)}
-                          </span>
-                        )}
-                      </td>
-                      <td className="px-2 py-2.5 text-right tabular-nums text-muted-foreground">
-                        {civ.pickRate}%
-                      </td>
-                      <td className="px-2 py-2.5 text-right tabular-nums text-muted-foreground">
-                        {formatCount(civ.games)}
-                      </td>
-                      <td className="px-2 py-2.5 text-right tabular-nums">
-                        {buildCountForCiv(civ.civ)}
-                      </td>
-                      <td className="px-4 py-2.5 text-right text-muted-foreground">
-                        {civ.lowSample ? tt('low') : tt('stable')}
-                      </td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
+          <div className="grid gap-3 text-sm sm:grid-cols-3">
+            <div className="rounded-md border border-border/70 bg-background/30 p-3">
+              <div className="rts-ledger-head">{tt('Meta scope')}</div>
+              <div className="mt-1 font-medium">{data.leaderboard}</div>
+              <div className="text-xs text-muted-foreground">
+                {data.rankLevel ?? tt('All ranks')} · {tt('All maps')}
+              </div>
+            </div>
+            <div className="rounded-md border border-border/70 bg-background/30 p-3">
+              <div className="rts-ledger-head">{tt('Coverage signal')}</div>
+              <div className="mt-1 font-medium">{data.civs.length} {tt('civilizations')}</div>
+              <div className="text-xs text-muted-foreground">
+                {formatCount(data.totalGames)} {tt('games in the saved snapshot')}
+              </div>
+            </div>
+            <div className="rounded-md border border-border/70 bg-background/30 p-3">
+              <div className="rts-ledger-head">{tt('Next action')}</div>
+              <div className="mt-1 text-xs text-muted-foreground">
+                {tt('Use Civ Meta for sortable civ rows, patch and map filters.')}
+              </div>
+            </div>
+          </div>
+          {notableDeltas.length > 0 && (
+            <div className="rounded-md border border-border/70 bg-background/30 p-3">
+              <div className="rts-ledger-head">{tt('Largest snapshot movements')}</div>
+              <div className="mt-2 grid gap-2 sm:grid-cols-3">
+                {notableDeltas.map(({ civ, delta }) => (
+                  <div key={civ.civ} className="text-xs">
+                    <div className="font-medium">{civ.civName}</div>
+                    <div className="mt-0.5 text-muted-foreground">
+                      {tt('WR')} <span className={delta.winRate != null && delta.winRate >= 0 ? 'text-win' : 'text-loss'}>
+                        {delta.winRate == null ? '—' : `${delta.winRate > 0 ? '+' : ''}${delta.winRate.toFixed(1)} pp`}
+                      </span>
+                      {' · '}
+                      {tt('Pick')} {delta.pickRate == null ? '—' : `${delta.pickRate > 0 ? '+' : ''}${delta.pickRate.toFixed(1)} pp`}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          <div className="flex flex-wrap items-center justify-between gap-2 border-t border-border/60 pt-3 text-xs text-muted-foreground">
+            <span>{tt('Patch compatibility is maintained in Explorer.')}</span>
+            <Link to="/explorer?tab=patches" className="text-primary hover:underline">
+              {tt('Open patch coverage')} →
+            </Link>
           </div>
         </CardContent>
       </Card>
-      <p className="text-[11px] text-muted-foreground">
-        {tt(
-          'The WR/pick/games columns are live AoE4World aggregates. “Builds” is our local coverage count, kept separate so curation is not mistaken for sample size.',
-        )}
-      </p>
     </div>
-  )
-}
-
-function PatchAuditCard({ audit }: { audit: ReturnType<typeof buildPatchAudit> }) {
-  const { tt } = useI18n()
-  const source = audit.sourcePatchIds.length > 0 ? audit.sourcePatchIds.join(', ') : tt('unknown')
-  const family = audit.sourceFamilies.length > 0 ? audit.sourceFamilies.join(' / ') : tt('unknown')
-  const statusLabel =
-    audit.status === 'covered'
-      ? tt('covered')
-      : audit.status === 'mixed'
-        ? tt('mixed — review before ranked play')
-        : tt('unknown — refresh metadata')
-  return (
-    <Card>
-      <CardContent className="space-y-3 p-4">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <div>
-            <div className="rts-section-title">{tt('Patch audit')}</div>
-            <p className="text-xs text-muted-foreground">
-              {tt(
-                'Merges live AoE4World coverage with patch labels attached to local Cellar builds.',
-              )}
-            </p>
-          </div>
-          <Badge
-            variant="outline"
-            className={cn(
-              audit.status === 'covered' && 'border-win/40 text-win',
-              audit.status === 'mixed' && 'border-amber-500/40 text-amber-200',
-              audit.status === 'unknown' && 'border-border text-muted-foreground',
-            )}
-          >
-            {statusLabel}
-          </Badge>
-        </div>
-        <div className="grid gap-3 text-xs sm:grid-cols-3">
-          <div>
-            <div className="rts-ledger-head">{tt('Meta patch IDs')}</div>
-            <div className="mt-1 font-medium tabular-nums">{source}</div>
-            <div className="text-muted-foreground">
-              {tt('families')}: {family}
-            </div>
-          </div>
-          <div>
-            <div className="rts-ledger-head">{tt('Build coverage')}</div>
-            <div className="mt-1 font-medium">
-              <span className="text-win">
-                {audit.builds.covered} {tt('covered')}
-              </span>
-              {' · '}
-              <span className="text-amber-200">
-                {audit.builds.legacy} {tt('old')}
-              </span>
-              {' · '}
-              <span className="text-muted-foreground">
-                {audit.builds.unversioned} {tt('untagged')}
-              </span>
-            </div>
-          </div>
-          <div>
-            <div className="rts-ledger-head">{tt('Interpretation')}</div>
-            <div className="mt-1 text-muted-foreground">
-              {tt(
-                'Covered means the source dataset includes that patch family; it is not an automatic balance validation of every step.',
-              )}
-            </div>
-          </div>
-        </div>
-        {audit.warnings.length > 0 && (
-          <ul className="space-y-1 border-t border-border/60 pt-2 text-xs text-amber-200">
-            {audit.warnings.map((warning) => (
-              <li key={warning}>• {warning}</li>
-            ))}
-          </ul>
-        )}
-      </CardContent>
-    </Card>
   )
 }
 
@@ -768,23 +450,21 @@ function BuildCellar() {
   const [importError, setImportError] = useState<string | null>(null)
   const [communityBuildUrl, setCommunityBuildUrl] = useState('')
   const [communityBuildStatus, setCommunityBuildStatus] = useState<string | null>(null)
-  const [communityCatalog, setCommunityCatalog] = useState<CommunityBuildSummary[]>([])
-  const [communityCatalogQuery, setCommunityCatalogQuery] = useState('')
-  const [communityCatalogPage, setCommunityCatalogPage] = useState(1)
-  const [communityCatalogHasNext, setCommunityCatalogHasNext] = useState(false)
-  const [communityCatalogLoading, setCommunityCatalogLoading] = useState(false)
-  const [communityCatalogLoaded, setCommunityCatalogLoaded] = useState(false)
-  const communityCatalogRequest = useRef(0)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const videoEntries = useMemo(
     () => buildCatalogEntries(videoAnalyses.map((analysis) => analysis.build)),
     [videoAnalyses],
   )
-  const allEntries = useMemo(
-    () => [...videoEntries, ...sessionEntries, ...BUILD_CATALOG],
-    [sessionEntries, videoEntries],
-  )
   const activeId = searchParams.get('build')
+  const referenceEntries = useMemo(
+    () =>
+      activeId && BUILD_CATALOG.some((entry) => entry.id === activeId) ? BUILD_CATALOG : [],
+    [activeId],
+  )
+  const allEntries = useMemo(
+    () => [...videoEntries, ...sessionEntries, ...referenceEntries],
+    [referenceEntries, sessionEntries, videoEntries],
+  )
   const active = allEntries.find((entry) => entry.id === activeId) ?? null
   const civilizations = useMemo(
     () =>
@@ -801,17 +481,14 @@ function BuildCellar() {
     [allEntries],
   )
   const filtered = useMemo(() => {
-    const needle = query.trim().toLocaleLowerCase()
     return allEntries
       .filter((entry) => {
-        if (civilization && !entry.civilizationLabels.includes(civilization)) return false
-        if (
-          opponentCivilization &&
-          !entry.opponentCivilizationLabels.includes(opponentCivilization)
-        )
-          return false
-        if (origin && entry.origin !== origin) return false
-        return !needle || fuzzyMatches(entry.searchText, needle)
+        return matchesBuildArchiveTextFilters(entry, {
+          query,
+          civilization,
+          opponentCivilization,
+          origin,
+        })
       })
       .sort((left, right) => {
         if (sort === 'name') return left.build.name.localeCompare(right.build.name)
@@ -885,32 +562,6 @@ function BuildCellar() {
   const importCommunityBuild = async () => {
     await importCommunityBuildUrl(communityBuildUrl)
     setCommunityBuildUrl('')
-  }
-
-  const loadCommunityCatalog = useCallback(async (queryValue: string, pageValue: number) => {
-    const requestId = ++communityCatalogRequest.current
-    setCommunityCatalogLoading(true)
-    const result = await ipc.listCommunityBuilds(queryValue, pageValue)
-    if (requestId !== communityCatalogRequest.current) return
-    if (result.ok) {
-      setCommunityCatalog(result.data.items)
-      setCommunityCatalogHasNext(result.data.hasNext)
-      setCommunityCatalogLoaded(true)
-    } else {
-      setCommunityBuildStatus(result.error.message)
-    }
-    setCommunityCatalogLoading(false)
-  }, [])
-
-  useEffect(() => {
-    const timer = window.setTimeout(() => {
-      void loadCommunityCatalog(communityCatalogQuery, communityCatalogPage)
-    }, 650)
-    return () => window.clearTimeout(timer)
-  }, [communityCatalogPage, communityCatalogQuery, loadCommunityCatalog])
-
-  const importCommunityCatalogItem = async (item: CommunityBuildSummary) => {
-    await importCommunityBuildUrl(item.url)
   }
 
   const saveVideoAnalysis = (record: VideoAnalysisRecord) => {
@@ -1059,120 +710,6 @@ function BuildCellar() {
 
   return (
     <div className="space-y-4">
-      <CommunityBuildSources />
-      <Card className="border-primary/20 bg-primary/5">
-        <CardContent className="space-y-3 p-4">
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <div>
-              <div className="rts-section-title">{tt('AOE4 Builds live catalog')}</div>
-              <p className="text-xs text-muted-foreground">
-                {tt('Search the public catalogue and import a selected build into the Cellar.')}
-              </p>
-            </div>
-            <span className="text-[11px] text-muted-foreground">
-              {communityCatalogLoading
-                ? tt('Loading…')
-                : communityCatalogLoaded
-                  ? `${communityCatalog.length} ${tt('results')}`
-                  : ''}
-            </span>
-          </div>
-          <div className="flex flex-col gap-2 sm:flex-row">
-            <label className="relative block min-w-0 flex-1">
-              <span className="sr-only">{tt('Search AOE4 Builds')}</span>
-              <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                value={communityCatalogQuery}
-                onChange={(event) => {
-                  setCommunityCatalogQuery(event.target.value)
-                  setCommunityCatalogPage(1)
-                }}
-                placeholder={tt('Search title, civilization, or strategy…')}
-                className="h-9 pl-8 text-xs"
-              />
-            </label>
-            <button
-              type="button"
-              onClick={() => void loadCommunityCatalog(communityCatalogQuery, communityCatalogPage)}
-              className="h-9 shrink-0 rounded-md border border-primary/40 px-3 text-xs text-primary hover:bg-primary/10"
-            >
-              {tt('Load catalog')}
-            </button>
-          </div>
-          {communityCatalogLoaded && communityCatalog.length === 0 && (
-            <p className="text-xs text-muted-foreground">{tt('No builds found.')}</p>
-          )}
-          <div className="grid gap-2 md:grid-cols-2">
-            {communityCatalog.map((item) => (
-              <div
-                key={item.id}
-                className="rounded-md border border-border/80 bg-background/60 p-3"
-              >
-                <div className="flex items-start justify-between gap-2">
-                  <div className="min-w-0">
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="line-clamp-1 text-sm font-medium hover:text-primary hover:underline"
-                    >
-                      {item.name}
-                    </a>
-                    <div className="mt-1 flex flex-wrap gap-1.5 text-[10px] text-muted-foreground">
-                      {item.civilization && <span>{item.civilization}</span>}
-                      {item.strategy && <span>· {item.strategy}</span>}
-                      {item.difficulty && <span>· {item.difficulty}</span>}
-                      {item.views != null && (
-                        <span>
-                          · {tt('Views')}: {item.views}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => void importCommunityCatalogItem(item)}
-                    className="shrink-0 rounded-md border border-primary/40 px-2.5 py-1.5 text-[11px] text-primary hover:bg-primary/10"
-                  >
-                    {tt('Import')}
-                  </button>
-                </div>
-                {item.description && (
-                  <p className="mt-2 line-clamp-2 text-xs text-muted-foreground">
-                    {item.description}
-                  </p>
-                )}
-                {(item.author || item.likes) && (
-                  <p className="mt-2 text-[10px] text-muted-foreground">
-                    {item.author && `${tt('By')} ${item.author}`}
-                    {item.likes && ` · ${item.likes}`}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
-          {(communityCatalogPage > 1 || communityCatalogHasNext) && (
-            <div className="flex justify-end gap-2">
-              <button
-                type="button"
-                disabled={communityCatalogPage <= 1 || communityCatalogLoading}
-                onClick={() => setCommunityCatalogPage((page) => Math.max(1, page - 1))}
-                className="rounded-md border border-border px-3 py-1.5 text-xs disabled:opacity-40"
-              >
-                {tt('Previous')}
-              </button>
-              <button
-                type="button"
-                disabled={!communityCatalogHasNext || communityCatalogLoading}
-                onClick={() => setCommunityCatalogPage((page) => page + 1)}
-                className="rounded-md border border-border px-3 py-1.5 text-xs disabled:opacity-40"
-              >
-                {tt('Next')}
-              </button>
-            </div>
-          )}
-        </CardContent>
-      </Card>
       <div className="grid gap-3 sm:grid-cols-3">
         <LedgerStat label={tt('Builds in archive')} value={formatCount(allEntries.length)} />
         <LedgerStat label={tt('Civilization labels')} value={formatCount(civCount)} />
@@ -1197,10 +734,16 @@ function BuildCellar() {
             <div>
               <div className="rts-section-title">{tt('The Cellar')}</div>
               <p className="text-xs text-muted-foreground">
-                Every valid local build, its provenance, timing coverage, and exportable raw order.
+                {tt('Personal imports, video evidence, provenance and exportable raw orders.')}
               </p>
             </div>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
+              <Link
+                to="/guides?tab=builds"
+                className="inline-flex h-9 items-center rounded-md border border-primary/40 px-3 text-xs text-primary hover:bg-primary/10"
+              >
+                {tt('Open public Build Library')}
+              </Link>
               <input
                 ref={fileInputRef}
                 type="file"
@@ -1338,7 +881,9 @@ function BuildCellar() {
             </select>
           </div>
           <div className="text-xs text-muted-foreground">
-            Showing {formatCount(filtered.length)} of {formatCount(allEntries.length)} builds.
+            {tt('Showing {shown} of {total} builds.')
+              .replace('{shown}', formatCount(filtered.length))
+              .replace('{total}', formatCount(allEntries.length))}
           </div>
           <div className="overflow-x-auto rounded-md border border-border">
             <table className="w-full min-w-[800px] text-sm">
@@ -1441,8 +986,9 @@ function BuildValidationCard({ result }: { result: BuildValidationResult }) {
           <div>
             <div className="rts-section-title">{tt('Build validation')}</div>
             <p className="text-xs text-muted-foreground">
-              Clock, age, worker allocation and known unit requirements from the versioned game
-              data.
+              {tt(
+                'Clock, age, worker allocation and known unit requirements from the versioned game data.',
+              )}
             </p>
           </div>
           <Badge
@@ -1617,7 +1163,7 @@ function ProductionCalculator() {
                 {tt('Tune continuous queues and see the villager demand behind them.')}
               </p>
               <p className="mt-1 text-[10px] text-muted-foreground/80">
-                Versioned game data · {GAME_DATA_VERSION} ·{' '}
+                {tt('Versioned game data')} · {GAME_DATA_VERSION} ·{' '}
                 {new Date(GAME_DATA_CAPTURED_AT).toLocaleDateString()}
               </p>
             </div>
@@ -1724,7 +1270,7 @@ function ProductionCalculator() {
                 >
                   {units.map((unit) => (
                     <option key={unit.id} value={unit.id}>
-                      {unit.name} · {unit.time}s
+                      {gameName(unit.name)} · {unit.time}s
                     </option>
                   ))}
                 </select>
@@ -1784,7 +1330,7 @@ function ProductionCalculator() {
                 >
                   {FOOD_SOURCES.map((source) => (
                     <option key={source} value={source}>
-                      {source}
+                      {tt(source)}
                     </option>
                   ))}
                 </select>
@@ -1805,7 +1351,7 @@ function ProductionCalculator() {
               {PRODUCTION_RESOURCES.slice(0, 2).map((resource) => (
                 <NumberField
                   key={resource}
-                  label={`Пассивно: ${tt(RESOURCE_LABELS[resource])}`}
+                  label={`${tt('Passive')}: ${tt(RESOURCE_LABELS[resource])}`}
                   value={passive[resource]}
                   onChange={(value) => setPassive((current) => ({ ...current, [resource]: value }))}
                 />
@@ -1815,7 +1361,7 @@ function ProductionCalculator() {
               {PRODUCTION_RESOURCES.slice(2).map((resource) => (
                 <NumberField
                   key={resource}
-                  label={`Пассивно: ${tt(RESOURCE_LABELS[resource])}`}
+                  label={`${tt('Passive')}: ${tt(RESOURCE_LABELS[resource])}`}
                   value={passive[resource]}
                   onChange={(value) => setPassive((current) => ({ ...current, [resource]: value }))}
                 />
@@ -1845,7 +1391,7 @@ function ProductionCalculator() {
                 {PRODUCTION_RESOURCES.map((resource) => (
                   <NumberField
                     key={resource}
-                    label={`${tt(RESOURCE_LABELS[resource])} / мин`}
+                    label={`${tt(RESOURCE_LABELS[resource])} / ${tt('min')}`}
                     value={customGatherRates[resource]}
                     onChange={(value) =>
                       setCustomGatherRates((current) => ({ ...current, [resource]: value }))
@@ -1881,9 +1427,9 @@ function ProductionCalculator() {
                       className="mt-0.5"
                     />
                     <span>
-                      <strong className="font-medium text-foreground">{modifier.label}</strong>
+                      <strong className="font-medium text-foreground">{tt(modifier.label)}</strong>
                       <span className="mt-0.5 block text-muted-foreground">
-                        {modifier.description}
+                        {tt(modifier.description)}
                       </span>
                     </span>
                   </label>
@@ -1911,7 +1457,7 @@ function ProductionCalculator() {
                 {Math.ceil(result.totalVillagers)}
               </div>
               <div className="text-[10px] text-muted-foreground">
-                ≈ {result.totalVillagers.toFixed(1)} calculated
+                ≈ {result.totalVillagers.toFixed(1)} {tt('calculated')}
               </div>
             </div>
           </div>
@@ -1935,7 +1481,9 @@ function ProductionCalculator() {
                     </div>
                     <div className="mt-1 flex items-center justify-between gap-2 text-[10px] text-muted-foreground">
                       <span>{tt('villagers needed')}</span>
-                      <span className="tabular-nums">{result.net[resource].toFixed(1)} / min</span>
+                      <span className="tabular-nums">
+                        {result.net[resource].toFixed(1)} / {tt('min')}
+                      </span>
                     </div>
                     <div className="mt-2 h-1 overflow-hidden rounded-full bg-secondary">
                       <div
@@ -1973,19 +1521,19 @@ function ProductionCalculator() {
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="truncate font-medium text-foreground">
-                            {line.unit.name}
+                            {gameName(line.unit.name)}
                           </div>
                           <div className="text-[10px] text-muted-foreground">
                             {mode === 'buildings'
-                              ? `${line.count} ${line.count === 1 ? 'building' : 'buildings'}`
-                              : `${line.unitsPerMinute.toFixed(2)} units/min · ${line.buildingsRequired.toFixed(2)} buildings`}
+                              ? `${line.count} ${tt(line.count === 1 ? 'building' : 'buildings')}`
+                              : `${line.unitsPerMinute.toFixed(2)} ${tt('units/min')} · ${line.buildingsRequired.toFixed(2)} ${tt('buildings')}`}
                             {' · '}
-                            {line.unit.time}s cycle
+                            {line.unit.time}s {tt('cycle')}
                           </div>
                         </div>
                         <div className="text-right tabular-nums text-muted-foreground">
                           <div className="font-medium text-foreground">
-                            {line.unitsPerMinute.toFixed(2)} / min
+                            {line.unitsPerMinute.toFixed(2)} / {tt('min')}
                           </div>
                           <div className="text-[10px]">{tt('output')}</div>
                         </div>

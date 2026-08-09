@@ -54,7 +54,7 @@ export function ScoutHistoryPanel({
         <SectionHeader
           icon={<History className="h-4 w-4" />}
           title={tt('Recent public matches')}
-          detail={mergedRecent.ok ? sampleLabel(mergedRecent.data) : undefined}
+          detail={mergedRecent.ok ? sampleLabel(mergedRecent.data, tt) : undefined}
         />
         <div className="p-4">
           {!mergedRecent.ok ? (
@@ -83,7 +83,7 @@ export function ScoutHistoryPanel({
         <SectionHeader
           icon={<Swords className="h-4 w-4" />}
           title={tt('Personal head-to-head')}
-          detail={headToHead?.ok ? sampleLabel(headToHead.data) : undefined}
+          detail={headToHead?.ok ? sampleLabel(headToHead.data, tt) : undefined}
         />
         <div className="p-4">
           {activeProfile == null ? (
@@ -155,6 +155,7 @@ function LoadMoreMatches({
   isFetchingNextPage: boolean
   onLoadMore: () => void
 }) {
+  const { tt } = useI18n()
   if (!hasNextPage && !isFetchingNextPage) return null
   return (
     <button
@@ -163,7 +164,7 @@ function LoadMoreMatches({
       disabled={isFetchingNextPage}
       onClick={onLoadMore}
     >
-      {isFetchingNextPage ? 'Loading more matches…' : 'Load more public matches'}
+      {isFetchingNextPage ? tt('Loading more matches…') : tt('Load more public matches')}
     </button>
   )
 }
@@ -189,6 +190,7 @@ function SectionHeader({
 }
 
 function HeadToHeadSummary({ data }: { data: HeadToHeadData }) {
+  const { tt } = useI18n()
   const unknown = data.sampleSize - data.decidedGames
   return (
     <div className="mb-3 flex flex-wrap items-center gap-2 rounded-md bg-secondary/50 px-3 py-2 text-xs">
@@ -198,9 +200,9 @@ function HeadToHeadSummary({ data }: { data: HeadToHeadData }) {
         <span className="text-loss">{data.losses}L</span>
       </span>
       <span className="text-muted-foreground">
-        {formatPercent(data.winRate)} across {data.decidedGames} decided in this sample
+        {formatPercent(data.winRate)} {tt('across {count} decided in this sample').replace('{count}', String(data.decidedGames))}
       </span>
-      {unknown > 0 && <span className="text-muted-foreground">· {unknown} undecided</span>}
+      {unknown > 0 && <span className="text-muted-foreground">· {unknown} {tt('undecided')}</span>}
     </div>
   )
 }
@@ -216,23 +218,25 @@ function MatchList({ page, profileId }: { page: ScoutMatchPage; profileId: numbe
 }
 
 function MatchRow({ match, profileId }: { match: ScoutMatchRow; profileId: number }) {
-  const { tt } = useI18n()
-  const opponentCivs = match.opponentCivilizations.map(civDisplayName).join(' + ')
-  const matchup = `${displayCiv(match.civilization)} vs ${opponentCivs || 'Unknown'}`
-  const when = relativeTime(match.startedAt) || 'Date unavailable'
+  const { tt, gameName } = useI18n()
+  const opponentCivs = match.opponentCivilizations.map((civ) => gameName(civDisplayName(civ))).join(' + ')
+  const matchup = `${displayCiv(match.civilization, tt, gameName)} ${tt('vs')} ${opponentCivs || tt('Unknown')}`
+  const when = relativeTime(match.startedAt) || tt('Date unavailable')
 
   return (
     <Link
       to={`/public-game/${profileId}/${match.gameId}`}
       className="flex flex-wrap items-center gap-x-4 gap-y-1 border-b border-border px-3 py-2.5 text-xs transition-colors hover:bg-secondary/40 last:border-b-0"
       title={
-        match.opponentNames.length > 0 ? `Opponents: ${match.opponentNames.join(', ')}` : undefined
+        match.opponentNames.length > 0
+          ? `${tt('Opponents')}: ${match.opponentNames.join(', ')}`
+          : undefined
       }
-      aria-label={`Open full analysis for match ${match.gameId}`}
+      aria-label={tt('Open full analysis for match {id}').replace('{id}', String(match.gameId))}
     >
       <ResultBadge result={match.result} />
       <span className="min-w-48 flex-1 font-medium text-foreground">{matchup}</span>
-      <span className="min-w-28 text-muted-foreground">{match.map ?? 'Map unavailable'}</span>
+      <span className="min-w-28 text-muted-foreground">{match.map ?? tt('Map unavailable')}</span>
       <span className="min-w-28 text-muted-foreground">
         {match.format ? tt(formatLeaderboard(match.format)) : tt('Format unavailable')}
       </span>
@@ -249,6 +253,7 @@ function MatchRow({ match, profileId }: { match: ScoutMatchRow; profileId: numbe
 }
 
 function ResultBadge({ result }: { result: ScoutMatchRow['result'] }) {
+  const { tt } = useI18n()
   const style =
     result === 'win'
       ? 'bg-win/15 text-win'
@@ -257,20 +262,26 @@ function ResultBadge({ result }: { result: ScoutMatchRow['result'] }) {
         : 'bg-secondary text-muted-foreground'
   return (
     <span className={`w-12 rounded px-1.5 py-0.5 text-center font-semibold uppercase ${style}`}>
-      {result === 'unknown' ? '—' : result}
+      {result === 'unknown' ? '—' : tt(result === 'win' ? 'Win' : 'Loss')}
     </span>
   )
 }
 
-function displayCiv(civilization: string | null): string {
-  return civilization ? civDisplayName(civilization) : 'Unknown'
+function displayCiv(
+  civilization: string | null,
+  tt: (value: string) => string,
+  gameName: (value: string) => string,
+): string {
+  return civilization ? gameName(civDisplayName(civilization)) : tt('Unknown')
 }
 
-function sampleLabel(page: ScoutMatchPage): string {
+function sampleLabel(page: ScoutMatchPage, tt: (value: string) => string): string {
   if (page.totalCount > page.sampleSize) {
-    return `Showing ${page.sampleSize} of ${page.totalCount}`
+    return tt('Showing {shown} of {total}')
+      .replace('{shown}', String(page.sampleSize))
+      .replace('{total}', String(page.totalCount))
   }
-  return `${page.sampleSize} ${page.sampleSize === 1 ? 'match' : 'matches'}`
+  return `${page.sampleSize} ${tt(page.sampleSize === 1 ? 'match' : 'matches')}`
 }
 
 function absoluteDate(iso: string): string {

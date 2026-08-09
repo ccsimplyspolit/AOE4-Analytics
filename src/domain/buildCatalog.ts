@@ -1,5 +1,6 @@
 import { parseDuration } from './format'
 import type { BuildOrder } from './buildOrderSchema'
+import { videoUrlsFromBuild } from './videoEmbed'
 
 export type BuildCatalogOrigin = 'curated' | 'house' | 'imported' | 'video'
 
@@ -27,6 +28,38 @@ export interface BuildCatalogEntry {
   searchText: string
 }
 
+/**
+ * Catalog entries can come from localStorage and video-analysis records, not
+ * only from the validated bundled library. Keep the catalog boundary defensive
+ * so one truncated/old JSON record cannot crash the main process while it is
+ * rebuilding the archive.
+ */
+function isCatalogBuild(value: unknown): value is BuildOrder {
+  if (!value || typeof value !== 'object') return false
+  const candidate = value as Record<string, unknown>
+  const civ = candidate.civilization
+  const validCiv =
+    (typeof civ === 'string' && civ.trim().length > 0) ||
+    (Array.isArray(civ) &&
+      civ.length > 0 &&
+      civ.every((item) => typeof item === 'string' && item.trim().length > 0))
+  const opponent = candidate.opponentCivilization
+  const validOpponent =
+    opponent == null ||
+    (typeof opponent === 'string' && opponent.trim().length > 0) ||
+    (Array.isArray(opponent) &&
+      opponent.every((item) => typeof item === 'string' && item.trim().length > 0))
+  if (typeof candidate.name !== 'string' || !candidate.name.trim() || !validCiv) return false
+  if (!validOpponent) return false
+  if (!Array.isArray(candidate.build_order) || candidate.build_order.length === 0) return false
+  if (candidate.tactics !== undefined && !Array.isArray(candidate.tactics)) return false
+  return candidate.build_order.every((step) => {
+    if (!step || typeof step !== 'object') return false
+    const notes = (step as Record<string, unknown>).notes
+    return Array.isArray(notes) && notes.every((note) => typeof note === 'string')
+  })
+}
+
 function labelsForBuild(build: BuildOrder): string[] {
   return Array.isArray(build.civilization) ? build.civilization : [build.civilization]
 }
@@ -46,7 +79,7 @@ function originForBuild(build: BuildOrder): BuildCatalogOrigin {
 }
 
 function slug(value: string): string {
-  return value
+  return String(value ?? '')
     .toLocaleLowerCase()
     .replace(/['’]/g, '')
     .replace(/[^a-z0-9]+/g, '-')
@@ -71,12 +104,18 @@ function fingerprint(build: BuildOrder): string {
     opponentCivilization: opponentLabelsForBuild(build)
       .map((value) => slug(value))
       .sort(),
+    // Keep materially different catalog variants addressable. Patch/season and
+    // map filters are part of the build's public identity even when two exports
+    // happen to contain the same step list.
+    patch: build.patch ?? null,
+    season: build.season ?? null,
+    map: build.map ?? null,
     steps: build.build_order.map((step) => ({
       age: step.age,
       time: step.time ?? null,
       villagers: step.villager_count,
       resources: step.resources,
-      notes: step.notes.map((note) => note.trim().toLocaleLowerCase()),
+      notes: step.notes.map((note) => String(note ?? '').trim().toLocaleLowerCase()),
     })),
   })
 }
@@ -97,13 +136,16 @@ export function buildCatalogEntries(builds: BuildOrder[]): BuildCatalogEntry[] {
   const seen = new Set<string>()
   const entries: BuildCatalogEntry[] = []
 
-  for (const build of builds) {
+  for (const candidate of builds) {
+    if (!isCatalogBuild(candidate)) continue
+    const build = candidate
     const key = fingerprint(build)
     if (seen.has(key)) continue
     seen.add(key)
 
     const labels = labelsForBuild(build)
     const opponentLabels = opponentLabelsForBuild(build)
+    const videoUrls = videoUrlsFromBuild(build)
     const timedSteps = build.build_order.filter(
       (step) => step.time && parseDuration(step.time) != null,
     ).length
@@ -121,6 +163,7 @@ export function buildCatalogEntries(builds: BuildOrder[]): BuildCatalogEntry[] {
       build.patch,
       build.origin,
       build.transcriptText,
+      ...videoUrls,
       ...(build.tactics?.flatMap((tactic) => [tactic.title, tactic.detail]) ?? []),
     ]
       .filter(Boolean)
@@ -137,7 +180,7 @@ export function buildCatalogEntries(builds: BuildOrder[]): BuildCatalogEntry[] {
       provider: build.provider ?? null,
       strategy: build.strategy ?? null,
       map: build.map ?? null,
-      videoUrl: build.video ?? null,
+      videoUrl: videoUrls[0] ?? null,
       score: metadataNumber(build.score),
       views: metadataNumber(build.views),
       patch: build.patch ?? null,

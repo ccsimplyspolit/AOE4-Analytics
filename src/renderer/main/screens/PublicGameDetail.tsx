@@ -122,12 +122,16 @@ function PublicGameBody({
       </header>
 
       <MatchFacts game={detail.game} viewedPlayer={viewedPlayer} />
-      <TeamsCard teams={teams} />
+      <TeamsCard teams={teams} gameId={detail.game.game_id} />
       <TwitchVodCard input={viewedCiv ? twitchVodInput : null} />
       {curatedReview && <CuratedMatchReviewCard review={curatedReview} />}
 
       {detail.perPlayer.length > 0 ? (
-        <ComparisonTable players={players} statsByProfile={statsByProfile} />
+        <ComparisonTable
+          players={players}
+          statsByProfile={statsByProfile}
+          gameId={detail.game.game_id}
+        />
       ) : (
         <Card>
           <CardContent className="p-4 text-sm text-muted-foreground">
@@ -227,7 +231,7 @@ function Fact({ icon, label, value }: { icon: ReactNode; label: string; value: s
   )
 }
 
-function TeamsCard({ teams }: { teams: GamePlayer[][] }) {
+function TeamsCard({ teams, gameId }: { teams: GamePlayer[][]; gameId: number }) {
   const { tt } = useI18n()
   return (
     <Card>
@@ -246,7 +250,8 @@ function TeamsCard({ teams }: { teams: GamePlayer[][] }) {
                     className="flex items-center justify-between gap-3 text-sm"
                   >
                     <Link
-                      to={`/profile/${player.profile_id}`}
+                      to={`/public-game/${player.profile_id}/${gameId}`}
+                      title={tt('Open this player’s full match analysis')}
                       className="min-w-0 truncate font-medium hover:text-primary"
                     >
                       {player.name}
@@ -268,9 +273,11 @@ function TeamsCard({ teams }: { teams: GamePlayer[][] }) {
 function ComparisonTable({
   players,
   statsByProfile,
+  gameId,
 }: {
   players: GamePlayer[]
   statsByProfile: Map<number, PerPlayerMatchStats>
+  gameId: number
 }) {
   const { tt } = useI18n()
   return (
@@ -300,7 +307,15 @@ function ComparisonTable({
                 const stats = statsByProfile.get(player.profile_id)
                 return (
                   <tr key={player.profile_id} className="border-b border-border/70 last:border-0">
-                    <td className="max-w-48 truncate px-2 py-2 font-medium">{player.name}</td>
+                    <td className="max-w-48 truncate px-2 py-2 font-medium">
+                      <Link
+                        to={`/public-game/${player.profile_id}/${gameId}`}
+                        title={tt('Open this player’s full match analysis')}
+                        className="hover:text-primary hover:underline"
+                      >
+                        {player.name}
+                      </Link>
+                    </td>
                     <td className="px-2 py-2 text-muted-foreground">
                       {civDisplayName(player.civilization)}
                     </td>

@@ -1,4 +1,4 @@
-import type { CivStatsResponse } from '../api/types'
+import type { CivStatEntry, CivStatsResponse } from '../api/types'
 import { civDisplayName } from './civ'
 import { round1 } from './form'
 
@@ -39,6 +39,78 @@ export function tierForWinRate(winRate: number): Tier {
     if (winRate >= band.minWinRate) return band.tier
   }
   return 'D'
+}
+
+/**
+ * Combines map-specific civ slices into one pool-weighted stats response.
+ * AoE4World exposes exact games and a high-precision win rate for each civ on
+ * each map. The map endpoint omits win_count, so wins are reconstructed from
+ * win_rate × games_count when that optional field is absent. This keeps the
+ * aggregation finite and avoids treating a rarely played map as equal to Dry
+ * Arabia.
+ */
+export function aggregateCivStatsByMapPool(
+  slices: readonly CivStatsResponse[],
+): CivStatsResponse | null {
+  const first = slices[0]
+  if (!first || slices.length === 0) return null
+
+  type Accumulator = {
+    civilization: string
+    winCount: number
+    gamesCount: number
+    playerGamesCount: number
+    durationMedianWeighted: number
+    durationAverageWeighted: number
+  }
+  const byCiv = new Map<string, Accumulator>()
+
+  for (const slice of slices) {
+    for (const entry of slice.data) {
+      const winCount =
+        entry.win_count ??
+        (Number.isFinite(entry.win_rate) ? (entry.win_rate / 100) * entry.games_count : 0)
+      const current = byCiv.get(entry.civilization) ?? {
+        civilization: entry.civilization,
+        winCount: 0,
+        gamesCount: 0,
+        playerGamesCount: 0,
+        durationMedianWeighted: 0,
+        durationAverageWeighted: 0,
+      }
+      current.winCount += winCount
+      current.gamesCount += entry.games_count
+      current.playerGamesCount += entry.player_games_count
+      current.durationMedianWeighted += entry.duration_median * entry.games_count
+      current.durationAverageWeighted += entry.duration_average * entry.games_count
+      byCiv.set(entry.civilization, current)
+    }
+  }
+
+  const totalPlayerGames = [...byCiv.values()].reduce(
+    (sum, entry) => sum + entry.playerGamesCount,
+    0,
+  )
+  const data: CivStatEntry[] = [...byCiv.values()].map((entry) => ({
+    civilization: entry.civilization,
+    win_rate: entry.gamesCount > 0 ? (entry.winCount / entry.gamesCount) * 100 : 0,
+    pick_rate: totalPlayerGames > 0 ? (entry.playerGamesCount / totalPlayerGames) * 100 : 0,
+    // Map slices currently omit win_count; round only the reconstructed
+    // display counter while keeping win_rate based on the unrounded total.
+    win_count: Math.round(entry.winCount),
+    games_count: entry.gamesCount,
+    player_games_count: entry.playerGamesCount,
+    duration_median: entry.gamesCount > 0 ? entry.durationMedianWeighted / entry.gamesCount : 0,
+    duration_average: entry.gamesCount > 0 ? entry.durationAverageWeighted / entry.gamesCount : 0,
+  }))
+
+  return {
+    leaderboard: first.leaderboard,
+    rank_level: first.rank_level,
+    rating: first.rating,
+    patch: first.patch,
+    data,
+  }
 }
 
 const METHODOLOGY =

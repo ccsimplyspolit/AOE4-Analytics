@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import {
   ArrowLeft,
@@ -12,17 +12,31 @@ import {
   Network,
   ExternalLink,
   Loader2,
+  PlayCircle,
 } from 'lucide-react'
 import { GUIDES, type Guide } from '@data/guides'
 import { BUILD_CATALOG } from '@data/buildCatalog'
+import {
+  CURATED_CONTENT_COUNTS,
+  CURATED_CONTENT_SOURCE,
+  searchCuratedContent,
+} from '@data/curatedContent'
 import { CIV_SLUGS, civCode } from '@data/civs'
 import type { BuildCatalogEntry } from '@domain/buildCatalog'
 import type { BuildOrder } from '@domain/buildOrderSchema'
 import { buildOrderCivLabel } from '@domain/buildOrderSchema'
 import { civDisplayName } from '@domain/civ'
+import {
+  hasBuildVideo,
+  matchesBuildArchiveTextFilters,
+  matchesBuildLibraryFilters,
+  type BuildMapPoolFilter,
+  type BuildPatchFilter,
+  type BuildSeasonFilter,
+} from '@domain/buildLibraryFilters'
+import { CURRENT_RANKED_MAP_POOL } from '@domain/rankedMapPool'
 import type { Aoe4GuidesBuildSummary } from '@ipc/contract'
 import { ipc } from '@shared/ipc'
-import { fuzzyMatches } from '@domain/fuzzySearch'
 import { Markdown } from '@shared/components/Markdown'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
@@ -34,6 +48,7 @@ import { CivQuiz } from '../components/tools/CivQuiz'
 import { ShortcutTrainer } from '../components/tools/ShortcutTrainer'
 import { BeastyNumber } from '../components/tools/BeastyNumber'
 import { useI18n } from '../../i18n'
+import { useRankedMapPool } from '../queries/useCivMeta'
 
 type Tab = 'guides' | 'builds' | 'counters' | 'quiz' | 'trainer' | 'beasty'
 
@@ -114,7 +129,7 @@ export function Guides() {
 }
 
 function GuideLibrary() {
-  const { tt } = useI18n()
+  const { locale, tt } = useI18n()
   // The open guide lives in the URL (`?guide=slug`) so it survives a refresh.
   const [searchParams, setSearchParams] = useSearchParams()
   const guideSlug = searchParams.get('guide')
@@ -131,6 +146,9 @@ function GuideLibrary() {
     )
 
   if (active) {
+    const title = locale === 'ru' ? active.titleRu ?? active.title : tt(active.title)
+    const category = tt(active.category)
+    const body = locale === 'ru' ? active.bodyRu ?? active.body : active.body
     return (
       <div className="space-y-4">
         <button
@@ -141,9 +159,9 @@ function GuideLibrary() {
           <ArrowLeft className="h-4 w-4" /> {tt('All guides')}
         </button>
         <div>
-          <h2 className="text-xl font-semibold tracking-tight">{active.title}</h2>
+          <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
           <div className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
-            <Badge variant="secondary">{active.category}</Badge>
+            <Badge variant="secondary">{category}</Badge>
             <span className="flex items-center gap-1">
               <Clock className="h-3 w-3" />
               {active.readMinutes} {tt('min')}
@@ -152,7 +170,7 @@ function GuideLibrary() {
         </div>
         <Card>
           <CardContent className="p-5">
-            <Markdown content={active.body} />
+            <Markdown content={body} />
           </CardContent>
         </Card>
       </div>
@@ -161,23 +179,27 @@ function GuideLibrary() {
 
   return (
     <div className="grid gap-3 sm:grid-cols-2">
-      {GUIDES.map((g) => (
-        <button key={g.slug} type="button" onClick={() => setActive(g)} className="text-left">
-          <Card className="h-full transition-colors hover:border-primary/40">
-            <CardContent className="space-y-1.5 p-4">
-              <div className="flex items-center justify-between gap-2">
-                <h3 className="font-semibold">{g.title}</h3>
-                <Badge variant="secondary">{g.category}</Badge>
-              </div>
-              <p className="text-sm leading-relaxed text-muted-foreground">{g.summary}</p>
-              <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                <Clock className="h-3 w-3" />
-                {g.readMinutes} {tt('min read')}
-              </div>
-            </CardContent>
-          </Card>
-        </button>
-      ))}
+      {GUIDES.map((g) => {
+        const title = locale === 'ru' ? g.titleRu ?? g.title : tt(g.title)
+        const summary = locale === 'ru' ? g.summaryRu ?? g.summary : tt(g.summary)
+        return (
+          <button key={g.slug} type="button" onClick={() => setActive(g)} className="text-left">
+            <Card className="h-full transition-colors hover:border-primary/40">
+              <CardContent className="space-y-1.5 p-4">
+                <div className="flex items-center justify-between gap-2">
+                  <h3 className="font-semibold">{title}</h3>
+                  <Badge variant="secondary">{tt(g.category)}</Badge>
+                </div>
+                <p className="text-sm leading-relaxed text-muted-foreground">{summary}</p>
+                <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                  <Clock className="h-3 w-3" />
+                  {g.readMinutes} {tt('min read')}
+                </div>
+              </CardContent>
+            </Card>
+          </button>
+        )
+      })}
     </div>
   )
 }
@@ -194,13 +216,21 @@ const DIFFICULTY_TONE: Record<string, string> = {
  * each carries a reasoning line for why it earned its slot.
  */
 function BuildLibrary() {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const entries = BUILD_CATALOG
   const builds = entries.map((entry) => entry.build)
+  const mapPoolQuery = useRankedMapPool()
+  const mapPool = mapPoolQuery.data?.ok ? mapPoolQuery.data.data : null
+  const mapPoolSnapshot = mapPool?.snapshot ?? CURRENT_RANKED_MAP_POOL
+  const currentPatch = mapPoolSnapshot.patch ?? CURRENT_RANKED_MAP_POOL.patch
+  const currentSeason = mapPoolSnapshot.season ?? CURRENT_RANKED_MAP_POOL.season ?? 13
   const [query, setQuery] = useState('')
   const [civilization, setCivilization] = useState('')
   const [opponentCivilization, setOpponentCivilization] = useState('')
   const [origin, setOrigin] = useState('')
+  const [patchFilter, setPatchFilter] = useState<BuildPatchFilter>('all')
+  const [seasonFilter, setSeasonFilter] = useState<BuildSeasonFilter>('all')
+  const [mapPoolFilter, setMapPoolFilter] = useState<BuildMapPoolFilter>('all')
   const [sort, setSort] = useState<'library' | 'score' | 'updated'>('library')
   const [onlineSearch, setOnlineSearch] = useState(false)
   const [onlineItems, setOnlineItems] = useState<Aoe4GuidesBuildSummary[]>([])
@@ -230,6 +260,13 @@ function BuildLibrary() {
   const onlineGuidesCiv = onlineCivCode
     ? GUIDES_CODE_BY_DATA_CODE[civCode(onlineCivCode) ?? ''] ?? undefined
     : undefined
+  const curatedVideos = useMemo(
+    () =>
+      searchCuratedContent(query, onlineCivCode ?? 'all').filter(
+        (item) => item.type === 'Video' || item.type === 'Shorts',
+      ),
+    [onlineCivCode, query],
+  )
 
   useEffect(() => {
     if (!onlineSearch) return
@@ -271,27 +308,60 @@ function BuildLibrary() {
     }
   }, [onlineGuidesCiv, onlineSearch, query, sort])
 
-  const civilizations = [...new Set(entries.flatMap((entry) => entry.civilizationLabels))].sort(
-    (a, b) => a.localeCompare(b),
+  const civilizations = [...new Set(entries.flatMap((entry) => entry.civilizationLabels))].sort((a, b) =>
+    gameName(a).localeCompare(gameName(b)),
   )
   const opponentCivilizations = [
     ...new Set(entries.flatMap((entry) => entry.opponentCivilizationLabels)),
-  ].sort((a, b) => a.localeCompare(b))
+  ].sort((a, b) => gameName(a).localeCompare(gameName(b)))
+
+  const seasons = useMemo(
+    () =>
+      [...new Set(entries.map((entry) => entry.build.season).filter((value): value is number => value != null))]
+        .sort((a, b) => b - a),
+    [entries],
+  )
+  const patches = useMemo(
+    () =>
+      [...new Set(entries.map((entry) => entry.patch).filter((value): value is string => Boolean(value)))]
+        .sort((a, b) => b.localeCompare(a)),
+    [entries],
+  )
+  const videoEntriesCount = useMemo(
+    () => entries.filter((entry) => hasBuildVideo(entry)).length,
+    [entries],
+  )
 
   // The catalog is deduplicated and provenance-aware. Keep the selected URL
   // index stable while allowing the visible list to be filtered/sorted.
-  const needle = query.trim().toLocaleLowerCase()
   const visibleEntries = entries
     .map((entry, i) => ({ entry, i }))
     .filter(({ entry }) => {
-      if (civilization && !entry.civilizationLabels.includes(civilization)) return false
       if (
-        opponentCivilization &&
-        !entry.opponentCivilizationLabels.includes(opponentCivilization)
+        !matchesBuildArchiveTextFilters(entry, {
+          query,
+          civilization,
+          opponentCivilization,
+          origin: origin === 'video' ? '' : origin,
+        })
+      ) {
+        return false
+      }
+      if (origin === 'video' && !hasBuildVideo(entry)) return false
+      if (
+        !matchesBuildLibraryFilters(
+          entry,
+          { patch: patchFilter, season: seasonFilter, mapPool: mapPoolFilter },
+          {
+            currentPatch,
+            currentSeason,
+            soloMaps: mapPoolSnapshot.solo,
+            teamMaps: mapPoolSnapshot.team,
+          },
+        )
       )
         return false
-      if (origin && entry.origin !== origin) return false
-      return !needle || fuzzyMatches(entry.searchText, needle)
+      return true
     })
     .sort((left, right) => {
       if (sort === 'score') {
@@ -309,7 +379,26 @@ function BuildLibrary() {
     list.push({ bo: entry.build, i })
     groups.set(civ, list)
   })
-  const civNames = [...groups.keys()].sort((a, b) => a.localeCompare(b))
+  const civNames = [...groups.keys()].sort((a, b) => gameName(a).localeCompare(gameName(b)))
+
+  const selectedMap = mapPoolFilter.startsWith('map:')
+    ? mapPoolFilter.slice('map:'.length)
+    : null
+  const allPoolMaps = [...new Set([...mapPoolSnapshot.solo, ...mapPoolSnapshot.team])]
+  const scopedMapCount = selectedMap
+    ? 1
+    : mapPoolFilter === 'team'
+      ? mapPoolSnapshot.team.length
+      : mapPoolFilter === 'solo'
+        ? mapPoolSnapshot.solo.length
+        : allPoolMaps.length
+  const mapPoolName = selectedMap
+    ? `${tt('Map')}: ${selectedMap}`
+    : mapPoolFilter === 'team'
+      ? tt('Current team map pool')
+      : mapPoolFilter === 'solo'
+        ? tt('Current solo map pool')
+        : tt('All maps / map tags')
 
   return (
     <div className="space-y-4">
@@ -337,7 +426,7 @@ function BuildLibrary() {
             <option value="">{tt('All civilizations')}</option>
             {civilizations.map((value) => (
               <option key={value} value={value}>
-                {value}
+                {gameName(value)}
               </option>
             ))}
           </select>
@@ -352,7 +441,7 @@ function BuildLibrary() {
             <option value="">{tt('All opponents')}</option>
             {opponentCivilizations.map((value) => (
               <option key={value} value={value}>
-                {value}
+                {gameName(value)}
               </option>
             ))}
           </select>
@@ -368,7 +457,9 @@ function BuildLibrary() {
             <option value="curated">{tt('Curated / AoE4Guides')}</option>
             <option value="house">{tt('RTSLytics house')}</option>
             <option value="imported">{tt('Imported')}</option>
-            <option value="video">{tt('Video evidence')}</option>
+            <option value="video">
+              {tt('Video evidence')} · {videoEntriesCount}
+            </option>
           </select>
         </label>
         <label className="space-y-1 text-xs text-muted-foreground">
@@ -383,6 +474,94 @@ function BuildLibrary() {
             <option value="updated">{tt('Most recently updated')}</option>
           </select>
         </label>
+      </div>
+
+      <div className="grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <label className="space-y-1 text-xs text-muted-foreground">
+          <span>{tt('Patch context')}</span>
+          <select
+            value={patchFilter}
+            onChange={(event) => setPatchFilter(event.target.value as BuildPatchFilter)}
+            className="h-9 w-full rounded-sm border border-border bg-background px-2 text-sm text-foreground outline-none focus:border-primary"
+          >
+            <option value="all">{tt('All patch versions')}</option>
+            <option value="current" disabled={!currentPatch}>
+              {tt('Current patch')} · {currentPatch ?? tt('unavailable')}
+            </option>
+            <option value="unversioned">{tt('No patch metadata')}</option>
+            <option value="legacy">{tt('Other / legacy patch')}</option>
+            {patches
+              .filter((patch) => patch !== currentPatch)
+              .map((patch) => (
+                <option key={patch} value={`patch:${patch}`}>
+                  {patch}
+                </option>
+              ))}
+          </select>
+        </label>
+        <label className="space-y-1 text-xs text-muted-foreground">
+          <span>{tt('Season')}</span>
+          <select
+            value={seasonFilter}
+            onChange={(event) => setSeasonFilter(event.target.value as BuildSeasonFilter)}
+            className="h-9 w-full rounded-sm border border-border bg-background px-2 text-sm text-foreground outline-none focus:border-primary"
+          >
+            <option value="all">{tt('All seasons')}</option>
+            <option value="current">
+              {tt('Current season')} · {currentSeason == null ? tt('unavailable') : currentSeason}
+            </option>
+            <option value="unversioned">{tt('No season metadata')}</option>
+            {seasons
+              .filter((season) => season !== currentSeason)
+              .map((season) => (
+                <option key={season} value={`season:${season}`}>
+                  {tt('Season')} {season}
+                </option>
+              ))}
+          </select>
+        </label>
+        <label className="space-y-1 text-xs text-muted-foreground">
+          <span>{tt('Ranked map pool')}</span>
+          <select
+            value={mapPoolFilter}
+            onChange={(event) => setMapPoolFilter(event.target.value as BuildMapPoolFilter)}
+            className="h-9 w-full rounded-sm border border-border bg-background px-2 text-sm text-foreground outline-none focus:border-primary"
+          >
+            <option value="all">{tt('All maps / map tags')}</option>
+            <optgroup label={`${tt('Current solo map pool')} · ${mapPoolSnapshot.solo.length}`}>
+              <option value="solo">{tt('All current solo maps')}</option>
+              {mapPoolSnapshot.solo.map((map) => (
+                <option key={`solo-${map}`} value={`map:${map}`}>
+                  {map}
+                </option>
+              ))}
+            </optgroup>
+            <optgroup label={`${tt('Current team map pool')} · ${mapPoolSnapshot.team.length}`}>
+              <option value="team">{tt('All current team maps')}</option>
+              {mapPoolSnapshot.team.map((map) => (
+                <option key={`team-${map}`} value={`map:${map}`}>
+                  {map}
+                </option>
+              ))}
+            </optgroup>
+          </select>
+        </label>
+      </div>
+
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 rounded-md border border-border/70 bg-card/40 px-3 py-2 text-[11px] text-muted-foreground">
+        <span>
+          {tt('Current context')}: {currentPatch ?? tt('patch unavailable')} · {tt('Season')}{' '}
+          {currentSeason ?? tt('unavailable')}
+        </span>
+        <span>
+          {tt('Map pool snapshot')}: {mapPoolQuery.isLoading ? tt('loading') : mapPoolName} ·{' '}
+          {scopedMapCount} {tt('maps')}
+        </span>
+        {mapPool?.autoRefresh?.lastCheckedAt && (
+          <span>
+            {tt('checked')} {new Date(mapPool.autoRefresh.lastCheckedAt).toLocaleDateString()}
+          </span>
+        )}
       </div>
 
       <p className="text-[11px] text-muted-foreground">
@@ -451,9 +630,14 @@ function BuildLibrary() {
                       </span>
                     </div>
                     <div className="mt-1 text-[11px] text-muted-foreground">
-                      {item.civilization} · {item.author ?? tt('community')} · {item.stepCount}{' '}
+                      {gameName(item.civilization)} · {item.author ?? tt('community')} · {item.stepCount}{' '}
                       {tt('steps')}
                     </div>
+                    {item.video && (
+                      <div className="mt-1 inline-flex items-center gap-1 text-[10px] text-primary">
+                        <PlayCircle className="h-3 w-3" /> {tt('Video linked')}
+                      </div>
+                    )}
                     <span className="mt-1 inline-flex items-center gap-1 text-[10px] text-primary">
                       {tt('Preview build')} <ExternalLink className="h-3 w-3" />
                     </span>
@@ -462,6 +646,61 @@ function BuildLibrary() {
               </div>
             )}
             {onlineSelected && <BuildOrderViewer bo={onlineSelected.build} />}
+          </div>
+        )}
+      </section>
+
+      <section className="rounded-md border border-border bg-card/30 p-4">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <div className="flex items-center gap-2 text-sm font-semibold">
+              <PlayCircle className="h-4 w-4 text-primary" />
+              {tt('AoE4World curated videos')}
+            </div>
+            <p className="mt-1 max-w-3xl text-xs leading-relaxed text-muted-foreground">
+              {tt(
+                'Approved videos and Shorts from the AoE4World catalogue are matched to the selected civilization and search.',
+              )}
+            </p>
+          </div>
+          <a
+            href={CURATED_CONTENT_SOURCE}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
+          >
+            {tt('Open source catalogue')} <ExternalLink className="h-3.5 w-3.5" />
+          </a>
+        </div>
+        <p className="mt-2 text-[11px] text-muted-foreground">
+          {curatedVideos.length} / {CURATED_CONTENT_COUNTS.videos} {tt('videos shown')}
+        </p>
+        {curatedVideos.length === 0 ? (
+          <p className="mt-3 text-xs text-muted-foreground">
+            {tt('No curated videos match the selected civilization and search.')}
+          </p>
+        ) : (
+          <div className="mt-3 grid gap-2 md:grid-cols-2 xl:grid-cols-3">
+            {curatedVideos.map((item) => (
+              <a
+                key={item.id}
+                href={item.url}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-md border border-border bg-background/40 px-3 py-2 transition-colors hover:border-primary/50 hover:bg-primary/5"
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <span className="line-clamp-2 text-sm font-medium">{item.title}</span>
+                  <ExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                </div>
+                <div className="mt-1 line-clamp-1 text-[11px] text-muted-foreground">
+                  {item.civilizations.map((civ) => gameName(civ)).join(' · ')} · {item.creator ?? tt('community')}
+                </div>
+                <div className="mt-1 text-[10px] uppercase tracking-wide text-primary">
+                  {item.type === 'Shorts' ? 'YouTube Shorts' : 'YouTube'}
+                </div>
+              </a>
+            ))}
           </div>
         )}
       </section>
@@ -475,7 +714,7 @@ function BuildLibrary() {
       <div className="grid gap-x-6 gap-y-2 sm:grid-cols-2 xl:grid-cols-3">
         {civNames.map((civ) => (
           <div key={civ} className="space-y-1">
-            <div className="rts-ledger-head">{civ}</div>
+            <div className="rts-ledger-head">{gameName(civ)}</div>
             {groups.get(civ)!.map(({ bo, i }) => (
               <button
                 key={i}
@@ -500,6 +739,12 @@ function BuildLibrary() {
                     {bo.difficulty}
                   </span>
                 )}
+                {hasBuildVideo(entries[i]!) && (
+                  <PlayCircle
+                    className="h-3.5 w-3.5 shrink-0 text-primary"
+                    aria-label={tt('Video linked')}
+                  />
+                )}
               </button>
             ))}
           </div>
@@ -510,7 +755,7 @@ function BuildLibrary() {
         <div className="rounded-sm border border-border bg-card/60 px-4 py-3">
           <div className="rts-ledger-head mb-1">{tt('Why this build')}</div>
           <p className="text-sm leading-relaxed text-muted-foreground">{active.reasoning}</p>
-          <CatalogMetadata entry={entries[idx]} />
+          <CatalogMetadata entry={entries[idx]} tt={tt} />
           {active.source && (
             <p className="mt-1.5 text-[11px] text-muted-foreground">
               {tt('Build by')}{' '}
@@ -538,15 +783,37 @@ function BuildLibrary() {
   )
 }
 
-function CatalogMetadata({ entry }: { entry: BuildCatalogEntry | undefined }) {
+function CatalogMetadata({
+  entry,
+  tt,
+}: {
+  entry: BuildCatalogEntry | undefined
+  tt: (value: string) => string
+}) {
   if (!entry) return null
   const bits = [
-    entry.patch ? `Patch ${entry.patch}` : null,
+    entry.patch ? `${tt('Patch')} ${entry.patch}` : null,
     entry.score != null ? `Score ${entry.score}` : null,
     entry.sampleSize != null ? `n=${entry.sampleSize}` : null,
-    entry.confidence != null ? `${Math.round(entry.confidence * 100)}% confidence` : null,
-    entry.hasVideoEvidence ? 'video evidence' : null,
-  ].filter(Boolean)
+    entry.confidence != null ? `${Math.round(entry.confidence * 100)}% ${tt('confidence')}` : null,
+    entry.videoUrl ? tt('Video linked') : entry.hasVideoEvidence ? tt('Video evidence') : null,
+  ].filter((bit): bit is string => Boolean(bit))
   if (bits.length === 0) return null
-  return <p className="mt-2 text-[11px] text-primary/80">{bits.join(' · ')}</p>
+  return (
+    <p className="mt-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] text-primary/80">
+      {bits.map((bit) => (
+        <span key={bit}>{bit}</span>
+      ))}
+      {entry.videoUrl && (
+        <a
+          href={entry.videoUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1 text-primary hover:underline"
+        >
+          {tt('Open video')} <ExternalLink className="h-3 w-3" />
+        </a>
+      )}
+    </p>
+  )
 }

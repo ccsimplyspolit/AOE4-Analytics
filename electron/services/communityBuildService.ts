@@ -1,4 +1,5 @@
 import { normalizeBuildOrder, type BuildOrder, type BuildStep } from '@domain/buildOrderSchema'
+import { deriveBuildAgeTimings } from '@domain/buildOrderInsights'
 import type { Aoe4GuidesBuildSummary, CommunityBuildSummary, IpcResult } from '@ipc/contract'
 import { err, ok } from './result'
 
@@ -13,23 +14,46 @@ const STEP_LINE =
 type CommunityProvider = 'aoe4guides' | 'aoeivbuilds' | 'age4builder'
 
 const GUIDES_CIVILIZATIONS: Record<string, string> = {
-  ABB: 'Abbasid Dynasty', AYY: 'Ayyubids', BYZ: 'Byzantines', CHI: 'Chinese',
-  DEL: 'Delhi Sultanate', ENG: 'English', FRE: 'French', HRE: 'Holy Roman Empire',
-  JAP: 'Japanese', JDA: "Jeanne d'Arc", MAL: 'Malians', MON: 'Mongols',
-  DRA: 'Order of the Dragon', OTT: 'Ottomans', RUS: 'Rus', ZXL: "Zhu Xi's Legacy",
-  HOL: 'House of Lancaster', KTE: 'Knights of Cross and Rose', GOH: 'Golden Horde',
-  MAC: 'Macedonian Dynasty', SEN: 'Sengoku Daimyo', TUG: 'Tughlaq Dynasty', JIN: 'Jin Dynasty',
+  ABB: 'Abbasid Dynasty',
+  AYY: 'Ayyubids',
+  BYZ: 'Byzantines',
+  CHI: 'Chinese',
+  DEL: 'Delhi Sultanate',
+  ENG: 'English',
+  FRE: 'French',
+  HRE: 'Holy Roman Empire',
+  JAP: 'Japanese',
+  JDA: "Jeanne d'Arc",
+  MAL: 'Malians',
+  MON: 'Mongols',
+  DRA: 'Order of the Dragon',
+  OTT: 'Ottomans',
+  RUS: 'Rus',
+  ZXL: "Zhu Xi's Legacy",
+  HOL: 'House of Lancaster',
+  KTE: 'Knights of Cross and Rose',
+  GOH: 'Golden Horde',
+  MAC: 'Macedonian Dynasty',
+  SEN: 'Sengoku Daimyo',
+  TUG: 'Tughlaq Dynasty',
+  JIN: 'Jin Dynasty',
 }
 
 const AGE4_BUILDER_CIVILIZATIONS: Record<string, string> = {
-  AD: 'Abbasid Dynasty', CH: 'Chinese', DS: 'Delhi Sultanate', EN: 'English', FR: 'French',
-  HR: 'Holy Roman Empire', MO: 'Mongols', RU: 'Rus', OT: 'Ottomans', MA: 'Malians',
+  AD: 'Abbasid Dynasty',
+  CH: 'Chinese',
+  DS: 'Delhi Sultanate',
+  EN: 'English',
+  FR: 'French',
+  HR: 'Holy Roman Empire',
+  MO: 'Mongols',
+  RU: 'Rus',
+  OT: 'Ottomans',
+  MA: 'Malians',
 }
 
 export interface CommunityBuildCatalogPage {
   items: CommunityBuildSummary[]
-  page: number
-  hasNext: boolean
 }
 
 export interface Aoe4GuidesCatalog {
@@ -39,61 +63,135 @@ export interface Aoe4GuidesCatalog {
 
 type Aoe4GuidesSort = 'score' | 'timeCreated' | 'views' | 'likes'
 
+const AOE4_GUIDES_SORTS: Aoe4GuidesSort[] = ['score', 'timeCreated', 'views', 'likes']
+const AOE4_GUIDES_CATALOG_CACHE_MS = 5 * 60_000
+
+let aoe4GuidesCatalogCache: { items: Aoe4GuidesBuildSummary[]; loadedAt: number } | null = null
+let aoe4GuidesCatalogInFlight: Promise<IpcResult<Aoe4GuidesBuildSummary[]>> | null = null
+
 /**
- * Fetches the bounded public AoE4Guides catalogue using the same typed
- * civ/sort boundary exposed by the `orda` client. The provider currently
- * returns at most ten rows per request; filtering stays local so the app
- * never sends an unbounded search or executes provider page scripts.
+ * Fetches the public AoE4Guides catalogue using the same typed civ/sort
+ * boundary exposed by the `orda` client. Filtering stays local so the app
+ * never executes provider page scripts.
  */
-export async function listAoe4GuidesBuilds(
-  input?: unknown,
-): Promise<IpcResult<Aoe4GuidesCatalog>> {
+export async function listAoe4GuidesBuilds(input?: unknown): Promise<IpcResult<Aoe4GuidesCatalog>> {
   const options = normalizeAoe4GuidesCatalogInput(input)
   if (!options.ok) return options
-  const params = new URLSearchParams({
-    orderBy: options.sort,
-    overlay: 'true',
+  const catalog = await loadAllAoe4GuidesBuilds()
+  if (!catalog.ok) return catalog
+
+  const needle = options.query.toLocaleLowerCase()
+  const items = catalog.data
+    .filter(
+      (item) =>
+        !options.civilization || item.civilization === GUIDES_CIVILIZATIONS[options.civilization],
+    )
+    .filter((item) => matchesAoe4GuidesQuery(item, needle))
+  return ok({ items: sortAoe4GuidesItems(items, options.sort), sort: options.sort })
+}
+
+/**
+ * AoE4Guides does not provide pagination. To recover more than the provider's
+ * ten-row response, combine every documented sort with every civilization and
+ * merge the overlapping sets locally. This is cached because a search query
+ * changes much more often than the source catalogue.
+ */
+async function loadAllAoe4GuidesBuilds(): Promise<IpcResult<Aoe4GuidesBuildSummary[]>> {
+  if (
+    aoe4GuidesCatalogCache &&
+    Date.now() - aoe4GuidesCatalogCache.loadedAt < AOE4_GUIDES_CATALOG_CACHE_MS
+  ) {
+    return ok(aoe4GuidesCatalogCache.items)
+  }
+  if (aoe4GuidesCatalogInFlight) return aoe4GuidesCatalogInFlight
+
+  aoe4GuidesCatalogInFlight = fetchAllAoe4GuidesBuilds().finally(() => {
+    aoe4GuidesCatalogInFlight = null
   })
-  if (options.civilization) params.set('civ', options.civilization)
+  return aoe4GuidesCatalogInFlight
+}
+
+async function fetchAllAoe4GuidesBuilds(): Promise<IpcResult<Aoe4GuidesBuildSummary[]>> {
   const controller = new AbortController()
-  const timeout = setTimeout(() => controller.abort(), 12_000)
+  const timeout = setTimeout(() => controller.abort(), 90_000)
+  const requests = AOE4_GUIDES_SORTS.flatMap((sort) => [
+    { sort, civilization: null },
+    ...Object.keys(GUIDES_CIVILIZATIONS).map((civilization) => ({ sort, civilization })),
+  ])
+
   try {
-    const response = await fetch(`https://${AOE4_GUIDES_HOST}/api/builds?${params.toString()}`, {
-      headers: { Accept: 'application/json', 'User-Agent': 'RTSLytics/1.0' },
-      signal: controller.signal,
-    })
-    if (!response.ok) return err('network', `AoE4Guides returned HTTP ${response.status}.`)
-    const body = (await response.json()) as unknown
-    const rawBuilds = extractGuidesBuilds(body)
-    const needle = options.query.toLocaleLowerCase()
-    const items = rawBuilds
-      .map((raw, index) => normalizeAoe4GuidesRecord(raw, index))
-      .filter((item): item is Aoe4GuidesBuildSummary => item !== null)
-      .filter((item) => {
-        if (!needle) return true
-        const text = [
-          item.name,
-          item.civilization,
-          item.author,
-          item.strategy,
-          item.map,
-          item.build.description,
-          item.build.transcriptText,
-        ]
-          .filter(Boolean)
-          .join(' ')
-          .toLocaleLowerCase()
-        return text.includes(needle)
-      })
-    return ok({ items: items.slice(0, 10), sort: options.sort })
+    const byUrl = new Map<string, Aoe4GuidesBuildSummary>()
+    // Keep the source responsive while still trying every public catalogue
+    // segment. There is deliberately no result-count cap here.
+    for (let index = 0; index < requests.length; index += 4) {
+      const group = await Promise.all(
+        requests.slice(index, index + 4).map(async ({ sort, civilization }) => {
+          const params = new URLSearchParams({ orderBy: sort, overlay: 'true' })
+          if (civilization) params.set('civ', civilization)
+          const response = await fetch(`https://${AOE4_GUIDES_HOST}/api/builds?${params}`, {
+            headers: { Accept: 'application/json', 'User-Agent': 'RTSLytics/1.0' },
+            signal: controller.signal,
+          })
+          if (!response.ok) throw new Error(`AoE4Guides returned HTTP ${response.status}.`)
+          const body = (await response.json()) as unknown
+          return extractGuidesBuilds(body)
+            .map((raw, rowIndex) => normalizeAoe4GuidesRecord(raw, rowIndex))
+            .filter((item): item is Aoe4GuidesBuildSummary => item !== null)
+        }),
+      )
+      for (const items of group) {
+        for (const item of items) byUrl.set(item.url, item)
+      }
+    }
+
+    const items = [...byUrl.values()]
+    aoe4GuidesCatalogCache = { items, loadedAt: Date.now() }
+    return ok(items)
   } catch (error) {
-    return err('network', error instanceof Error ? error.message : 'Unable to load AoE4Guides builds.')
+    return err(
+      'network',
+      error instanceof Error ? error.message : 'Unable to load AoE4Guides builds.',
+    )
   } finally {
     clearTimeout(timeout)
   }
 }
 
-function normalizeAoe4GuidesCatalogInput(input: unknown):
+function matchesAoe4GuidesQuery(item: Aoe4GuidesBuildSummary, needle: string): boolean {
+  if (!needle) return true
+  const text = [
+    item.name,
+    item.civilization,
+    item.author,
+    item.strategy,
+    item.map,
+    item.build.description,
+    item.build.transcriptText,
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLocaleLowerCase()
+  return text.includes(needle)
+}
+
+function sortAoe4GuidesItems(
+  items: Aoe4GuidesBuildSummary[],
+  sort: Aoe4GuidesSort,
+): Aoe4GuidesBuildSummary[] {
+  const score = (item: Aoe4GuidesBuildSummary) => {
+    if (sort === 'timeCreated') return item.updatedAt ? Date.parse(item.updatedAt) || 0 : 0
+    if (sort === 'views') return item.views ?? 0
+    if (sort === 'likes') return item.likes ?? 0
+    return item.score ?? 0
+  }
+  return [...items].sort(
+    (left, right) => score(right) - score(left) || left.name.localeCompare(right.name),
+  )
+}
+
+function normalizeAoe4GuidesCatalogInput(
+  input: unknown,
+):
   | { ok: true; query: string; civilization: string | null; sort: Aoe4GuidesSort }
   | ReturnType<typeof err> {
   const value = input && typeof input === 'object' ? (input as Record<string, unknown>) : {}
@@ -142,15 +240,28 @@ function normalizeAoe4GuidesRecord(
   const parsed = Array.isArray(raw.steps)
     ? parseAoe4GuidesBuild(raw, source)
     : (() => {
+        // The current API returns the already-normalized `build_order` shape,
+        // while older responses used grouped `steps`. Re-normalize provider
+        // metadata here so Season 13 strings and video URLs do not leak into
+        // the renderer with the wrong runtime types.
         const normalized = normalizeBuildOrder({
           ...raw,
+          build_order: Array.isArray(raw.build_order)
+            ? raw.build_order.map(normalizeAoe4GuidesStep)
+            : raw.build_order,
+          season: seasonNumber(raw.season),
+          video: stringValue(raw.video),
+          map: stringValue(raw.map),
+          strategy: stringValue(raw.strategy),
           source,
           provider: 'aoe4guides',
           providerId: id,
           origin: 'imported',
           schemaVersion: 1,
         })
-        return normalized.ok ? normalized.value : null
+        return normalized.ok
+          ? { ...normalized.value, ageTimings: deriveBuildAgeTimings(normalized.value) }
+          : null
       })()
   if (!parsed) return null
   const civ = Array.isArray(parsed.civilization)
@@ -187,62 +298,92 @@ export async function listCommunityBuilds(
   if (!options.ok) return options
 
   const controller = new AbortController()
-  const timeout = setTimeout(() => controller.abort(), 10_000)
+  const timeout = setTimeout(() => controller.abort(), 60_000)
   try {
-    const response = await fetch(`https://${AOE4_BUILDS_HOST}/?page=${options.page}`, {
-      headers: { Accept: 'text/html', 'User-Agent': 'RTSLytics/1.0' },
-      signal: controller.signal,
-    })
-    if (!response.ok) return err('network', `AOE4 Builds returned HTTP ${response.status}.`)
-    const html = await response.text()
-    const parsed = parseCatalogHtml(html)
+    const byId = new Map<string, CommunityBuildSummary>()
+    let page = 1
+    let hasNext = true
+
+    while (hasNext) {
+      const response = await fetch(`https://${AOE4_BUILDS_HOST}/?page=${page}`, {
+        headers: { Accept: 'text/html', 'User-Agent': 'RTSLytics/1.0' },
+        signal: controller.signal,
+      })
+      if (!response.ok) return err('network', `AOE4 Builds returned HTTP ${response.status}.`)
+      const html = await response.text()
+      const parsed = parseCatalogHtml(html)
+      const countBefore = byId.size
+      for (const item of parsed) byId.set(item.id, item)
+
+      // Stop on the site's explicit final page. The duplicate guard prevents
+      // an infinite loop if a provider starts serving the same page twice.
+      hasNext = hasNextCatalogPage(html, page)
+      if (!hasNext || byId.size === countBefore) break
+      page += 1
+    }
+
     const needle = options.query.toLocaleLowerCase()
     const items = needle
-      ? parsed.filter((item) =>
-          [item.name, item.civilization, item.description, item.strategy, item.difficulty, item.author]
+      ? [...byId.values()].filter((item) =>
+          [
+            item.name,
+            item.civilization,
+            item.description,
+            item.strategy,
+            item.difficulty,
+            item.author,
+          ]
             .filter(Boolean)
             .some((value) => String(value).toLocaleLowerCase().includes(needle)),
         )
-      : parsed
-    return ok({
-      items,
-      page: options.page,
-      hasNext: hasNextCatalogPage(html, options.page, parsed.length),
-    })
+      : [...byId.values()]
+    return ok({ items })
   } catch (error) {
-    return err('network', error instanceof Error ? error.message : 'Unable to load AOE4 Builds catalogue.')
+    return err(
+      'network',
+      error instanceof Error ? error.message : 'Unable to load AOE4 Builds catalogue.',
+    )
   } finally {
     clearTimeout(timeout)
   }
 }
 
-function normalizeCatalogInput(input: unknown):
-  | { ok: true; page: number; query: string }
-  | ReturnType<typeof err> {
+function normalizeCatalogInput(
+  input: unknown,
+): { ok: true; query: string } | ReturnType<typeof err> {
   const value = input && typeof input === 'object' ? (input as Record<string, unknown>) : {}
-  const rawPage = value.page
-  const page = rawPage == null ? 1 : Number(rawPage)
-  if (!Number.isInteger(page) || page < 1 || page > 100) {
-    return err('validation', 'Catalogue page must be an integer from 1 to 100.')
-  }
   const query = typeof value.query === 'string' ? value.query.trim().slice(0, 80) : ''
-  return { ok: true, page, query }
+  return { ok: true, query }
 }
 
 function parseCatalogHtml(html: string): CommunityBuildSummary[] {
   const cards: CommunityBuildSummary[] = []
-  const cardPattern = /<div\s+id=["']build_order_(\d+)["'][^>]*class=["'][^"']*build-order[^"']*["'][^>]*>([\s\S]*?)(?=<div\s+id=["']build_order_|<\/main>|$)/gi
+  const cardPattern =
+    /<div\s+id=["']build_order_(\d+)["'][^>]*class=["'][^"']*build-order[^"']*["'][^>]*>([\s\S]*?)(?=<div\s+id=["']build_order_|<\/main>|$)/gi
   let match: RegExpExecArray | null
   while ((match = cardPattern.exec(html))) {
     const id = match[1]
     const block = match[2]
     if (!id || !block) continue
-    const name = extractText(block, /<div\s+class=["'][^"']*build-order__title[^"']*["'][^>]*>[\s\S]*?<a[^>]*>([\s\S]*?)<\/a>/i)
+    const name = extractText(
+      block,
+      /<div\s+class=["'][^"']*build-order__title[^"']*["'][^>]*>[\s\S]*?<a[^>]*>([\s\S]*?)<\/a>/i,
+    )
     if (!name) continue
-    const description = extractText(block, /<div\s+class=["'][^"']*build-order__title[^"']*["'][^>]*>[\s\S]*?<p[^>]*>([\s\S]*?)<\/p>/i)
-    const civilization = decodeHtml((/<img[^>]+alt=["']([^"']+)["']/i.exec(block)?.[1] ?? '').trim()) || null
-    const details = extractParagraphs(block, /<div\s+class=["'][^"']*build-order__details[^"']*["'][^>]*>([\s\S]*?)<\/div>/i)
-    const creation = extractParagraphs(block, /<div\s+class=["'][^"']*build-order__creation-info[^"']*["'][^>]*>([\s\S]*?)<\/div>/i)
+    const description = extractText(
+      block,
+      /<div\s+class=["'][^"']*build-order__title[^"']*["'][^>]*>[\s\S]*?<p[^>]*>([\s\S]*?)<\/p>/i,
+    )
+    const civilization =
+      decodeHtml((/<img[^>]+alt=["']([^"']+)["']/i.exec(block)?.[1] ?? '').trim()) || null
+    const details = extractParagraphs(
+      block,
+      /<div\s+class=["'][^"']*build-order__details[^"']*["'][^>]*>([\s\S]*?)<\/div>/i,
+    )
+    const creation = extractParagraphs(
+      block,
+      /<div\s+class=["'][^"']*build-order__creation-info[^"']*["'][^>]*>([\s\S]*?)<\/div>/i,
+    )
     const findDetail = (pattern: RegExp) => details.find((value) => pattern.test(value)) ?? null
     const findCreation = (pattern: RegExp) => creation.find((value) => pattern.test(value)) ?? null
     const author = cleanMetadata(findCreation(/^created by\s*:/i))
@@ -271,7 +412,9 @@ function parseCatalogHtml(html: string): CommunityBuildSummary[] {
 function extractText(block: string, pattern: RegExp): string | null {
   const value = pattern.exec(block)?.[1]
   if (!value) return null
-  const text = decodeHtml(value.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim()
+  const text = decodeHtml(value.replace(/<[^>]+>/g, ' '))
+    .replace(/\s+/g, ' ')
+    .trim()
   return text || null
 }
 
@@ -280,7 +423,11 @@ function extractParagraphs(block: string, wrapper: RegExp): string[] {
   return [...inner.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)]
     .map((match) => match[1])
     .filter((value): value is string => value != null)
-    .map((value) => decodeHtml(value.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim())
+    .map((value) =>
+      decodeHtml(value.replace(/<[^>]+>/g, ' '))
+        .replace(/\s+/g, ' ')
+        .trim(),
+    )
     .filter(Boolean)
 }
 
@@ -289,8 +436,8 @@ function cleanMetadata(value: string | null): string | null {
   return value.replace(/^[^:]+:\s*/i, '').trim() || null
 }
 
-function hasNextCatalogPage(html: string, page: number, parsedCount: number): boolean {
-  return new RegExp(`(?:\\?|&)page=${page + 1}(?:["'&]|$)`, 'i').test(html) || parsedCount >= 10
+function hasNextCatalogPage(html: string, page: number): boolean {
+  return new RegExp(`(?:\\?|&)page=${page + 1}(?:["'&]|$)`, 'i').test(html)
 }
 
 /** Fetches and normalizes the plain-text export exposed by AOE4 Builds. */
@@ -360,7 +507,10 @@ async function importAoe4GuidesBuild(url: URL): Promise<IpcResult<BuildOrder>> {
     const build = parseAoe4GuidesBuild(await response.json(), sourceUrl)
     return build ? ok(build) : err('validation', 'The AoE4Guides response contains no steps.')
   } catch (error) {
-    return err('network', error instanceof Error ? error.message : 'Unable to load AoE4Guides build.')
+    return err(
+      'network',
+      error instanceof Error ? error.message : 'Unable to load AoE4Guides build.',
+    )
   } finally {
     clearTimeout(timeout)
   }
@@ -395,8 +545,10 @@ export function parseAoe4GuidesBuild(input: unknown, source: string): BuildOrder
       const villagerCount = explicitVillagers ?? assigned
       const population = Math.max(previousPopulation + 1, villagerCount + (builders ?? 0))
       const description = typeof step.description === 'string' ? step.description : ''
+      const time = normalizedTime(step.time)
       steps.push({
-        time: normalizedTime(step.time),
+        ...(time ? { time } : {}),
+        ...(time ? { timeProvenance: timeProvenance(step.time) } : {}),
         population_count: population,
         villager_count: villagerCount,
         age,
@@ -410,8 +562,9 @@ export function parseAoe4GuidesBuild(input: unknown, source: string): BuildOrder
   if (steps.length === 0) return null
 
   const civCode = stringValue(raw.civ) ?? ''
-  const capturedAt = isoDate(raw.timeUpdated) ?? isoDate(raw.timeCreated) ?? new Date().toISOString()
-  return {
+  const capturedAt =
+    isoDate(raw.timeUpdated) ?? isoDate(raw.timeCreated) ?? new Date().toISOString()
+  const build: BuildOrder = {
     schemaVersion: 1,
     name: stringValue(raw.title) ?? stringValue(raw.name) ?? 'Imported AoE4Guides build',
     civilization: GUIDES_CIVILIZATIONS[civCode] ?? (civCode || 'Unknown'),
@@ -436,6 +589,7 @@ export function parseAoe4GuidesBuild(input: unknown, source: string): BuildOrder
     updatedAt: capturedAt,
     build_order: steps,
   }
+  return { ...build, ageTimings: deriveBuildAgeTimings(build) }
 }
 
 async function importAge4BuilderBuild(url: URL): Promise<IpcResult<BuildOrder>> {
@@ -452,9 +606,10 @@ async function importAge4BuilderBuild(url: URL): Promise<IpcResult<BuildOrder>> 
     return err('validation', 'The age4builder link has no build payload (t, s, or b).')
   }
   const columns = params.has('t') ? 6 : 2
-  const decoded = params.has('t') || params.has('s')
-    ? decompressFromEncodedURIComponent(encoded)
-    : safeDecode(encoded)
+  const decoded =
+    params.has('t') || params.has('s')
+      ? decompressFromEncodedURIComponent(encoded)
+      : safeDecode(encoded)
   if (!decoded) return err('validation', 'Could not decode the age4builder build URL.')
   const build = parseAge4BuilderPayload(decoded, civ, url.toString(), columns)
   return build ? ok(build) : err('validation', 'The age4builder payload contains no build steps.')
@@ -473,7 +628,8 @@ export function parseAge4BuilderPayload(
     const time = normalizedTime(values[offset])
     const notesIndex = columns === 6 ? offset + 5 : offset + 1
     const notes = normalizeAge4BuilderText(values[notesIndex] ?? '')
-    if (!time && !notes && values.slice(offset, offset + columns).every((value) => !value.trim())) continue
+    if (!time && !notes && values.slice(offset, offset + columns).every((value) => !value.trim()))
+      continue
     const food = columns === 6 ? resourceValue(values[offset + 1]) : 0
     const wood = columns === 6 ? resourceValue(values[offset + 2]) : 0
     const stone = columns === 6 ? resourceValue(values[offset + 3]) : 0
@@ -528,7 +684,10 @@ function normalizeProviderHtml(value: string): string {
 
 function iconTokenFromProviderPath(value: string): string | null {
   const clean = value.replace(/\\/g, '/').replace(/\.(?:png|jpe?g|webp)$/i, '')
-  const match = /(?:^|\/)((?:unit|building|landmark|technology|upgrade|ability|resource)[^/]*)\/([^/]+)$/i.exec(clean)
+  const match =
+    /(?:^|\/)((?:unit|building|landmark|technology|upgrade|ability|resource)[^/]*)\/([^/]+)$/i.exec(
+      clean,
+    )
   if (!match) return null
   const category = match[1]!.toLocaleLowerCase()
   const categoryName = category.startsWith('unit')
@@ -559,7 +718,8 @@ function stringValue(value: unknown): string | null {
 
 function numberValue(value: unknown): number | null {
   if (typeof value === 'number' && Number.isFinite(value)) return value
-  if (typeof value === 'string' && value.trim() && Number.isFinite(Number(value))) return Number(value)
+  if (typeof value === 'string' && value.trim() && Number.isFinite(Number(value)))
+    return Number(value)
   return null
 }
 
@@ -574,7 +734,29 @@ function resourceValue(value: unknown): number {
 
 function normalizedTime(value: unknown): string | undefined {
   const text = stringValue(value)
-  return text ? text.replace(/^~/, '') : undefined
+  if (!text) return undefined
+  const cleaned = text
+    .replace(/<br\s*\/?\s*>/gi, ' ')
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/[~≈]/g, '')
+    .replace(/\s+/g, '')
+    .trim()
+  return cleaned || undefined
+}
+
+function timeProvenance(value: unknown): 'stated' | 'derived' {
+  return typeof value === 'string' && /[~≈]/.test(value) ? 'derived' : 'stated'
+}
+
+function normalizeAoe4GuidesStep(value: unknown): Record<string, unknown> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return {}
+  const step = value as Record<string, unknown>
+  const time = normalizedTime(step.time)
+  return {
+    ...step,
+    ...(time ? { time, timeProvenance: timeProvenance(step.time) } : {}),
+  }
 }
 
 function seasonNumber(value: unknown): number | undefined {
@@ -597,18 +779,28 @@ function isoDate(value: unknown): string | null {
 }
 
 function safeDecode(value: string): string {
-  try { return decodeURIComponent(value) } catch { return value }
+  try {
+    return decodeURIComponent(value)
+  } catch {
+    return value
+  }
 }
 
 function decompressFromEncodedURIComponent(input: string): string | null {
   if (input === '') return ''
   const encoded = input.replace(/ /g, '+')
   return decompress(encoded.length, 32, (index) =>
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-$'.indexOf(encoded.charAt(index)),
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-$'.indexOf(
+      encoded.charAt(index),
+    ),
   )
 }
 
-function decompress(length: number, resetValue: number, getNextValue: (index: number) => number): string | null {
+function decompress(
+  length: number,
+  resetValue: number,
+  getNextValue: (index: number) => number,
+): string | null {
   const dictionary: Array<string | number> = [0, 1, 2]
   let enlargeIn = 4
   let dictSize = 4
@@ -646,10 +838,19 @@ function decompress(length: number, resetValue: number, getNextValue: (index: nu
   while (true) {
     if (data.index > length) return ''
     c = readBits(numBits)
-    if (c === 0) { dictionary[dictSize++] = String.fromCharCode(readBits(8)); c = dictSize - 1; enlargeIn-- }
-    else if (c === 1) { dictionary[dictSize++] = String.fromCharCode(readBits(16)); c = dictSize - 1; enlargeIn-- }
-    else if (c === 2) return result.join('')
-    if (enlargeIn === 0) { enlargeIn = 2 ** numBits; numBits++ }
+    if (c === 0) {
+      dictionary[dictSize++] = String.fromCharCode(readBits(8))
+      c = dictSize - 1
+      enlargeIn--
+    } else if (c === 1) {
+      dictionary[dictSize++] = String.fromCharCode(readBits(16))
+      c = dictSize - 1
+      enlargeIn--
+    } else if (c === 2) return result.join('')
+    if (enlargeIn === 0) {
+      enlargeIn = 2 ** numBits
+      numBits++
+    }
     const numeric = typeof c === 'number' ? c : Number(c)
     if (dictionary[numeric] !== undefined) entry = String(dictionary[numeric])
     else if (numeric === dictSize) entry = w + w.charAt(0)
@@ -657,7 +858,10 @@ function decompress(length: number, resetValue: number, getNextValue: (index: nu
     result.push(entry)
     dictionary[dictSize++] = w + entry.charAt(0)
     enlargeIn--
-    if (enlargeIn === 0) { enlargeIn = 2 ** numBits; numBits++ }
+    if (enlargeIn === 0) {
+      enlargeIn = 2 ** numBits
+      numBits++
+    }
     w = entry
   }
 }

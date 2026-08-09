@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "source": "AOEMods.Essence",
+  "sourceUrl": "https://github.com/aoemods/AOEMods.Essence",
+  "sourceRevision": "local-steam-2026-08-09",
+  "capturedAt": "2026-08-09T12:08:21Z",
+  "status": "inventoried",
+  "input": {
+    "path": null,
+    "kind": "sga",
+    "name": "Attrib.sga",
+    "bytes": 100739100
+  },
+  "counts": {
+    "sga": 1,
+    "rgd": 0,
+    "rrtex": 0,
+    "rrgeom": 0,
+    "rrmaterial": 0,
+    "png": 0,
+    "files": 1,
+    "projectedRgd": 2958,
+    "projectionErrors": 754
+  },
+  "actions": [],
+  "projection": {
+    "status": "ready",
+    "sourceRevision": "local-steam-2026-08-09-rgd",
+    "counts": {
+      "jsonFiles": 28059,
+      "nodes": 7031398,
+      "records": 2958,
+      "unit": 1827,
+      "building": 1131,
+      "weapon": 0,
+      "errors": 754
+    },
+    "path": "data/research/essence/rgd-projection.json"
+  }
+}

@@ -6,6 +6,7 @@ import type { IpcResult } from '@ipc/contract'
 import {
   normalizeSourceSyncOptions,
   parseSourceSyncCompleted,
+  parseEssenceSyncStatus,
   type SourceSyncOptions,
   type SourceSyncResult,
 } from '@domain/sourceSync'
@@ -35,6 +36,33 @@ function projectRoot(): string | null {
 function argsFor(options: SourceSyncOptions, scriptPath: string): string[] {
   const args = [scriptPath]
   if (options.dryRun) args.push('--dry-run')
+  if (options.essenceAuto) args.push('--essence-auto')
+  if (options.essenceDecodeRgd) args.push('--decode-rgd')
+  if (options.essenceDecodeNativeIcons) {
+    args.push('--decode-native-icons')
+    // Keep the in-app action bounded: UIArt.sga also contains large Gaia and
+    // background trees which are not part of the icon catalogue.
+    for (const pattern of [
+      'ui/icons/civ/**/*.rrtex',
+      'ui/icons/hud/**/*.rrtex',
+      'ui/icons/resources/**/*.rrtex',
+    ]) {
+      args.push('--essence-sga-include', pattern)
+    }
+  }
+  if (options.essenceOnly) {
+    args.push(
+      '--skip-game-data',
+      '--skip-meta',
+      '--skip-guides',
+      '--skip-curated',
+      '--skip-upstream-audit',
+    )
+    // RGD-only research must not rebuild the renderer bundle. Native icon
+    // decoding is different: sync_sources.py needs its icon step to copy the
+    // staged PNGs into the offline catalogue.
+    if (!options.essenceDecodeNativeIcons) args.push('--skip-icons')
+  }
   if (options.skipIcons) args.push('--skip-icons')
   if (options.skipGameData) args.push('--skip-game-data')
   if (options.skipMeta) args.push('--skip-meta')
@@ -114,6 +142,7 @@ async function executeSync(
     dryRun: options.dryRun,
     restartRequired: !options.dryRun,
     output: processResult.output,
+    essence: parseEssenceSyncStatus(processResult.output),
   })
 }
 

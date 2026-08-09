@@ -41,16 +41,18 @@ export function TurningPointStory({
   summary,
   loading,
   myProfileId,
+  myPlayerId,
   myCiv,
 }: {
   summary: MatchSummary | null
   loading: boolean
   myProfileId: number | null
+  myPlayerId?: number | null
   myCiv: string | null
 }) {
   const { tt } = useI18n()
   const points = summary
-    ? deriveTurningPoints({ summary, myProfileId, myCiv })
+    ? deriveTurningPoints({ summary, myProfileId, myPlayerId, myCiv })
     : ([] as TurningPoint[])
   const isTeamSummary = (summary?.players.length ?? 0) > 2
 

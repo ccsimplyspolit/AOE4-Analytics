@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "sourceId": "upstream-github-audit",
   "sourceUrl": "https://github.com/",
-  "capturedAt": "2026-08-09T02:56:49Z",
+  "capturedAt": "2026-08-09T12:07:02Z",
   "status": "healthy",
-  "healthy": 12,
-  "total": 12,
+  "healthy": 24,
+  "total": 24,
   "sources": [
     {
       "id": "aoe4world-data",
@@ -21,6 +21,38 @@
       "url": "https://github.com/aoe4world/overlay",
       "branch": "main",
       "commit": "426f7d057d93e5c7ae4521a06710121026d99241",
+      "status": "ok"
+    },
+    {
+      "id": "aoe4world-explorer",
+      "repository": "aoe4world/explorer",
+      "url": "https://github.com/aoe4world/explorer",
+      "branch": "main",
+      "commit": "f5b5476188bc3d5fe279bd736aad31c98b8ede4d",
+      "status": "ok"
+    },
+    {
+      "id": "aoe4world-replays-api",
+      "repository": "aoe4world/replays-api",
+      "url": "https://github.com/aoe4world/replays-api",
+      "branch": "master",
+      "commit": "efc391296451da352c3660daf814403e37e787e8",
+      "status": "ok"
+    },
+    {
+      "id": "aoe4world-curated",
+      "repository": "aoe4world/curated",
+      "url": "https://github.com/aoe4world/curated",
+      "branch": "main",
+      "commit": "eebae4033b0a0904388e0665a6fe4e24a80d29d4",
+      "status": "ok"
+    },
+    {
+      "id": "aoe4world-docker-ruby-node",
+      "repository": "aoe4world/docker-ruby-node",
+      "url": "https://github.com/aoe4world/docker-ruby-node",
+      "branch": "master",
+      "commit": "8b699d3ac893d4281b645a8bffc57ecc54b87d0e",
       "status": "ok"
     },
     {
@@ -101,6 +133,70 @@
       "url": "https://github.com/LeandroSQ/aoe4-counter-chart",
       "branch": "main",
       "commit": "85044ca9b86588c0bcbc3e268a2a1f3cf7dd08d5",
+      "status": "ok"
+    },
+    {
+      "id": "aoemods-zig-essence",
+      "repository": "aoemods/zig-essence",
+      "url": "https://github.com/aoemods/zig-essence",
+      "branch": "main",
+      "commit": "11812ebbfc5733f9d38348e63c5a3bad0dd97a7c",
+      "status": "ok"
+    },
+    {
+      "id": "aoemods-aoetypes",
+      "repository": "aoemods/aoetypes",
+      "url": "https://github.com/aoemods/aoetypes",
+      "branch": "master",
+      "commit": "34311504d42139190381f1156ed927ff94e33dee",
+      "status": "ok"
+    },
+    {
+      "id": "aoemods-aoetypes-docs",
+      "repository": "aoemods/aoetypes-docs",
+      "url": "https://github.com/aoemods/aoetypes-docs",
+      "branch": "master",
+      "commit": "deed85c52e86206cad24b6492ef221ef62682757",
+      "status": "ok"
+    },
+    {
+      "id": "aoemods-typescript-template",
+      "repository": "aoemods/aoe4-typescript-template",
+      "url": "https://github.com/aoemods/aoe4-typescript-template",
+      "branch": "master",
+      "commit": "8424723aabc13ae5381682cc2a76127222d2ea6b",
+      "status": "ok"
+    },
+    {
+      "id": "aoemods-tstl",
+      "repository": "aoemods/AOE4-TSTL",
+      "url": "https://github.com/aoemods/AOE4-TSTL",
+      "branch": "master",
+      "commit": "f2a7314a01592f9091d5a01fd9206599622d1c8c",
+      "status": "ok"
+    },
+    {
+      "id": "aoemods-lua-docs",
+      "repository": "aoemods/lua-docs",
+      "url": "https://github.com/aoemods/lua-docs",
+      "branch": "master",
+      "commit": "5e858161b713f427efcdf99c891e6265356215a1",
+      "status": "ok"
+    },
+    {
+      "id": "aoemods-dodge-mod",
+      "repository": "aoemods/dodge-mod",
+      "url": "https://github.com/aoemods/dodge-mod",
+      "branch": "master",
+      "commit": "224fb36a8acfaf5aaa63720344e8975a9a9f00b9",
+      "status": "ok"
+    },
+    {
+      "id": "aoemods-wiki",
+      "repository": "aoemods/wiki",
+      "url": "https://github.com/aoemods/wiki",
+      "branch": "master",
+      "commit": "c4957797a44048a5bfe0c36161e9f09138dd2295",
       "status": "ok"
     }
   ]

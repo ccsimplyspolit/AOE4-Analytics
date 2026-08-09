@@ -22,26 +22,30 @@ export interface DiskCacheOptions {
   maxAgeMs?: number
 }
 
-interface CacheEnvelope {
+interface CacheEnvelope<T = unknown> {
   fetchedAt: number
-  body: unknown
+  body: T
 }
 
 /**
  * A tiny synchronous disk cache keyed by URL (D9). Each entry is a
- * JSON file `{ fetchedAt, body }`; `get` honours a per-call TTL. Corrupt or
+ * JSON file `{ fetchedAt, body }`; `get` honours a per-call TTL while retaining
+ * a bounded stale value for rate-limit/temporary-upstream fallback. Corrupt or
  * missing files are treated as a miss (never throw) so a bad cache file can't
- * break a request. Synchronous on purpose — it runs in the main process.
+ * break a request.
+ * Synchronous on purpose — it runs in the main process.
  */
 export class DiskCache {
   private readonly baseDir: string
   private readonly now: () => number
+  private readonly maxAgeMs: number
 
   constructor(options: DiskCacheOptions) {
     this.baseDir = options.baseDir
     this.now = options.now ?? Date.now
+    this.maxAgeMs = options.maxAgeMs ?? DEFAULT_MAX_AGE_MS
     mkdirSync(this.baseDir, { recursive: true })
-    this.sweep(options.maxAgeMs ?? DEFAULT_MAX_AGE_MS)
+    this.sweep(this.maxAgeMs)
   }
 
   /** Absolute path of the cache file for a key (stable hash). */
@@ -51,16 +55,18 @@ export class DiskCache {
   }
 
   get<T>(key: string, ttlMs: number): T | null {
-    const file = this.pathFor(key)
-    if (!existsSync(file)) return null
-    try {
-      const envelope = JSON.parse(readFileSync(file, 'utf8')) as CacheEnvelope
-      if (typeof envelope?.fetchedAt !== 'number') return this.evict(file)
-      if (this.now() - envelope.fetchedAt >= ttlMs) return this.evict(file)
-      return envelope.body as T
-    } catch {
-      return this.evict(file)
-    }
+    const envelope = this.read<T>(key)
+    if (!envelope || this.now() - envelope.fetchedAt >= ttlMs) return null
+    return envelope.body
+  }
+
+  /**
+   * Returns the last valid response even after its normal TTL. It remains
+   * bounded by the cache's max age. Regular refreshes still fetch current data;
+   * callers opt into this value only when the upstream request is unavailable.
+   */
+  getStale<T>(key: string): T | null {
+    return this.read<T>(key)?.body ?? null
   }
 
   set(key: string, body: unknown): void {
@@ -75,7 +81,7 @@ export class DiskCache {
     }
   }
 
-  /** Delete a stale/corrupt file (best-effort) and report it as a miss. */
+  /** Delete an expired/corrupt file (best-effort) and report it as a miss. */
   private evict(file: string): null {
     try {
       unlinkSync(file)
@@ -83,6 +89,23 @@ export class DiskCache {
       // best-effort
     }
     return null
+  }
+
+  private read<T>(key: string): CacheEnvelope<T> | null {
+    const file = this.pathFor(key)
+    if (!existsSync(file)) return null
+    try {
+      const envelope = JSON.parse(readFileSync(file, 'utf8')) as CacheEnvelope<T>
+      if (
+        typeof envelope?.fetchedAt !== 'number' ||
+        this.now() - envelope.fetchedAt >= this.maxAgeMs
+      ) {
+        return this.evict(file)
+      }
+      return envelope
+    } catch {
+      return this.evict(file)
+    }
   }
 
   /** Best-effort one-shot prune of cache files older than maxAgeMs (by mtime). */

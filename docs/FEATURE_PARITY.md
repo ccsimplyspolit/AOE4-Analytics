@@ -43,6 +43,19 @@ overlays, and some are build-order libraries.
   represented locally.
 - [AoE4Guides](https://aoe4guides.com/): community build provenance and
   validated import/export are represented in Guides and Tincture Cellar.
+- [aoe4world/data](https://github.com/aoe4world/data) and
+  [aoe4world/explorer](https://github.com/aoe4world/explorer): the renderer
+  consumes a compact, patch-pinned projection of units, buildings,
+  technologies, upgrades and explorer records.
+- [aoe4world/replays-api](https://github.com/aoe4world/replays-api): replay
+  summary normalization follows version-aware field boundaries and keeps
+  parser provenance visible in Replay Lab.
+- [aoe4world/curated](https://github.com/aoe4world/curated): approved guides,
+  analysed games and videos are synchronized into Explorer as provenance-tagged
+  reference evidence and exported through Dumps.
+- [aoe4world/docker-ruby-node](https://github.com/aoe4world/docker-ruby-node):
+  retained as an optional Ruby/Node CI reference; it is not a runtime dependency
+  of the Windows Electron app.
 
 ## Source-stack implementation audit
 
@@ -59,8 +72,25 @@ upstream application:
 - [aoemods/attrib](https://github.com/aoemods/attrib) and
   [aoemods/AOEMods.Essence](https://github.com/aoemods/AOEMods.Essence): the
   offline importer records hashes, decoded-record counts, binary asset types
-  and source revisions. Electron does not execute archive parsers or load
-  unreviewed game binaries; audited projections are the runtime boundary.
+  and source revisions. The desktop synchronizer auto-discovers `Attrib.sga`,
+  publishes compact Essence provenance to the bundled game-data layer and
+  keeps explicit RGD/RRTex decoding opt-in. With RGD decoding enabled, the
+  bounded `rgd-projection.json` index exposes local unit/building attributes
+  (PBG identity, health, costs, train time, movement, armour and weapon refs)
+  for patch audits while AoE4World remains the primary runtime source. Electron
+  does not execute archive parsers or load unreviewed game binaries; audited
+  projections are the runtime boundary. `aoemods/zig-essence` is retained as an
+  independent cross-check.
+- [aoemods/aoetypes](https://github.com/aoemods/aoetypes),
+  [aoemods/aoetypes-docs](https://github.com/aoemods/aoetypes-docs),
+  [aoemods/AOE4-TSTL](https://github.com/aoemods/AOE4-TSTL),
+  [aoemods/aoe4-typescript-template](https://github.com/aoemods/aoe4-typescript-template),
+  [aoemods/lua-docs](https://github.com/aoemods/lua-docs),
+  [aoemods/dodge-mod](https://github.com/aoemods/dodge-mod) and
+  [aoemods/wiki](https://github.com/aoemods/wiki): these are audited developer
+  references for TypeScript-to-Lua, API vocabulary, documentation and mod
+  project layout. They are surfaced in the source registry and provenance
+  manifest, but no mod code is executed or injected by RTSLytics.
 - [haZiinstinct/aoe4-war-room](https://github.com/haZiinstinct/aoe4-war-room):
   the counter layer now evaluates the complete 205×205 directed pair space,
   carries the source revision, and exposes explainable role/cost/age evidence.
@@ -78,7 +108,7 @@ upstream application:
   mirroring is still opt-in rather than an automatic background download. Data
   Studio can run the checked-in source orchestrator in dry-run or explicit
   refresh mode and reports its captured output. The orchestrator also records
-  exact GitHub HEAD revisions for all twelve referenced upstream repositories in
+  exact GitHub HEAD revisions for all twenty-four referenced upstream repositories in
   `data/research/aoe4-upstream-revisions.json`, so a source refresh can be
   reproduced and reviewed instead of relying on an unpinned `main`/`master`.
 - [FramHerel/Aoe4OverlayWinUI3](https://github.com/FramHerel/Aoe4OverlayWinUI3)
@@ -131,6 +161,11 @@ The match review now exposes the evidence layer alongside the interpretation:
 - Local replay command analysis groups decoded inputs into five-minute windows
   and reports first-to-last activity change. Unknown commands, truncated data,
   failed actions, worker allocation, and scouting remain visible limitations.
+- Summary decoding follows the current `aoe4world/replays-api` STPD contract
+  through v2034 (AoE4 15.4.8719). Every decoded summary carries the upstream
+  revision, observed STPD version and local/remote coverage. A future format
+  can optionally be delegated from the main process to a user-configured
+  `/Summary/new` service; no public replays API endpoint is assumed.
 
 This follows the same evidence-first approach as the [AoE4World Game Summary
 FAQ](https://www.aoe4world.com/faq), which distinguishes exact unstacked

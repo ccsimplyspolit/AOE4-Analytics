@@ -2,6 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import { makeReplayParserProvenance } from '../../domain/replayParserCompatibility'
 
 const electronState = vi.hoisted(() => ({ userData: '' }))
 
@@ -12,6 +13,7 @@ vi.mock('electron', () => ({
 import {
   getCachedSummaryInfo,
   readCachedParsedSummary,
+  writeCachedReplaysApiSummary,
   writeCachedSummary,
 } from '../../../electron/services/summaryCache'
 
@@ -43,5 +45,25 @@ describe('ranked summary cache recovery', () => {
     expect(info.cached).toBe(true)
     expect(info.sizeBytes).toBeGreaterThan(0)
     expect(info.path).toContain('246000001.rgs.gz')
+  })
+
+  it('persists an upstream parser result and clears it when the raw blob changes', () => {
+    const gameId = '246000002'
+    writeCachedSummary(gameId, new Uint8Array([1, 2, 3, 4]))
+    writeCachedReplaysApiSummary(gameId, {
+      gameLengthSec: 600,
+      players: [],
+      parser: makeReplayParserProvenance({
+        stpdVersions: [2034],
+        strictPlayers: 0,
+        totalPlayers: 0,
+        remote: true,
+      }),
+    })
+
+    expect(readCachedParsedSummary(gameId)?.parser?.remote).toBe(true)
+
+    writeCachedSummary(gameId, new Uint8Array([5, 6, 7, 8]))
+    expect(readCachedParsedSummary(gameId)).toBeNull()
   })
 })

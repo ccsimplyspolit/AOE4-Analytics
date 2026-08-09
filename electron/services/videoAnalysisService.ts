@@ -20,6 +20,7 @@ import type {
 import type { IpcResult } from '@ipc/contract'
 import { err, ok } from './result'
 import { saveVideoAnalysis } from './videoAnalysisStore'
+import { getTwitchApiHeaders, getYouTubeApiKey } from './externalApiService'
 
 type CaptionTrack = {
   baseUrl: string
@@ -36,6 +37,7 @@ type VideoMeta = {
   description: string
   publishedAt: string | null
   transcriptLanguage: string | null
+  viewCount: number | null
 }
 
 type CaptionResult = {
@@ -235,6 +237,52 @@ async function fetchVideoMeta(
   parsed: { provider: VideoProvider; id: string },
 ): Promise<VideoMeta> {
   if (parsed.provider === 'youtube') {
+    const apiKey = getYouTubeApiKey()
+    if (apiKey) {
+      try {
+        const params = new URLSearchParams({
+          part: 'snippet,statistics',
+          id: parsed.id,
+          key: apiKey,
+        })
+        const response = await fetchWithTimeout(
+          globalThis.fetch.bind(globalThis),
+          `https://www.googleapis.com/youtube/v3/videos?${params.toString()}`,
+          { headers: { 'User-Agent': USER_AGENT, Accept: 'application/json' } },
+          REQUEST_TIMEOUT_MS,
+        )
+        if (response.ok) {
+          const payload = (await response.json()) as {
+            items?: Array<{
+              snippet?: {
+                title?: string
+                channelTitle?: string
+                description?: string
+                publishedAt?: string
+              }
+              statistics?: { viewCount?: string }
+            }>
+          }
+          const item = payload.items?.[0]
+          if (item?.snippet) {
+            return {
+              provider: 'youtube',
+              id: parsed.id,
+              url: url.toString(),
+              title: item.snippet.title || `YouTube video ${parsed.id}`,
+              channel: item.snippet.channelTitle || null,
+              description: item.snippet.description || '',
+              publishedAt: item.snippet.publishedAt || null,
+              transcriptLanguage: null,
+              viewCount: item.statistics?.viewCount ? Number(item.statistics.viewCount) : null,
+            }
+          }
+        }
+      } catch {
+        // Public page metadata remains a useful fallback when the API key is
+        // missing, rate-limited, or the video is no longer available.
+      }
+    }
     const html = await fetchText(url.toString())
     const title =
       playerJsonValue(html, 'title') ??
@@ -253,23 +301,18 @@ async function fetchVideoMeta(
       description,
       publishedAt,
       transcriptLanguage: null,
+      viewCount: null,
     }
   }
 
-  const clientId = process.env.RTSLYTICS_TWITCH_CLIENT_ID ?? process.env.TWITCH_CLIENT_ID
-  const token = process.env.RTSLYTICS_TWITCH_ACCESS_TOKEN ?? process.env.TWITCH_ACCESS_TOKEN
-  if (clientId && token) {
+  const twitchHeaders = await getTwitchApiHeaders()
+  if (twitchHeaders) {
     try {
       const response = await fetchWithTimeout(
         globalThis.fetch.bind(globalThis),
         `https://api.twitch.tv/helix/videos?id=${encodeURIComponent(parsed.id)}`,
         {
-          headers: {
-            'User-Agent': USER_AGENT,
-            Accept: 'application/json',
-            'Client-ID': clientId,
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { ...twitchHeaders, 'User-Agent': USER_AGENT, Accept: 'application/json' },
         },
         REQUEST_TIMEOUT_MS,
       )
@@ -280,6 +323,7 @@ async function fetchVideoMeta(
             user_name?: string
             created_at?: string
             description?: string
+            view_count?: number
           }>
         }
         const item = payload.data?.[0]
@@ -293,6 +337,7 @@ async function fetchVideoMeta(
             description: item.description || '',
             publishedAt: item.created_at || null,
             transcriptLanguage: null,
+            viewCount: typeof item.view_count === 'number' ? item.view_count : null,
           }
         }
       }
@@ -316,6 +361,7 @@ async function fetchVideoMeta(
     description: metaContent(html, 'og:description') ?? '',
     publishedAt: metaContent(html, 'article:published_time'),
     transcriptLanguage: null,
+    viewCount: null,
   }
 }
 
@@ -776,7 +822,7 @@ export async function extractVideoAnalysis(
           url: meta.url,
           channel: meta.channel,
           publishedAt: meta.publishedAt ?? new Date().toISOString(),
-          viewCount: null,
+          viewCount: meta.viewCount,
           transcriptLanguage: captions.language ?? meta.transcriptLanguage,
           transcriptSource: captions.segments.length > 0 ? 'auto' : 'none',
           transcriptProvider:

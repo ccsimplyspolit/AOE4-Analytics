@@ -90,7 +90,7 @@ export function ProfileIdentityCard({
 export function CivOverviewTable({ rows }: { rows: CivOverviewRow[] }) {
   const { tt } = useI18n()
   if (rows.length === 0) return null
-  const display = rows.slice(0, 10)
+  const display = rows
 
   return (
     <Card>
@@ -101,7 +101,7 @@ export function CivOverviewTable({ rows }: { rows: CivOverviewRow[] }) {
             {tt('Civilizations')}
           </h3>
           <span className="text-[11px] text-muted-foreground">
-            {rows.length} civ{rows.length === 1 ? '' : 's'} played
+            {rows.length} {tt(rows.length === 1 ? 'civilization' : 'civilizations')} {tt('played')}
           </span>
         </div>
 
@@ -126,15 +126,13 @@ export function CivOverviewTable({ rows }: { rows: CivOverviewRow[] }) {
           </table>
         </div>
 
-        {rows.length > display.length && (
-          <p className="text-[11px] text-muted-foreground">+{rows.length - display.length} more</p>
-        )}
       </CardContent>
     </Card>
   )
 }
 
 function CivRow({ r }: { r: CivOverviewRow }) {
+  const { tt } = useI18n()
   return (
     <tr className="border-b border-border/50 last:border-b-0 hover:bg-secondary/30">
       <td className="px-3 py-2.5 align-top">
@@ -147,7 +145,7 @@ function CivRow({ r }: { r: CivOverviewRow }) {
       </td>
       <td className="px-2 py-2.5 align-top">
         <span
-          title={r.style.detail}
+          title={tt(r.style.detail)}
           className={cn(
             'inline-block rounded-sm px-2 py-0.5 text-[11px] font-semibold',
             r.style.tone === 'fight' && 'bg-loss/15 text-loss',
@@ -156,7 +154,7 @@ function CivRow({ r }: { r: CivOverviewRow }) {
             r.style.tone === 'balanced' && 'bg-secondary text-muted-foreground',
           )}
         >
-          {r.style.label}
+          {tt(r.style.label)}
         </span>
       </td>
       <td className="px-2 py-2.5 align-top">
@@ -177,21 +175,21 @@ function CivRow({ r }: { r: CivOverviewRow }) {
         }
         sub={
           r.avgResourcesGathered != null
-            ? `${formatCount(Math.round(r.avgResourcesGathered))} gathered`
+            ? `${formatCount(Math.round(r.avgResourcesGathered))} ${tt('gathered')}`
             : r.avgVillagersProduced != null
-              ? `${r.avgVillagersProduced} villagers`
+              ? `${r.avgVillagersProduced} ${tt('villagers')}`
               : null
         }
-        suffix={r.avgResourcesPerMinute != null ? 'res/min' : 'vil/min'}
+        suffix={r.avgResourcesPerMinute != null ? tt('res/min') : tt('vil/min')}
       />
       <Metric
         value={r.avgUnitsProduced}
-        sub={r.avgKills != null ? `${r.avgKills} kills` : null}
-        suffix="units"
+        sub={r.avgKills != null ? `${r.avgKills} ${tt('kills')}` : null}
+        suffix={tt('units')}
       />
       <Metric
         value={r.avgDurationSec != null ? formatDurationShort(r.avgDurationSec) : null}
-        sub={r.lateGameShare != null ? `${r.lateGameShare}% 20m+` : null}
+        sub={r.lateGameShare != null ? `${r.lateGameShare}% ${tt('20m+')}` : null}
       />
       <td className="px-3 py-2.5 text-right align-top">
         <span
@@ -207,7 +205,7 @@ function CivRow({ r }: { r: CivOverviewRow }) {
           {r.ratingDelta == null ? '-' : `${r.ratingDelta > 0 ? '+' : ''}${r.ratingDelta}`}
         </span>
         <div className="mt-0.5 text-[11px] tabular-nums text-muted-foreground">
-          {r.avgApm ?? '-'} APM - {r.avgKd ?? '-'} K/D
+          {r.avgApm ?? '-'} {tt('APM')} - {r.avgKd ?? '-'} {tt('K/D')}
         </div>
       </td>
     </tr>

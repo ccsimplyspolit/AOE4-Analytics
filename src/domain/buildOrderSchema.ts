@@ -20,6 +20,16 @@ export interface BuildStep {
   resources: BuildStepResources
   notes: string[]
   time?: string
+  /** AoE4Guides prefixes worked-out timestamps with `~`. */
+  timeProvenance?: 'stated' | 'derived'
+}
+
+/** Persisted age-arrival metadata inspired by AoE4Guides' age timeline model. */
+export interface BuildAgeTiming {
+  age: 2 | 3 | 4
+  seconds: number
+  derived: boolean
+  stepIndex: number
 }
 
 export interface BuildOrder {
@@ -66,6 +76,8 @@ export interface BuildOrder {
   /** Local video-import analysis; omitted from curated builds. */
   tactics?: VideoTactic[]
   transcriptText?: string
+  /** Optional precomputed age arrivals; the step list remains the source fallback. */
+  ageTimings?: BuildAgeTiming[]
   build_order: BuildStep[]
 }
 
@@ -146,6 +158,13 @@ export function validateBuildOrder(input: unknown): ValidationResult {
       if (s['time'] !== undefined && typeof s['time'] !== 'string') {
         errors.push(`${where}.time must be a string when present`)
       }
+      if (
+        s['timeProvenance'] !== undefined &&
+        s['timeProvenance'] !== 'stated' &&
+        s['timeProvenance'] !== 'derived'
+      ) {
+        errors.push(`${where}.timeProvenance must be stated or derived when present`)
+      }
     })
   }
 
@@ -193,6 +212,31 @@ export function validateBuildOrder(input: unknown): ValidationResult {
   }
   if (o['map'] !== undefined && o['map'] !== null && typeof o['map'] !== 'string') {
     errors.push('`map` must be a string or null when present')
+  }
+  if (o['ageTimings'] !== undefined) {
+    if (!Array.isArray(o['ageTimings'])) {
+      errors.push('`ageTimings` must be an array when present')
+    } else {
+      o['ageTimings'].forEach((raw, index) => {
+        if (!raw || typeof raw !== 'object' || Array.isArray(raw)) {
+          errors.push(`ageTimings[${index}] must be an object`)
+          return
+        }
+        const timing = raw as Record<string, unknown>
+        if (![2, 3, 4].includes(timing['age'] as number)) {
+          errors.push(`ageTimings[${index}].age must be 2, 3, or 4`)
+        }
+        if (!isNumber(timing['seconds']) || (timing['seconds'] as number) < 0) {
+          errors.push(`ageTimings[${index}].seconds must be a non-negative number`)
+        }
+        if (typeof timing['derived'] !== 'boolean') {
+          errors.push(`ageTimings[${index}].derived must be a boolean`)
+        }
+        if (!Number.isInteger(timing['stepIndex']) || (timing['stepIndex'] as number) < 0) {
+          errors.push(`ageTimings[${index}].stepIndex must be a non-negative integer`)
+        }
+      })
+    }
   }
   for (const key of ['score', 'scoreAllTime', 'views', 'likes', 'upvotes'] as const) {
     if (o[key] !== undefined && o[key] !== null && !isNumber(o[key]))

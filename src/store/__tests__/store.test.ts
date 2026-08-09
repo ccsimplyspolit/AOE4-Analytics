@@ -218,6 +218,35 @@ describe('sanitizePatch', () => {
     expect(sanitizePatch({ overlay: { buildOrderViewMode: 'script' as never } }).overlay).toEqual({})
   })
 
+  it('persists valid custom overlay builds and filters malformed cycle entries', () => {
+    const build = {
+      schemaVersion: 1,
+      name: 'Imported English opener',
+      civilization: 'English',
+      build_order: [
+        {
+          time: '0:00',
+          population_count: 6,
+          villager_count: 6,
+          age: 1,
+          resources: { food: 6, wood: 0, gold: 0, stone: 0, builder: 0 },
+          notes: ['Start'],
+        },
+      ],
+    }
+    const out = sanitizePatch({
+      overlay: {
+        customBuildOrders: [build, { name: 'broken' }, build] as never,
+        buildOrderCycle: [' Imported English opener ', 'missing', 42] as never,
+        buildOrderDisabled: ['Imported English opener', 'Imported English opener'] as never,
+      },
+    })
+    expect(out.overlay?.customBuildOrders).toHaveLength(1)
+    expect(out.overlay?.customBuildOrders?.[0]?.name).toBe('Imported English opener')
+    expect(out.overlay?.buildOrderCycle).toEqual(['Imported English opener', 'missing'])
+    expect(out.overlay?.buildOrderDisabled).toEqual(['Imported English opener'])
+  })
+
   it('sanitizes overlay widget and build-order presentation settings', () => {
     const out = sanitizePatch({
       overlay: {

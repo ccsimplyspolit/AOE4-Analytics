@@ -67,6 +67,11 @@ const REC_CIV_TO_SLUG: Record<string, string> = {
   ayyubids: 'ayyubids',
   templar: 'knights_templar',
   // variants (token → variant slug) — confirmed from real replays
+  // Order of the Dragon is serialized as the HRE variant in replay headers.
+  od: 'order_of_the_dragon',
+  order_of_the_dragon: 'order_of_the_dragon',
+  hre_ha_01: 'order_of_the_dragon',
+  holy_roman_empire_ha_01: 'order_of_the_dragon',
   japanese_ha_sen: 'sengoku_daimyo',
   sultanate_ha_tug: 'tughlaq_dynasty',
   french_ha_01: 'jeanne_darc',

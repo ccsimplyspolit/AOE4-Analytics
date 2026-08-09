@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { loadFixture } from '../../api/__tests__/fixtures'
 import type { CivStatsResponse } from '../../api/types'
-import { buildTierList, tierForWinRate } from '../tierList'
+import { aggregateCivStatsByMapPool, buildTierList, tierForWinRate } from '../tierList'
 
 const stats = loadFixture<CivStatsResponse>('stats-rmsolo-civilizations.json')
 
@@ -46,5 +46,57 @@ describe('buildTierList (real fixture)', () => {
   it('flags low-sample civs by the threshold', () => {
     const flagged = buildTierList(stats, { minGames: 1_000_000 })
     expect(flagged.civs.every((c) => c.lowSample)).toBe(true)
+  })
+})
+
+describe('aggregateCivStatsByMapPool', () => {
+  it('weights civ meta by actual map games instead of averaging map percentages', () => {
+    const slice = (mapId: number, games: number, wins: number): CivStatsResponse => ({
+      leaderboard: 'rm_solo',
+      rank_level: null,
+      rating: null,
+      patch: '11308',
+      map_id: mapId,
+      data: [
+        {
+          civilization: 'english',
+          win_rate: (wins / games) * 100,
+          pick_rate: 50,
+          win_count: wins,
+          games_count: games,
+          player_games_count: games,
+          duration_median: 600,
+          duration_average: 600,
+        },
+      ],
+    })
+
+    const result = aggregateCivStatsByMapPool([slice(1, 100, 60), slice(2, 10, 0)])
+    expect(result?.data[0]?.win_rate).toBeCloseTo((60 / 110) * 100)
+    expect(result?.data[0]?.games_count).toBe(110)
+  })
+
+  it('derives wins when map-specific API slices omit win_count', () => {
+    const result = aggregateCivStatsByMapPool([
+      {
+        leaderboard: 'rm_solo',
+        rank_level: null,
+        rating: null,
+        patch: '11308',
+        data: [
+          {
+            civilization: 'english',
+            win_rate: 55,
+            pick_rate: 50,
+            games_count: 100,
+            player_games_count: 100,
+            duration_median: 600,
+            duration_average: 600,
+          },
+        ],
+      },
+    ])
+    expect(result?.data[0]?.win_count).toBeCloseTo(55)
+    expect(result?.data[0]?.win_rate).toBeCloseTo(55)
   })
 })

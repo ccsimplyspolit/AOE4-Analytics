@@ -112,6 +112,17 @@ function player(
 }
 
 describe('deriveMatchReview', () => {
+  it('can focus a local/AI summary row without a profile id', () => {
+    const summary: MatchSummary = {
+      gameLengthSec: 900,
+      players: [player(1, null), player(2, null)],
+    }
+
+    const review = deriveMatchReview(summary, null, 'english', [], 2)
+
+    expect(review?.me.player.playerId).toBe(2)
+  })
+
   it('derives conversion, bank, troop trade and opening metrics', () => {
     const summary: MatchSummary = {
       gameLengthSec: 900,

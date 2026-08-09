@@ -22,6 +22,11 @@ import { OverlayController } from './services/overlayController'
 import { PollManager } from './services/pollService'
 import { ApmTracker } from './services/apmService'
 import { disposeStreamManager } from './services/streamManagerService'
+import { disposeReplaysApiSidecar } from './services/replaysApiService'
+import {
+  startRankedMapPoolAutoRefresh,
+  stopRankedMapPoolAutoRefresh,
+} from './services/rankedMapPoolService'
 
 // Diagnostic: isolate data to a temp dir when running a live verify/smoke.
 if (process.env['RTSLYTICS_VERIFY'] || process.env['RTSLYTICS_SMOKE'] === '1') {
@@ -44,6 +49,7 @@ let poll: PollManager | null = null
 let apmTracker: ApmTracker | null = null
 
 function bootstrap(): void {
+  const isSmoke = process.env['RTSLYTICS_SMOKE'] === '1'
   applySecurityPolicy(session.defaultSession)
   registerIpcHandlers()
 
@@ -62,16 +68,20 @@ function bootstrap(): void {
   overlay.init()
   setOverlayController(overlay)
 
-  registerHotkeys(overlay)
+  // Smoke runs must be repeatable while a dev instance is open. The
+  // diagnostic path exercises the overlay directly, so claiming global
+  // shortcuts here would only create false conflicts with the user's running
+  // app and other desktop tools.
+  if (!isSmoke) registerHotkeys(overlay)
 
   apmTracker = new ApmTracker(overlay)
   setApmTracker(apmTracker)
 
   poll = new PollManager(overlay, apmTracker)
   setPollManager(poll)
-  const isSmoke = process.env['RTSLYTICS_SMOKE'] === '1'
   if (!isSmoke) {
     poll.start() // don't make live API calls during the automated smoke
+    startRankedMapPoolAutoRefresh()
     // Start the live-APM global input hook if the user enabled it (Settings).
     apmTracker.setEnabled(getSettings().getAll().overlay.apm)
   }
@@ -175,10 +185,12 @@ if (!gotLock) {
 
   app.on('will-quit', () => {
     poll?.stop()
+    stopRankedMapPoolAutoRefresh()
     apmTracker?.stop()
     overlay?.dispose()
     unregisterHotkeys()
     closeAllHistorySync()
     disposeStreamManager()
+    disposeReplaysApiSidecar()
   })
 }

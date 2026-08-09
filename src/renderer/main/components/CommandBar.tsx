@@ -1,9 +1,9 @@
 import { useEffect, useState, type ReactNode } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { Copy, Info, Landmark, Minus, Settings as SettingsIcon, Square, X } from 'lucide-react'
 import { ipc } from '@shared/ipc'
 import { cn } from '@shared/lib/utils'
-import { navItems } from '../nav'
+import { navWorkspaces, workspaceForPath } from '../nav'
 import { useSettings } from '../queries/useProfile'
 import { AccountSwitcher } from './AccountSwitcher'
 import { LOCALE_OPTIONS, useI18n } from '../../i18n'
@@ -18,6 +18,7 @@ export function CommandBar() {
   const { locale, setLocale, tt } = useI18n()
   const hasProfile = settings?.profileId != null
   const [maximized, setMaximized] = useState(false)
+  const location = useLocation()
 
   useEffect(() => {
     ipc
@@ -27,55 +28,53 @@ export function CommandBar() {
     return ipc.onWindowMaximizedChanged(setMaximized)
   }, [])
 
-  const main = navItems.filter((i) => i.group === 'main')
+  const activeWorkspace = workspaceForPath(location.pathname)
 
   return (
-    <header className="drag-region relative z-40 flex h-12 shrink-0 select-none items-stretch border-b border-border bg-card/95">
+    <header className="drag-region relative z-40 flex h-12 shrink-0 select-none items-stretch overflow-hidden border-b border-border bg-card/95">
       {/* Brand — the only place the name appears. */}
-      <div className="flex items-center gap-2.5 pl-4 pr-6">
+      <div className="flex shrink-0 items-center gap-2.5 pl-4 pr-6">
         <Landmark className="h-4 w-4 text-primary" />
         <span className="whitespace-nowrap font-display text-[13px] font-bold tracking-[0.18em] text-foreground">
           RTSLytics
         </span>
       </div>
 
-      {/* Nav ribbon */}
+      {/* Workspace ribbon: stable top-level destinations only. */}
       {hasProfile && (
-        <nav className="no-drag flex items-stretch">
-          {main.map((item) => (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              end={item.path === '/'}
-              className={({ isActive }) =>
-                cn(
-                  'relative flex items-center px-4 font-display text-[12px] font-semibold tracking-[0.1em] transition-colors',
-                  isActive ? 'text-primary' : 'text-muted-foreground hover:text-foreground',
-                )
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  {tt(item.label)}
-                  {/* Gold underline rail, like the game's ribbon menus. */}
-                  <span
-                    className={cn(
-                      'absolute inset-x-3 bottom-0 h-0.5 bg-primary transition-opacity',
-                      isActive ? 'opacity-100' : 'opacity-0',
-                    )}
-                  />
-                </>
-              )}
-            </NavLink>
-          ))}
-        </nav>
+        <div className="no-drag min-w-0 flex-1 overflow-x-auto overflow-y-hidden [scrollbar-width:thin]">
+          <nav aria-label={tt('Main navigation')} className="flex min-w-max items-stretch">
+            {navWorkspaces.map((workspace) => (
+              <NavLink
+                key={workspace.id}
+                to={workspace.defaultPath}
+                aria-current={activeWorkspace === workspace.id ? 'page' : undefined}
+                className={cn(
+                  'relative flex shrink-0 items-center whitespace-nowrap px-3 font-display text-[12px] font-semibold tracking-[0.1em] transition-colors',
+                  activeWorkspace === workspace.id
+                    ? 'text-primary'
+                    : 'text-muted-foreground hover:text-foreground',
+                )}
+              >
+                {tt(workspace.label)}
+                {/* Gold underline rail, like the game's ribbon menus. */}
+                <span
+                  className={cn(
+                    'absolute inset-x-2 bottom-0 h-0.5 bg-primary transition-opacity',
+                    activeWorkspace === workspace.id ? 'opacity-100' : 'opacity-0',
+                  )}
+                />
+              </NavLink>
+            ))}
+          </nav>
+        </div>
       )}
 
       {/* Drag gutter */}
-      <div className="min-w-6 flex-1" />
+      {!hasProfile && <div className="min-w-6 flex-1" />}
 
       {/* Right cluster: settings/about, account, window controls */}
-      <div className="no-drag flex items-center gap-1 pr-1">
+      <div className="no-drag flex shrink-0 items-center gap-1 pr-1">
         <label className="mr-1 flex items-center gap-1.5 text-[10px] text-muted-foreground">
           <span className="sr-only">{tt('Language')}</span>
           <select

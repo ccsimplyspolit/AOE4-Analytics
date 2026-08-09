@@ -11,6 +11,7 @@ import {
   Info,
   ListOrdered,
   Map as MapIcon,
+  RefreshCw,
   ShieldHalf,
   Swords,
   Table2,
@@ -22,6 +23,11 @@ import { TIERS } from '@domain/tierList'
 import type { MapStat } from '@domain/mapStats'
 import type { RankedMapPoolResolution } from '@domain/rankedMapPool'
 import { isMapInPool } from '@domain/rankedMapPool'
+import {
+  RANK_FILTERS,
+  rankLevelFilterable,
+  ratingFiltersForLeaderboard,
+} from '@domain/statsFilters'
 import { CIV_PROFILES } from '@data/civProfiles'
 import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
 import { counterPlanForCiv } from '@domain/civUnits'
@@ -29,7 +35,7 @@ import { buildIndexForCiv } from '@domain/buildOrderSchema'
 import { COUNTER_MATRIX } from '@domain/counters'
 import { counterRowsForCivs } from '@domain/unitCounterModel'
 import { civDisplayName } from '@domain/civ'
-import { buildPersonalMatchup } from '@domain/matchupLab'
+import { buildPersonalMatchup, isGlobalMatchupLeaderboard } from '@domain/matchupLab'
 import { filterPersonalHistory } from '@domain/historyFilters'
 import {
   formatDurationShort,
@@ -58,31 +64,6 @@ const LADDERS: { label: string; value: StatsLeaderboard }[] = [
   { label: 'Ranked 4v4', value: 'rm_4v4' },
 ]
 
-const BRACKETS: { label: string; value: RankLevel | undefined }[] = [
-  { label: 'All ranks', value: undefined },
-  { label: 'Gold', value: 'gold' },
-  { label: 'Platinum', value: 'platinum' },
-  { label: 'Diamond', value: 'diamond' },
-  { label: 'Conqueror', value: 'conqueror' },
-]
-
-const RATINGS = [
-  { label: 'All ratings', value: undefined },
-  { label: '<699', value: '<699' },
-  { label: '700-899', value: '700-899' },
-  { label: '900-999', value: '900-999' },
-  { label: '1000-1099', value: '1000-1099' },
-  { label: '1100-1199', value: '1100-1199' },
-  { label: '1200-1299', value: '1200-1299' },
-  { label: '1300-1399', value: '1300-1399' },
-  { label: '>1400', value: '>1400' },
-  { label: '>1100', value: '>1100' },
-  { label: '>1200', value: '>1200' },
-  { label: '>1300', value: '>1300' },
-  { label: '>1500', value: '>1500' },
-  { label: '>1600', value: '>1600' },
-] as const
-
 const PATCHES = [
   { label: 'Current patch', value: undefined },
   { label: '16.2.10604–11308', value: '10604,10884,11214,11308' },
@@ -97,10 +78,6 @@ const TABS = [
   { key: 'maps', label: 'Maps', icon: MapIcon },
 ] as const
 type TabKey = (typeof TABS)[number]['key']
-
-function rankFilterable(lb: StatsLeaderboard): boolean {
-  return lb === 'rm_solo' || lb === 'qm_1v1'
-}
 
 function rankedMapPoolFilterable(lb: StatsLeaderboard): boolean {
   return lb === 'rm_solo' || /^rm_[234]v[234]$/.test(lb)
@@ -128,11 +105,12 @@ export function CivMeta() {
     ? (ladderParam as StatsLeaderboard)
     : 'rm_solo'
   const rankParam = searchParams.get('rank')
-  const rankLevel = rankFilterable(leaderboard)
-    ? BRACKETS.find((b) => b.value === rankParam)?.value
+  const rankLevel = rankLevelFilterable(leaderboard)
+    ? RANK_FILTERS.find((b) => b.value === rankParam)?.value
     : undefined
   const ratingParam = searchParams.get('rating')
-  const rating = RATINGS.some((entry) => entry.value === ratingParam)
+  const ratingOptions = ratingFiltersForLeaderboard(leaderboard)
+  const rating = ratingOptions.some((entry) => entry.value === ratingParam)
     ? ratingParam || undefined
     : undefined
   const patchParam = searchParams.get('patch')
@@ -148,7 +126,10 @@ export function CivMeta() {
         const next = new URLSearchParams(prev)
         if (value === 'rm_solo') next.delete('ladder')
         else next.set('ladder', value)
-        if (!rankFilterable(value)) next.delete('rank')
+        if (!rankLevelFilterable(value)) next.delete('rank')
+        if (!ratingFiltersForLeaderboard(value).some((entry) => entry.value === next.get('rating'))) {
+          next.delete('rating')
+        }
         return next
       },
       { replace: true },
@@ -296,12 +277,12 @@ export function CivMeta() {
           </select>
           <select
             value={rankLevel ?? ''}
-            disabled={!rankFilterable(leaderboard)}
+            disabled={!rankLevelFilterable(leaderboard)}
             onChange={(e) => setRankLevel((e.target.value || undefined) as RankLevel | undefined)}
             aria-label={tt('Rank bracket')}
             className="h-9 rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
           >
-            {BRACKETS.map((b) => (
+            {RANK_FILTERS.map((b) => (
               <option key={b.label} value={b.value ?? ''}>
                 {tt(b.label)}
               </option>
@@ -313,7 +294,7 @@ export function CivMeta() {
             aria-label={tt('Rating range')}
             className="h-9 rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            {RATINGS.map((entry) => (
+            {ratingOptions.map((entry) => (
               <option key={entry.label} value={entry.value ?? ''}>
                 {entry.label === 'All ratings' ? tt(entry.label) : entry.label}
               </option>
@@ -347,10 +328,20 @@ export function CivMeta() {
               {mapPoolOnly ? tt('Current map pool') : tt('All patch maps')}
             </button>
           )}
+          <button
+            type="button"
+            onClick={() => void refetch()}
+            disabled={isFetching}
+            className="inline-flex h-9 items-center gap-1.5 rounded-md border border-border px-3 text-sm transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-50"
+            title={tt('Refresh')}
+          >
+            <RefreshCw className={cn('h-3.5 w-3.5', isFetching && 'animate-spin')} />
+            {tt('Refresh')}
+          </button>
         </div>
       </div>
 
-      {!rankFilterable(leaderboard) && (
+      {!rankLevelFilterable(leaderboard) && (
         <p className="text-xs text-muted-foreground">
           {tt('Rank-band filtering isn’t available for team ladders — showing all ranks.')}
         </p>
@@ -1009,6 +1000,7 @@ function MatchupsTab({
   const matchup = global.data?.ok ? global.data.data : null
   const wr = matchup?.winRate ?? null
   const isFetching = global.isFetching
+  const globalMatchupsAvailable = isGlobalMatchupLeaderboard(leaderboard)
 
   const plan = useMemo(() => counterPlanForCiv(oppCiv), [oppCiv])
   const unitCounterRows = useMemo(() => counterRowsForCivs(oppCiv, myCiv), [myCiv, oppCiv])
@@ -1056,12 +1048,30 @@ function MatchupsTab({
       </div>
 
       <section className="rounded-lg border border-border bg-card/60 p-5 text-center">
-        <div className="flex items-center justify-center gap-3 text-lg font-semibold">
+        <div className="flex flex-wrap items-center justify-center gap-3 text-lg font-semibold">
           <span>{gameName(civDisplayName(myCiv))}</span>
           <Swords className="h-4 w-4 text-muted-foreground" />
           <span>{gameName(civDisplayName(oppCiv))}</span>
+          {globalMatchupsAvailable && (
+            <button
+              type="button"
+              onClick={() => void global.refetch()}
+              disabled={isFetching}
+              className="inline-flex h-8 items-center gap-1.5 rounded-md border border-border px-2.5 text-xs font-normal transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-50"
+              title={tt('Refresh')}
+            >
+              <RefreshCw className={cn('h-3.5 w-3.5', isFetching && 'animate-spin')} />
+              {tt('Refresh')}
+            </button>
+          )}
         </div>
-        {global.data && !global.data.ok ? (
+        {!globalMatchupsAvailable ? (
+          <p className="mt-3 text-left text-sm text-muted-foreground">
+            {tt(
+              'AoE4World does not publish a global matchup matrix for team queues. Your stored history below remains available.',
+            )}
+          </p>
+        ) : global.data && !global.data.ok ? (
           <div className="mt-4 text-left">
             <ErrorBox message={global.data.error.message} onRetry={() => global.refetch()} />
           </div>
@@ -1353,7 +1363,7 @@ function PersonalMatchupSection({
           </div>
 
           <div className="divide-y divide-border rounded-md border border-border">
-            {personal.matches.slice(0, 10).map((match) => (
+            {personal.matches.map((match) => (
               <Link
                 key={match.id}
                 to={`/game/${encodeURIComponent(match.id)}`}
@@ -1380,11 +1390,6 @@ function PersonalMatchupSection({
               </Link>
             ))}
           </div>
-          {personal.matches.length > 10 && (
-            <p className="text-xs text-muted-foreground">
-              Showing the 10 most recent of {personal.matches.length} matching games.
-            </p>
-          )}
         </>
       )}
     </section>

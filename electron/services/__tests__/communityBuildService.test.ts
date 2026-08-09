@@ -13,11 +13,12 @@ describe('AOE4 Builds importer', () => {
   it('normalizes the provider text export into overlay build steps', async () => {
     vi.stubGlobal(
       'fetch',
-      vi.fn(async () =>
-        new Response(
-          'English Dark Age Boom\n\n* (2/2/2/0)\t\tQueue Scout from TC\n* (6/3/2/0)\t4:00\tAge up with Council Hall\n\nCreated By: BeastyQT',
-          { status: 200 },
-        ),
+      vi.fn(
+        async () =>
+          new Response(
+            'English Dark Age Boom\n\n* (2/2/2/0)\t\tQueue Scout from TC\n* (6/3/2/0)\t4:00\tAge up with Council Hall\n\nCreated By: BeastyQT',
+            { status: 200 },
+          ),
       ),
     )
     const result = await importCommunityBuild('https://aoeivbuilds.com/build_orders/16')
@@ -33,16 +34,17 @@ describe('AOE4 Builds importer', () => {
   it('parses the server-rendered catalogue and filters it by search text', async () => {
     vi.stubGlobal(
       'fetch',
-      vi.fn(async () =>
-        new Response(
-          `<div id="build_order_16" class="build-order">
+      vi.fn(
+        async () =>
+          new Response(
+            `<div id="build_order_16" class="build-order">
             <div class="build-order__image"><img alt="English" src="/img/eng.png"></div>
             <div class="build-order__title"><a href="/build_orders/16">English Dark Age Farm Boom</a><p>Fast farm economy</p></div>
             <div class="build-order__details"><p>Open</p><p>Economic</p><p>Easy</p></div>
             <div class="build-order__creation-info"><p>Created By: BeastyQT</p><p>Uploaded By: Alice</p><p>Views: 47712</p><p>Likes: <span>98%</span></p></div>
           </div><a href="/?page=2">Next</a>`,
-          { status: 200, headers: { 'Content-Type': 'text/html' } },
-        ),
+            { status: 200, headers: { 'Content-Type': 'text/html' } },
+          ),
       ),
     )
     const result = await listCommunityBuilds({ query: 'farm', page: 1 })
@@ -57,39 +59,66 @@ describe('AOE4 Builds importer', () => {
       author: 'BeastyQT',
       views: 47712,
     })
-    expect(result.data.hasNext).toBe(true)
+  })
+
+  it('loads every AOE4 Builds catalogue page before filtering', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(
+        async (url: string) =>
+          new Response(
+            url.includes('page=1')
+              ? `<div id="build_order_16" class="build-order">
+                <div class="build-order__title"><a href="/build_orders/16">English Farm Boom</a></div>
+              </div><a href="/?page=2">Next</a>`
+              : `<div id="build_order_17" class="build-order">
+                <div class="build-order__title"><a href="/build_orders/17">French Knight Rush</a></div>
+              </div>`,
+            { status: 200, headers: { 'Content-Type': 'text/html' } },
+          ),
+      ),
+    )
+    const result = await listCommunityBuilds({ query: '' })
+    expect(result.ok).toBe(true)
+    if (!result.ok) return
+    expect(result.data.items.map((item) => item.id)).toEqual(['16', '17'])
   })
 })
 
 describe('AoE4Guides importer', () => {
-  it('lists a typed online catalogue slice and filters it locally', async () => {
+  it('lists all online catalogue results returned by the provider and filters them locally', async () => {
     vi.stubGlobal(
       'fetch',
-      vi.fn(async () =>
-        new Response(
-          JSON.stringify([
-            {
-              id: 'eng-1',
-              title: 'English Longbow Pressure',
-              civ: 'ENG',
-              creatorName: 'BeastyQT',
-              score: 92,
-              views: 1000,
-              likes: 88,
-              steps: [
-                {
-                  type: 'age',
-                  age: 1,
-                  steps: [{ time: '0:00', food: 6, description: 'Open with sheep' }],
-                },
-              ],
-            },
-          ]),
-          { status: 200, headers: { 'Content-Type': 'application/json' } },
-        ),
+      vi.fn(
+        async () =>
+          new Response(
+            JSON.stringify(
+              Array.from({ length: 11 }, (_, index) => ({
+                id: `eng-${index + 1}`,
+                title: `English Longbow Pressure ${index + 1}`,
+                civ: 'ENG',
+                creatorName: 'BeastyQT',
+                score: 92,
+                views: 1000,
+                likes: 88,
+                steps: [
+                  {
+                    type: 'age',
+                    age: 1,
+                    steps: [{ time: '0:00', food: 6, description: 'Open with sheep' }],
+                  },
+                ],
+              })),
+            ),
+            { status: 200, headers: { 'Content-Type': 'application/json' } },
+          ),
       ),
     )
-    const result = await listAoe4GuidesBuilds({ query: 'longbow', civilization: 'ENG', sort: 'score' })
+    const result = await listAoe4GuidesBuilds({
+      query: 'longbow',
+      civilization: 'ENG',
+      sort: 'score',
+    })
     expect(result.ok).toBe(true)
     if (!result.ok) return
     expect(result.data.sort).toBe('score')
@@ -100,6 +129,7 @@ describe('AoE4Guides importer', () => {
       score: 92,
       stepCount: 1,
     })
+    expect(result.data.items).toHaveLength(11)
     expect(result.data.items[0]?.build.source).toBe('https://aoe4guides.com/builds/eng-1')
   })
 
@@ -152,14 +182,21 @@ describe('AoE4Guides importer', () => {
   it('fetches a live AoE4Guides API build by URL', async () => {
     vi.stubGlobal(
       'fetch',
-      vi.fn(async () =>
-        new Response(
-          JSON.stringify({
-            title: 'English opener',
-            civ: 'ENG',
-            steps: [{ type: 'age', age: 1, steps: [{ time: '0:00', food: '6', description: 'Queue villager' }] }],
-          }),
-        ),
+      vi.fn(
+        async () =>
+          new Response(
+            JSON.stringify({
+              title: 'English opener',
+              civ: 'ENG',
+              steps: [
+                {
+                  type: 'age',
+                  age: 1,
+                  steps: [{ time: '0:00', food: '6', description: 'Queue villager' }],
+                },
+              ],
+            }),
+          ),
       ),
     )
     const result = await importCommunityBuild('https://aoe4guides.com/builds/abc')

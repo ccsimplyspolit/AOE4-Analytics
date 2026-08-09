@@ -1,6 +1,6 @@
 import { useMemo, useState, type ReactNode } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { Database, RefreshCw, RotateCcw } from 'lucide-react'
+import { Database, ImageIcon, RefreshCw, RotateCcw } from 'lucide-react'
 import {
   aggregateDataStudioGames,
   DATA_STUDIO_LEGACY_UNKNOWN,
@@ -32,6 +32,7 @@ import { useFullHistory } from '../queries/useHistory'
 import { useSettings } from '../queries/useProfile'
 import { useI18n } from '../../i18n'
 import { ipc } from '@shared/ipc'
+import type { EssenceSyncStatus } from '@domain/sourceSync'
 
 type FilterKey = keyof DataStudioFilters
 
@@ -207,18 +208,32 @@ function DataSourcePanel() {
   const [syncing, setSyncing] = useState(false)
   const [syncStatus, setSyncStatus] = useState<string | null>(null)
   const [syncOutput, setSyncOutput] = useState<string | null>(null)
+  const [essenceStatus, setEssenceStatus] = useState<EssenceSyncStatus | null>(null)
 
-  async function runSourceSync(dryRun: boolean) {
+  async function runSourceSync(
+    dryRun: boolean,
+    essenceOptions: Partial<{
+      essenceDecodeRgd: boolean
+      essenceDecodeNativeIcons: boolean
+      essenceOnly: boolean
+    }> = {},
+  ) {
     if (syncing) return
     setSyncing(true)
     setSyncStatus(null)
     setSyncOutput(null)
-    const result = await ipc.syncExternalSources({ dryRun })
+    setEssenceStatus(null)
+    const result = await ipc.syncExternalSources({
+      dryRun,
+      essenceAuto: true,
+      ...essenceOptions,
+    })
     if (!result.ok) {
       setSyncStatus(result.error.message)
       setSyncing(false)
       return
     }
+    setEssenceStatus(result.data.essence)
     const completed = result.data.completed.length
       ? result.data.completed.join(', ')
       : tt('No source steps reported')
@@ -260,11 +275,66 @@ function DataSourcePanel() {
             <RefreshCw className={cn('h-3.5 w-3.5', syncing && 'animate-spin')} />
             {tt('Refresh snapshots')}
           </button>
+          <button
+            type="button"
+            onClick={() =>
+              runSourceSync(false, {
+                essenceDecodeRgd: true,
+                essenceOnly: true,
+              })
+            }
+            disabled={syncing}
+            className="inline-flex items-center gap-1.5 rounded-sm border border-primary/50 px-2.5 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/10 disabled:cursor-wait disabled:opacity-50"
+          >
+            <Database className={cn('h-3.5 w-3.5', syncing && 'animate-pulse')} />
+            {tt('Decode local attributes')}
+          </button>
+          <button
+            type="button"
+            onClick={() =>
+              runSourceSync(false, {
+                essenceDecodeNativeIcons: true,
+                essenceOnly: true,
+              })
+            }
+            disabled={syncing}
+            className="inline-flex items-center gap-1.5 rounded-sm border border-primary/50 px-2.5 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/10 disabled:cursor-wait disabled:opacity-50"
+          >
+            <ImageIcon className={cn('h-3.5 w-3.5', syncing && 'animate-pulse')} />
+            {tt('Refresh native icons')}
+          </button>
         </div>
       </div>
       {(syncStatus || syncOutput) && (
         <div className="border-t border-border px-4 py-2">
           {syncStatus && <p className="text-xs text-muted-foreground">{syncStatus}</p>}
+          {essenceStatus && (
+            <p className="mt-1 text-xs text-muted-foreground">
+              {tt('AOEMods.Essence')}:{' '}
+              <span className="font-medium text-foreground">{tt(essenceStatus.status)}</span>
+              {essenceStatus.sourceRevision ? ` · ${essenceStatus.sourceRevision}` : ''}
+              {typeof essenceStatus.counts.files === 'number'
+                ? ` · ${essenceStatus.counts.files.toLocaleString()} ${tt('files inspected')}`
+                : ''}
+              {typeof essenceStatus.counts.decodedPng === 'number'
+                ? ` · ${essenceStatus.counts.decodedPng.toLocaleString()} ${tt('PNG decoded')}`
+                : ''}
+              {typeof essenceStatus.counts.decodedRgd === 'number'
+                ? ` · ${essenceStatus.counts.decodedRgd.toLocaleString()} ${tt('RGD decoded')}`
+                : ''}
+              {typeof essenceStatus.counts.projectedRgd === 'number'
+                ? ` · ${essenceStatus.counts.projectedRgd.toLocaleString()} ${tt('RGD projected')}`
+                : ''}
+              {typeof essenceStatus.counts.projectionErrors === 'number' && essenceStatus.counts.projectionErrors > 0
+                ? ` · ${essenceStatus.counts.projectionErrors.toLocaleString()} ${tt('projection warnings')}`
+                : ''}
+              {essenceStatus.inputName ? ` · ${essenceStatus.inputName}` : ''}
+              {essenceStatus.inputBytes != null ? ` · ${formatBytes(essenceStatus.inputBytes)}` : ''}
+              {essenceStatus.actions.length > 0
+                ? ` · ${essenceStatus.actions.map((action) => tt(action)).join(', ')}`
+                : ''}
+            </p>
+          )}
           {syncOutput && (
             <pre className="mt-2 max-h-32 overflow-auto whitespace-pre-wrap rounded-sm bg-background/60 p-2 text-[10px] leading-relaxed text-muted-foreground">
               {syncOutput}
@@ -723,6 +793,14 @@ function formatSigned(value: number | null): string {
 function formatNumber(value: number | null, decimals: number): string {
   if (value == null || !Number.isFinite(value)) return '-'
   return value.toFixed(decimals).replace(/\.0$/, '')
+}
+
+function formatBytes(value: number): string {
+  if (!Number.isFinite(value) || value < 0) return '-'
+  if (value >= 1024 ** 3) return `${(value / 1024 ** 3).toFixed(1)} GB`
+  if (value >= 1024 ** 2) return `${(value / 1024 ** 2).toFixed(1)} MB`
+  if (value >= 1024) return `${(value / 1024).toFixed(1)} KB`
+  return `${Math.round(value)} B`
 }
 
 function formatPercent(value: number | null): string {

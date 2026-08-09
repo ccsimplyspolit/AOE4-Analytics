@@ -35,9 +35,11 @@ import {
   type ReplayPlayer,
 } from '@domain/replay'
 import { parseReplayCommandStream, type ReplayAnalysisResult } from '@domain/replayCommand'
+import { readCachedReplayAnalysis, writeCachedReplayAnalysis } from './replayAnalysisCacheService'
 import { buildLocalLiveMatchup, type LiveMatchup } from '@domain/liveMatch'
 import { parseStatsSummary, type MatchSummary } from '@domain/statsSummary'
 import { getSettings } from './appContext'
+import { fetchReplaysApiSummary } from './replaysApiService'
 
 /**
  * Consent-gated access to the user's OWN local AoE4 log files (A1/D11). NOTHING
@@ -170,6 +172,24 @@ export function readGameSummary(matchId: string): MatchSummary | null {
   }
 }
 
+/**
+ * Async parser fallback for every summary consumer that has a local
+ * `stats.rgs`. The loopback or configured parser is started only when the
+ * bundled TypeScript implementation cannot decode the file.
+ */
+export async function readGameSummaryWithUpstreamFallback(matchId: string): Promise<MatchSummary | null> {
+  const local = readGameSummary(matchId)
+  if (local) return local
+  if (!getSettings().getAll().localData.consentGranted || !/^\d+$/.test(matchId)) return null
+  const path = join(gameDir(), 'matchhistory', matchId, 'stats.rgs')
+  try {
+    if (!existsSync(path) || !statSync(path).isFile()) return null
+    return await fetchReplaysApiSummary({ summaryBytes: new Uint8Array(readFileSync(path)) })
+  } catch {
+    return null
+  }
+}
+
 /** Latest local end-of-game economy stats for the user — only with consent. */
 export function getLatestLocalStats(profileId?: number): ParsedLocalStats | null {
   if (!getSettings().getAll().localData.consentGranted) return null
@@ -294,16 +314,26 @@ export function analyzeLocalReplay(id: string): ReplayAnalysisResult | null {
   if (!getSettings().getAll().localData.consentGranted || typeof id !== 'string') return null
   const path = replayArchivePath(id)
   if (!path || !existsSync(path)) return null
-  const bytes = readFullReplay(path)
-  if (!bytes) return null
-  const stat = statSync(path)
-  return {
-    id,
-    source: 'local',
-    sourcePath: path,
-    recordedAtMs: stat.mtimeMs,
-    info: parseReplayHeader(bytes),
-    commandStream: parseReplayCommandStream(bytes),
+  try {
+    const stat = statSync(path)
+    const recordedAtMs = stat.mtimeMs
+    const analysisKey = `local:${id}`
+    const previous = readCachedReplayAnalysis(analysisKey, path, recordedAtMs)
+    if (previous) return previous
+    const bytes = readFullReplay(path)
+    if (!bytes) return null
+    const result: ReplayAnalysisResult = {
+      id,
+      source: 'local',
+      sourcePath: path,
+      recordedAtMs,
+      info: parseReplayHeader(bytes),
+      commandStream: parseReplayCommandStream(bytes),
+    }
+    writeCachedReplayAnalysis(analysisKey, result)
+    return result
+  } catch {
+    return null
   }
 }
 

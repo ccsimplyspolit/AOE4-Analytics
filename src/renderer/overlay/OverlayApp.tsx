@@ -12,7 +12,11 @@ import { ipc } from '@shared/ipc'
 import type { ScoutReport } from '@domain/types'
 import type { LiveMatchup } from '@domain/liveMatch'
 import type { SessionSummary } from '@domain/session'
-import type { OverlayMatchState, PostGameSummary } from '@ipc/contract'
+import type {
+  OverlayDetectionPayload,
+  OverlayMatchState,
+  PostGameSummary,
+} from '@ipc/contract'
 import { matchupTroopsForTeam } from '@domain/civUnits'
 import { COUNTERABLE_CIVS, counterPlanForCiv } from '@domain/civUnits'
 import { civDisplayName } from '@domain/civ'
@@ -132,6 +136,13 @@ const WIDGET_LABELS: Record<OverlayWidgetKey, string> = {
 export function OverlayApp() {
   const { tt } = useI18n()
   const [matchState, setMatchState] = useState<OverlayMatchState>('idle')
+  const [detection, setDetection] = useState<OverlayDetectionPayload>({
+    processRunning: null,
+    localInMatch: null,
+    liveSource: 'no-game',
+    profileConfigured: false,
+    localDataEnabled: false,
+  })
   const [myCiv, setMyCiv] = useState<string | null>(null)
   const [oppCiv, setOppCiv] = useState<string | null>(null)
   const [oppName, setOppName] = useState<string | null>(null)
@@ -168,6 +179,9 @@ export function OverlayApp() {
   const [buildOrderViewMode, setBuildOrderViewMode] = useState<'illustrated' | 'text'>('illustrated')
   const [customCss, setCustomCss] = useState('')
   const [ageTargetsShown, setAgeTargetsShown] = useState(true)
+  const [customBuildOrders, setCustomBuildOrders] = useState<BuildOrder[]>([])
+  const [buildOrderCycle, setBuildOrderCycle] = useState<string[]>([])
+  const [buildOrderDisabled, setBuildOrderDisabled] = useState<string[]>([])
   // The pinned build order's unique name (Guides → "Show in overlay"); null = hidden.
   const [buildOrderId, setBuildOrderId] = useState<string | null>(null)
   const [buildOrderMode, setBuildOrderMode] = useState<'manual' | 'auto' | 'hidden'>('manual')
@@ -226,6 +240,9 @@ export function OverlayApp() {
         setCounterShown(s.overlay.showCounter !== false)
         setCoachShown(s.overlay.showCoach !== false)
         setBuildOrderId(s.overlay.buildOrderId ?? null)
+        setCustomBuildOrders(s.overlay.customBuildOrders ?? [])
+        setBuildOrderCycle(s.overlay.buildOrderCycle ?? [])
+        setBuildOrderDisabled(s.overlay.buildOrderDisabled ?? [])
       })
       .catch(() => {})
 
@@ -238,6 +255,7 @@ export function OverlayApp() {
 
     const offLock = ipc.onOverlayLock((locked) => setPlacementMode(!locked))
     const offApm = ipc.onOverlayApm((v) => setApm(v))
+    const offDetection = ipc.onOverlayDetection(setDetection)
     // The main process re-pushes the clock ANCHOR every second while a match is
     // live; elapsed is derived here from the anchor + our wall clock (freezes
     // through pauses because the anchor carries them).
@@ -270,6 +288,9 @@ export function OverlayApp() {
       setCounterShown(o.showCounter !== false)
       setCoachShown(o.showCoach !== false)
       setBuildOrderId(o.buildOrderId ?? null)
+      setCustomBuildOrders(o.customBuildOrders ?? [])
+      setBuildOrderCycle(o.buildOrderCycle ?? [])
+      setBuildOrderDisabled(o.buildOrderDisabled ?? [])
     })
 
     const offUpdate = ipc.onOverlayUpdate((p) => {
@@ -309,6 +330,7 @@ export function OverlayApp() {
     return () => {
       offUpdate()
       offApm()
+      offDetection()
       offClock()
       offSettings()
       offLock()
@@ -370,21 +392,55 @@ export function OverlayApp() {
   // the post-game screen, where the just-finished game is already counted).
   const showSession = sessionShown && (session != null || placementMode)
 
-  // The pinned build order, resolved by its unique bundled name; null = hidden.
+  const waitingLabel =
+    detection.processRunning === false
+      ? tt('waiting for a game')
+      : detection.processRunning === true && detection.localInMatch === false
+        ? tt('AoE4 is open · enter a match')
+        : detection.processRunning === true &&
+            detection.localInMatch == null &&
+            !detection.localDataEnabled
+          ? tt('AoE4 is open · allow local game data')
+        : detection.processRunning === true && !detection.profileConfigured
+          ? tt('AoE4 is open · connect your profile')
+          : tt('checking game state')
+
+  // The pinned build order, resolved by its unique name. Imported builds are
+  // checked first so an edited local build can intentionally replace a bundled
+  // build with the same title.
+  const allBuilds = useMemo<BuildOrder[]>(() => {
+    const seen = new Set<string>()
+    return [...customBuildOrders, ...(BUNDLED_BUILD_ORDERS as unknown as BuildOrder[])].filter(
+      (build) => {
+        if (!build?.name || seen.has(build.name)) return false
+        seen.add(build.name)
+        return true
+      },
+    )
+  }, [customBuildOrders])
+  const cycleBuilds = useMemo(() => {
+    const byName = new Map(allBuilds.map((build) => [build.name, build]))
+    const orderedNames = [
+      ...buildOrderCycle,
+      ...allBuilds.map((build) => build.name).filter((name) => !buildOrderCycle.includes(name)),
+    ]
+    return orderedNames
+      .map((name) => byName.get(name))
+      .filter((build): build is BuildOrder => !!build && !buildOrderDisabled.includes(build.name))
+  }, [allBuilds, buildOrderCycle, buildOrderDisabled])
   const selectedBuild = useMemo<BuildOrder | null>(
     () =>
       buildOrderId
-        ? ((BUNDLED_BUILD_ORDERS as unknown as BuildOrder[]).find((b) => b.name === buildOrderId) ??
-          null)
+        ? (allBuilds.find((b) => b.name === buildOrderId) ?? null)
         : null,
-    [buildOrderId],
+    [allBuilds, buildOrderId],
   )
   useEffect(() => {
     if (buildOrderMode !== 'auto' || !inGame || !myCiv) return
-    const index = buildIndexForCiv(BUNDLED_BUILD_ORDERS, myCiv)
-    const next = index == null ? null : BUNDLED_BUILD_ORDERS[index]?.name ?? null
+    const index = buildIndexForCiv(allBuilds, myCiv)
+    const next = index == null ? null : allBuilds[index]?.name ?? null
     setBuildOrderId((current) => (current === next ? current : next))
-  }, [buildOrderMode, inGame, myCiv])
+  }, [allBuilds, buildOrderMode, inGame, myCiv])
   const showBuildOrder =
     buildOrderMode !== 'hidden' && selectedBuild != null && (inGame || placementMode)
   const showAgeTargets = ageTargetsShown && (inGame || placementMode)
@@ -402,7 +458,7 @@ export function OverlayApp() {
   // click-through over the game.
   useEffect(() => {
     const offControl = ipc.onOverlayControl((action) => {
-      const builds = BUNDLED_BUILD_ORDERS as unknown as BuildOrder[]
+      const builds = cycleBuilds
       if (action === 'next-counter') {
         const current = counterCivOverride ?? oppCiv
         const currentIndex = current ? COUNTERABLE_CIVS.indexOf(current) : -1
@@ -483,7 +539,7 @@ export function OverlayApp() {
       })
     })
     return offControl
-  }, [counterCivOverride, elapsedSec, oppCiv, selectedBuild])
+  }, [counterCivOverride, cycleBuilds, elapsedSec, oppCiv, selectedBuild])
 
   const buildStepIndex =
     manualBuildStep ??
@@ -736,7 +792,7 @@ export function OverlayApp() {
                 ? tt('finding matchup...')
                 : matchState === 'ended'
                   ? tt('analyzing your game...')
-                  : tt('waiting for a game')}
+                  : waitingLabel}
             </span>
           </span>
         </div>

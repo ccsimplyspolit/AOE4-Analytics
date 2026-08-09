@@ -87,6 +87,7 @@ export function GameSummaryPanel({
   myCiv,
   perPlayer,
   myProfileId,
+  myPlayerId,
 }: {
   summary: MatchSummary
   /** The signed-in player's civ slug, to highlight "you". */
@@ -94,12 +95,18 @@ export function GameSummaryPanel({
   /** Relic comparison counters for combat/production/APM, when available. */
   perPlayer?: PerPlayerMatchStats[]
   myProfileId?: number | null
+  /** Stable summary row id used when the selected player has no profile id. */
+  myPlayerId?: number | null
 }) {
   const { tt } = useI18n()
   const meFirst = (a: PlayerSummary, b: PlayerSummary) =>
-    Number(isMe(b, myProfileId ?? null, myCiv)) - Number(isMe(a, myProfileId ?? null, myCiv))
+    Number(isMe(b, myProfileId ?? null, myCiv, myPlayerId ?? null)) -
+    Number(isMe(a, myProfileId ?? null, myCiv, myPlayerId ?? null))
   const players = [...summary.players].sort(meFirst)
-  const me = players.find((p) => isMe(p, myProfileId ?? null, myCiv)) ?? players[0] ?? null
+  const me =
+    players.find((p) => isMe(p, myProfileId ?? null, myCiv, myPlayerId ?? null)) ??
+    players[0] ??
+    null
   const colorOf = new Map(
     players.map((p, i) => [p.playerId, SERIES_COLORS[i % SERIES_COLORS.length]!]),
   )
@@ -123,10 +130,34 @@ export function GameSummaryPanel({
   const myVillHigh = me?.totals?.villagerHigh ?? null
   const myAge = me ? ageTimings(me, myCiv) : new Map<2 | 3 | 4, number>()
   const contribution = buildTeamContributionBreakdown(perPlayer ?? [], myProfileId ?? null)
-  const review = deriveMatchReview(summary, myProfileId ?? null, myCiv, perPlayer ?? [])
+  const review = deriveMatchReview(
+    summary,
+    myProfileId ?? null,
+    myCiv,
+    perPlayer ?? [],
+    myPlayerId ?? null,
+  )
 
   return (
     <div className="space-y-4">
+      {summary.parser && (
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 rounded-md border border-border/60 bg-muted/20 px-3 py-2 text-xs text-muted-foreground">
+          <span>
+            {tt('Replay parser')}: {summary.parser.source}
+          </span>
+          <span>
+            {tt('STPD')}{' '}
+            {summary.parser.stpdVersions.length > 0
+              ? summary.parser.stpdVersions.join(', ')
+              : tt('version not reported')}
+          </span>
+          <span>
+            {tt('Coverage')}: {summary.parser.coverage}
+          </span>
+          <span className="font-mono opacity-75">{summary.parser.revision.slice(0, 7)}</span>
+          {summary.parser.remote && <span>{tt('external fallback')}</span>}
+        </div>
+      )}
       {me && (
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
           <InsightCard
@@ -175,7 +206,12 @@ export function GameSummaryPanel({
         <div id="game-summary-resources" className="scroll-mt-4">
           <ResourceTable players={players} />
         </div>
-        <AgeTable players={players} myProfileId={myProfileId ?? null} myCiv={myCiv} />
+        <AgeTable
+          players={players}
+          myProfileId={myProfileId ?? null}
+          myPlayerId={myPlayerId ?? null}
+          myCiv={myCiv}
+        />
         <CombatTable
           perPlayer={perPlayer ?? []}
           players={players}
@@ -234,7 +270,7 @@ export function GameSummaryPanel({
                 <BuildOrderColumn
                   key={p.playerId}
                   player={p}
-                  me={isMe(p, myProfileId ?? null, myCiv)}
+                me={isMe(p, myProfileId ?? null, myCiv, myPlayerId ?? null)}
                   color={colorOf.get(p.playerId)!}
                 />
               ))}
@@ -856,18 +892,20 @@ function ResourceTable({ players }: { players: PlayerSummary[] }) {
 function AgeTable({
   players,
   myProfileId,
+  myPlayerId,
   myCiv,
 }: {
   players: PlayerSummary[]
   myProfileId: number | null
+  myPlayerId: number | null
   myCiv: string | null
 }) {
   const { tt } = useI18n()
   const rows = players.map((player) => ({
-    player,
-    timings: ageTimings(
       player,
-      isMe(player, myProfileId, myCiv) ? myCiv : civFromToken(player.civToken),
+      timings: ageTimings(
+        player,
+        isMe(player, myProfileId, myCiv, myPlayerId) ? myCiv : civFromToken(player.civToken),
     ),
   }))
   return (
@@ -1490,7 +1528,13 @@ function collapseRuns(events: BuildEvent[]): BuildRun[] {
 }
 
 /** Profile-id match from the summary header when available; civ as fallback. */
-function isMe(p: PlayerSummary, myProfileId: number | null, myCiv: string | null): boolean {
+function isMe(
+  p: PlayerSummary,
+  myProfileId: number | null,
+  myCiv: string | null,
+  myPlayerId: number | null = null,
+): boolean {
+  if (myPlayerId != null) return p.playerId === myPlayerId
   if (myProfileId != null && p.profileId != null) return p.profileId === myProfileId
   if (!myCiv) return false
   return civFromToken(p.civToken) === myCiv

@@ -1,5 +1,6 @@
 import type { AnalyzeResult, IpcResult } from '@ipc/contract'
 import type { BuildAuditHistoryRow } from '@domain/buildOrderHistory'
+import { analyzeMatchCorpus, type MatchCorpusReport } from '@domain/matchCorpus'
 import type { Game, MatchupStatsResponse } from '@api/types'
 import type { RelicRecentMatchHistoryResponse } from '@api/relicTypes'
 import type { StoredMatch } from '@store/historyStore'
@@ -30,10 +31,10 @@ import {
   getLiveTeamMatchup,
   getTempReplay,
   listLocalGames,
-  readGameSummary,
+  readGameSummaryWithUpstreamFallback,
 } from './localDataService'
 import { fetchRankedSummary, getSteamAuthStatus } from './relicAuthService'
-import { hasCachedSummary, hasUnavailableSummary, readCachedParsedSummary } from './summaryCache'
+import { hasCachedSummary, hasUnavailableSummary } from './summaryCache'
 import {
   landmarksBuilt,
   tallyLandmarkRecord,
@@ -221,10 +222,11 @@ function sameLocalStats(a: LocalGameStats | undefined, b: LocalGameStats | undef
   )
 }
 
-function enrichStoredMatchWithSummary(match: StoredMatch, profileId: number | null): StoredMatch {
+async function enrichStoredMatchWithSummary(match: StoredMatch, profileId: number | null): Promise<StoredMatch> {
+  const summary = await loadSummaryFromLocalOrCache(match.id, profileId)
   const local = mergeLocalStats(
     match.local,
-    localStatsFromSummary(readGameSummary(match.id), profileId, match.civ, match.durationSec),
+    localStatsFromSummary(summary, profileId, match.civ, match.durationSec),
   )
   return sameLocalStats(match.local, local) ? match : { ...match, local }
 }
@@ -278,6 +280,28 @@ interface SummaryBudget {
 }
 
 /**
+ * Uses every locally available summary source without starting a fresh network
+ * download. The replays-api fallback can decode an unsupported local stats.rgs
+ * or a raw ranked blob already persisted in the summary cache.
+ */
+async function loadSummaryFromLocalOrCache(
+  matchId: string,
+  profileId: number | null,
+): Promise<MatchSummary | null> {
+  const local = await readGameSummaryWithUpstreamFallback(matchId)
+  if (local) return local
+  // `fetchRankedSummary` may download through Relic when no summary is cached.
+  // History and corpus views must remain local and deterministic, so invoke it
+  // only when a raw cached blob exists for its upstream fallback to decode.
+  if (!hasCachedSummary(matchId)) return null
+  try {
+    return await fetchRankedSummary(matchId, profileId ?? 0, null)
+  } catch {
+    return null
+  }
+}
+
+/**
  * The stat summary for a game during a sync: local `stats.rgs` first, then the
  * Relic blob (disk-cache-first inside fetchRankedSummary; an actual download
  * spends the sync's network budget). Best-effort — null on any failure.
@@ -287,7 +311,7 @@ async function loadSummaryForSync(
   profileId: number,
   budget: SummaryBudget,
 ): Promise<MatchSummary | null> {
-  const local = readGameSummary(matchId)
+  const local = await readGameSummaryWithUpstreamFallback(matchId)
   if (local) return local
   const isCached = hasCachedSummary(matchId)
   if (
@@ -585,7 +609,7 @@ async function analyzeLocalGames(context: SyncContext): Promise<number> {
       const warningStats =
         g.id === newestId && localStats?.gameTimeSec != null ? localStats : undefined
       const summaryStats = localStatsFromSummary(
-        readGameSummary(g.id),
+        await readGameSummaryWithUpstreamFallback(g.id),
         profileId,
         built.game.civ,
         built.game.durationSec,
@@ -745,7 +769,7 @@ export async function getMatchupWinRate(civ: string, oppCiv: string): Promise<nu
  */
 export async function getGameSummary(matchId: string): Promise<IpcResult<MatchSummary | null>> {
   try {
-    const local = readGameSummary(matchId)
+    const local = await readGameSummaryWithUpstreamFallback(matchId)
     if (local) return ok(local)
     // Ranked fallback. fetchRankedSummary is disk-cache-first, so previously
     // fetched games load even offline / with Steam disconnected.
@@ -778,8 +802,9 @@ export async function deleteMatch(matchId: string): Promise<IpcResult<null>> {
 
 /**
  * The user's personal per-landmark W/L for one civ, from stored games whose
- * summaries are available locally (stats.rgs or the disk-cached ranked blob) —
- * deliberately NO network so the civ page stays instant.
+ * summaries are available locally (stats.rgs or the disk-cached ranked blob).
+ * No fresh Relic download is started; an explicitly configured parser service
+ * may still be used for a cached blob.
  */
 export async function getLandmarkRecord(civ: string): Promise<IpcResult<LandmarkRecordRow[]>> {
   try {
@@ -790,7 +815,7 @@ export async function getLandmarkRecord(civ: string): Promise<IpcResult<Landmark
       if (m.hidden || m.civ !== civ) continue
       const result = m.result ?? resultFromPerPlayer(m.perPlayer, profileId)
       if (result == null) continue
-      const summary = readGameSummary(m.id) ?? readCachedParsedSummary(m.id)
+      const summary = await loadSummaryFromLocalOrCache(m.id, profileId)
       if (!summary) continue
       const me = summaryPlayerForMe(summary, profileId, m.civ)
       if (!me) continue
@@ -811,11 +836,11 @@ export async function listHistory(limit?: number): Promise<IpcResult<StoredMatch
   try {
     const store = await getHistoryStore()
     const profileId = getSettings().getAll().profileId
-    const matches = store.listVisibleMatches(limit).map((match) => {
-      const enriched = enrichStoredMatchWithSummary(match, profileId)
+    const matches = await Promise.all(store.listVisibleMatches(limit).map(async (match) => {
+      const enriched = await enrichStoredMatchWithSummary(match, profileId)
       if (enriched !== match) store.saveMatch(enriched)
       return enriched
-    })
+    }))
     return ok(matches)
   } catch (e) {
     return errFrom(e)
@@ -823,9 +848,9 @@ export async function listHistory(limit?: number): Promise<IpcResult<StoredMatch
 }
 
 /**
- * Returns the multi-game build-review rows without forcing a network fetch for
- * every old ranked match. Local stats.rgs and already cached Relic summaries
- * are deterministic evidence; missing rows remain explicitly unavailable.
+ * Returns the multi-game build-review rows without forcing a fresh Relic
+ * download for every old ranked match. Local stats.rgs and already cached Relic
+ * summaries are deterministic evidence; missing rows remain unavailable.
  */
 export async function getBuildAuditHistory(
   limit = 50,
@@ -838,15 +863,61 @@ export async function getBuildAuditHistory(
     const settings = getSettings().getAll()
     const matches = store.listVisibleMatches(limit)
     return ok(
-      matches.map((match) =>
+      await Promise.all(
+        matches.map(async (match) =>
+          buildAuditHistoryRow({
+            match,
+            summary: await loadSummaryFromLocalOrCache(match.id, settings.profileId),
+            profileId: settings.profileId,
+            builds: BUNDLED_BUILD_ORDERS,
+            pinnedBuildName: settings.overlay.buildOrderId,
+          }),
+        ),
+      ),
+    )
+  } catch (e) {
+    return errFrom(e)
+  }
+}
+
+/**
+ * Joins every visible history row with whatever exact evidence is already on
+ * disk (local stats.rgs or a cached ranked summary). This does not start a
+ * fresh Relic download: the report remains repeatable and labels unavailable
+ * evidence instead of treating it as zero.
+ */
+export async function getMatchCorpusReport(
+  limit = 5_000,
+): Promise<IpcResult<MatchCorpusReport>> {
+  if (!Number.isSafeInteger(limit) || limit <= 0 || limit > 5_000) {
+    return err('validation', 'Corpus report limit must be between 1 and 5000.')
+  }
+  try {
+    const store = await getHistoryStore()
+    const settings = getSettings().getAll()
+    const matches = store.listVisibleMatches(limit)
+    const summaries = new Map<string, MatchSummary | null>()
+    const auditRows: BuildAuditHistoryRow[] = []
+    for (const match of matches) {
+      const summary = await loadSummaryFromLocalOrCache(match.id, settings.profileId)
+      summaries.set(match.id, summary)
+      auditRows.push(
         buildAuditHistoryRow({
           match,
-          summary: readGameSummary(match.id) ?? readCachedParsedSummary(match.id),
+          summary,
           profileId: settings.profileId,
           builds: BUNDLED_BUILD_ORDERS,
           pinnedBuildName: settings.overlay.buildOrderId,
         }),
-      ),
+      )
+    }
+    return ok(
+      analyzeMatchCorpus({
+        matches,
+        summaries,
+        profileId: settings.profileId,
+        buildAuditRows: auditRows,
+      }),
     )
   } catch (e) {
     return errFrom(e)

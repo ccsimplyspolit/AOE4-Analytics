@@ -4,6 +4,7 @@ import {
   type RtslyticsApi,
   type OverlayUpdatePayload,
   type OverlayControlAction,
+  type OverlayDetectionPayload,
 } from './ipc/contract'
 
 /** Subscribes to a main→renderer channel and returns an unsubscribe function. */
@@ -33,7 +34,9 @@ const api: RtslyticsApi = {
   scoutPlayer: (profileId) => ipcRenderer.invoke(IpcChannels.scoutGet, profileId),
   getScoutHistory: (profileId, query) =>
     ipcRenderer.invoke(IpcChannels.scoutHistoryGet, profileId, query),
+  getScoutMeta: (query) => ipcRenderer.invoke(IpcChannels.scoutMetaGet, query),
   getPublicGame: (query) => ipcRenderer.invoke(IpcChannels.publicGameGet, query),
+  findSimilarMatches: (query) => ipcRenderer.invoke(IpcChannels.similarMatchesFind, query),
   getLastMatchCoach: (profileId) => ipcRenderer.invoke(IpcChannels.tinctureCoachGet, profileId),
   getSettings: () => ipcRenderer.invoke(IpcChannels.settingsGet),
   updateSettings: (patch) => ipcRenderer.invoke(IpcChannels.settingsUpdate, patch),
@@ -48,6 +51,7 @@ const api: RtslyticsApi = {
   getHistory: (limit) => ipcRenderer.invoke(IpcChannels.analysisHistory, limit),
   getGameSummary: (matchId) => ipcRenderer.invoke(IpcChannels.analysisGameSummary, matchId),
   getBuildAuditHistory: (limit) => ipcRenderer.invoke(IpcChannels.analysisBuildAuditHistory, limit),
+  getMatchCorpusReport: (limit) => ipcRenderer.invoke(IpcChannels.analysisCorpusReport, limit),
   deleteMatch: (matchId) => ipcRenderer.invoke(IpcChannels.analysisDeleteMatch, matchId),
   getLandmarkRecord: (civ) => ipcRenderer.invoke(IpcChannels.civLandmarkRecord, civ),
   getLandmarkStats: (civ) => ipcRenderer.invoke(IpcChannels.civLandmarkStats, civ),
@@ -66,6 +70,7 @@ const api: RtslyticsApi = {
   onOverlaySettings: (cb) => subscribe(IpcChannels.overlaySettings, cb),
   onOverlayGameClock: (cb) => subscribe(IpcChannels.overlayGameClock, cb),
   onOverlayApm: (cb) => subscribe<number | null>(IpcChannels.overlayApm, cb),
+  onOverlayDetection: (cb) => subscribe<OverlayDetectionPayload>(IpcChannels.overlayDetection, cb),
 
   getLocalDataStatus: () => ipcRenderer.invoke(IpcChannels.localDataStatus),
 
@@ -90,13 +95,17 @@ const api: RtslyticsApi = {
   detectSteamAccounts: () => ipcRenderer.invoke(IpcChannels.steamDetect),
   getLatestReplay: () => ipcRenderer.invoke(IpcChannels.replayLatest),
   listReplays: (page, pageSize) => ipcRenderer.invoke(IpcChannels.replayList, page, pageSize),
-  listAccountReplays: (page, pageSize) =>
-    ipcRenderer.invoke(IpcChannels.replayAccount, page, pageSize),
+  listAccountReplays: (page, pageSize, forceRefresh) =>
+    ipcRenderer.invoke(IpcChannels.replayAccount, page, pageSize, forceRefresh),
+  listAllAccountReplays: (forceRefresh) =>
+    ipcRenderer.invoke(IpcChannels.replayAccountAll, forceRefresh),
   cacheReplay: (gameId) => ipcRenderer.invoke(IpcChannels.replayCache, gameId),
   cacheReplays: (gameIds) => ipcRenderer.invoke(IpcChannels.replayCacheBatch, gameIds),
   cacheSummary: (gameId) => ipcRenderer.invoke(IpcChannels.summaryCache, gameId),
   cacheSummaries: (gameIds) => ipcRenderer.invoke(IpcChannels.summaryCacheBatch, gameIds),
+  getReplaysApiStatus: () => ipcRenderer.invoke(IpcChannels.replaysApiStatus),
   analyzeReplay: (target) => ipcRenderer.invoke(IpcChannels.replayAnalyze, target),
+  downloadAndAnalyzeReplay: (gameId) => ipcRenderer.invoke(IpcChannels.replayFullAnalyze, gameId),
   getMatchupWinRate: (civ, oppCiv) => ipcRenderer.invoke(IpcChannels.matchupWinRate, civ, oppCiv),
   searchOnline: (query) => ipcRenderer.invoke(IpcChannels.onlineSearch, query),
   getPublicDumpCatalog: () => ipcRenderer.invoke(IpcChannels.dumpCatalogGet),
@@ -105,10 +114,14 @@ const api: RtslyticsApi = {
   findTwitchVod: (input) => ipcRenderer.invoke(IpcChannels.twitchVodFind, input),
   extractVideoAnalysis: (input) => ipcRenderer.invoke(IpcChannels.videoAnalysisExtract, input),
   listVideoAnalyses: () => ipcRenderer.invoke(IpcChannels.videoAnalysisList),
+  autoFindGameplay: (input) => ipcRenderer.invoke(IpcChannels.gameplayAutoFind, input),
   getTranslationStatus: () => ipcRenderer.invoke(IpcChannels.translationStatus),
   configureTranslation: (input) => ipcRenderer.invoke(IpcChannels.translationConfigure, input),
   translateBatch: (input) => ipcRenderer.invoke(IpcChannels.translationBatch, input),
   clearTranslationCache: () => ipcRenderer.invoke(IpcChannels.translationClearCache),
+  getExternalApiStatus: () => ipcRenderer.invoke(IpcChannels.externalApiStatus),
+  configureExternalApis: (input) => ipcRenderer.invoke(IpcChannels.externalApiConfigure, input),
+  clearExternalApis: () => ipcRenderer.invoke(IpcChannels.externalApiClear),
   getStreamManagerStatus: () => ipcRenderer.invoke(IpcChannels.streamGetStatus),
   startStreamManager: (port) => ipcRenderer.invoke(IpcChannels.streamStart, port),
   stopStreamManager: () => ipcRenderer.invoke(IpcChannels.streamStop),
@@ -116,8 +129,7 @@ const api: RtslyticsApi = {
   resetStreamManager: () => ipcRenderer.invoke(IpcChannels.streamReset),
   importStreamDraft: (url) => ipcRenderer.invoke(IpcChannels.streamImportDraft, url),
   importCommunityBuild: (url) => ipcRenderer.invoke(IpcChannels.communityBuildImport, url),
-  listCommunityBuilds: (query, page) =>
-    ipcRenderer.invoke(IpcChannels.communityBuildList, { query, page }),
+  listCommunityBuilds: (query) => ipcRenderer.invoke(IpcChannels.communityBuildList, { query }),
   listAoe4GuidesBuilds: (query, civilization, sort) =>
     ipcRenderer.invoke(IpcChannels.aoe4GuidesBuildList, { query, civilization, sort }),
 }

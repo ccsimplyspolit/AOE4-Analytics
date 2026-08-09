@@ -59,6 +59,16 @@ export function isMatchupCivilization(value: unknown): value is string {
   return typeof value === 'string' && value.length <= 64 && Object.hasOwn(CIV_PROFILES, value)
 }
 
+/**
+ * AoE4World publishes the global civilization-pair matrix only for the two
+ * 1v1 ladders. Team queues have no equivalent `/stats/{queue}/matchups`
+ * resource, so callers should use local history/team statistics instead of
+ * repeatedly requesting a URL that is guaranteed to return 404.
+ */
+export function isGlobalMatchupLeaderboard(value: string | undefined): boolean {
+  return value === 'rm_solo' || value === 'qm_1v1'
+}
+
 /** Selects one directional civilization pairing while preserving API source metadata. */
 export function buildGlobalMatchup(
   response: MatchupStatsResponse,

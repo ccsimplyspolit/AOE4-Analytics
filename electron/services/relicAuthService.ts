@@ -33,11 +33,14 @@ import { findSteamPath } from './steamService'
 import {
   hasCachedSummary,
   hasUnavailableSummary,
+  getCachedSummaryInfo,
   markSummaryUnavailable,
   readCachedParsedSummary,
+  writeCachedReplaysApiSummary,
   writeCachedSummary,
 } from './summaryCache'
 import { getCachedReplayInfo, writeCachedReplay } from './replayCacheService'
+import { fetchReplaysApiSummary } from './replaysApiService'
 
 const AOE4_APPID = 1466860
 const TITLE = 'age4'
@@ -632,12 +635,18 @@ export async function diagnoseRankedFetch(profileId: number): Promise<string> {
       }
       const bytes = raw.length > 2 && raw[0] === 0x1f && raw[1] === 0x8b ? gunzipSync(raw) : raw
       const parsed = parseStatsSummary(new Uint8Array(bytes))
+      const upstreamParsed =
+        parsed ??
+        (await fetchReplaysApiSummary({
+          summaryBytes: new Uint8Array(bytes),
+          sourceUrl: signedUrl,
+        }))
       add(
-        `  ✓ downloaded ${raw.length}B → inflated ${bytes.length}B → parsed players: ${parsed?.players.length ?? 'null'}`,
+        `  ✓ downloaded ${raw.length}B → inflated ${bytes.length}B → parsed players: ${upstreamParsed?.players.length ?? 'null'}`,
       )
       return (
         out.join('\n') +
-        (parsed ? '\n✅ WORKS.' : '\n⚠️ downloaded but parse returned null.')
+        (upstreamParsed ? '\n✅ WORKS.' : '\n⚠️ downloaded but both parsers returned null.')
       )
     } catch (e) {
       add(`→ credential/download error: ${e instanceof Error ? e.message : String(e)}`)
@@ -661,7 +670,16 @@ export async function fetchRankedSummary(
   recentHistory?: RelicRecentMatchHistoryResponse | null,
 ): Promise<MatchSummary | null> {
   const cached = readCachedParsedSummary(gameId)
-  if (cached || hasCachedSummary(gameId)) return cached
+  if (cached) return cached
+  if (hasCachedSummary(gameId)) {
+    const localFallback = await fetchReplaysApiSummary({
+      compressedSummaryPath: getCachedSummaryInfo(gameId).path,
+    })
+    if (localFallback) {
+      writeCachedReplaysApiSummary(gameId, localFallback)
+      return localFallback
+    }
+  }
   if (hasUnavailableSummary(gameId)) return null
 
   if (recentHistory === null) return null
@@ -700,6 +718,19 @@ export async function fetchRankedSummary(
       if (parsed) {
         writeCachedSummary(gameId, new Uint8Array(bytes)) // only cache blobs that decode
         return parsed
+      }
+      // Keep the raw summary before fallback. A loopback sidecar reads this
+      // private gzip file, avoiding any transfer of the signed Azure URL. A
+      // non-loopback service is used only when the user explicitly configured
+      // it; in that case it receives the short-lived signed URL below.
+      writeCachedSummary(gameId, new Uint8Array(bytes))
+      const upstreamParsed = await fetchReplaysApiSummary({
+        compressedSummaryPath: getCachedSummaryInfo(gameId).path,
+        sourceUrl: signed,
+      })
+      if (upstreamParsed) {
+        writeCachedReplaysApiSummary(gameId, upstreamParsed)
+        return upstreamParsed
       }
     } catch {
       /* next candidate */

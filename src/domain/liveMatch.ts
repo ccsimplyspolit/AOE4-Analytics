@@ -78,6 +78,11 @@ export interface LiveTeamRosterPlayer {
   profileId: number
   name: string
   civ: string | null
+  /** Raw game rating/ELO when the endpoint provides it. */
+  elo?: number | null
+  /** Raw game MMR when the endpoint provides it. */
+  mmr?: number | null
+  rating: number | null
   isMe: boolean
 }
 
@@ -224,8 +229,20 @@ export interface LiveMatchInfo {
    * different (previous) game — so opponent/civ/map/startedAt are all left null.
    */
   custom: boolean
+  /** AoE4World stats leaderboard for the current public match. */
+  leaderboard: string | null
   /** AoE4World's numeric patch id for public live games, when reported. */
   patch?: string | null
+  /** API game kind/leaderboard, e.g. rm_1v1 or rm_2v2. */
+  kind: string | null
+  /** Average MMR across the public lobby. */
+  averageMmr: number | null
+  /** Average rating/ELO across the public lobby, when reported. */
+  averageRating: number | null
+  /** Public game server/region. */
+  server: string | null
+  /** Elapsed game duration when the upstream API reports it. */
+  durationSec: number | null
   myCiv: string | null
   opponent: LiveOpponent | null
   /**
@@ -259,7 +276,13 @@ export function buildLiveMatchInfo(
     source: live.source,
     processRunning,
     custom: live.isLive && live.source !== 'ongoing',
+    leaderboard: null,
     patch: null,
+    kind: null,
+    averageMmr: null,
+    averageRating: null,
+    server: null,
+    durationSec: null,
     myCiv: null,
     opponent: null,
     teams: null,
@@ -279,6 +302,9 @@ export function buildLiveMatchInfo(
           profileId: player.profile_id,
           name: player.name,
           civ: player.civilization || null,
+          elo: player.rating ?? null,
+          mmr: player.mmr ?? null,
+          rating: player.rating ?? player.mmr ?? null,
           isMe: player.profile_id === myId,
         })),
       )
@@ -302,7 +328,13 @@ export function buildLiveMatchInfo(
   const primary = opp?.modes ? pickPrimaryMode(opp.modes) : null
   return {
     ...base,
+    leaderboard: game.leaderboard || game.kind || null,
     patch: game.patch == null ? null : String(game.patch),
+    kind: game.kind || game.leaderboard || null,
+    averageMmr: game.average_mmr ?? null,
+    averageRating: game.average_rating ?? null,
+    server: game.server ?? null,
+    durationSec: game.duration ?? null,
     myCiv: me?.civilization ?? null,
     teams,
     map: game.map,

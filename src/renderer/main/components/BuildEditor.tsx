@@ -9,10 +9,13 @@ import {
   Save,
   Search,
   Trash2,
+  FileUp,
   WandSparkles,
+  Monitor,
 } from 'lucide-react'
 import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
 import { CIV_SLUGS } from '@data/civs'
+import { EXPLORER_RECORDS, type ExplorerRecord } from '@data/explorerData'
 import { unitsForCiv, type VendoredUnit } from '@data/gameData'
 import { civDisplayName } from '@domain/civ'
 import {
@@ -20,7 +23,16 @@ import {
   evaluateBuildTiming,
   shiftBuildOrderTimes,
 } from '@domain/buildOrderTiming'
-import { parseOverlayBuild, serializeOverlayBuild, serializeSimpleBuildOrder } from '@domain/overlayBuild'
+import {
+  parseBuildOrderDisplayNote,
+  type BuildOrderDisplayNotePart,
+} from '@domain/buildOrderNotes'
+import {
+  parseOverlayBuild,
+  parseSimpleBuildOrder,
+  serializeOverlayBuild,
+  serializeSimpleBuildOrder,
+} from '@domain/overlayBuild'
 import type { BuildOrder, BuildStep } from '@domain/buildOrderSchema'
 import { validateBuildOrderFeasibility } from '@domain/buildOrderValidation'
 import { fuzzyMatches } from '@domain/fuzzySearch'
@@ -28,7 +40,9 @@ import { resolveAoE4Icon } from '@data/vendor/aoe4-icons/manifest'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
 import { cn } from '@shared/lib/utils'
+import { ipc } from '@shared/ipc'
 import { useI18n } from '../../i18n'
+import { useSettings } from '../queries/useProfile'
 
 const DRAFT_KEY = 'rtslytics.tincture.build-editor.v1'
 const QUICK_TOKENS = [
@@ -122,8 +136,49 @@ function iconForUnit(unit: VendoredUnit): string | null {
   return unit.icon ? resolveAoE4Icon(unit.icon) : resolveAoE4Icon(`units/${unit.id}`)
 }
 
+function iconForRecord(record: ExplorerRecord): string | null {
+  const category = record.kind === 'building' ? 'buildings' : 'technologies'
+  return record.icon
+    ? resolveAoE4Icon(record.icon)
+    : resolveAoE4Icon(`${category}/${record.id}`)
+}
+
+function NotePreview({ note, tt }: { note: string; tt: (value: string) => string }) {
+  const parts = parseBuildOrderDisplayNote(note)
+  return (
+    <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 rounded-md border border-primary/15 bg-primary/[0.04] px-2.5 py-2 text-xs leading-relaxed text-muted-foreground">
+      <span className="mr-1 text-[10px] font-semibold uppercase tracking-wider text-primary/80">
+        {tt('Preview')}
+      </span>
+      {parts.map((part: BuildOrderDisplayNotePart, index) => {
+        if (part.type === 'text') return <span key={index}>{part.text}</span>
+        const icon = resolveAoE4Icon(part.path)
+        const label =
+          part.type === 'icon'
+            ? part.label
+            : part.path
+                .split('/')
+                .pop()
+                ?.replace(/\.[^.]+$/, '')
+                .replace(/[-_]/g, ' ') ?? 'Icon'
+        return icon ? (
+          <span key={index} className="inline-flex items-center gap-1 rounded bg-background/55 px-1 py-0.5" title={tt(label)}>
+            <img src={icon} alt={tt(label)} className="h-4 w-4 object-contain" />
+            <span className="text-[10px] text-foreground/80">{tt(label)}</span>
+          </span>
+        ) : (
+          <span key={index} className="rounded bg-secondary px-1.5 py-0.5 text-[10px] text-primary" title={tt(label)}>
+            {tt(label)}
+          </span>
+        )
+      })}
+    </div>
+  )
+}
+
 export function BuildEditor() {
   const { tt, gameName } = useI18n()
+  const { data: appSettings } = useSettings()
   const [build, setBuild] = useState<BuildOrder>(() => {
     if (typeof window === 'undefined') return blankBuild()
     const fromUrl = new URLSearchParams(window.location.search).get('draft')
@@ -143,6 +198,7 @@ export function BuildEditor() {
   const [status, setStatus] = useState<string | null>(null)
   const [savedAt, setSavedAt] = useState<string | null>(null)
   const [timingOffset, setTimingOffset] = useState('0')
+  const importInputRef = useRef<HTMLInputElement>(null)
 
   const civSlug = useMemo(() => {
     const label = Array.isArray(build.civilization) ? build.civilization[0] : build.civilization
@@ -158,6 +214,12 @@ export function BuildEditor() {
       .filter((unit) => !query || fuzzyMatches(`${unit.name} ${unit.id}`, query))
       .slice(0, 48)
   }, [civSlug, iconQuery])
+  const availableRecords = useMemo(() => {
+    const query = iconQuery.trim().toLocaleLowerCase()
+    return EXPLORER_RECORDS.filter((record) =>
+      query ? fuzzyMatches(`${record.name} ${record.id}`, query) : true,
+    ).slice(0, 48)
+  }, [iconQuery])
   const validation = useMemo(() => {
     const units = unitsForCiv(civSlug).map((unit) => ({
       id: unit.id,
@@ -257,6 +319,43 @@ export function BuildEditor() {
     setStatus(tt('Draft saved locally'))
   }
 
+  const addToOverlayLibrary = async () => {
+    const current = appSettings ?? (await ipc.getSettings())
+    const customBuildOrders = [
+      ...current.overlay.customBuildOrders.filter((item) => item.name !== build.name),
+      structuredClone(build),
+    ]
+    await ipc.updateSettings({
+      overlay: {
+        customBuildOrders,
+        buildOrderId: build.name,
+        buildOrderMode: 'manual',
+      },
+    })
+    await ipc.applyOverlaySettings()
+    setStatus(tt('Added to overlay library'))
+  }
+
+  const importBuildFile = async (file: File | undefined) => {
+    if (!file) return
+    try {
+      const text = await file.text()
+      const jsonResult = parseOverlayBuild(text)
+      const result = jsonResult.ok
+        ? jsonResult
+        : parseSimpleBuildOrder(text, file.name.replace(/\.[^.]+$/, ''))
+      if (!result.ok) {
+        setStatus(`${tt('Import rejected')}: ${result.errors.join('; ')}`)
+        return
+      }
+      setBuild(result.value)
+      setSelectedStep(0)
+      setStatus(tt('Build imported'))
+    } catch {
+      setStatus(tt('Import rejected'))
+    }
+  }
+
   const copyShareLink = async () => {
     const url = new URL(window.location.href)
     url.searchParams.set('tab', 'editor')
@@ -324,12 +423,30 @@ export function BuildEditor() {
                 aria-label={tt('Load from archive')}
               >
                 <option value="">{tt('Load from archive')}</option>
-                {BUNDLED_BUILD_ORDERS.slice(0, 100).map((item) => (
+                {BUNDLED_BUILD_ORDERS.map((item) => (
                   <option key={item.name} value={item.name}>
                     {item.name}
                   </option>
                 ))}
               </select>
+              <input
+                ref={importInputRef}
+                type="file"
+                accept=".json,.overlay.json,.txt,application/json,text/plain"
+                className="hidden"
+                onChange={(event) => {
+                  void importBuildFile(event.target.files?.[0])
+                  event.currentTarget.value = ''
+                }}
+              />
+              <button
+                type="button"
+                className={EDITOR_BUTTON}
+                onClick={() => importInputRef.current?.click()}
+                title={tt('Import .overlay.json or .txt')}
+              >
+                <FileUp className="h-3.5 w-3.5" /> {tt('Import')}
+              </button>
               <button
                 type="button"
                 className={EDITOR_BUTTON}
@@ -357,6 +474,14 @@ export function BuildEditor() {
               </button>
               <button type="button" className={EDITOR_BUTTON} onClick={() => void copyShareLink()}>
                 <Copy className="h-3.5 w-3.5" /> {tt('Share')}
+              </button>
+              <button
+                type="button"
+                className={cn(EDITOR_BUTTON, 'border-primary/35 bg-primary/10 text-primary')}
+                onClick={() => void addToOverlayLibrary()}
+                title={tt('Use this build in the in-game overlay')}
+              >
+                <Monitor className="h-3.5 w-3.5" /> {tt('Use in overlay')}
               </button>
             </div>
           </div>
@@ -574,6 +699,7 @@ export function BuildEditor() {
           civSlug={civSlug}
           gameName={gameName}
           units={availableUnits}
+          records={availableRecords}
           query={iconQuery}
           setQuery={setIconQuery}
           onToken={appendToken}
@@ -754,6 +880,9 @@ function StepEditor({
           onChange={(event) => onUpdate({ notes: event.target.value.split('\n') })}
           placeholder={tt('Notes, one action per line')}
         />
+        {step.notes.filter((note) => note.trim()).map((note, noteIndex) => (
+          <NotePreview key={`${noteIndex}-${note}`} note={note} tt={tt} />
+        ))}
       </label>
     </div>
   )
@@ -814,6 +943,7 @@ function IconPalette({
   civSlug,
   gameName,
   units,
+  records,
   query,
   setQuery,
   onToken,
@@ -823,6 +953,7 @@ function IconPalette({
   civSlug: string
   gameName: (value: string) => string
   units: VendoredUnit[]
+  records: ExplorerRecord[]
   query: string
   setQuery: (value: string) => void
   onToken: (token: string) => void
@@ -856,7 +987,7 @@ function IconPalette({
             className={cn(EDITOR_INPUT, 'pl-9')}
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder={tt('Search units')}
+            placeholder={tt('Search units, buildings and technologies')}
           />
         </div>
         <div className="grid grid-cols-2 gap-2">
@@ -884,7 +1015,7 @@ function IconPalette({
             {gameName(civDisplayName(civSlug))}
           </span>
           <span className="text-[10px] text-muted-foreground">
-            {units.length} {tt('icons shown')}
+            {units.length + records.length} {tt('icons shown')}
           </span>
         </div>
         <div className="grid max-h-[38rem] grid-cols-3 gap-2 overflow-y-auto pr-1">
@@ -905,6 +1036,27 @@ function IconPalette({
                   <span className="h-10 w-10 rounded bg-secondary" />
                 )}
                 <span className="line-clamp-2 leading-tight">{unit.name}</span>
+              </button>
+            )
+          })}
+          {records.map((record) => {
+            const icon = iconForRecord(record)
+            const category = record.kind === 'building' ? 'buildings' : 'technologies'
+            const token = `@${record.icon ?? `${category}/${record.id}`}@`
+            return (
+              <button
+                key={`${record.kind}-${record.id}`}
+                type="button"
+                title={`${record.name} · ${token}`}
+                className="flex min-h-24 flex-col items-center justify-center gap-2 rounded-lg border border-border/60 bg-background/25 p-2 text-center text-[10px] text-muted-foreground transition-colors hover:border-primary/70 hover:bg-primary/10 hover:text-foreground"
+                onClick={() => onToken(token)}
+              >
+                {icon ? (
+                  <img src={icon} alt="" className="h-10 w-10 object-contain" />
+                ) : (
+                  <span className="h-10 w-10 rounded bg-secondary" />
+                )}
+                <span className="line-clamp-2 leading-tight">{record.name}</span>
               </button>
             )
           })}

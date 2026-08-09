@@ -87,6 +87,12 @@ const EMPTY_LIVE: LiveMatchInfo = {
   source: 'no-game',
   processRunning: null,
   custom: false,
+  leaderboard: null,
+  kind: null,
+  averageMmr: null,
+  averageRating: null,
+  server: null,
+  durationSec: null,
   myCiv: null,
   opponent: null,
   map: null,
@@ -196,26 +202,37 @@ export class PollManager {
     // Gate the live-APM counter on actually being in a match (≈ while playing).
     this.apm?.setInMatch(localInMatch === true)
 
-    // Only hit AoE4World when we're actually LOADING INTO / IN a game (the local
-    // detector flipped to in-match), or we're already tracking a shown match (to
-    // catch its end), or we have no local signal to gate on (non-Windows) and the
-    // process is up. Sitting in menus or with the game closed costs ZERO API
-    // calls — no more 24/7 polling of the public API.
+    // Only hit AoE4World while the game process is open. A definitive local
+    // `menu` signal still means "not live" below, but querying during the open
+    // process matters when warnings.log lags during a ranked loading transition:
+    // the upstream ongoing roster can then wake the overlay instead of leaving
+    // it on the vague "waiting for a game" state. A closed game still costs
+    // zero API calls.
     const alreadyTracking = this.shownGameId != null
     const noLocalSignal = localInMatch === null
     const shouldQuery =
       settings.profileId != null &&
       processRunning !== false &&
-      (localInMatch === true || alreadyTracking || noLocalSignal)
+      (localInMatch === true || alreadyTracking || noLocalSignal || processRunning === true)
 
     let game: Game | null = null
     if (shouldQuery) {
       game = await getClient()
-        .getLastGame(settings.profileId!)
+        // Keep the AoE4World overlay semantics: linked alts improve identity
+        // matching and include_custom lets the stream/HUD use the same endpoint
+        // for public custom games when the upstream exposes one.
+        .getLastGame(settings.profileId!, { includeAlts: true, includeCustom: true })
         .catch(() => null)
     }
 
     const live = evaluateLiveMatch({ game, localInMatch, processRunning, nowMs: Date.now() })
+    this.overlay.sendDetection({
+      processRunning,
+      localInMatch,
+      liveSource: live.source,
+      profileConfigured: settings.profileId != null,
+      localDataEnabled: settings.localData.consentGranted,
+    })
     this.liveInfo = buildLiveMatchInfo(game, live, processRunning, settings.profileId)
 
     // Game-clock producer: re-anchor from the log each tick while live (picks up
@@ -364,7 +381,7 @@ export class PollManager {
       if (ctx.opponentProfileId != null) {
         const oppPlayer = players[ids.indexOf(ctx.opponentProfileId)] ?? null
         const gamesRes = await client
-          .getPlayerGames(ctx.opponentProfileId, { limit: 20 })
+          .getPlayerGames(ctx.opponentProfileId, { limit: 100 })
           .catch(() => null)
         if (oppPlayer && gamesRes)
           scout = buildScoutReport({ player: oppPlayer, games: gamesRes.games })

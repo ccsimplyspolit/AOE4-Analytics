@@ -28,6 +28,10 @@ USER_AGENT = "RTSLytics/0.5 (+upstream-provenance-audit)"
 UPSTREAMS: tuple[dict[str, str], ...] = (
     {"id": "aoe4world-data", "repository": "aoe4world/data"},
     {"id": "aoe4world-overlay", "repository": "aoe4world/overlay"},
+    {"id": "aoe4world-explorer", "repository": "aoe4world/explorer"},
+    {"id": "aoe4world-replays-api", "repository": "aoe4world/replays-api"},
+    {"id": "aoe4world-curated", "repository": "aoe4world/curated"},
+    {"id": "aoe4world-docker-ruby-node", "repository": "aoe4world/docker-ruby-node"},
     {"id": "aoe4guides", "repository": "jensbuehl/aoe4-guides"},
     {"id": "essence", "repository": "aoemods/AOEMods.Essence"},
     {"id": "attrib", "repository": "aoemods/attrib"},
@@ -38,6 +42,17 @@ UPSTREAMS: tuple[dict[str, str], ...] = (
     {"id": "native-hud", "repository": "FramHerel/Aoe4OverlayWinUI3"},
     {"id": "hud-websocket", "repository": "ycxisreal/ycx-aoe4-hud-frontend"},
     {"id": "counter-chart", "repository": "LeandroSQ/aoe4-counter-chart"},
+    # AOEMods' format/parser and TypeScript-to-Lua toolchain. These repositories
+    # are audited for provenance and developer tooling; they are not bundled
+    # into the Electron runtime.
+    {"id": "aoemods-zig-essence", "repository": "aoemods/zig-essence"},
+    {"id": "aoemods-aoetypes", "repository": "aoemods/aoetypes"},
+    {"id": "aoemods-aoetypes-docs", "repository": "aoemods/aoetypes-docs"},
+    {"id": "aoemods-typescript-template", "repository": "aoemods/aoe4-typescript-template"},
+    {"id": "aoemods-tstl", "repository": "aoemods/AOE4-TSTL"},
+    {"id": "aoemods-lua-docs", "repository": "aoemods/lua-docs"},
+    {"id": "aoemods-dodge-mod", "repository": "aoemods/dodge-mod"},
+    {"id": "aoemods-wiki", "repository": "aoemods/wiki"},
 )
 
 

@@ -1034,59 +1034,184 @@ import asset1031 from "./native/hud/age/age_display_persistent_bg_right.png"
 import asset1032 from "./native/hud/age/xbox/ageup_building.png"
 import asset1033 from "./native/hud/age/xbox/ageup_buildingred.png"
 import asset1034 from "./native/hud/age/xbox/ageup_buildingred2.png"
-import asset1035 from "./native/hud/highlights/age_1_icon.png"
-import asset1036 from "./native/hud/highlights/age_2_icon.png"
-import asset1037 from "./native/hud/highlights/age_3_icon.png"
-import asset1038 from "./native/hud/highlights/age_4_icon.png"
-import asset1039 from "./native/hud/highlights/age_highlight_1.png"
-import asset1040 from "./native/hud/highlights/age_highlight_2.png"
-import asset1041 from "./native/hud/highlights/age_highlight_3.png"
-import asset1042 from "./native/resources/resource_berry_icon.png"
-import asset1043 from "./native/resources/resource_boar_icon.png"
-import asset1044 from "./native/resources/resource_carcasses_held_icon.png"
-import asset1045 from "./native/resources/resource_deer_icon.png"
-import asset1046 from "./native/resources/resource_exp_icon.png"
-import asset1047 from "./native/resources/resource_exp_icon_insufficient.png"
-import asset1048 from "./native/resources/resource_farm_icon.png"
-import asset1049 from "./native/resources/resource_fish_icon.png"
-import asset1050 from "./native/resources/resource_food_icon.png"
-import asset1051 from "./native/resources/resource_food_icon_insufficient.png"
-import asset1052 from "./native/resources/resource_gold_icon.png"
-import asset1053 from "./native/resources/resource_gold_icon_insufficient.png"
-import asset1054 from "./native/resources/resource_idle_villager.png"
-import asset1055 from "./native/resources/resource_idle_villager_no_z.png"
-import asset1056 from "./native/resources/resource_idle_villager_z.png"
-import asset1057 from "./native/resources/resource_idle_villager_zzz.png"
-import asset1058 from "./native/resources/resource_military.png"
-import asset1059 from "./native/resources/resource_no_idle_villager.png"
-import asset1060 from "./native/resources/resource_no_villager.png"
-import asset1061 from "./native/resources/resource_olive_oil.png"
-import asset1062 from "./native/resources/resource_olive_oil_insufficient.png"
-import asset1063 from "./native/resources/resource_popcap.png"
-import asset1064 from "./native/resources/resource_popcap_icon.png"
-import asset1065 from "./native/resources/resource_popcap_icon_insufficient.png"
-import asset1066 from "./native/resources/resource_popcap_reached.png"
-import asset1067 from "./native/resources/resource_popcap_warning.png"
-import asset1068 from "./native/resources/resource_relics_held_icon.png"
-import asset1069 from "./native/resources/resource_sheep_icon.png"
-import asset1070 from "./native/resources/resource_silver_icon.png"
-import asset1071 from "./native/resources/resource_silver_icon_insufficient.png"
-import asset1072 from "./native/resources/resource_stockpile.png"
-import asset1073 from "./native/resources/resource_stockpile_insufficient.png"
-import asset1074 from "./native/resources/resource_stone_icon.png"
-import asset1075 from "./native/resources/resource_stone_icon_insufficient.png"
-import asset1076 from "./native/resources/resource_taxes_collected_icon.png"
-import asset1077 from "./native/resources/resource_villager.png"
-import asset1078 from "./native/resources/resource_vp_icon.png"
-import asset1079 from "./native/resources/resource_vp_icon_insufficient.png"
-import asset1080 from "./native/resources/resource_wood_icon.png"
-import asset1081 from "./native/resources/resource_wood_icon_insufficient.png"
-import asset1082 from "./native/resources/xbox/resource_food_icon_alert.png"
-import asset1083 from "./native/resources/xbox/resource_gold_icon_alert.png"
-import asset1084 from "./native/resources/xbox/resource_popcap_amberalert.png"
-import asset1085 from "./native/resources/xbox/resource_popcap_redalert.png"
-import asset1086 from "./native/resources/xbox/resource_stone_icon_alert.png"
-import asset1087 from "./native/resources/xbox/resource_wood_icon_alert.png"
+import asset1035 from "./native/hud/backgrounds/age_panel_1_column.png"
+import asset1036 from "./native/hud/backgrounds/age_panel_1_column_hc.png"
+import asset1037 from "./native/hud/backgrounds/age_panel_2_column.png"
+import asset1038 from "./native/hud/backgrounds/age_panel_2_column_hc.png"
+import asset1039 from "./native/hud/backgrounds/age_panel_3_column.png"
+import asset1040 from "./native/hud/backgrounds/age_panel_3_column_hc.png"
+import asset1041 from "./native/hud/backgrounds/age_panel_4_column.png"
+import asset1042 from "./native/hud/backgrounds/age_panel_4_column_hc.png"
+import asset1043 from "./native/hud/backgrounds/age_panel_5_column.png"
+import asset1044 from "./native/hud/backgrounds/age_panel_5_column_hc.png"
+import asset1045 from "./native/hud/backgrounds/canvas_texture_312x312.png"
+import asset1046 from "./native/hud/backgrounds/circle_bg.png"
+import asset1047 from "./native/hud/backgrounds/circle_bg_mask.png"
+import asset1048 from "./native/hud/backgrounds/civ_specific_resource.png"
+import asset1049 from "./native/hud/backgrounds/civ_specific_resource_2.png"
+import asset1050 from "./native/hud/backgrounds/civ_specific_resource_2_hc.png"
+import asset1051 from "./native/hud/backgrounds/civ_specific_resource_3.png"
+import asset1052 from "./native/hud/backgrounds/civ_specific_resource_3_hc.png"
+import asset1053 from "./native/hud/backgrounds/civ_specific_resource_hc.png"
+import asset1054 from "./native/hud/backgrounds/command_panel.png"
+import asset1055 from "./native/hud/backgrounds/command_panel_group_selection.png"
+import asset1056 from "./native/hud/backgrounds/command_panel_group_selection_hc.png"
+import asset1057 from "./native/hud/backgrounds/command_panel_hc.png"
+import asset1058 from "./native/hud/backgrounds/command_panel_icon_light.png"
+import asset1059 from "./native/hud/backgrounds/gap_widget.png"
+import asset1060 from "./native/hud/backgrounds/gap_widget_hc.png"
+import asset1061 from "./native/hud/backgrounds/resource_panel.png"
+import asset1062 from "./native/hud/backgrounds/resource_panel_hc.png"
+import asset1063 from "./native/hud/backgrounds/resource_panel_tall.png"
+import asset1064 from "./native/hud/backgrounds/resource_panel_tall_hc.png"
+import asset1065 from "./native/hud/backgrounds/special_abilities.png"
+import asset1066 from "./native/hud/backgrounds/special_abilities_bg2.png"
+import asset1067 from "./native/hud/backgrounds/special_abilities_bg2_mask.png"
+import asset1068 from "./native/hud/backgrounds/special_abilities_hc.png"
+import asset1069 from "./native/hud/boon_widget_bg.png"
+import asset1070 from "./native/hud/boon_widget_bg_hc.png"
+import asset1071 from "./native/hud/boon_widget_mask.png"
+import asset1072 from "./native/hud/civ_illustrations/abb_illustration.png"
+import asset1073 from "./native/hud/civ_illustrations/byz_illustration.png"
+import asset1074 from "./native/hud/civ_illustrations/chi_illustration.png"
+import asset1075 from "./native/hud/civ_illustrations/eng_illustration.png"
+import asset1076 from "./native/hud/civ_illustrations/fre_illustration.png"
+import asset1077 from "./native/hud/civ_illustrations/hre_illustration.png"
+import asset1078 from "./native/hud/civ_illustrations/jin_illustration.png"
+import asset1079 from "./native/hud/civ_illustrations/jpn_illustration.png"
+import asset1080 from "./native/hud/civ_illustrations/mal_illustration.png"
+import asset1081 from "./native/hud/civ_illustrations/mon_illustration.png"
+import asset1082 from "./native/hud/civ_illustrations/ott_illustration.png"
+import asset1083 from "./native/hud/civ_illustrations/rus_illustration.png"
+import asset1084 from "./native/hud/civ_illustrations/sul_illustration.png"
+import asset1085 from "./native/hud/decorators/zzz_seq.png"
+import asset1086 from "./native/hud/diplomacy_button.png"
+import asset1087 from "./native/hud/diplomacy_button_hc.png"
+import asset1088 from "./native/hud/diplomacy_button_hover.png"
+import asset1089 from "./native/hud/diplomacy_button_hover_hc.png"
+import asset1090 from "./native/hud/events/cta_alert_event_icon.png"
+import asset1091 from "./native/hud/events/cta_celebration_event_icon.png"
+import asset1092 from "./native/hud/events/cta_focus_change_event_icon.png"
+import asset1093 from "./native/hud/events/cta_raised_stakes_event_icon.png"
+import asset1094 from "./native/hud/gap_gold_glow_effect.png"
+import asset1095 from "./native/hud/governor/governor.png"
+import asset1096 from "./native/hud/governor/governor_armor.png"
+import asset1097 from "./native/hud/governor/governor_cavalry.png"
+import asset1098 from "./native/hud/governor/governor_food.png"
+import asset1099 from "./native/hud/governor/governor_panel.png"
+import asset1100 from "./native/hud/governor/governor_religious.png"
+import asset1101 from "./native/hud/governor/governor_upgrade.png"
+import asset1102 from "./native/hud/governor/governor_villager.png"
+import asset1103 from "./native/hud/governor/unrest.png"
+import asset1104 from "./native/hud/highlights/age_1_icon.png"
+import asset1105 from "./native/hud/highlights/age_2_icon.png"
+import asset1106 from "./native/hud/highlights/age_3_icon.png"
+import asset1107 from "./native/hud/highlights/age_4_icon.png"
+import asset1108 from "./native/hud/highlights/age_highlight_1.png"
+import asset1109 from "./native/hud/highlights/age_highlight_2.png"
+import asset1110 from "./native/hud/highlights/age_highlight_3.png"
+import asset1111 from "./native/hud/minimap/blip_radial_gradient_base.png"
+import asset1112 from "./native/hud/minimap/holy_site_ring.png"
+import asset1113 from "./native/hud/minimap/holy_site_ring_glow.png"
+import asset1114 from "./native/hud/minimap/map_square_bg_150.png"
+import asset1115 from "./native/hud/minimap/minimap_bg_2.png"
+import asset1116 from "./native/hud/minimap/minimap_bg_hc.png"
+import asset1117 from "./native/hud/minimap/minimap_circle_gial.png"
+import asset1118 from "./native/hud/minimap/minimap_circle_gial_125.png"
+import asset1119 from "./native/hud/minimap/minimap_circle_gial_150.png"
+import asset1120 from "./native/hud/minimap/minimap_expand.png"
+import asset1121 from "./native/hud/minimap/minimap_panel_bottom.png"
+import asset1122 from "./native/hud/minimap/minimap_panel_bottom_hc.png"
+import asset1123 from "./native/hud/minimap/minimap_panel_top.png"
+import asset1124 from "./native/hud/minimap/minimap_panel_top_hc.png"
+import asset1125 from "./native/hud/minimap/minimap_shrink.png"
+import asset1126 from "./native/hud/minimap/minimap_square_bg.png"
+import asset1127 from "./native/hud/minimap/minimap_square_bg_125.png"
+import asset1128 from "./native/hud/minimap/minimap_topsquare_gial.png"
+import asset1129 from "./native/hud/minimap/minimap_topsquare_gial_125.png"
+import asset1130 from "./native/hud/minimap/minimap_topsquare_gial_150.png"
+import asset1131 from "./native/hud/minimap/n_indicator.png"
+import asset1132 from "./native/hud/minimap/objective_ping_icon_bg.png"
+import asset1133 from "./native/hud/minimap/ping_center_ring.png"
+import asset1134 from "./native/hud/minimap/xbox/attack_icon.png"
+import asset1135 from "./native/hud/minimap/xbox/cancel_move_icon.png"
+import asset1136 from "./native/hud/minimap/xbox/create_waypoint.png"
+import asset1137 from "./native/hud/minimap/xbox/gold_food_icon.png"
+import asset1138 from "./native/hud/minimap/xbox/lock_reticle_icon.png"
+import asset1139 from "./native/hud/minimap/xbox/minimap.png"
+import asset1140 from "./native/hud/minimap/xbox/n.png"
+import asset1141 from "./native/hud/minimap/xbox/reset_waypoints_icon.png"
+import asset1142 from "./native/hud/minimap/xbox/send_all_archers_icon.png"
+import asset1143 from "./native/hud/minimap/xbox/send_all_attack_ships_icon.png"
+import asset1144 from "./native/hud/minimap/xbox/send_all_cavalry_icon.png"
+import asset1145 from "./native/hud/minimap/xbox/send_all_melee.png"
+import asset1146 from "./native/hud/minimap/xbox/send_all_monk_icon.png"
+import asset1147 from "./native/hud/minimap/xbox/send_all_seige_icon.png"
+import asset1148 from "./native/hud/minimap/xbox/send_all_transport_icon.png"
+import asset1149 from "./native/hud/minimap/xbox/sheep_icon.png"
+import asset1150 from "./native/hud/minimap/xbox/town_center_icon.png"
+import asset1151 from "./native/hud/minimap/xbox/wedgeselection.png"
+import asset1152 from "./native/hud/objectives/objective_bottom_image.png"
+import asset1153 from "./native/hud/objectives/objective_bottom_image_big.png"
+import asset1154 from "./native/hud/objectives/objective_completed.png"
+import asset1155 from "./native/hud/objectives/objective_failed.png"
+import asset1156 from "./native/hud/objectives/objective_hint_point_progressbar_glow.png"
+import asset1157 from "./native/hud/objectives/objective_top_image.png"
+import asset1158 from "./native/hud/objectives/objective_top_image_big.png"
+import asset1159 from "./native/hud/objectives/secondary_objective_progressbar_glow.png"
+import asset1160 from "./native/hud/objectives/secondary_objective_progressbar_glow_xbox.png"
+import asset1161 from "./native/hud/xbox/agefire.png"
+import asset1162 from "./native/hud/xbox/agefirering.png"
+import asset1163 from "./native/hud/xbox/ageringsglow.png"
+import asset1164 from "./native/hud/xbox/boon_widget_bg.png"
+import asset1165 from "./native/hud/xbox/boon_widget_bg_hc.png"
+import asset1166 from "./native/hud/xbox/boon_widget_mask.png"
+import asset1167 from "./native/resources/resource_berry_icon.png"
+import asset1168 from "./native/resources/resource_boar_icon.png"
+import asset1169 from "./native/resources/resource_carcasses_held_icon.png"
+import asset1170 from "./native/resources/resource_deer_icon.png"
+import asset1171 from "./native/resources/resource_exp_icon.png"
+import asset1172 from "./native/resources/resource_exp_icon_insufficient.png"
+import asset1173 from "./native/resources/resource_farm_icon.png"
+import asset1174 from "./native/resources/resource_fish_icon.png"
+import asset1175 from "./native/resources/resource_food_icon.png"
+import asset1176 from "./native/resources/resource_food_icon_insufficient.png"
+import asset1177 from "./native/resources/resource_gold_icon.png"
+import asset1178 from "./native/resources/resource_gold_icon_insufficient.png"
+import asset1179 from "./native/resources/resource_idle_villager.png"
+import asset1180 from "./native/resources/resource_idle_villager_no_z.png"
+import asset1181 from "./native/resources/resource_idle_villager_z.png"
+import asset1182 from "./native/resources/resource_idle_villager_zzz.png"
+import asset1183 from "./native/resources/resource_military.png"
+import asset1184 from "./native/resources/resource_no_idle_villager.png"
+import asset1185 from "./native/resources/resource_no_villager.png"
+import asset1186 from "./native/resources/resource_olive_oil.png"
+import asset1187 from "./native/resources/resource_olive_oil_insufficient.png"
+import asset1188 from "./native/resources/resource_popcap.png"
+import asset1189 from "./native/resources/resource_popcap_icon.png"
+import asset1190 from "./native/resources/resource_popcap_icon_insufficient.png"
+import asset1191 from "./native/resources/resource_popcap_reached.png"
+import asset1192 from "./native/resources/resource_popcap_warning.png"
+import asset1193 from "./native/resources/resource_relics_held_icon.png"
+import asset1194 from "./native/resources/resource_sheep_icon.png"
+import asset1195 from "./native/resources/resource_silver_icon.png"
+import asset1196 from "./native/resources/resource_silver_icon_insufficient.png"
+import asset1197 from "./native/resources/resource_stockpile.png"
+import asset1198 from "./native/resources/resource_stockpile_insufficient.png"
+import asset1199 from "./native/resources/resource_stone_icon.png"
+import asset1200 from "./native/resources/resource_stone_icon_insufficient.png"
+import asset1201 from "./native/resources/resource_taxes_collected_icon.png"
+import asset1202 from "./native/resources/resource_villager.png"
+import asset1203 from "./native/resources/resource_vp_icon.png"
+import asset1204 from "./native/resources/resource_vp_icon_insufficient.png"
+import asset1205 from "./native/resources/resource_wood_icon.png"
+import asset1206 from "./native/resources/resource_wood_icon_insufficient.png"
+import asset1207 from "./native/resources/xbox/resource_food_icon_alert.png"
+import asset1208 from "./native/resources/xbox/resource_gold_icon_alert.png"
+import asset1209 from "./native/resources/xbox/resource_popcap_amberalert.png"
+import asset1210 from "./native/resources/xbox/resource_popcap_redalert.png"
+import asset1211 from "./native/resources/xbox/resource_stone_icon_alert.png"
+import asset1212 from "./native/resources/xbox/resource_wood_icon_alert.png"
 
 export const AOE4_ICON_ASSETS: Record<string, string> = {
   "images/abilities/ability-champion-companions-1.png": asset0000,
@@ -2124,64 +2249,190 @@ export const AOE4_ICON_ASSETS: Record<string, string> = {
   "native/hud/age/xbox/ageup_building.png": asset1032,
   "native/hud/age/xbox/ageup_buildingred.png": asset1033,
   "native/hud/age/xbox/ageup_buildingred2.png": asset1034,
-  "native/hud/highlights/age_1_icon.png": asset1035,
-  "native/hud/highlights/age_2_icon.png": asset1036,
-  "native/hud/highlights/age_3_icon.png": asset1037,
-  "native/hud/highlights/age_4_icon.png": asset1038,
-  "native/hud/highlights/age_highlight_1.png": asset1039,
-  "native/hud/highlights/age_highlight_2.png": asset1040,
-  "native/hud/highlights/age_highlight_3.png": asset1041,
-  "native/resources/resource_berry_icon.png": asset1042,
-  "native/resources/resource_boar_icon.png": asset1043,
-  "native/resources/resource_carcasses_held_icon.png": asset1044,
-  "native/resources/resource_deer_icon.png": asset1045,
-  "native/resources/resource_exp_icon.png": asset1046,
-  "native/resources/resource_exp_icon_insufficient.png": asset1047,
-  "native/resources/resource_farm_icon.png": asset1048,
-  "native/resources/resource_fish_icon.png": asset1049,
-  "native/resources/resource_food_icon.png": asset1050,
-  "native/resources/resource_food_icon_insufficient.png": asset1051,
-  "native/resources/resource_gold_icon.png": asset1052,
-  "native/resources/resource_gold_icon_insufficient.png": asset1053,
-  "native/resources/resource_idle_villager.png": asset1054,
-  "native/resources/resource_idle_villager_no_z.png": asset1055,
-  "native/resources/resource_idle_villager_z.png": asset1056,
-  "native/resources/resource_idle_villager_zzz.png": asset1057,
-  "native/resources/resource_military.png": asset1058,
-  "native/resources/resource_no_idle_villager.png": asset1059,
-  "native/resources/resource_no_villager.png": asset1060,
-  "native/resources/resource_olive_oil.png": asset1061,
-  "native/resources/resource_olive_oil_insufficient.png": asset1062,
-  "native/resources/resource_popcap.png": asset1063,
-  "native/resources/resource_popcap_icon.png": asset1064,
-  "native/resources/resource_popcap_icon_insufficient.png": asset1065,
-  "native/resources/resource_popcap_reached.png": asset1066,
-  "native/resources/resource_popcap_warning.png": asset1067,
-  "native/resources/resource_relics_held_icon.png": asset1068,
-  "native/resources/resource_sheep_icon.png": asset1069,
-  "native/resources/resource_silver_icon.png": asset1070,
-  "native/resources/resource_silver_icon_insufficient.png": asset1071,
-  "native/resources/resource_stockpile.png": asset1072,
-  "native/resources/resource_stockpile_insufficient.png": asset1073,
-  "native/resources/resource_stone_icon.png": asset1074,
-  "native/resources/resource_stone_icon_insufficient.png": asset1075,
-  "native/resources/resource_taxes_collected_icon.png": asset1076,
-  "native/resources/resource_villager.png": asset1077,
-  "native/resources/resource_vp_icon.png": asset1078,
-  "native/resources/resource_vp_icon_insufficient.png": asset1079,
-  "native/resources/resource_wood_icon.png": asset1080,
-  "native/resources/resource_wood_icon_insufficient.png": asset1081,
-  "native/resources/xbox/resource_food_icon_alert.png": asset1082,
-  "native/resources/xbox/resource_gold_icon_alert.png": asset1083,
-  "native/resources/xbox/resource_popcap_amberalert.png": asset1084,
-  "native/resources/xbox/resource_popcap_redalert.png": asset1085,
-  "native/resources/xbox/resource_stone_icon_alert.png": asset1086,
-  "native/resources/xbox/resource_wood_icon_alert.png": asset1087,
+  "native/hud/backgrounds/age_panel_1_column.png": asset1035,
+  "native/hud/backgrounds/age_panel_1_column_hc.png": asset1036,
+  "native/hud/backgrounds/age_panel_2_column.png": asset1037,
+  "native/hud/backgrounds/age_panel_2_column_hc.png": asset1038,
+  "native/hud/backgrounds/age_panel_3_column.png": asset1039,
+  "native/hud/backgrounds/age_panel_3_column_hc.png": asset1040,
+  "native/hud/backgrounds/age_panel_4_column.png": asset1041,
+  "native/hud/backgrounds/age_panel_4_column_hc.png": asset1042,
+  "native/hud/backgrounds/age_panel_5_column.png": asset1043,
+  "native/hud/backgrounds/age_panel_5_column_hc.png": asset1044,
+  "native/hud/backgrounds/canvas_texture_312x312.png": asset1045,
+  "native/hud/backgrounds/circle_bg.png": asset1046,
+  "native/hud/backgrounds/circle_bg_mask.png": asset1047,
+  "native/hud/backgrounds/civ_specific_resource.png": asset1048,
+  "native/hud/backgrounds/civ_specific_resource_2.png": asset1049,
+  "native/hud/backgrounds/civ_specific_resource_2_hc.png": asset1050,
+  "native/hud/backgrounds/civ_specific_resource_3.png": asset1051,
+  "native/hud/backgrounds/civ_specific_resource_3_hc.png": asset1052,
+  "native/hud/backgrounds/civ_specific_resource_hc.png": asset1053,
+  "native/hud/backgrounds/command_panel.png": asset1054,
+  "native/hud/backgrounds/command_panel_group_selection.png": asset1055,
+  "native/hud/backgrounds/command_panel_group_selection_hc.png": asset1056,
+  "native/hud/backgrounds/command_panel_hc.png": asset1057,
+  "native/hud/backgrounds/command_panel_icon_light.png": asset1058,
+  "native/hud/backgrounds/gap_widget.png": asset1059,
+  "native/hud/backgrounds/gap_widget_hc.png": asset1060,
+  "native/hud/backgrounds/resource_panel.png": asset1061,
+  "native/hud/backgrounds/resource_panel_hc.png": asset1062,
+  "native/hud/backgrounds/resource_panel_tall.png": asset1063,
+  "native/hud/backgrounds/resource_panel_tall_hc.png": asset1064,
+  "native/hud/backgrounds/special_abilities.png": asset1065,
+  "native/hud/backgrounds/special_abilities_bg2.png": asset1066,
+  "native/hud/backgrounds/special_abilities_bg2_mask.png": asset1067,
+  "native/hud/backgrounds/special_abilities_hc.png": asset1068,
+  "native/hud/boon_widget_bg.png": asset1069,
+  "native/hud/boon_widget_bg_hc.png": asset1070,
+  "native/hud/boon_widget_mask.png": asset1071,
+  "native/hud/civ_illustrations/abb_illustration.png": asset1072,
+  "native/hud/civ_illustrations/byz_illustration.png": asset1073,
+  "native/hud/civ_illustrations/chi_illustration.png": asset1074,
+  "native/hud/civ_illustrations/eng_illustration.png": asset1075,
+  "native/hud/civ_illustrations/fre_illustration.png": asset1076,
+  "native/hud/civ_illustrations/hre_illustration.png": asset1077,
+  "native/hud/civ_illustrations/jin_illustration.png": asset1078,
+  "native/hud/civ_illustrations/jpn_illustration.png": asset1079,
+  "native/hud/civ_illustrations/mal_illustration.png": asset1080,
+  "native/hud/civ_illustrations/mon_illustration.png": asset1081,
+  "native/hud/civ_illustrations/ott_illustration.png": asset1082,
+  "native/hud/civ_illustrations/rus_illustration.png": asset1083,
+  "native/hud/civ_illustrations/sul_illustration.png": asset1084,
+  "native/hud/decorators/zzz_seq.png": asset1085,
+  "native/hud/diplomacy_button.png": asset1086,
+  "native/hud/diplomacy_button_hc.png": asset1087,
+  "native/hud/diplomacy_button_hover.png": asset1088,
+  "native/hud/diplomacy_button_hover_hc.png": asset1089,
+  "native/hud/events/cta_alert_event_icon.png": asset1090,
+  "native/hud/events/cta_celebration_event_icon.png": asset1091,
+  "native/hud/events/cta_focus_change_event_icon.png": asset1092,
+  "native/hud/events/cta_raised_stakes_event_icon.png": asset1093,
+  "native/hud/gap_gold_glow_effect.png": asset1094,
+  "native/hud/governor/governor.png": asset1095,
+  "native/hud/governor/governor_armor.png": asset1096,
+  "native/hud/governor/governor_cavalry.png": asset1097,
+  "native/hud/governor/governor_food.png": asset1098,
+  "native/hud/governor/governor_panel.png": asset1099,
+  "native/hud/governor/governor_religious.png": asset1100,
+  "native/hud/governor/governor_upgrade.png": asset1101,
+  "native/hud/governor/governor_villager.png": asset1102,
+  "native/hud/governor/unrest.png": asset1103,
+  "native/hud/highlights/age_1_icon.png": asset1104,
+  "native/hud/highlights/age_2_icon.png": asset1105,
+  "native/hud/highlights/age_3_icon.png": asset1106,
+  "native/hud/highlights/age_4_icon.png": asset1107,
+  "native/hud/highlights/age_highlight_1.png": asset1108,
+  "native/hud/highlights/age_highlight_2.png": asset1109,
+  "native/hud/highlights/age_highlight_3.png": asset1110,
+  "native/hud/minimap/blip_radial_gradient_base.png": asset1111,
+  "native/hud/minimap/holy_site_ring.png": asset1112,
+  "native/hud/minimap/holy_site_ring_glow.png": asset1113,
+  "native/hud/minimap/map_square_bg_150.png": asset1114,
+  "native/hud/minimap/minimap_bg_2.png": asset1115,
+  "native/hud/minimap/minimap_bg_hc.png": asset1116,
+  "native/hud/minimap/minimap_circle_gial.png": asset1117,
+  "native/hud/minimap/minimap_circle_gial_125.png": asset1118,
+  "native/hud/minimap/minimap_circle_gial_150.png": asset1119,
+  "native/hud/minimap/minimap_expand.png": asset1120,
+  "native/hud/minimap/minimap_panel_bottom.png": asset1121,
+  "native/hud/minimap/minimap_panel_bottom_hc.png": asset1122,
+  "native/hud/minimap/minimap_panel_top.png": asset1123,
+  "native/hud/minimap/minimap_panel_top_hc.png": asset1124,
+  "native/hud/minimap/minimap_shrink.png": asset1125,
+  "native/hud/minimap/minimap_square_bg.png": asset1126,
+  "native/hud/minimap/minimap_square_bg_125.png": asset1127,
+  "native/hud/minimap/minimap_topsquare_gial.png": asset1128,
+  "native/hud/minimap/minimap_topsquare_gial_125.png": asset1129,
+  "native/hud/minimap/minimap_topsquare_gial_150.png": asset1130,
+  "native/hud/minimap/n_indicator.png": asset1131,
+  "native/hud/minimap/objective_ping_icon_bg.png": asset1132,
+  "native/hud/minimap/ping_center_ring.png": asset1133,
+  "native/hud/minimap/xbox/attack_icon.png": asset1134,
+  "native/hud/minimap/xbox/cancel_move_icon.png": asset1135,
+  "native/hud/minimap/xbox/create_waypoint.png": asset1136,
+  "native/hud/minimap/xbox/gold_food_icon.png": asset1137,
+  "native/hud/minimap/xbox/lock_reticle_icon.png": asset1138,
+  "native/hud/minimap/xbox/minimap.png": asset1139,
+  "native/hud/minimap/xbox/n.png": asset1140,
+  "native/hud/minimap/xbox/reset_waypoints_icon.png": asset1141,
+  "native/hud/minimap/xbox/send_all_archers_icon.png": asset1142,
+  "native/hud/minimap/xbox/send_all_attack_ships_icon.png": asset1143,
+  "native/hud/minimap/xbox/send_all_cavalry_icon.png": asset1144,
+  "native/hud/minimap/xbox/send_all_melee.png": asset1145,
+  "native/hud/minimap/xbox/send_all_monk_icon.png": asset1146,
+  "native/hud/minimap/xbox/send_all_seige_icon.png": asset1147,
+  "native/hud/minimap/xbox/send_all_transport_icon.png": asset1148,
+  "native/hud/minimap/xbox/sheep_icon.png": asset1149,
+  "native/hud/minimap/xbox/town_center_icon.png": asset1150,
+  "native/hud/minimap/xbox/wedgeselection.png": asset1151,
+  "native/hud/objectives/objective_bottom_image.png": asset1152,
+  "native/hud/objectives/objective_bottom_image_big.png": asset1153,
+  "native/hud/objectives/objective_completed.png": asset1154,
+  "native/hud/objectives/objective_failed.png": asset1155,
+  "native/hud/objectives/objective_hint_point_progressbar_glow.png": asset1156,
+  "native/hud/objectives/objective_top_image.png": asset1157,
+  "native/hud/objectives/objective_top_image_big.png": asset1158,
+  "native/hud/objectives/secondary_objective_progressbar_glow.png": asset1159,
+  "native/hud/objectives/secondary_objective_progressbar_glow_xbox.png": asset1160,
+  "native/hud/xbox/agefire.png": asset1161,
+  "native/hud/xbox/agefirering.png": asset1162,
+  "native/hud/xbox/ageringsglow.png": asset1163,
+  "native/hud/xbox/boon_widget_bg.png": asset1164,
+  "native/hud/xbox/boon_widget_bg_hc.png": asset1165,
+  "native/hud/xbox/boon_widget_mask.png": asset1166,
+  "native/resources/resource_berry_icon.png": asset1167,
+  "native/resources/resource_boar_icon.png": asset1168,
+  "native/resources/resource_carcasses_held_icon.png": asset1169,
+  "native/resources/resource_deer_icon.png": asset1170,
+  "native/resources/resource_exp_icon.png": asset1171,
+  "native/resources/resource_exp_icon_insufficient.png": asset1172,
+  "native/resources/resource_farm_icon.png": asset1173,
+  "native/resources/resource_fish_icon.png": asset1174,
+  "native/resources/resource_food_icon.png": asset1175,
+  "native/resources/resource_food_icon_insufficient.png": asset1176,
+  "native/resources/resource_gold_icon.png": asset1177,
+  "native/resources/resource_gold_icon_insufficient.png": asset1178,
+  "native/resources/resource_idle_villager.png": asset1179,
+  "native/resources/resource_idle_villager_no_z.png": asset1180,
+  "native/resources/resource_idle_villager_z.png": asset1181,
+  "native/resources/resource_idle_villager_zzz.png": asset1182,
+  "native/resources/resource_military.png": asset1183,
+  "native/resources/resource_no_idle_villager.png": asset1184,
+  "native/resources/resource_no_villager.png": asset1185,
+  "native/resources/resource_olive_oil.png": asset1186,
+  "native/resources/resource_olive_oil_insufficient.png": asset1187,
+  "native/resources/resource_popcap.png": asset1188,
+  "native/resources/resource_popcap_icon.png": asset1189,
+  "native/resources/resource_popcap_icon_insufficient.png": asset1190,
+  "native/resources/resource_popcap_reached.png": asset1191,
+  "native/resources/resource_popcap_warning.png": asset1192,
+  "native/resources/resource_relics_held_icon.png": asset1193,
+  "native/resources/resource_sheep_icon.png": asset1194,
+  "native/resources/resource_silver_icon.png": asset1195,
+  "native/resources/resource_silver_icon_insufficient.png": asset1196,
+  "native/resources/resource_stockpile.png": asset1197,
+  "native/resources/resource_stockpile_insufficient.png": asset1198,
+  "native/resources/resource_stone_icon.png": asset1199,
+  "native/resources/resource_stone_icon_insufficient.png": asset1200,
+  "native/resources/resource_taxes_collected_icon.png": asset1201,
+  "native/resources/resource_villager.png": asset1202,
+  "native/resources/resource_vp_icon.png": asset1203,
+  "native/resources/resource_vp_icon_insufficient.png": asset1204,
+  "native/resources/resource_wood_icon.png": asset1205,
+  "native/resources/resource_wood_icon_insufficient.png": asset1206,
+  "native/resources/xbox/resource_food_icon_alert.png": asset1207,
+  "native/resources/xbox/resource_gold_icon_alert.png": asset1208,
+  "native/resources/xbox/resource_popcap_amberalert.png": asset1209,
+  "native/resources/xbox/resource_popcap_redalert.png": asset1210,
+  "native/resources/xbox/resource_stone_icon_alert.png": asset1211,
+  "native/resources/xbox/resource_wood_icon_alert.png": asset1212,
 }
 
 export const AOE4_ICON_ALIASES: Record<string, string> = {
   "10000-bolts-4": AOE4_ICON_ASSETS["images/technologies/10000-bolts-4.png"]!,
   "aachen-chapel-1": AOE4_ICON_ASSETS["images/buildings/aachen-chapel-1.png"]!,
+  "abb-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/abb_illustration.png"]!,
   "abbasid/villager-1": AOE4_ICON_ASSETS["images/units/abbasid/villager-1.png"]!,
   "abbey-of-kings-1": AOE4_ICON_ASSETS["images/buildings/abbey-of-kings-1.png"]!,
   "abbey-of-the-trinity-2": AOE4_ICON_ASSETS["images/buildings/abbey-of-the-trinity-2.png"]!,
@@ -2230,6 +2481,16 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "age-highlight-1": AOE4_ICON_ASSETS["native/hud/highlights/age_highlight_1.png"]!,
   "age-highlight-2": AOE4_ICON_ASSETS["native/hud/highlights/age_highlight_2.png"]!,
   "age-highlight-3": AOE4_ICON_ASSETS["native/hud/highlights/age_highlight_3.png"]!,
+  "age-panel-1-column": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_1_column.png"]!,
+  "age-panel-1-column-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_1_column_hc.png"]!,
+  "age-panel-2-column": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_2_column.png"]!,
+  "age-panel-2-column-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_2_column_hc.png"]!,
+  "age-panel-3-column": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_3_column.png"]!,
+  "age-panel-3-column-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_3_column_hc.png"]!,
+  "age-panel-4-column": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_4_column.png"]!,
+  "age-panel-4-column-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_4_column_hc.png"]!,
+  "age-panel-5-column": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_5_column.png"]!,
+  "age-panel-5-column-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_5_column_hc.png"]!,
   "age/age-1": AOE4_ICON_ASSETS["native/hud/age/age_display_persistent_1.png"]!,
   "age/age-2": AOE4_ICON_ASSETS["native/hud/age/age_display_persistent_2.png"]!,
   "age/age-3": AOE4_ICON_ASSETS["native/hud/age/age_display_persistent_3.png"]!,
@@ -2246,6 +2507,9 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "age/age-display-persistent-4": AOE4_ICON_ASSETS["native/hud/age/age_display_persistent_4.png"]!,
   "age/age-display-persistent-bg-left": AOE4_ICON_ASSETS["native/hud/age/age_display_persistent_bg_left.png"]!,
   "age/age-display-persistent-bg-right": AOE4_ICON_ASSETS["native/hud/age/age_display_persistent_bg_right.png"]!,
+  "agefire": AOE4_ICON_ASSETS["native/hud/xbox/agefire.png"]!,
+  "agefirering": AOE4_ICON_ASSETS["native/hud/xbox/agefirering.png"]!,
+  "ageringsglow": AOE4_ICON_ASSETS["native/hud/xbox/ageringsglow.png"]!,
   "ageup-building": AOE4_ICON_ASSETS["native/hud/age/xbox/ageup_building.png"]!,
   "ageup-buildingred": AOE4_ICON_ASSETS["native/hud/age/xbox/ageup_buildingred.png"]!,
   "ageup-buildingred2": AOE4_ICON_ASSETS["native/hud/age/xbox/ageup_buildingred2.png"]!,
@@ -2273,9 +2537,44 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "atabeg-1": AOE4_ICON_ASSETS["images/units/atabeg-1.png"]!,
   "atakebune-4": AOE4_ICON_ASSETS["images/units/atakebune-4.png"]!,
   "atgeirmadr-1": AOE4_ICON_ASSETS["images/units/atgeirmadr-1.png"]!,
+  "attack-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/attack_icon.png"]!,
   "attack-ship-2": AOE4_ICON_ASSETS["images/units/attack-ship-2.png"]!,
   "awl-pikes-2": AOE4_ICON_ASSETS["images/technologies/awl-pikes-2.png"]!,
   "azure-mosque-4": AOE4_ICON_ASSETS["images/buildings/azure-mosque-4.png"]!,
+  "backgrounds/age-panel-1-column": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_1_column.png"]!,
+  "backgrounds/age-panel-1-column-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_1_column_hc.png"]!,
+  "backgrounds/age-panel-2-column": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_2_column.png"]!,
+  "backgrounds/age-panel-2-column-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_2_column_hc.png"]!,
+  "backgrounds/age-panel-3-column": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_3_column.png"]!,
+  "backgrounds/age-panel-3-column-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_3_column_hc.png"]!,
+  "backgrounds/age-panel-4-column": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_4_column.png"]!,
+  "backgrounds/age-panel-4-column-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_4_column_hc.png"]!,
+  "backgrounds/age-panel-5-column": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_5_column.png"]!,
+  "backgrounds/age-panel-5-column-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_5_column_hc.png"]!,
+  "backgrounds/canvas-texture-312x312": AOE4_ICON_ASSETS["native/hud/backgrounds/canvas_texture_312x312.png"]!,
+  "backgrounds/circle-bg": AOE4_ICON_ASSETS["native/hud/backgrounds/circle_bg.png"]!,
+  "backgrounds/circle-bg-mask": AOE4_ICON_ASSETS["native/hud/backgrounds/circle_bg_mask.png"]!,
+  "backgrounds/civ-specific-resource": AOE4_ICON_ASSETS["native/hud/backgrounds/civ_specific_resource.png"]!,
+  "backgrounds/civ-specific-resource-2": AOE4_ICON_ASSETS["native/hud/backgrounds/civ_specific_resource_2.png"]!,
+  "backgrounds/civ-specific-resource-2-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/civ_specific_resource_2_hc.png"]!,
+  "backgrounds/civ-specific-resource-3": AOE4_ICON_ASSETS["native/hud/backgrounds/civ_specific_resource_3.png"]!,
+  "backgrounds/civ-specific-resource-3-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/civ_specific_resource_3_hc.png"]!,
+  "backgrounds/civ-specific-resource-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/civ_specific_resource_hc.png"]!,
+  "backgrounds/command-panel": AOE4_ICON_ASSETS["native/hud/backgrounds/command_panel.png"]!,
+  "backgrounds/command-panel-group-selection": AOE4_ICON_ASSETS["native/hud/backgrounds/command_panel_group_selection.png"]!,
+  "backgrounds/command-panel-group-selection-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/command_panel_group_selection_hc.png"]!,
+  "backgrounds/command-panel-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/command_panel_hc.png"]!,
+  "backgrounds/command-panel-icon-light": AOE4_ICON_ASSETS["native/hud/backgrounds/command_panel_icon_light.png"]!,
+  "backgrounds/gap-widget": AOE4_ICON_ASSETS["native/hud/backgrounds/gap_widget.png"]!,
+  "backgrounds/gap-widget-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/gap_widget_hc.png"]!,
+  "backgrounds/resource-panel": AOE4_ICON_ASSETS["native/hud/backgrounds/resource_panel.png"]!,
+  "backgrounds/resource-panel-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/resource_panel_hc.png"]!,
+  "backgrounds/resource-panel-tall": AOE4_ICON_ASSETS["native/hud/backgrounds/resource_panel_tall.png"]!,
+  "backgrounds/resource-panel-tall-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/resource_panel_tall_hc.png"]!,
+  "backgrounds/special-abilities": AOE4_ICON_ASSETS["native/hud/backgrounds/special_abilities.png"]!,
+  "backgrounds/special-abilities-bg2": AOE4_ICON_ASSETS["native/hud/backgrounds/special_abilities_bg2.png"]!,
+  "backgrounds/special-abilities-bg2-mask": AOE4_ICON_ASSETS["native/hud/backgrounds/special_abilities_bg2_mask.png"]!,
+  "backgrounds/special-abilities-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/special_abilities_hc.png"]!,
   "baghlah-2": AOE4_ICON_ASSETS["images/units/baghlah-2.png"]!,
   "balanced-projectiles-3": AOE4_ICON_ASSETS["images/technologies/balanced-projectiles-3.png"]!,
   "ballista-elephant-3": AOE4_ICON_ASSETS["images/units/ballista-elephant-3.png"]!,
@@ -2306,12 +2605,16 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "blade-inlaying-tier4-3": AOE4_ICON_ASSETS["images/technologies/blade-inlaying-tier4-3.png"]!,
   "blade-inlaying-tier5-4": AOE4_ICON_ASSETS["images/technologies/blade-inlaying-tier5-4.png"]!,
   "blade-inlaying-tier6-4": AOE4_ICON_ASSETS["images/technologies/blade-inlaying-tier6-4.png"]!,
+  "blip-radial-gradient-base": AOE4_ICON_ASSETS["native/hud/minimap/blip_radial_gradient_base.png"]!,
   "bloomery-2": AOE4_ICON_ASSETS["images/technologies/bloomery-2.png"]!,
   "bodkin-bolts-4": AOE4_ICON_ASSETS["images/technologies/bodkin-bolts-4.png"]!,
   "bogmadr-2": AOE4_ICON_ASSETS["images/units/bogmadr-2.png"]!,
   "boiling-oil-3": AOE4_ICON_ASSETS["images/technologies/boiling-oil-3.png"]!,
   "bolt-magazines-3": AOE4_ICON_ASSETS["images/technologies/bolt-magazines-3.png"]!,
   "bombard-4": AOE4_ICON_ASSETS["images/units/bombard-4.png"]!,
+  "boon-widget-bg": AOE4_ICON_ASSETS["native/hud/boon_widget_bg.png"]!,
+  "boon-widget-bg-hc": AOE4_ICON_ASSETS["native/hud/boon_widget_bg_hc.png"]!,
+  "boon-widget-mask": AOE4_ICON_ASSETS["native/hud/boon_widget_mask.png"]!,
   "boot-camp-2": AOE4_ICON_ASSETS["images/technologies/boot-camp-2.png"]!,
   "border-settlements-2": AOE4_ICON_ASSETS["images/technologies/border-settlements-2.png"]!,
   "boyars-fortitude-3": AOE4_ICON_ASSETS["images/technologies/boyars-fortitude-3.png"]!,
@@ -2657,6 +2960,7 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "butted-chainmail-tier4-3": AOE4_ICON_ASSETS["images/technologies/butted-chainmail-tier4-3.png"]!,
   "butted-chainmail-tier5-4": AOE4_ICON_ASSETS["images/technologies/butted-chainmail-tier5-4.png"]!,
   "butted-chainmail-tier6-4": AOE4_ICON_ASSETS["images/technologies/butted-chainmail-tier6-4.png"]!,
+  "byz-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/byz_illustration.png"]!,
   "byzantines/mangudai-2": AOE4_ICON_ASSETS["images/units/byzantines/mangudai-2.png"]!,
   "camel-archer-2": AOE4_ICON_ASSETS["images/units/camel-archer-2.png"]!,
   "camel-handling-3": AOE4_ICON_ASSETS["images/technologies/camel-handling-3.png"]!,
@@ -2665,10 +2969,12 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "camel-rider-barding-4": AOE4_ICON_ASSETS["images/technologies/camel-rider-barding-4.png"]!,
   "camel-rider-shields-3": AOE4_ICON_ASSETS["images/technologies/camel-rider-shields-3.png"]!,
   "camel-support-4": AOE4_ICON_ASSETS["images/technologies/camel-support-4.png"]!,
+  "cancel-move-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/cancel_move_icon.png"]!,
   "cannon-4": AOE4_ICON_ASSETS["images/units/cannon-4.png"]!,
   "cannon-emplacement-4": AOE4_ICON_ASSETS["images/technologies/cannon-emplacement-4.png"]!,
   "canoe-tactics-2": AOE4_ICON_ASSETS["images/technologies/canoe-tactics-2.png"]!,
   "cantled-saddles-3": AOE4_ICON_ASSETS["images/technologies/cantled-saddles-3.png"]!,
+  "canvas-texture-312x312": AOE4_ICON_ASSETS["native/hud/backgrounds/canvas_texture_312x312.png"]!,
   "capital-town-center": AOE4_ICON_ASSETS["images/buildings/capital-town-center.png"]!,
   "carrack-4": AOE4_ICON_ASSETS["images/units/carrack-4.png"]!,
   "castle-4": AOE4_ICON_ASSETS["images/buildings/castle-4.png"]!,
@@ -2684,7 +2990,10 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "cheirosiphon-3": AOE4_ICON_ASSETS["images/units/cheirosiphon-3.png"]!,
   "chemistry-4": AOE4_ICON_ASSETS["images/technologies/chemistry-4.png"]!,
   "chevalier-confrere-2": AOE4_ICON_ASSETS["images/units/chevalier-confrere-2.png"]!,
+  "chi-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/chi_illustration.png"]!,
   "chivalry-2": AOE4_ICON_ASSETS["images/technologies/chivalry-2.png"]!,
+  "circle-bg": AOE4_ICON_ASSETS["native/hud/backgrounds/circle_bg.png"]!,
+  "circle-bg-mask": AOE4_ICON_ASSETS["native/hud/backgrounds/circle_bg_mask.png"]!,
   "cistercian-abbeys-3": AOE4_ICON_ASSETS["images/technologies/cistercian-abbeys-3.png"]!,
   "cistern-1": AOE4_ICON_ASSETS["images/buildings/cistern-1.png"]!,
   "cistern-of-the-first-hill-2": AOE4_ICON_ASSETS["images/buildings/cistern-of-the-first-hill-2.png"]!,
@@ -2731,6 +3040,25 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "civ-icon-small-tem": AOE4_ICON_ASSETS["native/civ/civ_icon_small_tem.png"]!,
   "civ-icon-small-teu": AOE4_ICON_ASSETS["native/civ/civ_icon_small_teu.png"]!,
   "civ-icon-small-tug": AOE4_ICON_ASSETS["native/civ/civ_icon_small_tug.png"]!,
+  "civ-illustrations/abb-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/abb_illustration.png"]!,
+  "civ-illustrations/byz-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/byz_illustration.png"]!,
+  "civ-illustrations/chi-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/chi_illustration.png"]!,
+  "civ-illustrations/eng-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/eng_illustration.png"]!,
+  "civ-illustrations/fre-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/fre_illustration.png"]!,
+  "civ-illustrations/hre-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/hre_illustration.png"]!,
+  "civ-illustrations/jin-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/jin_illustration.png"]!,
+  "civ-illustrations/jpn-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/jpn_illustration.png"]!,
+  "civ-illustrations/mal-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/mal_illustration.png"]!,
+  "civ-illustrations/mon-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/mon_illustration.png"]!,
+  "civ-illustrations/ott-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/ott_illustration.png"]!,
+  "civ-illustrations/rus-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/rus_illustration.png"]!,
+  "civ-illustrations/sul-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/sul_illustration.png"]!,
+  "civ-specific-resource": AOE4_ICON_ASSETS["native/hud/backgrounds/civ_specific_resource.png"]!,
+  "civ-specific-resource-2": AOE4_ICON_ASSETS["native/hud/backgrounds/civ_specific_resource_2.png"]!,
+  "civ-specific-resource-2-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/civ_specific_resource_2_hc.png"]!,
+  "civ-specific-resource-3": AOE4_ICON_ASSETS["native/hud/backgrounds/civ_specific_resource_3.png"]!,
+  "civ-specific-resource-3-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/civ_specific_resource_3_hc.png"]!,
+  "civ-specific-resource-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/civ_specific_resource_hc.png"]!,
   "civ/civ-icon-small-abbasid": AOE4_ICON_ASSETS["native/civ/civ_icon_small_abbasid.png"]!,
   "civ/civ-icon-small-anglo-saxon-england": AOE4_ICON_ASSETS["native/civ/civ_icon_small_anglo_saxon_england.png"]!,
   "civ/civ-icon-small-ant": AOE4_ICON_ASSETS["native/civ/civ_icon_small_ant.png"]!,
@@ -2825,6 +3153,11 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "collateral-damage-3": AOE4_ICON_ASSETS["images/technologies/collateral-damage-3.png"]!,
   "collective-hunting-1": AOE4_ICON_ASSETS["images/technologies/collective-hunting-1.png"]!,
   "college-of-artillery-3": AOE4_ICON_ASSETS["images/buildings/college-of-artillery-3.png"]!,
+  "command-panel": AOE4_ICON_ASSETS["native/hud/backgrounds/command_panel.png"]!,
+  "command-panel-group-selection": AOE4_ICON_ASSETS["native/hud/backgrounds/command_panel_group_selection.png"]!,
+  "command-panel-group-selection-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/command_panel_group_selection_hc.png"]!,
+  "command-panel-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/command_panel_hc.png"]!,
+  "command-panel-icon-light": AOE4_ICON_ASSETS["native/hud/backgrounds/command_panel_icon_light.png"]!,
   "companion-equipment-3": AOE4_ICON_ASSETS["images/technologies/companion-equipment-3.png"]!,
   "composite-bows-3": AOE4_ICON_ASSETS["images/technologies/composite-bows-3.png"]!,
   "compound-of-the-defender-2": AOE4_ICON_ASSETS["images/buildings/compound-of-the-defender-2.png"]!,
@@ -2836,10 +3169,15 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "counterweight-trebuchet-3": AOE4_ICON_ASSETS["images/units/counterweight-trebuchet-3.png"]!,
   "court-architects-4": AOE4_ICON_ASSETS["images/technologies/court-architects-4.png"]!,
   "cranequins-4": AOE4_ICON_ASSETS["images/technologies/cranequins-4.png"]!,
+  "create-waypoint": AOE4_ICON_ASSETS["native/hud/minimap/xbox/create_waypoint.png"]!,
   "cross-folded-armor-1": AOE4_ICON_ASSETS["images/technologies/cross-folded-armor-1.png"]!,
   "crossbow-stirrups-3": AOE4_ICON_ASSETS["images/technologies/crossbow-stirrups-3.png"]!,
   "crossbowman-3": AOE4_ICON_ASSETS["images/units/crossbowman-3.png"]!,
   "crosscut-saw-4": AOE4_ICON_ASSETS["images/technologies/crosscut-saw-4.png"]!,
+  "cta-alert-event-icon": AOE4_ICON_ASSETS["native/hud/events/cta_alert_event_icon.png"]!,
+  "cta-celebration-event-icon": AOE4_ICON_ASSETS["native/hud/events/cta_celebration_event_icon.png"]!,
+  "cta-focus-change-event-icon": AOE4_ICON_ASSETS["native/hud/events/cta_focus_change_event_icon.png"]!,
+  "cta-raised-stakes-event-icon": AOE4_ICON_ASSETS["native/hud/events/cta_raised_stakes_event_icon.png"]!,
   "culture-wing-1": AOE4_ICON_ASSETS["images/technologies/culture-wing-1.png"]!,
   "culture-wing-advancement-1": AOE4_ICON_ASSETS["images/technologies/culture-wing-advancement-1.png"]!,
   "culture-wing-advancement-2": AOE4_ICON_ASSETS["images/technologies/culture-wing-advancement-2.png"]!,
@@ -2858,6 +3196,7 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "dali-horses-2": AOE4_ICON_ASSETS["images/technologies/dali-horses-2.png"]!,
   "damascus-steel-4": AOE4_ICON_ASSETS["images/technologies/damascus-steel-4.png"]!,
   "decarbonization-3": AOE4_ICON_ASSETS["images/technologies/decarbonization-3.png"]!,
+  "decorators/zzz-seq": AOE4_ICON_ASSETS["native/hud/decorators/zzz_seq.png"]!,
   "deer-stones-1": AOE4_ICON_ASSETS["images/buildings/deer-stones-1.png"]!,
   "demilancer-1": AOE4_ICON_ASSETS["images/units/demilancer-1.png"]!,
   "demolition-ship-2": AOE4_ICON_ASSETS["images/units/demolition-ship-2.png"]!,
@@ -2866,6 +3205,10 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "desert-raider-2": AOE4_ICON_ASSETS["images/units/desert-raider-2.png"]!,
   "devoutness-3": AOE4_ICON_ASSETS["images/technologies/devoutness-3.png"]!,
   "dhow-2": AOE4_ICON_ASSETS["images/units/dhow-2.png"]!,
+  "diplomacy-button": AOE4_ICON_ASSETS["native/hud/diplomacy_button.png"]!,
+  "diplomacy-button-hc": AOE4_ICON_ASSETS["native/hud/diplomacy_button_hc.png"]!,
+  "diplomacy-button-hover": AOE4_ICON_ASSETS["native/hud/diplomacy_button_hover.png"]!,
+  "diplomacy-button-hover-hc": AOE4_ICON_ASSETS["native/hud/diplomacy_button_hover_hc.png"]!,
   "divine-light-1": AOE4_ICON_ASSETS["images/technologies/divine-light-1.png"]!,
   "do-maru-armor-4": AOE4_ICON_ASSETS["images/technologies/do-maru-armor-4.png"]!,
   "dock-1": AOE4_ICON_ASSETS["images/buildings/dock-1.png"]!,
@@ -2969,8 +3312,13 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "emissary-1": AOE4_ICON_ASSETS["images/units/emissary-1.png"]!,
   "enclave-of-the-emperor-4": AOE4_ICON_ASSETS["images/buildings/enclave-of-the-emperor-4.png"]!,
   "enclosures-4": AOE4_ICON_ASSETS["images/technologies/enclosures-4.png"]!,
+  "eng-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/eng_illustration.png"]!,
   "enlistment-incentives-3": AOE4_ICON_ASSETS["images/technologies/enlistment-incentives-3.png"]!,
   "eruptor-4": AOE4_ICON_ASSETS["images/units/eruptor-4.png"]!,
+  "events/cta-alert-event-icon": AOE4_ICON_ASSETS["native/hud/events/cta_alert_event_icon.png"]!,
+  "events/cta-celebration-event-icon": AOE4_ICON_ASSETS["native/hud/events/cta_celebration_event_icon.png"]!,
+  "events/cta-focus-change-event-icon": AOE4_ICON_ASSETS["native/hud/events/cta_focus_change_event_icon.png"]!,
+  "events/cta-raised-stakes-event-icon": AOE4_ICON_ASSETS["native/hud/events/cta_raised_stakes_event_icon.png"]!,
   "exact-militia-program-4": AOE4_ICON_ASSETS["images/technologies/exact-militia-program-4.png"]!,
   "expilatores-2": AOE4_ICON_ASSETS["images/technologies/expilatores-2.png"]!,
   "explosive-dhow-2": AOE4_ICON_ASSETS["images/units/explosive-dhow-2.png"]!,
@@ -3057,12 +3405,16 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "fortified-palisade-wall-1": AOE4_ICON_ASSETS["images/buildings/fortified-palisade-wall-1.png"]!,
   "fortify-outpost-2": AOE4_ICON_ASSETS["images/technologies/fortify-outpost-2.png"]!,
   "fortress-2": AOE4_ICON_ASSETS["images/buildings/fortress-2.png"]!,
+  "fre-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/fre_illustration.png"]!,
   "freeborn-warrior-3": AOE4_ICON_ASSETS["images/units/freeborn-warrior-3.png"]!,
   "fresh-foodstuffs-2": AOE4_ICON_ASSETS["images/technologies/fresh-foodstuffs-2.png"]!,
   "fudasashi-3": AOE4_ICON_ASSETS["images/technologies/fudasashi-3.png"]!,
   "galleass-3": AOE4_ICON_ASSETS["images/units/galleass-3.png"]!,
   "galley-2": AOE4_ICON_ASSETS["images/units/galley-2.png"]!,
   "gambesons-3": AOE4_ICON_ASSETS["images/technologies/gambesons-3.png"]!,
+  "gap-gold-glow-effect": AOE4_ICON_ASSETS["native/hud/gap_gold_glow_effect.png"]!,
+  "gap-widget": AOE4_ICON_ASSETS["native/hud/backgrounds/gap_widget.png"]!,
+  "gap-widget-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/gap_widget_hc.png"]!,
   "garrison-command-4": AOE4_ICON_ASSETS["images/units/garrison-command-4.png"]!,
   "genitour-3": AOE4_ICON_ASSETS["images/units/genitour-3.png"]!,
   "genoese-crossbowman-3": AOE4_ICON_ASSETS["images/units/genoese-crossbowman-3.png"]!,
@@ -3083,9 +3435,27 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "gilded-villager-1": AOE4_ICON_ASSETS["images/units/gilded-villager-1.png"]!,
   "gion-festival-4": AOE4_ICON_ASSETS["images/technologies/gion-festival-4.png"]!,
   "glorious-charge-3": AOE4_ICON_ASSETS["images/technologies/glorious-charge-3.png"]!,
+  "gold-food-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/gold_food_icon.png"]!,
   "golden-cuirass-2": AOE4_ICON_ASSETS["images/technologies/golden-cuirass-2.png"]!,
   "golden-horn-tower-2": AOE4_ICON_ASSETS["images/buildings/golden-horn-tower-2.png"]!,
   "golden-tent-2": AOE4_ICON_ASSETS["images/buildings/golden-tent-2.png"]!,
+  "governor": AOE4_ICON_ASSETS["native/hud/governor/governor.png"]!,
+  "governor-armor": AOE4_ICON_ASSETS["native/hud/governor/governor_armor.png"]!,
+  "governor-cavalry": AOE4_ICON_ASSETS["native/hud/governor/governor_cavalry.png"]!,
+  "governor-food": AOE4_ICON_ASSETS["native/hud/governor/governor_food.png"]!,
+  "governor-panel": AOE4_ICON_ASSETS["native/hud/governor/governor_panel.png"]!,
+  "governor-religious": AOE4_ICON_ASSETS["native/hud/governor/governor_religious.png"]!,
+  "governor-upgrade": AOE4_ICON_ASSETS["native/hud/governor/governor_upgrade.png"]!,
+  "governor-villager": AOE4_ICON_ASSETS["native/hud/governor/governor_villager.png"]!,
+  "governor/governor": AOE4_ICON_ASSETS["native/hud/governor/governor.png"]!,
+  "governor/governor-armor": AOE4_ICON_ASSETS["native/hud/governor/governor_armor.png"]!,
+  "governor/governor-cavalry": AOE4_ICON_ASSETS["native/hud/governor/governor_cavalry.png"]!,
+  "governor/governor-food": AOE4_ICON_ASSETS["native/hud/governor/governor_food.png"]!,
+  "governor/governor-panel": AOE4_ICON_ASSETS["native/hud/governor/governor_panel.png"]!,
+  "governor/governor-religious": AOE4_ICON_ASSETS["native/hud/governor/governor_religious.png"]!,
+  "governor/governor-upgrade": AOE4_ICON_ASSETS["native/hud/governor/governor_upgrade.png"]!,
+  "governor/governor-villager": AOE4_ICON_ASSETS["native/hud/governor/governor_villager.png"]!,
+  "governor/unrest": AOE4_ICON_ASSETS["native/hud/governor/unrest.png"]!,
   "granary-1": AOE4_ICON_ASSETS["images/buildings/granary-1.png"]!,
   "grand-bazaar-3": AOE4_ICON_ASSETS["images/technologies/grand-bazaar-3.png"]!,
   "grand-fulani-corral-2": AOE4_ICON_ASSETS["images/buildings/grand-fulani-corral-2.png"]!,
@@ -3147,6 +3517,8 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "hizukuri-2": AOE4_ICON_ASSETS["images/technologies/hizukuri-2.png"]!,
   "hobelar-2": AOE4_ICON_ASSETS["images/units/hobelar-2.png"]!,
   "hojo-clan-daimyo-estate-2": AOE4_ICON_ASSETS["images/buildings/hojo-clan-daimyo-estate-2.png"]!,
+  "holy-site-ring": AOE4_ICON_ASSETS["native/hud/minimap/holy_site_ring.png"]!,
+  "holy-site-ring-glow": AOE4_ICON_ASSETS["native/hud/minimap/holy_site_ring_glow.png"]!,
   "honed-blades-3": AOE4_ICON_ASSETS["images/technologies/honed-blades-3.png"]!,
   "horse-archer-3": AOE4_ICON_ASSETS["images/units/horse-archer-3.png"]!,
   "horse-archer-4": AOE4_ICON_ASSETS["images/units/horse-archer-4.png"]!,
@@ -3160,6 +3532,7 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "house-of-learning-2": AOE4_ICON_ASSETS["images/buildings/house-of-learning-2.png"]!,
   "house-of-wisdom-2": AOE4_ICON_ASSETS["images/buildings/house-of-wisdom-2.png"]!,
   "howdahs-4": AOE4_ICON_ASSETS["images/technologies/howdahs-4.png"]!,
+  "hre-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/hre_illustration.png"]!,
   "https-//data-aoe4world-com/images/abilities/ability-champion-companions-1": AOE4_ICON_ASSETS["images/abilities/ability-champion-companions-1.png"]!,
   "https-//data-aoe4world-com/images/abilities/ability-field-commander-1": AOE4_ICON_ASSETS["images/abilities/ability-field-commander-1.png"]!,
   "https-//data-aoe4world-com/images/abilities/ability-gunpowder-monarch-1": AOE4_ICON_ASSETS["images/abilities/ability-gunpowder-monarch-1.png"]!,
@@ -4136,6 +4509,14 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "https-//data-aoe4world-com/images/upgrades/veteran-yumi-ashigaru-3": AOE4_ICON_ASSETS["images/upgrades/veteran-yumi-ashigaru-3.png"]!,
   "https-//data-aoe4world-com/images/upgrades/veteran-zhuge-nu-3": AOE4_ICON_ASSETS["images/upgrades/veteran-zhuge-nu-3.png"]!,
   "https-//data-aoe4world-com/images/upgrades/warrior-scout-2": AOE4_ICON_ASSETS["images/upgrades/warrior-scout-2.png"]!,
+  "hud/boon-widget-bg": AOE4_ICON_ASSETS["native/hud/boon_widget_bg.png"]!,
+  "hud/boon-widget-bg-hc": AOE4_ICON_ASSETS["native/hud/boon_widget_bg_hc.png"]!,
+  "hud/boon-widget-mask": AOE4_ICON_ASSETS["native/hud/boon_widget_mask.png"]!,
+  "hud/diplomacy-button": AOE4_ICON_ASSETS["native/hud/diplomacy_button.png"]!,
+  "hud/diplomacy-button-hc": AOE4_ICON_ASSETS["native/hud/diplomacy_button_hc.png"]!,
+  "hud/diplomacy-button-hover": AOE4_ICON_ASSETS["native/hud/diplomacy_button_hover.png"]!,
+  "hud/diplomacy-button-hover-hc": AOE4_ICON_ASSETS["native/hud/diplomacy_button_hover_hc.png"]!,
+  "hud/gap-gold-glow-effect": AOE4_ICON_ASSETS["native/hud/gap_gold_glow_effect.png"]!,
   "huihui-pao-4": AOE4_ICON_ASSETS["images/units/huihui-pao-4.png"]!,
   "hulk-2": AOE4_ICON_ASSETS["images/units/hulk-2.png"]!,
   "hunting-cabin-1": AOE4_ICON_ASSETS["images/buildings/hunting-cabin-1.png"]!,
@@ -4187,6 +4568,8 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "jeannes-champion-3": AOE4_ICON_ASSETS["images/units/jeannes-champion-3.png"]!,
   "jeannes-rider-3": AOE4_ICON_ASSETS["images/units/jeannes-rider-3.png"]!,
   "jiangnan-tower-2": AOE4_ICON_ASSETS["images/buildings/jiangnan-tower-2.png"]!,
+  "jin-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/jin_illustration.png"]!,
+  "jpn-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/jpn_illustration.png"]!,
   "junk-2": AOE4_ICON_ASSETS["images/units/junk-2.png"]!,
   "kabura-ya-whistling-arrow-3": AOE4_ICON_ASSETS["images/technologies/kabura-ya-whistling-arrow-3.png"]!,
   "kampo-medicine-3": AOE4_ICON_ASSETS["images/technologies/kampo-medicine-3.png"]!,
@@ -4237,6 +4620,7 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "limitanei-1": AOE4_ICON_ASSETS["images/units/limitanei-1.png"]!,
   "liquid-explosives-3": AOE4_ICON_ASSETS["images/technologies/liquid-explosives-3.png"]!,
   "local-knowledge-2": AOE4_ICON_ASSETS["images/technologies/local-knowledge-2.png"]!,
+  "lock-reticle-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/lock_reticle_icon.png"]!,
   "lodya-attack-ship-2": AOE4_ICON_ASSETS["images/units/lodya-attack-ship-2.png"]!,
   "lodya-demolition-ship-2": AOE4_ICON_ASSETS["images/units/lodya-demolition-ship-2.png"]!,
   "lodya-fishing-boat-2": AOE4_ICON_ASSETS["images/units/lodya-fishing-boat-2.png"]!,
@@ -4251,6 +4635,7 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "machine-workshop-2": AOE4_ICON_ASSETS["images/buildings/machine-workshop-2.png"]!,
   "madrasa-4": AOE4_ICON_ASSETS["images/buildings/madrasa-4.png"]!,
   "mahouts-3": AOE4_ICON_ASSETS["images/technologies/mahouts-3.png"]!,
+  "mal-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/mal_illustration.png"]!,
   "man-at-arms-3": AOE4_ICON_ASSETS["images/units/man-at-arms-3.png"]!,
   "mangonel-3": AOE4_ICON_ASSETS["images/units/mangonel-3.png"]!,
   "mangonel-emplacement-3": AOE4_ICON_ASSETS["images/technologies/mangonel-emplacement-3.png"]!,
@@ -4260,6 +4645,7 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "mansa-javelineer-2": AOE4_ICON_ASSETS["images/units/mansa-javelineer-2.png"]!,
   "mansa-musofadi-warrior-2": AOE4_ICON_ASSETS["images/units/mansa-musofadi-warrior-2.png"]!,
   "mansa-quarry-1": AOE4_ICON_ASSETS["images/buildings/mansa-quarry-1.png"]!,
+  "map-square-bg-150": AOE4_ICON_ASSETS["native/hud/minimap/map_square_bg_150.png"]!,
   "market-2": AOE4_ICON_ASSETS["images/buildings/market-2.png"]!,
   "master-smiths-4": AOE4_ICON_ASSETS["images/technologies/master-smiths-4.png"]!,
   "matsuri-1": AOE4_ICON_ASSETS["images/buildings/matsuri-1.png"]!,
@@ -4291,9 +4677,50 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "militia-2": AOE4_ICON_ASSETS["images/units/militia-2.png"]!,
   "militia-halberdier-2": AOE4_ICON_ASSETS["images/units/militia-halberdier-2.png"]!,
   "mill-1": AOE4_ICON_ASSETS["images/buildings/mill-1.png"]!,
+  "minimap": AOE4_ICON_ASSETS["native/hud/minimap/xbox/minimap.png"]!,
+  "minimap-bg-2": AOE4_ICON_ASSETS["native/hud/minimap/minimap_bg_2.png"]!,
+  "minimap-bg-hc": AOE4_ICON_ASSETS["native/hud/minimap/minimap_bg_hc.png"]!,
+  "minimap-circle-gial": AOE4_ICON_ASSETS["native/hud/minimap/minimap_circle_gial.png"]!,
+  "minimap-circle-gial-125": AOE4_ICON_ASSETS["native/hud/minimap/minimap_circle_gial_125.png"]!,
+  "minimap-circle-gial-150": AOE4_ICON_ASSETS["native/hud/minimap/minimap_circle_gial_150.png"]!,
+  "minimap-expand": AOE4_ICON_ASSETS["native/hud/minimap/minimap_expand.png"]!,
+  "minimap-panel-bottom": AOE4_ICON_ASSETS["native/hud/minimap/minimap_panel_bottom.png"]!,
+  "minimap-panel-bottom-hc": AOE4_ICON_ASSETS["native/hud/minimap/minimap_panel_bottom_hc.png"]!,
+  "minimap-panel-top": AOE4_ICON_ASSETS["native/hud/minimap/minimap_panel_top.png"]!,
+  "minimap-panel-top-hc": AOE4_ICON_ASSETS["native/hud/minimap/minimap_panel_top_hc.png"]!,
+  "minimap-shrink": AOE4_ICON_ASSETS["native/hud/minimap/minimap_shrink.png"]!,
+  "minimap-square-bg": AOE4_ICON_ASSETS["native/hud/minimap/minimap_square_bg.png"]!,
+  "minimap-square-bg-125": AOE4_ICON_ASSETS["native/hud/minimap/minimap_square_bg_125.png"]!,
+  "minimap-topsquare-gial": AOE4_ICON_ASSETS["native/hud/minimap/minimap_topsquare_gial.png"]!,
+  "minimap-topsquare-gial-125": AOE4_ICON_ASSETS["native/hud/minimap/minimap_topsquare_gial_125.png"]!,
+  "minimap-topsquare-gial-150": AOE4_ICON_ASSETS["native/hud/minimap/minimap_topsquare_gial_150.png"]!,
+  "minimap/blip-radial-gradient-base": AOE4_ICON_ASSETS["native/hud/minimap/blip_radial_gradient_base.png"]!,
+  "minimap/holy-site-ring": AOE4_ICON_ASSETS["native/hud/minimap/holy_site_ring.png"]!,
+  "minimap/holy-site-ring-glow": AOE4_ICON_ASSETS["native/hud/minimap/holy_site_ring_glow.png"]!,
+  "minimap/map-square-bg-150": AOE4_ICON_ASSETS["native/hud/minimap/map_square_bg_150.png"]!,
+  "minimap/minimap-bg-2": AOE4_ICON_ASSETS["native/hud/minimap/minimap_bg_2.png"]!,
+  "minimap/minimap-bg-hc": AOE4_ICON_ASSETS["native/hud/minimap/minimap_bg_hc.png"]!,
+  "minimap/minimap-circle-gial": AOE4_ICON_ASSETS["native/hud/minimap/minimap_circle_gial.png"]!,
+  "minimap/minimap-circle-gial-125": AOE4_ICON_ASSETS["native/hud/minimap/minimap_circle_gial_125.png"]!,
+  "minimap/minimap-circle-gial-150": AOE4_ICON_ASSETS["native/hud/minimap/minimap_circle_gial_150.png"]!,
+  "minimap/minimap-expand": AOE4_ICON_ASSETS["native/hud/minimap/minimap_expand.png"]!,
+  "minimap/minimap-panel-bottom": AOE4_ICON_ASSETS["native/hud/minimap/minimap_panel_bottom.png"]!,
+  "minimap/minimap-panel-bottom-hc": AOE4_ICON_ASSETS["native/hud/minimap/minimap_panel_bottom_hc.png"]!,
+  "minimap/minimap-panel-top": AOE4_ICON_ASSETS["native/hud/minimap/minimap_panel_top.png"]!,
+  "minimap/minimap-panel-top-hc": AOE4_ICON_ASSETS["native/hud/minimap/minimap_panel_top_hc.png"]!,
+  "minimap/minimap-shrink": AOE4_ICON_ASSETS["native/hud/minimap/minimap_shrink.png"]!,
+  "minimap/minimap-square-bg": AOE4_ICON_ASSETS["native/hud/minimap/minimap_square_bg.png"]!,
+  "minimap/minimap-square-bg-125": AOE4_ICON_ASSETS["native/hud/minimap/minimap_square_bg_125.png"]!,
+  "minimap/minimap-topsquare-gial": AOE4_ICON_ASSETS["native/hud/minimap/minimap_topsquare_gial.png"]!,
+  "minimap/minimap-topsquare-gial-125": AOE4_ICON_ASSETS["native/hud/minimap/minimap_topsquare_gial_125.png"]!,
+  "minimap/minimap-topsquare-gial-150": AOE4_ICON_ASSETS["native/hud/minimap/minimap_topsquare_gial_150.png"]!,
+  "minimap/n-indicator": AOE4_ICON_ASSETS["native/hud/minimap/n_indicator.png"]!,
+  "minimap/objective-ping-icon-bg": AOE4_ICON_ASSETS["native/hud/minimap/objective_ping_icon_bg.png"]!,
+  "minimap/ping-center-ring": AOE4_ICON_ASSETS["native/hud/minimap/ping_center_ring.png"]!,
   "mining-camp-1": AOE4_ICON_ASSETS["images/buildings/mining-camp-1.png"]!,
   "mohe-ancestry-1": AOE4_ICON_ASSETS["images/technologies/mohe-ancestry-1.png"]!,
   "mohe-tribesman-2": AOE4_ICON_ASSETS["images/units/mohe-tribesman-2.png"]!,
+  "mon-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/mon_illustration.png"]!,
   "monastery-3": AOE4_ICON_ASSETS["images/buildings/monastery-3.png"]!,
   "monastic-shrines-3": AOE4_ICON_ASSETS["images/technologies/monastic-shrines-3.png"]!,
   "monk-3": AOE4_ICON_ASSETS["images/units/monk-3.png"]!,
@@ -4312,6 +4739,8 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "musofadi-gunner-4": AOE4_ICON_ASSETS["images/units/musofadi-gunner-4.png"]!,
   "musofadi-warrior-2": AOE4_ICON_ASSETS["images/units/musofadi-warrior-2.png"]!,
   "muster-the-nobles-2": AOE4_ICON_ASSETS["images/technologies/muster-the-nobles-2.png"]!,
+  "n": AOE4_ICON_ASSETS["native/hud/minimap/xbox/n.png"]!,
+  "n-indicator": AOE4_ICON_ASSETS["native/hud/minimap/n_indicator.png"]!,
   "nagae-yari-4": AOE4_ICON_ASSETS["images/technologies/nagae-yari-4.png"]!,
   "naginata-samurai-1": AOE4_ICON_ASSETS["images/units/naginata-samurai-1.png"]!,
   "naginata-samurai-levy-1": AOE4_ICON_ASSETS["images/units/naginata-samurai-levy-1.png"]!,
@@ -4374,6 +4803,75 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "native/hud/age/xbox/ageup-building": AOE4_ICON_ASSETS["native/hud/age/xbox/ageup_building.png"]!,
   "native/hud/age/xbox/ageup-buildingred": AOE4_ICON_ASSETS["native/hud/age/xbox/ageup_buildingred.png"]!,
   "native/hud/age/xbox/ageup-buildingred2": AOE4_ICON_ASSETS["native/hud/age/xbox/ageup_buildingred2.png"]!,
+  "native/hud/backgrounds/age-panel-1-column": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_1_column.png"]!,
+  "native/hud/backgrounds/age-panel-1-column-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_1_column_hc.png"]!,
+  "native/hud/backgrounds/age-panel-2-column": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_2_column.png"]!,
+  "native/hud/backgrounds/age-panel-2-column-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_2_column_hc.png"]!,
+  "native/hud/backgrounds/age-panel-3-column": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_3_column.png"]!,
+  "native/hud/backgrounds/age-panel-3-column-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_3_column_hc.png"]!,
+  "native/hud/backgrounds/age-panel-4-column": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_4_column.png"]!,
+  "native/hud/backgrounds/age-panel-4-column-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_4_column_hc.png"]!,
+  "native/hud/backgrounds/age-panel-5-column": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_5_column.png"]!,
+  "native/hud/backgrounds/age-panel-5-column-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/age_panel_5_column_hc.png"]!,
+  "native/hud/backgrounds/canvas-texture-312x312": AOE4_ICON_ASSETS["native/hud/backgrounds/canvas_texture_312x312.png"]!,
+  "native/hud/backgrounds/circle-bg": AOE4_ICON_ASSETS["native/hud/backgrounds/circle_bg.png"]!,
+  "native/hud/backgrounds/circle-bg-mask": AOE4_ICON_ASSETS["native/hud/backgrounds/circle_bg_mask.png"]!,
+  "native/hud/backgrounds/civ-specific-resource": AOE4_ICON_ASSETS["native/hud/backgrounds/civ_specific_resource.png"]!,
+  "native/hud/backgrounds/civ-specific-resource-2": AOE4_ICON_ASSETS["native/hud/backgrounds/civ_specific_resource_2.png"]!,
+  "native/hud/backgrounds/civ-specific-resource-2-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/civ_specific_resource_2_hc.png"]!,
+  "native/hud/backgrounds/civ-specific-resource-3": AOE4_ICON_ASSETS["native/hud/backgrounds/civ_specific_resource_3.png"]!,
+  "native/hud/backgrounds/civ-specific-resource-3-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/civ_specific_resource_3_hc.png"]!,
+  "native/hud/backgrounds/civ-specific-resource-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/civ_specific_resource_hc.png"]!,
+  "native/hud/backgrounds/command-panel": AOE4_ICON_ASSETS["native/hud/backgrounds/command_panel.png"]!,
+  "native/hud/backgrounds/command-panel-group-selection": AOE4_ICON_ASSETS["native/hud/backgrounds/command_panel_group_selection.png"]!,
+  "native/hud/backgrounds/command-panel-group-selection-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/command_panel_group_selection_hc.png"]!,
+  "native/hud/backgrounds/command-panel-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/command_panel_hc.png"]!,
+  "native/hud/backgrounds/command-panel-icon-light": AOE4_ICON_ASSETS["native/hud/backgrounds/command_panel_icon_light.png"]!,
+  "native/hud/backgrounds/gap-widget": AOE4_ICON_ASSETS["native/hud/backgrounds/gap_widget.png"]!,
+  "native/hud/backgrounds/gap-widget-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/gap_widget_hc.png"]!,
+  "native/hud/backgrounds/resource-panel": AOE4_ICON_ASSETS["native/hud/backgrounds/resource_panel.png"]!,
+  "native/hud/backgrounds/resource-panel-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/resource_panel_hc.png"]!,
+  "native/hud/backgrounds/resource-panel-tall": AOE4_ICON_ASSETS["native/hud/backgrounds/resource_panel_tall.png"]!,
+  "native/hud/backgrounds/resource-panel-tall-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/resource_panel_tall_hc.png"]!,
+  "native/hud/backgrounds/special-abilities": AOE4_ICON_ASSETS["native/hud/backgrounds/special_abilities.png"]!,
+  "native/hud/backgrounds/special-abilities-bg2": AOE4_ICON_ASSETS["native/hud/backgrounds/special_abilities_bg2.png"]!,
+  "native/hud/backgrounds/special-abilities-bg2-mask": AOE4_ICON_ASSETS["native/hud/backgrounds/special_abilities_bg2_mask.png"]!,
+  "native/hud/backgrounds/special-abilities-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/special_abilities_hc.png"]!,
+  "native/hud/boon-widget-bg": AOE4_ICON_ASSETS["native/hud/boon_widget_bg.png"]!,
+  "native/hud/boon-widget-bg-hc": AOE4_ICON_ASSETS["native/hud/boon_widget_bg_hc.png"]!,
+  "native/hud/boon-widget-mask": AOE4_ICON_ASSETS["native/hud/boon_widget_mask.png"]!,
+  "native/hud/civ-illustrations/abb-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/abb_illustration.png"]!,
+  "native/hud/civ-illustrations/byz-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/byz_illustration.png"]!,
+  "native/hud/civ-illustrations/chi-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/chi_illustration.png"]!,
+  "native/hud/civ-illustrations/eng-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/eng_illustration.png"]!,
+  "native/hud/civ-illustrations/fre-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/fre_illustration.png"]!,
+  "native/hud/civ-illustrations/hre-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/hre_illustration.png"]!,
+  "native/hud/civ-illustrations/jin-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/jin_illustration.png"]!,
+  "native/hud/civ-illustrations/jpn-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/jpn_illustration.png"]!,
+  "native/hud/civ-illustrations/mal-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/mal_illustration.png"]!,
+  "native/hud/civ-illustrations/mon-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/mon_illustration.png"]!,
+  "native/hud/civ-illustrations/ott-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/ott_illustration.png"]!,
+  "native/hud/civ-illustrations/rus-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/rus_illustration.png"]!,
+  "native/hud/civ-illustrations/sul-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/sul_illustration.png"]!,
+  "native/hud/decorators/zzz-seq": AOE4_ICON_ASSETS["native/hud/decorators/zzz_seq.png"]!,
+  "native/hud/diplomacy-button": AOE4_ICON_ASSETS["native/hud/diplomacy_button.png"]!,
+  "native/hud/diplomacy-button-hc": AOE4_ICON_ASSETS["native/hud/diplomacy_button_hc.png"]!,
+  "native/hud/diplomacy-button-hover": AOE4_ICON_ASSETS["native/hud/diplomacy_button_hover.png"]!,
+  "native/hud/diplomacy-button-hover-hc": AOE4_ICON_ASSETS["native/hud/diplomacy_button_hover_hc.png"]!,
+  "native/hud/events/cta-alert-event-icon": AOE4_ICON_ASSETS["native/hud/events/cta_alert_event_icon.png"]!,
+  "native/hud/events/cta-celebration-event-icon": AOE4_ICON_ASSETS["native/hud/events/cta_celebration_event_icon.png"]!,
+  "native/hud/events/cta-focus-change-event-icon": AOE4_ICON_ASSETS["native/hud/events/cta_focus_change_event_icon.png"]!,
+  "native/hud/events/cta-raised-stakes-event-icon": AOE4_ICON_ASSETS["native/hud/events/cta_raised_stakes_event_icon.png"]!,
+  "native/hud/gap-gold-glow-effect": AOE4_ICON_ASSETS["native/hud/gap_gold_glow_effect.png"]!,
+  "native/hud/governor/governor": AOE4_ICON_ASSETS["native/hud/governor/governor.png"]!,
+  "native/hud/governor/governor-armor": AOE4_ICON_ASSETS["native/hud/governor/governor_armor.png"]!,
+  "native/hud/governor/governor-cavalry": AOE4_ICON_ASSETS["native/hud/governor/governor_cavalry.png"]!,
+  "native/hud/governor/governor-food": AOE4_ICON_ASSETS["native/hud/governor/governor_food.png"]!,
+  "native/hud/governor/governor-panel": AOE4_ICON_ASSETS["native/hud/governor/governor_panel.png"]!,
+  "native/hud/governor/governor-religious": AOE4_ICON_ASSETS["native/hud/governor/governor_religious.png"]!,
+  "native/hud/governor/governor-upgrade": AOE4_ICON_ASSETS["native/hud/governor/governor_upgrade.png"]!,
+  "native/hud/governor/governor-villager": AOE4_ICON_ASSETS["native/hud/governor/governor_villager.png"]!,
+  "native/hud/governor/unrest": AOE4_ICON_ASSETS["native/hud/governor/unrest.png"]!,
   "native/hud/highlights/age-1-icon": AOE4_ICON_ASSETS["native/hud/highlights/age_1_icon.png"]!,
   "native/hud/highlights/age-2-icon": AOE4_ICON_ASSETS["native/hud/highlights/age_2_icon.png"]!,
   "native/hud/highlights/age-3-icon": AOE4_ICON_ASSETS["native/hud/highlights/age_3_icon.png"]!,
@@ -4381,6 +4879,62 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "native/hud/highlights/age-highlight-1": AOE4_ICON_ASSETS["native/hud/highlights/age_highlight_1.png"]!,
   "native/hud/highlights/age-highlight-2": AOE4_ICON_ASSETS["native/hud/highlights/age_highlight_2.png"]!,
   "native/hud/highlights/age-highlight-3": AOE4_ICON_ASSETS["native/hud/highlights/age_highlight_3.png"]!,
+  "native/hud/minimap/blip-radial-gradient-base": AOE4_ICON_ASSETS["native/hud/minimap/blip_radial_gradient_base.png"]!,
+  "native/hud/minimap/holy-site-ring": AOE4_ICON_ASSETS["native/hud/minimap/holy_site_ring.png"]!,
+  "native/hud/minimap/holy-site-ring-glow": AOE4_ICON_ASSETS["native/hud/minimap/holy_site_ring_glow.png"]!,
+  "native/hud/minimap/map-square-bg-150": AOE4_ICON_ASSETS["native/hud/minimap/map_square_bg_150.png"]!,
+  "native/hud/minimap/minimap-bg-2": AOE4_ICON_ASSETS["native/hud/minimap/minimap_bg_2.png"]!,
+  "native/hud/minimap/minimap-bg-hc": AOE4_ICON_ASSETS["native/hud/minimap/minimap_bg_hc.png"]!,
+  "native/hud/minimap/minimap-circle-gial": AOE4_ICON_ASSETS["native/hud/minimap/minimap_circle_gial.png"]!,
+  "native/hud/minimap/minimap-circle-gial-125": AOE4_ICON_ASSETS["native/hud/minimap/minimap_circle_gial_125.png"]!,
+  "native/hud/minimap/minimap-circle-gial-150": AOE4_ICON_ASSETS["native/hud/minimap/minimap_circle_gial_150.png"]!,
+  "native/hud/minimap/minimap-expand": AOE4_ICON_ASSETS["native/hud/minimap/minimap_expand.png"]!,
+  "native/hud/minimap/minimap-panel-bottom": AOE4_ICON_ASSETS["native/hud/minimap/minimap_panel_bottom.png"]!,
+  "native/hud/minimap/minimap-panel-bottom-hc": AOE4_ICON_ASSETS["native/hud/minimap/minimap_panel_bottom_hc.png"]!,
+  "native/hud/minimap/minimap-panel-top": AOE4_ICON_ASSETS["native/hud/minimap/minimap_panel_top.png"]!,
+  "native/hud/minimap/minimap-panel-top-hc": AOE4_ICON_ASSETS["native/hud/minimap/minimap_panel_top_hc.png"]!,
+  "native/hud/minimap/minimap-shrink": AOE4_ICON_ASSETS["native/hud/minimap/minimap_shrink.png"]!,
+  "native/hud/minimap/minimap-square-bg": AOE4_ICON_ASSETS["native/hud/minimap/minimap_square_bg.png"]!,
+  "native/hud/minimap/minimap-square-bg-125": AOE4_ICON_ASSETS["native/hud/minimap/minimap_square_bg_125.png"]!,
+  "native/hud/minimap/minimap-topsquare-gial": AOE4_ICON_ASSETS["native/hud/minimap/minimap_topsquare_gial.png"]!,
+  "native/hud/minimap/minimap-topsquare-gial-125": AOE4_ICON_ASSETS["native/hud/minimap/minimap_topsquare_gial_125.png"]!,
+  "native/hud/minimap/minimap-topsquare-gial-150": AOE4_ICON_ASSETS["native/hud/minimap/minimap_topsquare_gial_150.png"]!,
+  "native/hud/minimap/n-indicator": AOE4_ICON_ASSETS["native/hud/minimap/n_indicator.png"]!,
+  "native/hud/minimap/objective-ping-icon-bg": AOE4_ICON_ASSETS["native/hud/minimap/objective_ping_icon_bg.png"]!,
+  "native/hud/minimap/ping-center-ring": AOE4_ICON_ASSETS["native/hud/minimap/ping_center_ring.png"]!,
+  "native/hud/minimap/xbox/attack-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/attack_icon.png"]!,
+  "native/hud/minimap/xbox/cancel-move-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/cancel_move_icon.png"]!,
+  "native/hud/minimap/xbox/create-waypoint": AOE4_ICON_ASSETS["native/hud/minimap/xbox/create_waypoint.png"]!,
+  "native/hud/minimap/xbox/gold-food-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/gold_food_icon.png"]!,
+  "native/hud/minimap/xbox/lock-reticle-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/lock_reticle_icon.png"]!,
+  "native/hud/minimap/xbox/minimap": AOE4_ICON_ASSETS["native/hud/minimap/xbox/minimap.png"]!,
+  "native/hud/minimap/xbox/n": AOE4_ICON_ASSETS["native/hud/minimap/xbox/n.png"]!,
+  "native/hud/minimap/xbox/reset-waypoints-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/reset_waypoints_icon.png"]!,
+  "native/hud/minimap/xbox/send-all-archers-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_archers_icon.png"]!,
+  "native/hud/minimap/xbox/send-all-attack-ships-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_attack_ships_icon.png"]!,
+  "native/hud/minimap/xbox/send-all-cavalry-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_cavalry_icon.png"]!,
+  "native/hud/minimap/xbox/send-all-melee": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_melee.png"]!,
+  "native/hud/minimap/xbox/send-all-monk-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_monk_icon.png"]!,
+  "native/hud/minimap/xbox/send-all-seige-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_seige_icon.png"]!,
+  "native/hud/minimap/xbox/send-all-transport-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_transport_icon.png"]!,
+  "native/hud/minimap/xbox/sheep-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/sheep_icon.png"]!,
+  "native/hud/minimap/xbox/town-center-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/town_center_icon.png"]!,
+  "native/hud/minimap/xbox/wedgeselection": AOE4_ICON_ASSETS["native/hud/minimap/xbox/wedgeselection.png"]!,
+  "native/hud/objectives/objective-bottom-image": AOE4_ICON_ASSETS["native/hud/objectives/objective_bottom_image.png"]!,
+  "native/hud/objectives/objective-bottom-image-big": AOE4_ICON_ASSETS["native/hud/objectives/objective_bottom_image_big.png"]!,
+  "native/hud/objectives/objective-completed": AOE4_ICON_ASSETS["native/hud/objectives/objective_completed.png"]!,
+  "native/hud/objectives/objective-failed": AOE4_ICON_ASSETS["native/hud/objectives/objective_failed.png"]!,
+  "native/hud/objectives/objective-hint-point-progressbar-glow": AOE4_ICON_ASSETS["native/hud/objectives/objective_hint_point_progressbar_glow.png"]!,
+  "native/hud/objectives/objective-top-image": AOE4_ICON_ASSETS["native/hud/objectives/objective_top_image.png"]!,
+  "native/hud/objectives/objective-top-image-big": AOE4_ICON_ASSETS["native/hud/objectives/objective_top_image_big.png"]!,
+  "native/hud/objectives/secondary-objective-progressbar-glow": AOE4_ICON_ASSETS["native/hud/objectives/secondary_objective_progressbar_glow.png"]!,
+  "native/hud/objectives/secondary-objective-progressbar-glow-xbox": AOE4_ICON_ASSETS["native/hud/objectives/secondary_objective_progressbar_glow_xbox.png"]!,
+  "native/hud/xbox/agefire": AOE4_ICON_ASSETS["native/hud/xbox/agefire.png"]!,
+  "native/hud/xbox/agefirering": AOE4_ICON_ASSETS["native/hud/xbox/agefirering.png"]!,
+  "native/hud/xbox/ageringsglow": AOE4_ICON_ASSETS["native/hud/xbox/ageringsglow.png"]!,
+  "native/hud/xbox/boon-widget-bg": AOE4_ICON_ASSETS["native/hud/xbox/boon_widget_bg.png"]!,
+  "native/hud/xbox/boon-widget-bg-hc": AOE4_ICON_ASSETS["native/hud/xbox/boon_widget_bg_hc.png"]!,
+  "native/hud/xbox/boon-widget-mask": AOE4_ICON_ASSETS["native/hud/xbox/boon_widget_mask.png"]!,
   "native/resources/resource-berry-icon": AOE4_ICON_ASSETS["native/resources/resource_berry_icon.png"]!,
   "native/resources/resource-boar-icon": AOE4_ICON_ASSETS["native/resources/resource_boar_icon.png"]!,
   "native/resources/resource-carcasses-held-icon": AOE4_ICON_ASSETS["native/resources/resource_carcasses_held_icon.png"]!,
@@ -4437,6 +4991,23 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "neza-training-3": AOE4_ICON_ASSETS["images/technologies/neza-training-3.png"]!,
   "notre-dame-4": AOE4_ICON_ASSETS["images/buildings/notre-dame-4.png"]!,
   "numeri-4": AOE4_ICON_ASSETS["images/technologies/numeri-4.png"]!,
+  "objective-bottom-image": AOE4_ICON_ASSETS["native/hud/objectives/objective_bottom_image.png"]!,
+  "objective-bottom-image-big": AOE4_ICON_ASSETS["native/hud/objectives/objective_bottom_image_big.png"]!,
+  "objective-completed": AOE4_ICON_ASSETS["native/hud/objectives/objective_completed.png"]!,
+  "objective-failed": AOE4_ICON_ASSETS["native/hud/objectives/objective_failed.png"]!,
+  "objective-hint-point-progressbar-glow": AOE4_ICON_ASSETS["native/hud/objectives/objective_hint_point_progressbar_glow.png"]!,
+  "objective-ping-icon-bg": AOE4_ICON_ASSETS["native/hud/minimap/objective_ping_icon_bg.png"]!,
+  "objective-top-image": AOE4_ICON_ASSETS["native/hud/objectives/objective_top_image.png"]!,
+  "objective-top-image-big": AOE4_ICON_ASSETS["native/hud/objectives/objective_top_image_big.png"]!,
+  "objectives/objective-bottom-image": AOE4_ICON_ASSETS["native/hud/objectives/objective_bottom_image.png"]!,
+  "objectives/objective-bottom-image-big": AOE4_ICON_ASSETS["native/hud/objectives/objective_bottom_image_big.png"]!,
+  "objectives/objective-completed": AOE4_ICON_ASSETS["native/hud/objectives/objective_completed.png"]!,
+  "objectives/objective-failed": AOE4_ICON_ASSETS["native/hud/objectives/objective_failed.png"]!,
+  "objectives/objective-hint-point-progressbar-glow": AOE4_ICON_ASSETS["native/hud/objectives/objective_hint_point_progressbar_glow.png"]!,
+  "objectives/objective-top-image": AOE4_ICON_ASSETS["native/hud/objectives/objective_top_image.png"]!,
+  "objectives/objective-top-image-big": AOE4_ICON_ASSETS["native/hud/objectives/objective_top_image_big.png"]!,
+  "objectives/secondary-objective-progressbar-glow": AOE4_ICON_ASSETS["native/hud/objectives/secondary_objective_progressbar_glow.png"]!,
+  "objectives/secondary-objective-progressbar-glow-xbox": AOE4_ICON_ASSETS["native/hud/objectives/secondary_objective_progressbar_glow_xbox.png"]!,
   "oda-clan-daimyo-estate-2": AOE4_ICON_ASSETS["images/buildings/oda-clan-daimyo-estate-2.png"]!,
   "oda-tactics-4": AOE4_ICON_ASSETS["images/technologies/oda-tactics-4.png"]!,
   "odachi-3": AOE4_ICON_ASSETS["images/technologies/odachi-3.png"]!,
@@ -4445,6 +5016,7 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "onna-musha-3": AOE4_ICON_ASSETS["images/units/onna-musha-3.png"]!,
   "open-field-system-2": AOE4_ICON_ASSETS["images/technologies/open-field-system-2.png"]!,
   "ordinance-company-3": AOE4_ICON_ASSETS["images/technologies/ordinance-company-3.png"]!,
+  "ott-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/ott_illustration.png"]!,
   "outpost-1": AOE4_ICON_ASSETS["images/buildings/outpost-1.png"]!,
   "over-grazing-3": AOE4_ICON_ASSETS["images/technologies/over-grazing-3.png"]!,
   "ovoo-1": AOE4_ICON_ASSETS["images/buildings/ovoo-1.png"]!,
@@ -4479,6 +5051,7 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "piety-4": AOE4_ICON_ASSETS["images/technologies/piety-4.png"]!,
   "piety-improved-4": AOE4_ICON_ASSETS["images/technologies/piety-improved-4.png"]!,
   "pili-pao-4": AOE4_ICON_ASSETS["images/technologies/pili-pao-4.png"]!,
+  "ping-center-ring": AOE4_ICON_ASSETS["native/hud/minimap/ping_center_ring.png"]!,
   "piracy-2": AOE4_ICON_ASSETS["images/technologies/piracy-2.png"]!,
   "pit-mine-1": AOE4_ICON_ASSETS["images/buildings/pit-mine-1.png"]!,
   "platecutter-point-4": AOE4_ICON_ASSETS["images/technologies/platecutter-point-4.png"]!,
@@ -4519,6 +5092,7 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "reload-drills-4": AOE4_ICON_ASSETS["images/technologies/reload-drills-4.png"]!,
   "republic-of-genoa-2": AOE4_ICON_ASSETS["images/technologies/republic-of-genoa-2.png"]!,
   "republic-of-venice-3": AOE4_ICON_ASSETS["images/technologies/republic-of-venice-3.png"]!,
+  "reset-waypoints-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/reset_waypoints_icon.png"]!,
   "resource-berry-icon": AOE4_ICON_ASSETS["native/resources/resource_berry_icon.png"]!,
   "resource-boar-icon": AOE4_ICON_ASSETS["native/resources/resource_boar_icon.png"]!,
   "resource-carcasses-held-icon": AOE4_ICON_ASSETS["native/resources/resource_carcasses_held_icon.png"]!,
@@ -4542,6 +5116,10 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "resource-no-villager": AOE4_ICON_ASSETS["native/resources/resource_no_villager.png"]!,
   "resource-olive-oil": AOE4_ICON_ASSETS["native/resources/resource_olive_oil.png"]!,
   "resource-olive-oil-insufficient": AOE4_ICON_ASSETS["native/resources/resource_olive_oil_insufficient.png"]!,
+  "resource-panel": AOE4_ICON_ASSETS["native/hud/backgrounds/resource_panel.png"]!,
+  "resource-panel-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/resource_panel_hc.png"]!,
+  "resource-panel-tall": AOE4_ICON_ASSETS["native/hud/backgrounds/resource_panel_tall.png"]!,
+  "resource-panel-tall-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/resource_panel_tall_hc.png"]!,
   "resource-popcap": AOE4_ICON_ASSETS["native/resources/resource_popcap.png"]!,
   "resource-popcap-amberalert": AOE4_ICON_ASSETS["native/resources/xbox/resource_popcap_amberalert.png"]!,
   "resource-popcap-icon": AOE4_ICON_ASSETS["native/resources/resource_popcap_icon.png"]!,
@@ -4700,6 +5278,7 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "ruinous-blinding-2": AOE4_ICON_ASSETS["images/technologies/ruinous-blinding-2.png"]!,
   "rule-of-templars-3": AOE4_ICON_ASSETS["images/technologies/rule-of-templars-3.png"]!,
   "runestones-1": AOE4_ICON_ASSETS["images/buildings/runestones-1.png"]!,
+  "rus-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/rus_illustration.png"]!,
   "rus-tribute-3": AOE4_ICON_ASSETS["images/units/rus-tribute-3.png"]!,
   "ryokan-1": AOE4_ICON_ASSETS["images/buildings/ryokan-1.png"]!,
   "safe-passage-2": AOE4_ICON_ASSETS["images/technologies/safe-passage-2.png"]!,
@@ -4724,6 +5303,15 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "scout-1": AOE4_ICON_ASSETS["images/units/scout-1.png"]!,
   "scutage-4": AOE4_ICON_ASSETS["images/technologies/scutage-4.png"]!,
   "sea-gate-castle-3": AOE4_ICON_ASSETS["images/buildings/sea-gate-castle-3.png"]!,
+  "secondary-objective-progressbar-glow": AOE4_ICON_ASSETS["native/hud/objectives/secondary_objective_progressbar_glow.png"]!,
+  "secondary-objective-progressbar-glow-xbox": AOE4_ICON_ASSETS["native/hud/objectives/secondary_objective_progressbar_glow_xbox.png"]!,
+  "send-all-archers-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_archers_icon.png"]!,
+  "send-all-attack-ships-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_attack_ships_icon.png"]!,
+  "send-all-cavalry-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_cavalry_icon.png"]!,
+  "send-all-melee": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_melee.png"]!,
+  "send-all-monk-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_monk_icon.png"]!,
+  "send-all-seige-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_seige_icon.png"]!,
+  "send-all-transport-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_transport_icon.png"]!,
   "serjeant-2": AOE4_ICON_ASSETS["images/units/serjeant-2.png"]!,
   "serpentine-powder-4": AOE4_ICON_ASSETS["images/technologies/serpentine-powder-4.png"]!,
   "shaft-mining-3": AOE4_ICON_ASSETS["images/technologies/shaft-mining-3.png"]!,
@@ -4737,6 +5325,7 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "sharpening-stones-tier5-4": AOE4_ICON_ASSETS["images/technologies/sharpening-stones-tier5-4.png"]!,
   "sharpening-stones-tier6-4": AOE4_ICON_ASSETS["images/technologies/sharpening-stones-tier6-4.png"]!,
   "shattering-projectiles-4": AOE4_ICON_ASSETS["images/technologies/shattering-projectiles-4.png"]!,
+  "sheep-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/sheep_icon.png"]!,
   "shinobi-2": AOE4_ICON_ASSETS["images/units/shinobi-2.png"]!,
   "shinto-priest-3": AOE4_ICON_ASSETS["images/units/shinto-priest-3.png"]!,
   "shinto-rituals-3": AOE4_ICON_ASSETS["images/technologies/shinto-rituals-3.png"]!,
@@ -4766,6 +5355,10 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "spasskaya-tower-3": AOE4_ICON_ASSETS["images/buildings/spasskaya-tower-3.png"]!,
   "spearman-1": AOE4_ICON_ASSETS["images/units/spearman-1.png"]!,
   "spearman-levy-1": AOE4_ICON_ASSETS["images/units/spearman-levy-1.png"]!,
+  "special-abilities": AOE4_ICON_ASSETS["native/hud/backgrounds/special_abilities.png"]!,
+  "special-abilities-bg2": AOE4_ICON_ASSETS["native/hud/backgrounds/special_abilities_bg2.png"]!,
+  "special-abilities-bg2-mask": AOE4_ICON_ASSETS["native/hud/backgrounds/special_abilities_bg2_mask.png"]!,
+  "special-abilities-hc": AOE4_ICON_ASSETS["native/hud/backgrounds/special_abilities_hc.png"]!,
   "specialized-pick-2": AOE4_ICON_ASSETS["images/technologies/specialized-pick-2.png"]!,
   "specialized-pick-improved-2": AOE4_ICON_ASSETS["images/technologies/specialized-pick-improved-2.png"]!,
   "spice-roads-4": AOE4_ICON_ASSETS["images/technologies/spice-roads-4.png"]!,
@@ -4793,6 +5386,7 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "storm-lances-3": AOE4_ICON_ASSETS["images/technologies/storm-lances-3.png"]!,
   "streltsy-4": AOE4_ICON_ASSETS["images/units/streltsy-4.png"]!,
   "stronghold-defensive-arrowslits-2": AOE4_ICON_ASSETS["images/technologies/stronghold-defensive-arrowslits-2.png"]!,
+  "sul-illustration": AOE4_ICON_ASSETS["native/hud/civ_illustrations/sul_illustration.png"]!,
   "sultanhani-trade-network-1": AOE4_ICON_ASSETS["images/buildings/sultanhani-trade-network-1.png"]!,
   "sultans-elite-tower-elephant-3": AOE4_ICON_ASSETS["images/units/sultans-elite-tower-elephant-3.png"]!,
   "sultans-mamluks-3": AOE4_ICON_ASSETS["images/technologies/sultans-mamluks-3.png"]!,
@@ -5745,6 +6339,7 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "tower-of-victory-1": AOE4_ICON_ASSETS["images/buildings/tower-of-victory-1.png"]!,
   "tower-shields-4": AOE4_ICON_ASSETS["images/technologies/tower-shields-4.png"]!,
   "town-center-1": AOE4_ICON_ASSETS["images/buildings/town-center-1.png"]!,
+  "town-center-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/town_center_icon.png"]!,
   "traction-trebuchet-3": AOE4_ICON_ASSETS["images/units/traction-trebuchet-3.png"]!,
   "trade-bags-1": AOE4_ICON_ASSETS["images/technologies/trade-bags-1.png"]!,
   "trade-caravan-2": AOE4_ICON_ASSETS["images/units/trade-caravan-2.png"]!,
@@ -6223,6 +6818,7 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "university-4": AOE4_ICON_ASSETS["images/buildings/university-4.png"]!,
   "unlock-kharash-edict-1": AOE4_ICON_ASSETS["images/technologies/unlock-kharash-edict-1.png"]!,
   "unlock-stockyard-edict-1": AOE4_ICON_ASSETS["images/technologies/unlock-stockyard-edict-1.png"]!,
+  "unrest": AOE4_ICON_ASSETS["native/hud/governor/unrest.png"]!,
   "upgrade-riddari-into-elite-riddari-4": AOE4_ICON_ASSETS["images/upgrades/upgrade-riddari-into-elite-riddari-4.png"]!,
   "upgrade-to-elite-4": AOE4_ICON_ASSETS["images/technologies/upgrade-to-elite-4.png"]!,
   "upgrades/early-men-at-arms": AOE4_ICON_ASSETS["images/upgrades/early-men-at-arms-2.png"]!,
@@ -6534,6 +7130,7 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "warship-4": AOE4_ICON_ASSETS["images/units/warship-4.png"]!,
   "warwolf-trebuchet-3": AOE4_ICON_ASSETS["images/technologies/warwolf-trebuchet-3.png"]!,
   "wedge-rivets-3": AOE4_ICON_ASSETS["images/technologies/wedge-rivets-3.png"]!,
+  "wedgeselection": AOE4_ICON_ASSETS["native/hud/minimap/xbox/wedgeselection.png"]!,
   "western-mercenary-contract-1": AOE4_ICON_ASSETS["images/technologies/western-mercenary-contract-1.png"]!,
   "wheelbarrow-1": AOE4_ICON_ASSETS["images/technologies/wheelbarrow-1.png"]!,
   "wheelbarrow-improved-1": AOE4_ICON_ASSETS["images/technologies/wheelbarrow-improved-1.png"]!,
@@ -6549,15 +7146,39 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "wynguard-raiders-1": AOE4_ICON_ASSETS["images/units/wynguard-raiders-1.png"]!,
   "wynguard-ranger-4": AOE4_ICON_ASSETS["images/units/wynguard-ranger-4.png"]!,
   "wynguard-rangers-1": AOE4_ICON_ASSETS["images/units/wynguard-rangers-1.png"]!,
+  "xbox/agefire": AOE4_ICON_ASSETS["native/hud/xbox/agefire.png"]!,
+  "xbox/agefirering": AOE4_ICON_ASSETS["native/hud/xbox/agefirering.png"]!,
+  "xbox/ageringsglow": AOE4_ICON_ASSETS["native/hud/xbox/ageringsglow.png"]!,
   "xbox/ageup-building": AOE4_ICON_ASSETS["native/hud/age/xbox/ageup_building.png"]!,
   "xbox/ageup-buildingred": AOE4_ICON_ASSETS["native/hud/age/xbox/ageup_buildingred.png"]!,
   "xbox/ageup-buildingred2": AOE4_ICON_ASSETS["native/hud/age/xbox/ageup_buildingred2.png"]!,
+  "xbox/attack-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/attack_icon.png"]!,
+  "xbox/boon-widget-bg": AOE4_ICON_ASSETS["native/hud/xbox/boon_widget_bg.png"]!,
+  "xbox/boon-widget-bg-hc": AOE4_ICON_ASSETS["native/hud/xbox/boon_widget_bg_hc.png"]!,
+  "xbox/boon-widget-mask": AOE4_ICON_ASSETS["native/hud/xbox/boon_widget_mask.png"]!,
+  "xbox/cancel-move-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/cancel_move_icon.png"]!,
+  "xbox/create-waypoint": AOE4_ICON_ASSETS["native/hud/minimap/xbox/create_waypoint.png"]!,
+  "xbox/gold-food-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/gold_food_icon.png"]!,
+  "xbox/lock-reticle-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/lock_reticle_icon.png"]!,
+  "xbox/minimap": AOE4_ICON_ASSETS["native/hud/minimap/xbox/minimap.png"]!,
+  "xbox/n": AOE4_ICON_ASSETS["native/hud/minimap/xbox/n.png"]!,
+  "xbox/reset-waypoints-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/reset_waypoints_icon.png"]!,
   "xbox/resource-food-icon-alert": AOE4_ICON_ASSETS["native/resources/xbox/resource_food_icon_alert.png"]!,
   "xbox/resource-gold-icon-alert": AOE4_ICON_ASSETS["native/resources/xbox/resource_gold_icon_alert.png"]!,
   "xbox/resource-popcap-amberalert": AOE4_ICON_ASSETS["native/resources/xbox/resource_popcap_amberalert.png"]!,
   "xbox/resource-popcap-redalert": AOE4_ICON_ASSETS["native/resources/xbox/resource_popcap_redalert.png"]!,
   "xbox/resource-stone-icon-alert": AOE4_ICON_ASSETS["native/resources/xbox/resource_stone_icon_alert.png"]!,
   "xbox/resource-wood-icon-alert": AOE4_ICON_ASSETS["native/resources/xbox/resource_wood_icon_alert.png"]!,
+  "xbox/send-all-archers-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_archers_icon.png"]!,
+  "xbox/send-all-attack-ships-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_attack_ships_icon.png"]!,
+  "xbox/send-all-cavalry-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_cavalry_icon.png"]!,
+  "xbox/send-all-melee": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_melee.png"]!,
+  "xbox/send-all-monk-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_monk_icon.png"]!,
+  "xbox/send-all-seige-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_seige_icon.png"]!,
+  "xbox/send-all-transport-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/send_all_transport_icon.png"]!,
+  "xbox/sheep-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/sheep_icon.png"]!,
+  "xbox/town-center-icon": AOE4_ICON_ASSETS["native/hud/minimap/xbox/town_center_icon.png"]!,
+  "xbox/wedgeselection": AOE4_ICON_ASSETS["native/hud/minimap/xbox/wedgeselection.png"]!,
   "xebec-4": AOE4_ICON_ASSETS["images/units/xebec-4.png"]!,
   "yaki-ire-4": AOE4_ICON_ASSETS["images/technologies/yaki-ire-4.png"]!,
   "yam-network-3": AOE4_ICON_ASSETS["images/technologies/yam-network-3.png"]!,
@@ -6578,6 +7199,7 @@ export const AOE4_ICON_ALIASES: Record<string, string> = {
   "zhu-xis-library-3": AOE4_ICON_ASSETS["images/buildings/zhu-xis-library-3.png"]!,
   "zhuge-nu-2": AOE4_ICON_ASSETS["images/units/zhuge-nu-2.png"]!,
   "zornhau-3": AOE4_ICON_ASSETS["images/technologies/zornhau-3.png"]!,
+  "zzz-seq": AOE4_ICON_ASSETS["native/hud/decorators/zzz_seq.png"]!,
 }
 
 export function normalizeAoE4IconToken(value: string): string {
@@ -6644,6 +7266,13 @@ export function resolveAoE4Icon(value: string): string | null {
   if (category) {
     const byCategory = AOE4_ICON_ALIASES[(categoryKey && (categoryAliases[categoryKey] ?? categoryKey)) + '/' + stem]
     if (byCategory) return byCategory
+  }
+  // The game uses a shared worker token (unit_worker/villager) while the
+  // public catalogue stores civilization-specific villager art. Keep the
+  // resolver deterministic and offline by selecting the canonical Abbasid
+  // worker icon when no generic asset was published.
+  if (stem === 'villager') {
+    return AOE4_ICON_ALIASES['abbasid/villager-1'] ?? AOE4_ICON_ALIASES['gilded-villager-1'] ?? null
   }
   return AOE4_ICON_ALIASES[stem] ?? null
 }

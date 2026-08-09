@@ -2,7 +2,8 @@ import type { BuildOrder } from './buildOrderSchema'
 import { buildIndexForCiv, parseNote } from './buildOrderSchema'
 import { parseDuration } from './format'
 import { gradeBuildFollow, type TrainerReport } from './buildTrainer'
-import type { BuildEvent, PlayerSummary } from './statsSummary'
+import type { PerPlayerMatchStats } from './analysis'
+import { civFromToken, type BuildEvent, type PlayerSummary } from './statsSummary'
 
 export type BuildAuditStatus = 'ok' | 'late' | 'early' | 'missing' | 'unknown'
 export type BuildAuditSeverity = 'major' | 'minor' | 'info'
@@ -92,7 +93,9 @@ export function selectReferenceBuild(
   const preferred = preferredBuild && supportsCiv(preferredBuild, civ) ? [preferredBuild] : []
   const candidates = [...preferred, ...compatible].filter(
     (build, index, all) =>
-      all.findIndex((candidate) => candidate.name === build.name && candidate.source === build.source) === index,
+      all.findIndex(
+        (candidate) => candidate.name === build.name && candidate.source === build.source,
+      ) === index,
   )
   if (candidates.length === 0) {
     return {
@@ -116,7 +119,7 @@ export function selectReferenceBuild(
         observedFitScore: fit?.score ?? null,
         observedMatchedActions: fit?.matchedActions ?? 0,
         observedExpectedActions: fit?.expectedActions ?? 0,
-        observedConfidence: fit ? fitConfidence(fit.score, player?.buildOrder.length ?? 0) : 'none',
+        observedConfidence: fit?.confidence ?? 'none',
       }
     }
   }
@@ -129,7 +132,7 @@ export function selectReferenceBuild(
       observedFitScore: fit?.score ?? null,
       observedMatchedActions: fit?.matchedActions ?? 0,
       observedExpectedActions: fit?.expectedActions ?? 0,
-      observedConfidence: fit ? fitConfidence(fit.score, player?.buildOrder.length ?? 0) : 'none',
+      observedConfidence: fit?.confidence ?? 'none',
     }
   }
   const mapKey = normalizedContext(map)
@@ -138,9 +141,24 @@ export function selectReferenceBuild(
     const buildMap = normalizedContext(build.map)
     const buildPatch = normalizedContext(build.patch)
     const matchupMatch = supportsMatchup(build, opponentCivilizations)
-    const mapMatch = Boolean(mapKey && buildMap && (mapKey === buildMap || mapKey.includes(buildMap) || buildMap.includes(mapKey)))
-    const patchMatch = Boolean(patchKey && buildPatch && (patchKey === buildPatch || patchKey.includes(buildPatch) || buildPatch.includes(patchKey)))
-    const sourceBonus = build.origin === 'curated' ? 8 : build.origin === 'house' ? 5 : build.origin === 'imported' ? 2 : 0
+    const mapMatch = Boolean(
+      mapKey &&
+      buildMap &&
+      (mapKey === buildMap || mapKey.includes(buildMap) || buildMap.includes(mapKey)),
+    )
+    const patchMatch = Boolean(
+      patchKey &&
+      buildPatch &&
+      (patchKey === buildPatch || patchKey.includes(buildPatch) || buildPatch.includes(patchKey)),
+    )
+    const sourceBonus =
+      build.origin === 'curated'
+        ? 8
+        : build.origin === 'house'
+          ? 5
+          : build.origin === 'imported'
+            ? 2
+            : 0
     const metadataScore =
       (matchupMatch ? 140 : 0) +
       (mapMatch ? 100 : 0) +
@@ -174,7 +192,7 @@ export function selectReferenceBuild(
     observedFitScore: fit?.score ?? null,
     observedMatchedActions: fit?.matchedActions ?? 0,
     observedExpectedActions: fit?.expectedActions ?? 0,
-    observedConfidence: fit ? fitConfidence(fit.score, player?.buildOrder.length ?? 0) : 'none',
+    observedConfidence: fit?.confidence ?? 'none',
   }
 }
 
@@ -182,6 +200,7 @@ interface ObservedBuildFit {
   score: number
   matchedActions: number
   expectedActions: number
+  confidence: 'high' | 'medium' | 'low' | 'none'
 }
 
 function observedBuildFit(
@@ -199,15 +218,109 @@ function observedBuildFit(
   const score = Math.round(
     actionRate != null && checkpointScore != null
       ? actionRate * 0.55 + checkpointScore * 0.45
-      : actionRate ?? checkpointScore ?? 0,
+      : (actionRate ?? checkpointScore ?? 0),
   )
-  return { score, matchedActions, expectedActions }
+  return { score, matchedActions, expectedActions, confidence: audit.coverage.confidence }
 }
 
-function fitConfidence(score: number, eventCount: number): 'high' | 'medium' | 'low' {
-  if (eventCount >= 12 && score >= 70) return 'high'
-  if (eventCount >= 5 && score >= 45) return 'medium'
-  return 'low'
+export interface MatchBuildAuditInput {
+  players: PlayerSummary[]
+  builds: BuildOrder[]
+  myCiv: string | null
+  myProfileId: number | null
+  /** Stable summary row id used for local/AI players without a profile id. */
+  myPlayerId?: number | null
+  myName?: string | null
+  map?: string | null
+  patch?: string | null
+  referenceBuildName?: string | null
+  perPlayer?: PerPlayerMatchStats[] | null
+  /** Exact build extracted from a VOD for the selected player. */
+  preferredBuild?: BuildOrder | null
+}
+
+/**
+ * Audits every decoded player independently. The player row itself is the
+ * source of the event timeline; per-player combat rows are used only for team
+ * membership when choosing matchup-specific references.
+ */
+export function compareMatchPlayers(input: MatchBuildAuditInput): PlayerBuildAudit[] {
+  const { players, perPlayer } = input
+  return players.map((player) => {
+    const playerIsSubject = isPlayerSubject(
+      player,
+      input.myProfileId,
+      input.myCiv,
+      input.myName,
+      players,
+      input.myPlayerId,
+    )
+    const civ = playerIsSubject ? input.myCiv : civFromToken(player.civToken)
+    const playerStats =
+      player.profileId != null
+        ? (perPlayer?.find((row) => row.profileId === player.profileId) ?? null)
+        : null
+    const hasOpponentTeamIds = Boolean(
+      playerStats?.teamId != null &&
+        perPlayer?.some((row) => row.teamId != null && row.teamId !== playerStats.teamId),
+    )
+    const opponentCivilizations = players
+      .filter((other) => {
+        if (other.playerId === player.playerId) return false
+        const otherStats =
+          other.profileId != null
+            ? (perPlayer?.find((row) => row.profileId === other.profileId) ?? null)
+            : null
+        if (!hasOpponentTeamIds) return true
+        return otherStats?.teamId != null && otherStats.teamId !== playerStats?.teamId
+      })
+      .map((other) => civFromToken(other.civToken))
+      .filter((value): value is string => value != null)
+    const selection = selectReferenceBuild(input.builds, {
+      civ,
+      map: input.map,
+      patch: input.patch,
+      pinnedName: playerIsSubject ? input.referenceBuildName : null,
+      preferredBuild:
+        playerIsSubject && input.preferredBuild?.build_order.length
+          ? input.preferredBuild
+          : null,
+      player,
+      opponentCivilizations,
+    })
+    return comparePlayerToBuild({
+      player,
+      civ,
+      reference: selection.reference,
+      referenceCandidates: selection.candidates,
+      referenceReason: selection.reason,
+      referenceFitScore: selection.observedFitScore,
+      referenceMatchedActions: selection.observedMatchedActions,
+      referenceExpectedActions: selection.observedExpectedActions,
+      referenceConfidence: selection.observedConfidence,
+    })
+  })
+}
+
+export function isPlayerSubject(
+  player: PlayerSummary,
+  myProfileId: number | null,
+  myCiv: string | null,
+  myName: string | null | undefined,
+  allPlayers: PlayerSummary[],
+  myPlayerId: number | null = null,
+): boolean {
+  if (myPlayerId != null) return player.playerId === myPlayerId
+  if (myProfileId != null) {
+    if (player.profileId != null) return player.profileId === myProfileId
+    if (myName && player.name) return player.name.toLowerCase() === myName.toLowerCase()
+    return false
+  }
+  if (myName && player.name && player.name.toLowerCase() === myName.toLowerCase()) return true
+  if (myCiv == null || civFromToken(player.civToken) !== myCiv) return false
+  // A civ-only fallback is safe for a unique civ, but not for mirror matches
+  // or team games where several players can share the same civilization.
+  return allPlayers.filter((candidate) => civFromToken(candidate.civToken) === myCiv).length === 1
 }
 
 export interface PlayerBuildAudit {
@@ -223,7 +336,8 @@ export interface PlayerBuildAudit {
   /** Number of compatible local builds considered for this player. */
   referenceCandidates: number
   /** Why this reference was selected. */
-  referenceReason: 'pinned' | 'video' | 'observed' | 'matchup' | 'map' | 'patch' | 'best-match' | 'none'
+  referenceReason:
+    'pinned' | 'video' | 'observed' | 'matchup' | 'map' | 'patch' | 'best-match' | 'none'
   referenceFitScore: number | null
   referenceMatchedActions: number
   referenceExpectedActions: number
@@ -279,7 +393,10 @@ function singular(value: string): string {
 
 function noteText(note: string): string {
   return parseNote(note)
-    .filter((part): part is Extract<ReturnType<typeof parseNote>[number], { type: 'text' }> => part.type === 'text')
+    .filter(
+      (part): part is Extract<ReturnType<typeof parseNote>[number], { type: 'text' }> =>
+        part.type === 'text',
+    )
     .map((part) => part.text)
     .join(' ')
     .replace(/\s+/g, ' ')
@@ -289,7 +406,11 @@ function noteText(note: string): string {
 function actionCategory(note: string): BuildEvent['category'] | null {
   const text = norm(note)
   if (/\b(research|upgrade|technology|tech)\b/.test(text)) return 'upgrade'
-  if (/\b(build|construct|landmark|town center|tc|camp|house|stable|barracks|range|mill|dock|tower|wall|blacksmith|workshop)\b/.test(text)) {
+  if (
+    /\b(build|construct|landmark|town center|tc|camp|house|stable|barracks|range|mill|dock|tower|wall|blacksmith|workshop)\b/.test(
+      text,
+    )
+  ) {
     return 'building'
   }
   if (/\b(produce|train|knight|spearman|archer|villager|unit|men at arms|horseman)\b/.test(text)) {
@@ -309,7 +430,11 @@ function eventText(event: BuildEvent): string {
   return norm(`${event.name} ${event.blueprint}`)
 }
 
-function matchScore(note: string, event: BuildEvent, expectedCategory: BuildEvent['category'] | null): number {
+function matchScore(
+  note: string,
+  event: BuildEvent,
+  expectedCategory: BuildEvent['category'] | null,
+): number {
   const terms = actionTerms(note)
   const haystack = eventText(event)
   const overlap = terms.filter((term) => haystack.includes(term)).length
@@ -338,7 +463,12 @@ function nearestAction(
   for (const event of events) {
     if (Math.abs(event.timeSec - targetTimeSec) > ACTION_WINDOW_SEC) continue
     const score = matchScore(note, event, expectedCategory)
-    if (score > bestScore || (score === bestScore && best && Math.abs(event.timeSec - targetTimeSec) < Math.abs(best.timeSec - targetTimeSec))) {
+    if (
+      score > bestScore ||
+      (score === bestScore &&
+        best &&
+        Math.abs(event.timeSec - targetTimeSec) < Math.abs(best.timeSec - targetTimeSec))
+    ) {
       best = event
       bestScore = score
     }
@@ -392,7 +522,10 @@ function issuesForReport(report: TrainerReport): BuildAuditIssue[] {
   return issues
 }
 
-function strengthsForReport(report: TrainerReport, actions: BuildActionAudit[]): BuildAuditFinding[] {
+function strengthsForReport(
+  report: TrainerReport,
+  actions: BuildActionAudit[],
+): BuildAuditFinding[] {
   const strengths: BuildAuditFinding[] = []
   for (const checkpoint of report.checkpoints) {
     if (!checkpoint.ok) continue
@@ -427,19 +560,29 @@ function coverageFor(
   actions: BuildActionAudit[],
 ): BuildAuditCoverage {
   const timedCheckpoints = report?.checkpoints.length ?? 0
-  const gradeableCheckpoints = report?.checkpoints.filter((checkpoint) => checkpoint.ok != null).length ?? 0
+  const gradeableCheckpoints =
+    report?.checkpoints.filter((checkpoint) => checkpoint.ok != null).length ?? 0
   const matchedActions = actions.filter((action) => action.actual != null).length
   const expectedActions = actions.length
   const eventCount = player.buildOrder.length
+  const hasUnavailableCheckpoints = gradeableCheckpoints < timedCheckpoints
+  const actionsComplete = expectedActions === 0 || matchedActions === expectedActions
   const confidence =
     eventCount === 0
       ? 'none'
-      : gradeableCheckpoints > 0 && (expectedActions === 0 || matchedActions > 0)
+      : gradeableCheckpoints >= 2 && !hasUnavailableCheckpoints && actionsComplete
         ? 'high'
         : gradeableCheckpoints > 0 || matchedActions > 0
           ? 'medium'
           : 'low'
-  return { eventCount, timedCheckpoints, gradeableCheckpoints, matchedActions, expectedActions, confidence }
+  return {
+    eventCount,
+    timedCheckpoints,
+    gradeableCheckpoints,
+    matchedActions,
+    expectedActions,
+    confidence,
+  }
 }
 
 /**
@@ -476,12 +619,14 @@ export function comparePlayerToBuild(input: {
       reference: null,
       report: null,
       actions: [],
-      issues: [{
-        severity: 'info',
-        kind: 'coverage',
-        message: 'Для этой цивилизации нет совместимого локального билд-ордера.',
-        evidence: 'Сверка действий не выполнялась, чтобы не сравнивать игрока с чужим билдом.',
-      }],
+      issues: [
+        {
+          severity: 'info',
+          kind: 'coverage',
+          message: 'Для этой цивилизации нет совместимого локального билд-ордера.',
+          evidence: 'Сверка действий не выполнялась, чтобы не сравнивать игрока с чужим билдом.',
+        },
+      ],
       improvements: [],
       strengths: [],
       coverage: {
@@ -502,7 +647,18 @@ export function comparePlayerToBuild(input: {
     }
   }
 
-  const report = gradeBuildFollow({ reference, events: player.buildOrder, civ })
+  const report = gradeBuildFollow({
+    reference,
+    events: player.buildOrder,
+    civ,
+    ageUpTimes: player.totals
+      ? {
+          2: player.totals.age2Sec,
+          3: player.totals.age3Sec,
+          4: player.totals.age4Sec,
+        }
+      : undefined,
+  })
   const issues = issuesForReport(report)
   const actions: BuildActionAudit[] = []
   for (let i = 0; i < reference.build_order.length; i++) {
@@ -526,7 +682,8 @@ export function comparePlayerToBuild(input: {
           severity: 'minor',
           kind: 'missing-action',
           message: `Нужно проверить действие около ${step.time}: ${note}.`,
-          evidence: 'В расшифрованном STLS-таймлайне нет подходящего события в окне ±3:00; это не доказывает, что действие не было выполнено.',
+          evidence:
+            'В расшифрованном STLS-таймлайне нет подходящего события в окне ±3:00; это не доказывает, что действие не было выполнено.',
           certainty: 'review',
         })
       } else if (status === 'late' || status === 'early') {

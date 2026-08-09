@@ -77,7 +77,7 @@ describe('build order history audit', () => {
     expect(row.confidence).toBe('none')
   })
 
-  it('scores the uniquely identified player against the compatible map build', () => {
+  it('does not turn an opening baseline into a 100% build score', () => {
     const row = buildAuditHistoryRow({
       match,
       summary: summary(),
@@ -87,22 +87,27 @@ describe('build order history audit', () => {
 
     expect(row.summaryStatus).toBe('available')
     expect(row.referenceBuild).toBe(reference.name)
-    expect(row.score).toBe(100)
-    expect(row.gradeableCheckpoints).toBe(1)
-    expect(row.timedCheckpoints).toBe(1)
-    expect(row.confidence).toBe('high')
+    expect(row.score).toBeNull()
+    expect(row.gradeableCheckpoints).toBe(0)
+    expect(row.timedCheckpoints).toBe(0)
+    expect(row.confidence).toBe('low')
   })
 
   it('aggregates only scored rows and keeps unavailable evidence visible', () => {
     const rows = [
       buildAuditHistoryRow({ match, summary: summary(), profileId: 10, builds: [reference] }),
-      buildAuditHistoryRow({ match: { ...match, id: 'game-2' }, summary: null, profileId: 10, builds: [reference] }),
+      buildAuditHistoryRow({
+        match: { ...match, id: 'game-2' },
+        summary: null,
+        profileId: 10,
+        builds: [reference],
+      }),
     ]
     const totals = summarizeBuildAuditHistory(rows)
 
     expect(totals.games).toBe(2)
     expect(totals.available).toBe(1)
-    expect(totals.scored).toBe(1)
-    expect(totals.averageScore).toBe(100)
+    expect(totals.scored).toBe(0)
+    expect(totals.averageScore).toBeNull()
   })
 })

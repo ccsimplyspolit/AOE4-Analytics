@@ -32,6 +32,10 @@ export function getClient(): Aoe4WorldClient {
       // ~4 requests/sec ceiling; the poll service additionally spaces last-game
       // checks to 15s (D9).
       rateLimiter: new RateLimiter({ minIntervalMs: 250 }),
+      // Recover from short AoE4World/TLS hiccups without making permanent 4xx
+      // responses look transient. The client still falls back to its disk cache
+      // when all bounded attempts fail.
+      fetchOptions: { transientRetries: 2 },
     })
   }
   return client

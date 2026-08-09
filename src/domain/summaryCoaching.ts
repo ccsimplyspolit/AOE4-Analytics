@@ -24,7 +24,12 @@ export function summaryPlayerForMe(
   summary: MatchSummary,
   myProfileId: number | null,
   myCiv: string | null,
+  myPlayerId: number | null = null,
 ): PlayerSummary | null {
+  if (myPlayerId != null) {
+    const byPlayerId = summary.players.find((p) => p.playerId === myPlayerId)
+    if (byPlayerId) return byPlayerId
+  }
   if (myProfileId != null) {
     const byId = summary.players.find((p) => p.profileId === myProfileId)
     if (byId) return byId
@@ -81,6 +86,8 @@ export interface SummaryCoachingInput {
   summary: MatchSummary
   myProfileId: number | null
   myCiv: string | null
+  /** Stable summary row id used for local/AI players without a profile id. */
+  myPlayerId?: number | null
   /** Relic counters, when available, for combat-trade context. */
   perPlayer?: PerPlayerMatchStats[]
   /** The Feudal age-up target (seconds) from the user's chosen build, if any. */
@@ -92,7 +99,7 @@ export interface SummaryCoachingInput {
  * against the FIRST other player (team games get self-contained reads only).
  */
 export function summarySignals(input: SummaryCoachingInput): Signal[] {
-  const me = summaryPlayerForMe(input.summary, input.myProfileId, input.myCiv)
+  const me = summaryPlayerForMe(input.summary, input.myProfileId, input.myCiv, input.myPlayerId)
   if (!me) return []
   const enemy = input.summary.players.find((p) => p.playerId !== me.playerId) ?? null
   const is1v1 = input.summary.players.length === 2
@@ -101,6 +108,7 @@ export function summarySignals(input: SummaryCoachingInput): Signal[] {
     input.myProfileId,
     input.myCiv,
     input.perPlayer ?? [],
+    input.myPlayerId,
   )
 
   const signals: Signal[] = []

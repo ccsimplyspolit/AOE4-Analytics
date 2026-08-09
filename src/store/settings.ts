@@ -1,5 +1,7 @@
 import type { Leaderboard } from '../api/types'
 import type { OverlayPosition } from '../domain/overlayBounds'
+import type { BuildOrder } from '../domain/buildOrderSchema'
+import { normalizeBuildOrder } from '../domain/buildOrderSchema'
 import type { Store } from './Store'
 
 export interface OverlaySettings {
@@ -95,6 +97,16 @@ export interface OverlaySettings {
   buildOrderShowResponsePlan: boolean
   /** Build widget width in pixels [280, 520]. */
   buildOrderPanelWidth: number
+  /**
+   * User-imported build orders available to the in-game overlay. Bundled builds
+   * remain in the application catalog; these entries make the classic overlay
+   * workflow (paste/import arbitrary TXT or illustrated JSON) persistent.
+   */
+  customBuildOrders: BuildOrder[]
+  /** Optional explicit order for cycling build orders; omitted ids append in catalog order. */
+  buildOrderCycle: string[]
+  /** Build-order names excluded from next/previous cycling (still selectable manually). */
+  buildOrderDisabled: string[]
   /** Optional user CSS for the transparent overlay (CSS only; scripts are never executed). */
   customCss: string
 }
@@ -263,6 +275,13 @@ export interface AppSettings {
    * the brand colour of the civ you're playing, reverting when the game ends.
    */
   civTheme: boolean
+  /**
+   * Optional endpoint of a self-hosted aoe4world/replays-api instance. When
+   * empty, summary-parser fallback uses the bundled loopback sidecar instead.
+   * This value is deliberately not a credential: the service only accepts a
+   * plain http(s) base URL and rejects query strings / userinfo.
+   */
+  replaysApiUrl: string | null
   overlay: OverlaySettings
   hotkeys: HotkeySettings
   polling: PollingSettings
@@ -289,6 +308,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
   recentGamesCount: 10,
   openSummaryOnGameEnd: true,
   civTheme: true,
+  replaysApiUrl: null,
   overlay: {
     opacity: 0.92,
     position: 'top-center',
@@ -318,6 +338,9 @@ export const DEFAULT_SETTINGS: AppSettings = {
     buildOrderShowNotes: true,
     buildOrderShowResponsePlan: true,
     buildOrderPanelWidth: 340,
+    customBuildOrders: [],
+    buildOrderCycle: [],
+    buildOrderDisabled: [],
     customCss: '',
   },
   hotkeys: DEFAULT_HOTKEYS,
@@ -378,6 +401,29 @@ function stringOrNull(v: unknown): string | null | undefined {
   return v === null || typeof v === 'string' ? (v as string | null) : undefined
 }
 
+/** A configured parser-service URL may never carry credentials or a query string. */
+function replaysApiUrlOrNull(v: unknown): string | null | undefined {
+  if (v === null) return null
+  if (typeof v !== 'string') return undefined
+  const value = v.trim()
+  if (!value) return null
+  if (value.length > 2_048) return undefined
+  try {
+    const url = new URL(value)
+    if (
+      (url.protocol !== 'http:' && url.protocol !== 'https:') ||
+      url.username ||
+      url.password ||
+      url.search ||
+      url.hash
+    )
+      return undefined
+    return url.toString().replace(/\/$/, '')
+  } catch {
+    return undefined
+  }
+}
+
 function oneOf<T extends string>(v: unknown, values: readonly T[]): T | undefined {
   return typeof v === 'string' && (values as readonly string[]).includes(v) ? (v as T) : undefined
 }
@@ -416,6 +462,37 @@ function sanitizeWidgetPositions(v: unknown): Partial<OverlayWidgetPositions> | 
     const x = finite(pos.x)
     const y = finite(pos.y)
     if (anchor && x != null && y != null) out[key] = { anchor, x, y }
+  }
+  return out
+}
+
+function sanitizeBuildOrders(v: unknown): BuildOrder[] | undefined {
+  if (!Array.isArray(v)) return undefined
+  const out: BuildOrder[] = []
+  const names = new Set<string>()
+  // Imported BOs are user data, but still pass through the same normalizer as
+  // bundled data before being persisted and sent to the overlay renderer.
+  for (const raw of v.slice(0, 5_000)) {
+    const normalized = normalizeBuildOrder(raw)
+    if (!normalized.ok) continue
+    const name = normalized.value.name.trim()
+    if (!name || names.has(name)) continue
+    names.add(name)
+    out.push(normalized.value)
+  }
+  return out
+}
+
+function sanitizeBuildOrderNames(v: unknown): string[] | undefined {
+  if (!Array.isArray(v)) return undefined
+  const out: string[] = []
+  const seen = new Set<string>()
+  for (const value of v.slice(0, 5_000)) {
+    if (typeof value !== 'string') continue
+    const name = value.trim().slice(0, 256)
+    if (!name || seen.has(name)) continue
+    seen.add(name)
+    out.push(name)
   }
   return out
 }
@@ -495,6 +572,18 @@ function sanitizeOverlay(v: unknown): Partial<OverlaySettings> | undefined {
   if ('buildOrderPanelWidth' in v) {
     const n = clamped(v.buildOrderPanelWidth, 280, 520)
     if (n != null) out.buildOrderPanelWidth = Math.round(n)
+  }
+  if ('customBuildOrders' in v) {
+    const builds = sanitizeBuildOrders(v.customBuildOrders)
+    if (builds) out.customBuildOrders = builds
+  }
+  if ('buildOrderCycle' in v) {
+    const names = sanitizeBuildOrderNames(v.buildOrderCycle)
+    if (names) out.buildOrderCycle = names
+  }
+  if ('buildOrderDisabled' in v) {
+    const names = sanitizeBuildOrderNames(v.buildOrderDisabled)
+    if (names) out.buildOrderDisabled = names
   }
   if ('customCss' in v && typeof v.customCss === 'string') {
     // Keep the setting bounded so a malformed renderer patch cannot turn the
@@ -646,6 +735,10 @@ export function sanitizePatch(patch: AppSettingsPatch): AppSettingsPatch {
   }
   if ('openSummaryOnGameEnd' in p) out.openSummaryOnGameEnd = Boolean(p.openSummaryOnGameEnd)
   if ('civTheme' in p) out.civTheme = Boolean(p.civTheme)
+  if ('replaysApiUrl' in p) {
+    const url = replaysApiUrlOrNull(p.replaysApiUrl)
+    if (url !== undefined) out.replaysApiUrl = url
+  }
   if ('overlay' in p) {
     const o = sanitizeOverlay(p.overlay)
     if (o) out.overlay = o

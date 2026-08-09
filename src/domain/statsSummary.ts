@@ -22,6 +22,10 @@
  */
 import { findChild, findChildren, parseChunky, type ChunkyNode } from './chunky'
 import { resolveReplayCiv } from './replay'
+import {
+  makeReplayParserProvenance,
+  type ReplayParserProvenance,
+} from './replayParserCompatibility'
 
 export type BuildCategory = 'unit' | 'building' | 'upgrade' | 'other'
 
@@ -92,7 +96,7 @@ export interface PlayerTotals {
   buildingsLost: number
   buildingsRazed: number
   techResearched: number
-  largestArmy: number
+  largestArmy: number | null
   sacredCaptured: number
   sacredLost: number
   sacredNeutralized: number
@@ -136,6 +140,8 @@ export interface PlayerSummary {
 export interface MatchSummary {
   gameLengthSec: number | null
   players: PlayerSummary[]
+  /** Exact parser/format provenance used for this summary. */
+  parser?: ReplayParserProvenance
 }
 
 const latin1 = new TextDecoder('latin1')
@@ -245,6 +251,10 @@ export function parseStatsSummary(bytes: Uint8Array): MatchSummary | null {
 
   const stpl = findChild(stli.children, 'STPL', 'FOLD')
   const playerFolds = findChildren(stpl?.children, 'STLP', 'FOLD')
+  const stpdVersions = playerFolds
+    .map((pl) => findChild(pl.children, 'STPD', 'DATA')?.version)
+    .filter((version): version is number => version != null)
+  let strictPlayerCount = 0
 
   const players: PlayerSummary[] = playerFolds.map((pl) => {
     const stpd = findChild(pl.children, 'STPD', 'DATA')
@@ -254,6 +264,7 @@ export function parseStatsSummary(bytes: Uint8Array): MatchSummary | null {
     if (stpd) {
       try {
         strict = decodeStpdStrict(bytes, stpd)
+        strictPlayerCount += 1
       } catch {
         strict = null // unknown layout → scan fallback below
       }
@@ -267,7 +278,7 @@ export function parseStatsSummary(bytes: Uint8Array): MatchSummary | null {
       playerId: identity.playerId,
       name: identity.name,
       profileId: strict != null && strict.profileId > 0 ? strict.profileId : null,
-      civToken: strict?.civ || inferCivToken(buildOrder),
+      civToken: summaryCivToken(strict?.civ ?? null, buildOrder),
       totals: strict?.totals ?? null,
       villagersLost: villagersLostByPlayer
         ? (villagersLostByPlayer.get(identity.playerId) ?? 0)
@@ -281,7 +292,38 @@ export function parseStatsSummary(bytes: Uint8Array): MatchSummary | null {
     }
   })
 
-  return { gameLengthSec, players }
+  // STLS is the authoritative per-player event stream.  A damaged/partial
+  // summary can be missing an STPD player fold while still carrying that
+  // player's build events. Preserve those rows instead of silently dropping a
+  // participant from the comparison; fields absent from STPD stay null.
+  const knownPlayerIds = new Set(players.map((player) => player.playerId))
+  for (const [playerId, events] of buildByPlayer) {
+    if (knownPlayerIds.has(playerId)) continue
+    players.push({
+      playerId,
+      name: null,
+      profileId: null,
+      civToken: inferCivToken(events),
+      totals: null,
+      villagersLost: villagersLostByPlayer ? (villagersLostByPlayer.get(playerId) ?? 0) : null,
+      casualties: casualtiesByPlayer ? (casualtiesByPlayer.get(playerId) ?? []) : undefined,
+      buildOrder: events,
+      resources: [],
+      scores: [],
+    })
+  }
+
+  players.sort((a, b) => a.playerId - b.playerId)
+
+  return {
+    gameLengthSec,
+    players,
+    parser: makeReplayParserProvenance({
+      stpdVersions,
+      strictPlayers: strictPlayerCount,
+      totalPlayers: players.length,
+    }),
+  }
 }
 
 /** STLS: header (byte + 4×i32 incl. gameLength), createdCount × createdEntity,
@@ -780,6 +822,8 @@ const CIV_TOKEN_TO_SLUG: Record<string, string> = {
   eng: 'english',
   fre: 'french',
   hre: 'holy_roman_empire',
+  hre_ha_01: 'order_of_the_dragon',
+  holy_roman_empire_ha_01: 'order_of_the_dragon',
   jap: 'japanese',
   mal: 'malians',
   mon: 'mongols',
@@ -788,6 +832,8 @@ const CIV_TOKEN_TO_SLUG: Record<string, string> = {
   tem: 'knights_templar',
   jd: 'jeanne_darc',
   od: 'order_of_the_dragon',
+  order_of_the_dragon: 'order_of_the_dragon',
+  orderofthedragon: 'order_of_the_dragon',
   zx: 'zhu_xis_legacy',
   fre_ha_01: 'jeanne_darc',
   byzantine_ha_mac: 'macedonian_dynasty',
@@ -827,4 +873,24 @@ function inferCivToken(events: BuildEvent[]): string | null {
     }
   }
   return best
+}
+
+/**
+ * Relic's STPD header keeps the base HRE token for Order of the Dragon games;
+ * the variant is encoded in the build blueprints as `_od`. Prefer that
+ * variant evidence so the summary does not relabel OOTD as generic HRE.
+ */
+function summaryCivToken(header: string | null, events: BuildEvent[]): string | null {
+  const inferred = inferCivToken(events)
+  const normalizedHeader = header?.toLowerCase() ?? null
+  if (
+    inferred === 'od' &&
+    (normalizedHeader === 'hre' ||
+      normalizedHeader === 'holy_roman_empire' ||
+      normalizedHeader === 'hre_ha_01' ||
+      normalizedHeader === 'holy_roman_empire_ha_01')
+  ) {
+    return 'od'
+  }
+  return header ?? inferred
 }

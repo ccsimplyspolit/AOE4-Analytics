@@ -11,8 +11,10 @@
  *    landmark data (or games where none matched) leave the checkpoint
  *    ungradeable rather than guessed (D10).
  *
- * `score` is the share of gradeable checkpoints passed; null when nothing
- * could be graded (e.g. an empty/missing summary).
+ * `score` is the share of gradeable checkpoints that passed; unknown
+ * checkpoints are not treated as failures. It stays null until at least two
+ * measurable checkpoints are available, so a partial timeline cannot
+ * masquerade as a confident exact build match.
  */
 import type { BuildOrder } from './buildOrderSchema'
 import type { BuildEvent } from './statsSummary'
@@ -39,7 +41,7 @@ export interface TrainerCheckpoint {
 export interface TrainerReport {
   buildName: string
   checkpoints: TrainerCheckpoint[]
-  /** % of gradeable checkpoints passed; null when nothing was gradeable. */
+  /** % of gradeable checkpoints passed; unknown checkpoints are not failures. */
   score: number | null
 }
 
@@ -72,7 +74,8 @@ function landmarkTimes(events: BuildEvent[], civ: string | null): Map<2 | 3 | 4,
   if (!landmarks) return times
   for (const choice of landmarks.ages) {
     for (const e of events) {
-      if (e.category !== 'building' || !choice.options.some((option) => matchesLandmark(e, option))) continue
+      if (e.category !== 'building' || !choice.options.some((option) => matchesLandmark(e, option)))
+        continue
       const prev = times.get(choice.age)
       if (prev == null || e.timeSec < prev) times.set(choice.age, e.timeSec)
     }
@@ -85,8 +88,10 @@ export function gradeBuildFollow(input: {
   events: BuildEvent[]
   /** My civ slug (for the landmark lookup). */
   civ: string | null
+  /** Authoritative STPD age-up times; null means that age was not reached. */
+  ageUpTimes?: Partial<Record<2 | 3 | 4, number | null>>
 }): TrainerReport {
-  const { reference, events, civ } = input
+  const { reference, events, civ, ageUpTimes } = input
   // An empty event list means "no data", not "produced nothing" — leave
   // villager checkpoints ungradeable instead of scoring a phantom zero.
   const hasData = events.length > 0
@@ -99,7 +104,17 @@ export function gradeBuildFollow(input: {
     .map((e) => e.timeSec)
     .sort((a, b) => a - b)
   const producedBy = (t: number) => villagerTimes.filter((ts) => ts <= t).length
-  const ageUps = landmarkTimes(events, civ)
+  // STPD's header timings are the same authoritative values shown by the
+  // game's post-match screen. Use them whenever the header decoded; only fall
+  // back to landmark-name matching for headerless summaries.
+  const ageUps =
+    ageUpTimes != null
+      ? new Map<2 | 3 | 4, number>(
+          ([2, 3, 4] as const)
+            .map((age) => [age, ageUpTimes[age]] as const)
+            .filter((entry): entry is readonly [2 | 3 | 4, number] => entry[1] != null),
+        )
+      : landmarkTimes(events, civ)
 
   const checkpoints: TrainerCheckpoint[] = []
   let maxAge = 1
@@ -109,19 +124,26 @@ export function gradeBuildFollow(input: {
     maxAge = Math.max(maxAge, s.age)
     if (t == null) return
 
-    const actualVillagers = hasData ? startingVillagers + producedBy(t) : null
-    checkpoints.push({
-      kind: 'villagers',
-      label: `Villagers @ ${formatDuration(t)}`,
-      targetTimeSec: t,
-      targetVillagers: s.villager_count,
-      actualVillagers,
-      villagerDelta: actualVillagers != null ? actualVillagers - s.villager_count : null,
-      ok:
-        actualVillagers != null
-          ? Math.abs(actualVillagers - s.villager_count) <= VILLAGER_TOLERANCE
-          : null,
-    })
+    // The opening row is normally "6 villagers @ 0:00". It is a description
+    // of the build's starting state, not an observed decision: treating it as
+    // a passed checkpoint made sparse summaries look like a 100% build match.
+    // Keep it out of the score and require at least one timed, measurable row.
+    const isOpeningBaseline = i === 0 && t <= 15 && s.villager_count === startingVillagers
+    if (!isOpeningBaseline) {
+      const actualVillagers = hasData ? startingVillagers + producedBy(t) : null
+      checkpoints.push({
+        kind: 'villagers',
+        label: `Villagers @ ${formatDuration(t)}`,
+        targetTimeSec: t,
+        targetVillagers: s.villager_count,
+        actualVillagers,
+        villagerDelta: actualVillagers != null ? actualVillagers - s.villager_count : null,
+        ok:
+          actualVillagers != null
+            ? Math.abs(actualVillagers - s.villager_count) <= VILLAGER_TOLERANCE
+            : null,
+      })
+    }
 
     if (agedUp) {
       const age = Math.min(s.age, 4) as 2 | 3 | 4
@@ -143,6 +165,6 @@ export function gradeBuildFollow(input: {
   return {
     buildName: reference.name,
     checkpoints,
-    score: gradeable.length > 0 ? Math.round((passed / gradeable.length) * 100) : null,
+    score: gradeable.length >= 2 ? Math.round((passed / checkpoints.length) * 100) : null,
   }
 }

@@ -59,6 +59,12 @@ function sourceFamilies(ids: readonly string[]): string[] {
   ].sort()
 }
 
+function sourceFamiliesFromPatch(value: string | null | undefined): string[] {
+  if (typeof value !== 'string') return []
+  const explicit = value.match(/\b\d+\.\d+\b/g) ?? []
+  return [...new Set([...sourceFamilies(sourceIds(value)), ...explicit])].sort()
+}
+
 function buildIsCovered(
   patch: string,
   ids: readonly string[],
@@ -80,7 +86,7 @@ export function classifyPatch(
   const patch = typeof buildPatch === 'string' ? buildPatch.trim() : ''
   if (!patch) return 'unversioned'
   const ids = sourceIds(sourcePatch)
-  const families = sourceFamilies(ids)
+  const families = sourceFamiliesFromPatch(sourcePatch)
   return buildIsCovered(patch, ids, families) ? 'covered' : 'legacy'
 }
 
@@ -91,7 +97,7 @@ export function buildPatchAudit(input: PatchAuditInput): PatchAudit {
       ? input.sourcePatch.trim()
       : null
   const sourcePatchIds = sourceIds(sourcePatch)
-  const sourceFamiliesList = sourceFamilies(sourcePatchIds)
+  const sourceFamiliesList = sourceFamiliesFromPatch(sourcePatch)
   const counts = { covered: 0, legacy: 0, unversioned: 0 }
   for (const patch of input.buildPatches) counts[classifyPatch(patch, sourcePatch)] += 1
 

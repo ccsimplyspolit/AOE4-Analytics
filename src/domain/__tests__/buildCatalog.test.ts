@@ -60,4 +60,22 @@ describe('buildCatalogEntries', () => {
     expect(entry.opponentCivilizationLabels).toEqual(['French', 'Rus'])
     expect(entry.searchText).toContain('french')
   })
+
+  it('ignores truncated local records instead of crashing catalog construction', () => {
+    expect(() =>
+      buildCatalogEntries([
+        undefined as unknown as BuildOrder,
+        { name: 'Broken', civilization: undefined } as unknown as BuildOrder,
+        { name: 'Broken steps', civilization: 'English', build_order: [{}] } as unknown as BuildOrder,
+        build({ name: 'Valid after broken records' }),
+      ]),
+    ).not.toThrow()
+
+    expect(buildCatalogEntries([
+      undefined as unknown as BuildOrder,
+      { name: 'Broken', civilization: undefined } as unknown as BuildOrder,
+      { name: 'Broken steps', civilization: 'English', build_order: [{}] } as unknown as BuildOrder,
+      build({ name: 'Valid after broken records' }),
+    ])).toHaveLength(1)
+  })
 })
