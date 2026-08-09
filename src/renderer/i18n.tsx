@@ -561,6 +561,7 @@ const UI: Record<Locale, Record<string, string>> = {
     Peak: 'Пик',
     Rank: 'Ранг',
     Mode: 'Режим',
+    'Tincture mode': 'Режим Tincture',
     'No recent games': 'Нет недавних матчей',
     'Match preparation': 'Подготовка к матчу',
     'Key timings': 'Ключевые тайминги',

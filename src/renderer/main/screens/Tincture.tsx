@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Calculator, Download, FileUp, FlaskConical, Plus, Search, Trash2 } from 'lucide-react'
+import type { StatsLeaderboard } from '@api/types'
 import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
 import { BUILD_CATALOG } from '@data/buildCatalog'
 import { CIV_SLUGS } from '@data/civs'
@@ -22,7 +23,7 @@ import {
 } from '@domain/buildOrderValidation'
 import { civDisplayName } from '@domain/civ'
 import { formatDuration } from '@domain/format'
-import { formatCount } from '@shared/format'
+import { formatCount, formatLeaderboard } from '@shared/format'
 import { ipc } from '@shared/ipc'
 import {
   isTinctureHistoryStale,
@@ -58,6 +59,7 @@ import { Input } from '@shared/components/ui/input'
 import { useVideoAnalyses } from '../queries/useVideoAnalyses'
 import { cn } from '@shared/lib/utils'
 import { useI18n } from '../../i18n'
+import { useSettings } from '../queries/useProfile'
 import { resolveAoE4Icon } from '@data/vendor/aoe4-icons/manifest'
 import { essenceValidationForUnit } from '@data/essenceAttributes'
 
@@ -73,9 +75,22 @@ const RESOURCE_LABELS: Record<ProductionResource, string> = {
 const FOOD_SOURCES = Object.keys(DEFAULT_GATHER_RATES)
 const TINCTURE_HISTORY = tinctureHistoryJson as TinctureHistoryDocument
 const TINCTURE_META = tinctureMetaJson as TinctureMetaDocument
-const TINCTURE_DEFAULT_SLICE =
-  TINCTURE_META.slices.find((slice) => slice.leaderboard === 'rm_solo' && slice.rankLevel == null) ??
-  null
+const TINCTURE_LADDERS: { label: string; value: StatsLeaderboard }[] = [
+  { label: 'Ranked 1v1', value: 'rm_solo' },
+  { label: 'Quick Match 1v1', value: 'qm_1v1' },
+  { label: 'Ranked 2v2', value: 'rm_2v2' },
+  { label: 'Quick Match 2v2', value: 'qm_2v2' },
+  { label: 'Ranked 3v3', value: 'rm_3v3' },
+  { label: 'Quick Match 3v3', value: 'qm_3v3' },
+  { label: 'Ranked 4v4', value: 'rm_4v4' },
+  { label: 'Quick Match 4v4', value: 'qm_4v4' },
+]
+
+function tinctureLeaderboard(value: string | null | undefined): StatsLeaderboard {
+  return TINCTURE_LADDERS.some((entry) => entry.value === value)
+    ? (value as StatsLeaderboard)
+    : 'rm_solo'
+}
 
 function unitForCalculator(unit: VendoredUnit): ProductionUnitLike | null {
   if (!unit.costs || unit.costs.time <= 0 || unit.producedBy.length === 0) return null
@@ -122,6 +137,7 @@ function buildCivSlug(build: { civilization: string | string[] }): string | null
 
 export function Tincture() {
   const { tt } = useI18n()
+  const { data: settings } = useSettings()
   const [searchParams, setSearchParams] = useSearchParams()
   const rawTab = searchParams.get('tab')
   const tab: TinctureTab =
@@ -137,6 +153,18 @@ export function Tincture() {
         const nextParams = new URLSearchParams(prev)
         if (next === 'ledger') nextParams.delete('tab')
         else nextParams.set('tab', next)
+        return nextParams
+      },
+      { replace: true },
+    )
+  const configuredLeaderboard = tinctureLeaderboard(settings?.leaderboard)
+  const leaderboard = tinctureLeaderboard(searchParams.get('ladder') ?? configuredLeaderboard)
+  const setLeaderboard = (next: StatsLeaderboard) =>
+    setSearchParams(
+      (prev) => {
+        const nextParams = new URLSearchParams(prev)
+        if (next === configuredLeaderboard) nextParams.delete('ladder')
+        else nextParams.set('ladder', next)
         return nextParams
       },
       { replace: true },
@@ -176,10 +204,25 @@ export function Tincture() {
             {tt('Match Coach')}
           </TabButton>
         </div>
+        <label className="flex items-center gap-2 text-xs text-muted-foreground">
+          <span>{tt('Mode')}</span>
+          <select
+            value={leaderboard}
+            onChange={(event) => setLeaderboard(event.target.value as StatsLeaderboard)}
+            aria-label={tt('Tincture mode')}
+            className="h-9 rounded-md border border-border bg-background px-3 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            {TINCTURE_LADDERS.map((entry) => (
+              <option key={entry.value} value={entry.value}>
+                {tt(formatLeaderboard(entry.value))}
+              </option>
+            ))}
+          </select>
+        </label>
       </div>
 
       {tab === 'ledger' ? (
-        <DecisionSummary />
+        <DecisionSummary leaderboard={leaderboard} />
       ) : tab === 'cellar' ? (
         <BuildCellar />
       ) : tab === 'editor' ? (
@@ -220,16 +263,24 @@ function TabButton({
   )
 }
 
-function DecisionSummary() {
+function DecisionSummary({ leaderboard }: { leaderboard: StatsLeaderboard }) {
   const { tt } = useI18n()
-  const data = TINCTURE_DEFAULT_SLICE
+  const data =
+    TINCTURE_META.slices.find(
+      (slice) => slice.leaderboard === leaderboard && slice.rankLevel == null,
+    ) ?? null
   const historySnapshot = [...TINCTURE_HISTORY.snapshots]
     .sort((left, right) => right.capturedAt.localeCompare(left.capturedAt))
     .find((snapshot) =>
-      snapshot.slices.some((slice) => slice.leaderboard === 'rm_solo' && slice.rankLevel == null),
+      snapshot.slices.some(
+        (slice) => slice.leaderboard === leaderboard && slice.rankLevel == null,
+      ),
     )
   const historyStale = isTinctureHistoryStale(TINCTURE_META.generatedAt)
-  const civMetaHref = '/civ-meta?tab=stats'
+  const civMetaHref =
+    leaderboard === 'rm_solo'
+      ? '/civ-meta?tab=stats'
+      : `/civ-meta?tab=stats&ladder=${encodeURIComponent(leaderboard)}`
   const notableDeltas = useMemo(
     () => {
       const civs = data?.civs ?? []
@@ -240,7 +291,7 @@ function DecisionSummary() {
               delta: tinctureDelta(
                 TINCTURE_HISTORY,
                 historySnapshot,
-                'rm_solo',
+                leaderboard,
                 null,
                 civ.civ,
               ),
@@ -253,7 +304,7 @@ function DecisionSummary() {
             .slice(0, 3)
         : []
     },
-    [data, historySnapshot],
+    [data, historySnapshot, leaderboard],
   )
 
   if (!data) return <EmptyBox>{tt('AoE4World meta is unavailable.')}</EmptyBox>
@@ -311,7 +362,7 @@ function DecisionSummary() {
           <div className="grid gap-3 text-sm sm:grid-cols-3">
             <div className="rounded-md border border-border/70 bg-background/30 p-3">
               <div className="rts-ledger-head">{tt('Meta scope')}</div>
-              <div className="mt-1 font-medium">{data.leaderboard}</div>
+              <div className="mt-1 font-medium">{tt(formatLeaderboard(data.leaderboard))}</div>
               <div className="text-xs text-muted-foreground">
                 {data.rankLevel ?? tt('All ranks')} · {tt('All maps')}
               </div>

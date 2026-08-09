@@ -7,7 +7,7 @@ known-good snapshot.
 
 Examples:
     python scripts/distill_tincture.py --dry-run
-    python scripts/distill_tincture.py --leaderboards rm_solo rm_2v2 rm_3v3 rm_4v4
+    python scripts/distill_tincture.py --leaderboards rm_solo qm_1v1 rm_2v2 qm_2v2 rm_3v3 qm_3v3 rm_4v4 qm_4v4
 """
 
 from __future__ import annotations
@@ -24,7 +24,16 @@ from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 API_BASE = "https://aoe4world.com/api/v0"
-DEFAULT_LEADERBOARDS = ("rm_solo", "rm_2v2", "rm_3v3", "rm_4v4")
+DEFAULT_LEADERBOARDS = (
+    "rm_solo",
+    "qm_1v1",
+    "rm_2v2",
+    "qm_2v2",
+    "rm_3v3",
+    "qm_3v3",
+    "rm_4v4",
+    "qm_4v4",
+)
 META_PATH = ROOT / "src" / "data" / "tinctureMeta.json"
 HISTORY_PATH = ROOT / "src" / "data" / "tinctureHistory.json"
 MAX_SNAPSHOTS = 240
