@@ -1650,6 +1650,14 @@ const UI: Record<Locale, Record<string, string>> = {
     Hotkeys: 'Горячие клавиши',
     'UX/UI & Menus': 'Интерфейс и меню',
     'Design Update/Rework': 'Изменение и переработка дизайна',
+    'Filter updates by civilization': 'Фильтр изменений по цивилизации',
+    'Click on different units or technologies to learn more about them.':
+      'Нажмите на юниты или технологии, чтобы узнать о них подробнее.',
+    'Showing notes for the': 'Показаны заметки для',
+    'Other patch notes are hidden.': 'Остальные заметки патча скрыты.',
+    'View the full notes': 'Показать все заметки',
+    'Jump to': 'Перейти к',
+    'No changes for this civilization.': 'Для этой цивилизации изменений нет.',
     'Official news sources': 'Официальные источники новостей',
     'Patch notes are normalized from AoE4World; news comes from official RSS feeds.':
       'Заметки к патчам нормализуются из AoE4World, а новости поступают из официальных RSS-лент.',
