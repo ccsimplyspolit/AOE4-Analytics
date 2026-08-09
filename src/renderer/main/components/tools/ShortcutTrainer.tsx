@@ -76,7 +76,9 @@ function loadStore(): TrainerStore {
         ? parsed.layout
         : EMPTY_STORE.layout
     const displayStyle: ShortcutDisplayStyle =
-      parsed.displayStyle === 'SINGLE' || parsed.displayStyle === 'GRID' || parsed.displayStyle === 'NAME'
+      parsed.displayStyle === 'SINGLE' ||
+      parsed.displayStyle === 'GRID' ||
+      parsed.displayStyle === 'NAME'
         ? parsed.displayStyle
         : EMPTY_STORE.displayStyle
     const customLayout = Array.from({ length: 3 }, (_, rowIndex) =>
@@ -89,7 +91,9 @@ function loadStore(): TrainerStore {
           : DEFAULT_KEYBOARD_LAYOUT[rowIndex]![columnIndex]!
       }),
     )
-    const ages = (parsed.ages ?? EMPTY_STORE.ages).filter((age): age is number => AGES.includes(age as 1 | 2 | 3 | 4))
+    const ages = (parsed.ages ?? EMPTY_STORE.ages).filter((age): age is number =>
+      AGES.includes(age as 1 | 2 | 3 | 4),
+    )
     const types = (parsed.types ?? EMPTY_STORE.types).filter((type): type is TrainerBuildingType =>
       BUILDING_TYPES.some((item) => item.value === type),
     )
@@ -102,7 +106,8 @@ function loadStore(): TrainerStore {
       roundSize: ROUND_SIZES.includes(parsed.roundSize as (typeof ROUND_SIZES)[number])
         ? (parsed.roundSize as (typeof ROUND_SIZES)[number])
         : EMPTY_STORE.roundSize,
-      civilization: typeof parsed.civilization === 'string' ? parsed.civilization : EMPTY_STORE.civilization,
+      civilization:
+        typeof parsed.civilization === 'string' ? parsed.civilization : EMPTY_STORE.civilization,
       ages: ages.length > 0 ? ages : EMPTY_STORE.ages,
       types: types.length > 0 ? types : EMPTY_STORE.types,
       showKeyLabels: parsed.showKeyLabels !== false,
@@ -128,10 +133,7 @@ function randomAction(actions: readonly TrainerBuildingAction[], excluded: reado
 
 export function ShortcutTrainer() {
   const { gameName, tt } = useI18n()
-  const actions = useMemo(
-    () => trainerBuildingActions(EXPLORER_RECORDS_BY_KIND.building),
-    [],
-  )
+  const actions = useMemo(() => trainerBuildingActions(EXPLORER_RECORDS_BY_KIND.building), [])
   const [store, setStore] = useState<TrainerStore>(loadStore)
   const [currentId, setCurrentId] = useState('')
   const [roundSolved, setRoundSolved] = useState<string[]>([])
@@ -236,7 +238,7 @@ export function ShortcutTrainer() {
       if (pressed !== expected) {
         setEntered([])
         setStore((previous) => ({ ...previous, attempts: previous.attempts + 1, streak: 0 }))
-        setFeedback({ kind: 'wrong', message: 'Неверно. Начните команду заново.' })
+        setFeedback({ kind: 'wrong', message: tt('Not quite. Start the command again.') })
         return
       }
       const nextEntered = [...entered, pressed]
@@ -259,7 +261,9 @@ export function ShortcutTrainer() {
       }))
       setFeedback({
         kind: complete ? 'complete' : 'correct',
-        message: complete ? 'Серия завершена. Выберите новую или начните заново.' : tt('Correct'),
+        message: complete
+          ? tt('Series complete. Start a new one when you are ready.')
+          : tt('Correct'),
       })
       if (!complete) {
         transitionTimer.current = window.setTimeout(() => {
@@ -270,7 +274,17 @@ export function ShortcutTrainer() {
     }
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
-  }, [availableActions, current, editingCell, entered, expectedKeys, keyboardLayout, roundSolved, roundTarget, tt])
+  }, [
+    availableActions,
+    current,
+    editingCell,
+    entered,
+    expectedKeys,
+    keyboardLayout,
+    roundSolved,
+    roundTarget,
+    tt,
+  ])
 
   const toggleAge = (age: number) => {
     setStore((previous) => {
@@ -321,8 +335,7 @@ export function ShortcutTrainer() {
           </p>
         </div>
         <Badge variant="outline" className="gap-1.5">
-          <Keyboard className="h-3.5 w-3.5" /> {availableActions.length}{' '}
-          {tt('verified commands')}
+          <Keyboard className="h-3.5 w-3.5" /> {availableActions.length} {tt('verified commands')}
         </Badge>
       </div>
 
@@ -337,7 +350,11 @@ export function ShortcutTrainer() {
             </div>
             <OptionGroup label={tt('Tasks per series')}>
               {ROUND_SIZES.map((size) => (
-                <OptionButton key={size} active={store.roundSize === size} onClick={() => setStore((previous) => ({ ...previous, roundSize: size }))}>
+                <OptionButton
+                  key={size}
+                  active={store.roundSize === size}
+                  onClick={() => setStore((previous) => ({ ...previous, roundSize: size }))}
+                >
                   {size}
                 </OptionButton>
               ))}
@@ -346,25 +363,37 @@ export function ShortcutTrainer() {
               <span>{tt('Civilization')}</span>
               <select
                 value={store.civilization}
-                onChange={(event) => setStore((previous) => ({ ...previous, civilization: event.target.value }))}
+                onChange={(event) =>
+                  setStore((previous) => ({ ...previous, civilization: event.target.value }))
+                }
                 className="h-9 rounded-md border border-border bg-background px-2 text-sm text-foreground outline-none focus:border-primary"
               >
                 <option value="ALL">{tt('All civilizations')}</option>
                 {civilizationOptions.map((option) => (
-                  <option key={option.code} value={option.code}>{option.label}</option>
+                  <option key={option.code} value={option.code}>
+                    {option.label}
+                  </option>
                 ))}
               </select>
             </label>
             <OptionGroup label={tt('Ages')}>
               {AGES.map((age) => (
-                <OptionButton key={age} active={store.ages.includes(age)} onClick={() => toggleAge(age)}>
+                <OptionButton
+                  key={age}
+                  active={store.ages.includes(age)}
+                  onClick={() => toggleAge(age)}
+                >
                   {tt('Age')} {age}
                 </OptionButton>
               ))}
             </OptionGroup>
             <OptionGroup label={tt('Building types')}>
               {BUILDING_TYPES.map((type) => (
-                <OptionButton key={type.value} active={store.types.includes(type.value)} onClick={() => toggleType(type.value)}>
+                <OptionButton
+                  key={type.value}
+                  active={store.types.includes(type.value)}
+                  onClick={() => toggleType(type.value)}
+                >
                   {tt(type.label)}
                 </OptionButton>
               ))}
@@ -397,7 +426,11 @@ export function ShortcutTrainer() {
                   ['CUSTOM', tt('Custom')],
                 ] as const
               ).map(([value, label]) => (
-                <OptionButton key={value} active={store.layout === value} onClick={() => changeLayout(value)}>
+                <OptionButton
+                  key={value}
+                  active={store.layout === value}
+                  onClick={() => changeLayout(value)}
+                >
                   {label}
                 </OptionButton>
               ))}
@@ -410,7 +443,11 @@ export function ShortcutTrainer() {
                   ['NAME', tt('Name only')],
                 ] as const
               ).map(([value, label]) => (
-                <OptionButton key={value} active={store.displayStyle === value} onClick={() => setStore((previous) => ({ ...previous, displayStyle: value }))}>
+                <OptionButton
+                  key={value}
+                  active={store.displayStyle === value}
+                  onClick={() => setStore((previous) => ({ ...previous, displayStyle: value }))}
+                >
                   {label}
                 </OptionButton>
               ))}
@@ -419,7 +456,9 @@ export function ShortcutTrainer() {
               <input
                 type="checkbox"
                 checked={store.showKeyLabels}
-                onChange={(event) => setStore((previous) => ({ ...previous, showKeyLabels: event.target.checked }))}
+                onChange={(event) =>
+                  setStore((previous) => ({ ...previous, showKeyLabels: event.target.checked }))
+                }
                 className="h-4 w-4 accent-primary"
               />
               {tt('Show key labels')}
@@ -432,8 +471,14 @@ export function ShortcutTrainer() {
         <Card>
           <CardContent className="space-y-5 p-5">
             <div className="flex items-center justify-between gap-3">
-              <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{tt('Prompt')}</div>
-              <button type="button" onClick={resetSeries} className="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-2 text-xs hover:bg-secondary">
+              <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                {tt('Prompt')}
+              </div>
+              <button
+                type="button"
+                onClick={resetSeries}
+                className="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-2 text-xs hover:bg-secondary"
+              >
                 <Shuffle className="h-3.5 w-3.5" /> {tt('New series')}
               </button>
             </div>
@@ -451,7 +496,12 @@ export function ShortcutTrainer() {
                   )}
                 </div>
                 {store.displayStyle === 'SINGLE' && current.icon && (
-                  <img src={current.icon} alt="" className="mx-auto h-16 w-16 object-contain" loading="lazy" />
+                  <img
+                    src={current.icon}
+                    alt=""
+                    className="mx-auto h-16 w-16 object-contain"
+                    loading="lazy"
+                  />
                 )}
                 <KeyboardMap
                   layout={keyboardLayout}
@@ -486,17 +536,27 @@ export function ShortcutTrainer() {
 
         <Card>
           <CardContent className="space-y-4 p-4">
-            <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{tt('Progress')}</div>
+            <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+              {tt('Progress')}
+            </div>
             <div className="grid grid-cols-2 gap-2">
               <Stat label={tt('Accuracy')} value={formatAccuracy(store.correct, store.attempts)} />
               <Stat label={tt('Series')} value={`${roundSolved.length}/${roundTarget}`} />
               <Stat label={tt('Streak')} value={String(store.streak)} />
               <Stat label={tt('Best')} value={String(store.bestStreak)} />
             </div>
-            <button type="button" onClick={resetSeries} className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground">
+            <button
+              type="button"
+              onClick={resetSeries}
+              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
+            >
               <Shuffle className="h-3.5 w-3.5" /> {tt('Reset current series')}
             </button>
-            <button type="button" onClick={resetTrainer} className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground">
+            <button
+              type="button"
+              onClick={resetTrainer}
+              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
+            >
               <RotateCcw className="h-3.5 w-3.5" /> {tt('Reset trainer')}
             </button>
           </CardContent>
@@ -545,7 +605,9 @@ function KeyboardMap({
   return (
     <div className="rounded-md border border-border/70 bg-background/40 p-3">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-        <span className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">{tt('Construction grid')}</span>
+        <span className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+          {tt('Construction grid')}
+        </span>
         <span className="text-[11px] text-muted-foreground">
           {layoutId === 'CUSTOM'
             ? tt('Click a cell, then press a key to rebind it.')
@@ -554,7 +616,12 @@ function KeyboardMap({
       </div>
       <div className="mb-3 grid grid-cols-4 gap-1 rounded-md border border-border p-1">
         {AGES.map((age) => (
-          <button key={age} type="button" onClick={() => onPreviewAge(age)} className={`rounded px-2 py-1.5 text-xs ${previewAge === age ? 'bg-primary/15 text-primary' : 'text-muted-foreground hover:bg-secondary'}`}>
+          <button
+            key={age}
+            type="button"
+            onClick={() => onPreviewAge(age)}
+            className={`rounded px-2 py-1.5 text-xs ${previewAge === age ? 'bg-primary/15 text-primary' : 'text-muted-foreground hover:bg-secondary'}`}
+          >
             {tt('Age')} {age}
           </button>
         ))}
@@ -563,7 +630,8 @@ function KeyboardMap({
         {layout.map((row, rowIndex) => (
           <div key={rowIndex} className="grid grid-cols-4 gap-1.5">
             {row.map((key, columnIndex) => {
-              const position = `${rowIndex}:${columnIndex}` as TrainerBuildingAction['shortcut'][number]
+              const position =
+                `${rowIndex}:${columnIndex}` as TrainerBuildingAction['shortcut'][number]
               const menuAction = menuActions.get(position)
               const editing = editingCell?.[0] === rowIndex && editingCell?.[1] === columnIndex
               const completed = current.shortcut.slice(0, expectedIndex).includes(position)
@@ -582,11 +650,22 @@ function KeyboardMap({
                   }`}
                 >
                   {displayStyle !== 'NAME' && menuAction?.icon && (
-                    <img src={menuAction.icon} alt="" className="h-6 w-6 object-contain" loading="lazy" />
+                    <img
+                      src={menuAction.icon}
+                      alt=""
+                      className="h-6 w-6 object-contain"
+                      loading="lazy"
+                    />
                   )}
-                  {showKeyLabels && <kbd className="mt-1 font-mono text-sm font-semibold">{editing ? '…' : key}</kbd>}
+                  {showKeyLabels && (
+                    <kbd className="mt-1 font-mono text-sm font-semibold">
+                      {editing ? '…' : key}
+                    </kbd>
+                  )}
                   {displayStyle !== 'GRID' && menuAction && (
-                    <span className="mt-1 max-w-full truncate text-[10px] leading-tight">{menuAction.name}</span>
+                    <span className="mt-1 max-w-full truncate text-[10px] leading-tight">
+                      {menuAction.name}
+                    </span>
                   )}
                 </button>
               )
@@ -611,9 +690,21 @@ function OptionGroup({ label, children }: { label: string; children: React.React
   )
 }
 
-function OptionButton({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+function OptionButton({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean
+  onClick: () => void
+  children: React.ReactNode
+}) {
   return (
-    <button type="button" onClick={onClick} className={`rounded px-2 py-1.5 text-xs transition-colors ${active ? 'bg-primary/15 text-primary' : 'text-muted-foreground hover:bg-secondary hover:text-foreground'}`}>
+    <button
+      type="button"
+      onClick={onClick}
+      className={`rounded px-2 py-1.5 text-xs transition-colors ${active ? 'bg-primary/15 text-primary' : 'text-muted-foreground hover:bg-secondary hover:text-foreground'}`}
+    >
       {children}
     </button>
   )
@@ -621,12 +712,25 @@ function OptionButton({ active, onClick, children }: { active: boolean; onClick:
 
 function FeedbackBanner({ feedback }: { feedback: Exclude<Feedback, null> }) {
   const Icon = feedback.kind === 'wrong' ? X : Check
-  const tone = feedback.kind === 'wrong' ? 'border-loss/30 bg-loss/10 text-loss' : 'border-win/30 bg-win/10 text-win'
-  return <div className={`flex items-center gap-2 rounded-md border px-3 py-2 text-sm ${tone}`}><Icon className="h-4 w-4" />{feedback.message}</div>
+  const tone =
+    feedback.kind === 'wrong'
+      ? 'border-loss/30 bg-loss/10 text-loss'
+      : 'border-win/30 bg-win/10 text-win'
+  return (
+    <div className={`flex items-center gap-2 rounded-md border px-3 py-2 text-sm ${tone}`}>
+      <Icon className="h-4 w-4" />
+      {feedback.message}
+    </div>
+  )
 }
 
 function Stat({ label, value }: { label: string; value: string }) {
-  return <div className="rounded-md border border-border bg-background/40 px-3 py-2"><div className="text-[10px] uppercase tracking-wide text-muted-foreground">{label}</div><div className="mt-1 text-lg font-semibold tabular-nums">{value}</div></div>
+  return (
+    <div className="rounded-md border border-border bg-background/40 px-3 py-2">
+      <div className="text-[10px] uppercase tracking-wide text-muted-foreground">{label}</div>
+      <div className="mt-1 text-lg font-semibold tabular-nums">{value}</div>
+    </div>
+  )
 }
 
 function typeLabel(type: TrainerBuildingType): string {

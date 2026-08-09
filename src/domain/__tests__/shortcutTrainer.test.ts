@@ -41,27 +41,16 @@ describe('shortcut trainer keyboard profiles', () => {
 
   it('captures the label at the physical position of the selected profile', () => {
     expect(
-      shortcutFromKeyInput(
-        { key: 'y', code: 'KeyZ', shiftKey: true },
-        KEYBOARD_LAYOUTS.QWERTZ,
-      ),
+      shortcutFromKeyInput({ key: 'y', code: 'KeyZ', shiftKey: true }, KEYBOARD_LAYOUTS.QWERTZ),
     ).toBe('SHIFT+Y')
-    expect(
-      shortcutFromKeyInput({ key: 'a', code: 'KeyQ' }, KEYBOARD_LAYOUTS.AZERTY),
-    ).toBe('A')
+    expect(shortcutFromKeyInput({ key: 'a', code: 'KeyQ' }, KEYBOARD_LAYOUTS.AZERTY)).toBe('A')
   })
 
   it('keeps saved shortcuts on the same physical key when the profile changes', () => {
     expect(
-      remapShortcutForLayout(
-        'CTRL+Z,ALT+X',
-        KEYBOARD_LAYOUTS.QWERTY,
-        KEYBOARD_LAYOUTS.QWERTZ,
-      ),
+      remapShortcutForLayout('CTRL+Z,ALT+X', KEYBOARD_LAYOUTS.QWERTY, KEYBOARD_LAYOUTS.QWERTZ),
     ).toBe('CTRL+Y,ALT+X')
-    expect(
-      remapShortcutForLayout('Q', KEYBOARD_LAYOUTS.QWERTY, KEYBOARD_LAYOUTS.AZERTY),
-    ).toBe('A')
+    expect(remapShortcutForLayout('Q', KEYBOARD_LAYOUTS.QWERTY, KEYBOARD_LAYOUTS.AZERTY)).toBe('A')
   })
 
   it('provides verified default two-key construction commands without user mapping', () => {
@@ -72,8 +61,14 @@ describe('shortcut trainer keyboard profiles', () => {
     )
 
     expect(house?.shortcut).toEqual(['0:0', '0:0'])
-    expect(shortcutKeysForPositions(house?.shortcut ?? [], KEYBOARD_LAYOUTS.QWERTY)).toEqual(['Q', 'Q'])
-    expect(shortcutKeysForPositions(house?.shortcut ?? [], KEYBOARD_LAYOUTS.AZERTY)).toEqual(['A', 'A'])
+    expect(shortcutKeysForPositions(house?.shortcut ?? [], KEYBOARD_LAYOUTS.QWERTY)).toEqual([
+      'Q',
+      'Q',
+    ])
+    expect(shortcutKeysForPositions(house?.shortcut ?? [], KEYBOARD_LAYOUTS.AZERTY)).toEqual([
+      'A',
+      'A',
+    ])
     expect(mongolStable?.shortcut).toEqual(['0:0', '1:3'])
   })
 
