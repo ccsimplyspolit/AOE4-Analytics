@@ -1033,6 +1033,61 @@ const UI: Record<Locale, Record<string, string>> = {
     'Watch VOD': 'Смотреть VOD',
     'Watch VOD from {time}': 'Смотреть VOD с {time}',
     'Open VOD finder': 'Открыть поиск VOD',
+    'Show me how to play this matchup': 'Покажи, как играть этот матчап',
+    'Same map · civilizations · game mode': 'Та же карта · цивилизации · режим игры',
+    'The app searches public games for a winning example with the same map and civilization matchup, then compares your measurable checkpoints with that player.':
+      'Приложение ищет публичную победную игру на той же карте и с тем же матчапом цивилизаций, затем сравнивает измеримые контрольные точки с вашей игрой.',
+    'Searching for similar winning games…': 'Ищу похожие победные игры…',
+    'Reference games': 'Эталонные игры',
+    'No public match with this exact map and civilization composition was found.':
+      'Публичная игра с точно такой картой и составом цивилизаций не найдена.',
+    'Try again after more games are indexed, or use the build-order comparison below.':
+      'Попробуйте позже, когда проиндексируется больше игр, или используйте сравнение билдов ниже.',
+    'Reference player': 'Игрок-эталон',
+    'Reference game': 'Эталонная игра',
+    exact: 'точное совпадение',
+    'same-matchup': 'тот же матчап',
+    similar: 'похожая игра',
+    'patch unknown': 'патч неизвестен',
+    rating: 'рейтинг',
+    'rating unavailable': 'рейтинг недоступен',
+    win: 'победа',
+    loss: 'поражение',
+    unknown: 'неизвестно',
+    'Target civilization side': 'Сторона вашей цивилизации',
+    'Opposing side': 'Сторона соперника',
+    'Team sides and civilization order are compared. Exact spawn coordinates are not published by AoE4World.':
+      'Сравниваются стороны команд и порядок цивилизаций. Точные координаты старта AoE4World не публикует.',
+    'Loading reference statistics…': 'Загружаю статистику эталона…',
+    'The public match was found, but its detailed statistics are not available yet.':
+      'Публичный матч найден, но подробная статистика пока недоступна.',
+    'What to copy from the reference': 'Что скопировать с эталона',
+    'Open the reference game': 'Открыть эталонную игру',
+    Checkpoint: 'Контрольная точка',
+    'Your game': 'Ваша игра',
+    Reference: 'Эталон',
+    Difference: 'Разница',
+    'Game length': 'Длительность игры',
+    'Feudal timing': 'Переход в Феодал',
+    'Castle timing': 'Переход в Замок',
+    'Villager high': 'Максимум жителей',
+    'Resources gathered': 'Собрано ресурсов',
+    'Military units produced': 'Произведено военных юнитов',
+    'Largest army': 'Максимальная армия',
+    'Units killed': 'Уничтожено юнитов',
+    'Units lost': 'Потеряно юнитов',
+    'Technologies researched': 'Изучено технологий',
+    APM: 'APM',
+    'The reference reached Feudal earlier — protect the opening resource plan and avoid idle Town Center time.':
+      'Эталон раньше вышел в Феодал — сохрани план стартовых ресурсов и не допускай простоя Городского центра.',
+    'The reference kept more villagers alive — copy the safer worker production and defensive reactions.':
+      'Эталон сохранил больше жителей — повтори более безопасное производство рабочих и защитные реакции.',
+    'The reference reached a larger army — spend resources sooner and keep production buildings active.':
+      'Эталон собрал более крупную армию — раньше трать ресурсы и держи производственные здания активными.',
+    'The reference lost fewer units — avoid exposed fights and trade only with vision or a timing advantage.':
+      'Эталон потерял меньше юнитов — избегай открытых боёв и принимай размен только с обзором или преимуществом по таймингу.',
+    'Use the reference replay as a timing template: compare the first age-up, first army, and first decisive fight.':
+      'Используй реплей эталона как шаблон таймингов: сравни первый апгрейд эпохи, первую армию и первый решающий бой.',
     'Twitch opens in your browser because its embedded player requires a verified web domain.':
       'Twitch откроется в браузере: его встроенный плеер требует подтверждённый веб-домен.',
     'Verified exact-game VOD': 'Проверенный VOD именно этой игры',
@@ -2331,11 +2386,13 @@ function russianDynamic(input: string): string | null {
   if (summary) {
     const result = { Win: 'Победа', Loss: 'Поражение', Game: 'Матч' }[summary[1]!] ?? summary[1]
     const ownCiv = GAME_NAMES.ru[summary[2]!] ?? summary[2]
-    const takeaway = summary[4]!.replace(
-      /^Tough matchup: (.+) vs (.+)$/,
-      (_, left: string, right: string) =>
-        `Сложный матчап: ${GAME_NAMES.ru[left] ?? left} против ${GAME_NAMES.ru[right] ?? right}`,
-    )
+    const takeaway =
+      russianDynamic(summary[4]!) ??
+      summary[4]!.replace(
+        /^Tough matchup: (.+) vs (.+)$/,
+        (_, left: string, right: string) =>
+          `Сложный матчап: ${GAME_NAMES.ru[left] ?? left} против ${GAME_NAMES.ru[right] ?? right}`,
+      )
     const map = GAME_NAMES.ru[summary[3]!] ?? summary[3]
     return `${result}: ${ownCiv} на карте ${map}. Главный вывод: ${takeaway}.`
   }
@@ -2372,7 +2429,11 @@ function russianDynamic(input: string): string | null {
     return 'Соперник создал более крупную армию. Держите все производственные здания занятыми и тратьте накопленные ресурсы — простой производства уменьшает численность войск.'
   }
   const toughMatchup = /^Tough matchup: (.+) vs (.+)$/.exec(input)
-  if (toughMatchup) return `Сложный матчап: ${toughMatchup[1]} против ${toughMatchup[2]}`
+  if (toughMatchup) {
+    const left = GAME_NAMES.ru[toughMatchup[1]!] ?? toughMatchup[1]
+    const right = GAME_NAMES.ru[toughMatchup[2]!] ?? toughMatchup[2]
+    return `Сложный матчап: ${left} против ${right}`
+  }
   const matchupHistory =
     /^Historically ~([\d.]+)% for you\. Lean on your civ's strengths and avoid their power spikes\.$/.exec(
       input,
