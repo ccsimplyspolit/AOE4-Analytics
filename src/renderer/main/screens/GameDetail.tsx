@@ -39,6 +39,7 @@ import { CuratedMatchReviewCard } from '../components/CuratedMatchReviewCard'
 import { useVideoAnalyses } from '../queries/useVideoAnalyses'
 import { useTwitchVod } from '../queries/useTwitchVod'
 import { SimilarMatchCard } from '../components/SimilarMatchCard'
+import { TeamMateReviewCard } from '../components/TeamMateReviewCard'
 import { inferGameKind, type SimilarMatchQuery } from '@domain/similarMatch'
 import { EmptyBox, ErrorBox, Spinner } from '../components/feedback'
 import { useI18n } from '../../i18n'
@@ -154,6 +155,7 @@ function Detail({
   // reference build.
   const twitchVodInput: TwitchVodFinderInput = {
     gameId: match.id,
+    profileId: myProfileId,
     civilization: match.civ,
     opponentCivilization: match.oppCiv,
     map: match.map,
@@ -185,6 +187,13 @@ function Detail({
     (summary?.players.filter((player) => civFromToken(player.civToken) === match.civ).length === 1
       ? summary.players.find((player) => civFromToken(player.civToken) === match.civ)
       : undefined)
+  const ownCounter =
+    myProfileId == null
+      ? null
+      : (match.perPlayer ?? []).find((row) => row.profileId === myProfileId) ?? null
+  const teamReviewEligible =
+    ownCounter?.teamId != null &&
+    (match.perPlayer ?? []).filter((row) => row.teamId === ownCounter.teamId).length > 1
   const subjectPlayerId = focusedPlayerId ?? ownSummaryPlayer?.playerId ?? null
   const subjectSummaryPlayer =
     focusedPlayerId != null
@@ -325,6 +334,7 @@ function Detail({
         isPublicGame={isPublicGame}
         hasSummary={summary != null}
         hasVerifiedVod={verifiedVod != null}
+        hasTeamReview={teamReviewEligible}
         onReplay={() => document.getElementById('replay-command-analysis')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
       />
 
@@ -335,6 +345,21 @@ function Detail({
           ownProfileId={myProfileId}
           activePlayerId={subjectPlayerId}
           onSelect={(playerId) => {
+            const ownId = ownSummaryPlayer?.playerId ?? null
+            setFocusedPlayerId(playerId === ownId ? null : playerId)
+          }}
+        />
+      )}
+
+      {summary && summary.players.length > 1 && teamReviewEligible && (
+        <TeamMateReviewCard
+          summary={summary}
+          perPlayer={match.perPlayer}
+          myProfileId={myProfileId}
+          myPlayerId={ownSummaryPlayer?.playerId ?? null}
+          myCiv={match.civ}
+          activePlayerId={subjectPlayerId}
+          onSelectPlayer={(playerId) => {
             const ownId = ownSummaryPlayer?.playerId ?? null
             setFocusedPlayerId(playerId === ownId ? null : playerId)
           }}
@@ -385,7 +410,7 @@ function Detail({
         myCiv={subjectCiv}
       />
 
-      <TwitchVodCard match={match} />
+      <TwitchVodCard match={match} profileId={myProfileId} />
       {curatedReview && <CuratedMatchReviewCard review={curatedReview} />}
       {linkedVideoAnalysis && <VideoAnalysisPanel record={linkedVideoAnalysis} />}
 
@@ -443,6 +468,7 @@ function Detail({
         hasAnalysis={Boolean(linkedVideoAnalysis)}
         input={{
           gameId: match.id,
+          profileId: myProfileId,
           civilization: match.civ,
           opponentCivilization: match.oppCiv,
           map: match.map,
@@ -512,7 +538,11 @@ function similarMatchQuery(match: StoredMatch, profileId: number | null): Simila
     targetCiv: match.civ,
     targetTeamCivs,
     enemyTeamCivs,
-    winsOnly: true,
+    // Coaching references must have the complete same CIV composition. A loss
+    // is still useful evidence, so winning examples are preferred by ranking
+    // but are not the only eligible references.
+    exactCivsOnly: true,
+    winsOnly: false,
     ratingAbove: match.rating,
     durationMaxSec: match.durationSec,
     limit: 5,
@@ -526,15 +556,18 @@ function MatchSectionNav({
   isPublicGame,
   hasSummary,
   hasVerifiedVod,
+  hasTeamReview,
   onReplay,
 }: {
   isPublicGame: boolean
   hasSummary: boolean
   hasVerifiedVod: boolean
+  hasTeamReview: boolean
   onReplay: () => void
 }) {
   const { tt } = useI18n()
   const links = [
+    ...(hasTeamReview ? [{ id: 'team-mate-review', label: tt('Team review') }] : []),
     { id: 'turning-point-story', label: tt('Turning points') },
     { id: 'build-order-audit', label: tt('Build audit') },
     { id: 'game-summary-evidence', label: tt('Economy & build order') },

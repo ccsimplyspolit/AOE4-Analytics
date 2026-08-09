@@ -16,6 +16,7 @@ import {
 } from '@domain/similarMatch'
 import { getClient } from './appContext'
 import { readAccountReplayArchive } from './accountReplayArchiveStore'
+import { findTwitchFinderReferences } from './twitchVodService'
 import type { IpcResult } from '@ipc/contract'
 import { err, errFrom, ok } from './result'
 
@@ -68,6 +69,7 @@ function parseQuery(input: unknown): SimilarMatchQuery {
     targetCiv,
     targetTeamCivs: readCivs(value.targetTeamCivs),
     enemyTeamCivs: readCivs(value.enemyTeamCivs),
+    exactCivsOnly: value.exactCivsOnly === true,
     winsOnly: value.winsOnly !== false,
     ratingAbove:
       typeof value.ratingAbove === 'number' && Number.isFinite(value.ratingAbove)
@@ -143,6 +145,7 @@ function matchCandidate(game: Game, query: SimilarMatchQuery): SimilarMatchCandi
       (candidate) => normalizeMatchToken(candidate) === normalizeMatchToken(civ),
     ),
   )
+  if (query.exactCivsOnly && (!targetTeamExact || !enemyTeamExact)) return null
   if (!targetTeamExact && !samePool && !containsRequestedEnemies) return null
 
   const targetTeamResult = teams[targetTeamIndex]!.result
@@ -156,6 +159,7 @@ function matchCandidate(game: Game, query: SimilarMatchQuery): SimilarMatchCandi
     queryKind === gameKind ||
     gameKind.endsWith(queryKind) ||
     (queryKind === 'rm_solo' && gameKind === 'rm_1v1')
+  if (query.exactCivsOnly && queryKind && !kindExact) return null
   const patchExact = !query.patch || String(game.patch ?? '') === String(query.patch)
   const quality =
     targetTeamExact && enemyTeamExact ? 'exact' : samePool ? 'same-matchup' : 'similar'
@@ -217,6 +221,39 @@ function matchCandidate(game: Game, query: SimilarMatchQuery): SimilarMatchCandi
   }
 }
 
+/**
+ * The global `/games` feed is intentionally bounded and quickly loses older
+ * VOD-linked games. Finder rows retain those public matches, so resolve their
+ * exact game payloads and run the same strict map/CIV/mode matcher.
+ */
+async function searchFinderReferences(
+  query: SimilarMatchQuery,
+  unique: Map<number, SimilarMatchCandidate>,
+): Promise<void> {
+  const references = await findTwitchFinderReferences({
+    gameId: '1',
+    civilization: query.targetCiv,
+    map: query.map,
+    durationSec: query.durationMaxSec,
+  })
+  for (const reference of references) {
+    if (reference.profileId == null) continue
+    const gameId = Number(reference.gameId)
+    if (
+      !Number.isSafeInteger(gameId) ||
+      (query.gameId != null && gameId === query.gameId)
+    )
+      continue
+    try {
+      const game = await getClient().getGame(reference.profileId, gameId)
+      const candidate = matchCandidate(game, query)
+      if (candidate) unique.set(candidate.gameId, candidate)
+    } catch {
+      // One stale/deleted profile row must not hide other Finder matches.
+    }
+  }
+}
+
 /** Search the complete local account archive plus the available public feed window. */
 export async function findSimilarMatches(
   input: unknown,
@@ -251,6 +288,7 @@ export async function findSimilarMatches(
           : query.kind
         : undefined
 
+    let publicFeedLimited = false
     for (let page = 1; page <= MAX_PAGES; page++) {
       let response
       try {
@@ -263,12 +301,17 @@ export async function findSimilarMatches(
         })
       } catch (error) {
         if (error instanceof ApiError && error.status === 429) {
-          if (unique.size > 0) break
-          return err(
-            'api',
-            'AoE4World is temporarily limiting public-game searches. Please try again in a minute.',
-            429,
-          )
+          if (gamesSource !== getClient() && unique.size === 0) {
+            return err(
+              'api',
+              'AoE4World is temporarily limiting public-game searches. Please try again in a minute.',
+              429,
+            )
+          }
+          // The Twitch Finder is an independent public source and can still
+          // recover exact VOD-linked references when `/games` is rate-limited.
+          publicFeedLimited = true
+          break
         }
         throw error
       }
@@ -278,6 +321,19 @@ export async function findSimilarMatches(
         if (candidate) unique.set(candidate.gameId, candidate)
       }
       if (response.games.length === 0 || response.games.length < 50) break
+    }
+
+    // Use the public VOD Finder as a long-tail fallback only for the real
+    // client. Tests and injected API clients remain fully deterministic.
+    if (
+      gamesSource === getClient() &&
+      (publicFeedLimited || unique.size < (query.limit ?? DEFAULT_LIMIT))
+    ) {
+      try {
+        await searchFinderReferences(query, unique)
+      } catch {
+        // Finder is an optional enrichment source; API matches remain valid.
+      }
     }
 
     return ok(

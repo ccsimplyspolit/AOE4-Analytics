@@ -30,7 +30,7 @@ import type {
 import { normalizeTeams } from '@api/types'
 import { BUILD_CATALOG } from '@data/buildCatalog'
 import { civDisplayName } from '@domain/civ'
-import { civFromToken } from '@domain/statsSummary'
+import { civFromToken, type MatchSummary } from '@domain/statsSummary'
 import { compareMatchPlayers } from '@domain/buildOrderComparison'
 import { formatDuration } from '@domain/format'
 import type { TwitchVodFinderInput } from '@domain/twitchVodFinder'
@@ -700,6 +700,7 @@ export function ReplayLab() {
           data={local.data}
           isLoading={local.isLoading}
           isError={local.isError}
+          profileId={settings.data?.profileId ?? null}
           autoAnalysisResults={autoAnalysisResults}
           onRetry={() => void local.refetch()}
           page={localPage}
@@ -766,6 +767,7 @@ function LocalArchive({
   data,
   isLoading,
   isError,
+  profileId,
   autoAnalysisResults,
   onRetry,
   page,
@@ -775,6 +777,7 @@ function LocalArchive({
   data: ReplayArchivePage | undefined
   isLoading: boolean
   isError: boolean
+  profileId: number | null
   autoAnalysisResults: Record<string, ReplayAnalysisResult>
   onRetry: () => void
   page: number
@@ -830,6 +833,7 @@ function LocalArchive({
         <LocalReplayRow
           key={item.id}
           item={item}
+          profileId={profileId}
           autoResult={autoAnalysisResults[`local:${item.id}`]}
         />
       ))}
@@ -840,25 +844,31 @@ function LocalArchive({
 
 function LocalReplayRow({
   item,
+  profileId,
   autoResult,
 }: {
   item: ReplayArchiveItem
+  profileId: number | null
   autoResult?: ReplayAnalysisResult
 }) {
   const { tt } = useI18n()
-  const [showAnalysis, setShowAnalysis] = useState(false)
+  const [activeTab, setActiveTab] = useState<'match' | 'replay'>('match')
   const analysis = useReplayAnalysis()
   const map = item.info?.mapName ?? item.localMatch?.map ?? item.info?.mapId ?? tt('Unknown map')
   const displayedAnalysis = analysis.data ?? autoResult
+  const summaryQuery = useGameSummary(item.matchId ?? undefined, {
+    enabled: item.matchId != null && item.hasStatsSummary && activeTab === 'match',
+  })
+  const summary = summaryQuery.data?.ok ? summaryQuery.data.data : null
   const runAnalysis = async () => {
     if (!item.hasReplay || analysis.isPending) return
     if (autoResult) {
-      setShowAnalysis(true)
+      setActiveTab('replay')
       return
     }
     try {
       await analysis.mutateAsync({ localId: item.id })
-      setShowAnalysis(true)
+      setActiveTab('replay')
     } catch {
       // The mutation error is rendered below the row.
     }
@@ -869,7 +879,18 @@ function LocalReplayRow({
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <div className="truncate font-medium">{map}</div>
+              {item.matchId ? (
+                <Link
+                  to={`/game/${item.matchId}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="truncate font-medium hover:text-primary hover:underline"
+                >
+                  {map}
+                </Link>
+              ) : (
+                <div className="truncate font-medium">{map}</div>
+              )}
               <Badge variant="secondary" className="text-[10px]">
                 {item.source === 'matchhistory' ? tt('match history') : tt('playback')}
               </Badge>
@@ -916,6 +937,8 @@ function LocalReplayRow({
             {item.matchId && (
               <Link
                 to={`/game/${item.matchId}`}
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline"
               >
                 <History className="h-3.5 w-3.5" /> {tt('Review game')}
@@ -946,16 +969,219 @@ function LocalReplayRow({
         {analysis.error && !autoResult && (
           <p className="text-xs text-loss">{analysis.error.message}</p>
         )}
-        {displayedAnalysis && (
+        <ReplayViewTabs active={activeTab} onChange={setActiveTab} tt={tt} />
+        {activeTab === 'match' ? (
+          <LocalMatchOverview
+            item={item}
+            map={map}
+            profileId={profileId}
+            summary={summary}
+            summaryLoading={summaryQuery.isFetching}
+            fallbackDurationSec={displayedAnalysis?.commandStream.durationSec ?? null}
+          />
+        ) : displayedAnalysis ? (
           <ReplayAnalysisPanel
             result={displayedAnalysis}
             target={{ localId: item.id }}
-            open={showAnalysis}
-            onToggle={() => setShowAnalysis((value) => !value)}
+            open
+            onToggle={() => setActiveTab('match')}
           />
+        ) : (
+          <p className="border-t border-border/60 pt-3 text-xs text-muted-foreground">
+            {tt('Run replay analysis to open the command stream.')}
+          </p>
         )}
       </CardContent>
     </Card>
+  )
+}
+
+function ReplayViewTabs({
+  active,
+  onChange,
+  tt,
+}: {
+  active: 'match' | 'replay'
+  onChange: (value: 'match' | 'replay') => void
+  tt: (value: string) => string
+}) {
+  return (
+    <div className="flex gap-1 border-t border-border/60 pt-3" role="tablist">
+      <button
+        type="button"
+        role="tab"
+        aria-selected={active === 'match'}
+        onClick={() => onChange('match')}
+        className={cn(
+          'inline-flex items-center gap-1.5 rounded-md px-3 py-2 text-xs font-medium transition-colors',
+          active === 'match'
+            ? 'bg-secondary text-foreground'
+            : 'text-muted-foreground hover:bg-secondary/60 hover:text-foreground',
+        )}
+      >
+        <History className="h-3.5 w-3.5" /> {tt('Match')}
+      </button>
+      <button
+        type="button"
+        role="tab"
+        aria-selected={active === 'replay'}
+        onClick={() => onChange('replay')}
+        className={cn(
+          'inline-flex items-center gap-1.5 rounded-md px-3 py-2 text-xs font-medium transition-colors',
+          active === 'replay'
+            ? 'bg-secondary text-foreground'
+            : 'text-muted-foreground hover:bg-secondary/60 hover:text-foreground',
+        )}
+      >
+        <Activity className="h-3.5 w-3.5" /> {tt('Replay analysis')}
+      </button>
+    </div>
+  )
+}
+
+function LocalMatchOverview({
+  item,
+  map,
+  profileId,
+  summary,
+  summaryLoading,
+  fallbackDurationSec,
+}: {
+  item: ReplayArchiveItem
+  map: string
+  profileId: number | null
+  summary: MatchSummary | null
+  summaryLoading: boolean
+  fallbackDurationSec: number | null
+}) {
+  const { tt } = useI18n()
+  const players = item.info?.players ?? []
+  const localPlayers = item.localMatch?.players ?? []
+  const duration = summary?.gameLengthSec ?? fallbackDurationSec
+  return (
+    <div className="space-y-3 border-t border-border/60 pt-3">
+      <div className="grid gap-2 sm:grid-cols-4">
+        <Metric label={tt('Map')} value={map} />
+        <Metric
+          label={tt('Duration')}
+          value={duration == null ? tt('not available') : formatDuration(duration)}
+        />
+        <Metric label={tt('Players')} value={String(Math.max(players.length, localPlayers.length))} />
+        <Metric
+          label={tt('Source')}
+          value={item.source === 'matchhistory' ? tt('match history') : tt('playback')}
+        />
+      </div>
+      {players.length > 0 ? (
+        <div className="grid gap-2 sm:grid-cols-2">
+          {players.map((player, index) => (
+            <div
+              key={`${player.name}-${index}`}
+              className="rounded-md border border-border/60 bg-secondary/20 px-3 py-2"
+            >
+              <div className="font-medium">
+                {player.name || tt('Unknown')}
+                {player.ai && <span className="ml-1 text-[10px] text-muted-foreground">AI</span>}
+              </div>
+              <div className="mt-0.5 text-xs text-muted-foreground">
+                {player.civName || tt('Unknown civilization')}
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="text-xs text-muted-foreground">{tt('Player roster unavailable')}</p>
+      )}
+      {item.matchId ? (
+        <Link
+          to={`/game/${item.matchId}`}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline"
+        >
+          <History className="h-3.5 w-3.5" /> {tt('Open full match review')}
+        </Link>
+      ) : (
+        <p className="text-[11px] text-muted-foreground">
+          {tt(
+            'This playback has no synchronized match-history id. The tab still shows every fact available from the replay header and local summary.',
+          )}
+        </p>
+      )}
+      {summaryLoading && <Spinner label={tt('Loading summary…')} />}
+      {summary && (
+        <GameSummaryPanel
+          summary={summary}
+          myCiv={item.info?.players.find((player) => !player.ai)?.civSlug ?? null}
+          myProfileId={profileId}
+        />
+      )}
+    </div>
+  )
+}
+
+function AccountMatchOverview({
+  item,
+  profileId,
+}: {
+  item: AccountReplayItem
+  profileId: number | null
+}) {
+  const { tt } = useI18n()
+  const teams = normalizeTeams(item.game)
+  const me = teams.flat().find((player) => player.profile_id === profileId)
+  return (
+    <div className="space-y-3 border-t border-border/60 pt-3">
+      <div className="grid gap-2 sm:grid-cols-5">
+        <Metric label={tt('Map')} value={item.game.map || tt('Unknown map')} />
+        <Metric label={tt('Mode')} value={item.game.leaderboard || item.game.kind || '—'} />
+        <Metric
+          label={tt('Duration')}
+          value={item.game.duration == null ? tt('not available') : formatDuration(item.game.duration)}
+        />
+        <Metric label={tt('Average rating')} value={String(item.game.average_rating ?? '—')} />
+        <Metric
+          label={tt('Result')}
+          value={
+            me?.result === 'win'
+              ? tt('Win')
+              : me?.result === 'loss'
+                ? tt('Loss')
+                : tt('unknown')
+          }
+        />
+      </div>
+      <div className="grid gap-2 sm:grid-cols-2">
+        {teams.map((team, index) => (
+          <div key={index} className="rounded-md border border-border/60 bg-secondary/20 px-3 py-2">
+            <div className="mb-1 text-[10px] uppercase tracking-wide text-muted-foreground">
+              {tt('Team')} {index + 1}
+            </div>
+            <div className="space-y-1">
+              {team.map((player) => (
+                <div key={player.profile_id} className="flex items-center justify-between gap-2 text-xs">
+                  <span className={player.profile_id === profileId ? 'font-semibold text-primary' : ''}>
+                    {player.name}
+                  </span>
+                  <span className="text-muted-foreground">
+                    {civDisplayName(player.civilization)} ·{' '}
+                    {player.result === 'win' ? tt('Win') : player.result === 'loss' ? tt('Loss') : '—'}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <Link
+        to={`/public-game/${profileId ?? teams.flat()[0]?.profile_id ?? 0}/${item.game.game_id}`}
+        target="_blank"
+        rel="noreferrer"
+        className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline"
+      >
+        <History className="h-3.5 w-3.5" /> {tt('Open full match review')}
+      </Link>
+    </div>
   )
 }
 
@@ -1310,6 +1536,7 @@ function AccountReplayRow({
   autoResult?: ReplayAnalysisResult
 }) {
   const { tt } = useI18n()
+  const [activeTab, setActiveTab] = useState<'match' | 'replay'>('match')
   const [showAnalysis, setShowAnalysis] = useState(false)
   const [showSummary, setShowSummary] = useState(false)
   const [fullResult, setFullResult] = useState<FullReplayAnalysis | null>(null)
@@ -1317,6 +1544,10 @@ function AccountReplayRow({
   const fullAnalysis = useDownloadAndAnalyzeReplay()
   const videoAnalyses = useVideoAnalyses()
   const game = item.game
+  const matchRoute =
+    item.historySource === 'relic'
+      ? `/public-game/${profileId ?? normalizeTeams(game).flat()[0]?.profile_id ?? 0}/${game.game_id}`
+      : `/game/${game.game_id}`
   const summaryQuery = useGameSummary(String(game.game_id), { enabled: showSummary })
   const summary = summaryQuery.data?.ok ? summaryQuery.data.data : null
   const summaryError =
@@ -1328,6 +1559,7 @@ function AccountReplayRow({
     .find((player) => profileId != null && player.profile_id === profileId)
   const twitchVodInput: TwitchVodFinderInput = {
     gameId: String(game.game_id),
+    profileId,
     civilization: myPlayer?.civilization ?? 'english',
     opponentCivilization:
       normalizeTeams(game)
@@ -1355,7 +1587,14 @@ function AccountReplayRow({
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <div className="font-medium">{game.map || tt('Unknown map')}</div>
+              <Link
+                to={matchRoute}
+                target="_blank"
+                rel="noreferrer"
+                className="font-medium hover:text-primary hover:underline"
+              >
+                {game.map || tt('Unknown map')}
+              </Link>
               <Badge variant="secondary" className="text-[10px]">
                 {game.leaderboard || game.kind || tt('match')}
               </Badge>
@@ -1398,6 +1637,7 @@ function AccountReplayRow({
                       setFullResult(result)
                       setShowAnalysis(result.replay != null)
                       setShowSummary(result.summary != null)
+                      setActiveTab(result.replay != null ? 'replay' : 'match')
                     })
                     .catch(() => undefined)
                 }}
@@ -1427,11 +1667,15 @@ function AccountReplayRow({
                 onClick={() => {
                   if (autoResult) {
                     setShowAnalysis(true)
+                    setActiveTab('replay')
                     return
                   }
                   void analysis
                     .mutateAsync({ gameId: game.game_id })
-                    .then(() => setShowAnalysis(true))
+                    .then(() => {
+                      setShowAnalysis(true)
+                      setActiveTab('replay')
+                    })
                     .catch(() => undefined)
                 }}
                 className="inline-flex h-8 items-center gap-1.5 rounded-md border border-primary/40 px-2.5 text-xs text-primary hover:bg-primary/10 disabled:opacity-40"
@@ -1448,7 +1692,10 @@ function AccountReplayRow({
               <button
                 type="button"
                 disabled={summaryQuery.isFetching}
-                onClick={() => setShowSummary((value) => !value)}
+                onClick={() => {
+                  setActiveTab('match')
+                  setShowSummary((value) => !value)
+                }}
                 className="inline-flex h-8 items-center gap-1.5 rounded-md border border-border px-2.5 text-xs hover:bg-secondary disabled:opacity-40"
               >
                 <ListChecks className="h-3.5 w-3.5" />
@@ -1466,6 +1713,8 @@ function AccountReplayRow({
             ) : (
               <Link
                 to={`/game/${game.game_id}`}
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline"
               >
                 <History className="h-3.5 w-3.5" /> {tt('Review')}
@@ -1498,15 +1747,25 @@ function AccountReplayRow({
             {fullResult.coverage.summary ? tt('available') : tt('unavailable')}
           </p>
         )}
-        {displayedAnalysis && (
+        <ReplayViewTabs active={activeTab} onChange={setActiveTab} tt={tt} />
+        {activeTab === 'match' && <AccountMatchOverview item={item} profileId={profileId} />}
+        {activeTab === 'replay' && displayedAnalysis && (
           <ReplayAnalysisPanel
             result={displayedAnalysis}
             target={{ gameId: game.game_id }}
             open={showAnalysis}
-            onToggle={() => setShowAnalysis((value) => !value)}
+            onToggle={() => {
+              setShowAnalysis((value) => !value)
+              setActiveTab('match')
+            }}
           />
         )}
-        {(item.summaryAvailable || displayedSummary != null) && showSummary && (
+        {activeTab === 'replay' && !displayedAnalysis && (
+          <p className="border-t border-border/60 pt-3 text-xs text-muted-foreground">
+            {tt('Run replay analysis to open the command stream.')}
+          </p>
+        )}
+        {activeTab === 'match' && (item.summaryAvailable || displayedSummary != null) && showSummary && (
           <div className="border-t border-border/60 pt-3">
             {summaryQuery.isFetching && <Spinner label={tt('Loading summary…')} />}
             {summaryError && <p className="text-xs text-loss">{summaryError}</p>}

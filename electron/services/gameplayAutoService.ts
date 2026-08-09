@@ -127,6 +127,7 @@ function candidateFromOnline(
 async function findCandidate(input: GameplayAutoInput): Promise<GameplayCandidate | null> {
   const verified = await findTwitchVod({
     gameId: input.gameId,
+    profileId: input.profileId,
     civilization: input.civilization,
     opponentCivilization: input.opponentCivilization,
     map: input.map,

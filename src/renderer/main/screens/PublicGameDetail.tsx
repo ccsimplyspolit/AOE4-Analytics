@@ -91,6 +91,7 @@ function PublicGameBody({
   const viewedCiv = viewedPlayer?.civilization ?? null
   const twitchVodInput: TwitchVodFinderInput = {
     gameId: String(detail.game.game_id),
+    profileId: detail.profileId,
     civilization: viewedCiv ?? 'english',
     opponentCivilization:
       players.find((player) => player.profile_id !== detail.profileId)?.civilization ?? null,

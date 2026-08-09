@@ -8,16 +8,20 @@ import { useI18n } from '../../i18n'
 import { useTwitchVod } from '../queries/useTwitchVod'
 
 /**
- * Shows a Twitch link only after AoE4World's Finder returned the same game id.
+ * Shows a Twitch link only after AoE4World's exact game API/Finder association
+ * returned the same game id.
  * Twitch embeds require a verified web `parent` domain and don't reliably run
  * in a packaged file:// Electron renderer, so the direct VOD opens in the
  * browser where Twitch playback is supported.
  */
 export function TwitchVodCard({
   match,
+  profileId,
   input: providedInput,
 }: {
   match?: StoredMatch
+  /** Profile used to read AoE4World's direct per-game Twitch association. */
+  profileId?: number | null
   /** Public-game callers can provide the same exact-game Finder input. */
   input?: TwitchVodFinderInput | null
 }) {
@@ -27,6 +31,7 @@ export function TwitchVodCard({
     (match
       ? {
           gameId: match.id,
+          profileId,
           civilization: match.civ,
           opponentCivilization: match.oppCiv,
           map: match.map,

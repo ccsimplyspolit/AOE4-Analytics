@@ -77,6 +77,7 @@ export function SimilarMatchCard({
   const vodInput: TwitchVodFinderInput = selected
     ? {
         gameId: String(selected.gameId),
+        profileId: selected.referenceProfileId,
         civilization: selected.referenceCiv,
         opponentCivilization: selected.teams
           .filter((team) => team.index !== selected.targetTeamIndex)
@@ -129,11 +130,13 @@ export function SimilarMatchCard({
         <CardContent className="space-y-4 p-4">
           <p className="text-sm text-muted-foreground">
             {tt(
-              'The app searches your complete cached account archive first, then the available public-game window (up to 1,000 recent matches). It prefers a higher-rated winner with the same map and civilization sides; a shorter or similarly timed game is a valid reference.',
+              'The app searches your complete cached account archive first, then the available public-game window (up to 1,000 recent matches). It keeps only the same map and complete civilization composition, then prefers higher-rated examples and winning references; a shorter or similarly timed game is a valid reference.',
             )}
           </p>
 
-          {search.isLoading && <Spinner label={tt('Searching for similar winning games…')} />}
+          {search.isLoading && (
+            <Spinner label={tt('Searching for exact civilization-match games…')} />
+          )}
           {search.data && !search.data.ok && (
             <ErrorBox
               message={tt(search.data.error.message)}

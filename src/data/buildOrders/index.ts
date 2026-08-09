@@ -72,9 +72,7 @@ function evidenceKey(civilization: string | string[] | null | undefined): string
   return label.toLocaleLowerCase().replace(/[^a-z0-9]+/g, '')
 }
 
-const RAW_BUNDLED_BUILD_ORDERS = [
-  ...ARCHIVED_BUILD_ORDERS,
-  ...Object.entries(ACTIVE_BUILD_MODULES)
+const ACTIVE_BUILD_ORDERS = Object.entries(ACTIVE_BUILD_MODULES)
   .sort(([left], [right]) => {
     const leftFile = left.replace(/^\.\//, '').replace(/^\.\.\/activeBuildOrders\//, '')
     const rightFile = right.replace(/^\.\//, '').replace(/^\.\.\/activeBuildOrders\//, '')
@@ -84,9 +82,15 @@ const RAW_BUNDLED_BUILD_ORDERS = [
       leftFile.localeCompare(rightFile)
     )
   })
-  .map(([, build]) => build),
-]
-  .filter(isBuildOrder)
+  .map(([, build]) => build)
+
+// Prefer the reviewed active catalog when an archive snapshot still contains
+// the same build. The archive remains the fallback, but it must not shadow a
+// newer active record during a refresh or a partially rebuilt release.
+const RAW_BUNDLED_BUILD_ORDERS = [
+  ...ACTIVE_BUILD_ORDERS,
+  ...ARCHIVED_BUILD_ORDERS,
+].filter(isBuildOrder)
 
 function buildIdentity(build: BuildOrder): string {
   const civilizations = Array.isArray(build.civilization)

@@ -328,6 +328,43 @@ describe('Aoe4WorldClient', () => {
     expect(calls[1]).toContain('page=2')
   })
 
+  it('honours AoE4World server-side page caps when the requested limit is larger', async () => {
+    const calls: string[] = []
+    const game = (id: number) => ({
+      game_id: id,
+      started_at: '2024-01-01T00:00:00Z',
+      duration: 600,
+      map: 'Highwoods',
+      kind: 'rm_1v1',
+      leaderboard: 'rm_solo',
+      ongoing: false,
+      just_finished: false,
+      teams: [],
+    })
+    const fetchFn = (async (url: string) => {
+      calls.push(url)
+      const page = Number(new URL(url).searchParams.get('page'))
+      const count = page < 3 ? 50 : 20
+      return {
+        ok: true,
+        status: 200,
+        json: async () => ({
+          total_count: 120,
+          per_page: 50,
+          count,
+          games: Array.from({ length: count }, (_, index) => game((page - 1) * 50 + index + 1)),
+        }),
+      }
+    }) as unknown as typeof fetch
+    const client = makeClient(fetchFn)
+
+    const games = await client.getAllPlayerGames(10240693, { pageSize: 100, fresh: true })
+
+    expect(games).toHaveLength(120)
+    expect(calls).toHaveLength(3)
+    expect(calls[2]).toContain('page=3')
+  })
+
   it('filters head-to-head games by opponent and coalesces identical requests', async () => {
     const fake = fakeFetch(loadFixture('games-10240693-rmsolo.json'))
     const client = makeClient(fake.fetch)

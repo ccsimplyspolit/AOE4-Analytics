@@ -137,4 +137,30 @@ describe('findSimilarMatches', () => {
       },
     })
   })
+
+  it('keeps a losing reference when the full civilization composition matches', async () => {
+    const losingReference: Game = {
+      ...matchingGame,
+      teams: [[player(1, 'english', 'loss')], [player(2, 'french', 'win')]],
+    }
+    const getGames = vi
+      .fn<Aoe4WorldClient['getGames']>()
+      .mockResolvedValue(gamePage([losingReference]))
+
+    const result = await findSimilarMatches(
+      {
+        ...query,
+        exactCivsOnly: true,
+        winsOnly: false,
+      },
+      { getGames },
+    )
+
+    expect(result).toEqual(
+      expect.objectContaining({
+        ok: true,
+        data: [expect.objectContaining({ gameId: 42, targetTeamWon: false, quality: 'exact' })],
+      }),
+    )
+  })
 })

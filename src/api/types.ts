@@ -145,6 +145,8 @@ export interface GamePlayer {
   avatars?: Avatars
   social?: Social
   modes?: Modes
+  /** Direct Twitch archive association exposed by AoE4World's game endpoint. */
+  twitch_video_url?: string | null
 }
 
 /** A team slot is either wrapped (`games` list) or the player directly (`games/last`). */

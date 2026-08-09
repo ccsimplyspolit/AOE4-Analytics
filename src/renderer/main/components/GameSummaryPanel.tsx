@@ -199,7 +199,7 @@ export function GameSummaryPanel({
 
       {review && <DecisionMetricsCard review={review} />}
 
-      <div className="grid gap-4 xl:grid-cols-2">
+      <div className="grid items-start gap-4 xl:grid-cols-2">
         <div id="game-summary-score" className="scroll-mt-4">
           <ScoreTable players={players} />
         </div>

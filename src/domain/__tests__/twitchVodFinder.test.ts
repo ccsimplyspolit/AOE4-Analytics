@@ -68,6 +68,20 @@ describe('twitch VOD finder helpers', () => {
     expect(twitchFinderLastPage(html)).toBe(2)
   })
 
+  it('keeps a participant profile id for exact game API enrichment', () => {
+    const html =
+      '<div data-game-id="237594260"><a href="/players/5452192-My-Liege">My Liege</a><a href="https://www.twitch.tv/videos/2793503526?t=6773s">VOD</a></div>'
+    expect(twitchVodReferencesFromFinderHtml(html)).toEqual([
+      {
+        gameId: '237594260',
+        profileId: 5452192,
+        videoId: '2793503526',
+        offsetSec: 6773,
+        url: 'https://www.twitch.tv/videos/2793503526?t=6773s',
+      },
+    ])
+  })
+
   it('parses only valid Twitch offsets', () => {
     expect(twitchOffsetSeconds('5624s')).toBe(5624)
     expect(twitchOffsetSeconds('2m10s')).toBe(130)

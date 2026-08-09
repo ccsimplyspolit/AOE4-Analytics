@@ -77,17 +77,22 @@ function sameDocument(a: string, b: string): boolean {
 /**
  * Standard Electron hardening applied to every window: open only http(s) links
  * externally (no `file:`/custom-scheme handoff to the OS), and block any
- * top-level navigation/redirect away from the app's own origin. The app is a
- * local SPA (react-router uses the history API, not full document loads), so a
- * real navigation is always unexpected.
+ * top-level navigation/redirect away from the app's own origin. A renderer may
+ * optionally provide a callback for same-document `target="_blank"` links;
+ * those are opened as another hardened app window instead of being handed to
+ * the OS or silently denied.
  */
-export function hardenWindow(win: BrowserWindow): void {
+export function hardenWindow(win: BrowserWindow, openInAppWindow?: (url: string) => void): void {
   win.webContents.setWindowOpenHandler(({ url }) => {
     let protocol = ''
     try {
       protocol = new URL(url).protocol
     } catch {
       // malformed URL — deny
+    }
+    if (openInAppWindow && sameDocument(url, win.webContents.getURL())) {
+      openInAppWindow(url)
+      return { action: 'deny' }
     }
     if (ALLOWED_OPEN_PROTOCOLS.has(protocol)) void shell.openExternal(url)
     return { action: 'deny' }

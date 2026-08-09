@@ -228,7 +228,11 @@ export class Aoe4WorldClient {
     })
     const games = [...first.games]
     const total = Number.isSafeInteger(first.total_count) ? first.total_count : games.length
-    const pageCount = Math.min(Math.ceil(total / pageSize), Math.ceil(maxGames / pageSize))
+    // AoE4World may cap `limit=100` to a smaller server-side page (currently
+    // 50). Use the response's effective page size for pagination; otherwise a
+    // short first response is mistaken for the end of the account archive.
+    const firstPageSize = Math.max(1, first.per_page ?? first.count ?? first.games.length)
+    const pageCount = Math.min(Math.ceil(total / firstPageSize), Math.ceil(maxGames / firstPageSize))
     for (let page = 2; page <= pageCount && games.length < maxGames; page++) {
       const response = await this.getPlayerGames(profileId, {
         limit: pageSize,
@@ -237,7 +241,8 @@ export class Aoe4WorldClient {
       })
       if (response.games.length === 0) break
       games.push(...response.games)
-      if (response.games.length < pageSize) break
+      const responsePageSize = Math.max(1, response.per_page ?? response.count ?? firstPageSize)
+      if (response.games.length < responsePageSize) break
     }
     const unique = new Map<number, Game>()
     for (const game of games) unique.set(game.game_id, game)

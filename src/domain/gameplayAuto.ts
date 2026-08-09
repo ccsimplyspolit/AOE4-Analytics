@@ -4,6 +4,8 @@ import type { VideoAnalysisRecord } from './videoAnalysis'
 export interface GameplayAutoInput {
   /** AoE4World game id. Custom/AI matches are intentionally not accepted. */
   gameId: string
+  /** Optional active profile for the exact AoE4World game lookup. */
+  profileId?: number | null
   civilization: string
   opponentCivilization?: string | null
   map?: string | null
@@ -62,6 +64,10 @@ export function isGameplayAutoInput(value: unknown): value is GameplayAutoInput 
   return (
     typeof input.gameId === 'string' &&
     GAME_ID.test(input.gameId) &&
+    (input.profileId == null ||
+      (typeof input.profileId === 'number' &&
+        Number.isSafeInteger(input.profileId) &&
+        input.profileId > 0)) &&
     typeof input.civilization === 'string' &&
     input.civilization.trim().length > 0
   )

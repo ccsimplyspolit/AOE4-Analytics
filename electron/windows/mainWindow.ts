@@ -9,7 +9,7 @@ import { IpcChannels } from '../ipc/contract'
  * own title bar (logo + min/max/close), driven via the `window:*` IPC handlers,
  * so the OS chrome never clashes with the app's look.
  */
-export function createMainWindow(): BrowserWindow {
+export function createMainWindow(initialRoute?: string): BrowserWindow {
   const win = new BrowserWindow({
     width: 1280,
     height: 832,
@@ -64,13 +64,27 @@ export function createMainWindow(): BrowserWindow {
     if (!win.isDestroyed()) win.webContents.reload()
   })
 
-  // Open external links in the browser; block in-app navigation/other schemes.
-  hardenWindow(win)
+  // Open external links in the browser; same-document app links with
+  // target="_blank" get a fresh, equally hardened dashboard window.
+  hardenWindow(win, (url) => {
+    const route = (() => {
+      try {
+        return new URL(url).hash.slice(1)
+      } catch {
+        return null
+      }
+    })()
+    if (!route) return
+    if (!/^\/(?:game\/[^/?#]+|public-game\/[^/?#]+\/[^/?#]+)$/.test(route)) return
+    createMainWindow(route)
+  })
 
   if (isDev) {
-    void win.loadURL(`${process.env['ELECTRON_RENDERER_URL']}/index.html`)
+    void win.loadURL(
+      `${process.env['ELECTRON_RENDERER_URL']}/index.html${initialRoute ? `#${initialRoute}` : ''}`,
+    )
   } else {
-    void win.loadFile(join(__dirname, '../renderer/index.html'))
+    void win.loadFile(join(__dirname, '../renderer/index.html'), initialRoute ? { hash: initialRoute } : undefined)
   }
 
   return win

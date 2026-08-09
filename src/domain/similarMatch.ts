@@ -52,6 +52,8 @@ export interface SimilarMatchQuery {
   targetCiv: string
   targetTeamCivs?: string[]
   enemyTeamCivs?: string[]
+  /** Require both sides to have exactly the requested civilization multiset. */
+  exactCivsOnly?: boolean
   /** Prefer examples where the requested civilization side won. */
   winsOnly?: boolean
   /** Prefer candidates whose average player rating is above this game rating. */

@@ -13,6 +13,8 @@ export const TWITCH_VIDEO_FINDER_URL = 'https://aoe4world.com/tools/twitch-video
 export interface TwitchVodFinderInput {
   /** AoE4World's canonical game id (the stored ranked/QM match id). */
   gameId: string
+  /** Profile used for the exact AoE4World game endpoint, when known. */
+  profileId?: number | null
   civilization: string
   opponentCivilization?: string | null
   map?: string | null
@@ -22,6 +24,8 @@ export interface TwitchVodFinderInput {
 /** A direct VOD URL and the game-clock position where the match begins. */
 export interface TwitchVodReference {
   gameId: string
+  /** A participant profile parsed from the Finder row, when available. */
+  profileId?: number
   videoId: string
   /** Twitch VOD offset supplied by AoE4World, in seconds; null when absent. */
   offsetSec: number | null
@@ -32,7 +36,7 @@ export interface TwitchVodLookupResult {
   gameId: string
   /** A user-openable AoE4World finder URL with the match filters applied. */
   finderUrl: string
-  /** A VOD only when the Finder returned this exact game id. */
+  /** A VOD only when AoE4World associated it with this exact game id. */
   vod: TwitchVodReference | null
   /** Number of Finder result pages checked for this exact game. */
   checkedPages: number
@@ -48,6 +52,10 @@ export function isTwitchVodFinderInput(value: unknown): value is TwitchVodFinder
   return (
     typeof input.gameId === 'string' &&
     GAME_ID.test(input.gameId) &&
+    (input.profileId == null ||
+      (typeof input.profileId === 'number' &&
+        Number.isSafeInteger(input.profileId) &&
+        input.profileId > 0)) &&
     typeof input.civilization === 'string' &&
     CIVILIZATION_SLUG.test(input.civilization)
   )
@@ -144,7 +152,15 @@ export function twitchVodReferencesFromFinderHtml(html: string): TwitchVodRefere
     )?.[1]
     if (!vodUrl) continue
     const reference = twitchVodReferenceFromUrl(vodUrl, gameId)
-    if (reference) result.push(reference)
+    if (reference) {
+      const profileMatch = /href="\/players\/(\d+)(?:-[^"/?#]*)?"/i.exec(row)
+      const profileId = profileMatch?.[1] ? Number(profileMatch[1]) : null
+      result.push(
+        profileId != null && Number.isSafeInteger(profileId) && profileId > 0
+          ? { ...reference, profileId }
+          : reference,
+      )
+    }
   }
   return result
 }

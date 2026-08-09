@@ -8,6 +8,7 @@ export function useTwitchVod(input: TwitchVodFinderInput, enabled: boolean) {
     queryKey: [
       'twitchVod',
       input.gameId,
+      input.profileId ?? null,
       input.civilization,
       input.map ?? null,
       input.durationSec ?? null,
@@ -16,7 +17,8 @@ export function useTwitchVod(input: TwitchVodFinderInput, enabled: boolean) {
     enabled,
     // VOD association can arrive after a stream finishes, so don't make a
     // "not found" result permanent for the entire app session.
-    staleTime: 5 * 60_000,
+    staleTime: 30_000,
+    refetchOnWindowFocus: true,
     retry: false,
   })
 }
