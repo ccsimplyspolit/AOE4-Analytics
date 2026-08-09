@@ -14,7 +14,7 @@ import {
   Loader2,
   PlayCircle,
 } from 'lucide-react'
-import { GUIDES, type Guide } from '@data/guides'
+import { GUIDE_RESOURCES, GUIDES, type Guide } from '@data/guides'
 import { LEARNING_RESOURCES } from '@data/learningResources'
 import { BUILD_CATALOG } from '@data/buildCatalog'
 import {
@@ -234,7 +234,14 @@ function LearningShelf({ locale }: { locale: string }) {
     month: 'short',
     year: 'numeric',
   })
-  const resources = LEARNING_RESOURCES
+  // The general learning shelf stays current, while these retained references
+  // add patch history and longer civilization context without duplicating URLs.
+  const resources = [
+    ...LEARNING_RESOURCES,
+    ...GUIDE_RESOURCES.filter(
+      (resource) => !LEARNING_RESOURCES.some((current) => current.url === resource.url),
+    ),
+  ].toSorted((left, right) => (right.publishedAt ?? '').localeCompare(left.publishedAt ?? ''))
 
   return (
     <section className="space-y-3" aria-label={isRussian ? 'Свежие материалы' : 'Fresh resources'}>

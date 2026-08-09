@@ -10,6 +10,18 @@ export interface Guide {
   bodyRu?: string // Russian markdown copy, kept beside the canonical English source.
 }
 
+export interface GuideResource {
+  id: string
+  kind: 'article' | 'video' | 'patch' | 'catalogue'
+  title: string
+  titleRu: string
+  description: string
+  descriptionRu: string
+  source: string
+  url: string
+  publishedAt?: string
+}
+
 /**
  * These are decision guides, not fixed build orders. Exact landmark, unit and
  * timing advice changes with patches and civilizations; the linked resource
@@ -864,5 +876,292 @@ After three to five games with the same civilization and opening, look for a rep
 ## Сравнивайте небольшую серию реплеев
 
 После трёх–пяти игр за одну цивилизацию с одним открытием ищите повторяющуюся поломку. Если в каждом матче закрывают золото, сначала решите позицию золота, а не меняйте весь билд. Если раннее давление всегда удаётся, а позже вы проигрываете, тренируйте переход после давления. Прогресс строится на контролируемом цикле: сыграть, найти одну причину, отработать один ответ и снова проверить его.`,
+  },
+  {
+    slug: 'build-order-reading',
+    title: 'How to Read a Build Order',
+    titleRu: 'Как читать билд-ордер',
+    category: 'fundamentals',
+    summary: 'Turn a build order into checkpoints and decisions instead of memorizing a rigid sequence.',
+    summaryRu: 'Превратите билд в контрольные точки и решения, а не в жёсткую последовательность наизусть.',
+    readMinutes: 5,
+    body: `## A build is a decision map
+
+A build order is a tested route to a goal: an early army, a second Town Center, a Castle timing, or map control. It is not a promise that every match will follow the same script. Read every line as **action + reason + condition**.
+
+## Mark five checkpoints
+
+Before playing, identify:
+
+- the first house and first production building;
+- the age-up resource and builder count;
+- the first military unit and pressure window;
+- the resource split after Feudal completes;
+- the moment the opening becomes a composition and win condition.
+
+If a checkpoint is late, do not rush blindly to the next line. Find the cause: Town Center idle time, worker walking, a lost villager, an unsafe resource, or a defensive spend.
+
+## Turn every line into a test
+
+Ask: **What should I see? What can stop it? What is my smallest response?** “Stable at 4:30” means you need the wood beforehand, a safe placement, and a plan if the enemy has spearmen. This turns a copied build into a reusable opening.
+
+## Keep branches beside the build
+
+- Early cavalry seen → add spearmen, protect exposed gold, delay greedy technology.
+- Two Town Centers seen → pressure production or take your own economic step.
+- No military building by the first pass → verify fast Castle or trade before assuming safety.
+- Forward tower or villagers → secure the approach and stop the next greedy investment.
+
+## Practice loop
+
+Play the opening three times with the same civilization. After each game write the first missed checkpoint, its cause, and how you recovered. Keep a build when it teaches a repeatable decision; replace it when its patch or map assumptions are no longer true.`,
+    bodyRu: `## Билд — это карта решений
+
+Билд-ордер — проверенный маршрут к цели: ранней армии, второму ГЦ, таймингу в Замок или контролю карты. Он не обещает, что каждая игра пойдёт по одному сценарию. Читайте каждую строку как **действие + причина + условие**.
+
+## Отметьте пять контрольных точек
+
+Перед игрой определите:
+
+- первый дом и первое военное здание;
+- ресурс для перехода и число строителей;
+- первый боевой юнит и окно давления;
+- распределение ресурсов после завершения Феодала;
+- момент, когда открытие превращается в состав армии и условие победы.
+
+Если точка запоздала, не спешите вслепую к следующей строке. Найдите причину: простой ГЦ, долгий путь работника, потерянный крестьянин, опасный ресурс или траты на оборону.
+
+## Превращайте каждую строку в проверку
+
+Спросите: **Что я должен увидеть? Что может это остановить? Какой мой минимальный ответ?** «Конюшня в 4:30» означает дерево заранее, безопасное размещение и план на случай вражеских копейщиков. Так скопированный билд становится повторяемым открытием.
+
+## Держите ветки рядом с билдом
+
+- Увидели раннюю конницу → добавьте копейщиков, прикройте открытое золото, отложите жадные технологии.
+- Увидели два ГЦ → давите производство или делайте собственный экономический шаг.
+- После первого прохода нет военного здания → подтвердите быстрый Замок или торговлю, прежде чем считать себя в безопасности.
+- Передовая башня или крестьяне → обезопасьте подход и отмените следующее жадное вложение.
+
+## Цикл тренировки
+
+Сыграйте открытие три раза за одну цивилизацию. После каждой игры запишите первую пропущенную точку, её причину и восстановление. Сохраняйте билд, если он учит повторяемому решению; заменяйте его, если патч или карта изменили его предположения.`,
+  },
+  {
+    slug: 'adaptive-scouting',
+    title: 'Adaptive Scouting: From Information to Action',
+    titleRu: 'Адаптивная разведка: от информации к действию',
+    category: 'strategy',
+    summary: 'Observe, classify the threat, choose the smallest response, then verify your read.',
+    summaryRu: 'Увидьте, классифицируйте угрозу, выберите минимальный ответ и затем проверьте вывод.',
+    readMinutes: 5,
+    body: `## Scout for a question
+
+Do not scout because a guide says “scout.” Ask whether the opponent is attacking, booming, teching, trading, or hiding a transition. A useful report ends with an action.
+
+## Three passes
+
+1. **Opening (0:00–3:00):** sheep, enemy gold, first production clue, and forward foundations.
+2. **Age-up:** landmark, builder count, new resource commitment, and whether immediate unit production is possible.
+3. **Composition:** production, upgrades, reinforcements, and the next resource the enemy must protect.
+
+## Classify before countering
+
+- **Tempo:** early units or forward buildings. Buy time with the cheapest reliable defense.
+- **Economy:** second Town Center, trade, farms, or secured gold. Pressure the investment or match safely.
+- **Technology:** fast Castle, relics, sacred sites, or unique upgrades. Deny the timing or make them pay for defense.
+- **Information denial:** walls, stealth, keeps, or a missing army. Search map edges and protect your own vulnerable resource.
+
+## Verify the hypothesis
+
+One pass is only a hypothesis. Return after 30–60 seconds or after the first fight. If the expected army is not there, stop producing an irrelevant counter and revise the plan. In a replay, record the timestamp, evidence, conclusion, and smallest action that would have changed the game.`,
+    bodyRu: `## Разведывайте ради вопроса
+
+Не разведуйте только потому, что это написано в гайде. Спросите: противник атакует, развивается, исследует технологии, торгует или скрывает переход? Полезный отчёт заканчивается действием.
+
+## Три прохода
+
+1. **Старт (0:00–3:00):** овцы, золото противника, первое производственное доказательство и передовые фундаменты.
+2. **Переход в эпоху:** достопримечательность, число строителей, новый ресурс и возможность немедленно делать войска.
+3. **Состав:** производство, улучшения, подкрепления и следующий ресурс, который враг обязан защищать.
+
+## Сначала классифицируйте, потом контрите
+
+- **Темп:** ранние войска или передовые здания. Купите время самой дешёвой надёжной защитой.
+- **Экономика:** второй ГЦ, торговля, фермы или безопасное золото. Давите вложение или безопасно отвечайте экономикой.
+- **Технологии:** быстрый Замок, реликвии, святыни или уникальные улучшения. Сорвите тайминг или заставьте платить за защиту.
+- **Сокрытие информации:** стены, скрытность, крепости или пропавшая армия. Ищите края карты и защищайте свой уязвимый ресурс.
+
+## Проверяйте гипотезу
+
+Один проход — только гипотеза. Вернитесь через 30–60 секунд или после первой драки. Если ожидаемой армии нет, прекратите делать ненужный контр и измените план. В реплее запишите время, доказательство, вывод и минимальное действие, которое изменило бы игру.`,
+  },
+  {
+    slug: 'team-game-roles',
+    title: 'Team Game Roles and Timing',
+    titleRu: 'Роли и тайминги в командной игре',
+    category: 'strategy',
+    summary: 'Coordinate pressure, defense, and economy so allies execute one plan instead of separate 1v1s.',
+    summaryRu: 'Согласуйте давление, защиту и экономику, чтобы союзники исполняли один план, а не отдельные 1v1.',
+    readMinutes: 5,
+    body: `## Pick jobs before builds
+
+Team games are not several isolated 1v1s. Decide who creates first pressure, who protects the exposed flank, who scales economy, and who owns water or map control. Civilization strengths inform jobs; they do not dictate them blindly.
+
+## Share three timings
+
+Call when the first army moves, when reinforcements arrive, and when the team changes age or composition. A smaller force arriving together is stronger than several larger forces arriving one at a time.
+
+## Protect the weakest link efficiently
+
+If an ally is rushed, send the smallest useful help: counter units, a wall segment, vision, or a production building. Keep your own economy and production alive so the rescue does not become a second collapse.
+
+## Convert a team fight
+
+After a successful fight, choose one shared objective: production, a resource, sacred site, trade route, landmark, or water control. Ping it and rally together. Damage without conversion gives the other team time to recover.`,
+    bodyRu: `## Выберите задачи до билдов
+
+Командная игра — не несколько изолированных 1v1. Решите, кто создаёт первое давление, кто защищает открытый фланг, кто развивает экономику, а кто отвечает за воду или контроль карты. Сильные стороны цивилизаций подсказывают роли, но не диктуют их вслепую.
+
+## Назовите три тайминга
+
+Сообщайте, когда выходит первая армия, приходят подкрепления и команда меняет эпоху или состав. Меньшая армия, пришедшая вместе, сильнее нескольких больших, пришедших по очереди.
+
+## Экономно защищайте слабое звено
+
+Если союзника рашат, отправьте минимальную полезную помощь: контр-юнитов, кусок стены, обзор или производственное здание. Сохраняйте собственную экономику и производство, чтобы спасение не превратилось во второй обвал.
+
+## Конвертируйте командную драку
+
+После успеха выберите одну общую цель: производство, ресурс, святыню, торговый маршрут, достопримечательность или воду. Отметьте её и соберитесь вместе. Урон без конвертации даёт другой команде время восстановиться.`,
+  },
+  {
+    slug: 'patch-aware-guides',
+    title: 'Patch-Aware Guide Reading',
+    titleRu: 'Как читать гайды с учётом патча',
+    category: 'economy',
+    summary: 'Avoid stale advice by checking patch, map pool, assumptions, and current game data before practicing a build.',
+    summaryRu: 'Избегайте устаревших советов: сверяйте патч, пул карт, предположения и данные игры до тренировки билда.',
+    readMinutes: 4,
+    body: `## Version comes first
+
+Before copying a build, record its patch or season. Balance changes can alter unit cost, production time, landmark value, or the map pool while leaving a video title unchanged. Treat an unversioned build as a hypothesis until you test it.
+
+## Check its assumptions
+
+Look for map type, starting resources, game mode, civilization variant, matchup, and intended rank. A build designed for an open 1v1 map is not automatically safe on a closed team map.
+
+## Prefer evidence-linked builds
+
+The best reference combines a readable step list with a video, replay, or current data link. Compare costs and timings with the current Explorer before spending a whole session practicing it.
+
+## Keep a local verdict
+
+After three games, mark the guide **works**, **needs adaptation**, or **stale**. Record patch, map, matchup, and the first failed checkpoint. Your own evidence becomes more useful than an old global popularity score.`,
+    bodyRu: `## Сначала смотрите версию
+
+Перед копированием билда запишите его патч или сезон. Баланс может изменить стоимость юнита, время производства, ценность достопримечательности или пул карт, а название видео останется прежним. Билд без версии считайте гипотезой, пока не проверите его.
+
+## Проверьте предположения
+
+Посмотрите тип карты, стартовые ресурсы, режим, вариант цивилизации, матчап и целевой рейтинг. Билд для открытой 1v1-карты не обязан быть безопасным на закрытой командной карте.
+
+## Выбирайте билды с доказательствами
+
+Лучший источник сочетает понятный список шагов с видео, реплеем или актуальной ссылкой на данные. Сравните стоимость и тайминги с текущим Explorer до целой сессии тренировки.
+
+## Храните свой вердикт
+
+После трёх игр пометьте гайд: **работает**, **требует адаптации** или **устарел**. Запишите патч, карту, матчап и первую сломанную точку. Собственные данные полезнее старого глобального рейтинга популярности.`,
+  },
+  {
+    slug: 'replay-review-checklist',
+    title: 'Replay Review Checklist',
+    titleRu: 'Чек-лист разбора реплея',
+    category: 'fundamentals',
+    summary: 'Separate confirmed evidence from assumptions in a repeatable 15-minute review.',
+    summaryRu: 'Отделяйте подтверждённые данные от предположений в повторяемом 15-минутном разборе.',
+    readMinutes: 6,
+    body: '## Start at the end\n\nWatch the final two minutes and name the loss condition: lost army, exposed economy, failed timing, tech gap, or teammate collapse. Then inspect production, economy, information, position, and conversion after a won fight. A production gap confirms no unit was queued, not why; a lower score confirms a gap, not the strategic mistake. Label conclusions confirmed, likely, or unknown, then choose one measurable next-game experiment.',
+    bodyRu: '## Начните с конца\n\nПосмотрите последние две минуты и назовите условие поражения: армия, экономика, тайминг, технология или падение тиммейта. Затем проверьте производство, экономику, информацию, позицию и конверсию победной драки. Простой подтверждает отсутствие юнита в очереди, но не причину; отставание счёта подтверждает разрыв, но не ошибку. Помечайте выводы как подтверждённые, вероятные или неизвестные и выберите одну измеримую цель.',
+  },
+]
+
+/** Additional references retained for deeper patch and civilization context. */
+export const GUIDE_RESOURCES: readonly GuideResource[] = [
+  {
+    id: 'official-patch-20249',
+    kind: 'patch',
+    title: 'Age of Empires IV — Patch 20249',
+    titleRu: 'Age of Empires IV — патч 20249',
+    description: 'Latest official notes: balance, map changes, hotkey fixes, UI changes, and replay-version caveats.',
+    descriptionRu: 'Последние официальные заметки: баланс, карты, исправления хоткеев, UI и важное предупреждение о версиях реплеев.',
+    source: 'Age of Empires Official',
+    url: 'https://www.ageofempires.com/news/age-of-empires-iv-patch-20249/',
+    publishedAt: '2026-08-04',
+  },
+  {
+    id: 'aoe4world-patch-history',
+    kind: 'catalogue',
+    title: 'AoE4World Patch History & Explorer',
+    titleRu: 'История патчей и Explorer AoE4World',
+    description:
+      'Civilization-by-civilization changes, units, technologies, landmarks, and patch context.',
+    descriptionRu: 'Изменения по цивилизациям, юнитам, технологиям, landmark и контекст патча.',
+    source: 'AoE4World',
+    url: 'https://aoe4world.com/explorer/patches',
+  },
+  {
+    id: 'aoe4world-curated-content',
+    kind: 'catalogue',
+    title: 'AoE4World Curated Content',
+    titleRu: 'Кураторский каталог AoE4World',
+    description: 'A maintained catalogue of guides, build orders, breakdowns, and educational videos.',
+    descriptionRu: 'Обновляемый каталог гайдов, билдов, разборов и обучающих видео.',
+    source: 'AoE4World',
+    url: 'https://aoe4world.com/explorer/content',
+  },
+  {
+    id: 'beasty-what-civ-2026',
+    kind: 'video',
+    title: 'What Civilisation to play in 2026?',
+    titleRu: 'Какую цивилизацию играть в 2026 году?',
+    description: 'Beastyqt compares civilization identities and helps narrow a learning path.',
+    descriptionRu: 'Beastyqt сравнивает особенности цивилизаций и помогает выбрать путь обучения.',
+    source: 'BeastyqtSC2 · YouTube',
+    url: 'https://www.youtube.com/watch?v=RSUYg3jQ3gg',
+    publishedAt: '2026-02-01',
+  },
+  {
+    id: 'yellowish-macedonian-guide',
+    kind: 'video',
+    title: 'Macedonian Dynasty in its Completeness',
+    titleRu: 'Македонская династия: полный разбор',
+    description: 'A complete civilization overview with tactics and practical examples.',
+    descriptionRu: 'Полный обзор цивилизации с тактиками и практическими примерами.',
+    source: 'Yellowish · YouTube',
+    url: 'https://www.youtube.com/watch?v=xmFeEe5-XJE',
+    publishedAt: '2025-11-05',
+  },
+  {
+    id: 'vortix-four-ages',
+    kind: 'video',
+    title: 'How to play Age of Empires 4: the four ages',
+    titleRu: 'Как играть в Age of Empires 4: четыре эпохи',
+    description: 'A concept-first explanation of the goals and transitions in every age.',
+    descriptionRu: 'Объяснение целей и переходов каждой эпохи через игровые концепции.',
+    source: 'VortiX · YouTube',
+    url: 'https://www.youtube.com/watch?v=jSfoInAglI8',
+    publishedAt: '2025-04-01',
+  },
+  {
+    id: 'jin-dynasty-beginner-guide',
+    kind: 'article',
+    title: 'Jin Dynasty: beginner guide, build orders, and unique units',
+    titleRu: 'Династия Цзинь: гайд для новичка, билды и уникальные юниты',
+    description: 'A written introduction to the new civilization added with Yue Fei’s Legacy.',
+    descriptionRu: 'Письменный разбор новой цивилизации из Yue Fei’s Legacy.',
+    source: 'Game Truth',
+    url: 'https://www.gametruth.com/guides/age-of-empires-4-jin-dynasty-beginner-guide-build-orders-unique-units/',
+    publishedAt: '2026-05-01',
   },
 ]

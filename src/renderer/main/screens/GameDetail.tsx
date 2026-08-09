@@ -467,10 +467,14 @@ function Detail({
         showSubjectBadge={isOwnFocus}
       />
 
-      <ReplayCommandAnalysis key={match.id} match={match} knownPlayers={summary?.players} />
+      <ReplayCommandAnalysis
+        key={'replay-evidence-' + match.id}
+        match={match}
+        knownPlayers={summary?.players}
+      />
 
       <AutoGameplayCard
-        key={match.id}
+        key={'auto-gameplay-' + match.id}
         enabled={isOwnFocus && isPublicGame}
         hasAnalysis={Boolean(linkedVideoAnalysis)}
         input={{
