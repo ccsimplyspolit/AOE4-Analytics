@@ -85,15 +85,15 @@ export function CivDetail() {
           <h1 className="text-2xl font-semibold tracking-tight">{gameName(profile.name)}</h1>
           <Badge variant={DIFFICULTY_VARIANT[profile.difficulty]}>{tt(profile.difficulty)}</Badge>
         </div>
-        <p className="text-sm text-primary">{profile.focus}</p>
-        <p className="text-sm leading-relaxed text-muted-foreground">{profile.summary}</p>
+        <p className="text-sm text-primary">{tt(profile.focus)}</p>
+        <p className="text-sm leading-relaxed text-muted-foreground">{tt(profile.summary)}</p>
         <div className="flex flex-wrap gap-1.5 pt-1">
           {profile.tags.map((t) => (
             <span
               key={t}
               className="rounded bg-secondary px-2 py-0.5 text-xs text-muted-foreground"
             >
-              {t}
+              {tt(t)}
             </span>
           ))}
         </div>
@@ -115,7 +115,7 @@ export function CivDetail() {
               {profile.strengths.map((s, i) => (
                 <li key={i} className="flex gap-2">
                   <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-win" />
-                  {s}
+                  {tt(s)}
                 </li>
               ))}
             </ul>
@@ -128,7 +128,7 @@ export function CivDetail() {
               {profile.weaknesses.map((s, i) => (
                 <li key={i} className="flex gap-2">
                   <X className="mt-0.5 h-3.5 w-3.5 shrink-0 text-destructive" />
-                  {s}
+                  {tt(s)}
                 </li>
               ))}
             </ul>
@@ -137,8 +137,8 @@ export function CivDetail() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <InfoCard title={tt('Recommended opening')}>{profile.opening}</InfoCard>
-        <InfoCard title={tt('Game plan')}>{profile.gamePlan}</InfoCard>
+        <InfoCard title={tt('Recommended opening')}>{tt(profile.opening)}</InfoCard>
+        <InfoCard title={tt('Game plan')}>{tt(profile.gamePlan)}</InfoCard>
       </div>
 
       <Card>
@@ -151,7 +151,7 @@ export function CivDetail() {
             {profile.watchFor.map((w, i) => (
               <li key={i} className="flex gap-2">
                 <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary" />
-                {w}
+                {tt(w)}
               </li>
             ))}
           </ul>
@@ -283,11 +283,13 @@ function CivMetaSection({ slug, enabled }: { slug: string; enabled: boolean }) {
             title={tt('Best matchups')}
             icon={<TrendingUp className="h-4 w-4 text-win" />}
             rows={stats.best}
+            gameName={gameName}
           />
           <MatchupList
             title={tt('Toughest matchups')}
             icon={<TrendingDown className="h-4 w-4 text-loss" />}
             rows={stats.worst}
+            gameName={gameName}
           />
         </div>
       )}
@@ -326,10 +328,12 @@ function MatchupList({
   title,
   icon,
   rows,
+  gameName,
 }: {
   title: string
   icon: React.ReactNode
   rows: CivMatchup[]
+  gameName: (value: string) => string
 }) {
   if (rows.length === 0) return null
   return (
@@ -346,7 +350,7 @@ function MatchupList({
               to={`/civ/${r.civ}`}
               className="-mx-2 flex items-baseline justify-between gap-2 rounded-md px-2 py-1 text-sm transition-colors hover:bg-secondary/70 hover:text-primary"
             >
-              <span>{r.civName}</span>
+              <span>{gameName(r.civName)}</span>
               <span className="flex items-center gap-2 tabular-nums">
                 <span className="text-xs text-muted-foreground">{formatCount(r.games)}g</span>
                 <WinRateBar winRate={r.winRate} className="w-28 shrink-0" />
@@ -371,7 +375,7 @@ function InfoCard({ title, children }: { title: string; children: React.ReactNod
 }
 
 function UnitCard({ unit }: { unit: VendoredUnit }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const role = roleFromUnit(unit)
   const counter = role ? counterFor(role) : null
   const icon = resolveAoE4Icon(unit.icon ?? `units/${unit.name}`)
@@ -382,24 +386,28 @@ function UnitCard({ unit }: { unit: VendoredUnit }) {
           {icon && (
             <img src={icon} alt="" aria-hidden className="h-7 w-7 shrink-0 object-contain" />
           )}
-          <span className="truncate">{unit.name}</span>
+          <span className="truncate">{gameName(unit.name)}</span>
         </span>
         {unit.unique && <Badge variant="outline">{tt('unique')}</Badge>}
       </div>
-      <div className="mt-0.5 text-xs text-muted-foreground">{unit.displayClasses[0] ?? '—'}</div>
+      <div className="mt-0.5 text-xs text-muted-foreground">
+        {unit.displayClasses[0] ? tt(unit.displayClasses[0]) : '—'}
+      </div>
       <div className="mt-2 flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-muted-foreground">
         {unit.hitpoints != null && <span>{unit.hitpoints} HP</span>}
         {unit.attack && (
           <span>
-            {unit.attack.damage} {unit.attack.type} atk
+            {unit.attack.damage} {tt(unit.attack.type)} {tt('atk')}
           </span>
         )}
-        {unit.costs && unit.costs.total > 0 && <span>{unit.costs.total} res</span>}
+        {unit.costs && unit.costs.total > 0 && <span>{unit.costs.total} {tt('res')}</span>}
       </div>
       {counter && counter.weakVs.length > 0 && (
         <div className="mt-1.5 text-[11px] text-muted-foreground">
           {tt('Countered by:')}{' '}
-          <span className="text-destructive/90">{counter.weakVs.slice(0, 3).join(', ')}</span>
+          <span className="text-destructive/90">
+            {counter.weakVs.slice(0, 3).map((value) => gameName(value)).join(', ')}
+          </span>
         </div>
       )}
     </div>

@@ -51,6 +51,8 @@ const MAX_TEXT_LENGTH = 8_000
 const MAX_TOTAL_LENGTH = 100_000
 const CONFIG_FILE = 'translation-config.json'
 const CACHE_FILE = 'translation-cache.json'
+const AUTO_RUSSIAN_ENDPOINT =
+  'https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ru&dt=t&q='
 
 function paths(): { config: string; cache: string } {
   const dir = app.getPath('userData')
@@ -133,6 +135,37 @@ function targetCode(locale: TranslationLocale): string {
 
 function cacheKey(provider: TranslationProvider, locale: TranslationLocale, source: string): string {
   return `${provider}:${locale}:${source}`
+}
+
+function autoRussianCacheKey(source: string): string {
+  return `google-auto:ru:${source}`
+}
+
+/**
+ * Russian is the app's offline-first default locale. For persisted game data
+ * (profile prose, build notes, landmark explanations) the source text is not
+ * a finite UI-key catalog, so an opt-in provider would otherwise leave large
+ * English blocks visible. Translate those unknown strings through Google's
+ * public lightweight endpoint and cache the result locally. Configured DeepL
+ * or LibreTranslate remains preferred when the user enables it.
+ */
+async function translateAutoRussian(texts: string[]): Promise<string[]> {
+  const results: string[] = []
+  for (const text of texts) {
+    const response = await fetch(`${AUTO_RUSSIAN_ENDPOINT}${encodeURIComponent(text)}`)
+    if (!response.ok) throw new Error(`Automatic Russian translation returned HTTP ${response.status}.`)
+    const body = (await response.json()) as unknown
+    const chunks =
+      Array.isArray(body) && Array.isArray(body[0])
+        ? body[0]
+            .filter((chunk): chunk is unknown[] => Array.isArray(chunk))
+            .map((chunk) => (typeof chunk[0] === 'string' ? chunk[0] : ''))
+        : []
+    const translated = chunks.join('').trim()
+    if (!translated) throw new Error('Automatic Russian translation returned no text.')
+    results.push(translated)
+  }
+  return results
 }
 
 export function getTranslationStatus(): TranslationStatus {
@@ -233,11 +266,39 @@ export async function translateBatch(input: TranslationBatchInput): Promise<Tran
     .filter((text) => text.trim().length > 0)
     .filter((text) => text.length <= MAX_TEXT_LENGTH)
     .slice(0, MAX_TEXTS)
-  if (input.locale === 'ru' || texts.length === 0) {
+  if (texts.length === 0) {
     return { translations: Object.fromEntries(texts.map((text) => [text, text])), unavailable: false }
   }
 
   const config = readConfig()
+  if (input.locale === 'ru' && !config.enabled) {
+    const cache = readCache()
+    const result: Record<string, string> = {}
+    const pending: string[] = []
+    for (const text of texts) {
+      const cached = cache[autoRussianCacheKey(text)]
+      if (cached) result[text] = cached
+      else pending.push(text)
+    }
+    if (pending.length === 0) return { translations: result, unavailable: false }
+    try {
+      const translated = await translateAutoRussian(pending)
+      translated.forEach((value, index) => {
+        const source = pending[index]!
+        result[source] = value
+        cache[autoRussianCacheKey(source)] = value
+      })
+      writeCache(cache)
+      return { translations: result, unavailable: false }
+    } catch (error) {
+      return {
+        translations: result,
+        unavailable: true,
+        error: error instanceof Error ? error.message : 'Automatic Russian translation failed.',
+      }
+    }
+  }
+
   const apiKey = decryptApiKey(config)
   // DeepL requires a key; LibreTranslate accepts an empty key for public
   // instances. Normalize the nullable storage result before calling either

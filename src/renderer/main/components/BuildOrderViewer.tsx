@@ -28,10 +28,10 @@ function guideVideoUrl(bo: BuildOrder): string | null {
 }
 
 /** Renders a note's text with the same offline-first icon resolver used by the overlay. */
-function renderNote(note: string) {
+function renderNote(note: string, tt: (value: string) => string) {
   return parseNote(note).map((part, i) =>
     part.type === 'text' ? (
-      <span key={i}>{part.text}</span>
+      <span key={i}>{tt(part.text)}</span>
     ) : resolveAoE4Icon(part.path) ? (
       <img
         key={i}
@@ -48,11 +48,13 @@ function renderNote(note: string) {
       />
     ) : (
       <span key={i} className="font-medium text-primary">
-        {part.path
-          .split('/')
-          .pop()
-          ?.replace(/\.\w+$/, '')
-          .replace(/[-_]/g, ' ')}
+        {tt(
+          part.path
+            .split('/')
+            .pop()
+            ?.replace(/\.\w+$/, '')
+            .replace(/[-_]/g, ' ') ?? 'icon',
+        )}
       </span>
     ),
   )
@@ -118,7 +120,7 @@ function formatTimestamp(seconds: number): string {
 }
 
 export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const focus = focusForBuild(bo)
   const guideVideo = guideVideoUrl(bo)
   const transcriptAvailable =
@@ -149,7 +151,7 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
         <div className="min-w-0">
           <div className="truncate font-semibold">{bo.name}</div>
           <div className="text-xs text-muted-foreground">
-            {buildOrderCivLabel(bo)}
+            {tt(buildOrderCivLabel(bo))}
             {bo.author ? ` · ${bo.author}` : ''}
             {safeExternalUrl(bo.source) && (
               <a
@@ -198,7 +200,7 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
       </div>
       {focus && (
         <div className="border-b border-border bg-primary/5 px-4 py-2 text-xs text-muted-foreground">
-          <span className="font-medium text-primary">{tt('Win condition:')}</span> {focus}
+          <span className="font-medium text-primary">{tt('Win condition:')}</span> {tt(focus)}
         </div>
       )}
       {guideVideo && (
@@ -213,18 +215,18 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
               {tt('Video evidence')}
             </span>
             <span className="text-[11px] text-muted-foreground">
-              {evidenceLabel(bo.video_evidence)}
+              {tt(evidenceLabel(bo.video_evidence))}
             </span>
           </div>
           <p className="mt-1 text-xs text-muted-foreground">
             {bo.video_evidence.windowStart} → {bo.video_evidence.windowEnd}
-            {bo.video_evidence.coverageNote ? ` · ${bo.video_evidence.coverageNote}` : ''}
+            {bo.video_evidence.coverageNote ? ` · ${tt(bo.video_evidence.coverageNote)}` : ''}
           </p>
           <p className="mt-1 text-[11px] text-muted-foreground">
             {tt('Captions')}: {transcriptAvailable}/{bo.video_evidence.sources.length}{' '}
             {tt('available')}
             {transcriptRateLimited > 0
-              ? ` · ${transcriptRateLimited} pending after YouTube rate limit`
+              ? ` · ${transcriptRateLimited} ${tt('pending after YouTube rate limit')}`
               : ''}
           </p>
           {(bo.video_evidence.commonActions.length > 0 ||
@@ -236,31 +238,41 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
               {bo.video_evidence.commonTopics.length > 0 && (
                 <div>
                   <span className="text-muted-foreground">{tt('Analysis focus:')} </span>
-                  <span>{bo.video_evidence.commonTopics.join(' · ')}</span>
+                  <span>
+                    {bo.video_evidence.commonTopics.map((value) => tt(value)).join(' · ')}
+                  </span>
                 </div>
               )}
               {bo.video_evidence.commonActions.length > 0 && (
                 <div>
                   <span className="text-muted-foreground">{tt('Common actions:')} </span>
-                  <span>{bo.video_evidence.commonActions.join(' · ')}</span>
+                  <span>
+                    {bo.video_evidence.commonActions.map((value) => tt(value)).join(' · ')}
+                  </span>
                 </div>
               )}
               {bo.video_evidence.commonResources.length > 0 && (
                 <div>
                   <span className="text-muted-foreground">{tt('Resource signals:')} </span>
-                  <span>{bo.video_evidence.commonResources.join(' · ')}</span>
+                  <span>
+                    {bo.video_evidence.commonResources.map((value) => tt(value)).join(' · ')}
+                  </span>
                 </div>
               )}
               {bo.video_evidence.commonOpponents.length > 0 && (
                 <div>
                   <span className="text-muted-foreground">{tt('Opponent context:')} </span>
-                  <span>{bo.video_evidence.commonOpponents.join(' · ')}</span>
+                  <span>
+                    {bo.video_evidence.commonOpponents.map((value) => gameName(value)).join(' · ')}
+                  </span>
                 </div>
               )}
               {bo.video_evidence.commonMilitaryMentions.length > 0 && (
                 <div>
                   <span className="text-muted-foreground">{tt('Military mentions:')} </span>
-                  <span>{bo.video_evidence.commonMilitaryMentions.join(' · ')}</span>
+                  <span>
+                    {bo.video_evidence.commonMilitaryMentions.map((value) => tt(value)).join(' · ')}
+                  </span>
                 </div>
               )}
             </div>
@@ -271,7 +283,7 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
               <span>
                 {bo.video_evidence.timingSignals
                   .slice(0, 5)
-                  .map((timing) => `${timing.label} (${timing.mentions}×)`)
+                  .map((timing) => `${tt(timing.label)} (${timing.mentions}×)`)
                   .join(' · ')}
               </span>
             </div>
@@ -279,7 +291,8 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
           {bo.video_evidence.sources.length > 0 && (
             <details className="mt-3 rounded-md border border-border/70 bg-background/30 px-3 py-2">
               <summary className="cursor-pointer text-xs font-medium text-primary">
-                Per-source analysis · showing {Math.min(5, bo.video_evidence.sources.length)} of{' '}
+                {tt('Per-source analysis')} · {tt('showing')}{' '}
+                {Math.min(5, bo.video_evidence.sources.length)} {tt('of')}{' '}
                 {bo.video_evidence.sources.length}
               </summary>
               <div className="mt-2 space-y-2">
@@ -298,26 +311,37 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
                         {source.title}
                       </a>
                       <span className="text-muted-foreground">
-                        {transcriptStatusLabel(source.transcriptStatus, source.transcriptSource)} ·
-                        confidence {Math.round(source.signals.confidence * 100)}%
+                        {tt(
+                          transcriptStatusLabel(source.transcriptStatus, source.transcriptSource),
+                        )}{' '}
+                        ·{tt('confidence')} {Math.round(source.signals.confidence * 100)}%
                       </span>
                     </div>
                     <div className="mt-1 grid gap-1 text-[11px] text-muted-foreground sm:grid-cols-2">
                       {source.signals.topics.length > 0 && (
-                        <span>Focus: {source.signals.topics.join(' · ')}</span>
+                        <span>
+                          {tt('Focus')}:{' '}
+                          {source.signals.topics.map((value) => tt(value)).join(' · ')}
+                        </span>
                       )}
                       {source.signals.opponentCivs.length > 0 && (
-                        <span>Opponents: {source.signals.opponentCivs.join(' · ')}</span>
+                        <span>
+                          {tt('Opponents')}:{' '}
+                          {source.signals.opponentCivs.map((value) => gameName(value)).join(' · ')}
+                        </span>
                       )}
                       {source.signals.militaryMentions.length > 0 && (
-                        <span>Military: {source.signals.militaryMentions.join(' · ')}</span>
+                        <span>
+                          {tt('Military')}:{' '}
+                          {source.signals.militaryMentions.map((value) => tt(value)).join(' · ')}
+                        </span>
                       )}
                       {source.signals.timings.length > 0 && (
                         <span>
-                          Timings:{' '}
+                          {tt('Timings')}:{' '}
                           {source.signals.timings
                             .slice(0, 3)
-                            .map((timing) => timing.label)
+                            .map((timing) => tt(timing.label))
                             .join(' · ')}
                         </span>
                       )}
@@ -342,7 +366,7 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
                 className="rounded-md border border-border/70 bg-background/30 p-2.5"
               >
                 <div className="flex items-baseline justify-between gap-2 text-xs">
-                  <span className="font-medium">{tactic.title}</span>
+                  <span className="font-medium">{tt(tactic.title)}</span>
                   {tactic.timeSec != null && (
                     <span className="shrink-0 font-mono text-[10px] text-primary">
                       {formatTimestamp(tactic.timeSec)}
@@ -350,7 +374,7 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
                   )}
                 </div>
                 <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">
-                  {tactic.detail}
+                  {tt(tactic.detail)}
                 </p>
               </div>
             ))}
@@ -383,17 +407,19 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
                     className="mr-0.5 inline-block h-3.5 w-3.5 object-contain align-[-0.15em]"
                   />
                 )}
-                {AGE_NAMES[step.age] ?? `Age ${step.age}`}
+                {gameName(AGE_NAMES[step.age] ?? `Age ${step.age}`)}
               </span>
             </div>
             <div className="min-w-0 flex-1">
               <div className="mb-1 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-muted-foreground">
-                <span className="tabular-nums">{step.villager_count} vills</span>
+                <span className="tabular-nums">
+                  {step.villager_count} {tt('vills')}
+                </span>
                 <ResourceSplit r={step.resources} />
               </div>
               <ul className="space-y-0.5 leading-snug">
                 {step.notes.map((n, j) => (
-                  <li key={j}>{renderNote(n)}</li>
+                  <li key={j}>{renderNote(n, tt)}</li>
                 ))}
               </ul>
             </div>

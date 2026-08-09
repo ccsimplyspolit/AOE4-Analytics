@@ -249,8 +249,16 @@ const UI: Record<Locale, Record<string, string>> = {
     'No recent games': 'Нет недавних матчей',
     'Match preparation': 'Подготовка к матчу',
     'Key timings': 'Ключевые тайминги',
+    res: 'рес.',
     Landmarks: 'Лендмарки',
     Build: 'Билд',
+    atk: 'атака',
+    'Open full build': 'Открыть полный билд',
+    'They rely on': 'Они полагаются на',
+    'Landmark plan': 'План лендмарков',
+    'community consensus': 'мнение сообщества',
+    'consensus · adapt to your build': 'консенсус · адаптируйте под свой билд',
+    'rough guide': 'примерный ориентир',
     Expect: 'Ожидайте',
     'Focus from your last game': 'Фокус по последнему матчу',
     'Your civ': 'Ваша цивилизация',
@@ -468,6 +476,9 @@ const UI: Record<Locale, Record<string, string>> = {
     'Steam Guard code': 'Код Steam Guard',
     'Recovery plan': 'План восстановления',
     Evidence: 'Основание',
+    of: 'из',
+    Opponents: 'Соперники',
+    'metadata only': 'только метаданные',
     'Next run:': 'В следующем матче:',
     'Win condition:': 'Условие победы:',
     'Analysis focus:': 'Фокус анализа:',
@@ -476,6 +487,15 @@ const UI: Record<Locale, Record<string, string>> = {
     'Opponent context:': 'Контекст соперника:',
     'Military mentions:': 'Упоминания армии:',
     'Observed timing signals:': 'Замеченные тайминги:',
+    'Per-source analysis': 'Анализ по источникам',
+    showing: 'показано',
+    Focus: 'Фокус',
+    Timings: 'Тайминги',
+    confidence: 'уверенность',
+    'captions available': 'субтитры доступны',
+    'captions pending · rate limited': 'субтитры ожидаются · ограничение запросов',
+    'captions unavailable': 'субтитры недоступны',
+    'pending after YouTube rate limit': 'ожидается после ограничения YouTube',
     Metric: 'Метрика',
     Difference: 'Разница',
     'Not enough data': 'Недостаточно данных',
@@ -788,7 +808,6 @@ const UI: Record<Locale, Record<string, string>> = {
     'Your rank': 'Ваш ранг',
     Prev: 'Назад',
     Page: 'Страница',
-    of: 'из',
     Next: 'Далее',
     'Back to leaderboard': 'Назад к рейтингу',
     'Enter your in-game Age of Empires IV name. We’ll pull your ranks and recent games from AoE4World; no account needed.':
@@ -823,7 +842,6 @@ const UI: Record<Locale, Record<string, string>> = {
     age: 'эпоха',
     Opening: 'Открытие',
     'Live match': 'Матч идёт',
-    Opponents: 'Соперники',
     vs: 'против',
     Detection: 'Обнаружение',
     'AoE4World live roster': 'живой состав AoE4World',
@@ -902,7 +920,6 @@ const UI: Record<Locale, Record<string, string>> = {
     'match history': 'история матчей',
     playback: 'воспроизведение',
     'replay saved': 'реплей сохранён',
-    'metadata only': 'только метаданные',
     'detailed stats ready': 'подробная статистика готова',
     'Open summary': 'Открыть сводку',
     'Hide summary': 'Скрыть сводку',
@@ -997,6 +1014,8 @@ const UI: Record<Locale, Record<string, string>> = {
     'Imported match review pack': 'Импортированный пакет разборов матчей',
     'Civ meta is weighted across {maps} active ranked maps.':
       'Мета цивилизаций взвешена по {maps} активным картам рейтингового пула.',
+    'auto checked': 'автопроверка',
+    'auto refresh failed': 'автообновление недоступно',
     'Best civilizations for current map pool': 'Лучшие цивилизации для текущего пула карт',
     'Pool-weighted ranking uses every active ranked map and the selected rank, rating, and patch filters.':
       'Рейтинг взвешен по всем активным картам пула и выбранным фильтрам ранга, рейтинга и патча.',
@@ -1045,15 +1064,20 @@ const UI: Record<Locale, Record<string, string>> = {
       'Попробуйте позже, когда проиндексируется больше игр, или используйте сравнение билдов ниже.',
     'Reference player': 'Игрок-эталон',
     'Reference game': 'Эталонная игра',
+    'match score': 'баллов совпадения',
+    'Open full public analysis': 'Открыть полный публичный разбор',
+    'Search YouTube context': 'Искать контекст на YouTube',
+    'Find exact Twitch VOD': 'Найти точный Twitch VOD',
+    'Your opening': 'Ваше открытие',
+    'Reference opening': 'Открытие эталона',
+    'Detailed comparison': 'Детальное сравнение',
     exact: 'точное совпадение',
     'same-matchup': 'тот же матчап',
     similar: 'похожая игра',
     'patch unknown': 'патч неизвестен',
-    rating: 'рейтинг',
     'rating unavailable': 'рейтинг недоступен',
     win: 'победа',
     loss: 'поражение',
-    unknown: 'неизвестно',
     'Target civilization side': 'Сторона вашей цивилизации',
     'Opposing side': 'Сторона соперника',
     'Team sides and civilization order are compared. Exact spawn coordinates are not published by AoE4World.':
@@ -1063,21 +1087,12 @@ const UI: Record<Locale, Record<string, string>> = {
       'Публичный матч найден, но подробная статистика пока недоступна.',
     'What to copy from the reference': 'Что скопировать с эталона',
     'Open the reference game': 'Открыть эталонную игру',
-    Checkpoint: 'Контрольная точка',
     'Your game': 'Ваша игра',
-    Reference: 'Эталон',
-    Difference: 'Разница',
     'Game length': 'Длительность игры',
     'Feudal timing': 'Переход в Феодал',
     'Castle timing': 'Переход в Замок',
-    'Villager high': 'Максимум жителей',
-    'Resources gathered': 'Собрано ресурсов',
     'Military units produced': 'Произведено военных юнитов',
-    'Largest army': 'Максимальная армия',
-    'Units killed': 'Уничтожено юнитов',
-    'Units lost': 'Потеряно юнитов',
     'Technologies researched': 'Изучено технологий',
-    APM: 'APM',
     'The reference reached Feudal earlier — protect the opening resource plan and avoid idle Town Center time.':
       'Эталон раньше вышел в Феодал — сохрани план стартовых ресурсов и не допускай простоя Городского центра.',
     'The reference kept more villagers alive — copy the safer worker production and defensive reactions.':
@@ -1871,7 +1886,6 @@ const UI: Record<Locale, Record<string, string>> = {
     'Strength ratio': 'Соотношение сил',
     'Model confidence': 'Уверенность модели',
     bonus: 'бонус',
-    res: 'рес.',
     'Map series': 'Серия карт',
     'Civilization draft': 'Драфт цивилизаций',
     'Left bans / picks': 'Баны / пики слева',
@@ -2489,7 +2503,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   const requestTranslation = useCallback(
     (targetLocale: Locale, input: string) => {
-      if (targetLocale === 'en' || targetLocale === 'ru') return
+      if (targetLocale === 'en') return
       const requestKey = `${targetLocale}\u0000${input}`
       if (
         remoteTranslations[targetLocale]?.[input] ||
@@ -2504,10 +2518,10 @@ export function I18nProvider({ children }: { children: ReactNode }) {
         flushTimer.current = null
         const queued = [...pendingTranslations.current]
         pendingTranslations.current.clear()
-        const byLocale = new Map<'uk' | 'de', string[]>()
+        const byLocale = new Map<Exclude<Locale, 'en'>, string[]>()
         for (const queuedKey of queued) {
           const separator = queuedKey.indexOf('\u0000')
-          const queuedLocale = queuedKey.slice(0, separator) as 'uk' | 'de'
+          const queuedLocale = queuedKey.slice(0, separator) as Exclude<Locale, 'en'>
           const text = queuedKey.slice(separator + 1)
           const list = byLocale.get(queuedLocale) ?? []
           list.push(text)
@@ -2554,7 +2568,16 @@ export function I18nProvider({ children }: { children: ReactNode }) {
         requestTranslation(locale, input)
         return input
       },
-      gameName: (input) => GAME_NAMES[locale][input] ?? input,
+      gameName: (input) => {
+        const local = GAME_NAMES[locale][input] ?? UI[locale][input]
+        if (local) return local
+        if (locale === 'ru') {
+          const generated = russianDynamic(input)
+          if (generated) return generated
+        }
+        requestTranslation(locale, input)
+        return input
+      },
       refreshTranslationStatus,
     }),
     [locale, remoteTranslations, refreshTranslationStatus, requestTranslation],
