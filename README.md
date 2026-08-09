@@ -120,6 +120,31 @@ explicit and serialized; the renderer can only pass bounded flags and a validate
 patch label. Restart the app after a successful write so bundled TypeScript imports
 load the new snapshots.
 
+The orchestrator also records the exact GitHub HEAD revision of every referenced
+upstream adapter/reference (12 repositories) without cloning or executing their
+code. This makes source provenance auditable after a patch refresh:
+
+```bash
+python scripts/audit_upstream_repos.py --dry-run
+python scripts/audit_upstream_repos.py
+python scripts/sync_sources.py --skip-game-data --skip-meta --skip-guides --skip-icons
+```
+
+The revision manifest is written to `data/research/aoe4-upstream-revisions.json`
+and is included in `data/research/aoe4-source-sync.json`. If a local
+`aoemods/attrib` or `AOEMods.Essence` export is available, inventory it explicitly
+and keep the decoded files outside the renderer bundle:
+
+```bash
+python scripts/import_attrib_snapshot.py --input C:\path\to\decoded-attrib --source-revision <commit>
+python scripts/sync_sources.py --skip-game-data --skip-meta --skip-guides --skip-icons --attrib-input C:\path\to\decoded-attrib
+```
+
+`AOEMods.Essence` remains the external unpack/decode tool for `.sga`, `.rgd`,
+`.rrtex` and `.rrgeom`; the local importer only inventories and hashes its output.
+The runtime uses reviewed projections from `aoe4world/data`, not arbitrary parser
+code or untrusted game binaries.
+
 The scheduled workflow `.github/workflows/sync-external-sources.yml` runs the same pipeline daily and commits only the generated source artifacts. A failed provider stops the run before later imports are reported as complete; already committed snapshots remain unchanged. Use `--skip-icons` when only metadata/build snapshots are needed.
 
 ### Game-data refresh and patch research

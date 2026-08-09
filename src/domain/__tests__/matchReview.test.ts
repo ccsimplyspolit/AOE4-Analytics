@@ -174,6 +174,45 @@ describe('deriveMatchReview', () => {
     expect(review?.me.longestUnitCompletionGapSec).toBe(90)
   })
 
+  it('derives first military casualty and attributed response timing', () => {
+    const summary: MatchSummary = {
+      gameLengthSec: 900,
+      players: [
+        player(1, ME, {
+          casualties: [
+            {
+              timeSec: 420,
+              targetPlayerId: 1,
+              targetUnitType: 'unit_spearman_1_eng',
+              attackerPlayerId: 2,
+              attackerUnitType: 'unit_archer_1_fre',
+            },
+          ],
+        }),
+        player(2, 222, {
+          casualties: [
+            {
+              timeSec: 570,
+              targetPlayerId: 2,
+              targetUnitType: 'unit_archer_1_fre',
+              attackerPlayerId: 1,
+              attackerUnitType: 'unit_longbowman_1_eng',
+            },
+          ],
+        }),
+      ],
+    }
+    const review = deriveMatchReview(summary, ME, 'english')
+    expect(review?.me.firstMilitaryLoss?.timeSec).toBe(420)
+    expect(review?.pressure).toEqual({
+      myFirstMilitaryLossTimeSec: 420,
+      opponentFirstMilitaryLossTimeSec: 570,
+      firstEnemyMilitaryLossCausedTimeSec: 570,
+      responseLagSec: 150,
+    })
+    expect(review?.coverage.casualtyTimeline).toBe(true)
+  })
+
   it('does not guess a side-by-side opponent for team summaries', () => {
     const summary: MatchSummary = {
       gameLengthSec: 900,

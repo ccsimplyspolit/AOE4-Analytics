@@ -2,6 +2,7 @@ import { BUNDLED_BUILD_ORDERS } from './buildOrders'
 import { EXPLORER_RECORDS, type ExplorerRecordKind } from './explorerData'
 import { GAME_DATA_CAPTURED_AT, GAME_DATA_COMMIT, GAME_DATA_VERSION, UNITS } from './gameData'
 import { counterGraphCoverage } from '@domain/unitCounterModel'
+import { CURRENT_RANKED_MAP_POOL } from '@domain/rankedMapPool'
 
 export type DataSourceMode = 'live' | 'bundled' | 'local' | 'adapter' | 'reference'
 
@@ -42,6 +43,21 @@ export const DATA_SOURCE_REGISTRY: readonly DataSourceDescriptor[] = [
     version: 'v0',
     capturedAt: null,
     integration: 'typed main-process client, rate limiting, disk cache and pagination',
+  },
+  {
+    id: 'ranked-map-pool',
+    label: 'Ranked map pool snapshot',
+    url: CURRENT_RANKED_MAP_POOL.sourceUrl,
+    mode: 'bundled',
+    status: 'active',
+    patchAware: true,
+    coverage: `${CURRENT_RANKED_MAP_POOL.solo.length} solo + ${CURRENT_RANKED_MAP_POOL.team.length} team maps with effective dates`,
+    records: CURRENT_RANKED_MAP_POOL.solo.length + CURRENT_RANKED_MAP_POOL.team.length,
+    version: CURRENT_RANKED_MAP_POOL.snapshotId,
+    revision: null,
+    snapshotSchemaVersion: CURRENT_RANKED_MAP_POOL.schemaVersion,
+    capturedAt: CURRENT_RANKED_MAP_POOL.capturedAt,
+    integration: 'main-process dated resolver; ranked meta defaults to the active queue rotation',
   },
   {
     id: 'aoe4world-data',

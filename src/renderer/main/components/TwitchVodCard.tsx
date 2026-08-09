@@ -13,20 +13,37 @@ import { useTwitchVod } from '../queries/useTwitchVod'
  * in a packaged file:// Electron renderer, so the direct VOD opens in the
  * browser where Twitch playback is supported.
  */
-export function TwitchVodCard({ match }: { match: StoredMatch }) {
+export function TwitchVodCard({
+  match,
+  input: providedInput,
+}: {
+  match?: StoredMatch
+  /** Public-game callers can provide the same exact-game Finder input. */
+  input?: TwitchVodFinderInput | null
+}) {
   const { tt } = useI18n()
-  const input: TwitchVodFinderInput = {
-    gameId: match.id,
-    civilization: match.civ,
-    opponentCivilization: match.oppCiv,
-    map: match.map,
-    durationSec: match.durationSec,
+  const input: TwitchVodFinderInput | null =
+    providedInput ??
+    (match
+      ? {
+          gameId: match.id,
+          civilization: match.civ,
+          opponentCivilization: match.oppCiv,
+          map: match.map,
+          durationSec: match.durationSec,
+        }
+      : null)
+  const isPublicGame = Boolean(
+    input && (!match || !match.custom) && /^\d{1,16}$/.test(input.gameId),
+  )
+  const safeInput = input ?? {
+    gameId: '0',
+    civilization: 'english',
   }
-  const isPublicGame = !match.custom && /^\d{1,16}$/.test(match.id)
-  const lookup = useTwitchVod(input, isPublicGame)
-  const finderUrl = twitchVideoFinderUrl(input)
+  const lookup = useTwitchVod(safeInput, isPublicGame)
+  const finderUrl = twitchVideoFinderUrl(safeInput)
 
-  if (!isPublicGame) return null
+  if (!isPublicGame || !input) return null
 
   const result = lookup.data?.ok ? lookup.data.data : null
   const found = result?.vod ?? null
@@ -81,7 +98,7 @@ export function TwitchVodCard({ match }: { match: StoredMatch }) {
             {found ? (
               <div className="flex flex-wrap justify-end gap-2">
                 <a
-                  href={`#/tincture?tab=cellar&video=${encodeURIComponent(found.url)}`}
+                  href={`#/tincture?tab=cellar&video=${encodeURIComponent(found.url)}&gameId=${encodeURIComponent(input.gameId)}&civilization=${encodeURIComponent(input.civilization)}`}
                   className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-primary/35 px-3 py-2 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
                 >
                   {tt('Analyze VOD')}

@@ -19,6 +19,8 @@ import type { RankLevel, StatsLeaderboard } from '@api/types'
 import type { CivTier, Tier } from '@domain/tierList'
 import { TIERS } from '@domain/tierList'
 import type { MapStat } from '@domain/mapStats'
+import type { RankedMapPoolResolution } from '@domain/rankedMapPool'
+import { isMapInPool } from '@domain/rankedMapPool'
 import { CIV_PROFILES } from '@data/civProfiles'
 import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
 import { counterPlanForCiv } from '@domain/civUnits'
@@ -99,6 +101,10 @@ function rankFilterable(lb: StatsLeaderboard): boolean {
   return lb === 'rm_solo' || lb === 'qm_1v1'
 }
 
+function rankedMapPoolFilterable(lb: StatsLeaderboard): boolean {
+  return lb === 'rm_solo' || /^rm_[234]v[234]$/.test(lb)
+}
+
 type SortKey = 'civName' | 'winRate' | 'pickRate' | 'games'
 
 export function CivMeta() {
@@ -132,6 +138,7 @@ export function CivMeta() {
   const patch = PATCHES.some((entry) => entry.value === patchParam)
     ? (patchParam || undefined)
     : undefined
+  const mapPoolOnly = rankedMapPoolFilterable(leaderboard) && searchParams.get('mapPool') !== 'all'
   const rawMapId = Number(searchParams.get('map'))
   const selectedMapId = Number.isSafeInteger(rawMapId) && rawMapId > 0 ? rawMapId : undefined
   const setLeaderboard = (value: StatsLeaderboard) =>
@@ -175,6 +182,16 @@ export function CivMeta() {
       },
       { replace: true },
     )
+  const setMapPoolOnly = (value: boolean) =>
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev)
+        if (value) next.delete('mapPool')
+        else next.set('mapPool', 'all')
+        return next
+      },
+      { replace: true },
+    )
   const [sort, setSort] = useState<{ key: SortKey; dir: 'asc' | 'desc' }>({
     key: 'winRate',
     dir: 'desc',
@@ -186,9 +203,11 @@ export function CivMeta() {
     rating,
     patch,
     mapId: tab === 'counter' ? selectedMapId : undefined,
+    mapPoolOnly,
   })
 
   const maps = data?.ok ? data.data.maps : []
+  const mapPool = data?.ok ? data.data.mapPool ?? null : null
   const sortedCivs = useMemo(() => {
     const civs = data?.ok ? data.data.civs : []
     const dir = sort.dir === 'asc' ? 1 : -1
@@ -294,6 +313,22 @@ export function CivMeta() {
               </option>
             ))}
           </select>
+          {rankedMapPoolFilterable(leaderboard) && (
+            <button
+              type="button"
+              onClick={() => setMapPoolOnly(!mapPoolOnly)}
+              aria-pressed={mapPoolOnly}
+              className={cn(
+                'inline-flex h-9 items-center rounded-md border px-3 text-sm transition-colors',
+                mapPoolOnly
+                  ? 'border-primary/50 bg-primary/10 text-primary'
+                  : 'border-border text-muted-foreground hover:bg-secondary hover:text-foreground',
+              )}
+              title={tt('Show only maps in the active ranked rotation')}
+            >
+              {mapPoolOnly ? tt('Current map pool') : tt('All patch maps')}
+            </button>
+          )}
         </div>
       </div>
 
@@ -305,16 +340,26 @@ export function CivMeta() {
 
       <div role="tabpanel">
         {tab === 'matchups' ? (
-          <MatchupsTab leaderboard={leaderboard} rankLevel={rankLevel} rating={rating} patch={patch} />
+          <MatchupsTab
+            leaderboard={leaderboard}
+            rankLevel={rankLevel}
+            rating={rating}
+            patch={patch}
+            mapPoolOnly={mapPoolOnly}
+            mapPool={mapPool}
+          />
         ) : isLoading ? (
           <Skeleton className="h-96" />
         ) : data && !data.ok ? (
           <ErrorBox message={data.error.message} onRetry={() => refetch()} />
         ) : data?.ok ? (
           <div className={cn('space-y-5', isFetching && 'opacity-60')}>
+            {rankedMapPoolFilterable(leaderboard) && mapPool && (
+              <MapPoolNotice mapPool={mapPool} filtered={mapPoolOnly} />
+            )}
             {tab === 'tier' && <TierTab byTier={byTier} />}
             {tab === 'stats' && <CivStatsTable civs={sortedCivs} sort={sort} onSort={toggleSort} />}
-            {tab === 'maps' && <MapTable maps={maps} />}
+            {tab === 'maps' && <MapTable maps={maps} mapPool={mapPool} />}
             {tab === 'counter' && (
               <CounterCalculator
                 maps={maps}
@@ -492,7 +537,44 @@ function CivRow({ c }: { c: CivTier }) {
   )
 }
 
-function MapTable({ maps }: { maps: MapStat[] }) {
+function MapPoolNotice({
+  mapPool,
+  filtered,
+}: {
+  mapPool: RankedMapPoolResolution
+  filtered: boolean
+}) {
+  const { tt } = useI18n()
+  const captured = new Date(mapPool.snapshot.capturedAt).toLocaleDateString()
+  const until = new Date(`${mapPool.snapshot.effectiveUntil}T00:00:00Z`).toLocaleDateString()
+  const message =
+    mapPool.status === 'current'
+      ? filtered
+        ? `${tt('Showing only the active ranked map pool')} · ${mapPool.maps.length} ${tt('maps')} · ${tt('as of')} ${captured} · ${tt('through')} ${until}`
+        : `${tt('Active ranked map pool available')} · ${mapPool.maps.length} ${tt('maps')} · ${tt('as of')} ${captured} · ${tt('filter disabled')}`
+      : `${tt('Map pool snapshot needs refresh')} · ${tt('showing the full AoE4World patch map list')}`
+  return (
+    <div className="flex flex-wrap items-center justify-between gap-2 rounded-md border border-primary/20 bg-primary/5 px-3 py-2 text-xs">
+      <span className={mapPool.status === 'current' ? 'text-primary' : 'text-warn'}>{message}</span>
+      <a
+        href={mapPool.snapshot.sourceUrl}
+        target="_blank"
+        rel="noreferrer"
+        className="text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
+      >
+        {tt('Map pool source')}
+      </a>
+    </div>
+  )
+}
+
+function MapTable({
+  maps,
+  mapPool,
+}: {
+  maps: MapStat[]
+  mapPool: RankedMapPoolResolution | null
+}) {
   const { tt } = useI18n()
   if (maps.length === 0) {
     return <EmptyBox>{tt('No map stats for this leaderboard yet — try another ladder.')}</EmptyBox>
@@ -502,7 +584,7 @@ function MapTable({ maps }: { maps: MapStat[] }) {
       <CardContent className="space-y-3 p-4">
         <h3 className="flex items-center gap-1.5 text-sm font-semibold">
           <MapIcon className="h-4 w-4 text-primary" />
-          {tt('Map pool')}
+          {tt(mapPool?.status === 'current' ? 'Current ranked map pool' : 'Map pool')}
         </h3>
         <table className="w-full text-sm">
           <thead>
@@ -736,11 +818,15 @@ function MatchupsTab({
   rankLevel,
   rating,
   patch,
+  mapPoolOnly,
+  mapPool,
 }: {
   leaderboard: StatsLeaderboard
   rankLevel: RankLevel | undefined
   rating: string | undefined
   patch: string | undefined
+  mapPoolOnly: boolean
+  mapPool: RankedMapPoolResolution | null
 }) {
   const { tt, gameName } = useI18n()
   const [myCiv, setMyCiv] = useState('english')
@@ -767,10 +853,11 @@ function MatchupsTab({
   const unitCounterRows = useMemo(() => counterRowsForCivs(oppCiv, myCiv), [myCiv, oppCiv])
   const buildIndex = useMemo(() => buildIndexForCiv(BUNDLED_BUILD_ORDERS, myCiv), [myCiv])
   const build = buildIndex != null ? BUNDLED_BUILD_ORDERS[buildIndex]! : null
-  const personalHistory = useMemo(
-    () => filterPersonalHistory(history.data?.ok ? history.data.data : [], excludePractice),
-    [excludePractice, history.data],
-  )
+  const personalHistory = useMemo(() => {
+    const base = filterPersonalHistory(history.data?.ok ? history.data.data : [], excludePractice)
+    if (!mapPoolOnly) return base
+    return base.filter((match) => isMapInPool(match.map, mapPool))
+  }, [excludePractice, history.data, mapPool, mapPoolOnly])
   const personal = useMemo(
     () =>
       buildPersonalMatchup(personalHistory, {
@@ -790,6 +877,7 @@ function MatchupsTab({
 
   return (
     <div className="space-y-5">
+      {mapPool && <MapPoolNotice mapPool={mapPool} filtered={mapPoolOnly} />}
       <div className="flex items-end gap-3 rounded-lg border border-border bg-card/50 p-4">
           <CivSelect label={tt('Your civ')} value={myCiv} onChange={setMyCiv} />
         <button

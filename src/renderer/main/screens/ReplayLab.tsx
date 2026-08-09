@@ -21,17 +21,22 @@ import type {
   AccountReplayPage,
   ReplayArchiveItem,
   ReplayArchivePage,
+  ReplayAnalysisTarget,
   ReplayAnalysisResult,
 } from '@ipc/contract'
 import { normalizeTeams } from '@api/types'
 import { civDisplayName } from '@domain/civ'
 import { formatDuration } from '@domain/format'
+import type { TwitchVodFinderInput } from '@domain/twitchVodFinder'
+import { ipc } from '@shared/ipc'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
 import { formatCount } from '@shared/format'
 import { PageHead } from '../components/PageHead'
 import { EmptyBox, ErrorBox, Spinner } from '../components/feedback'
 import { GameSummaryPanel } from '../components/GameSummaryPanel'
+import { BuildOrderComparisonCard } from '../components/BuildOrderComparisonCard'
+import { TwitchVodCard } from '../components/TwitchVodCard'
 import {
   useAccountReplays,
   useCacheReplay,
@@ -43,10 +48,23 @@ import {
 import { useSettings } from '../queries/useProfile'
 import { useGameSummary } from '../queries/useHistory'
 import { useSteamAuthStatus } from '../queries/useSteam'
+import { useTwitchVod } from '../queries/useTwitchVod'
+import { useVideoAnalyses } from '../queries/useVideoAnalyses'
 import { useI18n } from '../../i18n'
 
 const LOCAL_PAGE_SIZE = 25
 const ACCOUNT_PAGE_SIZE = 20
+
+type AutoAnalysisState = {
+  done: number
+  total: number
+  errors: number
+}
+
+type AutoAnalysisTarget = {
+  key: string
+  target: ReplayAnalysisTarget
+}
 
 function replayDate(timestamp: number): string {
   return new Date(timestamp).toLocaleString()
@@ -60,8 +78,9 @@ function rosterLabel(item: ReplayArchiveItem, tt: (value: string) => string): st
   }
   if (item.localMatch?.players.length) {
     return item.localMatch.players
-      .map((player) =>
-        player.civ ?? (player.raceId != null ? `${tt('Civ')} #${player.raceId}` : tt('Unknown')),
+      .map(
+        (player) =>
+          player.civ ?? (player.raceId != null ? `${tt('Civ')} #${player.raceId}` : tt('Unknown')),
       )
       .join('  ·  ')
   }
@@ -132,8 +151,18 @@ export function ReplayLab() {
   const [localPage, setLocalPage] = useState(1)
   const [accountPage, setAccountPage] = useState(1)
   const [autoCache, setAutoCache] = useState(true)
+  const [autoAnalyze, setAutoAnalyze] = useState(true)
   const [cacheMessage, setCacheMessage] = useState<string | null>(null)
+  const [autoAnalysis, setAutoAnalysis] = useState<AutoAnalysisState | null>(null)
+  const [autoAnalysisResults, setAutoAnalysisResults] = useState<
+    Record<string, ReplayAnalysisResult>
+  >({})
   const autoCacheKey = useRef<string | null>(null)
+  const autoSummaryKey = useRef<string | null>(null)
+  const autoCacheInFlight = useRef(false)
+  const autoAnalysisKey = useRef<string | null>(null)
+  const autoAnalysisRun = useRef(0)
+  const autoAnalysisTargetsRef = useRef<AutoAnalysisTarget[]>([])
   const consent = settings.data?.localData.consentGranted ?? false
   const local = useReplays(localPage, LOCAL_PAGE_SIZE)
   const account = useAccountReplays(accountPage, ACCOUNT_PAGE_SIZE)
@@ -147,6 +176,19 @@ export function ReplayLab() {
   const summaryIds = (accountData?.items ?? [])
     .filter((item) => item.summaryAvailable && !item.summaryCached)
     .map((item) => item.game.game_id)
+  const autoAnalysisTargets: AutoAnalysisTarget[] =
+    source === 'local'
+      ? (local.data?.items ?? [])
+          .filter((item) => item.hasReplay)
+          .map((item) => ({ key: `local:${item.id}`, target: { localId: item.id } }))
+      : (steam.data?.connected ? (accountData?.items ?? []) : [])
+          .filter((item) => item.cacheStatus === 'cached')
+          .map((item) => ({
+            key: `account:${item.game.game_id}`,
+            target: { gameId: item.game.game_id },
+          }))
+  autoAnalysisTargetsRef.current = autoAnalysisTargets
+  const autoAnalysisTargetKey = `${source}:${source === 'local' ? localPage : accountPage}:${autoAnalysisTargets.map((item) => item.key).join(',')}`
 
   const cacheAvailable = useCallback(
     async (gameIds: number[]) => {
@@ -195,7 +237,10 @@ export function ReplayLab() {
     const key = `${accountData.page}:${availableIds.join(',')}`
     if (autoCacheKey.current === key) return
     autoCacheKey.current = key
-    void cacheAvailable(availableIds)
+    autoCacheInFlight.current = true
+    void cacheAvailable(availableIds).finally(() => {
+      autoCacheInFlight.current = false
+    })
   }, [
     accountData,
     autoCache,
@@ -205,6 +250,90 @@ export function ReplayLab() {
     source,
     steam.data?.connected,
   ])
+
+  useEffect(() => {
+    if (
+      source !== 'account' ||
+      !autoAnalyze ||
+      !steam.data?.connected ||
+      accountData == null ||
+      summaryIds.length === 0 ||
+      cacheSummaries.isPending ||
+      autoCacheInFlight.current
+    )
+      return
+
+    // Finish replay downloads before asking Relic for summaries. This keeps the
+    // two network batches serialized and makes the pipeline status predictable.
+    const replayKey = `${accountData.page}:${availableIds.join(',')}`
+    const replayCacheSettled =
+      !autoCache || availableIds.length === 0 || autoCacheKey.current === replayKey
+    if (!replayCacheSettled) return
+
+    const key = `${accountData.page}:${summaryIds.join(',')}`
+    if (autoSummaryKey.current === key) return
+    autoSummaryKey.current = key
+    void cacheAvailableSummaries(summaryIds)
+  }, [
+    accountData,
+    autoAnalyze,
+    autoCache,
+    availableIds,
+    cacheAvailableSummaries,
+    cacheSummaries.isPending,
+    summaryIds,
+    source,
+    steam.data?.connected,
+  ])
+
+  useEffect(() => {
+    if (!autoAnalyze) {
+      autoAnalysisKey.current = null
+      autoAnalysisRun.current += 1
+      setAutoAnalysis(null)
+      return
+    }
+
+    const targets = autoAnalysisTargetsRef.current
+
+    if (targets.length === 0) {
+      autoAnalysisKey.current = null
+      autoAnalysisRun.current += 1
+      setAutoAnalysis(null)
+      return
+    }
+    const key = autoAnalysisTargetKey
+    if (autoAnalysisKey.current === key) return
+    autoAnalysisKey.current = key
+
+    const runId = ++autoAnalysisRun.current
+    setAutoAnalysis({ done: 0, total: targets.length, errors: 0 })
+    void (async () => {
+      let errors = 0
+      for (const [index, item] of targets.entries()) {
+        if (autoAnalysisRun.current !== runId) return
+        try {
+          const result = await ipc.analyzeReplay(item.target)
+          const analysisResult = result.ok ? result.data : null
+          if (analysisResult == null) {
+            errors += 1
+          } else {
+            setAutoAnalysisResults((previous) => ({ ...previous, [item.key]: analysisResult }))
+          }
+        } catch {
+          errors += 1
+        }
+        if (autoAnalysisRun.current !== runId) return
+        setAutoAnalysis({ done: index + 1, total: targets.length, errors })
+      }
+    })()
+
+    return () => {
+      if (autoAnalysisRun.current === runId) {
+        autoAnalysisRun.current += 1
+      }
+    }
+  }, [autoAnalyze, autoAnalysisTargetKey])
 
   return (
     <div className="animate-fade-in space-y-5">
@@ -223,16 +352,34 @@ export function ReplayLab() {
             <CloudDownload className="h-3.5 w-3.5" /> {tt('Account history')}
           </SourceTab>
         </div>
-        {source === 'account' && (
+        <div className="flex flex-wrap items-center gap-3">
+          {source === 'account' && (
+            <label className="inline-flex items-center gap-2 text-xs text-muted-foreground">
+              <input
+                type="checkbox"
+                checked={autoCache}
+                onChange={(event) => setAutoCache(event.target.checked)}
+              />
+              {tt('Auto-cache available page replays')}
+            </label>
+          )}
           <label className="inline-flex items-center gap-2 text-xs text-muted-foreground">
             <input
               type="checkbox"
-              checked={autoCache}
-              onChange={(event) => setAutoCache(event.target.checked)}
+              checked={autoAnalyze}
+              onChange={(event) => setAutoAnalyze(event.target.checked)}
             />
-            {tt('Auto-cache available page replays')}
+            {tt(
+              source === 'account' ? 'Auto-analyze cached replays' : 'Auto-analyze local replays',
+            )}
           </label>
-        )}
+          {autoAnalysis && (
+            <Badge variant="outline" className="border-primary/40 text-primary">
+              {tt('Auto-analysis')} {autoAnalysis.done}/{autoAnalysis.total}
+              {autoAnalysis.errors > 0 ? ` · ${autoAnalysis.errors} ${tt('errors')}` : ''}
+            </Badge>
+          )}
+        </div>
       </div>
 
       {source === 'local' ? (
@@ -241,6 +388,7 @@ export function ReplayLab() {
           data={local.data}
           isLoading={local.isLoading}
           isError={local.isError}
+          autoAnalysisResults={autoAnalysisResults}
           onRetry={() => void local.refetch()}
           page={localPage}
           onPage={setLocalPage}
@@ -261,6 +409,8 @@ export function ReplayLab() {
           onRetry={() => void account.refetch()}
           onCacheAll={() => void cacheAvailable(availableIds)}
           onCacheSummaries={() => void cacheAvailableSummaries(summaryIds)}
+          autoAnalysis={autoAnalysis}
+          autoAnalysisResults={autoAnalysisResults}
           page={accountPage}
           onPage={setAccountPage}
         />
@@ -296,6 +446,7 @@ function LocalArchive({
   data,
   isLoading,
   isError,
+  autoAnalysisResults,
   onRetry,
   page,
   onPage,
@@ -304,6 +455,7 @@ function LocalArchive({
   data: ReplayArchivePage | undefined
   isLoading: boolean
   isError: boolean
+  autoAnalysisResults: Record<string, ReplayAnalysisResult>
   onRetry: () => void
   page: number
   onPage: (page: number) => void
@@ -348,20 +500,35 @@ function LocalArchive({
         <span>{tt('Headers only · command streams are never guessed')}</span>
       </div>
       {data.items.map((item) => (
-        <LocalReplayRow key={item.id} item={item} />
+        <LocalReplayRow
+          key={item.id}
+          item={item}
+          autoResult={autoAnalysisResults[`local:${item.id}`]}
+        />
       ))}
       <Pager {...data} page={page} onPage={onPage} />
     </div>
   )
 }
 
-function LocalReplayRow({ item }: { item: ReplayArchiveItem }) {
+function LocalReplayRow({
+  item,
+  autoResult,
+}: {
+  item: ReplayArchiveItem
+  autoResult?: ReplayAnalysisResult
+}) {
   const { tt } = useI18n()
   const [showAnalysis, setShowAnalysis] = useState(false)
   const analysis = useReplayAnalysis()
   const map = item.info?.mapName ?? item.localMatch?.map ?? item.info?.mapId ?? tt('Unknown map')
+  const displayedAnalysis = analysis.data ?? autoResult
   const runAnalysis = async () => {
     if (!item.hasReplay || analysis.isPending) return
+    if (autoResult) {
+      setShowAnalysis(true)
+      return
+    }
     try {
       await analysis.mutateAsync({ localId: item.id })
       setShowAnalysis(true)
@@ -393,6 +560,11 @@ function LocalReplayRow({ item }: { item: ReplayArchiveItem }) {
                   {tt('detailed stats ready')}
                 </Badge>
               )}
+              {autoResult && (
+                <Badge variant="outline" className="border-primary/40 text-[10px] text-primary">
+                  {tt('auto-analyzed')}
+                </Badge>
+              )}
             </div>
             <div className="mt-1 text-xs text-muted-foreground">
               {replayDate(item.recordedAtMs)}
@@ -407,7 +579,11 @@ function LocalReplayRow({ item }: { item: ReplayArchiveItem }) {
                 className="inline-flex h-8 items-center gap-1.5 rounded-md border border-primary/40 px-2.5 text-xs text-primary hover:bg-primary/10 disabled:opacity-40"
               >
                 <ScanLine className="h-3.5 w-3.5" />
-                {analysis.isPending ? tt('Analyzing…') : tt('Analyze replay')}
+                {analysis.isPending
+                  ? tt('Analyzing…')
+                  : autoResult
+                    ? tt('Show analysis')
+                    : tt('Analyze replay')}
               </button>
             )}
             {item.matchId && (
@@ -440,10 +616,12 @@ function LocalReplayRow({ item }: { item: ReplayArchiveItem }) {
                 'The game record exists in matchhistory, but AoE4 did not leave a replay.rec file for it.',
               )}
         </p>
-        {analysis.error && <p className="text-xs text-loss">{analysis.error.message}</p>}
-        {analysis.data && (
+        {analysis.error && !autoResult && (
+          <p className="text-xs text-loss">{analysis.error.message}</p>
+        )}
+        {displayedAnalysis && (
           <ReplayAnalysisPanel
-            result={analysis.data}
+            result={displayedAnalysis}
             open={showAnalysis}
             onToggle={() => setShowAnalysis((value) => !value)}
           />
@@ -465,6 +643,8 @@ function AccountArchive({
   cacheOne,
   cacheMany,
   cacheSummaries,
+  autoAnalysis,
+  autoAnalysisResults,
   onRetry,
   onCacheAll,
   onCacheSummaries,
@@ -482,6 +662,8 @@ function AccountArchive({
   cacheOne: ReturnType<typeof useCacheReplay>
   cacheMany: ReturnType<typeof useCacheReplays>
   cacheSummaries: ReturnType<typeof useCacheSummaries>
+  autoAnalysis: AutoAnalysisState | null
+  autoAnalysisResults: Record<string, ReplayAnalysisResult>
   onRetry: () => void
   onCacheAll: () => void
   onCacheSummaries: () => void
@@ -557,6 +739,15 @@ function AccountArchive({
             </p>
           )}
           {cacheMessage && <p className="text-xs text-primary">{cacheMessage}</p>}
+          {autoAnalysis && (
+            <p className="text-xs text-primary">
+              {tt('Automatic replay analysis')}: {autoAnalysis.done}/{autoAnalysis.total}
+              {autoAnalysis.errors > 0 ? ` · ${autoAnalysis.errors} ${tt('errors')}` : ''}
+              {autoAnalysis.done < autoAnalysis.total
+                ? ` · ${tt('summaries are cached automatically when available')}`
+                : ''}
+            </p>
+          )}
           <p className="text-[11px] text-muted-foreground">
             {formatCount(data.totalCount)} total · AoE4World {formatCount(data.aoe4WorldCount)} ·
             Relic {formatCount(data.relicCount)} · Relic-only {formatCount(data.relicOnlyCount)}
@@ -572,6 +763,7 @@ function AccountArchive({
             item={item}
             profileId={profileId}
             cacheOne={cacheOne}
+            autoResult={autoAnalysisResults[`account:${item.game.game_id}`]}
           />
         ))
       )}
@@ -584,23 +776,42 @@ function AccountReplayRow({
   item,
   profileId,
   cacheOne,
+  autoResult,
 }: {
   item: AccountReplayItem
   profileId: number | null
   cacheOne: ReturnType<typeof useCacheReplay>
+  autoResult?: ReplayAnalysisResult
 }) {
   const { tt } = useI18n()
   const [showAnalysis, setShowAnalysis] = useState(false)
   const [showSummary, setShowSummary] = useState(false)
   const analysis = useReplayAnalysis()
+  const videoAnalyses = useVideoAnalyses()
   const game = item.game
   const summaryQuery = useGameSummary(String(game.game_id), { enabled: showSummary })
   const summary = summaryQuery.data?.ok ? summaryQuery.data.data : null
   const summaryError =
     summaryQuery.data && !summaryQuery.data.ok ? summaryQuery.data.error.message : null
+  const displayedAnalysis = analysis.data ?? autoResult
   const myPlayer = normalizeTeams(game)
     .flat()
     .find((player) => profileId != null && player.profile_id === profileId)
+  const twitchVodInput: TwitchVodFinderInput = {
+    gameId: String(game.game_id),
+    civilization: myPlayer?.civilization ?? 'english',
+    opponentCivilization:
+      normalizeTeams(game)
+        .flat()
+        .find((player) => player.profile_id !== myPlayer?.profile_id)?.civilization ?? null,
+    map: game.map,
+    durationSec: game.duration,
+  }
+  const twitchVodLookup = useTwitchVod(twitchVodInput, showSummary && myPlayer != null)
+  const verifiedVod = twitchVodLookup.data?.ok ? twitchVodLookup.data.data.vod : null
+  const linkedVideoAnalysis = videoAnalyses.data?.ok
+    ? videoAnalyses.data.data.find((record) => record.gameId === String(game.game_id))
+    : undefined
   const statusLabel =
     item.cacheStatus === 'cached'
       ? tt('cached locally')
@@ -630,6 +841,11 @@ function AccountReplayRow({
               >
                 {statusLabel}
               </Badge>
+              {autoResult && (
+                <Badge variant="outline" className="border-primary/40 text-[10px] text-primary">
+                  {tt('auto-analyzed')}
+                </Badge>
+              )}
               {item.summaryAvailable && (
                 <Badge variant="outline" className="text-[10px]">
                   {tt('summary')}
@@ -658,6 +874,10 @@ function AccountReplayRow({
                 type="button"
                 disabled={analysis.isPending}
                 onClick={() => {
+                  if (autoResult) {
+                    setShowAnalysis(true)
+                    return
+                  }
                   void analysis
                     .mutateAsync({ gameId: game.game_id })
                     .then(() => setShowAnalysis(true))
@@ -666,7 +886,11 @@ function AccountReplayRow({
                 className="inline-flex h-8 items-center gap-1.5 rounded-md border border-primary/40 px-2.5 text-xs text-primary hover:bg-primary/10 disabled:opacity-40"
               >
                 <ScanLine className="h-3.5 w-3.5" />
-                {analysis.isPending ? tt('Analyzing…') : tt('Analyze replay')}
+                {analysis.isPending
+                  ? tt('Analyzing…')
+                  : autoResult
+                    ? tt('Show analysis')
+                    : tt('Analyze replay')}
               </button>
             )}
             {item.summaryAvailable && (
@@ -712,10 +936,12 @@ function AccountReplayRow({
             ? ` ${tt('Cached size')}: ${(item.cacheSizeBytes / 1024 / 1024).toFixed(1)} MB.`
             : ''}
         </p>
-        {analysis.error && <p className="text-xs text-loss">{analysis.error.message}</p>}
-        {analysis.data && (
+        {analysis.error && !autoResult && (
+          <p className="text-xs text-loss">{analysis.error.message}</p>
+        )}
+        {displayedAnalysis && (
           <ReplayAnalysisPanel
-            result={analysis.data}
+            result={displayedAnalysis}
             open={showAnalysis}
             onToggle={() => setShowAnalysis((value) => !value)}
           />
@@ -730,11 +956,25 @@ function AccountReplayRow({
               </p>
             )}
             {summary && (
-              <GameSummaryPanel
-                summary={summary}
-                myCiv={myPlayer?.civilization ?? null}
-                myProfileId={profileId}
-              />
+              <div className="space-y-4">
+                <TwitchVodCard input={myPlayer ? twitchVodInput : null} />
+                <BuildOrderComparisonCard
+                  summary={summary}
+                  myCiv={myPlayer?.civilization ?? null}
+                  myProfileId={profileId}
+                  myName={myPlayer?.name ?? null}
+                  map={game.map}
+                  format={game.kind}
+                  patch={game.patch == null ? null : String(game.patch)}
+                  linkedVideoAnalysis={linkedVideoAnalysis}
+                  verifiedVod={verifiedVod}
+                />
+                <GameSummaryPanel
+                  summary={summary}
+                  myCiv={myPlayer?.civilization ?? null}
+                  myProfileId={profileId}
+                />
+              </div>
             )}
           </div>
         )}
@@ -824,7 +1064,9 @@ export function ReplayAnalysisPanel({
                         {formatDuration(player.maxCommandGapSec)}
                       </td>
                       <td className="px-2 py-1.5 tabular-nums">
-                        {player.knownCommandPct == null ? '—' : `${player.knownCommandPct.toFixed(1)}%`}
+                        {player.knownCommandPct == null
+                          ? '—'
+                          : `${player.knownCommandPct.toFixed(1)}%`}
                         <span className="ml-1 text-muted-foreground">
                           ({player.knownCommandCount}/{player.commandCount})
                         </span>

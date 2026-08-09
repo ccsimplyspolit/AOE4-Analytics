@@ -134,7 +134,9 @@ export function GameSummaryPanel({
             label={tt('Resources gathered')}
             value={myResources ? fmtInt(totalResources(myResources)) : '-'}
             hint={
-              myResources ? resourceLine(myResources) : tt('Summary did not include resource totals.')
+              myResources
+                ? resourceLine(myResources)
+                : tt('Summary did not include resource totals.')
             }
           />
           <InsightCard
@@ -185,7 +187,9 @@ export function GameSummaryPanel({
         <TeamContributionCard breakdown={contribution} summaryPlayers={players} />
       )}
       <p className="text-[11px] leading-relaxed text-muted-foreground">
-        {tt("Scores are the game's last sampled values (up to ~20s before the end screen), so they can sit slightly under the score screen's finals. Resource totals count DELIVERED resources — the game's own screen also credits what villagers were still carrying when the game ended.")}
+        {tt(
+          "Scores are the game's last sampled values (up to ~20s before the end screen), so they can sit slightly under the score screen's finals. Resource totals count DELIVERED resources — the game's own screen also credits what villagers were still carrying when the game ended.",
+        )}
       </p>
 
       {(hasEco || hasScore) && (
@@ -204,7 +208,10 @@ export function GameSummaryPanel({
             </ChartCard>
           )}
           {hasScore && (
-            <ChartCard title={tt('Score over time')} icon={<Trophy className="h-4 w-4 text-primary" />}>
+            <ChartCard
+              title={tt('Score over time')}
+              icon={<Trophy className="h-4 w-4 text-primary" />}
+            >
               <TimeChart
                 data={scoreData}
                 players={players}
@@ -277,7 +284,9 @@ function DecisionMetricsCard({ review }: { review: MatchReview }) {
               <Activity className="h-4 w-4 text-primary" /> {tt('Decision metrics')}
             </h3>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              {tt('Derived from the game summary and Relic counters. These explain conversion and timing; they are not a single skill score.')}
+              {tt(
+                'Derived from the game summary and Relic counters. These explain conversion and timing; they are not a single skill score.',
+              )}
             </p>
           </div>
           <span className="rounded bg-secondary px-2 py-1 text-[10px] text-muted-foreground">
@@ -288,7 +297,11 @@ function DecisionMetricsCard({ review }: { review: MatchReview }) {
           <span className="rounded border border-border/70 px-2 py-1 uppercase tracking-wide">
             {tt('Evidence coverage')}: {coverageLabel(review.coverage.confidence, tt)}
           </span>
-          <span>{coverageFacts(review.coverage).map((fact) => tt(fact)).join(' · ')}</span>
+          <span>
+            {coverageFacts(review.coverage)
+              .map((fact) => tt(fact))
+              .join(' · ')}
+          </span>
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
@@ -364,6 +377,14 @@ function DecisionMetricsCard({ review }: { review: MatchReview }) {
               .filter((value): value is string => value != null)
               .join(' · ')}
           />
+          {review.pressure && (
+            <ReviewMetric
+              icon={<Swords className="h-4 w-4 text-primary" />}
+              label={tt('First pressure')}
+              value={pressureValue(review.pressure)}
+              hint={pressureHint(review, tt)}
+            />
+          )}
         </div>
 
         {!review.isOneVsOne && review.teamComparison && (
@@ -414,7 +435,9 @@ function DecisionMetricsCard({ review }: { review: MatchReview }) {
           </div>
         )}
         <p className="text-[10px] leading-relaxed text-muted-foreground">
-          {tt("A positive gap means your value is higher than the opponent's at the nearest recorded sample. “Last bank” is the last timeline sample, not a claim about the exact end screen.")}
+          {tt(
+            "A positive gap means your value is higher than the opponent's at the nearest recorded sample. “Last bank” is the last timeline sample, not a claim about the exact end screen.",
+          )}
         </p>
       </CardContent>
     </Card>
@@ -457,8 +480,55 @@ function coverageFacts(coverage: MatchReview['coverage']): string[] {
     coverage.economyTimeline ? 'economy timeline' : null,
     coverage.scoreTimeline ? 'score timeline' : null,
     coverage.buildTimeline ? 'build timeline' : null,
+    coverage.casualtyTimeline ? 'casualty timeline' : null,
     coverage.combatCounters ? 'combat counters' : null,
   ].filter((value): value is string => value != null)
+}
+
+function pressureValue(pressure: MatchReview['pressure']): string {
+  if (
+    !pressure ||
+    pressure.myFirstMilitaryLossTimeSec == null ||
+    pressure.opponentFirstMilitaryLossTimeSec == null
+  ) {
+    return '-'
+  }
+  return `${formatDurationShort(pressure.myFirstMilitaryLossTimeSec)} / ${formatDurationShort(pressure.opponentFirstMilitaryLossTimeSec)}`
+}
+
+function pressureHint(review: MatchReview, tt: (value: string) => string): string {
+  const pressure = review.pressure
+  if (!pressure) return tt('First military-casualty timestamps unavailable.')
+  if (
+    pressure.myFirstMilitaryLossTimeSec == null ||
+    pressure.opponentFirstMilitaryLossTimeSec == null
+  ) {
+    return tt('First military-casualty timestamps unavailable.')
+  }
+  const parts = [
+    `${tt('you')} ${formatDurationShort(pressure.myFirstMilitaryLossTimeSec)}${casualtySuffix(review.me.firstMilitaryLoss)}`,
+    `${tt('opponent')} ${formatDurationShort(pressure.opponentFirstMilitaryLossTimeSec)}${casualtySuffix(review.opponent?.firstMilitaryLoss ?? null)}`,
+  ]
+  if (pressure.firstEnemyMilitaryLossCausedTimeSec != null) {
+    parts.push(
+      `${tt('first enemy loss by you')} ${formatDurationShort(pressure.firstEnemyMilitaryLossCausedTimeSec)}`,
+    )
+  }
+  if (pressure.responseLagSec != null) {
+    const sign = pressure.responseLagSec >= 0 ? '+' : '−'
+    parts.push(`${tt('response')} ${sign}${formatDurationShort(Math.abs(pressure.responseLagSec))}`)
+  }
+  return parts.join(' · ')
+}
+
+function casualtySuffix(event: MatchReviewPlayer['firstMilitaryLoss']): string {
+  if (!event) return ''
+  const label = event.targetUnitType
+    .replace(/^unit_/, '')
+    .replace(/_\d+_.+$/, '')
+    .replace(/_\d+$/, '')
+    .replace(/_/g, ' ')
+  return label ? ` (${label})` : ''
 }
 
 function TeamReviewComparison({
@@ -475,7 +545,9 @@ function TeamReviewComparison({
             {tt('Team comparison')}
           </h4>
           <p className="mt-1 text-[11px] text-muted-foreground">
-            {tt('Aggregated from the decoded summary players; this is a side-level read for team games.')}
+            {tt(
+              'Aggregated from the decoded summary players; this is a side-level read for team games.',
+            )}
           </p>
         </div>
         <span className="text-[10px] text-muted-foreground">
@@ -493,11 +565,27 @@ function TeamReviewComparison({
           </thead>
           <tbody>
             {[
-              [tt('Resources spent / gathered'), teamEconomy(comparison.mine), teamEconomy(comparison.enemy)],
+              [
+                tt('Resources spent / gathered'),
+                teamEconomy(comparison.mine),
+                teamEconomy(comparison.enemy),
+              ],
               [tt('Kills / troop losses'), teamTrade(comparison.mine), teamTrade(comparison.enemy)],
-              [tt('Units produced / peak army'), `${teamInt(comparison.mine.unitsProduced)} / ${teamInt(comparison.mine.largestArmy)}`, `${teamInt(comparison.enemy.unitsProduced)} / ${teamInt(comparison.enemy.largestArmy)}`],
-              [tt('Villager high / TC gaps'), `${teamInt(comparison.mine.villagerHigh)} / ${comparison.mine.tcIdleWindows}`, `${teamInt(comparison.enemy.villagerHigh)} / ${comparison.enemy.tcIdleWindows}`],
-              [tt('Upgrades'), teamInt(comparison.mine.upgrades), teamInt(comparison.enemy.upgrades)],
+              [
+                tt('Units produced / peak army'),
+                `${teamInt(comparison.mine.unitsProduced)} / ${teamInt(comparison.mine.largestArmy)}`,
+                `${teamInt(comparison.enemy.unitsProduced)} / ${teamInt(comparison.enemy.largestArmy)}`,
+              ],
+              [
+                tt('Villager high / TC gaps'),
+                `${teamInt(comparison.mine.villagerHigh)} / ${comparison.mine.tcIdleWindows}`,
+                `${teamInt(comparison.enemy.villagerHigh)} / ${comparison.enemy.tcIdleWindows}`,
+              ],
+              [
+                tt('Upgrades'),
+                teamInt(comparison.mine.upgrades),
+                teamInt(comparison.enemy.upgrades),
+              ],
             ].map(([label, mine, enemy]) => (
               <tr key={label} className="border-t border-border/60">
                 <td className="px-2 py-1.5 text-muted-foreground">{label}</td>
@@ -889,7 +977,13 @@ function CombatTable({
           better: 'high',
           value: (r) => villagerHighFor(r.profileId),
         },
-        { key: 'kills', label: tt('Killed'), align: 'right', better: 'high', value: (r) => r.kills },
+        {
+          key: 'kills',
+          label: tt('Killed'),
+          align: 'right',
+          better: 'high',
+          value: (r) => r.kills,
+        },
         { key: 'deaths', label: tt('Lost'), align: 'right', better: 'low', value: (r) => r.deaths },
         { key: 'kd', label: 'K/D', align: 'right', better: 'high', value: (r) => r.kd },
         {
@@ -1113,7 +1207,9 @@ function TeamContributionCard({
                   </td>
                   <MetricCell
                     raw={
-                      row.production.value == null ? '-' : `${fmtInt(row.production.value)} ${tt('units')}`
+                      row.production.value == null
+                        ? '-'
+                        : `${fmtInt(row.production.value)} ${tt('units')}`
                     }
                     detail={metricComparison(row.production, 'team total', tt)}
                   />

@@ -6,6 +6,7 @@ import { normalizeTeams } from '@api/types'
 import type { PerPlayerMatchStats } from '@domain/analysis'
 import type { MatchSummary } from '@domain/statsSummary'
 import type { VideoAnalysisRecord } from '@domain/videoAnalysis'
+import type { TwitchVodFinderInput } from '@domain/twitchVodFinder'
 import {
   CURATED_MATCH_REVIEWS_BY_GAME_ID,
   type CuratedMatchReview,
@@ -18,9 +19,12 @@ import { Badge } from '@shared/components/ui/badge'
 import { ErrorBox, Spinner } from '../components/feedback'
 import { GameSummaryPanel } from '../components/GameSummaryPanel'
 import { VideoAnalysisPanel } from '../components/VideoAnalysisPanel'
+import { TwitchVodCard } from '../components/TwitchVodCard'
+import { BuildOrderComparisonCard } from '../components/BuildOrderComparisonCard'
 import { CuratedMatchReviewCard } from '../components/CuratedMatchReviewCard'
 import { usePublicGame } from '../queries/usePublicGame'
 import { useVideoAnalyses } from '../queries/useVideoAnalyses'
+import { useTwitchVod } from '../queries/useTwitchVod'
 import { useI18n } from '../../i18n'
 
 export function PublicGameDetail() {
@@ -84,6 +88,17 @@ function PublicGameBody({
   const teams = normalizeTeams(detail.game)
   const players = teams.flat()
   const viewedPlayer = players.find((player) => player.profile_id === detail.profileId)
+  const viewedCiv = viewedPlayer?.civilization ?? null
+  const twitchVodInput: TwitchVodFinderInput = {
+    gameId: String(detail.game.game_id),
+    civilization: viewedCiv ?? 'english',
+    opponentCivilization:
+      players.find((player) => player.profile_id !== detail.profileId)?.civilization ?? null,
+    map: detail.game.map,
+    durationSec: detail.game.duration,
+  }
+  const twitchVodLookup = useTwitchVod(twitchVodInput, viewedCiv != null)
+  const verifiedVod = twitchVodLookup.data?.ok ? twitchVodLookup.data.data.vod : null
   const result = viewedPlayer?.result ?? null
   const statsByProfile = new Map(detail.perPlayer.map((stats) => [stats.profileId, stats]))
 
@@ -108,6 +123,7 @@ function PublicGameBody({
 
       <MatchFacts game={detail.game} viewedPlayer={viewedPlayer} />
       <TeamsCard teams={teams} />
+      <TwitchVodCard input={viewedCiv ? twitchVodInput : null} />
       {curatedReview && <CuratedMatchReviewCard review={curatedReview} />}
 
       {detail.perPlayer.length > 0 ? (
@@ -121,12 +137,26 @@ function PublicGameBody({
       )}
 
       {detail.summary ? (
-        <GameSummaryPanel
-          summary={detail.summary}
-          myCiv={viewedPlayer?.civilization ?? null}
-          perPlayer={detail.perPlayer}
-          myProfileId={detail.profileId}
-        />
+        <>
+          <BuildOrderComparisonCard
+            summary={detail.summary}
+            myCiv={viewedCiv}
+            myProfileId={detail.profileId}
+            myName={viewedPlayer?.name ?? null}
+            map={detail.game.map}
+            format={detail.game.kind}
+            patch={detail.game.patch == null ? null : String(detail.game.patch)}
+            perPlayer={detail.perPlayer}
+            linkedVideoAnalysis={videoAnalysis}
+            verifiedVod={verifiedVod}
+          />
+          <GameSummaryPanel
+            summary={detail.summary}
+            myCiv={viewedCiv}
+            perPlayer={detail.perPlayer}
+            myProfileId={detail.profileId}
+          />
+        </>
       ) : (
         <Card>
           <CardContent className="space-y-2 p-4">

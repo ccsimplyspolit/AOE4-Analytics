@@ -9,23 +9,23 @@ overlays, and some are build-order libraries.
 
 ## Matrix
 
-| Capability | Local status | Implementation / limitation |
-| --- | --- | --- |
-| AoE4World live player bar | Implemented | Local `/live` browser source polls `/api/live`, renders every detected team, player name, civilization, rank, rating, win rate, favorite civilizations, map/mode, and hides outside an ongoing match. `Stream Desk` also builds the official hosted AoE4World profile URL with `top`/`floating` and alternate-civ options. |
-| Ranked and team formats | Implemented | The live model keeps all teams, not only a 1v1 opponent; the stats/meta screens cover ranked/QM 1v1, 2v2, 3v3 and 4v4. |
-| OBS / Streamlabs browser source | Implemented | Local tournament source and live-match source are copyable and previewable from `Stream Desk`. |
-| Tournament score graphics | Implemented | Teams, civs, score, best-of, map series, civ draft, caster, countdown, spoiler, swap/reset, HTTP score routes, and CSS theme controls are available. |
-| FluffyMaguro player panel | Implemented | Native overlay includes matchup/stats, APM, post-game, session, counters, coach, age targets and build-order widgets. |
-| Illustrated build order | Implemented | Build steps render game icons and resource tokens; font/image size and overlay positions are configurable. |
-| Build step controls | Implemented | Clock-driven mode plus manual next/previous/reset step, build cycling, manual timer, and configurable global hotkeys. |
-| RTS_Overlay compatibility | Implemented | Import/export uses the normalized `.overlay.json` schema, with timing, villagers, resources, supply, age and notes. The editor validates feasibility and supports local save/share links. |
-| Build library search | Implemented | Library and Cellar now use tokenized fuzzy matching; searches tolerate punctuation, accents and incomplete subsequences. |
-| Faction/opponent build filters | Implemented | Guides library and Cellar filter by own civilization, opponent civilization and provenance. |
-| AoE4Guides community data | Implemented | Community source synchronizer/import path preserves author, score, views, patch, timestamps, source URL, confidence and sample metadata; duplicate build fingerprints are removed. Guides also has a debounced, typed online catalogue search using the provider's civ/sort API boundary, with preview and source-link preservation. |
-| Counter helper / quiz / video finder | Implemented | Available in Guides and Explorer; local data and external-source links are kept separate. |
-| Arbitrary custom overlay JavaScript | Intentionally not implemented | The local stream source accepts bounded CSS only. Executing arbitrary scripts from a settings field would give an OBS browser source code-execution surface; use the typed controls or edit the local template in source. |
-| AoE4World account/comments/ratings | Not replicated | The app consumes public data and links to the hosted service; private account state, community comments and server-side rating writes require the corresponding remote authentication/backend. |
-| Hosted AoE4World UI clone | Not replicated | The official hosted bar remains available through the generated public URL. The local source is a self-contained, offline-capable equivalent for local game data and tournament graphics. |
+| Capability                           | Local status                  | Implementation / limitation                                                                                                                                                                                                                                                                                                          |
+| ------------------------------------ | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| AoE4World live player bar            | Implemented                   | Local `/live` browser source polls `/api/live`, renders every detected team, player name, civilization, rank, rating, win rate, favorite civilizations, map/mode, and hides outside an ongoing match. `Stream Desk` also builds the official hosted AoE4World profile URL with `top`/`floating` and alternate-civ options.           |
+| Ranked and team formats              | Implemented                   | The live model keeps all teams, not only a 1v1 opponent; the stats/meta screens cover ranked/QM 1v1, 2v2, 3v3 and 4v4.                                                                                                                                                                                                               |
+| OBS / Streamlabs browser source      | Implemented                   | Local tournament source and live-match source are copyable and previewable from `Stream Desk`.                                                                                                                                                                                                                                       |
+| Tournament score graphics            | Implemented                   | Teams, civs, score, best-of, map series, civ draft, caster, countdown, spoiler, swap/reset, HTTP score routes, and CSS theme controls are available.                                                                                                                                                                                 |
+| FluffyMaguro player panel            | Implemented                   | Native overlay includes matchup/stats, APM, post-game, session, counters, coach, age targets and build-order widgets.                                                                                                                                                                                                                |
+| Illustrated build order              | Implemented                   | Build steps render game icons and resource tokens; font/image size and overlay positions are configurable.                                                                                                                                                                                                                           |
+| Build step controls                  | Implemented                   | Clock-driven mode plus manual next/previous/reset step, build cycling, manual timer, and configurable global hotkeys.                                                                                                                                                                                                                |
+| RTS_Overlay compatibility            | Implemented                   | Import/export uses the normalized `.overlay.json` schema, with timing, villagers, resources, supply, age and notes. The editor validates feasibility and supports local save/share links.                                                                                                                                            |
+| Build library search                 | Implemented                   | Library and Cellar now use tokenized fuzzy matching; searches tolerate punctuation, accents and incomplete subsequences.                                                                                                                                                                                                             |
+| Faction/opponent build filters       | Implemented                   | Guides library and Cellar filter by own civilization, opponent civilization and provenance.                                                                                                                                                                                                                                          |
+| AoE4Guides community data            | Implemented                   | Community source synchronizer/import path preserves author, score, views, patch, timestamps, source URL, confidence and sample metadata; duplicate build fingerprints are removed. Guides also has a debounced, typed online catalogue search using the provider's civ/sort API boundary, with preview and source-link preservation. |
+| Counter helper / quiz / video finder | Implemented                   | Available in Guides and Explorer; local data and external-source links are kept separate.                                                                                                                                                                                                                                            |
+| Arbitrary custom overlay JavaScript  | Intentionally not implemented | The local stream source accepts bounded CSS only. Executing arbitrary scripts from a settings field would give an OBS browser source code-execution surface; use the typed controls or edit the local template in source.                                                                                                            |
+| AoE4World account/comments/ratings   | Not replicated                | The app consumes public data and links to the hosted service; private account state, community comments and server-side rating writes require the corresponding remote authentication/backend.                                                                                                                                       |
+| Hosted AoE4World UI clone            | Not replicated                | The official hosted bar remains available through the generated public URL. The local source is a self-contained, offline-capable equivalent for local game data and tournament graphics.                                                                                                                                            |
 
 ## Source-to-local mapping
 
@@ -77,7 +77,10 @@ upstream application:
   now exposes a versioned snapshot envelope and freshness state. Large dump
   mirroring is still opt-in rather than an automatic background download. Data
   Studio can run the checked-in source orchestrator in dry-run or explicit
-  refresh mode and reports its captured output.
+  refresh mode and reports its captured output. The orchestrator also records
+  exact GitHub HEAD revisions for all twelve referenced upstream repositories in
+  `data/research/aoe4-upstream-revisions.json`, so a source refresh can be
+  reproduced and reviewed instead of relying on an unpinned `main`/`master`.
 - [FramHerel/Aoe4OverlayWinUI3](https://github.com/FramHerel/Aoe4OverlayWinUI3)
   and [ycxisreal/ycx-aoe4-hud-frontend](https://github.com/ycxisreal/ycx-aoe4-hud-frontend):
   native always-on-top placement, typed IPC, hotkeys and local HUD boundaries
@@ -105,7 +108,7 @@ missing functionality.
 The match review now exposes the evidence layer alongside the interpretation:
 
 - `summary totals`, `economy timeline`, `score timeline`, `build timeline`, and
-  `combat counters` are reported as explicit coverage flags. A low-coverage
+  `casualty timeline`, and `combat counters` are reported as explicit coverage flags. A low-coverage
   game is not allowed to look like a complete replay audit.
 - `Unspent float` is the last recorded resource bank as a percentage of total
   gathered resources. It is a conversion clue, not a claim that saving for an
@@ -113,10 +116,18 @@ The match review now exposes the evidence layer alongside the interpretation:
 - `Unit cadence` reports gaps between completed non-villager units. It is
   deliberately worded as an observable completion gap because the summary does
   not identify the exact queue state of every production building.
+- `First pressure` uses the decoded STLS casualty records: first hostile
+  military loss for each side, the first opponent loss attributed to the player,
+  and the elapsed response window. Unit type and timestamp are shown as evidence;
+  the UI does not call this a complete fight log or infer vision, movement, or
+  the exact reason a fight was won.
 - Reference selection now tests compatible candidates against the actual player
-  event timeline. An exact build extracted from a VOD linked to the same game is
-  preferred; otherwise the best observed fit is labeled as inferred, with its
-  matched-action count and confidence shown next to the source link.
+  event timeline. A caption-backed build with recognized tactics extracted from
+  a VOD linked to the same game is preferred; metadata-only VOD records remain
+  source evidence but cannot override the observed fit. Otherwise the best
+  observed fit is labeled as inferred, with its matched-action count and
+  confidence shown next to the source link. The same VOD/build audit is exposed
+  on local history and public match detail pages.
 - Local replay command analysis groups decoded inputs into five-minute windows
   and reports first-to-last activity change. Unknown commands, truncated data,
   failed actions, worker allocation, and scouting remain visible limitations.

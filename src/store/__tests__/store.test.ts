@@ -218,6 +218,33 @@ describe('sanitizePatch', () => {
     expect(sanitizePatch({ overlay: { buildOrderViewMode: 'script' as never } }).overlay).toEqual({})
   })
 
+  it('sanitizes overlay widget and build-order presentation settings', () => {
+    const out = sanitizePatch({
+      overlay: {
+        showMatchup: 0 as never,
+        showPostGame: 1 as never,
+        showStatus: false,
+        buildOrderMode: 'auto',
+        buildOrderPanelWidth: 999,
+        buildOrderShowNext: 0 as never,
+        buildOrderShowResources: 1 as never,
+        buildOrderShowNotes: false,
+        buildOrderShowResponsePlan: true,
+      },
+    })
+    expect(out.overlay).toEqual({
+      showMatchup: false,
+      showPostGame: true,
+      showStatus: false,
+      buildOrderMode: 'auto',
+      buildOrderPanelWidth: 520,
+      buildOrderShowNext: false,
+      buildOrderShowResources: true,
+      buildOrderShowNotes: false,
+      buildOrderShowResponsePlan: true,
+    })
+  })
+
   it('sanitizes the counter-cycle hotkey', () => {
     expect(sanitizePatch({ hotkeys: { nextCounter: 'Alt+C' } }).hotkeys).toEqual({
       nextCounter: 'Alt+C',

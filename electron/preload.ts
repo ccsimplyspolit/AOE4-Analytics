@@ -39,6 +39,7 @@ const api: RtslyticsApi = {
   updateSettings: (patch) => ipcRenderer.invoke(IpcChannels.settingsUpdate, patch),
 
   getCivMeta: (query) => ipcRenderer.invoke(IpcChannels.civMetaGet, query),
+  getRankedMapPool: () => ipcRenderer.invoke(IpcChannels.rankedMapPoolGet),
   getMatchupLab: (query) => ipcRenderer.invoke(IpcChannels.matchupLabGet, query),
   getCivDetailStats: (civ) => ipcRenderer.invoke(IpcChannels.civDetailGet, civ),
   getLeaderboard: (query) => ipcRenderer.invoke(IpcChannels.leaderboardGet, query),

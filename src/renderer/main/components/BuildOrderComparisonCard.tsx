@@ -1,8 +1,16 @@
-import { AlertTriangle, CheckCircle2, ClipboardCheck, ExternalLink, Info, XCircle } from 'lucide-react'
+import {
+  AlertTriangle,
+  CheckCircle2,
+  ClipboardCheck,
+  ExternalLink,
+  Info,
+  XCircle,
+} from 'lucide-react'
 import { useMemo } from 'react'
 import type { PerPlayerMatchStats } from '@domain/analysis'
 import type { MatchSummary, PlayerSummary } from '@domain/statsSummary'
 import type { VideoAnalysisRecord } from '@domain/videoAnalysis'
+import type { TwitchVodReference } from '@domain/twitchVodFinder'
 import { civFromToken } from '@domain/statsSummary'
 import {
   comparePlayerToBuild,
@@ -32,6 +40,7 @@ export function BuildOrderComparisonCard({
   referenceBuildName,
   perPlayer,
   linkedVideoAnalysis,
+  verifiedVod,
 }: {
   summary: MatchSummary | null
   myCiv: string | null
@@ -45,9 +54,19 @@ export function BuildOrderComparisonCard({
   perPlayer?: PerPlayerMatchStats[] | null
   /** Exact VOD analysis linked to this game, when public captions were extracted. */
   linkedVideoAnalysis?: VideoAnalysisRecord
+  /** Exact-game Twitch association, even before caption/build extraction. */
+  verifiedVod?: TwitchVodReference | null
 }) {
   const { tt, gameName } = useI18n()
   const players = summary?.players ?? EMPTY_PLAYERS
+  // A metadata-only VOD record proves the source URL, but not the build. Only
+  // caption-backed records with at least one recognized tactic may override
+  // the observed replay-fit reference.
+  const extractedVideoBuild =
+    linkedVideoAnalysis?.transcriptStatus === 'available' &&
+    (linkedVideoAnalysis.tactics?.length ?? 0) > 0
+      ? linkedVideoAnalysis.build
+      : null
   const audits = useMemo(
     () =>
       players.map((player) => {
@@ -56,7 +75,7 @@ export function BuildOrderComparisonCard({
         const playerStats = perPlayer?.find((row) => row.profileId === player.profileId) ?? null
         const hasOpponentTeamIds = Boolean(
           playerStats?.teamId != null &&
-            perPlayer?.some((row) => row.teamId != null && row.teamId !== playerStats.teamId),
+          perPlayer?.some((row) => row.teamId != null && row.teamId !== playerStats.teamId),
         )
         const opponentCivilizations = players
           .filter((other) => {
@@ -73,9 +92,7 @@ export function BuildOrderComparisonCard({
           patch,
           pinnedName: playerIsMe ? referenceBuildName : null,
           preferredBuild:
-            playerIsMe && linkedVideoAnalysis?.build.build_order.length
-              ? linkedVideoAnalysis.build
-              : null,
+            playerIsMe && extractedVideoBuild?.build_order.length ? extractedVideoBuild : null,
           player,
           opponentCivilizations,
         })
@@ -91,23 +108,41 @@ export function BuildOrderComparisonCard({
           referenceConfidence: selection.observedConfidence,
         })
       }),
-    [linkedVideoAnalysis, map, myCiv, myName, myProfileId, patch, perPlayer, players, referenceBuildName],
+    [
+      extractedVideoBuild,
+      map,
+      myCiv,
+      myName,
+      myProfileId,
+      patch,
+      perPlayer,
+      players,
+      referenceBuildName,
+    ],
   )
   if (!summary) {
     return (
-      <section className="space-y-2">
+      <section id="build-order-audit" className="scroll-mt-4 space-y-2">
         <h2 className="flex items-center gap-2 text-lg font-semibold tracking-tight">
           <ClipboardCheck className="h-4 w-4 text-primary" />
           {tt('Build-order audit · all players')}
         </h2>
         <Card>
           <CardContent className="space-y-2 p-4 text-sm">
-            <p className="font-medium">{summaryLoading ? tt('Reading match evidence…') : tt('Detailed build comparison is unavailable for this game.')}</p>
+            <p className="font-medium">
+              {summaryLoading
+                ? tt('Reading match evidence…')
+                : tt('Detailed build comparison is unavailable for this game.')}
+            </p>
             <p className="text-xs leading-relaxed text-muted-foreground">
-              {tt('The game has no decoded stats.rgs or cached Relic summary yet, so actual player actions, landmark timings and build deviations cannot be verified.')}
+              {tt(
+                'The game has no decoded stats.rgs or cached Relic summary yet, so actual player actions, landmark timings and build deviations cannot be verified.',
+              )}
             </p>
             <p className="text-xs text-muted-foreground">
-              {tt('Sync the match again, connect Steam for ranked summaries, or save the local replay and run replay analysis.')}
+              {tt(
+                'Sync the match again, connect Steam for ranked summaries, or save the local replay and run replay analysis.',
+              )}
             </p>
           </CardContent>
         </Card>
@@ -118,7 +153,7 @@ export function BuildOrderComparisonCard({
   const comparable = audits.filter((audit) => audit.report != null)
 
   return (
-    <section className="space-y-3">
+    <section id="build-order-audit" className="scroll-mt-4 space-y-3">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h2 className="flex items-center gap-2 text-lg font-semibold tracking-tight">
           <ClipboardCheck className="h-4 w-4 text-primary" />
@@ -133,6 +168,13 @@ export function BuildOrderComparisonCard({
 
       <Card>
         <CardContent className="space-y-3 p-4">
+          {verifiedVod && (
+            <ExactVodEvidence
+              vod={verifiedVod}
+              civilization={myCiv}
+              extracted={Boolean(extractedVideoBuild)}
+            />
+          )}
           <div className="overflow-x-auto rounded-md border border-border/70">
             <table className="w-full min-w-[680px] text-sm">
               <thead>
@@ -140,7 +182,7 @@ export function BuildOrderComparisonCard({
                   <th className="rts-ledger-head px-3 py-2 text-left">{tt('Player')}</th>
                   <th className="rts-ledger-head px-2 py-2 text-left">{tt('Civilization')}</th>
                   <th className="rts-ledger-head px-2 py-2 text-left">{tt('Reference build')}</th>
-              <th className="rts-ledger-head px-2 py-2 text-right">{tt('On plan')}</th>
+                  <th className="rts-ledger-head px-2 py-2 text-right">{tt('On plan')}</th>
                   <th className="rts-ledger-head px-2 py-2 text-right">{tt('Good')}</th>
                   <th className="rts-ledger-head px-3 py-2 text-right">{tt('Improve')}</th>
                 </tr>
@@ -168,11 +210,62 @@ export function BuildOrderComparisonCard({
 
           <p className="flex items-start gap-2 text-[11px] leading-relaxed text-muted-foreground">
             <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-            {tt('Confirmed errors use only decoded build events and landmark timings. Review items are not proof of a mistake. Villager assignment, rally points, scouting, and unrecorded commands are shown as unavailable, not guessed.')}
+            {tt(
+              'Confirmed errors use only decoded build events and landmark timings. Review items are not proof of a mistake. Villager assignment, rally points, scouting, and unrecorded commands are shown as unavailable, not guessed.',
+            )}
           </p>
         </CardContent>
       </Card>
     </section>
+  )
+}
+
+function ExactVodEvidence({
+  vod,
+  civilization,
+  extracted,
+}: {
+  vod: TwitchVodReference
+  civilization: string | null
+  extracted: boolean
+}) {
+  const { tt } = useI18n()
+  const url = safeExternalUrl(vod.url)
+  if (!url) return null
+  const civParam = civilization ? `&civilization=${encodeURIComponent(civilization)}` : ''
+  const analyzeUrl = `#/tincture?tab=cellar&video=${encodeURIComponent(url)}&gameId=${encodeURIComponent(vod.gameId)}${civParam}`
+  return (
+    <div className="flex flex-wrap items-center justify-between gap-3 rounded-md border border-violet-400/25 bg-violet-500/[0.06] px-3 py-2">
+      <div className="min-w-0">
+        <div className="text-xs font-medium text-violet-200">{tt('Verified exact-game VOD')}</div>
+        <p className="mt-0.5 text-[11px] text-muted-foreground">
+          {extracted
+            ? tt('The extracted video build is used as the preferred reference for your player.')
+            : tt(
+                'This confirms the video belongs to this game; the build is still inferred until the VOD is analyzed.',
+              )}
+        </p>
+      </div>
+      <div className="flex shrink-0 flex-wrap gap-2">
+        <a
+          href={analyzeUrl}
+          className="inline-flex items-center gap-1.5 rounded-md border border-primary/35 px-2.5 py-1.5 text-[11px] font-medium text-primary hover:bg-primary/10"
+        >
+          {tt('Analyze exact VOD')}
+        </a>
+        <a
+          href={url}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1.5 rounded-md bg-violet-500 px-2.5 py-1.5 text-[11px] font-medium text-white hover:bg-violet-400"
+        >
+          {vod.offsetSec != null
+            ? tt('Watch VOD from {time}').replace('{time}', formatDurationShort(vod.offsetSec))
+            : tt('Watch VOD')}
+          <ExternalLink className="h-3.5 w-3.5" />
+        </a>
+      </div>
+    </div>
   )
 }
 
@@ -197,7 +290,11 @@ function AuditSummaryRow({
     <tr className="border-b border-border/50 last:border-b-0">
       <td className="px-3 py-2 font-medium">
         {name}
-        {me && <Badge className="ml-2 text-[10px]" variant="outline">{tt('You')}</Badge>}
+        {me && (
+          <Badge className="ml-2 text-[10px]" variant="outline">
+            {tt('You')}
+          </Badge>
+        )}
       </td>
       <td className="px-2 py-2 text-muted-foreground">
         {audit.civ ? gameName(civDisplayName(audit.civ)) : tt('Unknown')}
@@ -208,17 +305,23 @@ function AuditSummaryRow({
       <td className="px-2 py-2 text-right">
         {score == null ? <span className="text-muted-foreground">—</span> : <Score score={score} />}
       </td>
-      <td className="px-2 py-2 text-right tabular-nums text-win">
-        {audit.strengths.length}
-      </td>
+      <td className="px-2 py-2 text-right tabular-nums text-win">{audit.strengths.length}</td>
       <td className="px-3 py-2 text-right tabular-nums">
-        <span className={audit.improvements.length > 0 ? 'text-loss' : 'text-win'}>{audit.improvements.length}</span>
+        <span className={audit.improvements.length > 0 ? 'text-loss' : 'text-win'}>
+          {audit.improvements.length}
+        </span>
       </td>
     </tr>
   )
 }
 
-function AuditDetail({ audit, gameName }: { audit: PlayerBuildAudit; gameName: (value: string) => string }) {
+function AuditDetail({
+  audit,
+  gameName,
+}: {
+  audit: PlayerBuildAudit
+  gameName: (value: string) => string
+}) {
   const { tt } = useI18n()
   const name = audit.player.name || `Player ${audit.player.playerId}`
   const title = audit.civ ? `${name} · ${gameName(civDisplayName(audit.civ))}` : name
@@ -237,9 +340,12 @@ function AuditDetail({ audit, gameName }: { audit: PlayerBuildAudit; gameName: (
         {audit.reference && audit.report ? (
           <>
             <p className="text-xs text-muted-foreground">
-              {tt('Compared with')} <span className="font-medium text-foreground">{audit.reference.name}</span>.
-              {' '}{referenceSelectionText(audit, tt)}{' '}
-              {audit.hasTimeline ? tt('The replay timeline is available.') : tt('The replay has no decoded build timeline.')}
+              {tt('Compared with')}{' '}
+              <span className="font-medium text-foreground">{audit.reference.name}</span>.{' '}
+              {referenceSelectionText(audit, tt)}{' '}
+              {audit.hasTimeline
+                ? tt('The replay timeline is available.')
+                : tt('The replay has no decoded build timeline.')}
             </p>
             {referenceUrl(audit) && (
               <a
@@ -259,7 +365,9 @@ function AuditDetail({ audit, gameName }: { audit: PlayerBuildAudit; gameName: (
             )}
             {audit.referenceReason === 'observed' && audit.referenceFitScore != null && (
               <p className="text-[11px] text-muted-foreground">
-                {tt('Inferred from the observed timeline')}: {audit.referenceFitScore}% · {audit.referenceMatchedActions}/{audit.referenceExpectedActions} {tt('actions matched')} · {tt(`${audit.referenceConfidence} confidence`)}
+                {tt('Inferred from the observed timeline')}: {audit.referenceFitScore}% ·{' '}
+                {audit.referenceMatchedActions}/{audit.referenceExpectedActions}{' '}
+                {tt('actions matched')} · {tt(`${audit.referenceConfidence} confidence`)}
               </p>
             )}
             <CoverageLine audit={audit} />
@@ -267,13 +375,30 @@ function AuditDetail({ audit, gameName }: { audit: PlayerBuildAudit; gameName: (
             {audit.improvements.length > 0 ? (
               <div className="space-y-1.5">
                 {audit.improvements.map((issue, index) => (
-                  <div key={`${issue.kind}-${index}`} className={cn(
-                    'flex items-start gap-2 rounded-md border p-2 text-xs',
-                    issue.certainty === 'review' ? 'border-warn/20 bg-warn/5' : issue.severity === 'info' ? 'border-primary/20 bg-primary/5' : 'border-loss/20 bg-loss/5',
-                  )}>
-                    <AlertTriangle className={cn('mt-0.5 h-3.5 w-3.5 shrink-0', issue.certainty === 'review' || issue.severity === 'info' ? 'text-warn' : 'text-loss')} />
+                  <div
+                    key={`${issue.kind}-${index}`}
+                    className={cn(
+                      'flex items-start gap-2 rounded-md border p-2 text-xs',
+                      issue.certainty === 'review'
+                        ? 'border-warn/20 bg-warn/5'
+                        : issue.severity === 'info'
+                          ? 'border-primary/20 bg-primary/5'
+                          : 'border-loss/20 bg-loss/5',
+                    )}
+                  >
+                    <AlertTriangle
+                      className={cn(
+                        'mt-0.5 h-3.5 w-3.5 shrink-0',
+                        issue.certainty === 'review' || issue.severity === 'info'
+                          ? 'text-warn'
+                          : 'text-loss',
+                      )}
+                    />
                     <div>
-                      <div className="font-medium">{issue.certainty === 'review' ? `${tt('Review')}: ` : ''}{issue.message}</div>
+                      <div className="font-medium">
+                        {issue.certainty === 'review' ? `${tt('Review')}: ` : ''}
+                        {issue.message}
+                      </div>
                       <div className="text-muted-foreground">{issue.evidence}</div>
                     </div>
                   </div>
@@ -281,7 +406,8 @@ function AuditDetail({ audit, gameName }: { audit: PlayerBuildAudit; gameName: (
               </div>
             ) : (
               <div className="flex items-center gap-2 rounded-md border border-win/20 bg-win/5 p-2 text-xs text-win">
-                <CheckCircle2 className="h-3.5 w-3.5" /> {tt('No confirmed build-order deviations in the decoded timeline.')}
+                <CheckCircle2 className="h-3.5 w-3.5" />{' '}
+                {tt('No confirmed build-order deviations in the decoded timeline.')}
               </div>
             )}
             <TimingTable audit={audit} />
@@ -290,7 +416,9 @@ function AuditDetail({ audit, gameName }: { audit: PlayerBuildAudit; gameName: (
         ) : (
           <div className="flex items-start gap-2 text-xs text-muted-foreground">
             <XCircle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-warn" />
-            <span>{audit.issues[0]?.message ?? tt('No compatible build is available for this player.')}</span>
+            <span>
+              {audit.issues[0]?.message ?? tt('No compatible build is available for this player.')}
+            </span>
           </div>
         )}
       </div>
@@ -311,9 +439,17 @@ function CoverageLine({ audit }: { audit: PlayerBuildAudit }) {
           : tt('no gradeable data')
   return (
     <div className="flex flex-wrap gap-x-3 gap-y-1 rounded-md border border-border/60 bg-secondary/20 px-2 py-1.5 text-[11px] text-muted-foreground">
-      <span>{tt('Evidence')}: {c.eventCount} {tt('decoded events')}</span>
-      <span>{c.gradeableCheckpoints}/{c.timedCheckpoints} {tt('timing checkpoints')}</span>
-      {c.expectedActions > 0 && <span>{c.matchedActions}/{c.expectedActions} {tt('actions matched')}</span>}
+      <span>
+        {tt('Evidence')}: {c.eventCount} {tt('decoded events')}
+      </span>
+      <span>
+        {c.gradeableCheckpoints}/{c.timedCheckpoints} {tt('timing checkpoints')}
+      </span>
+      {c.expectedActions > 0 && (
+        <span>
+          {c.matchedActions}/{c.expectedActions} {tt('actions matched')}
+        </span>
+      )}
       <span>{confidence}</span>
     </div>
   )
@@ -328,7 +464,10 @@ function Strengths({ audit }: { audit: PlayerBuildAudit }) {
       </h3>
       <div className="grid gap-1.5 md:grid-cols-2">
         {audit.strengths.map((finding, index) => (
-          <div key={`${finding.kind}-${index}`} className="rounded-md border border-win/15 bg-win/5 p-2 text-xs">
+          <div
+            key={`${finding.kind}-${index}`}
+            className="rounded-md border border-win/15 bg-win/5 p-2 text-xs"
+          >
             <div className="font-medium text-win">{finding.message}</div>
             <div className="text-muted-foreground">{finding.evidence}</div>
           </div>
@@ -338,16 +477,17 @@ function Strengths({ audit }: { audit: PlayerBuildAudit }) {
   )
 }
 
-function referenceSelectionText(
-  audit: PlayerBuildAudit,
-  tt: (value: string) => string,
-): string {
+function referenceSelectionText(audit: PlayerBuildAudit, tt: (value: string) => string): string {
   if (audit.referenceReason === 'pinned') return tt('Pinned build selected.')
   if (audit.referenceReason === 'video') return tt('Exact linked VOD build selected.')
-  if (audit.referenceReason === 'observed') return `${tt('Selected by observed timeline fit')} (${audit.referenceCandidates}).`
-  if (audit.referenceReason === 'matchup') return `${tt('Build selected for this matchup')} (${audit.referenceCandidates}).`
-  if (audit.referenceReason === 'map') return `${tt('Best compatible build for this map')} (${audit.referenceCandidates}).`
-  if (audit.referenceReason === 'patch') return `${tt('Build matching the current patch')} (${audit.referenceCandidates}).`
+  if (audit.referenceReason === 'observed')
+    return `${tt('Selected by observed timeline fit')} (${audit.referenceCandidates}).`
+  if (audit.referenceReason === 'matchup')
+    return `${tt('Build selected for this matchup')} (${audit.referenceCandidates}).`
+  if (audit.referenceReason === 'map')
+    return `${tt('Best compatible build for this map')} (${audit.referenceCandidates}).`
+  if (audit.referenceReason === 'patch')
+    return `${tt('Build matching the current patch')} (${audit.referenceCandidates}).`
   return audit.referenceCandidates > 1
     ? `${tt('Best compatible build selected')} (${audit.referenceCandidates}).`
     : tt('The only compatible build was selected.')
@@ -356,8 +496,12 @@ function referenceSelectionText(
 function referenceUrl(audit: PlayerBuildAudit): string | null {
   const url = audit.reference?.video ?? audit.reference?.source ?? null
   if (!url) return null
+  return safeExternalUrl(url)
+}
+
+function safeExternalUrl(value: string): string | null {
   try {
-    const parsed = new URL(url)
+    const parsed = new URL(value)
     return parsed.protocol === 'https:' ? parsed.toString() : null
   } catch {
     return null
@@ -370,7 +514,9 @@ function TimingTable({ audit }: { audit: PlayerBuildAudit }) {
   if (checkpoints.length === 0) return null
   return (
     <div>
-      <h3 className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-primary">{tt('Timing checkpoints')}</h3>
+      <h3 className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-primary">
+        {tt('Timing checkpoints')}
+      </h3>
       <div className="overflow-x-auto rounded-md border border-border/70">
         <table className="w-full min-w-[540px] text-xs">
           <thead>
@@ -384,17 +530,50 @@ function TimingTable({ audit }: { audit: PlayerBuildAudit }) {
           </thead>
           <tbody>
             {checkpoints.map((checkpoint, index) => {
-              const actual = checkpoint.kind === 'villagers' ? checkpoint.actualVillagers : checkpoint.actualTimeSec
-              const target = checkpoint.kind === 'villagers' ? checkpoint.targetVillagers : checkpoint.targetTimeSec
-              const delta = checkpoint.kind === 'villagers' ? checkpoint.villagerDelta : checkpoint.deltaSec
-              const status = checkpoint.ok == null ? 'unknown' : checkpoint.ok ? 'ok' : delta != null && delta > 0 ? 'late' : 'early'
+              const actual =
+                checkpoint.kind === 'villagers'
+                  ? checkpoint.actualVillagers
+                  : checkpoint.actualTimeSec
+              const target =
+                checkpoint.kind === 'villagers'
+                  ? checkpoint.targetVillagers
+                  : checkpoint.targetTimeSec
+              const delta =
+                checkpoint.kind === 'villagers' ? checkpoint.villagerDelta : checkpoint.deltaSec
+              const status =
+                checkpoint.ok == null
+                  ? 'unknown'
+                  : checkpoint.ok
+                    ? 'ok'
+                    : delta != null && delta > 0
+                      ? 'late'
+                      : 'early'
               return (
-                <tr key={`${checkpoint.kind}-${index}`} className="border-b border-border/50 last:border-b-0">
+                <tr
+                  key={`${checkpoint.kind}-${index}`}
+                  className="border-b border-border/50 last:border-b-0"
+                >
                   <td className="px-2 py-1.5">{checkpoint.label}</td>
-                  <td className="px-2 py-1.5 text-right tabular-nums">{checkpoint.kind === 'villagers' ? target : formatDurationShort(target)}</td>
-                  <td className="px-2 py-1.5 text-right tabular-nums">{actual == null ? '—' : checkpoint.kind === 'villagers' ? actual : formatDurationShort(actual)}</td>
-                  <td className="px-2 py-1.5 text-right tabular-nums">{delta == null ? '—' : checkpoint.kind === 'villagers' ? `${delta > 0 ? '+' : ''}${delta}` : `${delta > 0 ? '+' : ''}${formatDurationShort(Math.abs(delta))}`}</td>
-                  <td className="px-2 py-1.5 text-right"><Status status={status} /></td>
+                  <td className="px-2 py-1.5 text-right tabular-nums">
+                    {checkpoint.kind === 'villagers' ? target : formatDurationShort(target)}
+                  </td>
+                  <td className="px-2 py-1.5 text-right tabular-nums">
+                    {actual == null
+                      ? '—'
+                      : checkpoint.kind === 'villagers'
+                        ? actual
+                        : formatDurationShort(actual)}
+                  </td>
+                  <td className="px-2 py-1.5 text-right tabular-nums">
+                    {delta == null
+                      ? '—'
+                      : checkpoint.kind === 'villagers'
+                        ? `${delta > 0 ? '+' : ''}${delta}`
+                        : `${delta > 0 ? '+' : ''}${formatDurationShort(Math.abs(delta))}`}
+                  </td>
+                  <td className="px-2 py-1.5 text-right">
+                    <Status status={status} />
+                  </td>
                 </tr>
               )
             })}
@@ -409,12 +588,23 @@ function ActionTable({ audit }: { audit: PlayerBuildAudit }) {
   const { tt } = useI18n()
   return (
     <div>
-      <h3 className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-primary">{tt('Action verification')}</h3>
+      <h3 className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-primary">
+        {tt('Action verification')}
+      </h3>
       <div className="space-y-1">
         {audit.actions.map((action, index) => (
-          <div key={`${action.stepIndex}-${index}`} className="grid gap-1 rounded-md border border-border/60 px-2 py-1.5 text-xs md:grid-cols-[1fr_1fr_auto] md:items-center">
-            <span className="text-muted-foreground">{formatDurationShort(action.targetTimeSec)} · {action.note}</span>
-            <span>{action.actual ? `${action.actual.name} @ ${formatDurationShort(action.actual.timeSec)}` : tt('Not found in replay timeline')}</span>
+          <div
+            key={`${action.stepIndex}-${index}`}
+            className="grid gap-1 rounded-md border border-border/60 px-2 py-1.5 text-xs md:grid-cols-[1fr_1fr_auto] md:items-center"
+          >
+            <span className="text-muted-foreground">
+              {formatDurationShort(action.targetTimeSec)} · {action.note}
+            </span>
+            <span>
+              {action.actual
+                ? `${action.actual.name} @ ${formatDurationShort(action.actual.timeSec)}`
+                : tt('Not found in replay timeline')}
+            </span>
             <Status status={action.status} />
           </div>
         ))}
@@ -424,13 +614,44 @@ function ActionTable({ audit }: { audit: PlayerBuildAudit }) {
 }
 
 function Score({ score }: { score: number }) {
-  return <span className={cn('rounded-sm px-1.5 py-0.5 font-semibold tabular-nums', score >= 80 ? 'bg-win/15 text-win' : score >= 50 ? 'bg-warn/15 text-warn' : 'bg-loss/15 text-loss')}>{score}%</span>
+  return (
+    <span
+      className={cn(
+        'rounded-sm px-1.5 py-0.5 font-semibold tabular-nums',
+        score >= 80
+          ? 'bg-win/15 text-win'
+          : score >= 50
+            ? 'bg-warn/15 text-warn'
+            : 'bg-loss/15 text-loss',
+      )}
+    >
+      {score}%
+    </span>
+  )
 }
 
 function Status({ status }: { status: BuildAuditStatus }) {
   const { tt } = useI18n()
-  const label = status === 'ok' ? tt('OK') : status === 'late' ? tt('Late') : status === 'early' ? tt('Early') : status === 'missing' ? tt('Missing') : tt('Unavailable')
-  return <span className={cn('font-medium', status === 'ok' ? 'text-win' : status === 'unknown' ? 'text-muted-foreground' : 'text-loss')}>{label}</span>
+  const label =
+    status === 'ok'
+      ? tt('OK')
+      : status === 'late'
+        ? tt('Late')
+        : status === 'early'
+          ? tt('Early')
+          : status === 'missing'
+            ? tt('Missing')
+            : tt('Unavailable')
+  return (
+    <span
+      className={cn(
+        'font-medium',
+        status === 'ok' ? 'text-win' : status === 'unknown' ? 'text-muted-foreground' : 'text-loss',
+      )}
+    >
+      {label}
+    </span>
+  )
 }
 
 function isMe(

@@ -17,6 +17,12 @@ export interface OverlaySettings {
   position: OverlayPosition
   /** When locked the overlay is click-through; unlock to drag/resize. */
   locked: boolean
+  /** Show the live matchup/team bar. */
+  showMatchup: boolean
+  /** Show the post-game result/coaching card after analysis completes. */
+  showPostGame: boolean
+  /** Show the small waiting/analyzing status pill while no card is visible. */
+  showStatus: boolean
   /**
    * The civ whose build order the overlay defaults to when it can't detect the
    * live civ (custom/AI games, menus) — remembered from your last manual build
@@ -64,6 +70,8 @@ export interface OverlaySettings {
    * (set from Guides → Build Orders → "Show in overlay"). Null = widget hidden.
    */
   buildOrderId: string | null
+  /** How the build widget chooses its source during a match. */
+  buildOrderMode: 'manual' | 'auto' | 'hidden'
   /**
    * Overlay widget scale [0.75, 1.5]. Applied per widget as a CSS transform
    * around each widget's anchor corner, so saved positions stay put.
@@ -77,6 +85,16 @@ export interface OverlaySettings {
   buildOrderImageSize: number
   /** Build-order presentation: rich icon cards or the compact original TXT-style view. */
   buildOrderViewMode: 'illustrated' | 'text'
+  /** Show the dim preview of the next build step. */
+  buildOrderShowNext: boolean
+  /** Show resource and villager split values in the active step. */
+  buildOrderShowResources: boolean
+  /** Show the instruction/note text for the active step. */
+  buildOrderShowNotes: boolean
+  /** Show contextual scout/counter response forks below the build. */
+  buildOrderShowResponsePlan: boolean
+  /** Build widget width in pixels [280, 520]. */
+  buildOrderPanelWidth: number
   /** Optional user CSS for the transparent overlay (CSS only; scripts are never executed). */
   customCss: string
 }
@@ -275,6 +293,9 @@ export const DEFAULT_SETTINGS: AppSettings = {
     opacity: 0.92,
     position: 'top-center',
     locked: true,
+    showMatchup: true,
+    showPostGame: true,
+    showStatus: true,
     defaultBuildCiv: null,
     widgets: DEFAULT_OVERLAY_WIDGETS,
     apm: true,
@@ -286,12 +307,18 @@ export const DEFAULT_SETTINGS: AppSettings = {
     showCounter: true,
     showCoach: true,
     buildOrderId: null,
+    buildOrderMode: 'manual',
     scale: 1,
     widgetPositions: DEFAULT_OVERLAY_WIDGET_POSITIONS,
-  buildOrderFontSize: 14,
-  buildOrderImageSize: 30,
-  buildOrderViewMode: 'illustrated',
-  customCss: '',
+    buildOrderFontSize: 14,
+    buildOrderImageSize: 30,
+    buildOrderViewMode: 'illustrated',
+    buildOrderShowNext: true,
+    buildOrderShowResources: true,
+    buildOrderShowNotes: true,
+    buildOrderShowResponsePlan: true,
+    buildOrderPanelWidth: 340,
+    customCss: '',
   },
   hotkeys: DEFAULT_HOTKEYS,
   polling: { idleIntervalMs: 15_000, activeIntervalMs: 8_000 },
@@ -322,6 +349,7 @@ const LEADERBOARDS: readonly Leaderboard[] = [
 const OVERLAY_POSITIONS = ['top-left', 'top-center', 'top-right', 'custom'] as const
 const APM_CORNERS = ['top-left', 'top-right', 'bottom-left', 'bottom-right'] as const
 const TROOPS_POS = ['bar', 'hidden'] as const
+const BUILD_ORDER_MODES = ['manual', 'auto', 'hidden'] as const
 const WIDGET_ANCHORS: readonly OverlayWidgetAnchor[] = [
   'top-left',
   'top-center',
@@ -404,6 +432,9 @@ function sanitizeOverlay(v: unknown): Partial<OverlaySettings> | undefined {
     if (s) out.position = s
   }
   if ('locked' in v) out.locked = Boolean(v.locked)
+  if ('showMatchup' in v) out.showMatchup = Boolean(v.showMatchup)
+  if ('showPostGame' in v) out.showPostGame = Boolean(v.showPostGame)
+  if ('showStatus' in v) out.showStatus = Boolean(v.showStatus)
   if ('defaultBuildCiv' in v) {
     const s = stringOrNull(v.defaultBuildCiv)
     if (s !== undefined) out.defaultBuildCiv = s
@@ -431,6 +462,10 @@ function sanitizeOverlay(v: unknown): Partial<OverlaySettings> | undefined {
     const s = stringOrNull(v.buildOrderId)
     if (s !== undefined) out.buildOrderId = s
   }
+  if ('buildOrderMode' in v) {
+    const mode = oneOf(v.buildOrderMode, BUILD_ORDER_MODES)
+    if (mode) out.buildOrderMode = mode
+  }
   if ('scale' in v) {
     const n = clamped(v.scale, 0.75, 1.5)
     if (n != null) out.scale = n
@@ -450,6 +485,16 @@ function sanitizeOverlay(v: unknown): Partial<OverlaySettings> | undefined {
   if ('buildOrderViewMode' in v) {
     const mode = oneOf(v.buildOrderViewMode, ['illustrated', 'text'] as const)
     if (mode) out.buildOrderViewMode = mode
+  }
+  if ('buildOrderShowNext' in v) out.buildOrderShowNext = Boolean(v.buildOrderShowNext)
+  if ('buildOrderShowResources' in v) out.buildOrderShowResources = Boolean(v.buildOrderShowResources)
+  if ('buildOrderShowNotes' in v) out.buildOrderShowNotes = Boolean(v.buildOrderShowNotes)
+  if ('buildOrderShowResponsePlan' in v) {
+    out.buildOrderShowResponsePlan = Boolean(v.buildOrderShowResponsePlan)
+  }
+  if ('buildOrderPanelWidth' in v) {
+    const n = clamped(v.buildOrderPanelWidth, 280, 520)
+    if (n != null) out.buildOrderPanelWidth = Math.round(n)
   }
   if ('customCss' in v && typeof v.customCss === 'string') {
     // Keep the setting bounded so a malformed renderer patch cannot turn the

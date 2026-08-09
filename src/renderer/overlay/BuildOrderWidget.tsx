@@ -138,6 +138,10 @@ export function BuildOrderWidget({
   fontSize = 14,
   iconSize = 30,
   viewMode = 'illustrated',
+  showNext = true,
+  showResources = true,
+  showNotes = true,
+  showResponsePlan = true,
   noBuildCiv,
   opponentCivs = [],
 }: {
@@ -151,6 +155,14 @@ export function BuildOrderWidget({
   iconSize?: number
   /** Rich icon view or compact plain-text view compatible with classic RTS overlays. */
   viewMode?: 'illustrated' | 'text'
+  /** Keep the dim next-step preview below the active step. */
+  showNext?: boolean
+  /** Show resource/villager requirements in the active step. */
+  showResources?: boolean
+  /** Show the active step's instruction text. */
+  showNotes?: boolean
+  /** Show the contextual counter/scouting response plan. */
+  showResponsePlan?: boolean
   /** Player's civ name when no bundled build matches it — the shown build is a reference. */
   noBuildCiv?: string | null
   /** Known lobby civilizations only; null entries preserve honest team coverage. */
@@ -216,31 +228,33 @@ export function BuildOrderWidget({
                 ))}
               </div>
             )}
-            {viewMode === 'text' && (
+            {showNotes && viewMode === 'text' && (
               <div className="min-w-0 flex-1 text-sm font-medium leading-snug text-white/90">
                 {plainNote(step.notes[0]) || tt('No instruction for this step')}
               </div>
             )}
-            <div className="ml-auto flex items-center gap-2 text-[12px] tabular-nums text-white/85">
-              <Res glyph={RES_GLYPH.food} icon={RES_ICON.food} value={r?.food} />
-              <Res glyph={RES_GLYPH.wood} icon={RES_ICON.wood} value={r?.wood} />
-              <Res glyph={RES_GLYPH.gold} icon={RES_ICON.gold} value={r?.gold} />
-              <Res glyph={RES_GLYPH.stone} icon={RES_ICON.stone} value={r?.stone} />
-              <Res
-                glyph={RES_GLYPH.villager}
-                icon={RES_ICON.villager}
-                value={step.villager_count}
-              />
-              {step.time && (
-                <span className="whitespace-nowrap text-white/45">
-                  {TIME_GLYPH} {step.time}
-                </span>
-              )}
-            </div>
+            {showResources && (
+              <div className="ml-auto flex items-center gap-2 text-[12px] tabular-nums text-white/85">
+                <Res glyph={RES_GLYPH.food} icon={RES_ICON.food} value={r?.food} />
+                <Res glyph={RES_GLYPH.wood} icon={RES_ICON.wood} value={r?.wood} />
+                <Res glyph={RES_GLYPH.gold} icon={RES_ICON.gold} value={r?.gold} />
+                <Res glyph={RES_GLYPH.stone} icon={RES_ICON.stone} value={r?.stone} />
+                <Res
+                  glyph={RES_GLYPH.villager}
+                  icon={RES_ICON.villager}
+                  value={step.villager_count}
+                />
+                {step.time && (
+                  <span className="whitespace-nowrap text-white/45">
+                    {TIME_GLYPH} {step.time}
+                  </span>
+                )}
+              </div>
+            )}
           </div>
 
           {/* the single key instruction for this step */}
-          {viewMode === 'illustrated' && step.notes[0] && (
+          {showNotes && viewMode === 'illustrated' && step.notes[0] && (
             <div className="mt-1 flex items-center gap-[5px] text-sm font-medium leading-snug">
               {renderNote(step.notes[0])}
             </div>
@@ -249,7 +263,7 @@ export function BuildOrderWidget({
       )}
 
       {/* dim "next" preview — keeps you one step ahead without the full list */}
-      {next && (
+      {showNext && next && (
         <div className="mt-1 flex items-center gap-1.5 px-1 text-[11px] text-white/45">
           <span className="uppercase tracking-wide">{tt('next')}</span>
           {viewMode === 'illustrated' && nextTargets.length > 0 ? (
@@ -262,7 +276,7 @@ export function BuildOrderWidget({
         </div>
       )}
 
-      {(responsePlan.forks.length > 0 || responsePlan.coverageNote) && (
+      {showResponsePlan && (responsePlan.forks.length > 0 || responsePlan.coverageNote) && (
         <div className="mt-1 border-t border-white/10 px-1 pt-1">
           <div className="text-[9px] font-semibold uppercase tracking-wider text-cyan-300/70">
             {tt('Response forks · scout first')}

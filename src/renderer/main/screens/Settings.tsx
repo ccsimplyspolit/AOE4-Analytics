@@ -225,7 +225,11 @@ export function Settings() {
                 disabled={settings?.profileId == null}
                 onClick={() => {
                   if (settings?.profileId == null) return
-                  if (!window.confirm(tt('Remove this account from RTSLytics? This cannot be undone.')))
+                  if (
+                    !window.confirm(
+                      tt('Remove this account from RTSLytics? This cannot be undone.'),
+                    )
+                  )
                     return
                   removeAccount.mutate(settings.profileId)
                 }}
@@ -318,6 +322,42 @@ export function Settings() {
             />
           </div>
 
+          <div className="grid gap-2 border-t border-border pt-3 sm:grid-cols-3">
+            <OverlayToggle
+              label={tt('Matchup bar')}
+              description={tt('Teams, civilizations, rank, and matchup troops.')}
+              checked={settings?.overlay.showMatchup ?? true}
+              onChange={(checked) =>
+                update.mutate(
+                  { overlay: { showMatchup: checked } },
+                  { onSuccess: () => void ipc.applyOverlaySettings() },
+                )
+              }
+            />
+            <OverlayToggle
+              label={tt('Post-game card')}
+              description={tt('Show the result and coaching card after the match.')}
+              checked={settings?.overlay.showPostGame ?? true}
+              onChange={(checked) =>
+                update.mutate(
+                  { overlay: { showPostGame: checked } },
+                  { onSuccess: () => void ipc.applyOverlaySettings() },
+                )
+              }
+            />
+            <OverlayToggle
+              label={tt('Status pill')}
+              description={tt('Show waiting, matchup, and analysis status.')}
+              checked={settings?.overlay.showStatus ?? true}
+              onChange={(checked) =>
+                update.mutate(
+                  { overlay: { showStatus: checked } },
+                  { onSuccess: () => void ipc.applyOverlaySettings() },
+                )
+              }
+            />
+          </div>
+
           <p className="text-[11px] text-muted-foreground">
             The overlay shows the matchup across the top, a live APM counter, and a results card
             after each game. Arrange widgets with the button below or {placementHotkey}; it opens a
@@ -347,7 +387,9 @@ export function Settings() {
               className="w-full rounded-md border border-border bg-background px-3 py-2 font-mono text-xs leading-relaxed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             />
             <span className="block text-[11px] text-muted-foreground">
-              {tt('CSS only. Use .overlay-widget or .overlay-widget-buildOrder; scripts are ignored.')}
+              {tt(
+                'CSS only. Use .overlay-widget or .overlay-widget-buildOrder; scripts are ignored.',
+              )}
             </span>
           </label>
 
@@ -588,54 +630,158 @@ export function Settings() {
                 className="h-4 w-4 shrink-0 accent-[hsl(var(--primary))]"
               />
             </label>
-            <div className="flex items-center justify-between gap-3 text-sm">
-              <span>
-                Build order on overlay
-                <span className="block text-[11px] text-muted-foreground">
-                  {settings?.overlay.buildOrderId
-                    ? `Showing "${settings.overlay.buildOrderId}" step-by-step during matches.`
-                    : 'None selected — pick one in Guides → Build Orders → "Show in overlay".'}
+            <div className="space-y-3 border-t border-border pt-3">
+              <div>
+                <div className="text-sm font-medium">{tt('Build order overlay')}</div>
+                <p className="mt-0.5 text-[11px] text-muted-foreground">
+                  {tt(
+                    'Choose a build here, or let the overlay pick the first matching build for your civilization.',
+                  )}
+                </p>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <label className="space-y-1.5 text-sm">
+                  <span className="text-muted-foreground">{tt('Build selection')}</span>
+                  <select
+                    value={settings?.overlay.buildOrderMode ?? 'manual'}
+                    onChange={(event) => {
+                      if (!settings) return
+                      const mode = event.target.value as typeof settings.overlay.buildOrderMode
+                      update.mutate(
+                        { overlay: { buildOrderMode: mode } },
+                        { onSuccess: () => void ipc.applyOverlaySettings() },
+                      )
+                    }}
+                    className="h-9 w-full rounded-md border border-border bg-background px-2 text-xs"
+                  >
+                    <option value="manual">{tt('Use selected build')}</option>
+                    <option value="auto">{tt('Auto-select by civilization')}</option>
+                    <option value="hidden">{tt('Hide build order')}</option>
+                  </select>
+                </label>
+                <label className="space-y-1.5 text-sm">
+                  <span className="text-muted-foreground">{tt('Selected build')}</span>
+                  <select
+                    value={settings?.overlay.buildOrderId ?? ''}
+                    disabled={!settings || settings.overlay.buildOrderMode !== 'manual'}
+                    onChange={(event) => {
+                      if (!settings) return
+                      const buildOrderId = event.target.value || null
+                      update.mutate(
+                        {
+                          overlay: {
+                            buildOrderId,
+                            buildOrderMode: buildOrderId ? 'manual' : 'hidden',
+                          },
+                        },
+                        { onSuccess: () => void ipc.applyOverlaySettings() },
+                      )
+                    }}
+                    className="h-9 w-full rounded-md border border-border bg-background px-2 text-xs disabled:opacity-50"
+                  >
+                    <option value="">{tt('No build selected')}</option>
+                    {BUNDLED_BUILD_ORDERS.map((build) => (
+                      <option key={build.name} value={build.name}>
+                        {build.name} · {buildOrderCivLabel(build)}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+              <label className="flex items-center justify-between gap-3 text-sm">
+                <span>
+                  {tt('Build order display')}
+                  <span className="block text-[11px] text-muted-foreground">
+                    {tt(
+                      'Choose illustrated resource/unit cards or the compact plain-text RTS overlay view.',
+                    )}
+                  </span>
                 </span>
-              </span>
-              {settings?.overlay.buildOrderId && (
-                <button
-                  type="button"
-                  onClick={() => {
+                <select
+                  value={settings?.overlay.buildOrderViewMode ?? 'illustrated'}
+                  onChange={(event) => {
                     if (!settings) return
+                    const mode = event.target.value === 'text' ? 'text' : 'illustrated'
                     update.mutate(
-                      { overlay: { ...settings.overlay, buildOrderId: null } },
+                      { overlay: { buildOrderViewMode: mode } },
                       { onSuccess: () => void ipc.applyOverlaySettings() },
                     )
                   }}
-                  className="shrink-0 rounded-md border border-border px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                  className="h-9 rounded-md border border-border bg-background px-2 text-xs"
                 >
-                  {tt('Remove')}
-                </button>
-              )}
-            </div>
-            <label className="flex items-center justify-between gap-3 text-sm">
-              <span>
-                {tt('Build order display')}
-                <span className="block text-[11px] text-muted-foreground">
-                  {tt('Choose illustrated resource/unit cards or the compact plain-text RTS overlay view.')}
+                  <option value="illustrated">{tt('Illustrated')}</option>
+                  <option value="text">{tt('Plain text')}</option>
+                </select>
+              </label>
+              <label className="space-y-1.5 text-sm">
+                <span className="flex items-center justify-between">
+                  <span>{tt('Build panel width')}</span>
+                  <span className="tabular-nums text-muted-foreground">
+                    {settings?.overlay.buildOrderPanelWidth ?? 340}px
+                  </span>
                 </span>
-              </span>
-              <select
-                value={settings?.overlay.buildOrderViewMode ?? 'illustrated'}
-                onChange={(event) => {
-                  if (!settings) return
-                  const mode = event.target.value === 'text' ? 'text' : 'illustrated'
-                  update.mutate(
-                    { overlay: { ...settings.overlay, buildOrderViewMode: mode } },
-                    { onSuccess: () => void ipc.applyOverlaySettings() },
-                  )
-                }}
-                className="h-9 rounded-md border border-border bg-background px-2 text-xs"
-              >
-                <option value="illustrated">{tt('Illustrated')}</option>
-                <option value="text">{tt('Plain text')}</option>
-              </select>
-            </label>
+                <input
+                  type="range"
+                  min={280}
+                  max={520}
+                  step={10}
+                  value={settings?.overlay.buildOrderPanelWidth ?? 340}
+                  onChange={(event) =>
+                    update.mutate(
+                      { overlay: { buildOrderPanelWidth: Number(event.target.value) } },
+                      { onSuccess: () => void ipc.applyOverlaySettings() },
+                    )
+                  }
+                  className="w-full accent-[hsl(var(--primary))]"
+                />
+              </label>
+              <div className="grid gap-2 sm:grid-cols-2">
+                <OverlayToggle
+                  label={tt('Next-step preview')}
+                  description={tt('Show the next build step below the current step.')}
+                  checked={settings?.overlay.buildOrderShowNext ?? true}
+                  onChange={(checked) =>
+                    update.mutate(
+                      { overlay: { buildOrderShowNext: checked } },
+                      { onSuccess: () => void ipc.applyOverlaySettings() },
+                    )
+                  }
+                />
+                <OverlayToggle
+                  label={tt('Resources and villagers')}
+                  description={tt('Show the resource split and villager target.')}
+                  checked={settings?.overlay.buildOrderShowResources ?? true}
+                  onChange={(checked) =>
+                    update.mutate(
+                      { overlay: { buildOrderShowResources: checked } },
+                      { onSuccess: () => void ipc.applyOverlaySettings() },
+                    )
+                  }
+                />
+                <OverlayToggle
+                  label={tt('Step instructions')}
+                  description={tt('Show notes and icon instructions for the active step.')}
+                  checked={settings?.overlay.buildOrderShowNotes ?? true}
+                  onChange={(checked) =>
+                    update.mutate(
+                      { overlay: { buildOrderShowNotes: checked } },
+                      { onSuccess: () => void ipc.applyOverlaySettings() },
+                    )
+                  }
+                />
+                <OverlayToggle
+                  label={tt('Response plan')}
+                  description={tt('Show scout-first counter and adaptation suggestions.')}
+                  checked={settings?.overlay.buildOrderShowResponsePlan ?? true}
+                  onChange={(checked) =>
+                    update.mutate(
+                      { overlay: { buildOrderShowResponsePlan: checked } },
+                      { onSuccess: () => void ipc.applyOverlaySettings() },
+                    )
+                  }
+                />
+              </div>
+            </div>
             <HotkeyInput
               label={tt('Show / hide overlay hotkey')}
               value={toggleHotkey}
@@ -850,6 +996,47 @@ export function Settings() {
   )
 }
 
+function OverlayToggle({
+  label,
+  description,
+  checked,
+  onChange,
+}: {
+  label: string
+  description: string
+  checked: boolean
+  onChange: (checked: boolean) => void
+}) {
+  return (
+    <div className="flex items-start justify-between gap-3 rounded-md border border-border/60 bg-secondary/20 p-3 transition-colors hover:border-primary/35">
+      <span className="min-w-0">
+        <span className="block text-sm font-medium">{label}</span>
+        <span className="mt-0.5 block text-[11px] leading-relaxed text-muted-foreground">
+          {description}
+        </span>
+      </span>
+      <button
+        type="button"
+        role="switch"
+        aria-checked={checked}
+        aria-label={label}
+        onClick={() => onChange(!checked)}
+        className={cn(
+          'relative mt-0.5 h-5 w-9 shrink-0 rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+          checked ? 'border-primary bg-primary' : 'border-border bg-secondary',
+        )}
+      >
+        <span
+          className={cn(
+            'absolute top-0.5 h-3.5 w-3.5 rounded-full bg-white shadow-sm transition-transform',
+            checked ? 'translate-x-[18px]' : 'translate-x-0.5',
+          )}
+        />
+      </button>
+    </div>
+  )
+}
+
 const TRANSLATION_ENDPOINTS = {
   deepl: 'https://api-free.deepl.com/v2/translate',
   libretranslate: 'https://libretranslate.com/translate',
@@ -922,7 +1109,9 @@ function TranslationApiCard({ onSaved }: { onSaved: () => Promise<void> }) {
               {tt('Translation API')}
             </h2>
             <p className="mt-1 max-w-2xl text-xs text-muted-foreground">
-              {tt('Translate missing interface strings for Ukrainian and German using an optional provider.')}
+              {tt(
+                'Translate missing interface strings for Ukrainian and German using an optional provider.',
+              )}
             </p>
           </div>
           <span className="rounded bg-secondary px-2 py-1 text-[10px] text-muted-foreground">
@@ -977,7 +1166,9 @@ function TranslationApiCard({ onSaved }: { onSaved: () => Promise<void> }) {
           />
         </label>
         <p className="text-[11px] text-muted-foreground">
-          {tt('API key is stored encrypted by the operating system and never exposed to the renderer or overlay.')}
+          {tt(
+            'API key is stored encrypted by the operating system and never exposed to the renderer or overlay.',
+          )}
         </p>
 
         <div className="flex flex-wrap items-center gap-2">

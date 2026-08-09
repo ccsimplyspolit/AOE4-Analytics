@@ -18,7 +18,7 @@ import { COUNTERABLE_CIVS, counterPlanForCiv } from '@domain/civUnits'
 import { civDisplayName } from '@domain/civ'
 import { gameElapsedSec, todMsFromEpoch } from '@domain/localStats'
 import { bracketFromRankLevel, getBenchmarks } from '@domain/benchmarks'
-import { stepIndexForElapsed, type BuildOrder } from '@domain/buildOrderSchema'
+import { buildIndexForCiv, stepIndexForElapsed, type BuildOrder } from '@domain/buildOrderSchema'
 import { applyAccent } from '@shared/accent'
 import { CIV_FLAGS } from '@data/vendor/aoe4world-overlay/flags'
 import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
@@ -148,6 +148,10 @@ export function OverlayApp() {
   // matchup helper without changing the detected live roster.
   const [counterCivOverride, setCounterCivOverride] = useState<string | null>(null)
   const [coachShown, setCoachShown] = useState(true)
+  const [apmShown, setApmShown] = useState(true)
+  const [matchupShown, setMatchupShown] = useState(true)
+  const [postGameShown, setPostGameShown] = useState(true)
+  const [statusShown, setStatusShown] = useState(true)
   const [troopsShown, setTroopsShown] = useState(true)
   const [civTheme, setCivTheme] = useState(true)
   const [accentColor, setAccentColor] = useState<string | null>(null)
@@ -166,6 +170,12 @@ export function OverlayApp() {
   const [ageTargetsShown, setAgeTargetsShown] = useState(true)
   // The pinned build order's unique name (Guides → "Show in overlay"); null = hidden.
   const [buildOrderId, setBuildOrderId] = useState<string | null>(null)
+  const [buildOrderMode, setBuildOrderMode] = useState<'manual' | 'auto' | 'hidden'>('manual')
+  const [buildOrderShowNext, setBuildOrderShowNext] = useState(true)
+  const [buildOrderShowResources, setBuildOrderShowResources] = useState(true)
+  const [buildOrderShowNotes, setBuildOrderShowNotes] = useState(true)
+  const [buildOrderShowResponsePlan, setBuildOrderShowResponsePlan] = useState(true)
+  const [buildOrderPanelWidth, setBuildOrderPanelWidth] = useState(340)
   // Null means the build follows the game clock. Global step hotkeys set an
   // explicit index until the reset hotkey returns it to clock-driven mode.
   const [manualBuildStep, setManualBuildStep] = useState<number | null>(null)
@@ -197,9 +207,19 @@ export function OverlayApp() {
         setAccentColor(s.accentColor ?? null)
         setPanelAlpha(clampAlpha(s.overlay.opacity))
         setScale(clampScale(s.overlay.scale))
+        setApmShown(s.overlay.apm !== false)
+        setMatchupShown(s.overlay.showMatchup !== false)
+        setPostGameShown(s.overlay.showPostGame !== false)
+        setStatusShown(s.overlay.showStatus !== false)
         setBuildOrderFontSize(s.overlay.buildOrderFontSize ?? 14)
         setBuildOrderImageSize(s.overlay.buildOrderImageSize ?? 30)
         setBuildOrderViewMode(s.overlay.buildOrderViewMode ?? 'illustrated')
+        setBuildOrderMode(s.overlay.buildOrderMode ?? 'manual')
+        setBuildOrderShowNext(s.overlay.buildOrderShowNext !== false)
+        setBuildOrderShowResources(s.overlay.buildOrderShowResources !== false)
+        setBuildOrderShowNotes(s.overlay.buildOrderShowNotes !== false)
+        setBuildOrderShowResponsePlan(s.overlay.buildOrderShowResponsePlan !== false)
+        setBuildOrderPanelWidth(clampBuildPanelWidth(s.overlay.buildOrderPanelWidth))
         setCustomCss(s.overlay.customCss ?? '')
         setAgeTargetsShown(s.overlay.showAgeTargets !== false)
         setSessionShown(s.overlay.showSession !== false)
@@ -231,9 +251,19 @@ export function OverlayApp() {
       setAccentColor(o.accentColor ?? null)
       setPanelAlpha(clampAlpha(o.opacity))
       setScale(clampScale(o.scale))
+      setApmShown(o.apm !== false)
+      setMatchupShown(o.showMatchup !== false)
+      setPostGameShown(o.showPostGame !== false)
+      setStatusShown(o.showStatus !== false)
       setBuildOrderFontSize(o.buildOrderFontSize ?? 14)
       setBuildOrderImageSize(o.buildOrderImageSize ?? 30)
       setBuildOrderViewMode(o.buildOrderViewMode ?? 'illustrated')
+      setBuildOrderMode(o.buildOrderMode ?? 'manual')
+      setBuildOrderShowNext(o.buildOrderShowNext !== false)
+      setBuildOrderShowResources(o.buildOrderShowResources !== false)
+      setBuildOrderShowNotes(o.buildOrderShowNotes !== false)
+      setBuildOrderShowResponsePlan(o.buildOrderShowResponsePlan !== false)
+      setBuildOrderPanelWidth(clampBuildPanelWidth(o.buildOrderPanelWidth))
       setCustomCss(o.customCss ?? '')
       setAgeTargetsShown(o.showAgeTargets !== false)
       setSessionShown(o.showSession !== false)
@@ -328,7 +358,8 @@ export function OverlayApp() {
     inGame && ((matchup?.teams.length ?? 0) >= 2 || myCiv != null || oppCiv != null)
   const showMatchup = haveMatchup || placementMode
   const showPostGame = (matchState === 'ended' && postGame != null) || placementMode
-  const showApm = apm != null || placementMode
+  const showPostGameWidget = postGameShown && showPostGame
+  const showApm = apmShown && (apm != null || placementMode)
   // Shown whenever the overlay is up with a session to report (in-game AND on
   // the post-game screen, where the just-finished game is already counted).
   const showSession = sessionShown && (session != null || placementMode)
@@ -342,7 +373,14 @@ export function OverlayApp() {
         : null,
     [buildOrderId],
   )
-  const showBuildOrder = selectedBuild != null && (inGame || placementMode)
+  useEffect(() => {
+    if (buildOrderMode !== 'auto' || !inGame || !myCiv) return
+    const index = buildIndexForCiv(BUNDLED_BUILD_ORDERS, myCiv)
+    const next = index == null ? null : BUNDLED_BUILD_ORDERS[index]?.name ?? null
+    setBuildOrderId((current) => (current === next ? current : next))
+  }, [buildOrderMode, inGame, myCiv])
+  const showBuildOrder =
+    buildOrderMode !== 'hidden' && selectedBuild != null && (inGame || placementMode)
   const showAgeTargets = ageTargetsShown && (inGame || placementMode)
   // Placement mode outside a match previews with a fake clock (like the other placeholders).
   const renderElapsed =
@@ -415,8 +453,11 @@ export function OverlayApp() {
         const nextBuild = builds[nextIndex]
         if (!nextBuild) return
         setBuildOrderId(nextBuild.name)
+        setBuildOrderMode('manual')
         setManualBuildStep(null)
-        void ipc.updateSettings({ overlay: { buildOrderId: nextBuild.name } }).catch(() => {})
+        void ipc
+          .updateSettings({ overlay: { buildOrderId: nextBuild.name, buildOrderMode: 'manual' } })
+          .catch(() => {})
         return
       }
       if (!selectedBuild) return
@@ -507,7 +548,7 @@ export function OverlayApp() {
       style={{ '--panel-alpha': panelAlpha } as CSSProperties}
     >
       {customCss && <style data-rtslytics-user-css="true">{customCss}</style>}
-      {showMatchup && (
+      {matchupShown && showMatchup && (
         <PlacedWidget
           widgetKey="matchup"
           position={widgetPositions.matchup}
@@ -525,7 +566,7 @@ export function OverlayApp() {
         </PlacedWidget>
       )}
 
-      {showPostGame && (
+      {showPostGameWidget && (
         <PlacedWidget
           widgetKey="postGame"
           position={widgetPositions.postGame}
@@ -578,8 +619,9 @@ export function OverlayApp() {
           onPositionChange={saveWidgetPosition}
         >
           <div
-            className="pointer-events-none w-[340px] select-none rounded-lg py-1 shadow-xl ring-1 ring-white/10"
+            className="pointer-events-none select-none rounded-lg py-1 shadow-xl ring-1 ring-white/10"
             style={{
+              width: buildOrderPanelWidth,
               background: `linear-gradient(to bottom right, ${panelBg(0.95)}, ${panelBg(0.7)})`,
               textShadow: '0 1px 3px rgba(0,0,0,0.95)',
               fontSize: buildOrderFontSize,
@@ -593,6 +635,10 @@ export function OverlayApp() {
               fontSize={buildOrderFontSize}
               iconSize={buildOrderImageSize}
               viewMode={buildOrderViewMode}
+              showNext={buildOrderShowNext}
+              showResources={buildOrderShowResources}
+              showNotes={buildOrderShowNotes}
+              showResponsePlan={buildOrderShowResponsePlan}
               opponentCivs={enemyCivs}
             />
           </div>
@@ -674,7 +720,7 @@ export function OverlayApp() {
         </div>
       )}
 
-      {!placementMode && !showMatchup && !showPostGame && (
+      {!placementMode && statusShown && !showMatchup && !showPostGameWidget && (
         <div className="pointer-events-none fixed inset-x-0 top-1.5 z-50 flex justify-center">
           <span className="flex items-center gap-1.5 rounded-md bg-[#0b0e14]/85 px-2.5 py-1 text-[11px] text-white/70 shadow-lg ring-1 ring-white/10">
             <span className="inline-block h-2 w-2 rounded-full bg-cyan-400" />
@@ -844,6 +890,11 @@ function clampAlpha(value: number | undefined): number {
 /** Mirror the settings range for overlay scale ([0.75, 1.5], 1 when unset). */
 function clampScale(value: number | undefined): number {
   return clamp(typeof value === 'number' && Number.isFinite(value) ? value : 1, 0.75, 1.5)
+}
+
+/** Mirror the build widget width range ([280, 520], 340 when unset). */
+function clampBuildPanelWidth(value: number | undefined): number {
+  return Math.round(clamp(typeof value === 'number' && Number.isFinite(value) ? value : 340, 280, 520))
 }
 
 /** Keep at least this many pixels of a widget inside the canvas when clamping. */

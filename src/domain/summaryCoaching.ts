@@ -295,8 +295,43 @@ export function summarySignals(input: SummaryCoachingInput): Signal[] {
       id: 'sum-unit-cadence',
       severity: unitCompletionGaps >= 4 ? 'minor' : 'info',
       title: `Long unit-completion gaps (${fmtTime(longestUnitCompletionGapSec)} max)`,
+      detail: `${unitCompletionGaps} gaps over one minute were visible between completed non-villager units. Check whether production buildings were staffed and whether resources were being floated before the next fight; this is not a direct queue-idle measurement.`,
+    })
+  }
+
+  // --- First recorded pressure: STLS keeps timestamps for casualties and,
+  // when available, the attacking player. This is stronger evidence than a
+  // final K/D, but it still marks a casualty window rather than the whole
+  // fight or a guaranteed cause of the result.
+  const pressure = review?.pressure
+  if (
+    is1v1 &&
+    pressure?.myFirstMilitaryLossTimeSec != null &&
+    pressure.opponentFirstMilitaryLossTimeSec != null
+  ) {
+    const deltaSec = Math.round(
+      pressure.myFirstMilitaryLossTimeSec - pressure.opponentFirstMilitaryLossTimeSec,
+    )
+    if (Math.abs(deltaSec) >= 45) {
+      const mineFirst = deltaSec < 0
+      signals.push({
+        id: 'sum-first-pressure',
+        severity: mineFirst ? 'minor' : 'info',
+        title: mineFirst
+          ? `Your first military casualty came ${fmtTime(Math.abs(deltaSec))} before theirs`
+          : `Their first military casualty came ${fmtTime(Math.abs(deltaSec))} before yours`,
+        detail: `Recorded casualty window: you ${fmtTime(pressure.myFirstMilitaryLossTimeSec)}, opponent ${fmtTime(pressure.opponentFirstMilitaryLossTimeSec)}. This is a timing checkpoint for the first hostile loss, not proof that the unit loss alone decided the game.`,
+      })
+    }
+  }
+
+  if (pressure?.responseLagSec != null && pressure.responseLagSec >= 90) {
+    signals.push({
+      id: 'sum-pressure-response',
+      severity: pressure.responseLagSec >= 180 ? 'minor' : 'info',
+      title: `Response after first loss took ${fmtTime(pressure.responseLagSec)}`,
       detail:
-        `${unitCompletionGaps} gaps over one minute were visible between completed non-villager units. Check whether production buildings were staffed and whether resources were being floated before the next fight; this is not a direct queue-idle measurement.`,
+        'The first opponent military loss attributed to you came well after your first recorded military loss. Review that interval in the replay: add production or disengage earlier instead of taking a second low-value fight.',
     })
   }
 

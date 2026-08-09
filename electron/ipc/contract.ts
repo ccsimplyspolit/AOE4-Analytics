@@ -32,6 +32,7 @@ import type { TwitchVodFinderInput, TwitchVodLookupResult } from '@domain/twitch
 import type { VideoAnalysisInput, VideoAnalysisRecord } from '@domain/videoAnalysis'
 import type { BuildOrder } from '@domain/buildOrderSchema'
 import type { SourceSyncOptions, SourceSyncResult } from '@domain/sourceSync'
+import type { RankedMapPoolResolution } from '@domain/rankedMapPool'
 import type { Game, Leaderboard, RankLevel, StatsLeaderboard } from '@api/types'
 import type {
   TranslationBatchInput,
@@ -172,6 +173,7 @@ export const IpcChannels = {
   settingsUpdate: 'settings:update',
   // Phase 2
   civMetaGet: 'civMeta:get',
+  rankedMapPoolGet: 'rankedMapPool:get',
   matchupLabGet: 'matchupLab:get',
   civDetailGet: 'civDetail:get',
   leaderboardGet: 'leaderboard:get',
@@ -459,6 +461,8 @@ export interface CivMetaQuery {
   patch?: string
   /** Optional map id for the AoE4World civ-by-map Counter Calculator slice. */
   mapId?: number
+  /** Limit map stats and map-specific analytics to the active ranked rotation. */
+  mapPoolOnly?: boolean
 }
 
 /** Civ meta explorer payload: sortable civ rows + map popularity for a bracket. */
@@ -473,6 +477,8 @@ export interface CivMetaResult {
   /** Full civ ranking for the selected map, when mapId was requested. */
   mapCivs?: CivTier[]
   selectedMap?: string | null
+  /** Provenance and effective dates for the current ranked rotation. */
+  mapPool?: RankedMapPoolResolution | null
 }
 
 export interface MatchupLabQuery {
@@ -727,6 +733,7 @@ export interface RtslyticsApi {
   updateSettings(patch: AppSettingsPatch): Promise<AppSettings>
   // Phase 2
   getCivMeta(query: CivMetaQuery): Promise<IpcResult<CivMetaResult>>
+  getRankedMapPool(): Promise<IpcResult<RankedMapPoolResolution>>
   getMatchupLab(query: MatchupLabQuery): Promise<IpcResult<GlobalMatchupSummary | null>>
   getCivDetailStats(civ: string): Promise<IpcResult<CivDetailStats>>
   getLeaderboard(query: LeaderboardQuery): Promise<IpcResult<LeaderboardPage>>

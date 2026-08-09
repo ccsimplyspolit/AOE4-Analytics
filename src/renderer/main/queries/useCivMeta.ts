@@ -11,9 +11,18 @@ export function useCivMeta(query: CivMetaQuery) {
       query.rating ?? 'all-ratings',
       query.patch ?? 'current',
       query.mapId ?? 'all-maps',
+      query.mapPoolOnly ?? false,
     ],
     queryFn: () => ipc.getCivMeta(query),
     staleTime: 6 * 60 * 60_000,
+  })
+}
+
+export function useRankedMapPool() {
+  return useQuery({
+    queryKey: ['rankedMapPool'],
+    queryFn: () => ipc.getRankedMapPool(),
+    staleTime: 60 * 60_000,
   })
 }
 

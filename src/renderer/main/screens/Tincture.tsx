@@ -474,7 +474,9 @@ function MetaLedger({
         />
         <LedgerStat
           label={tt('Snapshot history')}
-          value={historyStale ? tt('stale') : `${TINCTURE_HISTORY.snapshots.length} ${tt('points')}`}
+          value={
+            historyStale ? tt('stale') : `${TINCTURE_HISTORY.snapshots.length} ${tt('points')}`
+          }
         />
       </div>
       <div
@@ -612,7 +614,9 @@ function PatchAuditCard({ audit }: { audit: ReturnType<typeof buildPatchAudit> }
           <div>
             <div className="rts-section-title">{tt('Patch audit')}</div>
             <p className="text-xs text-muted-foreground">
-              {tt('Merges live AoE4World coverage with patch labels attached to local Cellar builds.')}
+              {tt(
+                'Merges live AoE4World coverage with patch labels attached to local Cellar builds.',
+              )}
             </p>
           </div>
           <Badge
@@ -1176,6 +1180,8 @@ function BuildCellar() {
       </div>
       <VideoAnalysisImporter
         initialUrl={searchParams.get('video') ?? ''}
+        initialGameId={searchParams.get('gameId') ?? null}
+        initialCivilization={searchParams.get('civilization') ?? ''}
         onImported={saveVideoAnalysis}
       />
       {videoAnalyses.length > 0 && (
@@ -1384,7 +1390,9 @@ function BuildCellar() {
                           {entry.provider ?? tt('local')}
                           {entry.strategy ? ` · ${entry.strategy}` : ''}
                           {entry.map ? ` · ${entry.map}` : ''}
-                          {entry.score != null ? ` · ${tt('score')} ${Math.round(entry.score)}` : ''}
+                          {entry.score != null
+                            ? ` · ${tt('score')} ${Math.round(entry.score)}`
+                            : ''}
                         </div>
                       )}
                     </td>
@@ -1393,7 +1401,7 @@ function BuildCellar() {
                     </td>
                     <td className="px-2 py-2 text-xs text-muted-foreground">
                       {entry.opponentCivilizationLabels.length > 0
-                          ? `${tt('vs')} ${entry.opponentCivilizationLabels.join(', ')}`
+                        ? `${tt('vs')} ${entry.opponentCivilizationLabels.join(', ')}`
                         : '—'}
                     </td>
                     <td className="px-2 py-2 text-xs text-muted-foreground">

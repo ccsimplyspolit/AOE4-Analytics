@@ -41,6 +41,23 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-meta", action="store_true", help="Do not refresh AoE4World civilization meta snapshots")
     parser.add_argument("--skip-guides", action="store_true", help="Do not import AoE4Guides builds")
     parser.add_argument("--skip-icons", action="store_true", help="Do not rebuild the offline AoE4World icon catalogue")
+    parser.add_argument(
+        "--skip-upstream-audit",
+        action="store_true",
+        help="Do not resolve revisions for the referenced GitHub repositories",
+    )
+    parser.add_argument(
+        "--attrib-input",
+        type=Path,
+        default=None,
+        help="Optional decoded attrib/Essence directory or file to inventory",
+    )
+    parser.add_argument(
+        "--attrib-revision",
+        default=None,
+        help="Optional attrib or AOEMods.Essence revision recorded in the audit",
+    )
+    parser.add_argument("--upstream-timeout", type=int, default=30)
     return parser.parse_args()
 
 
@@ -91,11 +108,12 @@ def write_manifest(args: argparse.Namespace, completed: list[str]) -> None:
     meta = read_json(ROOT / "src" / "data" / "tinctureMeta.json")
     units = read_document(ROOT / "src" / "data" / "vendor" / "aoe4world-data" / "units.json")
     icons = read_json(ROOT / "src" / "data" / "vendor" / "aoe4-icons" / "metadata.json")
+    upstream_audit = read_json(ROOT / "data" / "research" / "aoe4-upstream-revisions.json")
     imported_dir = ROOT / "src" / "data" / "buildOrders" / "imported"
     unit_rows = units.get("data", units) if isinstance(units, dict) else units
     manifest = {
-        "schemaVersion": 1,
-        "source": "aoe4guides+aoe4world",
+        "schemaVersion": 2,
+        "source": "aoe4guides+aoe4world+upstream-audit",
         "capturedAt": captured_at,
         "patch": args.patch or meta.get("patch"),
         "completed": completed,
@@ -105,6 +123,12 @@ def write_manifest(args: argparse.Namespace, completed: list[str]) -> None:
             "metaSlices": len(meta.get("slices", [])) if isinstance(meta.get("slices"), list) else 0,
             "entityIcons": icons.get("uniqueEntityIcons", 0),
             "nativeIcons": icons.get("nativeAssetCount", 0),
+        },
+        "upstreamAudit": {
+            "capturedAt": upstream_audit.get("capturedAt"),
+            "status": upstream_audit.get("status"),
+            "healthy": upstream_audit.get("healthy"),
+            "total": upstream_audit.get("total"),
         },
     }
     MANIFEST_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -118,8 +142,17 @@ def main() -> int:
         raise SystemExit("--guides-limit-per-query must be between 1 and 10")
     if args.guides_delay < 0:
         raise SystemExit("--guides-delay must be non-negative")
-    if args.skip_game_data and args.skip_meta and args.skip_guides and args.skip_icons:
+    if (
+        args.skip_game_data
+        and args.skip_meta
+        and args.skip_guides
+        and args.skip_icons
+        and args.skip_upstream_audit
+        and args.attrib_input is None
+    ):
         raise SystemExit("at least one source must remain enabled")
+    if args.upstream_timeout < 1 or args.upstream_timeout > 300:
+        raise SystemExit("--upstream-timeout must be between 1 and 300 seconds")
 
     completed: list[str] = []
     try:
@@ -142,6 +175,20 @@ def main() -> int:
         if not args.skip_guides:
             run_step("AoE4Guides builds", "sync_aoe4guides.py", build_arguments(args), args.dry_run)
             completed.append("aoe4guides-builds")
+        if args.attrib_input is not None:
+            attrib_arguments = ["--input", str(args.attrib_input)]
+            if args.attrib_revision:
+                attrib_arguments.extend(("--source-revision", args.attrib_revision))
+            run_step("attrib / Essence audit", "import_attrib_snapshot.py", attrib_arguments, args.dry_run)
+            completed.append("attrib-audit")
+        if not args.skip_upstream_audit:
+            run_step(
+                "GitHub upstream audit",
+                "audit_upstream_repos.py",
+                ["--timeout", str(args.upstream_timeout)],
+                args.dry_run,
+            )
+            completed.append("upstream-github-audit")
     except (OSError, RuntimeError) as error:
         print(f"[sync] failed: {error}", file=sys.stderr)
         return 1

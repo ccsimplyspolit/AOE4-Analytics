@@ -229,6 +229,36 @@ describe('summarySignals', () => {
     expect(signals.some((s) => s.id === 'sum-unit-cadence')).toBe(true)
   })
 
+  it('flags a first-pressure window and a slow military response', () => {
+    const me = player(1000, ME, {})
+    const enemy = player(1001, 222, {})
+    me.casualties = [
+      {
+        timeSec: 360,
+        targetPlayerId: 1000,
+        targetUnitType: 'unit_spearman_1_eng',
+        attackerPlayerId: 1001,
+        attackerUnitType: 'unit_archer_1_fre',
+      },
+    ]
+    enemy.casualties = [
+      {
+        timeSec: 510,
+        targetPlayerId: 1001,
+        targetUnitType: 'unit_archer_1_fre',
+        attackerPlayerId: 1000,
+        attackerUnitType: 'unit_longbowman_1_eng',
+      },
+    ]
+    const signals = summarySignals({
+      summary: game(me, enemy),
+      myProfileId: ME,
+      myCiv: 'english',
+    })
+    expect(signals.some((signal) => signal.id === 'sum-first-pressure')).toBe(true)
+    expect(signals.some((signal) => signal.id === 'sum-pressure-response')).toBe(true)
+  })
+
   it('returns nothing when the user is not identifiable', () => {
     const signals = summarySignals({
       summary: game(player(1000, 999, {}), player(1001, 222, {})),

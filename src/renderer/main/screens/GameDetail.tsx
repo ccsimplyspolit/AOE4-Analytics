@@ -4,6 +4,7 @@ import { ArrowLeft, ScanLine, Trash2 } from 'lucide-react'
 import type { StoredMatch } from '@store/historyStore'
 import type { AppSettings } from '@store/settings'
 import type { VideoAnalysisRecord } from '@domain/videoAnalysis'
+import type { TwitchVodFinderInput } from '@domain/twitchVodFinder'
 import {
   CURATED_MATCH_REVIEWS_BY_GAME_ID,
   type CuratedMatchReview,
@@ -33,6 +34,7 @@ import { TwitchVodCard } from '../components/TwitchVodCard'
 import { VideoAnalysisPanel } from '../components/VideoAnalysisPanel'
 import { CuratedMatchReviewCard } from '../components/CuratedMatchReviewCard'
 import { useVideoAnalyses } from '../queries/useVideoAnalyses'
+import { useTwitchVod } from '../queries/useTwitchVod'
 import { EmptyBox, ErrorBox, Spinner } from '../components/feedback'
 import { useI18n } from '../../i18n'
 
@@ -134,6 +136,20 @@ function Detail({
   const { tt, gameName } = useI18n()
   const navigate = useNavigate()
   const deleteMatch = useDeleteMatch()
+  // Keep the exact-game lookup here as well as in TwitchVodCard. React Query
+  // de-duplicates the request, while this screen can attach the verified VOD
+  // to the build-order audit and preserve it as evidence for the inferred
+  // reference build.
+  const twitchVodInput: TwitchVodFinderInput = {
+    gameId: match.id,
+    civilization: match.civ,
+    opponentCivilization: match.oppCiv,
+    map: match.map,
+    durationSec: match.durationSec,
+  }
+  const isPublicGame = !match.custom && /^\d{1,16}$/.test(match.id)
+  const twitchVodLookup = useTwitchVod(twitchVodInput, isPublicGame)
+  const verifiedVod = twitchVodLookup.data?.ok ? twitchVodLookup.data.data.vod : null
   const removeGame = () => {
     if (!window.confirm('Remove this game from your history? This cannot be undone.')) return
     deleteMatch.mutate(match.id, { onSuccess: () => navigate('/stats') })
@@ -231,6 +247,12 @@ function Detail({
           {match.format ? `${match.format} · ` : ''}
           {match.map} · {formatDurationShort(match.durationSec)} · {relativeTime(match.playedAt)}
         </p>
+        <a
+          href="#build-order-audit"
+          className="inline-flex w-fit items-center rounded-sm border border-primary/30 bg-primary/5 px-2.5 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
+        >
+          {tt('Open build audit')}
+        </a>
       </header>
 
       {rows.length > 0 ? (
@@ -304,6 +326,7 @@ function Detail({
         referenceBuildName={referenceBuildName}
         perPlayer={match.perPlayer}
         linkedVideoAnalysis={linkedVideoAnalysis}
+        verifiedVod={verifiedVod}
       />
 
       <ReplayCommandAnalysis matchId={match.id} />
@@ -449,7 +472,11 @@ function ComparisonTable({
               <tr className="border-b border-border">
                 <th className="rts-ledger-head px-3 py-2 text-left">{tt('Player')}</th>
                 {COLS.map((c) => (
-                  <th key={c.key} title={tt(c.title)} className="rts-ledger-head px-3 py-2 text-right">
+                  <th
+                    key={c.key}
+                    title={tt(c.title)}
+                    className="rts-ledger-head px-3 py-2 text-right"
+                  >
                     {tt(c.label)}
                   </th>
                 ))}

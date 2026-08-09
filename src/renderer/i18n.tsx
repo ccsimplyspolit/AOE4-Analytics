@@ -301,6 +301,7 @@ const UI: Record<Locale, Record<string, string>> = {
     W: 'П',
     L: 'ПР',
     'Open full post-game breakdown': 'Открыть полный послематчевый разбор',
+    'Open build audit': 'Открыть сверку билда',
     'Indexing local replay headers…': 'Индексация заголовков локальных реплеев…',
     'No readable replays found.': 'Читаемые реплеи не найдены.',
     'Finish a game or save a replay, then return here.':
@@ -539,6 +540,37 @@ const UI: Record<Locale, Record<string, string>> = {
     Stats: 'Статистика',
     Opacity: 'Прозрачность',
     'Widget size': 'Размер виджета',
+    'Matchup bar': 'Панель матчапа',
+    'Teams, civilizations, rank, and matchup troops.':
+      'Команды, цивилизации, ранг и войска для матчапа.',
+    'Post-game card': 'Послематчевый блок',
+    'Show the result and coaching card after the match.':
+      'Показывать результат и рекомендации после матча.',
+    'Status pill': 'Статус матча',
+    'Show waiting, matchup, and analysis status.':
+      'Показывать ожидание, матчап и статус анализа.',
+    'Build order overlay': 'Билд в оверлее',
+    'Choose a build here, or let the overlay pick the first matching build for your civilization.':
+      'Выберите билд здесь или включите автоматический выбор первого билда для вашей цивилизации.',
+    'Build selection': 'Выбор билда',
+    'Use selected build': 'Использовать выбранный билд',
+    'Auto-select by civilization': 'Выбирать по цивилизации',
+    'Hide build order': 'Скрыть билд',
+    'Selected build': 'Выбранный билд',
+    'No build selected': 'Билд не выбран',
+    'Build panel width': 'Ширина панели билда',
+    'Next-step preview': 'Превью следующего шага',
+    'Show the next build step below the current step.':
+      'Показывать следующий шаг под текущим.',
+    'Resources and villagers': 'Ресурсы и крестьяне',
+    'Show the resource split and villager target.':
+      'Показывать распределение ресурсов и цель по крестьянам.',
+    'Step instructions': 'Инструкция шага',
+    'Show notes and icon instructions for the active step.':
+      'Показывать заметки и иконки текущего шага.',
+    'Response plan': 'План ответа',
+    'Show scout-first counter and adaptation suggestions.':
+      'Показывать контры и варианты адаптации после разведки.',
     'APM corner': 'Угол APM',
     'Top-left': 'Слева сверху',
     'Top-right': 'Справа сверху',
@@ -802,6 +834,14 @@ const UI: Record<Locale, Record<string, string>> = {
     'Local archive': 'Локальный архив',
     'Account history': 'История аккаунта',
     'Auto-cache available page replays': 'Автоматически кэшировать доступные реплеи страницы',
+    'Auto-analyze cached replays': 'Автоматически разбирать кэшированные реплеи',
+    'Auto-analyze local replays': 'Автоматически разбирать локальные реплеи',
+    'Auto-analysis': 'Авторазбор',
+    'Automatic replay analysis': 'Автоматический разбор реплеев',
+    'summaries are cached automatically when available':
+      'сводки автоматически кэшируются, если доступны',
+    'auto-analyzed': 'разобран автоматически',
+    'Show analysis': 'Показать разбор',
     Previous: 'Предыдущая',
     'Local replay access is disabled': 'Доступ к локальным реплеям отключён',
     'Enable local data access in Settings to index your own matchhistory and `.rec` files. Nothing is read before consent.':
@@ -951,6 +991,12 @@ const UI: Record<Locale, Record<string, string>> = {
     'Open VOD finder': 'Открыть поиск VOD',
     'Twitch opens in your browser because its embedded player requires a verified web domain.':
       'Twitch откроется в браузере: его встроенный плеер требует подтверждённый веб-домен.',
+    'Verified exact-game VOD': 'Проверенный VOD именно этой игры',
+    'The extracted video build is used as the preferred reference for your player.':
+      'Извлечённый из видео билд используется как приоритетный референс для вашего игрока.',
+    'This confirms the video belongs to this game; the build is still inferred until the VOD is analyzed.':
+      'Видео подтверждено для этой игры, но билд пока только определён по совпадению — сначала разберите VOD.',
+    'Analyze exact VOD': 'Разобрать точный VOD',
     'Explorer Quiz': 'Тест обозревателя',
     Search: 'Поиск',
     'Unit name, class, id...': 'Название юнита, класс или ID…',
@@ -1374,6 +1420,7 @@ const UI: Record<Locale, Record<string, string>> = {
     'economy timeline': 'временная шкала экономики',
     'score timeline': 'временная шкала счёта',
     'build timeline': 'временная шкала билда',
+    'casualty timeline': 'временная шкала потерь',
     'combat counters': 'боевые показатели',
     'Resource conversion': 'Конверсия ресурсов',
     'Unspent float': 'Нерасходованный запас',
@@ -1387,6 +1434,10 @@ const UI: Record<Locale, Record<string, string>> = {
       'Потери войск невозможно отделить от потерь крестьян.',
     'Production conversion': 'Конверсия производства',
     'Opening checkpoint': 'Контрольная точка открытия',
+    'First pressure': 'Первое давление',
+    'First military-casualty timestamps unavailable.': 'Времена первых военных потерь недоступны.',
+    'first enemy loss by you': 'первая потеря соперника от вас',
+    response: 'ответ',
     'First building event unavailable.': 'Событие первого здания недоступно.',
     Checkpoint: 'Контрольная точка',
     'Gathered gap': 'Разница ресурсов',
@@ -1679,11 +1730,15 @@ const UI: Record<Locale, Record<string, string>> = {
       'Всадники против кавалерии, ослабляющие соседних всадников; уязвимы для дальнобойных и копейщиков.',
     'Enormous HP that crushes melee; brought down by crossbows, handcannoneers, and camels.':
       'Огромный запас здоровья позволяет сокрушать ближний бой; контрятся арбалетчиками, ручными стрелками и верблюдами.',
-    'War Room role graph marks this as a hard counter.': 'Граф ролей War Room считает это жёстким контром.',
-    'War Room role graph marks this as a disadvantage.': 'Граф ролей War Room считает это невыгодным матчапом.',
-    'War Room role graph marks this as a soft answer.': 'Граф ролей War Room считает это мягким ответом.',
+    'War Room role graph marks this as a hard counter.':
+      'Граф ролей War Room считает это жёстким контром.',
+    'War Room role graph marks this as a disadvantage.':
+      'Граф ролей War Room считает это невыгодным матчапом.',
+    'War Room role graph marks this as a soft answer.':
+      'Граф ролей War Room считает это мягким ответом.',
     'No explicit role edge was found.': 'Явная связь ролей не найдена.',
-    'The attacker has a lower total resource cost.': 'У атакующего ниже суммарная стоимость ресурсов.',
+    'The attacker has a lower total resource cost.':
+      'У атакующего ниже суммарная стоимость ресурсов.',
     'The compact damage-versus-armor estimate favors the attacker.':
       'Компактная оценка урона против брони в пользу атакующего.',
     'Available by the same or earlier age.': 'Доступен в той же или более ранней эпохе.',
@@ -1835,7 +1890,8 @@ const UI: Record<Locale, Record<string, string>> = {
       'Производство, бой, технологии и действия в минуту получены из Relic (того же источника, который читает AoE4World). Потери включают крестьян — военная вкладка игры считает только войска. Экономика в этом потоке не передаётся, поэтому отдельной колонкой не показывается.',
     'Loading matchup…': 'Загрузка матчапа…',
     'No matchup data for this pairing.': 'Для этой пары нет данных о матчапе.',
-    'Mirror match — it comes down to play, not the civ.': 'Зеркальный матч — всё решает игра, а не цивилизация.',
+    'Mirror match — it comes down to play, not the civ.':
+      'Зеркальный матч — всё решает игра, а не цивилизация.',
     '{civ} directional win rate vs {opponent}': 'Направленный винрейт {civ} против {opponent}',
     'source patch': 'патч источника',
     'not reported': 'не указан',
@@ -1849,9 +1905,11 @@ const UI: Record<Locale, Record<string, string>> = {
     'values are needed': 'значения',
     'Personal history only: {publicPatchKnown}/{publicGames} loaded public matches include a stored patch and {publicSeasonKnown}/{publicGames} include a season. {legacyPatchUnknown} legacy public matches lack patch metadata and {legacySeasonUnknown} lack season metadata{localSuffix} Filters show correlation in your matches, not patch causality or global performance.{practiceSuffix}':
       'Только личная история: в {publicPatchKnown} из {publicGames} загруженных публичных матчей сохранён патч, а в {publicSeasonKnown} из {publicGames} — сезон. У {legacyPatchUnknown} старых публичных матчей нет данных о патче, ещё у {legacySeasonUnknown} нет данных о сезоне{localSuffix} Фильтры показывают корреляцию в ваших матчах, а не причинность патча или глобальную эффективность.{practiceSuffix}',
-    'local/custom matches cannot be assigned a public patch.': 'локальных/пользовательских матчей нельзя связать с публичным патчем.',
-    'Practice games are hidden by your Settings preference.': 'Тренировочные матчи скрыты согласно настройке.',
-    'observed': 'наблюдений:',
+    'local/custom matches cannot be assigned a public patch.':
+      'локальных/пользовательских матчей нельзя связать с публичным патчем.',
+    'Practice games are hidden by your Settings preference.':
+      'Тренировочные матчи скрыты согласно настройке.',
+    observed: 'наблюдений:',
     game: 'матч',
     'Legacy public - unrecorded': 'Старые публичные — не записано',
     'Legacy - unrecorded': 'Старые — не записано',

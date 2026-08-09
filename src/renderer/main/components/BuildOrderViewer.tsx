@@ -134,7 +134,12 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
   const inOverlay = settings?.overlay.buildOrderId === bo.name
   const toggleOverlayPin = () => {
     update.mutate(
-      { overlay: { buildOrderId: inOverlay ? null : bo.name } },
+      {
+        overlay: {
+          buildOrderId: inOverlay ? null : bo.name,
+          buildOrderMode: inOverlay ? 'hidden' : 'manual',
+        },
+      },
       { onSuccess: () => void ipc.applyOverlaySettings() },
     )
   }

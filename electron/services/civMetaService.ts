@@ -3,6 +3,7 @@ import type { GlobalMatchupSummary } from '@domain/matchupLab'
 import { buildGlobalMatchup, isMatchupCivilization } from '@domain/matchupLab'
 import { buildTierList, type CivTier } from '@domain/tierList'
 import { buildMapStats, type MapStat } from '@domain/mapStats'
+import { filterMapStatsByPool, resolveForLeaderboard } from '@domain/rankedMapPool'
 import type { RankLevel, StatsLeaderboard } from '@api/types'
 import { getClient } from './appContext'
 import { err, errFrom, ok } from './result'
@@ -62,22 +63,39 @@ function parseMatchupLabQuery(input: unknown): MatchupLabQuery | null {
  */
 export async function getCivMeta(query: CivMetaQuery): Promise<IpcResult<CivMetaResult>> {
   try {
+    const leaderboard = query.leaderboard ?? 'rm_solo'
     const rating = query.rating && RATINGS.has(query.rating) ? query.rating : undefined
     const patch = safePatch(query.patch)
     const civStats = await getClient().getCivStats({
-      leaderboard: query.leaderboard,
+      leaderboard,
       rankLevel: query.rankLevel,
       rating,
       patch,
     })
     const tier = buildTierList(civStats)
 
+    const mapPool = resolveForLeaderboard(leaderboard)
+    let maps: MapStat[] = []
+    try {
+      const mapStats = await getClient().getMapStats({
+        leaderboard,
+        rankLevel: query.rankLevel,
+        rating,
+        patch,
+      })
+      const allMaps = buildMapStats(mapStats)
+      maps = query.mapPoolOnly === true ? filterMapStatsByPool(allMaps, mapPool) : allMaps
+    } catch {
+      maps = []
+    }
+
     let mapCivs: CivTier[] | undefined
     let selectedMap: string | null = null
-    if (Number.isSafeInteger(query.mapId) && query.mapId! > 0) {
+    const selectedMapIsVisible = maps.some((map) => map.mapId === query.mapId)
+    if (Number.isSafeInteger(query.mapId) && query.mapId! > 0 && (!query.mapPoolOnly || selectedMapIsVisible)) {
       try {
         const mapResponse = await getClient().getMapCivStats(query.mapId!, {
-          leaderboard: query.leaderboard,
+          leaderboard,
           rankLevel: query.rankLevel,
           rating,
           patch,
@@ -90,19 +108,6 @@ export async function getCivMeta(query: CivMetaQuery): Promise<IpcResult<CivMeta
       }
     }
 
-    let maps: MapStat[] = []
-    try {
-      const mapStats = await getClient().getMapStats({
-        leaderboard: query.leaderboard,
-        rankLevel: query.rankLevel,
-        rating,
-        patch,
-      })
-      maps = buildMapStats(mapStats)
-    } catch {
-      maps = []
-    }
-
     return ok({
       civs: tier.civs,
       maps,
@@ -112,6 +117,7 @@ export async function getCivMeta(query: CivMetaQuery): Promise<IpcResult<CivMeta
       patch: civStats.patch,
       mapCivs,
       selectedMap,
+      mapPool,
     })
   } catch (e) {
     return errFrom(e)

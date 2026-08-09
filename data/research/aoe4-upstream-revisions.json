@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "sourceId": "upstream-github-audit",
+  "sourceUrl": "https://github.com/",
+  "capturedAt": "2026-08-09T02:56:49Z",
+  "status": "healthy",
+  "healthy": 12,
+  "total": 12,
+  "sources": [
+    {
+      "id": "aoe4world-data",
+      "repository": "aoe4world/data",
+      "url": "https://github.com/aoe4world/data",
+      "branch": "main",
+      "commit": "b2cd38222deae40ba2db18171edf494f81410c69",
+      "status": "ok"
+    },
+    {
+      "id": "aoe4world-overlay",
+      "repository": "aoe4world/overlay",
+      "url": "https://github.com/aoe4world/overlay",
+      "branch": "main",
+      "commit": "426f7d057d93e5c7ae4521a06710121026d99241",
+      "status": "ok"
+    },
+    {
+      "id": "aoe4guides",
+      "repository": "jensbuehl/aoe4-guides",
+      "url": "https://github.com/jensbuehl/aoe4-guides",
+      "branch": "main",
+      "commit": "8d00f03754a83106f47c76e1b0099e30c3b9d747",
+      "status": "ok"
+    },
+    {
+      "id": "essence",
+      "repository": "aoemods/AOEMods.Essence",
+      "url": "https://github.com/aoemods/AOEMods.Essence",
+      "branch": "master",
+      "commit": "2bb952f292ac9c2a1a1c84019d97b406018f7938",
+      "status": "ok"
+    },
+    {
+      "id": "attrib",
+      "repository": "aoemods/attrib",
+      "url": "https://github.com/aoemods/attrib",
+      "branch": "master",
+      "commit": "b8cce489a268ea3ae51a12182662b8089d10588a",
+      "status": "ok"
+    },
+    {
+      "id": "war-room",
+      "repository": "haZiinstinct/aoe4-war-room",
+      "url": "https://github.com/haZiinstinct/aoe4-war-room",
+      "branch": "main",
+      "commit": "bfc9660a71180c91ea99748e2b0f4d70bfa3445d",
+      "status": "ok"
+    },
+    {
+      "id": "prelate-rs",
+      "repository": "willfindlay/prelate-rs",
+      "url": "https://github.com/willfindlay/prelate-rs",
+      "branch": "main",
+      "commit": "0bca01ecac36ac582bd5b639f96cea603da473a8",
+      "status": "ok"
+    },
+    {
+      "id": "orda",
+      "repository": "gzordrai/orda",
+      "url": "https://github.com/gzordrai/orda",
+      "branch": "main",
+      "commit": "49420d1073592bbfaa9cbecc9abce21909a4ca4c",
+      "status": "ok"
+    },
+    {
+      "id": "aoe4stats",
+      "repository": "willbonney/aoe4stats.com",
+      "url": "https://github.com/willbonney/aoe4stats.com",
+      "branch": "master",
+      "commit": "5cb004de7da8df77c7fe58b22f5edd00445f7026",
+      "status": "ok"
+    },
+    {
+      "id": "native-hud",
+      "repository": "FramHerel/Aoe4OverlayWinUI3",
+      "url": "https://github.com/FramHerel/Aoe4OverlayWinUI3",
+      "branch": "main",
+      "commit": "72a02545dc9e0f5019be12c89dc674f74b2c45df",
+      "status": "ok"
+    },
+    {
+      "id": "hud-websocket",
+      "repository": "ycxisreal/ycx-aoe4-hud-frontend",
+      "url": "https://github.com/ycxisreal/ycx-aoe4-hud-frontend",
+      "branch": "master",
+      "commit": "00fd168418fc84baa1002bc12d91cbdea8105198",
+      "status": "ok"
+    },
+    {
+      "id": "counter-chart",
+      "repository": "LeandroSQ/aoe4-counter-chart",
+      "url": "https://github.com/LeandroSQ/aoe4-counter-chart",
+      "branch": "main",
+      "commit": "85044ca9b86588c0bcbc3e268a2a1f3cf7dd08d5",
+      "status": "ok"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import type { PerPlayerMatchStats } from './analysis'
 import {
   civFromToken,
   type BuildEvent,
+  type CasualtyEvent,
   type MatchSummary,
   type PlayerSummary,
 } from './statsSummary'
@@ -39,6 +40,8 @@ export interface MatchReviewPlayer {
   villagerHigh: number | null
   tcIdleWindows: number
   longestTcGapSec: number | null
+  /** First hostile military loss observed in the summary, when STLS decoded. */
+  firstMilitaryLoss: CasualtyEvent | null
 }
 
 export interface MatchReviewCheckpoint {
@@ -78,8 +81,19 @@ export interface MatchReviewCoverage {
   economyTimeline: boolean
   scoreTimeline: boolean
   buildTimeline: boolean
+  casualtyTimeline: boolean
   combatCounters: boolean
   confidence: 'high' | 'medium' | 'low'
+}
+
+export interface MatchReviewPressure {
+  /** The first hostile military loss received by each player. */
+  myFirstMilitaryLossTimeSec: number | null
+  opponentFirstMilitaryLossTimeSec: number | null
+  /** First military loss of the opponent explicitly attributed to me. */
+  firstEnemyMilitaryLossCausedTimeSec: number | null
+  /** Positive means the opponent lost a military unit after my first loss. */
+  responseLagSec: number | null
 }
 
 export interface MatchReview {
@@ -89,6 +103,8 @@ export interface MatchReview {
   isOneVsOne: boolean
   /** Team-level comparison when Relic supplied usable team ids for both sides. */
   teamComparison: MatchReviewTeamComparison | null
+  /** First-casualty / response evidence for a two-player summary. */
+  pressure: MatchReviewPressure | null
   /** Explicit evidence coverage so coaching never looks more certain than the data. */
   coverage: MatchReviewCoverage
 }
@@ -118,6 +134,7 @@ export function deriveMatchReview(
     checkpoints: opponent ? deriveCheckpoints(summary, me, opponent) : [],
     isOneVsOne,
     teamComparison: deriveTeamComparison(summary, me, perPlayer, perPlayerById),
+    pressure: opponent ? derivePressure(me, opponent) : null,
     coverage: coverageFor(summary, me, perPlayerById),
   }
 }
@@ -131,13 +148,22 @@ function coverageFor(
   const economyTimeline = summary.players.some((player) => player.resources.length >= 2)
   const scoreTimeline = summary.players.some((player) => player.scores.length >= 2)
   const buildTimeline = summary.players.some((player) => player.buildOrder.length > 0)
+  const casualtyTimeline = summary.players.some((player) => player.casualties != null)
   const combatCounters = me.profileId != null && perPlayerById.has(me.profileId)
-  const evidenceCount = [summaryTotals, economyTimeline, scoreTimeline, buildTimeline, combatCounters].filter(Boolean).length
+  const evidenceCount = [
+    summaryTotals,
+    economyTimeline,
+    scoreTimeline,
+    buildTimeline,
+    casualtyTimeline,
+    combatCounters,
+  ].filter(Boolean).length
   return {
     summaryTotals,
     economyTimeline,
     scoreTimeline,
     buildTimeline,
+    casualtyTimeline,
     combatCounters,
     confidence: evidenceCount >= 4 ? 'high' : evidenceCount >= 2 ? 'medium' : 'low',
   }
@@ -199,7 +225,8 @@ function aggregateTeamSide(
         : null,
     kills,
     troopLosses,
-    tradeRatio: kills != null && troopLosses != null && troopLosses > 0 ? kills / troopLosses : null,
+    tradeRatio:
+      kills != null && troopLosses != null && troopLosses > 0 ? kills / troopLosses : null,
     unitsProduced: sumNullable(rows.map((row) => row.unitsProduced)),
     largestArmy: sumNullable(rows.map((row) => row.largestArmy)),
     upgrades: sumNullable(rows.map((row) => row.upgrades)),
@@ -284,7 +311,59 @@ function playerMetrics(
     villagerHigh: totals?.villagerHigh ?? null,
     tcIdleWindows: rhythm.count,
     longestTcGapSec: rhythm.longestGapSec > 0 ? rhythm.longestGapSec : null,
+    firstMilitaryLoss: firstMilitaryLoss(player),
   }
+}
+
+function derivePressure(me: PlayerSummary, opponent: PlayerSummary): MatchReviewPressure {
+  const myLoss = firstMilitaryLoss(me)
+  const opponentLoss = firstMilitaryLoss(opponent)
+  const firstEnemyLossCaused = firstMilitaryLossByAttacker(opponent, me.playerId)
+  return {
+    myFirstMilitaryLossTimeSec: myLoss?.timeSec ?? null,
+    opponentFirstMilitaryLossTimeSec: opponentLoss?.timeSec ?? null,
+    firstEnemyMilitaryLossCausedTimeSec: firstEnemyLossCaused?.timeSec ?? null,
+    responseLagSec:
+      myLoss && firstEnemyLossCaused
+        ? Math.round(firstEnemyLossCaused.timeSec - myLoss.timeSec)
+        : null,
+  }
+}
+
+function firstMilitaryLoss(player: PlayerSummary): CasualtyEvent | null {
+  return (
+    (player.casualties ?? [])
+      .filter(
+        (event) =>
+          event.attackerPlayerId != null &&
+          event.attackerPlayerId !== event.targetPlayerId &&
+          isMilitaryCasualty(event.targetUnitType),
+      )
+      .sort((a, b) => a.timeSec - b.timeSec)[0] ?? null
+  )
+}
+
+function firstMilitaryLossByAttacker(
+  player: PlayerSummary,
+  attackerPlayerId: number,
+): CasualtyEvent | null {
+  return (
+    (player.casualties ?? [])
+      .filter(
+        (event) =>
+          event.attackerPlayerId === attackerPlayerId && isMilitaryCasualty(event.targetUnitType),
+      )
+      .sort((a, b) => a.timeSec - b.timeSec)[0] ?? null
+  )
+}
+
+/** Conservative classification: the summary names a target type, but does
+ * not provide a combat-role enum. Buildings, workers and map fauna are not
+ * treated as army losses; everything else is retained as a military signal. */
+function isMilitaryCasualty(unitType: string): boolean {
+  return !/(villager|worker|building|house|wall|outpost|farm|tower|sheep|deer|boar|fish|animal|resource)/i.test(
+    unitType,
+  )
 }
 
 function unitCompletionRhythm(player: PlayerSummary): { count: number; longestGapSec: number } {

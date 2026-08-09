@@ -11,16 +11,22 @@ import { useI18n } from '../../i18n'
 
 export function VideoAnalysisImporter({
   initialUrl = '',
+  initialGameId = null,
+  initialCivilization = '',
   onImported,
 }: {
   initialUrl?: string
+  /** Exact AoE4World game id carried from the Twitch Finder link. */
+  initialGameId?: string | null
+  /** Civ carried from the match so extraction can label the draft build. */
+  initialCivilization?: string | null
   onImported: (record: VideoAnalysisRecord) => void
 }) {
   const { tt, gameName } = useI18n()
   const queryClient = useQueryClient()
-  const autoStartedRef = useRef(false)
+  const autoStartedUrlRef = useRef<string | null>(null)
   const [url, setUrl] = useState(initialUrl)
-  const [civilization, setCivilization] = useState('')
+  const [civilization, setCivilization] = useState(initialCivilization ?? '')
   const [record, setRecord] = useState<VideoAnalysisRecord | null>(null)
   const [loading, setLoading] = useState(false)
   const [batchLoading, setBatchLoading] = useState(false)
@@ -42,6 +48,9 @@ export function VideoAnalysisImporter({
       const result = await ipc.extractVideoAnalysis({
         url: candidate.trim(),
         civilization: civilization.trim() || null,
+        // Only carry the match id for the exact Finder URL. If the user edits
+        // the field afterwards, do not attach an unrelated video to the game.
+        gameId: candidate.trim() === initialUrl.trim() ? initialGameId : null,
       })
       setLoading(false)
       if (!result.ok) {
@@ -52,7 +61,7 @@ export function VideoAnalysisImporter({
       void queryClient.invalidateQueries({ queryKey: ['videoAnalyses'] })
       onImported(result.data)
     },
-    [civilization, loading, onImported, queryClient, url],
+    [civilization, initialGameId, initialUrl, loading, onImported, queryClient, url],
   )
 
   const analyzeLinkedVods = async () => {
@@ -112,11 +121,15 @@ export function VideoAnalysisImporter({
   useEffect(() => {
     if (!initialUrl) return
     setUrl(initialUrl)
-    if (!autoStartedRef.current) {
-      autoStartedRef.current = true
+    if (initialCivilization) setCivilization(initialCivilization)
+    // The Cellar component stays mounted while hash query parameters change;
+    // remember the URL rather than a single boolean so every newly linked VOD
+    // is analyzed once, while ordinary rerenders cannot start duplicates.
+    if (autoStartedUrlRef.current !== initialUrl) {
+      autoStartedUrlRef.current = initialUrl
       void extract(initialUrl)
     }
-  }, [extract, initialUrl])
+  }, [extract, initialCivilization, initialUrl])
 
   return (
     <Card className="border-primary/25 bg-primary/[0.035]">

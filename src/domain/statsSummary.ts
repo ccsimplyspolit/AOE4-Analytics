@@ -35,6 +35,17 @@ export interface BuildEvent {
   name: string
 }
 
+/** A decoded STLS casualty record. This is an observed loss event, not a
+ * complete combat log: the summary records the target and (when available)
+ * the attacking player/unit, but not every attack, movement or vision state. */
+export interface CasualtyEvent {
+  timeSec: number
+  targetPlayerId: number
+  targetUnitType: string
+  attackerPlayerId: number | null
+  attackerUnitType: string | null
+}
+
 export interface ResourceAmounts {
   food: number
   wood: number
@@ -115,6 +126,8 @@ export interface PlayerSummary {
    * when the lost list didn't decode.
    */
   villagersLost: number | null
+  /** STLS loss events attributed to this player, when the lost list decoded. */
+  casualties?: CasualtyEvent[]
   buildOrder: BuildEvent[]
   resources: ResourcePoint[]
   scores: ScorePoint[]
@@ -224,13 +237,11 @@ export function parseStatsSummary(bytes: Uint8Array): MatchSummary | null {
   if (!stli) return null
 
   const stls = findChild(stli.children, 'STLS', 'DATA')
-  const { gameLengthSec, buildByPlayer, villagersLostByPlayer } = stls
-    ? decodeBuildOrder(bytes, stls)
-    : {
-        gameLengthSec: null,
-        buildByPlayer: new Map<number, BuildEvent[]>(),
-        villagersLostByPlayer: null,
-      }
+  const decodedBuild = stls ? decodeBuildOrder(bytes, stls) : null
+  const gameLengthSec = decodedBuild?.gameLengthSec ?? null
+  const buildByPlayer = decodedBuild?.buildByPlayer ?? new Map<number, BuildEvent[]>()
+  const villagersLostByPlayer = decodedBuild?.villagersLostByPlayer ?? null
+  const casualtiesByPlayer = decodedBuild?.casualtiesByPlayer ?? null
 
   const stpl = findChild(stli.children, 'STPL', 'FOLD')
   const playerFolds = findChildren(stpl?.children, 'STLP', 'FOLD')
@@ -249,7 +260,8 @@ export function parseStatsSummary(bytes: Uint8Array): MatchSummary | null {
     }
 
     const identity = strict ?? (stpd ? readStpdIdentity(bytes, stpd) : { playerId: -1, name: null })
-    const timelines = strict ?? (stpd ? decodeTimelines(bytes, stpd) : { resources: [], scores: [] })
+    const timelines =
+      strict ?? (stpd ? decodeTimelines(bytes, stpd) : { resources: [], scores: [] })
     const buildOrder = buildByPlayer.get(identity.playerId) ?? []
     return {
       playerId: identity.playerId,
@@ -257,7 +269,12 @@ export function parseStatsSummary(bytes: Uint8Array): MatchSummary | null {
       profileId: strict != null && strict.profileId > 0 ? strict.profileId : null,
       civToken: strict?.civ || inferCivToken(buildOrder),
       totals: strict?.totals ?? null,
-      villagersLost: villagersLostByPlayer ? (villagersLostByPlayer.get(identity.playerId) ?? 0) : null,
+      villagersLost: villagersLostByPlayer
+        ? (villagersLostByPlayer.get(identity.playerId) ?? 0)
+        : null,
+      casualties: casualtiesByPlayer
+        ? (casualtiesByPlayer.get(identity.playerId) ?? [])
+        : undefined,
       buildOrder,
       resources: timelines.resources,
       scores: timelines.scores,
@@ -276,6 +293,7 @@ function decodeBuildOrder(
   gameLengthSec: number | null
   buildByPlayer: Map<number, BuildEvent[]>
   villagersLostByPlayer: Map<number, number> | null
+  casualtiesByPlayer: Map<number, CasualtyEvent[]> | null
 } {
   const r = new Reader(bytes, stls.dataStart, stls.dataEnd)
   const byPlayer = new Map<number, BuildEvent[]>()
@@ -305,27 +323,36 @@ function decodeBuildOrder(
       byPlayer.set(playerId, list)
     }
   } catch {
-    return { gameLengthSec: null, buildByPlayer: byPlayer, villagersLostByPlayer: null }
+    return {
+      gameLengthSec: null,
+      buildByPlayer: byPlayer,
+      villagersLostByPlayer: null,
+      casualtiesByPlayer: null,
+    }
   }
 
   // Lost entities (per replaySummary.bt DataSTLSLostEntity) — decoded separately
   // so a drift here never costs the build order above.
   const villagersLost = new Map<number, number>()
+  const casualtiesByPlayer = new Map<number, CasualtyEvent[]>()
   try {
     const lostCount = r.i32()
     if (lostCount < 0 || lostCount > 200000) throw new RangeError('stls: implausible lost count')
     for (let i = 0; i < lostCount; i++) {
-      r.f32() // timestamp
+      const timeSec = r.f32()
       const targetPlayerId = r.i32()
       r.i32() // targetEntityId
       r.u8() // hasTarget (==1)
       const targetUnitType = r.str()
       r.i16()
       r.i16()
-      r.i32() // attackerPlayerId
+      const rawAttackerPlayerId = r.i32()
       r.i32() // attackerEntityId
       const hasAttacker = r.u8()
-      r.str() // attackerUnitType
+      const rawAttackerUnitType = r.str()
+      const attackerPlayerId = hasAttacker && rawAttackerPlayerId >= 0 ? rawAttackerPlayerId : null
+      const attackerUnitType =
+        hasAttacker && rawAttackerUnitType.length > 0 ? rawAttackerUnitType : null
       if (hasAttacker) {
         r.i16()
         r.i16()
@@ -335,13 +362,26 @@ function decodeBuildOrder(
       r.f32() // targetY
       r.f32() // attackerX
       r.f32() // attackerY
+      const events = casualtiesByPlayer.get(targetPlayerId) ?? []
+      events.push({ timeSec, targetPlayerId, targetUnitType, attackerPlayerId, attackerUnitType })
+      casualtiesByPlayer.set(targetPlayerId, events)
       if (/villager/i.test(targetUnitType)) {
         villagersLost.set(targetPlayerId, (villagersLost.get(targetPlayerId) ?? 0) + 1)
       }
     }
-    return { gameLengthSec, buildByPlayer: byPlayer, villagersLostByPlayer: villagersLost }
+    return {
+      gameLengthSec,
+      buildByPlayer: byPlayer,
+      villagersLostByPlayer: villagersLost,
+      casualtiesByPlayer,
+    }
   } catch {
-    return { gameLengthSec, buildByPlayer: byPlayer, villagersLostByPlayer: null }
+    return {
+      gameLengthSec,
+      buildByPlayer: byPlayer,
+      villagersLostByPlayer: null,
+      casualtiesByPlayer: null,
+    }
   }
 }
 
@@ -498,7 +538,12 @@ function readResourcePoint(r: Reader, timeSec: number, version: number): Resourc
 }
 
 function addResources(a: ResourceAmounts, b: ResourceAmounts): ResourceAmounts {
-  return { food: a.food + b.food, wood: a.wood + b.wood, gold: a.gold + b.gold, stone: a.stone + b.stone }
+  return {
+    food: a.food + b.food,
+    wood: a.wood + b.wood,
+    gold: a.gold + b.gold,
+    stone: a.stone + b.stone,
+  }
 }
 
 /** Post-timeline STPD fields, through the age-up timestamps. */
@@ -525,7 +570,8 @@ function decodeStpdTail(r: Reader, v: number, totals: PlayerTotals): void {
   if (unitCount < 0 || unitCount > 200000) throw new RangeError('stpd: implausible array size')
   for (let i = 0; i < unitCount; i++) {
     const idType = r.u8()
-    if (idType === 1) r.i32() // pbgid
+    if (idType === 1)
+      r.i32() // pbgid
     else if (idType === 2) r.ascii(20) // mod hash
     r.i16()
     r.i16()
@@ -687,8 +733,28 @@ function readResourceTimestampStep(r: Reader): number {
 
 /** Civ/variant/qualifier tokens to strip from the tail of a blueprint token. */
 const SUFFIX_JUNK = new Set([
-  'control', 'capital', 'ha', 'cw', 'jd', 'od', 'zx', 'summon',
-  'abb', 'ayy', 'byz', 'chi', 'del', 'eng', 'fre', 'hre', 'jap', 'mal', 'mon', 'ott', 'rus', 'tem',
+  'control',
+  'capital',
+  'ha',
+  'cw',
+  'jd',
+  'od',
+  'zx',
+  'summon',
+  'abb',
+  'ayy',
+  'byz',
+  'chi',
+  'del',
+  'eng',
+  'fre',
+  'hre',
+  'jap',
+  'mal',
+  'mon',
+  'ott',
+  'rus',
+  'tem',
 ])
 
 /** "unit_villager_1_tem" → "Villager"; "building_town_center_capital_tem" → "Town Center". */
