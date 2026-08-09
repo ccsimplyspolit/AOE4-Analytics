@@ -23,9 +23,12 @@ const SEVERITY_STYLE: Record<Severity, string> = {
 interface TeamMateReviewCardProps {
   summary: MatchSummary
   perPlayer?: PerPlayerMatchStats[]
+  /** Signed-in account, used only for the optional "You" marker. */
   myProfileId: number | null
-  myPlayerId: number | null
-  myCiv: string | null
+  /** The player whose team and evidence are currently in focus. */
+  focusProfileId: number | null
+  focusPlayerId: number | null
+  focusCiv: string | null
   activePlayerId: number | null
   onSelectPlayer?: (playerId: number) => void
 }
@@ -34,7 +37,8 @@ interface ReviewRow {
   player: SummaryPlayer | null
   counter: PerPlayerMatchStats
   signals: Signal[]
-  isMe: boolean
+  isYou: boolean
+  isFocus: boolean
   coverage: ReturnType<typeof playerEvidenceCoverage> | null
 }
 
@@ -47,14 +51,15 @@ export function TeamMateReviewCard({
   summary,
   perPlayer = [],
   myProfileId,
-  myPlayerId,
-  myCiv,
+  focusProfileId,
+  focusPlayerId,
+  focusCiv,
   activePlayerId,
   onSelectPlayer,
 }: TeamMateReviewCardProps) {
   const { tt, gameName } = useI18n()
-  const self = summaryPlayerForMe(summary, myProfileId, myCiv, myPlayerId)
-  const selfProfileId = self?.profileId ?? myProfileId
+  const self = summaryPlayerForMe(summary, focusProfileId, focusCiv, focusPlayerId)
+  const selfProfileId = self?.profileId ?? focusProfileId
   const ownCounter =
     selfProfileId == null
       ? null
@@ -87,7 +92,8 @@ export function TeamMateReviewCard({
       signals: dedupeSignals([...signals, ...comparison]).sort(
         (a, b) => SEVERITY_ORDER[a.severity] - SEVERITY_ORDER[b.severity],
       ),
-      isMe: counter.profileId === selfProfileId,
+      isYou: counter.profileId === myProfileId,
+      isFocus: player?.playerId === activePlayerId,
       coverage: player ? playerEvidenceCoverage(player, counter) : null,
     }
   })
@@ -138,7 +144,10 @@ export function TeamMateReviewCard({
                     </div>
                     <div className="text-xs text-muted-foreground">
                       {civ ? gameName(civDisplayName(civ)) : tt('Civilization unavailable')}
-                      {row.isMe && <span className="ml-1.5 text-primary">· {tt('You')}</span>}
+                      {row.isYou && <span className="ml-1.5 text-primary">· {tt('You')}</span>}
+                      {row.isFocus && !row.isYou && (
+                        <span className="ml-1.5 text-primary">· {tt('Focus')}</span>
+                      )}
                     </div>
                   </div>
                   <span

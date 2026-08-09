@@ -188,13 +188,6 @@ function Detail({
     (summary?.players.filter((player) => civFromToken(player.civToken) === match.civ).length === 1
       ? summary.players.find((player) => civFromToken(player.civToken) === match.civ)
       : undefined)
-  const ownCounter =
-    myProfileId == null
-      ? null
-      : ((match.perPlayer ?? []).find((row) => row.profileId === myProfileId) ?? null)
-  const teamReviewEligible =
-    ownCounter?.teamId != null &&
-    (match.perPlayer ?? []).filter((row) => row.teamId === ownCounter.teamId).length > 1
   const subjectPlayerId = focusedPlayerId ?? ownSummaryPlayer?.playerId ?? null
   const subjectSummaryPlayer =
     focusedPlayerId != null
@@ -206,6 +199,16 @@ function Detail({
     subjectProfileId != null
       ? (rows.find((player) => player.profileId === subjectProfileId) ?? null)
       : null
+  // Team review follows the focused player, not the signed-in account. This
+  // matters as soon as a user clicks an ally/opponent in the match roster:
+  // the same Relic team id must drive both the eligibility gate and the card.
+  const subjectCounter =
+    subjectProfileId == null
+      ? null
+      : ((match.perPlayer ?? []).find((row) => row.profileId === subjectProfileId) ?? null)
+  const teamReviewEligible =
+    subjectCounter?.teamId != null &&
+    (match.perPlayer ?? []).filter((row) => row.teamId === subjectCounter.teamId).length > 1
   // Per-player Relic data carries the exact variant (for example Order of the
   // Dragon), while the STPD summary can serialize that variant as generic HRE.
   // Prefer the exact row and the match civ before falling back to the summary
@@ -362,8 +365,9 @@ function Detail({
           summary={summary}
           perPlayer={match.perPlayer}
           myProfileId={myProfileId}
-          myPlayerId={ownSummaryPlayer?.playerId ?? null}
-          myCiv={match.civ}
+          focusProfileId={subjectProfileId}
+          focusPlayerId={subjectPlayerId}
+          focusCiv={subjectCiv}
           activePlayerId={subjectPlayerId}
           onSelectPlayer={(playerId) => {
             const ownId = ownSummaryPlayer?.playerId ?? null
