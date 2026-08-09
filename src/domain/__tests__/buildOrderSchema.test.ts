@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import {
+  decodeHtmlEntities,
   validateBuildOrder,
   normalizeBuildOrder,
   parseNote,
@@ -104,6 +105,15 @@ describe('parseNote', () => {
       { type: 'image', path: 'unit_worker/villager.webp' },
       { type: 'text', text: ' on ' },
       { type: 'image', path: 'resource/food.webp' },
+    ])
+  })
+
+  it('decodes HTML entities from imported provider notes', () => {
+    expect(decodeHtmlEntities('Rally &gt; wood &amp; gold')).toBe('Rally > wood & gold')
+    expect(parseNote('@resource/rally.webp@ &gt; @resource/resource_wood.webp@')).toEqual([
+      { type: 'image', path: 'resource/rally.webp' },
+      { type: 'text', text: ' > ' },
+      { type: 'image', path: 'resource/resource_wood.webp' },
     ])
   })
 })

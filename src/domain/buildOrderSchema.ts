@@ -95,9 +95,38 @@ function isNumber(v: unknown): v is number {
   return typeof v === 'number' && Number.isFinite(v)
 }
 
+/** Decodes provider HTML entities while keeping the result safe for React text rendering. */
+export function decodeHtmlEntities(value: string): string {
+  let decoded = value
+  for (let pass = 0; pass < 3; pass += 1) {
+    const next = decoded
+      .replace(/&amp;/gi, '&')
+      .replace(/&quot;/gi, '"')
+      .replace(/&#39;|&apos;/gi, "'")
+      .replace(/&lt;/gi, '<')
+      .replace(/&gt;/gi, '>')
+      .replace(/&nbsp;/gi, ' ')
+      .replace(/&#(\d+);/g, (_match, code: string) => {
+        const point = Number(code)
+        return point >= 0 && point <= 0x10ffff && Number.isSafeInteger(point)
+          ? String.fromCodePoint(point)
+          : _match
+      })
+      .replace(/&#x([0-9a-f]+);/gi, (_match, code: string) => {
+        const point = Number.parseInt(code, 16)
+        return point >= 0 && point <= 0x10ffff && Number.isSafeInteger(point)
+          ? String.fromCodePoint(point)
+          : _match
+      })
+    if (next === decoded) break
+    decoded = next
+  }
+  return decoded
+}
+
 /** Splits a note into text and icon-token (`@path@`) parts for rendering. */
 export function parseNote(note: string): NotePart[] {
-  const segments = note.split('@')
+  const segments = decodeHtmlEntities(note).split('@')
   const parts: NotePart[] = []
   segments.forEach((seg, i) => {
     if (i % 2 === 0) {

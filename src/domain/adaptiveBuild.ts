@@ -6,7 +6,7 @@
  * counter data. They never imply that RTSLytics observed an opponent's hidden
  * build, resources, or army.
  */
-import type { BuildOrder } from './buildOrderSchema'
+import { decodeHtmlEntities, type BuildOrder } from './buildOrderSchema'
 import type { TrainerCheckpoint, TrainerReport } from './buildTrainer'
 import { counterPlanForCiv } from './civUnits'
 import { formatDuration } from './format'
@@ -245,7 +245,7 @@ function normalizeCondition(value: string): string {
 }
 
 function cleanNote(note: string): string {
-  return note
+  return decodeHtmlEntities(note)
     .replace(/@[^@]+@/g, '')
     .replace(/\s+/g, ' ')
     .trim()

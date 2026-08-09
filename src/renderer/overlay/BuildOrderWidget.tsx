@@ -1,7 +1,7 @@
 // Re-activated (2026-07-07): mounted by OverlayApp as a placeable widget, driven
 // by the live game clock + the build order pinned from Guides ("Show in overlay").
 import { useState } from 'react'
-import type { BuildOrder } from '@domain/buildOrderSchema'
+import { decodeHtmlEntities, type BuildOrder } from '@domain/buildOrderSchema'
 import { parseBuildOrderDisplayNote } from '@domain/buildOrderNotes'
 import { liveBuildForkPlan } from '@domain/adaptiveBuild'
 import { formatDuration } from '@domain/format'
@@ -97,7 +97,7 @@ function renderNote(note: string) {
 /** First sentence of a note, trimmed — used for the dim "next" preview. */
 function firstClause(s: string | undefined): string {
   if (!s) return ''
-  const t = s.split(/[.!]/)[0] ?? s
+  const t = decodeHtmlEntities(s).split(/[.!]/)[0] ?? s
   return t.length > 44 ? `${t.slice(0, 42).trimEnd()}…` : t
 }
 
