@@ -49,7 +49,7 @@ export function ScoutHistoryPanel({
   const viewingSelf = activeProfile?.profileId === viewedProfileId
 
   return (
-    <div className="grid gap-6 xl:grid-cols-2">
+    <div className="grid items-start gap-6 xl:grid-cols-2">
       <section className="overflow-hidden rounded-lg border border-border bg-card/50">
         <SectionHeader
           icon={<History className="h-4 w-4" />}
@@ -200,9 +200,14 @@ function HeadToHeadSummary({ data }: { data: HeadToHeadData }) {
         <span className="text-loss">{data.losses}L</span>
       </span>
       <span className="text-muted-foreground">
-        {formatPercent(data.winRate)} {tt('across {count} decided in this sample').replace('{count}', String(data.decidedGames))}
+        {formatPercent(data.winRate)}{' '}
+        {tt('across {count} decided in this sample').replace('{count}', String(data.decidedGames))}
       </span>
-      {unknown > 0 && <span className="text-muted-foreground">· {unknown} {tt('undecided')}</span>}
+      {unknown > 0 && (
+        <span className="text-muted-foreground">
+          · {unknown} {tt('undecided')}
+        </span>
+      )}
     </div>
   )
 }
@@ -219,14 +224,16 @@ function MatchList({ page, profileId }: { page: ScoutMatchPage; profileId: numbe
 
 function MatchRow({ match, profileId }: { match: ScoutMatchRow; profileId: number }) {
   const { tt, gameName } = useI18n()
-  const opponentCivs = match.opponentCivilizations.map((civ) => gameName(civDisplayName(civ))).join(' + ')
+  const opponentCivs = match.opponentCivilizations
+    .map((civ) => gameName(civDisplayName(civ)))
+    .join(' + ')
   const matchup = `${displayCiv(match.civilization, tt, gameName)} ${tt('vs')} ${opponentCivs || tt('Unknown')}`
   const when = relativeTime(match.startedAt) || tt('Date unavailable')
 
   return (
     <Link
       to={`/public-game/${profileId}/${match.gameId}`}
-      className="flex flex-wrap items-center gap-x-4 gap-y-1 border-b border-border px-3 py-2.5 text-xs transition-colors hover:bg-secondary/40 last:border-b-0"
+      className="block border-b border-border px-3 py-2.5 text-xs transition-colors hover:bg-secondary/40 last:border-b-0"
       title={
         match.opponentNames.length > 0
           ? `${tt('Opponents')}: ${match.opponentNames.join(', ')}`
@@ -234,20 +241,20 @@ function MatchRow({ match, profileId }: { match: ScoutMatchRow; profileId: numbe
       }
       aria-label={tt('Open full analysis for match {id}').replace('{id}', String(match.gameId))}
     >
-      <ResultBadge result={match.result} />
-      <span className="min-w-48 flex-1 font-medium text-foreground">{matchup}</span>
-      <span className="min-w-28 text-muted-foreground">{match.map ?? tt('Map unavailable')}</span>
-      <span className="min-w-28 text-muted-foreground">
-        {match.format ? tt(formatLeaderboard(match.format)) : tt('Format unavailable')}
-      </span>
-      <span className="text-muted-foreground">{formatDurationShort(match.durationSec)}</span>
-      <time
-        className="min-w-16 text-right text-muted-foreground"
-        dateTime={match.startedAt}
-        title={absoluteDate(match.startedAt)}
-      >
-        {when}
-      </time>
+      <div className="flex min-w-0 items-start gap-2">
+        <ResultBadge result={match.result} />
+        <span className="min-w-0 flex-1 break-words font-medium leading-snug text-foreground">
+          {matchup}
+        </span>
+      </div>
+      <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-muted-foreground">
+        <span className="break-words">{match.map ?? tt('Map unavailable')}</span>
+        <span>{match.format ? tt(formatLeaderboard(match.format)) : tt('Format unavailable')}</span>
+        <span>{formatDurationShort(match.durationSec)}</span>
+        <time dateTime={match.startedAt} title={absoluteDate(match.startedAt)}>
+          {when}
+        </time>
+      </div>
     </Link>
   )
 }
@@ -261,7 +268,9 @@ function ResultBadge({ result }: { result: ScoutMatchRow['result'] }) {
         ? 'bg-loss/15 text-loss'
         : 'bg-secondary text-muted-foreground'
   return (
-    <span className={`w-12 rounded px-1.5 py-0.5 text-center font-semibold uppercase ${style}`}>
+    <span
+      className={`shrink-0 rounded px-1.5 py-0.5 text-center font-semibold uppercase whitespace-nowrap ${style}`}
+    >
       {result === 'unknown' ? '—' : tt(result === 'win' ? 'Win' : 'Loss')}
     </span>
   )
