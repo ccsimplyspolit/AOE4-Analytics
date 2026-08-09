@@ -47,7 +47,14 @@ jobs:
         run: npm audit --omit=dev --audit-level=high
 
       - name: Build portable executable
-        run: npm run dist:verified
+        shell: pwsh
+        run: |
+          npm run prepare:replays-api
+          npm run typecheck
+          npm run lint
+          npx vitest run --maxWorkers=1 --minWorkers=1
+          npm run bundle
+          npx electron-builder --win
 
       - name: Prepare release metadata
         id: artifact
