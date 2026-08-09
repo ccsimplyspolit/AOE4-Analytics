@@ -146,9 +146,11 @@ try {
   $oldCscDiscovery = $env:CSC_IDENTITY_AUTO_DISCOVERY
   $env:CSC_IDENTITY_AUTO_DISCOVERY = 'false'
   try {
-    Invoke-Step 'Package Windows dir + portable release' 'npx.cmd' @(
+    Invoke-Step 'Package Windows installer + dir + portable release' 'npx.cmd' @(
       'electron-builder',
       '--win',
+      '--publish',
+      'never',
       "--config.directories.output=$staging",
       '--config.npmRebuild=false',
       '--config.forceCodeSigning=false'
@@ -162,6 +164,9 @@ try {
   $asar = Join-Path $unpacked 'resources\app.asar'
   $exe = Join-Path $unpacked 'RTSLytics.exe'
   $portable = Get-ChildItem $staging -Filter '*-portable.exe' -File | Select-Object -First 1
+  $installer = Get-ChildItem $staging -Filter '*-Setup.exe' -File | Select-Object -First 1
+  $updateMetadata = Join-Path $staging 'latest.yml'
+  $installerBlockMap = if ($installer) { "$($installer.FullName).blockmap" } else { '' }
 
   if (-not (Test-Path $exe)) {
     throw "Packager did not produce $exe."
@@ -172,9 +177,16 @@ try {
   if (-not $portable) {
     throw 'Packager did not produce a portable Windows executable.'
   }
+  if (-not $installer) {
+    throw 'Packager did not produce a Windows Setup executable.'
+  }
+  if (-not (Test-Path $updateMetadata) -or -not (Test-Path $installerBlockMap)) {
+    throw 'Packager did not produce latest.yml and the Setup blockmap required for updates.'
+  }
 
   Write-Host "Packaged app.asar: $([math]::Round((Get-Item $asar).Length / 1MB, 1)) MB" -ForegroundColor Green
   Write-Host "Portable artifact: $($portable.FullName)" -ForegroundColor Green
+  Write-Host "Installer artifact: $($installer.FullName)" -ForegroundColor Green
 
   # Smoke is isolated by the app itself into a temporary userData directory.
   # A Windows executable with requestedExecutionLevel=requireAdministrator
@@ -222,7 +234,26 @@ try {
   }
   Move-Item -LiteralPath $portable.FullName -Destination $stablePortable
 
+  $stableInstaller = Join-Path $output $installer.Name
+  if (Test-Path $stableInstaller) {
+    Move-Item -LiteralPath $stableInstaller -Destination (Join-Path $output "$($installer.BaseName).$previousTag.exe")
+  }
+  Move-Item -LiteralPath $installer.FullName -Destination $stableInstaller
+
+  $stableBlockMap = "$stableInstaller.blockmap"
+  if (Test-Path $stableBlockMap) {
+    Move-Item -LiteralPath $stableBlockMap -Destination (Join-Path $output "$($installer.BaseName).$previousTag.exe.blockmap")
+  }
+  Move-Item -LiteralPath $installerBlockMap -Destination $stableBlockMap
+
+  $stableMetadata = Join-Path $output 'latest.yml'
+  if (Test-Path $stableMetadata) {
+    Move-Item -LiteralPath $stableMetadata -Destination (Join-Path $output "latest.$previousTag.yml")
+  }
+  Move-Item -LiteralPath $updateMetadata -Destination $stableMetadata
+
   Write-Host "`nRelease published: $stablePortable" -ForegroundColor Green
+  Write-Host "Installer published: $stableInstaller" -ForegroundColor Green
   Write-Host "Unpacked launch target: $(Join-Path $stableUnpacked 'RTSLytics.exe')" -ForegroundColor Green
 
   if ($Launch) {

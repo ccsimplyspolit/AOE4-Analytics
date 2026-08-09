@@ -10,707 +10,859 @@ export interface Guide {
   bodyRu?: string // Russian markdown copy, kept beside the canonical English source.
 }
 
-export interface GuideResource {
-  id: string
-  kind: 'article' | 'video' | 'patch' | 'catalogue'
-  title: string
-  titleRu: string
-  description: string
-  descriptionRu: string
-  source: string
-  url: string
-  publishedAt?: string
-}
-
+/**
+ * These are decision guides, not fixed build orders. Exact landmark, unit and
+ * timing advice changes with patches and civilizations; the linked resource
+ * shelf is the place for current patch notes and build-specific material.
+ */
 export const GUIDES: Guide[] = [
   {
     slug: 'scouting-basics',
     title: 'Scouting Basics',
     titleRu: 'Основы разведки',
     category: 'fundamentals',
-    summary:
-      'Why scouting wins games: find the enemy, read their plan, and react before it hits you.',
-    summaryRu:
-      'Почему разведка выигрывает игры: найдите противника, прочитайте его план и реагируйте до того, как он сработает.',
-    readMinutes: 2,
-    body: `## Why scout?
+    summary: 'Turn each scouting pass into one useful decision instead of simply revealing the map.',
+    summaryRu: 'Превращайте каждый заход разведчика в одно полезное решение, а не просто открывайте карту.',
+    readMinutes: 5,
+    body: `## The purpose is a decision
 
-Information is the cheapest advantage in Age of Empires IV. Knowing what your opponent is doing lets you build the right army and avoid nasty surprises.
+Scouting is not a tour of the enemy base. It answers one question: **what do I need to do next?** The scout pays for itself when information changes your production, your walling, your resource placement, or the moment you move out.
 
-## When to scout
+Use this rule: **one observation, one response**. Do not wait until you have perfect information.
 
-- Send your starting scout out the moment the game begins.
-- Keep scouting throughout the Dark and Feudal Ages, not just once.
-- Re-scout after big moments, like when you suspect they aged up.
+## A simple scouting route
 
-## How to scout
+1. **Opening:** collect nearby sheep, reveal your close food, gold, woodline, and the first safe route out of your base.
+2. **Before Feudal:** find the opponent's Town Center, gold, and the side from which units can reach you fastest.
+3. **During the age-up:** return to see their landmark, builders, and first military building. This is a high-value pass because builders are temporarily absent from gathering.
+4. **Every 45–60 seconds after that:** check the production buildings, exposed resources, and whether the army left home. Re-scout after any long period of fighting or when the opponent disappears behind walls.
 
-- Use your scout's vision to circle the map, not just the enemy base.
-- Put the scout on patrol or move it manually to dodge enemy units.
-- Pick up sheep and deer with your scout to feed your economy.
+The route changes on water, nomad, and unusual maps. The question does not: find the resource or building that would make the next enemy move dangerous.
 
-## What to look for
+## What the signs usually mean
 
-- **Military buildings** such as Barracks, Archery Ranges, and Stables tell you what army to expect.
-- **Gold mines and sacred sites** reveal where they are committing resources.
-- **Aggression signs** like forward buildings, walls, or units near your base mean an attack is coming.
-- A heavily walled base usually means they are booming, so you have time to grow too.
+- **Early Stable:** prepare spearmen, protect the outer food or gold, and do not send archers out without a screen.
+- **Early Barracks with units walking forward:** expect spearmen, a tower, or a forward building. Keep villagers near protection and scout the route.
+- **Two or more Feudal production buildings:** expect sustained pressure. Add the appropriate counter and enough production to replace losses.
+- **Villagers on stone or a forward stone camp:** a second Town Center, keep, or defensive plan may be coming. Confirm the spend before overreacting.
+- **Few military buildings, fast landmark, or a closed base:** the opponent may be ageing, booming, or hiding a tech choice. Take safe map resources, apply light pressure, and scout again rather than guessing.
+- **Walls and a passive army:** they are buying time. Secure your own economy, take space, and plan the next age or a siege transition.
 
-Scout early, scout often, and let what you see shape every decision you make.`,
-    bodyRu: `## Зачем нужна разведка?
+Civilization bonuses can make these signals look different. Treat them as prompts to check again, not as a guaranteed build order.
 
-Информация — самое дешёвое преимущество в Age of Empires IV. Если вы знаете, что делает противник, вы сможете создать правильную армию и избежать неприятных сюрпризов.
+## Keep the scout alive when it still has a job
 
-## Когда разведовать
+Do not donate a scout just to see a single building. Circle at the edge of vision, use elevation and forests, and leave before slow melee units can trap it. If it can no longer enter the base, watch army exits, outer gold, deer, relic routes, and sacred sites instead.
 
-- Отправьте стартового разведчика сразу после начала игры.
-- Разведуйте всю Тёмную и Феодальную эпоху, а не только один раз.
-- Повторяйте разведку после важных событий — например, когда ожидаете переход противника в новую эпоху.
+Sheep are valuable early, but information is often more valuable once food is secure. Do not send the scout across the map for one last sheep while a stable or army could be on the way.
 
-## Как разведовать
+## The 10-second response loop
 
-- Используйте обзор разведчика, чтобы обходить карту, а не только базу противника.
-- Поставьте разведчика на патруль или двигайте его вручную, чтобы уклоняться от вражеских войск.
-- Собирайте овец и оленей разведчиком, чтобы поддерживать экономику.
+When you see something, pause only long enough to answer these four points:
 
-## На что смотреть
+- What can reach my villagers first?
+- Which unit or position answers it efficiently?
+- Which resource will fund that answer?
+- When will I look again to verify the read?
 
-- **Военные здания** — казармы, стрельбища и конюшни — показывают, какую армию ждать.
-- **Золотые рудники и святые места** показывают, куда противник вкладывает ресурсы.
-- **Признаки давления** — передовые здания, стены или войска рядом с вашей базой — предупреждают о скорой атаке.
-- Хорошо укреплённая база обычно означает развитие экономики: у вас есть время развиваться в ответ.
+Examples: see a Stable → make spearmen, move the vulnerable gold-side villagers closer to safety, rally food and wood, then check whether horsemen actually leave the base. See a second Town Center → keep your own villager production running, produce a small force to deny outer resources, then decide whether to pressure or match the boom.
 
-Разведуйте рано и постоянно — пусть увиденное определяет каждое ваше решение.`,
+## Common mistakes
+
+- Scouting only once and playing the rest of the match from an old read.
+- Seeing a building but not changing production or positioning.
+- Sacrificing the scout without learning the army size or direction.
+- Looking only at the enemy base and missing the army crossing the map.
+
+Good scouting makes the opponent's plan expensive. It gives you time to prepare the right answer before their investment arrives.`,
+    bodyRu: `## Цель разведки — решение
+
+Разведка — не экскурсия по вражеской базе. Она отвечает на один вопрос: **что мне делать следующим?** Разведчик окупается, когда информация меняет производство, расположение стен, работу на ресурсах или время выхода армии.
+
+Правило простое: **одно наблюдение — одно действие**. Не ждите идеальной информации.
+
+## Простой маршрут разведчика
+
+1. **Старт:** соберите ближайших овец, откройте безопасную еду, золото, лес и первый безопасный выход с базы.
+2. **До Феодала:** найдите Городской центр противника, золото и сторону, с которой войска быстрее всего придут к вам.
+3. **Во время перехода в эпоху:** вернитесь, чтобы увидеть достопримечательность, строителей и первое военное здание. Это ценный момент: строители временно не добывают ресурсы.
+4. **Далее каждые 45–60 секунд:** проверяйте военные здания, открытые ресурсы и то, ушла ли армия с базы. Разведывайте заново после долгой драки или если враг исчез за стенами.
+
+На водных, кочевых и необычных картах маршрут меняется. Вопрос остаётся: найдите ресурс или здание, из-за которого следующий ход противника станет опасным.
+
+## Что обычно означают признаки
+
+- **Ранняя конюшня:** готовьте копейщиков, прикройте внешнюю еду или золото и не выводите лучников без прикрытия.
+- **Ранняя казарма и войска идут вперёд:** ждите копейщиков, башню или передовое здание. Держите крестьян рядом с защитой и проверьте маршрут атаки.
+- **Два и более военных здания в Феодале:** ожидайте постоянное давление. Добавьте нужный контр и столько производства, чтобы восполнять потери.
+- **Крестьяне на камне или лагеря на камне впереди:** вероятны второй ГЦ, крепость или оборонительный план. Подтвердите, на что потратят ресурс, прежде чем слишком остро реагировать.
+- **Мало военных зданий, быстрый переход или закрытая база:** противник может выходить в эпоху, разгонять экономику или скрывать технологию. Берите безопасные ресурсы карты, слегка давите и разведайте ещё раз, а не гадайте.
+- **Стены и пассивная армия:** враг покупает время. Укрепите свою экономику, займите пространство и планируйте следующую эпоху или осаду.
+
+Бонусы цивилизаций могут менять картину. Считайте эти признаки поводом проверить ещё раз, а не гарантией конкретного билда.
+
+## Сохраняйте разведчика, пока он полезен
+
+Не отдавайте разведчика ради одного здания. Ходите по краю обзора, используйте возвышенности и лес, уходите до того, как медленные войска ближнего боя перекроют путь. Если в базу уже не войти, смотрите выходы армии, дальнее золото, оленей, маршруты к реликвиям и святыням.
+
+Овцы важны в начале, но после обеспечения едой информация часто ценнее. Не посылайте разведчика через всю карту за последней овцой, когда вражеская конюшня или армия уже могут идти к вам.
+
+## Реакция за десять секунд
+
+После наблюдения остановитесь лишь настолько, чтобы ответить на четыре вопроса:
+
+- Что первым доберётся до моих крестьян?
+- Каким войском или позицией это выгодно остановить?
+- Какой ресурс оплатит этот ответ?
+- Когда я проверю, что вывод был верным?
+
+Примеры: увидели конюшню → делаете копейщиков, уводите уязвимых работников ближе к защите, ставите сбор на еду и дерево, затем проверяете, действительно ли всадники выходят. Увидели второй ГЦ → не останавливаете производство крестьян, делаете небольшую армию для запрета внешних ресурсов и только потом решаете: давить или отвечать развитием.
+
+## Частые ошибки
+
+- Разведать один раз и всю игру опираться на старую информацию.
+- Увидеть здание, но не изменить производство или позицию.
+- Отдать разведчика, не узнав размер и направление армии.
+- Смотреть только на базу и не заметить войска, идущие через карту.
+
+Хорошая разведка делает план противника дорогим: она даёт время приготовить правильный ответ до того, как его вложения придут к вам.`,
   },
   {
     slug: 'economy-fundamentals',
     title: 'Economy Fundamentals',
     titleRu: 'Основы экономики',
     category: 'economy',
-    summary:
-      'A strong economy funds everything else. Keep villagers flowing and resources working.',
-    summaryRu:
-      'Сильная экономика обеспечивает всё остальное. Не останавливайте производство крестьян и постоянно используйте ресурсы.',
-    readMinutes: 2,
-    body: `## Never stop villager production
+    summary: 'Run a short macro loop that turns resources into the army, technology, or expansion you actually need.',
+    summaryRu: 'Используйте короткий макроцикл, который превращает ресурсы в нужную армию, технологии или расширение.',
+    readMinutes: 6,
+    body: `## Economy is spending with a purpose
 
-The single biggest habit for beginners: keep your Town Center making villagers nonstop. Every second your TC sits idle is lost economy you can never get back.
+An economy is not a large bank. It is the ability to continuously pay for the plan you chose: villagers, army, production buildings, upgrades, or an age-up. A thousand unspent resources often means that a production building, a house, a rally point, or a decision is missing.
 
-## Balance your resources
+## The macro loop
 
-- **Food** powers villagers, most age-ups, and many units.
-- **Wood** builds structures, walls, and supports archers.
-- **Gold** funds stronger units, upgrades, and ranged troops.
-- **Stone** is for defenses, extra Town Centers, and some landmarks.
+Repeat this loop whenever you return to your base and after every fight:
 
-Match what you gather to what you plan to build. Hoarding one resource while starving another slows you down.
+1. **Queue villagers** in every Town Center unless you deliberately reached your population plan.
+2. **Spend the bank** on the next thing that changes the game: units, production, an age-up, a Town Center, or a defensive structure.
+3. **Check population room** before the queue reaches the cap.
+4. **Match gatherers to the next 60–90 seconds of spending.** Move villagers before you are short, not after production stops.
+5. **Check exposed workers.** A safe income is better than a perfect ratio on a resource the enemy can idle for free.
 
-## Add a second Town Center
+This loop matters more than memorizing a universal villager split. Every civilization, map, and unit composition changes the right numbers.
 
-Once your economy is stable, usually in the Feudal or Castle Age, a second Town Center doubles your villager production and helps you boom safely. Build it near a fresh resource cluster.
+## Read the bank, then change the economy
 
-## Avoid floating and idle time
+- **Food is high, wood is low:** you may be unable to add production, farms, houses, or ranged units. Move new villagers to wood before the bottleneck stops you.
+- **Wood is high, food is low:** do not blindly add buildings. Secure food, add farms only when the transition is affordable, or choose a unit mix that fits the map.
+- **Gold is high while units are not producing:** the army may need more food/wood, another production building, or a different composition.
+- **Stone is high with no expansion or keep plan:** stop mining it and fund the army or age-up. Stone is an investment, not a trophy.
+- **All resources are high:** your spending capacity is late. Add production only if you can keep it working; otherwise spend toward a decisive age-up, expansion, or attack.
 
-- **Floating resources** are piles you are not spending. If you have 800 unused food, queue villagers or units.
-- **Idle TC time** means no villager is training. Set a rally point and keep the queue full.
-- Idle villagers should be put back to work immediately.
+## Town Centers and greedy investments
 
-A clean economy quietly wins games long before the fighting decides them.`,
-    bodyRu: `## Не останавливайте производство крестьян
+A second Town Center is strong only when three conditions are true:
 
-Главная привычка новичка — держать Городской центр в непрерывной работе. Каждая секунда простоя — потерянная экономика, которую уже не вернуть.
+- You can afford its civilization-specific cost without stopping basic production.
+- You can defend its builders, its location, and the resource cluster around it.
+- You have a plan for the next minute while it is being built — usually a small defensive army and continued scouting.
 
-## Балансируйте ресурсы
+If the enemy has more Feudal production or units on your side of the map, a delayed Town Center is often better than a dead one. The same logic applies to expensive technologies and a fast age-up: buy them when they do not remove your ability to survive.
 
-- **Еда** нужна для крестьян, большинства переходов в эпоху и многих войск.
-- **Дерево** используется для зданий, стен и лучников.
-- **Золото** оплачивает сильные войска, улучшения и стрелковые отряды.
-- **Камень** нужен для укреплений, дополнительных Городских центров и некоторых достопримечательностей.
+## Production capacity is part of the economy
 
-Подстраивайте сбор под то, что собираетесь строить. Запас одного ресурса при нехватке другого замедляет развитие.
+More resources do not become more army by themselves. If two buildings are permanently queued and resources still climb, add production. If buildings are idle because resources are short, fix the gatherer split instead of adding empty structures.
 
-## Добавьте второй Городской центр
+Keep rally points deliberate. A rally point on an unsafe gold vein can lose more than a small timing gain. Re-route new villagers when sheep finish, a woodline is threatened, or the army changes composition.
 
-Когда экономика стабилизировалась — обычно в Феодальную или Замковую эпоху — второй Городской центр удваивает производство крестьян и помогает безопасно разгоняться. Ставьте его рядом с новым кластером ресурсов.
+## Upgrades and farms
 
-## Не копите ресурсы без цели и не допускайте простоя
+Take an economic upgrade when its payback will arrive before the game changes and when it does not cause villager or military idle time. A cheap upgrade is still wrong if it delays defense. Farms are a planned food transition: save wood, place them safely, and do not let the entire food economy become exposed at once.
 
-- **Излишек ресурсов** — это накопленные ресурсы, которые вы не тратите. Если у вас 800 еды, поставьте крестьян или войска в очередь.
-- **Простой Городского центра** означает, что крестьянин не производится. Установите точку сбора и держите очередь заполненной.
-- Сразу возвращайте простаивающих крестьян к работе.
+## A practical post-fight reset
 
-Чистая экономика выигрывает игры задолго до того, как решается сражение.`,
+After a battle, do not only queue replacement units. Check: did you lose workers, did the opponent switch unit types, did a resource become unsafe, and does the next fight require more production or a different resource? The player who rebalances first usually reaches the next useful army first.`,
+    bodyRu: `## Экономика — это траты с целью
+
+Экономика — не большой запас в банке. Это способность непрерывно оплачивать выбранный план: крестьян, армию, военные здания, улучшения или переход в эпоху. Тысяча неиспользованных ресурсов часто означает, что не хватает здания, дома, точки сбора или решения.
+
+## Макроцикл
+
+Повторяйте этот цикл, когда возвращаетесь к базе и после каждой драки:
+
+1. **Ставьте крестьян в очередь** во всех Городских центрах, пока осознанно не достигли плана по населению.
+2. **Тратьте запас** на следующее действие, меняющее игру: войска, производство, эпоху, ГЦ или оборону.
+3. **Проверяйте лимит населения** до того, как очередь упрётся в него.
+4. **Подстраивайте сбор под траты следующих 60–90 секунд.** Переводите работников до дефицита, а не после остановки производства.
+5. **Проверяйте уязвимых работников.** Безопасный доход лучше идеального соотношения на ресурсе, который враг бесплатно выключит налётом.
+
+Этот цикл важнее заученного «универсального» распределения крестьян. Для каждой цивилизации, карты и состава войск правильные числа свои.
+
+## Смотрите на запас и меняйте экономику
+
+- **Много еды, мало дерева:** вам может не хватить зданий, ферм, домов или лучников. Переведите новых крестьян на дерево до остановки производства.
+- **Много дерева, мало еды:** не ставьте здания автоматически. Защитите еду, стройте фермы лишь когда переход оплачен или выберите состав, подходящий карте.
+- **Много золота, но войска не производятся:** армии может не хватать еды/дерева, ещё одного производственного здания или другого состава.
+- **Много камня без плана на расширение или крепость:** перестаньте его добывать и оплатите армию или эпоху. Камень — вложение, не трофей.
+- **Много всего:** производство не поспевает за экономикой. Добавляйте здания, только если сможете держать их занятыми; иначе вложитесь в решающую эпоху, расширение или атаку.
+
+## Городские центры и жадные вложения
+
+Второй ГЦ силён только при трёх условиях:
+
+- Вы оплачиваете его специфичную для цивилизации цену, не останавливая базовое производство.
+- Можете защитить строителей, место установки и ближайший кластер ресурсов.
+- У вас есть план на следующую минуту, пока ГЦ строится: обычно небольшая оборонительная армия и продолжающаяся разведка.
+
+Если у противника больше феодального производства или его войска уже на вашей половине карты, лучше отложить ГЦ, чем потерять его. То же относится к дорогим технологиям и быстрому переходу: покупайте их, если после этого способны выжить.
+
+## Производственные мощности — тоже экономика
+
+Ресурсы сами не превращаются в армию. Если два здания постоянно заняты и запас растёт, добавляйте производство. Если здания простаивают из-за нехватки ресурсов, исправьте распределение, а не стройте пустые постройки.
+
+Точки сбора должны быть осознанными. Точка на незащищённом золоте способна стоить больше, чем даёт ускорение. Меняйте её, когда заканчиваются овцы, лес под угрозой или меняется состав армии.
+
+## Улучшения и фермы
+
+Берите экономическое улучшение, когда оно успеет окупиться до смены ситуации и не вызовет простой крестьян или армии. Даже дешёвое улучшение ошибочно, если оно задерживает оборону. Фермы — запланированный переход: сохраните дерево, ставьте их безопасно и не делайте всю еду уязвимой одновременно.
+
+## Сброс после боя
+
+После драки не ограничивайтесь очередью замены. Проверьте: погибли ли работники, сменил ли враг войска, стал ли ресурс опасным, нужны ли для следующей драки новые здания или другой ресурс. Тот, кто первым перестраивает экономику, обычно первым приводит следующую полезную армию.`,
   },
   {
     slug: 'army-composition',
     title: 'Army Composition',
     titleRu: 'Состав армии',
     category: 'military',
-    summary:
-      'Age of Empires IV is rock-paper-scissors. Counter what you see and keep your army mixed.',
-    summaryRu:
-      'Age of Empires IV работает по принципу «камень–ножницы–бумага». Контрите увиденное и сохраняйте смешанный состав армии.',
-    readMinutes: 2,
-    body: `## The counter triangle
+    summary: 'Build by battlefield role and the enemy’s actual composition, not by a memorized single-unit counter.',
+    summaryRu: 'Собирайте армию по боевым ролям и реальному составу врага, а не по заученному контру одним юнитом.',
+    readMinutes: 6,
+    body: `## Counters are a starting point
 
-Most units have a job and a weakness. Learn the core relationships:
+AoE IV has counter relationships, but no unit wins every fight in every situation. Terrain, upgrades, numbers, reinforcement distance, and civilization-specific bonuses all matter. First identify the enemy's **main damage unit**, its **screen**, and its **most expensive vulnerable unit**.
 
-- **Spearmen** beat cavalry and horsemen with their anti-cavalry bonus.
-- **Horsemen and cavalry** beat ranged units by closing the gap fast and running them down.
-- **Archers** beat infantry, melting spearmen and other foot soldiers.
-- **Crossbows and handcannoneers** beat heavy units like knights and men-at-arms.
-- **Siege** beats buildings and tightly clumped armies.
+The common relationships are:
 
-## Read and react
+- **Spearmen** punish cavalry and protect ranged units from charges.
+- **Horsemen and other mobile cavalry** threaten exposed ranged units, siege, villagers, and reinforcements.
+- **Archers** are efficient into light infantry, especially spearmen.
+- **Crossbowmen** answer heavy units such as knights and men-at-arms.
+- **Mangonels and other area damage** punish tightly packed ranged or light armies; the exact siege role is patch-sensitive.
+- **Siege and torch damage** are tools for buildings and defensive positions, not a substitute for an army screen.
 
-Scout the enemy army, then build the counter:
+Always check the unit card or in-app counter tool when a unique unit is involved.
 
-- Facing knights? Add spearmen and crossbows.
-- Facing archers? Send horsemen to chase them down.
-- Facing massed infantry? Lean on archers.
+## Give every group a job
 
-## Keep your army mixed
+A reliable mixed army usually contains some of these jobs:
 
-No single unit wins every fight. A pure army is easy to hard-counter, so blend types:
+- **Frontline:** holds space and absorbs the first contact.
+- **Screen:** protects your vulnerable damage dealers from the unit that counters them, often spearmen protecting ranged units from cavalry.
+- **Damage core:** the unit type that efficiently removes the enemy's current investment.
+- **Mobile threat:** raids, catches reinforcements, surrounds ranged units, and controls open space.
+- **Siege support:** breaks a fortified position or punishes clumping once you can protect it.
 
-- A frontline of infantry or cavalry to absorb damage.
-- Ranged units behind to deal damage safely.
-- A little siege to break clumps and defenses.
+You do not need every role in every fight. You do need to know which role is missing before you add another expensive unit.
 
-## Don't forget positioning
+## Build from what you see
 
-- Keep ranged units protected behind your melee.
-- Focus-fire key targets like enemy siege.
+- Against **knights or other heavy cavalry**, add spearmen first. Crossbows become important once heavy numbers grow. Keep the spears between cavalry and your ranged units.
+- Against **archer masses**, create mobile cavalry, attack from multiple angles, and do not feed isolated spearmen into them.
+- Against **spears protecting ranged units**, add your own ranged damage or use mobility to force the spears to turn. Do not charge cavalry through a prepared spear line.
+- Against **heavy infantry**, use crossbows and enough frontline to stop them reaching the crossbows. Consider armour and positioning before assuming a single counter is enough.
+- Against **siege**, identify whether you can dive it with mobility, answer it with your own appropriate siege, or force it to move by attacking somewhere else.
 
-A balanced army that answers what your opponent brings beats a bigger army that doesn't.`,
-    bodyRu: `## Треугольник контров
+## Positioning makes the composition work
 
-У каждого войска есть задача и уязвимость. Изучите основные связи:
+Fight where the enemy cannot use their whole army at once: behind a choke, near your reinforcement path, around a Town Center, or on high ground. Put ranged units behind a front line, spread when area damage is present, and do not chase through a narrow route without vision.
 
-- **Копейщики** побеждают кавалерию благодаря бонусу против конницы.
-- **Всадники и кавалерия** побеждают стрелков, быстро сокращая дистанцию и преследуя их.
-- **Лучники** побеждают пехоту, быстро уничтожая копейщиков и другие пешие войска.
-- **Арбалетчики и ручные кулевринеры** эффективны против тяжёлых войск — рыцарей и тяжёлой пехоты.
-- **Осадные орудия** уничтожают здания и плотные скопления войск.
+Focus fire only when it removes a high-value unit or a key threat. Otherwise, let the formation attack while you preserve the front line and watch for flanks.
 
-## Смотрите и реагируйте
+## Before adding a new unit type
 
-Разведайте армию противника и создайте контр:
+Ask four questions:
 
-- Видите рыцарей? Добавьте копейщиков и арбалетчиков.
-- Видите лучников? Отправьте всадников в обход и преследование.
-- Видите массу пехоты? Сделайте упор на лучников.
+- Can I build it from existing production, or will it delay the answer?
+- Can my current food/wood/gold income sustain it and its upgrades?
+- Does it solve the next fight, not only a hypothetical late-game fight?
+- What now counters the army I am creating?
 
-## Сохраняйте смешанный состав
+An army is not balanced because it has many icons. It is balanced when its jobs cover each other and it can be reinforced at the pace of the fight.`,
+    bodyRu: `## Контры — это начало, а не весь ответ
 
-Один тип войск не выигрывает каждое сражение. Чистую армию легко законтрить, поэтому смешивайте типы:
+В AoE IV есть контр-связи, но ни один юнит не выигрывает любой бой в любой ситуации. Важны рельеф, улучшения, число войск, расстояние подкреплений и бонусы цивилизации. Сначала определите **главный источник урона** врага, его **прикрытие** и самый дорогой уязвимый юнит.
 
-- Передняя линия из пехоты или кавалерии принимает урон.
-- Стрелки позади наносят безопасный урон.
-- Небольшая группа осадных орудий ломает плотные построения и оборону.
+Основные связи обычно такие:
 
-## Не забывайте о позиционировании
+- **Копейщики** наказывают кавалерию и защищают стрелков от атаки в лоб.
+- **Всадники и другая мобильная кавалерия** угрожают открытым стрелкам, осаде, крестьянам и подкреплениям.
+- **Лучники** эффективны против лёгкой пехоты, особенно копейщиков.
+- **Арбалетчики** отвечают тяжёлым войскам: рыцарям и тяжёлой пехоте.
+- **Мангонели и другой урон по площади** наказывают плотные массы стрелков и лёгких войск; точная роль осады зависит от патча.
+- **Осадные орудия и факелы** нужны против зданий и оборонительных позиций, но не заменяют прикрытие армии.
 
-- Держите стрелков за спиной у бойцов ближнего боя.
-- Фокусируйте важные цели, например вражескую осадную технику.
+При уникальном юните всегда сверяйтесь с его карточкой или помощником по контрам в приложении.
 
-Сбалансированная армия, отвечающая на состав противника, сильнее многочисленной армии без контров.`,
+## Дайте каждой группе работу
+
+Надёжная смешанная армия обычно содержит несколько таких ролей:
+
+- **Фронтлайн:** держит пространство и принимает первый удар.
+- **Прикрытие:** защищает уязвимый урон от контра — например, копейщики прикрывают стрелков от конницы.
+- **Ядро урона:** войска, выгодно уничтожающие текущие вложения противника.
+- **Мобильная угроза:** рейды, ловля подкреплений, обход стрелков и контроль открытого пространства.
+- **Поддержка осадой:** ломает укреплённую позицию или плотный строй, когда вы можете её защитить.
+
+Не каждая роль нужна в каждом бою. Но перед покупкой ещё одного дорогого юнита нужно понимать, какой роли не хватает.
+
+## Собирайте армию по увиденному
+
+- Против **рыцарей и другой тяжёлой кавалерии** сначала добавьте копейщиков. Когда тяжёлых войск много, важны арбалетчики. Держите копья между конницей и стрелками.
+- Против **массы лучников** сделайте мобильную кавалерию, атакуйте с нескольких сторон и не отдавайте одиночных копейщиков.
+- Против **копейщиков, прикрывающих стрелков**, добавьте свой стрелковый урон или используйте мобильность, чтобы заставить копья разворачиваться. Не врезайтесь кавалерией в готовую стену копий.
+- Против **тяжёлой пехоты** используйте арбалетчиков и достаточно фронтлайна, чтобы она не дошла до арбалетов. Улучшения брони и позиция иногда важнее одного контра.
+- Против **осады** решите, можете ли ворваться мобильными войсками, ответить подходящей осадой или заставить её сдвинуться угрозой в другом месте.
+
+## Позиция включает состав армии
+
+Сражайтесь там, где враг не сможет использовать всю армию разом: за узким проходом, рядом с путём подкреплений, около ГЦ или на высоте. Держите стрелков за фронтлайном, рассредотачивайтесь против урона по площади и не гонитесь по узкому маршруту без обзора.
+
+Фокусируйте цель, когда это снимает дорогой юнит или ключевую угрозу. В остальных случаях дайте строю атаковать, сохраняйте фронт и следите за обходами.
+
+## Перед добавлением нового типа войск
+
+Спросите себя:
+
+- Я могу производить его из существующих зданий или ответ запоздает?
+- Хватит ли текущей еды, дерева и золота на него и его улучшения?
+- Решает ли он следующий бой, а не только воображаемую позднюю игру?
+- Что теперь контрит армию, которую я создаю?
+
+Армия сбалансирована не потому, что в ней много разных значков. Она сбалансирована, когда её роли прикрывают друг друга и её можно пополнять в темпе боя.`,
   },
   {
     slug: 'when-to-attack',
     title: 'When to Attack',
     titleRu: 'Когда атаковать',
     category: 'strategy',
-    summary: 'Timing is everything. Hit when you have an edge, and never charge into a counter.',
-    summaryRu:
-      'Тайминг решает всё. Атакуйте, когда у вас есть преимущество, и не бросайтесь под контр.',
-    readMinutes: 3,
-    body: `## Find your timing window
+    summary: 'Attack for a concrete objective when your composition, reinforcement, and economy can support it.',
+    summaryRu: 'Атакуйте с конкретной целью, когда состав, подкрепления и экономика поддерживают выход.',
+    readMinutes: 5,
+    body: `## A timing is an advantage with an objective
 
-Attacks work best when you have a temporary advantage:
+Do not attack just because units exist. A good timing combines a temporary advantage with something worth taking: deny gold, idle villagers, force a cancelled expansion, take a sacred site, break a wall, or destroy a landmark. Killing a few units while losing your whole army is not a timing.
 
-- Just after an age-up, when your units outclass theirs.
-- When you have more army than the enemy can field right now.
-- When the enemy is greedy and under-defended.
+## The three checks before moving out
 
-## Always scout before committing
+- **Composition:** you know what you are likely to face and are not walking into its hard counter.
+- **Reinforcement:** production is running, the rally route is safe enough, and you can replace the important part of the army.
+- **Home safety:** your own gold, food, and Town Centers are not open to an immediate counter-raid.
 
-Never march in blind. Before you attack:
+If one check fails, you may still harass or take map control, but do not commit to a base dive.
 
-- Check the enemy army size and composition.
-- Look for walls, towers, and defensive buildings.
-- Confirm you are not walking into a hard counter.
+## Common windows to use
 
-## All-in vs boom
+- **Enemy builders are ageing:** they have fewer gatherers and often weaker immediate production. Pressure a resource, but expect their new-age units when the landmark finishes.
+- **You completed a useful upgrade or age-up first:** move before the opponent reaches the equivalent answer, not several minutes later.
+- **You scouted a greedy investment:** a second Town Center, distant resource, or fast tech can be punished if your army reaches it before defenses do.
+- **Their army is on the other side of the map:** raid an exposed resource, take a relic, wall a route, or damage reinforcements instead of racing them to your base.
+- **You won a clean fight:** convert the surviving army into map control, a resource denial, or a building kill. Do not automatically dive under Town Center fire.
 
-- **All-in** means pouring resources into army for a knockout blow. It wins fast but leaves you behind if it fails.
-- **Booming** means investing in economy to overwhelm later. Safer, but vulnerable to early aggression.
+## Pressure, commit, or leave
 
-Most games sit between these. Apply pressure to keep the enemy honest without bankrupting your economy.
+**Pressure** means showing an army, forcing units, denying a resource, and backing away before the trade turns bad. It is the default way to test a greedy opponent.
 
-## Punish greed
+**Commit** means spending heavily on forward production, rams, or a one-base army to end the game. Do it only when you have a clear reason the opponent cannot survive: a composition lead, an undefended expansion, a broken wall, or a massive production lead.
 
-If scouting shows an opponent skipping defenses to boom, attack. Even light pressure forces them to spend on army and falls behind their plan.
+**Leave** when the objective is no longer available. If the enemy has the counter, reinforcements, or defensive position, save the army. Retreating with units is not failure; it preserves the next timing.
 
-## Don't attack into counters
+## Set a retreat line first
 
-- Avoid sending cavalry into a wall of spearmen.
-- Don't push ranged armies into faster cavalry.
-- If the math looks bad, back off and out-economy them instead.
+Before attacking, decide where the army retreats: your nearest outpost, a choke, the rally path, or your Town Center. Keep the scout ahead, watch for reinforcements, and do not chase through fog after the original objective is achieved.
 
-Patience plus the right timing beats reckless aggression nearly every time.`,
-    bodyRu: `## Найдите окно для атаки
+## Convert the advantage
 
-Атаки лучше всего работают, когда у вас есть временное преимущество:
+After every attack, ask what changed. If you idled food workers, take map food or age up. If you forced a tower, their wood is spent — consider a different angle. If you killed the second Town Center, continue villager production and avoid throwing the lead into a fortified base. The best attack creates the next easy decision.`,
+    bodyRu: `## Тайминг — это преимущество с целью
 
-- Сразу после перехода в эпоху, когда ваши войска сильнее.
-- Когда ваша армия превосходит то, что противник может выставить прямо сейчас.
-- Когда противник жадничает и оставляет базу без защиты.
+Не атакуйте лишь потому, что у вас появились войска. Хороший тайминг соединяет временное преимущество с конкретной добычей: запретить золото, остановить крестьян, сорвать расширение, взять святыню, сломать стену или уничтожить достопримечательность. Убить несколько юнитов и потерять всю армию — не тайминг.
 
-## Всегда разведуйте перед атакой
+## Три проверки перед выходом
 
-Не идите вслепую. Перед атакой:
+- **Состав:** вы знаете, что вероятно встретите, и не идёте в жёсткий контр.
+- **Подкрепления:** производство работает, путь от точек сбора достаточно безопасен, а важную часть армии можно восполнять.
+- **Безопасность дома:** ваше золото, еда и ГЦ не открыты для мгновенного рейда в ответ.
 
-- Проверьте размер и состав армии противника.
-- Найдите стены, башни и оборонительные здания.
-- Убедитесь, что не заходите под жёсткий контр.
+Если хотя бы один пункт не готов, можно харассить или брать карту, но не ныряйте в базу.
 
-## Олл-ин или развитие
+## Частые окна
 
-- **Олл-ин** — вложить ресурсы в армию для решающего удара. Если атака провалится, вы сильно отстанете.
-- **Развитие** — инвестировать в экономику, чтобы превзойти противника позже. Это безопаснее, но уязвимо для раннего давления.
+- **Враг строит переход в эпоху:** у него меньше добытчиков и часто слабее немедленное производство. Давите ресурс, но ждите его новых юнитов, когда достопримечательность достроится.
+- **Вы раньше получили полезное улучшение или эпоху:** двигайтесь, пока противник не сделал равный ответ, а не через несколько минут.
+- **Разведка показала жадное вложение:** второй ГЦ, дальний ресурс или быстрая технология наказуемы, если армия придёт раньше обороны.
+- **Армия врага на другой стороне карты:** налетайте на открытый ресурс, берите реликвию, закрывайте маршрут стеной или бейте подкрепления вместо гонки к своей базе.
+- **Вы чисто выиграли бой:** превратите выжившую армию в контроль карты, запрет ресурса или снос здания. Не ныряйте автоматически под огонь ГЦ.
 
-Большинство игр находится между этими крайностями. Давите на противника, но не разоряйте свою экономику.
+## Давить, вкладываться или уйти
 
-## Наказывайте жадность
+**Давление** — показать армию, вынудить войска, перекрыть ресурс и отойти до плохого размена. Это стандартный способ проверить жадного противника.
 
-Если разведка показывает, что противник пропустил защиту ради развития, атакуйте. Даже лёгкое давление заставит его тратить ресурсы на армию и нарушит его план.
+**Полная ставка** — много вложиться в передовое производство, тараны или армию с одной базы для завершения игры. Делайте это, когда ясно, почему враг не переживёт: перевес по составу, незащищённое расширение, проломленная стена или огромное преимущество производства.
 
-## Не атакуйте под контры
+**Уходите**, когда цели больше нет. Если появились контр, подкрепления или оборонительная позиция, сохраните армию. Отход с войсками — не провал, а сохранение следующего тайминга.
 
-- Не отправляйте кавалерию в стену копейщиков.
-- Не ведите стрелковую армию навстречу быстрой кавалерии.
-- Если размен плохой, отступите и переиграйте противника экономикой.
+## Сначала определите линию отхода
 
-Терпение и правильный тайминг почти всегда сильнее безрассудной агрессии.`,
+До атаки решите, куда отступит армия: к ближайшей башне, в узкий проход, по пути подкреплений или к ГЦ. Держите разведчика впереди, следите за подкреплениями и не гонитесь в туман после выполнения цели.
+
+## Превратите преимущество в следующее
+
+После каждой атаки спросите, что изменилось. Остановили работников на еде — займите еду карты или переходите в эпоху. Вынудили башню — враг потратил дерево, попробуйте другой угол. Уничтожили второй ГЦ — продолжайте производство крестьян и не отдавайте преимущество в укреплённую базу. Лучшая атака создаёт следующее простое решение.`,
   },
   {
     slug: 'age-up-benchmarks',
     title: 'Age-Up Benchmarks',
     titleRu: 'Ориентиры перехода в эпоху',
     category: 'economy',
-    summary: 'Rough timing targets to measure your progress. Heuristics, not hard rules.',
-    summaryRu: 'Примерные тайминги для оценки прогресса. Это ориентиры, а не жёсткие правила.',
-    readMinutes: 2,
-    body: `## These are heuristics, not laws
-
-The numbers below are loose targets for low-to-mid level players to check their pace. They are **not strict rules**. Real timings depend heavily on your civilization, your build order, and your strategy. A fast aggressive build and a greedy boom will hit very different numbers, and that is fine.
-
-## Age-up timing targets
-
-- **Feudal Age:** roughly 5:00 to 6:30.
-- **Castle Age:** roughly 10:00 to 14:00.
-
-Slower than this isn't a failure, but if you are far behind these ranges, look for idle Town Center time or stalled villager production.
-
-## Villager count targets
-
-- About **20 villagers by 5:00**.
-- About **40 or more villagers by 10:00**.
-
-These assume a fairly economic build. Aggressive openings trade villagers for early army, so expect lower counts.
-
-## How to use these
-
-- Treat them as a rough mirror, not a scoreboard.
-- If you are consistently behind, check for idle TC time and floating resources first.
-- As you improve, your own benchmarks matter more than generic ones.
-
-The goal isn't to hit exact numbers. It's to keep producing, keep spending, and keep getting a little faster each game.`,
-    bodyRu: `## Это ориентиры, а не законы
-
-Ниже приведены примерные цели для игроков начального и среднего уровня. Это **не строгие правила**. Реальные тайминги сильно зависят от цивилизации, билда и стратегии. Быстрая агрессия и жадное развитие выйдут в разные тайминги — и это нормально.
-
-## Цели перехода в эпохи
-
-- **Феодальная эпоха:** примерно 5:00–6:30.
-- **Замковая эпоха:** примерно 10:00–14:00.
-
-Более поздний переход не означает провал, но при сильном отставании проверьте простой Городского центра и остановки производства крестьян.
-
-## Цели по числу крестьян
-
-- Около **20 крестьян к 5:00**.
-- Около **40 или больше крестьян к 10:00**.
-
-Это ориентиры для относительно экономичного билда. Агрессивные открытия обменивают часть крестьян на раннюю армию, поэтому их число будет ниже.
-
-## Как этим пользоваться
-
-- Считайте это зеркалом для проверки, а не табло с оценкой.
-- Если вы постоянно отстаёте, сначала проверьте простой Городского центра и излишки ресурсов.
-- По мере роста собственные показатели станут полезнее общих ориентиров.
-
-Цель — не попасть в точные цифры, а продолжать производить, тратить и становиться немного быстрее с каждой игрой.`,
-  },
-  {
-    slug: 'build-order-reading',
-    title: 'How to Read a Build Order',
-    titleRu: 'Как читать билд-ордер',
-    category: 'fundamentals',
-    summary:
-      'Turn a build order into checkpoints and decisions instead of memorizing a rigid sequence.',
-    summaryRu:
-      'Превратите билд-ордер в набор контрольных точек и решений, а не в бездумное заучивание последовательности.',
+    summary: 'Use build-specific gates and correct villager baselines instead of chasing a misleading universal clock.',
+    summaryRu: 'Сверяйтесь с этапами своего билда и реалистичной базой крестьян, а не гонитесь за обманчивым общим таймером.',
     readMinutes: 5,
-    body: `## A build order is a decision map
+    body: `## Benchmarks are diagnostics, not targets to worship
 
-A build order is a tested route to a goal: a fast landmark, an early army, a second Town Center, or a timing attack. It is not a promise that every game will look identical. Read every step as **action + reason + condition**.
+The old habit of judging every match by one Feudal or Castle timestamp is misleading. Civilizations age differently; an open map, water, early fight, trade, or a second Town Center changes the clock. A benchmark is useful only if it tells you what to repair.
 
-## Read checkpoints, not a script
+## Start with a build-specific reference
 
-Before playing, mark five checkpoints:
+For the build you practice, write down four checkpoints from a recent, patch-relevant source:
 
-- the first house and the first production building;
-- the age-up resource and the number of builders;
-- the first military unit and the first pressure window;
-- the transition resource split after aging up;
-- the point where the build becomes a composition and a win condition.
+- when you start the Feudal landmark;
+- when Feudal completes and the first relevant production starts;
+- when the first pressure, expansion, or Castle transition should be ready;
+- what resources and villagers should be safe at each point.
 
-If a checkpoint is late, do not blindly rush the next line. Identify the cause: idle Town Center, walking time, a lost villager, an unscouted threat, or a resource that was spent on defense.
+Replay the opening against AI until you can reach those checkpoints without a fight. In a real match, compare **why** you differ: lost sheep, unsafe resource, idle Town Center, a defensive unit, or a deliberate response are all different causes.
 
-## Convert a line into a test
+## Useful generic ranges for standard 1v1 openings
 
-For each line ask: **What should I see? What can stop it? What do I do if it fails?** For example, “stable at 4:30” means you need the wood before 4:30, a safe location, and a plan if the opponent opens spearmen. This turns a copied build into a reusable opening.
+These are deliberately broad health checks, not build orders:
 
-## Branches are part of the build
+- A conventional Feudal transition often begins or completes somewhere around the mid-fourth to mid-fifth minute. Dark-Age pressure, civilization mechanics, map type, and greedy openings can be earlier or later.
+- A one-Town-Center opening with uninterrupted standard villager production is roughly **20–21 villagers at 5:00** and **34–36 at 10:00**, before deaths and civilization-specific modifiers.
+- A second Town Center changes the ten-minute count dramatically; compare it with the exact 2TC build, not a one-Town-Center baseline.
+- A fast Castle timing is only healthy if it leaves enough defense for what scouting shows. The fastest possible Castle is not automatically the best Castle.
 
-Keep a small response table beside the build:
+If your own build source states different numbers, trust its updated, civilization-specific checkpoints.
 
-- early cavalry seen → add spears, protect exposed gold, delay greedy tech;
-- two Town Centers seen → pressure production or take your own economy step;
-- no military building by the first scout pass → check for a fast Castle or trade plan;
-- forward outpost or tower → stop the next greedy investment and secure the approach.
+## Diagnose the gap
 
-## Practice loop
+- **Behind before the first age-up:** inspect Town Center idle time, sheep under the Town Center, walking distances, missed drop-offs, housing, and whether the landmark had too many or too few builders.
+- **Age-up is on time but the first unit is late:** wood, a house, or production placement was probably late. Check the resource bank at the moment Feudal finishes.
+- **Economy is strong but army is absent:** the spend or production capacity is late, not the gathering rate.
+- **Everything is late after an early attack:** compare the damage to the response. A few defensive units may be correct; an unnecessary all-in defense can create the delay.
 
-Play the opening three times without changing the civilization. After each game record only the first missed checkpoint, the reason, and the recovery. Keep the build when it teaches a repeatable decision; replace it when its assumptions no longer match the current patch or map.
-`,
-    bodyRu: `## Билд-ордер — это карта решений
+## Measure one improvement at a time
 
-Билд-ордер — проверенный маршрут к цели: быстрому landmark, ранней армии, второму Городскому центру или тайминговой атаке. Он не обещает, что каждая игра будет одинаковой. Читайте каждый шаг как **действие + причина + условие**.
+In the next practice game, choose one measurable goal: zero intentional Town Center idle time until Feudal, a house before population cap, scout confirmation before the first military building, or no unspent resources above a chosen threshold. A short, repeatable target improves faster than trying to play like a tournament final all at once.`,
+    bodyRu: `## Ориентиры — диагностика, а не культ таймера
 
-## Запоминайте контрольные точки, а не сценарий
+Старая привычка оценивать каждую игру по одному времени Феодала или Замка обманчива. Цивилизации переходят по-разному; открытая карта, вода, ранняя драка, торговля или второй ГЦ меняют часы. Ориентир полезен только тогда, когда показывает, что исправить.
 
-Перед игрой отметьте пять контрольных точек:
+## Начните с этапов конкретного билда
 
-- первый дом и первое военное здание;
-- ресурс для перехода и число строителей;
-- первый боевой юнит и окно давления;
-- распределение ресурсов после перехода в эпоху;
-- момент, когда билд превращается в состав армии и условие победы.
+Для тренируемого билда выпишите из свежего источника четыре контрольные точки:
 
-Если точка запоздала, не бегите вслепую к следующей строке. Найдите причину: простой Городского центра, долгий путь, потерянный крестьянин, неразведанная угроза или ресурс, потраченный на защиту.
+- когда начинается строительство феодальной достопримечательности;
+- когда завершается Феодал и запускается нужное производство;
+- когда должны быть готовы первое давление, расширение или переход в Замок;
+- какие ресурсы и крестьяне должны быть в безопасности на каждом этапе.
 
-## Превращайте строку в проверку
+Повторяйте открытие против ИИ, пока не можете достигать этих точек без боя. В реальной игре сравнивайте **почему** есть разница: потерянные овцы, опасный ресурс, простой ГЦ, оборонительный юнит или осознанная реакция — это разные причины.
 
-Для каждого шага спросите: **Что я должен увидеть? Что может это остановить? Что делать, если не получилось?** Например, «конюшня в 4:30» требует дерева к 4:30, безопасного места и плана на случай ранних копейщиков. Так скопированный билд становится универсальным открытием.
+## Полезные общие рамки для стандартного 1v1
 
-## Ветки — часть билда
+Это намеренно широкая проверка здоровья, а не билд:
 
-Держите рядом небольшую таблицу ответов:
+- Обычный переход в Феодал часто начинается или завершается примерно между серединой четвёртой и серединой пятой минуты. Давление в Тёмной эпохе, механика цивилизации, тип карты и жадное открытие могут быть раньше или позже.
+- Открытие с одним ГЦ и непрерывным стандартным производством крестьян даёт примерно **20–21 крестьянина к 5:00** и **34–36 к 10:00**, без учёта смертей и модификаторов цивилизации.
+- Второй ГЦ сильно меняет число крестьян к десятой минуте; сравнивайте его с конкретным 2TC-билдом, а не с базой одного ГЦ.
+- Быстрый Замок хорош только тогда, когда после него остаётся защита от увиденного разведкой. Самый быстрый возможный Замок не всегда лучший.
 
-- заметили раннюю кавалерию → добавьте копейщиков, защитите открытое золото, отложите жадные улучшения;
-- увидели два Городских центра → давите производством или сами переходите к развитию;
-- после первой разведки нет военного здания → проверьте быстрый Castle или торговый план;
-- передовая башня или outpost → отмените следующую жадную инвестицию и обезопасьте подход.
+Если свежий источник вашего билда даёт другие числа, доверяйте его актуальным контрольным точкам для конкретной цивилизации.
 
-## Цикл тренировки
+## Найдите причину отставания
 
-Сыграйте открытие три раза одной цивилизацией. После каждой игры запишите только первую пропущенную точку, причину и восстановление. Сохраняйте билд, если он учит повторяемому решению; заменяйте его, если его предположения больше не соответствуют патчу или карте.
-`,
+- **Отстаёте до первой эпохи:** проверьте простой ГЦ, овец под ГЦ, дальность ходьбы, точки сдачи ресурсов, дома и число строителей достопримечательности.
+- **Переход вовремя, но первый юнит поздно:** вероятно, запоздали дерево, дом или место производства. Посмотрите запас в момент завершения Феодала.
+- **Экономика сильная, а армии нет:** поздно принято решение о тратах или не хватает производства, а не добычи.
+- **Всё поздно после ранней атаки:** сравните ущерб с ответом. Несколько оборонительных юнитов могут быть правильны; лишняя защита олл-ином создаёт задержку.
+
+## Улучшайте по одному параметру
+
+В следующей тренировочной игре выберите одну измеримую цель: без намеренного простоя ГЦ до Феодала, дом до лимита, подтверждение разведкой до первого военного здания или отсутствие запаса выше выбранного порога. Короткая повторяемая цель улучшает быстрее, чем попытка сразу сыграть как в финале турнира.`,
   },
   {
-    slug: 'adaptive-scouting',
-    title: 'Adaptive Scouting: From Information to Action',
-    titleRu: 'Адаптивная разведка: от информации к действию',
-    category: 'strategy',
-    summary:
-      'A practical scouting loop: observe, classify the threat, choose the smallest response, and verify it.',
-    summaryRu:
-      'Практический цикл разведки: увидеть, классифицировать угрозу, выбрать минимальный ответ и проверить результат.',
-    readMinutes: 5,
-    body: `## Scout for decisions
-
-Do not scout because the guide says “scout.” Scout to answer a question: Is this player attacking, booming, teching, trading, or hiding a transition? A useful scout report ends with one action you can take.
-
-## Three passes
-
-1. **Opening pass (0:00–3:00):** find sheep, the opponent's gold, the first production clue, and any forward foundation.
-2. **Age-up pass:** identify the landmark, builder count, new resource commitment, and whether the opponent can support units immediately.
-3. **Composition pass:** check production buildings, upgrades, reinforcements, and the resource the opponent must protect next.
-
-## Classify before you counter
-
-Use four threat classes:
-
-- **Tempo:** early units or forward buildings. Add the cheapest defense that buys time.
-- **Economy:** extra Town Center, trade, farms, or a protected gold. Pressure the investment or match the economy.
-- **Technology:** fast Castle, relics, sacred sites, or unique upgrades. Deny the timing or force the opponent to spend on defense.
-- **Information denial:** walls, keeps, stealth, or a missing army. Search the edges and protect your own vulnerable resource.
-
-## Verify your read
-
-One scout pass is a hypothesis. Revisit after 30–60 seconds or after the first fight. If the expected army is not there, do not keep producing the same counter. Change the plan and write down what disproved your read.
-
-## What to record in a review
-
-For every missed read, record the timestamp, visible evidence, the conclusion you made, and the smallest action that would have changed the game. This is more useful than writing “I did not scout enough.”
-`,
-    bodyRu: `## Разведывайте ради решений
-
-Не разведуйте только потому, что так написано в гайде. Разведывайте, чтобы ответить на вопрос: противник атакует, развивается, исследует технологии, торгует или скрывает переход? Хороший отчёт разведки заканчивается действием.
-
-## Три прохода
-
-1. **Стартовый проход (0:00–3:00):** найдите овец, золото противника, первое военное здание и передовую постройку.
-2. **Проход во время перехода:** определите landmark, число строителей, новый ресурс и способен ли противник сразу поддержать войска.
-3. **Проход по составу:** проверьте здания производства, улучшения, подкрепления и следующий ресурс, который противник обязан защищать.
-
-## Сначала классифицируйте, потом контрьте
-
-Используйте четыре класса угроз:
-
-- **Темп:** ранние войска или передовые здания. Добавьте минимальную защиту, которая покупает время.
-- **Экономика:** второй Городской центр, торговля, фермы или защищённое золото. Давите на инвестицию или отвечайте развитием.
-- **Технологии:** быстрый Castle, реликвии, святые места или уникальные улучшения. Сорвите тайминг или заставьте тратить ресурсы на защиту.
-- **Отказ в информации:** стены, keep, скрытность или пропавшая армия. Ищите края карты и защищайте уязвимый ресурс.
-
-## Проверяйте свою гипотезу
-
-Один проход — только гипотеза. Вернитесь через 30–60 секунд или после первой драки. Если ожидаемой армии нет, не продолжайте делать тот же контр. Измените план и запишите, что опровергло вашу догадку.
-
-## Что записывать в разборе
-
-Для каждого пропущенного чтения запишите таймстамп, видимое доказательство, свой вывод и минимальное действие, которое изменило бы игру. Это полезнее, чем фраза «мало разведовал».
-`,
-  },
-  {
-    slug: 'replay-review-checklist',
-    title: 'Replay Review Checklist',
-    titleRu: 'Чек-лист разбора реплея',
+    slug: 'first-ten-minutes',
+    title: 'Your First Ten Minutes in 1v1',
+    titleRu: 'Первые десять минут в 1v1',
     category: 'fundamentals',
-    summary: 'A repeatable 15-minute review that separates confirmed evidence from assumptions.',
-    summaryRu:
-      'Повторяемый 15-минутный разбор, который отделяет подтверждённые данные от предположений.',
+    summary: 'A repeatable opening routine: establish income, read the opponent, choose one plan, and keep it flexible.',
+    summaryRu: 'Повторяемая рутина старта: наладьте доход, прочитайте соперника, выберите один план и сохраняйте гибкость.',
     readMinutes: 6,
-    body: `## Pass one: identify the loss condition
+    body: `## The goal is a stable first plan
 
-Watch the final two minutes first. Ask what actually ended the game: lost army, exposed economy, failed timing, tech disadvantage, or a teammate collapse. Do not start by counting every mistake.
+The first ten minutes do not require a perfect professional build. They require a plan you can repeat: villagers working, scout moving, a clear Feudal purpose, and enough defense to avoid losing the game before learning from it.
 
-## Pass two: check the five controllable lanes
+## 0:00–2:30 — establish the base
 
-- **Production:** Town Center and military buildings working; queues spent before the next fight.
-- **Economy:** villagers on the right resources; no large bank that cannot become units, upgrades, or infrastructure.
-- **Information:** scouting before transitions and before committing the army.
-- **Position:** reinforcements, vision, retreat path, and whether the fight happened on your terms.
-- **Conversion:** after winning a fight, did you take a base, resource, landmark, relic, sacred site, or extra Town Center?
+- Queue a villager immediately and keep the Town Center working.
+- Bring sheep under the Town Center or secure the safest available food. Do not send early workers on a long walk without a reason.
+- Use the scout for sheep first, then learn the opponent's starting side and gold.
+- Build a house before the population cap interrupts production.
+- Start moving toward the food and gold your civilization needs for its age-up; follow a current build for exact numbers.
 
-## Confirm before you blame
+Your success check: workers have short walking distances, food is safe, the scout is alive, and the Town Center did not idle unnecessarily.
 
-Use the replay timeline and stats as evidence, not as a complete explanation. A production gap confirms that no unit was queued; it does not prove the cause. A lower score confirms a gap in the recorded score, not who made a strategic mistake. Label every conclusion as **confirmed**, **likely**, or **unknown**.
+## 2:30–5:30 — age with a purpose
 
-## Finish with one experiment
+Before the landmark starts, answer: **what does Feudal unlock for me next?** Choose one primary plan:
 
-Turn the largest repeatable problem into a measurable next-game goal: “zero Town Center gaps over 10 seconds before 8:00,” “scout the opponent twice before Feudal,” or “retreat when the counter appears.” One experiment is easier to verify than ten vague promises.
-`,
-    bodyRu: `## Первый проход: найдите условие поражения
+- a small army to protect resources or pressure;
+- a safe expansion;
+- a faster Castle transition with enough defense;
+- map control on water, deer, relic routes, or sacred sites.
 
-Сначала посмотрите последние две минуты. Что реально закончило игру: проигранная армия, открытая экономика, сорванный тайминг, технологическое отставание или падение тиммейта? Не начинайте с подсчёта каждой ошибки.
+During the age-up, prepare the resource and building required by that plan. For an early army, do not finish Feudal with no wood, no house, and nowhere to produce it. For an expansion, do not send builders into an unscouted area.
 
-## Второй проход: проверьте пять управляемых направлений
+## 5:30–8:00 — make the first read pay
 
-- **Производство:** Городской центр и военные здания работают; очереди заполнены до следующей драки.
-- **Экономика:** крестьяне стоят на нужных ресурсах; большой запас превращается в войска, улучшения или инфраструктуру.
-- **Информация:** разведка перед переходами и перед вводом армии.
-- **Позиция:** подкрепления, обзор, путь отхода и драка на выгодных условиях.
-- **Конверсия:** после выигранной драки вы взяли базу, ресурс, landmark, реликвию, святое место или второй Городской центр?
+Scout the opponent's first military building and move. A simple response is better than a complex one:
 
-## Сначала подтвердите, потом обвиняйте
+- cavalry sign → make a safe spear screen;
+- ranged mass sign → create a mobile threat and protect vulnerable workers;
+- greedy expansion sign → pressure outer resources or safely match the economy;
+- fast tech or walls sign → take safe space, deny key resources, and avoid donating units into defenses.
 
-Используйте таймлайн реплея и статистику как доказательства, а не как полное объяснение. Простой производства подтверждает, что юнит не был поставлен в очередь, но не объясняет почему. Отставание счёта подтверждает разрыв, но не доказывает стратегическую ошибку. Помечайте вывод как **подтверждённый**, **вероятный** или **неизвестный**.
+Put the army where it protects something valuable or threatens something valuable. It does not have to end the game in its first trip.
 
-## Завершайте одним экспериментом
+## 8:00–10:00 — choose the next investment
 
-Превратите главную повторяемую проблему в цель на следующую игру: «ни одного простоя Городского центра дольше 10 секунд до 8:00», «разведать противника дважды до Feudal» или «отступить при появлении контра». Один эксперимент проще проверить, чем десять общих обещаний.
-`,
+Look at the game state, not your original script:
+
+- If the enemy keeps producing Feudal units, keep enough defense and production before investing in Castle or a second Town Center.
+- If you won the map or forced a retreat, convert it into food, gold, relic access, sacred-site position, or a safer age-up.
+- If your attack did little, retreat with survivors, rebalance resources, and prepare the next composition rather than repeating the same bad fight.
+
+## Three drills before ranked
+
+Play three short practice games with one criterion each:
+
+1. No intentional Town Center idle time until Feudal.
+2. A live scout report immediately before the first military building.
+3. A first army that protects or threatens a real resource — not a march across the map with no purpose.
+
+After that, take the same opening to ranked. The goal is to learn which decision breaks first, then improve that one in the next game.`,
+    bodyRu: `## Цель — устойчивый первый план
+
+Первые десять минут не требуют идеального профессионального билда. Нужен повторяемый план: крестьяне работают, разведчик движется, у Феодала есть цель, а защиты достаточно, чтобы не проиграть до того, как вы чему-то научитесь.
+
+## 0:00–2:30 — создайте основу
+
+- Сразу поставьте крестьянина в очередь и держите ГЦ работающим.
+- Подведите овец под ГЦ или закрепите самую безопасную еду. Не отправляйте ранних работников далеко без причины.
+- Сначала ищите разведчиком овец, затем сторону старта противника и его золото.
+- Постройте дом до того, как лимит остановит производство.
+- Начните переходить к еде и золоту, нужным вашей цивилизации для эпохи; точные числа берите из свежего билда.
+
+Проверка успеха: работники мало ходят, еда безопасна, разведчик жив, а ГЦ не простаивал без необходимости.
+
+## 2:30–5:30 — переходите с целью
+
+До начала строительства достопримечательности ответьте: **что Феодал даст мне следующим?** Выберите один главный план:
+
+- небольшая армия для защиты ресурсов или давления;
+- безопасное расширение;
+- более быстрый переход в Замок с достаточной обороной;
+- контроль карты на воде, оленях, маршрутах реликвий или святынях.
+
+Во время перехода подготовьте ресурс и здание для этого плана. Для ранней армии нельзя заканчивать Феодал без дерева, дома и места производства. Для расширения нельзя посылать строителей в неразведанную область.
+
+## 5:30–8:00 — используйте первую информацию
+
+Разведайте первое военное здание врага и действуйте. Простой ответ лучше сложного:
+
+- признак конницы → сделайте безопасный экран из копейщиков;
+- признак массы стрелков → создайте мобильную угрозу и прикройте уязвимых работников;
+- признак жадного расширения → давите внешние ресурсы или безопасно отвечайте экономикой;
+- признак быстрой технологии или стен → займите безопасное пространство, запретите ключевые ресурсы и не отдавайте войска в оборону.
+
+Ставьте армию туда, где она защищает или угрожает чему-то ценному. Первый выход не обязан заканчивать игру.
+
+## 8:00–10:00 — выберите следующее вложение
+
+Смотрите на состояние игры, а не на исходный сценарий:
+
+- Если враг продолжает делать феодальные войска, сначала обеспечьте защиту и производство, потом вкладывайтесь в Замок или второй ГЦ.
+- Если вы взяли карту или вынудили отход, превратите это в еду, золото, доступ к реликвиям, позицию у святыни или более безопасный переход в эпоху.
+- Если атака ничего не дала, отойдите выжившими, перестройте ресурсы и подготовьте следующий состав вместо повторения плохой драки.
+
+## Три упражнения перед рейтингом
+
+Сыграйте три короткие тренировочные игры, в каждой с одним критерием:
+
+1. Без намеренного простоя ГЦ до Феодала.
+2. Живая информация разведчика прямо перед первым военным зданием.
+3. Первая армия защищает или угрожает реальному ресурсу, а не просто идёт через карту без цели.
+
+После этого возьмите то же открытие в рейтинг. Цель — понять, какое решение ломается первым, и улучшить именно его в следующей игре.`,
   },
   {
-    slug: 'team-game-roles',
-    title: 'Team Game Roles and Timing',
-    titleRu: 'Роли и тайминги в командной игре',
+    slug: 'defending-early-pressure',
+    title: 'Defending Early Pressure',
+    titleRu: 'Защита от раннего давления',
+    category: 'military',
+    summary: 'Stabilize without panic: protect the resource under attack, produce the right answer, and keep your economy alive.',
+    summaryRu: 'Стабилизируйтесь без паники: защитите атакованный ресурс, производите правильный ответ и сохраняйте экономику.',
+    readMinutes: 6,
+    body: `## Defense starts before the enemy arrives
+
+The cheapest defense is scouting. If you see a stable, barracks, range, forward villagers, or missing enemy army early, begin preparing before the attack reaches your workers. An outpost, short wall, production building, or a few counter units is much cheaper before the resource is surrounded.
+
+## First identify the real threat
+
+Ask three questions:
+
+- Which resource or building can the enemy hit first?
+- What is their first damage unit and what protects it?
+- Are they trying to kill you now, deny one resource, or distract you while they boom?
+
+Do not defend every part of the map at once. Protect the resource that keeps your current plan alive, then relocate or surrender a distant one if the trade is bad.
+
+## The stabilization sequence
+
+1. **Save workers first.** Pull them under the Town Center, behind a wall, to a nearby resource, or to a safer drop-off. Lost gathering time is usually better than lost villagers.
+2. **Make the direct counter.** Spearmen for the immediate cavalry threat, mobile units into exposed ranged units, and a front line before fragile damage dealers. Match the actual army, not only its first building.
+3. **Use position.** Fight near Town Center fire, an outpost, a choke, or reinforcements. Do not chase into the open just because the enemy turned around.
+4. **Restore production.** Queue villagers, replace the right units, and move new villagers to the resource that pays for the answer.
+5. **Scout the follow-up.** The first raid may hide a ram push, a second Town Center, an age-up, or a switch in unit type.
+
+## Walls, outposts, and buildings
+
+Small walls are strongest when they buy seconds for the army to arrive or force cavalry into a bad path. Outposts are strongest when they protect a specific exposed resource and you can react nearby. Neither replaces units against a committed push.
+
+Place production and houses so they do not create a free path into the resource line. If you are forced to defend one side of the base, move the rally point away from the raid route.
+
+## Do not over-defend
+
+Panic can lose more than the raid. Avoid pulling every villager off work for a small force, adding five towers to a safe base, or making only one counter unit after the opponent switched. Defend enough to stop losses, then recover the economy and look for the moment the attacker is far from home.
+
+## When to counterattack
+
+Counterattack when the enemy army is retreating, their reinforcement route is exposed, or you have confirmed that their investment left them weak at home. Your first objective is usually their forward resource or production, not their Town Center. If your economy just stabilized, a small safe raid can be better than an all-in chase.`,
+    bodyRu: `## Оборона начинается до прихода армии
+
+Самая дешёвая защита — разведка. Если рано увидели конюшню, казарму, стрельбище, передовых крестьян или исчезнувшую армию, готовьтесь до того, как атака дошла до работников. Башня, короткая стена, военное здание или несколько контр-юнитов гораздо дешевле, пока ресурс ещё не окружён.
+
+## Сначала определите настоящую угрозу
+
+Задайте три вопроса:
+
+- Какой ресурс или здание враг может ударить первым?
+- Какой его основной юнит наносит урон и кто его прикрывает?
+- Он пытается убить вас сейчас, закрыть один ресурс или отвлечь, пока развивает экономику?
+
+Не защищайте всю карту одновременно. Сначала защитите ресурс, на котором держится текущий план, а дальний ресурс уступите или переведите работников, если размен невыгоден.
+
+## Последовательность стабилизации
+
+1. **Сначала спасите работников.** Уведите под ГЦ, за стену, на ближайший ресурс или к безопасной точке сдачи. Потерянное время добычи обычно лучше потерянных крестьян.
+2. **Сделайте прямой контр.** Копейщики против немедленной конницы, мобильные войска против открытых стрелков, фронтлайн перед хрупким уроном. Отвечайте на реальную армию, а не только на её первое здание.
+3. **Используйте позицию.** Деритесь под огнём ГЦ, у башни, в узком проходе или рядом с подкреплениями. Не гонитесь в чистое поле только потому, что враг развернулся.
+4. **Верните производство.** Ставьте крестьян в очередь, восполняйте нужные войска и направляйте новых работников на ресурс, который оплачивает ответ.
+5. **Разведайте продолжение.** Первый рейд может скрывать тараны, второй ГЦ, переход в эпоху или смену войск.
+
+## Стены, башни и здания
+
+Короткие стены сильнее всего, когда покупают секунды до подхода армии или заводят конницу по плохому маршруту. Башни сильны, когда защищают конкретный открытый ресурс и вы можете быстро подойти к нему. Ни то ни другое не заменяет армию против серьёзного пуша.
+
+Ставьте производство и дома так, чтобы не открыть бесплатный путь к линии ресурсов. Если приходится защищать одну сторону базы, перенесите точку сбора от маршрута налёта.
+
+## Не переобороняйтесь
+
+Паника может стоить дороже налёта. Не снимайте с работы всех крестьян против небольшой группы, не ставьте пять башен на безопасной базе и не делайте только один контр-юнит после смены врагом состава. Защититесь достаточно, чтобы прекратить потери, затем восстановите экономику и ищите момент, когда атакующий далеко от дома.
+
+## Когда бить в ответ
+
+Контратакуйте, когда армия врага отступает, его путь подкреплений открыт или разведка подтвердила, что вложения оставили базу слабой. Первой целью обычно будут его передовой ресурс или производство, а не ГЦ. Если экономика только стабилизировалась, маленький безопасный рейд лучше погони олл-ином.`,
+  },
+  {
+    slug: 'map-control-resource-safety',
+    title: 'Map Control and Safe Resources',
+    titleRu: 'Контроль карты и безопасные ресурсы',
     category: 'strategy',
-    summary: 'Coordinate pressure, defense, and economy so that four players act as one plan.',
-    summaryRu:
-      'Согласуйте давление, защиту и экономику, чтобы четыре игрока действовали как единый план.',
+    summary: 'Take space that pays for your next plan, while making the opponent’s economy harder and riskier to use.',
+    summaryRu: 'Занимайте пространство, которое оплачивает ваш следующий план, и делайте экономику врага более дорогой и рискованной.',
     readMinutes: 5,
-    body: `## Pick a job before a build
+    body: `## Map control is useful access, not painted territory
 
-Team games are not four separate 1v1s. Decide who creates the first pressure, who protects the exposed flank, who scales the economy, and who controls the map or water. The civilization lineup should inform the jobs, not dictate them blindly.
+You control an area when you can gather from it, move through it, reinforce through it, or make the opponent pay to use it. A lone unit in the middle of the map is not control. A small force that protects your deer, sees an enemy gold vein, and can retreat to an outpost often is.
 
-## Share timing windows
+## Prioritize the resource that changes the next minute
 
-Call out three times: when the first army moves, when reinforcements arrive, and when the team changes age or composition. A small army arriving together is stronger than four larger armies arriving one at a time.
+- **Food outside the base** supports sustained unit production and can be worth a small escort.
+- **Gold** often decides upgrades, age-ups, heavy units, and religious play; deny it only if you can avoid a bad fight.
+- **Stone** matters when a Town Center, keep, or wall plan is visible. Scouting turns it from a generic resource into a strategic target.
+- **Relics and sacred sites** are not side quests: they create income and force the opponent to leave their base.
 
-## Protect the weakest link
+Do not take an outer resource because it exists. Take it when it funds a concrete next step and you can either hold it or profit before leaving.
 
-If one teammate is being rushed, do not all abandon your plans. Send the smallest useful help: a few units, a wall segment, vision, or a counter building. Keep your own production alive so the rescue does not become a second loss.
+## Make the resource safe enough
 
-## Convert team advantages
+Safety is layered:
 
-After a successful fight, choose one shared objective: destroy production, deny a resource, take a sacred site, secure a trade route, or push a landmark. Ping the objective and rally to it; damage without conversion gives the opponent time to recover.
-`,
-    bodyRu: `## Выберите задачу до начала билда
+1. Scout the route and nearby enemy production.
+2. Move a small army, not only villagers, when the resource is exposed.
+3. Use a short wall, outpost, building placement, or natural choke to buy reaction time.
+4. Keep a retreat path and a second resource ready; do not trap workers between the enemy and a wall.
+5. Re-scout when the opponent's army disappears.
 
-Командная игра — не четыре отдельных 1v1. Заранее решите, кто создаёт первое давление, кто защищает открытый фланг, кто развивает экономику, а кто контролирует карту или воду. Состав цивилизаций должен подсказывать роли, но не диктовать их вслепую.
+The aim is not invulnerability. It is to make every raid cost the opponent more time or units than it costs you gathering time.
 
-## Согласуйте окна тайминга
+## Deny without throwing your army away
 
-Назовите три момента: выход первой армии, приход подкреплений и смену эпохи или состава. Небольшая армия, пришедшая вместе, сильнее четырёх больших армий, пришедших по одной.
+You can deny a resource by showing up, forcing an outpost, killing a mining camp, walling a path, or simply making workers walk away. You do not need to kill the Town Center. If the enemy has the better position, keep vision and attack another point rather than trading into their defense.
 
-## Защищайте слабое звено
+## Spend map control before it expires
 
-Если одного тиммейта рашат, не бросайте все свои планы. Отправьте минимальную полезную помощь: несколько юнитов, кусок стены, обзор или здание-контр. Не останавливайте собственное производство, чтобы спасение не превратилось во второе поражение.
+After winning a fight or forcing an army home, choose a conversion immediately:
 
-## Превращайте преимущество команды в результат
+- take deer, gold, relics, or a sacred-site position;
+- establish a safer expansion;
+- add production forward enough to shorten reinforcements but not so far that it is free to lose;
+- age up while the opponent is forced to defend.
 
-После выигранной драки выберите одну общую цель: снести производство, закрыть ресурс, взять святое место, обезопасить торговый маршрут или надавить на landmark. Отметьте цель и соберите армию к ней; урон без конверсии даёт противнику время восстановиться.
-`,
+Map control disappears when the army is idle or when the opponent takes the next resource unseen. Keep the scout moving and make the advantage pay for something.`,
+    bodyRu: `## Контроль карты — это доступ, а не закрашенная территория
+
+Вы контролируете область, когда можете добывать там, проходить через неё, вести подкрепления или заставлять противника дорого платить за использование. Один юнит в центре карты — не контроль. Небольшая армия, которая защищает ваших оленей, видит вражеское золото и может отойти к башне, — часто уже контроль.
+
+## Сначала берите ресурс, меняющий следующую минуту
+
+- **Еда вне базы** поддерживает постоянное производство войск и заслуживает небольшого эскорта.
+- **Золото** часто решает улучшения, эпохи, тяжёлые войска и религиозную игру; запрещайте его, только если не идёте в плохой бой.
+- **Камень** важен, когда видны планы на ГЦ, крепость или стены. Разведка превращает его из обычного ресурса в стратегическую цель.
+- **Реликвии и святыни** — не побочная задача: они создают доход и вынуждают противника выйти из базы.
+
+Не берите дальний ресурс только потому, что он есть. Берите его, когда он оплачивает конкретный следующий шаг и вы способны удержать его или получить выгоду до отхода.
+
+## Сделайте ресурс достаточно безопасным
+
+Безопасность складывается из нескольких слоёв:
+
+1. Разведайте маршрут и ближайшее производство врага.
+2. Ведите к открытому ресурсу небольшую армию, а не только крестьян.
+3. Используйте короткую стену, башню, размещение зданий или естественный проход, чтобы выиграть время на реакцию.
+4. Оставьте путь отхода и второй ресурс; не запирайте работников между врагом и стеной.
+5. Разведывайте заново, когда армия противника исчезает.
+
+Цель не в неуязвимости. Цель — сделать каждый налёт дороже для врага по времени или войскам, чем для вас по времени добычи.
+
+## Запрещайте ресурс, не отдавая армию
+
+Ресурс можно закрыть присутствием, вынужденной башней, уничтожением лагеря, стеной на пути или просто тем, что рабочим приходится уйти. Не обязательно ломать ГЦ. Если позиция врага лучше, сохраните обзор и ударьте в другом месте вместо размена в его оборону.
+
+## Тратьте контроль карты, пока он не исчез
+
+После выигранной драки или ухода армии врага сразу выберите конвертацию:
+
+- возьмите оленей, золото, реликвии или позицию у святыни;
+- поставьте более безопасное расширение;
+- добавьте производство достаточно впереди, чтобы укоротить подкрепления, но не настолько, чтобы его было бесплатно потерять;
+- переходите в эпоху, пока враг вынужден обороняться.
+
+Контроль карты исчезает, когда армия простаивает или противник незаметно занимает следующий ресурс. Держите разведчика в движении и заставляйте преимущество оплачивать что-то конкретное.`,
   },
   {
-    slug: 'patch-aware-guides',
-    title: 'Patch-Aware Guide Reading',
-    titleRu: 'Как читать гайды с учётом патча',
-    category: 'economy',
-    summary:
-      'Avoid stale advice: check the patch, map pool, assumptions, and whether the build still matches the game data.',
-    summaryRu:
-      'Избегайте устаревших советов: проверяйте патч, пул карт, предположения и соответствие билда данным игры.',
-    readMinutes: 4,
-    body: `## Version comes first
+    slug: 'replay-review-loop',
+    title: 'Replay Review: Turn Losses into a Plan',
+    titleRu: 'Разбор реплея: превращаем поражения в план',
+    category: 'strategy',
+    summary: 'Find the first costly decision, name its cause, and practice one correction in the next match.',
+    summaryRu: 'Найдите первое дорогое решение, назовите его причину и потренируйте одно исправление в следующей игре.',
+    readMinutes: 6,
+    body: `## Review for the first cause, not the last disaster
 
-Before copying a build, record its patch or season. Balance changes can alter a unit cost, production time, landmark bonus, or map pool without changing the title of a video. Treat an unversioned build as a hypothesis until you test it.
+The final fight is dramatic, but it is often not why the game was lost. Start from the end, then move backward until you find the first moment where a different, realistic decision would have changed the next several minutes. That is the moment worth training.
 
-## Check the assumptions
+## A five-minute review order
 
-Look for the map type, starting resources, game mode, civilization variant, opponent matchup, and intended rank. A build designed for an open 1v1 map is not automatically safe on a closed team map.
+1. **Opening health:** did the Town Center idle, did housing block you, did workers walk too far, or did the first age-up miss its build checkpoint?
+2. **Information:** what did you scout before the first important military or economic choice? What did you fail to scout?
+3. **Response:** when the enemy's plan became visible, did you make the counter, position workers safely, and adjust resources?
+4. **Spending:** where did resources float while production was missing or idle? Did you build things that were never used?
+5. **Conversion:** after winning or surviving a fight, did you take a resource, age up, expand, or simply let the advantage disappear?
 
-## Prefer evidence-linked builds
+Write one sentence for each answer. Vague conclusions such as “macro was bad” are hard to fix; “I had 700 wood while the first range was idle from 6:20 to 7:10” is actionable.
 
-The strongest reference combines a readable step list with a video, replay, or current game-data link. Compare the build's costs and timings with the current explorer before investing a whole session in it.
+## Classify the mistake correctly
 
-## Keep a local verdict
+- **Mechanical:** late house, idle Town Center, missed queue, poor unit control. Fix with a focused drill.
+- **Information:** did not see the stable, second Town Center, forward villagers, or army leaving. Fix the scout route and check cadence.
+- **Decision:** saw the information but chose the wrong unit, investment, or fight. Write the alternative action you will test.
+- **Execution under pressure:** knew the answer but could not do it while defending. Simplify the plan or add control groups and a defensive rally.
 
-After three games, mark the guide as **works**, **needs adaptation**, or **stale**. Record the patch, map, matchup, and first failed checkpoint. This keeps your personal library more useful than a global popularity score.
-`,
-    bodyRu: `## Сначала смотрите версию
+One event can include several categories, but choose the earliest controllable one first.
 
-Перед копированием билда запишите его патч или сезон. Баланс может изменить стоимость юнита, время производства, бонус landmark или пул карт, а название видео останется прежним. Билд без версии считайте гипотезой, пока не проверите его.
+## Use a single next-game goal
 
-## Проверьте предположения
+Examples of good goals:
 
-Посмотрите тип карты, стартовые ресурсы, режим, вариант цивилизации, матчап и целевой рейтинг. Билд для открытой 1v1-карты не обязан работать на закрытой командной карте.
+- “Scout enemy gold and first production before I start my own first military building.”
+- “When cavalry appears, make spearmen before moving my ranged units across the map.”
+- “If wood reaches 400 while units are queued, add the next production building.”
+- “After a won fight, take one safe outer food source before chasing.”
 
-## Выбирайте билды с доказательствами
+Avoid “win more” or “use fewer resources.” The goal needs an observable trigger and action.
 
-Лучший референс сочетает понятный список шагов с видео, реплеем или актуальной ссылкой на данные игры. Перед целой сессией сравните стоимость и тайминги с текущим Explorer.
+## Compare a small set of replays
 
-## Храните свой вердикт
+After three to five games with the same civilization and opening, look for a repeated failure. If the same gold raid appears every match, solve the gold position before changing the entire build. If early pressure always succeeds but you lose later, practice the post-pressure transition. Improvement comes from a controlled loop: play, identify one cause, drill one answer, then test it again.`,
+    bodyRu: `## Ищите первую причину, а не последнюю катастрофу
 
-После трёх игр пометьте гайд как **работает**, **требует адаптации** или **устарел**. Запишите патч, карту, матчап и первую сломанную контрольную точку. Так личная библиотека становится полезнее глобального рейтинга популярности.
-`,
-  },
-]
+Последняя драка выглядит драматично, но часто не она проиграла матч. Начните с конца и двигайтесь назад, пока не найдёте первый момент, когда другое реалистичное решение изменило бы следующие несколько минут. Именно этот момент стоит тренировать.
 
-/** Fresh external references selected from current official and curated sources. */
-export const GUIDE_RESOURCES: readonly GuideResource[] = [
-  {
-    id: 'official-patch-16-2-10884',
-    kind: 'patch',
-    title: 'Age of Empires IV — Patch 16.2.10884',
-    titleRu: 'Age of Empires IV — патч 16.2.10884',
-    description:
-      'Official release notes: balance, bug fixes, UI changes, and replay-version caveats.',
-    descriptionRu:
-      'Официальные заметки: баланс, исправления, UI и важное предупреждение о версиях реплеев.',
-    source: 'Age of Empires Official',
-    url: 'https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/',
-    publishedAt: '2026-06-18',
-  },
-  {
-    id: 'aoe4world-patch-history',
-    kind: 'catalogue',
-    title: 'AoE4World Patch History & Explorer',
-    titleRu: 'История патчей и Explorer AoE4World',
-    description:
-      'Civilization-by-civilization changes, units, technologies, landmarks, and patch context.',
-    descriptionRu: 'Изменения по цивилизациям, юнитам, технологиям, landmark и контекст патча.',
-    source: 'AoE4World',
-    url: 'https://aoe4world.com/explorer/patches',
-  },
-  {
-    id: 'aoe4world-curated-content',
-    kind: 'catalogue',
-    title: 'AoE4World Curated Content',
-    titleRu: 'Кураторский каталог AoE4World',
-    description:
-      'A maintained catalogue of guides, build orders, breakdowns, and educational videos.',
-    descriptionRu: 'Обновляемый каталог гайдов, билдов, разборов и обучающих видео.',
-    source: 'AoE4World',
-    url: 'https://aoe4world.com/explorer/content',
-  },
-  {
-    id: 'beasty-what-civ-2026',
-    kind: 'video',
-    title: 'What Civilisation to play in 2026?',
-    titleRu: 'Какую цивилизацию играть в 2026 году?',
-    description: 'Beastyqt compares civilization identities and helps narrow a learning path.',
-    descriptionRu: 'Beastyqt сравнивает особенности цивилизаций и помогает выбрать путь обучения.',
-    source: 'BeastyqtSC2',
-    url: 'https://www.youtube.com/watch?v=RSUYg3jQ3gg',
-    publishedAt: '2026-02-01',
-  },
-  {
-    id: 'yellowish-macedonian-guide',
-    kind: 'video',
-    title: 'Macedonian Dynasty in its Completeness',
-    titleRu: 'Македонская династия: полный разбор',
-    description: 'A complete civilization overview with tactics and practical examples.',
-    descriptionRu: 'Полный обзор цивилизации с тактиками и практическими примерами.',
-    source: 'Yellowish',
-    url: 'https://www.youtube.com/watch?v=xmFeEe5-XJE',
-    publishedAt: '2025-11-05',
-  },
-  {
-    id: 'vortix-four-ages',
-    kind: 'video',
-    title: 'How to play Age of Empires 4: the four ages',
-    titleRu: 'Как играть в Age of Empires 4: четыре эпохи',
-    description: 'A concept-first explanation of the goals and transitions in every age.',
-    descriptionRu: 'Объяснение целей и переходов каждой эпохи через игровые концепции.',
-    source: 'VortiX',
-    url: 'https://www.youtube.com/watch?v=jSfoInAglI8',
-    publishedAt: '2025-04-01',
-  },
-  {
-    id: 'jin-dynasty-beginner-guide',
-    kind: 'article',
-    title: 'Jin Dynasty: beginner guide, build orders, and unique units',
-    titleRu: 'Династия Цзинь: гайд для новичка, билды и уникальные юниты',
-    description: 'A written introduction to the new civilization added with Yue Fei’s Legacy.',
-    descriptionRu: 'Письменный разбор новой цивилизации из Yue Fei’s Legacy.',
-    source: 'Game Truth',
-    url: 'https://www.gametruth.com/guides/age-of-empires-4-jin-dynasty-beginner-guide-build-orders-unique-units/',
-    publishedAt: '2026-05-01',
+## Порядок разбора на пять минут
+
+1. **Здоровье открытия:** простаивал ли ГЦ, был ли блок по домам, далеко ли ходили работники, совпал ли первый переход в эпоху с этапом билда?
+2. **Информация:** что вы разведали перед первым важным военным или экономическим выбором? Чего не разведали?
+3. **Реакция:** когда план врага стал виден, сделали ли контр, безопасно ли расположили работников, перестроили ли ресурсы?
+4. **Траты:** где копились ресурсы, пока не хватало или простаивало производство? Не были ли построены вещи, которыми не воспользовались?
+5. **Конвертация:** после выигранной или пережитой драки взяли ли вы ресурс, эпоху, расширение или просто дали преимуществу исчезнуть?
+
+Запишите по одному предложению на каждый ответ. Расплывчатое «плохое макро» трудно исправить; «к 6:20 было 700 дерева, а первое стрельбище простаивало до 7:10» — уже действие.
+
+## Правильно назовите ошибку
+
+- **Механика:** поздний дом, простой ГЦ, пропущенная очередь, плохой контроль войск. Исправляйте целевым упражнением.
+- **Информация:** не увидели конюшню, второй ГЦ, передовых крестьян или выход армии. Исправьте маршрут и частоту разведки.
+- **Решение:** информацию увидели, но выбрали неправильный юнит, вложение или драку. Запишите альтернативное действие, которое проверите.
+- **Исполнение под давлением:** знали ответ, но не смогли сделать его во время обороны. Упростите план или добавьте контрольные группы и оборонительную точку сбора.
+
+В одном эпизоде могут быть разные категории, но сначала выберите самую раннюю управляемую.
+
+## Одна цель на следующую игру
+
+Примеры хороших целей:
+
+- «Разведать вражеское золото и первое производство до начала собственного первого военного здания».
+- «При появлении конницы сделать копейщиков до выхода стрелков через карту».
+- «Если дерево достигает 400, а войска стоят в очереди, добавить следующее производство».
+- «После выигранной драки занять один безопасный источник внешней еды до погони».
+
+Не выбирайте «больше побеждать» или «меньше тратить». У цели должен быть наблюдаемый триггер и действие.
+
+## Сравнивайте небольшую серию реплеев
+
+После трёх–пяти игр за одну цивилизацию с одним открытием ищите повторяющуюся поломку. Если в каждом матче закрывают золото, сначала решите позицию золота, а не меняйте весь билд. Если раннее давление всегда удаётся, а позже вы проигрываете, тренируйте переход после давления. Прогресс строится на контролируемом цикле: сыграть, найти одну причину, отработать один ответ и снова проверить его.`,
   },
 ]

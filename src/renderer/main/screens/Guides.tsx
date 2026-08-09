@@ -14,7 +14,7 @@ import {
   Loader2,
   PlayCircle,
 } from 'lucide-react'
-import { GUIDE_RESOURCES, GUIDES, type Guide } from '@data/guides'
+import { GUIDES, type Guide } from '@data/guides'
 import { LEARNING_RESOURCES } from '@data/learningResources'
 import { BUILD_CATALOG } from '@data/buildCatalog'
 import {
@@ -234,14 +234,7 @@ function LearningShelf({ locale }: { locale: string }) {
     month: 'short',
     year: 'numeric',
   })
-  // Keep the hand-picked links from both sources, preferring the newer
-  // reference when the same URL is present in both lists.
-  const resources = [
-    ...GUIDE_RESOURCES,
-    ...LEARNING_RESOURCES.filter(
-      (resource) => !GUIDE_RESOURCES.some((current) => current.url === resource.url),
-    ),
-  ]
+  const resources = LEARNING_RESOURCES
 
   return (
     <section className="space-y-3" aria-label={isRussian ? 'Свежие материалы' : 'Fresh resources'}>

@@ -29,6 +29,7 @@ import {
   stopRankedMapPoolAutoRefresh,
 } from './services/rankedMapPoolService'
 import { startAutomation, stopAutomation } from './services/automationService'
+import { startAutoUpdate } from './services/updateService'
 
 // Diagnostic: isolate data to a temp dir when running a live verify/smoke.
 if (process.env['RTSLYTICS_VERIFY'] || process.env['RTSLYTICS_SMOKE'] === '1') {
@@ -85,6 +86,7 @@ function bootstrap(): void {
     poll.start() // don't make live API calls during the automated smoke
     startRankedMapPoolAutoRefresh()
     startAutomation()
+    startAutoUpdate()
     // Start the live-APM global input hook if the user enabled it (Settings).
     apmTracker.setEnabled(getSettings().getAll().overlay.apm)
   }

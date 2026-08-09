@@ -21,17 +21,17 @@ export interface LearningResource {
  */
 export const LEARNING_RESOURCES: readonly LearningResource[] = [
   {
-    id: 'official-patch-14681',
+    id: 'official-patch-20249',
     kind: 'article',
-    title: 'Age of Empires IV – Patch 14681',
-    titleRu: 'Age of Empires IV — патч 14681',
+    title: 'Age of Empires IV – Patch 20249',
+    titleRu: 'Age of Empires IV — патч 20249',
     description:
-      'Official notes for the current balance and map changes. Read this before relying on any time-sensitive build or matchup advice.',
+      'Latest official notes for balance, map, hotkey, and replay changes. Read this before relying on time-sensitive build or matchup advice.',
     descriptionRu:
-      'Официальные изменения баланса и карт. Откройте их перед тем, как применять билд или совет по матчапу, завязанный на текущий патч.',
+      'Последние официальные изменения баланса, карт, хоткеев и реплеев. Откройте их перед применением билда или совета по актуальному матчапу.',
     source: 'Age of Empires',
-    url: 'https://www.ageofempires.com/news/age-of-empires-iv-patch-14681/',
-    publishedAt: '2026-07-24',
+    url: 'https://www.ageofempires.com/news/age-of-empires-iv-patch-20249/',
+    publishedAt: '2026-08-04',
     checkedAt: '2026-08-09',
   },
   {

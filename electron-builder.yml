@@ -33,12 +33,23 @@ win:
   # Windows can block it from appearing above an elevated game window. Request
   # elevation for every Windows launch, including the portable build.
   requestedExecutionLevel: requireAdministrator
-  # No installer — a single self-contained portable .exe (double-click to run)
-  # plus the unpacked folder (release/win-unpacked/RTSLytics.exe).
+  # NSIS is the supported Windows target for electron-updater. Keep portable and
+  # unpacked builds for users who prefer them, but publish the installer so
+  # installed copies receive future updates automatically.
   target:
+    - nsis
     - portable
     - dir
-  artifactName: ${productName}-${version}-portable.${ext}
+
+publish:
+  provider: github
+  owner: ccsimplyspolit
+  repo: AOE4-Analytics
+
+nsis:
+  artifactName: ${productName}-${version}-Setup.${ext}
+  oneClick: true
+  perMachine: false
 
 portable:
   artifactName: ${productName}-${version}-portable.${ext}

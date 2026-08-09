@@ -1,4 +1,4 @@
-name: Portable Release
+name: Windows Release
 
 # A Windows package is produced only after the Linux CI workflow is green.
 # Every successful main build gets a unique prerelease; the first build for a
@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   release:
-    name: Build portable Windows release
+    name: Build Windows installer and portable release
     if: >-
       github.event_name == 'workflow_dispatch' ||
       (github.event.workflow_run.conclusion == 'success' &&
@@ -46,7 +46,7 @@ jobs:
       - name: Audit production dependencies
         run: npm audit --omit=dev --audit-level=high
 
-      - name: Build portable executable
+      - name: Build Windows installer and portable executable
         shell: pwsh
         run: |
           npm run prepare:replays-api
@@ -54,7 +54,9 @@ jobs:
           npm run lint
           npx vitest run --maxWorkers=1 --minWorkers=1
           npm run bundle
-          npx electron-builder --win
+          # Releases are published explicitly below with gh, but electron-builder
+          # still creates latest.yml + blockmap metadata for electron-updater.
+          npx electron-builder --win --publish never
 
       - name: Prepare release metadata
         id: artifact
@@ -67,9 +69,17 @@ jobs:
           $portable = Get-ChildItem -Path release -Filter "*-portable.exe" -File |
             Sort-Object LastWriteTime -Descending |
             Select-Object -First 1
+          $installer = Get-ChildItem -Path release -Filter "*-Setup.exe" -File |
+            Sort-Object LastWriteTime -Descending |
+            Select-Object -First 1
+          if (-not $portable -or -not $installer) {
+            throw "Release is missing portable or Setup executable."
+          }
 
-          if (-not $portable) {
-            throw "No portable executable found in release/"
+          $updateMetadata = Join-Path $portable.DirectoryName 'latest.yml'
+          $blockMap = "$($installer.FullName).blockmap"
+          if (-not (Test-Path $updateMetadata) -or -not (Test-Path $blockMap)) {
+            throw "Release is missing latest.yml or Setup blockmap."
           }
 
           $shortSha = $env:TARGET_SHA.Substring(0, 7)
@@ -88,6 +98,8 @@ jobs:
             buildTag = $buildTag
             stableTag = $stableTag
             artifact = $portable.Name
+            installer = $installer.Name
+            updaterMetadata = (Split-Path -Leaf $updateMetadata)
             sha256 = $checksum.Hash.ToLowerInvariant()
             builtAtUtc = (Get-Date).ToUniversalTime().ToString('o')
           } | ConvertTo-Json | Out-File -FilePath $manifestPath -Encoding utf8
@@ -99,8 +111,10 @@ jobs:
           "stable_tag=$stableTag" >> $env:GITHUB_OUTPUT
           "build_tag=$buildTag" >> $env:GITHUB_OUTPUT
           "stable_exists=$($stableExists.ToString().ToLowerInvariant())" >> $env:GITHUB_OUTPUT
-          "artifact_path=$($portable.FullName)" >> $env:GITHUB_OUTPUT
-          "artifact_name=$($portable.Name)" >> $env:GITHUB_OUTPUT
+          "portable_path=$($portable.FullName)" >> $env:GITHUB_OUTPUT
+          "installer_path=$($installer.FullName)" >> $env:GITHUB_OUTPUT
+          "blockmap_path=$blockMap" >> $env:GITHUB_OUTPUT
+          "update_metadata_path=$updateMetadata" >> $env:GITHUB_OUTPUT
           "checksum_path=$checksumPath" >> $env:GITHUB_OUTPUT
           "manifest_path=$manifestPath" >> $env:GITHUB_OUTPUT
           "target_sha=$($env:TARGET_SHA)" >> $env:GITHUB_OUTPUT
@@ -112,7 +126,10 @@ jobs:
           name: RTSLytics-${{ steps.artifact.outputs.version }}-build-${{ github.run_number }}
           retention-days: 14
           path: |
-            ${{ steps.artifact.outputs.artifact_path }}
+            ${{ steps.artifact.outputs.portable_path }}
+            ${{ steps.artifact.outputs.installer_path }}
+            ${{ steps.artifact.outputs.blockmap_path }}
+            ${{ steps.artifact.outputs.update_metadata_path }}
             ${{ steps.artifact.outputs.checksum_path }}
             ${{ steps.artifact.outputs.manifest_path }}
           if-no-files-found: error
@@ -124,7 +141,10 @@ jobs:
           BUILD_TAG: ${{ steps.artifact.outputs.build_tag }}
           BUILD_NAME: RTSLytics ${{ steps.artifact.outputs.version }} build ${{ github.run_number }}
           TARGET_SHA: ${{ steps.artifact.outputs.target_sha }}
-          ARTIFACT_PATH: ${{ steps.artifact.outputs.artifact_path }}
+          PORTABLE_PATH: ${{ steps.artifact.outputs.portable_path }}
+          INSTALLER_PATH: ${{ steps.artifact.outputs.installer_path }}
+          BLOCKMAP_PATH: ${{ steps.artifact.outputs.blockmap_path }}
+          UPDATE_METADATA_PATH: ${{ steps.artifact.outputs.update_metadata_path }}
           CHECKSUM_PATH: ${{ steps.artifact.outputs.checksum_path }}
           MANIFEST_PATH: ${{ steps.artifact.outputs.manifest_path }}
         run: |
@@ -136,7 +156,7 @@ jobs:
           This prerelease is generated automatically after a green CI run.
           "@ | Out-File -FilePath $notesPath -Encoding utf8
 
-          gh release create $env:BUILD_TAG $env:ARTIFACT_PATH $env:CHECKSUM_PATH $env:MANIFEST_PATH `
+          gh release create $env:BUILD_TAG $env:PORTABLE_PATH $env:INSTALLER_PATH $env:BLOCKMAP_PATH $env:UPDATE_METADATA_PATH $env:CHECKSUM_PATH $env:MANIFEST_PATH `
             --title $env:BUILD_NAME `
             --notes-file $notesPath `
             --prerelease `
@@ -151,19 +171,23 @@ jobs:
           STABLE_TAG: ${{ steps.artifact.outputs.stable_tag }}
           VERSION: ${{ steps.artifact.outputs.version }}
           TARGET_SHA: ${{ steps.artifact.outputs.target_sha }}
-          ARTIFACT_PATH: ${{ steps.artifact.outputs.artifact_path }}
+          PORTABLE_PATH: ${{ steps.artifact.outputs.portable_path }}
+          INSTALLER_PATH: ${{ steps.artifact.outputs.installer_path }}
+          BLOCKMAP_PATH: ${{ steps.artifact.outputs.blockmap_path }}
+          UPDATE_METADATA_PATH: ${{ steps.artifact.outputs.update_metadata_path }}
           CHECKSUM_PATH: ${{ steps.artifact.outputs.checksum_path }}
           MANIFEST_PATH: ${{ steps.artifact.outputs.manifest_path }}
         run: |
           $notesPath = Join-Path $env:RUNNER_TEMP "stable-release-notes.md"
           @"
-          RTSLytics $env:VERSION portable Windows release.
+          RTSLytics $env:VERSION Windows release.
 
           Commit: $env:TARGET_SHA
-          Download the portable .exe and run it. No installer is required.
+          Install the Setup executable to receive automatic updates. The portable
+          executable remains available for manual-use scenarios.
           "@ | Out-File -FilePath $notesPath -Encoding utf8
 
-          gh release create $env:STABLE_TAG $env:ARTIFACT_PATH $env:CHECKSUM_PATH $env:MANIFEST_PATH `
+          gh release create $env:STABLE_TAG $env:PORTABLE_PATH $env:INSTALLER_PATH $env:BLOCKMAP_PATH $env:UPDATE_METADATA_PATH $env:CHECKSUM_PATH $env:MANIFEST_PATH `
             --title "RTSLytics $env:STABLE_TAG" `
             --notes-file $notesPath `
             --target $env:TARGET_SHA
