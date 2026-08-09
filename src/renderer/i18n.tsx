@@ -2758,6 +2758,8 @@ const UI: Record<Locale, Record<string, string>> = {
     'LibreTranslate API key': 'API-ключ LibreTranslate',
     'Get a DeepL key': 'Получить ключ DeepL',
     'Get a LibreTranslate key': 'Получить ключ LibreTranslate',
+    'Create Twitch credentials': 'Создать данные Twitch',
+    'Create a YouTube API key': 'Создать API-ключ YouTube',
   },
   en: {},
   uk: {
