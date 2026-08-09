@@ -1498,16 +1498,16 @@ const UI: Record<Locale, Record<string, string>> = {
       'Приложение ищет публичную победную игру на той же карте и с тем же матчапом цивилизаций, затем сравнивает измеримые контрольные точки с вашей игрой.',
     'The app searches public games for a winning example with the same map and civilization matchup, prioritizes matches rated above yours, and compares your measurable checkpoints with that player.':
       'Приложение ищет публичную победную игру на той же карте и с тем же матчапом цивилизаций, сначала выбирает матчи с рейтингом выше вашего и сравнивает измеримые контрольные точки с вашей игрой.',
-    'The app searches a bounded, cached public sample for a winning example with the same map and civilization matchup, prioritizes matches rated above yours, and compares your measurable checkpoints with that player.':
-      'Приложение ищет в ограниченной кэшированной выборке публичных игр победный пример на той же карте и с тем же матчапом цивилизаций, сначала выбирает матчи с рейтингом выше вашего и сравнивает измеримые контрольные точки с вашей игрой.',
+    'The app searches the complete available public-game window (up to 1,000 recent matches) for a winning example with the same map and civilization matchup, prioritizes matches rated above yours, and compares your measurable checkpoints with that player.':
+      'Приложение ищет в полном доступном окне публичных игр (до 1 000 последних матчей) победный пример на той же карте и с тем же матчапом цивилизаций, сначала выбирает матчи с рейтингом выше вашего и сравнивает измеримые контрольные точки с вашей игрой.',
     'AoE4World is temporarily limiting public-game searches. Please try again in a minute.':
       'AoE4World временно ограничивает поиск публичных игр. Повторите попытку через минуту.',
     'Searching for similar winning games…': 'Ищу похожие победные игры…',
     'Reference games': 'Эталонные игры',
     'No public match with this exact map and civilization composition was found.':
       'Публичная игра с точно такой картой и составом цивилизаций не найдена.',
-    'No match with this exact map and civilization composition was found in the recent public sample.':
-      'В недавней публичной выборке не найден матч с этой картой и точным составом цивилизаций.',
+    'No match with this exact map and civilization composition was found in the available public-game window.':
+      'В доступном окне публичных игр не найден матч с этой картой и точным составом цивилизаций.',
     'Try again after more games are indexed, or use the build-order comparison below.':
       'Попробуйте позже, когда проиндексируется больше игр, или используйте сравнение билдов ниже.',
     'Reference player': 'Игрок-эталон',

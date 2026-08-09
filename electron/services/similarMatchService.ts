@@ -17,9 +17,10 @@ import { getClient } from './appContext'
 import type { IpcResult } from '@ipc/contract'
 import { err, errFrom, ok } from './result'
 
-// A public-game comparison is advisory, not a crawler. Five cached pages keep
-// the request bounded to 250 games and below AoE4World's public API budget.
-const MAX_PAGES = 5
+// A public-game comparison is advisory, not an unbounded crawler. AoE4World's
+// global feed exposes at most 20 pages, so scan the complete API window (up to
+// 1,000 recent games) while still relying on the shared disk cache/rate limit.
+const MAX_PAGES = 20
 const DEFAULT_LIMIT = 5
 const DEFAULT_LOOKBACK_DAYS = 365
 

@@ -58,14 +58,14 @@ describe('findSimilarMatches', () => {
     )
   })
 
-  it('never scans beyond the five-page public sample', async () => {
+  it('scans the complete public feed window without exceeding the API page cap', async () => {
     const getGames = vi
       .fn<Aoe4WorldClient['getGames']>()
       .mockResolvedValue(gamePage(Array.from({ length: 50 }, () => matchingGame)))
 
     await findSimilarMatches({ ...query, map: 'High View' }, { getGames })
 
-    expect(getGames).toHaveBeenCalledTimes(5)
+    expect(getGames).toHaveBeenCalledTimes(20)
   })
 
   it('returns a retryable explanation when the first request is rate-limited', async () => {

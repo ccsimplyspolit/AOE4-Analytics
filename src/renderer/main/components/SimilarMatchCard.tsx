@@ -128,7 +128,7 @@ export function SimilarMatchCard({
         <CardContent className="space-y-4 p-4">
           <p className="text-sm text-muted-foreground">
             {tt(
-              'The app searches a bounded, cached public sample for a winning example with the same map and civilization matchup, prioritizes matches rated above yours, and compares your measurable checkpoints with that player.',
+              'The app searches the complete available public-game window (up to 1,000 recent matches) for a winning example with the same map and civilization matchup, prioritizes matches rated above yours, and compares your measurable checkpoints with that player.',
             )}
           </p>
 
@@ -144,7 +144,7 @@ export function SimilarMatchCard({
               <div className="space-y-1">
                 <p>
                   {tt(
-                    'No match with this exact map and civilization composition was found in the recent public sample.',
+                    'No match with this exact map and civilization composition was found in the available public-game window.',
                   )}
                 </p>
                 <p className="text-xs">
