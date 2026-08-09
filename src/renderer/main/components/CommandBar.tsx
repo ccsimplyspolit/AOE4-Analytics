@@ -63,10 +63,16 @@ export function CommandBar() {
       header.clientWidth - brand.offsetWidth - rightCluster.offsetWidth - 24,
     )
     const overflowWidth = 40
-    const widths = mainItems.map((item) => ({
-      path: item.path,
-      width: measureRefs.current.get(item.path)?.getBoundingClientRect().width ?? 0,
-    }))
+    const widths = mainItems.map((item) => {
+      const label = tt(item.label)
+      const measured = measureRefs.current.get(item.path)?.getBoundingClientRect().width ?? 0
+      return {
+        path: item.path,
+        // The fallback only covers the first layout pass, before hidden labels
+        // have acquired their font metrics.
+        width: measured > 0 ? measured : label.length * 7.5 + 32,
+      }
+    })
     const activePath = mainItems.some((item) => item.path === location.pathname)
       ? location.pathname
       : null
@@ -111,7 +117,7 @@ export function CommandBar() {
         ? previous
         : visible,
     )
-  }, [hasProfile, locale, location.pathname, mainItems])
+  }, [location.pathname, mainItems, tt])
 
   useLayoutEffect(() => {
     recomputeNavigation()
