@@ -2115,6 +2115,7 @@ const UI: Record<Locale, Record<string, string>> = {
     'Series control': 'Управление серией',
     Session: 'Сессия',
     Shortcut: 'Сочетание клавиш',
+    'Shortcut input': 'Ввод сочетания',
     'Shortcut saved. Press Check when you are ready.':
       'Сочетание сохранено. Нажмите «Проверить», когда будете готовы.',
     'Show graphic': 'Показать график',

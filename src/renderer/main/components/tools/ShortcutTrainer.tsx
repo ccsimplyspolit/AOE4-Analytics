@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Check, Keyboard, RotateCcw, Shuffle, X } from 'lucide-react'
+import { Check, Keyboard, RotateCcw, Settings2, Shuffle, X } from 'lucide-react'
 import { CIV_CODE_TO_SLUG } from '@data/civs'
 import { EXPLORER_RECORDS_BY_KIND } from '@data/explorerData'
 import { civDisplayName } from '@domain/civ'
@@ -141,6 +141,7 @@ export function ShortcutTrainer() {
   const [feedback, setFeedback] = useState<Feedback>(null)
   const [editingCell, setEditingCell] = useState<[number, number] | null>(null)
   const [previewAge, setPreviewAge] = useState(1)
+  const [settingsOpen, setSettingsOpen] = useState(false)
   const transitionTimer = useRef<number | null>(null)
 
   const keyboardLayout = useMemo(
@@ -220,7 +221,8 @@ export function ShortcutTrainer() {
   }, [editingCell, keyboardLayout])
 
   useEffect(() => {
-    if (editingCell || !current || expectedKeys.length === 0 || roundTarget === 0) return
+    if (settingsOpen || editingCell || !current || expectedKeys.length === 0 || roundTarget === 0)
+      return
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.repeat) return
       if (event.key === 'Escape') {
@@ -283,6 +285,7 @@ export function ShortcutTrainer() {
     keyboardLayout,
     roundSolved,
     roundTarget,
+    settingsOpen,
     tt,
   ])
 
@@ -334,195 +337,190 @@ export function ShortcutTrainer() {
             )}
           </p>
         </div>
-        <Badge variant="outline" className="gap-1.5">
-          <Keyboard className="h-3.5 w-3.5" /> {availableActions.length} {tt('verified commands')}
-        </Badge>
+        <div className="flex items-center gap-2">
+          <Badge variant="outline" className="gap-1.5">
+            <Keyboard className="h-3.5 w-3.5" /> {availableActions.length} {tt('verified commands')}
+          </Badge>
+          <button
+            type="button"
+            onClick={() => setSettingsOpen((open) => !open)}
+            className="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-2 text-xs hover:bg-secondary"
+            aria-expanded={settingsOpen}
+          >
+            <Settings2 className="h-3.5 w-3.5" />
+            {settingsOpen ? tt('Close settings') : tt('Training settings')}
+          </button>
+        </div>
       </div>
 
-      <div className="grid gap-4 xl:grid-cols-[minmax(0,1.25fr)_minmax(20rem,0.75fr)]">
-        <Card>
-          <CardContent className="space-y-4 p-4">
-            <div>
-              <h3 className="text-sm font-semibold">{tt('Series settings')}</h3>
-              <p className="mt-1 text-xs text-muted-foreground">
-                {tt('Choose a set. Unknown or new commands are never presented as real bindings.')}
-              </p>
-            </div>
-            <OptionGroup label={tt('Tasks per series')}>
-              {ROUND_SIZES.map((size) => (
-                <OptionButton
-                  key={size}
-                  active={store.roundSize === size}
-                  onClick={() => setStore((previous) => ({ ...previous, roundSize: size }))}
-                >
-                  {size}
-                </OptionButton>
-              ))}
-            </OptionGroup>
-            <label className="grid gap-1 text-xs text-muted-foreground">
-              <span>{tt('Civilization')}</span>
-              <select
-                value={store.civilization}
-                onChange={(event) =>
-                  setStore((previous) => ({ ...previous, civilization: event.target.value }))
-                }
-                className="h-9 rounded-md border border-border bg-background px-2 text-sm text-foreground outline-none focus:border-primary"
-              >
-                <option value="ALL">{tt('All civilizations')}</option>
-                {civilizationOptions.map((option) => (
-                  <option key={option.code} value={option.code}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <OptionGroup label={tt('Ages')}>
-              {AGES.map((age) => (
-                <OptionButton
-                  key={age}
-                  active={store.ages.includes(age)}
-                  onClick={() => toggleAge(age)}
-                >
-                  {tt('Age')} {age}
-                </OptionButton>
-              ))}
-            </OptionGroup>
-            <OptionGroup label={tt('Building types')}>
-              {BUILDING_TYPES.map((type) => (
-                <OptionButton
-                  key={type.value}
-                  active={store.types.includes(type.value)}
-                  onClick={() => toggleType(type.value)}
-                >
-                  {tt(type.label)}
-                </OptionButton>
-              ))}
-            </OptionGroup>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="space-y-3 p-4">
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
+      {settingsOpen && (
+        <div className="grid gap-4 xl:grid-cols-[minmax(0,1.25fr)_minmax(20rem,0.75fr)]">
+          <Card>
+            <CardContent className="space-y-4 p-4">
               <div>
-                <h3 className="text-sm font-semibold">{tt('Keyboard profile')}</h3>
+                <h3 className="text-sm font-semibold">{tt('Series settings')}</h3>
                 <p className="mt-1 text-xs text-muted-foreground">
-                  {tt('Choose a keyboard layout. Rebinding is available only for the custom grid.')}
+                  {tt(
+                    'Choose a set. Unknown or new commands are never presented as real bindings.',
+                  )}
                 </p>
               </div>
-              {editingCell && (
-                <span className="rounded-md bg-primary/10 px-2 py-1 text-xs text-primary">
-                  {tt('Press one key to rebind the selected cell. Escape cancels.')}
-                </span>
-              )}
-            </div>
-            <OptionGroup label={tt('Current layout')}>
-              {(
-                [
-                  ['QWERTY', 'QWERTY'],
-                  ['QWERTZ', 'QWERTZ'],
-                  ['AZERTY', 'AZERTY'],
-                  ['DVORAK', 'Dvorak'],
-                  ['CUSTOM', tt('Custom')],
-                ] as const
-              ).map(([value, label]) => (
-                <OptionButton
-                  key={value}
-                  active={store.layout === value}
-                  onClick={() => changeLayout(value)}
+              <OptionGroup label={tt('Tasks per series')}>
+                {ROUND_SIZES.map((size) => (
+                  <OptionButton
+                    key={size}
+                    active={store.roundSize === size}
+                    onClick={() => setStore((previous) => ({ ...previous, roundSize: size }))}
+                  >
+                    {size}
+                  </OptionButton>
+                ))}
+              </OptionGroup>
+              <label className="grid gap-1 text-xs text-muted-foreground">
+                <span>{tt('Civilization')}</span>
+                <select
+                  value={store.civilization}
+                  onChange={(event) =>
+                    setStore((previous) => ({ ...previous, civilization: event.target.value }))
+                  }
+                  className="h-9 rounded-md border border-border bg-background px-2 text-sm text-foreground outline-none focus:border-primary"
                 >
-                  {label}
-                </OptionButton>
-              ))}
-            </OptionGroup>
-            <OptionGroup label={tt('Display options')}>
-              {(
-                [
-                  ['SINGLE', tt('Icon + name')],
-                  ['GRID', tt('Icon in grid')],
-                  ['NAME', tt('Name only')],
-                ] as const
-              ).map(([value, label]) => (
-                <OptionButton
-                  key={value}
-                  active={store.displayStyle === value}
-                  onClick={() => setStore((previous) => ({ ...previous, displayStyle: value }))}
-                >
-                  {label}
-                </OptionButton>
-              ))}
-            </OptionGroup>
-            <label className="inline-flex items-center gap-2 text-xs text-muted-foreground">
-              <input
-                type="checkbox"
-                checked={store.showKeyLabels}
-                onChange={(event) =>
-                  setStore((previous) => ({ ...previous, showKeyLabels: event.target.checked }))
-                }
-                className="h-4 w-4 accent-primary"
+                  <option value="ALL">{tt('All civilizations')}</option>
+                  {civilizationOptions.map((option) => (
+                    <option key={option.code} value={option.code}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <OptionGroup label={tt('Ages')}>
+                {AGES.map((age) => (
+                  <OptionButton
+                    key={age}
+                    active={store.ages.includes(age)}
+                    onClick={() => toggleAge(age)}
+                  >
+                    {tt('Age')} {age}
+                  </OptionButton>
+                ))}
+              </OptionGroup>
+              <OptionGroup label={tt('Building types')}>
+                {BUILDING_TYPES.map((type) => (
+                  <OptionButton
+                    key={type.value}
+                    active={store.types.includes(type.value)}
+                    onClick={() => toggleType(type.value)}
+                  >
+                    {tt(type.label)}
+                  </OptionButton>
+                ))}
+              </OptionGroup>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="space-y-3 p-4">
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <div>
+                  <h3 className="text-sm font-semibold">{tt('Keyboard profile')}</h3>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    {tt(
+                      'Choose a keyboard layout. Rebinding is available only for the custom grid.',
+                    )}
+                  </p>
+                </div>
+                {editingCell && (
+                  <span className="rounded-md bg-primary/10 px-2 py-1 text-xs text-primary">
+                    {tt('Press one key to rebind the selected cell. Escape cancels.')}
+                  </span>
+                )}
+              </div>
+              <OptionGroup label={tt('Current layout')}>
+                {(
+                  [
+                    ['QWERTY', 'QWERTY'],
+                    ['QWERTZ', 'QWERTZ'],
+                    ['AZERTY', 'AZERTY'],
+                    ['DVORAK', 'Dvorak'],
+                    ['CUSTOM', tt('Custom')],
+                  ] as const
+                ).map(([value, label]) => (
+                  <OptionButton
+                    key={value}
+                    active={store.layout === value}
+                    onClick={() => changeLayout(value)}
+                  >
+                    {label}
+                  </OptionButton>
+                ))}
+              </OptionGroup>
+              <OptionGroup label={tt('Display options')}>
+                {(
+                  [
+                    ['SINGLE', tt('Icon + name')],
+                    ['GRID', tt('Icon in grid')],
+                    ['NAME', tt('Name only')],
+                  ] as const
+                ).map(([value, label]) => (
+                  <OptionButton
+                    key={value}
+                    active={store.displayStyle === value}
+                    onClick={() => setStore((previous) => ({ ...previous, displayStyle: value }))}
+                  >
+                    {label}
+                  </OptionButton>
+                ))}
+              </OptionGroup>
+              <label className="inline-flex items-center gap-2 text-xs text-muted-foreground">
+                <input
+                  type="checkbox"
+                  checked={store.showKeyLabels}
+                  onChange={(event) =>
+                    setStore((previous) => ({ ...previous, showKeyLabels: event.target.checked }))
+                  }
+                  className="h-4 w-4 accent-primary"
+                />
+                {tt('Show key labels')}
+              </label>
+              <KeyboardMap
+                layout={keyboardLayout}
+                layoutId={store.layout}
+                displayStyle={store.displayStyle}
+                showKeyLabels={store.showKeyLabels}
+                editingCell={editingCell}
+                actions={availableActions}
+                previewAge={previewAge}
+                onPreviewAge={setPreviewAge}
+                onCellClick={(row, column) => {
+                  if (store.layout === 'CUSTOM') setEditingCell([row, column])
+                }}
               />
-              {tt('Show key labels')}
-            </label>
-          </CardContent>
-        </Card>
-      </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
 
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_280px]">
         <Card>
-          <CardContent className="space-y-5 p-5">
-            <div className="flex items-center justify-between gap-3">
-              <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                {tt('Prompt')}
-              </div>
-              <button
-                type="button"
-                onClick={resetSeries}
-                className="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-2 text-xs hover:bg-secondary"
-              >
-                <Shuffle className="h-3.5 w-3.5" /> {tt('New series')}
-              </button>
-            </div>
+          <CardContent className="flex min-h-[390px] flex-col items-center justify-center gap-6 p-6 text-center">
             {current ? (
               <>
-                <div className="rounded-lg border border-primary/30 bg-primary/5 px-5 py-8 text-center">
-                  <div className="text-2xl font-semibold">{gameName(current.name)}</div>
-                  <div className="mt-2 text-xs text-muted-foreground">
-                    {tt(typeLabel(current.type))} · {tt('Age')} {current.age}
-                  </div>
-                  {current.description && (
-                    <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                      {gameName(current.description)}
-                    </p>
-                  )}
-                </div>
-                {store.displayStyle === 'SINGLE' && current.icon && (
+                {current.icon && (
                   <img
                     src={current.icon}
                     alt=""
-                    className="mx-auto h-16 w-16 object-contain"
+                    className="h-16 w-16 rounded-md bg-secondary/50 p-2 object-contain"
                     loading="lazy"
                   />
                 )}
-                <KeyboardMap
-                  layout={keyboardLayout}
-                  layoutId={store.layout}
-                  displayStyle={store.displayStyle}
-                  showKeyLabels={store.showKeyLabels}
-                  editingCell={editingCell}
-                  current={current}
-                  entered={entered}
-                  actions={availableActions}
-                  previewAge={previewAge}
-                  onPreviewAge={setPreviewAge}
-                  onCellClick={(row, column) => {
-                    if (store.layout === 'CUSTOM') setEditingCell([row, column])
-                  }}
+                <div className="text-2xl font-semibold">{gameName(current.name)}</div>
+                <AnswerSlots
+                  count={expectedKeys.length}
+                  entered={entered.length}
+                  label={tt('Shortcut input')}
                 />
-                <div className="rounded-md border border-border bg-background/40 px-3 py-2 text-xs text-muted-foreground">
-                  {entered.length === 0
-                    ? tt('Press keys directly. Waiting for the first press.')
-                    : tt('First key accepted: {key}.').replace('{key}', entered[0] ?? '')}{' '}
-                  {tt('Escape starts the command again.')}
+                <div className="text-sm tabular-nums text-muted-foreground">
+                  {roundSolved.length + 1} / {roundTarget}
                 </div>
               </>
             ) : (
@@ -572,8 +570,6 @@ function KeyboardMap({
   displayStyle,
   showKeyLabels,
   editingCell,
-  current,
-  entered,
   actions,
   previewAge,
   onPreviewAge,
@@ -584,8 +580,6 @@ function KeyboardMap({
   displayStyle: ShortcutDisplayStyle
   showKeyLabels: boolean
   editingCell: [number, number] | null
-  current: TrainerBuildingAction
-  entered: string[]
   actions: readonly TrainerBuildingAction[]
   previewAge: number
   onPreviewAge: (age: number) => void
@@ -601,7 +595,6 @@ function KeyboardMap({
     }
     return map
   }, [actions, previewAge])
-  const expectedIndex = entered.length
   return (
     <div className="rounded-md border border-border/70 bg-background/40 p-3">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
@@ -634,7 +627,6 @@ function KeyboardMap({
                 `${rowIndex}:${columnIndex}` as TrainerBuildingAction['shortcut'][number]
               const menuAction = menuActions.get(position)
               const editing = editingCell?.[0] === rowIndex && editingCell?.[1] === columnIndex
-              const completed = current.shortcut.slice(0, expectedIndex).includes(position)
               return (
                 <button
                   key={position}
@@ -644,9 +636,7 @@ function KeyboardMap({
                   className={`flex min-h-16 min-w-0 flex-col items-center justify-center rounded-md border px-2 py-1 text-center transition-colors ${
                     editing
                       ? 'border-primary bg-primary/15 text-primary ring-1 ring-primary'
-                      : completed
-                        ? 'border-win/60 bg-win/10 text-win'
-                        : 'border-border bg-secondary/30 text-muted-foreground hover:border-primary/50 hover:text-foreground'
+                      : 'border-border bg-secondary/30 text-muted-foreground hover:border-primary/50 hover:text-foreground'
                   }`}
                 >
                   {displayStyle !== 'NAME' && menuAction?.icon && (
@@ -673,6 +663,34 @@ function KeyboardMap({
           </div>
         ))}
       </div>
+    </div>
+  )
+}
+
+/** The exercise deliberately hides the key labels; only entered steps reveal progress. */
+function AnswerSlots({
+  count,
+  entered,
+  label,
+}: {
+  count: number
+  entered: number
+  label: string
+}) {
+  return (
+    <div className="flex items-center justify-center gap-4" aria-label={label}>
+      {Array.from({ length: count }, (_, index) => (
+        <span
+          key={index}
+          className={`flex h-14 w-14 items-center justify-center rounded-md border shadow-[0_4px_0_rgba(0,0,0,0.32)] ${
+            index < entered
+              ? 'border-win/70 bg-win/15 text-win'
+              : 'border-border bg-secondary/60 text-muted-foreground'
+          }`}
+        >
+          {index < entered && <Check className="h-5 w-5" aria-hidden="true" />}
+        </span>
+      ))}
     </div>
   )
 }
@@ -731,10 +749,6 @@ function Stat({ label, value }: { label: string; value: string }) {
       <div className="mt-1 text-lg font-semibold tabular-nums">{value}</div>
     </div>
   )
-}
-
-function typeLabel(type: TrainerBuildingType): string {
-  return BUILDING_TYPES.find((item) => item.value === type)?.label ?? type
 }
 
 function formatAccuracy(correct: number, attempts: number): string {
