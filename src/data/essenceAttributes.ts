@@ -282,3 +282,15 @@ export function compareEssenceAttributes(units: readonly VendoredUnit[] = UNITS)
     rows,
   }
 }
+
+let DEFAULT_COMPARISON_CACHE: EssenceAttributeComparisonSummary | null = null
+
+/**
+ * Lightweight lookup for Counter/Production callers. The first lookup builds
+ * the same cached validation report shown in Data Studio; callers can surface
+ * it as a warning without changing the AoE4World-backed calculation.
+ */
+export function essenceValidationForUnit(unitId: string): EssenceUnitComparison | null {
+  DEFAULT_COMPARISON_CACHE ??= compareEssenceAttributes()
+  return DEFAULT_COMPARISON_CACHE.rows.find((row) => row.unitId === unitId) ?? null
+}

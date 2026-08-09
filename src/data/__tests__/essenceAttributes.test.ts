@@ -5,6 +5,7 @@ import {
   essenceRgdByPbg,
   essenceRgdRecords,
   essenceRgdSearch,
+  essenceValidationForUnit,
 } from '../essenceAttributes'
 import { UNITS } from '../gameData'
 
@@ -46,5 +47,11 @@ describe('Essence RGD projection', () => {
     ])
     expect(summary.rows[0]?.status).toBe('missing')
     expect(summary.missing).toBe(1)
+  })
+
+  it('exposes a cached per-unit validation result for calculator callers', () => {
+    const row = essenceValidationForUnit(UNITS[0]!.id)
+    expect(row?.unitId).toBe(UNITS[0]!.id)
+    expect(['matched', 'partial', 'conflict', 'missing']).toContain(row?.status)
   })
 })

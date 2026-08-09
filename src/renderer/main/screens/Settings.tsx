@@ -55,6 +55,13 @@ const POLL_OPTIONS = [
   { value: 30_000, label: '30s' },
   { value: 60_000, label: '60s' },
 ]
+
+function pollOptionsWithCurrent(current: number | undefined) {
+  if (current == null || POLL_OPTIONS.some((option) => option.value === current)) {
+    return POLL_OPTIONS
+  }
+  return [{ value: current, label: `${Math.round(current / 100) / 10}s (custom)` }, ...POLL_OPTIONS]
+}
 const SETTINGS_SECTIONS = [
   ['settings-appearance', 'Appearance'],
   ['settings-account', 'Account'],
@@ -1030,7 +1037,7 @@ export function Settings() {
                 }}
                 className="h-9 w-full rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
-                {POLL_OPTIONS.map((o) => (
+                {pollOptionsWithCurrent(settings?.polling.idleIntervalMs).map((o) => (
                   <option key={o.value} value={o.value}>
                     {o.label}
                   </option>
@@ -1047,7 +1054,7 @@ export function Settings() {
                 }}
                 className="h-9 w-full rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
-                {POLL_OPTIONS.map((o) => (
+                {pollOptionsWithCurrent(settings?.polling.activeIntervalMs).map((o) => (
                   <option key={o.value} value={o.value}>
                     {o.label}
                   </option>
@@ -1099,6 +1106,12 @@ export function Settings() {
                 onChange={(event) => update.mutate({ recentGamesCount: Number(event.target.value) })}
                 className="h-8 shrink-0 rounded-md border border-border bg-background px-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
+                {settings?.recentGamesCount != null &&
+                  ![10, 25, 50, 100].includes(settings.recentGamesCount) && (
+                    <option key={settings.recentGamesCount} value={settings.recentGamesCount}>
+                      {settings.recentGamesCount} ({tt('custom')})
+                    </option>
+                  )}
                 {[10, 25, 50, 100].map((count) => (
                   <option key={count} value={count}>
                     {count}
