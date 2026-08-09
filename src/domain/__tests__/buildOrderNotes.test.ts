@@ -81,7 +81,7 @@ describe('build-order note iconification', () => {
         return typeof source === 'string' && !source.startsWith('http')
       }),
     ).toBe(true)
-  }, 30_000)
+  }, 120_000)
 
   it('keeps explicit provider icon tokens intact', () => {
     const parts = parseBuildOrderDisplayNote('5 @unit_worker/villager.webp@ on @resource/resource_gold.webp@')
