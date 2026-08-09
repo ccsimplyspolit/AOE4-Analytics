@@ -155,21 +155,31 @@ try {
   Write-Host "Portable artifact: $($portable.FullName)" -ForegroundColor Green
 
   # Smoke is isolated by the app itself into a temporary userData directory.
-  $oldSmoke = $env:RTSLYTICS_SMOKE
-  $env:RTSLYTICS_SMOKE = '1'
-  try {
-    Write-Host 'Running packaged smoke test...' -ForegroundColor Cyan
-    $smoke = Start-Process -FilePath $exe -WorkingDirectory $unpacked -PassThru
-    if (-not $smoke.WaitForExit(60000)) {
-      Start-Process -FilePath 'taskkill.exe' -ArgumentList @('/PID', $smoke.Id, '/T', '/F') -Wait -WindowStyle Hidden | Out-Null
-      throw 'Packaged smoke test did not exit within 60 seconds.'
+  # A Windows executable with requestedExecutionLevel=requireAdministrator
+  # cannot be launched headlessly from this non-elevated build process: the
+  # UAC consent dialog would wait forever and look like a broken smoke test.
+  # The package/asar checks above still run for elevated builds; interactive
+  # smoke remains available by launching the unpacked executable manually.
+  $requiresElevation = Select-String -Path (Join-Path $repoRoot 'electron-builder.yml') -Pattern '^\s*requestedExecutionLevel:\s*requireAdministrator\s*$'
+  if ($requiresElevation) {
+    Write-Host 'Skipping packaged smoke test: build requests requireAdministrator (UAC is interactive).' -ForegroundColor Yellow
+  } else {
+    $oldSmoke = $env:RTSLYTICS_SMOKE
+    $env:RTSLYTICS_SMOKE = '1'
+    try {
+      Write-Host 'Running packaged smoke test...' -ForegroundColor Cyan
+      $smoke = Start-Process -FilePath $exe -WorkingDirectory $unpacked -PassThru
+      if (-not $smoke.WaitForExit(60000)) {
+        Start-Process -FilePath 'taskkill.exe' -ArgumentList @('/PID', $smoke.Id, '/T', '/F') -Wait -WindowStyle Hidden | Out-Null
+        throw 'Packaged smoke test did not exit within 60 seconds.'
+      }
+      if ($smoke.ExitCode -ne 0) {
+        throw "Packaged smoke test exited with code $($smoke.ExitCode)."
+      }
+    } finally {
+      if ($null -eq $oldSmoke) { Remove-Item Env:RTSLYTICS_SMOKE -ErrorAction SilentlyContinue }
+      else { $env:RTSLYTICS_SMOKE = $oldSmoke }
     }
-    if ($smoke.ExitCode -ne 0) {
-      throw "Packaged smoke test exited with code $($smoke.ExitCode)."
-    }
-  } finally {
-    if ($null -eq $oldSmoke) { Remove-Item Env:RTSLYTICS_SMOKE -ErrorAction SilentlyContinue }
-    else { $env:RTSLYTICS_SMOKE = $oldSmoke }
   }
 
   $output = if ($OutputDir) { $OutputDir } else { Join-Path $repoRoot 'release' }
