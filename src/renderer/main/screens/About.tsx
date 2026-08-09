@@ -21,19 +21,19 @@ export function About() {
 
       <div className="grid gap-3 sm:grid-cols-3">
         <ProjectLink
-          href="https://github.com/alesxxxx/AOE4-Analytics"
+          href="https://github.com/ccsimplyspolit/AOE4-Analytics"
           icon={Code2}
           title={tt('Source code')}
           detail={tt('Browse releases and project history')}
         />
         <ProjectLink
-          href="https://github.com/alesxxxx/AOE4-Analytics/blob/main/README.md"
+          href="https://github.com/ccsimplyspolit/AOE4-Analytics/blob/main/README.md"
           icon={BookOpen}
           title={tt('Documentation')}
           detail={tt('Setup, privacy, and local-data details')}
         />
         <ProjectLink
-          href="https://github.com/alesxxxx/AOE4-Analytics/issues/new"
+          href="https://github.com/ccsimplyspolit/AOE4-Analytics/issues/new"
           icon={Bug}
           title={tt('Report an issue')}
           detail={tt('Share a bug or feature request')}

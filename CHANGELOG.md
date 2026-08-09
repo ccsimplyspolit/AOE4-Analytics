@@ -167,12 +167,12 @@ to follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Initial release: pre-game scouting, in-game overlay, post-game review, and
   civ/guide/tier-list data, powered by local AoE4 files and public APIs.
 
-[Unreleased]: https://github.com/alesxxxx/AOE4-Analytics/compare/v0.5.0...HEAD
-[0.5.0]: https://github.com/alesxxxx/AOE4-Analytics/compare/v0.4.1...v0.5.0
-[0.4.1]: https://github.com/alesxxxx/AOE4-Analytics/compare/v0.4.0...v0.4.1
-[0.4.0]: https://github.com/alesxxxx/AOE4-Analytics/compare/v0.3.0...v0.4.0
-[0.3.0]: https://github.com/alesxxxx/AOE4-Analytics/compare/v0.2.3...v0.3.0
-[0.2.2]: https://github.com/alesxxxx/AOE4-Analytics/compare/v0.2.1...v0.2.3
-[0.2.1]: https://github.com/alesxxxx/AOE4-Analytics/compare/v0.2.0...v0.2.1
-[0.2.0]: https://github.com/alesxxxx/AOE4-Analytics/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/alesxxxx/AOE4-Analytics/releases/tag/v0.1.0
+[Unreleased]: https://github.com/ccsimplyspolit/AOE4-Analytics/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/ccsimplyspolit/AOE4-Analytics/compare/v0.4.1...v0.5.0
+[0.4.1]: https://github.com/ccsimplyspolit/AOE4-Analytics/compare/v0.4.0...v0.4.1
+[0.4.0]: https://github.com/ccsimplyspolit/AOE4-Analytics/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/ccsimplyspolit/AOE4-Analytics/compare/v0.2.3...v0.3.0
+[0.2.2]: https://github.com/ccsimplyspolit/AOE4-Analytics/compare/v0.2.1...v0.2.3
+[0.2.1]: https://github.com/ccsimplyspolit/AOE4-Analytics/compare/v0.2.0...v0.2.1
+[0.2.0]: https://github.com/ccsimplyspolit/AOE4-Analytics/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/ccsimplyspolit/AOE4-Analytics/releases/tag/v0.1.0

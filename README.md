@@ -1,6 +1,6 @@
 # RTSLytics
 
-[![CI](https://github.com/alesxxxx/AOE4-Analytics/actions/workflows/ci.yml/badge.svg)](https://github.com/alesxxxx/AOE4-Analytics/actions/workflows/ci.yml)
+[![CI](https://github.com/ccsimplyspolit/AOE4-Analytics/actions/workflows/ci.yml/badge.svg)](https://github.com/ccsimplyspolit/AOE4-Analytics/actions/workflows/ci.yml)
 [![Лицензия MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Платформа Windows](https://img.shields.io/badge/platform-Windows-blue.svg)
 
@@ -208,7 +208,7 @@ Essence-скриптов. Для аккаунтных реплеев нужен 
 работают локальные файлы и bundled snapshots.
 
 ```powershell
-git clone https://github.com/alesxxxx/AOE4-Analytics.git
+git clone https://github.com/ccsimplyspolit/AOE4-Analytics.git
 cd AOE4-Analytics
 npm ci
 npm run dev
