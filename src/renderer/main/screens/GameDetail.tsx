@@ -14,7 +14,7 @@ import type { PerPlayerMatchStats, Severity, Signal } from '@domain/analysis'
 import { resultFromPerPlayer, sanitizeStoredSignals, villagersPerMinute } from '@domain/analysis'
 import { comparisonSignals } from '@domain/gameCoaching'
 import { summarySignals } from '@domain/summaryCoaching'
-import { civFromToken, type PlayerSummary } from '@domain/statsSummary'
+import { civFromToken, type MatchSummary, type PlayerSummary } from '@domain/statsSummary'
 import { buildIndexForCiv, condenseBuildOrder } from '@domain/buildOrderSchema'
 import { parseDuration } from '@domain/format'
 import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
@@ -467,7 +467,7 @@ function Detail({
         showSubjectBadge={isOwnFocus}
       />
 
-      <ReplayCommandAnalysis key={match.id} match={match} />
+      <ReplayCommandAnalysis key={match.id} match={match} knownPlayers={summary?.players} />
 
       <AutoGameplayCard
         key={match.id}
@@ -625,7 +625,13 @@ function MatchSectionNav({
   )
 }
 
-function ReplayCommandAnalysis({ match }: { match: StoredMatch }) {
+function ReplayCommandAnalysis({
+  match,
+  knownPlayers,
+}: {
+  match: StoredMatch
+  knownPlayers?: MatchSummary['players']
+}) {
   const { tt } = useI18n()
   const [open, setOpen] = useState(false)
   const [checked, setChecked] = useState(false)
@@ -712,6 +718,7 @@ function ReplayCommandAnalysis({ match }: { match: StoredMatch }) {
             <ReplayAnalysisPanel
               result={displayedAnalysis}
               target={target}
+              knownPlayers={knownPlayers}
               open={open}
               onToggle={() => setOpen((value) => !value)}
             />

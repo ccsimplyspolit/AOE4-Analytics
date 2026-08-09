@@ -980,6 +980,7 @@ function LocalReplayRow({
           <ReplayAnalysisPanel
             result={displayedAnalysis}
             target={{ localId: item.id }}
+            knownPlayers={summary?.players}
             open
             onToggle={() => setActiveTab('match')}
           />
@@ -1760,6 +1761,7 @@ function AccountReplayRow({
           <ReplayAnalysisPanel
             result={displayedAnalysis}
             target={{ gameId: game.game_id }}
+            knownPlayers={displayedSummary?.players}
             open={showAnalysis}
             onToggle={() => {
               setShowAnalysis((value) => !value)
@@ -1816,11 +1818,14 @@ export function ReplayAnalysisPanel({
   target,
   open,
   onToggle,
+  knownPlayers,
 }: {
   result: ReplayAnalysisResult
   target: ReplayAnalysisTarget
   open: boolean
   onToggle: () => void
+  /** Player rows decoded from the Relic summary, when it is available. */
+  knownPlayers?: MatchSummary['players']
 }) {
   const { tt } = useI18n()
   const stream = result.commandStream
@@ -1859,9 +1864,7 @@ export function ReplayAnalysisPanel({
   const playerCommands = stream.players.reduce((total, player) => total + player.commandCount, 0)
   const decodedPercent =
     playerCommands > 0 ? Math.round((knownCommands / playerCommands) * 100) : null
-  const playerNames = new Map(
-    stream.setup?.players.map((player) => [player.playerId, replayPlayerLabel(player)]) ?? [],
-  )
+  const playerNames = replayPlayerLabels(result, knownPlayers)
   return (
     <div className="border-t border-border/60 pt-3">
       <button
@@ -2157,6 +2160,58 @@ function replayPlayerLabel(player: ReplaySetupPlayer): string {
   const name = player.name.trim() || `P${player.playerId}`
   const civ = civDisplayName(civFromToken(player.civToken) ?? player.civToken)
   return civ ? `${name} · ${civ}` : name
+}
+
+/**
+ * Replay command records carry a technical player id (usually P1000, P1001,
+ * ...), while the human-readable name may live in a different replay section.
+ * Prefer exact ids from the Relic summary/setup; when those sections are not
+ * available, AoE4's player slots are stable at 1000 + slot and can be joined
+ * to the names parsed from the replay header.
+ */
+function replayPlayerLabels(
+  result: ReplayAnalysisResult,
+  knownPlayers: MatchSummary['players'] | undefined,
+): Map<number, string> {
+  const labels = new Map<number, string>()
+  for (const player of knownPlayers ?? []) {
+    if (player.name?.trim()) {
+      labels.set(player.playerId, replaySummaryPlayerLabel(player))
+    }
+  }
+  for (const player of result.commandStream.setup?.players ?? []) {
+    const label = replayPlayerLabel(player)
+    if (!labels.has(player.playerId) || label !== `P${player.playerId}`) {
+      labels.set(player.playerId, label)
+    }
+  }
+
+  const headerPlayers = result.info?.players ?? []
+  if (headerPlayers.length > 0) {
+    const ids = new Set<number>([
+      ...result.commandStream.players.map((player) => player.playerId),
+      ...result.commandStream.events.map((event) => event.playerId),
+    ])
+    for (const playerId of ids) {
+      if (labels.has(playerId)) continue
+      const slot = playerId - 1000
+      const headerPlayer = slot >= 0 && slot < headerPlayers.length ? headerPlayers[slot] : null
+      if (headerPlayer?.name.trim()) labels.set(playerId, replayHeaderPlayerLabel(headerPlayer))
+    }
+  }
+  return labels
+}
+
+function replaySummaryPlayerLabel(player: MatchSummary['players'][number]): string {
+  const name = player.name?.trim() || `P${player.playerId}`
+  const civ = civDisplayName(civFromToken(player.civToken) ?? player.civToken ?? '')
+  return civ ? `${name} · ${civ}` : name
+}
+
+function replayHeaderPlayerLabel(
+  player: NonNullable<ReplayAnalysisResult['info']>['players'][number],
+): string {
+  return player.civName ? `${player.name.trim()} · ${player.civName}` : player.name.trim()
 }
 
 function replayActionLabel(commandName: string): string {

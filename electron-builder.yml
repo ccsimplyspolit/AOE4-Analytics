@@ -42,6 +42,9 @@ win:
 
 portable:
   artifactName: ${productName}-${version}-portable.${ext}
+  # The NSIS wrapper is a separate executable from RTSLytics.exe. It must
+  # request elevation too, otherwise portable launches silently downgrade.
+  requestExecutionLevel: admin
   # Reuse a stable extraction dir between launches (faster relaunch). Settings &
   # history live under %APPDATA%/RTSLytics regardless, so they always persist.
   unpackDirName: RTSLytics
