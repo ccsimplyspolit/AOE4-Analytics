@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { ArrowLeft, CheckCircle2, ExternalLink, ScanLine, Trash2 } from 'lucide-react'
 import type { StoredMatch } from '@store/historyStore'
@@ -608,6 +608,20 @@ function ReplayCommandAnalysis({ match }: { match: StoredMatch }) {
       })
       .catch(() => setChecked(true))
   }
+
+  // Opening a match is already an explicit request to inspect it. Start the
+  // replay path automatically so decoded commands and evidence are available
+  // without another click. Main-process caching keeps repeat visits cheap.
+  const autoStartedRef = useRef(false)
+  useEffect(() => {
+    if (autoStartedRef.current) return
+    autoStartedRef.current = true
+    run()
+    // The effect is scoped to one mounted match; mutation updates must not
+    // restart the workflow.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [match.id])
+
   return (
     <section id="replay-command-analysis" className="scroll-mt-4 space-y-2">
       <div className="flex items-center justify-between gap-2">

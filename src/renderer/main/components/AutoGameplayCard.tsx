@@ -52,6 +52,8 @@ export function AutoGameplayCard({
   const { tt } = useI18n()
   const auto = useGameplayAuto()
   const startedRef = useRef(false)
+  const retryScheduledRef = useRef(false)
+  const retryTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const run = (force = false) => {
     if (auto.isPending) return
@@ -66,6 +68,38 @@ export function AutoGameplayCard({
     // process deduplicates retries and keeps a short-lived result cache.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [enabled, hasAnalysis, input.gameId])
+
+  // Public archives are often indexed after the match itself. If the first
+  // lookup returns no candidate, retry once in the background so the user does
+  // not have to press “Find again” just because the catalogue was late.
+  useEffect(() => {
+    if (
+      !enabled ||
+      hasAnalysis ||
+      retryScheduledRef.current ||
+      auto.data?.stage !== 'not_found'
+    ) {
+      return
+    }
+    retryScheduledRef.current = true
+    retryTimerRef.current = setTimeout(() => {
+      retryTimerRef.current = null
+      run(true)
+    }, 60_000)
+    return () => {
+      if (retryTimerRef.current) clearTimeout(retryTimerRef.current)
+      retryTimerRef.current = null
+    }
+    // The retry is deliberately limited to one pass per mounted match.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [enabled, hasAnalysis, auto.data?.stage, input.gameId])
+
+  useEffect(
+    () => () => {
+      if (retryTimerRef.current) clearTimeout(retryTimerRef.current)
+    },
+    [],
+  )
 
   if (!enabled) return null
   const result = auto.data

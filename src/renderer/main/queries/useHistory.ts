@@ -54,6 +54,12 @@ export function useGameSummary(matchId: string | undefined, options?: { enabled?
     // summaries minutes after a game) — retry on the next visit instead of
     // pinning "no data" until an app restart.
     staleTime: (query) => (query.state.data?.ok && query.state.data.data ? Infinity : 30_000),
+    // Keep checking while this detail page is open so delayed Relic summaries
+    // fill in automatically instead of requiring a manual sync or reload.
+    refetchInterval: (query) =>
+      query.state.data?.ok && query.state.data.data ? false : 30_000,
+    refetchOnWindowFocus: true,
+    retry: 2,
   })
 }
 
