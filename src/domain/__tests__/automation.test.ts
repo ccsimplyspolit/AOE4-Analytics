@@ -1,7 +1,25 @@
 import { describe, expect, it } from 'vitest'
-import { createIdleAutomationStatus, idleAutomationTasks } from '../automation'
+import { AUTOMATION_TASK_IDS, createIdleAutomationStatus, idleAutomationTasks } from '../automation'
 
 describe('automation status model', () => {
+  it('creates one idle task for every registered automation job', () => {
+    const status = idleAutomationTasks()
+
+    expect(status).toHaveLength(AUTOMATION_TASK_IDS.length)
+    expect(status.map((task) => task.id)).toEqual([...AUTOMATION_TASK_IDS])
+    expect(status.every((task) => task.state === 'idle')).toBe(true)
+    expect(status.every((task) => task.startedAt === null && task.finishedAt === null)).toBe(true)
+  })
+
+  it('creates an independent task list on every call', () => {
+    const first = idleAutomationTasks()
+    const second = idleAutomationTasks()
+
+    first[0]!.state = 'running'
+
+    expect(second[0]!.state).toBe('idle')
+  })
+
   it('creates a stable idle status for every pipeline stage', () => {
     const status = createIdleAutomationStatus('2026-08-09T10:00:00.000Z')
 
