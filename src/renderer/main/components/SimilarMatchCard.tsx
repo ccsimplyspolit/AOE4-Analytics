@@ -46,7 +46,12 @@ export function SimilarMatchCard({
 }: SimilarMatchCardProps) {
   const { tt } = useI18n()
   const search = useSimilarMatches(query, enabled)
-  const candidates = useMemo(() => (search.data?.ok ? search.data.data : []), [search.data])
+  // Defense in depth: the service excludes the current game, but a stale IPC
+  // response must never turn the match currently on screen into its "reference".
+  const candidates = useMemo(
+    () => (search.data?.ok ? search.data.data.filter((candidate) => candidate.gameId !== query.gameId) : []),
+    [query.gameId, search.data],
+  )
   const [selectedGameId, setSelectedGameId] = useState<number | null>(null)
   const selected =
     candidates.find((candidate) => candidate.gameId === selectedGameId) ?? candidates[0] ?? null
@@ -86,6 +91,14 @@ export function SimilarMatchCard({
         durationSec: selected.durationSec,
       }
     : { gameId: '0', civilization: match.civ }
+  const emptyStateVodInput: TwitchVodFinderInput = {
+    gameId: query.gameId != null ? String(query.gameId) : '0',
+    profileId: query.profileId ?? null,
+    civilization: query.targetCiv,
+    opponentCivilization: query.enemyTeamCivs?.[0] ?? null,
+    map: query.map,
+    durationSec: query.durationMaxSec,
+  }
   const vodLookup = useTwitchVod(vodInput, selected != null)
   const verifiedVod = vodLookup.data?.ok ? vodLookup.data.data.vod : null
   const videoAnalyses = useVideoAnalyses()
@@ -145,7 +158,7 @@ export function SimilarMatchCard({
           )}
           {!search.isFetching && search.data?.ok && candidates.length === 0 && (
             <EmptyBox>
-              <div className="space-y-1">
+              <div className="space-y-2">
                 <p>
                   {tt(
                     'No match with this exact map and civilization composition was found in the cached account archive or available public-game window.',
@@ -156,6 +169,23 @@ export function SimilarMatchCard({
                     'Try again after more games are indexed, or use the build-order comparison below.',
                   )}
                 </p>
+                <div className="flex flex-wrap items-center gap-3 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => void search.refetch()}
+                    className="text-xs text-primary hover:underline"
+                  >
+                    {tt('Search again')}
+                  </button>
+                  <a
+                    href={twitchVideoFinderUrl(emptyStateVodInput)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs text-violet-200 hover:underline"
+                  >
+                    <Search className="h-3.5 w-3.5" /> {tt('Find exact Twitch VOD')}
+                  </a>
+                </div>
               </div>
             </EmptyBox>
           )}
@@ -184,6 +214,7 @@ export function SimilarMatchCard({
                   {publicGame.data && !publicGame.data.ok && (
                     <p className="text-xs text-loss">{publicGame.data.error.message}</p>
                   )}
+                  <ReferenceFit candidate={selected} metrics={metrics} />
                   {!publicGame.isLoading &&
                   referenceDetail?.summary &&
                   currentPlayer &&
@@ -416,31 +447,71 @@ function TeamLayout({ candidate }: { candidate: SimilarMatchCandidate }) {
   )
 }
 
+function ReferenceFit({
+  candidate,
+  metrics,
+}: {
+  candidate: SimilarMatchCandidate
+  metrics: Metric[]
+}) {
+  const { tt } = useI18n()
+  const measured = metrics.filter(
+    (metric) => metric.current != null && metric.reference != null && !metric.neutral,
+  )
+  const referenceAhead = measured.filter((metric) => comparisonState(metric) === 'reference-ahead')
+  const yoursAhead = measured.filter((metric) => comparisonState(metric) === 'your-game-ahead')
+  return (
+    <div className="space-y-2 rounded-md border border-primary/25 bg-primary/5 p-3 text-xs">
+      <div className="font-medium">{tt('Why this is a useful reference')}</div>
+      <div className="flex flex-wrap gap-1.5">
+        {candidate.reasons.slice(0, 5).map((reason) => (
+          <Badge key={reason} variant="outline" className="border-border/70 bg-background/40 text-[10px]">
+            {tt(reason)}
+          </Badge>
+        ))}
+      </div>
+      {measured.length > 0 ? (
+        <p className="leading-relaxed text-muted-foreground">
+          {referenceAhead.length > 0
+            ? tt('Reference is measurably ahead in {count} checkpoint(s); open the rows below to see the exact difference.').replace(
+                '{count}',
+                String(referenceAhead.length),
+              )
+            : yoursAhead.length > 0
+              ? tt('Your game is ahead in {count} measured checkpoint(s); use the reference mainly as a timing check.').replace(
+                  '{count}',
+                  String(yoursAhead.length),
+                )
+              : tt('The recorded checkpoints are level. Use the opening timeline and VOD to compare decisions that the totals cannot show.')}
+        </p>
+      ) : (
+        <p className="leading-relaxed text-muted-foreground">
+          {tt('Match identity is confirmed, but detailed reference statistics are still loading or unavailable.')}
+        </p>
+      )}
+    </div>
+  )
+}
+
 function ComparisonTable({ metrics }: { metrics: Metric[] }) {
   const { tt } = useI18n()
   return (
     <div className="overflow-x-auto rounded border border-border/60">
-      <table className="w-full min-w-[520px] text-xs">
+      <table className="w-full min-w-[680px] text-xs">
         <thead className="bg-secondary/50 text-left text-muted-foreground">
           <tr>
             <th className="px-2 py-1.5 font-medium">{tt('Checkpoint')}</th>
             <th className="px-2 py-1.5 font-medium">{tt('Your game')}</th>
             <th className="px-2 py-1.5 font-medium">{tt('Reference')}</th>
             <th className="px-2 py-1.5 font-medium">{tt('Difference')}</th>
+            <th className="px-2 py-1.5 font-medium">{tt('What it means')}</th>
           </tr>
         </thead>
         <tbody>
           {metrics.map((metric) => {
-            const delta =
-              metric.current != null && metric.reference != null
-                ? metric.reference - metric.current
-                : null
-            const better =
-              metric.neutral || delta == null || delta === 0
-                ? null
-                : metric.lowerIsBetter
-                  ? delta < 0
-                  : delta > 0
+            const delta = metricDelta(metric)
+            const state = comparisonState(metric)
+            const better = state === 'reference-ahead' ? true : state === 'your-game-ahead' ? false : null
             return (
               <tr key={metric.label} className="border-t border-border/50">
                 <td className="px-2 py-1.5 font-medium">{tt(metric.label)}</td>
@@ -462,6 +533,16 @@ function ComparisonTable({ metrics }: { metrics: Metric[] }) {
                 >
                   {formatDelta(delta, metric.kind)}
                 </td>
+                <td className={cn(
+                  'px-2 py-1.5',
+                  state === 'reference-ahead'
+                    ? 'text-loss'
+                    : state === 'your-game-ahead'
+                      ? 'text-win'
+                      : 'text-muted-foreground',
+                )}>
+                  {tt(comparisonRead(metric, state))}
+                </td>
               </tr>
             )
           })}
@@ -469,6 +550,29 @@ function ComparisonTable({ metrics }: { metrics: Metric[] }) {
       </table>
     </div>
   )
+}
+
+type ComparisonState = 'reference-ahead' | 'your-game-ahead' | 'same' | 'unavailable'
+
+function metricDelta(metric: Metric): number | null {
+  return metric.current != null && metric.reference != null
+    ? metric.reference - metric.current
+    : null
+}
+
+function comparisonState(metric: Metric): ComparisonState {
+  const delta = metricDelta(metric)
+  if (delta == null) return 'unavailable'
+  if (metric.neutral || delta === 0) return 'same'
+  const referenceAhead = metric.lowerIsBetter ? delta < 0 : delta > 0
+  return referenceAhead ? 'reference-ahead' : 'your-game-ahead'
+}
+
+function comparisonRead(metric: Metric, state: ComparisonState): string {
+  if (state === 'unavailable') return 'Missing in one of the match summaries'
+  if (state === 'same')
+    return metric.neutral ? 'Context only — duration is not a quality score' : 'Same recorded value'
+  return state === 'reference-ahead' ? 'Reference is ahead here' : 'Your game is ahead here'
 }
 
 function BuildOrderSnippet({

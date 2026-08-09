@@ -93,6 +93,33 @@ describe('findSimilarMatches', () => {
     expect(getGames).toHaveBeenCalledTimes(1)
   })
 
+  it('never returns the game under review from the account archive', async () => {
+    writeAccountReplayArchive(123, {
+      items: [
+        {
+          game: matchingGame,
+          historySource: 'aoe4world',
+          replayAvailable: false,
+          summaryAvailable: false,
+          summaryCached: false,
+          cacheStatus: 'unavailable',
+          cacheSizeBytes: null,
+        },
+      ],
+      aoe4WorldCount: 1,
+      relicCount: 0,
+      relicOnlyCount: 0,
+    })
+    const getGames = vi.fn<Aoe4WorldClient['getGames']>().mockResolvedValue(gamePage([]))
+
+    const result = await findSimilarMatches(
+      { ...query, profileId: 123, gameId: matchingGame.game_id },
+      { getGames },
+    )
+
+    expect(result).toEqual(expect.objectContaining({ ok: true, data: [] }))
+  })
+
   it('keeps already found examples when AoE4World rate-limits a later page', async () => {
     const getGames = vi
       .fn<Aoe4WorldClient['getGames']>()

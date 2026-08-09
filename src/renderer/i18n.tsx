@@ -301,6 +301,7 @@ const UI: Record<Locale, Record<string, string>> = {
     'Distilled meta, build coverage, and production demand on top of RTSLytics data layers.':
       'Очищенная мета, билды и потребность в производстве поверх данных RTSLytics.',
     'AoE4World + local builds': 'AoE4World + локальные билды',
+    'Decision summary': 'Сводка решений',
     'Meta Ledger': 'Журнал меты',
     'Decision Summary': 'Сводка решений',
     'Patch compatibility is maintained in Explorer.':
@@ -309,6 +310,13 @@ const UI: Record<Locale, Record<string, string>> = {
     'Historical snapshot is stale or unavailable; open Civ Meta for current values.':
       'Исторический снапшот устарел или недоступен; актуальные значения доступны в Civ Meta.',
     'Saved games in snapshot': 'Матчей в сохранённом снапшоте',
+    'Open full Civ Meta': 'Открыть полную мету цивилизаций',
+    'Meta scope': 'Охват меты',
+    'Coverage signal': 'Сигнал покрытия',
+    'Next action': 'Следующее действие',
+    'Use Civ Meta for sortable civ rows, patch and map filters.':
+      'Используйте мету цивилизаций для сортировки цивилизаций и фильтров по патчу и карте.',
+    'Largest snapshot movements': 'Крупнейшие изменения снимка',
     'Custom build orders are available here. Uncheck a build to skip it while cycling; use the arrows to set the order.':
       'Здесь доступны ваши пользовательские билды. Снимите флажок, чтобы пропустить билд в цикле; стрелками задайте порядок.',
     'No build orders are available. Create one in Tincture to add it to the overlay cycle.':
@@ -1588,6 +1596,7 @@ const UI: Record<Locale, Record<string, string>> = {
     'Open full public analysis': 'Открыть полный публичный разбор',
     'Search YouTube context': 'Искать контекст на YouTube',
     'Find exact Twitch VOD': 'Найти точный Twitch VOD',
+    'Search again': 'Искать ещё раз',
     'Your opening': 'Ваше открытие',
     'Reference opening': 'Открытие эталона',
     'Detailed comparison': 'Детальное сравнение',
@@ -1981,6 +1990,9 @@ const UI: Record<Locale, Record<string, string>> = {
       'История может быть закрыта или ещё не проиндексирована.',
     'This game vs': 'Этот матч против',
     'Tincture sections': 'Разделы Tincture',
+    'Open public Build Library': 'Открыть публичную библиотеку билдов',
+    'Personal imports, video evidence, provenance and exportable raw orders.':
+      'Личные импорты, видео-доказательства, происхождение данных и экспортируемые исходные билды.',
     'Tip: enter the shortcut exactly as you use it. Case and extra spaces are normalized.':
       'Совет: вводите сочетание точно так, как используете его. Регистр и лишние пробелы нормализуются.',
     Unit: 'Юнит',

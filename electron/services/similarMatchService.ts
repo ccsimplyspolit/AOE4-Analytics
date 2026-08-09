@@ -275,6 +275,10 @@ export async function findSimilarMatches(
       // discard older matches just because the public-feed lookback is narrow.
       const archiveQuery: SimilarMatchQuery = { ...query, playedAt: null }
       for (const item of archive?.items ?? []) {
+        // The archived account history also contains the game currently being
+        // reviewed. A match cannot be its own reference, even when its stats
+        // happen to look identical after a cache refresh.
+        if (query.gameId != null && item.game.game_id === query.gameId) continue
         const candidate = matchCandidate(item.game, archiveQuery)
         if (candidate) unique.set(candidate.gameId, candidate)
       }

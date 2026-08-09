@@ -1818,12 +1818,13 @@ export function ReplayAnalysisPanel({
   const [eventLimit, setEventLimit] = useState(24)
   const [playerFilter, setPlayerFilter] = useState<number | null>(null)
   const [actionOffset, setActionOffset] = useState(0)
+  const [showTechnicalJournal, setShowTechnicalJournal] = useState(false)
   const actionPage = useReplayActions(
     target,
     actionOffset,
     100,
     playerFilter,
-    open && result.actionLog != null,
+    open && showTechnicalJournal && result.actionLog != null,
   )
   const coverageLabel =
     stream.coverage === 'full'
@@ -1837,7 +1838,17 @@ export function ReplayAnalysisPanel({
     playerFilter == null
       ? stream.events
       : stream.events.filter((event) => event.playerId === playerFilter)
-  const visibleEvents = filteredEvents.slice(0, eventLimit)
+  // Periodic/meta records are synchronization data, not player decisions. They
+  // used to make the first screen look like an endless 0:00 technical log.
+  const playerActions = filteredEvents.filter(isMeaningfulReplayAction)
+  const hiddenServiceRecords = filteredEvents.length - playerActions.length
+  const visibleEvents = playerActions.slice(0, eventLimit)
+  const knownCommands = stream.players.reduce((total, player) => total + player.knownCommandCount, 0)
+  const playerCommands = stream.players.reduce((total, player) => total + player.commandCount, 0)
+  const decodedPercent = playerCommands > 0 ? Math.round((knownCommands / playerCommands) * 100) : null
+  const playerNames = new Map(
+    stream.setup?.players.map((player) => [player.playerId, replayPlayerLabel(player)]) ?? [],
+  )
   return (
     <div className="border-t border-border/60 pt-3">
       <button
@@ -1852,26 +1863,31 @@ export function ReplayAnalysisPanel({
       </button>
       {open && (
         <div className="mt-3 space-y-3 text-xs">
-          <div className="grid gap-2 sm:grid-cols-5">
+          <div className="rounded-md border border-primary/25 bg-primary/5 p-3 text-xs leading-relaxed text-muted-foreground">
+            <span className="font-medium text-foreground">{tt('What this replay evidence shows')}. </span>
+            {tt(
+              'Only recognized player orders are shown below. Synchronization records and unknown payloads are hidden from the coaching view, but remain available in the technical journal. Use the match summary for economy, combat and unit-loss conclusions.',
+            )}
+          </div>
+          <div className="grid gap-2 sm:grid-cols-3 xl:grid-cols-6">
             <Metric label={tt('Coverage')} value={coverageLabel} />
             <Metric
               label={tt('Duration')}
               value={stream.durationSec == null ? '—' : formatDuration(stream.durationSec)}
             />
             <Metric
-              label={tt('Commands')}
-              value={`${stream.commandCount}${stream.eventsTruncated ? '+' : ''}`}
+              label={tt('Recognized player actions')}
+              value={`${playerActions.length}${stream.eventsTruncated ? '+' : ''}`}
             />
-            <Metric label={tt('Ticks')} value={String(stream.ticksParsed)} />
-            <Metric label={tt('Unknown')} value={String(stream.unknownCommandCount)} />
             <Metric
-              label={tt('Complete action journal')}
-              value={
-                result.actionLog == null
-                  ? tt('not available')
-                  : `${result.actionLog.eventCount}${result.actionLog.complete ? '' : '+'}`
-              }
+              label={tt('Production orders')}
+              value={String(totalCommandType(stream, 'queue-unit'))}
             />
+            <Metric
+              label={tt('Schema recognized')}
+              value={decodedPercent == null ? '—' : `${decodedPercent}%`}
+            />
+            <Metric label={tt('Hidden service records')} value={String(hiddenServiceRecords)} />
           </div>
           {stream.setup && stream.setup.players.length > 0 && (
             <div className="rounded-md border border-border/60 bg-secondary/10 p-2">
@@ -1918,24 +1934,36 @@ export function ReplayAnalysisPanel({
             </div>
           )}
           {stream.players.length > 0 && (
-            <div className="overflow-x-auto rounded-md border border-border/60">
-              <table className="w-full min-w-[900px] text-left text-[11px]">
+            <>
+              <div className="grid gap-2 lg:grid-cols-2">
+                {stream.players.map((player) => (
+                  <ReplayPlayerRead
+                    key={player.playerId}
+                    player={player}
+                    label={playerNames.get(player.playerId) ?? `P${player.playerId}`}
+                  />
+                ))}
+              </div>
+              <div className="overflow-x-auto rounded-md border border-border/60">
+                <table className="w-full min-w-[900px] text-left text-[11px]">
                 <thead className="bg-secondary/40 text-muted-foreground">
                   <tr>
                     <th className="px-2 py-1.5">{tt('Player')}</th>
-                    <th className="px-2 py-1.5">{tt('Commands')}</th>
+                    <th className="px-2 py-1.5">{tt('Observed actions')}</th>
                     <th className="px-2 py-1.5">{tt('APM')}</th>
-                    <th className="px-2 py-1.5">{tt('Command gaps')}</th>
-                    <th className="px-2 py-1.5">{tt('Max gap')}</th>
-                    <th className="px-2 py-1.5">{tt('Decoded')}</th>
-                    <th className="px-2 py-1.5">{tt('Input mix')}</th>
+                    <th className="px-2 py-1.5">{tt('Input gaps')}</th>
+                    <th className="px-2 py-1.5">{tt('Longest gap')}</th>
+                    <th className="px-2 py-1.5">{tt('Schema confidence')}</th>
+                    <th className="px-2 py-1.5">{tt('Main actions')}</th>
                     <th className="px-2 py-1.5">{tt('Activity trend')}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {stream.players.map((player) => (
                     <tr key={player.playerId} className="border-t border-border/50">
-                      <td className="px-2 py-1.5 font-medium">{player.playerId}</td>
+                      <td className="px-2 py-1.5 font-medium">
+                        {playerNames.get(player.playerId) ?? `P${player.playerId}`}
+                      </td>
                       <td className="px-2 py-1.5 tabular-nums">{player.commandCount}</td>
                       <td className="px-2 py-1.5 tabular-nums">{player.apm.toFixed(1)}</td>
                       <td className="px-2 py-1.5 tabular-nums">
@@ -1961,16 +1989,18 @@ export function ReplayAnalysisPanel({
                     </tr>
                   ))}
                 </tbody>
-              </table>
+                </table>
+              </div>
             </div>
+            </>
           )}
           <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
             <ListChecks className="h-3.5 w-3.5" />
-            {tt('Production queue events')}: {totalCommandType(stream, 'queue-unit')}
+            {tt('Production orders are queue commands, not completed units')}: {totalCommandType(stream, 'queue-unit')}
           </div>
           {stream.players.length > 0 && (
             <label className="flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
-              <span>{tt('Timeline player')}</span>
+              <span>{tt('Show actions for')}</span>
               <select
                 value={playerFilter == null ? 'all' : String(playerFilter)}
                 onChange={(event) => {
@@ -1983,92 +2013,90 @@ export function ReplayAnalysisPanel({
                 <option value="all">{tt('All players')}</option>
                 {stream.players.map((player) => (
                   <option key={player.playerId} value={player.playerId}>
-                    P{player.playerId}
+                    {playerNames.get(player.playerId) ?? `P${player.playerId}`}
                   </option>
                 ))}
               </select>
               <span>
-                {filteredEvents.length} {tt('decoded events in view')}
+                {playerActions.length} {tt('recognized actions in view')}
               </span>
             </label>
           )}
           {visibleEvents.length > 0 && (
             <>
-              <div className="max-h-64 overflow-auto rounded-md border border-border/60">
-                {(actionPage.data?.events ?? visibleEvents).map((event, index) => (
+              <div className="overflow-hidden rounded-md border border-border/60">
+                <div className="border-b border-border/60 bg-secondary/30 px-2 py-1.5 text-[10px] uppercase tracking-wide text-muted-foreground">
+                  {tt('Action timeline')} · {tt('only decisions recognized by the replay schema')}
+                </div>
+                <div className="max-h-64 overflow-auto">
+                {visibleEvents.map((event, index) => (
                   <div
                     key={`${event.offset}-${index}`}
-                    className="grid grid-cols-[52px_1fr_auto] gap-2 border-b border-border/40 px-2 py-1.5 last:border-b-0"
+                    className="grid grid-cols-[52px_1fr_auto] gap-2 border-b border-border/40 px-2 py-2 last:border-b-0"
                   >
                     <span className="tabular-nums text-muted-foreground">
                       {formatDuration(event.timeSec)}
                     </span>
-                    <span>
-                      {event.commandName}
-                      {event.pbgid == null ? '' : ` · pbgid ${event.pbgid}`}
+                    <span className="min-w-0">
+                      <span className="font-medium">{tt(replayActionLabel(event.commandName))}</span>
+                      <span className="ml-1 text-muted-foreground">
+                        {replayActionDetail(event)}
+                      </span>
                     </span>
-                    <span className="text-muted-foreground">P{event.playerId}</span>
+                    <span className="truncate text-muted-foreground">
+                      {playerNames.get(event.playerId) ?? `P${event.playerId}`}
+                    </span>
                   </div>
                 ))}
-              </div>
-              {actionPage.data ? (
-                <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-muted-foreground">
-                  <span>
-                    {tt('Complete action journal')}: {actionPage.data.offset + 1}–
-                    {Math.min(
-                      actionPage.data.offset + actionPage.data.events.length,
-                      actionPage.data.offset + actionPage.data.total,
-                    )}{' '}
-                    / {actionPage.data.total}
-                  </span>
-                  <span className="flex gap-2">
-                    <button
-                      type="button"
-                      disabled={actionOffset === 0 || actionPage.isFetching}
-                      onClick={() => setActionOffset((value) => Math.max(0, value - 100))}
-                      className="text-primary hover:underline disabled:opacity-40"
-                    >
-                      {tt('Previous')}
-                    </button>
-                    <button
-                      type="button"
-                      disabled={
-                        actionOffset + actionPage.data.events.length >= actionPage.data.total ||
-                        actionPage.isFetching
-                      }
-                      onClick={() => setActionOffset((value) => value + 100)}
-                      className="text-primary hover:underline disabled:opacity-40"
-                    >
-                      {tt('Next')}
-                    </button>
-                  </span>
                 </div>
-              ) : eventLimit < filteredEvents.length ? (
+              </div>
+              {eventLimit < playerActions.length ? (
                 <button
                   type="button"
                   onClick={() =>
-                    setEventLimit((value) => Math.min(filteredEvents.length, value + 24))
+                    setEventLimit((value) => Math.min(playerActions.length, value + 24))
                   }
                   className="text-xs text-primary hover:underline"
                 >
-                  {tt('Show more timeline events')} ({filteredEvents.length - eventLimit})
+                  {tt('Show more actions')} ({playerActions.length - eventLimit})
                 </button>
               ) : null}
             </>
           )}
-          {stream.dataGaps.length > 0 && (
-            <div className="space-y-1 rounded-md border border-amber-500/30 bg-amber-500/5 p-2 text-[11px] text-amber-200">
-              {stream.dataGaps.slice(0, 4).map((gap, index) => (
-                <div key={`${gap.code}-${index}`} className="flex gap-1.5">
-                  <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-                  <span>{gap.message}</span>
-                </div>
-              ))}
-            </div>
+          {visibleEvents.length === 0 && (
+            <p className="rounded-md border border-border/60 bg-secondary/10 p-3 text-muted-foreground">
+              {tt('No player decision was identified by the current replay schema in this selection. This does not mean that the player was inactive.')}
+            </p>
           )}
+          <div className="rounded-md border border-border/60 bg-secondary/10 p-3">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <div className="font-medium">{tt('Technical journal and parser notes')}</div>
+                <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">
+                  {tt('Open this only to inspect raw decoded records or parser limitations. It is not used as coaching evidence.')}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowTechnicalJournal((value) => !value)}
+                className="rounded border border-border/70 px-2 py-1 text-[11px] text-primary hover:bg-primary/10"
+              >
+                {tt(showTechnicalJournal ? 'Hide technical journal' : 'Open technical journal')}
+              </button>
+            </div>
+            {showTechnicalJournal && (
+              <TechnicalJournal
+                actionPage={actionPage}
+                actionOffset={actionOffset}
+                onPrevious={() => setActionOffset((value) => Math.max(0, value - 100))}
+                onNext={() => setActionOffset((value) => value + 100)}
+                dataGaps={stream.dataGaps}
+              />
+            )}
+          </div>
           <p className="text-[11px] text-muted-foreground">
             {tt(
-              'Command gaps are an observable input-gap estimate, not a direct villager-idle measurement. The complete action journal contains every decoded command; structured fields are shown when the current patch schema identifies them. Unknown payloads remain available as raw evidence, while failed actions, worker allocation and scouting are not encoded as explicit events.',
+              'Input gaps estimate periods without decoded player orders; they are not direct villager-idle measurements. Failed actions, worker allocation and scouting are not explicit replay events, so they are not presented as confirmed mistakes.',
             )}
           </p>
         </div>
