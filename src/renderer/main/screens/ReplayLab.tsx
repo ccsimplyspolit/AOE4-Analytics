@@ -1991,7 +1991,6 @@ export function ReplayAnalysisPanel({
                 </tbody>
                 </table>
               </div>
-            </div>
             </>
           )}
           <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
@@ -2040,7 +2039,7 @@ export function ReplayAnalysisPanel({
                     <span className="min-w-0">
                       <span className="font-medium">{tt(replayActionLabel(event.commandName))}</span>
                       <span className="ml-1 text-muted-foreground">
-                        {replayActionDetail(event)}
+                        {replayActionDetail(event, tt)}
                       </span>
                     </span>
                     <span className="truncate text-muted-foreground">
@@ -2099,6 +2098,161 @@ export function ReplayAnalysisPanel({
               'Input gaps estimate periods without decoded player orders; they are not direct villager-idle measurements. Failed actions, worker allocation and scouting are not explicit replay events, so they are not presented as confirmed mistakes.',
             )}
           </p>
+        </div>
+      )}
+    </div>
+  )
+}
+
+type ReplayEvent = ReplayAnalysisResult['commandStream']['events'][number]
+type ReplayPlayer = ReplayAnalysisResult['commandStream']['players'][number]
+type ReplaySetupPlayer = NonNullable<ReplayAnalysisResult['commandStream']['setup']>['players'][number]
+
+function isMeaningfulReplayAction(event: ReplayEvent): boolean {
+  return (
+    event.playerId > 0 &&
+    event.actionCategory !== 'meta' &&
+    event.actionCategory !== 'unknown' &&
+    !event.commandName.startsWith('unknown-') &&
+    !event.commandName.startsWith('periodic-')
+  )
+}
+
+function replayPlayerLabel(player: ReplaySetupPlayer): string {
+  const name = player.name.trim() || `P${player.playerId}`
+  const civ = civDisplayName(civFromToken(player.civToken) ?? player.civToken)
+  return civ ? `${name} · ${civ}` : name
+}
+
+function replayActionLabel(commandName: string): string {
+  const labels: Record<string, string> = {
+    'queue-unit': 'Queued unit',
+    'queue-villager-or-unknown': 'Queued villager or unit',
+    'rally-point': 'Set rally point',
+    'return-to-work': 'Returned workers to work',
+    research: 'Started technology',
+    move: 'Moved selected units',
+    cancel: 'Cancelled an order',
+    build: 'Placed a building order',
+    'attack-move': 'Attack-move order',
+    'unit-ability': 'Used unit ability',
+    'seek-shelter': 'Sought shelter',
+    'gather-or-return-to-resource': 'Gather or return-resource order',
+    'unit-stance': 'Changed unit stance',
+    patrol: 'Patrol order',
+    'build-area-or-placement': 'Placed area/building order',
+  }
+  return labels[commandName] ?? 'Recognized player action'
+}
+
+function replayActionDetail(event: ReplayEvent, tt: (value: string) => string): string {
+  const detail: string[] = []
+  if (event.queueCount != null) detail.push(`×${event.queueCount}`)
+  if (event.selectedUnitCount > 0) detail.push(`${event.selectedUnitCount} ${tt('selected')}`)
+  if (event.queued) detail.push(tt('queued'))
+  return detail.length > 0 ? `· ${detail.join(' · ')}` : ''
+}
+
+function ReplayPlayerRead({ player, label }: { player: ReplayPlayer; label: string }) {
+  const { tt } = useI18n()
+  const schemaRead =
+    player.knownCommandPct == null
+      ? tt('The replay did not provide enough command data for a confidence read.')
+      : player.knownCommandPct < 60
+        ? `${tt('Only')} ${player.knownCommandPct.toFixed(0)}% ${tt('of this player’s decoded commands are understood by the current schema; avoid micro conclusions.')}`
+        : `${player.knownCommandPct.toFixed(0)}% ${tt('of decoded commands are recognized; the action timeline is usable as supporting evidence.')}`
+  const gapRead =
+    player.commandGapCount === 0
+      ? tt('No input gap longer than five seconds was observed.')
+      : `${player.commandGapCount} ${tt('input gap(s) longer than five seconds')} · ${tt('longest')} ${formatDuration(player.maxCommandGapSec)}. ${tt('This is not proof of idle villagers.')}`
+  const activityRead =
+    player.activityDropPct != null && player.activityDropPct <= -25
+      ? `${tt('Observed command rate fell')} ${Math.abs(player.activityDropPct)}% ${tt('between the first and last five-minute windows.')}`
+      : player.activityDropPct != null && player.activityDropPct >= 25
+        ? `${tt('Observed command rate rose')} ${player.activityDropPct}% ${tt('between the first and last five-minute windows.')}`
+        : tt('No large recorded command-rate change across five-minute windows.')
+  return (
+    <article className="rounded-md border border-border/60 bg-secondary/10 p-3">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <h4 className="font-medium">{label}</h4>
+        <span className="text-[11px] tabular-nums text-muted-foreground">
+          {player.apm.toFixed(1)} APM · {player.commandCount} {tt('decoded orders')}
+        </span>
+      </div>
+      <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">{gapRead}</p>
+      <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">{activityRead}</p>
+      <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">{schemaRead}</p>
+    </article>
+  )
+}
+
+function TechnicalJournal({
+  actionPage,
+  actionOffset,
+  onPrevious,
+  onNext,
+  dataGaps,
+}: {
+  actionPage: ReturnType<typeof useReplayActions>
+  actionOffset: number
+  onPrevious: () => void
+  onNext: () => void
+  dataGaps: ReplayAnalysisResult['commandStream']['dataGaps']
+}) {
+  const { tt } = useI18n()
+  const page = actionPage.data
+  return (
+    <div className="mt-3 space-y-2 border-t border-border/60 pt-3 text-[11px]">
+      {actionPage.isFetching && <Spinner label={tt('Loading technical journal…')} />}
+      {actionPage.error && <p className="text-loss">{actionPage.error.message}</p>}
+      {page && (
+        <>
+          <div className="max-h-64 overflow-auto rounded-md border border-border/60 bg-background/40">
+            {page.events.map((event, index) => (
+              <div
+                key={`${event.offset}-${index}`}
+                className="grid grid-cols-[52px_1fr_auto] gap-2 border-b border-border/40 px-2 py-1.5 last:border-b-0"
+              >
+                <span className="tabular-nums text-muted-foreground">{formatDuration(event.timeSec)}</span>
+                <span>{event.commandName}</span>
+                <span className="text-muted-foreground">P{event.playerId}</span>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-wrap items-center justify-between gap-2 text-muted-foreground">
+            <span>
+              {tt('Complete action journal')}: {page.offset + 1}–
+              {Math.min(page.offset + page.events.length, page.offset + page.total)} / {page.total}
+            </span>
+            <span className="flex gap-2">
+              <button
+                type="button"
+                disabled={actionOffset === 0 || actionPage.isFetching}
+                onClick={onPrevious}
+                className="text-primary hover:underline disabled:opacity-40"
+              >
+                {tt('Previous')}
+              </button>
+              <button
+                type="button"
+                disabled={actionOffset + page.events.length >= page.total || actionPage.isFetching}
+                onClick={onNext}
+                className="text-primary hover:underline disabled:opacity-40"
+              >
+                {tt('Next')}
+              </button>
+            </span>
+          </div>
+        </>
+      )}
+      {dataGaps.length > 0 && (
+        <div className="space-y-1 rounded-md border border-amber-500/30 bg-amber-500/5 p-2 text-amber-200">
+          {dataGaps.slice(0, 4).map((gap, index) => (
+            <div key={`${gap.code}-${index}`} className="flex gap-1.5">
+              <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+              <span>{gap.message}</span>
+            </div>
+          ))}
         </div>
       )}
     </div>
