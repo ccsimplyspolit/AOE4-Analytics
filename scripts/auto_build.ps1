@@ -29,11 +29,33 @@ function Stop-ProjectElectron {
   # Electron processes whose executable/command line belongs to this project.
   # AoE4, Steam, Discord, and unrelated Electron apps are left untouched.
   $projectNeedle = $repoRoot.TrimEnd('\')
-  $targets = Get-CimInstance Win32_Process | Where-Object {
+  $processes = @(Get-CimInstance Win32_Process)
+  $targets = @($processes | Where-Object {
     $_.ProcessId -ne $PID -and
     $_.Name -match '^(electron|RTSLytics)\.exe$' -and
     (($_.CommandLine -and $_.CommandLine.Contains($projectNeedle)) -or
       ($_.ExecutablePath -and $_.ExecutablePath.StartsWith($projectNeedle, [StringComparison]::OrdinalIgnoreCase)))
+  })
+
+  # Elevated Electron roots can expose neither CommandLine nor ExecutablePath
+  # through the non-elevated WMI query. Walk parent links from every matched
+  # project child so the root process is stopped as well and cannot keep the
+  # stable release directory locked during publication.
+  $byId = @{}
+  foreach ($process in $processes) { $byId[[int]$process.ProcessId] = $process }
+  $knownIds = @{}
+  foreach ($target in $targets) { $knownIds[[int]$target.ProcessId] = $true }
+  $parentIds = @($targets | ForEach-Object { [int]$_.ParentProcessId })
+  while ($parentIds.Count -gt 0) {
+    $nextParents = @()
+    foreach ($parentId in $parentIds) {
+      if ($parentId -le 0 -or $knownIds.ContainsKey($parentId) -or -not $byId.ContainsKey($parentId)) { continue }
+      $parent = $byId[$parentId]
+      $knownIds[$parentId] = $true
+      if ($parent.Name -match '^(electron|RTSLytics)\.exe$') { $targets += $parent }
+      if ($parent.ParentProcessId -gt 0) { $nextParents += [int]$parent.ParentProcessId }
+    }
+    $parentIds = @($nextParents | Select-Object -Unique)
   }
 
   foreach ($target in $targets) {
