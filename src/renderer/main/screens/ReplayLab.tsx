@@ -1614,6 +1614,50 @@ export function ReplayAnalysisPanel({
               }
             />
           </div>
+          {stream.setup && stream.setup.players.length > 0 && (
+            <div className="rounded-md border border-border/60 bg-secondary/10 p-2">
+              <div className="mb-1 text-[10px] uppercase tracking-wide text-muted-foreground">
+                {tt('Replay setup')}
+              </div>
+              <div className="grid gap-1 sm:grid-cols-2 lg:grid-cols-3">
+                {stream.setup.players.map((player) => (
+                  <div key={`${player.playerId}-${player.hostComputerId}`} className="rounded border border-border/50 px-2 py-1.5">
+                    <div className="font-medium">
+                      {player.name || `P${player.playerId}`}{' '}
+                      <span className="text-muted-foreground">· {civDisplayName(civFromToken(player.civToken) ?? player.civToken)}</span>
+                    </div>
+                    <div className="text-[10px] text-muted-foreground">
+                      {tt('Team')} {player.team} · P{player.playerId} · host {player.hostComputerId}
+                      {player.steamId ? ` · ${player.steamId}` : ''}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          {stream.chat.length > 0 && (
+            <div className="rounded-md border border-border/60 bg-secondary/10 p-2">
+              <div className="mb-1 text-[10px] uppercase tracking-wide text-muted-foreground">
+                {tt('Replay chat')} · {stream.chat.length}
+              </div>
+              <div className="max-h-32 space-y-1 overflow-auto text-[11px]">
+                {stream.chat.map((message, index) => (
+                  <div key={`${message.rawHex.slice(0, 12)}-${index}`}>
+                    <span className="tabular-nums text-muted-foreground">
+                      {message.timeSec == null ? '—' : formatDuration(message.timeSec)}
+                    </span>{' '}
+                    <span className="font-medium">{message.playerName ?? `P${message.playerId ?? '?'}`}</span>:{' '}
+                    {message.message ?? tt('system message')}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          {stream.chunks.length > 0 && (
+            <div className="text-[11px] text-muted-foreground">
+              {tt('Replay data chunks')}: {stream.chunks.map((chunk) => `${chunk.kind}:${chunk.id}`).join(' · ')}
+            </div>
+          )}
           {stream.players.length > 0 && (
             <div className="overflow-x-auto rounded-md border border-border/60">
               <table className="w-full min-w-[900px] text-left text-[11px]">

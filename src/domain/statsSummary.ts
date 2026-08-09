@@ -137,11 +137,40 @@ export interface PlayerSummary {
   scores: ScorePoint[]
 }
 
+/**
+ * Lossless structural evidence for every Relic Chunky node in a stats.rgs
+ * file. Known STLS/STPD fields are projected into the stable summary above;
+ * this tree keeps every additional STLU/STLB/STLP/STLC/STLA/STDD section and
+ * future/unknown DATA payload available for later analysis.
+ */
+export interface SummaryChunkSnapshot {
+  kind: 'FOLD' | 'DATA'
+  id: string
+  version: number
+  name: string
+  dataOffset: number
+  dataSize: number
+  /** Complete DATA payload, encoded as hex so the summary remains JSON-safe. */
+  dataHex?: string
+  /** Best-effort typed decode for auxiliary STLU/STLB/STLP/STLC/STLA/STDD data. */
+  decoded?: unknown
+  children?: SummaryChunkSnapshot[]
+}
+
+export interface SummaryRawEvidence {
+  source: 'local-chunky' | 'aoe4world-replays-api'
+  chunks?: SummaryChunkSnapshot[]
+  /** The upstream parser's complete ReplaySummary object, when available. */
+  replaySummary?: unknown
+}
+
 export interface MatchSummary {
   gameLengthSec: number | null
   players: PlayerSummary[]
   /** Exact parser/format provenance used for this summary. */
   parser?: ReplayParserProvenance
+  /** Lossless evidence for sections not projected into PlayerSummary yet. */
+  raw?: SummaryRawEvidence
 }
 
 const latin1 = new TextDecoder('latin1')
@@ -323,6 +352,118 @@ export function parseStatsSummary(bytes: Uint8Array): MatchSummary | null {
       strictPlayers: strictPlayerCount,
       totalPlayers: players.length,
     }),
+    raw: {
+      source: 'local-chunky',
+      chunks: tree.map((node) => snapshotChunk(bytes, node)),
+    },
+  }
+}
+
+function snapshotChunk(bytes: Uint8Array, node: ChunkyNode): SummaryChunkSnapshot {
+  const snapshot: SummaryChunkSnapshot = {
+    kind: node.kind,
+    id: node.id,
+    version: node.version,
+    name: node.name,
+    dataOffset: node.dataStart,
+    dataSize: Math.max(0, node.dataEnd - node.dataStart),
+  }
+  if (node.kind === 'DATA') {
+    snapshot.dataHex = [...bytes.subarray(node.dataStart, node.dataEnd)]
+      .map((value) => value.toString(16).padStart(2, '0'))
+      .join('')
+    const decoded = decodeAuxiliaryStatsChunk(bytes, node)
+    if (decoded != null) snapshot.decoded = decoded
+  } else if (node.children) {
+    snapshot.children = node.children.map((child) => snapshotChunk(bytes, child))
+  }
+  return snapshot
+}
+
+/** Decode auxiliary stat-log chunks while retaining their exact bytes above. */
+function decodeAuxiliaryStatsChunk(bytes: Uint8Array, node: ChunkyNode): unknown | null {
+  if (!['STLU', 'STLB', 'STLP', 'STLC', 'STLA', 'STDD'].includes(node.id)) return null
+  try {
+    const reader = new Reader(bytes, node.dataStart, node.dataEnd)
+    const array = <T>(read: () => T, max = 100_000): T[] => {
+      const count = reader.i32()
+      if (count < 0 || count > max) throw new RangeError('stats: implausible auxiliary array')
+      const result: T[] = []
+      for (let index = 0; index < count; index++) result.push(read())
+      return result
+    }
+    const stluGroup = () => ({
+      unknown1: reader.u8(),
+      unitType: reader.str(),
+      unknown2: reader.i16(),
+      unknown3: reader.i16(),
+      unknown4: reader.i32(),
+      unknown5: reader.i32(),
+    })
+    const stluEntry = () => ({ unknown1: reader.i32(), unknown2: reader.i32() })
+    switch (node.id) {
+      case 'STLU': {
+        const pbgid = reader.i32()
+        const unknownResources = reader.resourceDict()
+        const numProduced = reader.i32()
+        const unknown = Array.from({ length: 16 }, () => reader.i32())
+        const groups = array(stluGroup)
+        const unknown19 = Array.from({ length: 12 }, () => reader.i32())
+        const numTotal = reader.i32()
+        return { pbgid, unknownResources, numProduced, unknown, groups, unknown19, numTotal, entries: array(stluEntry) }
+      }
+      case 'STLB':
+        return {
+          unknown1: reader.u8(),
+          buildingType: reader.str(),
+          unknown2: reader.i16(),
+          unknown3: reader.i16(),
+          damageDealt: reader.f32(),
+          created: reader.i32(),
+          destroyed: reader.i32(),
+        }
+      case 'STLP':
+        return {
+          unknown1: reader.u8(),
+          commandType: reader.str(),
+          unknown2: reader.i16(),
+          category: reader.i16(),
+          amount: reader.i32(),
+          timestampFirstUse: reader.i32(),
+          details: array(() => ({ x: reader.f32(), y: reader.f32(), timestamp: reader.i32() })),
+        }
+      case 'STLC':
+        return { details: array(() => ({ pbgid: reader.i32(), lost: reader.i32(), gained: reader.i32() })) }
+      case 'STLA':
+        return {
+          entries1: array(() => ({ unknown1: reader.i32(), unknown2: reader.i32() })),
+          entries2: array(() => ({ unknown1: reader.i32(), unknown2: reader.i32() })),
+          groups: array(() => ({
+            unknown1: reader.u8(),
+            buildingType: reader.str(),
+            unknown3: reader.i16(),
+            unknown4: reader.i16(),
+            damageInflicted: reader.f32(),
+          })),
+        }
+      case 'STDD': {
+        const subEntry = () => ({
+          unknown1: reader.u8(),
+          unitType: reader.str(),
+          unknown3: reader.i16(),
+          unknown4: reader.i16(),
+          unknown5: reader.f32(),
+        })
+        const subGroup = () => ({ playerId: reader.i32(), unknown2: reader.f32(), entries: array(subEntry) })
+        const group = () => ({ entityId: reader.i32(), unknown2: reader.i32(), subGroups: array(subGroup) })
+        return { buildings: array(group), units: array(group) }
+      }
+      default:
+        return null
+    }
+  } catch {
+    // Keep dataHex as the authoritative fallback when a game patch changes a layout.
+    return null
   }
 }
 

@@ -26,6 +26,9 @@ export interface ReplayDataLocation {
   streamOffset: number
   /** Chunky file version of the replay-data container when it was readable. */
   chunkyVersion: number | null
+  /** DATA/DATA setup block decoded from the same replay-data container. */
+  setup?: ReplaySetup | null
+  chunks?: ReplayDataChunk[]
 }
 
 export type ReplayActionCategory =
@@ -46,6 +49,58 @@ export interface ReplayActionPosition {
   x: number
   y: number
   z: number
+}
+
+export interface ReplaySetupPlayer {
+  isHuman: boolean
+  name: string
+  team: number
+  playerId: number
+  civToken: string
+  steamId: string | null
+  hostComputerId: number
+  color: number | null
+  extraDataFlags: number
+}
+
+export interface ReplaySetup {
+  version: number
+  players: ReplaySetupPlayer[]
+  /** Complete setup DATA payload, kept as evidence for version-specific fields. */
+  rawDataHex: string
+}
+
+export interface ReplayDataChunk {
+  kind: 'FOLD' | 'DATA'
+  id: string
+  version: number
+  name: string
+  dataOffset: number
+  dataSize: number
+  /** Lossless bytes for the chunk payload, including unknown/versioned fields. */
+  dataHex: string
+}
+
+export interface ReplayChatMessage {
+  timeSec: number | null
+  mode: number | null
+  playerName: string | null
+  message: string | null
+  playerId: number | null
+  rawHex: string
+}
+
+export interface ReplayCommandAttribute {
+  type: number
+  offset: number
+  byteSize: number
+  rawHex: string
+  size?: number
+  selectedUnitIds?: number[]
+  position?: ReplayActionPosition | null
+  buildingId?: number | null
+  entityId?: number | null
+  decodeLevel: ReplayActionDecodeLevel
 }
 
 export interface ReplayCommandEvent {
@@ -77,7 +132,10 @@ export interface ReplayCommandEvent {
   decodeLevel: ReplayActionDecodeLevel
   /** Bounded raw payload evidence; offset + payloadBytes locate complete bytes in .rec. */
   payloadHex: string
+  /** Complete raw payload, in addition to the bounded preview above. */
+  payloadHexFull?: string
   payloadHexTruncated: boolean
+  attributes?: ReplayCommandAttribute[]
   known: boolean
 }
 
@@ -130,6 +188,9 @@ export interface ReplayCommandAnalysis {
   eventsTruncated: boolean
   events: ReplayCommandEvent[]
   players: ReplayPlayerCommandStats[]
+  setup: ReplaySetup | null
+  chunks: ReplayDataChunk[]
+  chat: ReplayChatMessage[]
   dataGaps: ReplayDataGap[]
 }
 
@@ -199,6 +260,109 @@ function ascii(bytes: Uint8Array, offset: number, length: number): string {
   for (let i = 0; i < length && offset + i < bytes.length; i++)
     value += String.fromCharCode(bytes[offset + i]!)
   return value
+}
+
+function hex(bytes: Uint8Array, start: number, end: number): string {
+  return [...bytes.subarray(start, end)].map((byte) => byte.toString(16).padStart(2, '0')).join('')
+}
+
+function prefixedString(
+  reader: Reader,
+  offset: number,
+  end: number,
+  wide: boolean,
+): { value: string; nextOffset: number } | null {
+  if (!canRead(reader, offset, 4, end)) return null
+  const length = u32(reader, offset)
+  if (length > 16_384) return null
+  const byteLength = wide ? length * 2 : length
+  if (!canRead(reader, offset + 4, byteLength, end)) return null
+  const bytes = reader.bytes.subarray(offset + 4, offset + 4 + byteLength)
+  const value = wide ? new TextDecoder('utf-16le').decode(bytes) : new TextDecoder('latin1').decode(bytes)
+  return { value, nextOffset: offset + 4 + byteLength }
+}
+
+function rawSetupHex(reader: Reader, start: number, end: number): string {
+  return hex(reader.bytes, start, end)
+}
+
+/** Decode the stable prefix of DataGameSetup; unknown version-specific tails stay raw. */
+function parseReplaySetup(
+  reader: Reader,
+  start: number,
+  end: number,
+  version: number,
+): ReplaySetup | null {
+  if (!canRead(reader, start, 14, end)) return null
+  let cursor = start + 4 + 4 + 2
+  const playerCount = u32(reader, cursor)
+  cursor += 4
+  if (playerCount > 16) return null
+  const players: ReplaySetupPlayer[] = []
+  for (let index = 0; index < playerCount; index++) {
+    if (!canRead(reader, cursor, 1, end)) return null
+    const isHuman = u8(reader, cursor) !== 0
+    cursor += 1
+    const name = prefixedString(reader, cursor, end, true)
+    if (!name || !canRead(reader, name.nextOffset, 4 + 4 + 1, end)) return null
+    cursor = name.nextOffset
+    const team = u32(reader, cursor)
+    const playerId = u32(reader, cursor + 4)
+    cursor += 8
+    cursor += 1 // unknown7
+    const civ = prefixedString(reader, cursor, end, false)
+    if (!civ || !canRead(reader, civ.nextOffset, 2 + 2 + 4, end)) return null
+    cursor = civ.nextOffset
+    cursor += 2 + 2 + 4
+    const unknown11 = prefixedString(reader, cursor, end, false)
+    if (!unknown11 || !canRead(reader, unknown11.nextOffset, 4 + 4 * 5 + 4 + 4 + 4, end)) return null
+    cursor = unknown11.nextOffset
+    cursor += 4 // unknown12 float
+    cursor += 4 + 4 * 5 + 4 // unknown13..15
+    const hostComputerId = u32(reader, cursor)
+    cursor += 4 + 4 // hostComputerId + unknown17
+    cursor += 4 + 5 // unknown18 + unknown19
+    const steam = prefixedString(reader, cursor, end, true)
+    if (!steam || !canRead(reader, steam.nextOffset, 4 + 4 + 2 + 2 + 1 + 1 + 1 + 15 + 4, end)) return null
+    cursor = steam.nextOffset
+    cursor += 4 + 4 + 2 + 2 + 1 + 1
+    const color = u8(reader, cursor)
+    cursor += 1 + 15
+    const extraDataFlags = u32(reader, cursor)
+    cursor += 4
+    players.push({
+      isHuman,
+      name: name.value,
+      team,
+      playerId,
+      civToken: civ.value,
+      steamId: steam.value || null,
+      hostComputerId,
+      color,
+      extraDataFlags,
+    })
+
+    // Skip optional player metadata so the next player starts at the right offset.
+    if (extraDataFlags > 0) {
+      if (!canRead(reader, cursor, 69, end)) return null
+      cursor += 69
+      const attrs = prefixedString(reader, cursor, end, false)
+      if (!attrs || !canRead(reader, attrs.nextOffset, 11 * 4, end)) return null
+      cursor = attrs.nextOffset + 11 * 4
+    }
+    if (extraDataFlags > 1) {
+      if (!canRead(reader, cursor, 17 * 4 + 1, end)) return null
+      cursor += 17 * 4 + 1
+      const attrs = prefixedString(reader, cursor, end, false)
+      if (!attrs || !canRead(reader, attrs.nextOffset, 11 * 4, end)) return null
+      cursor = attrs.nextOffset + 11 * 4
+    }
+    if (extraDataFlags > 2) {
+      if (!canRead(reader, cursor, 117, end)) return null
+      cursor += 117
+    }
+  }
+  return { version, players, rawDataHex: rawSetupHex(reader, start, end) }
 }
 
 const COMMAND_NAMES: Record<number, string> = {
@@ -304,6 +468,8 @@ export function locateReplayData(bytes: Uint8Array): ReplayDataLocation | null {
 
   let candidate = -1
   let candidateVersion: number | null = null
+  let candidateSetup: ReplaySetup | null = null
+  let candidateChunks: ReplayDataChunk[] = []
   for (let offset = 0; offset + CHUNKY_FILE_HEADER_SIZE <= bytes.length; offset++) {
     if (bytes[offset] !== CHUNKY_MAGIC.charCodeAt(0)) continue
     if (ascii(bytes, offset, CHUNKY_MAGIC.length) !== CHUNKY_MAGIC) continue
@@ -311,15 +477,36 @@ export function locateReplayData(bytes: Uint8Array): ReplayDataLocation | null {
     const version = u32(reader, offset + 16)
     let cursor = offset + CHUNKY_FILE_HEADER_SIZE
     let nodeCount = 0
+    let setup: ReplaySetup | null = null
+    const chunks: ReplayDataChunk[] = []
     while (canRead(reader, cursor, CHUNK_HEADER_SIZE)) {
       const kind = ascii(bytes, cursor, 4)
       if (kind !== 'FOLD' && kind !== 'DATA') break
+      const chunkVersion = u32(reader, cursor + 8)
       const dataSize = u32(reader, cursor + 12)
       const nameLength = u32(reader, cursor + 16)
       const dataStart = cursor + CHUNK_HEADER_SIZE + nameLength
       if (!canRead(reader, dataStart, dataSize)) {
         cursor = -1
         break
+      }
+      const chunkId = ascii(bytes, cursor + 4, 4)
+      chunks.push({
+        kind,
+        id: chunkId,
+        version: chunkVersion,
+        name: ascii(bytes, cursor + CHUNK_HEADER_SIZE, nameLength),
+        dataOffset: dataStart,
+        dataSize,
+        dataHex: hex(bytes, dataStart, dataStart + dataSize),
+      })
+      if (kind === 'DATA' && chunkId === 'DATA') {
+        try {
+          setup = parseReplaySetup(reader, dataStart, dataStart + dataSize, chunkVersion)
+        } catch {
+          // A patch-specific setup tail must not make command-stream parsing fail.
+          setup = null
+        }
       }
       cursor = dataStart + dataSize
       nodeCount += 1
@@ -328,9 +515,18 @@ export function locateReplayData(bytes: Uint8Array): ReplayDataLocation | null {
     if (isLikelyGameTick(reader, cursor)) {
       candidate = cursor
       candidateVersion = version
+      candidateSetup = setup
+      candidateChunks = chunks
     }
   }
-  return candidate >= 0 ? { streamOffset: candidate, chunkyVersion: candidateVersion } : null
+  return candidate >= 0
+    ? {
+        streamOffset: candidate,
+        chunkyVersion: candidateVersion,
+        setup: candidateSetup,
+        chunks: candidateChunks,
+      }
+    : null
 }
 
 function isLikelyGameTick(reader: Reader, offset: number): boolean {
@@ -424,6 +620,114 @@ function targetAttribute(
   return { position: null, targetBuildingId: null }
 }
 
+function parseCommandAttributes(
+  reader: Reader,
+  commandType: number,
+  payloadStart: number,
+  commandEnd: number,
+): ReplayCommandAttribute[] {
+  const attributes: ReplayCommandAttribute[] = []
+  let cursor = payloadStart
+  if (UNIT_SELECTION_COMMANDS.has(commandType)) {
+    const selection = selectedUnits(reader, cursor, commandEnd)
+    if (selection.nextOffset !== cursor) {
+      const marker = u8(reader, cursor)
+      const byteSize = selection.nextOffset - cursor
+      attributes.push({
+        type: marker,
+        offset: cursor,
+        byteSize,
+        rawHex: hex(reader.bytes, cursor, selection.nextOffset),
+        selectedUnitIds: selection.ids,
+        decodeLevel: 'exact',
+      })
+      cursor = selection.nextOffset
+    }
+  }
+
+  while (cursor < commandEnd) {
+    if (!canRead(reader, cursor, 1, commandEnd)) break
+    const offset = cursor
+    const type = u8(reader, cursor)
+    let byteSize: number
+    let size: number | undefined
+    let decodeLevel: ReplayActionDecodeLevel = 'unknown'
+    let position: ReplayActionPosition | null | undefined
+    let buildingId: number | null | undefined
+    let entityId: number | null | undefined
+    let selectedUnitIds: number[] | undefined
+
+    if (type === 2 && canRead(reader, cursor + 1, 12, commandEnd)) {
+      byteSize = 13
+      position = {
+        x: reader.view.getFloat32(cursor + 1, true),
+        y: reader.view.getFloat32(cursor + 5, true),
+        z: reader.view.getFloat32(cursor + 9, true),
+      }
+      decodeLevel = 'exact'
+    } else if ((type === 3 || type === 4) && canRead(reader, cursor + 1, 4, commandEnd)) {
+      byteSize = 5
+      const value =
+        (u8(reader, cursor + 1) |
+          (u8(reader, cursor + 2) << 8) |
+          (u8(reader, cursor + 3) << 16)) >>> 0
+      if (type === 3) buildingId = value
+      else entityId = value
+      decodeLevel = 'exact'
+    } else if (type === 16 && canRead(reader, cursor + 1, 4, commandEnd)) {
+      byteSize = canRead(reader, cursor + 1, 5, commandEnd) ? 6 : 5
+      decodeLevel = 'structured'
+    } else if ((type === 1 || type === 15 || type === 30) && canRead(reader, cursor + 1, 1, commandEnd)) {
+      size = u8(reader, cursor + 1)
+      byteSize = 2 + size
+      if (!canRead(reader, cursor, byteSize, commandEnd)) {
+        byteSize = commandEnd - cursor
+        decodeLevel = 'unknown'
+      } else {
+        decodeLevel = 'structured'
+      }
+    } else if (type > 64 && type < 128) {
+      const selection = selectedUnits(reader, cursor, commandEnd)
+      if (selection.nextOffset !== cursor) {
+        byteSize = selection.nextOffset - cursor
+        selectedUnitIds = selection.ids
+        decodeLevel = 'exact'
+      } else {
+        byteSize = commandEnd - cursor
+      }
+    } else if (type === 128) {
+      const selection = selectedUnits(reader, cursor, commandEnd)
+      if (selection.nextOffset !== cursor) {
+        byteSize = selection.nextOffset - cursor
+        selectedUnitIds = selection.ids
+        decodeLevel = 'exact'
+      } else {
+        byteSize = commandEnd - cursor
+      }
+    } else {
+      // Unknown attributes are not length-prefixed. Preserve the remainder as one evidence block.
+      byteSize = commandEnd - cursor
+    }
+    if (byteSize <= 0) break
+    const end = Math.min(commandEnd, cursor + byteSize)
+    attributes.push({
+      type,
+      offset,
+      byteSize: end - offset,
+      rawHex: hex(reader.bytes, offset, end),
+      ...(size == null ? {} : { size }),
+      ...(selectedUnitIds == null ? {} : { selectedUnitIds }),
+      ...(position === undefined ? {} : { position }),
+      ...(buildingId === undefined ? {} : { buildingId }),
+      ...(entityId === undefined ? {} : { entityId }),
+      decodeLevel,
+    })
+    cursor = end
+    if (decodeLevel === 'unknown' && type !== 2 && type !== 3 && type !== 4 && type !== 16) break
+  }
+  return attributes
+}
+
 function parseCommandPayload(
   reader: Reader,
   commandType: number,
@@ -439,9 +743,11 @@ function parseCommandPayload(
   targetBuildingId: number | null
   actionCategory: ReplayActionCategory
   decodeLevel: ReplayActionDecodeLevel
+  attributes: ReplayCommandAttribute[]
 } {
   const category = COMMAND_CATEGORIES[commandType] ?? 'unknown'
   const decodeLevel = COMMAND_DECODE_LEVELS[commandType] ?? 'unknown'
+  const attributes = parseCommandAttributes(reader, commandType, payloadStart, commandEnd)
   if (commandType === 3) {
     // QueueUnitCommand: attribute(16), queue count, unit pbgid, player id, 0.
     const attr = canRead(reader, payloadStart, 6, commandEnd) ? u8(reader, payloadStart) : -1
@@ -462,6 +768,7 @@ function parseCommandPayload(
       targetBuildingId: null,
       actionCategory: category,
       decodeLevel,
+      attributes,
     }
   }
   if (UNIT_SELECTION_COMMANDS.has(commandType)) {
@@ -480,6 +787,7 @@ function parseCommandPayload(
       targetBuildingId: target.targetBuildingId,
       actionCategory: category,
       decodeLevel,
+      attributes,
     }
   }
   return {
@@ -495,6 +803,7 @@ function parseCommandPayload(
     targetBuildingId: null,
     actionCategory: category,
     decodeLevel,
+    attributes,
   }
 }
 
@@ -529,8 +838,40 @@ function commandEvent(
     payloadBytes: Math.max(0, size - COMMAND_HEADER_SIZE),
     ...payload,
     payloadHex: rawPayload.value,
+    payloadHexFull: hex(reader.bytes, payloadStart, offset + size),
     payloadHexTruncated: rawPayload.truncated,
     known: COMMAND_NAMES[commandType] != null,
+  }
+}
+
+function parseChatRecord(reader: Reader, offset: number, recordEnd: number): ReplayChatMessage | null {
+  if (!canRead(reader, offset, 12, recordEnd)) return null
+  const type = u32(reader, offset + 4)
+  const messageSize = u32(reader, offset + 8)
+  if (messageSize > recordEnd - offset - 12) return null
+  if (type === 0) {
+    return {
+      timeSec: null,
+      mode: null,
+      playerName: null,
+      message: null,
+      playerId: canRead(reader, offset + 12, 4, recordEnd) ? u32(reader, offset + 12) : null,
+      rawHex: hex(reader.bytes, offset, recordEnd),
+    }
+  }
+  if (type !== 1 || !canRead(reader, offset + 12, 12, recordEnd)) return null
+  const mode = u32(reader, offset + 12)
+  const name = prefixedString(reader, offset + 24, recordEnd, true)
+  if (!name) return null
+  const message = prefixedString(reader, name.nextOffset, recordEnd, true)
+  if (!message) return null
+  return {
+    timeSec: null,
+    mode,
+    playerName: name.value || null,
+    message: message.value,
+    playerId: null,
+    rawHex: hex(reader.bytes, offset, recordEnd),
   }
 }
 
@@ -675,6 +1016,9 @@ function emptyAnalysis(
     eventsTruncated: false,
     events: [],
     players: [],
+    setup: null,
+    chunks: [],
+    chat: [],
     dataGaps,
   }
 }
@@ -708,9 +1052,11 @@ export function parseReplayCommandStream(
   let recordsParsed = 0
   let ticksParsed = 0
   let durationSec: number | null = null
+  let currentTimeSec = 0
   let commandCount = 0
   let unknownCommandCount = 0
   let eventsTruncated = false
+  const chat: ReplayChatMessage[] = []
   const maxEvents = Math.max(0, Math.floor(options.maxEvents ?? 50_000))
 
   while (canRead(reader, cursor, 8)) {
@@ -729,6 +1075,7 @@ export function parseReplayCommandStream(
       const tick = u32(reader, cursor + 9)
       const blockCount = u32(reader, cursor + 17)
       durationSec = Math.max(durationSec ?? 0, tick / 8)
+      currentTimeSec = tick / 8
       ticksParsed += 1
       let blockCursor = cursor + 21
       let blockError = false
@@ -799,12 +1146,21 @@ export function parseReplayCommandStream(
       recordsParsed += 1
       continue
     }
-    if (
-      recordType === CHAT_RECORD &&
-      declaredSize >= 8 &&
-      canRead(reader, cursor + 8, declaredSize)
-    ) {
-      cursor += 8 + declaredSize
+    // Chat records use the opposite header order: [size][type=1][...].
+    if (declaredSize === CHAT_RECORD && recordType >= 8 && canRead(reader, cursor + 4, recordType)) {
+      const recordEnd = cursor + 4 + recordType
+      const message = parseChatRecord(reader, cursor, recordEnd)
+      if (!message) {
+        dataGaps.push({
+          code: 'invalid-record',
+          message: `Chat record at 0x${cursor.toString(16)} could not be decoded.`,
+          offset: cursor,
+        })
+        break
+      }
+      message.timeSec = currentTimeSec
+      chat.push(message)
+      cursor = recordEnd
       recordsParsed += 1
       continue
     }
@@ -843,6 +1199,9 @@ export function parseReplayCommandStream(
     eventsTruncated,
     events,
     players: playerStats(playerAccumulators, durationSec),
+    setup: location.setup ?? null,
+    chunks: location.chunks ?? [],
+    chat,
     dataGaps,
   }
 }

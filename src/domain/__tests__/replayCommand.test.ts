@@ -38,6 +38,22 @@ function tick(tick: number, commands: number[] = []): number[] {
   return [...u32(0), ...u32(body.length), ...body]
 }
 
+function uString(value: string): number[] {
+  const bytes: number[] = []
+  for (const char of value) {
+    const code = char.charCodeAt(0)
+    bytes.push(code & 0xff, (code >>> 8) & 0xff)
+  }
+  return [...u32(value.length), ...bytes]
+}
+
+function chatRecord(): number[] {
+  const payload = [...u32(2), ...u32(0), ...u32(0), ...uString('Alice'), ...uString('gg')]
+  const body = [...u32(1), ...u32(payload.length), ...payload]
+  const size = body.length
+  return [...u32(size), ...body]
+}
+
 describe('replay command stream parser', () => {
   it('decodes ticks, queue commands, and player command metrics', () => {
     const bytes = new Uint8Array([...tick(8, queueCommand()), ...tick(88)])
@@ -97,6 +113,16 @@ describe('replay command stream parser', () => {
     expect(result.commandCount).toBe(3)
     expect(journal).toEqual([0, 1, 2])
     expect(result.events[0]?.payloadHexTruncated).toBe(false)
+  })
+
+  it('decodes chat records with their wire-order size/type header', () => {
+    const result = parseReplayCommandStream(new Uint8Array([...tick(16), ...chatRecord(), ...tick(24)]), 0)
+
+    expect(result.coverage).toBe('full')
+    expect(result.recordsParsed).toBe(3)
+    expect(result.chat).toEqual([
+      expect.objectContaining({ timeSec: 2, mode: 2, playerName: 'Alice', message: 'gg' }),
+    ])
   })
 
   it('exposes five-minute activity windows for late-game drop-off reads', () => {

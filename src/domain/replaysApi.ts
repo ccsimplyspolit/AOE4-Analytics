@@ -289,6 +289,14 @@ function normalizeNewSummary(root: JsonRecord): MatchSummary | null {
       totalPlayers: normalized.length,
       remote: true,
     }),
+    // Keep the complete upstream ReplaySummary (STLU/STLB/STLP/STLC/STLA/STDD
+    // and any future sections) alongside the normalized view.  The UI can use
+    // the stable projection while exports and forensic tooling retain every
+    // field decoded by the sidecar.
+    raw: {
+      source: 'aoe4world-replays-api',
+      replaySummary: field(root, 'replaySummary'),
+    },
   }
 }
 

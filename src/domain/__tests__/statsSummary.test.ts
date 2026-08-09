@@ -132,6 +132,9 @@ describe('parseStatsSummary', () => {
     const opp = s!.players.find((p) => p.playerId === 1007)!
     expect(opp.civToken).toBe('english')
     expect(opp.buildOrder.map((e) => e.name)).toEqual(['Town Center', 'Villager'])
+    expect(s!.raw?.source).toBe('local-chunky')
+    expect(s!.raw?.chunks?.some((chunk) => chunk.id === 'STLI')).toBe(true)
+    expect(s!.raw?.chunks?.[0]?.children?.some((chunk) => typeof chunk.dataHex === 'string')).toBe(true)
   })
 
   it('keeps Order of the Dragon when STPD reports the base HRE token', () => {

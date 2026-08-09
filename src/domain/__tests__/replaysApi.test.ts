@@ -78,6 +78,10 @@ describe('normalizeReplaysApiSummary', () => {
     expect(player?.resources[0]?.gathered).toEqual({ food: 110, wood: 55, gold: 22, stone: 0 })
     expect(player?.villagersLost).toBe(1)
     expect(player?.casualties?.[0]?.attackerUnitType).toBe('unit_knight_2_fre')
+    expect(summary?.raw).toMatchObject({
+      source: 'aoe4world-replays-api',
+      replaySummary: expect.objectContaining({ dataSTLS: expect.any(Object) }),
+    })
   })
 
   it('accepts the legacy compatibility array returned by /Summary', () => {

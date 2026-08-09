@@ -21,7 +21,9 @@ import type {
   ReplayCommandEvent,
 } from '@domain/replayCommand'
 
-const SCHEMA_VERSION = 2
+// Bump whenever the decoded evidence shape changes so old journals are
+// automatically re-read and enriched with setup/chat/attribute data.
+const SCHEMA_VERSION = 3
 
 interface CachedReplayAnalysis {
   schemaVersion: typeof SCHEMA_VERSION
