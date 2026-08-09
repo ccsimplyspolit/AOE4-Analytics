@@ -531,7 +531,7 @@ function MatchCard({ match, profileId }: { match: StoredMatch; profileId: number
   const statBits = [
     apm != null ? `${apm} APM` : null,
     mine?.kd != null ? `${mine.kd} K/D` : null,
-    rpm != null ? `${rpm} res/min` : vpm != null ? `${vpm} vil/min` : null,
+    rpm != null ? `${rpm} ${tt('res/min')}` : vpm != null ? `${vpm} ${tt('vil/min')}` : null,
   ].filter(Boolean)
   return (
     <Card className="transition-colors hover:border-primary/40">
@@ -562,7 +562,7 @@ function MatchCard({ match, profileId }: { match: StoredMatch; profileId: number
             <div className="truncate text-xs text-muted-foreground">
               {match.format ? `${match.format} · ` : ''}
               {match.map} · {formatDurationShort(match.durationSec)} ·{' '}
-              {relativeTime(match.playedAt)}
+              {tt(relativeTime(match.playedAt))}
             </div>
           </div>
           {statBits.length > 0 && (

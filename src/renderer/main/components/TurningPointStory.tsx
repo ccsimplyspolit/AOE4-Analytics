@@ -129,12 +129,12 @@ function StoryCard({ point, number }: { point: TurningPoint; number: number }) {
           </span>
         </div>
         <div className="min-w-0 space-y-2">
-          <h3 className="text-sm font-semibold">{point.title}</h3>
+          <h3 className="text-sm font-semibold">{tt(point.title)}</h3>
           <div>
             <div className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
               {tt('Observed')}
             </div>
-            <p className="text-xs leading-relaxed text-foreground">{point.observed}</p>
+            <p className="text-xs leading-relaxed text-foreground">{tt(point.observed)}</p>
           </div>
           <div className="flex items-start gap-1.5">
             <Lightbulb className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
@@ -142,7 +142,7 @@ function StoryCard({ point, number }: { point: TurningPoint; number: number }) {
               <div className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
                 {tt('Possible takeaway')}
               </div>
-              <p className="text-xs leading-relaxed text-muted-foreground">{point.coaching}</p>
+              <p className="text-xs leading-relaxed text-muted-foreground">{tt(point.coaching)}</p>
             </div>
           </div>
           <button

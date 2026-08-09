@@ -66,8 +66,7 @@ export function BuildTrainerCard({
           </div>
           {recovery.length > 0 && <RecoveryPlan recommendations={recovery} />}
           <p className="text-[11px] text-muted-foreground">
-            Villager counts assume the reference's opening villagers plus your production (the stat
-            file doesn't record losses); age-ups are read from when your landmark went down.
+            {tt("Villager counts assume the reference's opening villagers plus your production (the stat file doesn't record losses); age-ups are read from when your landmark went down.")}
           </p>
         </CardContent>
       </Card>
@@ -117,9 +116,9 @@ function CheckpointRow({ c }: { c: TrainerCheckpoint }) {
   const { tt } = useI18n()
   return (
     <div className="grid grid-cols-[minmax(0,1fr)_5.5rem_5.5rem_5rem] items-center gap-2 border-b border-border/50 px-3 py-1.5 text-sm last:border-b-0">
-      <span className="truncate">{c.label}</span>
+      <span className="truncate">{tt(c.label)}</span>
       <span className="text-right text-xs tabular-nums text-muted-foreground">
-        {c.kind === 'villagers' ? `${c.targetVillagers} vills` : formatDuration(c.targetTimeSec)}
+        {c.kind === 'villagers' ? `${c.targetVillagers} ${tt('vills')}` : formatDuration(c.targetTimeSec)}
       </span>
       <span className="text-right text-xs tabular-nums">
         {c.kind === 'villagers'

@@ -737,8 +737,8 @@ function ScoreTable({ players }: { players: PlayerSummary[] }) {
         {
           key: 'player',
           label: tt('Player'),
-          value: (r) => playerLabel(r.player),
-          display: (_, r) => playerLabel(r.player),
+          value: (r) => tt(playerLabel(r.player)),
+          display: (_, r) => tt(playerLabel(r.player)),
         },
         {
           key: 'total',
@@ -795,8 +795,8 @@ function ResourceTable({ players }: { players: PlayerSummary[] }) {
         {
           key: 'player',
           label: tt('Player'),
-          value: (r) => playerLabel(r.player),
-          display: (_, r) => playerLabel(r.player),
+          value: (r) => tt(playerLabel(r.player)),
+          display: (_, r) => tt(playerLabel(r.player)),
         },
         // Whole numbers, like the game's own screen (raw values are floats).
         {
@@ -880,8 +880,8 @@ function AgeTable({
         {
           key: 'player',
           label: tt('Player'),
-          value: (r) => playerLabel(r.player),
-          display: (_, r) => playerLabel(r.player),
+          value: (r) => tt(playerLabel(r.player)),
+          display: (_, r) => tt(playerLabel(r.player)),
         },
         {
           key: 'age2',
@@ -953,8 +953,8 @@ function CombatTable({
         {
           key: 'player',
           label: tt('Player'),
-          value: (r) => combatPlayerLabel(r, labelByCiv, myProfileId),
-          display: (_, r) => combatPlayerLabel(r, labelByCiv, myProfileId),
+          value: (r) => tt(combatPlayerLabel(r, labelByCiv, myProfileId)),
+          display: (_, r) => tt(combatPlayerLabel(r, labelByCiv, myProfileId)),
         },
         {
           key: 'units',
@@ -1041,8 +1041,8 @@ function SummaryTotalsTable({ players }: { players: PlayerSummary[] }) {
         {
           key: 'player',
           label: tt('Player'),
-          value: (r) => playerLabel(r.player),
-          display: (_, r) => playerLabel(r.player),
+          value: (r) => tt(playerLabel(r.player)),
+          display: (_, r) => tt(playerLabel(r.player)),
         },
         {
           key: 'gathered',
@@ -1270,9 +1270,9 @@ function contributionPlayerLabel(
   tt: (value: string) => string,
 ): string {
   const summary = summaryPlayers.find((player) => player.profileId === row.profileId)
-  const civ = row.civ ? civDisplayName(row.civ) : null
+  const civ = row.civ ? tt(civDisplayName(row.civ)) : null
   if (row.isMe) return civ ? `${tt('You')} — ${civ}` : tt('You')
-  if (summary) return playerLabel(summary)
+  if (summary) return tt(playerLabel(summary))
   return civ ?? `${tt('Profile')} ${row.profileId}`
 }
 
@@ -1365,6 +1365,7 @@ function TimeChart({
   colorOf: Map<number, string>
   meId: number | null
 }) {
+  const { tt } = useI18n()
   return (
     <div className="h-52 w-full overflow-hidden">
       <ResponsiveContainer width="100%" height="100%">
@@ -1399,7 +1400,7 @@ function TimeChart({
             formatter={(v, key) => {
               const pid = Number(String(key).slice(1))
               const p = players.find((x) => x.playerId === pid)
-              return [formatCount(Number(v)), p ? playerLabel(p) : String(key)]
+              return [formatCount(Number(v)), p ? tt(playerLabel(p)) : String(key)]
             }}
           />
           {players.map((p) => (
@@ -1429,6 +1430,7 @@ function BuildOrderColumn({
   me: boolean
   color: string
 }) {
+  const { tt } = useI18n()
   const rows = collapseRuns(player.buildOrder)
   const rhythm = villagerGaps(player)
   return (
@@ -1440,15 +1442,15 @@ function BuildOrderColumn({
     >
       <div className="flex items-center gap-2 border-b border-border px-3 py-2">
         <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: color }} />
-        <span className="truncate text-sm font-medium">{playerLabel(player)}</span>
+        <span className="truncate text-sm font-medium">{tt(playerLabel(player))}</span>
         {me && (
           <span className="rounded bg-primary/15 px-1 text-[9px] font-semibold uppercase text-primary">
-            You
+            {tt('You')}
           </span>
         )}
         {rhythm && (
           <span className="ml-auto whitespace-nowrap text-[11px] text-muted-foreground">
-            {rhythm.villagersMade} vills
+            {rhythm.villagersMade} {tt('vills')}
           </span>
         )}
       </div>

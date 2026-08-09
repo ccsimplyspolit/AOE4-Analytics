@@ -288,7 +288,7 @@ function Detail({
         <h2 className="text-lg font-semibold tracking-tight">{tt('What to improve')}</h2>
         <Card>
           <CardContent className="space-y-3 p-4">
-            <p className="text-sm text-muted-foreground">{summaryText}</p>
+            <p className="text-sm text-muted-foreground">{tt(summaryText)}</p>
             {coaching.length === 0 && (
               <p className="text-xs text-muted-foreground">
                 {tt('No standout issues this game — a clean, balanced performance.')}

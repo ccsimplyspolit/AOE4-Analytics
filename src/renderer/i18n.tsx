@@ -942,6 +942,8 @@ const UI: Record<Locale, Record<string, string>> = {
     'Kills / game': 'Убийства / матч',
     'resources/min': 'ресурсы/мин',
     'villagers/min': 'крестьяне/мин',
+    'res/min': 'рес/мин',
+    'vil/min': 'крестьяне/мин',
     'No data yet': 'Пока нет данных',
     'vs AI': 'против ИИ',
     Custom: 'Пользовательский',
@@ -995,6 +997,14 @@ const UI: Record<Locale, Record<string, string>> = {
     'Imported match review pack': 'Импортированный пакет разборов матчей',
     'Civ meta is weighted across {maps} active ranked maps.':
       'Мета цивилизаций взвешена по {maps} активным картам рейтингового пула.',
+    'Best civilizations for current map pool': 'Лучшие цивилизации для текущего пула карт',
+    'Pool-weighted ranking uses every active ranked map and the selected rank, rating, and patch filters.':
+      'Рейтинг взвешен по всем активным картам пула и выбранным фильтрам ранга, рейтинга и патча.',
+    'Overall pool ranking': 'Общий рейтинг пула',
+    'Best by map': 'Лучшие по картам',
+    pick: 'пик',
+    'The active map list is filtered, but per-map civ slices were unavailable; win and pick rates use the full current-patch dataset.':
+      'Список активных карт отфильтрован, но данные цивилизаций по отдельным картам недоступны; винрейт и пикрейт рассчитаны по всему набору текущего патча.',
     'Eight exact AoE4World matches were resolved from the supplied map, player and Twitch URLs. Open a public match for the full API-backed breakdown or jump to the exact VOD timestamp.':
       'По переданным ссылкам на карты, игроков и Twitch найдены 8 точных матчей AoE4World. Откройте публичный матч для полного разбора через API или перейдите к точному моменту VOD.',
     'Snapshot 2026-08-09': 'Снимок на 09.08.2026',
@@ -2120,6 +2130,22 @@ const GAME_NAMES: Record<Locale, Record<string, string>> = {
     'Meditation Gardens': 'Сады медитации',
     'Mount Lu Academy': 'Академия горы Лу',
     "Zhu Xi's Library": 'Библиотека Чжу Си',
+    'Ancient Spires': 'Древние шпили',
+    'Boulder Bay': 'Бухта валунов',
+    Cliffside: 'Утёс',
+    'Dry Arabia': 'Сухая Аравия',
+    Flankwoods: 'Фланковые леса',
+    Gorge: 'Ущелье',
+    'Golden Heights': 'Золотые высоты',
+    'High View': 'Высокий обзор',
+    Highwoods: 'Хайвудс',
+    'Hidden Valley': 'Скрытая долина',
+    Nagari: 'Нагари',
+    'Ocean Gateway': 'Океанские ворота',
+    Prairie: 'Прерия',
+    'Relic River': 'Река реликвий',
+    'The Pit': 'Яма',
+    'West Lake': 'Западное озеро',
     Feudal: 'Феодальная эпоха',
     Castle: 'Замковая эпоха',
     Imperial: 'Имперская эпоха',
@@ -2154,6 +2180,27 @@ type I18nValue = {
 /** Translate persisted/generated English analysis copy without changing the
  * domain records that are also used by tests, exports, and the English UI. */
 function russianDynamic(input: string): string | null {
+  const gameName = GAME_NAMES.ru[input]
+  if (gameName) return gameName
+  const labelledGameName = /^(.+?) - (.+)$/.exec(input)
+  if (labelledGameName) {
+    const translatedCiv = GAME_NAMES.ru[labelledGameName[2]!]
+    if (translatedCiv) return `${labelledGameName[1]} - ${translatedCiv}`
+  }
+
+  const relative = /^(\d+)(m|h|d|mo|y) ago$/.exec(input)
+  if (relative) {
+    const units: Record<string, string> = {
+      m: 'мин. назад',
+      h: 'ч назад',
+      d: 'дн. назад',
+      mo: 'мес. назад',
+      y: 'г. назад',
+    }
+    return `${relative[1]} ${units[relative[2]!] ?? 'назад'}`
+  }
+  if (input === 'just now') return 'только что'
+
   const rank = /^(Bronze|Silver|Gold|Platinum|Diamond|Conqueror)(?: (\d+))?$/.exec(input)
   if (rank) {
     const names: Record<string, string> = {
@@ -2214,8 +2261,133 @@ function russianDynamic(input: string): string | null {
     return 'Ваша экономика продолжала расти — именно так и нужно.'
   }
 
+  const turningTitle = /^(Feudal|Castle|Imperial) timing$/.exec(input)
+  if (turningTitle) {
+    const age =
+      { Feudal: 'Феодальный', Castle: 'Замковый', Imperial: 'Имперский' }[turningTitle[1]!] ??
+      turningTitle[1]
+    return `${age} тайминг`
+  }
+  if (input === 'First non-villager unit') return 'Первый нерабочий юнит'
+  if (input === 'Longest villager-production gap')
+    return 'Самый длинный простой производства крестьян'
+  const scoreTitle = /^Fastest (economy|military|society|technology) score growth$/.exec(input)
+  if (scoreTitle) {
+    const lane =
+      {
+        economy: 'экономики',
+        military: 'армии',
+        society: 'общества',
+        technology: 'технологий',
+      }[scoreTitle[1]!] ?? scoreTitle[1]
+    return `Самый быстрый рост счёта ${lane}`
+  }
+  const reachedAge = /^You reached (Feudal|Castle|Imperial) Age at (.+)\.$/.exec(input)
+  if (reachedAge) {
+    const age =
+      { Feudal: 'феодальную', Castle: 'замковую', Imperial: 'имперскую' }[reachedAge[1]!] ??
+      reachedAge[1]
+    return `Вы достигли ${age} эпохи в ${reachedAge[2]}.`
+  }
+  const firstUnit = /^(.+) was the first recorded non-villager unit, completed at (.+)\.$/.exec(
+    input,
+  )
+  if (firstUnit)
+    return `${firstUnit[1]} был первым записанным нерабочим юнитом и завершён в ${firstUnit[2]}.`
+  const scoreObserved =
+    /^Your recorded (economy|military|society|technology) score rose by (\d+) during this interval\.$/.exec(
+      input,
+    )
+  if (scoreObserved) {
+    const lane =
+      { economy: 'экономики', military: 'армии', society: 'общества', technology: 'технологий' }[
+        scoreObserved[1]!
+      ] ?? scoreObserved[1]
+    return `Ваш записанный счёт ${lane} вырос на ${scoreObserved[2]} за этот интервал.`
+  }
+  if (
+    input ===
+    'Use this as an opening checkpoint. The timestamp alone does not show whether the timing fit the matchup or your chosen build.'
+  ) {
+    return 'Используйте это как контрольную точку открытия. По одному времени нельзя понять, подходит ли тайминг матчапу или выбранному билду.'
+  }
+  if (
+    input ===
+    'Treat this as an opening checkpoint. Whether it was early or late depends on the selected build, civilization, and matchup.'
+  ) {
+    return 'Считайте это контрольной точкой открытия. Ранним или поздним тайминг делает выбранный билд, цивилизация и матчап.'
+  }
+  if (
+    input ===
+    'This shows where that score lane grew fastest between samples. It does not identify a fight, decision, teammate contribution, or underlying cause.'
+  ) {
+    return 'Здесь показан самый быстрый рост этой линии счёта между замерами. Это не определяет сражение, решение, вклад союзника или настоящую причину.'
+  }
+
   const tougherOpponent = /^Faced a stronger opponent \(\+(\d+)\)$/.exec(input)
   if (tougherOpponent) return `Соперник был сильнее (+${tougherOpponent[1]})`
+
+  const summary = /^(Win|Loss|Game) as (.+) on (.+)\. Biggest takeaway: (.+)\.$/.exec(input)
+  if (summary) {
+    const result = { Win: 'Победа', Loss: 'Поражение', Game: 'Матч' }[summary[1]!] ?? summary[1]
+    const ownCiv = GAME_NAMES.ru[summary[2]!] ?? summary[2]
+    const takeaway = summary[4]!.replace(
+      /^Tough matchup: (.+) vs (.+)$/,
+      (_, left: string, right: string) =>
+        `Сложный матчап: ${GAME_NAMES.ru[left] ?? left} против ${GAME_NAMES.ru[right] ?? right}`,
+    )
+    const map = GAME_NAMES.ru[summary[3]!] ?? summary[3]
+    return `${result}: ${ownCiv} на карте ${map}. Главный вывод: ${takeaway}.`
+  }
+  const tcIdle = /^Town Center sat idle \(~(\d+) villagers never made\)$/.exec(input)
+  if (tcIdle) return `Городской центр простаивал (~${tcIdle[1]} крестьян не создано)`
+  const tcDetail =
+    /^(\d+) production gaps, the longest (.+)\. Queue 2-3 villagers whenever you check the base — especially while fighting\.$/.exec(
+      input,
+    )
+  if (tcDetail)
+    return `${tcDetail[1]} пауз производства, самая длинная — ${tcDetail[2]}. При каждой проверке базы ставьте 2–3 крестьян, особенно во время боя.`
+  const lostVillagers = /^Lost (\d+) villagers$/.exec(input)
+  if (lostVillagers) return `Потеряно ${lostVillagers[1]} крестьян`
+  if (
+    input ===
+    'Keep the first defensive response simple: scout the approach, pull exposed workers early, and avoid taking a fight while the Town Center is not covered.'
+  ) {
+    return 'Начните с простой обороны: разведайте подход, заранее отведите открытых крестьян и не принимайте бой без прикрытия Городского центра.'
+  }
+  const unitGapTitle = /^Long unit-completion gaps \((.+) max\)$/.exec(input)
+  if (unitGapTitle) return `Длинные паузы завершения юнитов (максимум ${unitGapTitle[1]})`
+  const unitGapDetail =
+    /^(\d+) gaps over one minute were visible between completed non-villager units\. Check whether production buildings were staffed and whether resources were being floated before the next fight; this is not a direct queue-idle measurement\.$/.exec(
+      input,
+    )
+  if (unitGapDetail)
+    return `${unitGapDetail[1]} пауз дольше минуты между завершёнными нерабочими юнитами. Проверьте, были ли производственные здания укомплектованы и не копились ли ресурсы перед следующим боем; это не прямое измерение простоя очереди.`
+  const outProduced = /^Out-produced \((\d+) vs (\d+) units\)$/.exec(input)
+  if (outProduced) return `Произведено меньше (${outProduced[1]} против ${outProduced[2]} юнитов)`
+  if (
+    input ===
+    'Your opponent built a bigger army. Keep every production building working and spend banked resources — idle production loses the unit count.'
+  ) {
+    return 'Соперник создал более крупную армию. Держите все производственные здания занятыми и тратьте накопленные ресурсы — простой производства уменьшает численность войск.'
+  }
+  const toughMatchup = /^Tough matchup: (.+) vs (.+)$/.exec(input)
+  if (toughMatchup) return `Сложный матчап: ${toughMatchup[1]} против ${toughMatchup[2]}`
+  const matchupHistory =
+    /^Historically ~([\d.]+)% for you\. Lean on your civ's strengths and avoid their power spikes\.$/.exec(
+      input,
+    )
+  if (matchupHistory)
+    return `Исторический винрейт для вас — около ${matchupHistory[1]}%. Используйте сильные стороны цивилизации и избегайте пиков силы соперника.`
+  const villagersCheckpoint = /^Villagers @ (.+)$/.exec(input)
+  if (villagersCheckpoint) return `Крестьяне на ${villagersCheckpoint[1]}`
+  if (input === 'Feudal landmark') return 'Лендмарк феодальной эпохи'
+  if (
+    input ===
+    "Villager counts assume the reference's opening villagers plus your production (the stat file doesn't record losses); age-ups are read from when your landmark went down."
+  ) {
+    return 'Количество крестьян учитывает стартовых крестьян эталонного билда и ваше производство (файл статистики не записывает потери); эпохи определяются по моменту завершения лендмарка.'
+  }
 
   return null
 }
