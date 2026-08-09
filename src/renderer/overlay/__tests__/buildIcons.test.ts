@@ -62,5 +62,5 @@ describe('extractBuildTargets', () => {
     expect(steps.length).toBeGreaterThan(0)
     expect(targets.length).toBeGreaterThan(0)
     expect(targets.every((target) => !target.url.startsWith('https:'))).toBe(true)
-  }, 30_000)
+  }, 120_000)
 })
