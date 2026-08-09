@@ -584,13 +584,19 @@ function MatchSectionNav({
         {tt('Evidence')}
       </span>
       {links.map((link) => (
-        <a
+        <button
           key={link.id}
-          href={`#${link.id}`}
+          type="button"
+          onClick={() =>
+            document.getElementById(link.id)?.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            })
+          }
           className="rounded px-2.5 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
         >
           {link.label}
-        </a>
+        </button>
       ))}
       <button
         type="button"
