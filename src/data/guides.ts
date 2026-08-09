@@ -33,8 +33,10 @@ export const GUIDES: Guide[] = [
     title: 'Scouting Basics',
     titleRu: 'Основы разведки',
     category: 'fundamentals',
-    summary: 'Turn each scouting pass into one useful decision instead of simply revealing the map.',
-    summaryRu: 'Превращайте каждый заход разведчика в одно полезное решение, а не просто открывайте карту.',
+    summary:
+      'Turn each scouting pass into one useful decision instead of simply revealing the map.',
+    summaryRu:
+      'Превращайте каждый заход разведчика в одно полезное решение, а не просто открывайте карту.',
     readMinutes: 5,
     body: `## The purpose is a decision
 
@@ -144,8 +146,10 @@ Good scouting makes the opponent's plan expensive. It gives you time to prepare 
     title: 'Economy Fundamentals',
     titleRu: 'Основы экономики',
     category: 'economy',
-    summary: 'Run a short macro loop that turns resources into the army, technology, or expansion you actually need.',
-    summaryRu: 'Используйте короткий макроцикл, который превращает ресурсы в нужную армию, технологии или расширение.',
+    summary:
+      'Run a short macro loop that turns resources into the army, technology, or expansion you actually need.',
+    summaryRu:
+      'Используйте короткий макроцикл, который превращает ресурсы в нужную армию, технологии или расширение.',
     readMinutes: 6,
     body: `## Economy is spending with a purpose
 
@@ -247,8 +251,10 @@ After a battle, do not only queue replacement units. Check: did you lose workers
     title: 'Army Composition',
     titleRu: 'Состав армии',
     category: 'military',
-    summary: 'Build by battlefield role and the enemy’s actual composition, not by a memorized single-unit counter.',
-    summaryRu: 'Собирайте армию по боевым ролям и реальному составу врага, а не по заученному контру одним юнитом.',
+    summary:
+      'Build by battlefield role and the enemy’s actual composition, not by a memorized single-unit counter.',
+    summaryRu:
+      'Собирайте армию по боевым ролям и реальному составу врага, а не по заученному контру одним юнитом.',
     readMinutes: 6,
     body: `## Counters are a starting point
 
@@ -358,8 +364,10 @@ An army is not balanced because it has many icons. It is balanced when its jobs 
     title: 'When to Attack',
     titleRu: 'Когда атаковать',
     category: 'strategy',
-    summary: 'Attack for a concrete objective when your composition, reinforcement, and economy can support it.',
-    summaryRu: 'Атакуйте с конкретной целью, когда состав, подкрепления и экономика поддерживают выход.',
+    summary:
+      'Attack for a concrete objective when your composition, reinforcement, and economy can support it.',
+    summaryRu:
+      'Атакуйте с конкретной целью, когда состав, подкрепления и экономика поддерживают выход.',
     readMinutes: 5,
     body: `## A timing is an advantage with an objective
 
@@ -437,8 +445,10 @@ After every attack, ask what changed. If you idled food workers, take map food o
     title: 'Age-Up Benchmarks',
     titleRu: 'Ориентиры перехода в эпоху',
     category: 'economy',
-    summary: 'Use build-specific gates and correct villager baselines instead of chasing a misleading universal clock.',
-    summaryRu: 'Сверяйтесь с этапами своего билда и реалистичной базой крестьян, а не гонитесь за обманчивым общим таймером.',
+    summary:
+      'Use build-specific gates and correct villager baselines instead of chasing a misleading universal clock.',
+    summaryRu:
+      'Сверяйтесь с этапами своего билда и реалистичной базой крестьян, а не гонитесь за обманчивым общим таймером.',
     readMinutes: 5,
     body: `## Benchmarks are diagnostics, not targets to worship
 
@@ -518,8 +528,10 @@ In the next practice game, choose one measurable goal: zero intentional Town Cen
     title: 'Your First Ten Minutes in 1v1',
     titleRu: 'Первые десять минут в 1v1',
     category: 'fundamentals',
-    summary: 'A repeatable opening routine: establish income, read the opponent, choose one plan, and keep it flexible.',
-    summaryRu: 'Повторяемая рутина старта: наладьте доход, прочитайте соперника, выберите один план и сохраняйте гибкость.',
+    summary:
+      'A repeatable opening routine: establish income, read the opponent, choose one plan, and keep it flexible.',
+    summaryRu:
+      'Повторяемая рутина старта: наладьте доход, прочитайте соперника, выберите один план и сохраняйте гибкость.',
     readMinutes: 6,
     body: `## The goal is a stable first plan
 
@@ -633,8 +645,10 @@ After that, take the same opening to ranked. The goal is to learn which decision
     title: 'Defending Early Pressure',
     titleRu: 'Защита от раннего давления',
     category: 'military',
-    summary: 'Stabilize without panic: protect the resource under attack, produce the right answer, and keep your economy alive.',
-    summaryRu: 'Стабилизируйтесь без паники: защитите атакованный ресурс, производите правильный ответ и сохраняйте экономику.',
+    summary:
+      'Stabilize without panic: protect the resource under attack, produce the right answer, and keep your economy alive.',
+    summaryRu:
+      'Стабилизируйтесь без паники: защитите атакованный ресурс, производите правильный ответ и сохраняйте экономику.',
     readMinutes: 6,
     body: `## Defense starts before the enemy arrives
 
@@ -712,8 +726,10 @@ Counterattack when the enemy army is retreating, their reinforcement route is ex
     title: 'Map Control and Safe Resources',
     titleRu: 'Контроль карты и безопасные ресурсы',
     category: 'strategy',
-    summary: 'Take space that pays for your next plan, while making the opponent’s economy harder and riskier to use.',
-    summaryRu: 'Занимайте пространство, которое оплачивает ваш следующий план, и делайте экономику врага более дорогой и рискованной.',
+    summary:
+      'Take space that pays for your next plan, while making the opponent’s economy harder and riskier to use.',
+    summaryRu:
+      'Занимайте пространство, которое оплачивает ваш следующий план, и делайте экономику врага более дорогой и рискованной.',
     readMinutes: 5,
     body: `## Map control is useful access, not painted territory
 
@@ -799,8 +815,10 @@ Map control disappears when the army is idle or when the opponent takes the next
     title: 'Replay Review: Turn Losses into a Plan',
     titleRu: 'Разбор реплея: превращаем поражения в план',
     category: 'strategy',
-    summary: 'Find the first costly decision, name its cause, and practice one correction in the next match.',
-    summaryRu: 'Найдите первое дорогое решение, назовите его причину и потренируйте одно исправление в следующей игре.',
+    summary:
+      'Find the first costly decision, name its cause, and practice one correction in the next match.',
+    summaryRu:
+      'Найдите первое дорогое решение, назовите его причину и потренируйте одно исправление в следующей игре.',
     readMinutes: 6,
     body: `## Review for the first cause, not the last disaster
 
@@ -882,8 +900,10 @@ After three to five games with the same civilization and opening, look for a rep
     title: 'How to Read a Build Order',
     titleRu: 'Как читать билд-ордер',
     category: 'fundamentals',
-    summary: 'Turn a build order into checkpoints and decisions instead of memorizing a rigid sequence.',
-    summaryRu: 'Превратите билд в контрольные точки и решения, а не в жёсткую последовательность наизусть.',
+    summary:
+      'Turn a build order into checkpoints and decisions instead of memorizing a rigid sequence.',
+    summaryRu:
+      'Превратите билд в контрольные точки и решения, а не в жёсткую последовательность наизусть.',
     readMinutes: 5,
     body: `## A build is a decision map
 
@@ -952,7 +972,8 @@ Play the opening three times with the same civilization. After each game write t
     titleRu: 'Адаптивная разведка: от информации к действию',
     category: 'strategy',
     summary: 'Observe, classify the threat, choose the smallest response, then verify your read.',
-    summaryRu: 'Увидьте, классифицируйте угрозу, выберите минимальный ответ и затем проверьте вывод.',
+    summaryRu:
+      'Увидьте, классифицируйте угрозу, выберите минимальный ответ и затем проверьте вывод.',
     readMinutes: 5,
     body: `## Scout for a question
 
@@ -1000,8 +1021,10 @@ One pass is only a hypothesis. Return after 30–60 seconds or after the first f
     title: 'Team Game Roles and Timing',
     titleRu: 'Роли и тайминги в командной игре',
     category: 'strategy',
-    summary: 'Coordinate pressure, defense, and economy so allies execute one plan instead of separate 1v1s.',
-    summaryRu: 'Согласуйте давление, защиту и экономику, чтобы союзники исполняли один план, а не отдельные 1v1.',
+    summary:
+      'Coordinate pressure, defense, and economy so allies execute one plan instead of separate 1v1s.',
+    summaryRu:
+      'Согласуйте давление, защиту и экономику, чтобы союзники исполняли один план, а не отдельные 1v1.',
     readMinutes: 5,
     body: `## Pick jobs before builds
 
@@ -1039,8 +1062,10 @@ After a successful fight, choose one shared objective: production, a resource, s
     title: 'Patch-Aware Guide Reading',
     titleRu: 'Как читать гайды с учётом патча',
     category: 'economy',
-    summary: 'Avoid stale advice by checking patch, map pool, assumptions, and current game data before practicing a build.',
-    summaryRu: 'Избегайте устаревших советов: сверяйте патч, пул карт, предположения и данные игры до тренировки билда.',
+    summary:
+      'Avoid stale advice by checking patch, map pool, assumptions, and current game data before practicing a build.',
+    summaryRu:
+      'Избегайте устаревших советов: сверяйте патч, пул карт, предположения и данные игры до тренировки билда.',
     readMinutes: 4,
     body: `## Version comes first
 
@@ -1079,10 +1104,12 @@ After three games, mark the guide **works**, **needs adaptation**, or **stale**.
     titleRu: 'Чек-лист разбора реплея',
     category: 'fundamentals',
     summary: 'Separate confirmed evidence from assumptions in a repeatable 15-minute review.',
-    summaryRu: 'Отделяйте подтверждённые данные от предположений в повторяемом 15-минутном разборе.',
+    summaryRu:
+      'Отделяйте подтверждённые данные от предположений в повторяемом 15-минутном разборе.',
     readMinutes: 6,
     body: '## Start at the end\n\nWatch the final two minutes and name the loss condition: lost army, exposed economy, failed timing, tech gap, or teammate collapse. Then inspect production, economy, information, position, and conversion after a won fight. A production gap confirms no unit was queued, not why; a lower score confirms a gap, not the strategic mistake. Label conclusions confirmed, likely, or unknown, then choose one measurable next-game experiment.',
-    bodyRu: '## Начните с конца\n\nПосмотрите последние две минуты и назовите условие поражения: армия, экономика, тайминг, технология или падение тиммейта. Затем проверьте производство, экономику, информацию, позицию и конверсию победной драки. Простой подтверждает отсутствие юнита в очереди, но не причину; отставание счёта подтверждает разрыв, но не ошибку. Помечайте выводы как подтверждённые, вероятные или неизвестные и выберите одну измеримую цель.',
+    bodyRu:
+      '## Начните с конца\n\nПосмотрите последние две минуты и назовите условие поражения: армия, экономика, тайминг, технология или падение тиммейта. Затем проверьте производство, экономику, информацию, позицию и конверсию победной драки. Простой подтверждает отсутствие юнита в очереди, но не причину; отставание счёта подтверждает разрыв, но не ошибку. Помечайте выводы как подтверждённые, вероятные или неизвестные и выберите одну измеримую цель.',
   },
 ]
 
@@ -1093,8 +1120,10 @@ export const GUIDE_RESOURCES: readonly GuideResource[] = [
     kind: 'patch',
     title: 'Age of Empires IV — Patch 20249',
     titleRu: 'Age of Empires IV — патч 20249',
-    description: 'Latest official notes: balance, map changes, hotkey fixes, UI changes, and replay-version caveats.',
-    descriptionRu: 'Последние официальные заметки: баланс, карты, исправления хоткеев, UI и важное предупреждение о версиях реплеев.',
+    description:
+      'Latest official notes: balance, map changes, hotkey fixes, UI changes, and replay-version caveats.',
+    descriptionRu:
+      'Последние официальные заметки: баланс, карты, исправления хоткеев, UI и важное предупреждение о версиях реплеев.',
     source: 'Age of Empires Official',
     url: 'https://www.ageofempires.com/news/age-of-empires-iv-patch-20249/',
     publishedAt: '2026-08-04',
@@ -1115,7 +1144,8 @@ export const GUIDE_RESOURCES: readonly GuideResource[] = [
     kind: 'catalogue',
     title: 'AoE4World Curated Content',
     titleRu: 'Кураторский каталог AoE4World',
-    description: 'A maintained catalogue of guides, build orders, breakdowns, and educational videos.',
+    description:
+      'A maintained catalogue of guides, build orders, breakdowns, and educational videos.',
     descriptionRu: 'Обновляемый каталог гайдов, билдов, разборов и обучающих видео.',
     source: 'AoE4World',
     url: 'https://aoe4world.com/explorer/content',
