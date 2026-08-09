@@ -631,6 +631,21 @@ const UI: Record<Locale, Record<string, string>> = {
     'Turning points': 'Переломные моменты',
     'Build audit': 'Сверка билда',
     'Command stream': 'Поток команд',
+    'Team review': 'Разбор команды',
+    'Team-mate review': 'Разбор тиммейтов',
+    'Only recorded evidence is used; no combined carry score is inferred.':
+      'Используются только записанные данные; общий «счёт переноса» не вычисляется.',
+    'Civilization unavailable': 'Цивилизация недоступна',
+    'Show this player’s full match evidence': 'Показать полный разбор этого игрока',
+    'Confirmed findings': 'Подтверждённые выводы',
+    'No evidence-backed issues were found for this player.':
+      'Подтверждённых данных об ошибках этого игрока не найдено.',
+    'Summary timeline': 'Таймлайн сводки',
+    'Kills / losses': 'Убийства / потери',
+    'TC gaps': 'Паузы ГЦ',
+    Major: 'Критично',
+    Minor: 'Важно',
+    Info: 'Наблюдение',
     'Summary ready': 'Сводка готова',
     'Summary pending': 'Сводка ожидается',
     'VOD linked': 'VOD привязан',
@@ -1321,6 +1336,13 @@ const UI: Record<Locale, Record<string, string>> = {
       'сводки автоматически кэшируются, если доступны',
     'auto-analyzed': 'разобран автоматически',
     'Show analysis': 'Показать разбор',
+    Match: 'Матч',
+    'Replay analysis': 'Анализ реплея',
+    'Open full match review': 'Открыть полный разбор матча',
+    'Run replay analysis to open the command stream.':
+      'Запустите анализ реплея, чтобы открыть командный поток.',
+    'This playback has no synchronized match-history id. The tab still shows every fact available from the replay header and local summary.':
+      'Для этого воспроизведения нет связанного ID истории матча. Вкладка всё равно показывает все данные из заголовка реплея и локальной сводки.',
     Previous: 'Предыдущая',
     'Local replay access is disabled': 'Доступ к локальным реплеям отключён',
     'Enable local data access in Settings to index your own matchhistory and `.rec` files. Nothing is read before consent.':
@@ -1544,9 +1566,12 @@ const UI: Record<Locale, Record<string, string>> = {
       'Приложение ищет публичную победную игру на той же карте и с тем же матчапом цивилизаций, сначала выбирает матчи с рейтингом выше вашего и сравнивает измеримые контрольные точки с вашей игрой.',
     'The app searches your complete cached account archive first, then the available public-game window (up to 1,000 recent matches), and compares detailed checkpoints for the best matching winner.':
       'Приложение сначала ищет в полном кэшированном архиве вашего аккаунта, затем в доступном окне публичных игр (до 1 000 последних матчей) и сравнивает подробные контрольные точки с лучшим подходящим победителем.',
+    'The app searches your complete cached account archive first, then the available public-game window (up to 1,000 recent matches). It keeps only the same map and complete civilization composition, then prefers higher-rated examples and winning references; a shorter or similarly timed game is a valid reference.':
+      'Приложение сначала ищет в полном кэшированном архиве аккаунта, затем в доступном окне публичных игр (до 1 000 последних матчей). Оставляются только та же карта и полный состав цивилизаций; выше ранжируются более рейтинговые и победные примеры, но более короткая или близкая по времени игра тоже подходит как эталон.',
     'AoE4World is temporarily limiting public-game searches. Please try again in a minute.':
       'AoE4World временно ограничивает поиск публичных игр. Повторите попытку через минуту.',
     'Searching for similar winning games…': 'Ищу похожие победные игры…',
+    'Searching for exact civilization-match games…': 'Ищу игры с точным составом цивилизаций…',
     'Reference games': 'Эталонные игры',
     'No public match with this exact map and civilization composition was found.':
       'Публичная игра с точно такой картой и составом цивилизаций не найдена.',
@@ -3168,11 +3193,39 @@ function russianDynamic(input: string): string | null {
     return `${unitGapDetail[1]} пауз дольше минуты между завершёнными нерабочими юнитами. Проверьте, были ли производственные здания укомплектованы и не копились ли ресурсы перед следующим боем; это не прямое измерение простоя очереди.`
   const outProduced = /^Out-produced \((\d+) vs (\d+) units\)$/.exec(input)
   if (outProduced) return `Произведено меньше (${outProduced[1]} против ${outProduced[2]} юнитов)`
+  const strongProduction = /^Strong production \((\d+) vs (\d+) units\)$/.exec(input)
+  if (strongProduction)
+    return `Сильное производство (${strongProduction[1]} против ${strongProduction[2]} юнитов)`
+  const lowKd = /^You traded poorly \(K\/D ([\d.]+)\)$/.exec(input)
+  if (lowKd) return `Плохие размены (У/П ${lowKd[1]})`
+  const highKd = /^You won your fights \(K\/D ([\d.]+)\)$/.exec(input)
+  if (highKd) return `Сражения выиграны (У/П ${highKd[1]})`
+  const fewerUpgrades = /^Fewer upgrades \((\d+) vs (\d+)\)$/.exec(input)
+  if (fewerUpgrades)
+    return `Меньше улучшений (${fewerUpgrades[1]} против ${fewerUpgrades[2]})`
   if (
     input ===
     'Your opponent built a bigger army. Keep every production building working and spend banked resources — idle production loses the unit count.'
   ) {
     return 'Соперник создал более крупную армию. Держите все производственные здания занятыми и тратьте накопленные ресурсы — простой производства уменьшает численность войск.'
+  }
+  if (
+    input ===
+    'You lost more army value than you killed. Fight on your terms — force good engagements, hold a concave, and retreat rather than feeding units piecemeal.'
+  ) {
+    return 'Вы потеряли больше армейской ценности, чем уничтожили. Сражайтесь на своих условиях, держите строй и отступайте вместо поочерёдной отдачи юнитов.'
+  }
+  if (input === 'Strong trades — you got real value out of every engagement.') {
+    return 'Хорошие размены — вы получали реальную ценность от каждого сражения.'
+  }
+  if (input === 'You out-produced the enemy — your macro kept the army coming.') {
+    return 'Вы произвели больше юнитов — макроэкономика постоянно поддерживала армию.'
+  }
+  if (
+    input ===
+    'The enemy out-teched you. Blacksmith attack/armour and economy upgrades compound — bank them in with your unit production, not instead of it.'
+  ) {
+    return 'Соперник опередил по технологиям. Улучшения атаки, брони и экономики накапливают преимущество — совмещайте их с производством армии, а не заменяйте им производство.'
   }
   const toughMatchup = /^Tough matchup: (.+) vs (.+)$/.exec(input)
   if (toughMatchup) {
@@ -3186,8 +3239,26 @@ function russianDynamic(input: string): string | null {
     )
   if (matchupHistory)
     return `Исторический винрейт для вас — около ${matchupHistory[1]}%. Используйте сильные стороны цивилизации и избегайте пиков силы соперника.`
-  const villagersCheckpoint = /^Villagers @ (.+)$/.exec(input)
+  const villagersCheckpoint = /^Villagers @ (\d+:\d+)$/.exec(input)
   if (villagersCheckpoint) return `Крестьяне на ${villagersCheckpoint[1]}`
+  const villagerPace = /^Villagers @ (.+): villager pace held\.$/.exec(input)
+  if (villagerPace) return `Крестьяне на ${villagerPace[1]}: темп крестьян выдержан.`
+  const villagerPaceRu = /^Villagers @ (.+): темп крестьян выдержан\.$/.exec(input)
+  if (villagerPaceRu) return `Крестьяне на ${villagerPaceRu[1]}: темп крестьян выдержан.`
+  const timingOnPlan = /^(.+): timing is on plan\.$/.exec(input)
+  if (timingOnPlan) return `${timingOnPlan[1]}: тайминг в норме.`
+  const timingOnPlanRu = /^(.+): тайминг в норме\.$/.exec(input)
+  if (timingOnPlanRu) return `${timingOnPlanRu[1]}: тайминг в норме.`
+  const confirmed = /^Confirmed: (.+?)(?:\.)?$/.exec(input)
+  if (confirmed) {
+    const action = russianBuildNote(confirmed[1]!) ?? confirmed[1]!
+    return `Подтверждено: ${action}.`
+  }
+  const actionReview = /^(Раннее|Позднее) действие около (.+): (.+)\.$/.exec(input)
+  if (actionReview) {
+    const action = russianBuildNote(actionReview[3]!) ?? actionReview[3]!
+    return `${actionReview[1]} действие около ${actionReview[2]}: ${action}.`
+  }
   if (input === 'Feudal landmark') return 'Лендмарк феодальной эпохи'
   if (
     input ===
@@ -3202,6 +3273,40 @@ function russianDynamic(input: string): string | null {
     return 'Количество крестьян учитывает стартовых крестьян эталонного билда и ваше производство (файл статистики не записывает потери); эпохи берутся из авторитетной сводки матча, а при её отсутствии — из событий строительства лендмарка.'
   }
 
+  return null
+}
+
+/** Built-in translations for the short build-order notes most often shown in audits. */
+function russianBuildNote(input: string): string | null {
+  const exact: Record<string, string> = {
+    'Put 3 villagers on wood and build a Lumber Camp.':
+      'Отправьте 3 крестьян на дерево и постройте лесопилку',
+    'Send 3 villagers to gold with a Mining Camp.':
+      'Отправьте 3 крестьян на золото и постройте рудник',
+    'Keep most villagers on food and add a Mill on berries.':
+      'Оставьте большинство крестьян на еде и поставьте мельницу на ягодах',
+    'Build your first Imperial Official and set it to collect taxes from your Town Center.':
+      'Постройте первого имперского чиновника и назначьте ему сбор налогов с Городского центра',
+    'Use your larger economy to out-produce the enemy and grind forward with siege.':
+      'Используйте более сильную экономику, чтобы обойти соперника по производству и продвигаться с осадой',
+    'Keep making villagers nonstop.': 'Не прекращайте производство крестьян',
+  }
+  const exactTranslation = exact[input] ?? exact[`${input}.`]
+  if (typeof exactTranslation === 'string') return exactTranslation
+  const put = /^Put (\d+) villagers on (food|wood|gold|stone) and build (?:a|an) (.+)\.$/.exec(input)
+  if (put) {
+    const resource = { food: 'еду', wood: 'дерево', gold: 'золото', stone: 'камень' }[put[2]!] ?? put[2]!
+    const building =
+      ({ 'Lumber Camp': 'лесопилку', 'Mining Camp': 'рудник', Mill: 'мельницу', House: 'дом' } as Record<string, string>)[put[3]!] ?? put[3]!
+    return `Отправьте ${put[1]} крестьян на ${resource} и постройте ${building}`
+  }
+  const send = /^Send (\d+) villagers to (food|wood|gold|stone) with (?:a|an) (.+)\.$/.exec(input)
+  if (send) {
+    const resource = { food: 'еде', wood: 'дереву', gold: 'золоту', stone: 'камню' }[send[2]!] ?? send[2]!
+    const building =
+      ({ 'Lumber Camp': 'лесопилкой', 'Mining Camp': 'рудником', Mill: 'мельницей' } as Record<string, string>)[send[3]!] ?? send[3]!
+    return `Отправьте ${send[1]} крестьян к ${resource} с ${building}`
+  }
   return null
 }
 

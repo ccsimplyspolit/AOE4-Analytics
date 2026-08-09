@@ -432,9 +432,9 @@ function AuditDetail({
                     <div>
                       <div className="font-medium">
                         {issue.certainty === 'review' ? `${tt('Review')}: ` : ''}
-                        {issue.message}
+                        {tt(issue.message)}
                       </div>
-                      <div className="text-muted-foreground">{issue.evidence}</div>
+                      <div className="text-muted-foreground">{tt(issue.evidence)}</div>
                     </div>
                   </div>
                 ))}
@@ -452,7 +452,9 @@ function AuditDetail({
           <div className="flex items-start gap-2 text-xs text-muted-foreground">
             <XCircle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-warn" />
             <span>
-              {audit.issues[0]?.message ?? tt('No compatible build is available for this player.')}
+            {audit.issues[0] != null
+              ? tt(audit.issues[0].message)
+              : tt('No compatible build is available for this player.')}
             </span>
           </div>
         )}
@@ -503,8 +505,8 @@ function Strengths({ audit }: { audit: PlayerBuildAudit }) {
             key={`${finding.kind}-${index}`}
             className="rounded-md border border-win/15 bg-win/5 p-2 text-xs"
           >
-            <div className="font-medium text-win">{finding.message}</div>
-            <div className="text-muted-foreground">{finding.evidence}</div>
+            <div className="font-medium text-win">{tt(finding.message)}</div>
+            <div className="text-muted-foreground">{tt(finding.evidence)}</div>
           </div>
         ))}
       </div>
@@ -588,7 +590,7 @@ function TimingTable({ audit }: { audit: PlayerBuildAudit }) {
                   key={`${checkpoint.kind}-${index}`}
                   className="border-b border-border/50 last:border-b-0"
                 >
-                  <td className="px-2 py-1.5">{checkpoint.label}</td>
+                  <td className="px-2 py-1.5">{tt(checkpoint.label)}</td>
                   <td className="px-2 py-1.5 text-right tabular-nums">
                     {checkpoint.kind === 'villagers' ? target : formatDurationShort(target)}
                   </td>
@@ -633,11 +635,11 @@ function ActionTable({ audit }: { audit: PlayerBuildAudit }) {
             className="grid gap-1 rounded-md border border-border/60 px-2 py-1.5 text-xs md:grid-cols-[1fr_1fr_auto] md:items-center"
           >
             <span className="text-muted-foreground">
-              {formatDurationShort(action.targetTimeSec)} · {action.note}
+              {formatDurationShort(action.targetTimeSec)} · {tt(action.note)}
             </span>
             <span>
               {action.actual
-                ? `${action.actual.name} @ ${formatDurationShort(action.actual.timeSec)}`
+                ? `${tt(action.actual.name)} @ ${formatDurationShort(action.actual.timeSec)}`
                 : tt('Not found in replay timeline')}
             </span>
             <Status status={action.status} />
