@@ -14,7 +14,8 @@ import {
   Loader2,
   PlayCircle,
 } from 'lucide-react'
-import { GUIDES, type Guide } from '@data/guides'
+import { GUIDE_RESOURCES, GUIDES, type Guide } from '@data/guides'
+import { LEARNING_RESOURCES } from '@data/learningResources'
 import { BUILD_CATALOG } from '@data/buildCatalog'
 import {
   CURATED_CONTENT_COUNTS,
@@ -54,10 +55,29 @@ type Tab = 'guides' | 'builds' | 'counters' | 'quiz' | 'trainer' | 'beasty'
 
 /** AoE4Guides uses its own civ abbreviations (e.g. HRE/JDA/ZXL). */
 const GUIDES_CODE_BY_DATA_CODE: Record<string, string> = {
-  ab: 'ABB', ay: 'AYY', de: 'DEL', en: 'ENG', fr: 'FRE', hr: 'HRE', ja: 'JAP',
-  je: 'JDA', ma: 'MAL', mac: 'MAC', mo: 'MON', od: 'DRA', ot: 'OTT', ru: 'RUS',
-  zx: 'ZXL', hl: 'HOL', kt: 'KTE', gol: 'GOH', sen: 'SEN', tug: 'TUG', jin: 'JIN',
-  by: 'BYZ', ch: 'CHI',
+  ab: 'ABB',
+  ay: 'AYY',
+  de: 'DEL',
+  en: 'ENG',
+  fr: 'FRE',
+  hr: 'HRE',
+  ja: 'JAP',
+  je: 'JDA',
+  ma: 'MAL',
+  mac: 'MAC',
+  mo: 'MON',
+  od: 'DRA',
+  ot: 'OTT',
+  ru: 'RUS',
+  zx: 'ZXL',
+  hl: 'HOL',
+  kt: 'KTE',
+  gol: 'GOH',
+  sen: 'SEN',
+  tug: 'TUG',
+  jin: 'JIN',
+  by: 'BYZ',
+  ch: 'CHI',
 }
 
 const TABS = [
@@ -146,9 +166,9 @@ function GuideLibrary() {
     )
 
   if (active) {
-    const title = locale === 'ru' ? active.titleRu ?? active.title : tt(active.title)
+    const title = locale === 'ru' ? (active.titleRu ?? active.title) : tt(active.title)
     const category = tt(active.category)
-    const body = locale === 'ru' ? active.bodyRu ?? active.body : active.body
+    const body = locale === 'ru' ? (active.bodyRu ?? active.body) : active.body
     return (
       <div className="space-y-4">
         <button
@@ -178,29 +198,137 @@ function GuideLibrary() {
   }
 
   return (
-    <div className="grid gap-3 sm:grid-cols-2">
-      {GUIDES.map((g) => {
-        const title = locale === 'ru' ? g.titleRu ?? g.title : tt(g.title)
-        const summary = locale === 'ru' ? g.summaryRu ?? g.summary : tt(g.summary)
-        return (
-          <button key={g.slug} type="button" onClick={() => setActive(g)} className="text-left">
-            <Card className="h-full transition-colors hover:border-primary/40">
-              <CardContent className="space-y-1.5 p-4">
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-semibold">{title}</h3>
-                  <Badge variant="secondary">{tt(g.category)}</Badge>
-                </div>
-                <p className="text-sm leading-relaxed text-muted-foreground">{summary}</p>
-                <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                  <Clock className="h-3 w-3" />
-                  {g.readMinutes} {tt('min read')}
-                </div>
-              </CardContent>
-            </Card>
-          </button>
-        )
-      })}
+    <div className="space-y-6">
+      <LearningShelf locale={locale} />
+      <div className="grid gap-3 sm:grid-cols-2">
+        {GUIDES.map((g) => {
+          const title = locale === 'ru' ? (g.titleRu ?? g.title) : tt(g.title)
+          const summary = locale === 'ru' ? (g.summaryRu ?? g.summary) : tt(g.summary)
+          return (
+            <button key={g.slug} type="button" onClick={() => setActive(g)} className="text-left">
+              <Card className="h-full transition-colors hover:border-primary/40">
+                <CardContent className="space-y-1.5 p-4">
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="font-semibold">{title}</h3>
+                    <Badge variant="secondary">{tt(g.category)}</Badge>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{summary}</p>
+                  <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                    <Clock className="h-3 w-3" />
+                    {g.readMinutes} {tt('min read')}
+                  </div>
+                </CardContent>
+              </Card>
+            </button>
+          )
+        })}
+      </div>
     </div>
+  )
+}
+
+function LearningShelf({ locale }: { locale: string }) {
+  const isRussian = locale === 'ru'
+  const dateFormatter = new Intl.DateTimeFormat(isRussian ? 'ru-RU' : 'en-US', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  })
+  // Keep the hand-picked links from both sources, preferring the newer
+  // reference when the same URL is present in both lists.
+  const resources = [
+    ...GUIDE_RESOURCES,
+    ...LEARNING_RESOURCES.filter(
+      (resource) => !GUIDE_RESOURCES.some((current) => current.url === resource.url),
+    ),
+  ]
+
+  return (
+    <section className="space-y-3" aria-label={isRussian ? 'Свежие материалы' : 'Fresh resources'}>
+      <div className="flex flex-wrap items-end justify-between gap-2">
+        <div>
+          <h2 className="text-base font-semibold">
+            {isRussian ? 'Свежие материалы' : 'Fresh resources'}
+          </h2>
+          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+            {isRussian
+              ? 'Статьи и видео, отобранные для текущей версии игры. Точные билды и баланс всегда сверяйте с патчем.'
+              : 'Articles and videos selected for the current game. Always check exact builds and balance against the patch notes.'}
+          </p>
+        </div>
+        <span className="text-[11px] text-muted-foreground">
+          {isRussian
+            ? `${resources.length} материалов · проверено 9 авг. 2026`
+            : `${resources.length} references · checked Aug 9, 2026`}
+        </span>
+      </div>
+      <div className="grid gap-2 lg:grid-cols-2">
+        {resources.map((resource) => {
+          const isVideo = resource.kind === 'video'
+          const title = isRussian ? resource.titleRu : resource.title
+          const description = isRussian ? resource.descriptionRu : resource.description
+          const published = resource.publishedAt
+            ? dateFormatter.format(new Date(`${resource.publishedAt}T12:00:00Z`))
+            : null
+          const kindLabel = isRussian
+            ? (
+                {
+                  video: 'Видео',
+                  article: 'Статья',
+                  patch: 'Патчноут',
+                  catalogue: 'Каталог',
+                } as const
+              )[resource.kind]
+            : (
+                {
+                  video: 'Video',
+                  article: 'Article',
+                  patch: 'Patch notes',
+                  catalogue: 'Catalogue',
+                } as const
+              )[resource.kind]
+          return (
+            <a
+              key={resource.id}
+              href={resource.url}
+              target="_blank"
+              rel="noreferrer"
+              className="group rounded-lg border border-border bg-card p-3 transition-colors hover:border-primary/60 hover:bg-primary/5"
+            >
+              <div className="flex gap-2">
+                {isVideo ? (
+                  <PlayCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                ) : (
+                  <BookOpen className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                )}
+                <div className="min-w-0">
+                  <div className="flex items-start justify-between gap-2">
+                    <h3 className="text-sm font-medium leading-snug group-hover:text-primary">
+                      {title}
+                    </h3>
+                    <ExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground group-hover:text-primary" />
+                  </div>
+                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                    {description}
+                  </p>
+                  <div className="mt-2 flex flex-wrap gap-x-2 text-[11px] text-muted-foreground">
+                    <Badge variant="secondary" className="px-1.5 py-0 text-[10px]">
+                      {kindLabel}
+                    </Badge>
+                    <span>{resource.source}</span>
+                    {published && (
+                      <span>
+                        {isRussian ? 'опубликовано' : 'published'} {published}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </a>
+          )
+        })}
+      </div>
+    </section>
   )
 }
 
@@ -258,7 +386,7 @@ function BuildLibrary() {
       )?.slug
     : undefined
   const onlineGuidesCiv = onlineCivCode
-    ? GUIDES_CODE_BY_DATA_CODE[civCode(onlineCivCode) ?? ''] ?? undefined
+    ? (GUIDES_CODE_BY_DATA_CODE[civCode(onlineCivCode) ?? ''] ?? undefined)
     : undefined
   const curatedVideos = useMemo(
     () =>
@@ -308,8 +436,8 @@ function BuildLibrary() {
     }
   }, [onlineGuidesCiv, onlineSearch, query, sort])
 
-  const civilizations = [...new Set(entries.flatMap((entry) => entry.civilizationLabels))].sort((a, b) =>
-    gameName(a).localeCompare(gameName(b)),
+  const civilizations = [...new Set(entries.flatMap((entry) => entry.civilizationLabels))].sort(
+    (a, b) => gameName(a).localeCompare(gameName(b)),
   )
   const opponentCivilizations = [
     ...new Set(entries.flatMap((entry) => entry.opponentCivilizationLabels)),
@@ -317,14 +445,22 @@ function BuildLibrary() {
 
   const seasons = useMemo(
     () =>
-      [...new Set(entries.map((entry) => entry.build.season).filter((value): value is number => value != null))]
-        .sort((a, b) => b - a),
+      [
+        ...new Set(
+          entries
+            .map((entry) => entry.build.season)
+            .filter((value): value is number => value != null),
+        ),
+      ].sort((a, b) => b - a),
     [entries],
   )
   const patches = useMemo(
     () =>
-      [...new Set(entries.map((entry) => entry.patch).filter((value): value is string => Boolean(value)))]
-        .sort((a, b) => b.localeCompare(a)),
+      [
+        ...new Set(
+          entries.map((entry) => entry.patch).filter((value): value is string => Boolean(value)),
+        ),
+      ].sort((a, b) => b.localeCompare(a)),
     [entries],
   )
   const videoEntriesCount = useMemo(
@@ -381,9 +517,7 @@ function BuildLibrary() {
   })
   const civNames = [...groups.keys()].sort((a, b) => gameName(a).localeCompare(gameName(b)))
 
-  const selectedMap = mapPoolFilter.startsWith('map:')
-    ? mapPoolFilter.slice('map:'.length)
-    : null
+  const selectedMap = mapPoolFilter.startsWith('map:') ? mapPoolFilter.slice('map:'.length) : null
   const allPoolMaps = [...new Set([...mapPoolSnapshot.solo, ...mapPoolSnapshot.team])]
   const scopedMapCount = selectedMap
     ? 1
@@ -608,7 +742,9 @@ function BuildLibrary() {
             )}
             {onlineError && <p className="text-xs text-loss">{onlineError}</p>}
             {!onlineLoading && !onlineError && onlineItems.length === 0 && (
-              <p className="text-xs text-muted-foreground">{tt('No online builds match the filters.')}</p>
+              <p className="text-xs text-muted-foreground">
+                {tt('No online builds match the filters.')}
+              </p>
             )}
             {onlineItems.length > 0 && (
               <div className="grid gap-2 md:grid-cols-2">
@@ -630,8 +766,8 @@ function BuildLibrary() {
                       </span>
                     </div>
                     <div className="mt-1 text-[11px] text-muted-foreground">
-                      {gameName(item.civilization)} · {item.author ?? tt('community')} · {item.stepCount}{' '}
-                      {tt('steps')}
+                      {gameName(item.civilization)} · {item.author ?? tt('community')} ·{' '}
+                      {item.stepCount} {tt('steps')}
                     </div>
                     {item.video && (
                       <div className="mt-1 inline-flex items-center gap-1 text-[10px] text-primary">
@@ -694,7 +830,8 @@ function BuildLibrary() {
                   <ExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
                 </div>
                 <div className="mt-1 line-clamp-1 text-[11px] text-muted-foreground">
-                  {item.civilizations.map((civ) => gameName(civ)).join(' · ')} · {item.creator ?? tt('community')}
+                  {item.civilizations.map((civ) => gameName(civ)).join(' · ')} ·{' '}
+                  {item.creator ?? tt('community')}
                 </div>
                 <div className="mt-1 text-[10px] uppercase tracking-wide text-primary">
                   {item.type === 'Shorts' ? 'YouTube Shorts' : 'YouTube'}
