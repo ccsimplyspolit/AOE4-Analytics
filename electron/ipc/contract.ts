@@ -46,6 +46,7 @@ import type {
 } from '../services/translationService'
 import type { ExternalApiConfigInput, ExternalApiStatus } from '../services/externalApiService'
 import type { ReplaysApiStatus } from '../services/replaysApiService'
+import type { AutomationStatus } from '@domain/automation'
 
 export type Platform = 'win32' | 'darwin' | 'linux' | (string & {})
 
@@ -279,6 +280,8 @@ export const IpcChannels = {
   videoAnalysisExtract: 'video:analysisExtract',
   videoAnalysisList: 'video:analysisList',
   gameplayAutoFind: 'gameplay:autoFind',
+  automationStatus: 'automation:status',
+  automationRun: 'automation:run',
   translationStatus: 'translation:status',
   translationConfigure: 'translation:configure',
   translationBatch: 'translation:batch',
@@ -960,6 +963,12 @@ export interface RtslyticsApi {
   listVideoAnalyses(): Promise<IpcResult<VideoAnalysisRecord[]>>
   /** Finds public gameplay, downloads it when yt-dlp is available, and extracts analysis. */
   autoFindGameplay(input: GameplayAutoInput): Promise<IpcResult<GameplayAutoResult>>
+  /** Current background automation status. */
+  getAutomationStatus(): Promise<AutomationStatus>
+  /** Runs the background pipeline immediately, bypassing the enabled switch. */
+  runAutomationNow(): Promise<AutomationStatus>
+  /** Receives status transitions from the Electron background coordinator. */
+  onAutomationStatus(cb: (status: AutomationStatus) => void): () => void
   /** Returns translation-provider state without exposing the stored API key. */
   getTranslationStatus(): Promise<TranslationStatus>
   /** Stores translation provider settings; the API key is encrypted in the main process. */

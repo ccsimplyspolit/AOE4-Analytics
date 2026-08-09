@@ -14,6 +14,7 @@ import {
   KeyRound,
   ArrowDown,
   ArrowUp,
+  Zap,
 } from 'lucide-react'
 import type { Leaderboard } from '@api/types'
 import {
@@ -69,6 +70,7 @@ const SETTINGS_SECTIONS = [
   ['settings-translation', 'Translation'],
   ['settings-replays', 'Replay parser'],
   ['settings-overlay', 'Overlay'],
+  ['settings-automation', 'Automation'],
   ['settings-polling', 'Polling'],
   ['settings-stats', 'Stats'],
   ['settings-hotkeys', 'Hotkeys'],
@@ -128,9 +130,7 @@ export function Settings() {
   const cycleNames = settings?.overlay.buildOrderCycle ?? []
   const orderedOverlayBuildNames = [
     ...cycleNames.filter((name) => overlayBuilds.some((build) => build.name === name)),
-    ...overlayBuilds
-      .map((build) => build.name)
-      .filter((name) => !cycleNames.includes(name)),
+    ...overlayBuilds.map((build) => build.name).filter((name) => !cycleNames.includes(name)),
   ]
   useEffect(() => {
     if (debouncedOpacity == null) return
@@ -734,7 +734,9 @@ export function Settings() {
                     {overlayBuilds.map((build) => (
                       <option key={build.name} value={build.name}>
                         {build.name} · {buildOrderCivLabel(build)}
-                        {settings?.overlay.customBuildOrders.some((item) => item.name === build.name)
+                        {settings?.overlay.customBuildOrders.some(
+                          (item) => item.name === build.name,
+                        )
                           ? ` · ${tt('custom')}`
                           : ''}
                       </option>
@@ -896,7 +898,12 @@ export function Settings() {
                         className="h-4 w-4 shrink-0 accent-[hsl(var(--primary))]"
                         aria-label={`${tt('Cycle')} ${name}`}
                       />
-                      <span className={cn('min-w-0 flex-1 truncate', disabled && 'text-muted-foreground line-through')}>
+                      <span
+                        className={cn(
+                          'min-w-0 flex-1 truncate',
+                          disabled && 'text-muted-foreground line-through',
+                        )}
+                      >
                         {name}
                       </span>
                       <span className="shrink-0 text-[10px] text-muted-foreground">
@@ -1019,6 +1026,139 @@ export function Settings() {
         </CardContent>
       </Card>
 
+      <Card id="settings-automation" className="scroll-mt-14">
+        <CardContent className="space-y-4 p-5">
+          <h2 className="flex items-center gap-2 text-base font-semibold">
+            <Zap className="h-4 w-4 text-primary" />
+            {tt('Background automation')}
+          </h2>
+          <label className="flex cursor-pointer items-center justify-between gap-3 text-sm">
+            <span>
+              {tt('Keep data fresh automatically')}
+              <span className="block text-[11px] text-muted-foreground">
+                {tt(
+                  'Sync history, save recent summaries/replays and warm public catalogues when the game is closed.',
+                )}
+              </span>
+            </span>
+            <input
+              type="checkbox"
+              checked={settings?.automation.enabled ?? true}
+              onChange={(e) => update.mutate({ automation: { enabled: e.target.checked } })}
+            />
+          </label>
+          <div className="grid gap-3 md:grid-cols-2">
+            <label className="flex cursor-pointer items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={settings?.automation.syncHistory ?? true}
+                onChange={(e) => update.mutate({ automation: { syncHistory: e.target.checked } })}
+              />
+              {tt('Sync account history')}
+            </label>
+            <label className="flex cursor-pointer items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={settings?.automation.refreshReplayArchive ?? true}
+                onChange={(e) =>
+                  update.mutate({ automation: { refreshReplayArchive: e.target.checked } })
+                }
+              />
+              {tt('Refresh complete replay archive')}
+            </label>
+            <label className="flex cursor-pointer items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={settings?.automation.cacheSummaries ?? true}
+                onChange={(e) =>
+                  update.mutate({ automation: { cacheSummaries: e.target.checked } })
+                }
+              />
+              {tt('Cache uploaded summaries')}
+            </label>
+            <label className="flex cursor-pointer items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={settings?.automation.cacheReplays ?? true}
+                onChange={(e) => update.mutate({ automation: { cacheReplays: e.target.checked } })}
+              />
+              {tt('Cache recent replays')}
+            </label>
+            <label className="flex cursor-pointer items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={settings?.automation.analyzeReplays ?? true}
+                onChange={(e) => update.mutate({ automation: { analyzeReplays: e.target.checked } })}
+              />
+              {tt('Analyze replay command streams')}
+            </label>
+            <label className="flex cursor-pointer items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={settings?.automation.warmCatalogs ?? true}
+                onChange={(e) => update.mutate({ automation: { warmCatalogs: e.target.checked } })}
+              />
+              {tt('Warm public catalogues')}
+            </label>
+          </div>
+          <div className="grid gap-3 md:grid-cols-3">
+            <label className="block space-y-1 text-sm">
+              <span className="text-muted-foreground">{tt('Refresh interval')}</span>
+              <select
+                value={settings?.automation.intervalMinutes ?? 30}
+                onChange={(e) =>
+                  update.mutate({ automation: { intervalMinutes: Number(e.target.value) } })
+                }
+                className="h-9 w-full rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {[15, 30, 60, 180, 360].map((minutes) => (
+                  <option key={minutes} value={minutes}>
+                    {minutes < 60 ? `${minutes} min` : `${minutes / 60} h`}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="block space-y-1 text-sm">
+              <span className="text-muted-foreground">{tt('Summaries per pass')}</span>
+              <select
+                value={settings?.automation.maxSummariesPerRun ?? 50}
+                onChange={(e) =>
+                  update.mutate({ automation: { maxSummariesPerRun: Number(e.target.value) } })
+                }
+                className="h-9 w-full rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {[10, 25, 50].map((count) => (
+                  <option key={count} value={count}>
+                    {count}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="block space-y-1 text-sm">
+              <span className="text-muted-foreground">{tt('Replays per pass')}</span>
+              <select
+                value={settings?.automation.maxReplaysPerRun ?? 3}
+                onChange={(e) =>
+                  update.mutate({ automation: { maxReplaysPerRun: Number(e.target.value) } })
+                }
+                className="h-9 w-full rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {[1, 3, 5, 10].map((count) => (
+                  <option key={count} value={count}>
+                    {count}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            {tt(
+              'Background work is serialized, cache-first and paused while AoE4 is running. Source files are never rewritten automatically.',
+            )}
+          </p>
+        </CardContent>
+      </Card>
+
       <div id="settings-polling" className="grid scroll-mt-14 gap-4 md:grid-cols-2">
         <Card>
           <CardContent className="space-y-3 p-5">
@@ -1084,7 +1224,9 @@ export function Settings() {
               ))}
             </select>
             <p className="text-xs text-muted-foreground">
-              {tt('Used as the initial ladder in Civ Meta and Leaderboards; a URL ladder still wins.')}
+              {tt(
+                'Used as the initial ladder in Civ Meta and Leaderboards; a URL ladder still wins.',
+              )}
             </p>
           </CardContent>
         </Card>
@@ -1103,7 +1245,9 @@ export function Settings() {
               </span>
               <select
                 value={settings?.recentGamesCount ?? 10}
-                onChange={(event) => update.mutate({ recentGamesCount: Number(event.target.value) })}
+                onChange={(event) =>
+                  update.mutate({ recentGamesCount: Number(event.target.value) })
+                }
                 className="h-8 shrink-0 rounded-md border border-border bg-background px-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 {settings?.recentGamesCount != null &&
@@ -1271,9 +1415,7 @@ function LocalDataStatusCard() {
         <span
           className={cn(
             'rounded px-2 py-0.5 text-[11px]',
-            available
-              ? 'bg-emerald-500/10 text-emerald-400'
-              : 'bg-amber-500/10 text-amber-300',
+            available ? 'bg-emerald-500/10 text-emerald-400' : 'bg-amber-500/10 text-amber-300',
           )}
         >
           {checking
@@ -1561,7 +1703,9 @@ function ReplaysApiCard({
     }
     try {
       await saveValue(next)
-      setMessage(next ? tt('External replays-api URL saved.') : tt('Bundled local sidecar selected.'))
+      setMessage(
+        next ? tt('External replays-api URL saved.') : tt('Bundled local sidecar selected.'),
+      )
     } catch {
       setMessage(tt('Replay parser setting could not be saved.'))
     }
@@ -1592,7 +1736,9 @@ function ReplaysApiCard({
         </div>
 
         <label className="space-y-1 text-xs">
-          <span className="block text-muted-foreground">{tt('External replays-api URL (optional)')}</span>
+          <span className="block text-muted-foreground">
+            {tt('External replays-api URL (optional)')}
+          </span>
           <input
             type="url"
             value={draft}

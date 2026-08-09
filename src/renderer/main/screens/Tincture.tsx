@@ -59,6 +59,7 @@ import { useVideoAnalyses } from '../queries/useVideoAnalyses'
 import { cn } from '@shared/lib/utils'
 import { useI18n } from '../../i18n'
 import { resolveAoE4Icon } from '@data/vendor/aoe4-icons/manifest'
+import { essenceValidationForUnit } from '@data/essenceAttributes'
 
 type TinctureTab = 'ledger' | 'production' | 'cellar' | 'editor' | 'coach'
 
@@ -1055,6 +1056,15 @@ function ProductionCalculator() {
   })
   const [selectedBuild, setSelectedBuild] = useState(() => requestedBuild ?? '')
   const units = useMemo(() => calculatorUnitsForCiv(civ, age), [age, civ])
+  const essenceValidation = useMemo(() => {
+    const rows = units.map((unit) => essenceValidationForUnit(unit.id)).filter(Boolean)
+    return {
+      checked: rows.length,
+      conflicts: rows.filter((row) => row!.status === 'conflict').length,
+      variants: rows.filter((row) => row!.status === 'partial').length,
+      missing: rows.filter((row) => row!.status === 'missing').length,
+    }
+  }, [units])
   const modifiers = useMemo(() => productionModifiersForCiv(civ), [civ])
   const defaultModifierIds = useMemo(
     () => modifiers.filter((modifier) => modifier.defaultSelected).map((modifier) => modifier.id),
@@ -1168,6 +1178,18 @@ function ProductionCalculator() {
               <p className="mt-1 text-[10px] text-muted-foreground/80">
                 {tt('Versioned game data')} · {GAME_DATA_VERSION} ·{' '}
                 {new Date(GAME_DATA_CAPTURED_AT).toLocaleDateString()}
+              </p>
+              <p className="mt-1 text-[10px] text-muted-foreground/70">
+                {tt('Local Essence check')} · {essenceValidation.checked} {tt('units checked')}
+                {essenceValidation.conflicts > 0
+                  ? ` · ${essenceValidation.conflicts} ${tt('attribute conflicts')}`
+                  : ''}
+                {essenceValidation.variants > 0
+                  ? ` · ${essenceValidation.variants} ${tt('variant groups')}`
+                  : ''}
+                {essenceValidation.missing > 0
+                  ? ` · ${essenceValidation.missing} ${tt('unmatched units')}`
+                  : ''}
               </p>
             </div>
             <Badge variant="outline" className="border-primary/30 text-[10px] text-primary">

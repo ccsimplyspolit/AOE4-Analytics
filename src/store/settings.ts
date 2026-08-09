@@ -236,6 +236,36 @@ export interface LocalDataSettings {
   excludeAiFromStats: boolean
 }
 
+/** Background work that keeps the local account archive and public catalogues warm. */
+export interface AutomationSettings {
+  /** Master switch for all background refreshes. */
+  enabled: boolean
+  /** Periodically fold new account/local games into the local history store. */
+  syncHistory: boolean
+  /** Refresh the complete AoE4World + Relic account archive before cache work. */
+  refreshReplayArchive: boolean
+  /** Find exact or high-confidence public gameplay for new account matches. */
+  discoverGameplay: boolean
+  /** Run the checked-in source refresh script automatically. Disabled by default because it can rewrite generated files. */
+  syncSources: boolean
+  /** Persist available datatype-1 summaries before Relic's short retention window expires. */
+  cacheSummaries: boolean
+  /** Persist a small, recent replay window for offline Replay Lab analysis. */
+  cacheReplays: boolean
+  /** Parse cached/local replay command streams automatically in Replay Lab. */
+  analyzeReplays: boolean
+  /** Warm public map/build/dump caches without mutating bundled source files. */
+  warmCatalogs: boolean
+  /** Minimum delay between account refresh passes. */
+  intervalMinutes: number
+  /** Maximum summary blobs downloaded by one background pass. */
+  maxSummariesPerRun: number
+  /** Maximum replay files downloaded by one background pass. */
+  maxReplaysPerRun: number
+  /** Maximum new gameplay VOD analyses started by one background pass. */
+  maxGameplayPerRun: number
+}
+
 /** A linked AoE4World account (the user may have several). */
 export interface Account {
   profileId: number
@@ -291,15 +321,17 @@ export interface AppSettings {
   hotkeys: HotkeySettings
   polling: PollingSettings
   localData: LocalDataSettings
+  automation: AutomationSettings
 }
 
 export type AppSettingsPatch = Partial<
-  Omit<AppSettings, 'overlay' | 'hotkeys' | 'polling' | 'localData'>
+  Omit<AppSettings, 'overlay' | 'hotkeys' | 'polling' | 'localData' | 'automation'>
 > & {
   overlay?: Partial<OverlaySettings>
   hotkeys?: Partial<HotkeySettings>
   polling?: Partial<PollingSettings>
   localData?: Partial<LocalDataSettings>
+  automation?: Partial<AutomationSettings>
 }
 
 export const DEFAULT_SETTINGS: AppSettings = {
@@ -352,6 +384,21 @@ export const DEFAULT_SETTINGS: AppSettings = {
   hotkeys: DEFAULT_HOTKEYS,
   polling: { idleIntervalMs: 15_000, activeIntervalMs: 8_000 },
   localData: { consentGranted: true, gameDir: null, excludeAiFromStats: false },
+  automation: {
+    enabled: true,
+    syncHistory: true,
+    refreshReplayArchive: true,
+    discoverGameplay: true,
+    syncSources: false,
+    cacheSummaries: true,
+    cacheReplays: true,
+    analyzeReplays: true,
+    warmCatalogs: true,
+    intervalMinutes: 30,
+    maxSummariesPerRun: 50,
+    maxReplaysPerRun: 3,
+    maxGameplayPerRun: 2,
+  },
 }
 
 const KEY = 'settings'
@@ -570,7 +617,8 @@ function sanitizeOverlay(v: unknown): Partial<OverlaySettings> | undefined {
     if (mode) out.buildOrderViewMode = mode
   }
   if ('buildOrderShowNext' in v) out.buildOrderShowNext = Boolean(v.buildOrderShowNext)
-  if ('buildOrderShowResources' in v) out.buildOrderShowResources = Boolean(v.buildOrderShowResources)
+  if ('buildOrderShowResources' in v)
+    out.buildOrderShowResources = Boolean(v.buildOrderShowResources)
   if ('buildOrderShowNotes' in v) out.buildOrderShowNotes = Boolean(v.buildOrderShowNotes)
   if ('buildOrderShowResponsePlan' in v) {
     out.buildOrderShowResponsePlan = Boolean(v.buildOrderShowResponsePlan)
@@ -703,6 +751,37 @@ function sanitizeLocalData(v: unknown): Partial<LocalDataSettings> | undefined {
   return out
 }
 
+function sanitizeAutomation(v: unknown): Partial<AutomationSettings> | undefined {
+  if (!isObject(v)) return undefined
+  const out: Partial<AutomationSettings> = {}
+  if ('enabled' in v) out.enabled = Boolean(v.enabled)
+  if ('syncHistory' in v) out.syncHistory = Boolean(v.syncHistory)
+  if ('refreshReplayArchive' in v) out.refreshReplayArchive = Boolean(v.refreshReplayArchive)
+  if ('discoverGameplay' in v) out.discoverGameplay = Boolean(v.discoverGameplay)
+  if ('syncSources' in v) out.syncSources = Boolean(v.syncSources)
+  if ('cacheSummaries' in v) out.cacheSummaries = Boolean(v.cacheSummaries)
+  if ('cacheReplays' in v) out.cacheReplays = Boolean(v.cacheReplays)
+  if ('analyzeReplays' in v) out.analyzeReplays = Boolean(v.analyzeReplays)
+  if ('warmCatalogs' in v) out.warmCatalogs = Boolean(v.warmCatalogs)
+  if ('intervalMinutes' in v) {
+    const n = finite(v.intervalMinutes)
+    if (n != null) out.intervalMinutes = Math.round(Math.min(24 * 60, Math.max(5, n)))
+  }
+  if ('maxSummariesPerRun' in v) {
+    const n = finite(v.maxSummariesPerRun)
+    if (n != null) out.maxSummariesPerRun = Math.round(Math.min(50, Math.max(1, n)))
+  }
+  if ('maxReplaysPerRun' in v) {
+    const n = finite(v.maxReplaysPerRun)
+    if (n != null) out.maxReplaysPerRun = Math.round(Math.min(10, Math.max(1, n)))
+  }
+  if ('maxGameplayPerRun' in v) {
+    const n = finite(v.maxGameplayPerRun)
+    if (n != null) out.maxGameplayPerRun = Math.round(Math.min(10, Math.max(1, n)))
+  }
+  return out
+}
+
 /**
  * Coerces/clamps a renderer-supplied settings patch: numbers via Number() with
  * per-field bounds, booleans via Boolean(), enum/string fields type-checked,
@@ -766,6 +845,10 @@ export function sanitizePatch(patch: AppSettingsPatch): AppSettingsPatch {
     const o = sanitizeLocalData(p.localData)
     if (o) out.localData = o
   }
+  if ('automation' in p) {
+    const o = sanitizeAutomation(p.automation)
+    if (o) out.automation = o
+  }
   return out
 }
 
@@ -796,6 +879,7 @@ export class SettingsService {
         ...(stored.localData ?? {}),
         consentGranted: true,
       },
+      automation: { ...DEFAULT_SETTINGS.automation, ...(stored.automation ?? {}) },
       accounts: stored.accounts ?? [],
     }
     // Migrate a pre-multi-account install (single profileId) into accounts[].
@@ -828,6 +912,9 @@ export class SettingsService {
       hotkeys: patch.hotkeys ? { ...current.hotkeys, ...patch.hotkeys } : current.hotkeys,
       polling: patch.polling ? { ...current.polling, ...patch.polling } : current.polling,
       localData: patch.localData ? { ...current.localData, ...patch.localData } : current.localData,
+      automation: patch.automation
+        ? { ...current.automation, ...patch.automation }
+        : current.automation,
     }
     this.store.set(KEY, next)
     return next

@@ -134,6 +134,27 @@ describe('sanitizePatch', () => {
     expect(out.overlay).toEqual({ opacity: 1 })
   })
 
+  it('sanitizes bounded background automation settings', () => {
+    const out = sanitizePatch({
+      automation: {
+        enabled: 0 as never,
+        refreshReplayArchive: 1 as never,
+        analyzeReplays: 0 as never,
+        intervalMinutes: 2,
+        maxSummariesPerRun: 999,
+        maxReplaysPerRun: 0,
+      },
+    })
+    expect(out.automation).toEqual({
+      enabled: false,
+      refreshReplayArchive: true,
+      analyzeReplays: false,
+      intervalMinutes: 5,
+      maxSummariesPerRun: 50,
+      maxReplaysPerRun: 1,
+    })
+  })
+
   it('drops non-finite numbers and coerces numeric strings', () => {
     const out = sanitizePatch({
       recentGamesCount: 'NaN',

@@ -2,6 +2,7 @@ import { FileText, ListChecks, Video } from 'lucide-react'
 import type { VideoAnalysisRecord } from '@domain/videoAnalysis'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { useI18n } from '../../i18n'
+import { VideoPlayer } from './VideoPlayer'
 
 export function VideoAnalysisPanel({ record }: { record: VideoAnalysisRecord }) {
   const { tt } = useI18n()
@@ -30,6 +31,8 @@ export function VideoAnalysisPanel({ record }: { record: VideoAnalysisRecord }) 
             {tt('Open source')} ↗
           </a>
         </div>
+
+        <VideoPlayer url={record.url} title={record.title} className="max-w-2xl" />
 
         {tactics.length > 0 ? (
           <div className="grid gap-2 sm:grid-cols-2">
@@ -65,7 +68,7 @@ export function VideoAnalysisPanel({ record }: { record: VideoAnalysisRecord }) 
               <FileText className="h-3.5 w-3.5 text-primary" />
               {tt('Transcript excerpt')}
               <span className="ml-auto text-[10px] text-muted-foreground">
-                {record.transcriptLanguage ?? 'auto'} · {record.transcriptProvider}
+                {record.transcriptLanguage ?? tt('auto')} · {transcriptProviderLabel(record.transcriptProvider, tt)}
               </span>
             </summary>
             <p className="max-h-52 overflow-y-auto border-t border-border px-3 py-2 text-[11px] leading-relaxed text-muted-foreground">
@@ -82,6 +85,20 @@ export function VideoAnalysisPanel({ record }: { record: VideoAnalysisRecord }) 
       </CardContent>
     </Card>
   )
+}
+
+function transcriptProviderLabel(
+  provider: VideoAnalysisRecord['transcriptProvider'],
+  tt: (value: string) => string,
+): string {
+  const labels: Record<VideoAnalysisRecord['transcriptProvider'], string> = {
+    'youtube-captions': 'YouTube captions',
+    'twitch-captions': 'Twitch captions',
+    'yt-dlp': 'yt-dlp',
+    local: 'Local file',
+    none: 'None',
+  }
+  return tt(labels[provider])
 }
 
 function formatTimestamp(seconds: number): string {

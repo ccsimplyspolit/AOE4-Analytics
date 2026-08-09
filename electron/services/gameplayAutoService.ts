@@ -255,16 +255,20 @@ async function workflow(input: GameplayAutoInput): Promise<GameplayAutoResult> {
   result.stage = 'found'
   result.warnings.push(candidate.reason)
 
-  result.stage = 'downloading'
-  const downloaded = await downloadGameplay(candidate, input.gameId)
-  if (downloaded) {
-    result.downloadedPath = downloaded.path
-    result.downloadedBytes = downloaded.bytes
-    result.stage = 'downloaded'
+  if (input.download !== false) {
+    result.stage = 'downloading'
+    const downloaded = await downloadGameplay(candidate, input.gameId)
+    if (downloaded) {
+      result.downloadedPath = downloaded.path
+      result.downloadedBytes = downloaded.bytes
+      result.stage = 'downloaded'
+    } else {
+      result.warnings.push(
+        'Не удалось скачать файл автоматически. Установите yt-dlp или Python-модуль yt_dlp; разбор публичных субтитров всё равно будет выполнен по ссылке.',
+      )
+    }
   } else {
-    result.warnings.push(
-      'Не удалось скачать файл автоматически. Установите yt-dlp или Python-модуль yt_dlp; разбор публичных субтитров всё равно будет выполнен по ссылке.',
-    )
+    result.warnings.push('Фоновый режим: видеофайл не скачивался, использованы публичные субтитры и метаданные.')
   }
 
   result.stage = 'analyzing'
@@ -295,6 +299,7 @@ export async function autoFindGameplay(input: unknown): Promise<IpcResult<Gamepl
     opponentCivilization: input.opponentCivilization?.trim() || null,
     map: input.map?.trim() || null,
     playedAt: input.playedAt?.trim() || null,
+    download: input.download !== false,
   }
   const cached = cache.get(normalized.gameId)
   if (!normalized.force && cached && cached.expiresAt > Date.now()) return ok(cached.value)

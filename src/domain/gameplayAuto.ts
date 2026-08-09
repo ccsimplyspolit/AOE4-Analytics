@@ -9,6 +9,8 @@ export interface GameplayAutoInput {
   map?: string | null
   durationSec?: number | null
   playedAt?: string | null
+  /** Skip the potentially large yt-dlp download and analyze public captions only. */
+  download?: boolean
   /** Bypass the short-lived workflow cache when the user explicitly retries. */
   force?: boolean
 }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-09T12:06:07.352Z",
+  "generatedAt": "2026-08-09T12:24:26.389Z",
   "source": "aoe4world/data",
   "sourceCommit": "b2cd38222deae40ba2db18171edf494f81410c69",
   "cdnRoot": "https://data.aoe4world.com/images",
@@ -10,17 +10,19 @@
   "downloaded": 0,
   "reused": 976,
   "essence": {
-    "status": "inventoried",
+    "status": "decoded",
     "sourceRevision": null,
     "counts": {
-      "sga": 1,
+      "sga": 0,
       "rgd": 0,
-      "rrtex": 0,
+      "rrtex": 237,
       "rrgeom": 0,
       "rrmaterial": 0,
       "png": 0,
-      "files": 1,
-      "projectedRgd": 2958
+      "files": 237,
+      "projectedRgd": 2958,
+      "projectionErrors": 754,
+      "decodedPng": 237
     },
     "report": "data/research/essence/latest.json"
   }

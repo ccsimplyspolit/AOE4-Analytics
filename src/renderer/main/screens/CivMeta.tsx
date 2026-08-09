@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import {
   ArrowLeftRight,
@@ -35,7 +35,11 @@ import { buildIndexForCiv } from '@domain/buildOrderSchema'
 import { COUNTER_MATRIX } from '@domain/counters'
 import { counterRowsForCivs } from '@domain/unitCounterModel'
 import { civDisplayName } from '@domain/civ'
-import { buildPersonalMatchup, isGlobalMatchupLeaderboard } from '@domain/matchupLab'
+import {
+  buildPersonalMatchup,
+  isGlobalMatchupLeaderboard,
+  isMatchupCivilization,
+} from '@domain/matchupLab'
 import { filterPersonalHistory } from '@domain/historyFilters'
 import {
   formatDurationShort,
@@ -56,6 +60,7 @@ import { useSettings } from '../queries/useProfile'
 import { TierBadge } from '../components/TierBadge'
 import { EmptyBox, ErrorBox } from '../components/feedback'
 import { useI18n } from '../../i18n'
+import { essenceValidationForUnit } from '@data/essenceAttributes'
 
 const LADDERS: { label: string; value: StatsLeaderboard }[] = [
   { label: 'Ranked 1v1', value: 'rm_solo' },
@@ -1014,6 +1019,17 @@ function MatchupsTab({
 
   const plan = useMemo(() => counterPlanForCiv(oppCiv), [oppCiv])
   const unitCounterRows = useMemo(() => counterRowsForCivs(oppCiv, myCiv), [myCiv, oppCiv])
+  const essenceCounterValidation = useMemo(() => {
+    const units = unitCounterRows.flatMap((row) => [row.target, ...row.candidates.map((candidate) => candidate.unit)])
+    const unique = [...new Map(units.map((unit) => [unit.id, unit])).values()]
+    const rows = unique.map((unit) => essenceValidationForUnit(unit.id)).filter(Boolean)
+    return {
+      checked: rows.length,
+      conflicts: rows.filter((row) => row!.status === 'conflict').length,
+      variants: rows.filter((row) => row!.status === 'partial').length,
+      missing: rows.filter((row) => row!.status === 'missing').length,
+    }
+  }, [unitCounterRows])
   const buildIndex = useMemo(() => buildIndexForCiv(BUNDLED_BUILD_ORDERS, myCiv), [myCiv])
   const build = buildIndex != null ? BUNDLED_BUILD_ORDERS[buildIndex]! : null
   const personalHistory = useMemo(() => {
@@ -1032,6 +1048,40 @@ function MatchupsTab({
     [formatFilter, mapFilter, myCiv, oppCiv, personalHistory],
   )
   const mirror = myCiv === oppCiv
+  const autoPairInitialized = useRef(false)
+  const pairTouched = useRef(false)
+
+  // English vs French used to be a fixed example pair. That made the personal
+  // history panel look broken for players whose recent games use other civs.
+  // Once the account history is ready, select its newest valid pair only when
+  // the example pair has no local matches; deliberate user selections remain
+  // untouched afterwards.
+  useEffect(() => {
+    if (
+      autoPairInitialized.current ||
+      pairTouched.current ||
+      !settings ||
+      history.isLoading ||
+      !history.data?.ok
+    )
+      return
+    autoPairInitialized.current = true
+    if (personal.sampleSize > 0) return
+    const latestPair = personalHistory
+      .map((match) => ({
+        match,
+        opponent:
+          match.oppCiv ?? match.oppTeam?.find((player) => isMatchupCivilization(player.civ))?.civ,
+      }))
+      .find(
+        ({ match, opponent }) =>
+          isMatchupCivilization(match.civ) && isMatchupCivilization(opponent),
+      )
+    if (latestPair?.opponent) {
+      setMyCiv(latestPair.match.civ)
+      setOppCiv(latestPair.opponent)
+    }
+  }, [history.data, history.isLoading, personal.sampleSize, personalHistory, settings])
 
   useEffect(() => {
     setMapFilter('')
@@ -1042,10 +1092,18 @@ function MatchupsTab({
     <div className="space-y-5">
       {mapPool && <MapPoolNotice mapPool={mapPool} filtered={mapPoolOnly} />}
       <div className="flex items-end gap-3 rounded-lg border border-border bg-card/50 p-4">
-        <CivSelect label={tt('Your civ')} value={myCiv} onChange={setMyCiv} />
+        <CivSelect
+          label={tt('Your civ')}
+          value={myCiv}
+          onChange={(value) => {
+            pairTouched.current = true
+            setMyCiv(value)
+          }}
+        />
         <button
           type="button"
           onClick={() => {
+            pairTouched.current = true
             setMyCiv(oppCiv)
             setOppCiv(myCiv)
           }}
@@ -1054,7 +1112,14 @@ function MatchupsTab({
         >
           <ArrowLeftRight className="h-4 w-4" />
         </button>
-        <CivSelect label={tt('Opponent civ')} value={oppCiv} onChange={setOppCiv} />
+        <CivSelect
+          label={tt('Opponent civ')}
+          value={oppCiv}
+          onChange={(value) => {
+            pairTouched.current = true
+            setOppCiv(value)
+          }}
+        />
       </div>
 
       <section className="rounded-lg border border-border bg-card/60 p-5 text-center">
@@ -1203,6 +1268,18 @@ function MatchupsTab({
                 'War Room-inspired ranking over the vendored AoE4World unit snapshot. It combines role counters with age, cost and training time; active abilities and map effects are not simulated.',
               )}
             </p>
+            <p className="mt-1 text-[10px] text-muted-foreground/70">
+              {tt('Local Essence check')} · {essenceCounterValidation.checked} {tt('units checked')}
+              {essenceCounterValidation.conflicts > 0
+                ? ` · ${essenceCounterValidation.conflicts} ${tt('attribute conflicts')}`
+                : ''}
+              {essenceCounterValidation.variants > 0
+                ? ` · ${essenceCounterValidation.variants} ${tt('variant groups')}`
+                : ''}
+              {essenceCounterValidation.missing > 0
+                ? ` · ${essenceCounterValidation.missing} ${tt('unmatched units')}`
+                : ''}
+            </p>
           </div>
           <div className="grid gap-2 md:grid-cols-2">
             {unitCounterRows.map((row) => (
@@ -1350,9 +1427,17 @@ function PersonalMatchupSection({
       </header>
 
       {personal.sampleSize === 0 ? (
-        <EmptyBox>
-          {tt('No matching games in your stored history for these local filters.')}
-        </EmptyBox>
+        <div className="space-y-2">
+          <EmptyBox>
+            {tt('No matching games in your stored history for these local filters.')}
+          </EmptyBox>
+          {history.data?.ok && history.data.data.length > 0 && (
+            <p className="text-center text-xs text-muted-foreground">
+              {tt('Your history contains {count} games. Try another civilization pair or local filter.')
+                .replace('{count}', String(history.data.data.length))}
+            </p>
+          )}
+        </div>
       ) : (
         <>
           <div className="flex flex-wrap gap-4 text-sm">

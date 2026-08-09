@@ -308,6 +308,10 @@ const UI: Record<Locale, Record<string, string>> = {
     'Historical snapshot is stale or unavailable; open Civ Meta for current values.':
       'Исторический снапшот устарел или недоступен; актуальные значения доступны в Civ Meta.',
     'Saved games in snapshot': 'Матчей в сохранённом снапшоте',
+    'Custom build orders are available here. Uncheck a build to skip it while cycling; use the arrows to set the order.':
+      'Здесь доступны ваши пользовательские билды. Снимите флажок, чтобы пропустить билд в цикле; стрелками задайте порядок.',
+    'No build orders are available. Create one in Tincture to add it to the overlay cycle.':
+      'Билдов пока нет. Создайте билд в Tincture, чтобы добавить его в цикл оверлея.',
     'Saved snapshot context plus local build coverage.':
       'Контекст сохранённого снапшота и покрытие локальными билдами.',
     'games in the saved snapshot': 'матчей в сохранённом снапшоте',
@@ -402,7 +406,15 @@ const UI: Record<Locale, Record<string, string>> = {
     'Curated / AoE4Guides': 'Подборка / AoE4Guides',
     'Custom stream CSS': 'Пользовательский CSS стрима',
     'Data sources and coverage': 'Источники данных и покрытие',
+    Watch: 'Смотреть',
+    auto: 'авто',
+    'YouTube captions': 'субтитры YouTube',
+    'Twitch captions': 'субтитры Twitch',
+    'Local file': 'локальный файл',
+    None: 'нет',
     'Essence validation': 'Проверка Essence',
+    'Local Essence check': 'Проверка локальным Essence',
+    'units checked': 'юнитов проверено',
     'exact matches': 'точных совпадений',
     'variant groups': 'групп вариантов',
     'attribute conflicts': 'расхождений атрибутов',
@@ -1364,6 +1376,22 @@ const UI: Record<Locale, Record<string, string>> = {
     'Changes save automatically': 'Изменения сохраняются автоматически',
     'Save failed': 'Не удалось сохранить',
     Appearance: 'Оформление',
+    Automation: 'Автоматизация',
+    'Background automation': 'Фоновая автоматизация',
+    'Keep data fresh automatically': 'Автоматически поддерживать данные свежими',
+    'Sync history, save recent summaries/replays and warm public catalogues when the game is closed.':
+      'Синхронизировать историю, сохранять свежие сводки и реплеи и прогревать публичные каталоги, когда игра закрыта.',
+    'Sync account history': 'Синхронизировать историю аккаунта',
+    'Refresh complete replay archive': 'Обновлять полный архив реплеев',
+    'Cache uploaded summaries': 'Кэшировать загруженные сводки',
+    'Cache recent replays': 'Кэшировать свежие реплеи',
+    'Analyze replay command streams': 'Разбирать потоки команд реплеев',
+    'Warm public catalogues': 'Прогревать публичные каталоги',
+    'Refresh interval': 'Интервал обновления',
+    'Summaries per pass': 'Сводок за проход',
+    'Replays per pass': 'Реплеев за проход',
+    'Background work is serialized, cache-first and paused while AoE4 is running. Source files are never rewritten automatically.':
+      'Фоновая работа выполняется последовательно, использует кэш и приостанавливается во время AoE4. Исходные файлы автоматически не переписываются.',
     'Civilization themes': 'Темы цивилизаций',
     'While a match is live, the app and overlay re-accent to the colours of the civ you’re playing, then revert when the game ends.':
       'Во время матча приложение и оверлей используют цвета выбранной цивилизации, а после матча возвращаются к обычным.',
@@ -1606,7 +1634,6 @@ const UI: Record<Locale, Record<string, string>> = {
     evidence: 'доказательство',
     'Views unavailable': 'Просмотры недоступны',
     views: 'просмотров',
-    Watch: 'Смотреть',
     'Showing the first 80 matches. Refine the filters to narrow the corpus.':
       'Показаны первые 80 совпадений. Уточните фильтры, чтобы сузить выборку.',
     'How to beat': 'Как победить',
@@ -2117,7 +2144,6 @@ const UI: Record<Locale, Record<string, string>> = {
     Counter: 'Контр',
     opp: 'соперник',
     next: 'далее',
-    auto: 'авто',
     manual: 'вручную',
     'reference build — no bundled build for': 'эталонный билд — нет встроенного билда для',
     'Response forks · scout first': 'Варианты ответа · сначала разведка',

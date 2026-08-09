@@ -28,6 +28,8 @@
     "dist": "npm run prepare:replays-api && npm run build && electron-builder --win",
     "dist:verified": "npm run prepare:replays-api && npm run verify && npm run bundle && electron-builder --win",
     "pack": "npm run prepare:replays-api && npm run build && electron-builder --dir",
+    "release:auto": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/auto_build.ps1 -Launch",
+    "release:smoke": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/auto_build.ps1 -SkipTests",
     "test": "vitest run",
     "test:watch": "vitest",
     "verify": "npm run typecheck && npm run lint && npm test",

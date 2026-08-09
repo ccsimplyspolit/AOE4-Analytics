@@ -52,7 +52,7 @@ import {
   useReplayAnalysis,
   useReplays,
 } from '../queries/useReplays'
-import { useSettings } from '../queries/useProfile'
+import { useSettings, useUpdateSettings } from '../queries/useProfile'
 import { useGameSummary } from '../queries/useHistory'
 import { useSteamAuthStatus } from '../queries/useSteam'
 import { useTwitchVod } from '../queries/useTwitchVod'
@@ -187,13 +187,12 @@ function Pager({
 export function ReplayLab() {
   const { tt } = useI18n()
   const settings = useSettings()
+  const updateSettings = useUpdateSettings()
   const steam = useSteamAuthStatus()
   const [source, setSource] = useState<'local' | 'account'>('local')
   const [localPage, setLocalPage] = useState(1)
   const [accountPage, setAccountPage] = useState(1)
   const [accountRefreshVersion, setAccountRefreshVersion] = useState(0)
-  const [autoCache, setAutoCache] = useState(true)
-  const [autoAnalyze, setAutoAnalyze] = useState(true)
   const [cacheMessage, setCacheMessage] = useState<string | null>(null)
   const [bulkCacheMode, setBulkCacheMode] = useState<BulkCacheMode | null>(null)
   const [bulkCacheProgress, setBulkCacheProgress] = useState<BulkCacheProgress | null>(null)
@@ -215,6 +214,9 @@ export function ReplayLab() {
   const fullAnalysisRun = useRef(0)
   const archiveAuditRun = useRef(0)
   const consent = settings.data?.localData.consentGranted ?? false
+  const autoCache = settings.data?.automation.cacheReplays ?? true
+  const autoSummaryCache = settings.data?.automation.cacheSummaries ?? true
+  const autoAnalyze = settings.data?.automation.analyzeReplays ?? true
   const local = useReplays(localPage, LOCAL_PAGE_SIZE)
   const account = useAccountReplays(accountPage, ACCOUNT_PAGE_SIZE, accountRefreshVersion > 0)
   const cacheOne = useCacheReplay()
@@ -532,7 +534,7 @@ export function ReplayLab() {
   useEffect(() => {
     if (
       source !== 'account' ||
-      !autoAnalyze ||
+      !autoSummaryCache ||
       !steam.data?.connected ||
       accountData == null ||
       summaryIds.length === 0 ||
@@ -554,7 +556,7 @@ export function ReplayLab() {
     void cacheAvailableSummaries(summaryIds)
   }, [
     accountData,
-    autoAnalyze,
+    autoSummaryCache,
     autoCache,
     availableIds,
     cacheAvailableSummaries,
@@ -638,7 +640,9 @@ export function ReplayLab() {
               <input
                 type="checkbox"
                 checked={autoCache}
-                onChange={(event) => setAutoCache(event.target.checked)}
+                onChange={(event) =>
+                  updateSettings.mutate({ automation: { cacheReplays: event.target.checked } })
+                }
               />
               {tt('Auto-cache available page replays')}
             </label>
@@ -647,7 +651,9 @@ export function ReplayLab() {
             <input
               type="checkbox"
               checked={autoAnalyze}
-              onChange={(event) => setAutoAnalyze(event.target.checked)}
+              onChange={(event) =>
+                updateSettings.mutate({ automation: { analyzeReplays: event.target.checked } })
+              }
             />
             {tt(
               source === 'account' ? 'Auto-analyze cached replays' : 'Auto-analyze local replays',

@@ -42,7 +42,6 @@ import { Badge } from '@shared/components/ui/badge'
 import { cn } from '@shared/lib/utils'
 import { ipc } from '@shared/ipc'
 import { useI18n } from '../../i18n'
-import { useSettings } from '../queries/useProfile'
 
 const DRAFT_KEY = 'rtslytics.tincture.build-editor.v1'
 const QUICK_TOKENS = [
@@ -178,7 +177,6 @@ function NotePreview({ note, tt }: { note: string; tt: (value: string) => string
 
 export function BuildEditor() {
   const { tt, gameName } = useI18n()
-  const { data: appSettings } = useSettings()
   const [build, setBuild] = useState<BuildOrder>(() => {
     if (typeof window === 'undefined') return blankBuild()
     const fromUrl = new URLSearchParams(window.location.search).get('draft')
@@ -320,7 +318,10 @@ export function BuildEditor() {
   }
 
   const addToOverlayLibrary = async () => {
-    const current = appSettings ?? (await ipc.getSettings())
+    // Read the authoritative main-process settings each time so adding a
+    // second build in the same editor session never overwrites the first one
+    // while the React query cache is still stale.
+    const current = await ipc.getSettings()
     const customBuildOrders = [
       ...current.overlay.customBuildOrders.filter((item) => item.name !== build.name),
       structuredClone(build),

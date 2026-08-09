@@ -1,4 +1,5 @@
 import { app, BrowserWindow, session } from 'electron'
+import { writeFileSync } from 'node:fs'
 import { createMainWindow } from './windows/mainWindow'
 import { registerIpcHandlers } from './ipc/handlers'
 import { registerHotkeys, unregisterHotkeys } from './hotkeys'
@@ -27,6 +28,7 @@ import {
   startRankedMapPoolAutoRefresh,
   stopRankedMapPoolAutoRefresh,
 } from './services/rankedMapPoolService'
+import { startAutomation, stopAutomation } from './services/automationService'
 
 // Diagnostic: isolate data to a temp dir when running a live verify/smoke.
 if (process.env['RTSLYTICS_VERIFY'] || process.env['RTSLYTICS_SMOKE'] === '1') {
@@ -82,6 +84,7 @@ function bootstrap(): void {
   if (!isSmoke) {
     poll.start() // don't make live API calls during the automated smoke
     startRankedMapPoolAutoRefresh()
+    startAutomation()
     // Start the live-APM global input hook if the user enabled it (Settings).
     apmTracker.setEnabled(getSettings().getAll().overlay.apm)
   }
@@ -132,19 +135,37 @@ function bootstrap(): void {
       console.log(
         `[rtslytics] localData: consent=${local.consentGranted} available=${local.available} (gate ${local.consentGranted ? 'open' : 'closed'})`,
       )
-      void isGameRunning().then((r) =>
-        console.log(`[rtslytics] gameRunning(AoE4 process): ${r}`),
-      )
+      void isGameRunning().then((r) => console.log(`[rtslytics] gameRunning(AoE4 process): ${r}`))
       void getSteamAccounts().then((a) =>
         console.log(`[rtslytics] steamAccounts: ${a.length} (recent: ${a[0]?.personaName ?? '—'})`),
       )
+      // Exercise the paint-gated overlay show path before capturing the
+      // diagnostic report, so the report reflects the visible state.
+      overlay?.show()
       getHistory()
-        .then(({ backend }) => console.log(`[rtslytics] history backend: ${backend}`))
-        .catch((e) => console.log('[rtslytics] history init error:', e))
+        .then(({ backend }) => {
+          const report = {
+            version: app.getVersion(),
+            historyBackend: backend,
+            overlayVisible: overlay?.isVisible() ?? false,
+            overlayBounds: overlay?.window?.getBounds() ?? null,
+            localData: getLocalDataStatus(),
+            completedAt: new Date().toISOString(),
+          }
+          writeFileSync(
+            join(app.getPath('userData'), 'smoke-report.json'),
+            JSON.stringify(report, null, 2),
+          )
+          console.log(`[rtslytics] history backend: ${backend}`)
+        })
+        .catch((e) => {
+          writeFileSync(
+            join(app.getPath('userData'), 'smoke-report.json'),
+            JSON.stringify({ error: String(e), completedAt: new Date().toISOString() }, null, 2),
+          )
+          console.log('[rtslytics] history init error:', e)
+        })
         .finally(() => {
-          // Exercise the paint-gated overlay show path (Alt+O) and confirm it
-          // reveals at its persisted bounds without throwing.
-          overlay?.show()
           console.log(
             `[rtslytics] overlay shown: ${overlay?.isVisible()} bounds: ${JSON.stringify(
               overlay?.window?.getBounds(),
@@ -186,6 +207,7 @@ if (!gotLock) {
   app.on('will-quit', () => {
     poll?.stop()
     stopRankedMapPoolAutoRefresh()
+    stopAutomation()
     apmTracker?.stop()
     overlay?.dispose()
     unregisterHotkeys()

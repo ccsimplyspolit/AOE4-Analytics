@@ -76,6 +76,7 @@ import { syncExternalSources } from '../services/sourceSyncService'
 import { extractVideoAnalysis } from '../services/videoAnalysisService'
 import { listVideoAnalyses } from '../services/videoAnalysisStore'
 import { autoFindGameplay } from '../services/gameplayAutoService'
+import { getAutomationStatus, runAutomationNow } from '../services/automationService'
 import { getBeastyNumber } from '../services/beastyNumberService'
 import { getPublicGame } from '../services/publicGameService'
 import { findSimilarMatches } from '../services/similarMatchService'
@@ -344,6 +345,8 @@ export function registerIpcHandlers(): void {
   )
   ipcMain.handle(IpcChannels.videoAnalysisList, () => ok(listVideoAnalyses()))
   ipcMain.handle(IpcChannels.gameplayAutoFind, (_e, input: unknown) => autoFindGameplay(input))
+  ipcMain.handle(IpcChannels.automationStatus, () => getAutomationStatus())
+  ipcMain.handle(IpcChannels.automationRun, () => runAutomationNow())
   ipcMain.handle(IpcChannels.translationStatus, () => getTranslationStatus())
   ipcMain.handle(IpcChannels.translationConfigure, (_e, input: unknown) => {
     if (!input || typeof input !== 'object') throw new Error('Invalid translation settings.')

@@ -2,27 +2,31 @@
   "schemaVersion": 1,
   "source": "AOEMods.Essence",
   "sourceUrl": "https://github.com/aoemods/AOEMods.Essence",
-  "sourceRevision": "local-steam-2026-08-09",
-  "capturedAt": "2026-08-09T12:08:21Z",
-  "status": "inventoried",
+  "sourceRevision": null,
+  "capturedAt": "2026-08-09T12:22:58Z",
+  "status": "decoded",
   "input": {
     "path": null,
     "kind": "sga",
-    "name": "Attrib.sga",
-    "bytes": 100739100
+    "name": "UIArt.sga",
+    "bytes": 1766722682
   },
   "counts": {
-    "sga": 1,
+    "sga": 0,
     "rgd": 0,
-    "rrtex": 0,
+    "rrtex": 237,
     "rrgeom": 0,
     "rrmaterial": 0,
     "png": 0,
-    "files": 1,
+    "files": 237,
     "projectedRgd": 2958,
-    "projectionErrors": 754
+    "projectionErrors": 754,
+    "decodedPng": 237
   },
-  "actions": [],
+  "actions": [
+    "sga-unpack (filtered)",
+    "rrtex-decode -> PNG"
+  ],
   "projection": {
     "status": "ready",
     "sourceRevision": "local-steam-2026-08-09-rgd",
