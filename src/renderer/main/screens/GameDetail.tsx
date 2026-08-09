@@ -41,6 +41,7 @@ import { useTwitchVod } from '../queries/useTwitchVod'
 import { SimilarMatchCard } from '../components/SimilarMatchCard'
 import { TeamMateReviewCard } from '../components/TeamMateReviewCard'
 import { inferGameKind, type SimilarMatchQuery } from '@domain/similarMatch'
+import { playerEvidenceCoverage } from '@domain/statsCoverage'
 import { EmptyBox, ErrorBox, Spinner } from '../components/feedback'
 import { useI18n } from '../../i18n'
 
@@ -342,6 +343,7 @@ function Detail({
         <MatchPlayerFocus
           players={summary.players}
           civByProfile={new Map(rows.map((row) => [row.profileId, row.civ]))}
+          perPlayer={match.perPlayer}
           ownProfileId={myProfileId}
           activePlayerId={subjectPlayerId}
           onSelect={(playerId) => {
@@ -461,9 +463,10 @@ function Detail({
         showSubjectBadge={isOwnFocus}
       />
 
-      <ReplayCommandAnalysis match={match} />
+      <ReplayCommandAnalysis key={match.id} match={match} />
 
       <AutoGameplayCard
+        key={match.id}
         enabled={isOwnFocus && isPublicGame}
         hasAnalysis={Boolean(linkedVideoAnalysis)}
         input={{
@@ -645,10 +648,15 @@ function ReplayCommandAnalysis({ match }: { match: StoredMatch }) {
   // Opening a match is already an explicit request to inspect it. Start the
   // replay path automatically so decoded commands and evidence are available
   // without another click. Main-process caching keeps repeat visits cheap.
-  const autoStartedRef = useRef(false)
+  const autoStartedRef = useRef<string | null>(null)
   useEffect(() => {
-    if (autoStartedRef.current) return
-    autoStartedRef.current = true
+    if (autoStartedRef.current === match.id) return
+    autoStartedRef.current = match.id
+    setOpen(false)
+    setChecked(false)
+    setFullResult(null)
+    analysis.reset()
+    fullAnalysis.reset()
     run()
     // The effect is scoped to one mounted match; mutation updates must not
     // restart the workflow.
@@ -720,18 +728,21 @@ function Metric({ label, value, hint }: { label: string; value: string; hint?: s
 function MatchPlayerFocus({
   players,
   civByProfile,
+  perPlayer,
   ownProfileId,
   activePlayerId,
   onSelect,
 }: {
   players: PlayerSummary[]
   civByProfile: Map<number, string | null>
+  perPlayer?: PerPlayerMatchStats[]
   ownProfileId: number | null
   activePlayerId: number | null
   onSelect: (playerId: number) => void
 }) {
   const { tt, gameName } = useI18n()
   const selectable = players
+  const countersByProfile = new Map((perPlayer ?? []).map((row) => [row.profileId, row]))
   if (selectable.length < 2) return null
   return (
     <section className="space-y-2" aria-label={tt('Match player focus')}>
@@ -748,6 +759,10 @@ function MatchPlayerFocus({
           const civ =
             (profileId != null ? civByProfile.get(profileId) : undefined) ??
             civFromToken(player.civToken)
+          const coverage = playerEvidenceCoverage(
+            player,
+            profileId != null ? countersByProfile.get(profileId) : null,
+          )
           return (
             <button
               // profileId is optional for local/AI rows; playerId is the
@@ -775,6 +790,20 @@ function MatchPlayerFocus({
                   {tt('You')}
                 </span>
               )}
+              <span
+                className={cn(
+                  'ml-1.5 rounded px-1 text-[9px] font-medium uppercase',
+                  coverage.level === 'full'
+                    ? 'bg-win/15 text-win'
+                    : coverage.level === 'unavailable'
+                      ? 'bg-secondary text-muted-foreground'
+                      : 'bg-warn/15 text-warn',
+                )}
+                title={`${tt('Summary')}: ${coverage.summaryReported}/${coverage.summaryTotal} · ${tt('Relic counters')}: ${coverage.counterReported}/${coverage.counterTotal}${coverage.missing.length > 0 ? ` · ${tt('Missing')}: ${coverage.missing.map((field) => tt(field)).join(', ')}` : ''}`}
+              >
+                {coverage.summaryReported + coverage.counterReported}/
+                {coverage.summaryTotal + coverage.counterTotal}
+              </span>
             </button>
           )
         })}

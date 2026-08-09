@@ -51,8 +51,8 @@ export function AutoGameplayCard({
 }) {
   const { tt } = useI18n()
   const auto = useGameplayAuto()
-  const startedRef = useRef(false)
-  const retryScheduledRef = useRef(false)
+  const startedRef = useRef<string | null>(null)
+  const retryScheduledRef = useRef<string | null>(null)
   const retryTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const run = (force = false) => {
@@ -61,8 +61,12 @@ export function AutoGameplayCard({
   }
 
   useEffect(() => {
-    if (!enabled || hasAnalysis || startedRef.current) return
-    startedRef.current = true
+    if (!enabled || hasAnalysis || startedRef.current === input.gameId) return
+    if (startedRef.current != null && startedRef.current !== input.gameId) {
+      auto.reset()
+      retryScheduledRef.current = null
+    }
+    startedRef.current = input.gameId
     run()
     // The workflow is intentionally started once per mounted match. The main
     // process deduplicates retries and keeps a short-lived result cache.
@@ -76,12 +80,12 @@ export function AutoGameplayCard({
     if (
       !enabled ||
       hasAnalysis ||
-      retryScheduledRef.current ||
+      retryScheduledRef.current === input.gameId ||
       auto.data?.stage !== 'not_found'
     ) {
       return
     }
-    retryScheduledRef.current = true
+    retryScheduledRef.current = input.gameId
     retryTimerRef.current = setTimeout(() => {
       retryTimerRef.current = null
       run(true)

@@ -637,6 +637,9 @@ const UI: Record<Locale, Record<string, string>> = {
       'Используются только записанные данные; общий «счёт переноса» не вычисляется.',
     'Civilization unavailable': 'Цивилизация недоступна',
     'Show this player’s full match evidence': 'Показать полный разбор этого игрока',
+    'units produced': 'произведённые юниты',
+    losses: 'потери',
+    technology: 'технологии',
     'Confirmed findings': 'Подтверждённые выводы',
     'No evidence-backed issues were found for this player.':
       'Подтверждённых данных об ошибках этого игрока не найдено.',

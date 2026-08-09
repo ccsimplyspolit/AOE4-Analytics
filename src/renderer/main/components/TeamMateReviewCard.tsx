@@ -4,6 +4,7 @@ import { comparisonSignals } from '@domain/gameCoaching'
 import type { MatchSummary } from '@domain/statsSummary'
 import { civFromToken, type PlayerSummary as SummaryPlayer } from '@domain/statsSummary'
 import { summaryPlayerForMe, summarySignals, villagerGaps } from '@domain/summaryCoaching'
+import { playerEvidenceCoverage } from '@domain/statsCoverage'
 import { civDisplayName } from '@domain/civ'
 import { formatDurationShort } from '@shared/format'
 import { cn } from '@shared/lib/utils'
@@ -33,6 +34,7 @@ interface ReviewRow {
   counter: PerPlayerMatchStats
   signals: Signal[]
   isMe: boolean
+  coverage: ReturnType<typeof playerEvidenceCoverage> | null
 }
 
 /**
@@ -84,6 +86,7 @@ export function TeamMateReviewCard({
         (a, b) => SEVERITY_ORDER[a.severity] - SEVERITY_ORDER[b.severity],
       ),
       isMe: counter.profileId === selfProfileId,
+      coverage: player ? playerEvidenceCoverage(player, counter) : null,
     }
   })
 
@@ -187,8 +190,17 @@ export function TeamMateReviewCard({
                 )}
 
                 <div className="flex flex-wrap gap-x-3 gap-y-1 border-t border-border/60 pt-2 text-[10px] text-muted-foreground">
-                  <span>{tt('Relic counters')}: {counterCoverage(row.counter)}</span>
-                  {row.player && <span>{tt('Summary timeline')}: {summaryCoverage(row.player)}</span>}
+                  <span>
+                    {tt('Relic counters')}:{' '}
+                    {row.coverage
+                      ? `${row.coverage.counterReported}/${row.coverage.counterTotal}`
+                      : counterCoverage(row.counter)}
+                  </span>
+                  {row.coverage && (
+                    <span>
+                      {tt('Summary timeline')}: {row.coverage.summaryReported}/{row.coverage.summaryTotal}
+                    </span>
+                  )}
                 </div>
               </CardContent>
             </Card>
@@ -248,21 +260,15 @@ function formatNumber(value: number | null | undefined): string {
 }
 
 function counterCoverage(row: PerPlayerMatchStats): string {
-  const reported = [row.unitsProduced, row.kills, row.deaths, row.techsResearched, row.apm].filter(
-    (value) => value != null,
-  ).length
-  return `${reported}/5`
-}
-
-function summaryCoverage(player: SummaryPlayer): string {
   const reported = [
-    player.totals != null,
-    player.buildOrder.length > 0,
-    player.resources.length > 1,
-    player.scores.length > 1,
-    player.casualties != null,
-  ].filter(Boolean).length
-  return `${reported}/5`
+    row.unitsProduced,
+    row.kills,
+    row.deaths,
+    row.buildingsProduced,
+    row.techsResearched,
+    row.apm,
+  ].filter((value) => value != null).length
+  return `${reported}/6`
 }
 
 function dedupeSignals(signals: Signal[]): Signal[] {

@@ -12,7 +12,7 @@ export function useSimilarMatches(query: SimilarMatchQuery | null, enabled = tru
     // when this match is opened instead of silently reusing an old empty page.
     staleTime: 5 * 60_000,
     refetchOnMount: (current) =>
-      current.state.data?.ok && current.state.data.data.length > 0 ? false : 'always',
+      current.state.data?.ok && current.state.data.data.length > 0 ? true : 'always',
     refetchOnWindowFocus: true,
     retry: 2,
   })
