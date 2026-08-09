@@ -305,8 +305,8 @@ function Detail({
                   {sig.severity}
                 </span>
                 <div>
-                  <div className="text-sm font-medium">{sig.title}</div>
-                  <div className="text-xs text-muted-foreground">{sig.detail}</div>
+                  <div className="text-sm font-medium">{tt(sig.title)}</div>
+                  <div className="text-xs text-muted-foreground">{tt(sig.detail)}</div>
                 </div>
               </div>
             ))}

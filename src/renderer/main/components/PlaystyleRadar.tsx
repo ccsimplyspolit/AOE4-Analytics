@@ -2,6 +2,7 @@ import { PolarAngleAxis, PolarGrid, Radar, RadarChart, ResponsiveContainer } fro
 import { Sparkles } from 'lucide-react'
 import type { PlaystyleProfile } from '@domain/playstyle'
 import { cn } from '@shared/lib/utils'
+import { useI18n } from '../../i18n'
 
 const ACCENT = 'hsl(var(--primary))'
 const GRID = 'hsl(var(--border))'
@@ -16,8 +17,9 @@ export function PlaystyleRadar({
   profile: PlaystyleProfile
   showTags?: boolean
 }) {
+  const { tt } = useI18n()
   const data = profile.dimensions.map((d) => ({
-    dim: d.label,
+    dim: tt(d.label),
     value: d.hasData ? d.value : 0,
   }))
   // Split empty axes by WHY they're empty: some need your local game stats
@@ -27,13 +29,13 @@ export function PlaystyleRadar({
   const noData = profile.dimensions.filter((d) => !d.hasData)
   const localGated = noData.filter((d) => LOCAL_STAT_KEYS.has(d.key))
   const sampleGated = noData.filter((d) => !LOCAL_STAT_KEYS.has(d.key))
-  const join = (dims: typeof noData) => dims.map((d) => d.label).join(' & ')
+  const join = (dims: typeof noData) => dims.map((d) => tt(d.label)).join(' и ')
 
   return (
     <section className="rts-menu-card space-y-3 rounded-md border p-4">
       <h3 className="flex items-center gap-1.5 text-sm">
         <Sparkles className="h-4 w-4 text-primary" />
-        Your playstyle
+        {tt('Your playstyle')}
       </h3>
 
       <div className="grid items-center gap-4 md:grid-cols-2">
@@ -61,7 +63,7 @@ export function PlaystyleRadar({
             <div className="flex flex-wrap gap-1.5">
               {profile.tags.length === 0 ? (
                 <span className="text-xs text-muted-foreground">
-                  Play more games to unlock playstyle tags.
+                  {tt('Play more games to unlock playstyle tags.')}
                 </span>
               ) : (
                 profile.tags.map((t) => (
@@ -75,7 +77,7 @@ export function PlaystyleRadar({
                         : 'bg-secondary text-muted-foreground',
                     )}
                   >
-                    {t.label}
+                    {tt(t.label)}
                   </span>
                 ))
               )}
@@ -91,7 +93,7 @@ export function PlaystyleRadar({
                 className={cn('space-y-1', !d.hasData && 'opacity-60')}
               >
                 <div className="flex items-baseline justify-between gap-2 text-xs">
-                  <span className="font-medium">{d.label}</span>
+                  <span className="font-medium">{tt(d.label)}</span>
                   <span className="tabular-nums text-muted-foreground">
                     {d.hasData ? d.value : '—'}
                   </span>
@@ -112,11 +114,10 @@ export function PlaystyleRadar({
         <div className="space-y-1 border-t border-border/60 pt-2 text-[11px] text-muted-foreground">
           {localGated.length > 0 && (
             <p>
-              {join(localGated)} come from your local game stats (villager/resource economy and
-              APM) — they appear once the app has recorded a finished game&apos;s stats.
+              {join(localGated)} {tt('come from your local game stats (villager/resource economy and APM) — they appear once the app has recorded a finished game\'s stats.')}
             </p>
           )}
-          {sampleGated.length > 0 && <p>{join(sampleGated)} need at least 3 analysed games.</p>}
+          {sampleGated.length > 0 && <p>{join(sampleGated)} {tt('need at least 3 analysed games.')}</p>}
         </div>
       )}
     </section>

@@ -298,7 +298,7 @@ function Row({ r }: { r: LeaderboardRow }) {
           )}
           {r.rankLevel && (
             <span className="text-[11px]" style={{ color: rankColor(r.rankLevel) }}>
-              {formatRankLevel(r.rankLevel)}
+              {tt(formatRankLevel(r.rankLevel))}
             </span>
           )}
         </span>

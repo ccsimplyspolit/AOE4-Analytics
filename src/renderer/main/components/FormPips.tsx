@@ -17,7 +17,7 @@ export function FormPips({ form, max = 12 }: { form: RecentForm; max?: number })
               r === 'W' ? 'border-win/50 text-win' : 'border-loss/50 text-loss',
             )}
           >
-            {r}
+            {tt(r)}
           </span>
         ))}
         {pips.length === 0 && (
@@ -26,9 +26,13 @@ export function FormPips({ form, max = 12 }: { form: RecentForm; max?: number })
       </div>
       {form.games > 0 && (
         <span className="text-xs text-muted-foreground">
-          {form.wins}W–{form.losses}L · {form.winRate}%
+          {form.wins}{tt('W')}–{form.losses}{tt('L')} · {form.winRate}%
           {form.streak !== 0 && (
-            <> · {form.streak > 0 ? `W${form.streak}` : `L${-form.streak}`} streak</>
+            <>
+              {' · '}
+              {form.streak > 0 ? `${tt('W')}${form.streak}` : `${tt('L')}${-form.streak}`}{' '}
+              {tt('streak')}
+            </>
           )}
         </span>
       )}

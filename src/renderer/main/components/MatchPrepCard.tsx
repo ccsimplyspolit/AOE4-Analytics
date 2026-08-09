@@ -113,7 +113,7 @@ export function MatchPrepCard({ matches }: { matches: StoredMatch[] }) {
                     {gameName(AGE_NAME[a.age])}
                   </span>
                   <span className="min-w-0 break-words leading-snug" title={a.reason}>
-                    {a.pick}
+                    {gameName(a.pick)}
                   </span>
                 </li>
               ))}
@@ -144,7 +144,7 @@ export function MatchPrepCard({ matches }: { matches: StoredMatch[] }) {
               {goals.map((g) => (
                 <li key={g.id} className="flex items-start gap-2 text-xs">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                  <span>{g.text}</span>
+                  <span>{tt(g.text)}</span>
                 </li>
               ))}
             </ul>
@@ -175,7 +175,9 @@ function TimingRow({ t }: { t: BuildKeyTiming }) {
         {t.villagers} {tt('vill')}
       </span>
       <span className="min-w-0 leading-snug">
-        {t.ageUpTo != null ? `${gameName(AGE_NAME[t.ageUpTo])} ${tt('age')}` : (t.note ?? tt('Opening'))}
+        {t.ageUpTo != null
+          ? `${gameName(AGE_NAME[t.ageUpTo])} ${tt('age')}`
+          : tt(t.note ?? tt('Opening'))}
       </span>
     </li>
   )

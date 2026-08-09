@@ -59,7 +59,7 @@ export function ProfileIdentityCard({
                   t.tone === 'pos' ? 'bg-win/15 text-win' : 'bg-secondary text-muted-foreground',
                 )}
               >
-                {t.label}
+                {tt(t.label)}
               </span>
             ))}
           </div>

@@ -95,8 +95,8 @@ function RecurringLeakCard({ leak }: { leak: Leak | null }) {
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="rts-ledger-head text-warn">{tt('Biggest recurring leak')}</div>
-          <h2 className="mt-1 text-base font-semibold">{leak.title}</h2>
-          <p className="mt-1 text-sm text-muted-foreground">{leak.detail}</p>
+          <h2 className="mt-1 text-base font-semibold">{tt(leak.title)}</h2>
+          <p className="mt-1 text-sm text-muted-foreground">{tt(leak.detail)}</p>
         </div>
         <div className="shrink-0 rounded-sm border border-warn/30 px-2.5 py-1.5 text-right">
           <div className="text-lg font-semibold tabular-nums text-warn">
@@ -151,7 +151,7 @@ function LadderStanding({ data }: { data: DashboardData }) {
         <Vital
           label={tt('Rating')}
           value={formatRating(primary?.rating)}
-          sub={formatLeaderboard(primary?.leaderboard)}
+          sub={tt(formatLeaderboard(primary?.leaderboard))}
         />
         <Vital label={tt('Peak')} value={formatRating(primary?.maxRating)} />
         <Vital label={tt('Rank')} value={primary?.rank != null ? `#${primary.rank}` : '—'} />
@@ -177,19 +177,19 @@ function LadderStanding({ data }: { data: DashboardData }) {
               key={m.leaderboard}
               className="grid grid-cols-[1fr_auto_auto_auto] items-center gap-x-6 border-t border-border/60 px-4 py-2 text-sm"
             >
-              <span className="font-medium">{formatLeaderboard(m.leaderboard)}</span>
+              <span className="font-medium">{tt(formatLeaderboard(m.leaderboard))}</span>
               {/* Quick Match has no rank tiers — only Ranked ladders do, so a QM
                   row showing "Unranked" would be misleading. */}
               {m.leaderboard?.startsWith('qm') || m.leaderboard?.startsWith('Quick Match') ? (
                 <span className="text-right text-muted-foreground">—</span>
               ) : (
                 <span className="text-right" style={{ color: rankColor(m.rankLevel) }}>
-                  {formatRankLevel(m.rankLevel)}
+                  {tt(formatRankLevel(m.rankLevel))}
                 </span>
               )}
               <span className="w-16 text-right tabular-nums">{formatRating(m.rating)}</span>
               <span className="w-24 text-right tabular-nums text-muted-foreground">
-                {formatPercent(m.winRate)} · {m.gamesCount}g
+                {formatPercent(m.winRate)} · {m.gamesCount} {tt('games')}
               </span>
             </div>
           ))}

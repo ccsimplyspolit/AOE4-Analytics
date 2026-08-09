@@ -87,7 +87,7 @@ function ProfileBody({ report }: { report: Parameters<typeof ScoutReportCard>[0]
         <StatTile
           label={tt('Rating')}
           value={formatRating(primary?.rating)}
-          sub={primary ? formatLeaderboard(primary.leaderboard) : undefined}
+          sub={primary ? tt(formatLeaderboard(primary.leaderboard)) : undefined}
         />
         <StatTile label={tt('Peak')} value={formatRating(primary?.maxRating)} />
         <StatTile label={tt('Rank')} value={primary?.rank != null ? `#${primary.rank}` : '—'} />
@@ -110,14 +110,14 @@ function ProfileBody({ report }: { report: Parameters<typeof ScoutReportCard>[0]
                 key={m.leaderboard}
                 className="flex items-center justify-between border-b border-border px-4 py-2 text-sm last:border-b-0"
               >
-                <span className="font-medium">{formatLeaderboard(m.leaderboard)}</span>
+                <span className="font-medium">{tt(formatLeaderboard(m.leaderboard))}</span>
                 <span className="flex items-center gap-4 text-muted-foreground">
                   <span style={{ color: rankColor(m.rankLevel) }}>
-                    {formatRankLevel(m.rankLevel)}
+                    {tt(formatRankLevel(m.rankLevel))}
                   </span>
                   <span className="tabular-nums text-foreground">{formatRating(m.rating)}</span>
                   <span className="w-20 text-right tabular-nums">
-                    {formatPercent(m.winRate)} · {m.gamesCount}g
+                    {formatPercent(m.winRate)} · {m.gamesCount} {tt('games')}
                   </span>
                 </span>
               </div>

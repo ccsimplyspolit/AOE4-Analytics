@@ -258,7 +258,7 @@ function Content({
             </h3>
             <span className="text-[11px] tabular-nums text-muted-foreground">
               {tt('Last 2 weeks')}: {r.games} {tt('games')} · {r.wins}{tt('W')}–{r.losses}{tt('L')}
-              {recentWr != null ? ` · ${recentWr}%` : ''} · {r.hours}h played
+              {recentWr != null ? ` · ${recentWr}%` : ''} · {r.hours}h {tt('played')}
             </span>
           </div>
           <PerformanceTilesRow tiles={overview.tiles} ratingTrend={trends.rating.delta} />

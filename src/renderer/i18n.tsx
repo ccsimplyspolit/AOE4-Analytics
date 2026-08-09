@@ -91,16 +91,22 @@ const UI: Record<Locale, Record<string, string>> = {
     'Tier list': 'Тир-лист',
     'Ranked 1v1': 'Рейтинг 1×1',
     'Quick Match 1v1': 'Быстрый матч 1×1',
-    'Ranked 2v2': 'Рейтинг 2×2',
+    'Ranked Team': 'Рейтинговая команда',
+    'Ranked 3v3 (Elo)': 'Рейтинг 3×3 (Elo)',
     'Ranked 3v3': 'Рейтинг 3×3',
     'Ranked 4v4': 'Рейтинг 4×4',
+    'Quick Match 3v3': 'Быстрый матч 3×3',
+    'Quick Match 4v4': 'Быстрый матч 4×4',
+    'Quick Match 2v2': 'Быстрый матч 2×2',
+    'Quick Match FFA': 'Быстрый матч FFA',
+    'Ranked 2v2': 'Рейтинг 2×2',
     Platinum: 'Платина',
     Diamond: 'Алмаз',
     Conqueror: 'Завоеватель',
     'Rank bracket': 'Ранговый диапазон',
     Leaderboard: 'Рейтинг',
     'Landmark pick & win rates': 'Пик и винрейт landmark',
-    Landmark: 'Landmark',
+    Landmark: 'Лендмарк',
     Age: 'Эпоха',
     'Pick rate': 'Пикрейт',
     'Win rate': 'Винрейт',
@@ -243,7 +249,7 @@ const UI: Record<Locale, Record<string, string>> = {
     'No recent games': 'Нет недавних матчей',
     'Match preparation': 'Подготовка к матчу',
     'Key timings': 'Ключевые тайминги',
-    Landmarks: 'Landmark',
+    Landmarks: 'Лендмарки',
     Build: 'Билд',
     Expect: 'Ожидайте',
     'Focus from your last game': 'Фокус по последнему матчу',
@@ -423,6 +429,34 @@ const UI: Record<Locale, Record<string, string>> = {
     'Something went wrong': 'Что-то пошло не так',
     'Synced games': 'Синхронизированные матчи',
     'Longest streaks': 'Самые длинные серии',
+    streak: 'серия',
+    played: 'сыграно',
+    'Your playstyle': 'Ваш стиль игры',
+    Aggression: 'Агрессия',
+    Multitasking: 'Многозадачность',
+    Consistency: 'Стабильность',
+    'Civ variety': 'Разнообразие цивилизаций',
+    Aggressive: 'Агрессивный стиль',
+    'Macro / boom': 'Макро / развитие',
+    Versatile: 'Универсальный игрок',
+    'Late bloomer': 'Сильная поздняя игра',
+    'Fast closer': 'Быстрое завершение',
+    Consistent: 'Стабильный игрок',
+    Streaky: 'Серийный результат',
+    'High APM': 'Высокий APM',
+    'Strong macro': 'Сильное макро',
+    Villagerphobia: 'Нехватка крестьян',
+    'Boom economy': 'Экономический разгон',
+    'Wins the fights': 'Побеждает в сражениях',
+    'Donates armies': 'Теряет армии',
+    'Upgrade enjoyer': 'Любит улучшения',
+    'Skips upgrades': 'Пропускает улучшения',
+    'War machine': 'Военная машина',
+    'Play more games to unlock playstyle tags.':
+      'Сыграйте ещё несколько матчей, чтобы открыть теги стиля игры.',
+    "come from your local game stats (villager/resource economy and APM) — they appear once the app has recorded a finished game's stats.":
+      'рассчитываются по локальной статистике (экономика крестьян/ресурсов и APM) после записи завершённого матча.',
+    'need at least 3 analysed games.': 'требуют минимум 3 проанализированных матчей.',
     Style: 'Стиль',
     Economy: 'Экономика',
     Army: 'Армия',
@@ -547,8 +581,7 @@ const UI: Record<Locale, Record<string, string>> = {
     'Show the result and coaching card after the match.':
       'Показывать результат и рекомендации после матча.',
     'Status pill': 'Статус матча',
-    'Show waiting, matchup, and analysis status.':
-      'Показывать ожидание, матчап и статус анализа.',
+    'Show waiting, matchup, and analysis status.': 'Показывать ожидание, матчап и статус анализа.',
     'Build order overlay': 'Билд в оверлее',
     'Choose a build here, or let the overlay pick the first matching build for your civilization.':
       'Выберите билд здесь или включите автоматический выбор первого билда для вашей цивилизации.',
@@ -560,8 +593,7 @@ const UI: Record<Locale, Record<string, string>> = {
     'No build selected': 'Билд не выбран',
     'Build panel width': 'Ширина панели билда',
     'Next-step preview': 'Превью следующего шага',
-    'Show the next build step below the current step.':
-      'Показывать следующий шаг под текущим.',
+    'Show the next build step below the current step.': 'Показывать следующий шаг под текущим.',
     'Resources and villagers': 'Ресурсы и крестьяне',
     'Show the resource split and villager target.':
       'Показывать распределение ресурсов и цель по крестьянам.',
@@ -961,6 +993,8 @@ const UI: Record<Locale, Record<string, string>> = {
     Dumps: 'Дампы',
     'Video Finder': 'Поиск видео',
     'Imported match review pack': 'Импортированный пакет разборов матчей',
+    'Civ meta is weighted across {maps} active ranked maps.':
+      'Мета цивилизаций взвешена по {maps} активным картам рейтингового пула.',
     'Eight exact AoE4World matches were resolved from the supplied map, player and Twitch URLs. Open a public match for the full API-backed breakdown or jump to the exact VOD timestamp.':
       'По переданным ссылкам на карты, игроков и Twitch найдены 8 точных матчей AoE4World. Откройте публичный матч для полного разбора через API или перейдите к точному моменту VOD.',
     'Snapshot 2026-08-09': 'Снимок на 09.08.2026',
@@ -2083,6 +2117,9 @@ const GAME_NAMES: Record<Locale, Record<string, string>> = {
     'Cistern of the First Hill': 'Цистерна Первого холма',
     'Palatine School': 'Палатинская школа',
     'Foreign Engineering Company': 'Иностранная инженерная компания',
+    'Meditation Gardens': 'Сады медитации',
+    'Mount Lu Academy': 'Академия горы Лу',
+    "Zhu Xi's Library": 'Библиотека Чжу Си',
     Feudal: 'Феодальная эпоха',
     Castle: 'Замковая эпоха',
     Imperial: 'Имперская эпоха',
@@ -2112,6 +2149,75 @@ type I18nValue = {
   tt: (value: string) => string
   gameName: (value: string) => string
   refreshTranslationStatus: () => Promise<void>
+}
+
+/** Translate persisted/generated English analysis copy without changing the
+ * domain records that are also used by tests, exports, and the English UI. */
+function russianDynamic(input: string): string | null {
+  const rank = /^(Bronze|Silver|Gold|Platinum|Diamond|Conqueror)(?: (\d+))?$/.exec(input)
+  if (rank) {
+    const names: Record<string, string> = {
+      Bronze: 'Бронза',
+      Silver: 'Серебро',
+      Gold: 'Золото',
+      Platinum: 'Платина',
+      Diamond: 'Алмаз',
+      Conqueror: 'Завоеватель',
+    }
+    return `${names[rank[1]!] ?? rank[1]}${rank[2] ? ` ${rank[2]}` : ''}`
+  }
+
+  const lowVillagers = /^Low villager count \((\d+)\)$/.exec(input)
+  if (lowVillagers) return `Мало крестьян (${lowVillagers[1]})`
+
+  const solidVillagers = /^Solid villager production \((\d+)\)$/.exec(input)
+  if (solidVillagers) return `Стабильное производство крестьян (${solidVillagers[1]})`
+
+  const lowActivity = /^Low activity \(~([\d.]+) APM\)$/.exec(input)
+  if (lowActivity) return `Низкая активность (~${lowActivity[1]} APM)`
+
+  const villagerBenchmark =
+    /^For a game this long, aim for (\d+)\+ by 10:00\. Never let your Town Center sit idle\.$/.exec(
+      input,
+    )
+  if (villagerBenchmark) {
+    return `Для такой длительной игры к 10:00 должно быть не менее ${villagerBenchmark[1]} крестьян. Не допускайте простоя Городского центра.`
+  }
+
+  const villagerGoal =
+    /^Produce at least (\d+) villagers — keep your Town Center working nonstop\.$/.exec(input)
+  if (villagerGoal) {
+    return `Создайте минимум ${villagerGoal[1]} крестьян — Городской центр должен работать без остановки.`
+  }
+
+  const apmGoal = /^Stay active — aim for ~(\d+) APM by macroing between fights\.$/.exec(input)
+  if (apmGoal)
+    return `Не бездействуйте — держите около ${apmGoal[1]} APM, развивая экономику между сражениями.`
+
+  const feudalGoal = /^Reach Feudal Age before (.+) without stopping villager production\.$/.exec(
+    input,
+  )
+  if (feudalGoal) {
+    return `Выйдите в Феодальную эпоху до ${feudalGoal[1]}, не останавливая производство крестьян.`
+  }
+
+  if (input === 'Build all eco buildings closeby for better tax collection') {
+    return 'Стройте все экономические здания рядом, чтобы эффективнее собирать налог.'
+  }
+  if (
+    input ===
+    'Keep your hands busy between fights: produce, scout, and spend resources continuously.'
+  ) {
+    return 'Не бездействуйте между сражениями: производите юнитов, разведуйте и постоянно тратьте ресурсы.'
+  }
+  if (input === 'Your economy kept growing — exactly right.') {
+    return 'Ваша экономика продолжала расти — именно так и нужно.'
+  }
+
+  const tougherOpponent = /^Faced a stronger opponent \(\+(\d+)\)$/.exec(input)
+  if (tougherOpponent) return `Соперник был сильнее (+${tougherOpponent[1]})`
+
+  return null
 }
 
 const I18nContext = createContext<I18nValue | null>(null)
@@ -2208,6 +2314,10 @@ export function I18nProvider({ children }: { children: ReactNode }) {
         if (local) return local
         const remote = remoteTranslations[locale]?.[input]
         if (remote) return remote
+        if (locale === 'ru') {
+          const generated = russianDynamic(input)
+          if (generated) return generated
+        }
         requestTranslation(locale, input)
         return input
       },

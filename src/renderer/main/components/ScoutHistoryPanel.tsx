@@ -216,6 +216,7 @@ function MatchList({ page, profileId }: { page: ScoutMatchPage; profileId: numbe
 }
 
 function MatchRow({ match, profileId }: { match: ScoutMatchRow; profileId: number }) {
+  const { tt } = useI18n()
   const opponentCivs = match.opponentCivilizations.map(civDisplayName).join(' + ')
   const matchup = `${displayCiv(match.civilization)} vs ${opponentCivs || 'Unknown'}`
   const when = relativeTime(match.startedAt) || 'Date unavailable'
@@ -233,7 +234,7 @@ function MatchRow({ match, profileId }: { match: ScoutMatchRow; profileId: numbe
       <span className="min-w-48 flex-1 font-medium text-foreground">{matchup}</span>
       <span className="min-w-28 text-muted-foreground">{match.map ?? 'Map unavailable'}</span>
       <span className="min-w-28 text-muted-foreground">
-        {match.format ? formatLeaderboard(match.format) : 'Format unavailable'}
+        {match.format ? tt(formatLeaderboard(match.format)) : tt('Format unavailable')}
       </span>
       <span className="text-muted-foreground">{formatDurationShort(match.durationSec)}</span>
       <time

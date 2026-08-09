@@ -194,7 +194,7 @@ function PlayerLine({
       ? 'hsl(var(--loss))'
       : 'hsl(var(--win))'
   const rank =
-    player.rankLevel && /[a-z]/i.test(player.rankLevel) ? formatRankLevel(player.rankLevel) : null
+    player.rankLevel && /[a-z]/i.test(player.rankLevel) ? tt(formatRankLevel(player.rankLevel)) : null
   return (
     <div
       className={cn('flex items-center gap-2 px-3 py-2', isRight && 'flex-row-reverse text-right')}
@@ -416,7 +416,7 @@ function LegacySide({
   const isRight = align === 'right'
   const color = isRight ? 'hsl(var(--loss))' : 'hsl(var(--win))'
   const rank =
-    side.rankLevel && /[a-z]/i.test(side.rankLevel) ? formatRankLevel(side.rankLevel) : null
+    side.rankLevel && /[a-z]/i.test(side.rankLevel) ? tt(formatRankLevel(side.rankLevel)) : null
   const hasRow2 =
     !side.isAI &&
     (rank != null ||

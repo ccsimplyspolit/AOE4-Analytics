@@ -115,7 +115,7 @@ function PublicGameBody({
           <Badge variant="outline">Game #{detail.game.game_id}</Badge>
         </div>
         <p className="text-sm text-muted-foreground">
-          {formatLeaderboard(detail.game.leaderboard || detail.game.kind)} ·{' '}
+          {tt(formatLeaderboard(detail.game.leaderboard || detail.game.kind))} ·{' '}
           {detail.game.map || tt('Map unavailable')} · {formatDurationShort(detail.game.duration)} ·{' '}
           {relativeTime(detail.game.started_at) || tt('Date unavailable')}
         </p>

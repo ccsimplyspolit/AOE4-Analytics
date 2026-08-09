@@ -19,7 +19,7 @@ export function RankBadge({ rank }: { rank: RankInfo | null }) {
     <span className="inline-flex items-center gap-2">
       <RankCrest rankLevel={rank.rankLevel} size={26} />
       <span className="text-xs font-semibold" style={{ color }}>
-        {formatRankLevel(rank.rankLevel)}
+        {tt(formatRankLevel(rank.rankLevel))}
       </span>
       <span className="text-sm font-semibold tabular-nums">{formatRating(rank.rating)}</span>
     </span>

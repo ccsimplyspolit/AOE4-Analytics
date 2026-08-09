@@ -97,7 +97,7 @@ export function LiveMatchCard() {
               <span className="text-muted-foreground">{tt('vs')}</span>
               <span className="font-medium">{live.opponent.name}</span>
               <span style={{ color: rankColor(live.opponent.rankLevel) }}>
-                {formatRankLevel(live.opponent.rankLevel)}
+                {tt(formatRankLevel(live.opponent.rankLevel))}
               </span>
               <span className="tabular-nums text-muted-foreground">
                 {formatRating(live.opponent.rating)}

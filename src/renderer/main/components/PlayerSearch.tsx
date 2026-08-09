@@ -90,7 +90,7 @@ export function PlayerSearch({ onSelect, placeholder, autoFocus }: PlayerSearchP
               </span>
               <span className="flex shrink-0 items-center gap-2 text-xs text-muted-foreground">
                 <span style={{ color: rankColor(hit.rankLevel) }}>
-                  {formatRankLevel(hit.rankLevel)}
+                  {tt(formatRankLevel(hit.rankLevel))}
                 </span>
                 <span className="tabular-nums">{formatRating(hit.rating)}</span>
                 {hit.lastGameAt && (
