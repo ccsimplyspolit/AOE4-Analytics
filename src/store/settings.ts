@@ -105,9 +105,9 @@ export interface OverlaySettings {
    * workflow (paste/import arbitrary TXT or illustrated JSON) persistent.
    */
   customBuildOrders: BuildOrder[]
-  /** Optional explicit order for cycling build orders; omitted ids append in catalog order. */
+  /** Explicit ordered list of builds activated for cycling; an empty list means no automatic cycle. */
   buildOrderCycle: string[]
-  /** Build-order names excluded from next/previous cycling (still selectable manually). */
+  /** Build-order names paused within the active pool (still selectable manually). */
   buildOrderDisabled: string[]
   /** Optional user CSS for the transparent overlay (CSS only; scripts are never executed). */
   customCss: string

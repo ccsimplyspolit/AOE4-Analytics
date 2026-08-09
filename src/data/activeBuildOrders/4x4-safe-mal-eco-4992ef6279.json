@@ -1,0 +1,196 @@
+{
+  "description": "Командный role-template Malians для 2x2–4x4: защищенная шахта, Donso/Javelin, коровы после первого окна и масштабирование через 2TC или Farimba.",
+  "civilization": "Malians",
+  "name": "[4x4][SAFE][MAL][ECO] Шахта, коровы и поддержка команды",
+  "author": "Командная адаптация Malians 2TC/Standard и статистики AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/builds/j0fJCjgPHJGrQ1F781fW, https://aoe4world.com/stats/rm_2v2/civilizations, https://aoe4world.com/stats/rm_3v3/civilizations, https://aoe4world.com/stats/rm_4v4/civilizations",
+  "mode": [
+    "4x4"
+  ],
+  "role": "eco/support",
+  "status": "active",
+  "map_type": [
+    "safe",
+    "long"
+  ],
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 жителей собирают @resource/resource_wood.webp@, 1 ставит @building_malians/pit-mine-1.webp@ на золоте.",
+        "Союзнику сразу сообщи: ты eco/support, ранний all-in не планируешь."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:40",
+      "villager_count": 13,
+      "resources": {
+        "food": 12,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Начинай @landmark_malians/mansa-quarry-2.webp@ четырьмя жителями.",
+        "Если враг давит шахту, замени на @landmark_malians/saharan-trade-network-1.webp@ и ставь защиту."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:30",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_economy/lumber-camp.webp@ и @building_economy/mining-camp.webp@.",
+        "Не трать @resource/resource_wood.webp@ на ранние коровники, пока нет армии и @building_economy/house.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:40",
+      "villager_count": 20,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_military/barracks.webp@; @unit_malians/donso-1.webp@ против @unit_cavalry/horseman-1.webp@, @unit_byzantines/javelin-thrower-2.webp@ против легкой пехоты.",
+        "4x4: держи внешнюю шахту и прикрывай ближайшего фронтовика."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:00",
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 9,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "После первого военного окна ставь @building_malians/cattle-ranch-2.webp@ и покупай @resource/cattle.webp@.",
+        "Если союзник проигрывает фронт, @resource/cattle.webp@ отменяются: добавь @building_military/barracks.webp@ и защиту."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:30",
+      "villager_count": 31,
+      "resources": {
+        "food": 15,
+        "wood": 10,
+        "gold": 7,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "2x2: безопасный @building_economy/town-center.webp@ только при живом союзном давлении.",
+        "4x4: сначала eco и армия; второй центр только после удержания линии."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:30",
+      "villager_count": 39,
+      "resources": {
+        "food": 18,
+        "wood": 11,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Добавляй @unit_malians/sofa-2.webp@ и @unit_infantry/archer-2.webp@ по составу врага.",
+        "Командная цель — удержать @resource/resource_gold.webp@, чтобы союзник мог закончить @age/age_3.webp@/@building_military/siege-workshop.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:00",
+      "villager_count": 52,
+      "resources": {
+        "food": 20,
+        "wood": 12,
+        "gold": 18,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Переходи через @landmark_malians/farimba-garrison-2.webp@ и выпускай @unit_malians/musofadi-warrior-2.webp@/@unit_malians/javelin-thrower-2.webp@ по армии врага.",
+        "4x4: сохраняй экономику и помогай команде Castle/siege, не начинай дальний рейд.",
+        "4x4: не умирай первым, сохраняй экономику для Castle/siege и помогай фронту в общей точке сбора."
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Сезон 13. Проверено 2026-08-08 под live-сборку 16.3.11308.",
+  "map": "Hill and Dale, Rocky River, Himeyama, Hideout, Prairie",
+  "strategy": "eco/support: защищенная Pit Mine, Donso/Javelin, коровы после армии, командный 2TC и Farimba для второй волны.",
+  "queue": "rm_4v4",
+  "team_size": 4,
+  "strategy_key": "eco_support",
+  "meta_tier": "team_core",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "mode_strategy": "4x4: не умирай первым, сохраняй экономику для Castle/siege и помогай фронту в общей точке сбора.",
+  "build_group": "TEAM_MAL_2026",
+  "map_family": [
+    "безопасная",
+    "длинная"
+  ],
+  "rank_fit": "all+conqueror",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 0,
+    "transcript_count": 0,
+    "transcript_sources": {},
+    "search_candidate_count": 0,
+    "metadata_date_count": 0,
+    "rss_fallback_count": 0,
+    "status": "no_relevant_video_in_window",
+    "source_urls": [],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Свежих роликов с фракцией в названии за окно не найдено; Farimba/Sofa и eco-ветки остаются без YouTube-изменений."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

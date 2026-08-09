@@ -1,0 +1,180 @@
+{
+  "description": "Базовый открытый Sengoku opener: Oda Daimyo, Yari, Yatai и переход в Tanegashima/Clan Castle.",
+  "civilization": "Sengoku Daimyo",
+  "name": "[1x1][OPEN][SEN][TEMPO] Sengoku: Oda Yari и Yatai",
+  "author": "Синтез Season 13 AoE4Guides/AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/builds/KU51mZrTdid5f5lbShIA, https://www.youtube.com/watch?v=bi9ZBCWKMqY, https://aoe4world.com/explorer/civs/sengoku",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 жителей на @resource/sheep.webp@; 6-й ставит @building_economy/house.webp@ и идёт на @resource/resource_wood.webp@.",
+        "@unit_sengoku/daimyo.webp@ держит ауру на стартовой экономике."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:30",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_sengoku/daimyo.webp@ и первый @unit_sengoku/yatai.webp@ на нужный ресурс."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:40",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "3 жителя начинают @landmark_sengoku/sword_hunt_statue.webp@.",
+        "После закладки ралли на @resource/resource_wood.webp@ для @unit_sengoku/yatai.webp@ и @building_military/barracks.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:45",
+      "villager_count": 20,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_military/barracks.webp@ и выпускай @unit_sengoku/yari-2.webp@.",
+        "Дай Oda @building_sengoku/daimyo.webp@ усилить передовую группу и @unit_sengoku/yatai.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:55",
+      "villager_count": 25,
+      "resources": {
+        "food": 14,
+        "wood": 10,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Против @unit_cavalry/horseman-1.webp@ добавь @unit_sengoku/yari-2.webp@; против пехоты поставь @building_military/archery-range.webp@ и @unit_sengoku/yumi-ashigaru-levy.webp@.",
+        "Не отправляй @unit_sengoku/yatai.webp@ впереди армии."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:15",
+      "villager_count": 30,
+      "resources": {
+        "food": 17,
+        "wood": 12,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Исследуй @technology_sengoku/yari_training.webp@ и добавь @building_sengoku/matsuri.webp@ после стабилизации.",
+        "Переход к Clan выбирай по составу, а не по таймеру."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:25",
+      "villager_count": 37,
+      "resources": {
+        "food": 20,
+        "wood": 14,
+        "gold": 9,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "В @age/age_3.webp@ добавляй @unit_sengoku/tanegashima_ashigaru-3.webp@ и @unit_japanese/samurai-1.webp@.",
+        "Сохраняй @building_sengoku/daimyo.webp@: аура и перенаправление @unit_sengoku/yatai.webp@ важнее одной атаки."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/watch?v=bi9ZBCWKMqY",
+  "season": "Season 13; live-сборка 16.3.11308",
+  "map": "Открытые карты и карты с коротким первым контактом",
+  "strategy": "Oda Daimyo, Yatai, Yari, контр-стрельба и Clan-переход по разведке.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "role": "tempo",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "strategy_key": "tempo",
+  "meta_tier": "meta_core",
+  "build_group": "sengoku_daimyo_tempo",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 1,
+    "transcript_count": 1,
+    "transcript_sources": {
+      "legacy_local": 1
+    },
+    "search_candidate_count": 188,
+    "metadata_date_count": 0,
+    "rss_fallback_count": 1,
+    "status": "sparse_evidence",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=pHf8TdPhan8"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Свежий разбор сравнивает Ryoken и Abbey of Kings и подчёркивает mounted Samurai в Castle; это механическая поправка, не готовый таймлайн."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

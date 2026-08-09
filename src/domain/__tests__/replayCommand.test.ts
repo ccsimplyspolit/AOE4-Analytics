@@ -33,9 +33,7 @@ function queueCommand(): number[] {
 }
 
 function tick(tick: number, commands: number[] = []): number[] {
-  const block = commands.length
-    ? [...u32(1), ...u32(0), ...u32(commands.length), ...commands]
-    : []
+  const block = commands.length ? [...u32(1), ...u32(0), ...u32(commands.length), ...commands] : []
   const body = [0x20, ...u32(tick), ...u32(0x12345678), ...u32(commands.length ? 1 : 0), ...block]
   return [...u32(0), ...u32(body.length), ...body]
 }
@@ -58,6 +56,12 @@ describe('replay command stream parser', () => {
       pbgid: 12345,
       productionBuildingId: 321,
       queueCount: 1,
+      eventIndex: 0,
+      selectedUnitCount: 0,
+      actionCategory: 'production',
+      decodeLevel: 'exact',
+      payloadHex: expect.any(String),
+      payloadHexTruncated: false,
     })
     expect(result.players[0]).toMatchObject({
       playerId: 1000,
@@ -76,11 +80,27 @@ describe('replay command stream parser', () => {
     })
   })
 
-  it('exposes five-minute activity windows for late-game drop-off reads', () => {
+  it('journals every decoded action even when the UI preview is capped', () => {
+    const journal: number[] = []
     const bytes = new Uint8Array([
       ...tick(8, queueCommand()),
-      ...tick(2408, queueCommand()),
+      ...tick(16, queueCommand()),
+      ...tick(24, queueCommand()),
     ])
+    const result = parseReplayCommandStream(bytes, 0, {
+      maxEvents: 1,
+      onEvent: (event) => journal.push(event.eventIndex),
+    })
+
+    expect(result.events).toHaveLength(1)
+    expect(result.eventsTruncated).toBe(true)
+    expect(result.commandCount).toBe(3)
+    expect(journal).toEqual([0, 1, 2])
+    expect(result.events[0]?.payloadHexTruncated).toBe(false)
+  })
+
+  it('exposes five-minute activity windows for late-game drop-off reads', () => {
+    const bytes = new Uint8Array([...tick(8, queueCommand()), ...tick(2408, queueCommand())])
     const result = parseReplayCommandStream(bytes, 0)
     const player = result.players[0]!
     expect(player.activityWindows).toHaveLength(2)

@@ -1,0 +1,211 @@
+{
+  "description": "Открытая феодальная ветка Macedonian: Warcamp первым домом, Imperial Hippodrome, ранние Horseman/Varangian Guard и переход в Castle по разведке.",
+  "civilization": "Macedonian Dynasty",
+  "name": "[1x1][OPEN][MAC][PRESSURE] Македонцы: Warcamp и Varangian Guard",
+  "author": "Синтез AoE4Guides/AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/dashboard?civ=MAC, https://aoe4world.com/explorer/civs/macedonian, https://aoe4world.com/stats/rm_solo/civilizations",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 жителей на @resource/sheep.webp@; 7-й ставит @building_economy/house.webp@, затем @building_economy/mining-camp.webp@ и идёт на @resource/resource_gold.webp@.",
+        "@unit_cavalry/scout.webp@ ищет @resource/sheep.webp@ и проверяет раннюю @unit_cavalry/horseman-1.webp@ соперника."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:10",
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "3 жителя начинают @landmark_byzantines/imperial-hippodrome-1.webp@; @building_macedonian/varangian_warcamp.webp@ ставь первым военным зданием.",
+        "После закладки landmark ралли: 3 на @resource/resource_wood.webp@, затем @resource/resource_food.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:05",
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "После landmark строители переходят на @building_economy/lumber-camp.webp@ и @resource/resource_wood.webp@.",
+        "@building_macedonian/varangian_warcamp.webp@ держи рядом с базой: он нужен для ранних Varangian и бесплатных подкреплений."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:15",
+      "villager_count": 16,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Сразу закажи @unit_macedonian/hippodrome_horseman.webp@; против ранних копий добавь @unit_byzantines/varangian-guard-3.webp@.",
+        "Не ставь второй военный корпус до первой боевой единицы."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:10",
+      "villager_count": 19,
+      "resources": {
+        "food": 11,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_macedonian/varangian_arsenal.webp@ после первой армии; серебро трать на нужную военную технологию.",
+        "Против @unit_infantry/archer-2.webp@ добавь @building_military/stable.webp@ и ещё @unit_cavalry/horseman-1.webp@; против @unit_cavalry/horseman-1.webp@ — @building_military/barracks.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:15",
+      "villager_count": 23,
+      "resources": {
+        "food": 13,
+        "wood": 7,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Если давления нет, бери @technology_economy/wheelbarrow.webp@ и @technology_economy/double-broadaxe.webp@.",
+        "Сохраняй @building_macedonian/varangian_warcamp.webp@ и армию компактно: @civilization_flag/mac.webp@ выигрывают темпом, а не разменом по одному юниту."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:25",
+      "villager_count": 27,
+      "resources": {
+        "food": 15,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Против тяжёлой пехоты добавляй @unit_byzantines/varangian-guard-3.webp@; против стрелков — @unit_cavalry/horseman-1.webp@ и обходы.",
+        "Если соперник закрывается, не теряй армию: готовь @age/age_3.webp@ и контроль внешнего @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "08:40",
+      "villager_count": 31,
+      "resources": {
+        "food": 17,
+        "wood": 9,
+        "gold": 7,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Без решающего урона начинай @landmark_byzantines/cistern-of-the-first-hill-2.webp@; не жертвуй непрерывным @building_economy/town-center.webp@.",
+        "На очень открытой карте вместо @age/age_3.webp@ можно добавить @building_military/archery-range.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:20",
+      "villager_count": 38,
+      "resources": {
+        "food": 19,
+        "wood": 10,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "В @age/age_3.webp@ переходи в @unit_macedonian/riddari-3.webp@ и @unit_macedonian/varangian-2.webp@ через @building_macedonian/varangian_stronghold.webp@.",
+        "Серебро направляй в @building_macedonian/varangian_arsenal.webp@; армия должна давить @resource/resource_gold.webp@ и производство врага."
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 13; snapshot 08.08.2026, live-сборка 16.3.11308",
+  "map": "Dry Arabia, Gorge, Flankwoods, Cliffside и другие открытые сухопутные карты",
+  "strategy": "Imperial Hippodrome, Warcamp, Horseman/Varangian Guard, раннее давление и Castle через Cistern при отсутствии урона.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "role": "pressure",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "strategy_key": "pressure",
+  "meta_tier": "meta_core",
+  "build_group": "macedonian_dynasty_pressure",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 0,
+    "transcript_count": 0,
+    "transcript_sources": {},
+    "search_candidate_count": 0,
+    "metadata_date_count": 0,
+    "rss_fallback_count": 0,
+    "status": "no_relevant_video_in_window",
+    "source_urls": [],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "За окно релевантных роликов с фракцией в названии не найдено; новый build не выдумываем, используем текущий проверенный Македонский opener и патч-мету."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

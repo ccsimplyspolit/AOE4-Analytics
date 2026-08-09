@@ -1,0 +1,221 @@
+{
+  "description": "Открытая Ayyubids ветка: Berry Orchard, House of Wisdom, Culture Wing, Desert Raider и гибкий переход в Ghulam/Camel Lancer.",
+  "civilization": "Ayyubids",
+  "name": "[1x1][OPEN][AYY][PRESSURE] Ayyubids: Berry Orchard и Desert Raider",
+  "author": "Синтез AoE4Guides/AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/builds/1PkzeWB49HuxfK4Lu0eQ, https://aoe4guides.com/builds/1VL6AzGgns4b0hBgc7uu, https://aoe4world.com/explorer/civs/ayyubids",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "4 жителя на @resource/berrybush.webp@; 2 строят @building_economy/mill.webp@ рядом с кустами, остальные на @resource/resource_wood.webp@.",
+        "Ayyubids получают Orchard и +25% к сбору @resource/berrybush.webp@: не переходи на @resource/deer.webp@ без причины."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:50",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 1,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "3 жителя начинают @landmark_abbasid/house-of-wisdom.webp@; следующий житель идёт на @resource/resource_gold.webp@.",
+        "Поставь @building_economy/house.webp@ до лимита и держи @landmark_abbasid/house-of-wisdom.webp@ рядом с ресурсами."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:25",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "На возраст выбирай @technology_ayyubids/culture-wing-logistics-1.webp@ для раннего военного темпа.",
+        "После @age/age_2.webp@ строй @building_military/stable.webp@; @resource/resource_food.webp@ держи на @resource/berrybush.webp@, @resource/resource_gold.webp@ на @unit_ayyubids/desert-raider-2.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:35",
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Сразу выпускай @unit_ayyubids/desert-raider-2.webp@; переключай режим под цель рейда.",
+        "Против ранней @unit_cavalry/horseman-1.webp@ @unit_ayyubids/desert-raider-2.webp@ держит дистанцию и режет скорость атаки."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:35",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_military/archery-range.webp@ и добавь @unit_ayyubids/bedouin-skirmisher-2.webp@ против лёгкой пехоты.",
+        "Рейдь @resource/resource_gold.webp@/@resource/resource_wood.webp@, но не теряй @unit_ayyubids/desert-raider-2.webp@ в @building_economy/town-center.webp@ или под башней."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:45",
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Если враг давит, бери @technology_ayyubids/military-wing-reinforcement-1.webp@; иначе сохраняй @resource/resource_wood.webp@ на экономику.",
+        "Для тяжёлых целей готовь @unit_ayyubids/camel-lancer-3.webp@, а не больше @unit_ayyubids/desert-raider-2.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "08:05",
+      "villager_count": 29,
+      "resources": {
+        "food": 15,
+        "wood": 9,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Без решающего урона выбирай @age/age_3.webp@ wing: @landmark_abbasid/military-wing.webp@ или @landmark_abbasid/economic-wing.webp@ по разведке.",
+        "Не ставь 2 @building_economy/town-center.webp@ на открытой карте, пока @unit_ayyubids/desert-raider-2.webp@ не контролирует дальние ресурсы."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:35",
+      "villager_count": 35,
+      "resources": {
+        "food": 18,
+        "wood": 10,
+        "gold": 9,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Переходи в @age/age_3.webp@ через выбранное крыло; @landmark_abbasid/house-of-wisdom.webp@ продолжает давать @age/goldenagetier1.webp@ по зданиям.",
+        "Поставь @building_religious/mosque.webp@ только когда @unit_ayyubids/dervish-3.webp@ реально нужен."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:20",
+      "villager_count": 42,
+      "resources": {
+        "food": 20,
+        "wood": 12,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "В @age/age_3.webp@ добавь @unit_abbasid/ghulam-3.webp@, @unit_ayyubids/camel-lancer-3.webp@ и @unit_ayyubids/dervish-3.webp@.",
+        "@unit_ayyubids/manjaniq-3.webp@ и @technology_ayyubids/siege-carpentry-3.webp@ нужны против плотной пехоты и укреплений."
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 13; snapshot 08.08.2026, live-сборка 16.3.11308",
+  "map": "Dry Arabia, Gorge, Flankwoods и открытые карты с доступными berries",
+  "strategy": "Berry Orchard, Culture Wing, Desert Raider, гибкий Military Wing и Camel/Ghulam Castle.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "role": "pressure",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "strategy_key": "pressure",
+  "meta_tier": "meta_core",
+  "build_group": "ayyubids_pressure",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 11,
+    "transcript_count": 10,
+    "transcript_sources": {
+      "youtube-transcript.ai": 9,
+      "legacy_local": 1
+    },
+    "search_candidate_count": 189,
+    "metadata_date_count": 11,
+    "rss_fallback_count": 0,
+    "status": "evidence_backed",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=YDfX6tCO1nM",
+      "https://www.youtube.com/watch?v=4QoOqaQsl5s",
+      "https://www.youtube.com/watch?v=_3Cg1RsHWH8",
+      "https://www.youtube.com/watch?v=aRvS6nnLtU4",
+      "https://www.youtube.com/watch?v=mdNb2yQ6Fc8",
+      "https://www.youtube.com/watch?v=Yr_u-odNztI"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Десять transcript из одиннадцати показывают повторяющиеся age-up/decision/timing-сигналы Season 13, но единого безопасного численного тайминга нет; агрессивная ветка сохраняется."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

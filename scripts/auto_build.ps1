@@ -48,6 +48,27 @@ function Stop-ProjectElectron {
   }
 }
 
+function Stop-ProjectBuildProcesses {
+  # Do not let an older terminal build rewrite `out/` while this build is
+  # bundling/packaging. Restrict the match to this repository and build
+  # commands; ordinary node scripts and unrelated applications are untouched.
+  $projectNeedle = $repoRoot.TrimEnd('\')
+  $buildPattern = 'electron-builder|electron-vite (dev|build)|npm run (dist|pack|bundle|build|verify)|npx.*electron-builder'
+  $targets = Get-CimInstance Win32_Process | Where-Object {
+    $_.ProcessId -ne $PID -and
+    $_.CommandLine -and
+    $_.CommandLine.Contains($projectNeedle) -and
+    $_.CommandLine -match $buildPattern -and
+    $_.Name -match '^(cmd|node|npm|npx|electron-builder|7za)\.exe$'
+  }
+
+  foreach ($target in $targets) {
+    Write-Host "Stopping stale project build $($target.Name) (PID $($target.ProcessId))..." -ForegroundColor Yellow
+    Start-Process -FilePath 'taskkill.exe' -ArgumentList @('/PID', $target.ProcessId, '/T', '/F') -Wait -WindowStyle Hidden | Out-Null
+  }
+  if ($targets) { Start-Sleep -Milliseconds 1500 }
+}
+
 function Assert-Command {
   param([Parameter(Mandatory = $true)][string]$Name)
   if (-not (Get-Command $Name -ErrorAction SilentlyContinue)) {
@@ -69,10 +90,22 @@ if (-not (Test-Path (Join-Path $repoRoot 'node_modules\.bin\electron-builder.cmd
 }
 
 Stop-ProjectElectron
+Stop-ProjectBuildProcesses
 
 $buildId = Get-Date -Format 'yyyyMMdd-HHmmss'
-$staging = Join-Path ([IO.Path]::GetTempPath()) "rtslytics-build-$buildId"
+$staging = Join-Path $repoRoot "release-staging-$buildId"
+$stagingDrive = (Split-Path -Qualifier $staging).TrimEnd(':')
+$freeBytes = (Get-PSDrive -Name $stagingDrive).Free
+if ($freeBytes -lt 2GB) {
+  throw "At least 2 GB of free space is required on drive $stagingDrive`:; available $([math]::Round($freeBytes / 1GB, 2)) GB."
+}
 New-Item -ItemType Directory -Force -Path $staging | Out-Null
+$cacheRoot = Join-Path $repoRoot '.electron-cache'
+New-Item -ItemType Directory -Force -Path $cacheRoot | Out-Null
+$oldElectronCache = $env:ELECTRON_CACHE
+$oldBuilderCache = $env:ELECTRON_BUILDER_CACHE
+$env:ELECTRON_CACHE = Join-Path $cacheRoot 'electron'
+$env:ELECTRON_BUILDER_CACHE = Join-Path $cacheRoot 'builder'
 
 try {
   Invoke-Step 'Prepare replay sidecar' 'npm.cmd' @('run', 'prepare:replays-api')
@@ -95,6 +128,7 @@ try {
       'electron-builder',
       '--win',
       "--config.directories.output=$staging",
+      '--config.npmRebuild=false',
       '--config.forceCodeSigning=false'
     )
   } finally {
@@ -163,6 +197,10 @@ try {
     Start-Process -FilePath (Join-Path $stableUnpacked 'RTSLytics.exe') -WorkingDirectory $stableUnpacked
   }
 } finally {
+  if ($null -eq $oldElectronCache) { Remove-Item Env:ELECTRON_CACHE -ErrorAction SilentlyContinue }
+  else { $env:ELECTRON_CACHE = $oldElectronCache }
+  if ($null -eq $oldBuilderCache) { Remove-Item Env:ELECTRON_BUILDER_CACHE -ErrorAction SilentlyContinue }
+  else { $env:ELECTRON_BUILDER_CACHE = $oldBuilderCache }
   if (-not $KeepStaging -and (Test-Path $staging)) {
     Remove-Item -LiteralPath $staging -Recurse -Force -ErrorAction SilentlyContinue
   } elseif (Test-Path $staging) {

@@ -12,6 +12,7 @@ import {
   History,
   ListChecks,
   Map as MapIcon,
+  MoreHorizontal,
   RefreshCw,
   ScanLine,
   Users,
@@ -34,6 +35,7 @@ import { compareMatchPlayers } from '@domain/buildOrderComparison'
 import { formatDuration } from '@domain/format'
 import type { TwitchVodFinderInput } from '@domain/twitchVodFinder'
 import { ipc } from '@shared/ipc'
+import { cn } from '@shared/lib/utils'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
 import { formatCount } from '@shared/format'
@@ -49,6 +51,7 @@ import {
   useCacheReplays,
   useCacheSummaries,
   useDownloadAndAnalyzeReplay,
+  useReplayActions,
   useReplayAnalysis,
   useReplays,
 } from '../queries/useReplays'
@@ -199,7 +202,9 @@ export function ReplayLab() {
   const [fullAnalysis, setFullAnalysis] = useState<AutoAnalysisState | null>(null)
   const [fullAnalysisRunning, setFullAnalysisRunning] = useState(false)
   const [archiveAuditRows, setArchiveAuditRows] = useState<ArchiveAuditRow[]>([])
-  const [archiveAuditProgress, setArchiveAuditProgress] = useState<ArchiveAuditProgress | null>(null)
+  const [archiveAuditProgress, setArchiveAuditProgress] = useState<ArchiveAuditProgress | null>(
+    null,
+  )
   const [archiveAuditRunning, setArchiveAuditRunning] = useState(false)
   const [autoAnalysis, setAutoAnalysis] = useState<AutoAnalysisState | null>(null)
   const [autoAnalysisResults, setAutoAnalysisResults] = useState<
@@ -426,14 +431,17 @@ export function ReplayLab() {
             summary?.players.find((player) =>
               roster.some(
                 (rosterPlayer) =>
-                  rosterPlayer.name.trim().toLowerCase() === (player.name ?? '').trim().toLowerCase(),
+                  rosterPlayer.name.trim().toLowerCase() ===
+                  (player.name ?? '').trim().toLowerCase(),
               ),
             ) ??
             null
           if (!summary || summary.players.length === 0) {
             errors += 1
           } else {
-            const myCiv = accountPlayer?.civilization ?? (summaryPlayer ? civFromToken(summaryPlayer.civToken) : null)
+            const myCiv =
+              accountPlayer?.civilization ??
+              (summaryPlayer ? civFromToken(summaryPlayer.civToken) : null)
             const audits = compareMatchPlayers({
               players: summary.players,
               builds: BUILD_CATALOG.map((entry) => entry.build),
@@ -453,8 +461,10 @@ export function ReplayLab() {
                 ...audits.map((audit) => {
                   const rosterPlayer = roster.find(
                     (player) =>
-                      (audit.player.profileId != null && player.profile_id === audit.player.profileId) ||
-                      player.name.trim().toLowerCase() === (audit.player.name ?? '').trim().toLowerCase(),
+                      (audit.player.profileId != null &&
+                        player.profile_id === audit.player.profileId) ||
+                      player.name.trim().toLowerCase() ===
+                        (audit.player.name ?? '').trim().toLowerCase(),
                   )
                   const isMe =
                     (summaryPlayer != null && audit.player.playerId === summaryPlayer.playerId) ||
@@ -503,6 +513,22 @@ export function ReplayLab() {
       }
     }
   }, [archiveAuditRunning, bulkCacheMode, settings.data?.profileId, tt])
+
+  const refreshEverything = useCallback(async () => {
+    if (bulkCacheMode != null || fullAnalysisRunning || archiveAuditRunning) return
+    setAccountRefreshVersion((value) => value + 1)
+    await cacheWholeAccount('replays')
+    await cacheWholeAccount('summaries')
+    await analyzeWholeAccount()
+    await auditWholeAccount()
+  }, [
+    analyzeWholeAccount,
+    archiveAuditRunning,
+    auditWholeAccount,
+    bulkCacheMode,
+    cacheWholeAccount,
+    fullAnalysisRunning,
+  ])
 
   useEffect(() => {
     if (
@@ -698,6 +724,7 @@ export function ReplayLab() {
           archiveAuditProgress={archiveAuditProgress}
           archiveAuditRunning={archiveAuditRunning}
           onRetry={() => setAccountRefreshVersion((value) => value + 1)}
+          onRefreshAll={() => void refreshEverything()}
           onCacheAll={() => void cacheWholeAccount('replays')}
           onCacheSummaries={() => void cacheWholeAccount('summaries')}
           onAnalyzeAll={() => void analyzeWholeAccount()}
@@ -777,9 +804,16 @@ function LocalArchive({
   if (!data || data.totalCount === 0) {
     return (
       <EmptyBox>
-        <div className="space-y-1">
-          <p>{tt('No local match-history records found.')}</p>
+        <div className="space-y-3">
+          <p>{tt('No local replay records found.')}</p>
           <p className="text-xs">{tt('Finish a game or save a replay, then return here.')}</p>
+          <button
+            type="button"
+            onClick={onRetry}
+            className="mx-auto inline-flex h-8 items-center gap-1.5 rounded-md border border-border px-3 text-xs transition-colors hover:bg-secondary"
+          >
+            <RefreshCw className="h-3.5 w-3.5" /> {tt('Refresh')}
+          </button>
         </div>
       </EmptyBox>
     )
@@ -915,6 +949,7 @@ function LocalReplayRow({
         {displayedAnalysis && (
           <ReplayAnalysisPanel
             result={displayedAnalysis}
+            target={{ localId: item.id }}
             open={showAnalysis}
             onToggle={() => setShowAnalysis((value) => !value)}
           />
@@ -944,6 +979,7 @@ function AccountArchive({
   autoAnalysis,
   autoAnalysisResults,
   onRetry,
+  onRefreshAll,
   onCacheAll,
   onCacheSummaries,
   onAnalyzeAll,
@@ -970,6 +1006,7 @@ function AccountArchive({
   autoAnalysis: AutoAnalysisState | null
   autoAnalysisResults: Record<string, ReplayAnalysisResult>
   onRetry: () => void
+  onRefreshAll: () => void
   onCacheAll: () => void
   onCacheSummaries: () => void
   onAnalyzeAll: () => void
@@ -990,6 +1027,7 @@ function AccountArchive({
       />
     )
   }
+  const refreshAllRunning = bulkCacheMode != null || fullAnalysisRunning || archiveAuditRunning
   return (
     <div className="space-y-3">
       <Card>
@@ -1003,61 +1041,88 @@ function AccountArchive({
                 )}
               </p>
             </div>
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex items-center gap-2">
               <Badge variant="outline" className={steamConnected ? 'border-win/40 text-win' : ''}>
                 Steam {steamConnected ? tt('connected') : tt('not connected')}
               </Badge>
               <button
                 type="button"
-                onClick={onRetry}
-                className="inline-flex h-8 items-center gap-1.5 rounded-md border border-border px-2.5 text-xs hover:bg-secondary"
+                disabled={data.totalCount === 0 || refreshAllRunning}
+                onClick={onRefreshAll}
+                className="inline-flex h-8 items-center gap-1.5 rounded-md bg-primary px-3 text-xs font-medium text-primary-foreground hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-40"
               >
-                <RefreshCw className="h-3.5 w-3.5" /> {tt('Sync full history')}
+                <RefreshCw className={cn('h-3.5 w-3.5', refreshAllRunning && 'animate-spin')} />
+                {refreshAllRunning ? tt('Updating full archive…') : tt('Refresh all')}
               </button>
-              <button
-                type="button"
-                disabled={!steamConnected || data.totalCount === 0 || cacheMany.isPending || bulkCacheMode != null}
-                onClick={onCacheAll}
-                className="inline-flex h-8 items-center gap-1.5 rounded-md border border-primary/40 px-2.5 text-xs text-primary hover:bg-primary/10 disabled:cursor-not-allowed disabled:opacity-40"
-              >
-                <HardDriveDownload className="h-3.5 w-3.5" />
-                {bulkCacheMode === 'replays' || cacheMany.isPending
-                  ? tt('Caching full archive…')
-                  : tt('Cache all available')}
-              </button>
-              <button
-                type="button"
-                disabled={!steamConnected || data.totalCount === 0 || cacheSummaries.isPending || bulkCacheMode != null}
-                onClick={onCacheSummaries}
-                className="inline-flex h-8 items-center gap-1.5 rounded-md border border-border px-2.5 text-xs hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-40"
-              >
-                <ListChecks className="h-3.5 w-3.5" />
-                {bulkCacheMode === 'summaries' || cacheSummaries.isPending
-                  ? tt('Caching full archive…')
-                  : tt('Cache all summaries')}
-              </button>
-              <button
-                type="button"
-                disabled={data.totalCount === 0 || fullAnalysisRunning || bulkCacheMode != null}
-                onClick={onAnalyzeAll}
-                className="inline-flex h-8 items-center gap-1.5 rounded-md border border-border px-2.5 text-xs hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-40"
-              >
-                <ScanLine className="h-3.5 w-3.5" />
-                {fullAnalysisRunning ? tt('Analyzing full archive…') : tt('Analyze full cached archive')}
-              </button>
-              <button
-                type="button"
-                disabled={
-                  data.totalCount === 0 ||
-                  archiveAuditRunning ||
-                  bulkCacheMode != null
-                }
-                onClick={onAuditAll}
-                className="inline-flex h-8 items-center gap-1.5 rounded-md border border-primary/40 px-2.5 text-xs text-primary hover:bg-primary/10 disabled:cursor-not-allowed disabled:opacity-40"
-              >
-                <ClipboardCheck className="h-3.5 w-3.5" />
-                {archiveAuditRunning ? tt('Auditing full archive…') : tt('Audit all cached summaries')}
-              </button>
+              <details className="relative">
+                <summary className="flex h-8 cursor-pointer list-none items-center justify-center rounded-md border border-border px-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground [&::-webkit-details-marker]:hidden">
+                  <MoreHorizontal className="h-4 w-4" />
+                  <span className="sr-only">{tt('Advanced actions')}</span>
+                </summary>
+                <div className="absolute right-0 top-9 z-20 w-64 space-y-1 rounded-md border border-border bg-card p-1.5 shadow-xl">
+                  <button
+                    type="button"
+                    onClick={onRetry}
+                    className="flex w-full items-center gap-2 rounded-sm px-2.5 py-2 text-left text-xs text-muted-foreground hover:bg-secondary hover:text-foreground"
+                  >
+                    <RefreshCw className="h-3.5 w-3.5" /> {tt('Sync full history')}
+                  </button>
+                  <button
+                    type="button"
+                    disabled={
+                      !steamConnected ||
+                      data.totalCount === 0 ||
+                      cacheMany.isPending ||
+                      bulkCacheMode != null
+                    }
+                    onClick={onCacheAll}
+                    className="flex w-full items-center gap-2 rounded-sm px-2.5 py-2 text-left text-xs text-muted-foreground hover:bg-secondary hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    <HardDriveDownload className="h-3.5 w-3.5" />
+                    {bulkCacheMode === 'replays' || cacheMany.isPending
+                      ? tt('Caching full archive…')
+                      : tt('Cache all available')}
+                  </button>
+                  <button
+                    type="button"
+                    disabled={
+                      !steamConnected ||
+                      data.totalCount === 0 ||
+                      cacheSummaries.isPending ||
+                      bulkCacheMode != null
+                    }
+                    onClick={onCacheSummaries}
+                    className="flex w-full items-center gap-2 rounded-sm px-2.5 py-2 text-left text-xs text-muted-foreground hover:bg-secondary hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    <ListChecks className="h-3.5 w-3.5" />
+                    {bulkCacheMode === 'summaries' || cacheSummaries.isPending
+                      ? tt('Caching full archive…')
+                      : tt('Cache all summaries')}
+                  </button>
+                  <button
+                    type="button"
+                    disabled={data.totalCount === 0 || fullAnalysisRunning || bulkCacheMode != null}
+                    onClick={onAnalyzeAll}
+                    className="flex w-full items-center gap-2 rounded-sm px-2.5 py-2 text-left text-xs text-muted-foreground hover:bg-secondary hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    <ScanLine className="h-3.5 w-3.5" />
+                    {fullAnalysisRunning
+                      ? tt('Analyzing full archive…')
+                      : tt('Analyze full cached archive')}
+                  </button>
+                  <button
+                    type="button"
+                    disabled={data.totalCount === 0 || archiveAuditRunning || bulkCacheMode != null}
+                    onClick={onAuditAll}
+                    className="flex w-full items-center gap-2 rounded-sm px-2.5 py-2 text-left text-xs text-muted-foreground hover:bg-secondary hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    <ClipboardCheck className="h-3.5 w-3.5" />
+                    {archiveAuditRunning
+                      ? tt('Auditing full archive…')
+                      : tt('Audit all cached summaries')}
+                  </button>
+                </div>
+              </details>
             </div>
           </div>
           {!steamConnected && (
@@ -1071,8 +1136,8 @@ function AccountArchive({
           {bulkCacheProgress && (
             <p className="text-[11px] text-muted-foreground">
               {tt('Full archive scan')}: {formatCount(bulkCacheProgress.scanned)} ·{' '}
-              {bulkCacheProgress.mode === 'replays' ? tt('replays') : tt('summaries')} {formatCount(bulkCacheProgress.completed)}/
-              {formatCount(bulkCacheProgress.eligible)}
+              {bulkCacheProgress.mode === 'replays' ? tt('replays') : tt('summaries')}{' '}
+              {formatCount(bulkCacheProgress.completed)}/{formatCount(bulkCacheProgress.eligible)}
             </p>
           )}
           {fullAnalysis && (
@@ -1191,10 +1256,10 @@ function ArchiveAuditCard({ rows }: { rows: ArchiveAuditRow[] }) {
                   <td className="px-3 py-2">
                     <div>{row.map || tt('Unknown map')}</div>
                     <div className="text-[10px] text-muted-foreground">
-                      {row.civ == null ? tt('Unknown civilization') : gameName(civDisplayName(row.civ))}
-                      {row.result
-                        ? ` · ${row.result === 'win' ? tt('Win') : tt('Loss')}`
-                        : ''}
+                      {row.civ == null
+                        ? tt('Unknown civilization')
+                        : gameName(civDisplayName(row.civ))}
+                      {row.result ? ` · ${row.result === 'win' ? tt('Win') : tt('Loss')}` : ''}
                     </div>
                   </td>
                   <td className="px-3 py-2">
@@ -1422,22 +1487,21 @@ function AccountReplayRow({
             ? ` ${tt('Cached size')}: ${(item.cacheSizeBytes / 1024 / 1024).toFixed(1)} MB.`
             : ''}
         </p>
-        {fullAnalysis.error && (
-          <p className="text-xs text-loss">{fullAnalysis.error.message}</p>
-        )}
+        {fullAnalysis.error && <p className="text-xs text-loss">{fullAnalysis.error.message}</p>}
         {analysis.error && !autoResult && !fullResult && (
           <p className="text-xs text-loss">{analysis.error.message}</p>
         )}
         {fullResult && (
           <p className="border-t border-border/60 pt-2 text-[11px] text-muted-foreground">
-            {tt('Full replay analysis')}: {fullResult.download.status} ·{' '}
-            {tt('Replay stream')} {fullResult.coverage.replay} · {tt('Summary')}{' '}
+            {tt('Full replay analysis')}: {fullResult.download.status} · {tt('Replay stream')}{' '}
+            {fullResult.coverage.replay} · {tt('Summary')}{' '}
             {fullResult.coverage.summary ? tt('available') : tt('unavailable')}
           </p>
         )}
         {displayedAnalysis && (
           <ReplayAnalysisPanel
             result={displayedAnalysis}
+            target={{ gameId: game.game_id }}
             open={showAnalysis}
             onToggle={() => setShowAnalysis((value) => !value)}
           />
@@ -1481,10 +1545,12 @@ function AccountReplayRow({
 
 export function ReplayAnalysisPanel({
   result,
+  target,
   open,
   onToggle,
 }: {
   result: ReplayAnalysisResult
+  target: ReplayAnalysisTarget
   open: boolean
   onToggle: () => void
 }) {
@@ -1492,6 +1558,14 @@ export function ReplayAnalysisPanel({
   const stream = result.commandStream
   const [eventLimit, setEventLimit] = useState(24)
   const [playerFilter, setPlayerFilter] = useState<number | null>(null)
+  const [actionOffset, setActionOffset] = useState(0)
+  const actionPage = useReplayActions(
+    target,
+    actionOffset,
+    100,
+    playerFilter,
+    open && result.actionLog != null,
+  )
   const coverageLabel =
     stream.coverage === 'full'
       ? tt('full command stream')
@@ -1531,6 +1605,14 @@ export function ReplayAnalysisPanel({
             />
             <Metric label={tt('Ticks')} value={String(stream.ticksParsed)} />
             <Metric label={tt('Unknown')} value={String(stream.unknownCommandCount)} />
+            <Metric
+              label={tt('Complete action journal')}
+              value={
+                result.actionLog == null
+                  ? tt('not available')
+                  : `${result.actionLog.eventCount}${result.actionLog.complete ? '' : '+'}`
+              }
+            />
           </div>
           {stream.players.length > 0 && (
             <div className="overflow-x-auto rounded-md border border-border/60">
@@ -1590,6 +1672,7 @@ export function ReplayAnalysisPanel({
                 value={playerFilter == null ? 'all' : String(playerFilter)}
                 onChange={(event) => {
                   setEventLimit(24)
+                  setActionOffset(0)
                   setPlayerFilter(event.target.value === 'all' ? null : Number(event.target.value))
                 }}
                 className="h-7 rounded-md border border-border bg-background px-2 text-foreground"
@@ -1609,7 +1692,7 @@ export function ReplayAnalysisPanel({
           {visibleEvents.length > 0 && (
             <>
               <div className="max-h-64 overflow-auto rounded-md border border-border/60">
-                {visibleEvents.map((event, index) => (
+                {(actionPage.data?.events ?? visibleEvents).map((event, index) => (
                   <div
                     key={`${event.offset}-${index}`}
                     className="grid grid-cols-[52px_1fr_auto] gap-2 border-b border-border/40 px-2 py-1.5 last:border-b-0"
@@ -1625,7 +1708,39 @@ export function ReplayAnalysisPanel({
                   </div>
                 ))}
               </div>
-              {eventLimit < filteredEvents.length && (
+              {actionPage.data ? (
+                <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-muted-foreground">
+                  <span>
+                    {tt('Complete action journal')}: {actionPage.data.offset + 1}–
+                    {Math.min(
+                      actionPage.data.offset + actionPage.data.events.length,
+                      actionPage.data.offset + actionPage.data.total,
+                    )}{' '}
+                    / {actionPage.data.total}
+                  </span>
+                  <span className="flex gap-2">
+                    <button
+                      type="button"
+                      disabled={actionOffset === 0 || actionPage.isFetching}
+                      onClick={() => setActionOffset((value) => Math.max(0, value - 100))}
+                      className="text-primary hover:underline disabled:opacity-40"
+                    >
+                      {tt('Previous')}
+                    </button>
+                    <button
+                      type="button"
+                      disabled={
+                        actionOffset + actionPage.data.events.length >= actionPage.data.total ||
+                        actionPage.isFetching
+                      }
+                      onClick={() => setActionOffset((value) => value + 100)}
+                      className="text-primary hover:underline disabled:opacity-40"
+                    >
+                      {tt('Next')}
+                    </button>
+                  </span>
+                </div>
+              ) : eventLimit < filteredEvents.length ? (
                 <button
                   type="button"
                   onClick={() =>
@@ -1635,7 +1750,7 @@ export function ReplayAnalysisPanel({
                 >
                   {tt('Show more timeline events')} ({filteredEvents.length - eventLimit})
                 </button>
-              )}
+              ) : null}
             </>
           )}
           {stream.dataGaps.length > 0 && (
@@ -1650,7 +1765,7 @@ export function ReplayAnalysisPanel({
           )}
           <p className="text-[11px] text-muted-foreground">
             {tt(
-              'Command gaps are an observable input-gap estimate, not a direct villager-idle measurement. Activity trend compares the first and last five-minute command windows. Decoded is the share of this player’s commands understood by the current parser. Failed actions, worker allocation and scouting are not encoded as explicit events.',
+              'Command gaps are an observable input-gap estimate, not a direct villager-idle measurement. The complete action journal contains every decoded command; structured fields are shown when the current patch schema identifies them. Unknown payloads remain available as raw evidence, while failed actions, worker allocation and scouting are not encoded as explicit events.',
             )}
           </p>
         </div>

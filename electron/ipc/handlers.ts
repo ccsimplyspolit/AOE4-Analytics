@@ -45,6 +45,7 @@ import {
   listAccountReplayArchive,
 } from '../services/replayArchiveService'
 import { analyzeCachedReplay } from '../services/replayCacheService'
+import { readReplayActionPage } from '../services/replayAnalysisCacheService'
 import {
   diagnoseRankedFetch,
   getSteamAuthStatus,
@@ -333,6 +334,31 @@ export function registerIpcHandlers(): void {
       return errFrom(error)
     }
   })
+  ipcMain.handle(
+    IpcChannels.replayActions,
+    async (_e, target: unknown, offset?: unknown, limit?: unknown, playerId?: unknown) => {
+      try {
+        let result = null
+        if (target && typeof target === 'object') {
+          const value = target as Record<string, unknown>
+          if (typeof value.localId === 'string') result = analyzeLocalReplay(value.localId)
+          else if (typeof value.gameId === 'number' && Number.isSafeInteger(value.gameId))
+            result = analyzeCachedReplay(value.gameId)
+        }
+        if (!result) return ok(null)
+        return ok(
+          await readReplayActionPage(
+            result,
+            typeof offset === 'number' ? offset : 0,
+            typeof limit === 'number' ? limit : 100,
+            typeof playerId === 'number' && Number.isSafeInteger(playerId) ? playerId : null,
+          ),
+        )
+      } catch (error) {
+        return errFrom(error)
+      }
+    },
+  )
   ipcMain.handle(IpcChannels.replayFullAnalyze, (_e, gameId: unknown) =>
     downloadAndAnalyzeAccountReplay(typeof gameId === 'number' ? gameId : Number(gameId)),
   )
@@ -383,5 +409,7 @@ export function registerIpcHandlers(): void {
   ipcMain.handle(IpcChannels.streamImportDraft, (_e, url: unknown) => importAoe2cmDraft(url))
   ipcMain.handle(IpcChannels.communityBuildImport, (_e, url: unknown) => importCommunityBuild(url))
   ipcMain.handle(IpcChannels.communityBuildList, (_e, input: unknown) => listCommunityBuilds(input))
-  ipcMain.handle(IpcChannels.aoe4GuidesBuildList, (_e, input: unknown) => listAoe4GuidesBuilds(input))
+  ipcMain.handle(IpcChannels.aoe4GuidesBuildList, (_e, input: unknown) =>
+    listAoe4GuidesBuilds(input),
+  )
 }

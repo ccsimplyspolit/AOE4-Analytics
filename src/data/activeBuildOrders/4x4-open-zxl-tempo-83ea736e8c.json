@@ -1,0 +1,200 @@
+{
+  "description": "Командный role-template Zhu Xi для 2x2–4x4: темп, vision и дальняя поддержка. Не заменяет выбор союзника и карту; ветка меняется после разведки.",
+  "civilization": "Zhu Xi's Legacy",
+  "name": "[4x4][OPEN][ZXL][TEMPO] Башня Цзяннань и поддержка союзника",
+  "author": "Командная адаптация текущей ZXL Feudal Agro и статистики AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/builds/LTyVAZiMT9Wb2qsFO8bJ, https://aoe4world.com/stats/rm_2v2/civilizations, https://aoe4world.com/stats/rm_3v3/civilizations, https://aoe4world.com/stats/rm_4v4/civilizations",
+  "mode": [
+    "4x4"
+  ],
+  "role": "tempo/support",
+  "status": "active",
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 жителя ставят @building_economy/mill.webp@ у @resource/berrybush.webp@ и едят @resource/sheep.webp@.",
+        "@unit_chinese/imperial-official.webp@ надзирает мельницу; @unit_cavalry/scout.webp@ ищет сторону для давления."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Первый новый житель ставит @building_economy/mining-camp.webp@ и идет на @resource/resource_gold.webp@.",
+        "4x4: отметь союзнику безопасный сектор и не открывайся первым."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:40",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Начинай @landmark_zhuxi/jiangnan-tower-2.webp@ одним жителем.",
+        "4x4: Jiangnan и военные здания держи глубже; впереди нужен vision союзников."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:45",
+      "villager_count": 16,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Новых жителей отправляй на @resource/resource_wood.webp@; военные здания ставь в зоне @building_defensive/outpost.webp@.",
+        "Пингни союзнику момент готовности первой армии, а не только ап эпохи."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:30",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_military/archery-range.webp@ и @building_military/barracks.webp@ в влиянии.",
+        "Против @unit_cavalry/horseman-1.webp@ сначала @unit_infantry/spearman-1.webp@, против пехоты — @unit_chinese/zhuge-nu-2.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:30",
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Производи @unit_chinese/zhuge-nu-2.webp@ и @unit_infantry/spearman-1.webp@ без пауз.",
+        "4x4: не умирай первым; поддерживай фронт Zhuge Nu/копьями из второй линии."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:00",
+      "villager_count": 30,
+      "resources": {
+        "food": 15,
+        "wood": 10,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Используй бесплатный пакет @building_defensive/outpost.webp@ вместе с армией союзника.",
+        "Если атака не пробила, переходи в @technology_economy/professional-scouts.webp@ или @age/age_3.webp@, а не в одиночный all-in."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:00",
+      "villager_count": 38,
+      "resources": {
+        "food": 18,
+        "wood": 11,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2x2: добавь второе производство; 3x3: держи центр; 4x4: копи на @age/age_3.webp@ и @building_military/siege-workshop.webp@.",
+        "4x4: копи на Castle и siege, не строй второй центр, пока команда теряет внешний ресурс.",
+        "4x4: не умирай первым, сохраняй экономику для Castle/siege и помогай фронту в общей точке сбора."
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Сезон 13. Проверено 2026-08-08 под live-сборку 16.3.11308.",
+  "map": "Dry Arabia, Gorge, Flankwoods, Cliffside, Sunkenlands",
+  "strategy": "tempo/support: Jiangnan, Zhuge Nu/копья, vision, синхронное окно давления и переход в масштабирование по состоянию команды.",
+  "queue": "rm_4v4",
+  "team_size": 4,
+  "strategy_key": "tempo_support",
+  "meta_tier": "team_core",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "mode_strategy": "4x4: не умирай первым, сохраняй экономику для Castle/siege и помогай фронту в общей точке сбора.",
+  "build_group": "TEAM_ZXL_2026",
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "rank_fit": "all+conqueror",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 1,
+    "transcript_count": 1,
+    "transcript_sources": {
+      "youtube-transcript.ai": 1
+    },
+    "search_candidate_count": 210,
+    "metadata_date_count": 0,
+    "rss_fallback_count": 1,
+    "status": "sparse_evidence",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=5hEzJSWbE9I"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Единственный ролик имеет transcript, но это gameplay/AI evidence без устойчивого build-order сигнала; действуют проверенные Jiangnan/Pro Scouts/Song ветки."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

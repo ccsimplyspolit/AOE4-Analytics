@@ -1,0 +1,182 @@
+{
+  "description": "Открытая Tughlaq Dynasty ветка: Tughlaqabad Fort, Worker Elephant, Elephant Raider и постепенный выход в Castle.",
+  "civilization": "Tughlaq Dynasty",
+  "name": "[1x1][OPEN][TUG][TEMPO] Туглак: Tughlaqabad и Elephant Raider",
+  "author": "Синтез Season 13 AoE4Guides/AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/builds/OWFiBX39naun6p3S1PSo, https://www.youtube.com/watch?v=iorxhl7QLTc, https://aoe4world.com/explorer/civs/tughlaq-dynasty",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 жителей на @resource/sheep.webp@; 6-й ставит @building_economy/house.webp@ и идёт на @resource/resource_gold.webp@.",
+        "@unit_cavalry/scout.webp@ проверяет внешнюю @resource/resource_food.webp@ и безопасный маршрут @unit_tughluq/worker_elephant.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:35",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_economy/lumber-camp.webp@; @resource/resource_wood.webp@ нужно под @building_tughluq/tughluqabad_fort.webp@ и военное производство."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "3 жителя начинают @building_tughluq/tughluqabad_fort.webp@.",
+        "@unit_tughluq/worker_elephant.webp@ отправь на дальнюю @resource/resource_food.webp@, но не подставляй его под ранний rush."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:50",
+      "villager_count": 21,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_military/barracks.webp@ и выпускай @unit_tughluq/elephant_raider_age2.webp@ после открытия.",
+        "Пехота прикрывает @unit_tughluq/worker_elephant.webp@ от копий и @unit_infantry/archer-2.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 15,
+        "wood": 10,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Исследуй @technology_tughluq/elephant_economics_1.webp@ только после первого боевого @unit_tughluq/worker_elephant.webp@.",
+        "@unit_tughluq/elephant_raider_age2.webp@ давит внешнее @resource/resource_gold.webp@ и не танкует под @building_economy/town-center.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:20",
+      "villager_count": 31,
+      "resources": {
+        "food": 18,
+        "wood": 12,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Добавь @unit_infantry/spearman-1.webp@ против @unit_cavalry/horseman-1.webp@ и второе производство.",
+        "Если враг ушёл в 2 @building_economy/town-center.webp@, сохраняй @unit_tughluq/worker_elephant.webp@ и копи на @age/age_3.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:30",
+      "villager_count": 38,
+      "resources": {
+        "food": 21,
+        "wood": 14,
+        "gold": 9,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "В @age/age_3.webp@ усиливай @building_tughluq/tughluqabad_fort.webp@ через @technology_tughluq/tughluqabad_fort_tier2.webp@ и добавляй @unit_tughluq/elephant_raider_age2.webp@.",
+        "Не делай чистую экономику: Tughlaq выигрывает от защищённой военной экономики."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/watch?v=iorxhl7QLTc",
+  "season": "Season 13; live-сборка 16.3.11308",
+  "map": "Открытые карты с доступной дальней едой",
+  "strategy": "Tughlaqabad Fort, Worker Elephant, Elephant Raider, копья и усиление Fort в Castle.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "role": "tempo",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "strategy_key": "tempo",
+  "meta_tier": "meta_core",
+  "build_group": "tughlaq_dynasty_tempo",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 3,
+    "transcript_count": 3,
+    "transcript_sources": {
+      "legacy_local": 3
+    },
+    "search_candidate_count": 186,
+    "metadata_date_count": 0,
+    "rss_fallback_count": 3,
+    "status": "evidence_backed",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=ZfEoOUiAg8I",
+      "https://www.youtube.com/watch?v=oAXCW0uVLIE",
+      "https://www.youtube.com/watch?v=-W1M4i524_M"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Три свежих гайда сходятся на Feudal Spear/Elephant pressure и остановке давления при появлении контр-состава; активный Tughlaqabad/Elephant Raider этому соответствует."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

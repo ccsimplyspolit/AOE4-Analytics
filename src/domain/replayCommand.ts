@@ -28,7 +28,29 @@ export interface ReplayDataLocation {
   chunkyVersion: number | null
 }
 
+export type ReplayActionCategory =
+  | 'production'
+  | 'economy'
+  | 'movement'
+  | 'combat'
+  | 'ability'
+  | 'technology'
+  | 'control'
+  | 'meta'
+  | 'unknown'
+
+/** How much of an action's payload is understood by the current replay schema. */
+export type ReplayActionDecodeLevel = 'exact' | 'structured' | 'inferred' | 'unknown'
+
+export interface ReplayActionPosition {
+  x: number
+  y: number
+  z: number
+}
+
 export interface ReplayCommandEvent {
+  /** Zero-based position in the complete decoded command stream. */
+  eventIndex: number
   offset: number
   tick: number
   timeSec: number
@@ -45,6 +67,17 @@ export interface ReplayCommandEvent {
   /** Best-effort production building id from the queue command attribute. */
   productionBuildingId: number | null
   queueCount: number | null
+  /** Number of selected units when the command carries a selection attribute. */
+  selectedUnitCount: number
+  /** Structured target position for move/attack/patrol/rally commands, when present. */
+  position: ReplayActionPosition | null
+  /** Structured target building id for commands that target a building. */
+  targetBuildingId: number | null
+  actionCategory: ReplayActionCategory
+  decodeLevel: ReplayActionDecodeLevel
+  /** Bounded raw payload evidence; offset + payloadBytes locate complete bytes in .rec. */
+  payloadHex: string
+  payloadHexTruncated: boolean
   known: boolean
 }
 
@@ -107,6 +140,25 @@ export interface ReplayAnalysisResult {
   recordedAtMs: number
   info: ReplayInfo | null
   commandStream: ReplayCommandAnalysis
+  /** Complete action journal, including events beyond the UI preview window. */
+  actionLog?: ReplayActionLog
+}
+
+export interface ReplayActionLog {
+  path: string
+  format: 'ndjson'
+  eventCount: number
+  /** False when the replay parser stopped on a malformed/truncated record. */
+  complete: boolean
+}
+
+export interface ReplayActionPage {
+  events: ReplayCommandEvent[]
+  offset: number
+  limit: number
+  total: number
+  playerId: number | null
+  complete: boolean
 }
 
 interface Reader {
@@ -186,6 +238,58 @@ const COMMAND_NAMES: Record<number, string> = {
   154: 'periodic-3',
 }
 
+const COMMAND_CATEGORIES: Record<number, ReplayActionCategory> = {
+  3: 'production',
+  12: 'economy',
+  14: 'economy',
+  16: 'technology',
+  62: 'movement',
+  63: 'control',
+  65: 'economy',
+  67: 'production',
+  71: 'combat',
+  72: 'ability',
+  73: 'control',
+  105: 'economy',
+  109: 'control',
+  114: 'control',
+  116: 'movement',
+  123: 'economy',
+  143: 'meta',
+  146: 'meta',
+  148: 'meta',
+  152: 'meta',
+  153: 'meta',
+  154: 'meta',
+}
+
+const COMMAND_DECODE_LEVELS: Record<number, ReplayActionDecodeLevel> = {
+  3: 'exact',
+  12: 'structured',
+  62: 'structured',
+  63: 'structured',
+  65: 'structured',
+  67: 'structured',
+  71: 'structured',
+  72: 'structured',
+  73: 'structured',
+  109: 'structured',
+  114: 'structured',
+  116: 'structured',
+  123: 'structured',
+  14: 'inferred',
+  16: 'inferred',
+  105: 'inferred',
+  143: 'inferred',
+  146: 'inferred',
+  148: 'inferred',
+  152: 'inferred',
+  153: 'inferred',
+  154: 'inferred',
+}
+
+const PAYLOAD_HEX_LIMIT = 128
+
 const UNIT_SELECTION_COMMANDS = new Set([62, 63, 65, 67, 71, 72, 73, 109, 114, 116])
 
 /**
@@ -237,22 +341,32 @@ function isLikelyGameTick(reader: Reader, offset: number): boolean {
   return u8(reader, offset + 8) === 0x20 && u32(reader, offset + 9) < 0x7fffffff
 }
 
-function selectedUnits(reader: Reader, offset: number, end: number): number[] {
-  if (!canRead(reader, offset, 1, end)) return []
+interface SelectedUnits {
+  ids: number[]
+  nextOffset: number
+}
+
+function selectedUnits(reader: Reader, offset: number, end: number): SelectedUnits {
+  if (!canRead(reader, offset, 1, end)) return { ids: [], nextOffset: offset }
   const marker = u8(reader, offset)
   if (marker === 32) {
-    if (!canRead(reader, offset + 1, 3, end)) return []
+    if (!canRead(reader, offset + 1, 3, end)) return { ids: [], nextOffset: offset }
     // Single-unit selection is stored in reverse byte order.
-    return [
-      ((u8(reader, offset + 1) << 16) | (u8(reader, offset + 2) << 8) | u8(reader, offset + 3)) >>>
-        0,
-    ]
+    return {
+      ids: [
+        ((u8(reader, offset + 1) << 16) |
+          (u8(reader, offset + 2) << 8) |
+          u8(reader, offset + 3)) >>>
+          0,
+      ],
+      nextOffset: offset + 4,
+    }
   }
   const count =
     marker > 64 && marker < 128 ? marker - 64 : marker === 128 ? u8(reader, offset + 1) : 0
-  if (count <= 0 || count > 128) return []
+  if (count <= 0 || count > 128) return { ids: [], nextOffset: offset }
   const start = marker === 128 ? offset + 2 : offset + 1
-  if (!canRead(reader, start, count * 4, end)) return []
+  if (!canRead(reader, start, count * 4, end)) return { ids: [], nextOffset: offset }
   const ids: number[] = []
   for (let i = 0; i < count; i++)
     ids.push(
@@ -261,7 +375,53 @@ function selectedUnits(reader: Reader, offset: number, end: number): number[] {
         (u8(reader, start + i * 4 + 2) << 16)) >>>
         0,
     )
-  return ids
+  return { ids, nextOffset: start + count * 4 }
+}
+
+function payloadHex(
+  reader: Reader,
+  start: number,
+  end: number,
+): {
+  value: string
+  truncated: boolean
+} {
+  const bytes = reader.bytes.subarray(start, end)
+  const visible = bytes.subarray(0, PAYLOAD_HEX_LIMIT)
+  return {
+    value: [...visible].map((byte) => byte.toString(16).padStart(2, '0')).join(''),
+    truncated: bytes.length > visible.length,
+  }
+}
+
+function targetAttribute(
+  reader: Reader,
+  offset: number,
+  end: number,
+): { position: ReplayActionPosition | null; targetBuildingId: number | null } {
+  if (!canRead(reader, offset, 1, end)) return { position: null, targetBuildingId: null }
+  const type = u8(reader, offset)
+  if (type === 2 && canRead(reader, offset + 1, 12, end)) {
+    return {
+      position: {
+        x: reader.view.getFloat32(offset + 1, true),
+        y: reader.view.getFloat32(offset + 5, true),
+        z: reader.view.getFloat32(offset + 9, true),
+      },
+      targetBuildingId: null,
+    }
+  }
+  if (type === 3 && canRead(reader, offset + 1, 4, end)) {
+    return {
+      position: null,
+      targetBuildingId:
+        (u8(reader, offset + 1) |
+          (u8(reader, offset + 2) << 8) |
+          (u8(reader, offset + 3) << 16)) >>>
+        0,
+    }
+  }
+  return { position: null, targetBuildingId: null }
 }
 
 function parseCommandPayload(
@@ -274,7 +434,14 @@ function parseCommandPayload(
   pbgid: number | null
   productionBuildingId: number | null
   queueCount: number | null
+  selectedUnitCount: number
+  position: ReplayActionPosition | null
+  targetBuildingId: number | null
+  actionCategory: ReplayActionCategory
+  decodeLevel: ReplayActionDecodeLevel
 } {
+  const category = COMMAND_CATEGORIES[commandType] ?? 'unknown'
+  const decodeLevel = COMMAND_DECODE_LEVELS[commandType] ?? 'unknown'
   if (commandType === 3) {
     // QueueUnitCommand: attribute(16), queue count, unit pbgid, player id, 0.
     const attr = canRead(reader, payloadStart, 6, commandEnd) ? u8(reader, payloadStart) : -1
@@ -290,17 +457,45 @@ function parseCommandPayload(
       queueCount: canRead(reader, payloadStart + 6, 1, commandEnd)
         ? u8(reader, payloadStart + 6)
         : null,
+      selectedUnitCount: 0,
+      position: null,
+      targetBuildingId: null,
+      actionCategory: category,
+      decodeLevel,
     }
   }
   if (UNIT_SELECTION_COMMANDS.has(commandType)) {
+    const selection = selectedUnits(reader, payloadStart, commandEnd)
+    const target =
+      commandType === 12 || commandType === 62 || commandType === 71 || commandType === 116
+        ? targetAttribute(reader, selection.nextOffset + 2, commandEnd)
+        : { position: null, targetBuildingId: null }
     return {
-      unitIds: selectedUnits(reader, payloadStart, commandEnd),
+      unitIds: selection.ids,
       pbgid: null,
       productionBuildingId: null,
       queueCount: null,
+      selectedUnitCount: selection.ids.length,
+      position: target.position,
+      targetBuildingId: target.targetBuildingId,
+      actionCategory: category,
+      decodeLevel,
     }
   }
-  return { unitIds: [], pbgid: null, productionBuildingId: null, queueCount: null }
+  return {
+    unitIds: [],
+    pbgid:
+      commandType === 123 && canRead(reader, payloadStart + 7, 4, commandEnd)
+        ? i32(reader, payloadStart + 7)
+        : null,
+    productionBuildingId: null,
+    queueCount: null,
+    selectedUnitCount: 0,
+    position: null,
+    targetBuildingId: null,
+    actionCategory: category,
+    decodeLevel,
+  }
 }
 
 function commandEvent(
@@ -309,6 +504,7 @@ function commandEvent(
   tick: number,
   hostComputerId: number,
   end: number,
+  eventIndex: number,
 ): ReplayCommandEvent | null {
   if (!canRead(reader, offset, COMMAND_HEADER_SIZE, end)) return null
   const size = i16(reader, offset)
@@ -318,7 +514,9 @@ function commandEvent(
   const playerId = u32(reader, offset + 20)
   const payloadStart = offset + COMMAND_HEADER_SIZE
   const payload = parseCommandPayload(reader, commandType, payloadStart, offset + size)
+  const rawPayload = payloadHex(reader, payloadStart, offset + size)
   return {
+    eventIndex,
     offset,
     tick,
     timeSec: tick / 8,
@@ -330,8 +528,16 @@ function commandEvent(
     playerCommandCount,
     payloadBytes: Math.max(0, size - COMMAND_HEADER_SIZE),
     ...payload,
+    payloadHex: rawPayload.value,
+    payloadHexTruncated: rawPayload.truncated,
     known: COMMAND_NAMES[commandType] != null,
   }
+}
+
+export interface ReplayCommandParseOptions {
+  /** Preview cap only; the optional event sink still receives every decoded command. */
+  maxEvents?: number
+  onEvent?: (event: ReplayCommandEvent) => void
 }
 
 interface PlayerStatsAccumulator {
@@ -477,6 +683,7 @@ function emptyAnalysis(
 export function parseReplayCommandStream(
   bytes: Uint8Array,
   streamOffset?: number,
+  options: ReplayCommandParseOptions = {},
 ): ReplayCommandAnalysis {
   if (bytes.byteLength > MAX_ANALYZED_BYTES)
     return emptyAnalysis('unavailable', null, bytes.byteLength, [
@@ -504,7 +711,7 @@ export function parseReplayCommandStream(
   let commandCount = 0
   let unknownCommandCount = 0
   let eventsTruncated = false
-  const maxEvents = 50_000
+  const maxEvents = Math.max(0, Math.floor(options.maxEvents ?? 50_000))
 
   while (canRead(reader, cursor, 8)) {
     const recordType = u32(reader, cursor)
@@ -545,7 +752,14 @@ export function parseReplayCommandStream(
             break
           }
           const size = i16(reader, commandCursor)
-          const event = commandEvent(reader, commandCursor, tick, hostComputerId, blockEnd)
+          const event = commandEvent(
+            reader,
+            commandCursor,
+            tick,
+            hostComputerId,
+            blockEnd,
+            commandCount,
+          )
           if (!event) {
             blockError = true
             break
@@ -561,6 +775,11 @@ export function parseReplayCommandStream(
               })
           }
           updatePlayerStats(playerAccumulators, event)
+          try {
+            options.onEvent?.(event)
+          } catch {
+            // An optional journal sink must never make a valid replay look corrupt.
+          }
           if (events.length < maxEvents) events.push(event)
           else eventsTruncated = true
           commandCursor += size
@@ -601,7 +820,7 @@ export function parseReplayCommandStream(
     dataGaps.push({
       code: 'event-cap',
       message:
-        'Only the first 50,000 commands are returned to the UI; aggregate metrics still include the full decoded prefix.',
+        'The inline preview is capped at 50,000 commands; the complete decoded action journal is stored separately.',
       offset: null,
     })
   const coverage: ReplayAnalysisCoverage = dataGaps.some(

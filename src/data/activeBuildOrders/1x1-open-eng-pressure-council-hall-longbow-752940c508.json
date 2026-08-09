@@ -1,0 +1,185 @@
+{
+  "description": "Универсальный English opener: Council Hall, ранние Longbow/Spearman, Network of Castles и переход в White Tower или 2TC.",
+  "civilization": "English",
+  "name": "[1x1][OPEN][ENG][PRESSURE] Англичане: Council Hall и Longbow",
+  "author": "Синтез Season 13 AoE4Guides/AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/builds/qMulVDVXE7BsHxxNI0mP, https://www.youtube.com/watch?v=aRkeTDdkd4I, https://aoe4world.com/explorer/civs/english",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 жителей на @resource/sheep.webp@; 7-й строит @building_economy/house.webp@ и идёт на @resource/resource_gold.webp@.",
+        "@unit_cavalry/scout.webp@ ищет внешний @resource/resource_gold.webp@ и сторону первой атаки."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:45",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Один житель на @resource/resource_wood.webp@; не ставь раннюю @building_economy/farm.webp@ до проверки @resource/deer.webp@ и @resource/berrybush.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:35",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "3 жителя начинают @landmark_english/council-hall.webp@.",
+        "После закладки ралли на @resource/resource_wood.webp@ для @building_economy/house.webp@ и @building_military/archery-range.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:45",
+      "villager_count": 21,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_english/council-hall.webp@ непрерывно выпускает @unit_english/longbowman-2.webp@.",
+        "Поставь @building_military/barracks.webp@ и смешай @unit_infantry/spearman-1.webp@ против @unit_cavalry/horseman-1.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:55",
+      "villager_count": 26,
+      "resources": {
+        "food": 14,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_defensive/outpost.webp@ на внешний @resource/resource_gold.webp@ только при угрозе.",
+        "Атакуй с @unit_english/longbowman-2.webp@ под @ability_english/ability-network-of-castles.webp@, не подставляя стрелков в одиночку."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:20",
+      "villager_count": 31,
+      "resources": {
+        "food": 17,
+        "wood": 12,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Бери @technology_english/arrow-volley.webp@ и @technology_military/steeled-arrow.webp@ по составу врага.",
+        "Против 2 @building_economy/town-center.webp@ добавь @unit_siege/battering-ram.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:30",
+      "villager_count": 38,
+      "resources": {
+        "food": 20,
+        "wood": 14,
+        "gold": 8,
+        "stone": 5,
+        "builder": 6
+      },
+      "notes": [
+        "Если rush не пробил, переходи в @landmark_english/the-white-tower.webp@ или @landmark_english/kings-palace.webp@.",
+        "Давление @unit_english/longbowman-2.webp@ сохраняй до @age/age_3.webp@, не меняй армию на голую жадность."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/watch?v=aRkeTDdkd4I",
+  "season": "Season 13; live-сборка 16.3.11308",
+  "map": "Dry Arabia, Gorge, Flankwoods и другие открытые карты",
+  "strategy": "Council Hall, Longbow/копья, Network of Castles и переход в White Tower по состоянию игры.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "role": "pressure",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "strategy_key": "pressure",
+  "meta_tier": "meta_core",
+  "build_group": "english_pressure",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 6,
+    "transcript_count": 6,
+    "transcript_sources": {
+      "youtube-transcript.ai": 6
+    },
+    "search_candidate_count": 190,
+    "metadata_date_count": 6,
+    "rss_fallback_count": 0,
+    "status": "evidence_backed",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=YDfX6tCO1nM",
+      "https://www.youtube.com/watch?v=BmdJ2U0S41E",
+      "https://www.youtube.com/watch?v=DCKjcFh9jPA",
+      "https://www.youtube.com/watch?v=EkvXMv2viMg",
+      "https://www.youtube.com/watch?v=FSqzyFg17Ug",
+      "https://www.youtube.com/watch?v=JF0cshpA1Yg"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Шесть из шести роликов имеют transcript; decision/age-up/unit/map сигналы подтверждают адаптивный Longbow/2TC каркас, но не дают единого нового тайминга."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

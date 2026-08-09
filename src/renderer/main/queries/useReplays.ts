@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { ipc } from '@shared/ipc'
 import { useSettings } from './useProfile'
-import type { AccountReplayPage, ReplayAnalysisTarget } from '@ipc/contract'
+import type { AccountReplayPage, ReplayActionPage, ReplayAnalysisTarget } from '@ipc/contract'
 
 /** Paginated local archive; permission and filesystem access stay in main. */
 export function useReplays(page = 1, pageSize = 25) {
@@ -10,7 +10,13 @@ export function useReplays(page = 1, pageSize = 25) {
     queryKey: ['replays', page, pageSize],
     queryFn: () => ipc.listReplays(page, pageSize),
     enabled: settings.isSuccess && settings.data.localData.consentGranted,
-    staleTime: 30_000,
+    // AoE4 creates/rotates playback/temp.rec outside the renderer. Always
+    // refresh on revisit and poll while this tab is open so a just-finished
+    // match cannot leave the archive stuck on an old empty result.
+    refetchOnMount: 'always',
+    refetchOnWindowFocus: 'always',
+    refetchInterval: settings.data?.localData.consentGranted ? 10_000 : false,
+    staleTime: 5_000,
   })
 }
 
@@ -67,6 +73,26 @@ export function useReplayAnalysis() {
       if (!result.ok) throw new Error(result.error.message)
       return result.data
     },
+  })
+}
+
+/** Reads the complete decoded action journal in bounded pages from main. */
+export function useReplayActions(
+  target: ReplayAnalysisTarget,
+  offset: number,
+  limit: number,
+  playerId: number | null,
+  enabled: boolean,
+) {
+  return useQuery<ReplayActionPage | null>({
+    queryKey: ['replay-actions', target, offset, limit, playerId],
+    queryFn: async () => {
+      const result = await ipc.getReplayActions(target, offset, limit, playerId)
+      if (!result.ok) throw new Error(result.error.message)
+      return result.data
+    },
+    enabled,
+    staleTime: Infinity,
   })
 }
 

@@ -1,0 +1,176 @@
+{
+  "description": "Базовый открытый Ottoman opener: Military School, Sipahi/Mehter, давление на внешнее золото и переход в Janissary или Castle.",
+  "civilization": "Ottomans",
+  "name": "[1x1][OPEN][OTT][PRESSURE] Османы: Military School и Sipahi",
+  "author": "Синтез Season 13 AoE4Guides/AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/builds/Qw883olQI2LzPplEqPES, https://www.youtube.com/watch?v=oFfv5cHry68, https://aoe4world.com/explorer/civs/ottomans",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 жителей на @resource/sheep.webp@; 6-й ставит @building_economy/house.webp@ и идёт на @resource/resource_gold.webp@.",
+        "@unit_cavalry/scout.webp@ отмечает внешний @resource/resource_gold.webp@ и безопасную позицию @building_ottomans/military-school-1.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:35",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Новых жителей до 8 @resource/resource_food.webp@; затем @resource/resource_wood.webp@ под @building_ottomans/military-school-1.webp@ и @building_economy/house.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:35",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "3 жителя начинают @landmark_ottomans/twin-minaret-medrese-1.webp@.",
+        "Поставь @building_ottomans/military-school-1.webp@ сразу после закладки."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:45",
+      "villager_count": 21,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_ottomans/military-school-1.webp@ выпускает @unit_ottomans/sipahi-2.webp@; обычная @building_military/stable.webp@ добавляет второго.",
+        "@unit_ottomans/mehter-2.webp@ нужен рядом с первой группой армии."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:55",
+      "villager_count": 26,
+      "resources": {
+        "food": 15,
+        "wood": 10,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_military/archery-range.webp@ и добавь @unit_infantry/archer-2.webp@ против @unit_infantry/spearman-1.webp@.",
+        "@unit_ottomans/sipahi-2.webp@ режут @resource/resource_gold.webp@ и рабочих, но не заходят под @building_economy/town-center.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:15",
+      "villager_count": 31,
+      "resources": {
+        "food": 18,
+        "wood": 12,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Исследуй @technology_ottomans/mehter-drums-1.webp@ и ускоряй производство Vizier.",
+        "При вражеской коннице добавь @unit_infantry/spearman-1.webp@ до второй @building_military/stable.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:25",
+      "villager_count": 38,
+      "resources": {
+        "food": 21,
+        "wood": 14,
+        "gold": 9,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "В @age/age_3.webp@ добавляй @unit_ottomans/janissary-3.webp@ против тяжёлой @unit_cavalry/horseman-1.webp@.",
+        "Не жертвуй @building_ottomans/military-school-1.webp@ ради голого Fast @age/age_3.webp@."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/watch?v=oFfv5cHry68",
+  "season": "Season 13; live-сборка 16.3.11308",
+  "map": "Открытые карты и короткие сухопутные дистанции",
+  "strategy": "Military School, Sipahi/Mehter, ранний рейд и Castle Janissary по контр-составу.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "role": "pressure",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "strategy_key": "pressure",
+  "meta_tier": "meta_core",
+  "build_group": "ottomans_pressure",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 0,
+    "transcript_count": 0,
+    "transcript_sources": {},
+    "search_candidate_count": 0,
+    "metadata_date_count": 0,
+    "rss_fallback_count": 0,
+    "status": "no_relevant_video_in_window",
+    "source_urls": [],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Свежих роликов с фракцией в названии за окно не найдено; Military School/Janissary ветки не получают неподтверждённых правок."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

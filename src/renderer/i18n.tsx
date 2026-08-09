@@ -303,7 +303,8 @@ const UI: Record<Locale, Record<string, string>> = {
     'AoE4World + local builds': 'AoE4World + локальные билды',
     'Meta Ledger': 'Журнал меты',
     'Decision Summary': 'Сводка решений',
-    'Patch compatibility is maintained in Explorer.': 'Совместимость патчей проверяется в Explorer.',
+    'Patch compatibility is maintained in Explorer.':
+      'Совместимость патчей проверяется в Explorer.',
     'Open patch coverage': 'Открыть покрытие патчей',
     'Historical snapshot is stale or unavailable; open Civ Meta for current values.':
       'Исторический снапшот устарел или недоступен; актуальные значения доступны в Civ Meta.',
@@ -625,6 +626,18 @@ const UI: Record<Locale, Record<string, string>> = {
     'Sync all account games': 'Синхронизировать все матчи аккаунта',
     'What to improve': 'Что улучшить',
     'Economy & build order': 'Экономика и порядок строительства',
+    'Match evidence navigation': 'Навигация по доказательствам матча',
+    'Turning points': 'Переломные моменты',
+    'Build audit': 'Сверка билда',
+    'Command stream': 'Поток команд',
+    'Summary ready': 'Сводка готова',
+    'Summary pending': 'Сводка ожидается',
+    'VOD linked': 'VOD привязан',
+    'VOD search': 'Поиск VOD',
+    'Download + analyze replay': 'Скачать и разобрать реплей',
+    'Online replay': 'Онлайн-реплей',
+    'Relic did not return an available replay for this game.':
+      'Relic не вернул доступный реплей для этого матча.',
     'Villagers / min': 'Крестьяне / мин',
     W: 'П',
     L: 'ПР',
@@ -829,7 +842,7 @@ const UI: Record<Locale, Record<string, string>> = {
     Password: 'Пароль',
     'Steam Guard code': 'Код Steam Guard',
     'Recovery plan': 'План восстановления',
-    Evidence: 'Основание',
+    Evidence: 'Доказательства',
     of: 'из',
     Opponents: 'Соперники',
     'metadata only': 'только метаданные',
@@ -967,14 +980,17 @@ const UI: Record<Locale, Record<string, string>> = {
     'Overlay control room': 'Пульт управления оверлеем',
     'Tune the in-game view, choose what appears, then place it exactly where you want.':
       'Настройте вид в игре, выберите нужную информацию и разместите виджеты там, где удобно.',
-    'A single scale for a quiet, readable overlay.': 'Единый масштаб для спокойного и читаемого оверлея.',
+    'A single scale for a quiet, readable overlay.':
+      'Единый масштаб для спокойного и читаемого оверлея.',
     'Live preview': 'Предпросмотр',
     'Game-state widgets': 'Виджеты матча',
-    'Only show information that matters in the moment.': 'Оставьте только то, что важно прямо сейчас.',
+    'Only show information that matters in the moment.':
+      'Оставьте только то, что важно прямо сейчас.',
     'Show / hide overlay': 'Показать / скрыть оверлей',
     'The overlay shows the matchup across the top, a live APM counter, and a results card after each game. Arrange widgets with the button below or':
       'Оверлей показывает матчап сверху, живой счётчик APM и карточку результата после каждой игры. Расставьте виджеты кнопкой ниже или',
-    'it opens a draggable preview even before a match.': '— так откроется перетаскиваемый предпросмотр ещё до матча.',
+    'it opens a draggable preview even before a match.':
+      '— так откроется перетаскиваемый предпросмотр ещё до матча.',
     'Reset widget positions': 'Сбросить позиции виджетов',
     Layout: 'Расположение',
     'Matchup bar': 'Панель матчапа',
@@ -986,8 +1002,20 @@ const UI: Record<Locale, Record<string, string>> = {
     'Status pill': 'Статус матча',
     'Show waiting, matchup, and analysis status.': 'Показывать ожидание, матчап и статус анализа.',
     'Build order overlay': 'Билд в оверлее',
-    'Choose a build here, or let the overlay pick the first matching build for your civilization.':
-      'Выберите билд здесь или включите автоматический выбор первого билда для вашей цивилизации.',
+    'Choose a build here, or let the overlay pick the first matching build from your active pool.':
+      'Выберите билд здесь или включите автоматический выбор первого подходящего билда из активного пула.',
+    'My active builds': 'Мои активные билды',
+    'Only builds in this pool can appear in the overlay cycle. Imported builds stay available in the catalogue until you add them here.':
+      'Только билды из этого пула могут участвовать в цикле оверлея. Импортированные билды остаются в каталоге, пока вы не добавите их сюда.',
+    'Active pool': 'Активный пул',
+    'Used by overlay': 'Используется оверлеем',
+    'Clear active pool': 'Очистить активный пул',
+    'No builds selected yet. Add a build from the catalogue.':
+      'Билды пока не выбраны. Добавьте билд из каталога.',
+    'Remove from active pool': 'Убрать из активного пула',
+    'Build catalogue': 'Каталог билдов',
+    'Search build library…': 'Поиск по библиотеке билдов…',
+    'No builds match this filter.': 'Нет билдов по этому фильтру.',
     'Build selection': 'Выбор билда',
     'Use selected build': 'Использовать выбранный билд',
     'Auto-select by civilization': 'Выбирать по цивилизации',
@@ -1298,7 +1326,7 @@ const UI: Record<Locale, Record<string, string>> = {
       'Включите доступ к локальным данным в настройках, чтобы индексировать matchhistory и файлы `.rec`. До согласия ничего не читается.',
     'Indexing the complete local archive…': 'Индексация полного локального архива…',
     'Could not read the local replay archive.': 'Не удалось прочитать локальный архив реплеев.',
-    'No local match-history records found.': 'Локальные записи истории матчей не найдены.',
+    'No local replay records found.': 'Локальные записи реплеев не найдены.',
     'local games indexed': 'локальных матчей проиндексировано',
     'Headers only · command streams are never guessed':
       'Только заголовки · потоки команд не угадываются',
@@ -1319,12 +1347,14 @@ const UI: Record<Locale, Record<string, string>> = {
     'external fallback': 'внешний fallback',
     Commands: 'Команды',
     Ticks: 'Тики',
+    'Complete action journal': 'Полный журнал действий',
+    'not available': 'недоступен',
     'Command gaps': 'Паузы между командами',
     'Max gap': 'Макс. пауза',
     'Production queue events': 'События очередей производства',
     'Show more timeline events': 'Показать ещё события таймлайна',
-    'Command gaps are an observable input-gap estimate, not a direct villager-idle measurement. Failed actions, worker allocation and scouting are not encoded as explicit events.':
-      'Паузы между командами — оценка по наблюдаемому вводу, а не прямое измерение простоя крестьян. Ошибки действий, распределение рабочих и разведка не записаны как явные события.',
+    'Command gaps are an observable input-gap estimate, not a direct villager-idle measurement. The complete action journal contains every decoded command; structured fields are shown when the current patch schema identifies them. Unknown payloads remain available as raw evidence, while failed actions, worker allocation and scouting are not encoded as explicit events.':
+      'Паузы между командами — оценка по наблюдаемому вводу, а не прямое измерение простоя крестьян. Полный журнал содержит каждую декодированную команду; структурированные поля показываются, когда их распознаёт схема текущего патча. Неизвестные данные остаются доступными как сырое доказательство, а ошибки действий, распределение рабочих и разведка не записаны как явные события.',
     'match history': 'история матчей',
     playback: 'воспроизведение',
     'replay saved': 'реплей сохранён',
@@ -1358,6 +1388,19 @@ const UI: Record<Locale, Record<string, string>> = {
       'Нажмите «Синхронизировать все матчи аккаунта», чтобы загрузить и проанализировать матчи.',
     Performance: 'Результаты',
     'Last 2 weeks': 'Последние 2 недели',
+    'Stats scope': 'Область статистики',
+    'All personal history is loaded; these filters only change the analysis view.':
+      'Вся личная история загружена; фильтры меняют только представление и расчёты.',
+    'matching games': 'подходящих матчей',
+    'All formats': 'Все форматы',
+    'Reset filters': 'Сбросить фильтры',
+    'Data coverage': 'Покрытие данных',
+    'Missing evidence is excluded, never counted as zero.':
+      'Отсутствующие данные исключаются, а не считаются нулём.',
+    'Resolved results': 'Определённый результат',
+    'Rated games': 'Матчи с рейтингом',
+    'Economy evidence': 'Данные экономики',
+    'Export CSV': 'Экспорт CSV',
     'More breakdowns': 'Дополнительные разрезы',
     'opponent civ, map, format, game length, time of day':
       'цивилизация соперника, карта, формат, длительность и время суток',
@@ -1630,6 +1673,9 @@ const UI: Record<Locale, Record<string, string>> = {
     'Refresh snapshots': 'Обновить снимки',
     'Decode local attributes': 'Декодировать локальные атрибуты',
     'Refresh native icons': 'Обновить игровые иконки',
+    'Refresh all': 'Обновить всё',
+    'Updating full archive…': 'Обновление всего архива…',
+    'Advanced actions': 'Дополнительные действия',
     'RGD decoded': 'RGD декодировано',
     'RGD projected': 'RGD спроецировано',
     'projection warnings': 'предупреждений проекции',
@@ -1704,6 +1750,9 @@ const UI: Record<Locale, Record<string, string>> = {
     'AoE4World supplies the paginated account history; Relic adds recent matches, ranks and replay/summary upload slots.':
       'AoE4World предоставляет постраничную историю аккаунта; Relic добавляет последние матчи, ранги и слоты загрузки реплеев/сводок.',
     'Benchmark lens': 'Сравнение с эталоном',
+    'Compare non-overlapping groups from the loaded personal history.':
+      'Сравнивайте непересекающиеся группы из загруженной личной истории.',
+    'Full personal history': 'Вся личная история',
     Best: 'Лучший',
     'Best civilization by map': 'Лучшая цивилизация по карте',
     'All ratings': 'Все рейтинги',
@@ -2223,7 +2272,8 @@ const UI: Record<Locale, Record<string, string>> = {
     'Best compatible build selected': 'Выбран лучший совместимый билд',
     'The only compatible build was selected.': 'Выбран единственный совместимый билд.',
     'Reading match evidence…': 'Читаем данные матча…',
-    'No player rows were decoded for this match.': 'Для этого матча не декодированы строки игроков.',
+    'No player rows were decoded for this match.':
+      'Для этого матча не декодированы строки игроков.',
     'The match can still be reviewed after syncing its summary or importing the local replay.':
       'Сверку можно выполнить после повторной синхронизации сводки или импорта локального реплея.',
     'Detailed build comparison is unavailable for this game.':
@@ -2628,7 +2678,8 @@ const UI: Record<Locale, Record<string, string>> = {
     'Preview build': 'Предпросмотр билда',
     'mixed — review before ranked play': 'смешано — проверьте перед рейтинговой игрой',
     'unknown — refresh metadata': 'неизвестно — обновите метаданные',
-    'unknown — local builds lack patch metadata': 'неизвестно — у локальных билдов нет метаданных патча',
+    'unknown — local builds lack patch metadata':
+      'неизвестно — у локальных билдов нет метаданных патча',
     'The live meta patch set is known, but local builds do not carry patch tags. Their compatibility cannot be determined until each build is tagged or imported again with patch metadata.':
       'Набор патчей живой меты известен, но локальные билды не содержат тегов патча. Их совместимость нельзя определить, пока каждый билд не будет помечен или импортирован заново с метаданными патча.',
     'Coverage means only that the build tag belongs to the live patch family; it does not verify every build step against balance changes.':
@@ -2739,7 +2790,8 @@ const UI: Record<Locale, Record<string, string>> = {
     'Replay parser is unavailable.': 'Парсер реплеев недоступен.',
     'Environment setting': 'Настройка окружения',
     'Not available': 'Недоступно',
-    'Loopback parser service is configured and ready.': 'Локальная служба парсера настроена и готова.',
+    'Loopback parser service is configured and ready.':
+      'Локальная служба парсера настроена и готова.',
     'Loopback parser service is configured but unreachable.':
       'Локальная служба парсера настроена, но недоступна.',
     'Remote parser service is ready; signed summary URLs are sent only after parser fallback.':

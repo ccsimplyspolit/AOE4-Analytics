@@ -1,10 +1,27 @@
 import { app } from 'electron'
 import { createHash } from 'node:crypto'
-import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'
+import {
+  closeSync,
+  createReadStream,
+  existsSync,
+  mkdirSync,
+  openSync,
+  readFileSync,
+  renameSync,
+  unlinkSync,
+  writeFileSync,
+  writeSync,
+} from 'node:fs'
+import { createInterface } from 'node:readline'
 import { join } from 'node:path'
-import type { ReplayAnalysisResult } from '@domain/replayCommand'
+import type {
+  ReplayActionLog,
+  ReplayActionPage,
+  ReplayAnalysisResult,
+  ReplayCommandEvent,
+} from '@domain/replayCommand'
 
-const SCHEMA_VERSION = 1
+const SCHEMA_VERSION = 2
 
 interface CachedReplayAnalysis {
   schemaVersion: typeof SCHEMA_VERSION
@@ -23,16 +40,91 @@ function cachePath(key: string): string {
   return join(cacheDir(), `${hash}.json`)
 }
 
+function actionLogPath(key: string): string {
+  const hash = createHash('sha256').update(key).digest('hex')
+  return join(cacheDir(), `${hash}.ndjson`)
+}
+
+export interface ReplayActionLogWriter {
+  push(event: ReplayCommandEvent): void
+  finish(complete: boolean): ReplayActionLog | undefined
+}
+
+/**
+ * Creates a bounded-memory journal for every decoded command. The UI keeps a
+ * small preview in JSON, while this NDJSON file remains the complete audit
+ * stream and can be paged without loading the whole replay into renderer memory.
+ */
+export function createReplayActionLogWriter(key: string): ReplayActionLogWriter {
+  const finalPath = actionLogPath(key)
+  const temporary = `${finalPath}.${process.pid}.${Date.now()}.tmp`
+  let fd: number | null = null
+  let count = 0
+  let failed = false
+  try {
+    mkdirSync(cacheDir(), { recursive: true })
+    fd = openSync(temporary, 'w')
+  } catch {
+    failed = true
+  }
+  return {
+    push(event) {
+      if (failed || fd == null) return
+      try {
+        writeSync(fd, `${JSON.stringify(event)}\n`)
+        count += 1
+      } catch {
+        failed = true
+      }
+    },
+    finish(complete) {
+      if (fd != null) {
+        try {
+          closeSync(fd)
+        } catch {
+          /* best effort */
+        }
+        fd = null
+      }
+      if (failed) {
+        try {
+          if (existsSync(temporary)) unlinkSync(temporary)
+        } catch {
+          /* best effort */
+        }
+        return undefined
+      }
+      try {
+        renameSync(temporary, finalPath)
+        return { path: finalPath, format: 'ndjson', eventCount: count, complete }
+      } catch {
+        try {
+          if (existsSync(temporary)) unlinkSync(temporary)
+        } catch {
+          /* best effort */
+        }
+        return undefined
+      }
+    },
+  }
+}
+
 function isAnalysis(value: unknown): value is ReplayAnalysisResult {
   if (!value || typeof value !== 'object') return false
   const result = value as Partial<ReplayAnalysisResult>
-  return (
+  const valid =
     typeof result.id === 'string' &&
     (result.source === 'local' || result.source === 'cached') &&
     typeof result.sourcePath === 'string' &&
     Number.isFinite(result.recordedAtMs) &&
     result.commandStream != null &&
     typeof result.commandStream === 'object'
+  if (!valid) return false
+  return (
+    result.actionLog == null ||
+    (result.actionLog.format === 'ndjson' &&
+      typeof result.actionLog.path === 'string' &&
+      existsSync(result.actionLog.path))
   )
 }
 
@@ -67,6 +159,45 @@ export function readCachedReplayAnalysis(
   try {
     const value = JSON.parse(readFileSync(path, 'utf8')) as unknown
     return isCachedAnalysis(value, key, sourcePath, recordedAtMs) ? value.result : null
+  } catch {
+    return null
+  }
+}
+
+/** Read one bounded page from the complete action journal on disk. */
+export async function readReplayActionPage(
+  result: ReplayAnalysisResult,
+  requestedOffset = 0,
+  requestedLimit = 100,
+  playerId: number | null = null,
+): Promise<ReplayActionPage | null> {
+  const log = result.actionLog
+  if (!log || log.format !== 'ndjson' || !existsSync(log.path)) return null
+  const offset = Math.max(0, Math.floor(requestedOffset))
+  const limit = Math.max(1, Math.min(500, Math.floor(requestedLimit)))
+  const events: ReplayCommandEvent[] = []
+  let total = 0
+  try {
+    const input = createReadStream(log.path, { encoding: 'utf8' })
+    const lines = createInterface({ input, crlfDelay: Infinity })
+    try {
+      for await (const line of lines) {
+        if (!line.trim()) continue
+        let event: ReplayCommandEvent
+        try {
+          event = JSON.parse(line) as ReplayCommandEvent
+        } catch {
+          continue
+        }
+        if (playerId != null && event.playerId !== playerId) continue
+        if (total >= offset && events.length < limit) events.push(event)
+        total += 1
+      }
+    } finally {
+      lines.close()
+      input.destroy()
+    }
+    return { events, offset, limit, total, playerId, complete: log.complete }
   } catch {
     return null
   }

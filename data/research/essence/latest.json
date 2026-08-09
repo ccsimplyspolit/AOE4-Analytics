@@ -3,8 +3,8 @@
   "source": "AOEMods.Essence",
   "sourceUrl": "https://github.com/aoemods/AOEMods.Essence",
   "sourceRevision": null,
-  "capturedAt": "2026-08-09T12:22:58Z",
-  "status": "decoded",
+  "capturedAt": "2026-08-09T13:31:32Z",
+  "status": "inventoried",
   "tool": {
     "available": true,
     "root": "K:\\aoe4_dlc\\_source_audit\\essence",
@@ -29,32 +29,28 @@
     }
   },
   "input": {
-    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Age of Empires IV\\cardinal\\archives\\UIArt.sga",
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Age of Empires IV\\cardinal\\archives\\Attrib.sga",
     "kind": "sga",
-    "name": "UIArt.sga",
-    "bytes": 1766722682,
-    "effectivePath": "data/research/essence/extracted/UIArt"
+    "name": "Attrib.sga",
+    "bytes": 100739100,
+    "effectivePath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Age of Empires IV\\cardinal\\archives\\Attrib.sga"
   },
   "output": {
     "path": "data/research/essence",
-    "nativePath": "data/research/essence/native-output",
+    "nativePath": null,
     "rgdProjectionPath": "data/research/essence/rgd-projection.json"
   },
-  "actions": [
-    "sga-unpack (filtered)",
-    "rrtex-decode -> PNG"
-  ],
+  "actions": [],
   "counts": {
-    "sga": 0,
+    "sga": 1,
     "rgd": 0,
-    "rrtex": 237,
+    "rrtex": 0,
     "rrgeom": 0,
     "rrmaterial": 0,
     "png": 0,
-    "files": 237,
+    "files": 1,
     "projectedRgd": 2958,
-    "projectionErrors": 754,
-    "decodedPng": 237
+    "projectionErrors": 754
   },
   "errors": [],
   "projection": {
@@ -70,10 +66,5 @@
       "errors": 754
     },
     "path": "data/research/essence/rgd-projection.json"
-  },
-  "sgaInclude": [
-    "ui/icons/civ/**/*.rrtex",
-    "ui/icons/hud/**/*.rrtex",
-    "ui/icons/resources/**/*.rrtex"
-  ]
+  }
 }

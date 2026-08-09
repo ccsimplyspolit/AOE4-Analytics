@@ -1,6 +1,6 @@
 import { useMemo, useState, type ReactNode } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { Database, ImageIcon, RefreshCw, RotateCcw } from 'lucide-react'
+import { Database, ImageIcon, MoreHorizontal, RefreshCw, RotateCcw } from 'lucide-react'
 import {
   aggregateDataStudioGames,
   DATA_STUDIO_LEGACY_UNKNOWN,
@@ -261,53 +261,66 @@ function DataSourcePanel() {
             {active} {tt('active')} · {patchAware} {tt('patch-aware')}
           </span>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <button
-            type="button"
-            onClick={() => runSourceSync(true)}
-            disabled={syncing}
-            className="inline-flex items-center gap-1.5 rounded-sm border border-border px-2.5 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground disabled:cursor-wait disabled:opacity-50"
-          >
-            <RefreshCw className={cn('h-3.5 w-3.5', syncing && 'animate-spin')} />
-            {tt('Check sources')}
-          </button>
-          <button
-            type="button"
-            onClick={() => runSourceSync(false)}
-            disabled={syncing}
-            className="inline-flex items-center gap-1.5 rounded-sm bg-primary px-2.5 py-1.5 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:cursor-wait disabled:opacity-50"
-          >
-            <RefreshCw className={cn('h-3.5 w-3.5', syncing && 'animate-spin')} />
-            {tt('Refresh snapshots')}
-          </button>
+        <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={() =>
               runSourceSync(false, {
                 essenceDecodeRgd: true,
-                essenceOnly: true,
-              })
-            }
-            disabled={syncing}
-            className="inline-flex items-center gap-1.5 rounded-sm border border-primary/50 px-2.5 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/10 disabled:cursor-wait disabled:opacity-50"
-          >
-            <Database className={cn('h-3.5 w-3.5', syncing && 'animate-pulse')} />
-            {tt('Decode local attributes')}
-          </button>
-          <button
-            type="button"
-            onClick={() =>
-              runSourceSync(false, {
                 essenceDecodeNativeIcons: true,
-                essenceOnly: true,
               })
             }
             disabled={syncing}
-            className="inline-flex items-center gap-1.5 rounded-sm border border-primary/50 px-2.5 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/10 disabled:cursor-wait disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 rounded-sm bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:cursor-wait disabled:opacity-50"
           >
-            <ImageIcon className={cn('h-3.5 w-3.5', syncing && 'animate-pulse')} />
-            {tt('Refresh native icons')}
+            <RefreshCw className={cn('h-3.5 w-3.5', syncing && 'animate-spin')} />
+            {tt('Refresh all')}
           </button>
+          <details className="relative">
+            <summary className="flex h-8 cursor-pointer list-none items-center justify-center rounded-sm border border-border px-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground [&::-webkit-details-marker]:hidden">
+              <MoreHorizontal className="h-4 w-4" />
+              <span className="sr-only">{tt('Advanced actions')}</span>
+            </summary>
+            <div className="absolute right-0 top-9 z-20 w-56 space-y-1 rounded-sm border border-border bg-card p-1.5 shadow-xl">
+              <button
+                type="button"
+                onClick={() => runSourceSync(true)}
+                disabled={syncing}
+                className="flex w-full items-center gap-2 rounded-sm px-2.5 py-2 text-left text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground disabled:cursor-wait disabled:opacity-50"
+              >
+                <RefreshCw className="h-3.5 w-3.5" />
+                {tt('Check sources')}
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  runSourceSync(false, {
+                    essenceDecodeRgd: true,
+                    essenceOnly: true,
+                  })
+                }
+                disabled={syncing}
+                className="flex w-full items-center gap-2 rounded-sm px-2.5 py-2 text-left text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground disabled:cursor-wait disabled:opacity-50"
+              >
+                <Database className="h-3.5 w-3.5" />
+                {tt('Decode local attributes')}
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  runSourceSync(false, {
+                    essenceDecodeNativeIcons: true,
+                    essenceOnly: true,
+                  })
+                }
+                disabled={syncing}
+                className="flex w-full items-center gap-2 rounded-sm px-2.5 py-2 text-left text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground disabled:cursor-wait disabled:opacity-50"
+              >
+                <ImageIcon className="h-3.5 w-3.5" />
+                {tt('Refresh native icons')}
+              </button>
+            </div>
+          </details>
         </div>
       </div>
       {(syncStatus || syncOutput) && (

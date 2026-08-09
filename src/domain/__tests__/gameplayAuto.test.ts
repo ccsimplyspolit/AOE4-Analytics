@@ -18,4 +18,14 @@ describe('gameplay auto workflow input', () => {
     expect(isGameplayAutoInput({ gameId: 'custom-1', civilization: 'english' })).toBe(false)
     expect(isGameplayAutoInput({ gameId: '246556107', civilization: '' })).toBe(false)
   })
+
+  it('accepts caption-only background discovery without a video download', () => {
+    expect(
+      isGameplayAutoInput({
+        gameId: '246556107',
+        civilization: 'english',
+        download: false,
+      }),
+    ).toBe(true)
+  })
 })

@@ -1,4 +1,4 @@
-import { useMemo, type ReactNode } from 'react'
+import { useMemo, useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import {
   BarChart3,
@@ -7,6 +7,7 @@ import {
   Swords,
   Hourglass,
   RefreshCw,
+  Download,
   ChevronRight,
   Filter,
   ClipboardCheck,
@@ -16,6 +17,7 @@ import { filterPersonalHistory } from '@domain/historyFilters'
 import { resourcesPerMinute, resultFromPerPlayer, villagersPerMinute } from '@domain/analysis'
 import type { BenchmarkGame } from '@domain/benchmarkLens'
 import { computePlayerStats, type Breakdown, type StatGame } from '@domain/playerStats'
+import { computeStatsCoverage, type StatsCoverage } from '@domain/statsCoverage'
 import { computePlaystyle, type PlaystyleGame } from '@domain/playstyle'
 import {
   computeProfileOverview,
@@ -31,7 +33,7 @@ import { cn } from '@shared/lib/utils'
 import { Card, CardContent } from '@shared/components/ui/card'
 import {
   useBuildAuditHistory,
-  useHistory,
+  useFullHistory,
   useAnalyzeRecent,
   useMatchCorpusReport,
 } from '../queries/useHistory'
@@ -49,18 +51,56 @@ import { CorpusAnalysisCard } from '../components/CorpusAnalysisCard'
 import { useI18n } from '../../i18n'
 
 export function Stats() {
-  const { tt } = useI18n()
-  const { data, isLoading, refetch } = useHistory()
+  const { tt, gameName } = useI18n()
+  const { data, isLoading, refetch } = useFullHistory()
   const { data: settings } = useSettings()
   const { data: dash } = useDashboard(settings?.profileId != null)
-  const { data: buildAudit } = useBuildAuditHistory(50)
+  const { data: buildAudit } = useBuildAuditHistory()
   const analyze = useAnalyzeRecent()
   const corpus = useMatchCorpusReport()
   const updateSettings = useUpdateSettings()
+  const [range, setRange] = useState<StatsRange>('all')
+  const [civFilter, setCivFilter] = useState('all')
+  const [formatFilter, setFormatFilter] = useState('all')
   const excludeAi = settings?.localData.excludeAiFromStats ?? false
-  const matches = useMemo(
+  const historyMatches = useMemo(
     () => filterPersonalHistory(data?.ok ? data.data : [], excludeAi),
     [data, excludeAi],
+  )
+  const civOptions = useMemo(
+    () =>
+      [...new Set(historyMatches.map((match) => match.civ).filter(Boolean))].sort((a, b) =>
+        gameName(civDisplayName(a)).localeCompare(gameName(civDisplayName(b))),
+      ),
+    [gameName, historyMatches],
+  )
+  const formatOptions = useMemo(
+    () =>
+      [
+        ...new Set(
+          historyMatches
+            .map((match) => match.format)
+            .filter((value): value is string => Boolean(value)),
+        ),
+      ].sort(),
+    [historyMatches],
+  )
+  const selectedCiv = civOptions.includes(civFilter) ? civFilter : 'all'
+  const selectedFormat = formatOptions.includes(formatFilter) ? formatFilter : 'all'
+  const matches = useMemo(() => {
+    const cutoff = rangeCutoff(range)
+    return historyMatches.filter((match) => {
+      const inRange = cutoff == null || Date.parse(match.playedAt) >= cutoff
+      const civMatches = selectedCiv === 'all' || match.civ === selectedCiv
+      const formatMatches = selectedFormat === 'all' || match.format === selectedFormat
+      return inRange && civMatches && formatMatches
+    })
+  }, [historyMatches, range, selectedCiv, selectedFormat])
+  const selectedMatchIds = useMemo(() => new Set(matches.map((match) => match.id)), [matches])
+  const visibleBuildAudit = useMemo(
+    () =>
+      buildAudit?.ok ? buildAudit.data.filter((row) => selectedMatchIds.has(row.matchId)) : [],
+    [buildAudit, selectedMatchIds],
   )
 
   return (
@@ -104,6 +144,15 @@ export function Stats() {
               <RefreshCw className={cn('h-3.5 w-3.5', analyze.isPending && 'animate-spin')} />
               {analyze.isPending ? tt('Analyzing…') : tt('Sync all account games')}
             </button>
+            <button
+              type="button"
+              disabled={matches.length === 0}
+              onClick={() => downloadStatsCsv(matches, settings?.profileId ?? null)}
+              className="inline-flex items-center gap-1.5 rounded-sm border border-border px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground disabled:opacity-50"
+            >
+              <Download className="h-3.5 w-3.5" />
+              {tt('Export CSV')}
+            </button>
           </div>
         }
       />
@@ -121,6 +170,20 @@ export function Stats() {
             .replace('{backend}', analyze.data.data.backend)}
         </p>
       )}
+
+      <StatsScopeBar
+        total={historyMatches.length}
+        selected={matches.length}
+        range={range}
+        civ={selectedCiv}
+        format={selectedFormat}
+        civOptions={civOptions}
+        formatOptions={formatOptions}
+        onRangeChange={setRange}
+        onCivChange={setCivFilter}
+        onFormatChange={setFormatFilter}
+        civLabel={(value) => gameName(civDisplayName(value))}
+      />
 
       <CorpusAnalysisCard
         report={corpus.data?.ok ? corpus.data.data : null}
@@ -143,9 +206,15 @@ export function Stats() {
       {!isLoading && data?.ok && matches.length === 0 && (
         <EmptyBox>
           <div className="space-y-1">
-            <p>{tt('No analyzed games yet.')}</p>
+            <p>
+              {historyMatches.length > 0
+                ? tt('No games fit every selected filter.')
+                : tt('No analyzed games yet.')}
+            </p>
             <p className="text-xs">
-              {tt('Click “Sync all account games” to pull and analyze your matches.')}
+              {historyMatches.length > 0
+                ? tt('Broaden the view or reset the filters.')
+                : tt('Click “Sync all account games” to pull and analyze your matches.')}
             </p>
           </div>
         </EmptyBox>
@@ -154,7 +223,7 @@ export function Stats() {
       {!isLoading && matches.length > 0 && (
         <Content
           matches={matches}
-          buildAuditRows={buildAudit?.ok ? buildAudit.data : []}
+          buildAuditRows={visibleBuildAudit}
           profileId={settings?.profileId ?? null}
           identity={
             dash?.ok
@@ -164,6 +233,160 @@ export function Stats() {
         />
       )}
     </div>
+  )
+}
+
+type StatsRange = 'all' | '30d' | '90d' | 'year'
+
+function rangeCutoff(range: StatsRange): number | null {
+  if (range === 'all') return null
+  const days = range === '30d' ? 30 : range === '90d' ? 90 : 365
+  return Date.now() - days * 24 * 60 * 60 * 1_000
+}
+
+function downloadStatsCsv(matches: StoredMatch[], profileId: number | null): void {
+  const header = [
+    'date',
+    'result',
+    'civilization',
+    'opponent',
+    'map',
+    'format',
+    'duration_sec',
+    'rating',
+    'rating_delta',
+    'apm',
+    'kd',
+    'resources_per_min',
+  ]
+  const rows = matches.map((match) => {
+    const mine = match.perPlayer?.find((player) => player.profileId === profileId)
+    return [
+      match.playedAt,
+      displayedResult(match, profileId) ?? '',
+      match.civ,
+      match.oppCiv ?? '',
+      match.map,
+      match.format ?? '',
+      match.durationSec ?? '',
+      match.rating ?? '',
+      match.ratingDiff ?? '',
+      mine?.apm ?? match.analysis.apm ?? '',
+      mine?.kd ?? '',
+      resourcesPerMinute(match.local) ?? '',
+    ]
+  })
+  const csv = [header, ...rows]
+    .map((row) => row.map((value) => `"${String(value).replaceAll('"', '""')}"`).join(','))
+    .join('\r\n')
+  const url = URL.createObjectURL(new Blob([`\uFEFF${csv}`], { type: 'text/csv;charset=utf-8' }))
+  const anchor = document.createElement('a')
+  anchor.href = url
+  anchor.download = `rtslytics-stats-${new Date().toISOString().slice(0, 10)}.csv`
+  anchor.click()
+  window.setTimeout(() => URL.revokeObjectURL(url), 0)
+}
+
+function StatsScopeBar({
+  total,
+  selected,
+  range,
+  civ,
+  format,
+  civOptions,
+  formatOptions,
+  onRangeChange,
+  onCivChange,
+  onFormatChange,
+  civLabel,
+}: {
+  total: number
+  selected: number
+  range: StatsRange
+  civ: string
+  format: string
+  civOptions: string[]
+  formatOptions: string[]
+  onRangeChange: (value: StatsRange) => void
+  onCivChange: (value: string) => void
+  onFormatChange: (value: string) => void
+  civLabel: (value: string) => string
+}) {
+  const { tt } = useI18n()
+  return (
+    <Card>
+      <CardContent className="space-y-3 p-4">
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <div>
+            <h2 className="text-sm font-semibold">{tt('Stats scope')}</h2>
+            <p className="mt-0.5 text-xs text-muted-foreground">
+              {tt('All personal history is loaded; these filters only change the analysis view.')}
+            </p>
+          </div>
+          <span className="text-xs tabular-nums text-muted-foreground">
+            {selected} / {total} {tt('matching games')}
+          </span>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <label className="flex items-center gap-2 text-xs text-muted-foreground">
+            {tt('Recent window')}
+            <select
+              value={range}
+              onChange={(event) => onRangeChange(event.target.value as StatsRange)}
+              className="rounded-sm border border-border bg-background px-2 py-1.5 text-xs text-foreground outline-none focus:border-primary"
+            >
+              <option value="all">{tt('All loaded history')}</option>
+              <option value="30d">{tt('Last 30 days')}</option>
+              <option value="90d">{tt('Last 90 days')}</option>
+              <option value="year">{tt('Last year')}</option>
+            </select>
+          </label>
+          <label className="flex items-center gap-2 text-xs text-muted-foreground">
+            {tt('Civilization')}
+            <select
+              value={civ}
+              onChange={(event) => onCivChange(event.target.value)}
+              className="max-w-52 rounded-sm border border-border bg-background px-2 py-1.5 text-xs text-foreground outline-none focus:border-primary"
+            >
+              <option value="all">{tt('All civilizations')}</option>
+              {civOptions.map((value) => (
+                <option key={value} value={value}>
+                  {civLabel(value)}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="flex items-center gap-2 text-xs text-muted-foreground">
+            {tt('Format')}
+            <select
+              value={format}
+              onChange={(event) => onFormatChange(event.target.value)}
+              className="rounded-sm border border-border bg-background px-2 py-1.5 text-xs text-foreground outline-none focus:border-primary"
+            >
+              <option value="all">{tt('All formats')}</option>
+              {formatOptions.map((value) => (
+                <option key={value} value={value}>
+                  {value}
+                </option>
+              ))}
+            </select>
+          </label>
+          {(range !== 'all' || civ !== 'all' || format !== 'all') && (
+            <button
+              type="button"
+              className="text-xs text-primary hover:underline"
+              onClick={() => {
+                onRangeChange('all')
+                onCivChange('all')
+                onFormatChange('all')
+              }}
+            >
+              {tt('Reset filters')}
+            </button>
+          )}
+        </div>
+      </CardContent>
+    </Card>
   )
 }
 
@@ -238,6 +461,7 @@ function Content({
 
   const r = s.recent2w
   const recentWr = r.wins + r.losses > 0 ? Math.round((r.wins / (r.wins + r.losses)) * 100) : null
+  const coverage = useMemo(() => computeStatsCoverage(matches, profileId), [matches, profileId])
   const benchmarkGames = useMemo<BenchmarkGame[]>(
     () =>
       matches.map((match) => {
@@ -298,6 +522,8 @@ function Content({
 
       <BenchmarkLens games={benchmarkGames} />
 
+      <StatsCoverageCard coverage={coverage} />
+
       <BuildAuditHistoryCard rows={buildAuditRows} />
 
       <CivOverviewTable rows={overview.civs} />
@@ -357,6 +583,53 @@ function Content({
         ).replace('{games}', String(s.totalGames))}
       </p>
     </>
+  )
+}
+
+function StatsCoverageCard({ coverage }: { coverage: StatsCoverage }) {
+  const { tt } = useI18n()
+  return (
+    <Card>
+      <CardContent className="space-y-3 p-4">
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <h3 className="text-sm font-semibold">{tt('Data coverage')}</h3>
+          <span className="text-[11px] text-muted-foreground">
+            {tt('Missing evidence is excluded, never counted as zero.')}
+          </span>
+        </div>
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <CoverageMetric
+            label={tt('Resolved results')}
+            value={coverage.decided}
+            total={coverage.total}
+          />
+          <CoverageMetric label={tt('Rated games')} value={coverage.rated} total={coverage.total} />
+          <CoverageMetric
+            label={tt('Relic counters')}
+            value={coverage.counters}
+            total={coverage.total}
+          />
+          <CoverageMetric
+            label={tt('Economy evidence')}
+            value={coverage.economy}
+            total={coverage.total}
+          />
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+
+function CoverageMetric({ label, value, total }: { label: string; value: number; total: number }) {
+  const percent = total > 0 ? Math.round((value / total) * 100) : 0
+  return (
+    <div className="rounded-md border border-border/60 bg-secondary/20 px-2.5 py-2">
+      <div className="text-[10px] uppercase tracking-wide text-muted-foreground">{label}</div>
+      <div className="mt-0.5 text-lg font-semibold tabular-nums">
+        {value}/{total}
+      </div>
+      <div className="text-[11px] tabular-nums text-muted-foreground">{percent}%</div>
+    </div>
   )
 }
 

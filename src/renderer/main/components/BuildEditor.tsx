@@ -329,8 +329,6 @@ export function BuildEditor() {
     await ipc.updateSettings({
       overlay: {
         customBuildOrders,
-        buildOrderId: build.name,
-        buildOrderMode: 'manual',
       },
     })
     await ipc.applyOverlaySettings()

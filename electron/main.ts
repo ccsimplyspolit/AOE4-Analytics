@@ -14,7 +14,7 @@ import {
   setOverlayController,
   setPollManager,
 } from './services/appContext'
-import { getLocalDataStatus } from './services/localDataService'
+import { getLocalDataStatus, listReplayArchive } from './services/localDataService'
 import { isGameRunning } from './services/gameProcess'
 import { getSteamAccounts } from './services/steamService'
 import { analyzeRecentGames, listHistory } from './services/analysisService'
@@ -150,6 +150,14 @@ function bootstrap(): void {
             overlayVisible: overlay?.isVisible() ?? false,
             overlayBounds: overlay?.window?.getBounds() ?? null,
             localData: getLocalDataStatus(),
+            localArchive: (() => {
+              const archive = listReplayArchive(1, 1)
+              return {
+                totalCount: archive.totalCount,
+                firstId: archive.items[0]?.id ?? null,
+                firstMap: archive.items[0]?.info?.mapName ?? archive.items[0]?.info?.mapId ?? null,
+              }
+            })(),
             completedAt: new Date().toISOString(),
           }
           writeFileSync(

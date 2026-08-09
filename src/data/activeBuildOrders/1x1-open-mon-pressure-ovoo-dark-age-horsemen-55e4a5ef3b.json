@@ -1,0 +1,177 @@
+{
+  "description": "Открытый Mongols opener: Ovoo, Deer Stones, Dark Age Horsemen и Khan для раннего контроля карты.",
+  "civilization": "Mongols",
+  "name": "[1x1][OPEN][MON][PRESSURE] Монголы: Ovoo и Dark Age Horsemen",
+  "author": "Синтез Season 13 AoE4Guides/AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/builds/MWHMDD1GvbvhknZGJaII, https://aoe4world.com/explorer/civs/mongols",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Стартовый @building_mongols/ger.webp@ ставь у @resource/resource_wood.webp@ и @resource/resource_stone.webp@; 5 жителей на @resource/sheep.webp@, один на @resource/resource_wood.webp@.",
+        "@unit_golden_horde/khan.webp@ разведает @building_mongols/ovoo.webp@ и вражеское @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:30",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_mongols/ovoo.webp@ на @resource/resource_stone.webp@ и не меняй его без причины.",
+        "2 жителя добывают @resource/resource_stone.webp@ под ускоренное производство."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:40",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 0,
+        "stone": 4,
+        "builder": 3
+      },
+      "notes": [
+        "Поставь @landmark_mongols/deer-stones.webp@ рядом с маршрутом армии.",
+        "Следующий ралли на @resource/resource_food.webp@; Монголы не используют @building_economy/house.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "04:10",
+      "villager_count": 18,
+      "resources": {
+        "food": 11,
+        "wood": 5,
+        "gold": 0,
+        "stone": 6,
+        "builder": -1
+      },
+      "notes": [
+        "@building_mongols/ovoo.webp@ ускоряет @building_military/stable.webp@; начинай @unit_cavalry/horseman-1.webp@.",
+        "@unit_golden_horde/khan.webp@ держит ауру и не принимает бой в одиночку."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "05:25",
+      "villager_count": 23,
+      "resources": {
+        "food": 14,
+        "wood": 7,
+        "gold": 1,
+        "stone": 6,
+        "builder": -1
+      },
+      "notes": [
+        "Два @unit_cavalry/horseman-1.webp@ проверяют @resource/resource_gold.webp@ и строителей; не теряй их на копьях.",
+        "Поставь @building_mongols/ger.webp@ у нужного ресурса."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "07:00",
+      "villager_count": 29,
+      "resources": {
+        "food": 17,
+        "wood": 9,
+        "gold": 3,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "При уроне добавь ещё @unit_cavalry/horseman-1.webp@; без урона готовь @age/age_3.webp@ и @unit_mongols/keshik-2.webp@.",
+        "Не оставляй @building_mongols/ovoo.webp@ без @resource/resource_stone.webp@: это твой темп и производство."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "09:10",
+      "villager_count": 36,
+      "resources": {
+        "food": 20,
+        "wood": 11,
+        "gold": 7,
+        "stone": 10,
+        "builder": 5
+      },
+      "notes": [
+        "Переходи в @landmark_mongols/steppe-redoubt.webp@ на открытой карте или Palace по армии.",
+        "Сохраняй @unit_golden_horde/khan.webp@ и ставь @ability_mongols/ability-yam.webp@-маршрут между базой и фронтом."
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 13; live-сборка 16.3.11308",
+  "map": "Открытые карты с длинными маршрутами и камнем",
+  "strategy": "Ovoo, Deer Stones, Dark Age Horsemen, Khan vision и Castle Keshik по разведке.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "role": "pressure",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "strategy_key": "pressure",
+  "meta_tier": "meta_core",
+  "build_group": "mongols_pressure",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 0,
+    "transcript_count": 0,
+    "transcript_sources": {},
+    "search_candidate_count": 0,
+    "metadata_date_count": 0,
+    "rss_fallback_count": 0,
+    "status": "no_relevant_video_in_window",
+    "source_urls": [],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Свежих роликов с фракцией в названии за окно не найдено; Ger/но-мove/opening тайминги не меняются."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

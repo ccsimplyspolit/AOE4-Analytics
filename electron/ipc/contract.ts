@@ -14,7 +14,7 @@ import type { LeaderboardRow } from '@domain/leaderboard'
 import type { CivDetailStats } from '@domain/civDetailStats'
 import type { LiveMatchInfo, LiveOpponent, LiveMatchup, MatchupPlayer } from '@domain/liveMatch'
 import type { ReplayInfo, ReplayMatchup, ReplayPlayer } from '@domain/replay'
-import type { ReplayAnalysisResult } from '@domain/replayCommand'
+import type { ReplayActionPage, ReplayAnalysisResult } from '@domain/replayCommand'
 import type { AppSettings, AppSettingsPatch, OverlaySettings } from '@store/settings'
 import type { SessionSummary } from '@domain/session'
 import type { StoredMatch } from '@store/historyStore'
@@ -257,6 +257,7 @@ export const IpcChannels = {
   /** Readiness and provenance of the optional aoe4world/replays-api decoder. */
   replaysApiStatus: 'replaysApi:status',
   replayAnalyze: 'replay:analyze',
+  replayActions: 'replay:actions',
   replayFullAnalyze: 'replay:fullAnalyze',
   matchupWinRate: 'matchup:winRate',
   publicGameGet: 'publicGame:get',
@@ -301,6 +302,7 @@ export type {
   ReplayMatchup,
   ReplayPlayer,
   ReplayAnalysisResult,
+  ReplayActionPage,
 }
 
 /** The most-recent local replay (custom/AI games included), split me vs opponents. */
@@ -400,6 +402,8 @@ export interface SummaryCacheBatchResult {
 }
 
 export type ReplayAnalysisTarget = { localId: string } | { gameId: number }
+
+export type ReplayActionsResult = ReplayActionPage | null
 
 /** Combined online replay package: raw replay download + command stream + post-game summary. */
 export interface FullReplayAnalysis {
@@ -943,6 +947,13 @@ export interface RtslyticsApi {
   getReplaysApiStatus(): Promise<ReplaysApiStatus>
   /** Decode the recorded command stream from a local replay or cached Relic replay. */
   analyzeReplay(target: ReplayAnalysisTarget): Promise<IpcResult<ReplayAnalysisResult | null>>
+  /** Read the complete on-disk action journal in bounded pages. */
+  getReplayActions(
+    target: ReplayAnalysisTarget,
+    offset?: number,
+    limit?: number,
+    playerId?: number | null,
+  ): Promise<IpcResult<ReplayActionsResult>>
   /** Download an online replay (when needed), fetch its summary, and decode it in one pass. */
   downloadAndAnalyzeReplay(gameId: number): Promise<IpcResult<FullReplayAnalysis>>
   /** Historical win rate (%) of your civ vs the opponent's civ; null if unknown. */

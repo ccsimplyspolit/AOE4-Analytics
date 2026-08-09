@@ -1,0 +1,220 @@
+{
+  "description": "Открытая Golden Horde ветка: ранний Golden Tent, Ovoo/Stockyard, Khan, Keshik и Torguud с давлением по внешним ресурсам.",
+  "civilization": "Golden Horde",
+  "name": "[1x1][OPEN][GOH][PRESSURE] Golden Horde: Keshik и Torguud",
+  "author": "Синтез AoE4Guides/AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/builds/8Gts4gG5eGOqqrtWB6Tl, https://aoe4guides.com/dashboard?civ=GOH, https://aoe4world.com/explorer/civs/goldenhorde",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "6 жителей на @resource/sheep.webp@; 7-й ставит @building_mongols/ovoo.webp@ на @resource/resource_stone.webp@.",
+        "Golden Horde начинает с максимальным лимитом населения: ранний @building_economy/house.webp@ не нужен."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:35",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Поставь @building_golden_horde/stockyard.webp@ рядом с овцами; новые жители: 2 на @resource/resource_wood.webp@, затем @resource/resource_gold.webp@.",
+        "@building_mongols/ovoo.webp@ не ставь на дальний @resource/resource_stone.webp@ без защиты."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2 жителя строят @landmark_golden_horde/golden_tent.webp@; @unit_golden_horde/khan.webp@ готовь сразу после возраста.",
+        "Выбирай @ability_golden_horde/production_edict.webp@ с военной поддержкой, если враг открывается в @unit_cavalry/horseman-1.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:05",
+      "villager_count": 16,
+      "resources": {
+        "food": 10,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Закажи @unit_golden_horde/khan.webp@ и @unit_mongols/keshik-2.webp@; @unit_golden_horde/khan.webp@ всегда идёт впереди группы.",
+        "Ставь второе @building_golden_horde/stockyard.webp@ только после первой военной очереди."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:10",
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Добавь @unit_golden_horde/torguud.webp@ для защиты @unit_golden_horde/khan.webp@ и фронта.",
+        "@unit_mongols/keshik-2.webp@ рейдит внешнее @resource/resource_gold.webp@/@resource/resource_wood.webp@; @unit_golden_horde/torguud.webp@ не должен уходить один."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:20",
+      "villager_count": 24,
+      "resources": {
+        "food": 14,
+        "wood": 7,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Поставь @building_golden_horde/fortified_outpost.webp@ на @resource/resource_gold.webp@ и включи нужный @ability_golden_horde/production_edict.webp@.",
+        "Технологию @technology_golden_horde/khan-debuff-arrow.webp@ бери перед первой большой атакой."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:40",
+      "villager_count": 28,
+      "resources": {
+        "food": 16,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Исследуй @technology_golden_horde/rotation_grazing.webp@, если карта позволяет держать @building_golden_horde/stockyard.webp@ в безопасности.",
+        "Против копий добавляй @unit_infantry/archer-2.webp@; против стрелков — @unit_mongols/keshik-2.webp@ и обходы."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:00",
+      "villager_count": 33,
+      "resources": {
+        "food": 18,
+        "wood": 9,
+        "gold": 7,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Если первая атака не решила игру, улучшай @landmark_golden_horde/golden_tent.webp@ в @age/age_3.webp@; не задерживай бесконечный @age/age_2.webp@.",
+        "Оставь @unit_golden_horde/khan.webp@ с основной армией и одну кавалерийскую группу для рейдов."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:45",
+      "villager_count": 40,
+      "resources": {
+        "food": 20,
+        "wood": 11,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "В @age/age_3.webp@ добавь @unit_golden_horde/kipchak_age3.webp@ и @technology_golden_horde/archery-range-reinforcements-3.webp@.",
+        "Сохраняй мобильность: Horde выигрывает карту рейдами, а не фронтальным стоянием."
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 13; snapshot 08.08.2026, live-сборка 16.3.11308",
+  "map": "Dry Arabia, Gorge, Flankwoods и открытые карты с безопасным камнем",
+  "strategy": "Ovoo, Stockyard, Golden Tent, Khan, Keshik/Torguud pressure и переход в Kipchak.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "role": "pressure",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "strategy_key": "pressure",
+  "meta_tier": "meta_core",
+  "build_group": "golden_horde_pressure",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 8,
+    "transcript_count": 5,
+    "transcript_sources": {
+      "youtube-transcript.ai": 5
+    },
+    "search_candidate_count": 177,
+    "metadata_date_count": 8,
+    "rss_fallback_count": 0,
+    "status": "evidence_backed",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=XZloxAlUGxk",
+      "https://www.youtube.com/watch?v=2sG6KCYJShU",
+      "https://www.youtube.com/watch?v=JN-5V5CZkV4",
+      "https://www.youtube.com/watch?v=2L9WvBcOjcM",
+      "https://www.youtube.com/watch?v=hFyjIaxLW6k",
+      "https://www.youtube.com/watch?v=F7V0Cnb4QZQ"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Пять из восьми роликов имеют transcript; age-up/decision сигналы есть, но без устойчивого консенсуса по Keshik/экономическому таймингу."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

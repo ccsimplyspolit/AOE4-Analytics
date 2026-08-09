@@ -1,0 +1,216 @@
+{
+  "description": "Открытая Jin Dynasty ветка: Mounted Villagers, Great Pasture, Grassland, War Stable, Iron Pagoda и быстрый контроль карты.",
+  "civilization": "Jin Dynasty",
+  "name": "[1x1][OPEN][JIN][PRESSURE] Jin: Great Pasture и Iron Pagoda",
+  "author": "Синтез AoE4Guides/AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/dashboard?civ=JIN, https://aoe4world.com/explorer/civs/jindynasty, https://aoe4world.com/stats/rm_solo/civilizations",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 жителей на @resource/sheep.webp@; 7-й ставит @building_economy/house.webp@, затем @resource/resource_wood.webp@.",
+        "Каждого @unit_jin/mounted-villager.webp@ отправляй на внешний ресурс только после разведки пути."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:50",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Первый @unit_jin/mounted-villager.webp@ идёт на @resource/resource_gold.webp@; обычные жители держат @resource/resource_food.webp@ и @resource/resource_wood.webp@.",
+        "Поставь @building_economy/mining-camp.webp@ и не теряй быстрых жителей под вражеской разведкой."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:35",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 жителя начинают @landmark_jin/great-pasture.webp@; выбирай @building_jin/grassland.webp@ ближе к защищённому фронту.",
+        "@landmark_jin/great-pasture.webp@ одновременно даёт @building_jin/war-stable.webp@ и 3 @building_jin/grassland.webp@ Posts."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 10,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Из @landmark_jin/great-pasture.webp@ выпускай @unit_jin/horseman-grassland.webp@; не трать @resource/resource_wood.webp@ на обычную @building_military/stable.webp@.",
+        "Поставь @building_jin/grassland.webp@ на выбранном @building_jin/grassland.webp@, если нужен дополнительный @unit_cavalry/horseman-1.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:30",
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "После двух @unit_cavalry/horseman-1.webp@ добавь @unit_jin/iron-pagoda.webp@; кавалерия работает вокруг @building_jin/grassland.webp@.",
+        "Против копий используй @unit_jin/zhanma-swordsman.webp@/дальний урон, а не лобовой размен @unit_jin/iron-pagoda.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:40",
+      "villager_count": 24,
+      "resources": {
+        "food": 14,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_jin/war-stable.webp@ у @building_jin/grassland.webp@ для ускоренного производства @unit_cavalry/horseman-1.webp@.",
+        "@unit_jin/emissary.webp@ отправляй на Tributary только после безопасной первой атаки."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:55",
+      "villager_count": 28,
+      "resources": {
+        "food": 16,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Бери @technology_jin/draft-horses.webp@ или @technology_jin/quilted-armor.webp@ по составу врага.",
+        "Если давление не решило игру, готовь @landmark_jin/dragon-pavilion.webp@ вместо бесконечного @age/age_2.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:15",
+      "villager_count": 34,
+      "resources": {
+        "food": 18,
+        "wood": 10,
+        "gold": 8,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Начинай @landmark_jin/dragon-pavilion.webp@; @building_jin/grassland.webp@ и @building_jin/war-stable.webp@ должны продолжать кавалерийный темп.",
+        "На безопасной карте @landmark_jin/dragon-pavilion.webp@ можно сочетать со вторым @building_economy/town-center.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": 41,
+      "resources": {
+        "food": 20,
+        "wood": 12,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "В @age/age_3.webp@ добавь @unit_jin/bed-crossbow.webp@ и @unit_jin/zhanma-swordsman.webp@ против тяжёлых составов.",
+        "Кавалерия давит фланги, @unit_jin/bed-crossbow.webp@ держит центр и @building_military/siege-workshop.webp@."
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 13; snapshot 08.08.2026, live-сборка 16.3.11308",
+  "map": "Dry Arabia, Gorge, Flankwoods и открытые карты с безопасным Grassland Post",
+  "strategy": "Mounted Villagers, Great Pasture, Grassland, War Stable, Iron Pagoda pressure и Dragon Pavilion.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "role": "pressure",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "strategy_key": "pressure",
+  "meta_tier": "meta_core",
+  "build_group": "jin_dynasty_pressure",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 2,
+    "transcript_count": 2,
+    "transcript_sources": {
+      "legacy_local": 2
+    },
+    "search_candidate_count": 172,
+    "metadata_date_count": 1,
+    "rss_fallback_count": 1,
+    "status": "sparse_evidence",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=6iVfTOmxuKc",
+      "https://www.youtube.com/watch?v=PCPE5KYPsfw"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Два свежих ролика связывают Jin с ранним Grassland/Sipahi pressure и обязательной разведкой второго TC/Fast Castle; реактивность Great Pasture/Iron Pagoda сохранена."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

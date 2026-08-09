@@ -1,9 +1,21 @@
 import { app } from 'electron'
-import { existsSync, mkdirSync, readFileSync, renameSync, statSync, unlinkSync, writeFileSync } from 'node:fs'
+import {
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  renameSync,
+  statSync,
+  unlinkSync,
+  writeFileSync,
+} from 'node:fs'
 import { join } from 'node:path'
 import { parseReplayHeader } from '@domain/replay'
 import { parseReplayCommandStream, type ReplayAnalysisResult } from '@domain/replayCommand'
-import { readCachedReplayAnalysis, writeCachedReplayAnalysis } from './replayAnalysisCacheService'
+import {
+  createReplayActionLogWriter,
+  readCachedReplayAnalysis,
+  writeCachedReplayAnalysis,
+} from './replayAnalysisCacheService'
 
 /** Full replay files are usually small, but a long team game can be large. */
 export const MAX_CACHED_REPLAY_BYTES = 100 * 1024 * 1024
@@ -41,7 +53,9 @@ export function writeCachedReplay(gameId: number, bytes: Uint8Array): CachedRepl
   if (!path) throw new Error('Invalid replay id.')
   if (bytes.byteLength <= 0) throw new Error('Replay download was empty.')
   if (bytes.byteLength > MAX_CACHED_REPLAY_BYTES) {
-    throw new Error(`Replay is larger than the ${MAX_CACHED_REPLAY_BYTES / 1024 / 1024} MB cache limit.`)
+    throw new Error(
+      `Replay is larger than the ${MAX_CACHED_REPLAY_BYTES / 1024 / 1024} MB cache limit.`,
+    )
   }
   mkdirSync(cacheDir(), { recursive: true })
   const tempPath = `${path}.${process.pid}.${Date.now()}.tmp`
@@ -59,6 +73,32 @@ export function writeCachedReplay(gameId: number, bytes: Uint8Array): CachedRepl
   return { cached: true, sizeBytes: bytes.byteLength, path }
 }
 
+/** Analyze one replay file and journal every decoded command without a memory-sized event array. */
+export function analyzeReplayFile(
+  id: string,
+  source: 'local' | 'cached',
+  sourcePath: string,
+  recordedAtMs: number,
+  bytes: Uint8Array,
+  analysisKey = `${source}:${id}`,
+): ReplayAnalysisResult {
+  const actionLog = createReplayActionLogWriter(analysisKey)
+  const commandStream = parseReplayCommandStream(bytes, undefined, {
+    onEvent: (event) => actionLog.push(event),
+  })
+  const result: ReplayAnalysisResult = {
+    id,
+    source,
+    sourcePath,
+    recordedAtMs,
+    info: parseReplayHeader(bytes),
+    commandStream,
+    actionLog: actionLog.finish(commandStream.coverage === 'full'),
+  }
+  writeCachedReplayAnalysis(analysisKey, result)
+  return result
+}
+
 /** Analyze an authenticated replay already present in the local cache. */
 export function analyzeCachedReplay(gameId: number): ReplayAnalysisResult | null {
   const cached = getCachedReplayInfo(gameId)
@@ -70,16 +110,14 @@ export function analyzeCachedReplay(gameId: number): ReplayAnalysisResult | null
     const previous = readCachedReplayAnalysis(analysisKey, cached.path, recordedAtMs)
     if (previous) return previous
     const bytes = new Uint8Array(readFileSync(cached.path))
-    const result: ReplayAnalysisResult = {
-      id: `cached:${gameId}`,
-      source: 'cached',
-      sourcePath: cached.path,
+    return analyzeReplayFile(
+      `cached:${gameId}`,
+      'cached',
+      cached.path,
       recordedAtMs,
-      info: parseReplayHeader(bytes),
-      commandStream: parseReplayCommandStream(bytes),
-    }
-    writeCachedReplayAnalysis(analysisKey, result)
-    return result
+      bytes,
+      analysisKey,
+    )
   } catch {
     return null
   }

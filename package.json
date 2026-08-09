@@ -21,6 +21,8 @@
     "postinstall": "electron-builder install-app-deps",
     "dev": "electron-vite dev",
     "build": "npm run typecheck && npm run bundle",
+    "archive:builds": "python scripts/create_build_archive.py",
+    "prebundle": "npm run archive:builds",
     "bundle": "electron-vite build",
     "preview": "electron-vite preview",
     "start": "electron-vite preview",

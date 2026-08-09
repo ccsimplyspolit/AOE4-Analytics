@@ -1,0 +1,221 @@
+{
+  "description": "Безопасная House of Lancaster ветка для длинных карт: один ранний Manor, Lancaster Castle, скидка на levy, 5 Demilancers и White Tower в Castle.",
+  "civilization": "House of Lancaster",
+  "name": "[1x1][SAFE][HOL][FC] Lancaster: Manor и Lancaster Castle",
+  "author": "Синтез AoE4Guides/AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/dashboard?civ=HOL, https://aoe4world.com/explorer/civs/lancaster, https://aoe4world.com/stats/rm_solo/civilizations",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 жителей на @resource/sheep.webp@; 7-й ставит @building_economy/house.webp@, затем @building_economy/lumber-camp.webp@.",
+        "@unit_cavalry/scout.webp@ ищет дальние @resource/sheep.webp@, @resource/resource_stone.webp@ и безопасную точку под первый @building_lancaster/manor.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:50",
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 1,
+        "stone": 1,
+        "builder": 2
+      },
+      "notes": [
+        "Один @building_lancaster/manor.webp@ ставь между @building_economy/town-center.webp@, овцами и лесом; второй строитель идёт на @building_economy/mining-camp.webp@ и @resource/resource_gold.webp@.",
+        "Не спамь @building_lancaster/manor.webp@ в начале: после Season 12 важнее плотная аура, а не количество зданий."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:35",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 2,
+        "stone": 3,
+        "builder": 4
+      },
+      "notes": [
+        "4 жителя начинают @landmark_lancaster/lancaster_castle.webp@; @resource/resource_stone.webp@ после 100 переводится на @resource/resource_wood.webp@.",
+        "Если соперник уже показал сильный rush, оставь одного жителя на оборонительный @building_lancaster/manor.webp@ у ресурсов."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:20",
+      "villager_count": 17,
+      "resources": {
+        "food": 10,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "После @age/age_3.webp@ ставь второй @building_lancaster/manor.webp@ только если его аура накрывает рабочих; иначе сохраняй @resource/resource_wood.webp@ на производство.",
+        "@landmark_lancaster/lancaster_castle.webp@ усиливает все @building_lancaster/manor.webp@ и снижает стоимость levy за активный @building_lancaster/manor.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:25",
+      "villager_count": 21,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Используй levy @unit_lancaster/demilancer.webp@: в Season 13 @landmark_lancaster/lancaster_castle.webp@ выдаёт 5 @unit_lancaster/demilancer.webp@.",
+        "Поставь @building_military/archery-range.webp@; @unit_lancaster/yeoman_age2.webp@ прикрывает @unit_lancaster/demilancer.webp@ от копий."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:35",
+      "villager_count": 25,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Первая атака — внешний @resource/resource_gold.webp@/@resource/resource_wood.webp@ и разведка, не лобовой штурм @building_economy/town-center.webp@.",
+        "Добавь @unit_lancaster/yeoman_age2.webp@; против @unit_cavalry/horseman-1.webp@ добавь @technology_lancaster/billmen.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:45",
+      "villager_count": 29,
+      "resources": {
+        "food": 16,
+        "wood": 9,
+        "gold": 6,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Начинай @landmark_english/the-white-tower.webp@; @landmark_lancaster/kings_college.webp@ выбирай только при полностью спокойной карте.",
+        "@building_lancaster/manor.webp@ номер 3 ставь во время перехода, если он сразу накрывает 5+ жителей."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "09:40",
+      "villager_count": 36,
+      "resources": {
+        "food": 18,
+        "wood": 10,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_english/the-white-tower.webp@ ставь у ключевого ресурса; затем производи @unit_lancaster/yeoman_age2.webp@ и @unit_lancaster/demilancer.webp@.",
+        "Бери @technology_lancaster/yeoman_upgrade_age3.webp@ и @technology_lancaster/condensed_land_practices.webp@ по экономике."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:10",
+      "villager_count": 43,
+      "resources": {
+        "food": 20,
+        "wood": 12,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Добавляй @building_lancaster/manor.webp@ только по ауре, затем @technology_lancaster/open_field_system.webp@ для масштабирования.",
+        "Сохраняй @unit_lancaster/demilancer.webp@ для фланга; фронт держат @unit_lancaster/yeoman_age2.webp@, @unit_lancaster/earlretinue.webp@ и @landmark_english/the-white-tower.webp@."
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 13; snapshot 08.08.2026, live-сборка 16.3.11308",
+  "map": "Hill and Dale, Rocky River, Hideout, Prairie и другие безопасные/длинные карты",
+  "strategy": "Один ранний Manor, Lancaster Castle, discounted levy с 5 Demilancers, Castle через White Tower и позднее расширение ауры.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "safe",
+    "long"
+  ],
+  "role": "macro",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "безопасная",
+    "длинная"
+  ],
+  "strategy_key": "macro",
+  "meta_tier": "macro_branch",
+  "build_group": "house_of_lancaster_macro",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 9,
+    "transcript_count": 9,
+    "transcript_sources": {
+      "legacy_local": 2,
+      "youtube-transcript.ai": 7
+    },
+    "search_candidate_count": 197,
+    "metadata_date_count": 9,
+    "rss_fallback_count": 0,
+    "status": "evidence_backed",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=yMMGEzXByag",
+      "https://www.youtube.com/watch?v=30sM45Msbyw",
+      "https://www.youtube.com/watch?v=ChNobegYhgQ",
+      "https://www.youtube.com/watch?v=p4rJ_2bmMHU",
+      "https://www.youtube.com/watch?v=e01awWV86u4",
+      "https://www.youtube.com/watch?v=ooquXJDKjVQ"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "LaSh и Valdy подтверждают две разные роли: Manor+2TC → Fast Castle/White Tower против пассивной игры и Feudal all-in против жадного Castle."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

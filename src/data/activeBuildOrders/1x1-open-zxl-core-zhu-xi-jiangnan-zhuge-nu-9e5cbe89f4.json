@@ -1,0 +1,202 @@
+{
+  "description": "Феодальный агро-скелет из актуальной карточки AoE4Guides: ранняя башня Цзяннань, военные здания в ее влиянии, Жуге Ну с копейщиками и переход только после проверки урона.",
+  "civilization": "Zhu Xi's Legacy",
+  "name": "[1x1][OPEN][ZXL][CORE] Zhu Xi: Jiangnan и Zhuge Nu",
+  "author": "Синтез карточки AoE4Guides LTyVAZiMT9Wb2qsFO8bJ и текущей статистики AoE4World; 08.08.2026",
+  "source": "https://aoe4guides.com/builds/LTyVAZiMT9Wb2qsFO8bJ, https://aoe4world.com/stats/rm_solo/matchups?civilization=zhu_xis_legacy",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 жителя строят @building_economy/mill.webp@ у @resource/berrybush.webp@ и едят @resource/sheep.webp@.",
+        "@unit_chinese/imperial-official.webp@ сразу надзирает мельницу.",
+        "@unit_cavalry/scout.webp@ проверяет раннюю @building_military/stable.webp@ или @building_military/barracks.webp@ врага."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 5,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Первый новый житель ставит @building_economy/mining-camp.webp@ и идет на @resource/resource_gold.webp@.",
+        "Новых жителей до 8 @resource/resource_food.webp@ отправляй на @resource/sheep.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:50",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Держи 8 на еде и 3 на золоте для раннего перехода.",
+        "Место под @landmark_zhuxi/jiangnan-tower-2.webp@ оставляй с местом для @building_military/barracks.webp@ и @building_military/archery-range.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 житель начинает @landmark_zhuxi/jiangnan-tower-2.webp@.",
+        "4 с @resource/resource_food.webp@ на @building_economy/lumber-camp.webp@, новые жители идут на @resource/resource_wood.webp@.",
+        "Военные здания ставь вплотную к башне."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:10",
+      "villager_count": 25,
+      "resources": {
+        "food": 15,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_chinese/imperial-official.webp@ надзирает @resource/resource_wood.webp@ или военное здание.",
+        "Поставь 2 @building_military/archery-range.webp@ и 1 @building_military/barracks.webp@ в зоне @building_defensive/outpost.webp@.",
+        "Бери @technology_economy/horticulture.webp@ и держи производство без пауз."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:45",
+      "villager_count": 27,
+      "resources": {
+        "food": 13,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Состав по умолчанию: @unit_chinese/zhuge-nu-2.webp@ и @unit_infantry/spearman-1.webp@ примерно 1:1.",
+        "Против @unit_cavalry/horseman-1.webp@ сначала добавь @building_military/barracks.webp@ и @unit_infantry/spearman-1.webp@.",
+        "3-й @unit_chinese/imperial-official.webp@ может надзирать @building_technology/blacksmith.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:35",
+      "villager_count": 30,
+      "resources": {
+        "food": 14,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Первые @unit_chinese/zhuge-nu-2.webp@ должны выйти около 5:35–5:50.",
+        "Следи за шкалой @building_defensive/outpost.webp@ и выбирай бесплатный пакет по разведке.",
+        "Не уходи в @technology_economy/professional-scouts.webp@ в этой ветке без свободного @resource/resource_wood.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:00",
+      "villager_count": 34,
+      "resources": {
+        "food": 16,
+        "wood": 12,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "7–10 @unit_chinese/zhuge-nu-2.webp@ давят @resource/resource_gold.webp@ и внешнюю @resource/resource_food.webp@, не ныряют под @building_economy/town-center.webp@.",
+        "Если враг строит 2 @building_economy/town-center.webp@ или @age/age_3.webp@, добавь @technology_military/siege-engineering.webp@ и готовь таран.",
+        "Если урона мало, копи ресурсы на @landmark_zhuxi/mount-lu-academy-1.webp@ и @unit_cavalry/lancer-3.webp@."
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Тринадцатый сезон. Проверено 2026-08-08 под live-сборку 16.3.11308; последний балансный патч — 16.2.10604.",
+  "map": "Открытые сухопутные карты; особенно Dry Arabia, Gorge, Cliffside и Flankwoods",
+  "strategy": "Башня Цзяннань, производство в ее влиянии, бесплатные пакеты, контроль золота и переход в Castle только после урона.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open"
+  ],
+  "role": "core",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая"
+  ],
+  "strategy_key": "core",
+  "meta_tier": "meta_core",
+  "build_group": "zhu_xi's_legacy_core",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 1,
+    "transcript_count": 1,
+    "transcript_sources": {
+      "youtube-transcript.ai": 1
+    },
+    "search_candidate_count": 210,
+    "metadata_date_count": 0,
+    "rss_fallback_count": 1,
+    "status": "sparse_evidence",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=5hEzJSWbE9I"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Единственный ролик имеет transcript, но это gameplay/AI evidence без устойчивого build-order сигнала; действуют проверенные Jiangnan/Pro Scouts/Song ветки."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

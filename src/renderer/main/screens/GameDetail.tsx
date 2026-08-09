@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { ArrowLeft, ScanLine, Trash2 } from 'lucide-react'
+import { ArrowLeft, CheckCircle2, ExternalLink, ScanLine, Trash2 } from 'lucide-react'
 import type { StoredMatch } from '@store/historyStore'
 import type { AppSettings } from '@store/settings'
+import type { FullReplayAnalysis } from '@ipc/contract'
 import type { VideoAnalysisRecord } from '@domain/videoAnalysis'
 import type { TwitchVodFinderInput } from '@domain/twitchVodFinder'
 import {
@@ -24,7 +25,7 @@ import { cn } from '@shared/lib/utils'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
 import { useDeleteMatch, useGameSummary, useHistory } from '../queries/useHistory'
-import { useReplayAnalysis } from '../queries/useReplays'
+import { useDownloadAndAnalyzeReplay, useReplayAnalysis } from '../queries/useReplays'
 import { useSettings } from '../queries/useProfile'
 import { GameSummaryPanel } from '../components/GameSummaryPanel'
 import { BuildOrderComparisonCard } from '../components/BuildOrderComparisonCard'
@@ -162,7 +163,7 @@ function Detail({
   const twitchVodLookup = useTwitchVod(twitchVodInput, isPublicGame)
   const verifiedVod = twitchVodLookup.data?.ok ? twitchVodLookup.data.data.vod : null
   const removeGame = () => {
-    if (!window.confirm('Remove this game from your history? This cannot be undone.')) return
+    if (!window.confirm(tt('Remove this game from your history? This cannot be undone.'))) return
     deleteMatch.mutate(match.id, { onSuccess: () => navigate('/stats') })
   }
   const ownResult = match.result ?? resultFromPerPlayer(match.perPlayer, myProfileId)
@@ -258,7 +259,7 @@ function Detail({
 
   return (
     <div className="space-y-6">
-      <header className="space-y-1">
+      <header id="match-overview" className="scroll-mt-4 space-y-3">
         <div className="flex flex-wrap items-center gap-3">
           <span
             className={cn(
@@ -320,6 +321,13 @@ function Detail({
         </button>
       </header>
 
+      <MatchSectionNav
+        isPublicGame={isPublicGame}
+        hasSummary={summary != null}
+        hasVerifiedVod={verifiedVod != null}
+        onReplay={() => document.getElementById('replay-command-analysis')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+      />
+
       {summary && summary.players.length > 1 && (
         <MatchPlayerFocus
           players={summary.players}
@@ -352,9 +360,7 @@ function Detail({
             const selected = summary?.players.find((player) => player.profileId === profileId)
             const ownId = ownSummaryPlayer?.playerId ?? null
             setFocusedPlayerId(
-              selected?.playerId != null && selected.playerId !== ownId
-                ? selected.playerId
-                : null,
+              selected?.playerId != null && selected.playerId !== ownId ? selected.playerId : null,
             )
           }}
           nameByCiv={nameByCiv}
@@ -430,7 +436,7 @@ function Detail({
         showSubjectBadge={isOwnFocus}
       />
 
-      <ReplayCommandAnalysis matchId={match.id} />
+      <ReplayCommandAnalysis match={match} />
 
       <AutoGameplayCard
         enabled={isOwnFocus && isPublicGame}
@@ -515,49 +521,138 @@ function similarMatchQuery(match: StoredMatch, profileId: number | null): Simila
   }
 }
 
-function ReplayCommandAnalysis({ matchId }: { matchId: string }) {
+function MatchSectionNav({
+  isPublicGame,
+  hasSummary,
+  hasVerifiedVod,
+  onReplay,
+}: {
+  isPublicGame: boolean
+  hasSummary: boolean
+  hasVerifiedVod: boolean
+  onReplay: () => void
+}) {
+  const { tt } = useI18n()
+  const links = [
+    { id: 'turning-point-story', label: tt('Turning points') },
+    { id: 'build-order-audit', label: tt('Build audit') },
+    { id: 'game-summary-evidence', label: tt('Economy & build order') },
+  ]
+  return (
+    <nav
+      aria-label={tt('Match evidence navigation')}
+      className="sticky top-0 z-20 -mx-1 flex flex-wrap items-center gap-1 rounded-md border border-border/70 bg-background/95 p-1.5 shadow-sm backdrop-blur"
+    >
+      <span className="px-2 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+        {tt('Evidence')}
+      </span>
+      {links.map((link) => (
+        <a
+          key={link.id}
+          href={`#${link.id}`}
+          className="rounded px-2.5 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+        >
+          {link.label}
+        </a>
+      ))}
+      <button
+        type="button"
+        onClick={onReplay}
+        className="rounded px-2.5 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+      >
+        {tt('Command stream')}
+      </button>
+      <span className="ml-auto flex items-center gap-2 px-2 text-[10px] text-muted-foreground">
+        <span className={cn('inline-flex items-center gap-1', hasSummary ? 'text-win' : '')}>
+          <CheckCircle2 className="h-3 w-3" /> {hasSummary ? tt('Summary ready') : tt('Summary pending')}
+        </span>
+        {isPublicGame && (
+          <span className={cn('inline-flex items-center gap-1', hasVerifiedVod ? 'text-win' : '')}>
+            <ExternalLink className="h-3 w-3" /> {hasVerifiedVod ? tt('VOD linked') : tt('VOD search')}
+          </span>
+        )}
+      </span>
+    </nav>
+  )
+}
+
+function ReplayCommandAnalysis({ match }: { match: StoredMatch }) {
   const { tt } = useI18n()
   const [open, setOpen] = useState(false)
   const [checked, setChecked] = useState(false)
+  const [fullResult, setFullResult] = useState<FullReplayAnalysis | null>(null)
   const analysis = useReplayAnalysis()
+  const fullAnalysis = useDownloadAndAnalyzeReplay()
+  const isOnlineGame = /^\d{1,16}$/.test(match.id) && !match.custom
+  const target = isOnlineGame ? { gameId: Number(match.id) } : { localId: match.id }
+  const displayedAnalysis = fullResult?.replay ?? analysis.data
   const run = () => {
+    setChecked(false)
+    if (isOnlineGame) {
+      void fullAnalysis
+        .mutateAsync(Number(match.id))
+        .then((result) => {
+          setFullResult(result)
+          setChecked(true)
+          setOpen(result.replay != null)
+        })
+        .catch(() => setChecked(true))
+      return
+    }
     void analysis
-      .mutateAsync({ localId: `matchhistory:${matchId}` })
+      .mutateAsync(target)
       .then(() => {
         setChecked(true)
         setOpen(true)
       })
-      .catch(() => undefined)
+      .catch(() => setChecked(true))
   }
   return (
-    <section className="space-y-2">
+    <section id="replay-command-analysis" className="scroll-mt-4 space-y-2">
       <div className="flex items-center justify-between gap-2">
         <h2 className="text-lg font-semibold tracking-tight">{tt('Replay command analysis')}</h2>
         <button
           type="button"
           onClick={run}
-          disabled={analysis.isPending}
+          disabled={analysis.isPending || fullAnalysis.isPending}
           className="inline-flex h-8 items-center gap-1.5 rounded-md border border-primary/40 px-2.5 text-xs text-primary hover:bg-primary/10 disabled:opacity-40"
         >
           <ScanLine className="h-3.5 w-3.5" />
-          {analysis.isPending ? tt('Analyzing…') : tt('Analyze replay')}
+          {fullAnalysis.isPending
+            ? tt('Downloading and analyzing…')
+            : analysis.isPending
+              ? tt('Analyzing…')
+              : isOnlineGame
+                ? tt('Download + analyze replay')
+                : tt('Analyze replay')}
         </button>
       </div>
-      {analysis.error && <p className="text-xs text-loss">{analysis.error.message}</p>}
-      {analysis.data && (
+      {analysis.error && !isOnlineGame && <p className="text-xs text-loss">{analysis.error.message}</p>}
+      {fullAnalysis.error && <p className="text-xs text-loss">{fullAnalysis.error.message}</p>}
+      {fullResult && (
+        <p className="border-t border-border/60 pt-2 text-[11px] text-muted-foreground">
+          {tt('Online replay')}: {fullResult.download.status} · {tt('Replay stream')}{' '}
+          {tt(fullResult.coverage.replay)} · {tt('Summary')}{' '}
+          {fullResult.coverage.summary ? tt('available') : tt('unavailable')}
+        </p>
+      )}
+      {displayedAnalysis && (
         <Card>
           <CardContent className="p-4">
             <ReplayAnalysisPanel
-              result={analysis.data}
+              result={displayedAnalysis}
+              target={target}
               open={open}
               onToggle={() => setOpen((value) => !value)}
             />
           </CardContent>
         </Card>
       )}
-      {checked && analysis.data == null && !analysis.error && (
+      {checked && displayedAnalysis == null && !analysis.error && !fullAnalysis.error && (
         <p className="text-xs text-muted-foreground">
-          {tt('No local replay file is available for this game.')}
+          {isOnlineGame
+            ? tt('Relic did not return an available replay for this game.')
+            : tt('No local replay file is available for this game.')}
         </p>
       )}
     </section>

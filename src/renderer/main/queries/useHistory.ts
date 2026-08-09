@@ -25,11 +25,11 @@ export function useFullHistory() {
 }
 
 /** Multi-game build adherence, sourced from local/cached summaries. */
-export function useBuildAuditHistory(limit = 50) {
+export function useBuildAuditHistory(limit?: number) {
   const settings = useSettings()
   const profileId = settings.data?.profileId ?? null
   return useQuery({
-    queryKey: ['buildAuditHistory', profileId, limit],
+    queryKey: ['buildAuditHistory', profileId, limit ?? 'all'],
     queryFn: () => ipc.getBuildAuditHistory(limit),
     enabled: settings.isSuccess,
     staleTime: 60_000,

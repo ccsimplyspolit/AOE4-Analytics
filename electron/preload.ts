@@ -105,6 +105,8 @@ const api: RtslyticsApi = {
   cacheSummaries: (gameIds) => ipcRenderer.invoke(IpcChannels.summaryCacheBatch, gameIds),
   getReplaysApiStatus: () => ipcRenderer.invoke(IpcChannels.replaysApiStatus),
   analyzeReplay: (target) => ipcRenderer.invoke(IpcChannels.replayAnalyze, target),
+  getReplayActions: (target, offset, limit, playerId) =>
+    ipcRenderer.invoke(IpcChannels.replayActions, target, offset, limit, playerId),
   downloadAndAnalyzeReplay: (gameId) => ipcRenderer.invoke(IpcChannels.replayFullAnalyze, gameId),
   getMatchupWinRate: (civ, oppCiv) => ipcRenderer.invoke(IpcChannels.matchupWinRate, civ, oppCiv),
   searchOnline: (query) => ipcRenderer.invoke(IpcChannels.onlineSearch, query),

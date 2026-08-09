@@ -1,0 +1,219 @@
+{
+  "description": "Открытая Japanese ветка: Kura Storehouse, дешёвая казарма, Samurai с Yumi Ashigaru и переход в Castle по разведке.",
+  "civilization": "Japanese",
+  "name": "[1x1][OPEN][JAP][PRESSURE] Japanese: Kura, Samurai и Yumi",
+  "author": "Синтез AoE4Guides/AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/dashboard?civ=JAP, https://aoe4world.com/explorer/civs/japanese, https://aoe4world.com/stats/rm_solo/civilizations",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 жителей на @resource/sheep.webp@; 7-й ставит @building_japanese/farmhouse-1.webp@ и затем идёт на @resource/resource_wood.webp@.",
+        "@building_japanese/farmhouse-1.webp@ — и @building_economy/house.webp@, и drop-off @resource/resource_food.webp@: ставь его рядом с sheep/@resource/berrybush.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:40",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Поставь @building_japanese/forge-1.webp@ на @resource/resource_gold.webp@; @building_japanese/forge-1.webp@ также служит drop-off для @resource/resource_gold.webp@ и @resource/resource_stone.webp@.",
+        "@resource/resource_wood.webp@ копи на дешёвую @building_military/barracks.webp@ и возраст."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:35",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 жителя начинают @landmark_japanese/kura-storehouse-1.webp@; новые жители: @resource/resource_wood.webp@ до 5, затем @resource/resource_gold.webp@.",
+        "@landmark_japanese/kura-storehouse-1.webp@ — безопасный экономический landmark для давления через войско."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:25",
+      "villager_count": 16,
+      "resources": {
+        "food": 10,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь вторую @building_military/barracks.webp@ только после первого @unit_japanese/samurai-1.webp@.",
+        "Заказывай @unit_japanese/samurai-1.webp@ и держи его впереди, а не под огнём @building_economy/town-center.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:25",
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_military/archery-range.webp@ и добавь @unit_japanese/yumi-ashigaru-2.webp@ против копий.",
+        "@unit_japanese/samurai-1.webp@ держит фронт, @unit_japanese/yumi-ashigaru-2.webp@ фокусит лёгкую пехоту."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:35",
+      "villager_count": 24,
+      "resources": {
+        "food": 14,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Исследуй @technology_japanese/daimyo-manor-1.webp@, если рядом есть безопасная @resource/resource_food.webp@ и можно масштабировать @building_economy/farm.webp@.",
+        "Против @unit_cavalry/horseman-1.webp@ держи @unit_japanese/samurai-1.webp@ плотной группой и не расходуй @unit_japanese/yumi-ashigaru-2.webp@ по карте."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:50",
+      "villager_count": 28,
+      "resources": {
+        "food": 16,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Если враг не давит, начинай @age/age_3.webp@; при открытом @resource/resource_gold.webp@ добавь @building_defensive/outpost.webp@.",
+        "Новые жители идут на @resource/resource_food.webp@/@resource/resource_gold.webp@: @age/age_3.webp@ нужен для @unit_japanese/mounted-samurai-3.webp@ и @building_japanese/shinto-shrine-3.webp@/@building_japanese/buddhist-temple-3.webp@ выбора."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:20",
+      "villager_count": 34,
+      "resources": {
+        "food": 18,
+        "wood": 10,
+        "gold": 8,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Переходи через @landmark_japanese/temple-of-equality-2.webp@ для религиозной поддержки и безопасной армии.",
+        "Если давление сильное, продолжай @unit_japanese/samurai-1.webp@/@unit_japanese/yumi-ashigaru-2.webp@ вместо ранней жадности."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:10",
+      "villager_count": 41,
+      "resources": {
+        "food": 20,
+        "wood": 12,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "В @age/age_3.webp@ добавь @unit_japanese/mounted-samurai-3.webp@ и @unit_japanese/uma-bannerman-2.webp@ к основной пехоте.",
+        "Против тяжёлых целей переходи в @unit_japanese/onna-musha-3.webp@ и @building_military/siege-workshop.webp@."
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 13; snapshot 08.08.2026, live-сборка 16.3.11308",
+  "map": "Dry Arabia, Gorge, Flankwoods и открытые карты с лесом/berries",
+  "strategy": "Kura Storehouse, дешёвая казарма, Samurai/Yumi, Daimyo Manor и Castle через Temple of Equality.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "role": "pressure",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "strategy_key": "pressure",
+  "meta_tier": "meta_core",
+  "build_group": "japanese_pressure",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 5,
+    "transcript_count": 5,
+    "transcript_sources": {
+      "youtube-transcript.ai": 5
+    },
+    "search_candidate_count": 188,
+    "metadata_date_count": 5,
+    "rss_fallback_count": 0,
+    "status": "evidence_backed",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=8JZfneS0ReM",
+      "https://www.youtube.com/watch?v=whV7qTyBEeI",
+      "https://www.youtube.com/watch?v=TSrMgLt1ZTI",
+      "https://www.youtube.com/watch?v=GgPa3nWpq7U",
+      "https://www.youtube.com/watch?v=ItmF8A87CHU"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Полное покрытие 5/5 даёт в основном decision-сигналы; Ryoken/Abbey и mounted Samurai остаются отдельными ветками без нового численного тайминга."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

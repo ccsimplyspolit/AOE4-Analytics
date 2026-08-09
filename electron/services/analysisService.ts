@@ -222,7 +222,10 @@ function sameLocalStats(a: LocalGameStats | undefined, b: LocalGameStats | undef
   )
 }
 
-async function enrichStoredMatchWithSummary(match: StoredMatch, profileId: number | null): Promise<StoredMatch> {
+async function enrichStoredMatchWithSummary(
+  match: StoredMatch,
+  profileId: number | null,
+): Promise<StoredMatch> {
   const summary = await loadSummaryFromLocalOrCache(match.id, profileId)
   const local = mergeLocalStats(
     match.local,
@@ -376,7 +379,10 @@ export function analyzeRecentGames(count?: number): Promise<IpcResult<AnalyzeRes
   return sync
 }
 
-async function runSync(count: number | undefined, context: SyncContext): Promise<IpcResult<AnalyzeResult>> {
+async function runSync(
+  count: number | undefined,
+  context: SyncContext,
+): Promise<IpcResult<AnalyzeResult>> {
   const ranked = await analyzeRankedGames(count, context)
   let localAnalyzed = 0
   try {
@@ -417,7 +423,9 @@ async function analyzeRankedGames(
           // team games together.
           client.getAllPlayerGames(profileId, { pageSize: 100, fresh: true })
         : // Polling and post-game auto-folds intentionally stay bounded.
-          client.getPlayerGames(profileId, { limit: count, fresh: true }).then((response) => response.games),
+          client
+            .getPlayerGames(profileId, { limit: count, fresh: true })
+            .then((response) => response.games),
     ])
     const bracket = bracketFromRankLevel(pickPrimaryMode(player.modes)?.rankLevel)
     const bench = getBenchmarks(bracket)
@@ -836,11 +844,13 @@ export async function listHistory(limit?: number): Promise<IpcResult<StoredMatch
   try {
     const store = await getHistoryStore()
     const profileId = getSettings().getAll().profileId
-    const matches = await Promise.all(store.listVisibleMatches(limit).map(async (match) => {
-      const enriched = await enrichStoredMatchWithSummary(match, profileId)
-      if (enriched !== match) store.saveMatch(enriched)
-      return enriched
-    }))
+    const matches = await Promise.all(
+      store.listVisibleMatches(limit).map(async (match) => {
+        const enriched = await enrichStoredMatchWithSummary(match, profileId)
+        if (enriched !== match) store.saveMatch(enriched)
+        return enriched
+      }),
+    )
     return ok(matches)
   } catch (e) {
     return errFrom(e)
@@ -853,9 +863,9 @@ export async function listHistory(limit?: number): Promise<IpcResult<StoredMatch
  * summaries are deterministic evidence; missing rows remain unavailable.
  */
 export async function getBuildAuditHistory(
-  limit = 50,
+  limit?: number,
 ): Promise<IpcResult<BuildAuditHistoryRow[]>> {
-  if (!Number.isSafeInteger(limit) || limit <= 0 || limit > 500) {
+  if (limit != null && (!Number.isSafeInteger(limit) || limit <= 0 || limit > 500)) {
     return err('validation', 'Build audit history limit must be between 1 and 500.')
   }
   try {
@@ -886,9 +896,7 @@ export async function getBuildAuditHistory(
  * fresh Relic download: the report remains repeatable and labels unavailable
  * evidence instead of treating it as zero.
  */
-export async function getMatchCorpusReport(
-  limit = 5_000,
-): Promise<IpcResult<MatchCorpusReport>> {
+export async function getMatchCorpusReport(limit = 5_000): Promise<IpcResult<MatchCorpusReport>> {
   if (!Number.isSafeInteger(limit) || limit <= 0 || limit > 5_000) {
     return err('validation', 'Corpus report limit must be between 1 and 5000.')
   }

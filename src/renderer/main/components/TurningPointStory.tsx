@@ -57,7 +57,11 @@ export function TurningPointStory({
   const isTeamSummary = (summary?.players.length ?? 0) > 2
 
   return (
-    <section className="space-y-2" aria-labelledby="turning-point-story-heading">
+    <section
+      id="turning-point-story"
+      className="scroll-mt-4 space-y-2"
+      aria-labelledby="turning-point-story-heading"
+    >
       <div>
         <h2
           id="turning-point-story-heading"

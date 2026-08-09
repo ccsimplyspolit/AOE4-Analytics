@@ -34,8 +34,9 @@ import {
   type ReplayMatchup,
   type ReplayPlayer,
 } from '@domain/replay'
-import { parseReplayCommandStream, type ReplayAnalysisResult } from '@domain/replayCommand'
-import { readCachedReplayAnalysis, writeCachedReplayAnalysis } from './replayAnalysisCacheService'
+import type { ReplayAnalysisResult } from '@domain/replayCommand'
+import { readCachedReplayAnalysis } from './replayAnalysisCacheService'
+import { analyzeReplayFile } from './replayCacheService'
 import { buildLocalLiveMatchup, type LiveMatchup } from '@domain/liveMatch'
 import { parseStatsSummary, type MatchSummary } from '@domain/statsSummary'
 import { getSettings } from './appContext'
@@ -47,6 +48,7 @@ import { fetchReplaysApiSummary } from './replaysApiService'
  * (own files, never game memory). The AoE4World API remains the fallback.
  */
 const AOE4_DIRNAME = 'Age of Empires IV'
+const REPLAY_MAGIC = 'AOE4_RE'
 
 interface GameSummaryMemoEntry {
   mtimeMs: number
@@ -136,10 +138,13 @@ export function getLocalDataStatus(): LocalDataStatus {
   const dir = gameDir()
   // Honour the consent gate: don't touch the filesystem until the user accepts.
   const logExists = consent ? existsSync(warningLogPath()) : false
+  const replayStorageExists = consent
+    ? ['playback', 'replays', 'matchhistory'].some((name) => existsSync(join(dir, name)))
+    : false
   return {
     platform: process.platform,
     consentGranted: consent,
-    available: consent && process.platform === 'win32' && logExists,
+    available: consent && process.platform === 'win32' && (logExists || replayStorageExists),
     gameDir: dir,
     logExists,
   }
@@ -177,7 +182,9 @@ export function readGameSummary(matchId: string): MatchSummary | null {
  * `stats.rgs`. The loopback or configured parser is started only when the
  * bundled TypeScript implementation cannot decode the file.
  */
-export async function readGameSummaryWithUpstreamFallback(matchId: string): Promise<MatchSummary | null> {
+export async function readGameSummaryWithUpstreamFallback(
+  matchId: string,
+): Promise<MatchSummary | null> {
   const local = readGameSummary(matchId)
   if (local) return local
   if (!getSettings().getAll().localData.consentGranted || !/^\d+$/.test(matchId)) return null
@@ -264,36 +271,49 @@ function readFullReplay(path: string): Uint8Array | null {
   }
 }
 
-/** All saved `.rec` files (named playback replays + per-match copies); skips temp scratch. */
+/** All saved `.rec` files (named playback replays + per-match copies).
+ * AoE4 itself uses `temp.rec` for the latest saved playback, so it is a real
+ * replay and must not be discarded. Only explicit partial-write suffixes are
+ * ignored; unreadable/locked files are filtered safely by the caller.
+ */
 function findReplayFiles(): string[] {
   const dir = gameDir()
   const out: string[] = []
+  const seen = new Set<string>()
   const walk = (d: string): void => {
-    for (const e of readdirSync(d, { withFileTypes: true })) {
-      const p = join(d, e.name)
-      if (e.isDirectory()) walk(p)
-      else if (e.isFile() && e.name.toLowerCase().endsWith('.rec') && !/^temp/i.test(e.name))
-        out.push(p)
-    }
-  }
-  try {
-    const pb = join(dir, 'playback')
-    if (existsSync(pb)) walk(pb)
-  } catch {
-    // ignore unreadable playback dir
-  }
-  try {
-    const mh = join(dir, 'matchhistory')
-    if (existsSync(mh)) {
-      for (const f of readdirSync(mh)) {
-        const p = join(mh, f, 'replay.rec')
-        if (existsSync(p)) out.push(p)
+    try {
+      for (const e of readdirSync(d, { withFileTypes: true })) {
+        const p = join(d, e.name)
+        if (e.isDirectory()) walk(p)
+        else if (
+          e.isFile() &&
+          e.name.toLowerCase().endsWith('.rec') &&
+          !/\.partial\.rec$/i.test(e.name)
+        ) {
+          const normalized = resolve(p).toLowerCase()
+          if (!seen.has(normalized)) {
+            seen.add(normalized)
+            out.push(p)
+          }
+        }
       }
+    } catch {
+      // A replay may be locked or a directory may disappear while AoE4 rotates it.
+      // Keep the files already discovered in the other roots.
     }
-  } catch {
-    // ignore unreadable matchhistory dir
+  }
+  // Current AoE4 writes playback/temp.rec; other builds and replay managers use
+  // replays/, while match-history copies can be nested below matchhistory/.
+  for (const name of ['playback', 'replays', 'matchhistory']) {
+    const root = join(dir, name)
+    if (existsSync(root)) walk(root)
   }
   return out
+}
+
+function isReplayHeaderCandidate(bytes: Uint8Array | null): boolean {
+  if (!bytes || bytes.length < 10) return false
+  return String.fromCharCode(...bytes.slice(4, 10)) === REPLAY_MAGIC
 }
 
 function replayArchivePath(id: string): string | null {
@@ -322,16 +342,7 @@ export function analyzeLocalReplay(id: string): ReplayAnalysisResult | null {
     if (previous) return previous
     const bytes = readFullReplay(path)
     if (!bytes) return null
-    const result: ReplayAnalysisResult = {
-      id,
-      source: 'local',
-      sourcePath: path,
-      recordedAtMs,
-      info: parseReplayHeader(bytes),
-      commandStream: parseReplayCommandStream(bytes),
-    }
-    writeCachedReplayAnalysis(analysisKey, result)
-    return result
+    return analyzeReplayFile(id, 'local', path, recordedAtMs, bytes, analysisKey)
   } catch {
     return null
   }
@@ -370,14 +381,15 @@ export function listReplayArchive(page = 1, pageSize = 25): ReplayArchivePage {
             : null
           const head = existsSync(recPath) ? readHead(recPath) : null
           const info = head ? parseReplayHeader(head) : null
-          if (!localMatch && !info) continue
+          const replayCandidate = isReplayHeaderCandidate(head)
+          if (!localMatch && !info && !replayCandidate) continue
           const statPath = existsSync(recPath) ? recPath : matchPath
           rows.push({
             id: `matchhistory:${folder}`,
             source: 'matchhistory',
             recordedAtMs: statSync(statPath).mtimeMs,
             matchId: folder,
-            hasReplay: info != null,
+            hasReplay: replayCandidate,
             hasStatsSummary: existsSync(join(folderPath, 'stats.rgs')),
             info,
             localMatch,
@@ -394,7 +406,9 @@ export function listReplayArchive(page = 1, pageSize = 25): ReplayArchivePage {
         const stat = statSync(path)
         const head = readHead(path)
         const info = head ? parseReplayHeader(head) : null
-        if (!info) continue
+        // Keep a valid AoE4 replay visible while its header is temporarily
+        // incomplete/locked. The row can be retried after the game closes.
+        if (!info && !isReplayHeaderCandidate(head)) continue
         const normalized = path.replace(/\\/g, '/')
         rows.push({
           id: normalized,

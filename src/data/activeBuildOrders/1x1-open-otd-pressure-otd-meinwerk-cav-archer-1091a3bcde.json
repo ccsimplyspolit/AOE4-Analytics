@@ -1,0 +1,199 @@
+{
+  "description": "Феодальная ветка OTD из актуальной карточки AoE4Guides: Мейнверк, ранняя конюшня, позолоченные всадники и затем позолоченные лучники. Играется компактной армией вокруг вдохновения.",
+  "civilization": "Order of the Dragon",
+  "name": "[1x1][OPEN][OTD][PRESSURE] OTD: Meinwerk Cav/Archer",
+  "author": "Синтез карточки AoE4Guides FMoKwPuEa27tXkkzWxJR и текущей статистики AoE4World; 08.08.2026",
+  "source": "https://aoe4guides.com/builds/FMoKwPuEa27tXkkzWxJR, https://aoe4world.com/stats/rm_solo/matchups?civilization=order_of_the_dragon",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Новые жители ставят @building_economy/house.webp@ и @building_economy/mining-camp.webp@, затем на @resource/resource_gold.webp@.",
+        "5 позолоченных жителей на @resource/sheep.webp@; @unit_cavalry/scout.webp@ проверяет раннюю @building_military/stable.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:26",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2 жителя начинают @landmark_hre/meinwerk-palace.webp@.",
+        "1 позолоченный житель сразу закладывает @building_military/stable.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2 строителя после landmark переходят на @resource/resource_wood.webp@ через @building_economy/lumber-camp.webp@.",
+        "Ралли держи на @resource/resource_wood.webp@ до 6 жителей."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "04:10",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Поставь @building_economy/mill.webp@ на ягодах, если @resource/sheep.webp@ заканчиваются.",
+        "Дострой @building_military/stable.webp@ и не задерживай первую @unit_dragon/gilded-horseman-2.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:25",
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Сразу бери @technology_economy/wheelbarrow.webp@ и @technology_economy/double-broadaxe.webp@, если нет давления.",
+        "Производи @unit_dragon/gilded-horseman-2.webp@ постоянно из @building_military/stable.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:20",
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "После второго всадника ставь @building_military/archery-range.webp@.",
+        "Ралли: 12 жителей на еде, новые жители на @resource/resource_wood.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:30",
+      "villager_count": 21,
+      "resources": {
+        "food": 13,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_infantry/archer-2.webp@ прикрывают @unit_cavalry/horseman-1.webp@: выпускай @unit_dragon/gilded-archer-2.webp@ без пауз.",
+        "Бери @technology_military/iron-undermesh.webp@ против стрел и @technology_military/steeled-arrow.webp@ для дальнего урона."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:30",
+      "villager_count": 25,
+      "resources": {
+        "food": 15,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Армия держится плотной группой под вдохновением; не разводи дорогих юнитов по карте.",
+        "Против @unit_cavalry/horseman-1.webp@ добавь @unit_dragon/gilded-spearman-1.webp@, против пехоты — больше @unit_infantry/archer-2.webp@.",
+        "Если давление не пробило, переходи в Burgrave или 2 @building_economy/town-center.webp@ по разведке."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/yTYNglu4f20",
+  "season": "Тринадцатый сезон. Проверено 2026-08-08 под live-сборку 16.3.11308; бонус добычи позолоченных жителей — 27%, Inspired Warriors — +10% и соседнее вдохновение.",
+  "map": "Открытые сухопутные карты; Dry Arabia, Gorge, Cliffside и Sunkenlands",
+  "strategy": "Феодальная мобильная армия через Мейнверк: позолоченные всадники плюс лучники, компактная формация и переход в Castle при отсутствии решающего урона.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open"
+  ],
+  "role": "pressure",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая"
+  ],
+  "strategy_key": "pressure",
+  "meta_tier": "meta_core",
+  "build_group": "order_of_the_dragon_pressure",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 2,
+    "transcript_count": 2,
+    "transcript_sources": {
+      "legacy_local": 1,
+      "youtube-transcript.ai": 1
+    },
+    "search_candidate_count": 233,
+    "metadata_date_count": 0,
+    "rss_fallback_count": 2,
+    "status": "sparse_evidence",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=cCrfspRS5cA",
+      "https://www.youtube.com/watch?v=T6hZUCZnw30"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Оба ролика имеют transcript, но распознанный сигнал слабый; 2TC и Horse/Spear pressure остаются отдельными ветками без нового численного тайминга."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

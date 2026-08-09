@@ -165,9 +165,12 @@ The match review now exposes the evidence layer alongside the interpretation:
   observed fit is labeled as inferred, with its matched-action count and
   confidence shown next to the source link. The same VOD/build audit is exposed
   on local history and public match detail pages.
-- Local replay command analysis groups decoded inputs into five-minute windows
-  and reports first-to-last activity change. Unknown commands, truncated data,
-  failed actions, worker allocation, and scouting remain visible limitations.
+- Local replay command analysis decodes every record in the command stream for
+  every player, writes a complete NDJSON action journal, and exposes bounded
+  pages with player filtering. Five-minute activity windows and first-to-last
+  activity change remain aggregate views. Unknown commands, truncated data,
+  failed actions, worker allocation, and scouting remain visible limitations;
+  the journal never invents semantics for an unknown payload.
 - Summary decoding follows the current `aoe4world/replays-api` STPD contract
   through v2034 (AoE4 15.4.8719). Every decoded summary carries the upstream
   revision, observed STPD version and local/remote coverage. A future format

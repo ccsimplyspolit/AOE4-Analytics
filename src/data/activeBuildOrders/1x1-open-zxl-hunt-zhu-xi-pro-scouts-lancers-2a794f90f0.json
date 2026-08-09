@@ -1,0 +1,397 @@
+{
+  "description": "Главная актуальная рейтинговая ветка Наследия Чжу Си: башня Цзяннань, профессиональные разведчики, защита двух стад оленей, затем академия горы Лу, конные копейщики, монахи и давление третьей эпохи. Это основной порядок для верхней лестницы после свежих патчей: он не умирает от раннего давления так легко, как чистая третья эпоха, и использует новый налог от оленей и бесплатные пакеты башни.",
+  "civilization": "Zhu Xi's Legacy",
+  "name": "[1x1][OPEN][ZXL][HUNT] Zhu Xi: Pro Scouts и Lancers",
+  "author": "Валдемар, свежие видеоразборы, карточка AoE4Guides tL4wX9W9JIEAic6AvD1x и статистика лестницы; сверка 2026-08-08",
+  "source": "https://www.youtube.com/watch?v=tWUA3KKhN0U, https://aoe4guides.com/builds/tL4wX9W9JIEAic6AvD1x",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Всех стартовых жителей и @unit_chinese/imperial-official.webp@ отправь к @resource/berrybush.webp@. Построй @building_economy/mill.webp@, подведи @resource/sheep.webp@ к @building_economy/mill.webp@ и включи @ability_chinese/supervise.webp@.",
+        "@resource/sheep.webp@ режь у мельницы, не на @building_economy/town-center.webp@.",
+        "Надзор и налог с крупных сдач @resource/resource_food.webp@ - причина, почему этот порядок уходит в @resource/deer.webp@.",
+        "@unit_cavalry/scout.webp@: ближние @resource/sheep.webp@, два своих стада @resource/deer.webp@, проходы и @resource/relics.webp@.",
+        "Потом проверь ранние военные здания врага.",
+        "Разведка: 00:00 @unit_cavalry/scout.webp@ собрать @resource/sheep.webp@, отметить два стада @resource/deer.webp@ и @resource/relics.webp@.",
+        "Без этого профессиональные @unit_cavalry/scout.webp@ играются вслепую."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:25",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Первые три новых жителя идут на @resource/resource_gold.webp@. Первый строит @building_economy/mining-camp.webp@.",
+        "После трех жителей на золоте всех новых жителей снова отправляй на @resource/resource_food.webp@ до начала перехода во @age/age_2.webp@.",
+        "Поставь @building_chinese/village.webp@ между мельницей и @resource/resource_gold.webp@. @building_chinese/village.webp@ экономит @resource/resource_wood.webp@, дает население и помогает укрывать жителей."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:45",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Когда на @building_economy/mill.webp@ накопится около сорока налогового @resource/resource_gold.webp@, собери налог чиновником через @ability_chinese/collect_tax.webp@ и сразу верни его на @ability_chinese/supervise.webp@.",
+        "Не забывай этот налог: в свежем мастер-классе Валдемар отдельно показывает сбор налога с мельницы перед @landmark_zhuxi/jiangnan-tower-2.webp@.",
+        "@unit_cavalry/scout.webp@ должен понять, нужна ли ранняя @building_military/barracks.webp@.",
+        "Против французов, японского давления и похожих планов готовь защиту."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "02:45",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Начинай @landmark_zhuxi/jiangnan-tower-2.webp@ двумя жителями с @resource/resource_food.webp@. Ставь ее так, чтобы рядом поместились @building_military/stable.webp@, @building_military/barracks.webp@ и @building_military/archery-range.webp@.",
+        "VortiX (07.07.2026): между @landmark_zhuxi/jiangnan-tower-2.webp@ и @building_economy/town-center.webp@ оставляй 3 клетки под военные здания.",
+        "@landmark_zhuxi/jiangnan-tower-2.webp@ - центр текущего патча: каждый произведенный рядом отряд продвигает бесплатный пакет войск.",
+        "После начала перехода новых жителей на @resource/resource_wood.webp@ до семи-восьми лесорубов.",
+        "@resource/resource_wood.webp@ нужно на @building_military/stable.webp@, @building_military/barracks.webp@, @building_military/archery-range.webp@ и население."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "03:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Закажи второго чиновника примерно между третьей двадцатью и третьей сороковой минутой, если город не под прямой угрозой.",
+        "Первый @unit_chinese/imperial-official.webp@ надзирает @resource/resource_food.webp@, второй @unit_chinese/imperial-official.webp@ идет на @building_economy/lumber-camp.webp@ лесопилку. Не держи чиновников без работы.",
+        "Схема чиновников: второго бери быстро, третьего сильно позже, четвертый почти не нужен.",
+        "Итог по чиновникам: один на @resource/resource_wood.webp@, один на @resource/resource_food.webp@, один собирает налоги.",
+        "Если разведка показала ранних @unit_cavalry/knight-2.webp@ или жесткий копейный выход, первое здание после @resource/resource_wood.webp@ - @building_military/barracks.webp@, а не @building_military/stable.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "После завершения @building_defensive/outpost.webp@ ставь @building_military/stable.webp@ в ее влиянии. Под надзором быстро закажи четырех дополнительных @unit_cavalry/scout.webp@.",
+        "Против ранней @unit_cavalry/horseman-1.webp@: около пяти @unit_infantry/spearman-1.webp@, потом @building_military/stable.webp@.",
+        "В этой защите профессиональные @unit_cavalry/scout.webp@ готовы примерно к 06:16.",
+        "Если давления нет, не задерживайся.",
+        "@unit_cavalry/scout.webp@ на @resource/deer.webp@ нажимай около 05:00; под надзором готово примерно к 05:45."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Исследуй @technology_economy/professional-scouts.webp@ на @building_economy/mill.webp@ под надзором.",
+        "Делай пять @unit_cavalry/scout.webp@ всего: четыре носят @resource/deer.webp@, один продолжает смотреть врага.",
+        "Разбор VortiX (07.07.2026): всего нужно ~5 @unit_cavalry/scout.webp@ @unit_cavalry/scout.webp@.",
+        "VortiX: @resource/deer.webp@ @resource/deer.webp@ носи цепочкой - сначала СВОИ паки, затем чужие.",
+        "Точка сдачи @resource/deer.webp@ - @building_economy/mill.webp@ у @resource/berrybush.webp@. Так жители получают быструю @resource/resource_food.webp@, а налог от крупных сдач становится сильнее.",
+        "@resource/resource_gold.webp@ под угрозой: @building_defensive/outpost.webp@ @building_defensive/outpost.webp@ обязательна.",
+        "Без угрозы @building_defensive/outpost.webp@ не ставь: она позднит @unit_cavalry/scout.webp@ на @resource/deer.webp@.",
+        "Прокачка: в 05:00 заказать @technology_economy/professional-scouts.webp@ @unit_cavalry/scout.webp@ на @resource/deer.webp@.",
+        "Если сделал пять @unit_infantry/spearman-1.webp@, нормальное время готовности около 06:16.",
+        "Пропуск: в 05:00 @technology_economy/wheelbarrow.webp@ тачку до @unit_cavalry/scout.webp@ на @resource/deer.webp@ не брать; @resource/resource_wood.webp@ и @resource/resource_gold.webp@ должны уйти в перенос @resource/deer.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:45",
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Ставь @building_military/archery-range.webp@ и @building_military/barracks.webp@ в влиянии @building_defensive/outpost.webp@ Цзяннань. Они нужны не для красоты, а для защиты @unit_cavalry/scout.webp@ и зарядки бесплатного пакета.",
+        "Против тяжелой @unit_cavalry/horseman-1.webp@: @unit_infantry/spearman-1.webp@ и @unit_cavalry/horseman-1.webp@.",
+        "Против копий и легкой пехоты: @unit_chinese/zhuge-nu-2.webp@ и дворцовая стража.",
+        "Против стрелков: @unit_cavalry/horseman-1.webp@ и аккуратная позиция.",
+        "Не выходи далеко без причины.",
+        "Твоя задача - привезти минимум два стада @resource/deer.webp@, а не выиграть случайную драку на середине карты."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:40",
+      "villager_count": 25,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Первый бесплатный пакет выбирай по разведке.",
+        "@unit_cavalry/horseman-1.webp@ против стрелков, @unit_infantry/spearman-1.webp@ против тяжелой @unit_cavalry/horseman-1.webp@, @unit_chinese/zhuge-nu-2.webp@ и стража против пехоты.",
+        "Дефолт пакета @building_defensive/outpost.webp@ - @ability_zhuxi/ability-provincial-levy.webp@: 4 @unit_infantry/spearman-1.webp@ @unit_infantry/spearman-1.webp@ + 3 всадника.",
+        "Пакет 4 @unit_chinese/zhuge-nu-2.webp@ @unit_chinese/zhuge-nu-2.webp@ + 3 @unit_chinese/palace-guard-3.webp@ дворцовой стражи бери против цив без тяжелой @unit_cavalry/horseman-1.webp@.",
+        "VortiX: максимум 10 жителей на дереве; дальше ралли-поинт @building_economy/town-center.webp@ переводи на @resource/resource_food.webp@.",
+        "Возьми @technology_economy/survival-techniques.webp@, когда первые @resource/deer.webp@ уже едут домой или начали сдаваться.",
+        "Это окупается быстро, потому что вся @resource/resource_food.webp@ теперь на охоте.",
+        "Враг жмет @age/age_3.webp@ без армии: бей @resource/resource_gold.webp@ во второй эпохе.",
+        "Если войска у врага хватает, готовь свою @age/age_3.webp@.",
+        "@resource/resource_food.webp@: в 06:40 заказать @technology_economy/survival-techniques.webp@ улучшение охоты, когда первые @resource/deer.webp@ уже едут домой или начали сдаваться.",
+        "@resource/resource_wood.webp@: в 06:40 @technology_economy/double-broadaxe.webp@ @resource/resource_wood.webp@ брать только после @building_military/stable.webp@, @building_military/barracks.webp@ и @building_military/archery-range.webp@; до этого не задерживай защиту @unit_cavalry/scout.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:45",
+      "villager_count": 31,
+      "resources": {
+        "food": 11,
+        "wood": 7,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Цель @unit_cavalry/scout.webp@ - два своих стада @resource/deer.webp@.",
+        "Чужое ближнее стадо бери только без больших потерь.",
+        "Третий @unit_chinese/imperial-official.webp@ нужен только если экономика уже держит производство и ты не умираешь.",
+        "Он собирает налоги и ускоряет нужное здание.",
+        "К девятой минуте у Чжу Си уже может быть сильная армия второй эпохи.",
+        "Ставь производство в влиянии @building_defensive/outpost.webp@, чтобы быстрее заряжать пакеты.",
+        "Прокачка: в 07:45 заказать @technology_economy/wheelbarrow.webp@ тачку после двух стад @resource/deer.webp@ или когда перенос уже защищен.",
+        "Безопасность: в 07:45 @technology_economy/textiles.webp@ текстиль брать, если жители выходят на @resource/boar.webp@, дальнюю охоту или строят впереди."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "08:50",
+      "villager_count": 37,
+      "resources": {
+        "food": 13,
+        "wood": 6,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Когда большая часть @resource/deer.webp@ уже @building_economy/house.webp@, переводи часть лесорубов на @resource/resource_food.webp@ и @resource/resource_gold.webp@.",
+        "Прекращай лишнее производство второй эпохи, если враг не давит.",
+        "Надзор: @resource/resource_food.webp@ и @resource/resource_gold.webp@ важнее @resource/resource_wood.webp@, пока копишь на @age/age_3.webp@.",
+        "@resource/resource_wood.webp@ держи на @building_economy/house.webp@, @building_technology/blacksmith.webp@, @building_religious/monastery.webp@ и дополнительные @building_military/stable.webp@.",
+        "Если враг идет в твое @resource/resource_gold.webp@, поставь @building_defensive/outpost.webp@ или @building_defensive/palisade-wall.webp@ и оставь защитный состав @building_economy/house.webp@.",
+        "Нельзя входить в @age/age_3.webp@ с потерянной золотой жилой."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:10",
+      "villager_count": 44,
+      "resources": {
+        "food": 15,
+        "wood": 6,
+        "gold": 13,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Переходи в @age/age_3.webp@ через @landmark_zhuxi/mount-lu-academy-1.webp@. Нормальный ориентир после @unit_cavalry/scout.webp@ на @resource/deer.webp@ - около 10-12 минут.",
+        "Строй академию 8 жителями: 4-кратная скорость, около 30 секунд - фактически мгновенный Замок.",
+        "После мгновенного Замка сразу 2-3 @building_military/stable.webp@ @building_military/stable.webp@: @unit_cavalry/lancer-3.webp@ @unit_cavalry/knight-2.webp@ и @technology_zhuxi/dali-horses.webp@ далийские кони.",
+        "Баг сборки 16.3.11308: академия @landmark_zhuxi/mount-lu-academy-1.webp@ считается кипом и НЕ отдаёт налоги — налоги собирай с других зданий.",
+        "В этой ветке основной выбор - @landmark_zhuxi/mount-lu-academy-1.webp@ академия горы Лу.",
+        "Шаолиньский @building_religious/monastery.webp@ оставь только при свободных реликвиях."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:20",
+      "villager_count": 50,
+      "resources": {
+        "food": 16,
+        "wood": 7,
+        "gold": 17,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Сразу ставь вторую и третью @building_military/stable.webp@ в удобной зоне влияния и начинай @unit_cavalry/lancer-3.webp@.",
+        "После Замка переключи пакет @building_defensive/outpost.webp@ на 4 @unit_infantry/crossbowman-3.webp@ арбалета + 1 гренадер.",
+        "Поставь @building_religious/monastery.webp@ и закажи монаха. Если свободных @resource/relics.webp@ много, надзирай @building_religious/monastery.webp@, чтобы @unit_religious/monk-3.webp@ выходили быстрее.",
+        "В @building_technology/blacksmith.webp@ бери броню или атаку по ситуации. Для входа под стрелы обычно важна дальняя броня для драки конницей - ближняя броня и атака.",
+        "@building_technology/blacksmith.webp@: в 11:20 заказать @technology_military/fitted-leatherwork.webp@ броню от стрел, если входишь под @building_defensive/outpost.webp@ против тяжелой брони закажи @technology_military/steeled-arrow.webp@ дальний урон арбалетчикам.",
+        "Скорость: в 11:20 заказать @technology_zhuxi/dali-horses.webp@ далийских коней, если делаешь @unit_cavalry/lancer-3.webp@ из двух-трех конюшен; без @unit_cavalry/horseman-1.webp@ отложи."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:10",
+      "villager_count": 55,
+      "resources": {
+        "food": 17,
+        "wood": 8,
+        "gold": 18,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Первый удар третьей эпохи: конные @unit_infantry/spearman-1.webp@ впереди, @unit_infantry/spearman-1.webp@ и @unit_chinese/zhuge-nu-2.webp@ сзади, @unit_religious/monk-3.webp@ под прикрытием идет за центральной реликвией.",
+        "Не отправляй монаха одного через темную карту.",
+        "@unit_cavalry/horseman-1.webp@ покупает время, пехота защищает монаха и центр.",
+        "Если враг делает тяжелую @unit_cavalry/horseman-1.webp@, добавь @unit_infantry/crossbowman-3.webp@. Если делает @unit_infantry/spearman-1.webp@, добавь @unit_chinese/zhuge-nu-2.webp@, дворцовую стражу и @unit_cavalry/horseman-1.webp@.",
+        "@building_religious/monastery.webp@: в 12:10 @technology_religious/piety.webp@ благочестие брать только если @unit_religious/monk-3.webp@ часто проходят через опасную середину карты."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "13:30",
+      "villager_count": 62,
+      "resources": {
+        "food": 18,
+        "wood": 9,
+        "gold": 20,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Дави не центр, а экономику: внешнее @resource/resource_gold.webp@, охоту, @resource/resource_stone.webp@, строящиеся монастыри, @resource/sacred_sites.webp@ и большие ресурсы.",
+        "Две-три @resource/relics.webp@: закрепи карту стенами и башнями.",
+        "Четыре-пять @resource/relics.webp@: преимущество большое, но не отдавай армию под укреплениями.",
+        "@unit_cavalry/scout.webp@ после @resource/deer.webp@ остаются полезны: расставь их на флангах, у @resource/relics.webp@ и на маршрутах набегов."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "15:00",
+      "villager_count": 70,
+      "resources": {
+        "food": 20,
+        "wood": 10,
+        "gold": 22,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Если давление прошло, добавляй сад медитации или династию Сун для фермерского перехода вокруг @building_chinese/granary.webp@.",
+        "В равной игре не спеши в дорогую династию Юань.",
+        "@building_chinese/pagoda.webp@ Пагоды имеют смысл только с реликвиями.",
+        "Финал: @unit_cavalry/horseman-1.webp@ и набеги против открытой карты.",
+        "Против брони: @unit_infantry/crossbowman-3.webp@ и осада. Против пехоты: дворцовая стража и @unit_chinese/zhuge-nu-2.webp@.",
+        "Пропуск: в 15:00 @building_chinese/pagoda.webp@ пагоды и династию Юань не вкладывать до трех @resource/relics.webp@; без @resource/relics.webp@ этот расход не окупается."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/tWUA3KKhN0U",
+  "season": "Тринадцатый сезон (старт 2026-05-07). Проверено 2026-08-08 под live-сборку 16.3.11308. Патчи 16.3.11214 и 16.3.11308 балансовых изменений не содержат; последний балансный патч — 16.2.10604 от 2026-06-01. Пул рейтинговых карт ротируется в начале месяца — проверяй текущий тип карты перед выбором ветки.",
+  "map": "Основные сухопутные карты рейтинговой лестницы с доступной охотой. Особенно хороши карты, где два стада можно безопасно привезти домой или отбить войсками второй эпохи.",
+  "strategy": "Башня Цзяннань, профессиональные разведчики, два стада оленей, бесплатные пакеты войск, академия горы Лу, конные копейщики, монахи и давление по золоту.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open"
+  ],
+  "role": "hunt",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая"
+  ],
+  "strategy_key": "hunt",
+  "meta_tier": "map_branch",
+  "build_group": "zhu_xi's_legacy_hunt",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 1,
+    "transcript_count": 1,
+    "transcript_sources": {
+      "youtube-transcript.ai": 1
+    },
+    "search_candidate_count": 210,
+    "metadata_date_count": 0,
+    "rss_fallback_count": 1,
+    "status": "sparse_evidence",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=5hEzJSWbE9I"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Единственный ролик имеет transcript, но это gameplay/AI evidence без устойчивого build-order сигнала; действуют проверенные Jiangnan/Pro Scouts/Song ветки."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

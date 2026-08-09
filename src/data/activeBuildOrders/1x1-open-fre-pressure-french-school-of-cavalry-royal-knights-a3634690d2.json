@@ -1,0 +1,221 @@
+{
+  "description": "Открытая French ветка: School of Cavalry, ранние Royal Knight, Chivalry, дешёвые drop-off и переход в Arbaletrier/2TC.",
+  "civilization": "French",
+  "name": "[1x1][OPEN][FRE][PRESSURE] French: School of Cavalry и Royal Knights",
+  "author": "Синтез AoE4Guides/AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/builds/1Ffv9VcYPqt5HC6lEViz, https://aoe4guides.com/dashboard?civ=FRE, https://aoe4world.com/explorer/civs/french",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 жителей на @resource/sheep.webp@; 7-й ставит дешёвый @building_economy/house.webp@, затем @building_economy/mining-camp.webp@.",
+        "Новые drop-off у French стоят дешевле: не задерживай переход на @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:05",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "3 жителя начинают @landmark_french/school-of-cavalry.webp@; после закладки ралли: @resource/resource_wood.webp@, затем @resource/resource_gold.webp@.",
+        "@landmark_french/school-of-cavalry.webp@ заменяет раннюю @building_military/stable.webp@ — не ставь вторую до первого @unit_cavalry/knight-2.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:25",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "После landmark 3 строителя на @resource/resource_wood.webp@; первый @unit_french/royal-knight-2.webp@ готовь сразу по завершении.",
+        "@unit_cavalry/scout.webp@ держит обзор на @resource/resource_gold.webp@ и не вступает в бой с чужим @unit_cavalry/knight-2.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:35",
+      "villager_count": 16,
+      "resources": {
+        "food": 10,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Закажи @unit_french/royal-knight-2.webp@ и исследуй @technology_french/chivalry.webp@.",
+        "Первый @unit_cavalry/knight-2.webp@ проверяет @resource/resource_gold.webp@/@resource/resource_wood.webp@, второй закрывает путь отхода."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:35",
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_military/archery-range.webp@ и добавь @unit_infantry/archer-2.webp@ против копий.",
+        "Не меняй @unit_french/royal-knight-2.webp@ на фронтовой бой: его задача — заряд, отход и рейд."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:45",
+      "villager_count": 24,
+      "resources": {
+        "food": 14,
+        "wood": 7,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Добавь @building_military/stable.webp@ только если соперник не поставил достаточно копий.",
+        "Возьми @technology_economy/wheelbarrow.webp@ и @technology_economy/double-broadaxe.webp@ после двух Knights."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "08:00",
+      "villager_count": 29,
+      "resources": {
+        "food": 16,
+        "wood": 8,
+        "gold": 7,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Если @unit_cavalry/knight-2.webp@ создал преимущество, строй второй @building_economy/town-center.webp@.",
+        "Если враг давит, оставь @resource/resource_wood.webp@ на @unit_infantry/archer-2.webp@ и не жертвуй army ради 2 @building_economy/town-center.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:25",
+      "villager_count": 35,
+      "resources": {
+        "food": 18,
+        "wood": 10,
+        "gold": 9,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Без решающего урона начинай @age/age_3.webp@ через @landmark_french/royal-institute.webp@.",
+        "@building_technology/blacksmith.webp@ после возраста даёт бесплатный melee upgrade — не задерживай @age/age_3.webp@ ради лишней технологии."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:15",
+      "villager_count": 42,
+      "resources": {
+        "food": 20,
+        "wood": 12,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "В @age/age_3.webp@ добавь @unit_french/arbaletrier-3.webp@ против тяжёлых целей и продолжай @unit_french/royal-knight-2.webp@.",
+        "Укрепи ключевое производство @building_defensive/keep.webp@-ом, чтобы получить скидку на войска под influence."
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 13; snapshot 08.08.2026, live-сборка 16.3.11308",
+  "map": "Dry Arabia, Gorge, Flankwoods и открытые карты",
+  "strategy": "School of Cavalry, two Royal Knights, Chivalry, ranged support и Castle/2TC по разведке.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "role": "pressure",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "strategy_key": "pressure",
+  "meta_tier": "meta_core",
+  "build_group": "french_pressure",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 7,
+    "transcript_count": 7,
+    "transcript_sources": {
+      "youtube-transcript.ai": 6,
+      "legacy_local": 1
+    },
+    "search_candidate_count": 196,
+    "metadata_date_count": 7,
+    "rss_fallback_count": 0,
+    "status": "evidence_backed",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=qbbOtB6zwrM",
+      "https://www.youtube.com/watch?v=jwn7msDWc14",
+      "https://www.youtube.com/watch?v=SwjTaYjIJpA",
+      "https://www.youtube.com/watch?v=b4BfCqoyQuE",
+      "https://www.youtube.com/watch?v=Tf9OHx88zhI",
+      "https://www.youtube.com/watch?v=uaAFYPM01qo"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Полное покрытие 7/7 подтверждает decision, Royal Knight и map/water развилки; фиксированный новый тайминг не добавлен."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

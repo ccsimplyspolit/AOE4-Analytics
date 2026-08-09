@@ -53,12 +53,12 @@ export function BenchmarkLens({ games }: { games: BenchmarkGame[] }) {
               {tt('Benchmark lens')}
             </h3>
             <p className="mt-1 text-xs text-muted-foreground">
-              {tt('Compare non-overlapping groups from up to your latest 100 loaded games.')}
+              {tt('Compare non-overlapping groups from the loaded personal history.')}
             </p>
           </div>
           <span className="inline-flex items-center gap-1 rounded-sm border border-border/70 bg-background/40 px-2 py-1 text-[11px] text-muted-foreground">
             <Database className="h-3 w-3" />
-            {tt('Up to 100 personal games')}
+            {tt('Full personal history')}
           </span>
         </div>
 
@@ -74,7 +74,7 @@ export function BenchmarkLens({ games }: { games: BenchmarkGame[] }) {
                   aria-pressed={effectiveSelection.kind === scope.kind}
                   title={
                     disabled
-                       ? `${tt('At least two known')} ${tt(scope.label).toLowerCase()} ${tt('values are needed')}`
+                      ? `${tt('At least two known')} ${tt(scope.label).toLowerCase()} ${tt('values are needed')}`
                       : undefined
                   }
                   onClick={() => {

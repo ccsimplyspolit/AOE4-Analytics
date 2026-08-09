@@ -1,0 +1,312 @@
+{
+  "description": "Идеальная ветка через оленей и быстрый переход в третью эпоху. Играть ТОЛЬКО по разведке: безопасная охота и сильная карта под Ахенскую капеллу. При любом сомнении выбирай второй городской центр — сейчас это основная мета. Быстрый замок — самый частый и самый наказуемый выбор Ордена: его винрейт падает с ростом ранга. Важно: бонус добычи позолоченных жителей теперь 27%, а Inspired Warriors дают +10% урона и дополнительно вдохновляют соседние отряды в радиусе 0,5 клетки.",
+  "civilization": "Order of the Dragon",
+  "name": "[1x1][HUNT][OTD][FC] OTD: олени и Fast Castle",
+  "author": "Валдемар, Бисти, турнирная сверка Кодекс",
+  "source": "https://www.youtube.com/watch?v=YPRL2C_pSoM",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Пять жителей на @resource/sheep.webp@. @unit_cavalry/scout.webp@ ищет @resource/sheep.webp@ и сразу отмечает ближайших безопасных @resource/deer.webp@.",
+        "Если @resource/deer.webp@ далеко и открыты, переходи в билд второго центра: этот вариант тогда слишком рискованный.",
+        "Разведка: в 00:00 @unit_cavalry/scout.webp@ разведчиком собрать @resource/sheep.webp@ и отметить ближайших @resource/deer.webp@ если @resource/deer.webp@ опасные, не играй этот порядок вслепую."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:23",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Первый новый житель строит @building_economy/house.webp@, затем идет на @resource/resource_gold.webp@. Следующий новый житель тоже на @resource/resource_gold.webp@.",
+        "Не отправляй жителей к оленям, пока не понял, может ли враг наказать охоту."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:55",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Если @resource/deer.webp@ безопасны, отправь четыре-пять жителей, поставь @building_economy/mill.webp@ и изучи @technology_economy/survival-techniques.webp@.",
+        "Охота дает ускорение @resource/resource_food.webp@, которое и делает @age/age_3.webp@ ранним.",
+        "@resource/resource_food.webp@: в 00:55 заказать @technology_economy/survival-techniques.webp@ улучшение охоты только если жители уже на безопасных оленях без @resource/deer.webp@ это улучшение пропустить.",
+        "Пропуск: в 00:55 @technology_economy/wheelbarrow.webp@ тачку до перехода во @age/age_2.webp@ не нажимать, чтобы не задержать быструю @age/age_3.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:45",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Новые жители идут на @resource/resource_food.webp@. @resource/resource_wood.webp@ берется только на мельницу, @building_economy/house.webp@ и возможную @building_defensive/outpost.webp@.",
+        "Если враг идет башней на охоту, отступай к базе и не теряй жителей."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:25",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 1,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Строй @landmark_hre/aachen-chapel.webp@ тремя жителями, если хочешь надежный ранний выход.",
+        "Ставь капеллу так, чтобы она усиливала @resource/deer.webp@ или будущие @building_economy/farm.webp@; капелла только на одном ресурсе хуже."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Пока строится капелла, держи упор на @resource/resource_food.webp@ и @resource/resource_gold.webp@. Лишнее @resource/resource_wood.webp@ задержит @age/age_3.webp@.",
+        "Если видишь ранний военный выход врага, готовь @building_defensive/outpost.webp@ и одну военную постройку во второй эпохе."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 10,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Во второй эпохе разведай врага: если он жадничает, продолжай быстрый переход; если он атакует, задержись и защищайся.",
+        "Можно поставить @building_military/stable.webp@ для одного @unit_dragon/gilded-horseman-2.webp@, чтобы проверить карту и сбить разведку."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:20",
+      "villager_count": 18,
+      "resources": {
+        "food": 12,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Контрольная точка: @resource/resource_food.webp@ должна расти быстро. Если @resource/resource_food.webp@ не хватает, добавь жителей на @resource/deer.webp@ или @resource/sheep.webp@.",
+        "@resource/resource_gold.webp@ нельзя терять: без него нет третьей эпохи и нет дорогих позолоченных отрядов.",
+        "Прокачка: в 05:20 после начала накопления на @age/age_3.webp@ заказать @technology_economy/wheelbarrow.webp@ тачку, если нет атаки и охота под контролем.",
+        "@resource/resource_wood.webp@: в 05:20 @technology_economy/double-broadaxe.webp@ @resource/resource_wood.webp@ брать только если уже поставлен лесной лагерь и нужно много производственных зданий."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:20",
+      "villager_count": 20,
+      "resources": {
+        "food": 13,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Нажимай @age/age_3.webp@, когда готово 1200 @resource/resource_food.webp@ и 600 @resource/resource_gold.webp@.",
+        "@landmark_hre/burgrave-palace.webp@ по умолчанию. @landmark_hre/regnitz-cathedral.webp@ только если @resource/relics.webp@ рядом и враг не может их оспорить.",
+        "Вариант ForTheMax под @landmark_hre/regnitz-cathedral.webp@: 3 @unit_dragon/gilded-man-at-arms-2.webp@ @unit_infantry/man-at-arms-1.webp@ держат центральный @resource/sacred_sites.webp@.",
+        "К сайту добавь @building_defensive/outpost.webp@ вышку для обзора, а @unit_hre/prelate.webp@ прелаты забирают 2 @resource/relics.webp@ в собор."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:10",
+      "villager_count": 22,
+      "resources": {
+        "food": 11,
+        "wood": 4,
+        "gold": 5,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Пока строится @age/age_3.webp@, добавь @resource/resource_wood.webp@ на @building_religious/monastery.webp@, @building_economy/house.webp@ и вторую военную постройку.",
+        "Не бросай охоту без @building_defensive/palisade-wall.webp@ или @building_defensive/outpost.webp@, если враг играет конницей."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "08:20",
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "В @age/age_3.webp@ делай @building_religious/monastery.webp@, прелатов и @unit_dragon/gilded-knight-3.webp@.",
+        "Раненых @unit_cavalry/knight-2.webp@ отводи и лечи. Каждый сохраненный позолоченный @unit_cavalry/knight-2.webp@ равен большому количеству ресурсов.",
+        "@building_technology/blacksmith.webp@: в 08:20 заказать @technology_military/fitted-leatherwork.webp@ броню от стрел перед первым выходом позолоченных латников или @unit_cavalry/knight-2.webp@.",
+        "Скорость: в 08:20 @technology_hre/marching-drills.webp@ походную подготовку брать, если делаешь пеший состав; для @unit_cavalry/knight-2.webp@ первым важнее броня."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "09:20",
+      "villager_count": 27,
+      "resources": {
+        "food": 13,
+        "wood": 6,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Если враг строит @unit_infantry/crossbowman-3.webp@, добавляй @unit_dragon/gilded-archer-2.webp@ и не дерись @unit_cavalry/knight-2.webp@ в лоб.",
+        "Если враг защищается @unit_infantry/spearman-1.webp@ и у тебя есть @resource/relics.webp@, можно добавить @unit_dragon/gilded-landsknecht-3.webp@ для разлома пехоты."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:30",
+      "villager_count": 31,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Забирай @resource/relics.webp@ под прикрытием @unit_cavalry/knight-2.webp@. Не отдавай прелатов по одному.",
+        "Дави дальнее @resource/resource_gold.webp@ и @resource/resource_food.webp@, а не центр. Цель - лишить врага третьей эпохи и брони.",
+        "Прокачка: в 10:30 @technology_hre/inspired-warriors.webp@ вдохновленных воинов брать после появления @unit_religious/monk-3.webp@ рядом с армией.",
+        "Прокачка: в 10:30 @technology_hre/steel-barding-3.webp@ стальную попону бери только для @unit_cavalry/knight-2.webp@.",
+        "Для латников и @unit_infantry/crossbowman-3.webp@ сначала броня и дальний урон."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:00",
+      "villager_count": 37,
+      "resources": {
+        "food": 16,
+        "wood": 10,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Переходи в @building_economy/farm.webp@ до окончания охоты. Поздний переход в @building_economy/farm.webp@ ломает весь темп.",
+        "Если атака не завершила игру, превращай раннее преимущество в @building_defensive/palisade-wall.webp@, @resource/relics.webp@ и четвертую эпоху."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/YPRL2C_pSoM",
+  "season": "Тринадцатый сезон (старт 2026-05-07). Проверено 2026-08-08 под live-сборку 16.3.11308. Патчи 16.3.11214 и 16.3.11308 балансовых изменений не содержат; последний балансный патч — 16.2.10604 от 2026-06-01. Пул рейтинговых карт ротируется в начале месяца — проверяй текущий тип карты перед выбором ветки.",
+  "map": "карты с безопасными оленями",
+  "strategy": "олени, быстрая третья эпоха, рыцари и реликвии",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "hunt"
+  ],
+  "role": "fc",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "охотничья"
+  ],
+  "strategy_key": "fc",
+  "meta_tier": "map_branch",
+  "build_group": "order_of_the_dragon_fc",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 2,
+    "transcript_count": 2,
+    "transcript_sources": {
+      "legacy_local": 1,
+      "youtube-transcript.ai": 1
+    },
+    "search_candidate_count": 233,
+    "metadata_date_count": 0,
+    "rss_fallback_count": 2,
+    "status": "sparse_evidence",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=cCrfspRS5cA",
+      "https://www.youtube.com/watch?v=T6hZUCZnw30"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Оба ролика имеют transcript, но распознанный сигнал слабый; 2TC и Horse/Spear pressure остаются отдельными ветками без нового численного тайминга."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

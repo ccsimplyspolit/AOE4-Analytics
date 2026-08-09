@@ -1,0 +1,202 @@
+{
+  "description": "Командный role-template OTD для 2x2–4x4: frontline через Meinwerk, позолоченные всадники/лучники и переход в Burgrave или Aachen по состоянию команды.",
+  "civilization": "Order of the Dragon",
+  "name": "[3x3][OPEN][OTD][FRONTLINE] Мейнверк и позолоченная линия",
+  "author": "Командная адаптация OTD Cav/Archer и статистики AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/builds/FMoKwPuEa27tXkkzWxJR, https://aoe4world.com/stats/rm_2v2/civilizations, https://aoe4world.com/stats/rm_3v3/civilizations, https://aoe4world.com/stats/rm_4v4/civilizations",
+  "mode": [
+    "3x3"
+  ],
+  "role": "frontline",
+  "status": "active",
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 позолоченных жителей на @resource/sheep.webp@, новые жители на @resource/resource_gold.webp@ через @building_economy/mining-camp.webp@.",
+        "@unit_cavalry/scout.webp@ проверяет сторону союзника и раннюю @building_military/stable.webp@ врага."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:26",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2 жителя начинают @landmark_hre/meinwerk-palace.webp@.",
+        "Первый свободный житель закладывает @building_military/stable.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Строители переходят на @resource/resource_wood.webp@; поставь @building_economy/lumber-camp.webp@ и @building_economy/house.webp@.",
+        "3x3: назначь сектор фронта и держи vision на боках до сбора армии."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:30",
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Производи @unit_dragon/gilded-horseman-2.webp@ без пауз.",
+        "Бери @technology_military/iron-undermesh.webp@ против стрел, если фронт открытый."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:30",
+      "villager_count": 21,
+      "resources": {
+        "food": 13,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "После второго всадника ставь @building_military/archery-range.webp@.",
+        "@unit_infantry/archer-2.webp@ прикрывают @unit_cavalry/horseman-1.webp@ и помогают союзнику добивать легкую пехоту."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:00",
+      "villager_count": 25,
+      "resources": {
+        "food": 16,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2x2: совместный пуш; 3x3: удержание фронта; 4x4: не уходи глубоко без vision.",
+        "3x3: удержание центра; не уходи глубже, пока два союзника не готовы."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:00",
+      "villager_count": 32,
+      "resources": {
+        "food": 18,
+        "wood": 10,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Если атака не закончила игру, выбирай @landmark_hre/burgrave-palace.webp@ для второй волны.",
+        "3x3: после неудачного пуша переходи к Burgrave и второй волне через центр."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:00",
+      "villager_count": 45,
+      "resources": {
+        "food": 20,
+        "wood": 12,
+        "gold": 14,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Добавляй @unit_dragon/gilded-man-at-arms-2.webp@ и Crossbow по фронту.",
+        "Твоя задача — принимать удар и сохранять союзной eco время на @building_military/siege-workshop.webp@/переход.",
+        "3x3: держи центр и внешний ресурс, оставляй vision на боках и соединяйся с двумя союзниками перед пушем."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/yTYNglu4f20",
+  "season": "Сезон 13. Проверено 2026-08-08; Gilded Villager +27%, Inspired Warriors +10% и соседнее вдохновение.",
+  "map": "Dry Arabia, Gorge, Flankwoods, Cliffside, Sunkenlands",
+  "strategy": "frontline: Meinwerk, позолоченная конница и лучники, плотная формация, синхронное давление и Burgrave/Aachen по командной разведке.",
+  "queue": "rm_3v3",
+  "team_size": 3,
+  "strategy_key": "frontline",
+  "meta_tier": "team_core",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "mode_strategy": "3x3: держи центр и внешний ресурс, оставляй vision на боках и соединяйся с двумя союзниками перед пушем.",
+  "build_group": "TEAM_OTD_2026",
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "rank_fit": "all+conqueror",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 2,
+    "transcript_count": 2,
+    "transcript_sources": {
+      "legacy_local": 1,
+      "youtube-transcript.ai": 1
+    },
+    "search_candidate_count": 233,
+    "metadata_date_count": 0,
+    "rss_fallback_count": 2,
+    "status": "sparse_evidence",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=cCrfspRS5cA",
+      "https://www.youtube.com/watch?v=T6hZUCZnw30"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Оба ролика имеют transcript, но распознанный сигнал слабый; 2TC и Horse/Spear pressure остаются отдельными ветками без нового численного тайминга."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

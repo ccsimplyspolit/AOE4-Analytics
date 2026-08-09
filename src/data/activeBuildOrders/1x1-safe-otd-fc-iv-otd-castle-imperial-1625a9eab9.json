@@ -1,0 +1,419 @@
+{
+  "description": "Полный русский билд Бисти: быстрый переход в третью эпоху, решение между дворцом Бурграве и Регницким собором, затем переход в четвертую эпоху через дворец Швабии. Сверено под live-сборку 16.3.11308: прямых балансных изменений Ордена после 16.2.10604 не было. Важно: бонус добычи позолоченных жителей теперь 27%, а Inspired Warriors дают +10% урона и дополнительно вдохновляют соседние отряды в радиусе 0,5 клетки. Бисти в июле 2026 чаще играет Чжу Си; билд сверен по текущей мете, а не по его последним играм.",
+  "civilization": "Order of the Dragon",
+  "name": "[1x1][SAFE][OTD][FC-IV] OTD: Castle в Imperial",
+  "author": "Бисти, сверка Кодекс",
+  "source": "https://youtu.be/uJ9_ZCAVKGI",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Цель билда: ранняя @age/age_3.webp@, контроль @resource/relics.webp@, затем четвертая эпоха только при стабильной экономике.",
+        "Пять жителей на @resource/sheep.webp@. @building_economy/town-center.webp@ никогда не простаивает.",
+        "Разведка: в 00:00 @unit_cavalry/scout.webp@ разведчиком собрать @resource/sheep.webp@, найти безопасную охоту и проверить, не идет ли враг ломать быстрый переход."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Первый новый житель строит @building_economy/house.webp@ рядом с городским центром, затем идет на @resource/resource_gold.webp@.",
+        "Следующий новый житель тоже на @resource/resource_gold.webp@. @unit_cavalry/scout.webp@ ищет @resource/sheep.webp@ и проверяет безопасную охоту."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:55",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Если рядом есть безопасные @resource/deer.webp@, отправь четыре-пять жителей, поставь @building_economy/mill.webp@ и изучи @technology_economy/survival-techniques.webp@.",
+        "Если @resource/deer.webp@ нет, играй через второй центр или более позднюю @age/age_3.webp@.",
+        "@resource/resource_food.webp@: в 00:55 заказать @technology_economy/survival-techniques.webp@ улучшение охоты только если жители реально собирают @resource/deer.webp@; без охоты это пустая трата.",
+        "Пропуск: в 00:55 @technology_economy/wheelbarrow.webp@ тачку до нажатия третьей эпохи обычно пропускай, чтобы не потерять тайминг."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:45",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Новых жителей держи на еде. Нужно быстро собрать 400 @resource/resource_food.webp@ и 200 @resource/resource_gold.webp@.",
+        "Не покупай лишнее @resource/resource_wood.webp@: каждый лишний житель на дереве задерживает @age/age_3.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:10",
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "В варианте Бисти можно строить @landmark_hre/meinwerk-palace.webp@ одним жителем, чтобы больше людей добывало ресурсы.",
+        "Если нужен более простой и безопасный вариант, строй двумя-тремя жителями или выбирай @landmark_hre/aachen-chapel.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Поставь лесной лагерь только если нужен @building_economy/house.webp@, @building_economy/mill.webp@ или @building_defensive/outpost.webp@.",
+        "Основной разгон дают @resource/resource_food.webp@ и @resource/resource_gold.webp@, а не ранняя древесина."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Если охота или @resource/resource_gold.webp@ открыты, заранее ставь @building_defensive/outpost.webp@.",
+        "Против полного раннего давления делай войска и откладывай @age/age_3.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 10,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Во второй эпохе сразу разведай базу врага.",
+        "Много военных зданий у врага означает защитную игру; мало войск означает возможность быстрого перехода.",
+        "Анти-Чжу Си (разбор Pilsen 15.07.2026): феодальное давление переживают @building_defensive/outpost.webp@ @building_defensive/outpost.webp@ со @technology_defensive/springald-emplacement.webp@ спрингалд-надстройками у точек добычи."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:50",
+      "villager_count": 16,
+      "resources": {
+        "food": 11,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Распределение на @age/age_3.webp@: больше всего жителей на еде, затем @resource/resource_gold.webp@, минимум на дереве.",
+        "Не заказывай лишние отряды, если враг не идет в тебя.",
+        "Прокачка: в 04:50 @technology_economy/wheelbarrow.webp@ тачку брать только если разведка показала пассивного врага и @age/age_3.webp@ не задерживается.",
+        "Анти-Чжу Си: ранняя стрелковая броня @technology_military/fitted-leatherwork.webp@ обязательна — ты знаешь, что придет.",
+        "Анти-Чжу Си: изучи @technology_economy/textiles.webp@ текстиль — запас здоровья жителей спасает от набегов."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:40",
+      "villager_count": 18,
+      "resources": {
+        "food": 12,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Контрольная точка: ты должен приближаться к 1200 @resource/resource_food.webp@ и 600 @resource/resource_gold.webp@.",
+        "Если @resource/resource_food.webp@ мало, добавь жителей на охоту или @resource/sheep.webp@. Если @resource/resource_gold.webp@ мало, добавь двух жителей на @resource/resource_gold.webp@.",
+        "Анти-Чжу Си: держи не более ~15 жителей на одной точке добычи — так один рейд не выбьет экономику."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:20",
+      "villager_count": 20,
+      "resources": {
+        "food": 13,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Нажимай @age/age_3.webp@. Задержка до 6:40 приемлема, если пришлось защищаться.",
+        "@landmark_hre/burgrave-palace.webp@ по умолчанию. @landmark_hre/regnitz-cathedral.webp@ только при свободных реликвиях."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:10",
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 4,
+        "gold": 5,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Пока строится @age/age_3.webp@, добавь @resource/resource_wood.webp@ на @building_religious/monastery.webp@, @building_economy/house.webp@ и военные постройки.",
+        "Не прекращай производство жителей ради более ранней армии."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "08:10",
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Если выбран дворец @landmark_hre/burgrave-palace.webp@, сразу производи @unit_dragon/gilded-man-at-arms-2.webp@ и дави дальние ресурсы.",
+        "Если выбран @landmark_hre/regnitz-cathedral.webp@ собор, первые прелаты идут за реликвиями только под защитой армии.",
+        "@building_technology/blacksmith.webp@: в 08:10 заказать @technology_military/fitted-leatherwork.webp@ броню от стрел и @technology_military/bloomery.webp@ ближний урон, если давишь латниками.",
+        "Скорость: в 08:10 @technology_hre/marching-drills.webp@ походную подготовку брать для пешего давления; без пехоты отложить."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "08:50",
+      "villager_count": 26,
+      "resources": {
+        "food": 11,
+        "wood": 6,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_religious/monastery.webp@, если прелаты не производятся из ориентира.",
+        "Состав: позолоченные латники впереди, @unit_dragon/gilded-crossbowman-3.webp@ против брони, @unit_dragon/gilded-archer-2.webp@ против @unit_infantry/crossbowman-3.webp@ и копий.",
+        "Анти-Чжу Си: в Замке позолоченный ландскнехт @unit_dragon/gilded-landsknecht-3.webp@ бесполезен — ставь @building_military/stable.webp@ и делай @unit_dragon/gilded-knight-3.webp@ позолоченных @unit_cavalry/knight-2.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "09:50",
+      "villager_count": 30,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Раненых дорогих отрядов отводи назад и лечи @unit_hre/prelate.webp@.",
+        "У Ордена Дракона проигранный размен особенно болезнен, поэтому драки выбирай только с понятной целью.",
+        "Прокачка: в 09:50 заказать @technology_hre/inspired-warriors.webp@ вдохновленных воинов, если @unit_religious/monk-3.webp@ сопровождает армию.",
+        "Прокачка: в 09:50 @technology_hre/heavy-maces.webp@ тяжелые булавы и @technology_hre/two-handed-weapon.webp@ двуручное оружие брать только если основной состав - позолоченные латники."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": 35,
+      "resources": {
+        "food": 14,
+        "wood": 9,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Начинай @building_economy/farm.webp@ до окончания охоты. Провал @resource/resource_food.webp@ задержит четвертую эпоху на несколько минут.",
+        "Закрывай боковые проходы стенами и ставь @building_defensive/outpost.webp@ на дальнем золоте."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:30",
+      "villager_count": 42,
+      "resources": {
+        "food": 17,
+        "wood": 10,
+        "gold": 14,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "Решение о четвертой эпохе: жми только если у тебя есть @resource/relics.webp@, @resource/resource_food.webp@ и армия, которая не даст врагу снести базу.",
+        "Если враг давит, оставайся в @age/age_3.webp@ и производи войска."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "14:00",
+      "villager_count": 48,
+      "resources": {
+        "food": 18,
+        "wood": 9,
+        "gold": 18,
+        "stone": 2,
+        "builder": 10
+      },
+      "notes": [
+        "Для малого числа жителей выбирай @landmark_hre/palace-of-swabia.webp@.",
+        "Строй его восемью-двенадцатью жителями, но не снимай всю @resource/resource_food.webp@: армия должна продолжать выходить."
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "time": "16:30",
+      "villager_count": 58,
+      "resources": {
+        "food": 20,
+        "wood": 11,
+        "gold": 23,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "В четвертой эпохе дворец Швабии постоянно делает дешевых жителей, пока экономика не восстановится до большого числа.",
+        "Сначала элитные улучшения и экономика, затем ручницы и осада.",
+        "Прокачка: в 16:30 в четвертой эпохе заказать @technology_military/chemistry.webp@ химию для ручниц и осады, затем @technology_military/biology.webp@ биологию для @unit_cavalry/horseman-1.webp@.",
+        "Прокачка: в 16:30 @technology_military/elite-army-tactics.webp@ элитную строевую подготовку брать, если много пешего ближнего боя."
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "time": "18:30",
+      "villager_count": 70,
+      "resources": {
+        "food": 23,
+        "wood": 13,
+        "gold": 28,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Поздний состав: @unit_dragon/gilded-man-at-arms-2.webp@ впереди, @unit_dragon/gilded-crossbowman-3.webp@ и @unit_dragon/dragon-handcannoneer-4.webp@ позади, осада под защитой.",
+        "Если есть технология вдохновленных воинов, держи прелатов рядом с основной армией, но не отдавай их первыми.",
+        "Прокачка: в 18:30 @technology_military/incendiary-arrows.webp@ зажигательные стрелы брать только при большом дальнем войске если основа ручницы и @unit_cavalry/knight-2.webp@, сначала химия и броня.",
+        "Анти-Чжу Си: против гранатомётов — контр-осада @unit_siege/culverin-4.webp@ (имперская технология)."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/uJ9_ZCAVKGI",
+  "season": "Тринадцатый сезон (старт 2026-05-07). Проверено 2026-08-08 под live-сборку 16.3.11308. Патчи 16.3.11214 и 16.3.11308 балансовых изменений не содержат; последний балансный патч — 16.2.10604 от 2026-06-01. Пул рейтинговых карт ротируется в начале месяца — проверяй текущий тип карты перед выбором ветки.",
+  "map": "сухие карты с безопасной едой",
+  "strategy": "третья эпоха, реликвии, дворец Швабии и поздняя армия",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "safe"
+  ],
+  "role": "fc-iv",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "безопасная"
+  ],
+  "strategy_key": "fc_iv",
+  "meta_tier": "map_branch",
+  "build_group": "order_of_the_dragon_fc_iv",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 2,
+    "transcript_count": 2,
+    "transcript_sources": {
+      "legacy_local": 1,
+      "youtube-transcript.ai": 1
+    },
+    "search_candidate_count": 233,
+    "metadata_date_count": 0,
+    "rss_fallback_count": 2,
+    "status": "sparse_evidence",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=cCrfspRS5cA",
+      "https://www.youtube.com/watch?v=T6hZUCZnw30"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Оба ролика имеют transcript, но распознанный сигнал слабый; 2TC и Horse/Spear pressure остаются отдельными ветками без нового численного тайминга."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

@@ -301,20 +301,24 @@ export async function autoFindGameplay(input: unknown): Promise<IpcResult<Gamepl
     playedAt: input.playedAt?.trim() || null,
     download: input.download !== false,
   }
-  const cached = cache.get(normalized.gameId)
+  // Keep caption-only background discovery separate from a manual full-download
+  // request. Otherwise an earlier background pass could make the manual action
+  // incorrectly reuse a result without a local video file.
+  const cacheKey = `${normalized.gameId}:${normalized.download === false ? 'metadata' : 'download'}`
+  const cached = cache.get(cacheKey)
   if (!normalized.force && cached && cached.expiresAt > Date.now()) return ok(cached.value)
-  let request = inFlight.get(normalized.gameId)
+  let request = inFlight.get(cacheKey)
   if (!request) {
     request = workflow(normalized)
-    inFlight.set(normalized.gameId, request)
+    inFlight.set(cacheKey, request)
   }
   try {
     const value = await request
-    cache.set(normalized.gameId, { expiresAt: Date.now() + CACHE_TTL_MS, value })
+    cache.set(cacheKey, { expiresAt: Date.now() + CACHE_TTL_MS, value })
     return ok(value)
   } catch (error) {
     return errFrom(error)
   } finally {
-    if (inFlight.get(normalized.gameId) === request) inFlight.delete(normalized.gameId)
+    if (inFlight.get(cacheKey) === request) inFlight.delete(cacheKey)
   }
 }

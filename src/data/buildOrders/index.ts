@@ -15,11 +15,13 @@
  */
 import { normalizeBuildOrder, type BuildOrder } from '@domain/buildOrderSchema'
 import { VIDEO_EVIDENCE_BY_CIV } from '@data/videoEvidence.generated'
+import BUILD_ORDER_ARCHIVE from '@data/buildOrderArchive.json'
 
 /**
- * Vite includes every JSON build in this directory, including files written by
- * the importer. The explicit primary order is retained for overlay/build-coach
- * compatibility; all other valid files follow alphabetically.
+ * The immutable archive is the release-safe source of truth. Active DLC builds
+ * are loaded separately. Keeping the broad legacy glob out of this module is
+ * intentional: a concurrent source refresh can remove a JSON file between
+ * Vite's scan and module evaluation, which would otherwise prevent startup.
  */
 const PRIMARY_FILE_ORDER = [
   'english-2tc-longbow.json',
@@ -45,10 +47,12 @@ const PRIMARY_FILE_ORDER = [
 ] as const
 
 const PRIMARY_RANK = new Map<string, number>(PRIMARY_FILE_ORDER.map((file, index) => [file, index]))
-const JSON_BUILD_MODULES = import.meta.glob('./**/*.json', {
+const ACTIVE_BUILD_MODULES = import.meta.glob('../activeBuildOrders/**/*.json', {
   eager: true,
   import: 'default',
 }) as Record<string, unknown>
+
+const ARCHIVED_BUILD_ORDERS = (Array.isArray(BUILD_ORDER_ARCHIVE) ? BUILD_ORDER_ARCHIVE : []) as unknown[]
 
 /** The importer also writes metadata snapshots beside build JSON files. */
 function isBuildOrder(value: unknown): value is BuildOrder {
@@ -68,17 +72,20 @@ function evidenceKey(civilization: string | string[] | null | undefined): string
   return label.toLocaleLowerCase().replace(/[^a-z0-9]+/g, '')
 }
 
-const RAW_BUNDLED_BUILD_ORDERS = Object.entries(JSON_BUILD_MODULES)
+const RAW_BUNDLED_BUILD_ORDERS = [
+  ...ARCHIVED_BUILD_ORDERS,
+  ...Object.entries(ACTIVE_BUILD_MODULES)
   .sort(([left], [right]) => {
-    const leftFile = left.replace(/^\.\//, '')
-    const rightFile = right.replace(/^\.\//, '')
+    const leftFile = left.replace(/^\.\//, '').replace(/^\.\.\/activeBuildOrders\//, '')
+    const rightFile = right.replace(/^\.\//, '').replace(/^\.\.\/activeBuildOrders\//, '')
     return (
       (PRIMARY_RANK.get(leftFile) ?? Number.MAX_SAFE_INTEGER) -
         (PRIMARY_RANK.get(rightFile) ?? Number.MAX_SAFE_INTEGER) ||
       leftFile.localeCompare(rightFile)
     )
   })
-  .map(([, build]) => build)
+  .map(([, build]) => build),
+]
   .filter(isBuildOrder)
 
 function buildIdentity(build: BuildOrder): string {

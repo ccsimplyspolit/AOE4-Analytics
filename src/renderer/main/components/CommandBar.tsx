@@ -42,10 +42,10 @@ export function CommandBar() {
 
       {/* Workspace ribbon: stable top-level destinations only. */}
       {hasProfile && (
-        <div className="no-drag flex min-w-0 flex-1 items-center justify-center overflow-x-auto overflow-y-hidden px-4 [scrollbar-width:thin]">
+        <div className="no-drag flex min-w-0 flex-1 items-stretch justify-center overflow-x-auto overflow-y-hidden px-3 [scrollbar-width:thin]">
           <nav
             aria-label={tt('Main navigation')}
-            className="flex h-8 min-w-max items-center gap-0.5 rounded-md border border-border/80 bg-background/45 p-0.5 shadow-sm"
+            className="flex min-w-max items-stretch"
           >
             {navWorkspaces.map((workspace) => (
               <NavLink
@@ -53,10 +53,10 @@ export function CommandBar() {
                 to={workspace.defaultPath}
                 aria-current={activeWorkspace === workspace.id ? 'page' : undefined}
                 className={cn(
-                  'flex h-7 shrink-0 items-center rounded-sm px-3 font-display text-[11px] font-semibold tracking-[0.07em] transition-all',
+                  'relative flex shrink-0 items-center px-3.5 font-display text-[11px] font-semibold tracking-[0.07em] transition-colors',
                   activeWorkspace === workspace.id
-                    ? 'bg-primary/15 text-primary ring-1 ring-primary/35'
-                    : 'text-muted-foreground hover:bg-secondary/70 hover:text-foreground',
+                    ? 'border-x border-border/80 bg-background/70 text-primary shadow-[inset_0_1px_0_hsl(var(--primary)/0.18)] after:absolute after:inset-x-3 after:bottom-0 after:h-px after:bg-primary'
+                    : 'border-x border-transparent text-muted-foreground hover:bg-secondary/55 hover:text-foreground',
                 )}
               >
                 {tt(workspace.label)}

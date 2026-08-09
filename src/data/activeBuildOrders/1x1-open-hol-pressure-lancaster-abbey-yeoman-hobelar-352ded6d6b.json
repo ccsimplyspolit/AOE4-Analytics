@@ -1,0 +1,221 @@
+{
+  "description": "Открытая House of Lancaster ветка: один Manor с хорошей аурой, Abbey of Kings, Yeoman и Hobelar pressure без раннего спама Manor.",
+  "civilization": "House of Lancaster",
+  "name": "[1x1][OPEN][HOL][PRESSURE] Lancaster: Abbey, Yeoman и Hobelar",
+  "author": "Синтез AoE4Guides/AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/dashboard?civ=HOL, https://aoe4world.com/explorer/civs/lancaster, https://aoe4world.com/stats/rm_solo/civilizations",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 жителей на @resource/sheep.webp@; 7-й ставит @building_economy/house.webp@, затем @building_economy/lumber-camp.webp@ и @resource/resource_wood.webp@.",
+        "Ланкастер собирает @resource/sheep.webp@ быстрее: не уходи на @resource/berrybush.webp@ без причины."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:45",
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 2,
+        "stone": 1,
+        "builder": 1
+      },
+      "notes": [
+        "Один житель ставит @building_economy/mining-camp.webp@ и идёт на @resource/resource_gold.webp@; следующий — на @resource/resource_stone.webp@.",
+        "Планируй один @building_lancaster/manor.webp@ так, чтобы аура накрывала @building_economy/town-center.webp@, @resource/sheep.webp@ и лес."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:40",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 2,
+        "stone": 3,
+        "builder": 4
+      },
+      "notes": [
+        "4 жителя начинают @landmark_english/abbey-of-kings.webp@; @building_lancaster/manor.webp@ должен уже собирать жителей в своей ауре.",
+        "Против раннего rush вместо @landmark_english/abbey-of-kings.webp@ выбирай @landmark_lancaster/lancaster_castle.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:20",
+      "villager_count": 17,
+      "resources": {
+        "food": 10,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_military/archery-range.webp@ и выпускай @unit_lancaster/yeoman_age2.webp@ без пауз.",
+        "@landmark_english/abbey-of-kings.webp@ создаёт @unit_lancaster/lord_lancaster.webp@: веди его с первой группой, но не отдавай вперёд один."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:15",
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Добавь @building_military/barracks.webp@ и @unit_infantry/spearman-1.webp@; против стрелков можно взять @unit_lancaster/hobelar_age2.webp@.",
+        "Первые @unit_lancaster/yeoman_age2.webp@ давят рабочую линию, а не штурмуют @building_economy/town-center.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:20",
+      "villager_count": 24,
+      "resources": {
+        "food": 14,
+        "wood": 7,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Второй @building_lancaster/manor.webp@ ставь только если безопасно и он накрывает 6+ жителей; иначе @resource/resource_wood.webp@ идёт в войска.",
+        "После первой атаки бери @technology_lancaster/billmen.webp@ против тяжёлой @unit_cavalry/horseman-1.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:35",
+      "villager_count": 28,
+      "resources": {
+        "food": 16,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "После стабилизации исследуй @technology_lancaster/condensed_land_practices.webp@ и добавляй @building_lancaster/manor.webp@ по ауре.",
+        "Против брони переходи в @unit_infantry/spearman-1.webp@ и @unit_lancaster/hobelar_age2.webp@; @unit_lancaster/yeoman_age2.webp@ сохраняй для фокуса лёгких целей."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "08:50",
+      "villager_count": 32,
+      "resources": {
+        "food": 18,
+        "wood": 9,
+        "gold": 6,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Если урон прошёл, продолжай @unit_lancaster/yeoman_age2.webp@/@unit_lancaster/hobelar_age2.webp@; если нет — начинай @landmark_english/the-white-tower.webp@.",
+        "На закрытой карте вместо давления копи @age/age_3.webp@ и защищай внешние ресурсы @building_lancaster/manor.webp@-ами."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:40",
+      "villager_count": 39,
+      "resources": {
+        "food": 20,
+        "wood": 10,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "В @age/age_3.webp@ добавляй @unit_lancaster/yeoman_age3.webp@, @unit_lancaster/demilancer.webp@ и @technology_lancaster/yeoman_upgrade_age3.webp@.",
+        "@landmark_english/the-white-tower.webp@ нужен против давления; @landmark_lancaster/kings_college.webp@ — если карта спокойная и важны технологии."
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 13; snapshot 08.08.2026, live-сборка 16.3.11308",
+  "map": "Dry Arabia, Gorge, Flankwoods, Cliffside и другие открытые карты",
+  "strategy": "Один эффективный Manor, Abbey of Kings, Yeoman плюс Hobelar/копья и Castle по разведке.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "role": "pressure",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "strategy_key": "pressure",
+  "meta_tier": "meta_core",
+  "build_group": "house_of_lancaster_pressure",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 9,
+    "transcript_count": 9,
+    "transcript_sources": {
+      "legacy_local": 2,
+      "youtube-transcript.ai": 7
+    },
+    "search_candidate_count": 197,
+    "metadata_date_count": 9,
+    "rss_fallback_count": 0,
+    "status": "evidence_backed",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=yMMGEzXByag",
+      "https://www.youtube.com/watch?v=30sM45Msbyw",
+      "https://www.youtube.com/watch?v=ChNobegYhgQ",
+      "https://www.youtube.com/watch?v=p4rJ_2bmMHU",
+      "https://www.youtube.com/watch?v=e01awWV86u4",
+      "https://www.youtube.com/watch?v=ooquXJDKjVQ"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "LaSh и Valdy подтверждают две разные роли: Manor+2TC → Fast Castle/White Tower против пассивной игры и Feudal all-in против жадного Castle."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

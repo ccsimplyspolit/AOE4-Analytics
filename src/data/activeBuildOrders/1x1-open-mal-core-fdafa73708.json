@@ -1,0 +1,311 @@
+{
+  "description": "Основной безопасный порядок малийцев для сухопутных карт. После повторной сверки со свежими разборами верхней лестницы он остается базовой веткой: сначала защита и вторая золотая шахта, затем коровы. Новая ветка через свой второй городской центр вынесена отдельным файлом.",
+  "civilization": "Malians",
+  "name": "[1x1][OPEN][MAL][CORE] Малийцы: Донсо, дротики и коровы",
+  "author": "Валдемар и свежая сверка верхней лестницы, переписано на русский язык без сокращений",
+  "source": "https://www.youtube.com/watch?v=ApuGahvKpf0",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Все шесть жителей отправь на @resource/resource_wood.webp@. Один из них сразу строит @building_malians/pit-mine-1.webp@ на стартовой золотой жиле.",
+        "Разведчиком собирай @resource/sheep.webp@ и сразу проверь, откуда враг может прийти ранним нападением.",
+        "@building_economy/town-center.webp@ должен без остановки производить жителей.",
+        "Не допускай пауз в производстве.",
+        "Не трать @resource/resource_gold.webp@ на раннее стадо без армии или безопасной второй золотой шахты.",
+        "Разведка: 00:00 @unit_cavalry/scout.webp@ собрать @resource/sheep.webp@ и проверить раннюю @building_military/barracks.webp@.",
+        "Мало @resource/sheep.webp@: возвращай разведчика раньше.",
+        "Пропуск: в 00:00 до второй эпохи не нажимай @technology_economy/wheelbarrow.webp@ тачку; порядок держится на раннем войске и домах вокруг шахты."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Первый новый житель берет двадцать пять @resource/resource_wood.webp@ со второго ближнего @resource/resource_wood.webp@ и потом возвращается к овцам.",
+        "Вокруг первой золотой шахты надо построить семь @building_economy/house.webp@.",
+        "@building_economy/house.webp@ малийцев дешевые, поэтому именно они усиливают доход от шахты.",
+        "Оставь свободное место под @building_economy/mining-camp.webp@. Если перекрыть место домами, потом придется строить неудобно и терять время."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:30",
+      "villager_count": 10,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "После семи @building_economy/house.webp@ все жители возвращаются на @resource/resource_food.webp@ под центр.",
+        "@unit_cavalry/scout.webp@ с овцами должен вернуться примерно до 02:30.",
+        "У малийцев стартовая @resource/resource_food.webp@ заканчивается быстро.",
+        "Если @resource/sheep.webp@ пришли поздно, заранее убей несколько @resource/sheep.webp@ под городским центром, чтобы жители не толкались."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Начинай переход во @age/age_2.webp@ через @landmark_malians/mansa-quarry-2.webp@.",
+        "Пять жителей строят каменоломню мансы. Остальные остаются на еде.",
+        "После начала строительства новых жителей отправляй на @resource/resource_wood.webp@.",
+        "@resource/resource_wood.webp@ нужно на мельницу, лесной лагерь и два военных здания."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_economy/lumber-camp.webp@ и собирай @resource/resource_wood.webp@ до десяти жителей на дереве.",
+        "Жителей, закончивших строительство каменоломни, отправь обратно на @resource/sheep.webp@.",
+        "Не покупай @resource/cattle.webp@ до военных зданий, если враг может напасть.",
+        "Слишком ранние @resource/cattle.webp@ часто приводят к потере второй золотой шахты."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "После выхода во @age/age_2.webp@ поставь @building_economy/mill.webp@ и начни @technology_economy/wheelbarrow.webp@.",
+        "Следующим улучшением возьми @technology_economy/double-broadaxe.webp@. Этот порядок дает достаточно @resource/resource_wood.webp@ для армии и второй шахты.",
+        "После десяти жителей на дереве новых жителей снова отправляй на @resource/resource_food.webp@.",
+        "Прокачка: в 04:30 заказать @technology_economy/wheelbarrow.webp@ тачку после мельницы, если @unit_malians/donso-1.webp@ уже строятся или атаки нет.",
+        "@resource/resource_wood.webp@: в 04:30 заказать @technology_economy/double-broadaxe.webp@ @resource/resource_wood.webp@ после первого военного здания; если тебя давят, сначала @unit_malians/donso-1.webp@ и метатели дротиков."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:05",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 9,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_military/barracks.webp@ и @building_military/archery-range.webp@.",
+        "Постоянно производи @unit_malians/donso-1.webp@ и @unit_malians/javelin-thrower-2.webp@. @unit_malians/donso-1.webp@ защищают от @unit_cavalry/horseman-1.webp@, метатели дротиков защищают от стрелков.",
+        "Враг ставит второй центр и мало войска: позже можно перейти к конюшне и @unit_malians/sofa-2.webp@.",
+        "Базовый план сначала безопаснее.",
+        "Враг ставит второй центр и мало войска: можно перейти к малийской ветке через свой второй центр."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Когда есть первые @unit_malians/donso-1.webp@ и метатели дротиков, выведи одного жителя ко второй золотой жиле.",
+        "Военные отряды должны идти вместе с жителем. Не отправляй строителя одного, иначе враг убьет его и задержит развитие.",
+        "Поставь второй @building_malians/pit-mine-1.webp@. Это главный источник дальнейшего @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:50",
+      "villager_count": 23,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Обстрой вторую шахту домами и добавь @building_economy/mining-camp.webp@.",
+        "Если враг идет в сильное нападение во второй эпохе, продолжай @unit_malians/donso-1.webp@ и метателей дротиков и отложи @resource/cattle.webp@.",
+        "Если карта спокойная, начни @technology_economy/horticulture.webp@, потому что дальнейшая игра требует много @resource/resource_food.webp@.",
+        "@resource/resource_food.webp@: в 06:50 заказать @technology_economy/horticulture.webp@ @resource/resource_food.webp@, потому что дальше нужны @resource/cattle.webp@, жители и постоянное войско.",
+        "Безопасность: в 06:50 @technology_economy/textiles.webp@ текстиль брать только против набегов или если жители выходят на открытую @resource/resource_food.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:40",
+      "villager_count": 26,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Теперь лишнее @resource/resource_gold.webp@ можно вкладывать в @resource/cattle.webp@ и @building_malians/cattle-ranch-2.webp@.",
+        "@resource/cattle.webp@ нужны не сразу все. Делай их постепенно, пока не остановлено производство армии.",
+        "Если @resource/resource_food.webp@ под городским центром мало, выводи пять жителей на @resource/deer.webp@ только вместе с армией или под защитой @building_defensive/outpost.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:45",
+      "villager_count": 30,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Продолжай давление небольшими отрядами. Цель не разрушить центр, а прогнать врага с @resource/resource_gold.webp@, @resource/resource_stone.webp@ и охоты.",
+        "Шесть метателей дротиков быстро убивают стрелков. @unit_malians/donso-1.webp@ держат @unit_cavalry/horseman-1.webp@ и раннюю тяжелую @unit_cavalry/horseman-1.webp@.",
+        "Если враг полностью защищается, не бей укрепления в лоб. Расширяй коровники и готовь @age/age_3.webp@.",
+        "@building_technology/blacksmith.webp@: в 08:45 заказать @technology_military/steeled-arrow.webp@ дальний урон, если у тебя много метателей дротиков против @unit_infantry/archer-2.webp@ сначала @technology_military/fitted-leatherwork.webp@ защита от стрел.",
+        "@building_technology/blacksmith.webp@: в 08:45 @technology_military/bloomery.webp@ ближний урон брать только если @unit_malians/donso-1.webp@ или @unit_malians/musofadi-warrior-2.webp@ будут реально драться, а не просто стоять для защиты."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:30",
+      "villager_count": 36,
+      "resources": {
+        "food": 17,
+        "wood": 7,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Начинай @age/age_3.webp@ через @landmark_malians/grand-fulani-corral-2.webp@, если уже есть много @resource/cattle.webp@.",
+        "Если @resource/cattle.webp@ мало, но много метателей дротиков, можно выбрать @landmark_malians/farimba-garrison-2.webp@.",
+        "Это дает быстрое производство войск за @resource/resource_gold.webp@.",
+        "Главное условие перехода: обе золотые шахты защищены, а враг не идет прямо ломать базу."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:00",
+      "villager_count": 42,
+      "resources": {
+        "food": 16,
+        "wood": 8,
+        "gold": 18,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "В @age/age_3.webp@ основной состав: @unit_malians/sofa-2.webp@ и @unit_infantry/archer-2.webp@.",
+        "Возьми @technology_malians/poisoned-arrows-3.webp@ для @unit_infantry/archer-2.webp@ и @technology_malians/imported-armor-3.webp@ для стойкости @unit_cavalry/horseman-1.webp@.",
+        "Против тяжелой @unit_cavalry/horseman-1.webp@ добавляй @unit_malians/donso-1.webp@ и скрытных воинов @unit_malians/musofadi-warrior-2.webp@.",
+        "Против массы стрелков добавляй больше метателей дротиков.",
+        "Прокачка: в 12:00 заказать @technology_malians/poisoned-arrows-3.webp@ отравленные стрелы для дальнего войска.",
+        "Прокачка: в 12:00 заказать @technology_malians/imported-armor-3.webp@ импортную броню, если @unit_malians/sofa-2.webp@ или воины-@unit_cavalry/scout.webp@ остаются на передней линии."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/ApuGahvKpf0",
+  "season": "Тринадцатый сезон (старт 2026-05-07). Проверено 2026-08-08 под live-сборку 16.3.11308. Последний балансный патч — 16.2.10604 от 2026-06-01; 16.2.10884, 16.3.11214 и 16.3.11308 балансовых изменений для малийцев не содержат. Пул рейтинговых карт ротируется в начале месяца.",
+  "map": "Сухопутные карты для игры один на один",
+  "strategy": "Безопасная вторая эпоха через военные отряды, защита золотых шахт, затем переход к коровам и сильной третьей эпохе.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open"
+  ],
+  "role": "core",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая"
+  ],
+  "strategy_key": "core",
+  "meta_tier": "meta_core",
+  "build_group": "malians_core",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 0,
+    "transcript_count": 0,
+    "transcript_sources": {},
+    "search_candidate_count": 0,
+    "metadata_date_count": 0,
+    "rss_fallback_count": 0,
+    "status": "no_relevant_video_in_window",
+    "source_urls": [],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Свежих роликов с фракцией в названии за окно не найдено; Farimba/Sofa и eco-ветки остаются без YouTube-изменений."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

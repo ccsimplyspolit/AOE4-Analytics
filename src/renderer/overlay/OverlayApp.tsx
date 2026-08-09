@@ -426,10 +426,10 @@ export function OverlayApp() {
   }, [customBuildOrders])
   const cycleBuilds = useMemo(() => {
     const byName = new Map(allBuilds.map((build) => [build.name, build]))
-    const orderedNames = [
-      ...buildOrderCycle,
-      ...allBuilds.map((build) => build.name).filter((name) => !buildOrderCycle.includes(name)),
-    ]
+    // Only explicitly activated builds participate in the overlay cycle. The
+    // catalogue can be large; an empty active pool intentionally means no
+    // automatic build order is shown.
+    const orderedNames = buildOrderCycle
     return orderedNames
       .map((name) => byName.get(name))
       .filter((build): build is BuildOrder => !!build && !buildOrderDisabled.includes(build.name))
@@ -443,10 +443,10 @@ export function OverlayApp() {
   )
   useEffect(() => {
     if (buildOrderMode !== 'auto' || !inGame || !myCiv) return
-    const index = buildIndexForCiv(allBuilds, myCiv)
-    const next = index == null ? null : allBuilds[index]?.name ?? null
+    const index = buildIndexForCiv(cycleBuilds, myCiv)
+    const next = index == null ? null : cycleBuilds[index]?.name ?? null
     setBuildOrderId((current) => (current === next ? current : next))
-  }, [allBuilds, buildOrderMode, inGame, myCiv])
+  }, [buildOrderMode, cycleBuilds, inGame, myCiv])
   const showBuildOrder =
     buildOrderVisible && buildOrderMode !== 'hidden' && selectedBuild != null && (inGame || placementMode)
   const showAgeTargets = ageTargetsShown && (inGame || placementMode)

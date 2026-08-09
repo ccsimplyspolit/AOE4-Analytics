@@ -1,0 +1,217 @@
+{
+  "description": "Открытая ветка Knights Templar: ранняя Commanderie, Safe Passage, Pilgrims, Fortress и связка Hospitaller Knight/Serjeant.",
+  "civilization": "Knights Templar",
+  "name": "[1x1][OPEN][KTE][PRESSURE] Templar: Commanderie, Pilgrims и Hospitaller",
+  "author": "Синтез AoE4Guides/AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/builds/060kYcgT8lGktGqrlVY, https://aoe4guides.com/dashboard?civ=KTE, https://aoe4world.com/explorer/civs/templar",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 жителей на @resource/sheep.webp@; 7-й идёт на @resource/resource_wood.webp@. У Templar нет обычного @building_economy/lumber-camp.webp@ — древесина сдаётся автоматически.",
+        "@unit_cavalry/scout.webp@ сразу отмечает @resource/sacred_sites.webp@ и ближайшие проходы."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:45",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Поставь @building_economy/house.webp@; следующего жителя на @resource/resource_gold.webp@, ещё одного на @resource/resource_wood.webp@.",
+        "Копи 400 @resource/resource_food.webp@ и 200 @resource/resource_gold.webp@ на возраст через Commanderie у @building_economy/town-center.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:35",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Начинай Commanderie у @building_economy/town-center.webp@; для открытой карты выбирай ветку с ранним @unit_templar/hospitaller_knight_age_2.webp@.",
+        "@resource/resource_wood.webp@ оставь на @building_military/barracks.webp@ и @building_economy/house.webp@, не уходи в жадную экономику."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:25",
+      "villager_count": 16,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Сразу исследуй @technology_templar/safepassage.webp@ и отправь @unit_templar/pilgrim.webp@ к лучшему @resource/sacred_sites.webp@.",
+        "Первый военный корпус — @building_military/barracks.webp@, затем @unit_templar/serjeant_age_2.webp@/@unit_templar/hospitaller_knight_age_2.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:30",
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 4,
+        "stone": 3,
+        "builder": 3
+      },
+      "notes": [
+        "Поставь @landmark_templar/fortress.webp@ у @resource/resource_gold.webp@ или на проходе; @landmark_templar/fortress.webp@ усиливает дальний бой в своей зоне.",
+        "Если враг давит, @landmark_templar/fortress.webp@ важнее второго производства."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:45",
+      "villager_count": 24,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Выпускай @unit_templar/hospitaller_knight_age_2.webp@ и @unit_templar/serjeant_age_2.webp@; держи их рядом с @landmark_templar/fortress.webp@.",
+        "Не отправляй одного @unit_templar/pilgrim.webp@ через центр: его задача — стабильное @resource/resource_gold.webp@, а не драка."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "08:00",
+      "villager_count": 28,
+      "resources": {
+        "food": 16,
+        "wood": 9,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Бери @technology_templar/sanctuary.webp@ для второго @unit_templar/pilgrim.webp@, если @resource/sacred_sites.webp@ доступен.",
+        "Против тяжёлой пехоты добавь @unit_infantry/archer-2.webp@; против @unit_cavalry/horseman-1.webp@ — больше @unit_templar/serjeant_age_2.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:20",
+      "villager_count": 33,
+      "resources": {
+        "food": 18,
+        "wood": 10,
+        "gold": 8,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Если давление прошло, начинай переход в @age/age_3.webp@; @landmark_templar/fortress.webp@ и @unit_templar/pilgrim.webp@ уже дают нужное @resource/resource_gold.webp@.",
+        "Не строй второй @landmark_templar/fortress.webp@, пока нет безопасной @building_defensive/palisade-wall.webp@ и достаточной армии."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": 40,
+      "resources": {
+        "food": 20,
+        "wood": 12,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "В @age/age_3.webp@ добавляй @unit_templar/templar_brother_age_3.webp@ и @technology_templar/ruleoftemplar.webp@.",
+        "@resource/resource_gold.webp@ от @unit_templar/pilgrim.webp@ направляй в тяжёлую армию и дешёвую @building_military/siege-workshop.webp@."
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 13; snapshot 08.08.2026, live-сборка 16.3.11308",
+  "map": "Dry Arabia, Gorge, Flankwoods и открытые карты с доступным Sacred Site",
+  "strategy": "Commanderie, Safe Passage, Pilgrims, Fortress, Hospitaller Knight и Serjeant pressure.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "role": "pressure",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "strategy_key": "pressure",
+  "meta_tier": "meta_core",
+  "build_group": "knights_templar_pressure",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 2,
+    "transcript_count": 2,
+    "transcript_sources": {
+      "youtube-transcript.ai": 1,
+      "legacy_local": 1
+    },
+    "search_candidate_count": 185,
+    "metadata_date_count": 0,
+    "rss_fallback_count": 2,
+    "status": "sparse_evidence",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=E5kWEIbiZwo",
+      "https://www.youtube.com/watch?v=AYgz7ji8x_c"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Оба ролика имеют transcript, но сигналы короткие и не дают надёжного Commanderie/Pilgrim тайминга; ветка остаётся без численной правки."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

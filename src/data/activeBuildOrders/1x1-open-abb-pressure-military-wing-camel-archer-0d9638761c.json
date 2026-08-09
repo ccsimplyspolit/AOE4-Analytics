@@ -1,0 +1,184 @@
+{
+  "description": "Базовая открытая ветка Аббасидов: Military Wing, ранние Camel Archer и копья, затем второй военный корпус или 2TC по разведке.",
+  "civilization": "Abbasid Dynasty",
+  "name": "[1x1][OPEN][ABB][PRESSURE] Аббасиды: Military Wing и Camel Archer",
+  "author": "Синтез Season 13 AoE4Guides/AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/builds/yB9hIPo4gB0yCHrddvwX, https://www.youtube.com/watch?v=8tAgbXGdNYQ, https://aoe4world.com/explorer/civs/abbasid",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 жителей на @resource/sheep.webp@; 6-й ставит @building_economy/house.webp@ и идёт на @resource/resource_gold.webp@.",
+        "@unit_cavalry/scout.webp@ проверяет внешнее @resource/resource_gold.webp@ и раннюю @building_military/stable.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Новых жителей держи на еде до 8; затем один на @resource/resource_wood.webp@ для @building_economy/lumber-camp.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:35",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "3 жителя начинают @landmark_abbasid/military-wing.webp@; остальных ралли на @resource/resource_wood.webp@ и @resource/resource_food.webp@.",
+        "Не ставь 2 @building_economy/town-center.webp@ до первой проверки армии врага."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:35",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_military/stable.webp@ и @building_military/barracks.webp@.",
+        "Первый состав: @unit_abbasid/camel-archer-2.webp@ с @unit_infantry/spearman-1.webp@ против @unit_cavalry/horseman-1.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:45",
+      "villager_count": 24,
+      "resources": {
+        "food": 13,
+        "wood": 9,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_abbasid/camel-archer-2.webp@ давит @resource/resource_gold.webp@ и внешнюю @resource/resource_food.webp@; не ныряй под @building_economy/town-center.webp@.",
+        "Против @unit_infantry/man-at-arms-1.webp@ добавь @unit_infantry/archer-2.webp@ и @building_technology/blacksmith.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:00",
+      "villager_count": 29,
+      "resources": {
+        "food": 15,
+        "wood": 10,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Если есть урон, добавь вторую @building_military/barracks.webp@; если нет — начинай @resource/resource_stone.webp@ под 2 @building_economy/town-center.webp@.",
+        "Бери @technology_economy/wheelbarrow.webp@ после непрерывного войска."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:00",
+      "villager_count": 36,
+      "resources": {
+        "food": 18,
+        "wood": 12,
+        "gold": 7,
+        "stone": 5,
+        "builder": 4
+      },
+      "notes": [
+        "Переход в 2 @building_economy/town-center.webp@ только с контролем внешнего @resource/resource_gold.webp@; против rush строй @building_defensive/palisade-wall.webp@ и @unit_infantry/spearman-1.webp@.",
+        "К @unit_abbasid/camel-archer-2.webp@ добавляй @unit_abbasid/camel-rider-3.webp@ в @age/age_3.webp@."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/watch?v=8tAgbXGdNYQ",
+  "season": "Season 13; live-сборка 16.3.11308",
+  "map": "Dry Arabia, Gorge, Cliffside и другие открытые карты",
+  "strategy": "Military Wing, Camel Archer/копья, давление на внешние ресурсы и 2TC только после стабилизации.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "role": "pressure",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "strategy_key": "pressure",
+  "meta_tier": "meta_core",
+  "build_group": "abbasid_dynasty_pressure",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 5,
+    "transcript_count": 3,
+    "transcript_sources": {
+      "youtube-transcript.ai": 3
+    },
+    "search_candidate_count": 195,
+    "metadata_date_count": 4,
+    "rss_fallback_count": 1,
+    "status": "evidence_backed",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=6iArDt0xmI4",
+      "https://www.youtube.com/watch?v=hsHrf2Q5wb4",
+      "https://www.youtube.com/watch?v=UOHPB6LxNq4",
+      "https://www.youtube.com/watch?v=CV3cymiZc7I",
+      "https://www.youtube.com/watch?v=1YE-4k2tWcM"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Три transcript из пяти роликов дают повторяющийся decision/age-up сигнал, но без устойчивого нового eco/2TC тайминга; основной каркас не меняем."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

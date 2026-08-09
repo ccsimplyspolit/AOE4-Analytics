@@ -1,0 +1,181 @@
+{
+  "description": "Универсальная китайская ветка для неизвестной открытой карты: Barbican, Imperial Official, Zhuge Nu и переход в Palace Guard/Castle.",
+  "civilization": "Chinese",
+  "name": "[1x1][OPEN][CHI][CORE] Китай: Barbican и Zhuge Nu",
+  "author": "Синтез Season 13 AoE4Guides/AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/builds/eXQjt8OPtLrpr3qrGg4N, https://www.youtube.com/watch?v=REY85gAXF74, https://aoe4world.com/explorer/civs/chinese",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 жителей на @resource/sheep.webp@; 6-й ставит @building_economy/house.webp@ и идёт на @resource/resource_gold.webp@.",
+        "Первый @unit_chinese/imperial-official.webp@ надзирает @resource/resource_food.webp@ или @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_economy/lumber-camp.webp@; @unit_chinese/imperial-official.webp@ не должен простаивать без надзора."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:45",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "3 жителя начинают @landmark_chinese/barbican-of-the-sun.webp@ у @resource/resource_gold.webp@ или передней @resource/resource_food.webp@.",
+        "Оставь место под @building_military/archery-range.webp@ и @building_military/barracks.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:40",
+      "villager_count": 20,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_military/archery-range.webp@ и @building_military/barracks.webp@ под надзором чиновника.",
+        "Начинай @unit_chinese/zhuge-nu-2.webp@ против пехоты и @unit_infantry/archer-2.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:55",
+      "villager_count": 25,
+      "resources": {
+        "food": 14,
+        "wood": 10,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Состав @unit_chinese/zhuge-nu-2.webp@ + @unit_infantry/spearman-1.webp@; против @unit_cavalry/horseman-1.webp@ сначала @building_military/barracks.webp@.",
+        "Бери @technology_chinese/extra-materials.webp@ только при защищённой позиции."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:15",
+      "villager_count": 30,
+      "resources": {
+        "food": 16,
+        "wood": 11,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "При уроне добавь второе @building_military/archery-range.webp@; без урона готовь @landmark_chinese/imperial-academy.webp@ или 2 @building_economy/town-center.webp@.",
+        "@unit_chinese/imperial-official.webp@ переключается на производство перед массовым выпуском."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:20",
+      "villager_count": 37,
+      "resources": {
+        "food": 19,
+        "wood": 13,
+        "gold": 9,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "В @age/age_3.webp@ переходи в @unit_chinese/palace-guard-3.webp@ и @landmark_chinese/astronomical-clocktower.webp@.",
+        "@technology_economy/professional-scouts.webp@ — отдельная ветка только при безопасном олене и свободном дереве."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/watch?v=REY85gAXF74",
+  "season": "Season 13; live-сборка 16.3.11308",
+  "map": "Открытые сухопутные карты без гарантированного безопасного FC",
+  "strategy": "Barbican, надзор чиновника, Zhuge Nu/копья и поздний Imperial Academy или 2TC.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "role": "core",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "strategy_key": "core",
+  "meta_tier": "meta_core",
+  "build_group": "chinese_core",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 2,
+    "transcript_count": 1,
+    "transcript_sources": {
+      "legacy_local": 1
+    },
+    "search_candidate_count": 219,
+    "metadata_date_count": 2,
+    "rss_fallback_count": 0,
+    "status": "sparse_evidence",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=vRerN_O9PDc",
+      "https://www.youtube.com/watch?v=tAwJr6TVv48"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Свежий meta-cast подчёркивает развилку Imperial Official/Barracks против Fast Castle; не нажимать blind FC и держать ранний военный ответ."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

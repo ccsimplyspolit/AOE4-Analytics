@@ -10,6 +10,7 @@ import {
   Palette,
   Pipette,
   Move,
+  X,
   Languages as LanguagesIcon,
   KeyRound,
   ArrowDown,
@@ -119,6 +120,8 @@ export function Settings() {
   const resetTimerHotkey = settings?.hotkeys.resetTimer ?? DEFAULT_HOTKEYS.resetTimer
   const [arrangingWidgets, setArrangingWidgets] = useState(false)
   const [customCssDraft, setCustomCssDraft] = useState('')
+  const [buildSearch, setBuildSearch] = useState('')
+  const [buildCivFilter, setBuildCivFilter] = useState('all')
   const [automationStatus, setAutomationStatus] = useState<AutomationStatus | null>(null)
 
   // Placement mode persists its locked state in settings, so the button stays
@@ -160,10 +163,25 @@ export function Settings() {
     })
   })()
   const cycleNames = settings?.overlay.buildOrderCycle ?? []
-  const orderedOverlayBuildNames = [
-    ...cycleNames.filter((name) => overlayBuilds.some((build) => build.name === name)),
-    ...overlayBuilds.map((build) => build.name).filter((name) => !cycleNames.includes(name)),
-  ]
+  const activeBuildNames = cycleNames.filter((name) => overlayBuilds.some((build) => build.name === name))
+  const activeBuilds = activeBuildNames
+    .map((name) => overlayBuilds.find((build) => build.name === name))
+    .filter((build): build is BuildOrder => build != null)
+  const buildCivilizations = Array.from(
+    new Set(
+      overlayBuilds.flatMap((build) =>
+        Array.isArray(build.civilization) ? build.civilization : [build.civilization],
+      ),
+    ),
+  ).sort((left, right) => left.localeCompare(right))
+  const normalizedBuildSearch = buildSearch.trim().toLocaleLowerCase()
+  const availableBuilds = overlayBuilds.filter((build) => {
+    if (activeBuildNames.includes(build.name)) return false
+    const civilizations = Array.isArray(build.civilization) ? build.civilization : [build.civilization]
+    if (buildCivFilter !== 'all' && !civilizations.includes(buildCivFilter)) return false
+    if (!normalizedBuildSearch) return true
+    return `${build.name} ${buildOrderCivLabel(build)}`.toLocaleLowerCase().includes(normalizedBuildSearch)
+  })
   useEffect(() => {
     if (debouncedOpacity == null) return
     commitSettings(
@@ -748,7 +766,7 @@ export function Settings() {
                 <div className="text-sm font-medium">{tt('Build order overlay')}</div>
                 <p className="mt-0.5 text-[11px] text-muted-foreground">
                   {tt(
-                    'Choose a build here, or let the overlay pick the first matching build for your civilization.',
+                    'Choose a build here, or let the overlay pick the first matching build from your active pool.',
                   )}
                 </p>
               </div>
@@ -793,7 +811,14 @@ export function Settings() {
                     className="h-9 w-full rounded-md border border-border bg-background px-2 text-xs disabled:opacity-50"
                   >
                     <option value="">{tt('No build selected')}</option>
-                    {overlayBuilds.map((build) => (
+                    {(settings?.overlay.buildOrderId &&
+                    !activeBuilds.some((build) => build.name === settings.overlay.buildOrderId)
+                      ? [
+                          overlayBuilds.find((build) => build.name === settings.overlay.buildOrderId),
+                          ...activeBuilds,
+                        ].filter((build): build is BuildOrder => build != null)
+                      : activeBuilds
+                    ).map((build) => (
                       <option key={build.name} value={build.name}>
                         {build.name} · {buildOrderCivLabel(build)}
                         {settings?.overlay.customBuildOrders.some(
@@ -913,85 +938,160 @@ export function Settings() {
             </div>
             <div className="space-y-2 border-t border-border pt-3">
               <div>
-                <div className="text-sm font-medium">{tt('Build-order cycle library')}</div>
+                <div className="flex items-center justify-between gap-3">
+                  <div className="text-sm font-medium">{tt('My active builds')}</div>
+                  <span className="rounded-full border border-primary/30 bg-primary/10 px-2 py-0.5 text-[10px] font-medium text-primary">
+                    {activeBuilds.length} / {overlayBuilds.length}
+                  </span>
+                </div>
                 <p className="mt-0.5 text-[11px] text-muted-foreground">
-                  {tt(
-                    'Imported builds and the bundled catalog are all available. Uncheck a build to skip it while cycling; use the arrows to set the order.',
-                  )}
+                  {tt('Only builds in this pool can appear in the overlay cycle. Imported builds stay available in the catalogue until you add them here.')}
                 </p>
               </div>
-              <div className="max-h-72 space-y-1 overflow-y-auto rounded-md border border-border/70 bg-background/30 p-2">
-                {orderedOverlayBuildNames.map((name, index) => {
-                  const build = overlayBuilds.find((item) => item.name === name)
-                  if (!build) return null
-                  const disabled = settings?.overlay.buildOrderDisabled.includes(name) ?? false
-                  const custom = settings?.overlay.customBuildOrders.some(
-                    (item) => item.name === name,
-                  )
-                  const move = (direction: -1 | 1) => {
-                    if (!settings) return
-                    const next = [...orderedOverlayBuildNames]
-                    const target = index + direction
-                    if (target < 0 || target >= next.length) return
-                    ;[next[index], next[target]] = [next[target]!, next[index]!]
-                    update.mutate(
-                      { overlay: { buildOrderCycle: next } },
-                      { onSuccess: () => void ipc.applyOverlaySettings() },
-                    )
-                  }
-                  return (
-                    <div
-                      key={name}
-                      className="flex items-center gap-2 rounded border border-border/60 px-2 py-1.5 text-xs"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={!disabled}
-                        onChange={(event) => {
+              <div className="grid gap-3 xl:grid-cols-[minmax(0,1fr)_minmax(300px,0.9fr)]">
+                <div className="rounded-md border border-primary/25 bg-primary/[0.03] p-2">
+                  <div className="mb-2 flex items-center justify-between px-1 text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+                    <span>{tt('Active pool')}</span>
+                    <span className="flex items-center gap-2">
+                      <span>{tt('Used by overlay')}</span>
+                      {activeBuilds.length > 0 && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (!settings) return
+                            update.mutate(
+                              {
+                                overlay: {
+                                  buildOrderCycle: [],
+                                  buildOrderDisabled: settings.overlay.buildOrderDisabled.filter(
+                                    (name) => !activeBuildNames.includes(name),
+                                  ),
+                                },
+                              },
+                              { onSuccess: () => void ipc.applyOverlaySettings() },
+                            )
+                          }}
+                          className="rounded border border-border px-1.5 py-0.5 text-[10px] font-medium normal-case tracking-normal text-muted-foreground hover:border-destructive/50 hover:text-destructive"
+                        >
+                          {tt('Clear active pool')}
+                        </button>
+                      )}
+                    </span>
+                  </div>
+                  <div className="max-h-64 space-y-1 overflow-y-auto">
+                    {activeBuilds.length === 0 ? (
+                      <div className="rounded border border-dashed border-border px-3 py-6 text-center text-xs text-muted-foreground">
+                        {tt('No builds selected yet. Add a build from the catalogue.')}
+                      </div>
+                    ) : (
+                      activeBuilds.map((build, index) => {
+                        const disabled = settings?.overlay.buildOrderDisabled.includes(build.name) ?? false
+                        const custom = settings?.overlay.customBuildOrders.some((item) => item.name === build.name)
+                        const move = (direction: -1 | 1) => {
                           if (!settings) return
-                          const nextDisabled = new Set(settings.overlay.buildOrderDisabled)
-                          if (event.target.checked) nextDisabled.delete(name)
-                          else nextDisabled.add(name)
+                          const next = [...activeBuildNames]
+                          const target = index + direction
+                          if (target < 0 || target >= next.length) return
+                          ;[next[index], next[target]] = [next[target]!, next[index]!]
                           update.mutate(
-                            { overlay: { buildOrderDisabled: [...nextDisabled] } },
+                            { overlay: { buildOrderCycle: next } },
                             { onSuccess: () => void ipc.applyOverlaySettings() },
                           )
-                        }}
-                        className="h-4 w-4 shrink-0 accent-[hsl(var(--primary))]"
-                        aria-label={`${tt('Cycle')} ${name}`}
-                      />
-                      <span
-                        className={cn(
-                          'min-w-0 flex-1 truncate',
-                          disabled && 'text-muted-foreground line-through',
-                        )}
-                      >
-                        {name}
-                      </span>
-                      <span className="shrink-0 text-[10px] text-muted-foreground">
-                        {custom ? tt('custom') : tt('bundled')}
-                      </span>
-                      <button
-                        type="button"
-                        disabled={index === 0}
-                        onClick={() => move(-1)}
-                        className="rounded border border-border p-1 text-muted-foreground hover:bg-secondary disabled:opacity-30"
-                        title={tt('Move up')}
-                      >
-                        <ArrowUp className="h-3 w-3" />
-                      </button>
-                      <button
-                        type="button"
-                        disabled={index === orderedOverlayBuildNames.length - 1}
-                        onClick={() => move(1)}
-                        className="rounded border border-border p-1 text-muted-foreground hover:bg-secondary disabled:opacity-30"
-                        title={tt('Move down')}
-                      >
-                        <ArrowDown className="h-3 w-3" />
-                      </button>
-                    </div>
-                  )
-                })}
+                        }
+                        return (
+                          <div key={build.name} className="flex items-center gap-2 rounded border border-border/60 bg-background/45 px-2 py-1.5 text-xs">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                if (!settings) return
+                                update.mutate(
+                                  {
+                                    overlay: {
+                                      buildOrderCycle: activeBuildNames.filter((name) => name !== build.name),
+                                      buildOrderDisabled: settings.overlay.buildOrderDisabled.filter((name) => name !== build.name),
+                                    },
+                                  },
+                                  { onSuccess: () => void ipc.applyOverlaySettings() },
+                                )
+                              }}
+                              className="rounded p-1 text-muted-foreground hover:bg-secondary hover:text-foreground"
+                              title={tt('Remove from active pool')}
+                            >
+                              <X className="h-3 w-3" />
+                            </button>
+                            <span className={cn('min-w-0 flex-1 truncate', disabled && 'text-muted-foreground line-through')}>
+                              <span className="block truncate">{build.name}</span>
+                              <span className="block truncate text-[10px] text-muted-foreground">{buildOrderCivLabel(build)} · {custom ? tt('custom') : tt('bundled')}</span>
+                            </span>
+                            <input
+                              type="checkbox"
+                              checked={!disabled}
+                              onChange={(event) => {
+                                if (!settings) return
+                                const nextDisabled = new Set(settings.overlay.buildOrderDisabled)
+                                if (event.target.checked) nextDisabled.delete(build.name)
+                                else nextDisabled.add(build.name)
+                                update.mutate(
+                                  { overlay: { buildOrderDisabled: [...nextDisabled] } },
+                                  { onSuccess: () => void ipc.applyOverlaySettings() },
+                                )
+                              }}
+                              className="h-4 w-4 shrink-0 accent-[hsl(var(--primary))]"
+                              aria-label={`${tt('Cycle')} ${build.name}`}
+                            />
+                            <button type="button" disabled={index === 0} onClick={() => move(-1)} className="rounded border border-border p-1 text-muted-foreground hover:bg-secondary disabled:opacity-30" title={tt('Move up')}>
+                              <ArrowUp className="h-3 w-3" />
+                            </button>
+                            <button type="button" disabled={index === activeBuilds.length - 1} onClick={() => move(1)} className="rounded border border-border p-1 text-muted-foreground hover:bg-secondary disabled:opacity-30" title={tt('Move down')}>
+                              <ArrowDown className="h-3 w-3" />
+                            </button>
+                          </div>
+                        )
+                      })
+                    )}
+                  </div>
+                </div>
+                <div className="rounded-md border border-border/70 bg-background/30 p-2">
+                  <div className="mb-2 flex items-center justify-between px-1 text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+                    <span>{tt('Build catalogue')}</span>
+                    <span>{availableBuilds.length}</span>
+                  </div>
+                  <div className="mb-2 grid gap-2 sm:grid-cols-[minmax(0,1fr)_150px]">
+                    <input
+                      value={buildSearch}
+                      onChange={(event) => setBuildSearch(event.target.value)}
+                      placeholder={tt('Search build library…')}
+                      className="h-8 rounded border border-border bg-background px-2 text-xs outline-none focus:border-primary"
+                    />
+                    <select value={buildCivFilter} onChange={(event) => setBuildCivFilter(event.target.value)} className="h-8 rounded border border-border bg-background px-2 text-xs">
+                      <option value="all">{tt('All civilizations')}</option>
+                      {buildCivilizations.map((civilization) => <option key={civilization} value={civilization}>{civilization}</option>)}
+                    </select>
+                  </div>
+                  <div className="max-h-64 space-y-1 overflow-y-auto">
+                    {availableBuilds.length === 0 ? (
+                      <div className="px-2 py-6 text-center text-xs text-muted-foreground">{tt('No builds match this filter.')}</div>
+                    ) : (
+                      availableBuilds.map((build) => (
+                        <button
+                          key={build.name}
+                          type="button"
+                          onClick={() => {
+                            if (!settings) return
+                            update.mutate(
+                              { overlay: { buildOrderCycle: [...activeBuildNames, build.name] } },
+                              { onSuccess: () => void ipc.applyOverlaySettings() },
+                            )
+                          }}
+                          className="flex w-full items-center gap-2 rounded border border-transparent px-2 py-1.5 text-left text-xs transition-colors hover:border-primary/30 hover:bg-primary/5"
+                        >
+                          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded border border-border text-sm text-primary">+</span>
+                          <span className="min-w-0 flex-1 truncate"><span className="block truncate">{build.name}</span><span className="block truncate text-[10px] text-muted-foreground">{buildOrderCivLabel(build)}</span></span>
+                        </button>
+                      ))
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
             <HotkeyInput

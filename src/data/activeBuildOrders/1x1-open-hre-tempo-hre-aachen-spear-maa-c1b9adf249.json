@@ -1,0 +1,186 @@
+{
+  "description": "Надёжный открытый HRE opener: Aachen Chapel, Spear/MAA, Inspired Warriors и переход в Burgrave или 2TC.",
+  "civilization": "Holy Roman Empire",
+  "name": "[1x1][OPEN][HRE][TEMPO] HRE: Aachen и Spear/MAA",
+  "author": "Синтез Season 13 AoE4Guides/AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/builds/uIX0FfLWqmBKG1qDQAKP, https://www.youtube.com/watch?v=rRgJNKBRmJc, https://aoe4world.com/explorer/civs/hre",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 жителей на @resource/sheep.webp@; 6-й ставит @building_economy/house.webp@ и идёт на @resource/resource_gold.webp@.",
+        "@unit_hre/prelate.webp@ сразу вдохновляет @resource/resource_food.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Один житель на @resource/resource_wood.webp@; сохраняй вдохновение и не отправляй @unit_religious/monk-3.webp@ впереди разведки."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:35",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "3 жителя начинают @landmark_hre/aachen-chapel.webp@ так, чтобы накрыть @resource/resource_food.webp@, @resource/resource_gold.webp@ и @resource/resource_wood.webp@.",
+        "После закладки ралли на @resource/resource_wood.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:40",
+      "villager_count": 20,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_military/barracks.webp@ и выпускай @unit_infantry/spearman-1.webp@.",
+        "Первый @unit_religious/monk-3.webp@ вдохновляет @building_military/barracks.webp@ и @resource/resource_wood.webp@ после перехода."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:50",
+      "villager_count": 25,
+      "resources": {
+        "food": 14,
+        "wood": 9,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Добавь @unit_infantry/man-at-arms-1.webp@ против @unit_infantry/archer-2.webp@ и лёгкой пехоты.",
+        "Вместе с армией забирай внешний @resource/resource_gold.webp@, но не теряй вдохновлённый фронт."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:10",
+      "villager_count": 30,
+      "resources": {
+        "food": 17,
+        "wood": 11,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Исследуй @technology_hre/marching-drills.webp@ после непрерывного производства.",
+        "Против @unit_cavalry/horseman-1.webp@ добавь @unit_infantry/archer-2.webp@ и укрепи внешний ресурс."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:20",
+      "villager_count": 37,
+      "resources": {
+        "food": 20,
+        "wood": 13,
+        "gold": 9,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "После урона переходи в @landmark_hre/burgrave-palace.webp@; на тихой карте — 2 @building_economy/town-center.webp@.",
+        "@resource/relics.webp@ и @landmark_hre/regnitz-cathedral.webp@ только после сохранения фронта."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/watch?v=rRgJNKBRmJc",
+  "season": "Season 13; live-сборка 16.3.11308",
+  "map": "Открытые карты, где Aachen может накрыть два внешних ресурса",
+  "strategy": "Aachen, вдохновлённые Spear/MAA, ранний контроль золота и Burgrave/2TC по разведке.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "role": "tempo",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "strategy_key": "tempo",
+  "meta_tier": "meta_core",
+  "build_group": "holy_roman_empire_tempo",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 15,
+    "transcript_count": 12,
+    "transcript_sources": {
+      "youtube-transcript.ai": 10,
+      "legacy_local": 2
+    },
+    "search_candidate_count": 245,
+    "metadata_date_count": 14,
+    "rss_fallback_count": 1,
+    "status": "evidence_backed",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=fiTXJRuvPqQ",
+      "https://www.youtube.com/watch?v=vjnwBJqY5UE",
+      "https://www.youtube.com/watch?v=iFlMqxjToxE",
+      "https://www.youtube.com/watch?v=d_FEca71_Xo",
+      "https://www.youtube.com/watch?v=2ymf33wmx6I",
+      "https://www.youtube.com/watch?v=pPmz0KdenVo"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Свежий masterclass подтверждает deer/open Fast Castle и mass Spear как ответ на Macedonian; Aachen/Spear оставлен основным открытым каркасом."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}

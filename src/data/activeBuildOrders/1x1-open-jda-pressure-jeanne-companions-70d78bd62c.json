@@ -1,0 +1,183 @@
+{
+  "description": "Открытая Jeanne d'Arc через раннего героя, School of Cavalry и постоянную конницу с лучниками.",
+  "civilization": "Jeanne d'Arc",
+  "name": "[1x1][OPEN][JDA][PRESSURE] Jeanne: герой и Companions",
+  "author": "Синтез Season 13 AoE4Guides/AoE4World; проверено 08.08.2026",
+  "source": "https://aoe4guides.com/builds/4fc9hTXmNy9b3OdMGIxr, https://www.youtube.com/watch?v=9TCvVtXvnj0, https://aoe4world.com/explorer/civs/jeanne-darc",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 жителей на @resource/sheep.webp@; 6-й ставит @building_economy/house.webp@ и идёт на @resource/resource_gold.webp@.",
+        "@unit_jeanne/jeanne-darc-knight-3.webp@ собирает опыт, @unit_cavalry/scout.webp@ отмечает направление атаки."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/resource_wood.webp@ нужно для стабильной @building_military/stable.webp@; не трать его на ранний второй @building_economy/house.webp@ без необходимости."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:35",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "3 жителя начинают @landmark_french/school-of-cavalry.webp@.",
+        "После закладки ралли: @resource/resource_wood.webp@, затем @resource/resource_food.webp@ и @resource/resource_gold.webp@ для героя."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:40",
+      "villager_count": 20,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Поставь @building_military/archery-range.webp@ и выпускай @unit_jeanne/jeanne-darc-knight-3.webp@.",
+        "Герой ведёт первую атаку и не должен танковать под @building_economy/town-center.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:50",
+      "villager_count": 25,
+      "resources": {
+        "food": 14,
+        "wood": 10,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Добавь @unit_jeanne/jeanne-darc-markswoman-4.webp@ против @unit_infantry/spearman-1.webp@/@unit_infantry/man-at-arms-1.webp@.",
+        "Выбирай путь героя под матчап: Warrior против фронта, @unit_infantry/archer-2.webp@ против @unit_cavalry/horseman-1.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:10",
+      "villager_count": 30,
+      "resources": {
+        "food": 17,
+        "wood": 12,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Исследуй @technology_french/chivalry.webp@ и добавь вторую @building_military/stable.webp@ после первого контакта.",
+        "Бей внешнее @resource/resource_gold.webp@ и производство, не @building_economy/town-center.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:20",
+      "villager_count": 37,
+      "resources": {
+        "food": 20,
+        "wood": 14,
+        "gold": 9,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "При отсутствии урона переходи в @age/age_3.webp@ и @unit_jeanne/jeannes-champion-3.webp@.",
+        "Сохраняй @unit_jeanne/jeanne-darc-knight-3.webp@: её уровень важнее одной лишней @unit_cavalry/horseman-1.webp@."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/watch?v=9TCvVtXvnj0",
+  "season": "Season 13; live-сборка 16.3.11308",
+  "map": "Dry Arabia, Gorge, Cliffside и другие открытые карты",
+  "strategy": "School of Cavalry, Jeanne, Companions, мобильное давление и переход в Castle после опыта.",
+  "mode": [
+    "1x1"
+  ],
+  "map_type": [
+    "open",
+    "short"
+  ],
+  "role": "pressure",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "map_family": [
+    "открытая",
+    "короткая"
+  ],
+  "strategy_key": "pressure",
+  "meta_tier": "meta_core",
+  "build_group": "jeanne_d'arc_pressure",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-08",
+  "game_build": "16.3.11308",
+  "meta_patch_window": "10604,10884,11214,11308",
+  "patch_reviewed": "2026-08-08",
+  "patch_status": "compatible_current_live",
+  "patch_scope": "16.2.10884: bugfixes; 16.3.11214: ranked map rotation; 16.3.11308: console launch crash fix; no new civ balance changes after 16.2.10604.",
+  "patch_notes_url": "https://www.ageofempires.com/news/age-of-empires-iv-patch-16-2-10884/",
+  "youtube_research": {
+    "window": "2026-07-08..2026-08-08",
+    "video_count": 3,
+    "transcript_count": 3,
+    "transcript_sources": {
+      "youtube-transcript.ai": 2,
+      "legacy_local": 1
+    },
+    "search_candidate_count": 193,
+    "metadata_date_count": 2,
+    "rss_fallback_count": 1,
+    "status": "evidence_backed",
+    "source_urls": [
+      "https://www.youtube.com/watch?v=gdb6QTnfje0",
+      "https://www.youtube.com/watch?v=4CJ408PzABI",
+      "https://www.youtube.com/watch?v=vg7-Slpb1cA"
+    ],
+    "report": "aoe4_sources/research_2026-08-08/YOUTUBE_VIDEO_RESEARCH_2026-08-08.md",
+    "insight": "Полное покрытие 3/3 даёт ограниченный gameplay/decision-сигнал; ранний Knight/hero pressure не переписывается без устойчивого build-order evidence."
+  },
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-08T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-08T00:00:00Z"
+}
