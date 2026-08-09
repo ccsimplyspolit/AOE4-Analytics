@@ -15,7 +15,10 @@ import {
   ArrowDown,
   ArrowUp,
   Zap,
+  Activity,
+  Play,
 } from 'lucide-react'
+import type { AutomationStatus, AutomationTaskId } from '@domain/automation'
 import type { Leaderboard } from '@api/types'
 import {
   DEFAULT_HOTKEYS,
@@ -63,6 +66,21 @@ function pollOptionsWithCurrent(current: number | undefined) {
   }
   return [{ value: current, label: `${Math.round(current / 100) / 10}s (custom)` }, ...POLL_OPTIONS]
 }
+
+const AUTOMATION_TASK_LABELS: Record<AutomationTaskId, string> = {
+  history: 'Match history',
+  archive: 'Replay archive',
+  cache: 'Offline cache',
+  videos: 'VOD and transcripts',
+  catalogs: 'Map and build catalogues',
+  sources: 'Source synchronizer',
+}
+
+function automationTime(value: string | null): string {
+  if (!value) return '—'
+  const date = new Date(value)
+  return Number.isNaN(date.getTime()) ? '—' : date.toLocaleTimeString()
+}
 const SETTINGS_SECTIONS = [
   ['settings-appearance', 'Appearance'],
   ['settings-account', 'Account'],
@@ -100,6 +118,7 @@ export function Settings() {
   const resetTimerHotkey = settings?.hotkeys.resetTimer ?? DEFAULT_HOTKEYS.resetTimer
   const [arrangingWidgets, setArrangingWidgets] = useState(false)
   const [customCssDraft, setCustomCssDraft] = useState('')
+  const [automationStatus, setAutomationStatus] = useState<AutomationStatus | null>(null)
 
   // Placement mode persists its locked state in settings, so the button stays
   // accurate when this screen is revisited after using the global hotkey.
@@ -110,6 +129,18 @@ export function Settings() {
   useEffect(() => {
     setCustomCssDraft(customCss ?? '')
   }, [customCss])
+
+  useEffect(() => {
+    let active = true
+    void ipc.getAutomationStatus().then((value) => {
+      if (active) setAutomationStatus(value)
+    })
+    const unsubscribe = ipc.onAutomationStatus((value) => setAutomationStatus(value))
+    return () => {
+      active = false
+      unsubscribe()
+    }
+  }, [])
 
   // The sliders track a local value and commit it debounced — one settings
   // write + overlay IPC after the drag settles instead of one per tick.
@@ -301,79 +332,115 @@ export function Settings() {
       </div>
 
       <Card id="settings-overlay" className="scroll-mt-14">
-        <CardContent className="space-y-4 p-5">
-          <h2 className="flex items-center gap-2 text-base font-semibold">
-            <Monitor className="h-4 w-4 text-primary" />
-            {tt('Overlay')}
-          </h2>
-          <div className="space-y-1.5">
-            <div className="flex items-center justify-between text-sm">
-              <span>{tt('Opacity')}</span>
-              <span className="tabular-nums text-muted-foreground">
-                {Math.round(opacity * 100)}%
-              </span>
+        <CardContent className="space-y-5 p-5">
+          <div className="flex flex-col gap-3 border-b border-border pb-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <div className="mb-1 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-primary">
+                <Monitor className="h-3.5 w-3.5" />
+                {tt('Overlay')}
+              </div>
+              <h2 className="text-lg font-semibold tracking-tight">{tt('Overlay control room')}</h2>
+              <p className="mt-1 max-w-2xl text-xs leading-relaxed text-muted-foreground">
+                {tt('Tune the in-game view, choose what appears, then place it exactly where you want.')}
+              </p>
             </div>
-            <input
-              type="range"
-              min={0.35}
-              max={1}
-              step={0.01}
-              value={opacity}
-              onChange={(e) => setLiveOpacity(Number(e.target.value))}
-              className="w-full accent-[hsl(var(--primary))]"
-            />
+            <button
+              type="button"
+              onClick={() => void ipc.toggleOverlay()}
+              className="inline-flex shrink-0 items-center justify-center rounded-md border border-primary/45 bg-primary/10 px-3 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/18"
+            >
+              {tt('Show / hide overlay')} <span className="ml-2 text-primary/70">{toggleHotkey}</span>
+            </button>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
-            <label className="space-y-1.5">
-              <span className="flex items-center justify-between text-sm">
-                <span>{tt('Build text size')}</span>
-                <span className="tabular-nums text-muted-foreground">{buildFontSize}px</span>
-              </span>
-              <input
-                type="range"
-                min={11}
-                max={18}
-                step={1}
-                value={buildFontSize}
-                onChange={(e) => setLiveBuildFontSize(Number(e.target.value))}
-                className="w-full accent-[hsl(var(--primary))]"
-              />
-            </label>
-            <label className="space-y-1.5">
-              <span className="flex items-center justify-between text-sm">
-                <span>{tt('Build icon size')}</span>
-                <span className="tabular-nums text-muted-foreground">{buildImageSize}px</span>
-              </span>
-              <input
-                type="range"
-                min={20}
-                max={48}
-                step={1}
-                value={buildImageSize}
-                onChange={(e) => setLiveBuildImageSize(Number(e.target.value))}
-                className="w-full accent-[hsl(var(--primary))]"
-              />
-            </label>
-          </div>
+          <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(270px,0.72fr)]">
+            <section className="rounded-lg border border-border/75 bg-background/25 p-4">
+              <div className="mb-4 flex items-baseline justify-between gap-3 border-b border-border/70 pb-3">
+                <div>
+                  <h3 className="text-sm font-semibold">{tt('Appearance')}</h3>
+                  <p className="mt-0.5 text-[11px] text-muted-foreground">
+                    {tt('A single scale for a quiet, readable overlay.')}
+                  </p>
+                </div>
+                <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+                  {tt('Live preview')}
+                </span>
+              </div>
+              <div className="grid gap-x-5 gap-y-4 sm:grid-cols-2">
+                <label className="space-y-1.5">
+                  <span className="flex items-center justify-between text-sm">
+                    <span>{tt('Opacity')}</span>
+                    <span className="tabular-nums text-muted-foreground">{Math.round(opacity * 100)}%</span>
+                  </span>
+                  <input
+                    type="range"
+                    min={0.35}
+                    max={1}
+                    step={0.01}
+                    value={opacity}
+                    onChange={(e) => setLiveOpacity(Number(e.target.value))}
+                    className="w-full accent-[hsl(var(--primary))]"
+                  />
+                </label>
+                <label className="space-y-1.5">
+                  <span className="flex items-center justify-between text-sm">
+                    <span>{tt('Widget size')}</span>
+                    <span className="tabular-nums text-muted-foreground">{Math.round(scale * 100)}%</span>
+                  </span>
+                  <input
+                    type="range"
+                    min={0.75}
+                    max={1.5}
+                    step={0.05}
+                    value={scale}
+                    onChange={(e) => setLiveScale(Number(e.target.value))}
+                    className="w-full accent-[hsl(var(--primary))]"
+                  />
+                </label>
+                <label className="space-y-1.5">
+                  <span className="flex items-center justify-between text-sm">
+                    <span>{tt('Build text size')}</span>
+                    <span className="tabular-nums text-muted-foreground">{buildFontSize}px</span>
+                  </span>
+                  <input
+                    type="range"
+                    min={11}
+                    max={18}
+                    step={1}
+                    value={buildFontSize}
+                    onChange={(e) => setLiveBuildFontSize(Number(e.target.value))}
+                    className="w-full accent-[hsl(var(--primary))]"
+                  />
+                </label>
+                <label className="space-y-1.5">
+                  <span className="flex items-center justify-between text-sm">
+                    <span>{tt('Build icon size')}</span>
+                    <span className="tabular-nums text-muted-foreground">{buildImageSize}px</span>
+                  </span>
+                  <input
+                    type="range"
+                    min={20}
+                    max={48}
+                    step={1}
+                    value={buildImageSize}
+                    onChange={(e) => setLiveBuildImageSize(Number(e.target.value))}
+                    className="w-full accent-[hsl(var(--primary))]"
+                  />
+                </label>
+              </div>
+            </section>
 
-          <div className="space-y-1.5">
-            <div className="flex items-center justify-between text-sm">
-              <span>{tt('Widget size')}</span>
-              <span className="tabular-nums text-muted-foreground">{Math.round(scale * 100)}%</span>
-            </div>
-            <input
-              type="range"
-              min={0.75}
-              max={1.5}
-              step={0.05}
-              value={scale}
-              onChange={(e) => setLiveScale(Number(e.target.value))}
-              className="w-full accent-[hsl(var(--primary))]"
-            />
-          </div>
-
-          <div className="grid gap-2 border-t border-border pt-3 sm:grid-cols-3">
+            <section className="overflow-hidden rounded-lg border border-border/75 bg-background/25">
+              <div className="flex items-start justify-between gap-3 border-b border-border/70 px-4 py-3">
+                <div>
+                  <h3 className="text-sm font-semibold">{tt('Game-state widgets')}</h3>
+                  <p className="mt-0.5 text-[11px] text-muted-foreground">
+                    {tt('Only show information that matters in the moment.')}
+                  </p>
+                </div>
+                <span className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary)/0.7)]" />
+              </div>
+              <div className="divide-y divide-border/70 px-4">
             <OverlayToggle
               label={tt('Matchup bar')}
               description={tt('Teams, civilizations, rank, and matchup troops.')}
@@ -407,12 +474,12 @@ export function Settings() {
                 )
               }
             />
+              </div>
+            </section>
           </div>
 
-          <p className="text-[11px] text-muted-foreground">
-            The overlay shows the matchup across the top, a live APM counter, and a results card
-            after each game. Arrange widgets with the button below or {placementHotkey}; it opens a
-            draggable preview even before a match.
+          <p className="rounded-md border border-border/60 bg-muted/20 px-3 py-2 text-[11px] leading-relaxed text-muted-foreground">
+            {tt('The overlay shows the matchup across the top, a live APM counter, and a results card after each game. Arrange widgets with the button below or')} {placementHotkey}; {tt('it opens a draggable preview even before a match.')}
           </p>
 
           <label className="block space-y-1.5">
@@ -444,14 +511,8 @@ export function Settings() {
             </span>
           </label>
 
-          <div className="flex flex-wrap gap-2">
-            <button
-              type="button"
-              onClick={() => void ipc.toggleOverlay()}
-              className="rounded-md border border-border px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-            >
-              Show / hide overlay ({toggleHotkey})
-            </button>
+          <div className="flex flex-wrap items-center gap-2 rounded-lg border border-border/75 bg-background/25 p-3">
+            <span className="mr-1 text-xs font-medium text-muted-foreground">{tt('Layout')}</span>
             <button
               type="button"
               disabled={!settings}
@@ -492,7 +553,7 @@ export function Settings() {
               }}
               className="rounded-md border border-border px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground disabled:opacity-50"
             >
-              Reset widget positions
+              {tt('Reset widget positions')}
             </button>
           </div>
 
@@ -1028,10 +1089,36 @@ export function Settings() {
 
       <Card id="settings-automation" className="scroll-mt-14">
         <CardContent className="space-y-4 p-5">
-          <h2 className="flex items-center gap-2 text-base font-semibold">
-            <Zap className="h-4 w-4 text-primary" />
-            {tt('Background automation')}
-          </h2>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <h2 className="flex items-center gap-2 text-base font-semibold">
+              <Zap className="h-4 w-4 text-primary" />
+              {tt('Background automation')}
+            </h2>
+            <button
+              type="button"
+              disabled={automationStatus?.running || settings?.profileId == null}
+              onClick={() => void ipc.runAutomationNow().then(setAutomationStatus)}
+              className="inline-flex items-center gap-1.5 rounded-md border border-primary/50 px-3 py-1.5 text-sm text-primary transition-colors hover:bg-primary/10 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {automationStatus?.running ? (
+                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              ) : (
+                <Play className="h-3.5 w-3.5" />
+              )}
+              {tt('Run now')}
+            </button>
+          </div>
+          <div className="flex flex-wrap items-center justify-between gap-2 rounded-md border border-border/60 bg-muted/20 px-3 py-2 text-xs">
+            <span className="text-muted-foreground">
+              {automationStatus?.running
+                ? tt('Automation is running…')
+                : automationStatus?.lastError
+                  ? `${tt('Last run had warnings')}: ${automationStatus.lastError}`
+                  : automationStatus?.finishedAt
+                    ? `${tt('Last run')}: ${new Date(automationStatus.finishedAt).toLocaleString()}`
+                    : tt('Automation is waiting for its first run.')}
+            </span>
+          </div>
           <label className="flex cursor-pointer items-center justify-between gap-3 text-sm">
             <span>
               {tt('Keep data fresh automatically')}
@@ -1088,7 +1175,9 @@ export function Settings() {
               <input
                 type="checkbox"
                 checked={settings?.automation.analyzeReplays ?? true}
-                onChange={(e) => update.mutate({ automation: { analyzeReplays: e.target.checked } })}
+                onChange={(e) =>
+                  update.mutate({ automation: { analyzeReplays: e.target.checked } })
+                }
               />
               {tt('Analyze replay command streams')}
             </label>
@@ -1100,8 +1189,26 @@ export function Settings() {
               />
               {tt('Warm public catalogues')}
             </label>
+            <label className="flex cursor-pointer items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={settings?.automation.discoverGameplay ?? true}
+                onChange={(e) =>
+                  update.mutate({ automation: { discoverGameplay: e.target.checked } })
+                }
+              />
+              {tt('Find public gameplay automatically')}
+            </label>
+            <label className="flex cursor-pointer items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={settings?.automation.syncSources ?? false}
+                onChange={(e) => update.mutate({ automation: { syncSources: e.target.checked } })}
+              />
+              {tt('Run source sync automatically')}
+            </label>
           </div>
-          <div className="grid gap-3 md:grid-cols-3">
+          <div className="grid gap-3 md:grid-cols-4">
             <label className="block space-y-1 text-sm">
               <span className="text-muted-foreground">{tt('Refresh interval')}</span>
               <select
@@ -1150,12 +1257,58 @@ export function Settings() {
                 ))}
               </select>
             </label>
+            <label className="block space-y-1 text-sm">
+              <span className="text-muted-foreground">{tt('Gameplay analyses per pass')}</span>
+              <select
+                value={settings?.automation.maxGameplayPerRun ?? 2}
+                onChange={(e) =>
+                  update.mutate({ automation: { maxGameplayPerRun: Number(e.target.value) } })
+                }
+                className="h-9 w-full rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {[1, 2, 5, 10].map((count) => (
+                  <option key={count} value={count}>
+                    {count}
+                  </option>
+                ))}
+              </select>
+            </label>
           </div>
           <p className="text-xs text-muted-foreground">
             {tt(
-              'Background work is serialized, cache-first and paused while AoE4 is running. Source files are never rewritten automatically.',
+              'Background work is serialized, cache-first and paused while AoE4 is running. Source files are only rewritten when automatic source sync is explicitly enabled.',
             )}
           </p>
+          <div className="space-y-2 border-t border-border pt-3">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-muted-foreground">
+              <span className="inline-flex items-center gap-1.5">
+                <Activity className="h-3.5 w-3.5" />
+                {automationStatus?.running ? tt('Running') : tt('Idle')}
+              </span>
+              <span>{tt('Last run')}: {automationTime(automationStatus?.finishedAt ?? null)}</span>
+              <span>{tt('Next run')}: {automationTime(automationStatus?.nextRunAt ?? null)}</span>
+            </div>
+            <div className="grid gap-1.5 sm:grid-cols-2 lg:grid-cols-3">
+              {(automationStatus?.tasks ?? []).map((task) => (
+                <div key={task.id} className="rounded-md border border-border/70 bg-background/20 px-2.5 py-2 text-xs">
+                  <div className="flex items-center gap-1.5 font-medium">
+                    <span className={cn(
+                      'h-1.5 w-1.5 rounded-full',
+                      task.state === 'running' && 'animate-pulse bg-primary',
+                      task.state === 'success' && 'bg-emerald-400',
+                      task.state === 'error' && 'bg-destructive',
+                      task.state === 'skipped' && 'bg-muted-foreground',
+                      task.state === 'idle' && 'bg-border',
+                    )} />
+                    <span>{tt(AUTOMATION_TASK_LABELS[task.id])}</span>
+                    {task.processed > 0 ? <span className="ml-auto tabular-nums text-muted-foreground">{task.processed}</span> : null}
+                  </div>
+                  {task.message ? <div className="mt-1 line-clamp-2 text-[10px] leading-relaxed text-muted-foreground">{task.message}</div> : null}
+                </div>
+              ))}
+            </div>
+            {automationStatus?.lastError ? <p className="text-xs text-destructive">{automationStatus.lastError}</p> : null}
+          </div>
         </CardContent>
       </Card>
 
@@ -1353,7 +1506,7 @@ function OverlayToggle({
   onChange: (checked: boolean) => void
 }) {
   return (
-    <div className="flex items-start justify-between gap-3 rounded-md border border-border/60 bg-secondary/20 p-3 transition-colors hover:border-primary/35">
+    <div className="flex min-h-[68px] items-start justify-between gap-3 py-3 transition-colors hover:text-foreground">
       <span className="min-w-0">
         <span className="block text-sm font-medium">{label}</span>
         <span className="mt-0.5 block text-[11px] leading-relaxed text-muted-foreground">
