@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "name": "Ottoman 1-3-1-1 (Beasty) Comandra Scheme",
+  "civilization": "Ottomans",
+  "author": "Comandra",
+  "source": "https://aoe4guides.com/builds/Fd0Y2MERgNSCzWNWKFLy",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "00.00",
+      "villager_count": 6,
+      "resources": {
+        "food": 1,
+        "wood": 3,
+        "gold": 1,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "00.35",
+      "villager_count": 6,
+      "resources": {
+        "food": 1,
+        "wood": 3,
+        "gold": 1,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/sheep.webp@@unit_worker/villager-ottomans.webp@-> 1st @building_economy/house.webp@ Shift back to @resource/sheep.webp@ (Close to TC 0 Squares in between)"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "02.00",
+      "villager_count": 11,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 1,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/sheep.webp@@unit_worker/villager-ottomans.webp@->@building_ottomans/military-school-1.webp@Shift back to @resource/sheep.webp@ (Aligned with TC) + (Close to TC 0 Squares in between)"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "03.00",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 1,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/sheep.webp@@unit_worker/villager-ottomans.webp@-> 2nd@building_economy/house.webp@Shift back to @resource/sheep.webp@ (Close to TC 0 Squares in between)"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "03.47",
+      "villager_count": 17,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 1,
+        "stone": 1,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/sheep.webp@4x@unit_worker/villager-ottomans.webp@ -> @landmark_ottomans/twin-minaret-medrese-1.webp@, Transfer 4x@resource/sheep.webp@@unit_worker/villager-ottomans.webp@ To @resource/resource_wood.webp@@unit_worker/villager-ottomans.webp@, @resource/rally.webp@@resource/resource_wood.webp@ until 10"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "04.00",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 1,
+        "stone": 1,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/resource_wood.webp@@unit_worker/villager-ottomans.webp@-> 3rd @building_economy/house.webp@ Shift back to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "04.50",
+      "villager_count": 21,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 1,
+        "stone": 2,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/resource_stone.webp@@unit_worker/villager-ottomans.webp@ has gathered 100 more @resource/resource_stone.webp@ move to @resource/resource_gold.webp@, 10 @unit_worker/villager-ottomans.webp@@resource/resource_wood.webp@ has been completed now @resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "05.30",
+      "villager_count": 21,
+      "resources": {
+        "food": 9,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "AGE UP COMPLETED PUT 5x@unit_worker/villager-ottomans.webp@ on @landmark_ottomans/twin-minaret-medrese-1.webp@@resource/berrybush.webp@, INSTA BUILD 2nd @building_ottomans/military-school-1.webp@ with@resource/sheep.webp@@unit_worker/villager-ottomans.webp@ (Aligned with TC) + (Opposite site of 1st mil school) +  (Close to TC 0 Squares in between)"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "05.35",
+      "villager_count": 22,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@ (Aligned with TC) in the middle of 2 @building_ottomans/military-school-1.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "05.55",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/archery-range.webp@@building_military/stable.webp@@technology_economy/double-broadaxe.webp@ if against CAVALARY CIV @building_military/barracks.webp@ instead of @building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "06.25",
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After Get 3x @unit_infantry/spearman-1.webp@ Get 1 @unit_ottomans/mehter-2.webp@ from @building_ottomans/military-school-1.webp@ after that turn to@unit_ottomans/sipahi-2.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "07.05",
+      "villager_count": 27,
+      "resources": {
+        "food": 14,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/horticulture.webp@ when finished remove 1 @unit_worker/villager-ottomans.webp@ from @landmark_ottomans/twin-minaret-medrese-1.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "08.00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "You've put enough pressure to opponent they had to make units.",
+        "Now decide if you wanna put another @building_military/stable.webp@@building_military/archery-range.webp@ and commit to all in.",
+        "Or slowly go for @landmark_ottomans/mehmed-imperial-armory-2.webp@"
+      ]
+    }
+  ],
+  "description": "https://www.youtube.com/watch?v=T-VYM1UBz4A\nInfo I gathered from this video. I put it in a way I would like to see it.",
+  "video": "https://www.youtube.com/embed/T-VYM1UBz4A",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "name": "Marinelord - 2 TC Song",
+  "civilization": "Chinese",
+  "author": "Sharp'",
+  "source": "https://aoe4guides.com/builds/URI0BOpaXGnWkJsFBlQY",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All @unit_worker/villager-china.webp@@abilities/repair.png@@building_economy/mill.png@ next to @building_economy/town-center.png@ and gather @resource/sheep.png@ for taxes",
+        "@resource/rally.png@@resource/resource_gold.png@(until 2)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "First @unit_worker/villager-china.webp@@abilities/repair.png@@building_economy/house.png@@building_economy/mining-camp.png@ on @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 2 on @resource/resource_gold.webp@, @resource/rally.png@@resource/sheep.png@ (until 10)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 10 on @resource/resource_food.webp@, @resource/rally.png@@resource/gaiatreeprototypetree.png@(until 2)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@age/age_2.webp@@landmark_chinese/imperial-academy.png@ with 3 @resource/sheep.png@@unit_worker/villager-china.png@",
+        "(try to cover as much resources as possible close to TC)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "When 2 on @resource/gaiatreeprototypetree.webp@, @resource/rally.png@@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "03:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 12,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Put @landmark_chinese/imperial-academy.webp@@unit_worker/villager-china.png@ back to @resource/sheep.png@",
+        "Queue 2 @unit_chinese/imperial-official.png@ from @landmark_chinese/imperial-academy.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "03:50",
+      "villager_count": 17,
+      "resources": {
+        "food": 13,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "First @unit_chinese/imperial-official.webp@ get taxes from @building_economy/mill.png@ then @ability_chinese/supervise.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:10",
+      "villager_count": 18,
+      "resources": {
+        "food": 14,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Second @unit_chinese/imperial-official.webp@ roam free for taxes"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 12,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "3 @resource/sheep.webp@@unit_worker/villager-china.png@ @abilities/repair.png@@landmark_chinese/barbican-of-the-sun.png@",
+        "Queue 3rd @unit_chinese/imperial-official.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:40",
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 6,
+        "builder": 3
+      },
+      "notes": [
+        "Remacro for 2nd @building_economy/town-center.webp@",
+        "Remove @resource/resource_gold.png@@unit_worker/villager-china.png@, leave 4 @unit_worker/villager-china.png@@resource/resource_food.png@",
+        "Split them between @resource/resource_wood.png@/@resource/resource_stone.png@ (you should always have 1 or 2 more vills on wood than stone)",
+        "@ability_chinese/supervise.png@@building_economy/lumber-camp.png@ and @building_economy/mining-camp.png@@resource/resource_stone.png@ with @unit_chinese/imperial-official.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:30",
+      "villager_count": 23,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/town-center.png@ with @resource/resource_stone.png@@unit_worker/villager-china.png@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/6W71yXOEJmY",
+  "season": 7,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

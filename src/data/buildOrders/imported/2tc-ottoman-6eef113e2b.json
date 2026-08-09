@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 1,
+  "name": "2TC Ottoman",
+  "civilization": "Ottomans",
+  "author": "Swing",
+  "source": "https://aoe4guides.com/builds/a3RKgmLkPdkLSaR3OCpj",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "Start: 5@unit_worker/villager-ottomans.webp@@resource/resource_stone.png@ 1@unit_worker/villager-ottomans.png@@resource/sheep.png@@resource/resource_food.png@",
+        "Rally TC to food until 9@unit_worker/villager-ottomans.png@@resource/sheep.png@@resource/resource_food.png@",
+        "Goal is to get 50 stone mined (=1 run without building mining camp -> enough stone for military school)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Move 5@unit_worker/villager-ottomans.webp@@resource/resource_stone.png@ to @resource/resource_wood.png@ (until 50 wood = with 5 villagers it means 1 run)",
+        "Move 2 @unit_worker/villager-ottomans.png@@resource/sheep.png@@resource/resource_food.png@ to build @building_ottomans/military-school-1.png@ (build military buildings in back of your base to not lose it if pushed)",
+        "Wood villagers are then moved to food, workers that were building military school too and one of them builds house"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Move 5 @unit_worker/villager-ottomans.webp@@resource/resource_wood.png@ to @resource/sheep.png@@resource/resource_food.png@",
+        "When military school is finished -> 1@unit_worker/villager-ottomans.png@ from @building_ottomans/military-school-1.png@ builds @building_economy/house.png@ (do not build house where you are going to build military buildings so they are in blacksmith bonus range)",
+        "1@unit_worker/villager-ottomans.png@ from @building_economy/house.png@ goes to @resource/sheep.png@@resource/resource_food.png@ (so there will be 9 vills on food)",
+        "Change TC rally point to @resource/resource_gold.png@ until 3@unit_worker/villager-ottomans.png@",
+        "Our target at this stage is to have 9 food and 3 gold vills"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 9@unit_worker/villager-ottomans.webp@@resource/sheep.png@@resource/resource_food.png@ and 3@unit_worker/villager-ottomans.png@@resource/resource_gold.png@ (until 200 gold)",
+        "Rally TC to food until age up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 11,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 200 @resource/resource_gold.webp@ move 3@unit_worker/villager-ottomans.png@@resource/resource_gold.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with @landmark_ottomans/twin-minaret-medrese-1.webp@ with 5@unit_worker/villager-ottomans.png@ from @resource/sheep.png@@resource/resource_food.png@",
+        "- Build Twin Minaret right next to TC but not too close to berries, so workers on Minaret are not in rage of berries",
+        "- Do not build it in the place where you will place military buildings",
+        "Twin Minaret can support 5@unit_worker/villager-ottomans.png@",
+        "When @technology_economy/horticulture.png@ researched, reduce it to 4@unit_worker/villager-ottomans.png@, when @technology_economy/fertilization.png@ researched, reduce them to 3@unit_worker/villager-ottomans.png@ or just keep 4 all the time to make it easier"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "During age up, move 4@unit_worker/villager-ottomans.webp@@resource/sheep.png@@resource/resource_food.png@ to @resource/resource_wood.png@ and build @building_economy/lumber-camp.png@",
+        "Rally TC to @resource/resource_wood.png@ until 8",
+        "Chop 2@resource/gaiatreeprototypetree.png@ next to TC"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 6,
+        "builder": 5
+      },
+      "notes": [
+        "1@unit_worker/villager-ottomans.webp@@resource/resource_wood.png@ builds @building_economy/house.png@ then moves to build @building_economy/mining-camp.png@ at @resource/resource_stone.png@",
+        "When 2 trees chopped, move 5@unit_worker/villager-ottomans.png@@resource/resource_wood.png@ to @resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 5,
+        "wood": 10,
+        "gold": 0,
+        "stone": 6,
+        "builder": -1
+      },
+      "notes": [
+        "5 @unit_worker/villager-ottomans.webp@ from age up stay on@landmark_ottomans/twin-minaret-medrese-1.png@ (see more above about villagers on Minaret)",
+        "Switch @building_ottomans/military-school-1.png@ to Sipahi and harras",
+        "Move 4@unit_worker/villager-ottomans.png@ from @resource/sheep.png@ @resource/resource_food.png@ to  @resource/resource_wood.png@",
+        "Rally TC to @resource/resource_stone.png@ until 650@resource/resource_stone.png@ for 2TC",
+        "350 stone is for 2TC and 300 is for military schools"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 0,
+        "stone": 9,
+        "builder": 8
+      },
+      "notes": [
+        "Build 2TC with 8@unit_worker/villager-ottomans.webp@ on @resource/resource_gold.png@",
+        "Rally TC to wood"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 650@resource/resource_stone.webp@ move @unit_worker/villager-ottomans.png@@resource/resource_stone.png@ to @resource/resource_wood.png@ and @resource/sheep.png@@resource/resource_food.png@",
+        "Workers that were building 2TC go to @resource/resource_gold.png@",
+        "Rally TC to food",
+        "Rally 2TC to gold",
+        "Target at this stage is to have 8 on wood, 8 on gold and rest on food with TC rally point to food"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 27,
+      "resources": {
+        "food": 11,
+        "wood": 7,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager-ottomans.webp@@resource/resource_wood.png@ builds @building_ottomans/military-school-1.png@ and  @building_technology/blacksmith.png@",
+        "Get @technology_economy/wheelbarrow.png@ and @technology_economy/double-broadaxe.png@",
+        "Build @building_economy/house.png@",
+        "Then get @technology_economy/horticulture.png@ and @technology_military/iron-undermesh.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "What to do next",
+        "- We can age up to Castle (with 8 villagers)",
+        "or",
+        "- Stables and knights",
+        "or",
+        "- barracks, archer ranges and MAA (we do not want to produce janissaries until enemy has cavalry)",
+        "or",
+        "- if opponent has cavalry we want to age up and get janissaries",
+        "or",
+        "- get relics"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Vizier points",
+        "With first @age/vizier_point.webp@ we get sheeps, so we can place 2TC on gold because we have safe food",
+        "With second @age/vizier_point.png@ we get +1 military schools"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Vs some civs",
+        "@civilization_flag/eng.webp@ Do not go military school that soon if you play against English and instead age up quicker",
+        "@civilization_flag/rus.png@ If against Rus - you can kill him some wolfs with spearman to deny bounty",
+        "@civilization_flag/fre.png@@civilization_flag/jda.png@ Be annoying at their gold with spearman",
+        "@civilization_flag/abb.png@ Be annoying at gold and stone",
+        "Knight civs (@civilization_flag/jda.png@@civilization_flag/fre.png@@civilization_flag/rus.png@)",
+        "- When we age up, we make barracks and upgrade spearman to defend"
+      ]
+    }
+  ],
+  "description": "2TC Ottoman Beasty guide (February 2024)\n- Can be play +- vs any civ\n\nMatchups:\n- English - hardest - they push too fast with LB and military school produces spearman \n- Zhu Xi and China - rough",
+  "video": "https://www.youtube.com/embed/GR1YprGU1go",
+  "season": 6,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

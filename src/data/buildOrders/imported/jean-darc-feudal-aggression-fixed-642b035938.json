@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "name": "Jean D'arc - Feudal Aggression FIXED",
+  "civilization": "Jeanne d'Arc",
+  "author": "Waarmy",
+  "source": "https://aoe4guides.com/builds/FS6nClHslGV4B2hqn4SX",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@  Builds @building_economy/house.png@ > @building_economy/mining-camp.png@ and mines gold"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 Villagers to Food @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:15",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Next 2 to Gold @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Next 2 to Food@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:20",
+      "villager_count": 11,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @landmark_french/school-of-cavalry.webp@ with  @unit_jeanne/jeanne-darc-peasant-1.webp@+1@resource/sheep.webp@@unit_worker/villager.webp@ -> @abilities/repair.webp@@landmark_french/school-of-cavalry.webp@ &gt; Rally to@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:25",
+      "villager_count": 17,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:40",
+      "villager_count": 21,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/archery-range.webp@ when you can to protect Knights from spears"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 9,
+        "wood": 10,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Upgrade Jean > @unit_jeanne/jeanne-darc-peasant-1.webp@ &gt; @unit_jeanne/jeanne-darc-woman-at-arms-2.webp@ &gt; send to fight"
+      ]
+    }
+  ],
+  "description": "Early Knight build order *Credit to OneofNine",
+  "video": "https://www.youtube.com/embed/_Dk5v-ee73k",
+  "season": 10,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

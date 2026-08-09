@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "name": "Malian 2TC ",
+  "civilization": "Malians",
+  "author": "Asmitha",
+  "source": "https://aoe4guides.com/builds/j0fJCjgPHJGrQ1F781fW",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/gaiatreeprototypetree.webp@ for 25 @resource/resource_wood.webp@ -> @resource/sheep.webp@",
+        "5 @unit_worker/villager-malians.webp@@resource/gaiatreeprototypetree.webp@ -&gt; @resource/sheep.webp@",
+        "1 @unit_worker/villager-malians.webp@@building_malians/pit-mine-1.webp@& 6 @building_economy/house.webp@ + 10 @resource/resource_gold.webp@ -&gt; @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 13,
+      "resources": {
+        "food": 12,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "with 4 @unit_worker/villager-malians.webp@@abilities/repair.webp@ -> back on @resource/resource_food.webp@",
+        "@landmark_malians/saharan-trade-network-1.webp@ against aggressive @civilization_flag/byz.webp@@civilization_flag/fre.webp@@civilization_flag/mac.webp@@civilization_flag/del.webp@@civilization_flag/goh.webp@ or bad spawn",
+        "@landmark_malians/mansa-quarry-2.webp@ against passif @civilization_flag/eng.webp@",
+        "All on @resource/resource_wood.webp@ but 4 On @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@building_economy/lumber-camp.webp@+@building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "8 @unit_worker/villager-malians.webp@from @resource/resource_wood.webp@ @building_economy/town-center.webp@ @resource/deer.webp@ > @resource/resource_wood.webp@&gt;@resource/resource_gold.webp@",
+        "(1-2+)@building_military/barracks.webp@ -&gt; @unit_malians/donso-1.webp@ against Cav / @unit_malians/musofadi-warrior-2.webp@ against MMA",
+        "@resource/rally.webp@@resource/resource_gold.webp@",
+        "@technology_economy/wheelbarrow.webp@@resource/cattle.webp@, @building_malians/pit-mine-1.webp@7@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_malians/farimba-garrison-2.webp@for @unit_malians/musofadi-mansa.webp@and @unit_malians/freeborn-mansa.webp@against range",
+        "@unit_religious/monk-3.webp@ @resource/relics.webp@, swarm",
+        "@landmark_malians/griot-bara-3.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/kUiUjUKHAHs",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

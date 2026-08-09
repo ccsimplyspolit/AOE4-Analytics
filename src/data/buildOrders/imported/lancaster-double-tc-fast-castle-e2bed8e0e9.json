@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "name": "Lancaster double TC-Fast Castle ",
+  "civilization": "House of Lancaster",
+  "author": "Dreallix",
+  "source": "https://aoe4guides.com/builds/ZxUb1KwIHxCBXm2HU4wh",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ build @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "next @unit_worker/villager.webp@ go @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@ rally point on @resource/sheep.webp@ until age up with @landmark_english/abbey-of-kings.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ build @building_economy/house.webp@ near @resource/sheep.webp@ but not near your future @building_lancaster/manor.webp@",
+        "between your @resource/sheep.webp@ and your @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "age up with @unit_worker/villager.webp@ from your @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": 2
+      },
+      "notes": [
+        "put 5 @unit_worker/villager.webp@ from your @resource/sheep.webp@ on your @resource/resource_stone.webp@, you need 400"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 0,
+        "stone": 5,
+        "builder": 2
+      },
+      "notes": [
+        "let 3 @unit_worker/villager.webp@ on @resource/sheep.webp@ and rally point on @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 0,
+        "stone": 5,
+        "builder": 2
+      },
+      "notes": [
+        "don't forget to build @building_economy/house.webp@, you don't want to be pop cap"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 19,
+      "resources": {
+        "food": 3,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "@abilities/repair.webp@ your @building_economy/town-center.webp@ with 5 @unit_worker/villager.webp@ from @resource/resource_stone.webp@ and 2 @unit_worker/villager.webp@ from @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 3,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "when @resource/gaiatreeprototypetree.webp@ near your 1st @building_economy/town-center.webp@ fade you can @abilities/repair.webp@ @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "rally point from your 1st @building_economy/town-center.webp@ on @resource/sheep.webp@ and @abilities/repair.webp@ your @building_lancaster/manor.webp@ with @unit_worker/villager.webp@ from @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 16,
+        "wood": 0,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@ who build go on @resource/sheep.webp@ 2nd @building_economy/town-center.webp@ rally point on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 34,
+      "resources": {
+        "food": 22,
+        "wood": 0,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with @landmark_english/the-white-tower.webp@"
+      ]
+    }
+  ],
+  "description": "BO by Jeando ",
+  "video": "https://www.youtube.com/embed/Ypo5msKpeck",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

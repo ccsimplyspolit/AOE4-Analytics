@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 1,
+  "name": "[BeastyqtSC2] 2TC+Feudal 3:33 min by betelgeuse",
+  "civilization": "Ayyubids",
+  "author": "betelgeuse",
+  "source": "https://aoe4guides.com/builds/n5y7lyeOG029K1uLvEKl",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "[  6  ] VILLAGER @unit_worker/villager-abbasid.webp@ ON SHEEP @resource/sheep.webp@",
+        "RALLY NEXT [  2  ] VILLAGERS @unit_worker/villager-abbasid.webp@ @resource/rally.webp@ ON TREE NEAR BASE @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:05",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "[  1  ] VILLAGER (any)  @unit_worker/villager-abbasid.webp@ TO BUILD @abilities/repair.webp@ HOUSE OF WISDOM @landmark_abbasid/house-of-wisdom.webp@ *NEAR BASE ---->&gt;&gt;",
+        "----&gt;&gt;&gt; THEN SAME VILLAGER @unit_worker/villager-abbasid.webp@ BUILD@abilities/repair.webp@ HOUSE @building_economy/house.webp@ + MINING CAMP @building_economy/mining-camp.webp@ ON STONE @resource/resource_stone.webp@",
+        "*** build mining camp last and put everything close so villager dont waste time ***",
+        "*** after finishing building mining camp put that villager on stone using shift command ***"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:45",
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "RALLY NEXT [  4  ] VILLAGERS  @unit_worker/villager-abbasid.webp@ @resource/rally.webp@ -> STONE @resource/resource_stone.webp@",
+        "*** 1st builder finished house of wisdom and started building house"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:15 ",
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 0,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": [
+        "AFTER FINISHING @unit_worker/villager-abbasid.webp@ @abilities/repair.webp@BUILDING VILLAGER ---->&gt;&gt; GOES TO MINING CAMP @building_economy/mining-camp.webp@ ON STONE@resource/resource_stone.webp@",
+        "*** If you made everything right 1st villager that will start mining stone will finish gathering 10stone before mining camp finishes building ---&gt;&gt; so you need to right click on mine camp with that villager when he finishes gathering or you will waste some time ***"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "AGE UP CULTURAL WING  @age/age_2.webp@@technology_ayyubids/culture-wing-advancement-1.webp@",
+        "!!! DON'T cancel Villager [#10] and [#11] to do faster age up -- Make sure you have enough food to -- ALWAYS produce new villagers and don't forget to queue them !!!"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:45",
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "WHEN [  4  ] VILLAGERS @unit_worker/villager-abbasid.webp@ ON STONE @resource/resource_stone.webp@---->&gt;&gt; MOVE [  1  ] VILLAGER @unit_worker/villager-abbasid.webp@ FROM SHEEP @resource/sheep.webp@ TO STRAGGLER TREE @resource/gaiatreeprototypetree.webp@ !!!!!! BUT REMOVE ONLY WHEN YOU HAVE NEXT VILLAGER QUEUED UP !!!!!!!",
+        "RALLY NEW VILLAGERS @unit_worker/villager-abbasid.webp@ @resource/rally.webp@ ----&gt;&gt;&gt; ON WOOD @resource/gaiatreeprototypetree.webp@ UNTILL [  7  ]",
+        "***Make sure you rally on the last tree with most wood in it so your villagers don't spend extra time to run around the base***"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50+",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "Age up @age/age_2.webp@ Completed at 2:50 - 3:00"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:30+",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "AFTER 7 ON WOOD --->&gt;&gt; @resource/rally.webp@-&gt; @resource/sheep.webp@ UNTILL 8"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:33",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "1) WHEN [  900  ]  STONE LEFT IN STONE MINE  @building_economy/mining-camp.webp@  @resource/resource_stone.webp@  FORCE DROP RESOURCES with 4 VILLAGERS",
+        "OR",
+        "2) WHEN YOU HAVE [  300  ] STONE  @resource/resource_stone.webp@",
+        "-> TAKE ALL [  4   ] VILLAGERS @unit_worker/villager-abbasid.webp@ FROM STONE MINE @building_economy/mining-camp.webp@ @resource/resource_stone.webp@",
+        "-&gt;  TAKE [  5  ]  VILLAGERS @unit_worker/villager-abbasid.webp@ FROM WOOD @resource/gaiatreeprototypetree.webp@",
+        "---&gt;&gt;&gt; BUILD @abilities/repair.webp@ SECOND TC @building_economy/town-center.webp@  (BUILD ON WOOD/GOLD, BOTH - PERFECT)",
+        "*** try to leave area for @building_economy/farm.webp@ near both @building_economy/town-center.webp@ ***",
+        "*** shift command builders to gather near wood ***"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:40+",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "@resource/rally.webp@ NEW VILLAGERS ON WOOD @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:10+",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "WHEN THERE IS NO MORE STRAGG TREES @resource/gaiatreeprototypetree.webp@ MOVE [  2  ] VILL @unit_worker/villager-abbasid.webp@ @resource/gaiatreeprototypetree.webp@ --->&gt;&gt; TO @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30+",
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2ND @building_economy/town-center.webp@ IS FINISHED, MOVE BUILDERS@unit_worker/villager-abbasid.webp@  --->&gt;&gt;TO @resource/resource_wood.webp@ NEAR 2ND @building_economy/town-center.webp@ (we save wood for lumber camp)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ ---->&gt;&gt; @resource/resource_gold.webp@ UNTILL [  3  ]",
+        "1st  @unit_worker/villager-abbasid.webp@ BUILD @building_economy/mill.webp@ ON @resource/berrybush.webp@ THEN ----&gt;&gt;&gt; BUILD @abilities/repair.webp@@building_economy/mining-camp.webp@  ON @resource/resource_gold.webp@ (consider @building_defensive/outpost.webp@ for both)",
+        "THEN BUILDER @unit_worker/villager-abbasid.webp@@abilities/repair.webp@ GOES TO ---&gt;&gt;&gt; @building_economy/mining-camp.webp@ @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~5:30",
+      "villager_count": 23,
+      "resources": {
+        "food": 8,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "(Building whatever you decided depending your strategy, read below)",
+        "@resource/rally.webp@ ->@resource/resource_food.webp@ UNTILL [  20-22 ] to produce villagers and army without problems"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~10:00",
+      "villager_count": 48,
+      "resources": {
+        "food": 20,
+        "wood": 25,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "TO AGE UP SPLIT VILLAGERS FROM WOOD @resource/resource_wood.webp@ ---->&gt;&gt; TO FOOD @resource/resource_food.webp@ AND GOLD @resource/resource_gold.webp@ (depending what you need)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:30",
+      "villager_count": 49,
+      "resources": {
+        "food": 25,
+        "wood": 4,
+        "gold": 20,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "AFTER YOU HAVE ENOUGH RESOURSES ---->&gt;&gt; START AGE UP @age/age_3.webp@ AND:",
+        "/EITHER BRING VILLAGERS  @unit_worker/villager-abbasid.webp@ BACK FROM @building_economy/mining-camp.webp@ @resource/resource_gold.webp@ TO @resource/resource_wood.webp@  AND RALLY GOLD @resource/rally.webp@@resource/resource_gold.webp@",
+        "/EITHER RALLY BOTH TC ON WOOD @resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "Based on video guide made by BeastyqtSC2 (link below) - made by betelgeuse",
+  "video": "https://www.youtube.com/embed/rqJS6mzAho4",
+  "season": 13,
+  "map": "Open",
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

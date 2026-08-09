@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "name": "Miliwing Stable 2TC (2026)",
+  "civilization": "Abbasid Dynasty",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/7NhTCEH8cuzlYchz9g7O",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager-abbasid.webp@ to @resource/berrybush.png@ (build a @building_economy/mill.png@ + @building_economy/house.png@ )"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Add 1 @unit_worker/villager-abbasid.webp@ to @resource/sheep.png@ (construct a @landmark_abbasid/house-of-wisdom.png@ with this vill)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:40",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Add 3 new @unit_worker/villager-abbasid.webp@ to @resource/resource_gold.png@ (build @building_economy/mining-camp.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Add new @unit_worker/villager-abbasid.webp@ to @resource/sheep.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Click up with @landmark_abbasid/military-wing.webp@ and remacro"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally Wood. Leave all vills on @resource/berrybush.webp@. Rest of @resource/sheep.png@@unit_worker/villager-abbasid.png@ go to @resource/gaiatreeprototypetree.png@ then woodline."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Take all 3 @resource/resource_gold.webp@@unit_worker/villager-abbasid.png@ and put on @resource/resource_stone.png@@building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 0,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 16,
+      "resources": {
+        "food": 6,
+        "wood": 7,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@ then 2 @building_economy/house.png@ + @building_economy/lumber-camp.png@ for @age/goldenagetier1.png@. Remember @technology_abbasid/fresh-foodstuffs.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 20,
+      "resources": {
+        "food": 6,
+        "wood": 11,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Full produce @unit_cavalry/horseman-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:05",
+      "villager_count": 24,
+      "resources": {
+        "food": 6,
+        "wood": 15,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Drop off stone when 850/1200 then build 2nd @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "From here on out, you are most likely going to be playing mass units. Add on more production.",
+        "@building_military/barracks.webp@ -> @building_military/archery-range.png@ -&gt; @building_technology/blacksmith.png@ eventually more if long feudal."
+      ]
+    }
+  ],
+  "description": "See video link for guide",
+  "video": "https://www.youtube.com/embed/zlFwOhCfX3M",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,629 @@
+/**
+ * Conservative decoder for the command stream at the end of an AoE4 `.rec`.
+ *
+ * The stream is not game memory and contains no live state: it is the recorded
+ * deterministic input feed.  The layout is version-sensitive, so this module
+ * only trusts fields documented by the AoE4World replay templates.  Unknown
+ * command types are skipped by their declared size and reported in coverage.
+ */
+
+import type { ReplayInfo } from './replay'
+
+const REPLAY_MAGIC = 'AOE4_RE'
+const CHUNKY_MAGIC = 'Relic Chunky'
+const CHUNKY_FILE_HEADER_SIZE = 24
+const CHUNK_HEADER_SIZE = 20
+const GAME_TICK_RECORD = 0
+const CHAT_RECORD = 1
+const COMMAND_HEADER_SIZE = 24
+const IDLE_GAP_THRESHOLD_SEC = 5
+const ACTIVITY_WINDOW_SEC = 300
+const MAX_ANALYZED_BYTES = 100 * 1024 * 1024
+
+export type ReplayAnalysisCoverage = 'full' | 'partial' | 'header-only' | 'unavailable'
+
+export interface ReplayDataLocation {
+  streamOffset: number
+  /** Chunky file version of the replay-data container when it was readable. */
+  chunkyVersion: number | null
+}
+
+export interface ReplayCommandEvent {
+  offset: number
+  tick: number
+  timeSec: number
+  hostComputerId: number
+  playerId: number
+  commandType: number
+  commandName: string
+  queued: boolean
+  playerCommandCount: number
+  payloadBytes: number
+  unitIds: number[]
+  /** PBGID of the queued unit/technology when the command carries one. */
+  pbgid: number | null
+  /** Best-effort production building id from the queue command attribute. */
+  productionBuildingId: number | null
+  queueCount: number | null
+  known: boolean
+}
+
+export interface ReplayPlayerCommandStats {
+  playerId: number
+  commandCount: number
+  knownCommandCount: number
+  unknownCommandCount: number
+  /** Number of observable command gaps longer than five seconds. */
+  commandGapCount: number
+  firstCommandSec: number | null
+  lastCommandSec: number | null
+  /** Sum of observable command gaps longer than five seconds. Not villager idle. */
+  commandGapSec: number
+  maxCommandGapSec: number
+  /** Percentage of this player's decoded commands with a known command type. */
+  knownCommandPct: number | null
+  apm: number
+  commandTypes: Record<string, number>
+  /** Five-minute command-rate windows. This is an activity read, not a skill score. */
+  activityWindows: ReplayActivityWindow[]
+  /** Change from the first to last observed activity window, when two exist. */
+  activityDropPct: number | null
+}
+
+export interface ReplayActivityWindow {
+  startSec: number
+  endSec: number
+  commandCount: number
+  knownCommandPct: number | null
+  apm: number
+}
+
+export interface ReplayDataGap {
+  code: 'no-stream' | 'truncated-record' | 'invalid-record' | 'unknown-command' | 'event-cap'
+  message: string
+  offset: number | null
+}
+
+export interface ReplayCommandAnalysis {
+  coverage: ReplayAnalysisCoverage
+  format: 'aoe4-replay-data-v1'
+  streamOffset: number | null
+  streamBytes: number
+  recordsParsed: number
+  ticksParsed: number
+  durationSec: number | null
+  commandCount: number
+  unknownCommandCount: number
+  eventsTruncated: boolean
+  events: ReplayCommandEvent[]
+  players: ReplayPlayerCommandStats[]
+  dataGaps: ReplayDataGap[]
+}
+
+export interface ReplayAnalysisResult {
+  id: string
+  source: 'local' | 'cached'
+  sourcePath: string
+  recordedAtMs: number
+  info: ReplayInfo | null
+  commandStream: ReplayCommandAnalysis
+}
+
+interface Reader {
+  bytes: Uint8Array
+  view: DataView
+}
+
+function makeReader(bytes: Uint8Array): Reader {
+  return { bytes, view: new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength) }
+}
+
+function canRead(reader: Reader, offset: number, size: number, end = reader.bytes.length): boolean {
+  return offset >= 0 && size >= 0 && offset + size <= end
+}
+
+function u8(reader: Reader, offset: number): number {
+  return reader.view.getUint8(offset)
+}
+
+function u16(reader: Reader, offset: number): number {
+  return reader.view.getUint16(offset, true)
+}
+
+function i16(reader: Reader, offset: number): number {
+  return reader.view.getInt16(offset, true)
+}
+
+function u32(reader: Reader, offset: number): number {
+  return reader.view.getUint32(offset, true)
+}
+
+function i32(reader: Reader, offset: number): number {
+  return reader.view.getInt32(offset, true)
+}
+
+function ascii(bytes: Uint8Array, offset: number, length: number): string {
+  let value = ''
+  for (let i = 0; i < length && offset + i < bytes.length; i++)
+    value += String.fromCharCode(bytes[offset + i]!)
+  return value
+}
+
+const COMMAND_NAMES: Record<number, string> = {
+  3: 'queue-unit',
+  5: 'unknown-5',
+  7: 'unknown-7',
+  12: 'rally-point',
+  14: 'return-to-work',
+  16: 'research',
+  20: 'unknown-20',
+  22: 'unknown-22',
+  56: 'unknown-56',
+  62: 'move',
+  63: 'cancel',
+  65: 'build',
+  66: 'unknown-66',
+  67: 'queue-villager-or-unknown',
+  71: 'attack-move',
+  72: 'unit-ability',
+  73: 'seek-shelter',
+  76: 'unknown-76',
+  96: 'unknown-96',
+  105: 'gather-or-return-to-resource',
+  108: 'unknown-108',
+  109: 'unit-stance',
+  114: 'unknown-114',
+  116: 'patrol',
+  123: 'build-area-or-placement',
+  130: 'unknown-130',
+  139: 'unknown-139',
+  143: 'surrender-or-global',
+  145: 'unknown-145',
+  146: 'pre-command',
+  148: 'post-command',
+  152: 'periodic-1',
+  153: 'periodic-2',
+  154: 'periodic-3',
+}
+
+const UNIT_SELECTION_COMMANDS = new Set([62, 63, 65, 67, 71, 72, 73, 109, 114, 116])
+
+/**
+ * Locate the raw replay stream after the replay-data Relic Chunky container.
+ * AoE4 currently writes a small POST container first and the replay-data
+ * container second; selecting a candidate only when the following bytes look
+ * like a game-tick record keeps old/new headers from being confused.
+ */
+export function locateReplayData(bytes: Uint8Array): ReplayDataLocation | null {
+  if (bytes.length < 12) return null
+  if (ascii(bytes, 4, REPLAY_MAGIC.length) !== REPLAY_MAGIC) return null
+
+  let candidate = -1
+  let candidateVersion: number | null = null
+  for (let offset = 0; offset + CHUNKY_FILE_HEADER_SIZE <= bytes.length; offset++) {
+    if (bytes[offset] !== CHUNKY_MAGIC.charCodeAt(0)) continue
+    if (ascii(bytes, offset, CHUNKY_MAGIC.length) !== CHUNKY_MAGIC) continue
+    const reader = makeReader(bytes)
+    const version = u32(reader, offset + 16)
+    let cursor = offset + CHUNKY_FILE_HEADER_SIZE
+    let nodeCount = 0
+    while (canRead(reader, cursor, CHUNK_HEADER_SIZE)) {
+      const kind = ascii(bytes, cursor, 4)
+      if (kind !== 'FOLD' && kind !== 'DATA') break
+      const dataSize = u32(reader, cursor + 12)
+      const nameLength = u32(reader, cursor + 16)
+      const dataStart = cursor + CHUNK_HEADER_SIZE + nameLength
+      if (!canRead(reader, dataStart, dataSize)) {
+        cursor = -1
+        break
+      }
+      cursor = dataStart + dataSize
+      nodeCount += 1
+    }
+    if (cursor < 0 || nodeCount === 0 || cursor >= bytes.length) continue
+    if (isLikelyGameTick(reader, cursor)) {
+      candidate = cursor
+      candidateVersion = version
+    }
+  }
+  return candidate >= 0 ? { streamOffset: candidate, chunkyVersion: candidateVersion } : null
+}
+
+function isLikelyGameTick(reader: Reader, offset: number): boolean {
+  if (!canRead(reader, offset, 21)) return false
+  if (u32(reader, offset) !== GAME_TICK_RECORD) return false
+  const size = u32(reader, offset + 4)
+  if (size < 13 || size > reader.bytes.length - offset - 8) return false
+  return u8(reader, offset + 8) === 0x20 && u32(reader, offset + 9) < 0x7fffffff
+}
+
+function selectedUnits(reader: Reader, offset: number, end: number): number[] {
+  if (!canRead(reader, offset, 1, end)) return []
+  const marker = u8(reader, offset)
+  if (marker === 32) {
+    if (!canRead(reader, offset + 1, 3, end)) return []
+    // Single-unit selection is stored in reverse byte order.
+    return [
+      ((u8(reader, offset + 1) << 16) | (u8(reader, offset + 2) << 8) | u8(reader, offset + 3)) >>>
+        0,
+    ]
+  }
+  const count =
+    marker > 64 && marker < 128 ? marker - 64 : marker === 128 ? u8(reader, offset + 1) : 0
+  if (count <= 0 || count > 128) return []
+  const start = marker === 128 ? offset + 2 : offset + 1
+  if (!canRead(reader, start, count * 4, end)) return []
+  const ids: number[] = []
+  for (let i = 0; i < count; i++)
+    ids.push(
+      (u8(reader, start + i * 4) |
+        (u8(reader, start + i * 4 + 1) << 8) |
+        (u8(reader, start + i * 4 + 2) << 16)) >>>
+        0,
+    )
+  return ids
+}
+
+function parseCommandPayload(
+  reader: Reader,
+  commandType: number,
+  payloadStart: number,
+  commandEnd: number,
+): {
+  unitIds: number[]
+  pbgid: number | null
+  productionBuildingId: number | null
+  queueCount: number | null
+} {
+  if (commandType === 3) {
+    // QueueUnitCommand: attribute(16), queue count, unit pbgid, player id, 0.
+    const attr = canRead(reader, payloadStart, 6, commandEnd) ? u8(reader, payloadStart) : -1
+    return {
+      unitIds: [],
+      pbgid: canRead(reader, payloadStart + 7, 4, commandEnd)
+        ? i32(reader, payloadStart + 7)
+        : null,
+      productionBuildingId:
+        attr === 16 && canRead(reader, payloadStart + 1, 4, commandEnd)
+          ? i32(reader, payloadStart + 1)
+          : null,
+      queueCount: canRead(reader, payloadStart + 6, 1, commandEnd)
+        ? u8(reader, payloadStart + 6)
+        : null,
+    }
+  }
+  if (UNIT_SELECTION_COMMANDS.has(commandType)) {
+    return {
+      unitIds: selectedUnits(reader, payloadStart, commandEnd),
+      pbgid: null,
+      productionBuildingId: null,
+      queueCount: null,
+    }
+  }
+  return { unitIds: [], pbgid: null, productionBuildingId: null, queueCount: null }
+}
+
+function commandEvent(
+  reader: Reader,
+  offset: number,
+  tick: number,
+  hostComputerId: number,
+  end: number,
+): ReplayCommandEvent | null {
+  if (!canRead(reader, offset, COMMAND_HEADER_SIZE, end)) return null
+  const size = i16(reader, offset)
+  if (size < COMMAND_HEADER_SIZE || !canRead(reader, offset, size, end)) return null
+  const commandType = u8(reader, offset + 2)
+  const playerCommandCount = u16(reader, offset + 4)
+  const playerId = u32(reader, offset + 20)
+  const payloadStart = offset + COMMAND_HEADER_SIZE
+  const payload = parseCommandPayload(reader, commandType, payloadStart, offset + size)
+  return {
+    offset,
+    tick,
+    timeSec: tick / 8,
+    hostComputerId,
+    playerId,
+    commandType,
+    commandName: COMMAND_NAMES[commandType] ?? `unknown-${commandType}`,
+    queued: (u8(reader, offset + 3) & 0x80) !== 0,
+    playerCommandCount,
+    payloadBytes: Math.max(0, size - COMMAND_HEADER_SIZE),
+    ...payload,
+    known: COMMAND_NAMES[commandType] != null,
+  }
+}
+
+interface PlayerStatsAccumulator {
+  playerId: number
+  commandCount: number
+  knownCommandCount: number
+  unknownCommandCount: number
+  commandGapCount: number
+  firstCommandSec: number | null
+  lastCommandSec: number | null
+  commandGapSec: number
+  maxCommandGapSec: number
+  commandTypes: Record<string, number>
+  activityWindows: Map<number, { commandCount: number; knownCommandCount: number }>
+}
+
+function updatePlayerStats(
+  accumulators: Map<number, PlayerStatsAccumulator>,
+  event: ReplayCommandEvent,
+): void {
+  if (event.playerId === 0) return
+  const current: PlayerStatsAccumulator = accumulators.get(event.playerId) ?? {
+    playerId: event.playerId,
+    commandCount: 0,
+    knownCommandCount: 0,
+    unknownCommandCount: 0,
+    commandGapCount: 0,
+    firstCommandSec: null,
+    lastCommandSec: null,
+    commandGapSec: 0,
+    maxCommandGapSec: 0,
+    commandTypes: {} as Record<string, number>,
+    activityWindows: new Map(),
+  }
+  current.commandCount += 1
+  if (event.known) current.knownCommandCount += 1
+  else current.unknownCommandCount += 1
+  current.firstCommandSec =
+    current.firstCommandSec == null
+      ? event.timeSec
+      : Math.min(current.firstCommandSec, event.timeSec)
+  if (current.lastCommandSec != null) {
+    const gap = Math.max(0, event.timeSec - current.lastCommandSec)
+    if (gap > IDLE_GAP_THRESHOLD_SEC) {
+      current.commandGapSec += gap
+      current.maxCommandGapSec = Math.max(current.maxCommandGapSec, gap)
+      current.commandGapCount += 1
+    }
+  }
+  current.lastCommandSec =
+    current.lastCommandSec == null ? event.timeSec : Math.max(current.lastCommandSec, event.timeSec)
+  current.commandTypes[event.commandName] = (current.commandTypes[event.commandName] ?? 0) + 1
+  const windowStart = Math.floor(event.timeSec / ACTIVITY_WINDOW_SEC) * ACTIVITY_WINDOW_SEC
+  const activityWindow = current.activityWindows.get(windowStart) ?? {
+    commandCount: 0,
+    knownCommandCount: 0,
+  }
+  activityWindow.commandCount += 1
+  if (event.known) activityWindow.knownCommandCount += 1
+  current.activityWindows.set(windowStart, activityWindow)
+  accumulators.set(event.playerId, current)
+}
+
+function playerStats(
+  accumulators: Map<number, PlayerStatsAccumulator>,
+  durationSec: number | null,
+): ReplayPlayerCommandStats[] {
+  return [...accumulators.values()]
+    .map((stats) => {
+      const first = stats.firstCommandSec
+      const last = stats.lastCommandSec
+      const activeMinutes = first != null && last != null && last > first ? (last - first) / 60 : 0
+      const activityWindows = [...stats.activityWindows.entries()]
+        .sort(([a], [b]) => a - b)
+        .map(([startSec, window]) => {
+          const endSec = Math.max(
+            startSec + 1,
+            Math.min(durationSec ?? startSec + ACTIVITY_WINDOW_SEC, startSec + ACTIVITY_WINDOW_SEC),
+          )
+          const spanMinutes = Math.max(1 / 60, (endSec - startSec) / 60)
+          return {
+            startSec,
+            endSec,
+            commandCount: window.commandCount,
+            knownCommandPct:
+              window.commandCount > 0
+                ? Math.round((window.knownCommandCount / window.commandCount) * 1000) / 10
+                : null,
+            apm: Math.round((window.commandCount / spanMinutes) * 10) / 10,
+          }
+        })
+      const firstWindow = activityWindows[0]
+      const lastWindow = activityWindows.at(-1)
+      const activityDropPct =
+        activityWindows.length >= 2 && firstWindow && lastWindow && firstWindow.apm > 0
+          ? Math.round(((lastWindow.apm - firstWindow.apm) / firstWindow.apm) * 100)
+          : null
+      const { activityWindows: _rawActivityWindows, ...rest } = stats
+      void _rawActivityWindows
+      return {
+        ...rest,
+        activityWindows,
+        activityDropPct,
+        apm:
+          activeMinutes > 0
+            ? Math.round((stats.commandCount / activeMinutes) * 10) / 10
+            : stats.commandCount > 0
+              ? stats.commandCount
+              : 0,
+        knownCommandPct:
+          stats.commandCount > 0
+            ? Math.round((stats.knownCommandCount / stats.commandCount) * 1000) / 10
+            : null,
+      }
+    })
+    .sort((a, b) => b.commandCount - a.commandCount)
+}
+
+function emptyAnalysis(
+  coverage: ReplayAnalysisCoverage,
+  streamOffset: number | null,
+  streamBytes: number,
+  dataGaps: ReplayDataGap[] = [],
+): ReplayCommandAnalysis {
+  return {
+    coverage,
+    format: 'aoe4-replay-data-v1',
+    streamOffset,
+    streamBytes,
+    recordsParsed: 0,
+    ticksParsed: 0,
+    durationSec: null,
+    commandCount: 0,
+    unknownCommandCount: 0,
+    eventsTruncated: false,
+    events: [],
+    players: [],
+    dataGaps,
+  }
+}
+
+/** Decode the replay data stream. This never throws on a truncated/unknown body. */
+export function parseReplayCommandStream(
+  bytes: Uint8Array,
+  streamOffset?: number,
+): ReplayCommandAnalysis {
+  if (bytes.byteLength > MAX_ANALYZED_BYTES)
+    return emptyAnalysis('unavailable', null, bytes.byteLength, [
+      {
+        code: 'invalid-record',
+        message: 'Replay exceeds the 100 MB analysis limit.',
+        offset: null,
+      },
+    ])
+  const location =
+    streamOffset == null ? locateReplayData(bytes) : { streamOffset, chunkyVersion: null }
+  if (!location)
+    return emptyAnalysis('header-only', null, 0, [
+      { code: 'no-stream', message: 'Replay command stream was not found.', offset: null },
+    ])
+
+  const reader = makeReader(bytes)
+  const events: ReplayCommandEvent[] = []
+  const playerAccumulators = new Map<number, PlayerStatsAccumulator>()
+  const dataGaps: ReplayDataGap[] = []
+  let cursor = location.streamOffset
+  let recordsParsed = 0
+  let ticksParsed = 0
+  let durationSec: number | null = null
+  let commandCount = 0
+  let unknownCommandCount = 0
+  let eventsTruncated = false
+  const maxEvents = 50_000
+
+  while (canRead(reader, cursor, 8)) {
+    const recordType = u32(reader, cursor)
+    const declaredSize = u32(reader, cursor + 4)
+    if (recordType === GAME_TICK_RECORD) {
+      if (declaredSize < 13 || !canRead(reader, cursor + 8, declaredSize)) {
+        dataGaps.push({
+          code: 'truncated-record',
+          message: `Game tick at 0x${cursor.toString(16)} is truncated or has an invalid size.`,
+          offset: cursor,
+        })
+        break
+      }
+      const recordEnd = cursor + 8 + declaredSize
+      const tick = u32(reader, cursor + 9)
+      const blockCount = u32(reader, cursor + 17)
+      durationSec = Math.max(durationSec ?? 0, tick / 8)
+      ticksParsed += 1
+      let blockCursor = cursor + 21
+      let blockError = false
+      for (let blockIndex = 0; blockIndex < blockCount; blockIndex++) {
+        if (!canRead(reader, blockCursor, 12, recordEnd)) {
+          blockError = true
+          break
+        }
+        const hostComputerId = u32(reader, blockCursor)
+        const blockSize = u32(reader, blockCursor + 8)
+        const commandsStart = blockCursor + 12
+        const blockEnd = commandsStart + blockSize
+        if (!canRead(reader, commandsStart, blockSize, recordEnd)) {
+          blockError = true
+          break
+        }
+        let commandCursor = commandsStart
+        while (commandCursor < blockEnd) {
+          if (!canRead(reader, commandCursor, 2, blockEnd)) {
+            blockError = true
+            break
+          }
+          const size = i16(reader, commandCursor)
+          const event = commandEvent(reader, commandCursor, tick, hostComputerId, blockEnd)
+          if (!event) {
+            blockError = true
+            break
+          }
+          commandCount += 1
+          if (!event.known) {
+            unknownCommandCount += 1
+            if (dataGaps.filter((gap) => gap.code === 'unknown-command').length < 20)
+              dataGaps.push({
+                code: 'unknown-command',
+                message: `Unknown command type ${event.commandType} was skipped.`,
+                offset: commandCursor,
+              })
+          }
+          updatePlayerStats(playerAccumulators, event)
+          if (events.length < maxEvents) events.push(event)
+          else eventsTruncated = true
+          commandCursor += size
+        }
+        if (commandCursor !== blockEnd) blockError = true
+        blockCursor = blockEnd
+      }
+      if (blockError || blockCursor > recordEnd) {
+        dataGaps.push({
+          code: 'invalid-record',
+          message: `Command block in tick ${tick} could not be decoded completely.`,
+          offset: cursor,
+        })
+        break
+      }
+      cursor = recordEnd
+      recordsParsed += 1
+      continue
+    }
+    if (
+      recordType === CHAT_RECORD &&
+      declaredSize >= 8 &&
+      canRead(reader, cursor + 8, declaredSize)
+    ) {
+      cursor += 8 + declaredSize
+      recordsParsed += 1
+      continue
+    }
+    dataGaps.push({
+      code: 'invalid-record',
+      message: `Unknown replay record type ${recordType} at 0x${cursor.toString(16)}.`,
+      offset: cursor,
+    })
+    break
+  }
+
+  if (eventsTruncated)
+    dataGaps.push({
+      code: 'event-cap',
+      message:
+        'Only the first 50,000 commands are returned to the UI; aggregate metrics still include the full decoded prefix.',
+      offset: null,
+    })
+  const coverage: ReplayAnalysisCoverage = dataGaps.some(
+    (gap) => gap.code === 'truncated-record' || gap.code === 'invalid-record',
+  )
+    ? 'partial'
+    : events.length > 0 || ticksParsed > 0
+      ? 'full'
+      : 'partial'
+  return {
+    coverage,
+    format: 'aoe4-replay-data-v1',
+    streamOffset: location.streamOffset,
+    streamBytes: bytes.length - location.streamOffset,
+    recordsParsed,
+    ticksParsed,
+    durationSec,
+    commandCount,
+    unknownCommandCount,
+    eventsTruncated,
+    events,
+    players: playerStats(playerAccumulators, durationSec),
+    dataGaps,
+  }
+}

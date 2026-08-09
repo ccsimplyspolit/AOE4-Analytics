@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "name": "1TC Kremlin - Fast Castle",
+  "civilization": "Rus",
+  "author": "Jitterbug",
+  "source": "https://aoe4guides.com/builds/63b4avnUQ5w7ucjM9sQS",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2 @unit_worker/villager.webp@@abilities/repair.webp@ 1 @building_rus/hunting-cabin.webp@ each -> @resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "1st @unit_worker/villager.webp@@resource/rally.webp@@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~2:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @unit_worker/villager.webp@ @abilities/repair.webp@@landmark_rus/kremlin.webp@ on"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Remacro"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "1 @resource/gaiatreeprototypetree.webp@@unit_worker/villager.webp@@abilities/repair.webp@@building_economy/house.webp@ when able"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@age/age_2.webp@@unit_worker/villager.webp@@abilities/repair.webp@@building_military/stable.webp@ + @building_rus/hunting-cabin.webp@ on @landmark_rus/kremlin.webp@ ->"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Immediately queue 1 @unit_cavalry/knight-2.webp@-> @technology_economy/survival-techniques.webp@ when able"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 1,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/gaiatreeprototypetree.webp@@unit_worker/villager.webp@ -> @resource/resource_gold.webp@ after 3, @resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 28,
+      "resources": {
+        "food": 20,
+        "wood": 1,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "10-12 @unit_worker/villager.webp@@abilities/repair.webp@@landmark_rus/abbey-of-the-trinity.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 28,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 7,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@ for rest of game"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 30,
+      "resources": {
+        "food": 6,
+        "wood": 7,
+        "gold": 7,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "@technology_economy/double-broadaxe.webp@ when able"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 33,
+      "resources": {
+        "food": 6,
+        "wood": 20,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_rus/warrior-monk.webp@ immediately and get @resource/relics.webp@ -> upgrade @unit_cavalry/knight-2.webp@",
+        "@age/age_3.webp@ -&gt; @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 34,
+      "resources": {
+        "food": 6,
+        "wood": 17,
+        "gold": 7,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@ + @building_military/archery-range.webp@@building_military/archery-range.webp@@building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 36,
+      "resources": {
+        "food": 6,
+        "wood": 15,
+        "gold": 7,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "8 @resource/resource_wood.webp@@unit_worker/villager.webp@ -> @resource/deer.webp@ w/"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 36,
+      "resources": {
+        "food": 14,
+        "wood": 15,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_cavalry/knight-2.webp@ + @unit_infantry/archer-2.webp@ if opponent making @unit_infantry/spearman-1.webp@",
+        "@unit_cavalry/knight-2.webp@ + @unit_infantry/crossbowman-3.webp@ if opponent making @unit_infantry/man-at-arms-1.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@ and Eco upgrades"
+      ]
+    }
+  ],
+  "description": "Transcription of Swaggy Professor's build posted 7/11/2026.  All thanks to him!",
+  "video": "https://www.youtube.com/embed/n74D7yb6WVg",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

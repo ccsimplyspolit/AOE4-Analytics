@@ -1,0 +1,347 @@
+{
+  "schemaVersion": 1,
+  "name": "Beastyqt’s Order of the Dragon Aggresive Strategy",
+  "civilization": "Order of the Dragon",
+  "author": "RMSeba13",
+  "source": "https://aoe4guides.com/builds/tUCfXCJ273kE0SJ3wDYv",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send all 5 @unit_worker/villager.webp@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send the next @unit_worker/villager.webp@ to build a @building_economy/house.png@ and a @building_economy/mining-camp.png@, and then to @resource/resource_gold.png@. Send the next @unit_worker/villager.png@ to @resource/resource_gold.png@ as well"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally @unit_worker/villager.webp@ to @resource/sheep.png@ until you have 9"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Send 2 @unit_worker/villager.webp@ from @resource/sheep.png@ to build@landmark_hre/meinwerk-palace.png@ to age up to @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Send 3 @unit_worker/villager.webp@ from @resource/sheep.png@ to nearby @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Rally @unit_worker/villager.webp@ to @resource/resource_wood.png@ until you have 6"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Send a @unit_worker/villager.webp@ from @resource/sheep.png@ to build a @building_economy/mill.png@ and then to @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Build a @building_economy/lumber-camp.webp@ with a @unit_worker/villager.png@ from @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Research @technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Rally @unit_worker/villager.webp@ to @resource/sheep.png@ until you have 12"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Send the @unit_worker/villager.webp@ who built @landmark_hre/meinwerk-palace.png@ to build a @building_military/stable.png@ and then to @resource/sheep.png@. Immediately start producing @unit_dragon/gilded-horseman-2.png@ when it is completed"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build a @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "With your first @unit_dragon/gilded-horseman-2.webp@, go harass your enemy @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build an @building_military/archery-range.webp@ and start producing @unit_dragon/gilded-archer-2.png@ when it is completed. If your enemy goes cavalry, build a @building_military/barracks.png@ instead and produce @unit_dragon/gilded-spearman-1.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 11,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/double-broadaxe.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send the next 2 @unit_worker/villager.webp@ to @resource/resource_wood.png@. Then rally to @resource/resource_food.png@ until you have 14"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_military/iron-undermesh.webp@/@technology_military/fitted-leatherwork.png@/@technology_military/steeled-arrow.png@/@technology_military/bloomery.png@ depending on your enemy’s army composition"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "From now on, keep an eye on the population limit considering that the @civilization_flag/dra.webp@ military units take 2 population spaces. Build @building_economy/house.png@ when your need it"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 13,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build  @building_military/archery-range.webp@/@building_military/barracks.png@and keep the production of @unit_dragon/gilded-archer-2.png@/@unit_dragon/gilded-spearman-1.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you run out of food, you can go for @resource/boar.webp@ or @resource/deer.png@ if it is safe. If so, research @technology_economy/survival-techniques.png@. Slowly build @building_economy/farm.png@ to before running out of food sources. Research @technology_economy/horticulture.png@ in that case"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally @unit_worker/villager.webp@ to @resource/resource_wood.png@ until you have 15. Then rally to @resource/resource_food.png@ again"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 31,
+      "resources": {
+        "food": 14,
+        "wood": 15,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "From now on, the match depends on your enemy’s response and army composition. Research @technology_military/iron-undermesh.webp@/@technology_military/fitted-leatherwork.png@/@technology_military/steeled-arrow.png@/@technology_military/bloomery.png@, build more @building_military/barracks.png@/@building_military/archery-range.png@/@building_military/stable.png@, research @technology_military/siege-engineering.png@ and build @unit_siege/battering-ram.png@ with your army, save resources to age up to @age/age_3.png@ and send more @unit_worker/villager.png@ to @resource/resource_gold.png@ to produce @unit_dragon/gilded-knight-3.png@/@unit_dragon/gilded-crossbowman-3.png@, or what you decide is best you need for the match"
+      ]
+    }
+  ],
+  "description": "This Build Order is meant to push your enemy early taking advantage of the more powerful units of Order of the Dragon, keeping balance of the resources needed to afford the high cost of your army. You will be able to produce two type of units to counter your enemy’s, and to switch to another type when needed.\nThis Build Order was created by Beastyqt.",
+  "video": "https://www.youtube.com/embed/GEzcw-eYp0E",
+  "season": 6,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

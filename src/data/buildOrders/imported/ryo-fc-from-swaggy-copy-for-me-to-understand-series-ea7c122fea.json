@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "name": "Ryo FC (from Swaggy) - Copy for me to understand series",
+  "civilization": "Sengoku Daimyo",
+  "author": "murtuk",
+  "source": "https://aoe4guides.com/builds/Y8jOKt83johjJ2oovQe5",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@resource/resource_gold.webp@2@resource/resource_wood.webp@, @resource/rally.webp@@resource/resource_food.webp@ (until 14)",
+        "1 @abilities/repair.webp@@building_sengoku/matsuri.webp@on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Buy 100@resource/resource_wood.webp@ to make 1st @unit_sengoku/yatai.webp@",
+        "@abilities/repair.webp@@building_japanese/farmhouse-1.webp@ on @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:25",
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Buy another 100@resource/resource_wood.webp@ to make 2nd @unit_sengoku/yatai.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_japanese/towara-1.webp@then send all @resource/sheep.webp@ to @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Start @age/age_2.webp@@landmark_sengoku/ryokan.webp@with 2 from@resource/resource_food.webp@, back to@resource/resource_food.webp@",
+        "Make @building_defensive/outpost.webp@ on gold with 1 @resource/resource_wood.webp@, then back to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 23,
+      "resources": {
+        "food": 14,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@ now"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:55",
+      "villager_count": 23,
+      "resources": {
+        "food": 14,
+        "wood": 4,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@ finishes at 5:55, Sell 100@resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:15",
+      "villager_count": 24,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Start @age/age_3.webp@@landmark_sengoku/sake_brewery.webp@with 10 from@resource/resource_food.webp@, 5 to@resource/resource_food.webp@ + 5 to brewery mats"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:45",
+      "villager_count": 26,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_military/stable.webp@ (can also buy wood to make 2nd @building_military/stable.webp@)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "7:20",
+      "villager_count": 28,
+      "resources": {
+        "food": 13,
+        "wood": 5,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_3.webp@ finishes at 7:20",
+        "Make @technology_sengoku/takeda_daimyo_1.webp@",
+        "Produce @unit_japanese/mounted-samurai-3.webp@+@unit_sengoku/daimyo.webp@",
+        "Research @technology_economy/double-broadaxe.webp@,@technology_japanese/takezaiku-2.webp@,@technology_economy/specialized-pick.webp@",
+        "Make @building_japanese/buddhist-temple-3.webp@"
+      ]
+    }
+  ],
+  "description": "Build from Swaggy Professor's video, transcribed for me to understand it better. \n(I may study timings later with beasty's BO and make this one better later)",
+  "video": "https://www.youtube.com/embed/p7Q4qPQOk6k",
+  "season": 12,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

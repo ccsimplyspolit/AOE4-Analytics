@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "name": "Early Aggro into 2TC",
+  "civilization": "Jeanne d'Arc",
+  "author": " King Roar",
+  "source": "https://aoe4guides.com/builds/KNqZ75ZKJtzHLnsgjKGd",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@Build everything -> @building_economy/house.png@ _ &gt; @building_economy/mining-camp.png@-&gt; @resource/resource_gold.png@",
+        "Rally Vills to @resource/sheep.png@ until 8, then 4 to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Should be hitting Age up as 4th vil is heading towards gold",
+        "Pull 3 Vills from @resource/sheep.webp@ to @landmark_french/school-of-cavalry.png@ (Build near berries)",
+        "Pull @unit_jeanne/jeanne-darc-peasant-1.png@ to build@building_economy/mill.png@ @resource/berrybush.png@, then immediately to help @landmark_french/school-of-cavalry.png@",
+        "@building_economy/town-center.png@Rally new Vills to @resource/gaiatreeprototypetree.png@",
+        "At 35 wood (Micro 1 vill back with 5 wood) and back to straggler - @technology_economy/wheelbarrow.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Upon age up, timings get tight:",
+        "You may idle TC / force food drop offs / to get @unit_french/royal-knight-2.webp@ + @unit_worker/villager.png@ queued (you will be able to keep 1 of each queued with minimal TC idling) Keep queuing  both",
+        "3 @unit_worker/villager.png@ from @landmark_french/school-of-cavalry.png@ go back to @resource/sheep.png@",
+        "@unit_jeanne/jeanne-darc-peasant-1.png@Builds @building_economy/house.png@at 50 wood - Rally her back to wood - send 2 @unit_worker/villager.png@ from @resource/gaiatreeprototypetree.png@ to @resource/sheep.png@ (now 10 on sheep)",
+        "Now keep 2 on @resource/gaiatreeprototypetree.png@ (Plus JD), and rally next 2 to @resource/sheep.png@",
+        "@unit_jeanne/jeanne-darc-peasant-1.png@ Builds @building_economy/lumber-camp.png@ at Next 50 wood on woodline - keep her on woodline (JD + 2 vills now on Wood / 12 on sheep)",
+        "@unit_jeanne/jeanne-darc-peasant-1.png@ builds @building_economy/mining-camp.png@ at next 50 wood on @resource/resource_stone.png@ - keep her mining her until level up - @unit_jeanne/jeanne-darc-hunter-2.png@",
+        "You should have 2-3 Knights out harassing once JD turns to Bow - go bring her in to join the harass and kill spears they made to counter your knights",
+        "DON'T lose your knights! Especially important against Fast Castle Civs, get Eco damage if you can, but you need them all alive if you cant get good damage and they reach castle, If JD dies typically, Don't buy her back, but to try to keep her alive at least for first consecrate.",
+        "@ability_jeanne/ability-consecrate-1.png@  > @landmark_french/school-of-cavalry.png@ &gt; main @building_economy/town-center.png@main &gt; 2nd@building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 4,
+        "gold": 4,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@ Rally new @unit_worker/villager.png@ to @resource/resource_wood.png@ until 4",
+        "Then @building_economy/town-center.png@ to @resource/resource_stone.png@ until 350 for 2nd TC.",
+        "Grab all @unit_worker/villager.png@from @resource/resource_wood.png@ and @resource/resource_stone.png@ to 2nd @building_economy/town-center.png@",
+        "2nd @building_economy/town-center.png@ On @resource/deer.png@, Ideally @resource/deer.png@/@resource/resource_gold.png@ location. You can get a bit greedy with location here as you have wheelbarrow and SHOULD have map control. (Obviously reel it back against @civilization_flag/del.png@/@civilization_flag/rus.png@ or other aggro horses)",
+        "Move @resource/sheep.png@@unit_worker/villager.png@ to @resource/berrybush.png@ when sheep run out",
+        "Get @technology_economy/survival-techniques.png@ when dropping 2nd TC if on deer (and with map control worth grabbing another local Deer patch/boar)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 32,
+      "resources": {
+        "food": 16,
+        "wood": 10,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Re Macro based on game state - but likely you want to be keeping map control with knights, forcing small skirmishes and picking off spears with JD",
+        "Add @building_military/archery-range.webp@ and  @building_technology/blacksmith.png@",
+        "This will test your micro while keeping 2TC macro behind it."
+      ]
+    }
+  ],
+  "description": "Inspired by Beasty's early aggro into 2TC french, I wanted to make something that could skip the archery range, and get a faster 2nd TC. By going Jeanne as archery, she can support your knights and harass while you get an earlier 2nd TC, + all the benefits of JD.\n\nYou have JD as a support unit, if she dies, most likely dont buy her back, (until late game when gold is flowing), Play normal french with the OP Jeanne to support. \n\nI have been playing this at the Plat/Diamond level and having alot of fun, it is incredibly Micro intensive, but you play games and feel the win or loss was in how you played it.",
+  "video": "",
+  "season": 7,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

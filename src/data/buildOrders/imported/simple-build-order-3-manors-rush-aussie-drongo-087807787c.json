@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "name": "Simple Build Order - 3 Manors Rush [Aussie Drongo]",
+  "civilization": "House of Lancaster",
+  "author": "Niki45nk",
+  "source": "https://aoe4guides.com/builds/ZbtV2HhzAc0WCrJMxOLM",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "First 6 @unit_worker/villager.webp@ on @resource/sheep.png@",
+        "Next 2 @unit_worker/villager.png@ on @building_economy/mining-camp.png@@resource/resource_gold.png@ and make 1 @building_economy/house.png@",
+        "Next 2 @unit_worker/villager.png@ on @building_economy/lumber-camp.png@@resource/resource_wood.png@",
+        "Next 3 @unit_worker/villager.png@ on @building_economy/mining-camp.png@@resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 2,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "When 3900 @resource/resource_gold.webp@ left:",
+        "3 @resource/sheep.png@@unit_worker/villager.png@ make @landmark_lancaster/lancaster_castle.png@ 3 tiles from @building_economy/town-center.png@ (protecting resources if possible)",
+        "2 @resource/resource_gold.png@@unit_worker/villager.png@ move to @resource/resource_wood.png@",
+        "@resource/rally.png@@unit_worker/villager.png@ on @resource/resource_wood.png@ until ~15 @resource/resource_wood.png@@unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 18,
+      "resources": {
+        "food": 3,
+        "wood": 9,
+        "gold": 0,
+        "stone": 3,
+        "builder": 3
+      },
+      "notes": [
+        "5@unit_worker/villager.webp@ (3@landmark_lancaster/lancaster_castle.png@and 2 @resource/sheep.png@) make @building_lancaster/manor.png@ (between @landmark_lancaster/lancaster_castle.png@ and @building_economy/town-center.png@)",
+        "2 @unit_worker/villager.png@@building_lancaster/manor.png@ back to @resource/sheep.png@",
+        "3 @unit_worker/villager.png@@building_lancaster/manor.png@ make another @building_lancaster/manor.png@, then to @resource/resource_wood.png@",
+        "When 900 @resource/resource_stone.png@ left, 3 @resource/resource_stone.png@@unit_worker/villager.png@ make 3rd @building_lancaster/manor.png@ then to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 21,
+      "resources": {
+        "food": 3,
+        "wood": 15,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 15 @resource/resource_wood.webp@@unit_worker/villager.png@, @resource/rally.png@@unit_worker/villager.png@ on @resource/sheep.png@",
+        "2 @resource/resource_wood.png@@unit_worker/villager.png@ make@building_military/archery-range.png@ then @building_military/barracks.png@",
+        "Another 2 @resource/resource_wood.png@@unit_worker/villager.png@ make 2nd @building_military/archery-range.png@",
+        "Always make @unit_lancaster/yeoman_age2.png@ and @unit_infantry/spearman-1.png@ (or @unit_lancaster/hobelar_age2.png@)",
+        "Upgrade @unit_infantry/spearman-1.png@ and get @technology_lancaster/billmen.png@ when possible",
+        "Make @building_technology/blacksmith.png@ -> @technology_military/steeled-arrow.png@ -&gt; @technology_military/iron-undermesh.png@ -&gt; @technology_military/siege-engineering.png@"
+      ]
+    }
+  ],
+  "description": "Simple Build Order - 3 Manors into Rush by Aussie Drongo",
+  "video": "https://www.youtube.com/embed/WqGEg2AsO_o",
+  "season": 10,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

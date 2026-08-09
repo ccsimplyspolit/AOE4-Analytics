@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "name": "[AussieDrongo] Fast Imp Opening - OverlayTool",
+  "civilization": "Ottomans",
+  "author": "schwazza",
+  "source": "https://aoe4guides.com/builds/BG2MaOuRvyVed8e3dKQs",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@on @resource/sheep.png@",
+        "5 @unit_worker/villager-ottomans.png@gather 50 @resource/resource_stone.png@->@resource/gaiatreeprototypetree.png@for 50&nbsp;@resource/resource_wood.png@-&gt;@resource/sheep.png@",
+        "&nbsp;1&nbsp;@unit_worker/villager-ottomans.png@&nbsp;on @resource/sheep.png@",
+        "@resource/rally.png@&nbsp;2&nbsp;@unit_worker/villager-ottomans.png@&nbsp;to 1@building_economy/house.png@&nbsp;&@building_economy/mining-camp.png@&nbsp;on&nbsp;@resource/resource_gold.png@&nbsp;",
+        "1&nbsp;@resource/sheep.png@@unit_worker/villager-ottomans.png@&nbsp;:&nbsp;@building_ottomans/military-school-1.png@&nbsp;(in back of&nbsp;@building_economy/town-center.png@) -&gt;back to&nbsp;@resource/sheep.png@",
+        "@resource/rally.png@@unit_worker/villager-ottomans.png@on@resource/sheep.png@til 10 on&nbsp;@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 0,
+        "stone": 3,
+        "builder": 5
+      },
+      "notes": [
+        "At 10 @unit_worker/villager-ottomans.webp@on&nbsp;@resource/resource_food.png@:&nbsp;@resource/rally.png@@unit_worker/villager-ottomans.png@&nbsp;on&nbsp;@resource/gaiatreeprototypetree.png@",
+        "At 200&nbsp;@resource/resource_gold.png@: 2&nbsp;@unit_worker/villager-ottomans.png@&nbsp;from&nbsp;@resource/resource_gold.png@&nbsp;go to&nbsp;@resource/gaiatreeprototypetree.png@",
+        "4&nbsp;@unit_worker/villager-ottomans.png@&nbsp;from @resource/resource_food.png@ build&nbsp;@age/age_2.png@&nbsp;@landmark_ottomans/twin-minaret-medrese-1.png@&nbsp;",
+        "2&nbsp;@unit_worker/villager-ottomans.png@&nbsp;from @resource/resource_food.png@ build&nbsp;@building_economy/mining-camp.png@ on @resource/resource_stone.png@&nbsp;",
+        "@resource/rally.png@&nbsp;1@unit_worker/villager-ottomans.png@&nbsp;to&nbsp;@abilities/repair.png@@landmark_ottomans/twin-minaret-medrese-1.png@-> 5@unit_worker/villager-ottomans.png@&nbsp;to&nbsp;@landmark_ottomans/twin-minaret-medrese-1.png@&nbsp;@resource/berrybush.png@",
+        "1&nbsp;@unit_worker/villager-ottomans.png@&nbsp;from&nbsp;@resource/gaiatreeprototypetree.png@&nbsp;to&nbsp;@resource/resource_stone.png@",
+        "@resource/rally.png@@unit_worker/villager-ottomans.png@&nbsp;on@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 28,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 8,
+        "stone": 0,
+        "builder": 11
+      },
+      "notes": [
+        "In &nbsp;@age/age_2.webp@:&nbsp;Add&nbsp;@building_technology/blacksmith.png@&nbsp;nxt to&nbsp;@building_ottomans/military-school-1.png@, switch&nbsp;@building_ottomans/military-school-1.png@&nbsp;to&nbsp;@unit_ottomans/sipahi-2.png@",
+        "At 100&nbsp;@resource/resource_stone.png@&nbsp;: Add&nbsp;@building_ottomans/military-school-1.png@&nbsp;& take&nbsp;@resource/resource_stone.png@@unit_worker/villager-ottomans.png@&nbsp;to&nbsp;@resource/resource_gold.png@",
+        "5&nbsp;@unit_worker/villager-ottomans.png@&nbsp;from&nbsp;@resource/resource_food.png@to&nbsp;@resource/resource_gold.png@",
+        "1st&nbsp;@age/vizier_point.png@:&nbsp;@technology_ottomans/field-work-1.png@&nbsp;if enough&nbsp;@resource/sheep.png@&nbsp;for&nbsp;@age/age_3.png@&nbsp;otherwise&nbsp;@technology_ottomans/anatolian-hills-1.png@",
+        "Send&nbsp;@unit_abbasid/imam.png@to&nbsp;@resource/relics.png@",
+        "All@resource/sheep.png@&nbsp;@unit_worker/villager-ottomans.png@build&nbsp;@age/age_3.png@@landmark_ottomans/mehmed-imperial-armory-2.png@nxt to&nbsp;@building_economy/town-center.png@in range of&nbsp;@building_technology/blacksmith.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 32,
+      "resources": {
+        "food": 16,
+        "wood": 8,
+        "gold": 3,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "5 @unit_worker/villager-ottomans.webp@&nbsp;from&nbsp;@resource/resource_gold.png@&nbsp;to&nbsp;@resource/resource_stone.png@&nbsp;for 200&nbsp;@resource/resource_stone.png@",
+        "@resource/rally.png@@unit_worker/villager-ottomans.png@on@resource/resource_wood.png@",
+        "In&nbsp;@age/age_3.png@:&nbsp;@landmark_ottomans/mehmed-imperial-armory-2.png@@unit_worker/villager-ottomans.png@->@resource/sheep.png@&nbsp;",
+        "Add&nbsp;@building_ottomans/military-school-1.png@&nbsp;& switch&nbsp;@building_ottomans/military-school-1.png@&nbsp;to&nbsp;@unit_infantry/man-at-arms-1.png@",
+        "2nd&nbsp;@age/vizier_point.png@:&nbsp;@technology_ottomans/military-campus-1.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 42,
+      "resources": {
+        "food": 19,
+        "wood": 6,
+        "gold": 17,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_religious/mosque.png@& drop off @resource/relics.png@",
+        "5&nbsp;@unit_worker/villager-ottomans.png@&nbsp;from&nbsp;@resource/resource_wood.png@&amp;&nbsp;5&nbsp;@unit_worker/villager-ottomans.png@from&nbsp;@resource/sheep.png@&nbsp;to&nbsp;@building_economy/mill.png@on@resource/deer.png@",
+        "At 200&nbsp;@resource/resource_stone.png@:&nbsp;@unit_worker/villager-ottomans.png@&nbsp;from&nbsp;@resource/resource_stone.png@&nbsp;to&nbsp;@resource/resource_gold.png@",
+        "@resource/rally.png@@unit_worker/villager-ottomans.png@on@resource/resource_gold.png@til&nbsp;@age/age_4.png@&nbsp;with&nbsp;@landmark_ottomans/istanbul-observatory-3.png@nxt to&nbsp;@building_economy/town-center.png@",
+        "3rd&nbsp;@age/vizier_point.png@: if under pressure@technology_ottomans/janissary-company-1.png@otherwise&nbsp;@technology_ottomans/fast-training-1.png@"
+      ]
+    }
+  ],
+  "description": "Fast Imperial Opening by Aussie Drongo",
+  "video": "https://www.youtube.com/embed/6DaMCvJiaPM",
+  "season": 5,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

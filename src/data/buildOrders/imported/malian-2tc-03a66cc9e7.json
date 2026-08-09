@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "name": "Malian 2TC",
+  "civilization": "Malians",
+  "author": "siberian_wolf",
+  "source": "https://aoe4guides.com/builds/CTkDzhtEbuUSrOO6SEiO",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 14,
+      "resources": {
+        "food": 10,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5@unit_worker/villager-malians.webp@>@resource/gaiatreeprototypetree.webp@(150)",
+        "1@unit_worker/villager-malians.webp@&gt;@building_malians/pit-mine-1.webp@&gt;6@building_economy/house.webp@&gt;@resource/gaiatreeprototypetree.webp@",
+        "5 @resource/rally.webp@&gt;@resource/sheep.webp@",
+        "3@resource/rally.webp@&gt;@resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "[4:50]",
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "3@resource/sheep.webp@@unit_worker/villager-malians.webp@> @landmark_malians/saharan-trade-network-1.webp@@resource/resource_wood.webp@",
+        "3@resource/sheep.webp@@unit_worker/villager-malians.webp@&gt;@building_economy/lumber-camp.webp@&gt;@resource/resource_wood.webp@",
+        "5 @resource/rally.webp@&gt;@building_economy/mining-camp.webp@&gt;@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:30",
+      "villager_count": 38,
+      "resources": {
+        "food": 20,
+        "wood": 7,
+        "gold": 10,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5@resource/resource_wood.webp@@unit_worker/villager-malians.webp@ + 3 @landmark_malians/saharan-trade-network-1.webp@@unit_worker/villager-malians.webp@>@building_economy/town-center.webp@@resource/deer.webp@&gt;@resource/deer.webp@",
+        "1 @resource/resource_gold.webp@@unit_worker/villager-malians.webp@&gt;@building_economy/house.webp@&gt;@resource/resource_gold.webp@",
+        "8@resource/rally.webp@&gt;@building_economy/mill.webp@&gt;@resource/resource_food.webp@",
+        "@technology_economy/horticulture.webp@@technology_economy/survival-techniques.webp@@technology_economy/specialized-pick.webp@@technology_economy/double-broadaxe.webp@",
+        "4@resource/rally.webp@&gt;@resource/resource_wood.webp@",
+        "5@resource/rally.webp@&gt;@resource/resource_gold.webp@",
+        "1@resource/resource_wood.webp@@unit_worker/villager-malians.webp@&gt;@building_military/barracks.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 50,
+      "resources": {
+        "food": 20,
+        "wood": 6,
+        "gold": 15,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "@technology_economy/wheelbarrow.webp@>∞@resource/cattle.webp@",
+        "8 @resource/sheep.webp@&gt;@landmark_malians/farimba-garrison-2.webp@",
+        "5@resource/rally.webp@&gt;@resource/resource_gold.webp@",
+        "1@building_military/barracks.webp@@unit_worker/villager-malians.webp@&gt;2@building_military/barracks.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "14:05",
+      "villager_count": 55,
+      "resources": {
+        "food": 20,
+        "wood": 20,
+        "gold": 15,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@building_economy/mill.webp@>@resource/cattle.webp@",
+        "∞@resource/rally.webp@&gt;@resource/resource_wood.webp@&gt;@building_religious/mosque.webp@&gt;@resource/relics.webp@ &gt;@building_malians/cattle-ranch-2.webp@&gt;@building_economy/farm.webp@&gt;@resource/resource_stone.webp@",
+        "∞@unit_malians/musofadi-warrior-2.webp@ + ∞@unit_malians/freeborn-mansa.webp@",
+        "2nd + 3rd @building_malians/pit-mine-1.webp@ @building_economy/house.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 9,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

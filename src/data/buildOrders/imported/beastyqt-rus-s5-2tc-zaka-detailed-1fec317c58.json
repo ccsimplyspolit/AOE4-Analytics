@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 1,
+  "name": "[Beastyqt] Rus S5 2TC {zaka} - Detailed",
+  "civilization": "Rus",
+  "author": "zaka",
+  "source": "https://aoe4guides.com/builds/vJ1gFaF4MVfsjBN39kyx",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@ to @resource/sheep.png@, 2 @unit_worker/villager.png@ build @building_rus/hunting-cabin.png@ -> @resource/sheep.png@ .",
+        "@resource/rally.png@ to @resource/resource_food.png@ until 10.",
+        "1st @unit_cavalry/scout.png@ goes through the middle to either left or right",
+        "and kills @resource/deer.png@ in that enemy side of the map."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:21",
+      "villager_count": 7,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "New @unit_worker/villager.webp@ builds @building_economy/house.png@ -> @resource/sheep.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:26",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_rus/hunting-cabin.webp@ Complete. Produce 2 @unit_cavalry/scout.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:50",
+      "villager_count": 8,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @unit_cavalry/scout.webp@ Produced. Send him as you did with the first scout,",
+        "but e.g. if the 1st@unit_cavalry/scout.png@ was send to the right, this one goes to the left,",
+        "be carefull not to overlap scouted areas. Kill @resource/deer.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:15",
+      "villager_count": 9,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3rd @unit_cavalry/scout.webp@ Produced. Immediately scout for 1-3 @resource/sheep.png@ near @building_economy/town-center.png@,",
+        "deliver them and kill the @resource/deer.png@ leftover on your side of the map.",
+        "By that time, the 1st @unit_cavalry/scout.png@ should be able to help you with that.",
+        "Research @technology_economy/wheelbarrow.png@ ."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:22",
+      "villager_count": 10,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once you have 10 on @resource/resource_food.webp@, @resource/rally.png@ to @resource/resource_wood.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:34",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Build @landmark_rus/kremlin.webp@ with 5  @resource/resource_food.png@@unit_worker/villager.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:37",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 6,
+        "builder": 5
+      },
+      "notes": [
+        "Once you have 150 @resource/resource_wood.webp@, build a @building_economy/house.png@ and",
+        "Send all @resource/resource_wood.png@@unit_worker/villager.png@ to @resource/resource_stone.png@.",
+        "@resource/rally.png@ to @resource/resource_stone.png@ until 8."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:10",
+      "villager_count": 18,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 0,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_rus/kremlin.webp@@unit_worker/villager.png@ go to @resource/resource_wood.png@.",
+        "Once you have 8 @unit_worker/villager.png@ on @resource/resource_stone.png@, @resource/rally.png@to @resource/resource_wood.png@.",
+        "Research @technology_economy/double-broadaxe.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:55",
+      "villager_count": 21,
+      "resources": {
+        "food": 5,
+        "wood": 16,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once you have 350 @resource/resource_stone.webp@, move @resource/resource_stone.png@@unit_worker/villager.png@ to @resource/resource_wood.png@.",
+        "If you're being rushed, build @building_military/barracks.png@/@building_military/archery-range.png@/@building_military/stable.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:38",
+      "villager_count": 22,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "Once you have enough for 2nd @building_economy/town-center.webp@, leave 8@unit_worker/villager.png@ on @resource/resource_wood.png@,",
+        "Build 2nd @building_economy/town-center.png@ either on @resource/deer.png@ or @resource/boar.png@ with the rest of them.",
+        "@resource/rally.png@ to @resource/resource_gold.png@ until 8.",
+        "Research @technology_economy/survival-techniques.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:13",
+      "villager_count": 24,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "Build 2 @building_military/stable.webp@ and start harassing with @unit_cavalry/knight-2.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:44",
+      "villager_count": 27,
+      "resources": {
+        "food": 15,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_economy/town-center.webp@ Completed, keep it @resource/rally.png@ to @resource/resource_food.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:48",
+      "villager_count": 34,
+      "resources": {
+        "food": 18,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once 8 on @resource/resource_gold.webp@, @resource/rally.png@ to @resource/resource_wood.png@.",
+        "Build 3 @building_military/archery-range.png@ and @building_technology/blacksmith.png@.",
+        "Get @technology_military/iron-undermesh.png@ -> @technology_military/steeled-arrow.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:47",
+      "villager_count": 44,
+      "resources": {
+        "food": 24,
+        "wood": 12,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Fight in @age/age_2.webp@ with @unit_cavalry/knight-2.png@/@unit_infantry/archer-2.png@.",
+        "If the opponent goes to @age/age_3.png@, keep harashing so you can buy",
+        "yourself time to slowly go @age/age_3.png@ with @landmark_rus/high-trade-house.png@."
+      ]
+    }
+  ],
+  "description": "This is build is a transcription for Rus begginers from the latest Beastyqt's Rus video with emphasis on Scouting Tips and 2nd TC placement. I recommend practicing this build vs A.I where you have time to pause and read the build step by step. Once your familiar with the build, I would suggest you to check my non detailed version of this build, which is the same exact build but with less information, making it easier to read.\nLet me know your opinion on this transcription either by leaving a Like, Dislike or a Comment, that way I'll know if I should continue doing this transcriptions from Beasty's videos.",
+  "video": "https://www.youtube.com/embed/GrwK-ZbrEUM",
+  "season": 5,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

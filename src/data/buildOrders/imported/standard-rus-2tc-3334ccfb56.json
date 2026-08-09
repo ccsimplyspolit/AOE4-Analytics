@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "name": "Standard Rus 2TC",
+  "civilization": "Rus",
+  "author": "Munchy",
+  "source": "https://aoe4guides.com/builds/1tfWsW7TmU88pmBMndSo",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@",
+        "2 @building_rus/hunting-cabin.webp@, @building_economy/house.webp@",
+        "Make 2/3 @unit_cavalry/scout.webp@from @building_rus/hunting-cabin.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:35",
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2 @unit_worker/villager.webp@build @landmark_rus/kremlin.webp@on @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Leave 4 on @resource/resource_food.webp@rest go @resource/gaiatreeprototypetree.webp@and @resource/rally.webp@@resource/resource_stone.webp@ (build @building_economy/mining-camp.webp@when 50 @resource/resource_wood.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 10,
+        "builder": 2
+      },
+      "notes": [
+        "Once 1 @resource/gaiatreeprototypetree.webp@is chopped send ALL @resource/resource_wood.webp@on @resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 16,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "At 300 @resource/resource_stone.webp@send @unit_worker/villager.webp@to @resource/resource_wood.webp@ and @resource/rally.webp@@resource/resource_wood.webp@",
+        "Age-up @unit_worker/villager.webp@go @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 23,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "At 400 @resource/resource_wood.webp@:",
+        "Pull 9 @resource/resource_wood.webp@@unit_worker/villager.webp@to build @building_economy/town-center.webp@near @landmark_rus/kremlin.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 24,
+      "resources": {
+        "food": 11,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "Leave 4 @unit_worker/villager.webp@on @resource/resource_wood.webp@rest go @resource/deer.webp@on @landmark_rus/kremlin.webp@",
+        "Main @building_economy/town-center.webp@@resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:25",
+      "villager_count": 25,
+      "resources": {
+        "food": 17,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd@building_economy/town-center.webp@Finishes, @resource/rally.webp@to @resource/deer.webp@",
+        "Start @technology_economy/survival-techniques.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/barracks.webp@or @building_military/archery-range.webp@if getting harassed",
+        "@building_rus/fortified-palisade-wall.webp@@building_rus/fortified-palisade-wall.webp@@building_rus/fortified-palisade-wall.webp@ your base"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:25",
+      "villager_count": 30,
+      "resources": {
+        "food": 17,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@BOTH @building_economy/town-center.webp@on @resource/resource_gold.webp@till 9 then back to @resource/resource_food.webp@",
+        "Get @technology_economy/wheelbarrow.webp@then @technology_economy/horticulture.webp@then @technology_economy/double-broadaxe.webp@(one after another)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:25",
+      "villager_count": 39,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 9,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "@landmark_rus/high-trade-house.webp@",
+        "OR",
+        "@landmark_rus/abbey-of-the-trinity.webp@if going @unit_rus/horse-archer-3.webp@@unit_rus/warrior-monk.webp@@unit_infantry/man-at-arms-1.webp@ comp"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@both @building_economy/town-center.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:20",
+      "villager_count": 45,
+      "resources": {
+        "food": 22,
+        "wood": 14,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age-up @unit_worker/villager.webp@go back to @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start pulling @unit_worker/villager.webp@off @resource/resource_gold.webp@once you get passive income from @landmark_rus/high-trade-house.webp@or @resource/relics.webp@",
+        "Keep an even split between @resource/resource_food.webp@and @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remember to @building_rus/wooden-fortress.webp@your @resource/deer.webp@@resource/berrybush.webp@@resource/boar.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "16:00",
+      "villager_count": 66,
+      "resources": {
+        "food": 50,
+        "wood": 10,
+        "gold": 3,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Pull @resource/resource_wood.webp@@unit_worker/villager.webp@and make @building_economy/farm.webp@, mass units win win @civilization_flag/rus.webp@@civilization_flag/rus.webp@",
+        "Good Luck!"
+      ]
+    }
+  ],
+  "description": "This is the build from the first game of the video",
+  "video": "https://www.youtube.com/embed/D_P5_qa-Sh0",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

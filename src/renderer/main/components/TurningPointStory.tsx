@@ -9,6 +9,7 @@ import {
 import { formatDurationShort } from '@shared/format'
 import { cn } from '@shared/lib/utils'
 import { Card, CardContent } from '@shared/components/ui/card'
+import { useI18n } from '../../i18n'
 
 const TONE_STYLE: Record<TurningPointTone, string> = {
   positive: 'border-win/40 bg-win/5',
@@ -47,6 +48,7 @@ export function TurningPointStory({
   myProfileId: number | null
   myCiv: string | null
 }) {
+  const { tt } = useI18n()
   const points = summary
     ? deriveTurningPoints({ summary, myProfileId, myCiv })
     : ([] as TurningPoint[])
@@ -60,41 +62,35 @@ export function TurningPointStory({
           className="flex items-center gap-2 text-lg font-semibold tracking-tight"
         >
           <Activity className="h-4 w-4 text-primary" />
-          Turning-point story
+          {tt('Turning-point story')}
         </h2>
         <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-          Recorded facts are separated from possible takeaways. These cards use post-game summary
-          data only.
+          {tt('Recorded facts are separated from possible takeaways. These cards use post-game summary data only.')}
         </p>
       </div>
 
       <Card>
         <CardContent className="p-4">
           {loading ? (
-            <p className="text-sm text-muted-foreground">Reading the game&apos;s stat summary…</p>
+            <p className="text-sm text-muted-foreground">{tt("Reading the game's stat summary…")}</p>
           ) : !summary ? (
             <p className="text-sm text-muted-foreground">
-              Turning points need the game&apos;s post-match summary, which is not available for
-              this game.
+              {tt("Turning points need the game's post-match summary, which is not available for this game.")}
             </p>
           ) : points.length === 0 ? (
             <p className="text-sm text-muted-foreground">
-              No evidence-backed turning points could be produced because your player row or the
-              required timeline data was unavailable.
+              {tt('No evidence-backed turning points could be produced because your player row or the required timeline data was unavailable.')}
             </p>
           ) : (
             <div className="space-y-3">
               {isTeamSummary && (
                 <p className="rounded-md border border-border bg-secondary/30 px-3 py-2 text-xs leading-relaxed text-muted-foreground">
-                  Team summary: these moments use only your own timelines. The summary does not
-                  identify which other rows are allies, so it does not make opponent comparisons.
+                  {tt('Team summary: these moments use only your own timelines. The summary does not identify which other rows are allies, so it does not make opponent comparisons.')}
                 </p>
               )}
               {points.length < 3 && (
                 <p className="text-xs text-muted-foreground">
-                  Only {points.length} evidence-backed{' '}
-                  {points.length === 1 ? 'moment was' : 'moments were'} available; missing moments
-                  were not estimated.
+                  {tt('Only')} {points.length} {tt(points.length === 1 ? 'moment was' : 'moments were')} {tt('available; missing moments were not estimated.')}
                 </p>
               )}
               <ol className="space-y-3">
@@ -111,6 +107,7 @@ export function TurningPointStory({
 }
 
 function StoryCard({ point, number }: { point: TurningPoint; number: number }) {
+  const { tt } = useI18n()
   return (
     <li
       className={cn('rounded-md border p-3', TONE_STYLE[point.tone])}
@@ -135,7 +132,7 @@ function StoryCard({ point, number }: { point: TurningPoint; number: number }) {
           <h3 className="text-sm font-semibold">{point.title}</h3>
           <div>
             <div className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
-              Observed
+              {tt('Observed')}
             </div>
             <p className="text-xs leading-relaxed text-foreground">{point.observed}</p>
           </div>
@@ -143,7 +140,7 @@ function StoryCard({ point, number }: { point: TurningPoint; number: number }) {
             <Lightbulb className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
             <div>
               <div className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
-                Possible takeaway
+                {tt('Possible takeaway')}
               </div>
               <p className="text-xs leading-relaxed text-muted-foreground">{point.coaching}</p>
             </div>
@@ -153,7 +150,7 @@ function StoryCard({ point, number }: { point: TurningPoint; number: number }) {
             onClick={() => scrollToSummaryEvidence(point.anchor)}
             className="inline-flex items-center gap-1 text-xs font-medium text-primary transition-colors hover:text-primary/80"
           >
-            {LINK_LABEL[point.anchor]}
+            {tt(LINK_LABEL[point.anchor])}
             <ArrowDown className="h-3 w-3" />
           </button>
         </div>

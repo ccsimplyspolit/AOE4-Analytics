@@ -1,0 +1,250 @@
+{
+  "schemaVersion": 1,
+  "name": "Jin Dinasty | Minute 3 Horsemen rush",
+  "civilization": "Jin Dynasty",
+  "author": "Jockxtar",
+  "source": "https://aoe4guides.com/builds/aJ0xgWPv9VYABfMSlnWs",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 3,
+      "resources": {
+        "food": 2,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @unit_jin/mounted-villager.webp@ -> @resource/resource_food.webp@ (\"rein@resource/deer.webp@\")",
+        "1 @unit_jin/mounted-villager.webp@ -&gt; @building_economy/mining-camp.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:05",
+      "villager_count": 3,
+      "resources": {
+        "food": 2,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ normal @unit_worker/villager-china.webp@ -> @resource/resource_food.webp@ (11)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:45",
+      "villager_count": 8,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "At 3900 on @resource/resource_gold.webp@ vein -> Force drop with @resource/resource_gold.webp@@unit_jin/mounted-villager.webp@ and send to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:50",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Cancel all @unit_worker/villager-china.webp@ except the one producing and force drop all @resource/resource_food.webp@ for faster @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:50",
+      "villager_count": 8,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "2 @unit_jin/mounted-villager.webp@ + 2 @unit_worker/villager-china.webp@ -> @abilities/repair.webp@@landmark_jin/great-pasture.webp@",
+        "@unit_jin/mounted-villager.webp@ will go @resource/gaiatreeprototypetree.webp@ after",
+        "@unit_worker/villager-china.webp@ will go @resource/resource_gold.webp@ after"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "1 @unit_worker/villager-china.webp@ -> @abilities/repair.webp@@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "You might need to force drop @resource/resource_food.webp@ again to not idle @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_jin/great-pasture.webp@@unit_jin/mounted-villager.webp@ -> @resource/gaiatreeprototypetree.webp@",
+        "@landmark_jin/great-pasture.webp@@unit_worker/villager-china.webp@ -&gt; @resource/resource_gold.webp@",
+        "Make 2 @unit_cavalry/horseman-1.webp@ ASAP and harass @resource/resource_gold.webp@ or @resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:55",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After second @unit_cavalry/horseman-1.webp@ is out, make @unit_jin/mohe-tribesman.webp@ (wait a bit for excess @resource/resource_food.webp@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 15,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start making @unit_jin/mounted-villager.webp@ now.",
+        "@resource/rally.webp@@unit_jin/mounted-villager.webp@ -> @resource/resource_wood.webp@ (only the first one)",
+        "Remacro:",
+        "Move 1 @resource/resource_food.webp@@unit_jin/mounted-villager.webp@ to @resource/resource_wood.webp@",
+        "Move 3 @resource/resource_food.webp@@unit_worker/villager-china.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "With excess @resource/resource_wood.webp@, @abilities/repair.webp@@building_jin/grassland.webp@ and @building_technology/blacksmith.webp@",
+        "If you expect pressure on your @resource/resource_gold.webp@, build @building_defensive/palisade-wall.webp@ or @building_defensive/outpost.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 16,
+      "resources": {
+        "food": 7,
+        "wood": 4,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@unit_jin/mounted-villager.webp@ -> @resource/deer.webp@ (5)",
+        "Build @building_defensive/outpost.webp@ to protect them."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep producing @unit_jin/mohe-tribesman.webp@. Also, make @unit_jin/iron-pagoda.webp@ with @landmark_jin/great-pasture.webp@ and @building_jin/grassland.webp@ discount.",
+        "Move @unit_worker/villager-china.webp@ from @resource/sheep.webp@ to @resource/resource_gold.webp@ if you want to get upgrades or a faster @age/age_3.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @unit_jin/mounted-villager.webp@ on @resource/resource_wood.webp@ is more than enough to produce units and any building you might need.",
+        "Only add more if you want to add @building_economy/farm.webp@ early. Otherwise @resource/rally.webp@ to @resource/resource_food.webp@ and @resource/resource_gold.webp@"
+      ]
+    }
+  ],
+  "description": "I got the idea from Swaggy's video where he rushes Feudal Age with Great Pastures to make iron pagodas very early.\nBut, since iron pagodas take so long to produce, I decided to make horsemen first instead before transitioning to mohe tribesmen.\n\nThe goal is to mess up the opponent's plan faster than any other civilization can, blocking resources and forcing them to react by spending resources on spearmen and archers.\n\nThis doesn't work against civilizations with heavy cavalry in Feudal Age (French, Jeanne D'Arc, Rus or Golden Horde). It also doesn't work against English, Lancaster or Abbasyd (military wing).\n\nCheck my other Jin Dinasty guides:\n- 2 TC: https://aoe4guides.com/builds/cVmyoYJZ7MFxVg1MGiu8",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "name": "The Chinese Feudal Tax All-In",
+  "civilization": "Chinese",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/AZKk4EEKB2llBxA1uqwf",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 6 starting @unit_worker/villager-china.webp@ to @resource/gaiatreeprototypetree.png@ & queue @unit_chinese/imperial-official.png@ from @building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When @unit_chinese/imperial-official.webp@ pops out & the @unit_worker/villager-china.png@ start going back to @building_economy/town-center.png@ don't let them drop off &amp; instead take them and build a @building_economy/mill.png@ on @resource/berrybush.png@ with @ability_chinese/supervise.png@ from @unit_chinese/imperial-official.png@. Without shiftclicking the vills to food, they should now drop off 72 @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:53",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New @unit_worker/villager-china.webp@ Build a @building_chinese/village.png@ opposite of Woodline & gathers 3 @resource/resource_wood.png@ from previous @resource/gaiatreeprototypetree.png@ then send to @resource/resource_gold.png@",
+        "3 @unit_worker/villager-china.png@in total to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:35",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_food.png@ until age-up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Age up with 3 @unit_worker/villager-china.webp@ on  @landmark_chinese/imperial-academy.png@ covering both the woodline and @building_economy/mill.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:12",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Remember to remacro (chop @resource/resource_wood.webp@from @resource/gaiatreeprototypetree.png@ until @building_economy/lumber-camp.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:25",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:55",
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@: Queue @unit_chinese/imperial-official.png@ until 3 + build @building_military/archery-range.png@ and @building_military/barracks.png@ (start production of"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:25",
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/double-broadaxe.webp@ +"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:40",
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/wheelbarrow.webp@ and get your 4th @unit_chinese/imperial-official.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 28,
+      "resources": {
+        "food": 13,
+        "wood": 15,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@ and add more production (@building_military/stable.png@ or @building_military/archery-range.png@ depending on opponent's comp)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 33,
+      "resources": {
+        "food": 8,
+        "wood": 20,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@landmark_chinese/barbican-of-the-sun.webp@ on your opponents most important production or resources when you push. It puts your opponent in the worst situation possible without you needing rams quick."
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/fXUmrfc5Z64",
+  "season": 8,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

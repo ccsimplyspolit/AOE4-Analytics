@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "name": "Puppypaw hybrid tughlaq from Homestead",
+  "civilization": "Tughlaq Dynasty",
+  "author": "daltor",
+  "source": "https://aoe4guides.com/builds/KBFiDHMrOaofuIfKwMDz",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@, one @unit_worker/villager-delhi.webp@@abilities/repair.webp@  @building_military/dock.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:15",
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@, keep 3-4 on food while producing @unit_ship/fishing-boat.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@ after 10 on @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:25",
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_military/dock.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 food to gold. @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 30,
+      "resources": {
+        "food": 12,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "3rd @building_military/dock.webp@",
+        "@age/age_2.webp@@landmark_delhi/tower-of-victory.webp@with 4 @unit_worker/villager-delhi.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 36,
+      "resources": {
+        "food": 17,
+        "wood": 16,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "should have 15 @unit_ship/fishing-boat.webp@at this point.",
+        "get @technology_tughluq/elephant_economics_1.webp@",
+        "@building_military/stable.webp@@building_military/archery-range.webp@@abilities/repair.webp@",
+        "start producing @unit_infantry/archer-2.webp@@unit_tughluq/elephant_raider_age2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:30",
+      "villager_count": 49,
+      "resources": {
+        "food": 22,
+        "wood": 23,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Should have 4 elephants 10 archers 20 fishing ships"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:30",
+      "villager_count": 54,
+      "resources": {
+        "food": 25,
+        "wood": 23,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_technology/blacksmith.webp@",
+        "@technology_military/steeled-arrow.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "either age up to castle after this or keep producing and kill. depends on game"
+      ]
+    }
+  ],
+  "description": "Four lakes map",
+  "video": "",
+  "season": 13,
+  "map": "Hybrid",
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

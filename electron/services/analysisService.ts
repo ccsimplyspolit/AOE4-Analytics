@@ -1,4 +1,5 @@
 import type { AnalyzeResult, IpcResult } from '@ipc/contract'
+import type { BuildAuditHistoryRow } from '@domain/buildOrderHistory'
 import type { Game, MatchupStatsResponse } from '@api/types'
 import type { RelicRecentMatchHistoryResponse } from '@api/relicTypes'
 import type { StoredMatch } from '@store/historyStore'
@@ -40,6 +41,7 @@ import {
   type LandmarkRecordRow,
 } from '@domain/landmarkRecord'
 import { summaryPlayerForMe } from '@domain/summaryCoaching'
+import { buildAuditHistoryRow } from '@domain/buildOrderHistory'
 import {
   civFromToken,
   type MatchSummary,
@@ -49,6 +51,7 @@ import {
 import { getSteamAccounts } from './steamService'
 import { err, errFrom, ok } from './result'
 import type { CreatedHistoryStore } from '@store/historyStoreFactory'
+import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
 
 /**
  * A stored team-format game (2v2+) that predates team-roster capture — it has a
@@ -326,7 +329,7 @@ const syncInFlightByProfile = new Map<number, Promise<IpcResult<AnalyzeResult>>>
  * Concurrent calls (poll tick + Sync button) share one in-flight run — two
  * interleaved syncs would double-download summary blobs and race goal chaining.
  */
-export function analyzeRecentGames(count = 15): Promise<IpcResult<AnalyzeResult>> {
+export function analyzeRecentGames(count?: number): Promise<IpcResult<AnalyzeResult>> {
   const settings = getSettings().getAll()
   const profileId = settings.profileId
   // 0 is only the no-profile key; real AoE4 profile ids are positive.
@@ -349,7 +352,7 @@ export function analyzeRecentGames(count = 15): Promise<IpcResult<AnalyzeResult>
   return sync
 }
 
-async function runSync(count: number, context: SyncContext): Promise<IpcResult<AnalyzeResult>> {
+async function runSync(count: number | undefined, context: SyncContext): Promise<IpcResult<AnalyzeResult>> {
   const ranked = await analyzeRankedGames(count, context)
   let localAnalyzed = 0
   try {
@@ -368,12 +371,12 @@ async function runSync(count: number, context: SyncContext): Promise<IpcResult<A
 }
 
 /**
- * Fetches the user's recent finished games, analyzes any not seen before
+ * Fetches the user's account games (or an explicit recent window), analyzes any not seen before
  * (Tier-1 + matchup enrichment; local stats arrive in Phase 4.5), chains goals
  * across games, and persists. Idempotent — already-stored games are skipped.
  */
 async function analyzeRankedGames(
-  count: number,
+  count: number | undefined,
   context: SyncContext,
 ): Promise<IpcResult<AnalyzeResult>> {
   const profileId = context.profileId
@@ -382,12 +385,15 @@ async function analyzeRankedGames(
 
   try {
     const client = getClient()
-    const [player, gamesRes] = await Promise.all([
+    const [player, games] = await Promise.all([
       client.getPlayer(profileId),
-      // No leaderboard filter → ALL recent games (ranked + Quick Match, 1v1 +
-      // team), so History matches what AoE4World shows, not just ranked 1v1.
-      // fresh: results change after a game ends — never fold a stale cached list.
-      client.getPlayerGames(profileId, { limit: count, fresh: true }),
+      count == null
+        ? // Follow total_count pagination instead of silently stopping at the
+          // first 20/100 records. No leaderboard filter keeps ranked, QM and
+          // team games together.
+          client.getAllPlayerGames(profileId, { pageSize: 100, fresh: true })
+        : // Polling and post-game auto-folds intentionally stay bounded.
+          client.getPlayerGames(profileId, { limit: count, fresh: true }).then((response) => response.games),
     ])
     const bracket = bracketFromRankLevel(pickPrimaryMode(player.modes)?.rankLevel)
     const bench = getBenchmarks(bracket)
@@ -411,7 +417,7 @@ async function analyzeRankedGames(
 
     const history = await historyPromise
     const { store } = history
-    const oldestFirst = [...gamesRes.games].filter((g) => !g.ongoing).reverse()
+    const oldestFirst = [...games].filter((g) => !g.ongoing).reverse()
     let analyzed = 0
     // At most this many ranked-summary DOWNLOADS per sync (disk-cached blobs and
     // local stats.rgs reads are free) — keeps a sync snappy on a fresh install.
@@ -811,6 +817,37 @@ export async function listHistory(limit?: number): Promise<IpcResult<StoredMatch
       return enriched
     })
     return ok(matches)
+  } catch (e) {
+    return errFrom(e)
+  }
+}
+
+/**
+ * Returns the multi-game build-review rows without forcing a network fetch for
+ * every old ranked match. Local stats.rgs and already cached Relic summaries
+ * are deterministic evidence; missing rows remain explicitly unavailable.
+ */
+export async function getBuildAuditHistory(
+  limit = 50,
+): Promise<IpcResult<BuildAuditHistoryRow[]>> {
+  if (!Number.isSafeInteger(limit) || limit <= 0 || limit > 500) {
+    return err('validation', 'Build audit history limit must be between 1 and 500.')
+  }
+  try {
+    const store = await getHistoryStore()
+    const settings = getSettings().getAll()
+    const matches = store.listVisibleMatches(limit)
+    return ok(
+      matches.map((match) =>
+        buildAuditHistoryRow({
+          match,
+          summary: readGameSummary(match.id) ?? readCachedParsedSummary(match.id),
+          profileId: settings.profileId,
+          builds: BUNDLED_BUILD_ORDERS,
+          pinnedBuildName: settings.overlay.buildOrderId,
+        }),
+      ),
+    )
   } catch (e) {
     return errFrom(e)
   }

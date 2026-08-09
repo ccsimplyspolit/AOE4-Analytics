@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "name": "Feudal Aggression Macedonians (DLC RELEASE VERSION)",
+  "civilization": "Macedonian Dynasty",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/Z272XddhRKJ9qxjZCGpw",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Send 5 @unit_worker/villager.webp@ to @resource/sheep.webp@ and 1 to build @building_macedonian/varangian_warcamp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 2 @unit_worker/villager.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@ until @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:13",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@ to build @landmark_byzantines/grand-winery-1.webp@ on @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2.20",
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Macro 3 @resource/sheep.webp@@unit_worker/villager.webp@ to @resource/resource_wood.webp@ and @resource/rally.webp@ until 8"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:10",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@ -> @building_macedonian/varangian_arsenal.webp@/@building_macedonian/varangian_stronghold.webp@ (arsenal if opp isn't feudal or isn't opening units)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_macedonian/blade-inlaying-2.webp@ or @technology_macedonian/sharpening-stones-2.webp@ (if archers)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:15",
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_macedonian/varangian_stronghold.webp@ (@building_macedonian/varangian_arsenal.webp@ if u went stronghold first)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 25,
+      "resources": {
+        "food": 13,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start adding in a few @building_economy/farm.webp@ around @landmark_byzantines/grand-winery-1.webp@ now. Potentially tower your berries or gold if they are in the front as well."
+      ]
+    }
+  ],
+  "description": "Standard aggro. Play horsemen archer spear (tricomp) aggressively and age up to castle after your opponent and look for a lot of damage in feudal. In castle play riddari and archer. ",
+  "video": "https://www.youtube.com/embed/zoA922O-HQM",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "name": "Erken baskı veya 2 TC",
+  "civilization": "Byzantines",
+  "author": "Woid",
+  "source": "https://aoe4guides.com/builds/U2uwVl6ufMqPmw68uSaj",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2.25",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "1 işci ilk sarnıç  @building_byzantines/cistern-1.webp@aynı işci ile nüfus evi @building_economy/house.webp@bu işçi geri gidiyor @resource/resource_food.webp@, 1 işci @building_economy/mining-camp.webp@@resource/resource_gold.webp@, 1 işçi @building_economy/mining-camp.webp@@resource/resource_stone.webp@, çıkan işciler 7 olana kadar et sonra ki 1 adet  @resource/resource_gold.webp@ve 1 adet  @resource/resource_stone.webp@olmak üzere 2 işci, sonra 10 işçi olana kadar  @resource/resource_food.webp@ve sonra ortaya çıkan hepsi işçi oduna çıkıyor."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3.50",
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 2,
+        "stone": 1,
+        "builder": 8
+      },
+      "notes": [
+        "@landmark_byzantines/grand-winery-1.webp@@building_byzantines/cistern-1.webp@@building_economy/house.webp@ 6 işçi ve işçiden alıp Büyük Şaraphaneyi böğürtlen önde değillerse 2 karo tarlaya sığacak kadar işçile inşaat yapıyorlar,bizde bu esnada taştan bir isçi alıp sarnıç atıyoruz.1 işçi ile de nüfustan ayrıldık.Bu sırada araştırma olarak'ta el arabası@technology_economy/wheelbarrow.webp@ veya saldırı için demirci kurup @technology_military/siege-engineering.webp@ alabilirsiniz.Altıni değerlendirmek için."
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "name": "HORD D'OR",
+  "civilization": "Golden Horde",
+  "author": "CaptainSerie",
+  "source": "https://aoe4guides.com/builds/KiLygeHvfmMDYPiYZLIP",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@ 4@unit_worker/villager-mongols.webp@ ---> @resource/resource_food.webp@",
+        "4@unit_worker/villager.webp@ ---&gt; @resource/sheep.webp@",
+        "1@unit_worker/villager-mongols.webp@@abilities/repair.webp@ ---&gt; @building_mongols/ovoo.webp@ ---&gt; @landmark_golden_horde/golden_tent.webp@ ---&gt; @building_mongols/ger.webp@ ---&gt; @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "UNE FOIS 8@unit_worker/villager-mongols.webp@@resource/sheep.webp@ ---> @resource/rally.webp@ 2@unit_worker/villager-mongols.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@unit_worker/villager-mongols.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "COCHER @ability_golden_horde/production_edict.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_golden_horde/golden_tent_building_carts_age2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 4@unit_worker/villager-mongols.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 7,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@unit_worker/villager-mongols.webp@@resource/sheep.webp@ ---> @resource/resource_wood.webp@",
+        "1@unit_worker/villager-mongols.webp@@resource/sheep.webp@ ---&gt; @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@unit_worker/villager-mongols.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@technology_golden_horde/golden_tent_building_carts_age2.webp@ ---> @building_military/stable.webp@",
+        "1@technology_golden_horde/golden_tent_building_carts_age2.webp@ ---&gt; @building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 9,
+        "wood": 7,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1@unit_worker/villager-mongols.webp@@resource/resource_wood.webp@ ---> @abilities/repair.webp@@building_mongols/ovoo.webp@ ---&gt; @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "START PRODUCE @unit_golden_horde/khan.webp@ PUIS @unit_golden_horde/torguud.webp@",
+        "START PRODUCE @unit_infantry/archer-2.webp@ ET @unit_mongols/keshik-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/wheelbarrow.webp@ ---> @technology_economy/double-broadaxe.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 27,
+      "resources": {
+        "food": 15,
+        "wood": 7,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1@unit_worker/villager-mongols.webp@@resource/resource_wood.webp@ ---> @building_technology/blacksmith.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 29,
+      "resources": {
+        "food": 17,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager-mongols.webp@@resource/resource_gold.webp@ ---> @abilities/repair.webp@@building_military/archery-range.webp@ ---&gt; @abilities/repair.webp@@building_golden_horde/fortified_outpost.webp@ ---&gt; @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "HORDE",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

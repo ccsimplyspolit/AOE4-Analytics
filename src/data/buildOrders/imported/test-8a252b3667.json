@@ -1,0 +1,369 @@
+{
+  "schemaVersion": 1,
+  "name": "Test",
+  "civilization": "Mongols",
+  "author": "ptc73",
+  "source": "https://aoe4guides.com/builds/FCMR6CEFjEwNyckDTcvw",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager-mongols.webp@ to @resource/gaiatreeprototypetree.webp@     1@unit_worker/villager-mongols.webp@ to @abilities/repair.webp@ @building_mongols/ovoo.webp@ then @building_mongols/pasture.webp@ then to @resource/sheep.webp@",
+        "@building_economy/town-center.webp@ on @resource/resource_wood.webp@ @resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once @resource/gaiatreeprototypetree.webp@ empty send 3 @unit_worker/villager-mongols.webp@ and@building_mongols/ger.webp@ to @resource/resource_gold.webp@",
+        "Other 2 @unit_worker/villager-mongols.webp@to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once Age up build @landmark_mongols/deer-stones.webp@ with 4@unit_worker/villager-mongols.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Leave 4@unit_worker/villager-mongols.webp@@resource/sheep.webp@",
+        "Move rest to @resource/resource_wood.webp@ @resource/rally.webp@to 6@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@ once 6@resource/resource_wood.webp@ @unit_worker/villager-mongols.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Once 150 @resource/resource_wood.webp@ @abilities/repair.webp@@building_military/stable.webp@ with @resource/sheep.webp@@unit_worker/villager-mongols.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 7,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Next 100 @resource/resource_wood.webp@@abilities/repair.webp@@building_defensive/outpost.webp@ on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 11,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Double produce @unit_mongols/keshik-2.webp@ once"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once 150 @resource/resource_wood.webp@ @abilities/repair.webp@@building_mongols/pasture.webp@with @resource/sheep.webp@@unit_worker/villager-mongols.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use @unit_mongols/khan-1.webp@ & @unit_mongols/keshik-2.webp@ to raid and @technology_defensive/arrow-slits.webp@@building_defensive/outpost.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 15,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once 150 @resource/resource_wood.webp@ @abilities/repair.webp@@building_mongols/pasture.webp@with @resource/sheep.webp@@unit_worker/villager-mongols.webp@",
+        "Make 2 more @unit_mongols/keshik-2.webp@ if needed with stone"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 16,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once 150 @resource/resource_wood.webp@ @abilities/repair.webp@@building_mongols/pasture.webp@with @resource/sheep.webp@@unit_worker/villager-mongols.webp@ for 4 total@building_mongols/pasture.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 28,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once 100@resource/resource_wood.webp@ @abilities/repair.webp@@building_defensive/outpost.webp@ on@unit_worker/villager-mongols.webp@ for 10 total on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 29,
+      "resources": {
+        "food": 13,
+        "wood": 6,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once 150@resource/resource_wood.webp@ @abilities/repair.webp@@building_military/barracks.webp@ or @building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use 9 @unit_worker/villager-mongols.webp@ @resource/resource_gold.webp@ to age up with @landmark_mongols/steppe-redoubt.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 30,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "Move @resource/sheep.webp@@unit_worker/villager-mongols.webp@ to @resource/resource_wood.webp@ to have 10",
+        "Continue to @resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 32,
+      "resources": {
+        "food": 12,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_technology/blacksmith.webp@ When enough @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 33,
+      "resources": {
+        "food": 13,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_defensive/outpost.webp@ When enough @resource/resource_wood.webp@ and @technology_defensive/springald-emplacement.webp@ on ones that are central"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 34,
+      "resources": {
+        "food": 14,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_defensive/outpost.webp@ When enough @resource/resource_wood.webp@ continually"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 34,
+      "resources": {
+        "food": 14,
+        "wood": 10,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If getting raided upgraded @technology_military/steeled-arrow.webp@ for bonus @building_defensive/outpost.webp@ damage"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 35,
+      "resources": {
+        "food": 15,
+        "wood": 10,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce @unit_mongols/keshik-2.webp@ & @unit_infantry/spearman-1.webp@/@unit_infantry/archer-2.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_military/bloomery.webp@/@technology_military/iron-undermesh.webp@/@technology_military/fitted-leatherwork.webp@",
+        "Research @technology_economy/wheelbarrow.webp@/@technology_economy/double-broadaxe.webp@/@technology_economy/horticulture.webp@/@technology_economy/specialized-pick.webp@",
+        "From @building_mongols/ovoo.webp@ Research @technology_mongols/raid-bounty.webp@/@technology_mongols/additional-torches.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 36,
+      "resources": {
+        "food": 16,
+        "wood": 10,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once map control get @building_mongols/prayer-tent.webp@ for @resource/relics.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

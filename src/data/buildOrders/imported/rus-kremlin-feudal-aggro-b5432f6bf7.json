@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "name": "Rus | Kremlin feudal aggro",
+  "civilization": "Rus",
+  "author": "JampiX",
+  "source": "https://aoe4guides.com/builds/sXbLY9JdD0tmkRgKHVO2",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@ -> @resource/sheep.webp@",
+        "1 @unit_worker/villager.webp@ -&gt; @abilities/repair.webp@@building_rus/hunting-cabin.webp@ -&gt; @abilities/repair.webp@@building_economy/house.webp@ -&gt; @resource/sheep.webp@",
+        "1 @unit_worker/villager.webp@ -&gt; @abilities/repair.webp@@building_rus/hunting-cabin.webp@ (different forest) -&gt; @resource/sheep.webp@",
+        "@resource/rally.webp@ -&gt; @resource/sheep.webp@ (12)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:45",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "First @building_rus/hunting-cabin.webp@ make 1 @unit_cavalry/scout.webp@ for extra @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:05",
+      "villager_count": 12,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/gaiatreeprototypetree.webp@ (11)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Move 5 @resource/sheep.webp@@unit_worker/villager.webp@ to where you want to build @landmark_rus/kremlin.webp@ (@resource/deer.webp@/@resource/boar.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "5 @resource/sheep.webp@@unit_worker/villager.webp@ -> @abilities/repair.webp@@landmark_rus/kremlin.webp@",
+        "5 @resource/sheep.webp@@unit_worker/villager.webp@",
+        "rest @unit_worker/villager.webp@-&gt; @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @abilities/repair.webp@@landmark_rus/kremlin.webp@@unit_worker/villager.webp@ -> @abilities/repair.webp@@building_military/stable.webp@-&gt; @abilities/repair.webp@@building_rus/hunting-cabin.webp@@resource/deer.webp@ or @resource/boar.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/sheep.webp@; produce @unit_cavalry/knight-2.webp@, back up with @unit_infantry/archer-2.webp@"
+      ]
+    }
+  ],
+  "description": "Build order with Kremlin into feudal aggression\n\nMy other Rus build orders:\n- 2 TC (Golden Gate): https://aoe4guides.com/builds/pX8L4VhAZGmjAxDgvCcN\n- Feudal aggro: https://aoe4guides.com/builds/xfOIBbmMKAFgdR96BV7i",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -25,6 +25,7 @@ import type {
   SteamCredentialsLoginResult,
   SteamGuardAction,
   SteamGuardActionKind,
+  ReplayCacheResult,
 } from '@ipc/contract'
 import type { RelicRecentMatchHistoryResponse } from '@api/relicTypes'
 import { getRelicClient } from './appContext'
@@ -36,6 +37,7 @@ import {
   readCachedParsedSummary,
   writeCachedSummary,
 } from './summaryCache'
+import { getCachedReplayInfo, writeCachedReplay } from './replayCacheService'
 
 const AOE4_APPID = 1466860
 const TITLE = 'age4'
@@ -419,6 +421,50 @@ async function requestTempCredentials(
     /* not JSON */
   }
   return null
+}
+
+/**
+ * Downloads one full online replay through Relic's signed Azure URL and stores
+ * the inflated `.rec` under the per-user replay cache. Relic exposes one slot
+ * per player, so candidates are tried largest-first until one succeeds.
+ */
+export async function cacheRemoteReplay(
+  gameId: number,
+  profileId: number,
+): Promise<ReplayCacheResult> {
+  const cached = getCachedReplayInfo(gameId)
+  if (cached.cached) {
+    return { gameId, status: 'already_cached', sizeBytes: cached.sizeBytes, path: cached.path }
+  }
+  if (!loggedOn) throw new Error('Steam must be connected before downloading online replays.')
+
+  const recent = await getRelicClient().getRecentMatchHistory(profileId)
+  const match = recent.matchHistoryStats.find((candidate) => candidate.id === gameId)
+  if (!match) return { gameId, status: 'unavailable', sizeBytes: null, path: null }
+
+  const candidates = (match.matchurls ?? [])
+    .filter((url) => url.datatype === 0 && url.url && (url.size ?? -1) > 0)
+    .sort((left, right) => (right.size ?? 0) - (left.size ?? 0))
+  if (candidates.length === 0) return { gameId, status: 'unavailable', sizeBytes: null, path: null }
+
+  const session = await ensureRelicSession()
+  for (const candidate of candidates) {
+    try {
+      const rawUrl = candidate.url!
+      const signed = await requestTempCredentials(session, rawUrl, blobKeyFromUrl(rawUrl))
+      if (!signed) continue
+      const response = await fetch(signed)
+      if (!response.ok) continue
+      const raw = Buffer.from(await response.arrayBuffer())
+      const inflated = raw.length > 2 && raw[0] === 0x1f && raw[1] === 0x8b ? gunzipSync(raw) : raw
+      if (inflated.length < 12) continue
+      const saved = writeCachedReplay(gameId, new Uint8Array(inflated))
+      return { gameId, status: 'cached', sizeBytes: saved.sizeBytes, path: saved.path }
+    } catch {
+      // Try another player's upload; one slot can be stale or unavailable.
+    }
+  }
+  return { gameId, status: 'unavailable', sizeBytes: null, path: null }
 }
 
 // ---------------------------------------------------------------------------

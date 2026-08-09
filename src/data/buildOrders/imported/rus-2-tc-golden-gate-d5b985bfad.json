@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 1,
+  "name": "Rus | 2 TC (Golden Gate)",
+  "civilization": "Rus",
+  "author": "Jockxtar",
+  "source": "https://aoe4guides.com/builds/pX8L4VhAZGmjAxDgvCcN",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@ -> @resource/sheep.webp@",
+        "1 @unit_worker/villager.webp@ -&gt; @abilities/repair.webp@@building_rus/hunting-cabin.webp@ -&gt; @abilities/repair.webp@@building_economy/house.webp@ -&gt; @resource/sheep.webp@",
+        "1 @unit_worker/villager.webp@ -&gt; @abilities/repair.webp@@building_rus/hunting-cabin.webp@ (different forest) -&gt; @resource/sheep.webp@",
+        "@resource/rally.webp@ -&gt; @resource/sheep.webp@ (11)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:45",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "First @building_rus/hunting-cabin.webp@ make 1 @unit_cavalry/scout.webp@ for extra @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:45",
+      "villager_count": 11,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_wood.webp@ (11)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 @resource/sheep.webp@@unit_worker/villager.webp@ -> @abilities/repair.webp@@landmark_rus/the-golden-gate.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "3 @resource/sheep.webp@@unit_worker/villager.webp@ -> @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:55",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "1 @resource/resource_wood.webp@@unit_worker/villager.webp@ -> @building_economy/lumber-camp.webp@ -&gt; @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:55",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 9,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @abilities/repair.webp@@unit_worker/villager.webp@ -> @resource/resource_gold.webp@ (2 @abilities/repair.webp@@building_economy/mining-camp.webp@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 11,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_food.webp@ (7)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 20,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Move 8 @resource/resource_wood.webp@@unit_worker/villager.webp@ to 2nd @building_economy/town-center.webp@ position."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 20,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Spend 2 @landmark_rus/the-golden-gate.webp@ tickets to buy @resource/resource_stone.webp@ (force drop @resource/resource_gold.webp@ if necessary)",
+        "8 @unit_worker/villager.webp@ -> @abilities/repair.webp@@building_economy/town-center.webp@ on @resource/deer.webp@ and/or @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use @unit_cavalry/scout.webp@ to push @resource/deer.webp@ near second @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:25",
+      "villager_count": 22,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "@building_rus/hunting-cabin.webp@ research @technology_economy/survival-techniques.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:55",
+      "villager_count": 23,
+      "resources": {
+        "food": 11,
+        "wood": 4,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_economy/town-center.webp@ @resource/rally.webp@ -> @resource/deer.webp@",
+        "Move 4 @resource/sheep.webp@@unit_worker/villager.webp@ -&gt; @resource/resource_gold.webp@ (for fast @age/age_3.webp@) or @resource/resource_wood.webp@ (for defense)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 23,
+      "resources": {
+        "food": 11,
+        "wood": 4,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_rus/hunting-cabin.webp@ research @technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use @landmark_rus/the-golden-gate.webp@ tickets to remacro.",
+        "For example, buy @resource/resource_wood.webp@ to build @building_rus/wooden-fortress.webp@/@building_rus/fortified-palisade-wall.webp@/@building_military/barracks.webp@/@building_military/archery-range.webp@/@building_military/stable.webp@ or @resource/resource_food.webp@ for more units. Or spend excess @resource/resource_gold.webp@ on upgrades."
+      ]
+    }
+  ],
+  "description": "2 TC build order with Golden Gate.\n\nMy other Rus build orders:\n- 2 TC (Kremlin): https://aoe4guides.com/builds/9RLFLxLnA1tMMlxPzJ9u\n- Feudal aggro: https://aoe4guides.com/builds/xfOIBbmMKAFgdR96BV7i",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

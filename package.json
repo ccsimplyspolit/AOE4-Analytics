@@ -30,10 +30,14 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "verify": "npm run typecheck && npm run lint && npm test",
+    "sync:sources": "python scripts/sync_sources.py",
+    "sync:sources:dry": "python scripts/sync_sources.py --dry-run",
+    "import:attrib": "python scripts/import_attrib_snapshot.py",
     "lint": "eslint . --max-warnings=0",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "sync:icons": "node scripts/sync_aoe4_icons.mjs",
     "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json"
   },
   "dependencies": {

@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "name": "Japonais berry",
+  "civilization": "Japanese",
+  "author": "siberian_wolf",
+  "source": "https://aoe4guides.com/builds/kl2xijJHN7s7HJgaNAig",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@unit_worker/villager-japanese.webp@>@resource/berrybush.webp@",
+        "2@unit_worker/villager-japanese.webp@&gt;@building_japanese/farmhouse-1.webp@&gt;@technology_japanese/towara-1.webp@&gt;@resource/berrybush.webp@",
+        "3@resource/rally.webp@&gt;@building_japanese/forge-1.webp@&gt;@resource/resource_gold.webp@",
+        "3@resource/rally.webp@&gt;@resource/berrybush.webp@",
+        "1@resource/rally.webp@&gt;@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 16,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 @resource/sheep.webp@@unit_worker/villager-japanese.webp@>@landmark_japanese/kura-storehouse-1.webp@",
+        "1@resource/berrybush.webp@@unit_worker/villager-japanese.webp@&gt;@resource/resource_gold.webp@",
+        "1@resource/rally.webp@&gt;@resource/resource_wood.webp@",
+        "7@resource/rally.webp@&gt;@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 19,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@resource/rally.webp@>@resource/sheep.webp@",
+        "1@landmark_japanese/kura-storehouse-1.webp@@unit_worker/villager-japanese.webp@&gt;@building_economy/farm.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 33,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "9@resource/sheep.webp@@unit_worker/villager-japanese.webp@>@landmark_japanese/floating-gate-2.webp@",
+        "7@resource/sheep.webp@@unit_worker/villager-japanese.webp@&gt;@resource/resource_wood.webp@",
+        "6@resource/rally.webp@&gt;@resource/resource_gold.webp@",
+        "3@resource/rally.webp@&gt;@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 33,
+      "resources": {
+        "food": 15,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_japanese/daimyo-manor-1.webp@",
+        "9@landmark_japanese/floating-gate-2.webp@@unit_worker/villager-japanese.webp@>@resource/resource_food.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

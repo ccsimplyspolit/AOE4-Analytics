@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "name": "HRE Fast Castle",
+  "civilization": "Holy Roman Empire",
+  "author": "Whorrified",
+  "source": "https://aoe4guides.com/builds/x71Xkppo7oPJIgAP5JdR",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:01",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @resource/resource_food.webp@   3 @resource/resource_gold.png@",
+        "@resource/rally.png@@resource/resource_food.png@ until 9"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:01",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_hre/prelate.webp@ to inspire all @resource/resource_gold.png@@unit_worker/villager.png@ once",
+        "Send @unit_hre/prelate.png@ back to @resource/resource_food.png@@unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:01",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.png@ until 3"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:31",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "@landmark_hre/aachen-chapel.webp@ with 3 @resource/resource_food.png@ 3 @resource/resource_gold.png@",
+        "Builders go to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:01",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.png@ until 15"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:01",
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 6,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "3 @resource/resource_food.webp@ to @resource/resource_stone.png@ for 1 trip WITHOUT @building_economy/mining-camp.png@ (for @technology_defensive/arrow-slits.png@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:41",
+      "villager_count": 20,
+      "resources": {
+        "food": 11,
+        "wood": 1,
+        "gold": 6,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2 @resource/resource_wood.webp@  @building_defensive/outpost.png@ on @resource/resource_gold.png@",
+        "Upgrade @technology_defensive/arrow-slits.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:01",
+      "villager_count": 24,
+      "resources": {
+        "food": 15,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_hre/regnitz-cathedral.webp@ with 10 @resource/resource_food.png@",
+        "@resource/rally.png@@resource/resource_wood.png@ at 15 @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:01",
+      "villager_count": 24,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "@unit_hre/prelate.webp@@unit_hre/prelate.png@ to @resource/relics.png@",
+        "@resource/rally.png@@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:31",
+      "villager_count": 24,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 6,
+        "stone": 0,
+        "builder": 11
+      },
+      "notes": [
+        "1 @resource/resource_wood.webp@ to @building_military/stable.png@",
+        "@unit_cavalry/knight-2.png@ for raiding"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "07:21",
+      "villager_count": 26,
+      "resources": {
+        "food": 15,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @resource/relics.webp@ in @landmark_hre/regnitz-cathedral.png@",
+        "Extra @resource/relics.png@ in @building_defensive/outpost.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_hre/devoutness.webp@  from @landmark_hre/regnitz-cathedral.png@",
+        "@building_economy/market.png@ to trade @resource/resource_gold.png@ for other resources as needed"
+      ]
+    }
+  ],
+  "description": "Check out VortiX's video for Aachen Chapel placement",
+  "video": "https://www.youtube.com/embed/xK9IVxvnNLA",
+  "season": 6,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

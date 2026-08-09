@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 1,
+  "name": "4:55 2TC Mongol",
+  "civilization": "Mongols",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/5QQeAZI06xD1qz6tB6WA",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Pop \"\"Maneuver Arrow\",",
+        "5 @unit_worker/villager-mongols.webp@ on @resource/resource_food.png@ and place @building_mongols/ger.png@ on @resource/resource_gold.png@.",
+        "1 @unit_worker/villager-mongols.png@ to build @building_mongols/ovoo.png@ on @resource/resource_stone.png@ then @resource/resource_food.png@",
+        "@building_economy/town-center.png@ unpacked at @resource/resource_wood.png@ (@resource/rally.png@starting @resource/sheep.png@to @building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:15",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.png@ 2 @unit_worker/villager-mongols.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:55",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Take @resource/resource_gold.webp@@unit_worker/villager-mongols.png@ to @resource/resource_wood.png@ when 3900/4000 @resource/resource_gold.png@vein"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:23",
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @landmark_mongols/deer-stones.webp@ with 2 @unit_worker/villager-mongols.png@ and remacro @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:29",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.png@ until @building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 19,
+      "resources": {
+        "food": 6,
+        "wood": 13,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age-up @unit_worker/villager-mongols.webp@ go to @resource/sheep.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:55",
+      "villager_count": 20,
+      "resources": {
+        "food": 6,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 2nd @building_economy/town-center.webp@ up against the main @building_economy/town-center.png@ with 15 @unit_worker/villager-mongols.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:29",
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro for proscouts. @resource/rally.webp@ @resource/resource_food.png@ with both @building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6.25",
+      "villager_count": 26,
+      "resources": {
+        "food": 13,
+        "wood": 5,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/professional-scouts.webp@ from @building_mongols/ger.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 29,
+      "resources": {
+        "food": 14,
+        "wood": 5,
+        "gold": 8,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@building_military/stable.webp@ on @building_mongols/ovoo.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:20",
+      "villager_count": 32,
+      "resources": {
+        "food": 24,
+        "wood": 0,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro and queue 2x @unit_cavalry/scout.webp@ (double produce) and start taking deer home"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 33,
+      "resources": {
+        "food": 25,
+        "wood": 0,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_mongols/steppe-redoubt.webp@ with 8 @unit_worker/villager-mongols.png@ and remacro for @building_military/barracks.png@@building_military/archery-range.png@ and @building_mongols/prayer-tent.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 34,
+      "resources": {
+        "food": 13,
+        "wood": 13,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "macro to the left"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 47,
+      "resources": {
+        "food": 19,
+        "wood": 16,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now play castle for relics. Use @unit_infantry/crossbowman-3.webp@ and @unit_infantry/spearman-1.png@ to defend and secure relics with. Build towers and pastures to scale economy."
+      ]
+    }
+  ],
+  "description": "2TC mongol. Pretty strong against civs you cant trush like Rus, Ayyubid, English etc.\n\nWin condition: Outscale and out eco",
+  "video": "",
+  "season": 9,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 1,
+  "name": "Fast Bannerman Into FC into 2TC",
+  "civilization": "Japanese",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/AwmiAnM1UQDVqmg0ybQm",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 1,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "Split your first 6 @unit_worker/villager-japanese.webp@ according to tab. (2 @resource/resource_stone.png@, 1 @resource/resource_gold.png@, 3 @resource/resource_food.png@) and then @resource/rally.png@ new @unit_worker/villager-japanese.png@ to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:35",
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 1,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "Take 4 @unit_worker/villager-japanese.webp@ and build @landmark_japanese/kura-storehouse-1.png@ towards woodline."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 1,
+        "stone": 2,
+        "builder": 4
+      },
+      "notes": [
+        "Take 3 from @resource/resource_food.webp@ and put on @resource/gaiatreeprototypetree.png@ and chop 2x @resource/gaiatreeprototypetree.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:15",
+      "villager_count": 11,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 1,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "When 225 @resource/resource_stone.webp@ pull your 2 @resource/resource_stone.png@@unit_worker/villager-japanese.png@ to chop the 2x @resource/gaiatreeprototypetree.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:15",
+      "villager_count": 11,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_japanese/daimyo-manor-1.webp@ & keep @resource/rally.png@ to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 age up @unit_worker/villager-japanese.webp@ go to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Take 2 @resource/resource_food.webp@@unit_worker/villager-japanese.png@ and build a @building_military/stable.png@ then @building_japanese/farmhouse-1.png@ & queue @unit_japanese/uma-bannerman-2.png@ to harass and defend (dont take unnecessary damage, you want him alive)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:04",
+      "villager_count": 23,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_defensive/outpost.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30ish",
+      "villager_count": 21,
+      "resources": {
+        "food": 16,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 16 on @resource/resource_food.webp@ then @resource/rally.png@ new @unit_worker/villager-japanese.png@ to @resource/resource_gold.png@ until @age/age_3.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 23,
+      "resources": {
+        "food": 16,
+        "wood": 0,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_defensive/arrow-slits.webp@'"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_japanese/floating-gate-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:40",
+      "villager_count": 23,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Setup barrack for Yorishiro in case of feudal and other necessities like walls and stuff"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 32,
+      "resources": {
+        "food": 17,
+        "wood": 7,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_wood.png@ and @resource/resource_food.png@. Spam @unit_japanese/mounted-samurai-3.png@ for Map Control and @resource/relics.png@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:30",
+      "villager_count": 35,
+      "resources": {
+        "food": 19,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_japanese/shinto-shrine-3.webp@ for @resource/relics.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:30 ish",
+      "villager_count": 43,
+      "resources": {
+        "food": 22,
+        "wood": 13,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Time for 2nd @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Afterwards start prepping barracks to deal with enemy Spear/crossbow comp through the use of @unit_japanese/onna-bugeisha-2.webp@ spam. (dont forget full melee att upgrades for these)",
+        "Otherwise, you can choose to play the long or short game here. Again, be flexible and reactive, dont go 2nd TC if opponent is trying to kill you or you dont have control. Play intelligently :P"
+      ]
+    }
+  ],
+  "description": "The modernized FC",
+  "video": "https://www.youtube.com/embed/0_DcTxTqB7I",
+  "season": 8,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

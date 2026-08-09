@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "name": "Doble Centro Urbano",
+  "civilization": "English",
+  "author": "TonnyWalker",
+  "source": "https://aoe4guides.com/builds/IiWeuisaPeQzZrXPA7YW",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6@unit_worker/villager.webp@ a @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @unit_worker/villager.webp@ construye @building_economy/house.webp@ después a @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @unit_worker/villager.webp@ construye @building_economy/mining-camp.webp@ después a @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @unit_worker/villager.webp@ a @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2 @unit_worker/villager.webp@ de @resource/resource_gold.webp@ construyen @landmark_english/abbey-of-kings.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 0,
+        "stone": 4,
+        "builder": 2
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@ de @resource/sheep.webp@ a @resource/resource_stone.webp@ y 2 @unit_worker/villager.webp@ de @resource/sheep.webp@ a @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 4,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/rally.webp@ @unit_worker/villager.webp@ a @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 0,
+        "stone": 4,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/rally.webp@ @unit_worker/villager.webp@ a @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@ de @resource/resource_stone.webp@ y 4 @unit_worker/villager.webp@ de @resource/resource_wood.webp@ construyen @building_economy/town-center.webp@",
+        "2 @unit_worker/villager.webp@ construyendo @landmark_english/abbey-of-kings.webp@ regresan a @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "@resource/rally.webp@ a @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 16,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "8 @unit_worker/villager.webp@ de@building_economy/town-center.webp@ a @resource/deer.webp@",
+        "@resource/rally.webp@ a @resource/resource_gold.webp@",
+        "Construir @building_economy/mill.webp@ e investigar @technology_economy/survival-techniques.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 30,
+      "resources": {
+        "food": 16,
+        "wood": 4,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Ambos @resource/rally.webp@ a @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:20",
+      "villager_count": 24,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@ de @resource/sheep.webp@ y 4 @unit_worker/villager.webp@ de @resource/resource_gold.webp@ construyen @landmark_english/the-white-tower.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/-Wk5muC_QCU",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -7,6 +7,7 @@ import { ipc } from '@shared/ipc'
 import { cn } from '@shared/lib/utils'
 import { CivFlag } from './CivFlag'
 import { panelBg } from './panelBg'
+import { useI18n } from '../i18n'
 
 /** Extra hit-slop around the ✕ so the click-through toggle isn't pixel-perfect twitchy. */
 const CLOSE_HIT_PAD = 8
@@ -27,9 +28,10 @@ export function PostGameCard({
   summary: PostGameSummary
   onDismiss?: () => void
 }) {
+  const { tt, gameName } = useI18n()
   const win = summary.result === 'win'
   const loss = summary.result === 'loss'
-  const title = win ? 'VICTORY' : loss ? 'DEFEAT' : 'GAME OVER'
+  const title = win ? tt('VICTORY') : loss ? tt('DEFEAT') : tt('GAME OVER')
   const titleColor = win ? 'hsl(var(--win))' : loss ? 'hsl(var(--loss))' : 'rgba(255,255,255,0.92)'
 
   const closeRef = useRef<HTMLButtonElement>(null)
@@ -72,7 +74,7 @@ export function PostGameCard({
           <button
             ref={closeRef}
             onClick={onDismiss}
-            aria-label="Dismiss"
+            aria-label={tt('Dismiss')}
             className="pointer-events-auto absolute right-2 top-2 z-10 flex h-6 w-6 items-center justify-center rounded-md text-white/55 transition-colors hover:bg-white/15 hover:text-white"
           >
             <X className="h-4 w-4" />
@@ -85,11 +87,11 @@ export function PostGameCard({
           <div className="flex items-center gap-2 text-[13px] text-white/90">
             <CivFlag civ={summary.civ} compact />
             <span className="font-semibold">
-              {summary.civ ? civDisplayName(summary.civ) : 'You'}
+              {summary.civ ? gameName(civDisplayName(summary.civ)) : tt('You')}
             </span>
-            <span className="text-white/40">vs</span>
+            <span className="text-white/40">{tt('vs')}</span>
             <span className="font-semibold">
-              {summary.oppCiv ? civDisplayName(summary.oppCiv) : 'Opponent'}
+              {summary.oppCiv ? gameName(civDisplayName(summary.oppCiv)) : tt('Opponent')}
             </span>
             <CivFlag civ={summary.oppCiv} compact />
           </div>
@@ -100,20 +102,20 @@ export function PostGameCard({
             )}
             {summary.grade && (
               <span>
-                Grade <span className="font-bold text-white">{summary.grade}</span>
+                {tt('Grade')} <span className="font-bold text-white">{summary.grade}</span>
               </span>
             )}
             {summary.apm != null && <span className="tabular-nums">{summary.apm} APM</span>}
-            {summary.vsAI && <span className="text-white/40">vs AI</span>}
+            {summary.vsAI && <span className="text-white/40">{tt('vs AI')}</span>}
           </div>
         </div>
         <div className="grid grid-cols-2 gap-px bg-white/10">
-          <Column title="What went well" tone="win" items={summary.didWell} empty="—" />
+          <Column title={tt('What went well')} tone="win" items={summary.didWell} empty="—" />
           <Column
-            title="Work on next game"
+            title={tt('Work on next game')}
             tone="warn"
             items={summary.improve}
-            empty="Clean game!"
+            empty={tt('Clean game!')}
           />
         </div>
       </div>

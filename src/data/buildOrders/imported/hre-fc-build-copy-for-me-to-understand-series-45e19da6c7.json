@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "name": "HRE FC Build - Copy for me to understand series",
+  "civilization": "Holy Roman Empire",
+  "author": "murtuk",
+  "source": "https://aoe4guides.com/builds/qtmw2DRbHitBJXK4kcrE",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 on@resource/sheep.webp@, 3 on @resource/resource_gold.webp@ (1@resource/resource_gold.webp@should@abilities/repair.webp@@building_economy/house.webp@first, 2 others @building_economy/mining-camp.webp@ first)",
+        "@unit_hre/prelate.webp@ inspire, but after the @resource/resource_gold.webp@, focus on @resource/sheep.webp@vills",
+        "@resource/rally.webp@food until @age/age_2.webp@AND@age/age_3.webp@ (about 17)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "start @age/age_2.webp@@landmark_hre/aachen-chapel.webp@with 4 from@resource/resource_food.webp@. Rally 2@resource/resource_gold.webp@ and 2 @resource/resource_food.webp@ after"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 17,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@landmark_hre/aachen-chapel.webp@finishes at 3:50, @abilities/repair.webp@2nd@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 22,
+      "resources": {
+        "food": 17,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "start@age/age_3.webp@@landmark_hre/regnitz-cathedral.webp@with 8 from@resource/resource_food.webp@, queue @unit_hre/prelate.webp@, be near @resource/relics.webp@to capture when aging up finishes."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 3,
+        "wood": 6,
+        "gold": 5,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Send 6@resource/resource_food.webp@ to @resource/resource_wood.webp@ (leave 3@resource/resource_food.webp@)",
+        "@resource/rally.webp@ @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:15",
+      "villager_count": 24,
+      "resources": {
+        "food": 3,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_military/stable.webp@+3rd@building_economy/house.webp@+ if needed @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:40",
+      "villager_count": 25,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@landmark_hre/regnitz-cathedral.webp@finishes at 6:40. Try to have 3-4 @unit_hre/prelate.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "6:50",
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "immediately make 2@unit_cavalry/knight-2.webp@, build the 3rd@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now, you can send @resource/sheep.webp@to @resource/deer.webp@, @abilities/repair.webp@@building_economy/mill.webp@ and research@technology_economy/survival-techniques.webp@, WITH a @unit_hre/prelate.webp@ on them"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 28,
+      "resources": {
+        "food": 19,
+        "wood": 4,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_defensive/outpost.webp@ with @resource/relics.webp@ if needed",
+        "May aim to @landmark_hre/palace-of-swabia.webp@ with 12 @unit_worker/villager.webp@ to have 4TC-like production and have easy farm transition around @landmark_hre/aachen-chapel.webp@",
+        "Relic wise; if 2 @resource/relics.webp@, must take @technology_religious/tithe-barns.webp@",
+        "if 4 @resource/relics.webp@, you can free up @resource/resource_gold.webp@",
+        "Also go for ECO upgrades like @technology_economy/double-broadaxe.webp@@technology_economy/wheelbarrow.webp@@technology_economy/specialized-pick.webp@@technology_economy/horticulture.webp@"
+      ]
+    }
+  ],
+  "description": "From Valdemar's video (may change timings a little because of the inspiration nerf  on season 11)",
+  "video": "https://www.youtube.com/embed/c_MzmVjwpC0",
+  "season": 11,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

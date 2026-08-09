@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "name": "Lorfo",
+  "civilization": "Jeanne d'Arc",
+  "author": "Lorfo",
+  "source": "https://aoe4guides.com/builds/h3whLljOM7QkQ8urhBym",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All @unit_worker/villager.webp@ to @resource/sheep.webp@",
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@ builds @building_economy/house.webp@ ---> @resource/sheep.webp@",
+        "7th @unit_worker/villager.webp@ + @unit_jeanne/jeanne-darc-peasant-1.webp@ to @resource/resource_food.webp@",
+        "Next 5 @unit_worker/villager.webp@ to @building_economy/mining-camp.webp@@resource/resource_gold.webp@",
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@+1@unit_worker/villager.webp@@resource/resource_gold.webp@ for @age/age_2.webp@ (2:40) ---&gt;(4:50)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5 max",
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@@resource/resource_food.webp@Build @building_economy/lumber-camp.webp@",
+        "@resource/rally.webp@@resource/gaiatreeprototypetree.webp@ (until 8@resource/resource_wood.webp@)",
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@Build @building_economy/mill.webp@ farm  LVL 2",
+        "Research @technology_economy/wheelbarrow.webp@ + @technology_economy/double-broadaxe.webp@ + @technology_economy/specialized-pick.webp@",
+        "Build @building_economy/house.webp@ with @resource/resource_wood.webp@@unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@hunts@resource/boar.webp@",
+        "Queue 1 @unit_french/royal-knight-2.webp@",
+        "(8@resource/resource_wood.webp@) @resource/rally.webp@@resource/resource_food.webp@",
+        "Build @building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 30,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "(14@resource/resource_food.webp@) @resource/rally.webp@ (until 8@resource/resource_gold.webp@)",
+        "Build @building_technology/blacksmith.webp@",
+        "Research @technology_military/iron-undermesh.webp@@technology_military/steeled-arrow.webp@@technology_military/bloomery.webp@@technology_military/fitted-leatherwork.webp@@technology_military/siege-engineering.webp@",
+        "@ability_jeanne/ability-consecrate-1.webp@ = @building_economy/town-center.webp@ > @landmark_french/school-of-cavalry.webp@ &gt; @building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 40,
+      "resources": {
+        "food": 20,
+        "wood": 10,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 next @resource/rally.webp@ build @age/age_3.webp@@landmark_french/royal-institute.webp@ for @technology_jeanne/companion-equipment-3.webp@ ->@technology_french/royal-bloodlines.webp@-&gt;@technology_french/cantled-saddles.webp@-&gt;@technology_french/enlistment-incentives.webp@ -&gt;@technology_french/merchant-guilds-4.webp@",
+        "Research @technology_military/wedge-rivets.webp@@technology_military/balanced-projectiles.webp@@technology_military/decarbonization.webp@@technology_military/fitted-leatherwork.webp@",
+        "build @building_economy/market.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "name": "ODD Fast Castle",
+  "civilization": "Order of the Dragon",
+  "author": "siberian_wolf",
+  "source": "https://aoe4guides.com/builds/o6bHsHqh2S1l7NRSA4OM",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5@unit_dragon/gilded-villager.webp@ >@building_economy/mill.webp@&gt; @technology_economy/survival-techniques.webp@&gt; @resource/deer.webp@",
+        "1 @resource/rally.webp@&gt;@building_economy/house.webp@&gt;@resource/sheep.webp@",
+        "4 @resource/rally.webp@&gt;@resource/resource_gold.webp@",
+        "2@resource/rally.webp@&gt;@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 14,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 @resource/sheep.webp@@unit_dragon/gilded-villager.webp@>@landmark_hre/meinwerk-palace.webp@",
+        "1@resource/rally.webp@&gt;@resource/resource_wood.webp@&gt;@building_defensive/outpost.webp@@resource/resource_gold.webp@&gt;@building_economy/house.webp@&gt;@resource/sheep.webp@",
+        "2 @resource/resource_wood.webp@@unit_dragon/gilded-villager.webp@&gt;@resource/sheep.webp@",
+        "5 @resource/rally.webp@&gt;@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 16,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@landmark_hre/meinwerk-palace.webp@@unit_dragon/gilded-villager.webp@>@resource/sheep.webp@",
+        "1@resource/rally.webp@&gt;@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 22,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "7 @resource/sheep.webp@@unit_dragon/gilded-villager.webp@>@landmark_hre/regnitz-cathedral.webp@",
+        "3 @resource/sheep.webp@@unit_dragon/gilded-villager.webp@ &gt; @resource/resource_wood.webp@",
+        "1@resource/sheep.webp@@unit_dragon/gilded-villager.webp@ &gt; @resource/resource_gold.webp@",
+        "2@resource/rally.webp@ &gt; @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "8@landmark_hre/regnitz-cathedral.webp@@unit_dragon/gilded-villager.webp@>@resource/sheep.webp@",
+        "∞@resource/rally.webp@&gt;@resource/resource_wood.webp@",
+        "@unit_dragon/gilded-knight-3.webp@ + @unit_dragon/gilded-spearman-1.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

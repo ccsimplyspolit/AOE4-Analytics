@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "name": "Fast 2 TC Knights Templar! (remix)",
+  "civilization": "Knights Templar",
+  "author": "siberian_wolf",
+  "source": "https://aoe4guides.com/builds/p4JCJDhY3tqypyWk6iqa",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:23",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager.webp@ > @resource/sheep.webp@",
+        "@resource/rally.webp@ &gt;@building_economy/house.webp@&gt; @resource/sheep.webp@",
+        "3 @resource/rally.webp@ &gt; @building_economy/mining-camp.webp@ &gt; @resource/resource_gold.webp@(200)&gt;@building_economy/mining-camp.webp@&gt;@resource/resource_stone.webp@",
+        "3 @resource/rally.webp@ &gt; @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:23",
+      "villager_count": 13,
+      "resources": {
+        "food": 0,
+        "wood": 7,
+        "gold": 0,
+        "stone": 6,
+        "builder": -1
+      },
+      "notes": [
+        "4 @resource/sheep.webp@>@resource/resource_wood.webp@",
+        "3 @resource/sheep.webp@&gt;@resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:10",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@resource/rally.webp@> @resource/sheep.webp@",
+        "3 @resource/resource_stone.webp@@unit_worker/villager.webp@&gt;@resource/sheep.webp@",
+        "7 @resource/resource_wood.webp@@unit_worker/villager.webp@ + 3 @resource/resource_stone.webp@@unit_worker/villager.webp@ &gt; @building_economy/town-center.webp@&gt;@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 8,
+        "wood": 15,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@> @resource/sheep.webp@",
+        "4@resource/rally.webp@&gt; @resource/resource_wood.webp@",
+        "@technology_templar/safepassage.webp@&gt;@technology_templar/sanctuary.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:50",
+      "villager_count": 35,
+      "resources": {
+        "food": 28,
+        "wood": 1,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "Flexible fast 2 TC Build order for Knights Templar to either transition into lategame or commit to feudal age!",
+  "video": "https://www.youtube.com/embed/1IlDQcG1DBg",
+  "season": 10,
+  "map": "Open",
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -55,6 +55,10 @@ export interface OverlaySettings {
    * losing streak is visible without leaving the game. Small, on by default.
    */
   showSession: boolean
+  /** Compact counter plan for the detected opponent civilization. */
+  showCounter: boolean
+  /** Timed build/scouting reminder chips driven by the live game clock. */
+  showCoach: boolean
   /**
    * The bundled build order pinned to the overlay, keyed by its unique `name`
    * (set from Guides → Build Orders → "Show in overlay"). Null = widget hidden.
@@ -67,6 +71,14 @@ export interface OverlaySettings {
   scale: number
   /** Saved per-widget overlay positions, relative to the transparent overlay canvas. */
   widgetPositions: OverlayWidgetPositions
+  /** Build-order text size in pixels [11, 18]. */
+  buildOrderFontSize: number
+  /** Build-order unit/building thumbnail size in pixels [20, 48]. */
+  buildOrderImageSize: number
+  /** Build-order presentation: rich icon cards or the compact original TXT-style view. */
+  buildOrderViewMode: 'illustrated' | 'text'
+  /** Optional user CSS for the transparent overlay (CSS only; scripts are never executed). */
+  customCss: string
 }
 
 // DORMANT (D55): per-widget toggles from the old overlay design — nothing reads
@@ -82,20 +94,10 @@ export interface OverlayWidgets {
 }
 
 export type OverlayWidgetKey =
-  | 'matchup'
-  | 'apm'
-  | 'postGame'
-  | 'buildOrder'
-  | 'ageTargets'
-  | 'session'
+  'matchup' | 'apm' | 'postGame' | 'buildOrder' | 'ageTargets' | 'session' | 'counter' | 'coach'
 
 export type OverlayWidgetAnchor =
-  | 'top-left'
-  | 'top-center'
-  | 'top-right'
-  | 'bottom-left'
-  | 'bottom-right'
-  | 'center'
+  'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-right' | 'center'
 
 export interface OverlayWidgetPosition {
   /** Anchor point on the overlay canvas; dragged widgets are saved as top-left. */
@@ -128,6 +130,8 @@ export const DEFAULT_OVERLAY_WIDGET_POSITIONS: OverlayWidgetPositions = {
   ageTargets: { anchor: 'top-right', x: 12, y: 96 },
   // Stacked just above the APM counter (both clear of the game's bottom HUD).
   session: { anchor: 'bottom-left', x: 12, y: 56 },
+  counter: { anchor: 'top-left', x: 12, y: 360 },
+  coach: { anchor: 'bottom-right', x: 12, y: 92 },
 }
 
 /** Global hotkey bindings, in Electron accelerator format (e.g. "Alt+O"). */
@@ -136,11 +140,41 @@ export interface HotkeySettings {
   toggleOverlay: string
   /** Toggle overlay placement (widget-drag) mode. */
   placementMode: string
+  /** Advance the pinned build order by one step. */
+  nextBuildStep: string
+  /** Move the pinned build order back by one step. */
+  previousBuildStep: string
+  /** Return the pinned build order to clock-driven mode. */
+  resetBuildStep: string
+  /** Cycle the counter-plan target civ in custom/AI/casting games. */
+  nextCounter: string
+  /** Select the next bundled build order in the overlay. */
+  nextBuildOrder: string
+  /** Select the previous bundled build order in the overlay. */
+  previousBuildOrder: string
+  /** Toggle between the live game clock and the manual RTS Overlay timer. */
+  switchTimerMode: string
+  /** Start the manual build-order timer. */
+  startTimer: string
+  /** Stop the manual build-order timer. */
+  stopTimer: string
+  /** Reset the manual build-order timer to zero. */
+  resetTimer: string
 }
 
 export const DEFAULT_HOTKEYS: HotkeySettings = {
   toggleOverlay: 'Alt+O',
   placementMode: 'Control+Alt+O',
+  nextBuildStep: 'Control+Alt+Right',
+  previousBuildStep: 'Control+Alt+Left',
+  resetBuildStep: 'Control+Alt+Down',
+  nextCounter: 'Control+Alt+C',
+  nextBuildOrder: 'Control+Alt+PageDown',
+  previousBuildOrder: 'Control+Alt+PageUp',
+  switchTimerMode: 'Control+Alt+M',
+  startTimer: 'Control+Alt+F9',
+  stopTimer: 'Control+Alt+F10',
+  resetTimer: 'Control+Alt+F11',
 }
 
 export interface PollingSettings {
@@ -249,9 +283,15 @@ export const DEFAULT_SETTINGS: AppSettings = {
     troopsPos: 'bar',
     showAgeTargets: true,
     showSession: true,
+    showCounter: true,
+    showCoach: true,
     buildOrderId: null,
     scale: 1,
     widgetPositions: DEFAULT_OVERLAY_WIDGET_POSITIONS,
+  buildOrderFontSize: 14,
+  buildOrderImageSize: 30,
+  buildOrderViewMode: 'illustrated',
+  customCss: '',
   },
   hotkeys: DEFAULT_HOTKEYS,
   polling: { idleIntervalMs: 15_000, activeIntervalMs: 8_000 },
@@ -385,6 +425,8 @@ function sanitizeOverlay(v: unknown): Partial<OverlaySettings> | undefined {
   }
   if ('showAgeTargets' in v) out.showAgeTargets = Boolean(v.showAgeTargets)
   if ('showSession' in v) out.showSession = Boolean(v.showSession)
+  if ('showCounter' in v) out.showCounter = Boolean(v.showCounter)
+  if ('showCoach' in v) out.showCoach = Boolean(v.showCoach)
   if ('buildOrderId' in v) {
     const s = stringOrNull(v.buildOrderId)
     if (s !== undefined) out.buildOrderId = s
@@ -396,6 +438,23 @@ function sanitizeOverlay(v: unknown): Partial<OverlaySettings> | undefined {
   if ('widgetPositions' in v) {
     const wp = sanitizeWidgetPositions(v.widgetPositions)
     if (wp) out.widgetPositions = wp as OverlayWidgetPositions
+  }
+  if ('buildOrderFontSize' in v) {
+    const n = clamped(v.buildOrderFontSize, 11, 18)
+    if (n != null) out.buildOrderFontSize = n
+  }
+  if ('buildOrderImageSize' in v) {
+    const n = clamped(v.buildOrderImageSize, 20, 48)
+    if (n != null) out.buildOrderImageSize = n
+  }
+  if ('buildOrderViewMode' in v) {
+    const mode = oneOf(v.buildOrderViewMode, ['illustrated', 'text'] as const)
+    if (mode) out.buildOrderViewMode = mode
+  }
+  if ('customCss' in v && typeof v.customCss === 'string') {
+    // Keep the setting bounded so a malformed renderer patch cannot turn the
+    // settings file into an unbounded stylesheet cache.
+    out.customCss = v.customCss.slice(0, 20_000)
   }
   return out
 }
@@ -429,6 +488,46 @@ function sanitizeHotkeys(v: unknown): Partial<HotkeySettings> | undefined {
   if ('placementMode' in v) {
     const s = sanitizeHotkey(v.placementMode)
     if (s) out.placementMode = s
+  }
+  if ('nextBuildStep' in v) {
+    const s = sanitizeHotkey(v.nextBuildStep)
+    if (s) out.nextBuildStep = s
+  }
+  if ('previousBuildStep' in v) {
+    const s = sanitizeHotkey(v.previousBuildStep)
+    if (s) out.previousBuildStep = s
+  }
+  if ('resetBuildStep' in v) {
+    const s = sanitizeHotkey(v.resetBuildStep)
+    if (s) out.resetBuildStep = s
+  }
+  if ('nextCounter' in v) {
+    const s = sanitizeHotkey(v.nextCounter)
+    if (s) out.nextCounter = s
+  }
+  if ('nextBuildOrder' in v) {
+    const s = sanitizeHotkey(v.nextBuildOrder)
+    if (s) out.nextBuildOrder = s
+  }
+  if ('previousBuildOrder' in v) {
+    const s = sanitizeHotkey(v.previousBuildOrder)
+    if (s) out.previousBuildOrder = s
+  }
+  if ('switchTimerMode' in v) {
+    const s = sanitizeHotkey(v.switchTimerMode)
+    if (s) out.switchTimerMode = s
+  }
+  if ('startTimer' in v) {
+    const s = sanitizeHotkey(v.startTimer)
+    if (s) out.startTimer = s
+  }
+  if ('stopTimer' in v) {
+    const s = sanitizeHotkey(v.stopTimer)
+    if (s) out.stopTimer = s
+  }
+  if ('resetTimer' in v) {
+    const s = sanitizeHotkey(v.resetTimer)
+    if (s) out.resetTimer = s
   }
   return out
 }

@@ -1,0 +1,69 @@
+name: Sync AoE4 external sources
+
+on:
+  schedule:
+    - cron: '20 3 * * *'
+  workflow_dispatch:
+    inputs:
+      patch:
+        description: 'Optional explicit AoE4 patch label for imported builds'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aoe4-source-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Refresh AoE4Guides and AoE4World
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Sync external source snapshots
+        env:
+          EXPLICIT_PATCH: ${{ inputs.patch }}
+        run: |
+          if [ -n "$EXPLICIT_PATCH" ]; then
+            python scripts/sync_sources.py --patch "$EXPLICIT_PATCH"
+          else
+            python scripts/sync_sources.py
+          fi
+
+      - name: Commit refreshed source artifacts
+        shell: bash
+        run: |
+          git add \
+            src/data/buildOrders/imported \
+            src/data/vendor/aoe4world-data/units.json \
+            src/data/vendor/aoe4world-data/SOURCE.md \
+            src/data/vendor/aoe4-icons \
+            src/data/tinctureMeta.json \
+            src/data/tinctureHistory.json
+          if git diff --cached --quiet; then
+            echo "No source changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: sync AoE4 external source snapshots"
+          git push

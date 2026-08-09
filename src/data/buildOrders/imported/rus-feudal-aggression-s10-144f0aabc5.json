@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "name": "Rus Feudal Aggression (S10)",
+  "civilization": "Rus",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/oThd30ZpTFKaKIXsbqI8",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Send 5 @unit_worker/villager.webp@ to gather 50 @resource/resource_wood.png@ from a @resource/gaiatreeprototypetree.png@ then go to @resource/sheep.png@.",
+        "1 @unit_worker/villager.png@build @building_rus/hunting-cabin.png@ on first woodline then @building_economy/house.png@ then goes to @resource/sheep.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "New @unit_worker/villager.webp@ to build 2nd @building_rus/hunting-cabin.png@ ."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:30",
+      "villager_count": 7,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:50",
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Queue 1 @unit_cavalry/scout.webp@ out of each @building_rus/hunting-cabin.png@ ( you will have 3 scouts total )"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 14,
+      "resources": {
+        "food": 14,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @landmark_rus/the-golden-gate.webp@ with 4 @unit_worker/villager.png@ from @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 14,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Put 5 @unit_worker/villager.webp@ on @resource/gaiatreeprototypetree.png@ and rest on @resource/sheep.png@ for @resource/bounty.png@@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 19,
+      "resources": {
+        "food": 14,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Sell 100 @resource/resource_food.webp@ and get @technology_economy/professional-scouts.png@. Queue up 2 more @unit_cavalry/scout.png@ from @building_rus/hunting-cabin.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro onto @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 21,
+      "resources": {
+        "food": 10,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_rus/wooden-fortress.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 22,
+      "resources": {
+        "food": 11,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@ for constant @unit_cavalry/knight-2.png@production & @building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:15",
+      "villager_count": 22,
+      "resources": {
+        "food": 11,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use tickets for more gold to get: @technology_economy/wheelbarrow.webp@ @technology_economy/double-broadaxe.png@ @technology_economy/survival-techniques.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:40",
+      "villager_count": 23,
+      "resources": {
+        "food": 11,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2x @building_military/archery-range.webp@ for constant @unit_infantry/archer-2.png@ production"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:30",
+      "villager_count": 29,
+      "resources": {
+        "food": 14,
+        "wood": 15,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/horticulture.webp@ & 2nd @building_military/stable.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 31,
+      "resources": {
+        "food": 16,
+        "wood": 15,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@ for @technology_military/steeled-arrow.png@ @technology_military/iron-undermesh.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 36,
+      "resources": {
+        "food": 21,
+        "wood": 15,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "DECISION: Around 11 mins in you should have 10 @unit_cavalry/knight-2.webp@ and 25+ @unit_infantry/archer-2.png@. This you can pressure with and keep producing if you can win with a feudal push. If not, then timing is going castle now. So switch @resource/resource_wood.png@ vills to @resource/resource_gold.png@ and get your upgrades and relics in castle age."
+      ]
+    }
+  ],
+  "description": "Golden Gate Feudal Aggression: This strategy focuses on early pressure in Feudal Age, using the Golden Gate to generate gold by selling tickets. It leverages the extra wood income from Wooden Fortresses, which are later sold for gold through the Golden Gate. Ideal for triple-unit compositions, all-ins, or a strong castle timing around the 12-minute mark.",
+  "video": "",
+  "season": 10,
+  "map": null,
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

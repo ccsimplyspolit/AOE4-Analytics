@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "name": "beastyqtSC2 Ottoman 2TC Simple",
+  "civilization": "Ottomans",
+  "author": "Kye",
+  "source": "https://aoe4guides.com/builds/hxBrBlltofjNQDDPe4WG",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:20",
+      "villager_count": 9,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/sheep.png@ until 9",
+        "1 @unit_worker/villager-ottomans.png@ to @resource/sheep.png@",
+        "5 @unit_worker/villager-ottomans.png@to @resource/resource_stone.png@ for 1 Trip",
+        "5@unit_worker/villager-ottomans.png@ to @resource/resource_wood.png@ for 1 Trip",
+        "2 @resource/sheep.png@@unit_worker/villager-ottomans.png@@abilities/repair.png@@building_ottomans/military-school-1.png@",
+        "@abilities/repair.png@@building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_gold.png@ until 3",
+        "1 @unit_worker/villager-ottomans.png@@abilities/repair.png@@building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 11,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/sheep.png@ until @age/age_2.png@",
+        "When 200 @resource/resource_gold.png@ move 3 @resource/resource_gold.png@@unit_worker/villager-ottomans.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@abilities/repair.webp@@landmark_ottomans/twin-minaret-medrese-1.png@ with 4 @resource/sheep.png@@unit_worker/villager-ottomans.png@",
+        "Move 3  @resource/sheep.png@@unit_worker/villager-ottomans.png@ to @resource/resource_wood.png@",
+        "@resource/rally.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:40",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "1  @resource/resource_wood.webp@@unit_worker/villager-ottomans.png@ @abilities/repair.png@@building_economy/lumber-camp.png@",
+        "1 @landmark_ottomans/twin-minaret-medrese-1.png@@unit_worker/villager-ottomans.png@ @abilities/repair.png@@building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "04:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 0,
+        "stone": 5,
+        "builder": 4
+      },
+      "notes": [
+        "Move 4 @resource/resource_wood.webp@@unit_worker/villager-ottomans.png@ to @abilities/repair.png@@building_economy/mining-camp.png@@resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 5,
+        "wood": 10,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_stone.png@",
+        "Put 4 @abilities/repair.png@@landmark_ottomans/twin-minaret-medrese-1.png@@unit_worker/villager-ottomans.png@ + 1 @resource/sheep.png@@unit_worker/villager-ottomans.png@  on @landmark_ottomans/twin-minaret-medrese-1.png@@resource/berrybush.png@",
+        "Put all @resource/sheep.png@@unit_worker/villager-ottomans.png@ on @resource/resource_wood.png@",
+        "Switch @building_ottomans/military-school-1.png@ to @unit_ottomans/sipahi-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:00",
+      "villager_count": 23,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 0,
+        "stone": 8,
+        "builder": 8
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/town-center.png@ with 8  @resource/resource_wood.png@@unit_worker/villager-ottomans.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 27,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 1 @building_economy/town-center.png@@resource/resource_gold.png@",
+        "@resource/rally.png@ 1 @building_economy/town-center.png@@resource/sheep.png@",
+        "@age/vizier_point.png@@technology_ottomans/anatolian-hills-1.png@",
+        "Put 8 @abilities/repair.png@@building_economy/town-center.png@@unit_worker/villager-ottomans.png@ on @resource/resource_gold.png@",
+        "Rebalance @resource/resource_stone.png@@unit_worker/villager-ottomans.png@ once 300 @resource/resource_stone.png@",
+        "@abilities/repair.png@@building_ottomans/military-school-1.png@",
+        "@abilities/repair.png@@building_technology/blacksmith.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 29,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/specialized-pick.webp@@technology_economy/horticulture.png@@technology_economy/double-broadaxe.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:20",
+      "villager_count": 35,
+      "resources": {
+        "food": 15,
+        "wood": 8,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/wheelbarrow.webp@@technology_economy/forestry.png@@technology_military/steeled-arrow.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 44,
+      "resources": {
+        "food": 13,
+        "wood": 8,
+        "gold": 15,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "@abilities/repair.webp@@landmark_ottomans/mehmed-imperial-armory-2.png@ with 8 @resource/sheep.png@@unit_worker/villager-ottomans.png@",
+        "Research @technology_military/iron-undermesh.png@@technology_economy/textiles.png@@technology_military/bloomery.png@@technology_economy/survival-techniques.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:30",
+      "villager_count": 48,
+      "resources": {
+        "food": 18,
+        "wood": 15,
+        "gold": 15,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/vizier_point.webp@@technology_ottomans/military-campus-1.png@",
+        "@abilities/repair.png@ 2 @building_ottomans/military-school-1.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:00",
+      "villager_count": 51,
+      "resources": {
+        "food": 18,
+        "wood": 18,
+        "gold": 15,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Win the Game."
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/GR1YprGU1go",
+  "season": 7,
+  "map": "Open",
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

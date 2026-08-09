@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "name": "[Beastyqt] OOTD 1 TC Aggression",
+  "civilization": "Order of the Dragon",
+  "author": "Gloom",
+  "source": "https://aoe4guides.com/builds/7jgDKFvouysQYjFDUqoa",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @unit_worker/villager.webp@ on @resource/resource_food.png@",
+        "@resource/rally.png@ 2 @unit_worker/villager.png@ on @resource/resource_gold.png@",
+        "1st builds @building_economy/house.png@ & @building_economy/mining-camp.png@",
+        "@resource/rally.png@@unit_worker/villager.png@ on @resource/resource_food.png@",
+        "until able to @age/age_2.png@@landmark_hre/meinwerk-palace.png@",
+        "end with",
+        "9 @resource/resource_food.png@ | 0 @resource/resource_wood.png@ | 2 @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:35",
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "age up with 2 @unit_worker/villager.webp@ from @resource/resource_food.png@ with @landmark_hre/meinwerk-palace.png@",
+        "3 @unit_worker/villager.png@ from @resource/resource_food.png@ to close @resource/resource_wood.png@",
+        "@resource/rally.png@ 1 @unit_worker/villager.png@ on @resource/resource_food.png@",
+        "1 new @unit_worker/villager.png@ builds @building_economy/mill.png@ on @resource/berrybush.png@",
+        "reserch @technology_economy/wheelbarrow.png@",
+        "@resource/rally.png@@unit_worker/villager.png@ on @resource/resource_wood.png@ until 6",
+        "1 @unit_worker/villager.png@ from @resource/resource_food.png@ to @resource/resource_wood.png@",
+        "build @building_economy/lumber-camp.png@ with 1 @unit_worker/villager.png@",
+        "end with",
+        "5 @resource/resource_food.png@ | 6 @resource/resource_wood.png@ | 2 @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@unit_worker/villager.png@ on @resource/resource_food.png@ until 12",
+        "2 @unit_worker/villager.png@ from @landmark_hre/meinwerk-palace.png@",
+        "build @building_military/stable.png@ & constantly make @unit_dragon/gilded-horseman-2.png@",
+        "start harras",
+        "then 1 build @building_economy/house.png@ then @resource/resource_food.png@ &amp; 1 @resource/resource_food.png@",
+        "reserch @technology_economy/double-broadaxe.png@",
+        "1 new @unit_worker/villager.png@ bulds @building_military/archery-range.png@",
+        "constantly make @unit_dragon/gilded-archer-2.png@",
+        "reserch @technology_military/iron-undermesh.png@",
+        "end with",
+        "12 @resource/resource_food.png@ | 6 @resource/resource_wood.png@ | 2 @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@unit_worker/villager.png@ on @resource/resource_wood.png@ until 8",
+        "reserch @technology_military/bloomery.png@",
+        "if you can",
+        "move 8 @unit_worker/villager.png@ to @resource/boar.png@",
+        "bulid @building_economy/mill.png@ & reserch @technology_economy/survival-techniques.png@",
+        "if not reserch @technology_economy/horticulture.png@",
+        "1 @unit_worker/villager.png@ builds 2nd @building_military/archery-range.png@",
+        "@resource/rally.png@@unit_worker/villager.png@ on @resource/resource_food.png@ until 14",
+        "@resource/rally.png@@unit_worker/villager.png@ on @resource/resource_wood.png@ until 15"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 31,
+      "resources": {
+        "food": 14,
+        "wood": 15,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "if you want rams",
+        "reserch @technology_military/siege-engineering.webp@",
+        "slowly build @building_economy/farm.png@",
+        "build 2nd @building_military/stable.png@",
+        "@resource/rally.png@@unit_worker/villager.png@ on @resource/resource_food.png@",
+        "add @building_military/archery-range.png@ (total 3)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "when enemy is NOT making @unit_dragon/gilded-archer-2.webp@",
+        "and is making @unit_dragon/gilded-horseman-2.png@/@unit_dragon/gilded-spearman-1.png@",
+        "transition to @unit_dragon/gilded-spearman-1.png@ & build 2 @building_military/barracks.png@",
+        "reserch @technology_dragon/dragon-fire-2.png@",
+        "if enemy have mass @unit_dragon/gilded-archer-2.png@",
+        "make @unit_dragon/gilded-man-at-arms-2.png@ &amp; reserch @technology_dragon/golden-cuirass-2.png@"
+      ]
+    }
+  ],
+  "description": "Can someone tell AoE4_Overlay's dev to to fix the bug when importing you need to replace ' \\n ' to ' \",\" '",
+  "video": "https://www.youtube.com/embed/GEzcw-eYp0E",
+  "season": 6,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

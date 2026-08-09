@@ -119,3 +119,9 @@ export function formatDurationShort(seconds: number | null | undefined): string 
   const s = Math.floor(seconds % 60)
   return `${m}:${s.toString().padStart(2, '0')}`
 }
+
+/** Safe integer formatting for counts that may be missing while data hydrates. */
+export function formatCount(value: number | null | undefined): string {
+  if (value == null || !Number.isFinite(value)) return '—'
+  return Math.trunc(value).toLocaleString()
+}

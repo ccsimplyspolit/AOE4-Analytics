@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "name": "4:30 2TC BYZ",
+  "civilization": "Byzantines",
+  "author": "12345",
+  "source": "https://aoe4guides.com/builds/v5aUNcel3VFW5jMyOFvD",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 @building_byzantines/cistern-1.webp@@building_economy/house.webp@--> @building_economy/mining-camp.webp@@building_economy/town-center.webp@1 @building_economy/mining-camp.webp@ @resource/resource_gold.webp@ THEN @building_economy/town-center.webp@--&gt; @resource/resource_food.webp@ UNTIL 9 on sheep"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:05",
+      "villager_count": 11,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send @building_economy/mining-camp.webp@ to @resource/resource_stone.webp@or @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 14,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 0,
+        "stone": 4,
+        "builder": 2
+      },
+      "notes": [
+        "1 of the @landmark_byzantines/grand-winery-1.webp@  Make @building_economy/house.webp@when you have 100 @resource/resource_wood.webp@ When @building_economy/house.webp@is complete take 1 from @resource/resource_stone.webp@to build landmark"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 16,
+      "resources": {
+        "food": 3,
+        "wood": 7,
+        "gold": 0,
+        "stone": 3,
+        "builder": 3
+      },
+      "notes": [
+        "@building_economy/town-center.webp@to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 3,
+        "wood": 10,
+        "gold": 0,
+        "stone": 3,
+        "builder": 3
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 21,
+      "resources": {
+        "food": 9,
+        "wood": 9,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_economy/town-center.webp@ with 9 keep @building_economy/town-center.webp@to @resource/resource_wood.webp@until 14 KEEP 3 @resource/resource_stone.webp@for @building_byzantines/cistern-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 28,
+      "resources": {
+        "food": 9,
+        "wood": 15,
+        "gold": 1,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_byzantines/cistern-1.webp@ Passively Build @building_byzantines/mercenary-house-2.webp@and 2 @building_military/barracks.webp@ and @building_technology/blacksmith.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 66,
+      "resources": {
+        "food": 16,
+        "wood": 20,
+        "gold": 8,
+        "stone": 0,
+        "builder": 22
+      },
+      "notes": [
+        "Around 10-11 have all 5 @building_byzantines/cistern-1.webp@up"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

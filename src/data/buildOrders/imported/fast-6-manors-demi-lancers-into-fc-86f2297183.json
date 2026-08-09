@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "name": "Fast 6 Manors Demi Lancers Into FC",
+  "civilization": "House of Lancaster",
+  "author": "SideboardP",
+  "source": "https://aoe4guides.com/builds/ljGXHbCoCxWiTOL3EgPO",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager.webp@ to @resource/sheep.png@ & 1 @unit_worker/villager.png@ builds @building_economy/house.png@ (after the house Vill goes back to sheep)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 2 @unit_worker/villager.png@ to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 1 @unit_worker/villager.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 1 @unit_worker/villager.png@ to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 2 @unit_worker/villager.png@ to @resource/resource_wood.png@ ; Rally to closest woodline and build @building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 0,
+        "stone": 1,
+        "builder": 3
+      },
+      "notes": [
+        "Shift 3 @unit_worker/villager.webp@ from @resource/sheep.png@ to @resource/resource_wood.png@ & shift 1 @unit_worker/villager.png@ from @resource/sheep.png@ to @resource/resource_stone.png@ ; @resource/rally.png@ 3 @unit_worker/villager.png@ to @resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 0,
+        "stone": 4,
+        "builder": 3
+      },
+      "notes": [
+        "@resource/rally.webp@ 3 @unit_worker/villager.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 1,
+        "stone": 4,
+        "builder": 2
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ from @landmark_lancaster/lancaster_castle.png@ goes to @resource/resource_gold.png@ & 2 @unit_worker/villager.png@ from @landmark_lancaster/lancaster_castle.png@ build @building_lancaster/manor.png@ ; @resource/rally.png@ to @resource/resource_gold.png@ (up until 10, including the 2 building the manors)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 2,
+        "stone": 4,
+        "builder": 2
+      },
+      "notes": [
+        "Continue to build @building_lancaster/manor.webp@ every 200@resource/resource_wood.png@ and 100 @resource/resource_stone.png@ & shift 2@unit_worker/villager.png@ from @resource/sheep.png@ to @resource/resource_gold.png@ (1 after 2 @building_lancaster/manor.png@are build and the second after 3 @building_lancaster/manor.png@ are build)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 21,
+      "resources": {
+        "food": 2,
+        "wood": 8,
+        "gold": 5,
+        "stone": 4,
+        "builder": 2
+      },
+      "notes": [
+        "Research @technology_lancaster/condensed_land_practices.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 1,
+        "wood": 8,
+        "gold": 6,
+        "stone": 4,
+        "builder": 4
+      },
+      "notes": [
+        "Use 2x2 @unit_worker/villager.webp@ to build remaining @building_lancaster/manor.png@ & @resource/rally.png@ to @resource/sheep.png@ after 10@unit_worker/villager.png@ on @resource/resource_gold.png@ (including the 4 building @building_lancaster/manor.png@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:55",
+      "villager_count": 26,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 14,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once 600 @resource/resource_stone.webp@ remaining,  shift 4 @unit_worker/villager.png@ to gold & shift 8 @unit_worker/villager.png@ from @resource/resource_wood.png@ to @resource/sheep.png@ ; research @ability_lancaster/call_to_arms.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:40",
+      "villager_count": 31,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 14,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Start building @building_military/barracks.webp@@building_military/archery-range.png@@building_military/stable.png@ & @building_technology/blacksmith.png@@building_religious/monastery.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:35",
+      "villager_count": 34,
+      "resources": {
+        "food": 17,
+        "wood": 3,
+        "gold": 14,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/resource_wood.png@ & start unit production"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/cjjxcmuqpWg",
+  "season": 10,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

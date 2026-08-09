@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "name": "Japan Dark Age Barracks to Feudal Aggro",
+  "civilization": "Japanese",
+  "author": "Ajom",
+  "source": "https://aoe4guides.com/builds/2tYvoQh7lpOnBjKkv3o7",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1@unit_worker/villager-japanese.webp@ builds @building_military/barracks.webp@ and then @building_japanese/farmhouse-1.webp@ ,  @resource/rally.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send @abilities/repair.webp@ to @resource/resource_food.webp@, build 2 @unit_infantry/spearman-1.webp@ and harass, OPTIONAL tower rush with @abilities/repair.webp@@unit_worker/villager-japanese.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move @resource/resource_wood.webp@@unit_worker/villager-japanese.webp@ to @resource/resource_gold.webp@, build @building_japanese/forge-1.webp@, @resource/rally.webp@ 2 to @resource/resource_food.webp@ and then to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:15",
+      "villager_count": 16,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "2 @resource/resource_food.webp@@unit_worker/villager-japanese.webp@ and 2 @resource/resource_gold.webp@@unit_worker/villager-japanese.webp@ age up to@age/age_2.webp@ with @landmark_japanese/kura-storehouse-1.webp@ on woodline"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/resource_wood.webp@, research @technology_japanese/towara-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 19,
+      "resources": {
+        "food": 6,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Stay on @resource/resource_wood.webp@ until gathered enough (300) to build 2 @building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@ 1 to @resource/resource_gold.webp@ and then to @resource/resource_wood.webp@. Start producing @unit_japanese/yumi-ashigaru-2.webp@ ASAP along with @unit_infantry/spearman-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/resource_gold.webp@, research @technology_military/steeled-arrow.webp@ and @technology_military/iron-undermesh.webp@, continue producing @unit_japanese/yumi-ashigaru-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 28,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move @resource/resource_food.webp@@unit_worker/villager-japanese.webp@ to farms around @landmark_japanese/kura-storehouse-1.webp@ and @resource/berrybush.webp@, research @technology_japanese/takezaiku-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up to @age/age_3.webp@ with @landmark_japanese/floating-gate-2.webp@ with like 10 @resource/resource_wood.webp@@unit_worker/villager-japanese.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/-N8jmbw8OuQ",
+  "season": 11,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

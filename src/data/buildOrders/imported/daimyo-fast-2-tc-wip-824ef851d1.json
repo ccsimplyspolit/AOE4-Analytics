@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "name": "Daimyo Fast 2 TC [WIP]",
+  "civilization": "Japanese",
+  "author": "Kinoss",
+  "source": "https://aoe4guides.com/builds/WysZj6avR8OpspNOAysx",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 2,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @unit_worker/villager-japanese.webp@ from the @building_economy/town-center.webp@.",
+        "4* @unit_worker/villager-japanese.webp@ on @resource/resource_gold.webp@",
+        "2* @unit_worker/villager-japanese.webp@ on @resource/sheep.webp@",
+        "Send the @unit_cavalry/scout.webp@ to collect additional @resource/sheep.webp@",
+        "@resource/rally.webp@ @building_economy/town-center.webp@ to the @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:21",
+      "villager_count": 7,
+      "resources": {
+        "food": 2,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1* @unit_worker/villager-japanese.webp@ @abilities/repair.webp@ @building_japanese/farmhouse-1.webp@ near @resource/berrybush.webp@ then to @resource/resource_stone.webp@",
+        "@resource/rally.webp@ @building_economy/town-center.webp@ to the @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:55",
+      "villager_count": 8,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Once each of the four (4*) @resource/resource_gold.webp@@unit_worker/villager-japanese.webp@ carries a full load, send all four directly from @resource/resource_gold.webp@ to @abilities/repair.webp@@building_japanese/forge-1.webp@ near @resource/resource_stone.webp@ and start mining @resource/resource_stone.webp@",
+        "Do not return them to the @building_economy/town-center.webp@!"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:21",
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@building_economy/town-center.webp@ to @resource/resource_stone.webp@",
+        "This becomes the sixth (6*) @resource/resource_stone.webp@ @unit_worker/villager-japanese.webp@ miner and the sixth (6*) future @landmark_japanese/kura-storehouse-1.webp@ builder."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:41",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 6,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@building_economy/town-center.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 6,
+        "builder": -1
+      },
+      "notes": [
+        "Put the 6 @unit_worker/villager-japanese.webp@from @resource/resource_stone.webp@in a control group.",
+        "Put the 7 @unit_worker/villager-japanese.webp@ from @resource/resource_food.webp@in another control group.",
+        "Once you hit 175 @resource/resource_stone.webp@, queue the @technology_japanese/daimyo-manor-1.webp@ at the @building_economy/town-center.webp@ to queue it right after the current villager."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:41",
+      "villager_count": 15,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": 1
+      },
+      "notes": [
+        "1* @unit_worker/villager-japanese.webp@ drop current @resource/resource_stone.webp@ at @building_japanese/forge-1.webp@ @abilities/repair.webp@ @building_japanese/farmhouse-1.webp@ near @resource/resource_stone.webp@ then to @resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:01",
+      "villager_count": 16,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 6,
+        "builder": -1
+      },
+      "notes": [
+        "Once 300 @resource/resource_stone.webp@ remains available after paying for @technology_japanese/daimyo-manor-1.webp@, using @resource/resource_stone.webp@ control group, remove all 6* @unit_worker/villager-japanese.webp@ from @resource/resource_stone.webp@",
+        "Gather @resource/resource_wood.webp@ line close to the planned @landmark_japanese/kura-storehouse-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:08",
+      "villager_count": 16,
+      "resources": {
+        "food": 3,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Use @resource/resource_stone.webp@ control group (6* @unit_worker/villager-japanese.webp@) to @abilities/repair.webp@ @landmark_japanese/kura-storehouse-1.webp@ near @resource/resource_wood.webp@ and Gather @resource/resource_wood.webp@ after building",
+        "@resource/rally.webp@@building_economy/town-center.webp@ to @resource/resource_wood.webp@",
+        "Move @resource/resource_food.webp@ control group (7* @unit_worker/villager-japanese.webp@) to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:21",
+      "villager_count": 17,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Keep producing @unit_worker/villager-japanese.webp@ toward @resource/resource_wood.webp@.",
+        "Add last producing villager to @resource/resource_food.webp@ Control group (so 8 @unit_worker/villager-japanese.webp@ total in @resource/resource_food.webp@ control group)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:52",
+      "villager_count": 18,
+      "resources": {
+        "food": 3,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Move eight @unit_worker/villager-japanese.webp@ (@resource/resource_food.webp@ control group) toward the planned @building_economy/town-center.webp@ second  location near @resource/resource_gold.webp@. Press Drop Off command after move command."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:01",
+      "villager_count": 19,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "As soon as you have: 400 @resource/resource_wood.webp@; 300 @resource/resource_stone.webp@; build the second @building_economy/town-center.webp@ with 8 @unit_worker/villager-japanese.webp@. Then Gather @resource/resource_gold.webp@ after building",
+        "@resource/rally.webp@1st @building_economy/town-center.webp@ to @resource/resource_food.webp@ (Prioritize @landmark_japanese/kura-storehouse-1.webp@'s @building_economy/farm.webp@)",
+        "@resource/rally.webp@2nd @building_economy/town-center.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 21,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remove @unit_worker/villager-japanese.webp@ from control Group",
+        "TBC"
+      ]
+    }
+  ],
+  "description": "A defensive Japanese Fast 2 TC build using Daimyo Manor before aging up.\nFour starting villagers gather one full load of Gold each, move directly to Stone, build a Forge, and then mine Stone. Two additional villagers join Stone\n\nOnce Daimyo Manor has been researched and 300 ::Stone remains available for the second ::TC, all six stone miners build the Kura Storehouse. This preserves the main ::Sheep economy for the 400 ::Food age-up requirement.\n\nTheoretical targets\nDaimyo Manor completed around 2:20\nFeudal age-up started around 3:08\nFeudal Age reached around 3:52\nSecond ::TC started around 3:58\n\nTimings depend on the distance between ::Gold, ::Stone, ::Sheep, ::Wood and the second ::TC location. Follow the resource triggers when they differ from the timestamps.",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

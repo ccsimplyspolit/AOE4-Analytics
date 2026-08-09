@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "name": "RUS Fast Castle Horse Archers Guide (legacy)",
+  "civilization": "Rus",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/dk68SNafsqonwR8f59Q2",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Queue up @unit_worker/villager.webp@",
+        "Send 5 @unit_worker/villager.png@ to gather 50 @resource/resource_wood.png@ from a @resource/gaiatreeprototypetree.png@ then go to @resource/sheep.png@",
+        "@resource/rally.png@@building_economy/town-center.png@ to @resource/sheep.png@",
+        "1 @unit_worker/villager.png@build @building_rus/hunting-cabin.png@ on first woodline then @building_economy/house.png@ then goes to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "New @unit_worker/villager.webp@ builds 2nd @building_rus/hunting-cabin.png@ on opposite woodline ( or to the side of the first one opposite the first @building_rus/hunting-cabin.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "When first @building_rus/hunting-cabin.webp@ is finished you queue up a @unit_cavalry/scout.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:25",
+      "villager_count": 13,
+      "resources": {
+        "food": 12,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_rus/the-golden-gate.webp@ with 3 @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Remacro 4 @unit_worker/villager.webp@ onto @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:15",
+      "villager_count": 15,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:45",
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 16,
+      "resources": {
+        "food": 12,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue up a @unit_cavalry/scout.webp@ and sell for 150 @resource/resource_gold.png@ in the @landmark_rus/the-golden-gate.png@ to afford @technology_economy/professional-scouts.png@ from Hunting Cabins. You start collecting enemy deer for castle."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 22,
+      "resources": {
+        "food": 18,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_rus/wooden-fortress.webp@ on woodline (or earlier if enemy is aggro)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 23,
+      "resources": {
+        "food": 18,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:45",
+      "villager_count": 26,
+      "resources": {
+        "food": 12,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "@landmark_rus/abbey-of-the-trinity.webp@ with 10 @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 27,
+      "resources": {
+        "food": 8,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Remacro. Sell 100 wood in @landmark_rus/the-golden-gate.webp@ for @technology_economy/double-broadaxe.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "7:45",
+      "villager_count": 29,
+      "resources": {
+        "food": 17,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Remacro. Queue @unit_rus/warrior-monk.webp@",
+        "@building_military/archery-range.png@x2 + @building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:30ish",
+      "villager_count": 30,
+      "resources": {
+        "food": 17,
+        "wood": 13,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "full produce @unit_rus/horse-archer-3.webp@ and wait for enemy reaction until adding units to composition.",
+        "@technology_economy/wheelbarrow.png@ -> @technology_economy/survival-techniques.png@-&gt;@technology_economy/horticulture.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If enemy is 2TC into FC, you can now think about going 2TC yourself. Buy stone or gather it."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:30",
+      "villager_count": 33,
+      "resources": {
+        "food": 18,
+        "wood": 15,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@ -> 2x @building_military/stable.png@ if enemy is going @building_military/stable.png@/@unit_infantry/archer-2.png@ (prioritise ranged upgrades)",
+        "If enemy goes @unit_infantry/archer-2.png@ you go @unit_cavalry/horseman-1.png@.",
+        "If enemy goes @unit_cavalry/horseman-1.png@ you go @unit_cavalry/knight-2.png@."
+      ]
+    }
+  ],
+  "description": "This is a pro scout build\n\nGood against Cavalry civs and FC civs like OOTD, HRE, Ayyubid\n\nTiming is when opponent runs out of food (thats when u push)\n\nGo either 2TC in castle if opp went 2TC \n\nIf opp is doing 1 TC FC as well go 1TC all in",
+  "video": "",
+  "season": 9,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

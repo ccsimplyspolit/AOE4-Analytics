@@ -1,7 +1,9 @@
 import type { DashboardData, IpcResult, PlayerSearchHit } from '@ipc/contract'
 import { summarizeRecentForm } from '@domain/form'
 import { pickPrimaryMode, ratedModes } from '@domain/scouting'
+import { buildScoutReportFromRelic } from '@domain/relic'
 import { getClient, getSettings } from './appContext'
+import { getRelicClient } from './appContext'
 import { errFrom, err, ok } from './result'
 
 /** Resolves a name query to a list of player hits for the onboarding/scout picker. */
@@ -36,20 +38,32 @@ export async function getDashboard(): Promise<IpcResult<DashboardData>> {
   const profileId = settings.profileId
   try {
     const client = getClient()
-    const [player, gamesRes] = await Promise.all([
+    const [player, gamesRes, relicStats] = await Promise.all([
       client.getPlayer(profileId),
       client.getPlayerGames(profileId, {
-        leaderboard: settings.leaderboard,
         limit: settings.recentGamesCount,
       }),
+      // AoE4World can lag or omit a ladder row. Relic's personal-stat endpoint
+      // is the authoritative fallback for every mode visible to the account.
+      getRelicClient().getPersonalStat([profileId]).catch(() => null),
     ])
+    const publicModes = ratedModes(player.modes)
+    const relicModes = relicStats
+      ? buildScoutReportFromRelic({
+          personalStat: relicStats,
+          matches: [],
+          profileId,
+          mapNames: {},
+        }).modes
+      : []
+    const modes = [...publicModes, ...relicModes].sort((left, right) => right.gamesCount - left.gamesCount)
     return ok({
       profileId: player.profile_id,
       name: player.name,
       country: player.country ?? null,
       steamId: player.steam_id ?? null,
-      primary: pickPrimaryMode(player.modes),
-      modes: ratedModes(player.modes),
+      primary: pickPrimaryMode(player.modes) ?? relicModes[0] ?? null,
+      modes,
       recentForm: summarizeRecentForm(gamesRes.games, profileId),
     })
   } catch (e) {

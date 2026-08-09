@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "name": "Standard GH Aggression Opener (DLC RELEASE VERSION)",
+  "civilization": "Golden Horde",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/9zJrWqTGcoGoCpxsLt2S",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 4,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Open 4 @unit_worker/villager.webp@ on @resource/sheep.webp@ and 1 @unit_worker/villager.webp@ to build @building_mongols/ovoo.webp@-> @landmark_golden_horde/golden_tent.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:37",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "2 new @unit_worker/villager-mongols.webp@ go to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:16",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @unit_worker/villager-mongols.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:52",
+      "villager_count": 11,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @unit_worker/villager-mongols.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:55",
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with @technology_golden_horde/golden_tent_building_carts_age2.webp@ for FC or fast aggro. Age with @technology_golden_horde/golden_tent_khan_age2.webp@ for standard feudal play or FC with torguuds to harass and prevent relics of FC opp."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:10",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Macro 8 on @resource/resource_wood.webp@ from @resource/sheep.webp@ and 1 more to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/sheep.webp@ and build @building_military/stable.webp@ on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_mongols/ovoo.webp@ on 2nd @resource/resource_stone.webp@ & queue @unit_golden_horde/khan.webp@ &amp; @unit_golden_horde/torguud.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:05",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_mongols/ger.webp@ on @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 23,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/archery-range.webp@ / @building_military/barracks.webp@ depending on opponent counter. (if cav-archer or spears you go archer, if enemy cav either go more cav or spear to compliment your keshik torguud comp)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now you go either long feudal and play for @age/age_3.webp@ Yasak Muscovy if you kept Keshiks alive. This age up gives u 200 wood per min so it helps with farms when @resource/deer.webp@ / @resource/boar.webp@ runs out. Add the @building_golden_horde/stockyard.webp@ when you are left with @resource/berrybush.webp@. The other age up is a long game style I'd use for FC into Age 3. @technology_golden_horde/golden_tent_relic_ovoos_age3.webp@ will give you plenty of stone to make age 4: @technology_golden_horde/golden_tent_stone_armies_age4.webp@ extremely potent, so you can use that as well. It all depends on how the feudal age played out :)"
+      ]
+    }
+  ],
+  "description": "My take on a standard build for Golden Horde",
+  "video": "https://www.youtube.com/embed/kl25O2wsfME",
+  "season": 11,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

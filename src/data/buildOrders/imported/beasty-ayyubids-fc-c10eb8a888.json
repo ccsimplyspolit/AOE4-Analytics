@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "name": "Beasty Ayyubids FC",
+  "civilization": "Ayyubids",
+  "author": "ferg40",
+  "source": "https://aoe4guides.com/builds/dOHFg35XUGjPu0GPvVgr",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager-abbasid.webp@ @building_economy/mill.webp@ on close @resource/deer.webp@. If not close then @resource/berrybush.webp@. 2-2-2 split on berries to keep them alive for Eco wing."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "7th @unit_worker/villager-abbasid.webp@@landmark_abbasid/house-of-wisdom.webp@ to connect @building_economy/town-center.webp@ + @building_economy/mill.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1st @resource/resource_gold.webp@ @unit_worker/villager-abbasid.webp@ @building_economy/house.webp@ + @building_economy/mining-camp.webp@ to connect with @building_economy/town-center.webp@. Rally 4 @unit_worker/villager-abbasid.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally to @resource/sheep.webp@ until @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_abbasid/culture-wing.webp@@technology_ayyubids/culture-wing-logistics-1.webp@. If against @civilization_flag/del.webp@ go @landmark_abbasid/economic-wing.webp@@technology_ayyubids/economic-wing-growth-1.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Pull 2 @unit_worker/villager-abbasid.webp@ from @resource/sheep.webp@ to @resource/resource_wood.webp@. Rally to @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_economy/house.webp@ + @building_economy/lumber-camp.webp@ with @resource/resource_wood.webp@ @unit_worker/villager-abbasid.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 19,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age @age/age_2.webp@ complete."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 7,
+        "wood": 9,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/archery-range.webp@ with 2 @resource/resource_wood.webp@ @unit_worker/villager-abbasid.webp@, and push @building_economy/house.webp@ for @age/goldenagetier1.webp@. When 9 @resource/resource_wood.webp@@unit_worker/villager-abbasid.webp@ rally to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make 2-4 @unit_ayyubids/desert-raider-2.webp@ to harass with 2 @unit_ayyubids/dervish-3.webp@. Put any pressure on enemy eco."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 23,
+      "resources": {
+        "food": 10,
+        "wood": 9,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/goldenagetier1.webp@pull @resource/resource_wood.webp@@unit_worker/villager-abbasid.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 19,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 27,
+      "resources": {
+        "food": 21,
+        "wood": 0,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_abbasid/economic-wing.webp@@technology_ayyubids/economic-wing-growth-1.webp@. If against cav civs go @landmark_abbasid/military-wing.webp@@technology_ayyubids/military-wing-reinforcement-1.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 30,
+      "resources": {
+        "food": 4,
+        "wood": 14,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro @unit_worker/villager-abbasid.webp@ to @resource/resource_wood.webp@/@resource/resource_gold.webp@ for Castle Age production/tempo push. Rally @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make 2 @building_military/stable.webp@ and 1 @building_religious/mosque.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "9:30",
+      "villager_count": 40,
+      "resources": {
+        "food": 14,
+        "wood": 14,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age @age/age_3.webp@ complete. Get @resource/relics.webp@ with @unit_ayyubids/dervish-3.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_economy/wheelbarrow.webp@ and eco tech. Get mil tech to counter enemy. Make @unit_infantry/archer-2.webp@ @unit_ayyubids/camel-lancer-3.webp@ to counter most civs or @unit_ayyubids/desert-raider-2.webp@@unit_ayyubids/camel-lancer-3.webp@ to counter cav civs."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "11:30",
+      "villager_count": 44,
+      "resources": {
+        "food": 16,
+        "wood": 16,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/attack-move.webp@Fight and choke enemy off map. Keep @resource/resource_food.webp@/@resource/resource_wood.webp@ @unit_worker/villager-abbasid.webp@ even. Keep 12 @unit_worker/villager-abbasid.webp@ on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If you can't close the game make 2TC while harassing."
+      ]
+    }
+  ],
+  "description": "Feudal Dervish Wing into Stables for Desert Raiders, FC Eco Wing into Camel Lancers, 5 Relics + harrassment",
+  "video": "https://www.youtube.com/embed/TO3sSgdOijQ",
+  "season": 11,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

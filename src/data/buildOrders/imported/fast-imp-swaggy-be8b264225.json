@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "name": "Fast Imp - Swaggy",
+  "civilization": "Macedonian Dynasty",
+  "author": "SwaggaIlya",
+  "source": "https://aoe4guides.com/builds/M7TWCWZUEk0SdSr7ZfWk",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00-01:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All 6 to @resource/sheep.webp@ or  @resource/deer.webp@, when find them. Research @technology_economy/survival-techniques.webp@",
+        "@resource/rally.webp@ 4 to @resource/resource_gold.webp@, first villager @building_economy/house.webp@ and @building_economy/mining-camp.webp@on @resource/resource_gold.webp@",
+        "Now @resource/rally.webp@@resource/resource_food.webp@ until age up."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:45-03:40",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Start @age/age_2.webp@@landmark_byzantines/imperial-hippodrome-1.webp@with 4 from @resource/resource_food.webp@ back to 2@resource/resource_food.webp@+ 2@resource/resource_gold.webp@",
+        "Now @resource/rally.webp@3 to@resource/resource_wood.webp@",
+        "Build @building_macedonian/varangian_warcamp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:15-06:50",
+      "villager_count": 22,
+      "resources": {
+        "food": 13,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@ finishes at 04:15, age uppers go to 2@resource/resource_food.webp@+ 2@resource/resource_gold.webp@",
+        "Research @technology_economy/specialized-pick.webp@",
+        "@abilities/repair.webp@@building_macedonian/varangian_arsenal.webp@near @resource/resource_gold.webp@ OR @building_defensive/outpost.webp@/@building_defensive/palisade-wall.webp@",
+        "Start @age/age_3.webp@@landmark_byzantines/golden-horn-tower-2.webp@near @resource/resource_gold.webp@/@resource/resource_stone.webp@ with 8 from @resource/resource_food.webp@ back to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "08:10",
+      "villager_count": 33,
+      "resources": {
+        "food": 16,
+        "wood": 3,
+        "gold": 14,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_3.webp@ finishes at 8:10. Age uppers go to @resource/resource_gold.webp@.",
+        "@abilities/repair.webp@@building_economy/market.webp@ to buy with excess @resource/resource_gold.webp@ for aging up",
+        "Set @building_macedonian/varangian_warcamp.webp@ to @unit_macedonian/riddari-3.webp@",
+        "Research @technology_macedonian/scale-barding-2.webp@ lvl I, @technology_economy/shaft-mining.webp@",
+        "Research @technology_economy/shaft-mining.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:15-12:10",
+      "villager_count": 45,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 21,
+        "stone": 14,
+        "builder": -1
+      },
+      "notes": [
+        "Start @age/age_4.webp@@landmark_byzantines/palatine-school-3.webp@with 14 or more @resource/resource_food.webp@ back to @resource/resource_stone.webp@",
+        "Research @technology_economy/wheelbarrow.webp@, @technology_economy/cupellation.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/xT21uNqskuU",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Imperial",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

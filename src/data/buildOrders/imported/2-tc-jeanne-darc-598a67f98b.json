@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "name": "2 TC Jeanne d'arc",
+  "civilization": "Jeanne d'Arc",
+  "author": "Dandylion",
+  "source": "https://aoe4guides.com/builds/qDxF5Trq1djAMHPIiMwo",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@->@abilities/repair.png@ [@building_economy/house.png@+@building_economy/mining-camp.png@]  -&gt; @resource/resource_gold.png@     and      @resource/rally.png@-&gt;@resource/resource_food.png@ till 8@unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> 2@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> 2@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@resource/rally.webp@ -> 7@resource/resource_wood.png@   @ 3900/4000 or 200 @resource/resource_gold.png@   @unit_jeanne/jeanne-darc-peasant-1.png@+2[@resource/resource_gold.png@@unit_worker/villager.png@] @abilities/repair.png@@landmark_french/school-of-cavalry.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 10,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @unit_cavalry/horseman-1.webp@ till 5   |  @unit_jeanne/jeanne-darc-peasant-1.png@+2@unit_worker/villager.png@@abilities/repair.png@@building_economy/house.png@->@building_economy/mining-camp.png@@resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 7,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/lumber-camp.png@ + @resource/rally.png@ -> 3@resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 7,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> 4@resource/resource_gold.png@ first @unit_worker/villager.png@@abilities/repair.png@@building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 10,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "At 350@resource/resource_stone.webp@@abilities/repair.png@@building_economy/town-center.png@"
+      ]
+    }
+  ],
+  "description": "Boom/Aggression",
+  "video": "",
+  "season": 6,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

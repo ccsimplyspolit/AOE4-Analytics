@@ -44,6 +44,16 @@ describe('gradeBuildFollow', () => {
     expect(v2.ok).toBe(false) // 6 over target is off-plan too
   })
 
+  it('counts civilization-suffixed worker blueprints as villagers', () => {
+    const worker = {
+      ...ev(20, 'unit', 'Worker Byz Ha Mac'),
+      blueprint: 'worker_elephant_byz_ha_mac',
+    }
+    const report = gradeBuildFollow({ reference, events: [worker], civ: 'english' })
+    const checkpoint = report.checkpoints.find((c) => c.kind === 'villagers' && c.targetTimeSec === 150)!
+    expect(checkpoint.actualVillagers).toBe(7)
+  })
+
   it('detects age-up timing from landmark build events (normalized names)', () => {
     const events = [
       ...villagers(24, 20, 25),
@@ -61,6 +71,21 @@ describe('gradeBuildFollow', () => {
     expect(castle.actualTimeSec).toBe(700)
     expect(castle.deltaSec).toBe(40)
     expect(castle.ok).toBe(true)
+  })
+
+  it('detects an age-up when the summary uses the shortened DLC landmark label', () => {
+    const macedonianReference: BuildOrder = {
+      ...reference,
+      civilization: 'Macedonian Dynasty',
+    }
+    const report = gradeBuildFollow({
+      reference: macedonianReference,
+      events: [ev(330, 'building', 'Landmark Age1 Hippodrome')],
+      civ: 'macedonian_dynasty',
+    })
+    const feudal = report.checkpoints.find((c) => c.kind === 'ageup' && c.ageUpTo === 2)!
+    expect(feudal.actualTimeSec).toBe(330)
+    expect(feudal.ok).toBe(true)
   })
 
   it('marks an age-up ungradeable when no landmark event matches', () => {

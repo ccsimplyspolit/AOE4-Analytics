@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 1,
+  "name": "Timing push/fast imp pl",
+  "civilization": "Delhi Sultanate",
+  "author": "tobradex1",
+  "source": "https://aoe4guides.com/builds/nHMTsXFqwa2kXggevJMW",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Wyślij 5 @unit_worker/villager-delhi.webp@ do @resource/resource_wood.webp@ jednorazowo (zbuduj nimi później @building_economy/mill.webp@@technology_economy/wheelbarrow.webp@, by nie musieli wracać do @building_economy/town-center.webp@.",
+        "@unit_worker/villager-delhi.webp@ wybuduje @building_religious/mosque.webp@@technology_delhi/efficient-production.webp@@technology_religious/piety.webp@ =>@building_economy/house.webp@, później daj go na @resource/berrybush.webp@.",
+        "@resource/rally.webp@ @resource/berrybush.webp@ do 8."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.webp@ do 3."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@ do 5, gdy będziesz grał kompozycję @unit_delhi/ghazi-raider-2.webp@+@unit_infantry/archer-2.webp@ lub",
+        "@resource/rally.webp@@resource/resource_wood.webp@ do 7, gdy będziesz grał kompozycję @unit_delhi/ghazi-raider-2.webp@+@unit_infantry/spearman-1.webp@.",
+        "@resource/rally.webp@@resource/resource_food.webp@ do @age/age_3.webp@ (jeżeli grasz @unit_delhi/ghazi-raider-2.webp@+@unit_infantry/archer-2.webp@ @resource/rally.webp@@resource/resource_food.webp@ do 12",
+        "=> @resource/rally.webp@@resource/resource_wood.webp@ do 12 =&gt; @resource/rally.webp@@resource/resource_food.webp@ do @age/age_3.webp@)."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Wyślij 4 @unit_worker/villager-delhi.webp@ do @landmark_delhi/dome-of-the-faith.webp@. 1 @unit_worker/villager-delhi.webp@ =>@building_economy/lumber-camp.webp@@technology_economy/forestry.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Wyklikaj wszystkie technologie w tej kolejności:",
+        "@technology_economy/double-broadaxe.webp@@technology_economy/forestry.webp@",
+        "@technology_economy/wheelbarrow.webp@@technology_economy/professional-scouts.webp@@technology_economy/survival-techniques.webp@@technology_economy/horticulture.webp@",
+        "@technology_delhi/sanctity.webp@@technology_religious/piety.webp@@technology_delhi/all-seeing-eye.webp@",
+        "@technology_economy/specialized-pick.webp@",
+        "Non-stop produkcja z @landmark_delhi/dome-of-the-faith.webp@.",
+        "2 @resource/resource_wood.webp@@unit_worker/villager-delhi.webp@ =>@building_military/stable.webp@.",
+        "Umieść @unit_delhi/scholar.webp@ =&gt; @building_military/stable.webp@.",
+        "Non-stop produkcja @unit_delhi/ghazi-raider-2.webp@.",
+        "Próbuj ciągle zadawać obrażenia z @unit_delhi/ghazi-raider-2.webp@. Gdy będą miały low hp odsyłaj je pojedynczo, by je wyleczyć, ważne by ich nie tracić."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 28,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Wyślij @unit_delhi/scholar.webp@ na @resource/sacred_sites.webp@.",
+        "Jęzli eżeli przeciwnik będzie walczył o @resource/sacred_sites.webp@ zajmuj @resource/sacred_sites.webp@ pojedynczo, w przeciwnym wypadku wyślij po jednym @unit_delhi/scholar.webp@ na każdy @resource/sacred_sites.webp@.",
+        "Dołóż @building_military/archery-range.webp@/@building_military/barracks.webp@ jak najszybciej (nie zapomnij o @unit_delhi/scholar.webp@)  => 2x@building_technology/blacksmith.webp@@technology_military/steeled-arrow.webp@@technology_military/iron-undermesh.webp@@technology_military/bloomery.webp@@technology_military/fitted-leatherwork.webp@@technology_military/siege-engineering.webp@.",
+        "Nie inwestuj w jednostki więcej niż musisz. Spróbuj wejść w @age/age_3.webp@ ok. 13 min.",
+        "Gdy tylko wybadasz @technology_economy/professional-scouts.webp@ zrób 3x@unit_cavalry/scout.webp@ i zacznij zbierać @resource/deer.webp@.",
+        "(Jeżeli przeciwnik będzie walczył o @resource/sacred_sites.webp@ możesz dosłać więcej @unit_worker/villager-delhi.webp@ na @resource/resource_gold.webp@ by móc wejść w @age/age_3.webp@.)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 35,
+      "resources": {
+        "food": 14,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Remacro:",
+        "14@unit_worker/villager-delhi.webp@=>@resource/resource_food.webp@.",
+        "Daj tylu @unit_worker/villager-delhi.webp@ na @resource/resource_gold.webp@, by mieć na @unit_delhi/war-elephant.webp@ po wejściu w @age/age_3.webp@.",
+        "Reszta @unit_worker/villager-delhi.webp@ na @resource/resource_wood.webp@.",
+        "Roześlij @unit_delhi/scholar.webp@ na każdy @resource/relics.webp@, by po wejściu w @age/age_3.webp@ od razu je zebrać.",
+        "Przygotuj koniecznie 2x@building_military/archery-range.webp@ =&gt; @building_military/stable.webp@ =&gt; 2x@building_technology/blacksmith.webp@ =&gt; 2x@building_religious/mosque.webp@.",
+        "Jeżeli przeciwnik szykuje się do dive'u, ulepsz @technology_economy/textiles.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 37,
+      "resources": {
+        "food": 20,
+        "wood": 14,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Wyklikaj wszystkie technologie w tej kolejności:",
+        "@technology_economy/lumber-preservation.webp@",
+        "@technology_economy/fertilization.webp@",
+        "@technology_economy/shaft-mining.webp@",
+        "@technology_religious/herbal-medicine.webp@@technology_delhi/swiftness.webp@",
+        "@technology_military/wedge-rivets.webp@@technology_military/balanced-projectiles.webp@@technology_delhi/forced-march.webp@@technology_military/decarbonization.webp@@technology_military/insulated-helm.webp@@technology_military/military-academy.webp@",
+        "@technology_delhi/paiks.webp@@technology_delhi/mahouts.webp@@technology_delhi/hearty-rations.webp@(reszta dowolnie/jak wolisz)",
+        "Ulepsz @unit_infantry/archer-2.webp@ oraz non-stop produkcja @unit_delhi/war-elephant.webp@.",
+        "Jeżeli przeciwnik nie ma 20+@unit_infantry/crossbowman-3.webp@ oraz wybadałeś @unit_infantry/archer-2.webp@@technology_military/balanced-projectiles.webp@@technology_military/wedge-rivets.webp@@technology_delhi/paiks.webp@, po zrobieniu 4x@unit_delhi/war-elephant.webp@ idź w all in'a (wyciągnij wszystkich @unit_delhi/scholar.webp@)",
+        "Powinieneś tutaj skończyć grę.",
+        "Jeżeli przeciwnik zadał ci duże obrażenia w feudalu i nie dasz rady zrobić timing push, pójdź w @age/age_4.webp@",
+        "W tym miejscu powinieneś dołożyć @building_military/barracks.webp@ oraz @building_military/siege-workshop.webp@, jeżeli jeszcze nie masz, by móc tam również wybadać technologie.",
+        "Staraj się zabudować bazę @building_defensive/palisade-wall.webp@ przy użyciu @unit_infantry/archer-2.webp@.",
+        "Zbierz całe @resource/resource_food.webp@ z mapy i wejdź w @age/age_4.webp@ ok 18 min."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 50,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 10,
+        "stone": 0,
+        "builder": 20
+      },
+      "notes": [
+        "Wybierz @landmark_delhi/hisar-academy.webp@ jeżeli nie masz jeszcze ukończonego farm transition, w przeciwnym razie wybierz @landmark_delhi/palace-of-the-sultan.webp@.",
+        "Przygotuj koniecznie 3x@building_military/archery-range.webp@ => 4x@building_military/stable.webp@ =&gt; 2x@building_military/barracks.webp@ =&gt;1x@building_military/siege-workshop.webp@.",
+        "Powinieneś w tym momencie mieć ok. 20x@unit_delhi/scholar.webp@."
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": 50,
+      "resources": {
+        "food": 10,
+        "wood": 30,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/crosscut-saw.webp@",
+        "@technology_economy/precision-cross-breeding.webp@",
+        "@technology_economy/cupellation.webp@",
+        "@technology_military/platecutter-point.webp@@technology_military/angled-surfaces.webp@@technology_military/damascus-steel.webp@@technology_military/master-smiths.webp@",
+        "@technology_religious/tithe-barns.webp@@technology_delhi/zeal.webp@",
+        "Ulepsz wszystkie unity w@building_military/barracks.webp@/@building_military/archery-range.webp@/@building_military/stable.webp@/@building_military/siege-workshop.webp@",
+        "Spróbuj wybudować 3x@building_technology/madrasa.webp@ => @technology_military/biology.webp@@technology_military/incendiary-arrows.webp@@technology_military/silk-bowstrings.webp@ (reszta dowolnie/jak wolisz)",
+        "Po wybadaniu tych 3 technologii z @building_technology/madrasa.webp@, wyciągnij wszystkich @unit_delhi/scholar.webp@ i idź po finałowego push'a z @unit_infantry/archer-2.webp@+@unit_delhi/war-elephant.webp@/@unit_delhi/sultans-elite-tower-elephant-4.webp@."
+      ]
+    }
+  ],
+  "description": "Uniwersalny build dla Sułtanatu Delhijskiego ",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": "Fast Imperial",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

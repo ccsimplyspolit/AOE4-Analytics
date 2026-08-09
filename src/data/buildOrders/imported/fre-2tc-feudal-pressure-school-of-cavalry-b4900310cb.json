@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 1,
+  "name": "FRE | 2TC | Feudal Pressure | School of Cavalry",
+  "civilization": "French",
+  "author": "exe",
+  "source": "https://aoe4guides.com/builds/CECvHmhQZslwv5Xc2kaP",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "vs. @civilization_flag/eng.webp@: @unit_cavalry/horseman-1.png@@unit_infantry/archer-2.png@",
+        "vs. @civilization_flag/fre.png@@civilization_flag/rus.png@: @building_military/barracks.png@@unit_infantry/spearman-1.png@@unit_french/royal-knight-2.png@",
+        "@age/age_3.png@@landmark_french/royal-institute.png@@technology_french/royal-bloodlines.png@to end the game or@landmark_french/guild-hall.png@to prepare for lategame",
+        "@age/age_4.png@@landmark_french/red-palace.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_economy/house.webp@",
+        "@resource/rally.png@@unit_worker/villager.png@>@resource/sheep.png@(until 7)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_economy/mining-camp.webp@",
+        "@resource/rally.png@@unit_worker/villager.png@>@resource/resource_gold.png@(until 4)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Optional:",
+        "Early @building_economy/mill.webp@>@resource/deer.png@(except vs. @civilization_flag/eng.png@@civilization_flag/mon.png@@civilization_flag/ott.png@)",
+        "Research @technology_economy/survival-techniques.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@>@resource/sheep.png@",
+        "@resource/rally.png@@unit_worker/villager.png@&gt;@resource/resource_wood.png@(until 4)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@age/age_2.webp@@landmark_french/school-of-cavalry.png@with 4@unit_worker/villager.png@from@resource/resource_wood.png@",
+        "Build @building_economy/mill.png@close to@building_economy/town-center.png@",
+        "Research @technology_economy/wheelbarrow.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "2 @unit_worker/villager.webp@>@resource/resource_food.png@",
+        "Leave @unit_worker/villager.png@&gt;@resource/resource_gold.png@ (until 200@resource/resource_gold.png@for 2@unit_french/royal-knight-2.png@)",
+        "@resource/rally.png@@unit_worker/villager.png@&gt;@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Train 2 @unit_french/royal-knight-2.webp@",
+        "@abilities/repair.png@@unit_worker/villager.png@>@resource/resource_wood.png@",
+        "Build @building_economy/lumber-camp.png@",
+        "Research @technology_economy/forestry.png@@technology_economy/double-broadaxe.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "Move @resource/resource_gold.webp@@unit_worker/villager.png@>@resource/resource_stone.png@(until @building_economy/town-center.png@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 24,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "Send @unit_french/royal-knight-2.webp@ immediately across the map",
+        "Check @resource/resource_gold.png@and@resource/resource_stone.png@since easier to@abilities/attack-move.png@",
+        "Build @building_military/archery-range.png@ to counter the spearmen"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 28,
+      "resources": {
+        "food": 10,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Build @building_economy/town-center.webp@with@unit_worker/villager.png@from@resource/resource_stone.png@and@resource/resource_wood.png@",
+        "Move @resource/resource_stone.png@@unit_worker/villager.png@>@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:30",
+      "villager_count": 30,
+      "resources": {
+        "food": 10,
+        "wood": 16,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Train @unit_french/royal-knight-2.webp@@unit_infantry/archer-2.png@ and pressure for idle time",
+        "Build @building_technology/blacksmith.png@@building_military/stable.png@",
+        "Research @technology_military/bloomery.png@@technology_military/steeled-arrow.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 36,
+      "resources": {
+        "food": 10,
+        "wood": 16,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_french/chivalry.webp@@technology_economy/specialized-pick.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "12:00",
+      "villager_count": 50,
+      "resources": {
+        "food": 20,
+        "wood": 20,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_military/iron-undermesh.webp@@technology_economy/horticulture.png@",
+        "Prepare @abilities/attack-move.png@and use line formation for@unit_infantry/archer-2.png@"
+      ]
+    }
+  ],
+  "description": "Based on Beasty's guide.\n\nFight in Feudal.\nLeave room in between your production building to add a keep later in the game.\n\nKeep villagers safe on the map to get further ahead.\nGroups of 5 villagers per resource.\nBuild Outpost next to resources.\n\nSemantics:\nVillagers count is target after following all steps in the description.\nTime is start trigger per step and can be used as a benchmark.",
+  "video": "https://www.youtube.com/embed/vNLRGFd8Ryc",
+  "season": 5,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

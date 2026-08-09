@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "name": "Fitzbro Abassid",
+  "civilization": "Abbasid Dynasty",
+  "author": "Yiuwa",
+  "source": "https://aoe4guides.com/builds/mDuXnIcuBloUz8kEXsYU",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@ first build @building_economy/house.webp@>@building_economy/mining-camp.webp@ last villager build @landmark_abbasid/house-of-wisdom.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_abbasid/culture-wing.webp@>@resource/rally.webp@@resource/resource_wood.webp@ until (5) build @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/berrybush.webp@ until @age/age_3.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 11,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_abbasid/preservation-of-knowledge.webp@@technology_abbasid/fresh-foodstuffs.webp@ build 3 @building_economy/house.webp@ 1 @building_military/barracks.webp@ to hit @age/goldenagetier1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 28,
+      "resources": {
+        "food": 16,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_abbasid/military-wing.webp@ build 3x @building_military/barracks.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 33,
+      "resources": {
+        "food": 16,
+        "wood": 7,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.webp@ until (10)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 33,
+      "resources": {
+        "food": 16,
+        "wood": 7,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Spam @unit_byzantines/ghulam-3.webp@ @building_technology/blacksmith.webp@@technology_military/iron-undermesh.webp@ to dive"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

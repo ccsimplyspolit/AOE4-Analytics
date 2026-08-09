@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "name": "Simple Tughlaq Dynasty - Beasty",
+  "civilization": "Tughlaq Dynasty",
+  "author": "Niki45nk",
+  "source": "https://aoe4guides.com/builds/aVKcjOpqkMc5wYn4Yc2J",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "[If desired] Immediately make 2 @unit_tughluq/worker_elephant.webp@ from @building_economy/town-center.webp@ to collect @resource/sheep.webp@",
+        "1 @unit_tughluq/worker_elephant.webp@ scouts behind your base, then goes to @resource/resource_gold.webp@",
+        "5 @unit_worker/villager-delhi.webp@ go to @resource/sheep.webp@",
+        "1 @unit_worker/villager-delhi.webp@ builds @building_economy/house.webp@ -> @resource/sheep.webp@",
+        "@resource/rally.webp@@unit_worker/villager-delhi.webp@ to @resource/sheep.webp@ until 8 @resource/sheep.webp@@unit_worker/villager-delhi.webp@",
+        "Rally 4-5  @unit_worker/villager-delhi.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @resource/sheep.webp@@unit_worker/villager-delhi.webp@ build @landmark_delhi/dome-of-the-faith.webp@ -> @resource/gaiatreeprototypetree.webp@",
+        "Rally 2 @unit_worker/villager-delhi.webp@ to @resource/sheep.webp@",
+        "Rally @unit_worker/villager-delhi.webp@ to @resource/gaiatreeprototypetree.webp@ and Right-click 1 @unit_tughluq/worker_elephant.webp@ to the same @resource/gaiatreeprototypetree.webp@",
+        "When 3rd @unit_tughluq/worker_elephant.webp@ returns, Right-click on @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Send 4 @landmark_delhi/dome-of-the-faith.webp@@unit_worker/villager-delhi.webp@ to @resource/gaiatreeprototypetree.webp@",
+        "Immediately and Always make @unit_tughluq/healer_elephant.webp@ at @landmark_delhi/dome-of-the-faith.webp@ to harass enemy @resource/resource_gold.webp@",
+        "Respond to opponent army composition",
+        "[If they make @building_military/barracks.webp@, then make @building_military/archery-range.webp@]",
+        "[If they make @building_military/archery-range.webp@, then make @building_military/stable.webp@]",
+        "[If they make @building_military/stable.webp@, then make @building_military/barracks.webp@ or @building_military/stable.webp@]"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 8 @resource/resource_wood.webp@@unit_worker/villager-delhi.webp@, Rally @unit_worker/villager-delhi.webp@ to @resource/sheep.webp@",
+        "Get @technology_tughluq/elephant_economics_1.webp@ at a @unit_tughluq/worker_elephant.webp@"
+      ]
+    }
+  ],
+  "description": "Simple Tughlaq Dynasty Build Order by Beasty",
+  "video": "https://www.youtube.com/embed/AcNwBJ7eiPE",
+  "season": 12,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

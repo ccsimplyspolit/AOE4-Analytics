@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "name": "Pro scout in fc",
+  "civilization": "Chinese",
+  "author": "Liam",
+  "source": "https://aoe4guides.com/builds/A2YmXSOMNsIiZLvinF2f",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0s",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "First@unit_worker/villager-china.webp@ build"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "40s",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2min30",
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2min30",
+      "villager_count": 11,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@unit_worker/villager-china.webp@ build @landmark_chinese/imperial-academy.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2min35",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 5@unit_worker/villager-china.webp@@resource/sheep.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3min",
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5@unit_worker/villager-china.webp@@resource/resource_wood.webp@ build @building_economy/lumber-camp.webp@ dans la zone du @landmark_chinese/imperial-academy.webp@Point de spawn sur @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3min45‑4min",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce @unit_chinese/imperial-official.webp@1@resource/resource_gold.webp@ build @building_chinese/village.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4min",
+      "villager_count": 17,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Point de spawn sur la bouffe @unit_chinese/imperial-official.webp@ Prends les taxes du @building_economy/mill.webp@ et le supervise",
+        "1@resource/resource_wood.webp@ build @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4min40",
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce @unit_chinese/imperial-official.webp@ supervise le @building_economy/mining-camp.webp@ et"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5min20",
+      "villager_count": 23,
+      "resources": {
+        "food": 13,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research@technology_economy/professional-scouts.webp@Product @unit_chinese/imperial-official.webp@ supervise l’écurie puis produire @unit_cavalry/scout.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5min50",
+      "villager_count": 24,
+      "resources": {
+        "food": 16,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce @unit_cavalry/scout.webp@Une fois @technology_economy/professional-scouts.webp@ atteint Send @unit_worker/villager-china.webp@ to @resource/resource_food.webp@Point de spawn sur la bouffe"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6min40",
+      "villager_count": 26,
+      "resources": {
+        "food": 18,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research@technology_chinese/imperial-examination.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7min40",
+      "villager_count": 28,
+      "resources": {
+        "food": 20,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@unit_cavalry/scout.webp@ cherche @resource/deer.webp@ et @unit_cavalry/scout.webp@ scout l’ennemi"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8min30",
+      "villager_count": 30,
+      "resources": {
+        "food": 22,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "With @landmark_chinese/astronomical-clocktower.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "Pro scout in fc",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

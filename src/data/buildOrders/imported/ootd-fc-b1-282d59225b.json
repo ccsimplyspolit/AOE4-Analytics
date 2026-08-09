@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "name": "OOTD FC b1",
+  "civilization": "Order of the Dragon",
+  "author": "Asmitha",
+  "source": "https://aoe4guides.com/builds/PIJZ7JXCYmJ0CJO1tmvO",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@ 4 @resource/resource_gold.webp@ @resource/sheep.webp@",
+        "5 @resource/sheep.webp@ -> @abilities/repair.webp@@building_economy/house.webp@",
+        "try @resource/deer.webp@ -&gt; @building_economy/mill.webp@@technology_economy/survival-techniques.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2 @resource/sheep.webp@ @abilities/repair.webp@@landmark_hre/meinwerk-palace.webp@ -> @resource/sheep.webp@",
+        "@resource/rally.webp@3 @resource/resource_wood.webp@ (get 150 -&gt; @resource/gaiatreeprototypetree.webp@) @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/sheep.webp@@abilities/repair.webp@@building_economy/house.webp@",
+        "@resource/resource_gold.webp@@abilities/repair.webp@@building_defensive/outpost.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "7 @resource/sheep.webp@ @abilities/repair.webp@@landmark_hre/burgrave-palace.webp@ -> @resource/resource_food.webp@",
+        "1 @resource/resource_food.webp@ -&gt; @resource/resource_gold.webp@",
+        "3 @resource/resource_food.webp@ -&gt; @resource/resource_wood.webp@",
+        "@resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @resource/resource_wood.webp@->@building_military/barracks.webp@ -&gt; @resource/resource_food.webp@",
+        "@building_religious/monastery.webp@",
+        "@building_military/stable.webp@ for @unit_dragon/gilded-horseman-2.webp@",
+        "@resource/rally.webp@5 @resource/resource_gold.webp@ @resource/resource_food.webp@"
+      ]
+    }
+  ],
+  "description": "Todo",
+  "video": "",
+  "season": 13,
+  "map": "Open",
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

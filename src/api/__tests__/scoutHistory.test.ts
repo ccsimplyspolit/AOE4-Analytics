@@ -136,8 +136,29 @@ describe('getScoutHistory', () => {
     })
   })
 
+  it('requests later public-history pages without repeating head-to-head', async () => {
+    mocks.getAllSettings.mockReturnValue({ profileId: 101, playerName: 'Active player' })
+    mocks.getPlayerGames.mockResolvedValue(response([], 25))
+
+    const result = await getScoutHistory(202, { recentPage: 2 })
+
+    expect(mocks.getPlayerGames).toHaveBeenCalledTimes(1)
+    expect(mocks.getPlayerGames).toHaveBeenCalledWith(202, { limit: 10, page: 2 })
+    expect(result).toMatchObject({
+      ok: true,
+      data: { recentPage: 2, recentPageSize: 10, headToHead: null },
+    })
+  })
+
   it('rejects invalid renderer profile ids without making a request', async () => {
     const result = await getScoutHistory(-1)
+
+    expect(result).toMatchObject({ ok: false, error: { kind: 'validation' } })
+    expect(mocks.getPlayerGames).not.toHaveBeenCalled()
+  })
+
+  it('rejects invalid history pages without making a request', async () => {
+    const result = await getScoutHistory(202, { recentPage: 0 })
 
     expect(result).toMatchObject({ ok: false, error: { kind: 'validation' } })
     expect(mocks.getPlayerGames).not.toHaveBeenCalled()

@@ -1,0 +1,397 @@
+{
+  "schemaVersion": 1,
+  "name": "Knights Templar | Feudal all-in",
+  "civilization": "Knights Templar",
+  "author": "Jockxtar",
+  "source": "https://aoe4guides.com/builds/3zDTNY0CFvLUA8dZ0UnX",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager.webp@ on @resource/sheep.webp@",
+        "@resource/rally.webp@ -> @building_economy/house.webp@ -&gt; @building_economy/mining-camp.webp@ -&gt; @resource/resource_gold.webp@ (2)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:45",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/sheep.webp@ (7)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:05",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/gaiatreeprototypetree.webp@ (8)",
+        "2 to closest @resource/gaiatreeprototypetree.webp@ to @resource/sheep.webp@; they will go gather @resource/sheep.webp@ after they fully chop it",
+        "2 to closest @resource/gaiatreeprototypetree.webp@ to @resource/resource_gold.webp@; they will go gather @resource/resource_gold.webp@ after they fully chop it",
+        "The rest to main @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move 3 @resource/sheep.webp@@unit_worker/villager.webp@ -> @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@civilization_flag/kof.webp@: The best option for this strategy. Heavy cavalry in @age/age_2.webp@ are super strong and the bonus unit production speed allows you to outproduce most civilizations in the game. Additionally, you will force the enemy to make @unit_infantry/spearman-1.webp@, which you will counter with @unit_infantry/archer-2.webp@.",
+        "@unit_templar/chevalier_confrere_age_2.webp@ are discounted feudal knights, decent for early raids and harassing opponents, but they are worse in direct combats. Still, once you group a large amount they can overwhelm enemy archers.",
+        "@civilization_flag/hos.webp@: vs @civilization_flag/abb.webp@ or @civilization_flag/ayy.webp@ (they can very easily counter cavalry).",
+        "@unit_templar/hospitaller_knight_age_2.webp@ are decently tanky in @age/age_2.webp@ and, with good micro, you can save units from dying during the early game, even while diving the enemy static defenses. They don't scale very well into @age/age_3.webp@, but they become considerably tanky in @age/age_4.webp@.",
+        "@civilization_flag/ant.webp@: Is better for tempo/scaling strategies. Still, they are the best option vs @civilization_flag/fre.webp@ and @civilization_flag/jda.webp@, since they have @unit_french/royal-knight-2.webp@ which destroy @unit_templar/chevalier_confrere_age_2.webp@ and @unit_templar/hospitaller_knight_age_2.webp@.",
+        "@unit_templar/serjeant_age_2.webp@ are a great unit to mass in Feudal Age, but way too expensive and are soft-countered by @unit_infantry/archer-2.webp@ and static defenses. This makes all-ins with this unit very difficult."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "TL;DR: @civilization_flag/kof.webp@ > @civilization_flag/hos.webp@ &gt; @civilization_flag/ant.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "The @resource/gaiatreeprototypetree.webp@@unit_worker/villager.webp@ should be close to finishing chopping their respective tree and then moving 2 to @resource/sheep.webp@ and 2 to @resource/resource_gold.webp@",
+        "Pay attention so that they don't go chop more trees."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:45",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@ -> @technology_templar/safepassage.webp@",
+        "@resource/rally.webp@ -&gt; @resource/resource_wood.webp@ (16)",
+        "Having 4 @unit_worker/villager.webp@ on @resource/resource_gold.webp@ will secure enough income to produce @unit_templar/chevalier_confrere_age_2.webp@ without relying on pilgrims, which can be denied easily by our opponent."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:45",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 @resource/resource_wood.webp@@unit_worker/villager.webp@ -> @abilities/repair.webp@@building_military/stable.webp@",
+        "Produce @unit_templar/chevalier_confrere_age_2.webp@ until you have 5 and use them to raid. Make sure they take as little damage as possible, forcing idle time is good enough and we need a large amount of them for the all-in."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 @resource/resource_gold.webp@@unit_worker/villager.webp@ -> @abilities/repair.webp@@building_technology/blacksmith.webp@ -&gt; @abilities/repair.webp@@building_economy/house.webp@",
+        "Order of upgrades: @technology_military/iron-undermesh.webp@ -&gt; @technology_military/steeled-arrow.webp@ -&gt; @technology_military/siege-engineering.webp@",
+        "You can research @technology_military/bloomery.webp@ first for @unit_worker/villager.webp@ kill breakpoint on @unit_templar/chevalier_confrere_age_2.webp@ (charge + 3 normal attacks instead of 4), but this will delay your all-in timing. Do it only if you are confident on your micro or if you want to punish enemy @unit_worker/villager.webp@ on @resource/deer.webp@.",
+        "One pilgrim generates 130 @resource/resource_gold.webp@ per minute, which coincides perfectly with @building_technology/blacksmith.webp@ upgrades."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@abilities/repair.webp@@unit_worker/villager.webp@ -> @abilities/repair.webp@ 2nd @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 7,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 @resource/resource_wood.webp@@unit_worker/villager.webp@ -> @abilities/repair.webp@@building_military/archery-range.webp@",
+        "Produce @unit_infantry/archer-2.webp@ nonstop",
+        "If you ever lack @resource/resource_food.webp@ to produce units, prioritize @unit_infantry/archer-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 6,
+        "wood": 9,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@abilities/repair.webp@@unit_worker/villager.webp@ -> @abilities/repair.webp@ second @building_military/archery-range.webp@ or @building_military/barracks.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 9,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "If you build @building_military/barracks.webp@, move 4 @resource/resource_gold.webp@@unit_worker/villager.webp@ -> @resource/resource_food.webp@; otherwise move only 2.",
+        "Either way, pause @unit_templar/chevalier_confrere_age_2.webp@ production until you have enough @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:45",
+      "villager_count": 26,
+      "resources": {
+        "food": 8,
+        "wood": 16,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_food.webp@ (14)",
+        "Now should be a good time to resume @unit_templar/chevalier_confrere_age_2.webp@ production."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move @resource/resource_food.webp@@unit_worker/villager.webp@ to @resource/deer.webp@ or @resource/boar.webp@ if you have map control. This will spike your unit production significantly, therefore you should build more military buildings to spend the resources."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once you have over 10 @unit_infantry/archer-2.webp@, if you lack @resource/resource_food.webp@ but have too much @resource/resource_wood.webp@, make @unit_siege/battering-ram.webp@",
+        "Otherwise research @technology_templar/sanctuary.webp@ put 1 or 2 @resource/resource_wood.webp@@unit_worker/villager.webp@ on @building_economy/farm.webp@",
+        "2 @unit_siege/battering-ram.webp@ is enough to destroy secondary @building_economy/town-center.webp@, but don't move for the main @building_economy/town-center.webp@ until you have at least 4."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If you float too much @resource/resource_gold.webp@, you can build @building_economy/market.webp@ to buy other resources or another @building_military/stable.webp@ for more @unit_templar/chevalier_confrere_age_2.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If the game is not finished after a while and you want to change your strategy, age up to @age/age_3.webp@ to upgrade your army and deal the final blow."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@civilization_flag/ang.webp@: @unit_templar/heavy_spearman_age_3.png@ are amazing against @age/age_2.png@ armies that rely on cavalry. Going for these will allow you to close up the game in early @age/age_3.png@ against civilizations like @civilization_flag/fre.png@, @civilization_flag/jda.png@ and @civilization_flag/rus.png@, since their @unit_infantry/archer-2.png@ will become useless and they will have no way to protect their @unit_cavalry/knight-2.png@.",
+        "@civilization_flag/gen.png@: @unit_templar/genoese_crossbowman_age_3.png@ are very strong against pretty much any unit, but are specially strong against melee infantry (most noticeably, @unit_infantry/spearman-1.png@). Their biggest counter are @unit_cavalry/horseman-1.png@ and @unit_infantry/archer-2.png@, but both can be dealt with our @age/age_2.png@ unique unit (@unit_templar/chevalier_confrere_age_2.png@, @unit_templar/hospitaller_knight_age_2.png@ or @unit_templar/serjeant_age_2.png@).",
+        "@civilization_flag/koc.png@: @unit_templar/genitour_age_3.png@ are ultra specific counter units. Good choice against @civilization_flag/ayy.png@@civilization_flag/abb.png@@civilization_flag/rus.png@@civilization_flag/mon.png@ if they are doing mounted cavalry units, but since we have been playing aggressive all this time, we should not wait to see what our opponent does after aging up, we want to have the upper hand by going @age/age_3.png@ first."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "TL;DR: @civilization_flag/ang.webp@ > @civilization_flag/gen.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "Basic opening for a strong Feudal Age all-in with chevalier confrere and archers.\nVery similar to a French all-in, but with a stronger economy and more reliance on archers rather than knights.\n\nMy other Knights Templar build orders:\n- 2TC: https://aoe4guides.com/builds/4eHSzSzuResmbfKsdVCV\n- Dark Age tower rush: https://aoe4guides.com/builds/txlg20KyI99bVIoPSWXs",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

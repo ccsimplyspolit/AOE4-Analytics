@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "name": "ABBs-ACID Archer Spam \"Fast Castle\"",
+  "civilization": "Abbasid Dynasty",
+  "author": "ßlàçk",
+  "source": "https://aoe4guides.com/builds/rAseJg4j7bGt9uFZi1KP",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:05",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6:@unit_worker/villager-abbasid.webp@->Build@building_economy/mill.png@On@resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:25",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@->Build@landmark_abbasid/house-of-wisdom.png@-&gt;@resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:45",
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@->@building_economy/house.png@-&gt;@building_economy/mining-camp.png@-&gt;@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:05",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:25",
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:45",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:05",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/gaiatreeprototypetree.png@ Up to 12"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:45",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age Up wtih @landmark_abbasid/culture-wing.webp@Culture Wing for @technology_abbasid/preservation-of-knowledge.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:05",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move 4:@unit_worker/villager-abbasid.webp@ From @resource/resource_food.png@->@resource/resource_wood.png@ Build @building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "04:05",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_economy/house.webp@->@resource/resource_wood.png@Up to 12"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:25",
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get Upgrade in that Order",
+        "@technology_abbasid/preservation-of-knowledge.webp@->@technology_abbasid/fresh-foodstuffs.png@-&gt;@technology_economy/wheelbarrow.png@-&gt;@technology_economy/double-broadaxe.png@-&gt;@technology_economy/horticulture.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:45",
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build in that Order@building_military/archery-range.webp@->@building_military/barracks.png@-&gt;@building_military/archery-range.png@-&gt;@building_technology/blacksmith.png@",
+        "Make @unit_infantry/archer-2.png@+@unit_infantry/spearman-1.png@ When @technology_abbasid/fresh-foodstuffs.png@ is finished",
+        "Get @technology_military/steeled-arrow.png@",
+        "Try to Unlock @age/goldenagetier1.png@ For extra +15% Gathering"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:05",
+      "villager_count": 21,
+      "resources": {
+        "food": 6,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/resource_food.png@Up to 18"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~09:25",
+      "villager_count": 33,
+      "resources": {
+        "food": 18,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/resource_gold.png@ Up to 6"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~10:05",
+      "villager_count": 36,
+      "resources": {
+        "food": 18,
+        "wood": 12,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/resource_food.png@ In case we want to go into @unit_abbasid/ghulam-3.png@ when we Go @age/age_3.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~11:05",
+      "villager_count": 39,
+      "resources": {
+        "food": 20,
+        "wood": 12,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age Up with@landmark_abbasid/military-wing.webp@ Military Wing"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "~13:00",
+      "villager_count": 42,
+      "resources": {
+        "food": 22,
+        "wood": 12,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_abbasid/composite-bows.webp@->@technology_abbasid/boot-camp.png@-&gt;@technology_military/balanced-projectiles.png@",
+        "Make @unit_siege/mangonel-3.png@+@unit_siege/battering-ram.png@+@unit_siege/springald.png@with Infentry"
+      ]
+    }
+  ],
+  "description": "We are not Really Rushing Castle but the goal is to get \"Composite Bows\" before we attack. Still Good for Season 8",
+  "video": "",
+  "season": 8,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

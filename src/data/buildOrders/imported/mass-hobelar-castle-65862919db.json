@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "name": "mass hobelar castle",
+  "civilization": "House of Lancaster",
+  "author": "joke less",
+  "source": "https://aoe4guides.com/builds/KBxl0d7xg5fqQHhsXH2y",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.webp@(1@unit_worker/villager.webp@@building_economy/mining-camp.webp@2@building_economy/house.webp@)until 3"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@1"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_stone.webp@(1@building_economy/mining-camp.webp@)until 2"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 2,
+        "builder": 5
+      },
+      "notes": [
+        "3@resource/resource_gold.webp@@unit_worker/villager.webp@+2 @resource/resource_food.webp@@unit_worker/villager.webp@@abilities/repair.webp@@landmark_lancaster/lancaster_castle.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 3,
+        "wood": 2,
+        "gold": 0,
+        "stone": 2,
+        "builder": 5
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@/  2@resource/resource_food.webp@@unit_worker/villager.webp@=>@resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "until 100@resource/resource_stone.webp@/@unit_worker/villager.webp@@resource/gaiatreeprototypetree.webp@ and @unit_worker/villager.webp@@resource/resource_stone.webp@ build @building_lancaster/manor.webp@at@resource/resource_wood.webp@total 6 builder rest on @resource/sheep.webp@",
+        "(all @unit_worker/villager.webp@in range"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_lancaster/lancaster_castle.webp@go to@resource/resource_gold.webp@other on @resource/sheep.webp@/@resource/rally.webp@@resource/sheep.webp@until 13 on @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.webp@until 10"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 4,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "@resource/resource_gold.webp@@unit_worker/villager.webp@@abilities/repair.webp@@landmark_lancaster/kings_college.webp@/9@resource/sheep.webp@@unit_worker/villager.webp@=>@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 4,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": 12
+      },
+      "notes": [
+        "@abilities/repair.webp@2@building_military/stable.webp@/@abilities/repair.webp@@building_technology/blacksmith.webp@@technology_military/iron-undermesh.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 27,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "get@technology_lancaster/hill_land_training.webp@/@landmark_lancaster/kings_college.webp@=>@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 27,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@start@resource/berrybush.webp@/@building_economy/mill.webp@@building_economy/farm.webp@/2@unit_worker/villager.webp@@resource/resource_stone.webp@for@building_lancaster/manor.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 27,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "start massing @unit_lancaster/hobelar_age2.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

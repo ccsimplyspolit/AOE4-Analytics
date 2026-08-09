@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 1,
+  "name": "Feudal rush rump type shi",
+  "civilization": "Sengoku Daimyo",
+  "author": "daltor",
+  "source": "https://aoe4guides.com/builds/fiaQ7cTy7xqxuJykadQd",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1@unit_worker/villager-japanese.webp@@abilities/repair.webp@@building_sengoku/matsuri.webp@ on wood, @resource/rally.webp@@resource/sheep.webp@",
+        "1 Builder goes to wood"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:50",
+      "villager_count": 8,
+      "resources": {
+        "food": 2,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@unit_sengoku/yatai.webp@+@building_japanese/farmhouse-1.webp@on @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:45",
+      "villager_count": 11,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@2nd @unit_sengoku/yatai.webp@",
+        "@resource/rally.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "pull @resource/sheep.webp@to @building_sengoku/matsuri.webp@",
+        "@abilities/repair.webp@@building_japanese/forge-1.webp@on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@once 3 on gold"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 1,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@landmark_sengoku/ryokan.webp@",
+        "Remacro to wood for @unit_sengoku/yatai.webp@+@building_military/stable.webp@",
+        "@technology_japanese/takezaiku-2.webp@@technology_japanese/towara-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 14,
+      "resources": {
+        "food": 2,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3rd @unit_sengoku/yatai.webp@out + ageup done",
+        "5 @landmark_sengoku/ryokan.webp@@abilities/repair.webp@2@building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 21,
+      "resources": {
+        "food": 9,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_military/stable.webp@out",
+        "produce @unit_sengoku/yari-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:15",
+      "villager_count": 23,
+      "resources": {
+        "food": 11,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4th @unit_sengoku/yatai.webp@@technology_japanese/hizukuri-2.webp@@technology_military/fitted-leatherwork.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 26,
+      "resources": {
+        "food": 13,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3rd @building_military/stable.webp@@technology_military/iron-undermesh.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 31,
+      "resources": {
+        "food": 17,
+        "wood": 10,
+        "gold": 3,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "@building_japanese/forge-1.webp@on @resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 32,
+      "resources": {
+        "food": 18,
+        "wood": 10,
+        "gold": 3,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_sengoku/takeda_daimyo_1.webp@on @building_military/stable.webp@ @resource/rally.webp@@resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:30",
+      "villager_count": 39,
+      "resources": {
+        "food": 26,
+        "wood": 0,
+        "gold": 7,
+        "stone": 6,
+        "builder": -1
+      },
+      "notes": [
+        "Going castle"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "12:30",
+      "villager_count": 39,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 7,
+        "stone": 8,
+        "builder": 15
+      },
+      "notes": [
+        "15 @abilities/repair.webp@@landmark_sengoku/sake_brewery.webp@",
+        "@resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "13:30",
+      "villager_count": 42,
+      "resources": {
+        "food": 15,
+        "wood": 13,
+        "gold": 12,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @technology_sengoku/takeda_daimyo_2.webp@+@unit_sengoku/daimyo.webp@x2",
+        "swap to @unit_japanese/mounted-samurai-3.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "15:00",
+      "villager_count": 40,
+      "resources": {
+        "food": 15,
+        "wood": 8,
+        "gold": 15,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "3rd @technology_sengoku/takeda_daimyo_3.webp@+@technology_military/wedge-rivets.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "17:00",
+      "villager_count": 56,
+      "resources": {
+        "food": 19,
+        "wood": 19,
+        "gold": 16,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_economy/town-center.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

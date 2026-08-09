@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "name": "Cow Boom and Fast Castle [eng]",
+  "civilization": "Malians",
+  "author": "Pilsen",
+  "source": "https://aoe4guides.com/builds/EXumyTzuiBNB0w5BUaOY",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1x@unit_worker/villager-malians.webp@ build @building_malians/pit-mine-1.png@ and some@building_economy/house.png@ --> Then @resource/sheep.png@",
+        "5x @unit_worker/villager-malians.png@ to @resource/gaiatreeprototypetree.png@ until cut it entirely . Then -&gt;",
+        "Move that 5x @unit_worker/villager-malians.png@to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 6,
+      "resources": {
+        "food": 1,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Age up @age/age_2.webp@ with 5x@unit_worker/villager-malians.png@build@landmark_malians/mansa-quarry-2.png@",
+        "Other 5x@unit_worker/villager-malians.png@of @resource/sheep.png@ go to @resource/gaiatreeprototypetree.png@",
+        "When you can @abilities/repair.png@@building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:25",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/mill.png@ and produce @resource/cattle.png@ constanly"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you reach @age/age_2.webp@, 5x@unit_worker/villager-malians.png@ of @landmark_malians/mansa-quarry-2.png@ go to @building_economy/mining-camp.png@@resource/resource_gold.png@",
+        "@resource/rally.png@@resource/resource_gold.png@ until x10 villagers there.",
+        "Build a  @building_malians/cattle-ranch-2.png@ to garrison cows"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build another @building_economy/mill.webp@ to produce @resource/cattle.png@ there too",
+        "Create @building_malians/cattle-ranch-2.png@ and @resource/cattle.png@  until the maximun amount."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you have 10x@unit_worker/villager-malians.webp@on @resource/resource_gold.png@ -->",
+        "@resource/rally.png@ to @resource/resource_food.png@ until you have 8x villager there",
+        "Eat @resource/sheep.png@ if still are, if not eat @resource/cattle.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If you can, build another @building_malians/pit-mine-1.webp@ (if the enemy doesn't attack)",
+        "When you have 8x@unit_worker/villager-malians.png@ on@resource/resource_food.png@ -->",
+        "@resource/rally.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:30",
+      "villager_count": 26,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Age up @age/age_3.webp@ building@landmark_malians/grand-fulani-corral-2.png@ with the @unit_worker/villager-malians.png@of @resource/resource_food.png@",
+        "When finished, the@unit_worker/villager-malians.png@ builders of @landmark_malians/grand-fulani-corral-2.png@ go to@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:45",
+      "villager_count": 18,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/stable.webp@ and research @technology_malians/imported-armor-3.png@",
+        "Research @technology_economy/wheelbarrow.png@ + @technology_economy/double-broadaxe.png@ + @technology_economy/horticulture.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "10:00&nbsp;&nbsp;",
+      "villager_count": 34,
+      "resources": {
+        "food": 0,
+        "wood": 24,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/archery-range.webp@",
+        "Mass produce @unit_malians/sofa-2.png@ and @unit_infantry/archer-2.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_religious/mosque.webp@ and @unit_religious/monk-3.png@ to take @resource/relics.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_technology/blacksmith.webp@ and reserch"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Attention! This is an ideal build where the enemy",
+        "does not attack during the feudal age.",
+        "If they do attack in feudal, you will be forced to create",
+        "buildings and military units to defend yourself."
+      ]
+    }
+  ],
+  "description": "Build order of Valdemar Uploaded by jimmy. Edited by me. ",
+  "video": "https://www.youtube.com/embed/8Vj1L6JVffk",
+  "season": 8,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "name": "Rus 2TC FC",
+  "civilization": "Rus",
+  "author": "Munchy",
+  "source": "https://aoe4guides.com/builds/peviqiLgfvdVjnwVslTW",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@",
+        "2 @building_rus/hunting-cabin.webp@, @building_economy/house.webp@",
+        "Make 2nd @unit_cavalry/scout.webp@from @building_rus/hunting-cabin.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 @landmark_rus/kremlin.webp@ cover @resource/resource_stone.webp@@resource/resource_gold.webp@@resource/resource_food.webp@",
+        "leave 4 on @resource/sheep.webp@ rest go @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 1,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@4@building_economy/mining-camp.webp@@resource/resource_stone.webp@, @building_economy/house.webp@",
+        "Then @resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "4 @landmark_rus/kremlin.webp@@resource/rally.webp@@resource/deer.webp@",
+        "2 @resource/sheep.webp@go @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "At 300 @resource/resource_stone.webp@@unit_worker/villager.webp@go @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:45",
+      "villager_count": 23,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": 14
+      },
+      "notes": [
+        "ALL @resource/resource_wood.webp@@unit_worker/villager.webp@build@building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/survival-techniques.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:20",
+      "villager_count": 25,
+      "resources": {
+        "food": 17,
+        "wood": 2,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@FINISHES -> HALF go @resource/sheep.webp@ HALF go @resource/resource_gold.webp@",
+        "@resource/rally.webp@both @building_economy/town-center.webp@@resource/resource_gold.webp@ (stop after 12)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:40",
+      "villager_count": 31,
+      "resources": {
+        "food": 18,
+        "wood": 1,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @building_economy/town-center.webp@@resource/resource_food.webp@other @building_economy/town-center.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:35",
+      "villager_count": 38,
+      "resources": {
+        "food": 8,
+        "wood": 9,
+        "gold": 12,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "9 @resource/sheep.webp@build@landmark_rus/abbey-of-the-trinity.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get ECO @technology_economy/specialized-pick.webp@@technology_economy/horticulture.webp@@technology_economy/wheelbarrow.webp@@technology_economy/forestry.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 52,
+      "resources": {
+        "food": 20,
+        "wood": 20,
+        "gold": 9,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Farm transition 20/20/9/3 @unit_worker/villager.webp@distribution",
+        "@resource/rally.webp@@resource/resource_food.webp@ and @resource/resource_wood.webp@",
+        "@building_technology/blacksmith.webp@@building_military/archery-range.webp@@building_military/barracks.webp@@building_military/stable.webp@ time"
+      ]
+    }
+  ],
+  "description": "VS 2TC or for team games ONLY",
+  "video": "https://www.youtube.com/embed/Lku9kFlDULc",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

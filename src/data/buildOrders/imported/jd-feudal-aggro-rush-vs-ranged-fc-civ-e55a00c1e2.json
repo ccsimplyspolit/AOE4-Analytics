@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "name": "JD Feudal aggro/rush vs Ranged FC civ",
+  "civilization": "Jeanne d'Arc",
+  "author": "resdxcvi",
+  "source": "https://aoe4guides.com/builds/idCB5WyssSleaLqCVZC9",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager.webp@ on @resource/sheep.webp@, make @unit_jeanne/jeanne-darc-peasant-1.webp@ @abilities/repair.webp@ @building_economy/house.webp@ + @resource/resource_gold.webp@ @building_economy/mining-camp.webp@, @resource/rally.webp@ next 2 @unit_worker/villager.webp@ @resource/sheep.webp@ then 1 on @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:10",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ next @unit_worker/villager.webp@ on  @resource/sheep.webp@ then the next on @resource/resource_gold.webp@,  @unit_cavalry/scout.webp@ @resource/deer.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:50",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send new @unit_worker/villager.webp@to @abilities/repair.webp@ @building_economy/lumber-camp.webp@, @resource/rally.webp@ next 2 to @resource/resource_wood.webp@. *If rushed before 200 @resource/resource_gold.webp@, use @unit_jeanne/jeanne-darc-peasant-1.webp@ to block @resource/resource_gold.webp@ @unit_worker/villager.webp@*."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:50",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Go @age/age_2.webp@ @landmark_french/school-of-cavalry.webp@ with only @unit_jeanne/jeanne-darc-peasant-1.webp@. Send 5 @resource/sheep.webp@ @unit_worker/villager.webp@ to  @abilities/repair.webp@ @building_economy/mill.webp@ on  @resource/deer.webp@, then @resource/rally.webp@1 on @resource/resource_wood.webp@ + 2 on @resource/resource_gold.webp@. (Use @unit_cavalry/scout.webp@ to guard @resource/resource_food.webp@ or @resource/resource_gold.webp@@unit_worker/villager.webp@)."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:10",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ next 2 to @resource/resource_food.webp@+ @resource/resource_gold.webp@. *If you were dark age aggro'd*  @abilities/repair.webp@@building_military/stable.webp@ with the @resource/resource_food.webp@@unit_worker/villager.webp@ 1st."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:50",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_economy/survival-techniques.webp@+ @technology_economy/wheelbarrow.webp@, then just pump @resource/resource_food.webp@ and @resource/resource_gold.webp@ respectively. @abilities/repair.webp@2nd @building_economy/house.webp@ with @resource/resource_gold.webp@ @unit_worker/villager.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:10",
+      "villager_count": 22,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@ complete, Get @technology_economy/specialized-pick.webp@, @abilities/repair.webp@ @building_military/stable.webp@ . Move 3 off @resource/resource_wood.webp@ to 2 on @resource/resource_gold.webp@ + 1 on @resource/resource_food.webp@. Produce @unit_french/royal-knight-2.webp@ and get @technology_french/chivalry.webp@ after first que. Lock off enemy side @resource/resource_food.webp@ or @resource/resource_gold.webp@ with @unit_french/royal-knight-2.webp@+ @unit_jeanne/jeanne-darc-woman-at-arms-2.webp@ for XP."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:30",
+      "villager_count": 23,
+      "resources": {
+        "food": 9,
+        "wood": 6,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Opt for 11 @resource/resource_food.webp@, 10 @resource/resource_gold.webp@ and no more than 8 @resource/resource_wood.webp@, then pump @resource/resource_stone.webp@ to 6, maintain ratio."
+      ]
+    }
+  ],
+  "description": "Good vs, Japan, England etc.",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

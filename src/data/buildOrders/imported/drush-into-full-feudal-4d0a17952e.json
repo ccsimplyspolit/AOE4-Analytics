@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "name": "Drush into Full Feudal",
+  "civilization": "Order of the Dragon",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/sa1NFyiJHpXgpdjGgXgg",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 2,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "2 @unit_worker/villager.webp@ to @resource/resource_food.png@ &&amp; 2 @unit_worker/villager.png@ to @resource/resource_wood.png@ &amp;&amp; 1 @unit_worker/villager.png@ to build @building_military/barracks.png@ (goes back to food)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ new @unit_worker/villager.png@ to @resource/resource_food.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:30",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @unit_dragon/gilded-spearman-1.webp@ and attack @resource/resource_gold.png@/@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:49",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/house.webp@ with 1 @resource/resource_food.png@@unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 60/150 @resource/resource_wood.webp@ in @resource/gaiatreeprototypetree.png@ OR 50 @resource/resource_wood.png@ in bank build a @building_economy/mining-camp.png@ with your 2 @resource/resource_wood.png@ @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:47",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Age up with 2 @resource/resource_gold.webp@@unit_worker/villager.png@ &&amp; 1 @resource/resource_food.png@@unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Divide vills and gather @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Go to 5 on @resource/resource_wood.webp@ for normal @building_military/barracks.png@+@building_military/stable.png@ Production. Go to 7-8 ish for @unit_dragon/gilded-archer-2.png@ production."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 14,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 2nd production building. @building_military/stable.webp@ or @building_military/archery-range.png@.",
+        "f opponent goes @building_military/barracks.png@/@building_military/archery-range.png@ you can run @unit_dragon/gilded-man-at-arms-2.png@+@unit_dragon/gilded-archer-2.png@. If you need mobility, then run tri-comp / 1-1-1 comp"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "From here on, macro for offense, dont go 2nd TC or FC unless 100% necessary. Try to get an archer ball going with maa and horsemen. Add spearmen if they go for Horsemen after your archer followup.",
+        "This is just an opener. You decide where you want to take the feudal game, but it is usually best to go 1tc all in :)",
+        "Check macro here: https://www.aoe4-production-calculator.com/",
+        "Check video for additional tips on dealing with feudal aggro or FC from opponent."
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/i_6TdgX-USM",
+  "season": 8,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

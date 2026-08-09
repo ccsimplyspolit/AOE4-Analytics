@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "name": "JD Teams",
+  "civilization": "Jeanne d'Arc",
+  "author": "RexTheKrab",
+  "source": "https://aoe4guides.com/builds/qyVrgFkbKTC4oMiplKQA",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All @unit_worker/villager.webp@ to food, @unit_jeanne/jeanne-darc-peasant-1.webp@ builds @building_economy/house.webp@ + @building_economy/mining-camp.webp@ and gathers @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ new @unit_worker/villager.webp@ to @resource/resource_food.webp@ until 8"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@2 new @unit_worker/villager.webp@ to @resource/resource_gold.webp@ then @resource/rally.webp@to @resource/resource_food.webp@again"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Build @landmark_french/school-of-cavalry.webp@ with@unit_jeanne/jeanne-darc-peasant-1.webp@+1 @unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Rally 2 @unit_worker/villager.webp@ on @resource/resource_gold.webp@ build 1 @building_economy/house.webp@ on the way"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Rally to @resource/resource_food.webp@ up to 11"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 11,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remicro the 2 @landmark_french/school-of-cavalry.webp@@unit_worker/villager.webp@ onto @resource/gaiatreeprototypetree.webp@ and build @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 11,
+        "wood": 4,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally to @resource/resource_gold.webp@ until 10"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 11,
+        "wood": 4,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_economy/specialized-pick.webp@ then @technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 11,
+        "wood": 4,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 10 on @resource/resource_gold.webp@ next @unit_worker/villager.webp@ to @building_economy/mill.webp@ on @resource/berrybush.webp@ and @resource/rally.webp@ on @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 27,
+      "resources": {
+        "food": 13,
+        "wood": 4,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 1st @building_military/stable.webp@ when @resource/resource_wood.webp@ allows"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 32,
+      "resources": {
+        "food": 18,
+        "wood": 4,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Take 5 @resource/resource_food.webp@@unit_worker/villager.webp@ -> @building_economy/mill.webp@ on @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 37,
+      "resources": {
+        "food": 23,
+        "wood": 4,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally to @resource/resource_wood.webp@ until 10"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 43,
+      "resources": {
+        "food": 23,
+        "wood": 10,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/resource_gold.webp@ + @resource/resource_food.webp@ for more knight production"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 11,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

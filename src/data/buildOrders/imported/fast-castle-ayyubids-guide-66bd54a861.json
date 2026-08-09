@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "name": "Fast Castle Ayyubids Guide",
+  "civilization": "Ayyubids",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/zhLqmRvLHXcdL4pegLmW",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager-abbasid.webp@ to @resource/berrybush.png@, 2@unit_worker/villager-abbasid.png@ build @building_economy/mill.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New @unit_worker/villager-abbasid.webp@ builds @building_economy/house.png@ to connect @building_economy/mill.png@ with @building_economy/town-center.png@ then goes to @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Add 4 New @unit_worker/villager-abbasid.webp@ to @resource/resource_gold.png@. 1st @unit_worker/villager-abbasid.png@ builds @building_economy/mining-camp.png@, 2nd @landmark_abbasid/house-of-wisdom.png@ close to the @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 New @unit_worker/villager-abbasid.webp@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@@technology_ayyubids/military-wing-reinforcement-1.png@ (use DRs to raid and/or counter cavalry units + buy you time to go age 3)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Take 4 @resource/resource_food.webp@ @unit_worker/villager-abbasid.png@ + 1@unit_worker/villager-abbasid.png@ from@building_economy/town-center.png@ & send to @resource/gaiatreeprototypetree.png@. Gather 150 @resource/resource_wood.png@ then go gather 50 @resource/resource_stone.png@ (no mining camp)",
+        "Keep @resource/rally.png@@building_economy/town-center.png@ on @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager-abbasid.webp@@resource/resource_gold.png@ build @building_defensive/outpost.png@ (upgrade when 50 @resource/resource_stone.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 4,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @unit_worker/villager-abbasid.webp@@resource/resource_stone.png@ go to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 18,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "&lt;--- Remacro and @resource/rally.webp@to @resource/resource_food.png@ until age 3"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:20",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Drop off res and go @age/age_3.webp@ @technology_ayyubids/economic-wing-growth-1.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:25",
+      "villager_count": 25,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "&lt;--- Remacro. @building_economy/town-center.webp@@resource/rally.png@ new @unit_worker/villager-abbasid.png@ to @resource/resource_gold.png@ until 12"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 28,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/double-broadaxe.webp@@technology_economy/wheelbarrow.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 29,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@@building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:25",
+      "villager_count": 31,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_ayyubids/economic-wing-growth-1.webp@ go to @resource/resource_food.png@",
+        "Construct @building_religious/mosque.png@ and grab as many @resource/relics.png@ as possible (3 @unit_ayyubids/dervish-3.png@)",
+        "@technology_economy/horticulture.png@ (when possible)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:30",
+      "villager_count": 41,
+      "resources": {
+        "food": 17,
+        "wood": 12,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 43,
+      "resources": {
+        "food": 17,
+        "wood": 14,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@ (get @technology_military/iron-undermesh.png@@technology_military/wedge-rivets.png@->@technology_military/steeled-arrow.png@@technology_military/balanced-projectiles.png@ -&gt; (sultans mamluks)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": 45,
+      "resources": {
+        "food": 17,
+        "wood": 16,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build 3 @building_military/archery-range.webp@@building_military/archery-range.png@@building_military/archery-range.png@ and have 15@unit_worker/villager-abbasid.png@ on @resource/resource_wood.png@ (5 per range)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "more info:",
+        "Keep adding more and more production as you start floating. You have to CONSTANTLY produce @unit_infantry/archer-2.webp@and @unit_ayyubids/camel-lancer-3.png@. Look for fights and when you push your opponent, make 2-4 @unit_ayyubids/manjaniq-3.png@and go for the slow kill with fire attack to force your opponent out of their base.",
+        "Upgrades (@technology_military/balanced-projectiles.png@+@technology_military/wedge-rivets.png@) are incredibly important and if you have fully upgraded archers, they last you very long and you forego the need for early expensive xbows. Don't be afraid to add a 2nd @building_technology/blacksmith.png@if necessary. The @unit_ayyubids/camel-lancer-3.png@+ @unit_infantry/archer-2.png@comp is goated.",
+        "Eco upgrades are also important. Get them as you can fit them in, but dont prioritise them over @building_technology/blacksmith.png@upgrades and @unit_ayyubids/dervish-3.png@."
+      ]
+    }
+  ],
+  "description": "This is the standard build order for Ayyubid FC. It works vs. every civ but not against Delhi & English (at the high level). Against these civs, you want to switch style. \n\nVideo Linked below",
+  "video": "https://www.youtube.com/embed/1qK1wElYUY8",
+  "season": 7,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

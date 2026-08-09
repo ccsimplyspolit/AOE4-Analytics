@@ -1,0 +1,433 @@
+{
+  "schemaVersion": 1,
+  "name": "Malian | Trade",
+  "civilization": "Malians",
+  "author": "Jockxtar",
+  "source": "https://aoe4guides.com/builds/kpBfvfYMeZjMmkXQodAM",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5@unit_worker/villager-malians.webp@-> @resource/gaiatreeprototypetree.webp@ -&gt; @resource/sheep.webp@",
+        "1@unit_worker/villager-malians.webp@ -&gt; @building_malians/pit-mine-1.webp@ -&gt; 2@building_economy/house.webp@ -&gt; 2@building_economy/house.webp@ -&gt; 2@building_economy/house.webp@ -&gt; @resource/sheep.webp@",
+        "@resource/rally.webp@ -&gt; @resource/sheep.webp@ (12)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:25",
+      "villager_count": 13,
+      "resources": {
+        "food": 12,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/gaiatreeprototypetree.webp@ (8)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "5 @unit_worker/villager-malians.webp@ -> @landmark_malians/saharan-trade-network-1.webp@ -&gt; @resource/resource_wood.webp@",
+        "3 @unit_worker/villager-malians.webp@ -&gt; @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:05",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:55",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Build @building_military/barracks.webp@ to produce @unit_malians/donso-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Next @unit_worker/villager-malians.webp@ -> 1 @building_economy/house.webp@ -&gt; @building_economy/mining-camp.webp@ on @building_malians/pit-mine-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "4 @abilities/repair.webp@@unit_worker/villager-malians.webp@ -> @resource/resource_wood.webp@",
+        "1 @abilities/repair.webp@@unit_worker/villager-malians.webp@ -&gt; @abilities/repair.webp@@building_economy/market.webp@ in a corner -&gt; @resource/resource_wood.webp@",
+        "Research @technology_economy/double-broadaxe.webp@ ASAP"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 12,
+        "gold": 1,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @resource/sheep.webp@@unit_worker/villager-malians.webp@ -> @abilities/repair.webp@@building_economy/mill.webp@ on @resource/deer.webp@/@resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:25",
+      "villager_count": 22,
+      "resources": {
+        "food": 7,
+        "wood": 13,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Add @building_military/archery-range.webp@ if opponent is making @unit_infantry/archer-2.webp@ or @unit_infantry/spearman-1.webp@ to attack you"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once you have enough units to defend, @abilities/repair.webp@ 2nd @building_malians/pit-mine-1.webp@ with full @building_economy/house.webp@ and @building_economy/mining-camp.webp@ around it (keep the @unit_worker/villager-malians.webp@ mining @resource/resource_gold.webp@ there)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce @unit_worker/trader.webp@ constantly on your 1 @building_economy/market.webp@",
+        "Research @technology_economy/wheelbarrow.webp@ and produce @resource/cattle.webp@ with excess @resource/resource_gold.webp@",
+        "Build @building_malians/cattle-ranch-2.webp@, @building_malians/toll-outpost-1.webp@ and @building_defensive/palisade-wall.webp@ with excess @resource/resource_wood.webp@",
+        "Remember to build @building_malians/toll-outpost-1.webp@ far away from each other so their toll aura doesn't overlap, otherwise they will generate less resources."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once you stop producing units, save @resource/resource_food.webp@ and @resource/resource_gold.webp@ for @age/age_3.webp@",
+        "The sooner you age up, the better."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/horticulture.webp@ after you run out of @resource/deer.webp@ and move to @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "12 @resource/resource_food.webp@@unit_worker/villager-malians.webp@ -> @abilities/repair.webp@@landmark_malians/farimba-garrison-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@ 2 more @building_military/barracks.webp@ and 1 @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Gather @resource/resource_stone.webp@ with 4 @unit_worker/villager-malians.webp@ for @building_defensive/stone-wall.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make @unit_malians/musofadi-mansa.webp@ and/or @unit_malians/freeborn-mansa.webp@ from @landmark_malians/farimba-garrison-2.webp@ and @building_military/barracks.webp@ nonstop to counter your opponent's army. Add @unit_malians/sofa-2.webp@ to force opponent into making @unit_infantry/spearman-1.webp@ and @unit_infantry/crossbowman-3.webp@, which are terrible against both @unit_malians/musofadi-mansa.webp@ and @unit_malians/freeborn-mansa.webp@ respectively."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Slowly add @building_malians/cattle-ranch-2.webp@ and @building_economy/farm.webp@ to further boost your economy.",
+        "Don't forget to build @building_malians/pit-mine-1.webp@ once it's safe."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If the all-in fails, @building_defensive/stone-wall.webp@ your base and start raiding with @unit_malians/sofa-2.webp@.",
+        "Send the rest of your army to support your allies wherever they go.",
+        "If you get attacked, ask your allies for help."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Production buildings:",
+        "4 @building_military/barracks.webp@ ; 2 @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_malians/fort-of-the-huntress-3.webp@ is a good choice if your team has control of a key area in the map. Rally your reinforcements wherever you build it so that they will be safe until you decide to make them join the rest of the army or go to a different location to defend.",
+        "It's also ok if you desperately need a keep in your base to defend from an inminent attack, but remember that it has the stats of a regular @building_defensive/keep.png@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_malians/griot-bara-3.webp@ has two unique active abilities that can help a lot at replenishing lost army and a third one that's very powerful to finish off opponents by giving your units additional siege damage.",
+        "If your team doesn't have map control or things between both teams are even, this landmark will be more useful."
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": 50,
+      "resources": {
+        "food": 32,
+        "wood": 13,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "&lt;- Eco should look like this",
+        "Stop at 40 @unit_worker/trader.webp@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Production buildings:",
+        "10 @building_military/barracks.webp@ ; 5 @building_military/archery-range.webp@ ; 10 @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "For @building_technology/madrasa.webp@ upgrades, prioritize this order: @technology_military/elite-army-tactics.webp@ -> @technology_military/biology.webp@ -&gt; @technology_military/serpentine-powder.webp@ -&gt; @technology_defensive/court-architects.webp@",
+        "Dont forget to research @technology_malians/farima-leadership-4.webp@ at @building_military/stable.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

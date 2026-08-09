@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "name": "Lancaster Spear/Tower Rush",
+  "civilization": "House of Lancaster",
+  "author": "Dro47",
+  "source": "https://aoe4guides.com/builds/2S3xUUp1xodmXlFzvl6e",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 2,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@@abilities/repair.webp@@building_military/barracks.webp@ & @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~1:30",
+      "villager_count": 7,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@@abilities/repair.webp@@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Decide here if going for spears into delayed feudal. or Tower.  If tower skip to step after age up timing at ~2:45"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3@unit_worker/villager.webp@@abilities/repair.webp@@building_economy/mining-camp.webp@ on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~2:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~2:45",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 0,
+        "stone": 3,
+        "builder": 3
+      },
+      "notes": [
+        "@abilities/repair.webp@@age/age_2.webp@ with 3 @unit_worker/villager.webp@ on @landmark_english/abbey-of-kings.webp@ & send 3 @resource/resource_gold.webp@@unit_worker/villager.webp@ to @resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~1:30",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~2:30",
+      "villager_count": 11,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/attack-move.webp@eco with  @unit_infantry/spearman-1.webp@.  aim for 5 total.  with 1 @unit_worker/villager.webp@ nearby to build the tower"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~2:45",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @resource/resource_gold.webp@@unit_worker/villager.webp@ @abilities/repair.webp@ a @building_economy/house.webp@.  @building_economy/town-center.webp@@resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~3:00",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@ @building_economy/mining-camp.webp@ as soon as practicable."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@ count as shown"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~4:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 14,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "with 4 @resource/resource_gold.webp@@unit_worker/villager.webp@ @abilities/repair.webp@ the @landmark_english/abbey-of-kings.webp@ and age up @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "Spear or Tower rush if the oppotunity presents.",
+  "video": "https://www.youtube.com/embed/XWHfruGPIrM",
+  "season": 13,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

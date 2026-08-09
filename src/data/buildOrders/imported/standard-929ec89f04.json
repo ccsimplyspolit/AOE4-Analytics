@@ -1,0 +1,329 @@
+{
+  "schemaVersion": 1,
+  "name": "Standard",
+  "civilization": "Chinese",
+  "author": "Don D",
+  "source": "https://aoe4guides.com/builds/K0iw9xrCUopBESFVdMcY",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:01",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/mill.webp@ close to base, near wood if possible (for IP to be close to both @building_economy/mill.webp@&@building_economy/lumber-camp.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 2,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally two @unit_worker/villager-china.webp@ to @resource/resource_gold.webp@ first builds @building_economy/mining-camp.webp@ second builds @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally to food until you can afford @landmark_chinese/imperial-academy.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @landmark_chinese/imperial-academy.webp@ with 3 @unit_worker/villager-china.webp@     -     pull two @unit_worker/villager-china.webp@from @resource/resource_food.webp@ to @resource/resource_wood.webp@     -     Rally next @unit_worker/villager-china.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:13",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 2 @unit_chinese/imperial-official.webp@    -     @unit_worker/villager-china.webp@ from @landmark_chinese/imperial-academy.webp@ build @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "supervise @building_economy/lumber-camp.webp@ or whichever eco building has most @unit_worker/villager-china.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:49",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build @building_chinese/village.webp@ can be any villager, depends on where best placement for village is"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "supervise @building_economy/mill.webp@ with second @unit_chinese/imperial-official.webp@  remember to micro for more gold. If low APM get 3rd @unit_chinese/imperial-official.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:16",
+      "villager_count": 15,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "make @building_military/stable.webp@    -    Pull 3@unit_worker/villager-china.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make @unit_cavalry/horseman-1.webp@ with @unit_chinese/imperial-official.webp@, then @unit_cavalry/scout.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:10",
+      "villager_count": 21,
+      "resources": {
+        "food": 10,
+        "wood": 9,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/professional-scouts.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get to 5 @unit_cavalry/scout.webp@ including the free one. One is for scouting unless not needed"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 12,
+        "wood": 9,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make 3rd @unit_chinese/imperial-official.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make @building_military/archery-range.webp@ &  @building_military/barracks.webp@ and produce @unit_infantry/spearman-1.webp@@unit_infantry/archer-2.webp@ or spam @unit_cavalry/horseman-1.webp@@unit_infantry/spearman-1.webp@ if facing cavalry and archers"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/professional-scouts.webp@@technology_economy/wheelbarrow.webp@@technology_economy/horticulture.webp@ get @technology_economy/double-broadaxe.webp@ if playing offensive"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 12,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Decide whether to fight and stay Feudal or go Castle"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 28,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Pump gold to get to @age/age_3.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "8:20",
+      "villager_count": 31,
+      "resources": {
+        "food": 13,
+        "wood": 9,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/double-broadaxe.webp@ and  @building_economy/market.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "9:30",
+      "villager_count": 21,
+      "resources": {
+        "food": 15,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_chinese/imperial-palace.webp@ with 8"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "14",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Farm transition slow"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

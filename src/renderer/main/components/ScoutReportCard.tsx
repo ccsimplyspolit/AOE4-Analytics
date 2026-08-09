@@ -6,6 +6,7 @@ import { countryFlag, formatPercent, formatRating, formatDurationShort, winRateT
 import { counterPlanForCiv } from '@domain/civUnits'
 import { RankBadge } from './RankBadge'
 import { FormPips } from './FormPips'
+import { useI18n } from '../../i18n'
 
 const CIV_BAR_FILL = { win: 'bg-win/80', loss: 'bg-loss/80', even: 'bg-primary/70' } as const
 
@@ -21,6 +22,7 @@ export function ScoutReportCard({
   report: ScoutReport
   showProfileLink?: boolean
 }) {
+  const { tt } = useI18n()
   const topCiv = report.topCivs[0]
   const topGames = topCiv?.games ?? 1
   const counterPlan = counterPlanForCiv(topCiv?.civ)
@@ -41,15 +43,15 @@ export function ScoutReportCard({
           </div>
           <div className="shrink-0 text-right text-xs text-muted-foreground">
             {report.primary?.maxRating != null && (
-              <div>Peak {formatRating(report.primary.maxRating)}</div>
+              <div>{tt('Peak')} {formatRating(report.primary.maxRating)}</div>
             )}
-            {report.primary && <div>{report.primary.gamesCount} games</div>}
+            {report.primary && <div>{report.primary.gamesCount} {tt('games')}</div>}
             {showProfileLink && (
               <Link
                 to={`/profile/${report.profileId}`}
                 className="mt-1.5 inline-flex items-center gap-1 rounded-md border border-primary/30 px-2 py-1 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
               >
-                View full profile <ArrowRight className="h-3 w-3" />
+                {tt('View full profile')} <ArrowRight className="h-3 w-3" />
               </Link>
             )}
           </div>
@@ -57,12 +59,12 @@ export function ScoutReportCard({
 
         {!report.hasData && (
           <div className="rounded-md border border-border bg-secondary/40 px-3 py-2 text-xs text-muted-foreground">
-            Limited public data — this player may have a private match history or few rated games.
+            {tt('Limited public data — this player may have a private match history or few rated games.')}
           </div>
         )}
 
         <section>
-          <h3 className="rts-ledger-head mb-1.5">Recent form</h3>
+          <h3 className="rts-ledger-head mb-1.5">{tt('Recent form')}</h3>
           <FormPips form={report.recentForm} />
           {report.recentForm.avgDurationSec != null && (
             <div className="mt-1 text-xs text-muted-foreground">
@@ -75,7 +77,7 @@ export function ScoutReportCard({
           <section>
             <h3 className="rts-ledger-head mb-2 flex items-center gap-1.5">
               <Swords className="h-3.5 w-3.5" />
-              Most-played civs
+              {tt('Most-played civs')}
             </h3>
             <div className="space-y-1.5">
               {report.topCivs.map((c) => (

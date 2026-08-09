@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "name": "Team Knight Feudal All-In",
+  "civilization": "French",
+  "author": "SideboardP",
+  "source": "https://aoe4guides.com/builds/JJpulFo3sszaZ6lKscCM",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager.webp@ to @resource/sheep.webp@ ; @resource/rally.webp@ 1 @unit_worker/villager.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 3 @unit_worker/villager.webp@ to @resource/resource_gold.webp@ ; 1st @unit_worker/villager.webp@ @abilities/repair.webp@ @building_economy/house.webp@@building_economy/mining-camp.webp@ ; 2nd @unit_worker/villager.webp@ helps @abilities/repair.webp@@building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 4 @unit_worker/villager.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@abilities/repair.webp@@landmark_french/school-of-cavalry.webp@ with 5 @unit_worker/villager.webp@ from @resource/sheep.webp@ (shift 2 to @resource/resource_wood.webp@ 2 to @resource/resource_gold.webp@ & 1 to @resource/sheep.webp@) ; continue @resource/rally.webp@  @unit_worker/villager.webp@ to @resource/sheep.webp@ until age up finished"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@ @abilities/repair.webp@ @building_economy/house.webp@ at @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:45",
+      "villager_count": 19,
+      "resources": {
+        "food": 12,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@  @unit_worker/villager.webp@ to @resource/resource_wood.webp@ until 5  &  @abilities/repair.webp@@building_economy/lumber-camp.webp@; start producing @unit_french/royal-knight-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@  @unit_worker/villager.webp@ to @resource/sheep.webp@ until 14 ; 1/2 @unit_worker/villager.webp@ @abilities/repair.webp@  @building_defensive/outpost.webp@on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 14,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/rally.webp@  @unit_worker/villager.webp@ to @resource/resource_gold.webp@ until 8 ; 1 @unit_worker/villager.webp@ @resource/resource_wood.webp@ @abilities/repair.webp@  @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:45",
+      "villager_count": 27,
+      "resources": {
+        "food": 14,
+        "wood": 4,
+        "gold": 8,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ @resource/resource_wood.webp@ @abilities/repair.webp@ @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:40",
+      "villager_count": 32,
+      "resources": {
+        "food": 18,
+        "wood": 5,
+        "gold": 8,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@  @unit_worker/villager.webp@ to @resource/resource_food.webp@ until 20 and @resource/resource_gold.webp@until 10 ; 1@unit_worker/villager.webp@ @resource/resource_wood.webp@ @abilities/repair.webp@ @abilities/repair.webp@ @building_technology/blacksmith.webp@ ; move to @resource/deer.webp@@resource/boar.webp@@resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 35,
+      "resources": {
+        "food": 20,
+        "wood": 5,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@  @unit_worker/villager.webp@ to  @resource/resource_gold.webp@ until 15 ; research @technology_economy/survival-techniques.webp@@technology_economy/specialized-pick.webp@@technology_economy/wheelbarrow.webp@"
+      ]
+    }
+  ],
+  "description": "Team game build for early knights and Feudal All-In",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

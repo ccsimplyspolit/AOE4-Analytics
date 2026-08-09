@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "name": "Unlimited Elephant",
+  "civilization": "Tughlaq Dynasty",
+  "author": "night_night",
+  "source": "https://aoe4guides.com/builds/0gvNQ9UtKN6kIbs9O85Y",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00\n",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_tughluq/worker_elephant.webp@+6 @unit_worker/villager-delhi.webp@go@resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:25",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_tughluq/worker_elephant.webp@go@resource/resource_gold.webp@, 1 @unit_worker/villager-delhi.webp@build@building_economy/house.webp@ next to @resource/resource_gold.webp@ then@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:50",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:56",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:13",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": 3
+      },
+      "notes": [
+        "3 @resource/sheep.webp@@unit_worker/villager-delhi.webp@build @landmark_delhi/tower-of-victory.webp@;",
+        "2 @resource/resource_gold.webp@ @unit_worker/villager-delhi.webp@+@unit_tughluq/worker_elephant.webp@ go @resource/resource_stone.webp@and @resource/rally.webp@3 more"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:10",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 5,
+        "builder": 3
+      },
+      "notes": [
+        "3 @unit_worker/villager-delhi.webp@ +1 new @unit_tughluq/worker_elephant.webp@go @resource/resource_wood.webp@ next to @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "when ~400 @resource/resource_stone.webp@, @resource/rally.webp@6 @unit_worker/villager-delhi.webp@ build @building_tughluq/tughluqabad_fort.webp@@ability_tughluq/bhakkar.webp@ next to @resource/resource_gold.webp@ & @building_economy/house.webp@ to gain @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:33",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/resource_stone.webp@until 250 to upgrade @technology_tughluq/tughluqabad_fort_tier2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:51",
+      "villager_count": 23,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build @building_economy/house.webp@ & @building_economy/farm.webp@ around @building_tughluq/tughluqabad_fort.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:50",
+      "villager_count": 28,
+      "resources": {
+        "food": 8,
+        "wood": 14,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build @building_military/stable.webp@ @unit_delhi/war-elephant.webp@ next to @landmark_delhi/tower-of-victory.webp@ when enough @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:47",
+      "villager_count": 36,
+      "resources": {
+        "food": 25,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "should have ~10 @unit_tughluq/elephant_raider_age2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:09",
+      "villager_count": 26,
+      "resources": {
+        "food": 15,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "age up with @landmark_delhi/house-of-learning.webp@ to get @technology_tughluq/elephant_caretakers.webp@@technology_tughluq/collateral_damage.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12‑13:00",
+      "villager_count": 41,
+      "resources": {
+        "food": 23,
+        "wood": 12,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "use upgraded @unit_tughluq/elephant_raider_age2.webp@ to harrass"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "name": "New Byzantine 100% Win Rate Build Order Guide for AOE4!",
+  "civilization": "Byzantines",
+  "author": "Zagorath",
+  "source": "https://aoe4guides.com/builds/TUl77gWBVBqtsY8yNuMe",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 on @resource/sheep.webp@",
+        "1 on @resource/gaiatreeprototypetree.png@ gather 10 -> @resource/sheep.png@",
+        "1 build @building_byzantines/cistern-1.png@ on @resource/resource_gold.png@+@resource/sheep.png@ -&gt; @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @building_byzantines/olive-grove-1.webp@",
+        "@building_economy/house.png@ -> @resource/resource_gold.png@",
+        "@technology_byzantines/border-settlements-2.png@ Research Border Settlements"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 from food @landmark_byzantines/grand-winery-1.webp@ Grand Winery -> @resource/berrybush.png@",
+        "@resource/rally.png@@resource/resource_wood.png@@resource/gaiatreeprototypetree.png@ Rally on wood until 10, starting with stragglers",
+        "Optionally begin @building_defensive/palisade-wall.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_byzantines/cistern-1.webp@ on winery"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/wheelbarrow.webp@@technology_economy/double-broadaxe.png@",
+        "@resource/rally.png@@building_byzantines/olive-grove-1.png@ Build farms whenever available"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@@unit_cavalry/horseman-1.png@",
+        "@building_byzantines/mercenary-house-2.png@@technology_byzantines/western-mercenary-contract-1.png@ for longbow, unless against archers, then @technology_byzantines/silk-road-mercenary-contract-1.png@ for javelin"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Blacksmith upgrades"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 33,
+      "resources": {
+        "food": 20,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.png@ To prepare for age up"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 27,
+      "resources": {
+        "food": 20,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_byzantines/golden-horn-tower-2.webp@ Golden Horn Tower from wood gatherers"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/barracks.webp@@building_military/barracks.png@@building_military/barracks.png@ Build barracks to prepare for Varangian guards"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 40,
+      "resources": {
+        "food": 20,
+        "wood": 10,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_byzantines/varangian-guard-3.webp@@unit_byzantines/varangian-guard-3.png@@unit_byzantines/varangian-guard-3.png@",
+        "Upgrade horsemen if you have >10"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_infantry/crossbowman-3.webp@ if they go m@a"
+      ]
+    }
+  ],
+  "description": "A more detailed description of BeastyQT's Byzantines build",
+  "video": "https://www.youtube.com/embed/UVYOlycwqoU",
+  "season": 7,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

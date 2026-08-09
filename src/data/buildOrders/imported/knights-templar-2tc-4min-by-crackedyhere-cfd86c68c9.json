@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "name": "Knights Templar 2TC 4min by CrackedyHere",
+  "civilization": "Knights Templar",
+  "author": "ElPavelo",
+  "source": "https://aoe4guides.com/builds/pqpmiTF8ZVoIvU7HUOz7",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6@unit_worker/villager.webp@>@resource/sheep.png@, @resource/rally.png@&gt;@resource/resource_gold.png@ till 2"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@>@resource/resource_wood.png@ till 3"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@>@resource/resource_food.png@ till 8"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:25",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@resource/resource_gold.webp@@unit_worker/villager.png@>@resource/resource_stone.png@, 5@resource/resource_food.png@@unit_worker/villager.png@&gt;@resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:50",
+      "villager_count": 15,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 0,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "all @resource/resource_food.webp@@unit_worker/villager.png@>@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04::00",
+      "villager_count": 15,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 0,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@, @resource/resource_wood.png@@unit_worker/villager.png@>@resource/resource_food.png@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/1IlDQcG1DBg",
+  "season": 10,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

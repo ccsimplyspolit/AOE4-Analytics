@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "name": "sdfgd",
+  "civilization": "Ayyubids",
+  "author": "JustLuffy",
+  "source": "https://aoe4guides.com/builds/47LHyyM9NpLybLtl0THG",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 on @resource/sheep.webp@",
+        "1 @landmark_abbasid/house-of-wisdom.webp@+@building_economy/house.webp@+@building_economy/mining-camp.webp@ on @resource/resource_stone.webp@ and start mining",
+        "@resource/rally.webp@to@resource/resource_wood.webp@ until 2"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 0,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_stone.webp@ until 4 (the builder was already going there)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:10",
+      "villager_count": 9,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 0,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "Start @age/age_2.webp@with@technology_ayyubids/culture-wing-advancement-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "1 @resource/resource_food.webp@ to @resource/resource_wood.webp@ (after getting a vil in queue)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "Now @resource/rally.webp@@resource/resource_wood.webp@7"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@finishes at 2:50"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 7,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@8"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "When 900 @resource/resource_stone.webp@ left, force drop off. Should also have 400 @resource/resource_wood.webp@ now",
+        "@abilities/repair.webp@ 2nd @building_economy/town-center.webp@ with 4@resource/resource_stone.webp@+ 5@resource/resource_wood.webp@vils, back to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@ with all @building_economy/town-center.webp@ to get @age/goldenagetier1.webp@ immediately",
+        "2 @resource/resource_wood.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_economy/town-center.webp@ finishes at 4:20",
+        "Make @building_economy/mining-camp.webp@ on @resource/resource_gold.webp@ + @building_economy/mill.webp@ + @building_economy/house.webp@ to get @age/goldenagetier1.webp@ when possible"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 12 at @resource/resource_wood.webp@, go 3 on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:15",
+      "villager_count": 23,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_military/stable.webp@+@building_military/archery-range.webp@ (or other production depending on opponent)",
+        "@resource/rally.webp@@resource/resource_food.webp@, make units"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:40",
+      "villager_count": 33,
+      "resources": {
+        "food": 18,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/wheelbarrow.webp@>@technology_economy/double-broadaxe.webp@&gt;@technology_economy/horticulture.webp@ Skip and go fast castle if OP is also FC"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

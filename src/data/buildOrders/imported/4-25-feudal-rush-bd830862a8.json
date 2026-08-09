@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "name": "4:25 Feudal Rush",
+  "civilization": "Mongols",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/JTP01adgLWNkZSKTXGyy",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Pop \"\"Maneuver Arrow\",",
+        "5 @unit_worker/villager-mongols.webp@ on @resource/resource_food.png@ and place @building_mongols/ger.png@ on @resource/resource_gold.png@.",
+        "1 @unit_worker/villager-mongols.png@ to build @building_mongols/ovoo.png@ on @resource/resource_stone.png@ then @resource/resource_food.png@",
+        "@building_economy/town-center.png@ unpacked at @resource/resource_wood.png@ (@resource/rally.png@starting @resource/sheep.png@to @building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:15",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.png@ 2 @unit_worker/villager-mongols.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:55",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:23",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @landmark_mongols/the-silver-tree.webp@ with 3 @unit_worker/villager-mongols.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro @resource/rally.webp@@resource/resource_wood.png@ until 5. Then @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:35",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@ when 150 @resource/resource_wood.png@ after remacro again by removing all wood vills and macroing food. @building_military/stable.png@unpacks at @building_mongols/ovoo.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:10",
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.png@ when 11 on @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 18,
+      "resources": {
+        "food": 11,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 age up @unit_worker/villager-mongols.webp@ to @resource/resource_gold.png@ and start @unit_mongols/keshik-2.png@ (dont double produce, save stone for archers)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 19,
+      "resources": {
+        "food": 11,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send @landmark_mongols/the-silver-tree.webp@ to corner opposite trade post."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/archery-range.webp@ then double produce @unit_infantry/archer-2.png@ nonstop"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 24,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Time to start trading. Build @unit_worker/trader.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "Feudal Rush for aggro play vs civs you cant tower rush lilke Rus, ayy, eng, etc\n\nWin by outscaling with traders. Dont dive, just resource deny and protect traders. Add in towers on the trade line for protection and speed bonus. Then try to hit castle between 12-14 mins (if it makes sense in the moment",
+  "video": "",
+  "season": 9,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

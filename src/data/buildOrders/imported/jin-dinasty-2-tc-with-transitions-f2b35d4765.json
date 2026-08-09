@@ -1,0 +1,401 @@
+{
+  "schemaVersion": 1,
+  "name": "Jin Dinasty | 2 TC (with transitions)",
+  "civilization": "Jin Dynasty",
+  "author": "Jockxtar",
+  "source": "https://aoe4guides.com/builds/cVmyoYJZ7MFxVg1MGiu8",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 3,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_jin/mounted-villager.webp@ -> @resource/resource_food.webp@",
+        "2 @unit_jin/mounted-villager.webp@ -&gt; @building_economy/mining-camp.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:05",
+      "villager_count": 3,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_food.webp@ (4)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:45",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/gaiatreeprototypetree.webp@ (1)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "Move both @resource/resource_gold.webp@@unit_jin/mounted-villager.webp@ to @resource/resource_stone.webp@ after they drop enough @resource/resource_gold.webp@ (@abilities/repair.webp@@building_economy/mining-camp.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Change to @unit_worker/villager-china.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 0,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:25",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Force drop @resource/resource_food.webp@ for faster @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:25",
+      "villager_count": 7,
+      "resources": {
+        "food": 3,
+        "wood": 1,
+        "gold": 0,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": [
+        "1 @resource/resource_food.webp@@unit_jin/mounted-villager.webp@ -> @landmark_jin/flower-pagoda.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 3,
+        "gold": 0,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": [
+        "2 @resource/resource_food.webp@@unit_jin/mounted-villager.webp@ -> @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 7,
+      "resources": {
+        "food": 2,
+        "wood": 2,
+        "gold": 0,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": [
+        "1 @resource/gaiatreeprototypetree.webp@@unit_jin/mounted-villager.webp@ -> @abilities/repair.webp@@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 0,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_gold.webp@ (4)",
+        "Move 1 @resource/resource_food.webp@@unit_jin/mounted-villager.webp@ -&gt; @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 2,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_jin/flower-pagoda.webp@@unit_jin/mounted-villager.webp@ -> @resource/gaiatreeprototypetree.webp@",
+        "@landmark_jin/flower-pagoda.webp@ skill on @resource/resource_food.webp@ (and, if possible, on @resource/gaiatreeprototypetree.webp@ too)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After getting 300 @resource/resource_stone.webp@, both @resource/resource_stone.webp@@unit_jin/mounted-villager.webp@ -> @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:35",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Drop @resource/resource_wood.webp@ and build @building_economy/town-center.webp@ on @resource/deer.webp@ with 6 @unit_jin/mounted-villager.webp@ (keep 1 on @resource/resource_wood.webp@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start making @unit_jin/mounted-villager.webp@ instead of @unit_worker/villager-china.webp@ now that you have @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Main @building_economy/town-center.webp@@resource/rally.webp@ -> @resource/resource_wood.webp@ (4)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "@landmark_jin/flower-pagoda.webp@ skill on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:25",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd  @building_economy/town-center.webp@@resource/rally.webp@ -> @resource/deer.webp@ (10)",
+        "Move 4 @resource/resource_food.webp@@unit_worker/villager-china.webp@ -&gt; @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Depending on matchup:"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "- @age/age_2.webp@ defense:",
+        "Move 4 @resource/sheep.webp@@unit_worker/villager-china.webp@ -> @resource/resource_wood.webp@",
+        "@abilities/repair.webp@@building_defensive/outpost.webp@ on @resource/resource_gold.webp@ and/or @building_military/barracks.webp@",
+        "Try to not get stuck in @age/age_2.webp@. Make @building_economy/farm.webp@ with @unit_jin/mounted-villager.webp@ if you run out of @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "- Fast @age/age_3.webp@:",
+        "Move 4 @resource/sheep.webp@@unit_worker/villager-china.webp@ -> @resource/resource_gold.webp@",
+        "Research @technology_economy/specialized-pick.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "8 @unit_jin/mounted-villager.webp@ -> @landmark_jin/dragon-pavilion.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move 5 @unit_jin/mounted-villager.webp@ from @resource/resource_gold.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "Fast 2 TC timing with two possible follow-up variations (defense or fast castle).\n\nCheck my other Jin Dinasty guides:\n- Minute 3 Horsemen rush: https://aoe4guides.com/builds/aJ0xgWPv9VYABfMSlnWs",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

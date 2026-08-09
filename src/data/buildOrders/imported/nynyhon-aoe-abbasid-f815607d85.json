@@ -1,0 +1,401 @@
+{
+  "schemaVersion": 1,
+  "name": "NynyHon AoE Abbasid",
+  "civilization": "Abbasid Dynasty",
+  "author": "SuperTTB",
+  "source": "https://aoe4guides.com/builds/yB9hIPo4gB0yCHrddvwX",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Intro BO Abbasid Dynasty simple et efficace. @unit_worker/villager-abbasid.webp@ x6 to @resource/berrybush.webp@ / moulin, @unit_cavalry/scout.webp@ cherche @resource/sheep.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:05",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 premiers @unit_worker/villager-abbasid.webp@ au moulin / @resource/berrybush.webp@. Les prochains @unit_worker/villager-abbasid.webp@ iront sur @resource/resource_gold.webp@ pour preparer l'age up."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:23",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1er @unit_worker/villager-abbasid.webp@ qui sort du @building_economy/town-center.webp@ construit @landmark_abbasid/house-of-wisdom.webp@ puis va a @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:32",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2e @unit_worker/villager-abbasid.webp@ construit d'abord @building_economy/house.webp@ puis va aussi sur @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:48",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3e @unit_worker/villager-abbasid.webp@ construit @building_economy/mining-camp.webp@ puis recolte @resource/resource_gold.webp@. Objectif: 3 @unit_worker/villager-abbasid.webp@ a l'or pour Wheelbarrow, Fresh Foodstuffs et techs."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "1:43",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Tous les prochains @unit_worker/villager-abbasid.webp@ vont sur @resource/sheep.webp@ jusqu'au clic d'age."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:06",
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Cliquer @landmark_abbasid/military-wing.webp@ Aile militaire. Donne 2 archers + 2 piquiers gratuitement au passage age 2."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Une fois @landmark_abbasid/military-wing.webp@ cliquee: tous les @unit_worker/villager-abbasid.webp@ des @resource/sheep.webp@ vont sur @resource/resource_wood.webp@. @resource/rally.webp@ du TC sur @resource/resource_wood.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:18",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Conseil micro: idealement 5 @unit_worker/villager-abbasid.webp@ par arbre pour eviter les retours inefficaces. Le 6e peut partir sur un autre arbre."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:06",
+      "villager_count": 16,
+      "resources": {
+        "food": 6,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Construire une nouvelle @building_economy/house.webp@ dans l'aura de @landmark_abbasid/house-of-wisdom.webp@. Chercher vite l'Age d'or: 10 batiments = +15% recolte."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:58",
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Construire @building_economy/lumber-camp.webp@ et @building_economy/house.webp@. Preparer assez de @resource/resource_wood.webp@ pour sortir rapidement @building_military/stable.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:13",
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Passage age 2 avec @landmark_abbasid/military-wing.webp@: recevoir 2 @unit_infantry/archer-2.webp@ + 2 @unit_infantry/spearman-1.webp@ gratuits."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:52",
+      "villager_count": 19,
+      "resources": {
+        "food": 6,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Construire @building_military/stable.webp@ le plus vite possible avec 4 @unit_worker/villager-abbasid.webp@. But: sortir @unit_cavalry/horseman-1.webp@ pour contrer les archers adverses."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:16",
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Les 4 builders de @building_military/stable.webp@ vont a @resource/resource_food.webp@. Viser environ 10 @unit_worker/villager-abbasid.webp@ sur nourriture; @resource/rally.webp@ TC reste sur @resource/resource_wood.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:31",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Lancer @technology_abbasid/fresh-foodstuffs.webp@ apres @technology_economy/wheelbarrow.webp@ pour payer les @unit_worker/villager-abbasid.webp@ moins cher."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Tech eco: commencer @technology_economy/horticulture.webp@, puis @technology_economy/double-broadaxe.webp@ selon le nombre de @unit_worker/villager-abbasid.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 23,
+      "resources": {
+        "food": 11,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Ajouter @building_military/archery-range.webp@ rapidement. En meme temps construire @building_economy/house.webp@ pour atteindre l'Age d'or."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "6:51",
+      "villager_count": 24,
+      "resources": {
+        "food": 11,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Quand @building_military/archery-range.webp@ est lancee, ajouter directement une autre @building_economy/house.webp@ si besoin pour debloquer l'Age d'or (+15% recolte)."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "6:57",
+      "villager_count": 24,
+      "resources": {
+        "food": 11,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Pression avec combo @unit_cavalry/horseman-1.webp@ + @unit_infantry/archer-2.webp@, protege par les @unit_infantry/spearman-1.webp@ gratuits. Forcer l'adversaire a produire."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "7:29",
+      "villager_count": 25,
+      "resources": {
+        "food": 11,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Priorite: @building_economy/house.webp@ avant @building_technology/blacksmith.webp@ si cela donne l'Age d'or. La forge peut etre delay un peu."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:06",
+      "villager_count": 26,
+      "resources": {
+        "food": 11,
+        "wood": 11,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Tech militaire: @technology_military/iron-undermesh.webp@ / resistance fleches souvent avant @technology_military/steeled-arrow.webp@ si l'adversaire a des unites a distance."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:15",
+      "villager_count": 27,
+      "resources": {
+        "food": 11,
+        "wood": 12,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Option pression: avec @landmark_abbasid/military-wing.webp@, faire rapidement @unit_siege/battering-ram.webp@ avec archers/piquiers sans attendre expertise de siege si l'adversaire ne repond pas bien."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "9:32",
+      "villager_count": 30,
+      "resources": {
+        "food": 12,
+        "wood": 13,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Adaptation: contre cavalerie lourde, commencer @building_military/stable.webp@ puis @building_military/archery-range.webp@, et ajouter @building_military/barracks.webp@ si besoin."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "10:11",
+      "villager_count": 31,
+      "resources": {
+        "food": 12,
+        "wood": 14,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Si trop de @resource/resource_wood.webp@: faire @building_defensive/outpost.webp@, moulins sur ressources externes, ou transitions eco. Continuer la pression et le controle carte."
+      ]
+    }
+  ],
+  "description": "BO Abbasid Dynasty extrait du transcript auto YouTube avec timestamps du Tuto de Jeando.\nOuverture Aile militaire, pression archer/spearman + cavalerie legere, puis setup eco avec Wheelbarrow, Fresh Foodstuffs, Horticulture et Double Broadaxe.\nTop Départ de la vidéo à 1m20s",
+  "video": "https://www.youtube.com/embed/8tAgbXGdNYQ",
+  "season": 13,
+  "map": null,
+  "strategy": "Aggression",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

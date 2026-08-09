@@ -1,0 +1,389 @@
+{
+  "schemaVersion": 1,
+  "name": "1TC FC Kremlin",
+  "civilization": "Rus",
+  "author": "Ehounds",
+  "source": "https://aoe4guides.com/builds/gDccAtaDw2l9hOfTD7Xd",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager.webp@ to @resource/sheep.webp@,@resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:30",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "2 @unit_worker/villager.webp@ each build a  @building_rus/hunting-cabin.webp@, 1 @unit_worker/villager.webp@ builds a @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": ":45",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build second @unit_cavalry/scout.webp@ from @building_rus/hunting-cabin.webp@ if needed. Scout for Deer Packs for @landmark_rus/kremlin.webp@ placement."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Age up with 5@unit_worker/villager.webp@ on @resource/deer.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Take all but 4@unit_worker/villager.webp@ and put them on @resource/gaiatreeprototypetree.webp@, then @resource/rally.webp@@resource/gaiatreeprototypetree.webp@ until 8."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Once 8@unit_worker/villager.webp@@resource/gaiatreeprototypetree.webp@, @resource/rally.webp@@resource/resource_food.webp@ (sheep at TC).",
+        "The 5 @unit_worker/villager.webp@ that aged up will immediately build @building_military/stable.webp@, then to @resource/deer.webp@. Try to push the @resource/deer.webp@ towards @landmark_rus/kremlin.webp@ with your @unit_cavalry/scout.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 1,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once 8 @unit_worker/villager.webp@@resource/gaiatreeprototypetree.webp@ have finished gathering from the 3@resource/gaiatreeprototypetree.webp@, send all but one to @resource/resource_gold.webp@. The other will build @building_economy/lumber-camp.webp@ within influence of the Kremlin."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 14,
+        "wood": 1,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make  @unit_cavalry/knight-2.webp@ (anywhere from 1-4 depending on matchup), and get @technology_economy/survival-techniques.webp@ whenever you can."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 14,
+        "wood": 1,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use your @unit_cavalry/knight-2.webp@ to harass the opponent while you age up to Castle."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:45",
+      "villager_count": 28,
+      "resources": {
+        "food": 10,
+        "wood": 1,
+        "gold": 7,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Build @landmark_rus/abbey-of-the-trinity.webp@ with 8-12 @unit_worker/villager.webp@@resource/resource_food.webp@, depending on how fast you need to get @resource/relics.webp@. Send to @resource/resource_wood.webp@ after."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 29,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 7,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Send 5@resource/resource_food.webp@@unit_worker/villager.webp@ to @resource/resource_wood.webp@, @resource/rally.webp@@resource/resource_wood.webp@ for rest of the game."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_economy/double-broadaxe.webp@ and @technology_economy/wheelbarrow.webp@. Set @resource/rally.webp@ for @landmark_rus/abbey-of-the-trinity.webp@ to get @resource/relics.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:50",
+      "villager_count": 31,
+      "resources": {
+        "food": 6,
+        "wood": 19,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Immediately queue @unit_rus/warrior-monk.webp@ to get @resource/relics.webp@. Make more @unit_cavalry/knight-2.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 31,
+      "resources": {
+        "food": 6,
+        "wood": 18,
+        "gold": 6,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Make @building_technology/blacksmith.webp@. Build 3x @building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 32,
+      "resources": {
+        "food": 14,
+        "wood": 12,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 8@resource/resource_wood.webp@@unit_worker/villager.webp@ to a food source, like @resource/deer.webp@. Build a @building_rus/wooden-fortress.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 33,
+      "resources": {
+        "food": 14,
+        "wood": 13,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If opponent is heavy on @unit_infantry/spearman-1.webp@, make @unit_infantry/archer-2.webp@. If they are heavy on @unit_cavalry/knight-2.webp@ or @unit_infantry/man-at-arms-1.webp@, make @unit_infantry/crossbowman-3.webp@. Make @unit_rus/horse-archer-3.webp@ if you need mobility and are ready to micro"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 35,
+      "resources": {
+        "food": 16,
+        "wood": 12,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep producing @unit_rus/warrior-monk.webp@! You want at least 5 at all times to buff your units and capture sacred sites."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 35,
+      "resources": {
+        "food": 16,
+        "wood": 12,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use your @unit_cavalry/knight-2.webp@ to keep harassing, while massing @unit_infantry/archer-2.webp@ / @unit_rus/horse-archer-3.webp@ / @unit_infantry/crossbowman-3.webp@ and getting all Economic upgrades and @building_technology/blacksmith.webp@ upgrades."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 42,
+      "resources": {
+        "food": 22,
+        "wood": 13,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once you're floating around 300@resource/resource_wood.webp@, take some  of those vills and put them on a @resource/resource_food.webp@ source."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 42,
+      "resources": {
+        "food": 22,
+        "wood": 13,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Aim to have 10-15 on @resource/resource_wood.webp@ at all times, moving any extra to @resource/resource_food.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 42,
+      "resources": {
+        "food": 22,
+        "wood": 13,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_rus/improved-blessing.webp@ and @technology_rus/blessing-duration.webp@ from @landmark_rus/abbey-of-the-trinity.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "15:00",
+      "villager_count": 47,
+      "resources": {
+        "food": 29,
+        "wood": 18,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once you've gotten all your @resource/relics.webp@ and capped the @resource/sacred_sites.webp@, take all your @resource/resource_gold.webp@@unit_worker/villager.webp@ and put them on either @resource/resource_food.webp@ or @resource/resource_wood.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 44,
+      "resources": {
+        "food": 24,
+        "wood": 20,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build a lot of extra @building_economy/house.webp@ for Kremlin Militia to come out"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "15:50",
+      "villager_count": 44,
+      "resources": {
+        "food": 24,
+        "wood": 20,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use Levy all militia from @landmark_rus/kremlin.webp@, and go for timing attack on enemy."
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/n74D7yb6WVg",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

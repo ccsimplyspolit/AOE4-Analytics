@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "name": "JD S10 Pro Scout",
+  "civilization": "Jeanne d'Arc",
+  "author": "chaserhkj",
+  "source": "https://aoe4guides.com/builds/N4ek9Uj6i2hnYOxlNfgx",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@->@abilities/repair.png@@building_economy/house.png@-&gt;@abilities/repair.png@@resource/resource_gold.png@@building_economy/mining-camp.png@-&gt;@resource/sheep.png@",
+        "@resource/rally.png@-&gt;@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@+1@resource/sheep.png@@unit_worker/villager.png@ -> @abilities/repair.png@@landmark_french/school-of-cavalry.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "3 @resource/sheep.webp@@unit_worker/villager.png@ -> @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "new @unit_worker/villager.webp@ -> @abilities/repair.png@@building_economy/mill.png@, @resource/rally.png@-&gt;@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@resource/resource_gold.webp@@unit_worker/villager.png@->@abilities/repair.png@@building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Immediately @unit_french/royal-knight-2.webp@@technology_economy/professional-scouts.png@, harass"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 12,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/resource_wood.png@, transition to mass@unit_infantry/archer-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "at some point, @resource/resource_wood.webp@@unit_worker/villager.png@->@resource/resource_gold.png@@resource/resource_food.png@ and age up"
+      ]
+    }
+  ],
+  "description": "The JD pro scout build from S9, adjusted for S10 pro scout cost increase",
+  "video": "",
+  "season": 10,
+  "map": null,
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

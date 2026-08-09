@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "name": "English Drush Into Heavy Feudal",
+  "civilization": "English",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/iFd1hqJWGrIN6e2xDOcg",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2 @unit_worker/villager.webp@ build @building_military/barracks.png@; 1 @unit_worker/villager.png@ goes to build @building_economy/house.png@ and back to @resource/resource_food.png@.",
+        "The other @unit_worker/villager.png@ goes to @resource/gaiatreeprototypetree.png@.",
+        "When @building_military/barracks.png@ completes, instantly queue 1@unit_infantry/man-at-arms-1.png@ .",
+        "@resource/rally.png@ @resource/sheep.png@ until 7@resource/resource_food.png@@unit_worker/villager.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_wood.png@until 2 on @resource/gaiatreeprototypetree.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@1 @unit_worker/villager.png@ to @resource/resource_gold.png@. When 50 @resource/resource_wood.png@ take the 2 @resource/gaiatreeprototypetree.png@@unit_worker/villager.png@ to @resource/resource_gold.png@ too."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 10,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 10 @resource/resource_food.webp@ @unit_worker/villager.png@ you @resource/rally.png@@resource/gaiatreeprototypetree.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Take 4@resource/resource_food.webp@@unit_worker/villager.png@ and build @landmark_english/council-hall.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Macro 6 @resource/resource_food.webp@ / 3@resource/resource_gold.png@ / rest to @resource/gaiatreeprototypetree.png@ -> @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Pull @resource/resource_gold.webp@@unit_worker/villager.png@ to @resource/resource_wood.png@ and 1 @unit_worker/villager.png@ to build @building_economy/mill.png@ on @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Instantly queue @unit_infantry/spearman-1.webp@@unit_english/longbowman-2.png@ and keep spamming."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:55",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 21,
+      "resources": {
+        "food": 10,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "POST BUILD ORDER:",
+        "Aim to have about 35 military units at min 10. Practice build order again if you are not reaching at least 30 military units. Macro is extremely important.",
+        "Around min 8-10 is when you add 3 on gold again to get more upgrades.",
+        "Depending on how many sheep you gathered, you can move more @unit_worker/villager.webp@to @resource/berrybush.png@. Try not to add farms before min 8-9ish so you can build a military lead/tempo/pressure",
+        "macro wise, you will be rallying primarily on wood and add farms with wood vills continously until you have 3 full farm setups. When you have 3 is when you can go castle (you dont have to if you can finish the game in feudal)",
+        "When you go castle, you go for @landmark_english/kings-palace.png@ ALWAYS. If you go white tower, you've probably already lost the game. Remember to macro heavy on @resource/resource_gold.png@for upgrades in castle. You are going castle for a timing :)",
+        "This build will NOT work vs and you will have to use other strategies: @civilization_flag/rus.png@@civilization_flag/mal.png@@civilization_flag/eng.png@"
+      ]
+    }
+  ],
+  "description": "This build order turns up the tempo knob of English and brings instant pressure.1 maa into feudal spear longbow with upgrades. \n\nAim to have about 35 military units at min 10. Practice build order again if you are not reaching at least 30 military units. Macro is extremely important and the only way this build works is if you don't slow yourself down by adding farms and instead use your military advantage to push the game. ",
+  "video": "https://www.youtube.com/embed/_SlKSgL3WjI",
+  "season": 6,
+  "map": "Open",
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

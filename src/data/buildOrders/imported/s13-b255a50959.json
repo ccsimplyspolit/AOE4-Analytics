@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "name": "s13金朝直城",
+  "civilization": "Jin Dynasty",
+  "author": "cat",
+  "source": "https://aoe4guides.com/builds/4QHHKwjdnY1rbj9e1cDg",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 3,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3个 @unit_jin/mounted-villager.webp@ 挖金 @building_economy/mining-camp.webp@@resource/resource_gold.webp@",
+        "集结点 @unit_jin/mounted-villager.webp@ 放在 @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "拥有 300 @resource/resource_gold.webp@, 2 @resource/resource_gold.webp@@unit_jin/mounted-villager.webp@ 两个挖金吃 @resource/sheep.webp@",
+        "1 @resource/resource_gold.webp@@unit_jin/mounted-villager.webp@建造 @building_economy/house.webp@, 然后一起去吃羊 @resource/sheep.webp@",
+        "使用@unit_cavalry/scout.webp@ 查看对面玩法"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @resource/resource_food.webp@@unit_jin/mounted-villager.webp@ 建造大牧场 @landmark_jin/great-pasture.webp@",
+        "3 @resource/resource_food.webp@@unit_jin/mounted-villager.webp@ 去@resource/resource_gold.webp@",
+        "保持@resource/rally.webp@@unit_jin/mounted-villager.webp@ 去 @resource/resource_food.webp@",
+        "如果对面是塔爆造 @unit_jin/mohe-tribesman.webp@保护 @landmark_jin/great-pasture.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:55",
+      "villager_count": 9,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "一直训练 @unit_jin/iron-pagoda.webp@ 在@landmark_jin/great-pasture.webp@ (@unit_jin/mohe-tribesman.webp@ 长矛换骑射)",
+        "一个@landmark_jin/great-pasture.webp@@unit_jin/mounted-villager.webp@ 去挖@resource/resource_gold.webp@ 两个@landmark_jin/great-pasture.webp@@unit_jin/mounted-villager.webp@ 去 @resource/gaiatreeprototypetree.webp@",
+        "拥有100 @resource/resource_wood.webp@, 1 @resource/gaiatreeprototypetree.webp@@unit_jin/mounted-villager.webp@ 伐木补草原 @building_jin/grassland.webp@ 最近的@landmark_jin/great-pasture.webp@, 然后去 @resource/resource_gold.webp@",
+        "使用@unit_jin/iron-pagoda.webp@ 骚扰对面村民@unit_worker/villager-china.webp@ 或者防守",
+        "如果对面长矛多@unit_infantry/spearman-1.webp@, 制造一些 @unit_jin/mohe-tribesman.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:50",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "拥有 8个 @resource/resource_food.webp@@unit_jin/mounted-villager.webp@,去 @resource/deer.webp@/@resource/boar.webp@ 建造 @building_economy/mill.webp@",
+        "点击 @technology_jin/mohe-ancestry.webp@ -> @technology_economy/wheelbarrow.webp@ 在 @building_economy/mill.webp@",
+        "@resource/rally.webp@ @unit_jin/mounted-villager.webp@ 集结地设置金 @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:15",
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "使用八个挖金 @resource/resource_gold.webp@@unit_jin/mounted-villager.webp@ 建造龙馆 @landmark_jin/dragon-pavilion.webp@ 在前面的金矿 @resource/resource_gold.webp@",
+        "所有的挖金去伐木 @resource/resource_gold.webp@@unit_jin/mounted-villager.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:10",
+      "villager_count": 29,
+      "resources": {
+        "food": 8,
+        "wood": 7,
+        "gold": 7,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "建造好时@landmark_jin/dragon-pavilion.webp@@unit_jin/mounted-villager.webp@ 去挖 @resource/resource_gold.webp@",
+        "使用使者 @unit_jin/emissary.webp@去贸易战",
+        "建造 @building_jin/grassland.webp@ 在@landmark_jin/dragon-pavilion.webp@",
+        "开始升级科技",
+        "Build @building_technology/blacksmith.webp@ and @building_religious/monastery.webp@"
+      ]
+    }
+  ],
+  "description": "The ONLY Jin Dynasty Build You Need To Get Conqueror by Swaggy Professor. \n\nFor a more simple version of this build, please check out murtuk's 'Copy for me to understand series' found here: https://aoe4guides.com/builds/tu8Z6S1y6myRbMBsEfWO",
+  "video": "https://www.youtube.com/embed/XF6du6yRz3E",
+  "season": 13,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

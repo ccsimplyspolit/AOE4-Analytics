@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import {
   validateBuildOrder,
+  normalizeBuildOrder,
   parseNote,
   stepIndexForElapsed,
   buildIndexForCiv,
@@ -56,6 +57,36 @@ describe('validateBuildOrder', () => {
 
   it('accepts a string or array civilization', () => {
     expect(validateBuildOrder({ ...validBO, civilization: ['English', 'French'] }).ok).toBe(true)
+  })
+
+  it('adds the normalized schema version at the runtime boundary', () => {
+    const result = normalizeBuildOrder(validBO)
+    expect(result.ok).toBe(true)
+    if (result.ok) expect(result.value.schemaVersion).toBe(1)
+  })
+
+  it('normalizes every bundled build at load time', () => {
+    expect(BUNDLED_BUILD_ORDERS.length).toBeGreaterThan(600)
+    expect(BUNDLED_BUILD_ORDERS.every((build) => build.schemaVersion === 1)).toBe(true)
+  })
+
+  it('accepts provenance-linked video evidence', () => {
+    const result = validateBuildOrder({
+      ...validBO,
+      video_evidence: {
+        schemaVersion: 1,
+        windowStart: '2026-07-09',
+        windowEnd: '2026-08-08',
+        sampleSize: 1,
+        requestedSampleSize: 100,
+        coverageNote: null,
+        commonActions: ['2TC'],
+        commonResources: ['food'],
+        timingSignals: [],
+        sources: [],
+      },
+    })
+    expect(result.ok).toBe(true)
   })
 })
 
@@ -216,6 +247,16 @@ describe('bundled build orders are all valid', () => {
     }
   })
 
+  it('does not expose duplicate faction/title variants', () => {
+    const keys = BUNDLED_BUILD_ORDERS.map((build) => {
+      const civ = Array.isArray(build.civilization)
+        ? build.civilization.join('|')
+        : build.civilization
+      return `${civ}::${build.name}`.toLocaleLowerCase()
+    })
+    expect(new Set(keys).size).toBe(keys.length)
+  })
+
   it('keeps variant-specific and stone-dependent openings honest', () => {
     const byName = new Map(BUNDLED_BUILD_ORDERS.map((bo) => [bo.name, bo]))
     const jeanne = byName.get("Jeanne d'Arc Knight Pressure")!
@@ -224,8 +265,14 @@ describe('bundled build orders are all valid', () => {
 
     for (const name of ['Byzantine Cistern Economy', 'Ottoman Military School Pressure']) {
       const bo = byName.get(name)!
-      expect(bo.build_order.some((s) => s.resources.stone > 0), name).toBe(true)
-      expect(bo.build_order.some((s) => /stone/i.test(s.notes.join(' '))), name).toBe(true)
+      expect(
+        bo.build_order.some((s) => s.resources.stone > 0),
+        name,
+      ).toBe(true)
+      expect(
+        bo.build_order.some((s) => /stone/i.test(s.notes.join(' '))),
+        name,
+      ).toBe(true)
     }
   })
 })
@@ -237,12 +284,51 @@ describe('condenseBuildOrder', () => {
     name: 'Test build',
     civilization: 'English',
     build_order: [
-      { population_count: 4, villager_count: 4, age: 1, resources: R(4, 0, 0, 0), notes: ['@icons/sheep.webp@ Send  villagers to sheep'] },
-      { population_count: 8, villager_count: 8, age: 1, resources: R(6, 2, 0, 0), notes: ['Build a house'] },
-      { population_count: 14, villager_count: 13, age: 2, resources: R(8, 5, 0, 0), notes: ['Age up with Council Hall'], time: '5:10' },
-      { population_count: 20, villager_count: 18, age: 2, resources: R(10, 8, 0, 0), notes: ['Add a blacksmith'] },
-      { population_count: 30, villager_count: 26, age: 3, resources: R(12, 10, 4, 0), notes: ["Age up with the King's Palace"], time: '11:00' },
-      { population_count: 45, villager_count: 36, age: 4, resources: R(14, 14, 8, 0), notes: [], time: '18:30' },
+      {
+        population_count: 4,
+        villager_count: 4,
+        age: 1,
+        resources: R(4, 0, 0, 0),
+        notes: ['@icons/sheep.webp@ Send  villagers to sheep'],
+      },
+      {
+        population_count: 8,
+        villager_count: 8,
+        age: 1,
+        resources: R(6, 2, 0, 0),
+        notes: ['Build a house'],
+      },
+      {
+        population_count: 14,
+        villager_count: 13,
+        age: 2,
+        resources: R(8, 5, 0, 0),
+        notes: ['Age up with Council Hall'],
+        time: '5:10',
+      },
+      {
+        population_count: 20,
+        villager_count: 18,
+        age: 2,
+        resources: R(10, 8, 0, 0),
+        notes: ['Add a blacksmith'],
+      },
+      {
+        population_count: 30,
+        villager_count: 26,
+        age: 3,
+        resources: R(12, 10, 4, 0),
+        notes: ["Age up with the King's Palace"],
+        time: '11:00',
+      },
+      {
+        population_count: 45,
+        villager_count: 36,
+        age: 4,
+        resources: R(14, 14, 8, 0),
+        notes: [],
+        time: '18:30',
+      },
     ],
   }
 
@@ -265,8 +351,20 @@ describe('condenseBuildOrder', () => {
       name: 'Dark only',
       civilization: 'Mongols',
       build_order: [
-        { population_count: 5, villager_count: 5, age: 1, resources: R(5, 0, 0, 0), notes: ['Open with sheep'] },
-        { population_count: 9, villager_count: 9, age: 1, resources: R(7, 2, 0, 0), notes: ['Ovoo on stone'] },
+        {
+          population_count: 5,
+          villager_count: 5,
+          age: 1,
+          resources: R(5, 0, 0, 0),
+          notes: ['Open with sheep'],
+        },
+        {
+          population_count: 9,
+          villager_count: 9,
+          age: 1,
+          resources: R(7, 2, 0, 0),
+          notes: ['Ovoo on stone'],
+        },
       ],
     }
     const rows = condenseBuildOrder(flat)

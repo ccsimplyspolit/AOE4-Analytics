@@ -1,21 +1,24 @@
 import { Loader2, AlertTriangle, Inbox } from 'lucide-react'
 import type { ReactNode } from 'react'
+import { useI18n } from '../../i18n'
 
 export function Spinner({ label }: { label?: string }) {
+  const { tt } = useI18n()
   return (
     <div className="flex items-center justify-center gap-2 py-12 text-sm text-muted-foreground">
       <Loader2 className="h-4 w-4 animate-spin" />
-      {label ?? 'Loading…'}
+      {label ?? tt('Loading…')}
     </div>
   )
 }
 
 export function ErrorBox({ message, onRetry }: { message: string; onRetry?: () => void }) {
+  const { tt } = useI18n()
   return (
     <div className="rounded-lg border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm">
       <div className="flex items-center gap-2 text-destructive">
         <AlertTriangle className="h-4 w-4" />
-        <span className="font-medium">Something went wrong</span>
+        <span className="font-medium">{tt('Something went wrong')}</span>
       </div>
       <p className="mt-1 text-muted-foreground">{message}</p>
       {onRetry && (
@@ -24,7 +27,7 @@ export function ErrorBox({ message, onRetry }: { message: string; onRetry?: () =
           onClick={onRetry}
           className="mt-2 text-xs font-medium text-primary hover:underline"
         >
-          Retry
+          {tt('Retry')}
         </button>
       )}
     </div>

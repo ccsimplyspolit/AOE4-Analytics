@@ -1,6 +1,6 @@
 import { useMemo, useState, type ReactNode } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { Database, RotateCcw } from 'lucide-react'
+import { Database, RefreshCw, RotateCcw } from 'lucide-react'
 import {
   aggregateDataStudioGames,
   DATA_STUDIO_LEGACY_UNKNOWN,
@@ -20,6 +20,8 @@ import {
   type DataStudioMetric,
 } from '@domain/dataStudio'
 import { civDisplayName } from '@domain/civ'
+import { snapshotFreshness } from '@domain/sourceSnapshot'
+import { DATA_SOURCE_REGISTRY } from '@data/dataSources'
 import { filterPersonalHistory } from '@domain/historyFilters'
 import { formatDurationShort } from '@shared/format'
 import { cn } from '@shared/lib/utils'
@@ -28,10 +30,13 @@ import { PageHead } from '../components/PageHead'
 import { EmptyBox, ErrorBox, Spinner } from '../components/feedback'
 import { useFullHistory } from '../queries/useHistory'
 import { useSettings } from '../queries/useProfile'
+import { useI18n } from '../../i18n'
+import { ipc } from '@shared/ipc'
 
 type FilterKey = keyof DataStudioFilters
 
 export function DataStudio() {
+  const { tt } = useI18n()
   const { data, isLoading, refetch } = useFullHistory()
   const { data: settings } = useSettings()
   const [searchParams, setSearchParams] = useSearchParams()
@@ -83,20 +88,22 @@ export function DataStudio() {
             className="inline-flex items-center gap-2 rounded-sm border border-border px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40"
           >
             <RotateCcw className="h-3.5 w-3.5" />
-            Reset view
+            {tt('Reset view')}
           </button>
         }
       />
 
-      {isLoading && <Spinner label="Loading personal match data..." />}
+      <DataSourcePanel />
+
+      {isLoading && <Spinner label={tt('Loading personal match data...')} />}
       {!isLoading && data && !data.ok && (
         <ErrorBox message={data.error.message} onRetry={() => refetch()} />
       )}
       {!isLoading && data?.ok && games.length === 0 && (
         <EmptyBox>
           <div className="space-y-1">
-            <p>No synced matches to explore yet.</p>
-            <p className="text-xs">Sync recent games from My Stats, then return here.</p>
+            <p>{tt('No synced matches to explore yet.')}</p>
+            <p className="text-xs">{tt('Sync recent games from My Stats, then return here.')}</p>
           </div>
         </EmptyBox>
       )}
@@ -106,71 +113,82 @@ export function DataStudio() {
           <FilterPanel filters={filters} options={options} onChange={setFilter} />
 
           <p className="rounded-sm border border-border/70 bg-background/40 px-3 py-2 text-xs text-muted-foreground">
-            Personal history only: {coverage.publicPatchKnown}/{coverage.publicGames} loaded public
-            matches include a stored patch and {coverage.publicSeasonKnown}/{coverage.publicGames}{' '}
-            include a season. {coverage.legacyPatchUnknown} legacy public{' '}
-            {coverage.legacyPatchUnknown === 1 ? 'match lacks' : 'matches lack'} patch metadata and{' '}
-            {coverage.legacySeasonUnknown} {coverage.legacySeasonUnknown === 1 ? 'lacks' : 'lack'}{' '}
-            season metadata
-            {coverage.localGames > 0
-              ? `; ${coverage.localGames} local/custom match${coverage.localGames === 1 ? '' : 'es'} cannot be assigned a public patch.`
-              : '.'}{' '}
-            Filters show correlation in your matches, not patch causality or global performance.
-            {excludePractice ? ' Practice games are hidden by your Settings preference.' : ''}
+            {tt(
+              'Personal history only: {publicPatchKnown}/{publicGames} loaded public matches include a stored patch and {publicSeasonKnown}/{publicGames} include a season. {legacyPatchUnknown} legacy public matches lack patch metadata and {legacySeasonUnknown} lack season metadata{localSuffix} Filters show correlation in your matches, not patch causality or global performance.{practiceSuffix}',
+            )
+              .replace('{publicPatchKnown}', String(coverage.publicPatchKnown))
+              .replace('{publicGames}', String(coverage.publicGames))
+              .replace('{publicSeasonKnown}', String(coverage.publicSeasonKnown))
+              .replace('{legacyPatchUnknown}', String(coverage.legacyPatchUnknown))
+              .replace('{legacySeasonUnknown}', String(coverage.legacySeasonUnknown))
+              .replace(
+                '{localSuffix}',
+                coverage.localGames > 0
+                  ? ` ${coverage.localGames} ${tt('local/custom matches cannot be assigned a public patch.')}`
+                  : '.',
+              )
+              .replace(
+                '{practiceSuffix}',
+                excludePractice ? ` ${tt('Practice games are hidden by your Settings preference.')}` : '',
+              )}
           </p>
 
           <section className="space-y-3">
             <div className="flex flex-wrap items-end justify-between gap-2">
               <div>
-                <h2 className="text-lg font-semibold tracking-tight">Filtered performance</h2>
+                <h2 className="text-lg font-semibold tracking-tight">
+                  {tt('Filtered performance')}
+                </h2>
                 <p className="text-xs text-muted-foreground">
-                  {aggregate.games} of {games.length} loaded matches fit this view.
+                  {tt('{shown} of {total} loaded matches fit this view.')
+                    .replace('{shown}', String(aggregate.games))
+                    .replace('{total}', String(games.length))}
                 </p>
               </div>
               <span className="text-[11px] text-muted-foreground">
-                Each tile uses only games where that metric was observed.
+                {tt('Each tile uses only games where that metric was observed.')}
               </span>
             </div>
             <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
               <MetricCard
-                label="Win rate"
+                label={tt('Win rate')}
                 metric={aggregate.winRate}
                 value={formatPercent(aggregate.winRate.value)}
                 detail={`${aggregate.wins}W-${aggregate.losses}L${aggregate.unknownResults > 0 ? `; ${aggregate.unknownResults} unknown` : ''}`}
               />
               <MetricCard
-                label="Average duration"
+                label={tt('Average duration')}
                 metric={aggregate.averageDurationSec}
                 value={formatDurationShort(aggregate.averageDurationSec.value)}
-                detail="Mean of matches with a recorded duration"
+                detail={tt('Mean of matches with a recorded duration')}
               />
               <MetricCard
-                label="Rating change"
+                label={tt('Rating change')}
                 metric={aggregate.averageRatingChange}
                 value={formatSigned(aggregate.averageRatingChange.value)}
                 detail={
                   aggregate.totalRatingChange.value == null
-                    ? 'No rating delta recorded'
-                    : `${formatSigned(aggregate.totalRatingChange.value)} net across the same sample`
+                    ? tt('No rating delta recorded')
+                    : `${formatSigned(aggregate.totalRatingChange.value)} ${tt('net across the same sample')}`
                 }
               />
               <MetricCard
-                label="APM"
+                label={tt('APM')}
                 metric={aggregate.averageApm}
                 value={formatNumber(aggregate.averageApm.value, 1)}
-                detail="Mean observed actions per minute"
+                detail={tt('Mean observed actions per minute')}
               />
               <MetricCard
-                label="Resources / min"
+                label={tt('Resources / min')}
                 metric={aggregate.averageResourcesPerMinute}
                 value={formatNumber(aggregate.averageResourcesPerMinute.value, 0)}
-                detail="Mean observed resource-gather rate"
+                detail={tt('Mean observed resource-gather rate')}
               />
               <MetricCard
-                label="Villagers / min"
+                label={tt('Villagers / min')}
                 metric={aggregate.averageVillagersPerMinute}
                 value={formatNumber(aggregate.averageVillagersPerMinute.value, 1)}
-                detail="Mean observed villager-production rate"
+                detail={tt('Mean observed villager-production rate')}
               />
             </div>
           </section>
@@ -182,6 +200,196 @@ export function DataStudio() {
   )
 }
 
+function DataSourcePanel() {
+  const { tt } = useI18n()
+  const active = DATA_SOURCE_REGISTRY.filter((source) => source.status === 'active').length
+  const patchAware = DATA_SOURCE_REGISTRY.filter((source) => source.patchAware).length
+  const [syncing, setSyncing] = useState(false)
+  const [syncStatus, setSyncStatus] = useState<string | null>(null)
+  const [syncOutput, setSyncOutput] = useState<string | null>(null)
+
+  async function runSourceSync(dryRun: boolean) {
+    if (syncing) return
+    setSyncing(true)
+    setSyncStatus(null)
+    setSyncOutput(null)
+    const result = await ipc.syncExternalSources({ dryRun })
+    if (!result.ok) {
+      setSyncStatus(result.error.message)
+      setSyncing(false)
+      return
+    }
+    const completed = result.data.completed.length
+      ? result.data.completed.join(', ')
+      : tt('No source steps reported')
+    setSyncStatus(
+      `${dryRun ? tt('Source check completed') : tt('Source refresh completed')}: ${completed}${
+        result.data.restartRequired ? ` · ${tt('Restart the app to load refreshed bundled snapshots.')}` : ''
+      }`,
+    )
+    setSyncOutput(result.data.output.trim().slice(-4_000) || null)
+    setSyncing(false)
+  }
+
+  return (
+    <div className="rounded-sm border border-border bg-card/50">
+      <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3">
+        <div className="flex min-w-0 items-center gap-2 text-sm font-medium">
+          <Database className="h-4 w-4 shrink-0 text-primary" />
+          <span className="truncate">{tt('Data sources and coverage')}</span>
+          <span className="shrink-0 text-[11px] font-normal text-muted-foreground">
+            {active} {tt('active')} · {patchAware} {tt('patch-aware')}
+          </span>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={() => runSourceSync(true)}
+            disabled={syncing}
+            className="inline-flex items-center gap-1.5 rounded-sm border border-border px-2.5 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground disabled:cursor-wait disabled:opacity-50"
+          >
+            <RefreshCw className={cn('h-3.5 w-3.5', syncing && 'animate-spin')} />
+            {tt('Check sources')}
+          </button>
+          <button
+            type="button"
+            onClick={() => runSourceSync(false)}
+            disabled={syncing}
+            className="inline-flex items-center gap-1.5 rounded-sm bg-primary px-2.5 py-1.5 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:cursor-wait disabled:opacity-50"
+          >
+            <RefreshCw className={cn('h-3.5 w-3.5', syncing && 'animate-spin')} />
+            {tt('Refresh snapshots')}
+          </button>
+        </div>
+      </div>
+      {(syncStatus || syncOutput) && (
+        <div className="border-t border-border px-4 py-2">
+          {syncStatus && <p className="text-xs text-muted-foreground">{syncStatus}</p>}
+          {syncOutput && (
+            <pre className="mt-2 max-h-32 overflow-auto whitespace-pre-wrap rounded-sm bg-background/60 p-2 text-[10px] leading-relaxed text-muted-foreground">
+              {syncOutput}
+            </pre>
+          )}
+        </div>
+      )}
+      <details className="group border-t border-border">
+        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm font-medium [&::-webkit-details-marker]:hidden">
+          <span>{tt('Show source coverage')}</span>
+          <span className="text-[11px] font-normal text-muted-foreground">{tt('provenance')}</span>
+        </summary>
+        <div className="border-t border-border px-4 py-3">
+        <p className="mb-3 max-w-4xl text-xs leading-relaxed text-muted-foreground">
+          {tt(
+            'Every number in this screen is tagged by its data boundary: live API, bundled snapshot, local files, or an optional research adapter. Optional sources are not silently treated as current game truth.',
+          )}
+        </p>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[760px] text-xs">
+            <thead className="border-b border-border text-left text-muted-foreground">
+              <tr>
+                <th className="px-2 py-2 font-medium">{tt('Source')}</th>
+                <th className="px-2 py-2 font-medium">{tt('Mode')}</th>
+                <th className="px-2 py-2 font-medium">{tt('Coverage')}</th>
+                <th className="px-2 py-2 text-right font-medium">{tt('Records')}</th>
+                <th className="px-2 py-2 font-medium">{tt('Version / capture')}</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border/60">
+              {DATA_SOURCE_REGISTRY.map((source) => (
+                <tr key={source.id} className="align-top">
+                  <td className="px-2 py-2">
+                    <a
+                      href={source.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-medium text-primary hover:underline"
+                    >
+                      {tt(source.label)}
+                    </a>
+                    <span className="mt-0.5 block text-[11px] text-muted-foreground">
+                      {tt(source.integration)}
+                    </span>
+                  </td>
+                  <td className="px-2 py-2">
+                    <span
+                      className={cn(
+                        'rounded-sm px-1.5 py-0.5 font-medium',
+                        source.status === 'active'
+                          ? 'bg-win/15 text-win'
+                          : source.status === 'optional'
+                            ? 'bg-warn/15 text-warn'
+                            : 'bg-secondary text-muted-foreground',
+                      )}
+                    >
+                      {tt(source.mode)}
+                    </span>
+                    {source.patchAware && (
+                      <span className="mt-1 block text-[10px] text-primary">{tt('patch-aware')}</span>
+                    )}
+                  </td>
+                  <td className="max-w-[360px] px-2 py-2 text-muted-foreground">
+                    {localizedSourceText(source.coverage, tt)}
+                  </td>
+                  <td className="px-2 py-2 text-right tabular-nums text-muted-foreground">
+                    {source.records == null ? '—' : source.records.toLocaleString()}
+                  </td>
+                  <td className="px-2 py-2 text-muted-foreground">
+                    {tt(source.version ?? 'live / external')}
+                    {source.revision && (
+                      <span className="mt-0.5 block text-[10px]">
+                        rev {source.revision.slice(0, 12)}
+                      </span>
+                    )}
+                    {source.capturedAt && (
+                      <span className="mt-0.5 block text-[10px]">
+                        {source.capturedAt.slice(0, 10)}
+                      </span>
+                    )}
+                    <span className="mt-0.5 block text-[10px]">
+                      {sourceFreshnessLabel(snapshotFreshness(source.capturedAt), tt)}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </details>
+    </div>
+  )
+}
+
+function sourceFreshnessLabel(
+  freshness: ReturnType<typeof snapshotFreshness>,
+  tt: (value: string) => string,
+): string {
+  return tt(
+    freshness === 'fresh'
+      ? 'fresh snapshot'
+      : freshness === 'aging'
+        ? 'aging snapshot'
+        : freshness === 'stale'
+          ? 'stale snapshot'
+          : 'snapshot age unknown',
+  )
+}
+
+function localizedSourceText(value: string, tt: (value: string) => string): string {
+  const roleGraph = value.match(/^role graph over (\d+) units \(([\d,]+) directed pairs; ([\d,]+) hard edges\)$/)
+  if (roleGraph) {
+    return tt('role graph over {units} units ({pairs} directed pairs; {edges} hard edges)')
+      .replace('{units}', roleGraph[1] ?? '')
+      .replace('{pairs}', roleGraph[2] ?? '')
+      .replace('{edges}', roleGraph[3] ?? '')
+  }
+  const gameData = value.match(/^(\d+) military units \+ (\d+) buildings\/tech\/upgrades$/)
+  if (gameData) {
+    return `${gameData[1] ?? ''} ${tt('military units')} + ${gameData[2] ?? ''} ${tt('buildings/tech/upgrades')}`
+  }
+  return tt(value)
+}
+
 function FilterPanel({
   filters,
   options,
@@ -191,95 +399,96 @@ function FilterPanel({
   options: DataStudioFilterOptions
   onChange: (key: FilterKey, value: string) => void
 }) {
+  const { tt } = useI18n()
   return (
     <Card>
       <CardContent className="space-y-3 p-4">
         <div className="flex items-center gap-2">
           <Database className="h-4 w-4 text-primary" />
-          <h2 className="text-sm font-semibold">Saved-view filters</h2>
+          <h2 className="text-sm font-semibold">{tt('Saved-view filters')}</h2>
           <span className="text-[11px] text-muted-foreground">
-            The current view is stored in the page address.
+            {tt('The current view is stored in the page address.')}
           </span>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           <FilterSelect
-            label="Civilization"
+            label={tt('Civilization')}
             value={filters.civilization}
             onChange={(value) => onChange('civilization', value)}
           >
-            {categoryOptions(options.civilizations, filters.civilization, civOptionLabel)}
+            {categoryOptions(options.civilizations, filters.civilization, (value) => civOptionLabel(value, tt))}
           </FilterSelect>
           <FilterSelect
-            label="Opponent civilization"
+            label={tt('Opponent civilization')}
             value={filters.opponentCivilization}
             onChange={(value) => onChange('opponentCivilization', value)}
           >
             {categoryOptions(
               options.opponentCivilizations,
               filters.opponentCivilization,
-              civOptionLabel,
+              (value) => civOptionLabel(value, tt),
             )}
           </FilterSelect>
           <FilterSelect
-            label="Map"
+            label={tt('Map')}
             value={filters.map}
             onChange={(value) => onChange('map', value)}
           >
-            {categoryOptions(options.maps, filters.map, plainOptionLabel)}
+            {categoryOptions(options.maps, filters.map, (value) => plainOptionLabel(value, tt))}
           </FilterSelect>
           <FilterSelect
-            label="Format"
+            label={tt('Format')}
             value={filters.format}
             onChange={(value) => onChange('format', value)}
           >
-            {categoryOptions(options.formats, filters.format, plainOptionLabel)}
+            {categoryOptions(options.formats, filters.format, (value) => plainOptionLabel(value, tt))}
           </FilterSelect>
           <FilterSelect
-            label="Patch"
+            label={tt('Patch')}
             value={filters.patch}
             onChange={(value) => onChange('patch', value)}
           >
-            {categoryOptions(options.patches, filters.patch, patchOptionLabel)}
+            {categoryOptions(options.patches, filters.patch, (value) => patchOptionLabel(value, tt))}
           </FilterSelect>
           <FilterSelect
-            label="Season"
+            label={tt('Season')}
             value={filters.season}
             onChange={(value) => onChange('season', value)}
           >
-            {categoryOptions(options.seasons, filters.season, seasonOptionLabel)}
+            {categoryOptions(options.seasons, filters.season, (value) => seasonOptionLabel(value, tt))}
           </FilterSelect>
           <FilterSelect
-            label="Result"
+            label={tt('Result')}
             value={filters.result}
             onChange={(value) => onChange('result', value)}
           >
-            <option value="win">Win</option>
-            <option value="loss">Loss</option>
-            <option value="unknown">Unknown result</option>
+            <option value="win">{tt('Win')}</option>
+            <option value="loss">{tt('Loss')}</option>
+            <option value="unknown">{tt('Unknown result')}</option>
           </FilterSelect>
           <FilterSelect
-            label="Duration"
+            label={tt('Duration')}
             value={filters.duration}
             onChange={(value) => onChange('duration', value)}
           >
-            <option value="under-15">Under 15 minutes</option>
-            <option value="15-25">15-25 minutes</option>
-            <option value="25-40">25-40 minutes</option>
-            <option value="40-plus">40+ minutes</option>
-            <option value="unknown">Unknown duration</option>
+            <option value="under-15">{tt('Under 15 minutes')}</option>
+            <option value="15-25">{tt('15-25 minutes')}</option>
+            <option value="25-40">{tt('25-40 minutes')}</option>
+            <option value="40-plus">{tt('40+ minutes')}</option>
+            <option value="unknown">{tt('Unknown duration')}</option>
           </FilterSelect>
           <FilterSelect
-            label="Recent window"
+            label={tt('Recent window')}
             value={filters.window}
-            allLabel="Default: 90 days"
+            allLabel={tt('Default: 90 days')}
             onChange={(value) => onChange('window', value)}
           >
-            <option value="7d">Last 7 days</option>
-            <option value="30d">Last 30 days</option>
-            <option value="90d">Last 90 days</option>
-            <option value="180d">Last 180 days</option>
-            <option value="365d">Last year</option>
-            <option value="all">All loaded history</option>
+            <option value="7d">{tt('Last 7 days')}</option>
+            <option value="30d">{tt('Last 30 days')}</option>
+            <option value="90d">{tt('Last 90 days')}</option>
+            <option value="180d">{tt('Last 180 days')}</option>
+            <option value="365d">{tt('Last year')}</option>
+            <option value="all">{tt('All loaded history')}</option>
           </FilterSelect>
         </div>
       </CardContent>
@@ -300,6 +509,7 @@ function FilterSelect({
   onChange: (value: string) => void
   children: ReactNode
 }) {
+  const { tt } = useI18n()
   return (
     <label className="space-y-1 text-xs text-muted-foreground">
       <span>{label}</span>
@@ -308,7 +518,7 @@ function FilterSelect({
         onChange={(event) => onChange(event.target.value)}
         className="h-9 w-full rounded-sm border border-border bg-background px-2 text-sm text-foreground outline-none transition-colors focus:border-primary"
       >
-        <option value="">{allLabel}</option>
+        <option value="">{allLabel === 'All' ? tt('All') : allLabel}</option>
         {children}
       </select>
     </label>
@@ -333,24 +543,24 @@ function categoryOptions(
   )
 }
 
-function civOptionLabel(value: string): string {
-  return value === DATA_STUDIO_UNKNOWN ? 'Unknown' : civDisplayName(value)
+function civOptionLabel(value: string, tt: (value: string) => string): string {
+  return value === DATA_STUDIO_UNKNOWN ? tt('Unknown') : civDisplayName(value)
 }
 
-function plainOptionLabel(value: string): string {
-  return value === DATA_STUDIO_UNKNOWN ? 'Unknown' : value
+function plainOptionLabel(value: string, tt: (value: string) => string): string {
+  return value === DATA_STUDIO_UNKNOWN ? tt('Unknown') : value
 }
 
-function patchOptionLabel(value: string): string {
-  if (value === DATA_STUDIO_LEGACY_UNKNOWN) return 'Legacy public - unrecorded'
-  if (value === DATA_STUDIO_LOCAL_UNKNOWN) return 'Local/custom - unknown'
-  return `Patch ${value}`
+function patchOptionLabel(value: string, tt: (value: string) => string): string {
+  if (value === DATA_STUDIO_LEGACY_UNKNOWN) return tt('Legacy public - unrecorded')
+  if (value === DATA_STUDIO_LOCAL_UNKNOWN) return tt('Local/custom - unknown')
+  return `${tt('Patch')} ${value}`
 }
 
-function seasonOptionLabel(value: string): string {
-  if (value === DATA_STUDIO_LEGACY_UNKNOWN) return 'Legacy public - unrecorded'
-  if (value === DATA_STUDIO_LOCAL_UNKNOWN) return 'Local/custom - unknown'
-  return `Season ${value}`
+function seasonOptionLabel(value: string, tt: (value: string) => string): string {
+  if (value === DATA_STUDIO_LEGACY_UNKNOWN) return tt('Legacy public - unrecorded')
+  if (value === DATA_STUDIO_LOCAL_UNKNOWN) return tt('Local/custom - unknown')
+  return `${tt('Season')} ${value}`
 }
 
 function MetricCard({
@@ -364,6 +574,7 @@ function MetricCard({
   value: string
   detail: string
 }) {
+  const { tt } = useI18n()
   return (
     <Card>
       <CardContent className="space-y-1 p-4">
@@ -371,7 +582,7 @@ function MetricCard({
         <div className="text-2xl font-semibold tabular-nums">{value}</div>
         <p className="text-xs text-muted-foreground">{detail}</p>
         <p className="text-[11px] tabular-nums text-primary/80">
-          n={metric.sampleSize} observed {metric.sampleSize === 1 ? 'game' : 'games'}
+          n={metric.sampleSize} {tt('observed')} {metric.sampleSize === 1 ? tt('game') : tt('games')}
         </p>
       </CardContent>
     </Card>
@@ -379,14 +590,15 @@ function MetricCard({
 }
 
 function MatchTable({ games }: { games: DataStudioGame[] }) {
+  const { tt } = useI18n()
   return (
     <section className="space-y-3">
-      <h2 className="text-lg font-semibold tracking-tight">Matching games</h2>
+      <h2 className="text-lg font-semibold tracking-tight">{tt('Matching games')}</h2>
       {games.length === 0 ? (
         <EmptyBox>
           <div className="space-y-1">
-            <p>No games fit every selected filter.</p>
-            <p className="text-xs">Broaden the view or reset the filters.</p>
+            <p>{tt('No games fit every selected filter.')}</p>
+            <p className="text-xs">{tt('Broaden the view or reset the filters.')}</p>
           </div>
         </EmptyBox>
       ) : (
@@ -395,14 +607,14 @@ function MatchTable({ games }: { games: DataStudioGame[] }) {
             <table className="w-full min-w-[900px] text-left text-xs">
               <thead className="border-b border-border bg-secondary/40 text-muted-foreground">
                 <tr>
-                  <TableHead>Date</TableHead>
-                  <TableHead>Result</TableHead>
-                  <TableHead>Matchup</TableHead>
-                  <TableHead>Map / format</TableHead>
-                  <TableHead>Patch / season</TableHead>
-                  <TableHead align="right">Duration</TableHead>
-                  <TableHead align="right">Rating</TableHead>
-                  <TableHead align="right">APM</TableHead>
+                  <TableHead>{tt('Date')}</TableHead>
+                  <TableHead>{tt('Result')}</TableHead>
+                  <TableHead>{tt('Matchup')}</TableHead>
+                  <TableHead>{tt('Map / format')}</TableHead>
+                  <TableHead>{tt('Patch / season')}</TableHead>
+                  <TableHead align="right">{tt('Duration')}</TableHead>
+                  <TableHead align="right">{tt('Rating')}</TableHead>
+                  <TableHead align="right">{tt('APM')}</TableHead>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/60">
@@ -410,7 +622,7 @@ function MatchTable({ games }: { games: DataStudioGame[] }) {
                   <tr key={game.id} className="transition-colors hover:bg-secondary/25">
                     <TableCell>
                       <Link to={`/game/${game.id}`} className="font-medium hover:text-primary">
-                        {formatDate(game.playedAt)}
+                      {formatDate(game.playedAt, tt)}
                       </Link>
                     </TableCell>
                     <TableCell>
@@ -427,23 +639,23 @@ function MatchTable({ games }: { games: DataStudioGame[] }) {
                       </span>
                     </TableCell>
                     <TableCell>
-                      {game.map || 'Unknown'}
-                      <span className="text-muted-foreground"> · {game.format ?? 'Unknown'}</span>
+                      {game.map || tt('Unknown')}
+                        <span className="text-muted-foreground"> · {game.format ?? tt('Unknown')}</span>
                     </TableCell>
                     <TableCell>
                       {game.patch != null
-                        ? `Patch ${game.patch}`
+                          ? `${tt('Patch')} ${game.patch}`
                         : game.custom
-                          ? 'Local - unknown'
-                          : 'Legacy - unrecorded'}
+                          ? tt('Local - unknown')
+                          : tt('Legacy - unrecorded')}
                       <span className="text-muted-foreground">
                         {' '}
                         ·{' '}
                         {game.season != null
-                          ? `Season ${game.season}`
+                          ? `${tt('Season')} ${game.season}`
                           : game.custom
-                            ? 'local season unknown'
-                            : 'legacy season unrecorded'}
+                            ? tt('local season unknown')
+                            : tt('legacy season unrecorded')}
                       </span>
                     </TableCell>
                     <TableCell align="right">{formatDurationShort(game.durationSec)}</TableCell>
@@ -480,6 +692,7 @@ function TableCell({ children, align }: { children: ReactNode; align?: 'right' }
 }
 
 function ResultLabel({ result }: { result: DataStudioGame['result'] }) {
+  const { tt } = useI18n()
   return (
     <span
       className={cn(
@@ -491,14 +704,14 @@ function ResultLabel({ result }: { result: DataStudioGame['result'] }) {
             : 'bg-secondary text-muted-foreground',
       )}
     >
-      {result === 'win' ? 'Win' : result === 'loss' ? 'Loss' : 'Unknown'}
+      {result === 'win' ? tt('Win') : result === 'loss' ? tt('Loss') : tt('Unknown')}
     </span>
   )
 }
 
-function formatDate(iso: string): string {
+function formatDate(iso: string, tt: (value: string) => string): string {
   const date = new Date(iso)
-  return Number.isNaN(date.getTime()) ? 'Date unavailable' : date.toLocaleDateString()
+  return Number.isNaN(date.getTime()) ? tt('Date unavailable') : date.toLocaleDateString()
 }
 
 function formatSigned(value: number | null): string {

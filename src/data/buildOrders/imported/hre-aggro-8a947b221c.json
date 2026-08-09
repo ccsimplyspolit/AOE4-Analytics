@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "name": "HRE aggro",
+  "civilization": "Holy Roman Empire",
+  "author": "Melclem",
+  "source": "https://aoe4guides.com/builds/G9klTtJD7UODvMKGkIeP",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0",
+      "villager_count": 7,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_economy/house.webp@,  @resource/rally.webp@ on food"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:35",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@landmark_hre/meinwerk-palace.webp@ Meinwerk Palace @resource/rally.webp@ on @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@ on @landmark_hre/meinwerk-palace.webp@, 1 @unit_worker/villager.webp@ from @resource/resource_wood.webp@ @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_religious/monk-3.webp@ to boost all @resource/resource_food.webp@@resource/resource_wood.webp@, @technology_economy/double-broadaxe.webp@, military building"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 20,
+      "resources": {
+        "food": 7,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_economy/mill.webp@ with @resource/resource_food.webp@@unit_worker/villager.webp@, build another military building and produce unites and @technology_economy/horticulture.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:15",
+      "villager_count": 21,
+      "resources": {
+        "food": 13,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @resource/resource_wood.webp@@unit_worker/villager.webp@ to @resource/resource_food.webp@, another mlytarry @technology_military/steeled-arrow.webp@@technology_military/iron-undermesh.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/L9U36uzQjdM",
+  "season": 13,
+  "map": null,
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

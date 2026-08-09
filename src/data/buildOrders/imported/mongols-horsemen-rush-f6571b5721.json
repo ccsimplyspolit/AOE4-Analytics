@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "name": "Mongols Horsemen Rush ",
+  "civilization": "Mongols",
+  "author": "siberian_wolf",
+  "source": "https://aoe4guides.com/builds/f2jUVYLGBfOqRv03UdpN",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager-mongols.webp@ >@resource/resource_wood.webp@(150 = 1@resource/gaiatreeprototypetree.webp@)",
+        "1 @unit_worker/villager-mongols.webp@&gt;@building_mongols/ovoo.webp@&gt;@resource/sheep.webp@",
+        "@building_mongols/ger.webp@&gt;@resource/gaiatreeprototypetree.webp@",
+        "@building_economy/town-center.webp@&gt;@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 22,
+      "resources": {
+        "food": 13,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "7 @resource/rally.webp@>@resource/sheep.webp@",
+        "2@resource/resource_wood.webp@@unit_worker/villager-mongols.webp@&gt; @resource/sheep.webp@",
+        "1@resource/resource_wood.webp@ @unit_worker/villager-mongols.webp@&gt;@building_military/stable.webp@&gt;@resource/sheep.webp@",
+        "6@resource/rally.webp@&gt;@resource/resource_gold.webp@",
+        "1@resource/rally.webp@&gt;@resource/resource_wood.webp@",
+        "3@resource/rally.webp@&gt;@resource/sheep.webp@",
+        "8@unit_cavalry/horseman-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 28,
+      "resources": {
+        "food": 16,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "3@resource/sheep.webp@@unit_worker/villager-mongols.webp@>@landmark_mongols/deer-stones.webp@&gt; @resource/resource_wood.webp@",
+        "6@resource/rally.webp@&gt;@resource/sheep.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

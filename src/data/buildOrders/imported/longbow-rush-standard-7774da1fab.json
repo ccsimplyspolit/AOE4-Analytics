@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "name": "Longbow Rush Standard",
+  "civilization": "English",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/oyUm3JIGLMqp2rxP34Qi",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_economy/house.webp@ with 1 @unit_worker/villager.png@ then @resource/resource_food.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally 2 @unit_worker/villager.webp@ to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ back to @resource/resource_food.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_english/council-hall.webp@ with 4 @resource/resource_food.png@ @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Build @building_economy/lumber-camp.webp@ with 2 @resource/resource_gold.png@@unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:19",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@ new vills to @building_economy/lumber-camp.png@ on Woodline until 11"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:25",
+      "villager_count": 16,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@building_military/barracks.webp@ with 1 age-up @unit_worker/villager.png@ ( goes to @resource/resource_food.png@ after )"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:46",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@building_economy/house.webp@ with another age-up @unit_worker/villager.png@( goes to @resource/resource_food.png@ after )"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:04",
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue up constant @unit_byzantines/longbowman-2.webp@ and @unit_infantry/spearman-1.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 25,
+      "resources": {
+        "food": 11,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Balance Economy 11f/11w then @resource/rally.webp@ 3 @unit_worker/villager.png@ to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:40",
+      "villager_count": 25,
+      "resources": {
+        "food": 11,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/resource_wood.png@ until ram timing at 11 minutes. If feudal aggro (no all in) then you balance wood by making farms with wood vills."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 27,
+      "resources": {
+        "food": 11,
+        "wood": 13,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Pull 1 @unit_worker/villager.webp@ for @building_defensive/outpost.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:50",
+      "villager_count": 28,
+      "resources": {
+        "food": 11,
+        "wood": 14,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@ for @technology_military/steeled-arrow.png@ @technology_military/iron-undermesh.png@ & @technology_military/siege-engineering.png@ (if rams)"
+      ]
+    }
+  ],
+  "description": "Standard Longbow Rush for an 11 min ram timing or feudal aggro with farms.",
+  "video": "https://www.youtube.com/embed/DK8KDAJQxf4",
+  "season": 9,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

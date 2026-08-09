@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "name": "Ayubid 2TC",
+  "civilization": "Ayyubids",
+  "author": "ww",
+  "source": "https://aoe4guides.com/builds/u3ElAhetd92A0pOMvV9H",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0\n",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1->@landmark_abbasid/house-of-wisdom.webp@-&gt;@building_economy/house.webp@-&gt;@resource/resource_stone.webp@@building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "rally to wood till 2 on wood"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "Rally to stone until 4 @resource/resource_stone.webp@,  move one food to wood"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "Rally to until 7 @resource/resource_wood.webp@ then rally to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use 4 stone vill and 5 wood vill to make a @building_economy/town-center.webp@ next to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally @building_economy/town-center.webp@ to @resource/resource_food.webp@ and  @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 23,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @resource/resource_gold.webp@ and build @building_economy/mill.webp@ on @resource/berrybush.webp@ and @building_military/stable.webp@@building_military/archery-range.webp@ or @building_military/barracks.webp@@building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 2 military buildings and 2 houses to get @age/goldenagetier2.webp@ ;",
+        "If enemy is are going FC move all wood to food and gold, move all wood to food and gold",
+        "Econ upgrades and Walling if needed"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:20",
+      "villager_count": 45,
+      "resources": {
+        "food": 21,
+        "wood": 21,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@ for upgrades and add farms or look for other food resources"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:30",
+      "villager_count": 45,
+      "resources": {
+        "food": 25,
+        "wood": 0,
+        "gold": 20,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If enemy is are going FC move all wood to food and gold, move all wood to food and gold"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 75,
+      "resources": {
+        "food": 35,
+        "wood": 20,
+        "gold": 20,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "2TC",
+  "video": "https://www.youtube.com/embed/rqJS6mzAho4",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

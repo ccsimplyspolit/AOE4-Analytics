@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "name": "mongol rush",
+  "civilization": "Mongols",
+  "author": "xbadey",
+  "source": "https://aoe4guides.com/builds/j8JEhKojgfgEFHWKQzcg",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Pop \"\"Maneuver Arrow\",",
+        "5 @unit_worker/villager-mongols.webp@ on @resource/gaiatreeprototypetree.png@and place @building_mongols/ger.png@",
+        "1 @unit_worker/villager-mongols.png@ to build @building_mongols/ovoo.png@ on @resource/resource_stone.png@ then @building_military/barracks.png@ to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:18",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@ @unit_worker/villager-mongols.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:58",
+      "villager_count": 6,
+      "resources": {
+        "food": 2,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "3 @resource/gaiatreeprototypetree.webp@@unit_worker/villager-mongols.png@ go to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:58",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @resource/gaiatreeprototypetree.webp@@unit_worker/villager-mongols.png@ go to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:37",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Queue 2x @unit_infantry/spearman-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Pull the 3 @resource/resource_wood.webp@@unit_worker/villager-mongols.png@ (enough for 2nd @unit_infantry/spearman-1.png@x2 + @building_defensive/outpost.png@) & send them to @resource/resource_gold.png@ with starting @building_mongols/ger.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @unit_infantry/spearman-1.webp@x2 & send 1 @unit_worker/villager-mongols.png@ to build @building_defensive/outpost.png@ on @resource/resource_gold.png@/@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~3:50",
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@age/age_2.webp@5@resource/resource_food.png@@unit_worker/villager-mongols.png@ to build @landmark_mongols/deer-stones.png@/@landmark_mongols/the-silver-tree.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "5@resource/resource_food.webp@@unit_worker/villager-mongols.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 11,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.png@ until 11 (Your desired macro is 11 @resource/resource_food.png@/ 7@resource/resource_wood.png@ / 5@resource/resource_gold.png@ then rest to wood"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~5:20",
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Build @building_military/archery-range.webp@ + @building_military/stable.png@ with age-up 5@unit_worker/villager-mongols.png@ then to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start full-producing @unit_mongols/keshik-2.webp@@unit_infantry/archer-2.png@ and raid/look for good fights."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send @landmark_mongols/the-silver-tree.webp@ to corner opposite trade post."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00‑10:00",
+      "villager_count": 23,
+      "resources": {
+        "food": 11,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remember@building_technology/blacksmith.webp@@technology_military/steeled-arrow.png@@technology_military/iron-undermesh.png@@technology_economy/professional-scouts.png@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 10,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "name": "HRE Jeando Agressif Simple & Puissant",
+  "civilization": "Holy Roman Empire",
+  "author": "aka",
+  "source": "https://aoe4guides.com/builds/9aeruwo2z7LVO5zKeEMS",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3@unit_worker/villager.webp@@resource/resource_food.webp@ & 3@unit_worker/villager.webp@@building_economy/mining-camp.webp@>@resource/resource_gold.webp@ - @unit_hre/prelate.webp@@resource/resource_food.webp@",
+        "@resource/rally.webp@@resource/resource_food.webp@",
+        "1 @unit_worker/villager.webp@@building_economy/house.webp@",
+        "Alterner @unit_hre/prelate.webp@entre @resource/resource_food.webp@&amp;@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Ne plus alterner, laisser @unit_hre/prelate.webp@ sur @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@landmark_hre/meinwerk-palace.webp@ - Forge, économise ressources ++, vitesse recherche & techs spécifiques",
+        "@landmark_hre/aachen-chapel.webp@ - Boost collecte quand @unit_hre/prelate.webp@ dedans - entourer avec des champs, placer pour avoir 3 ressources ou quand proscout"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4@unit_worker/villager.webp@@landmark_hre/meinwerk-palace.webp@, quand batiment construit @resource/resource_food.webp@",
+        "@resource/rally.webp@@resource/resource_wood.webp@",
+        "1 @unit_worker/villager.webp@@building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:10\n",
+      "villager_count": 17,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2e @unit_religious/monk-3.webp@ quand age up, 1@resource/resource_wood.webp@ & 1@resource/resource_food.webp@",
+        "ASAP @technology_economy/double-broadaxe.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "ASAP",
+        "@building_military/barracks.webp@ si cav",
+        "@building_military/stable.webp@ si archer / lent à se développer",
+        "@building_military/archery-range.webp@ si lancier"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Si @unit_infantry/spearman-1.webp@ ou @unit_cavalry/horseman-1.webp@, @technology_hre/awl-pike.webp@ dans @landmark_hre/meinwerk-palace.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Quand @building_military/barracks.webp@@building_military/archery-range.webp@ construit, @building_economy/mill.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Prod units, si adversaire n'a pas d'unité, investir dans l'économie",
+        "@unit_infantry/man-at-arms-1.webp@@unit_infantry/archer-2.webp@",
+        "ou @unit_infantry/spearman-1.webp@@unit_cavalry/horseman-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_military/bloomery.webp@@technology_military/steeled-arrow.webp@@technology_military/fitted-leatherwork.webp@@technology_military/iron-undermesh.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Ajouter @unit_worker/villager.webp@@resource/resource_food.webp@ dès qu'on se sent limité (@building_defensive/outpost.webp@@building_economy/mill.webp@ sur @resource/deer.webp@ par ex)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Mettre pression sur adversaire",
+        "S'il reste sous forum =>@age/age_3.webp@",
+        "@unit_siege/battering-ram.webp@ pour détruire les batiments ennemis en dehors de la range forum"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Ajouter des @unit_religious/monk-3.webp@",
+        "Les mettre avec les @unit_worker/villager.webp@@resource/deer.webp@ etc"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

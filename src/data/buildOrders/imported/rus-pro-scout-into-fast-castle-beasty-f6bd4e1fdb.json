@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 1,
+  "name": "Rus Pro Scout into Fast Castle (Beasty) ",
+  "civilization": "Rus",
+  "author": "Thoren",
+  "source": "https://aoe4guides.com/builds/37ji2OYyqsavTBq1PObN",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager.webp@ to get 50 @resource/resource_wood.webp@ from @resource/gaiatreeprototypetree.webp@ and 1 @unit_worker/villager.webp@ build @building_rus/hunting-cabin.webp@and @building_economy/house.webp@ on woodline"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "5 @unit_worker/villager.webp@ from @resource/resource_wood.webp@ to @resource/sheep.webp@ and 1 new @unit_worker/villager.webp@ build @building_rus/hunting-cabin.webp@ on the other side of the woods"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All @unit_worker/villager.webp@ on @resource/sheep.webp@ and @building_rus/hunting-cabin.webp@ produce 2 extra @unit_cavalry/scout.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 15,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@ build @landmark_rus/the-golden-gate.webp@ near @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Add @unit_worker/villager.webp@ on @resource/resource_wood.webp@ to 8 and @resource/rally.webp@ back to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_economy/lumber-camp.webp@ on Woodline"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Sell @resource/resource_food.webp@ or @resource/resource_wood.webp@ at @landmark_rus/the-golden-gate.webp@ to research @technology_economy/professional-scouts.webp@ and produce @unit_cavalry/scout.webp@ from other @building_rus/hunting-cabin.webp@ untill 6/7 total."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 22,
+      "resources": {
+        "food": 12,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If opponent is making @unit_infantry/spearman-1.webp@ to prevent you from Pro Scouting, @abilities/repair.webp@ @building_military/archery-range.webp@ and make couple @unit_infantry/archer-2.webp@ to escort scouts."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If opponent is making @unit_cavalry/knight-2.webp@ or @unit_cavalry/horseman-1.webp@, @abilities/repair.webp@ @building_military/barracks.webp@ and make couple @unit_infantry/spearman-1.webp@ to escort scouts."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Bring back @resource/deer.webp@ with your @unit_cavalry/scout.webp@ and research @technology_economy/survival-techniques.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 16,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_rus/wooden-fortress.webp@ near @building_economy/lumber-camp.webp@ and switch @unit_worker/villager.webp@ from @resource/sheep.webp@ to @resource/deer.webp@ when deer arrive under @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 29,
+      "resources": {
+        "food": 19,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_rus/the-golden-gate.webp@ sell @resource/resource_wood.webp@ for @resource/resource_gold.webp@ , then 8@resource/resource_food.webp@ @unit_worker/villager.webp@ build @landmark_rus/high-trade-house.webp@ near safe woodline"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:30",
+      "villager_count": 30,
+      "resources": {
+        "food": 8,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Leave 8 @unit_worker/villager.webp@ on @resource/resource_food.webp@ and @resource/rally.webp@ to @resource/resource_wood.webp@ and get @technology_economy/double-broadaxe.webp@ and @technology_economy/wheelbarrow.webp@ as you're ageing up."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:10",
+      "villager_count": 33,
+      "resources": {
+        "food": 13,
+        "wood": 18,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_religious/monastery.webp@ and 2 more @building_military/archery-range.webp@ start producing @unit_rus/horse-archer-3.webp@ and some @unit_rus/warrior-monk.webp@ to get @resource/relics.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If opponent is going all-in, @abilities/repair.webp@ @building_military/barracks.webp@ and @building_technology/blacksmith.webp@ and produce @unit_infantry/man-at-arms-1.webp@ and get @technology_military/iron-undermesh.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Army Comp Recommendations:",
+        "If opponent has a lot of archers and ranged units, get @unit_cavalry/horseman-1.webp@",
+        "If opponent has a diverse army, get @unit_cavalry/knight-2.webp@",
+        "If your opponent has a lot of spearman, get @unit_infantry/man-at-arms-1.webp@",
+        "If your opponent has a lot of cavalry, get @unit_infantry/spearman-1.webp@ and/or @unit_infantry/crossbowman-3.webp@"
+      ]
+    }
+  ],
+  "description": "This is the newly updated Beastyqt's Rus build order for Pro Scouting into Fast Castle for season 11. ",
+  "video": "https://www.youtube.com/embed/KVmi7Q318a8",
+  "season": 11,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

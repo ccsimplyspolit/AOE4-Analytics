@@ -51,6 +51,25 @@ function fileFor(gameId: string): string | null {
   return safe ? join(cacheDir(), `${safe}.rgs.gz`) : null
 }
 
+export interface CachedSummaryInfo {
+  cached: boolean
+  sizeBytes: number | null
+  path: string | null
+}
+
+/** Metadata for the compressed on-disk summary cache, without inflating it. */
+export function getCachedSummaryInfo(gameId: string): CachedSummaryInfo {
+  const file = fileFor(gameId)
+  if (!file || !existsSync(file)) return { cached: false, sizeBytes: null, path: null }
+  try {
+    const stat = statSync(file)
+    if (!stat.isFile() || stat.size <= 0) return { cached: false, sizeBytes: null, path: null }
+    return { cached: true, sizeBytes: stat.size, path: file }
+  } catch {
+    return { cached: false, sizeBytes: null, path: null }
+  }
+}
+
 function unavailableFileFor(gameId: string): string | null {
   const safe = safeGameId(gameId)
   return safe ? join(cacheDir(), `${safe}.unavailable`) : null
@@ -127,9 +146,7 @@ export function readCachedParsedSummary(gameId: string): MatchSummary | null {
 }
 
 export function hasCachedSummary(gameId: string): boolean {
-  const file = fileFor(gameId)
-  if (!file) return false
-  return existsSync(file)
+  return getCachedSummaryInfo(gameId).cached
 }
 
 /**

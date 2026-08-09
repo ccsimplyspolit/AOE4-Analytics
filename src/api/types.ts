@@ -214,6 +214,9 @@ export interface CivStatsResponse {
   rank_level: RankLevel | null
   rating: string | null
   patch: string | null
+  /** Present for the map-specific civ endpoint. */
+  map_id?: number
+  map?: string
   data: CivStatEntry[]
 }
 

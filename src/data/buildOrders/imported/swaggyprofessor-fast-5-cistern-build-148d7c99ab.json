@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "name": "SwaggyProfessor - Fast 5 Cistern Build",
+  "civilization": "Byzantines",
+  "author": "arianitnura99@gmail.com",
+  "source": "https://aoe4guides.com/builds/OSC2KqQDpJ4LZkEqSItW",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6@unit_worker/villager.webp@ to @resource/resource_food.webp@.  @resource/rally.webp@ @building_economy/town-center.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:05",
+      "villager_count": 7,
+      "resources": {
+        "food": 2,
+        "wood": 0,
+        "gold": 1,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ to @resource/resource_gold.webp@, 2 @unit_worker/villager.webp@ to @resource/resource_stone.webp@, 1 @unit_worker/villager.webp@ build @building_byzantines/cistern-1.webp@ and @building_economy/house.webp@ then go to @resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:10",
+      "villager_count": 8,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 1,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "5th @unit_worker/villager.webp@ builds @building_byzantines/aqueduct-1.webp@ and @building_byzantines/cistern-1.webp@ towards 2nd @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:45",
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 1,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "1@resource/resource_food.webp@@unit_worker/villager.webp@ builds @building_byzantines/cistern-1.webp@ towards 3rd @resource/berrybush.webp@ send @unit_worker/villager.webp@ to @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:08",
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 1,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "4 @resource/resource_food.webp@@unit_worker/villager.webp@ age up with @landmark_byzantines/grand-winery-1.webp@ on @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:15",
+      "villager_count": 10,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 1,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Send 2 @resource/resource_food.webp@@unit_worker/villager.webp@ to @resource/gaiatreeprototypetree.webp@. @resource/rally.webp@@resource/gaiatreeprototypetree.webp@ until 6, then @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:45",
+      "villager_count": 12,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 1,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "When 800 @resource/resource_stone.webp@ left. Pull 3 @resource/resource_stone.webp@@unit_worker/villager.webp@ to @abilities/repair.webp@@landmark_byzantines/grand-winery-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:32",
+      "villager_count": 17,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_byzantines/grand-winery-1.webp@@unit_worker/villager.webp@ gather @resource/berrybush.webp@ on @landmark_byzantines/grand-winery-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:40",
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 3,
+        "gold": 1,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4@resource/gaiatreeprototypetree.webp@@unit_worker/villager.webp@- @abilities/repair.webp@@building_military/barracks.webp@. Send vills to @resource/resource_wood.webp@ and @abilities/repair.webp@@building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 7,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue 5 @unit_byzantines/limitanei-1.webp@. When 15 on @resource/resource_food.webp@ @resource/rally.webp@ @resource/resource_gold.webp@ until 12. Then @resource/rally.webp@@resource/resource_food.webp@. Research @technology_economy/horticulture.webp@ ASAP. @abilities/repair.webp@ @building_byzantines/mercenary-house-2.webp@ and@building_technology/blacksmith.webp@ with excess @resource/resource_wood.webp@. Research @technology_military/steeled-arrow.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:35",
+      "villager_count": 28,
+      "resources": {
+        "food": 17,
+        "wood": 6,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with 8 @unit_worker/villager.webp@@resource/resource_food.webp@@landmark_byzantines/golden-horn-tower-2.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12.00",
+      "villager_count": 37,
+      "resources": {
+        "food": 17,
+        "wood": 8,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@ 1 @building_military/stable.webp@ - Instantly produce Cataphracts"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/MnJOULRokR8",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

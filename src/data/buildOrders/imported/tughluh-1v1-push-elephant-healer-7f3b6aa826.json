@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "name": "Tughluh 1v1 push Elephant Healer",
+  "civilization": "Tughlaq Dynasty",
+  "author": "Patrick Kanté",
+  "source": "https://aoe4guides.com/builds/Ke08Fa4iqRF8E2GzSxjt",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager-delhi.webp@ sur @resource/berrybush.webp@ + 2 @unit_tughluq/worker_elephant.webp@ : un pour scoot et un qui va au gold"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1er @unit_worker/villager-delhi.webp@ qui spawn construit @building_economy/house.webp@ (proche TC) et va aux @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @unit_worker/villager-delhi.webp@ suivants sur @resource/resource_gold.webp@ puis @resource/rally.webp@ @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Les 3 @unit_worker/villager-delhi.webp@@resource/sheep.webp@ vont construire @landmark_delhi/dome-of-the-faith.webp@ et @resource/rally.webp@@resource/gaiatreeprototypetree.webp@ (avec éléphant qui scootait revenu) jusqu'à 8"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 6,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Les 3 @unit_worker/villager-delhi.webp@ qui construisaient vont au @resource/resource_wood.webp@, un 8ème qui spawn, puis @resource/rally.webp@@resource/sheep.webp@",
+        "On commence immédiatement à produire @unit_tughluq/healer_elephant.webp@ (tout en manageant bien la production de @unit_worker/villager-delhi.webp@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "On construit @building_military/barracks.webp@-->@building_military/archery-range.webp@--&gt;@building_technology/blacksmith.webp@ dès que possible"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "On produit @unit_tughluq/healer_elephant.webp@ @unit_infantry/spearman-1.webp@ @unit_infantry/archer-2.webp@ et dès qu'on a 4/5 éléphants, on part à l'agression"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 11,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "On ajoute 3 @unit_worker/villager-delhi.webp@@resource/resource_gold.webp@, puis @resource/rally.webp@ @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 32,
+      "resources": {
+        "food": 15,
+        "wood": 11,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "On prod en boucle, on fait les techs (@technology_military/iron-undermesh.webp@@technology_military/steeled-arrow.webp@@technology_military/bloomery.webp@ et up du @unit_infantry/spearman-1.webp@) et on avise :",
+        "Soit on a rasé le mec",
+        "Sinon il faut penser à passer Age 3, faire les techs, ajouter possiblement 4/5 @unit_worker/villager-delhi.webp@ au @resource/resource_stone.webp@ pour @building_tughluq/tughluqabad_fort.webp@@ability_tughluq/sehwan.webp@",
+        "Refaire @building_military/archery-range.webp@ et @building_military/barracks.webp@"
+      ]
+    }
+  ],
+  "description": "Push 1v1 solide Age 2\nTOTAL COUT DES UNITS (Elephants + archers + piquiers)\nFood : 585/min -> 15 villageois\nWood : 280/min -> 7 villageois\nGolds : 232.5/min -> 6 villageois\n(+ les 150 de food/min des villageois, + 150 bois/min pour les maisons, 75 food 100 bois 410 gold pour les techs)\nDonc total pour bien tourner :\n15/11/6/0",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -6,6 +6,7 @@ import { useDebounce } from '@shared/hooks/useDebounce'
 import { countryFlag, formatRankLevel, formatRating, rankColor, relativeTime } from '@shared/format'
 import type { PlayerSearchHit } from '@ipc/contract'
 import { usePlayerSearch } from '../queries/useProfile'
+import { useI18n } from '../../i18n'
 
 interface PlayerSearchProps {
   onSelect: (hit: PlayerSearchHit) => void
@@ -15,6 +16,7 @@ interface PlayerSearchProps {
 
 /** Reusable debounced player-search box with a results dropdown. */
 export function PlayerSearch({ onSelect, placeholder, autoFocus }: PlayerSearchProps) {
+  const { tt } = useI18n()
   const [query, setQuery] = useState('')
   const [activeIndex, setActiveIndex] = useState(-1)
   const debounced = useDebounce(query, 350)
@@ -54,7 +56,7 @@ export function PlayerSearch({ onSelect, placeholder, autoFocus }: PlayerSearchP
             setActiveIndex(-1)
           }}
           onKeyDown={onKeyDown}
-          placeholder={placeholder ?? 'Search a player by name…'}
+          placeholder={placeholder ?? tt('Search a player by name…')}
           autoFocus={autoFocus}
           className="pl-9"
           spellCheck={false}
@@ -68,7 +70,7 @@ export function PlayerSearch({ onSelect, placeholder, autoFocus }: PlayerSearchP
         <div className="mt-2 overflow-hidden rounded-lg border border-border bg-card" role="listbox">
           {error && <div className="px-3 py-3 text-sm text-destructive">{error}</div>}
           {!error && hits.length === 0 && !isFetching && (
-            <div className="px-3 py-3 text-sm text-muted-foreground">No players found.</div>
+            <div className="px-3 py-3 text-sm text-muted-foreground">{tt('No players found.')}</div>
           )}
           {hits.map((hit, index) => (
             <button

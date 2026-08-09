@@ -1,0 +1,350 @@
+{
+  "schemaVersion": 1,
+  "name": "[Aussie_Drongo] Ottomans Fast Imperial {zaka}",
+  "civilization": "Ottomans",
+  "author": "zaka",
+  "source": "https://aoe4guides.com/builds/JhqDx8aEbOkjh3NAOZwQ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager-ottomans.webp@ to @resource/sheep.png@, 5 @unit_worker/villager-ottomans.png@ get 150 @resource/resource_stone.png@ -> @resource/gaiatreeprototypetree.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": 1
+      },
+      "notes": [
+        "New @unit_worker/villager-ottomans.webp@ builds @building_ottomans/military-school-1.png@ -> @resource/sheep.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 1,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "New @unit_worker/villager-ottomans.webp@ builds @building_economy/house.png@ -> @building_economy/mining-camp.png@ on @resource/resource_gold.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "New @unit_worker/villager-ottomans.webp@ builds @building_economy/mining-camp.png@ on @resource/resource_gold.png@.",
+        "@resource/rally.png@ to @resource/resource_food.png@ until 10."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:23",
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once 10 on @resource/resource_food.webp@, @resource/rally.png@ to @resource/resource_wood.png@ until 6.",
+        "Harass opponent with @unit_infantry/spearman-1.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:49",
+      "villager_count": 14,
+      "resources": {
+        "food": 10,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once you have 200 @resource/resource_gold.webp@, move both @resource/resource_gold.png@@unit_worker/villager-ottomans.png@to @resource/resource_wood.png@@resource/gaiatreeprototypetree.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 2,
+        "builder": 4
+      },
+      "notes": [
+        "Build @landmark_ottomans/twin-minaret-medrese-1.webp@ with 4 @resource/resource_food.png@@unit_worker/villager-ottomans.png@, move 2 @resource/resource_food.png@@unit_worker/villager-ottomans.png@ to @resource/resource_stone.png@ with @building_economy/mining-camp.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:32",
+      "villager_count": 17,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 0,
+        "stone": 2,
+        "builder": 4
+      },
+      "notes": [
+        "Once 6 on @resource/resource_wood.webp@, next @unit_worker/villager-ottomans.png@ goes to @resource/resource_food.png@.",
+        "Build @building_economy/house.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "04:10",
+      "villager_count": 18,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 0,
+        "stone": 2,
+        "builder": 5
+      },
+      "notes": [
+        "New @unit_worker/villager-ottomans.webp@ helps building @landmark_ottomans/twin-minaret-medrese-1.png@.",
+        "The 5 @landmark_ottomans/twin-minaret-medrese-1.png@@unit_worker/villager-ottomans.png@ will stay there on @resource/berrybush.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 5,
+        "gold": 0,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "Move 1 @resource/resource_wood.webp@@unit_worker/villager-ottomans.png@ to @resource/resource_stone.png@, other builds @building_technology/blacksmith.png@ -> 2nd @building_ottomans/military-school-1.png@.",
+        "@resource/rally.png@ to @resource/resource_food.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:15",
+      "villager_count": 21,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Once you have 100 @resource/resource_stone.webp@, move all @resource/resource_stone.png@@unit_worker/villager-ottomans.png@ to @resource/resource_gold.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:40",
+      "villager_count": 21,
+      "resources": {
+        "food": 9,
+        "wood": 4,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Adjust economy to leave 4 on @resource/resource_wood.webp@ and 8 on @resource/resource_gold.png@.",
+        "Keep @resource/rally.png@ to @resource/resource_food.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:44",
+      "villager_count": 25,
+      "resources": {
+        "food": 13,
+        "wood": 4,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If you don't have enough @resource/sheep.webp@ to go @age/age_3.png@ get @technology_ottomans/anatolian-hills-1.png@, else get @technology_ottomans/field-work-1.png@, if so, send your @unit_abbasid/imam.png@ to the @resource/relics.png@@resource/relics.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:48",
+      "villager_count": 28,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 3,
+        "stone": 5,
+        "builder": 10
+      },
+      "notes": [
+        "Build @landmark_ottomans/mehmed-imperial-armory-2.webp@ with 10 @resource/resource_food.png@@unit_worker/villager-ottomans.png@ in @building_technology/blacksmith.png@ range.",
+        "Move 5 @resource/resource_gold.png@@unit_worker/villager-ottomans.png@ to @resource/resource_stone.png@ until 200@resource/resource_stone.png@.",
+        "@resource/rally.png@ 2 to @resource/resource_wood.png@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "08:42",
+      "villager_count": 31,
+      "resources": {
+        "food": 17,
+        "wood": 6,
+        "gold": 3,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_religious/mosque.webp@ and get @resource/relics.png@s.",
+        "Build 3rd @building_ottomans/military-school-1.png@.",
+        "Change @building_ottomans/military-school-1.png@s to @unit_infantry/man-at-arms-1.png@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "09:16",
+      "villager_count": 34,
+      "resources": {
+        "food": 20,
+        "wood": 6,
+        "gold": 3,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_economy/survival-techniques.webp@ and send 10 @unit_worker/villager-ottomans.png@ to @resource/deer.png@.",
+        "@resource/rally.png@ to @resource/resource_gold.png@ until @age/age_4.png@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:20",
+      "villager_count": 37,
+      "resources": {
+        "food": 20,
+        "wood": 6,
+        "gold": 10,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_ottomans/military-campus-1.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:10",
+      "villager_count": 39,
+      "resources": {
+        "food": 20,
+        "wood": 6,
+        "gold": 12,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "Build 4th @building_ottomans/military-school-1.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:40",
+      "villager_count": 44,
+      "resources": {
+        "food": 5,
+        "wood": 10,
+        "gold": 13,
+        "stone": 1,
+        "builder": 15
+      },
+      "notes": [
+        "Build @landmark_ottomans/istanbul-observatory-3.webp@ with 15 @resource/resource_food.png@@unit_worker/villager-ottomans.png@.",
+        "Get @technology_economy/specialized-pick.png@/@technology_economy/double-broadaxe.png@/@technology_economy/wheelbarrow.png@/@technology_economy/forestry.png@ and Military upgrades."
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "time": "14:00",
+      "villager_count": 45,
+      "resources": {
+        "food": 20,
+        "wood": 10,
+        "gold": 15,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If your being attacked get @technology_ottomans/janissary-company-1.webp@, else get @technology_ottomans/fast-training-1.png@.",
+        "Build 5th @building_ottomans/military-school-1.png@. Change @landmark_ottomans/mehmed-imperial-armory-2.png@ to @unit_ottomans/great-bombard-4.png@."
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/6DaMCvJiaPM",
+  "season": 5,
+  "map": null,
+  "strategy": "Fast Imperial",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

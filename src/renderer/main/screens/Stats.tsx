@@ -9,6 +9,7 @@ import {
   RefreshCw,
   ChevronRight,
   Filter,
+  ClipboardCheck,
 } from 'lucide-react'
 import type { StoredMatch } from '@store/historyStore'
 import { filterPersonalHistory } from '@domain/historyFilters'
@@ -22,12 +23,13 @@ import {
   type ProfileGame,
 } from '@domain/profileOverview'
 import { computeTrends, type TrendGame } from '@domain/trends'
+import { summarizeBuildAuditHistory, type BuildAuditHistoryRow } from '@domain/buildOrderHistory'
 import type { RankInfo } from '@domain/types'
-import { civDisplayName, teamCivLabel } from '@domain/civ'
+import { civDisplayName } from '@domain/civ'
 import { formatDurationShort, relativeTime } from '@shared/format'
 import { cn } from '@shared/lib/utils'
 import { Card, CardContent } from '@shared/components/ui/card'
-import { useHistory, useAnalyzeRecent } from '../queries/useHistory'
+import { useBuildAuditHistory, useHistory, useAnalyzeRecent } from '../queries/useHistory'
 import { useDashboard, useSettings, useUpdateSettings } from '../queries/useProfile'
 import { WinRateBar } from '../components/WinRateBar'
 import { RatingChart } from '../components/RatingChart'
@@ -37,11 +39,14 @@ import { CivOverviewTable, ProfileIdentityCard } from '../components/ProfileOver
 import { PageHead } from '../components/PageHead'
 import { BenchmarkLens } from '../components/BenchmarkLens'
 import { EmptyBox, Spinner, ErrorBox } from '../components/feedback'
+import { useI18n } from '../../i18n'
 
 export function Stats() {
+  const { tt } = useI18n()
   const { data, isLoading, refetch } = useHistory()
   const { data: settings } = useSettings()
   const { data: dash } = useDashboard(settings?.profileId != null)
+  const { data: buildAudit } = useBuildAuditHistory(50)
   const analyze = useAnalyzeRecent()
   const updateSettings = useUpdateSettings()
   const excludeAi = settings?.localData.excludeAiFromStats ?? false
@@ -71,7 +76,7 @@ export function Stats() {
                 })
               }}
               aria-pressed={excludeAi}
-              title="Keep AI and custom practice games out of the stats on this page"
+              title={tt('Keep AI and custom practice games out of the stats on this page')}
               className={cn(
                 'inline-flex items-center gap-1.5 rounded-sm border px-3 py-1.5 text-sm transition-colors disabled:opacity-50',
                 excludeAi
@@ -80,28 +85,30 @@ export function Stats() {
               )}
             >
               <Filter className="h-3.5 w-3.5" />
-              {excludeAi ? 'Practice games hidden' : 'Hide AI / custom'}
+              {excludeAi ? tt('Practice games hidden') : tt('Hide AI / custom')}
             </button>
             <button
               type="button"
-              onClick={() => analyze.mutate(20)}
+              onClick={() => analyze.mutate(undefined)}
               disabled={analyze.isPending}
               className="inline-flex items-center gap-2 rounded-sm bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-60"
             >
               <RefreshCw className={cn('h-3.5 w-3.5', analyze.isPending && 'animate-spin')} />
-              {analyze.isPending ? 'Analyzing…' : 'Sync recent games'}
+              {analyze.isPending ? tt('Analyzing…') : tt('Sync all account games')}
             </button>
           </div>
         }
       />
 
       {analyze.data && !analyze.data.ok && (
-        <ErrorBox message={analyze.data.error.message} onRetry={() => analyze.mutate(20)} />
+        <ErrorBox message={analyze.data.error.message} onRetry={() => analyze.mutate(undefined)} />
       )}
       {analyze.data?.ok && (
         <p className="text-xs text-muted-foreground">
-          Analyzed {analyze.data.data.analyzed} new game(s) · {analyze.data.data.total} total ·
-          storage: {analyze.data.data.backend}
+          {tt('Analyzed {new} new game(s) · {total} total · storage: {backend}')
+            .replace('{new}', String(analyze.data.data.analyzed))
+            .replace('{total}', String(analyze.data.data.total))
+            .replace('{backend}', analyze.data.data.backend)}
         </p>
       )}
 
@@ -113,8 +120,8 @@ export function Stats() {
       {!isLoading && data?.ok && matches.length === 0 && (
         <EmptyBox>
           <div className="space-y-1">
-            <p>No analyzed games yet.</p>
-            <p className="text-xs">Click “Sync recent games” to pull and analyze your matches.</p>
+            <p>{tt('No analyzed games yet.')}</p>
+            <p className="text-xs">{tt('Click “Sync all account games” to pull and analyze your matches.')}</p>
           </div>
         </EmptyBox>
       )}
@@ -122,6 +129,7 @@ export function Stats() {
       {!isLoading && matches.length > 0 && (
         <Content
           matches={matches}
+          buildAuditRows={buildAudit?.ok ? buildAudit.data : []}
           profileId={settings?.profileId ?? null}
           identity={
             dash?.ok
@@ -136,13 +144,16 @@ export function Stats() {
 
 function Content({
   matches,
+  buildAuditRows,
   profileId,
   identity,
 }: {
   matches: StoredMatch[]
+  buildAuditRows: BuildAuditHistoryRow[]
   profileId: number | null
   identity: { name: string; country: string | null; primary: RankInfo | null } | null
 }) {
+  const { tt } = useI18n()
   const s = useMemo(() => {
     const games: StatGame[] = matches.map((m) => ({
       result: displayedResult(m, profileId),
@@ -243,16 +254,16 @@ function Content({
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <h3 className="flex items-center gap-1.5 text-sm">
               <Clock className="h-4 w-4 text-primary" />
-              Performance
+              {tt('Performance')}
             </h3>
             <span className="text-[11px] tabular-nums text-muted-foreground">
-              Last 2 weeks: {r.games} games · {r.wins}W–{r.losses}L
+              {tt('Last 2 weeks')}: {r.games} {tt('games')} · {r.wins}{tt('W')}–{r.losses}{tt('L')}
               {recentWr != null ? ` · ${recentWr}%` : ''} · {r.hours}h played
             </span>
           </div>
           <PerformanceTilesRow tiles={overview.tiles} ratingTrend={trends.rating.delta} />
           <div>
-            <div className="rts-ledger-head mb-1.5">Rating over time</div>
+            <div className="rts-ledger-head mb-1.5">{tt('Rating over time')}</div>
             <RatingChart matches={matches} />
           </div>
         </CardContent>
@@ -260,44 +271,46 @@ function Content({
 
       <BenchmarkLens games={benchmarkGames} />
 
+      <BuildAuditHistoryCard rows={buildAuditRows} />
+
       <CivOverviewTable rows={overview.civs} />
 
       <details className="group rounded-lg border border-border/70 bg-background/30">
         <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm font-semibold [&::-webkit-details-marker]:hidden">
           <span className="flex items-center gap-2">
             <BarChart3 className="h-4 w-4 text-primary" />
-            More breakdowns
+            {tt('More breakdowns')}
           </span>
           <span className="text-xs font-normal text-muted-foreground">
-            opponent civ, map, format, game length, time of day
+            {tt('opponent civ, map, format, game length, time of day')}
           </span>
         </summary>
         <div className="border-t border-border/70 p-4">
           <div className="grid gap-4 lg:grid-cols-2">
             <BreakdownCard
-              title="Versus opponent civ"
+              title={tt('Versus opponent civ')}
               icon={<Swords className="h-4 w-4 text-primary" />}
               rows={s.byOppCiv}
-              emptyHint="opponent civ not recorded"
+              emptyHint={tt('opponent civ not recorded')}
             />
             <BreakdownCard
-              title="By map"
+              title={tt('By map')}
               icon={<MapIcon className="h-4 w-4 text-primary" />}
               rows={s.byMap}
             />
             <BreakdownCard
-              title="By team format"
+              title={tt('By team format')}
               icon={<BarChart3 className="h-4 w-4 text-primary" />}
               rows={s.byFormat}
             />
             <BreakdownCard
-              title="By game length"
+              title={tt('By game length')}
               icon={<Hourglass className="h-4 w-4 text-primary" />}
               rows={s.byGameLength}
               keepOrder
             />
             <BreakdownCard
-              title="By time of day"
+              title={tt('By time of day')}
               icon={<Clock className="h-4 w-4 text-primary" />}
               rows={s.byTimeOfDay}
               keepOrder
@@ -307,18 +320,101 @@ function Content({
       </details>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-semibold tracking-tight">Game history</h2>
+        <h2 className="text-lg font-semibold tracking-tight">{tt('Game history')}</h2>
         {matches.map((m) => (
           <MatchCard key={m.id} match={m} profileId={profileId} />
         ))}
       </section>
 
       <p className="text-xs text-muted-foreground">
-        Computed from your {s.totalGames} synced games. Small samples are noisy — treat a low game
-        count with caution.
+        {tt('Computed from your {games} synced games. Small samples are noisy — treat a low game count with caution.').replace('{games}', String(s.totalGames))}
       </p>
     </>
   )
+}
+
+function BuildAuditHistoryCard({ rows }: { rows: BuildAuditHistoryRow[] }) {
+  const { tt, gameName } = useI18n()
+  const summary = useMemo(() => summarizeBuildAuditHistory(rows), [rows])
+  if (rows.length === 0) return null
+  return (
+    <section className="space-y-2">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h2 className="flex items-center gap-2 text-lg font-semibold tracking-tight">
+          <ClipboardCheck className="h-4 w-4 text-primary" />
+          {tt('Build adherence across games')}
+        </h2>
+        <span className="text-xs text-muted-foreground">
+          {summary.scored}/{summary.games} {tt('games scored')} · {summary.available}/{summary.games} {tt('with decoded evidence')}
+        </span>
+      </div>
+      <Card>
+        <CardContent className="space-y-3 p-4">
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
+            <AuditMetric label={tt('Average build score')} value={summary.averageScore == null ? '—' : `${summary.averageScore}%`} />
+            <AuditMetric label={tt('Confirmed issues')} value={String(summary.confirmedIssues)} tone={summary.confirmedIssues > 0 ? 'loss' : 'win'} />
+            <AuditMetric label={tt('Review items')} value={String(summary.reviewItems)} tone="warn" />
+            <AuditMetric label={tt('Good checkpoints')} value={String(summary.strengths)} tone="win" />
+            <AuditMetric label={tt('Evidence available')} value={`${summary.available}/${summary.games}`} />
+          </div>
+          <div className="overflow-x-auto rounded-md border border-border/70">
+            <table className="w-full min-w-[700px] text-xs">
+              <thead>
+                <tr className="border-b border-border bg-background/40">
+                  <th className="rts-ledger-head px-2 py-2 text-left">{tt('Date')}</th>
+                  <th className="rts-ledger-head px-2 py-2 text-left">{tt('Civilization')}</th>
+                  <th className="rts-ledger-head px-2 py-2 text-left">{tt('Map')}</th>
+                  <th className="rts-ledger-head px-2 py-2 text-left">{tt('Reference build')}</th>
+                  <th className="rts-ledger-head px-2 py-2 text-right">{tt('Score')}</th>
+                  <th className="rts-ledger-head px-2 py-2 text-right">{tt('Good')}</th>
+                  <th className="rts-ledger-head px-2 py-2 text-right">{tt('Improve')}</th>
+                  <th className="rts-ledger-head px-2 py-2 text-right">{tt('Open')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rows.slice(0, 12).map((row) => (
+                  <tr key={row.matchId} className="border-b border-border/50 last:border-b-0">
+                    <td className="px-2 py-2 text-muted-foreground">{relativeTime(row.playedAt)}</td>
+                    <td className="px-2 py-2">{gameName(civDisplayName(row.civ))}</td>
+                    <td className="px-2 py-2 text-muted-foreground">{row.map || '—'}</td>
+                    <td className="max-w-[220px] truncate px-2 py-2 text-muted-foreground">{row.referenceBuild ?? tt('No compatible build')}</td>
+                    <td className="px-2 py-2 text-right tabular-nums"><AuditScore score={row.score} /></td>
+                    <td className="px-2 py-2 text-right tabular-nums text-win">{row.strengths || '—'}</td>
+                    <td className={cn('px-2 py-2 text-right tabular-nums', row.confirmedIssues > 0 ? 'text-loss' : 'text-muted-foreground')}>
+                      {row.confirmedIssues + row.reviewItems || '—'}
+                    </td>
+                    <td className="px-2 py-2">
+                      <Link to={`/game/${row.matchId}`} className="inline-flex items-center text-primary hover:underline" title={tt('Open full post-game breakdown')}>
+                        <ChevronRight className="h-3.5 w-3.5" />
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-[11px] text-muted-foreground">
+            {tt('Only local or cached summaries are included. A missing summary is unavailable evidence, not a zero score.')}
+          </p>
+        </CardContent>
+      </Card>
+    </section>
+  )
+}
+
+function AuditMetric({ label, value, tone }: { label: string; value: string; tone?: 'win' | 'loss' | 'warn' }) {
+  return (
+    <div className="rounded-md border border-border/60 bg-secondary/20 px-2.5 py-2">
+      <div className="text-[10px] uppercase tracking-wide text-muted-foreground">{label}</div>
+      <div className={cn('mt-0.5 text-lg font-semibold tabular-nums', tone === 'win' && 'text-win', tone === 'loss' && 'text-loss', tone === 'warn' && 'text-warn')}>{value}</div>
+    </div>
+  )
+}
+
+function AuditScore({ score }: { score: number | null }) {
+  const { tt } = useI18n()
+  if (score == null) return <span className="text-muted-foreground">{tt('Unavailable')}</span>
+  return <span className={cn('rounded-sm px-1.5 py-0.5 font-semibold', score >= 80 ? 'bg-win/15 text-win' : score >= 50 ? 'bg-warn/15 text-warn' : 'bg-loss/15 text-loss')}>{score}%</span>
 }
 
 /** Overall performance tiles from real per-game data (- when unavailable). */
@@ -330,24 +426,25 @@ function PerformanceTilesRow({
   /** Rating change across the recent window (computeTrends), for the arrow. */
   ratingTrend: number | null
 }) {
+  const { tt } = useI18n()
   const delta = tiles.ratingDelta
   return (
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-6">
       <StatTile
-        label="Net rating"
+        label={tt('Net rating')}
         value={delta == null ? '-' : `${delta > 0 ? '+' : ''}${delta}`}
         accent={delta == null ? undefined : delta >= 0 ? 'win' : 'loss'}
-        sub={`over ${tiles.games} games`}
+        sub={`${tt('over')} ${tiles.games} ${tt('games')}`}
         delta={ratingTrend}
       />
-      <StatTile label="APM" value={tiles.avgApm ?? '-'} sub="avg, Relic counters" />
-      <StatTile label="K/D" value={tiles.avgKd ?? '-'} sub="units, avg" />
-      <StatTile label="Units / game" value={tiles.avgUnitsProduced ?? '-'} sub="produced, avg" />
-      <StatTile label="Kills / game" value={tiles.avgKills ?? '-'} sub="avg" />
+      <StatTile label="APM" value={tiles.avgApm ?? '-'} sub={tt('avg, Relic counters')} />
+      <StatTile label="K/D" value={tiles.avgKd ?? '-'} sub={tt('units, avg')} />
+      <StatTile label={tt('Units / game')} value={tiles.avgUnitsProduced ?? '-'} sub={tt('produced, avg')} />
+      <StatTile label={tt('Kills / game')} value={tiles.avgKills ?? '-'} sub={tt('avg')} />
       <StatTile
-        label="Eco pace"
+        label={tt('Eco pace')}
         value={tiles.avgResourcesPerMinute ?? tiles.avgVillagersPerMinute ?? '-'}
-        sub={tiles.avgResourcesPerMinute != null ? 'resources/min' : 'villagers/min'}
+        sub={tiles.avgResourcesPerMinute != null ? tt('resources/min') : tt('villagers/min')}
       />
     </div>
   )
@@ -366,6 +463,7 @@ function BreakdownCard({
   emptyHint?: string
   keepOrder?: boolean
 }) {
+  const { tt } = useI18n()
   const display = keepOrder ? rows : rows.slice(0, 10)
   return (
     <Card>
@@ -376,7 +474,7 @@ function BreakdownCard({
         </h3>
         {display.length === 0 ? (
           <p className="text-xs text-muted-foreground">
-            No data yet{emptyHint ? ` — ${emptyHint}` : ''}.
+            {tt('No data yet')}{emptyHint ? ` — ${emptyHint}` : ''}.
           </p>
         ) : (
           <div className="space-y-2">
@@ -408,16 +506,21 @@ function WinRateRow({ b }: { b: Breakdown }) {
 }
 
 function MatchCard({ match, profileId }: { match: StoredMatch; profileId: number | null }) {
+  const { tt, gameName } = useI18n()
   const result = displayedResult(match, profileId)
   const win = result === 'win'
   const loss = result === 'loss'
   const isTeamGame = (match.myTeam?.length ?? 0) > 0 || (match.oppTeam?.length ?? 0) > 1
-  const myLabel = isTeamGame ? teamCivLabel(match.civ, match.myTeam) : civDisplayName(match.civ)
+  const myLabel = isTeamGame
+    ? [match.civ, ...(match.myTeam ?? []).map((player) => player.civ)]
+        .map((civ) => gameName(civDisplayName(civ)))
+        .join(' + ')
+    : gameName(civDisplayName(match.civ))
   const oppLabel =
     isTeamGame && match.oppTeam?.length
-      ? match.oppTeam.map((p) => civDisplayName(p.civ)).join(' + ')
+      ? match.oppTeam.map((p) => gameName(civDisplayName(p.civ))).join(' + ')
       : match.oppCiv
-        ? civDisplayName(match.oppCiv)
+        ? gameName(civDisplayName(match.oppCiv))
         : null
   const mine = match.perPlayer?.find((p) => p.profileId === profileId)
   const apm = mine?.apm ?? match.analysis.apm
@@ -432,7 +535,7 @@ function MatchCard({ match, profileId }: { match: StoredMatch; profileId: number
   ].filter(Boolean)
   return (
     <Card className="transition-colors hover:border-primary/40">
-      <Link to={`/game/${match.id}`} className="block" title="Open full post-game breakdown">
+      <Link to={`/game/${match.id}`} className="block" title={tt('Open full post-game breakdown')}>
         <CardContent className="flex items-center gap-3 p-3">
           <span
             className={cn(
@@ -444,15 +547,15 @@ function MatchCard({ match, profileId }: { match: StoredMatch; profileId: number
                   : 'bg-secondary text-muted-foreground',
             )}
           >
-            {win ? 'W' : loss ? 'L' : '–'}
+            {win ? tt('W') : loss ? tt('L') : '–'}
           </span>
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2 text-sm">
               <span className="font-medium">{myLabel}</span>
-              {oppLabel && <span className="text-muted-foreground">vs {oppLabel}</span>}
+              {oppLabel && <span className="text-muted-foreground">{tt('vs')} {oppLabel}</span>}
               {match.custom && (
                 <span className="rounded-sm bg-secondary px-1.5 py-0.5 text-[10px] text-muted-foreground">
-                  {match.vsAI ? 'vs AI' : 'Custom'}
+                  {match.vsAI ? tt('vs AI') : tt('Custom')}
                 </span>
               )}
             </div>

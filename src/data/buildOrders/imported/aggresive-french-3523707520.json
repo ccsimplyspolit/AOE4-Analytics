@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "name": "Aggresive french",
+  "civilization": "French",
+  "author": "era",
+  "source": "https://aoe4guides.com/builds/LrenBCTt2AjddTZzE5Jt",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 2,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@to@resource/sheep.webp@, 3@unit_worker/villager.webp@to@resource/resource_gold.webp@, 1@unit_worker/villager.webp@@abilities/repair.webp@@building_economy/mill.webp@@building_economy/house.webp@then to@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@unit_worker/villager.webp@to@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@unit_worker/villager.webp@@abilities/repair.webp@@landmark_french/school-of-cavalry.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3@resource/resource_food.webp@@unit_worker/villager.webp@to@resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once you have this @unit_worker/villager.webp@split, @resource/rally.webp@@unit_worker/villager.webp@to@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/specialized-pick.webp@. If you're on@resource/sheep.webp@, get@technology_economy/horticulture.webp@. If you're on@resource/deer.webp@get@technology_economy/survival-techniques.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_military/archery-range.webp@or@building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If went for@building_military/archery-range.webp@,@resource/rally.webp@@unit_worker/villager.webp@@resource/resource_wood.webp@. If you went for@building_military/stable.webp@,@resource/rally.webp@@unit_worker/villager.webp@@resource/resource_gold.webp@until 10@resource/resource_gold.webp@@unit_worker/villager.webp@then@resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_technology/blacksmith.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_military/iron-undermesh.webp@@technology_military/bloomery.webp@for@unit_french/royal-knight-2.webp@.@technology_military/steeled-arrow.webp@for@unit_infantry/archer-2.webp@"
+      ]
+    }
+  ],
+  "description": "Beastyqt's latest build. Wheelbarrow build",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

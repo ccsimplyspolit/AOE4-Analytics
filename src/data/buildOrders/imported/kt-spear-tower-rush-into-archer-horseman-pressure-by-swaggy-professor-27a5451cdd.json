@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "name": "KT Spear + Tower Rush into Archer/Horseman Pressure - By Swaggy Professor",
+  "civilization": "Knights Templar",
+  "author": "Swaggy Professor",
+  "source": "https://aoe4guides.com/builds/l1FJWNSbbhQy7mg0LPBw",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 2,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@unit_worker/villager.webp@ to straggler @resource/resource_wood.webp@, 2@unit_worker/villager.webp@ to @resource/sheep.webp@",
+        "Scout heads immediately to opponent base to locate @resource/resource_gold.webp@ or exposed resources"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 2,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "At 150@resource/resource_wood.webp@, build @building_military/barracks.webp@ with 1 food villager",
+        "At 200 wood total, build @building_economy/house.webp@ with 1 wood villager"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "1:30",
+      "villager_count": 5,
+      "resources": {
+        "food": 2,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start training 3@unit_infantry/spearman-1.webp@ with no idle time; force drop food if needed"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 2nd @unit_infantry/spearman-1.webp@ is out, send 1@unit_worker/villager.webp@ with him to build @building_defensive/outpost.webp@ near enemy @resource/resource_gold.webp@ or @resource/berrybush.webp@ depending on civ"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once 7 on food, set TC @resource/rally.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 6,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "At ~70–80 wood, send 5@unit_worker/villager.webp@ from @resource/resource_wood.webp@ to build @building_economy/mining-camp.webp@ on @resource/resource_gold.webp@",
+        "Leave 1 wood villager in @resource/resource_wood.webp@ to maintain house production"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 3,
+        "wood": 10,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "At ~4:00, age up with @civilization_flag/hos.webp@",
+        "Leave only 3@unit_worker/villager.webp@ on @resource/resource_food.webp@, send rest to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 18,
+      "resources": {
+        "food": 3,
+        "wood": 10,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Garrison 1@unit_infantry/spearman-1.webp@ in forward tower, send other 2 to harass",
+        "When gold reaches 170, send 5@unit_worker/villager.webp@  from @resource/resource_gold.webp@ back to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Upon Feudal completion, send gold villagers to nearest @resource/boar.webp@ or @resource/deer.webp@",
+        "Forward villager builds 2@building_military/archery-range.webp@",
+        "Queue 1 @unit_templar/hospitaller_knight_age_2.webp@ and upgrade @unit_infantry/spearman-1.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/survival-techniques.webp@ when mill finishes",
+        "Keep producing @unit_infantry/archer-2.webp@ nonstop from forward @building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 28,
+      "resources": {
+        "food": 13,
+        "wood": 15,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build @building_military/stable.webp@ at home",
+        "Keep 13–15@unit_worker/villager.webp@ on wood, transfer in groups of 5 to new food sources when needed"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 28,
+      "resources": {
+        "food": 13,
+        "wood": 15,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use @unit_cavalry/horseman-1.webp@ from home stable to surprise opponents expecting only spears/archers",
+        "If enemy cavalry raids, produce @unit_infantry/spearman-1.webp@ from home @building_military/barracks.webp@ to defend"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 28,
+      "resources": {
+        "food": 13,
+        "wood": 15,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep producing units nonstop and build @building_technology/blacksmith.webp@ for upgrades",
+        "Research @technology_templar/safepassage.webp@ later when resources allow, but prioritize unit tempo"
+      ]
+    }
+  ],
+  "description": "Early Spear Tower Rush into Archers and Hidden Horsemen Transition",
+  "video": "https://www.youtube.com/embed/QkYFbk0n0R4",
+  "season": 11,
+  "map": "Open",
+  "strategy": "Feudal Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

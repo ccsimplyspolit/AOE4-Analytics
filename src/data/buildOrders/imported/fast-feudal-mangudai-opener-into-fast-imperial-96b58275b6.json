@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "name": "Fast Feudal Mangudai Opener into Fast Imperial",
+  "civilization": "Mongols",
+  "author": "L3v3n",
+  "source": "https://aoe4guides.com/builds/T6HrQKmAli9qRXigaKGq",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@technology_mongols/whistling-arrows.webp@by@unit_mongols/khan-1.webp@",
+        "5@unit_worker/villager-mongols.webp@to@resource/resource_wood.webp@and 1@unit_worker/villager-mongols.webp@to build @building_mongols/ovoo.webp@on @resource/resource_stone.webp@",
+        "@building_mongols/ger.webp@to@resource/resource_wood.webp@where villiagers are chopping wood",
+        "@building_economy/town-center.webp@on@resource/resource_wood.webp@line",
+        "@resource/sheep.webp@to@building_economy/town-center.webp@",
+        "@resource/rally.webp@to@resource/sheep.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "after 1@resource/gaiatreeprototypetree.webp@chopped down by 5@unit_worker/villager-mongols.webp@, rally to 2@resource/resource_food.webp@and 3@resource/resource_wood.webp@tiill you have 150@resource/resource_wood.webp@then3@unit_worker/villager-mongols.webp@to@resource/resource_food.webp@",
+        "@resource/rally.webp@to@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "build@building_mongols/pasture.webp@with 1@unit_worker/villager-mongols.webp@",
+        "@building_mongols/ger.webp@to@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4@unit_worker/villager-mongols.webp@to@abilities/repair.webp@@landmark_mongols/deer-stones.webp@to get @unit_mongols/khans-hunter.webp@with@unit_mongols/mangudai.webp@",
+        "6@unit_worker/villager-mongols.webp@to@resource/resource_wood.webp@to gather 150@resource/resource_wood.webp@for@building_military/archery-range.webp@or@building_defensive/outpost.webp@",
+        "@resource/rally.webp@to@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 16,
+      "resources": {
+        "food": 7,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "after@age/age_2.webp@send 4@unit_worker/villager-mongols.webp@@abilities/repair.webp@@building_military/archery-range.webp@at@building_mongols/ovoo.webp@,build only bulk @unit_mongols/mangudai.webp@(2x)",
+        "@unit_worker/villager-mongols.webp@afterwards to@resource/resource_food.webp@",
+        "get@technology_mongols/superior-mobility.webp@upgrade in@building_mongols/ovoo.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "harass enemy, you should have 4@unit_mongols/mangudai.webp@ and 1@unit_mongols/khans-hunter.webp@",
+        "use@landmark_mongols/deer-stones.webp@forward.",
+        "Harass opponent while going slowly@age/age_3.webp@, hence send @unit_worker/villager-mongols.webp@to@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "7:45",
+      "villager_count": 30,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build @building_technology/blacksmith.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build@unit_mongols/mangudai.webp@(2x)",
+        "build@unit_mongols/khans-hunter.webp@",
+        "move@landmark_mongols/deer-stones.webp@forward"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "harass enemy, you should have 4@unit_mongols/mangudai.webp@ and 1@unit_mongols/khans-hunter.webp@",
+        "use@landmark_mongols/deer-stones.webp@forward.",
+        "Harass opponent while going slowly@age/age_3.webp@, hence send @unit_worker/villager-mongols.webp@to@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:45",
+      "villager_count": 30,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build @building_technology/blacksmith.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/DP0PSJGNBlY",
+  "season": 11,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

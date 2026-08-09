@@ -13,79 +13,95 @@
  * the house build otherwise). aoe4guides has no Knights Templar or Golden
  * Horde category yet, so those civs keep house/absent coverage for now.
  */
-// Curated (timed) — listed first for their civs.
-import english2tcLongbow from './english-2tc-longbow.json'
-import hreFastCastle from './hre-fast-castle.json'
-import rusProScouts from './rus-pro-scouts.json'
-import chineseTaxAggro from './chinese-tax-aggro.json'
-import abbasidEcoWing2tc from './abbasid-eco-wing-2tc.json'
-import delhiFastGhazi from './delhi-fast-ghazi.json'
-import maliansClassicOpener from './malians-classic-opener.json'
-import byzantines5Cistern from './byzantines-5-cistern.json'
-import japaneseMlordFastCastle from './japanese-mlord-fast-castle.json'
-import jeanneDarcAggression from './jeanne-darc-aggression.json'
-import ootd2tcBoom from './ootd-2tc-boom.json'
-import zhuxiZhugeNuTiming from './zhuxi-zhuge-nu-timing.json'
-import lancaster2tc2manor from './lancaster-2tc-2manor.json'
-import jinSwaggyStandard from './jin-swaggy-standard.json'
-import macedonianBeasty from './macedonian-beasty.json'
-import sengokuBeasty from './sengoku-beasty.json'
-import tughlaqBeastyStandard from './tughlaq-beasty-standard.json'
-// House builds (timed) — primary where the curated pick lacks timings.
-import english2tc from './english-2tc-boom.json'
-import frenchKnights from './french-knights-rush.json'
-import jeanneDarcKnights from './jeanne-darc-knights-rush.json'
-import mongolsFastCastle from './mongols-fast-castle.json'
-import rusScoutFeudal from './rus-scout-feudal.json'
-import hreFastFeudalMaa from './hre-fast-feudal-maa.json'
-import abbasid2tc from './abbasid-2tc-boom.json'
-import ottomansMilitarySchool from './ottomans-military-school.json'
-import delhiSacredSites from './delhi-sacred-sites.json'
-import japaneseSamurai from './japanese-samurai-eco.json'
-import chineseDynasty from './chinese-dynasty-eco.json'
-import byzantinesCistern from './byzantines-cistern-eco.json'
-import maliansPitMine from './malians-pitmine-eco.json'
-// Curated (untimed) — great step lists, but the timed build stays primary.
-import frenchFastFeudalKnights from './french-fast-feudal-knights.json'
-import mongolsNewPlayer from './mongols-new-player.json'
-import ottomans1311 from './ottomans-1311.json'
-import ayyubidsFast2tc from './ayyubids-fast-2tc.json'
+import { normalizeBuildOrder, type BuildOrder } from '@domain/buildOrderSchema'
+import { VIDEO_EVIDENCE_BY_CIV } from '@data/videoEvidence.generated'
 
-export const BUNDLED_BUILD_ORDERS = [
-  // Primary (best-timed) build per civ, curated first where timed:
-  english2tcLongbow,
-  frenchKnights, // house build keeps full timings; curated French below
-  hreFastCastle,
-  rusProScouts,
-  mongolsFastCastle, // house — the curated Mongol guide is untimed
-  chineseTaxAggro,
-  abbasidEcoWing2tc,
-  delhiFastGhazi,
-  ottomansMilitarySchool, // house — the curated 1-3-1-1 below is untimed
-  maliansClassicOpener,
-  byzantines5Cistern,
-  japaneseMlordFastCastle,
-  jeanneDarcAggression,
-  ootd2tcBoom,
-  zhuxiZhugeNuTiming,
-  lancaster2tc2manor,
-  jinSwaggyStandard,
-  macedonianBeasty,
-  sengokuBeasty,
-  tughlaqBeastyStandard,
-  // Alternates (house + curated-untimed):
-  english2tc,
-  frenchFastFeudalKnights,
-  jeanneDarcKnights,
-  rusScoutFeudal,
-  hreFastFeudalMaa,
-  mongolsNewPlayer,
-  abbasid2tc,
-  ayyubidsFast2tc,
-  ottomans1311,
-  delhiSacredSites,
-  japaneseSamurai,
-  chineseDynasty,
-  byzantinesCistern,
-  maliansPitMine,
-]
+/**
+ * Vite includes every JSON build in this directory, including files written by
+ * the importer. The explicit primary order is retained for overlay/build-coach
+ * compatibility; all other valid files follow alphabetically.
+ */
+const PRIMARY_FILE_ORDER = [
+  'english-2tc-longbow.json',
+  'french-knights-rush.json',
+  'hre-fast-castle.json',
+  'rus-pro-scouts.json',
+  'mongols-fast-castle.json',
+  'chinese-tax-aggro.json',
+  'abbasid-eco-wing-2tc.json',
+  'delhi-fast-ghazi.json',
+  'ottomans-military-school.json',
+  'malians-classic-opener.json',
+  'byzantines-5-cistern.json',
+  'japanese-mlord-fast-castle.json',
+  'jeanne-darc-aggression.json',
+  'ootd-2tc-boom.json',
+  'zhuxi-zhuge-nu-timing.json',
+  'lancaster-2tc-2manor.json',
+  'jin-swaggy-standard.json',
+  'macedonian-beasty.json',
+  'sengoku-beasty.json',
+  'tughlaq-beasty-standard.json',
+] as const
+
+const PRIMARY_RANK = new Map<string, number>(PRIMARY_FILE_ORDER.map((file, index) => [file, index]))
+const JSON_BUILD_MODULES = import.meta.glob('./**/*.json', {
+  eager: true,
+  import: 'default',
+}) as Record<string, BuildOrder>
+
+function evidenceKey(civilization: string | string[]): string {
+  const label = Array.isArray(civilization) ? (civilization[0] ?? '') : civilization
+  return label.toLocaleLowerCase().replace(/[^a-z0-9]+/g, '')
+}
+
+const RAW_BUNDLED_BUILD_ORDERS = Object.entries(JSON_BUILD_MODULES)
+  .sort(([left], [right]) => {
+    const leftFile = left.replace(/^\.\//, '')
+    const rightFile = right.replace(/^\.\//, '')
+    return (
+      (PRIMARY_RANK.get(leftFile) ?? Number.MAX_SAFE_INTEGER) -
+        (PRIMARY_RANK.get(rightFile) ?? Number.MAX_SAFE_INTEGER) ||
+      leftFile.localeCompare(rightFile)
+    )
+  })
+  .map(([, build]) => build)
+
+function buildIdentity(build: BuildOrder): string {
+  const civilizations = Array.isArray(build.civilization)
+    ? build.civilization.join('|')
+    : build.civilization
+  return `${civilizations}::${build.name}`.toLocaleLowerCase().replace(/[^a-z0-9|]+/g, '')
+}
+
+function buildQuality(build: BuildOrder): number {
+  return (
+    build.build_order.length * 10 +
+    (build.reasoning ? 20 : 0) +
+    (build.archetype ? 5 : 0) +
+    (build.difficulty ? 2 : 0) +
+    (build.source ? 1 : 0)
+  )
+}
+
+/** Keep one best-documented variant per faction/title in the runtime library. */
+const NORMALIZED_BUILD_ORDERS: BuildOrder[] = []
+const BUILD_INDEX_BY_ID = new Map<string, number>()
+for (const rawBuild of RAW_BUNDLED_BUILD_ORDERS) {
+  const normalized = normalizeBuildOrder(rawBuild)
+  const build = normalized.ok ? normalized.value : rawBuild
+  const identity = buildIdentity(build)
+  const existingIndex = BUILD_INDEX_BY_ID.get(identity)
+  if (existingIndex == null) {
+    BUILD_INDEX_BY_ID.set(identity, NORMALIZED_BUILD_ORDERS.length)
+    NORMALIZED_BUILD_ORDERS.push(build)
+  } else if (buildQuality(build) > buildQuality(NORMALIZED_BUILD_ORDERS[existingIndex]!)) {
+    NORMALIZED_BUILD_ORDERS[existingIndex] = build
+  }
+}
+
+/** Attach generated video observations without changing the upstream JSON files. */
+export const BUNDLED_BUILD_ORDERS = NORMALIZED_BUILD_ORDERS.map((build) => {
+  const evidence = VIDEO_EVIDENCE_BY_CIV[evidenceKey(build.civilization)]
+  return evidence ? { ...build, video_evidence: evidence } : build
+})

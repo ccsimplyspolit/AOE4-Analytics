@@ -1,0 +1,405 @@
+{
+  "schemaVersion": 1,
+  "name": "2024 Ayyubids Castle Rush [Beasty]",
+  "civilization": "Ayyubids",
+  "author": "snoasis",
+  "source": "https://aoe4guides.com/builds/eLKv7F2chnknNwHPb1bl",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All 6 villagers @unit_worker/villager-abbasid.webp@ to berries @resource/berrybush.png@ (2 villagers @unit_worker/villager-abbasid.png@ build mill @building_economy/mill.png@)",
+        "*** Try to not completely exhaust berries. Future age-up will provide bonus to berry bushes that still remain"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send next villager @unit_worker/villager-abbasid.webp@ to berries @resource/berrybush.png@ (Build 1 @building_economy/house.png@ on the way)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send next villager @unit_worker/villager-abbasid.webp@ to gold@resource/resource_gold.png@ (Build mine@building_economy/mining-camp.png@ on the way)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally next 3 villagers @unit_worker/villager-abbasid.webp@ to gold @resource/resource_gold.png@ (Build House of Wisdom @landmark_abbasid/house-of-wisdom.png@ on the way)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally villagers @unit_worker/villager-abbasid.webp@ to straggler trees @resource/gaiatreeprototypetree.png@ until 4 vills on wood (Need wood for outposts @building_defensive/outpost.png@. Depending on Civ you're playing against, gather enough wood for 1-2 outposts)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@ Age up to Feudal with appropriate Wing",
+        "- Reinforcements @technology_ayyubids/military-wing-reinforcement-1.png@: Good against horse Civs (MAKE SURE TO HAVE ENOUGH ROOM FOR NEW UNITS ON AGE UP)",
+        "- Master Smiths @technology_ayyubids/military-wing-master-smiths-1.png@: Good against archers Civs",
+        "- Growth @technology_ayyubids/economic-wing-growth-1.png@: Save for Castle age up (MAKE SURE TO HAVE ENOUGH ROOM FOR NEW UNITS ON AGE UP)",
+        "----------------------------------------------------------------------",
+        "- Logistics @technology_ayyubids/culture-wing-logistics-1.png@: Save for Castle age up if against Civs that prioritize Relics, otherwise, save for Imperial age up",
+        "- Advancement @technology_ayyubids/culture-wing-advancement-1.png@: Save for later (when a quick age up can be decisive)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 16,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "Send wood villagers @resource/resource_wood.webp@@unit_worker/villager-abbasid.png@ to stone @resource/resource_stone.png@ (One trip provides enough stone (50) to upgrade 1 outpost @building_defensive/outpost.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 4,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "Rally @resource/rally.webp@ villagers @unit_worker/villager-abbasid.png@ to food @resource/resource_food.png@",
+        "*** Try to not completely exhaust berries. Future age-up will provide bonus to berry bushes that still remain"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send stone villagers @resource/resource_stone.webp@@unit_worker/villager-abbasid.png@ back to wood @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send Desert Raider @unit_ayyubids/desert-raider-2.webp@ from House of Wisdom @landmark_abbasid/house-of-wisdom.png@to harass (MAKE SURE TO HAVE ENOUGH ROOM FOR NEW UNITS ON AGE UP)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 20,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally villagers @unit_worker/villager-abbasid.webp@ to food @resource/resource_food.png@",
+        "*** Try to not completely exhaust berries. Future age-up will provide bonus to berry bushes that still remain"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:20",
+      "villager_count": 25,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send berry villagers @resource/berrybush.webp@@unit_worker/villager-abbasid.png@(should be around 7-8) to gold @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:35",
+      "villager_count": 26,
+      "resources": {
+        "food": 7,
+        "wood": 9,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_3.webp@ Age up to Castle with appropriate Wing",
+        "- Growth @technology_ayyubids/economic-wing-growth-1.png@: Get 8 villagers on age up, best in 90% of scenarios. Rally @resource/rally.png@ to berries @resource/berrybush.png@(MAKE SURE TO HAVE ENOUGH ROOM FOR NEW UNITS ON AGE UP)",
+        "- Logistics @technology_ayyubids/culture-wing-logistics-1.png@: Great if against Civs that prioritize Relics",
+        "----------------------------------------------------------------------",
+        "- Advancement @technology_ayyubids/culture-wing-advancement-1.png@: Save for when a quick age up can be decisive"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 26,
+      "resources": {
+        "food": 7,
+        "wood": 9,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally villagers @unit_worker/villager-abbasid.webp@ to wood @resource/resource_wood.png@ until 12 (Build @building_economy/lumber-camp.png@ when necessary)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 29,
+      "resources": {
+        "food": 7,
+        "wood": 12,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get eco upgrades @technology_economy/wheelbarrow.webp@ + @technology_economy/double-broadaxe.png@ + @technology_economy/specialized-pick.png@",
+        "Rally villagers @unit_worker/villager-abbasid.png@ to food @resource/resource_food.png@ until 18",
+        "***MAKE SURE TO HAVE ENOUGH ROOM FOR NEW UNITS ON AGE UP***"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 30,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build Stables x2 @building_military/stable.webp@@building_military/stable.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 40,
+      "resources": {
+        "food": 18,
+        "wood": 12,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Immediately queue Camel Lancers @unit_ayyubids/camel-lancer-3.webp@ and harass"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 40,
+      "resources": {
+        "food": 18,
+        "wood": 12,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally villagers @unit_worker/villager-abbasid.webp@ to wood@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 40,
+      "resources": {
+        "food": 18,
+        "wood": 12,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build Mosque @building_religious/mosque.webp@ (consider building 2) and get relics @resource/relics.png@ (1 Relic = 2 Villagers on Gold)",
+        "***If opponent is massing units and playing aggressively, prioritize military production buildings"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 40,
+      "resources": {
+        "food": 18,
+        "wood": 12,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build blacksmith @building_technology/blacksmith.webp@ get appropriate upgrades (@technology_military/iron-undermesh.png@ + @technology_military/bloomery.png@ +  etc)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 40,
+      "resources": {
+        "food": 18,
+        "wood": 12,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Upgrade to Veteran Camel Lancers @unit_ayyubids/camel-lancer-3.webp@ at stables @building_military/stable.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": 46,
+      "resources": {
+        "food": 18,
+        "wood": 12,
+        "gold": 16,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally villagers @unit_worker/villager-abbasid.webp@ to gold @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 48,
+      "resources": {
+        "food": 18,
+        "wood": 12,
+        "gold": 18,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Depending on how the game is being played at this point, prioritize military production @building_military/stable.webp@@building_military/archery-range.png@@building_military/barracks.png@ or build 2nd @building_economy/town-center.png@ or 3rd TC @building_economy/town-center.png@@building_economy/town-center.png@ to boom."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If opponent is attacking actively in Feudal with spearman @unit_infantry/spearman-1.webp@ and archers @building_military/archery-range.png@, don't build Camel Lancers @unit_ayyubids/camel-lancer-3.png@.",
+        "Instead, build barracks @building_military/barracks.png@ and Ghulam @unit_abbasid/ghulam-3.png@ to break out. Add @building_military/archery-range.png@ @unit_infantry/archer-2.png@ @unit_infantry/crossbowman-3.png@ to support.",
+        "Camel Lancers @unit_ayyubids/camel-lancer-3.png@ in general are better because than Ghulam @unit_abbasid/ghulam-3.png@ because you can more easily harass and keep your opponent on defense.",
+        "Don't forget to build siege @building_military/siege-workshop.png@ units, specifically Manjaniq's @unit_ayyubids/manjaniq-3.png@"
+      ]
+    }
+  ],
+  "description": "Fast Castle Build Order based on Beasty's March 7th, 2024 guide.\n\nFocused on first build order covered in video (delayed production of military units). Be sure to watch video to see different adaptations based on your choices in House of Wisdom and opponent playstyles.\n\nTried to include more info than necessary to help new players to Ayyubid (myself).",
+  "video": "https://www.youtube.com/embed/RI3kUGUUBV8",
+  "season": 7,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

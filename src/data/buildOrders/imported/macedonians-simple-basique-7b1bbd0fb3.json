@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "name": "MACEDONIANS - Simple, Basique",
+  "civilization": "Macedonian Dynasty",
+  "author": "m0_0p",
+  "source": "https://aoe4guides.com/builds/ky5RiOxY0tsQqkc22EVy",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.webp@@resource/resource_gold.webp@(2)",
+        "@unit_worker/villager.webp@> @resource/sheep.webp@",
+        "@building_macedonian/varangian_warcamp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.webp@@resource/sheep.webp@(11)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @resource/sheep.webp@@unit_worker/villager.webp@ > @age/age_2.webp@ &gt;&gt; @building_economy/house.webp@ &gt;&gt; @building_economy/mill.webp@",
+        "* @landmark_byzantines/grand-winery-1.webp@ : eco",
+        "@landmark_byzantines/imperial-hippodrome-1.webp@ : aggro, VS Maliens"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.webp@@resource/resource_wood.webp@ (7)",
+        "3 @resource/sheep.webp@@unit_worker/villager.webp@ > @building_economy/lumber-camp.webp@ &gt;&gt; @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.webp@@resource/sheep.webp@",
+        "@building_macedonian/varangian_arsenal.webp@",
+        "@technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 11,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_macedonian/varangian_stronghold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 14,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/survival-techniques.webp@/ @technology_economy/horticulture.webp@",
+        "@technology_macedonian/scale-barding-2.webp@ @technology_macedonian/rhomphaia-3.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "* @landmark_byzantines/golden-horn-tower-2.webp@ : super Déf + @unit_infantry/crossbowman-3.webp@",
+        "@landmark_byzantines/cistern-of-the-first-hill-2.webp@ : pour Fast Castle"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "* @landmark_byzantines/palatine-school-3.webp@ : @unit_macedonian/palatine_cataphracts.webp@",
+        "@landmark_byzantines/foreign-engineering-company-3.webp@ : VS éléphants / forts > @unit_french/royal-cannon-4.webp@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "MarineLorD",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "name": "6 minute AGE III",
+  "civilization": "Holy Roman Empire",
+  "author": "kendinehas",
+  "source": "https://aoe4guides.com/builds/gXhVu8HJviXC4TjvYuwQ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:01",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3@unit_worker/villager.webp@ to @resource/resource_food.png@  3 @unit_worker/villager.png@to @resource/resource_gold.png@",
+        "@resource/rally.png@to@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:31",
+      "villager_count": 7,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "7th @unit_worker/villager.webp@ to @abilities/repair.png@@building_economy/house.png@ and back to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@age/age_2.webp@with 4 @unit_worker/villager.png@age up @abilities/repair.png@@landmark_hre/aachen-chapel.png@ and back to @resource/resource_food.png@ when its done."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@to@resource/resource_gold.png@ till 5@unit_worker/villager.png@ on it.",
+        "then@resource/rally.png@ back to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 7,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 7,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "@age/age_3.webp@ with 9 @abilities/repair.png@@landmark_hre/regnitz-cathedral.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 35,
+      "resources": {
+        "food": 12,
+        "wood": 10,
+        "gold": 7,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_military/barracks.png@@building_technology/blacksmith.png@, get @resource/relics.png@ and eco & military upgrades."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "go harras, and add second TC"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/4nl0AMpgtBY",
+  "season": 9,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

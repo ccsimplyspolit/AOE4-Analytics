@@ -8,6 +8,7 @@ import { formatRankLevel, formatRating } from '@shared/format'
 import { cn } from '@shared/lib/utils'
 import { CivFlag } from './CivFlag'
 import { panelBg } from './panelBg'
+import { useI18n } from '../i18n'
 
 const AGE_ROMAN: Record<number, string> = { 2: 'II', 3: 'III', 4: 'IV' }
 const UNIT_CDN = 'https://data.aoe4world.com/images/units'
@@ -34,6 +35,7 @@ export function MatchupBar({
   matchup?: LiveMatchup | null
   troops?: MatchupTroops | null
 }) {
+  const { tt } = useI18n()
   const teams = matchup?.teams ?? []
   const hasTeams = teams.length >= 2 && teams.some((t) => t.length > 0)
   const hasTroops = !!troops && (troops.mine.length > 0 || troops.theirs.length > 0)
@@ -60,14 +62,14 @@ export function MatchupBar({
         <div className="flex flex-col items-center">
           <div className="flex items-start">
             <TeamColumn
-              label={maxTeamSize > 1 ? 'Your Team' : null}
+              label={maxTeamSize > 1 ? tt('Your Team') : null}
               players={teams[0] ?? []}
               align="left"
               winOdds={winOdds}
             />
             <div className="w-[220px] shrink-0" aria-hidden />
             <TeamColumn
-              label={maxTeamSize > 1 ? 'Enemy Team' : null}
+              label={maxTeamSize > 1 ? tt('Enemy Team') : null}
               players={teams.slice(1).flat()}
               align="right"
             />
@@ -81,10 +83,10 @@ export function MatchupBar({
                 units={troops!.mine}
                 priority={troops!.priority}
                 align="left"
-                label="Your army"
+                label={tt('Your army')}
               />
               <div className="w-[430px] shrink-0" aria-hidden />
-              <TroopsCol units={troops!.theirs} align="right" label="They make" />
+              <TroopsCol units={troops!.theirs} align="right" label={tt('They make')} />
             </div>
           )}
         </div>
@@ -101,10 +103,10 @@ export function MatchupBar({
                 units={troops!.mine}
                 priority={troops!.priority}
                 align="left"
-                label="Your army"
+                label={tt('Your army')}
               />
               <div className="w-[460px] shrink-0" aria-hidden />
-              <TroopsCol units={troops!.theirs} align="right" label="They make" />
+              <TroopsCol units={troops!.theirs} align="right" label={tt('They make')} />
             </div>
           )}
         </div>
@@ -184,6 +186,7 @@ function PlayerLine({
   align: 'left' | 'right'
   winOdds?: number | null
 }) {
+  const { tt, gameName } = useI18n()
   const isRight = align === 'right'
   const color = player.isMe
     ? 'hsl(var(--primary))'
@@ -200,7 +203,7 @@ function PlayerLine({
       <div className={cn('min-w-0 flex-1', isRight && 'items-end')}>
         <div className={cn('flex items-baseline gap-2', isRight && 'flex-row-reverse')}>
           <span className="whitespace-nowrap text-[15px] font-bold" style={{ color }}>
-            {player.civ ? civDisplayName(player.civ) : 'Unknown'}
+            {player.civ ? gameName(civDisplayName(player.civ)) : tt('Unknown')}
           </span>
           <span
             className={cn(
@@ -210,18 +213,22 @@ function PlayerLine({
           >
             {player.isMe && (
               <span className="rounded bg-primary/20 px-1 py-px text-[8px] font-semibold uppercase text-primary">
-                You
+                {tt('You')}
               </span>
             )}
             {player.isAI && (
               <span className="rounded bg-white/15 px-1 py-px text-[8px] font-semibold uppercase text-white/75">
-                AI
+                {tt('AI')}
               </span>
             )}
             <span className="max-w-[150px] truncate">{player.name}</span>
           </span>
         </div>
-        {(rank || player.rating != null || winOdds != null) && (
+        {(rank ||
+          player.rating != null ||
+          player.winRate != null ||
+          player.favoriteCivs.length > 0 ||
+          winOdds != null) && (
           <div
             className={cn(
               'mt-1 flex items-center gap-2 text-[11px] text-white/65',
@@ -234,7 +241,22 @@ function PlayerLine({
                 {formatRating(player.rating)}
               </span>
             )}
+            {player.winRate != null && (
+              <span className="tabular-nums">
+                {Math.round(player.winRate)}% {tt('WR')}
+              </span>
+            )}
             {winOdds != null && <WinOddsChip pct={winOdds} />}
+            {player.favoriteCivs.length > 0 && (
+              <span
+                className={cn('flex items-center gap-1', isRight && 'flex-row-reverse')}
+                title={tt('Most-played civs')}
+              >
+                {player.favoriteCivs.map((civ) => (
+                  <CivFlag key={civ} civ={civ} compact />
+                ))}
+              </span>
+            )}
           </div>
         )}
       </div>
@@ -247,16 +269,18 @@ function PlayerLine({
  * label says "by rating" rather than presenting it as a prediction.
  */
 function WinOddsChip({ pct }: { pct: number }) {
+  const { tt } = useI18n()
   return (
     <span className="whitespace-nowrap tabular-nums">
       <span className={pct >= 50 ? 'text-win' : 'text-loss'}>{Math.round(pct)}%</span>{' '}
-      <span className="text-white/55">by rating</span>
+      <span className="text-white/55">{tt('by rating')}</span>
     </span>
   )
 }
 
 /** A teammate/opponent beyond the column's primary player — civ + name only, no rank/rating row. */
 function CompactPlayerLine({ player, align }: { player: MatchupPlayer; align: 'left' | 'right' }) {
+  const { tt, gameName } = useI18n()
   const isRight = align === 'right'
   const color = player.isMe
     ? 'hsl(var(--primary))'
@@ -275,19 +299,32 @@ function CompactPlayerLine({ player, align }: { player: MatchupPlayer; align: 'l
         className={cn('flex min-w-0 items-center gap-1 text-[11px]', isRight && 'flex-row-reverse')}
       >
         <span className="whitespace-nowrap font-semibold" style={{ color }}>
-          {player.civ ? civDisplayName(player.civ) : 'Unknown'}
+          {player.civ ? gameName(civDisplayName(player.civ)) : tt('Unknown')}
         </span>
         {player.isMe && (
           <span className="rounded bg-primary/20 px-1 py-px text-[7px] font-semibold uppercase text-primary">
-            You
+            {tt('You')}
           </span>
         )}
         {player.isAI && (
           <span className="rounded bg-white/15 px-1 py-px text-[7px] font-semibold uppercase text-white/75">
-            AI
+            {tt('AI')}
           </span>
         )}
         <span className="max-w-[110px] truncate text-white/80">{player.name}</span>
+        {player.winRate != null && (
+          <span className="tabular-nums text-white/55">{Math.round(player.winRate)}% {tt('WR')}</span>
+        )}
+        {player.favoriteCivs.length > 0 && (
+          <span
+            className={cn('flex items-center gap-1', isRight && 'flex-row-reverse')}
+            title={tt('Most-played civs')}
+          >
+            {player.favoriteCivs.map((civ) => (
+              <CivFlag key={civ} civ={civ} compact />
+            ))}
+          </span>
+        )}
       </span>
     </div>
   )
@@ -375,6 +412,7 @@ function LegacySide({
   align: 'left' | 'right'
   winOdds?: number | null
 }) {
+  const { tt, gameName } = useI18n()
   const isRight = align === 'right'
   const color = isRight ? 'hsl(var(--loss))' : 'hsl(var(--win))'
   const rank =
@@ -403,7 +441,7 @@ function LegacySide({
           className={cn('flex items-baseline gap-2 leading-none', isRight && 'flex-row-reverse')}
         >
           <span className="whitespace-nowrap text-[17px] font-bold" style={{ color }}>
-            {side.civ ? civDisplayName(side.civ) : 'Unknown'}
+            {side.civ ? gameName(civDisplayName(side.civ)) : tt('Unknown')}
           </span>
           <span
             className={cn(
@@ -413,11 +451,11 @@ function LegacySide({
           >
             {side.isAI && (
               <span className="rounded bg-white/15 px-1 py-px text-[8px] font-semibold uppercase text-white/80">
-                AI
+                {tt('AI')}
               </span>
             )}
             <span className="max-w-[170px] truncate">
-              {side.name ?? (isRight ? 'Opponent' : 'You')}
+              {side.name ?? (isRight ? tt('Opponent') : tt('You'))}
             </span>
           </span>
         </div>
@@ -439,7 +477,7 @@ function LegacySide({
                 <span className={side.winRate >= 50 ? 'text-win' : 'text-loss'}>
                   {Math.round(side.winRate)}%
                 </span>{' '}
-                WR
+                {tt('WR')}
               </span>
             )}
             {winOdds != null && <WinOddsChip pct={winOdds} />}

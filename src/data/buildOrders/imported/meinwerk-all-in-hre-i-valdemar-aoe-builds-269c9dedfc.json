@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 1,
+  "name": "Meinwerk All-In HRE I Valdemar_AoE Builds",
+  "civilization": "Holy Roman Empire",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/PIgcKZ2mHmOYXwpNbUjI",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@ to @resource/sheep.png@",
+        "3 @unit_worker/villager.png@ to @resource/resource_gold.png@  (build @building_economy/house.png@+@building_economy/mining-camp.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to@resource/resource_food.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once buildings are completed and all @resource/resource_gold.webp@@unit_worker/villager.png@ are gathering, you send your @unit_hre/prelate.png@ to inspire the 3 @unit_worker/villager.png@, then back to @resource/resource_food.png@@unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:50‑2:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Drop sheep off from @unit_cavalry/scout.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_hre/meinwerk-palace.webp@ with 4@unit_worker/villager.png@",
+        "( 3@resource/resource_gold.png@@unit_worker/villager.png@ + @resource/resource_food.png@@unit_worker/villager.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:22",
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "6 @unit_worker/villager.webp@ to gather ALL @resource/gaiatreeprototypetree.png@ -> @building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@until 10 @resource/resource_food.png@@unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:44",
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@ See splits to the left",
+        "2 @unit_worker/villager.png@ from @landmark_hre/meinwerk-palace.png@ go to @resource/resource_gold.png@ and builds @building_military/archery-range.png@ + @building_military/stable.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~4:20~",
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once 10 @resource/resource_food.webp@@unit_worker/villager.png@ rally wood and keep a 1:1 ratio (between food and wood)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~4:20~",
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Constant production of @unit_cavalry/horseman-1.webp@ + @unit_infantry/archer-2.png@. (keep resources as low as possible through spending. Don't gather resources you don't need for aggression)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_military/steeled-arrow.webp@ -> @technology_military/iron-undermesh.png@ -&gt; @technology_hre/riveted-chain-mail-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~7:00~",
+      "villager_count": 26,
+      "resources": {
+        "food": 13,
+        "wood": 11,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/barracks.webp@ if opponent has Cavalry"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~10:00~",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_military/bloomery.webp@ -> @technology_military/fitted-leatherwork.png@ / More eco upgrades like @technology_economy/wheelbarrow.png@@technology_economy/double-broadaxe.png@@technology_economy/horticulture.png@@technology_economy/survival-techniques.png@(if on deer/boar)"
+      ]
+    }
+  ],
+  "description": "Full all in relying on quick upgrades and fast units with a boosted eco from the prelate. \n\nVideo linked below",
+  "video": "",
+  "season": 7,
+  "map": null,
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

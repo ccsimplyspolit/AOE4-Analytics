@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "name": "[Edited for simplicity] Dark Age Aggression - Wam01",
+  "civilization": "Order of the Dragon",
+  "author": "Niki45nk",
+  "source": "https://aoe4guides.com/builds/pf7ftLdvzfuZrQNT2fnG",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 4,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @unit_worker/villager-abbasid.webp@ to @resource/sheep.png@",
+        "1 @unit_worker/villager-abbasid.png@ builds @building_military/barracks.png@ then to @resource/gaiatreeprototypetree.png@",
+        "Immediately queue 1 @unit_dragon/gilded-spearman-1.png@ and harass",
+        "@unit_cavalry/scout.png@ returns at least 1 @resource/sheep.png@",
+        "First @unit_worker/villager-abbasid.png@ to @resource/gaiatreeprototypetree.png@",
+        "@resource/rally.png@@resource/resource_food.png@ until 8"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/resource_wood.webp@@unit_worker/villager.png@ builds @building_economy/house.png@ then to @resource/resource_food.png@",
+        "Move 2 @resource/resource_food.png@@unit_worker/villager.png@ to @resource/resource_wood.png@",
+        "Keep @resource/rally.png@ on @resource/resource_food.png@ (Control group 2 @resource/resource_food.png@@unit_worker/villager.png@ for @age/age_2.png@@abilities/repair.png@)",
+        "When 50 @resource/resource_wood.png@, Move @resource/resource_wood.png@@unit_worker/villager.png@s to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:11",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2 @resource/resource_food.webp@@unit_worker/villager.png@ build @age/age_2.png@@landmark_hre/meinwerk-palace.png@",
+        "Move 2 @resource/resource_food.png@@unit_worker/villager.png@ to @resource/resource_wood.png@",
+        "@resource/rally.png@ one @unit_worker/villager.png@ to @resource/resource_gold.png@",
+        "@resource/rally.png@@resource/resource_food.png@ until 6",
+        "@resource/rally.png@ one @unit_worker/villager.png@ to @age/age_2.png@@abilities/repair.png@, then to @resource/resource_wood.png@, then to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:58",
+      "villager_count": 17,
+      "resources": {
+        "food": 10,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@@abilities/repair.png@ to @resource/resource_food.png@",
+        "Keep @building_economy/town-center.png@@resource/rally.png@ on @resource/resource_food.png@ until 14",
+        "Produce some @unit_dragon/gilded-man-at-arms-2.png@ and harass"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 14,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.png@ until 5",
+        "1 @resource/resource_wood.png@@unit_worker/villager.png@ build @building_military/archery-range.png@ and return to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~7:30",
+      "villager_count": 23,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 7,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "7 @resource/resource_food.webp@@unit_worker/villager.png@ build @age/age_3.png@@landmark_hre/regnitz-cathedral.png@",
+        "Move 2 @resource/resource_food.png@@unit_worker/villager.png@ to @resource/resource_gold.png@",
+        "@resource/rally.png@@resource/resource_wood.png@ until 4, then@resource/rally.png@@resource/resource_food.png@",
+        "@age/age_3.png@@abilities/repair.png@ to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "~8:30",
+      "villager_count": 26,
+      "resources": {
+        "food": 15,
+        "wood": 4,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/stable.webp@ and @unit_dragon/gilded-knight-3.png@ to support",
+        "Produce @unit_hre/prelate.png@ and grab @resource/relics.png@",
+        "Go all-in to finish game in castle or go to @age/age_4.png@ with Swabia @landmark_hre/palace-of-swabia.png@"
+      ]
+    }
+  ],
+  "description": "My personal edit of Wam01's Dark Age Aggression BO. Original BO uploaded by snoasis: https://aoe4guides.com/builds/f0od4hPXT5qQI7qhFBik\n\nCovered in Farm Man Official's Apr 26, 2024's cast: https://www.youtube.com/embed/aquoicETlvc\n\nDirect link to Wam's POV: https://www.twitch.tv/videos/2128694536?t=3536s",
+  "video": "https://www.youtube.com/embed/aquoicETlvc",
+  "season": 9,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

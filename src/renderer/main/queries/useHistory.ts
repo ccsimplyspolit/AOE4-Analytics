@@ -24,12 +24,24 @@ export function useFullHistory() {
   return useAccountHistory('all')
 }
 
+/** Multi-game build adherence, sourced from local/cached summaries. */
+export function useBuildAuditHistory(limit = 50) {
+  const settings = useSettings()
+  const profileId = settings.data?.profileId ?? null
+  return useQuery({
+    queryKey: ['buildAuditHistory', profileId, limit],
+    queryFn: () => ipc.getBuildAuditHistory(limit),
+    enabled: settings.isSuccess,
+    staleTime: 60_000,
+  })
+}
+
 /** The full stat summary (build order + economy/score) for a game, or null. */
-export function useGameSummary(matchId: string | undefined) {
+export function useGameSummary(matchId: string | undefined, options?: { enabled?: boolean }) {
   return useQuery({
     queryKey: ['gameSummary', matchId],
     queryFn: () => ipc.getGameSummary(matchId!),
-    enabled: !!matchId,
+    enabled: !!matchId && (options?.enabled ?? true),
     // A summary that EXISTS never changes — cache it for the session. But a
     // null result may just mean the upload hasn't landed yet (players upload
     // summaries minutes after a game) — retry on the next visit instead of

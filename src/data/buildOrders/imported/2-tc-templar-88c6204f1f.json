@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "name": "2 TC Templar",
+  "civilization": "Knights Templar",
+  "author": "Fenil",
+  "source": "https://aoe4guides.com/builds/sTpj6WJQsFtFZbNC6aCG",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "all @unit_worker/villager.webp@ on @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:57",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "next 2x @unit_worker/villager.webp@ build @building_economy/mining-camp.webp@&@building_economy/house.webp@ on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:50",
+      "villager_count": 11,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "next 3x @unit_worker/villager.webp@ on individual @resource/gaiatreeprototypetree.webp@ to farm @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:03",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ on @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 0,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "on 200 @resource/resource_gold.webp@ change @unit_worker/villager.webp@ to @resource/resource_stone.webp@ and build @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:25",
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 0,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "change 5x @unit_worker/villager.webp@ from @resource/resource_food.webp@ to @resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:50",
+      "villager_count": 14,
+      "resources": {
+        "food": 0,
+        "wood": 7,
+        "gold": 0,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "change @unit_worker/villager.webp@ from @resource/resource_food.webp@ to @resource/resource_wood.webp@ and @resource/rally.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:50",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@civilization_flag/ant.webp@ @unit_templar/serjeant_age_2.webp@ strong for cover vs siege - mix with @unit_infantry/spearman-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:05",
+      "villager_count": 15,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "build @building_economy/town-center.webp@ near @resource/resource_wood.webp@ - research @technology_templar/safepassage.webp@"
+      ]
+    }
+  ],
+  "description": "4 Minute 2 TC Build Order",
+  "video": "https://www.youtube.com/embed/1IlDQcG1DBg",
+  "season": 12,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

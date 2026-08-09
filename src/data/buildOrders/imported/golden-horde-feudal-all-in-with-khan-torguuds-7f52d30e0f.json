@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "name": "Golden Horde Feudal All-in with Khan & Torguuds",
+  "civilization": "Golden Horde",
+  "author": "Eldritch",
+  "source": "https://aoe4guides.com/builds/YaldtBx323gE2V2N6VCa",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Queue 2 @unit_worker/villager-mongols.webp@ batches and @resource/rally.webp@ to @resource/sheep.webp@",
+        "Send 4 to @resource/sheep.webp@",
+        "Send 1 to build @building_mongols/ovoo.webp@ then @landmark_golden_horde/golden_tent.webp@ (near @resource/resource_gold.webp@ if front because you'll make @building_golden_horde/fortified_outpost.webp@ later on it) and then go @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:37",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Send 1 of the 2 new @unit_worker/villager-mongols.webp@ to build @building_mongols/ger.webp@ on @resource/resource_gold.webp@ and mine",
+        "Keep 2 @unit_worker/villager-mongols.webp@ on @resource/resource_gold.webp@ and @resource/rally.webp@@resource/sheep.webp@ until age-up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age-up with @technology_golden_horde/golden_tent_khan_age2.webp@",
+        "Send 6 @resource/sheep.webp@@unit_worker/villager-mongols.webp@ to @resource/gaiatreeprototypetree.webp@ and @resource/rally.webp@ the next two to @resource/gaiatreeprototypetree.webp@ as well",
+        "Then @resource/rally.webp@ back to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Produce @unit_golden_horde/khan.webp@ and @unit_golden_horde/torguud.webp@ from @landmark_golden_horde/golden_tent.webp@ and send to enemy @resource/resource_gold.webp@ to harass, try to keep him alive, dodge @unit_infantry/spearman-1.webp@",
+        "Send 1 @unit_worker/villager-mongols.webp@ to build @building_mongols/ovoo.webp@",
+        "Build @building_military/archery-range.webp@ near @landmark_golden_horde/golden_tent.webp@ with space for future @building_golden_horde/fortified_outpost.webp@",
+        "Build @building_mongols/ger.webp@ on @resource/resource_wood.webp@ when necessary"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:35",
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce 1 @unit_infantry/archer-2.webp@ batch and rally to the enemy base",
+        "Continue producing @unit_infantry/archer-2.webp@",
+        "Research @technology_economy/double-broadaxe.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:10",
+      "villager_count": 23,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce @unit_golden_horde/torguud.webp@ as soon as you have 160 @resource/resource_stone.webp@ and rally to enemy base, heal @unit_golden_horde/khan.webp@ if necessary",
+        "Once 11 @unit_worker/villager-mongols.webp@ on @resource/resource_food.webp@ then @resource/rally.webp@ @resource/resource_wood.webp@ until 14 then send 2-3 more @unit_worker/villager-mongols.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:50",
+      "villager_count": 29,
+      "resources": {
+        "food": 11,
+        "wood": 13,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_golden_horde/fortified_outpost.webp@ near your production",
+        "Build second production building when necessary, according to enemy composition",
+        "Whenever possible build @building_technology/blacksmith.webp@ and research @technology_military/steeled-arrow.webp@ and @technology_military/iron-undermesh.webp@",
+        "Research @technology_military/siege-engineering.webp@ if enemy goes 2 TC and you're in a safe position to push it with 2 rams"
+      ]
+    }
+  ],
+  "description": "A Build Order to go aggro all-in in Feudal, with Khan & Torguuds + Archers. You can aggro a bit earlier than with Building Carts and produce Torguuds more consistently. Aggressive strat best to deal with civs you don't want to play the long game against like Knights Templars or Ottomans.",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,613 @@
+{
+  "schemaVersion": 1,
+  "name": "English | Fast Castle with farms",
+  "civilization": "English",
+  "author": "Jockxtar",
+  "source": "https://aoe4guides.com/builds/gUoGjPoSBiQzojqy1tu7",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 1,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@ -> @resource/gaiatreeprototypetree.webp@ and drop once (we only need 30 @resource/resource_wood.webp@) -&gt; @resource/sheep.webp@",
+        "2 @unit_worker/villager.webp@ -&gt; @abilities/repair.webp@ 2 @building_economy/farm.webp@ & @building_economy/mill.webp@",
+        "1 @unit_worker/villager.webp@ -&gt; @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:05",
+      "villager_count": 6,
+      "resources": {
+        "food": 1,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @building_economy/house.webp@ -&gt; @building_economy/mining-camp.webp@ -&gt; @resource/resource_gold.webp@ (2)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:26",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@ on @resource/gaiatreeprototypetree.webp@ go to @resource/sheep.webp@, after dropping 30 @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:45",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/sheep.webp@ (4 more; total of 10 on @resource/resource_food.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:05",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/gaiatreeprototypetree.webp@ (5) Chop 2 @resource/gaiatreeprototypetree.webp@ then go to main @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 @resource/sheep.webp@@unit_worker/villager.webp@  -> @abilities/repair.webp@@age/age_2.webp@ -&gt; @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_english/abbey-of-kings.webp@: Ideal to match fast @age/age_3.webp@ strategies. The @unit_english/king-2.webp@ comes for free and can delay a bit the enemy timing. Later on, the healing aura is very strong on @unit_cavalry/knight-2.webp@ to have constant pressure.",
+        "@landmark_english/council-hall.webp@: Better for aggressive strategies. This strategy relies heavily on @unit_english/king-2.webp@ healing instead."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Move 2 @resource/sheep.webp@@unit_worker/villager.webp@ -> @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "2 @resource/sheep.webp@@unit_worker/villager.webp@ -> @abilities/repair.webp@@building_economy/farm.webp@",
+        "OR --- vs cavalry civs ---",
+        "Save @resource/resource_wood.webp@ for @building_military/barracks.webp@ first. Build @building_economy/farm.webp@ later."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:05",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/sheep.webp@ (18)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @abilities/repair.webp@@age/age_2.webp@@unit_worker/villager.webp@ -> @resource/resource_gold.webp@",
+        "Research @technology_economy/horticulture.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Gradually @abilities/repair.webp@@building_economy/farm.webp@. One with 2 @resource/sheep.webp@@unit_worker/villager.webp@, the other 2 with @resource/resource_wood.webp@@unit_worker/villager.webp@ until you have 8 around the @building_economy/mill.webp@.",
+        "OR --- vs cavalry civs ---",
+        "Save @resource/resource_wood.webp@ for @building_military/barracks.webp@ first. Build @building_economy/farm.webp@ later."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:55",
+      "villager_count": 20,
+      "resources": {
+        "food": 11,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start raiding with the @unit_english/king-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:05",
+      "villager_count": 27,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": 12
+      },
+      "notes": [
+        "12 @resource/resource_food.webp@@unit_worker/villager.webp@ (10 from @resource/sheep.webp@, 2 from @building_economy/farm.webp@) -> @abilities/repair.webp@@age/age_3.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_english/kings-palace.webp@: This landmark will help you scale your economy in the mid game. Best option unless you are afraid of a potential all-in from your opponent.",
+        "@landmark_english/the-white-tower.webp@: The safest choice. Ideal to protect your @building_economy/farm.webp@ even better."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:05",
+      "villager_count": 27,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": 12
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_gold.webp@ (10)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:15",
+      "villager_count": 27,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": 12
+      },
+      "notes": [
+        "Build 1 @building_military/stable.webp@ if you are chose @landmark_english/kings-palace.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 28,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 7,
+        "stone": 0,
+        "builder": 12
+      },
+      "notes": [
+        "Research @technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 29,
+      "resources": {
+        "food": 12,
+        "wood": 9,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @abilities/repair.webp@@age/age_3.webp@@unit_worker/villager.webp@ -> @building_economy/farm.webp@",
+        "4 @abilities/repair.webp@@age/age_3.webp@@unit_worker/villager.webp@ -&gt; @resource/sheep.webp@",
+        "6 @abilities/repair.webp@@age/age_3.webp@@unit_worker/villager.webp@ -&gt; @resource/resource_wood.webp@",
+        "Queue @unit_cavalry/knight-2.webp@ ASAP and use them to raid and distract the opponent. If you have the @unit_english/king-2.webp@ alive, move them together."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:25",
+      "villager_count": 31,
+      "resources": {
+        "food": 12,
+        "wood": 9,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_military/archery-range.webp@ and @building_military/barracks.webp@ to defend your base while your cavalry raids.",
+        "Eventually, you can join forces and go for a strong push on the enemy base."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Spend excess @resource/resource_gold.webp@ on upgrades, don't build second @building_military/stable.webp@",
+        "If you are loosing @unit_cavalry/knight-2.webp@, you need to play more carefully with them."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep adding @building_economy/farm.webp@ gradually until you have 5 full packs (total of 40)",
+        "Then @resource/rally.webp@ -> @resource/resource_gold.webp@ until you have 15 @unit_worker/villager.webp@ mining.",
+        "Then @resource/rally.webp@ -&gt; @resource/resource_wood.webp@ and keep adding @building_economy/farm.webp@ and production buildings."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 80,
+      "resources": {
+        "food": 40,
+        "wood": 20,
+        "gold": 10,
+        "stone": 10,
+        "builder": -1
+      },
+      "notes": [
+        "&lt;- Ideal economy"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Production buildings:",
+        "2 @building_military/barracks.webp@ ; 2 @building_military/archery-range.webp@ ; 1 @building_military/stable.webp@",
+        "(@landmark_english/the-white-tower.webp@ counts as 2 of any kind)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "The goal during @age/age_3.webp@ is to apply a lot of pressure with our superior @resource/resource_food.webp@ economy to damage our opponent and slow down their scaling while we get ready to go @age/age_4.webp@.",
+        "We can also add @unit_siege/trebuchet.webp@ to finish our opponent if we have a big lead, but going @age/age_4.webp@ is always ideal with @civilization_flag/eng.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remember to research @technology_english/network-of-citadels.webp@ at @landmark_english/the-white-tower.webp@/@building_defensive/keep.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_english/wynguard-palace.webp@: If you have secured map control in @age/age_3.webp@ and have access to @resource/resource_gold.webp@, this landmark will allow you to snowball the game and to compete with the strongest late game civilizations toe to toe.",
+        "@landmark_english/berkshire-palace.webp@: If things are tied, this landmark is super good at securing map control and key resources. Also, if you are behind and at risk of getting all-in by your opponent, this landmark will save you."
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Immediately research @technology_english/enclosures.webp@",
+        "Prioritize @unit_english/longbowman-2.webp@ and @unit_infantry/man-at-arms-1.webp@ elite upgrades."
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_technology/university.webp@: @technology_military/elite-army-tactics.webp@ -> @technology_military/incendiary-arrows.webp@ -&gt; @technology_military/silk-bowstrings.webp@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": 114,
+      "resources": {
+        "food": 64,
+        "wood": 30,
+        "gold": 15,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "&lt;- Ideal economy balance should look like this:"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Production balance:",
+        "10 @building_military/barracks.webp@ ; 10 @building_military/archery-range.webp@ ; 5 @building_military/stable.webp@ ; 3 @building_military/siege-workshop.webp@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Push forward slowly while building @building_defensive/outpost.webp@ and @building_defensive/keep.webp@, slowly creeping closer and closer to the enemy base, so that you always benefit from the bonus attack speed."
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After researching @technology_military/incendiary-arrows.webp@ and @technology_military/silk-bowstrings.webp@ at @building_technology/university.webp@, @unit_english/longbowman-2.webp@/@unit_english/wynguard-ranger-4.webp@ counter siege units, even @unit_siege/mangonel-3.webp@, and their high base damage makes them quite competent against cavalry and armored units as well."
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce @unit_siege/trebuchet.webp@ to destroy @building_defensive/keep.webp@ and @building_defensive/stone-wall.webp@"
+      ]
+    }
+  ],
+  "description": "Fast Castle build order with farms in Dark Age.\nThis gives you the ability to not run out of food after reaching Castle Age while still getting an early age up.",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -4,11 +4,12 @@ import { Shield } from 'lucide-react'
 import type { RankInfo } from '@domain/types'
 import type { PlaystyleTag } from '@domain/playstyle'
 import type { CivOverviewRow } from '@domain/profileOverview'
-import { formatDurationShort, countryFlag, formatPercent } from '@shared/format'
+import { formatCount, formatDurationShort, countryFlag, formatPercent } from '@shared/format'
 import { cn } from '@shared/lib/utils'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { RankBadge } from './RankBadge'
 import { WinRateBar } from './WinRateBar'
+import { useI18n } from '../../i18n'
 
 /** The player's identity + rank + tags column (Mobalytics-profile style). */
 export function ProfileIdentityCard({
@@ -31,6 +32,7 @@ export function ProfileIdentityCard({
   longestLossStreak: number
   tags: PlaystyleTag[]
 }) {
+  const { tt } = useI18n()
   return (
     <Card>
       <CardContent className="space-y-4 p-4">
@@ -65,14 +67,14 @@ export function ProfileIdentityCard({
 
         <div className="space-y-1.5 rounded-md border border-border/70 bg-background/40 p-3">
           <div className="flex items-baseline justify-between text-xs">
-            <span className="text-muted-foreground">Synced games</span>
+            <span className="text-muted-foreground">{tt('Synced games')}</span>
             <span className="font-semibold tabular-nums">
               {totalGames} - {wins}W-{losses}L
             </span>
           </div>
           <WinRateBar winRate={winRate} />
           <div className="flex items-baseline justify-between text-[11px] text-muted-foreground">
-            <span>Longest streaks</span>
+            <span>{tt('Longest streaks')}</span>
             <span className="tabular-nums">
               <span className="text-win">{longestWinStreak}W</span> -{' '}
               <span className="text-loss">{longestLossStreak}L</span>
@@ -86,6 +88,7 @@ export function ProfileIdentityCard({
 
 /** Per-civ results, economy, army, and pacing — one quiet ledger table. */
 export function CivOverviewTable({ rows }: { rows: CivOverviewRow[] }) {
+  const { tt } = useI18n()
   if (rows.length === 0) return null
   const display = rows.slice(0, 10)
 
@@ -95,7 +98,7 @@ export function CivOverviewTable({ rows }: { rows: CivOverviewRow[] }) {
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h3 className="flex items-center gap-1.5 text-sm">
             <Shield className="h-4 w-4 text-primary" />
-            Civilizations
+            {tt('Civilizations')}
           </h3>
           <span className="text-[11px] text-muted-foreground">
             {rows.length} civ{rows.length === 1 ? '' : 's'} played
@@ -106,13 +109,13 @@ export function CivOverviewTable({ rows }: { rows: CivOverviewRow[] }) {
           <table className="w-full min-w-[820px] text-sm">
             <thead>
               <tr className="border-b border-border/70 bg-background/40 text-left">
-                <th className="rts-ledger-head px-3 py-2 text-left">Civ</th>
-                <th className="rts-ledger-head px-2 py-2 text-left">Style</th>
-                <th className="rts-ledger-head px-2 py-2 text-left">Results</th>
-                <th className="rts-ledger-head px-2 py-2 text-right">Economy</th>
-                <th className="rts-ledger-head px-2 py-2 text-right">Army</th>
-                <th className="rts-ledger-head px-2 py-2 text-right">Pace</th>
-                <th className="rts-ledger-head px-3 py-2 text-right">Rating</th>
+                <th className="rts-ledger-head px-3 py-2 text-left">{tt('Civ')}</th>
+                <th className="rts-ledger-head px-2 py-2 text-left">{tt('Style')}</th>
+                <th className="rts-ledger-head px-2 py-2 text-left">{tt('Results')}</th>
+                <th className="rts-ledger-head px-2 py-2 text-right">{tt('Economy')}</th>
+                <th className="rts-ledger-head px-2 py-2 text-right">{tt('Army')}</th>
+                <th className="rts-ledger-head px-2 py-2 text-right">{tt('Pace')}</th>
+                <th className="rts-ledger-head px-3 py-2 text-right">{tt('Rating')}</th>
               </tr>
             </thead>
             <tbody>
@@ -174,10 +177,10 @@ function CivRow({ r }: { r: CivOverviewRow }) {
         }
         sub={
           r.avgResourcesGathered != null
-            ? `${Math.round(r.avgResourcesGathered).toLocaleString()} gathered`
+            ? `${formatCount(Math.round(r.avgResourcesGathered))} gathered`
             : r.avgVillagersProduced != null
-            ? `${r.avgVillagersProduced} villagers`
-            : null
+              ? `${r.avgVillagersProduced} villagers`
+              : null
         }
         suffix={r.avgResourcesPerMinute != null ? 'res/min' : 'vil/min'}
       />

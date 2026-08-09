@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "name": "Lancaster 2TC",
+  "civilization": "House of Lancaster",
+  "author": "siberian_wolf",
+  "source": "https://aoe4guides.com/builds/pGmV2gGVVAffXjLKFerf",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6@unit_worker/villager.webp@>@resource/sheep.webp@",
+        "3@resource/rally.webp@&gt;@building_economy/house.webp@&gt;@building_economy/mining-camp.webp@&gt;@resource/resource_gold.webp@(200)",
+        "3@resource/rally.webp@&gt;@resource/sheep.webp@",
+        "1@resource/resource_gold.webp@@unit_worker/villager.webp@&gt;@building_economy/lumber-camp.webp@&gt;@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 19,
+      "resources": {
+        "food": 3,
+        "wood": 10,
+        "gold": 0,
+        "stone": 4,
+        "builder": 2
+      },
+      "notes": [
+        "2@resource/resource_gold.webp@@unit_worker/villager.webp@>@landmark_lancaster/lancaster_castle.webp@",
+        "2@resource/sheep.webp@@unit_worker/villager.webp@&gt;@resource/resource_wood.webp@",
+        "4@resource/sheep.webp@@unit_worker/villager.webp@&gt;@building_economy/mining-camp.webp@&gt;@resource/resource_stone.webp@",
+        "7@resource/rally.webp@&gt;@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 5,
+        "wood": 12,
+        "gold": 0,
+        "stone": 4,
+        "builder": 1
+      },
+      "notes": [
+        "3@resource/rally.webp@>@resource/sheep.webp@",
+        "8@resource/resource_wood.webp@@unit_worker/villager.webp@&gt;@building_economy/town-center.webp@",
+        "2@landmark_english/abbey-of-kings.webp@@unit_worker/villager.webp@&gt;@resource/resource_wood.webp@",
+        "8@building_economy/town-center.webp@@unit_worker/villager.webp@&gt;@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 37,
+      "resources": {
+        "food": 24,
+        "wood": 2,
+        "gold": 10,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "3@resource/rally.webp@>@resource/sheep.webp@",
+        "7@resource/rally.webp@&gt;@resource/resource_gold.webp@",
+        "10@resource/rally.webp@&gt;@resource/sheep.webp@",
+        "3@resource/resource_stone.webp@&gt;@building_lancaster/manor.webp@&gt;@resource/resource_gold.webp@",
+        "8@resource/resource_wood.webp@&gt;@building_lancaster/manor.webp@&gt;@building_economy/mill.webp@&gt;@technology_economy/horticulture.webp@&gt;@resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 80,
+      "resources": {
+        "food": 30,
+        "wood": 20,
+        "gold": 20,
+        "stone": 10,
+        "builder": -1
+      },
+      "notes": [
+        "8@resource/berrybush.webp@@unit_worker/villager.webp@> @landmark_lancaster/kings_college.webp@&gt;@resource/resource_wood.webp@",
+        "∞@resource/rally.webp@&gt;@resource/resource_wood.webp@",
+        "10@resource/resource_wood.webp@@unit_worker/villager.webp@&gt;@resource/resource_gold.webp@",
+        "10@resource/resource_wood.webp@@unit_worker/villager.webp@&gt;@resource/resource_stone.webp@",
+        "14@resource/resource_wood.webp@@unit_worker/villager.webp@&gt;@building_economy/farm.webp@",
+        "20 @unit_infantry/spearman-1.webp@ +20@unit_infantry/crossbowman-3.webp@ + 20@unit_lancaster/yeoman_age2.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 90,
+      "resources": {
+        "food": 30,
+        "wood": 20,
+        "gold": 20,
+        "stone": 20,
+        "builder": -1
+      },
+      "notes": [
+        "40 @unit_infantry/spearman-1.webp@ + 30 @unit_infantry/handcannoneer-4.webp@ + 30@unit_lancaster/yeoman_age2.webp@ + 6@unit_siege/mangonel-3.webp@ + 4@unit_siege/trebuchet.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

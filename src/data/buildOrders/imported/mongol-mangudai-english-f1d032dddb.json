@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "name": "Mongol Mangudai  [English]",
+  "civilization": "Mongols",
+  "author": "snoasis",
+  "source": "https://aoe4guides.com/builds/Tm6QlpaG2XozXMEY9Xio",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@ goes on @resource/resource_gold.png@ + @resource/resource_food.png@",
+        "4 @unit_worker/villager-mongols.png@ to @resource/sheep.png@",
+        "1 @unit_worker/villager-mongols.png@@resource/resource_gold.png@",
+        "1 @unit_worker/villager-mongols.png@ build @building_mongols/ovoo.png@ then to @resource/resource_gold.png@",
+        "Send @building_mongols/ger.png@ and @building_mongols/ovoo.png@",
+        "@resource/rally.png@@resource/resource_food.png@ until @age/age_2.png@ (~12 @resource/resource_food.png@ @unit_worker/villager-mongols.png@)"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with 1 @resource/resource_food.webp@@unit_worker/villager-mongols.png@ on @landmark_mongols/deer-stones.png@",
+        "Send @landmark_mongols/deer-stones.png@ to @resource/resource_wood.png@",
+        "@resource/rally.png@ @resource/resource_wood.png@ until 8",
+        "Make @building_military/archery-range.png@ + @building_technology/blacksmith.png@ close to @building_mongols/ovoo.png@",
+        "Queue 2 @unit_mongols/mangudai.png@",
+        "@resource/rally.png@ @resource/resource_gold.png@ until 5"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_wood.png@ until 11 and queue 2 @unit_mongols/mangudai.png@",
+        "After @building_technology/blacksmith.png@ , make 2 @building_mongols/pasture.png@",
+        "Get @technology_military/steeled-arrow.png@",
+        "Make @building_mongols/ger.png@ by @resource/resource_wood.png@",
+        "Send 1 @unit_worker/villager-mongols.png@ by @building_mongols/ovoo.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 32,
+      "resources": {
+        "food": 13,
+        "wood": 11,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make more @building_military/archery-range.webp@ by the @building_mongols/ovoo.png@",
+        "Make @building_mongols/pasture.png@",
+        "Age up to @age/age_3.png@ with @landmark_mongols/steppe-redoubt.png@",
+        "Make more @unit_mongols/mangudai.png@",
+        "Aim for 19 @resource/resource_food.png@ 19 @resource/resource_wood.png@ 13 @resource/resource_gold.png@"
+      ]
+    }
+  ],
+  "description": "Translated flking's guide into English. See original here: https://aoe4guides.com/builds/bkrGVkOJfXj01bjLZ33e",
+  "video": "",
+  "season": 7,
+  "map": null,
+  "strategy": "Cheese",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

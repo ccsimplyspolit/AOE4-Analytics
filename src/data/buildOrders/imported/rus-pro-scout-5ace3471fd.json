@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "name": "Rus Pro Scout",
+  "civilization": "Rus",
+  "author": "shiiizaaaa",
+  "source": "https://aoe4guides.com/builds/vt6S8r1uiGSAVWztV0wr",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/sheep.webp@",
+        "3@unit_worker/villager.webp@to@resource/sheep.webp@",
+        "2@unit_worker/villager.webp@build 2 @building_rus/hunting-cabin.webp@ on opposite sides of woodline",
+        "1@unit_worker/villager.webp@build @building_economy/house.webp@ then back to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4@unit_worker/villager.webp@from @resource/sheep.webp@to build@landmark_rus/the-golden-gate.webp@ then back to sheep",
+        "5@unit_worker/villager.webp@from @resource/sheep.webp@ to @resource/gaiatreeprototypetree.webp@, @resource/rally.webp@ to straggler then woodline"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@from@resource/gaiatreeprototypetree.webp@build @building_economy/lumber-camp.webp@on woodline and shift click to woodline"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 21,
+      "resources": {
+        "food": 9,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Sell @resource/resource_wood.webp@for @resource/resource_gold.webp@ at @landmark_rus/the-golden-gate.webp@",
+        "Produce @unit_cavalry/scout.webp@",
+        "Remacro @resource/rally.webp@to sheep once 12@unit_worker/villager.webp@ are on wood"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 23,
+      "resources": {
+        "food": 11,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/professional-scouts.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:15",
+      "villager_count": 23,
+      "resources": {
+        "food": 11,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@ from woodline to build @building_rus/wooden-fortress.webp@ on woodline, then back to wood",
+        "From here wall if you can, maybe build @building_rus/hunting-cabin.webp@ in the far woods, and castle with 8@unit_worker/villager.webp@ from sheep on@landmark_rus/high-trade-house.webp@ , then prolly horse archer spam idk."
+      ]
+    }
+  ],
+  "description": "yoinked this from a video",
+  "video": "https://www.youtube.com/embed/Q63u0lCTb7Y",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "name": "PS Jiangan",
+  "civilization": "Zhu Xi's Legacy",
+  "author": "lewisaaronwelch",
+  "source": "https://aoe4guides.com/builds/1oEP96QdPdSa40Pojs3B",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "(Starting @unit_worker/villager-china.webp@ & @unit_chinese/imperial-official.webp@) build @building_economy/mill.webp@ at back of @building_economy/town-center.webp@, move @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Next 2 @unit_worker/villager-china.webp@ goes to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Next @unit_worker/villager-china.webp@ builds @building_chinese/village.webp@ then @building_economy/mining-camp.webp@ for @resource/resource_gold.webp@",
+        "Next 2 @unit_worker/villager-china.webp@ go @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_wood.webp@ until 4 (@resource/gaiatreeprototypetree.webp@ until enough wood for @building_economy/lumber-camp.webp@)"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 @resource/resource_food.webp@ @unit_worker/villager-china.webp@ @abilities/repair.webp@ @landmark_zhuxi/jiangnan-tower-2.webp@ (Make sure space is free around it for military buildings)"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @unit_chinese/imperial-official.webp@ from @building_economy/town-center.webp@ (may need to force drop @resource/resource_gold.webp@) and supervise @building_economy/lumber-camp.webp@",
+        "Move 2 @resource/resource_food.webp@ @unit_worker/villager-china.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Next @unit_worker/villager-china.webp@ goes to @resource/resource_wood.webp@",
+        "@resource/rally.webp@ @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_zhuxi/jiangnan-tower-2.webp@ @abilities/repair.webp@ @unit_worker/villager-china.webp@ @abilities/repair.webp@ @building_military/stable.webp@ near @landmark_zhuxi/jiangnan-tower-2.webp@ then to @resource/resource_wood.webp@",
+        "Supervise @building_military/stable.webp@ with @building_economy/mill.webp@ @unit_chinese/imperial-official.webp@",
+        "Make 1 @unit_cavalry/horseman-1.webp@ then multiple @unit_cavalry/scout.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:05",
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/lumber-camp.webp@ @unit_chinese/imperial-official.webp@ supervise @building_economy/mill.webp@ and research @technology_economy/professional-scouts.webp@",
+        "1 @resource/resource_food.webp@ @unit_worker/villager-china.webp@ @abilities/repair.webp@ @building_military/barracks.webp@ then back to @resource/resource_food.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

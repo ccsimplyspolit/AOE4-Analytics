@@ -1,0 +1,347 @@
+{
+  "schemaVersion": 1,
+  "name": "Basic Lancaster",
+  "civilization": "House of Lancaster",
+  "author": "Manthys",
+  "source": "https://aoe4guides.com/builds/dUrJBR126ujHA6kcynoq",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All villagers @resource/sheep.webp@ and @resource/rally.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "With 1 @resource/sheep.webp@ villager build @building_economy/house.webp@ and @building_economy/mining-camp.webp@ with new @resource/resource_gold.webp@ villager"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Wait till 3 @resource/resource_gold.webp@ villager then @resource/rally.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "As soon as possible use  @resource/resource_gold.webp@ villager to build @landmark_english/abbey-of-kings.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:05",
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Send 3 @resource/sheep.webp@ villagers to @resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:10",
+      "villager_count": 8,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Send 1 @resource/sheep.webp@ villager and @resource/rally.webp@ to @resource/resource_wood.webp@ near forum"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:15",
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "At 90 @resource/resource_stone.webp@ collected move all @resource/resource_stone.webp@ to @resource/resource_wood.webp@ near forum"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:55",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "At 225 @resource/resource_wood.webp@ take 2 @resource/resource_wood.webp@villagers and build @building_lancaster/manor.webp@to cover @resource/sheep.webp@ right nect to@resource/resource_wood.webp@treeline (and @resource/resource_gold.webp@ if possible)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:15",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ and move villagers to @resource/resource_wood.webp@ treeline near forum"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 6,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Produce 1 @unit_lancaster/lord_lancaster.webp@ more then build either @building_military/stable.webp@or@building_military/barracks.webp@or@building_military/archery-range.webp@ and start producing 1 @unit_lancaster/hobelar_age2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:35",
+      "villager_count": 21,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Second @building_military/stable.webp@ (or other finished, start prod more @unit_lancaster/hobelar_age2.webp@, start scouting/attacking around mid map.  @resource/rally.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:20",
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_military/archery-range.webp@ then @resource/resource_wood.webp@, start producing and harassing. When units are low, pull them back to heal"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:00",
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ On wood again"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:20",
+      "villager_count": 28,
+      "resources": {
+        "food": 14,
+        "wood": 7,
+        "gold": 6,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Produce more @unit_lancaster/lord_lancaster.webp@, start @building_technology/blacksmith.webp@ prepare to switch food source to @resource/deer.webp@ if not already"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "08:00",
+      "villager_count": 28,
+      "resources": {
+        "food": 15,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @technology_military/iron-undermesh.webp@ and prepare to dive at around 09:00 remember to send back wounded troops or whole army"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:35",
+      "villager_count": 35,
+      "resources": {
+        "food": 10,
+        "wood": 15,
+        "gold": 6,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Get @technology_economy/survival-techniques.webp@ and prepare to build @building_economy/market.webp@ around @resource/berrybush.webp@ and expand @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:50",
+      "villager_count": 34,
+      "resources": {
+        "food": 10,
+        "wood": 15,
+        "gold": 5,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@ to@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:15",
+      "villager_count": 24,
+      "resources": {
+        "food": 15,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Stop producing units, prepare to ge up to @age/age_3.webp@ Pull @resource/sheep.webp@ to @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:30",
+      "villager_count": 35,
+      "resources": {
+        "food": 23,
+        "wood": 4,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Dive again for real this time"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "12:40",
+      "villager_count": 43,
+      "resources": {
+        "food": 28,
+        "wood": 4,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @landmark_lancaster/kings_college.webp@ if a lot of hoblars and if in good position, otherwise White tower possible"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -8,6 +8,7 @@ import {
 } from '@domain/buildOrderSchema'
 import { parseDuration } from '@domain/format'
 import { cn } from '@shared/lib/utils'
+import { useI18n } from '../i18n'
 
 const AGE_NAME: Record<number, string> = { 2: 'Feudal Age', 3: 'Castle Age', 4: 'Imperial Age' }
 /** Show a checkpoint chip from this long before its target time. */
@@ -48,6 +49,7 @@ export function CoachWidget({
   /** Placement mode renders a static preview. */
   placement?: boolean
 }) {
+  const { tt } = useI18n()
   const checkpoints = useMemo<Checkpoint[]>(() => {
     const idx = buildIndexForCiv(BUNDLED_BUILD_ORDERS, civ)
     if (idx == null) return []
@@ -61,11 +63,11 @@ export function CoachWidget({
   if (placement) {
     return (
       <Shell>
-        <Chip icon={<LandmarkIcon className="h-3.5 w-3.5" />} title="Feudal Age — 6:15" urgent>
-          18 villagers · in 0:24
+        <Chip icon={<LandmarkIcon className="h-3.5 w-3.5" />} title={`${tt('Feudal Age')} — 6:15`} urgent>
+          18 {tt('villagers')} · {tt('in')} 0:24
         </Chip>
-        <Chip icon={<Eye className="h-3.5 w-3.5" />} title="Scout their base">
-          find their gold + army buildings
+        <Chip icon={<Eye className="h-3.5 w-3.5" />} title={tt('Scout their base')}>
+          {tt('find their gold + army buildings')}
         </Chip>
       </Shell>
     )
@@ -91,17 +93,17 @@ export function CoachWidget({
           }
           title={
             next.timing.ageUpTo != null
-              ? `${AGE_NAME[next.timing.ageUpTo]} — ${next.timing.time}`
-              : `Opening — ${next.timing.time ?? 'now'}`
+              ? `${tt(AGE_NAME[next.timing.ageUpTo] ?? 'Age targets')} — ${next.timing.time}`
+              : `${tt('Opening')} — ${next.timing.time ?? tt('now')}`
           }
           urgent={next.atSec - elapsedSec <= URGENT_SEC}
         >
-          {next.timing.villagers} villagers · {countdown(next.atSec - elapsedSec)}
+          {next.timing.villagers} {tt('villagers')} · {countdown(next.atSec - elapsedSec, tt)}
         </Chip>
       )}
       {showScout && (
-        <Chip icon={<Eye className="h-3.5 w-3.5" />} title="Scout their base">
-          find their gold + army buildings
+        <Chip icon={<Eye className="h-3.5 w-3.5" />} title={tt('Scout their base')}>
+          {tt('find their gold + army buildings')}
         </Chip>
       )}
     </Shell>
@@ -109,13 +111,14 @@ export function CoachWidget({
 }
 
 function Shell({ children }: { children: React.ReactNode }) {
+  const { tt } = useI18n()
   return (
     <div
       className="flex w-64 select-none flex-col gap-1.5 font-sans"
       style={{ textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}
     >
       <span className="flex items-center gap-1 font-display text-[9px] font-bold uppercase tracking-[0.2em] text-white/55">
-        <Bell className="h-3 w-3" /> Coach
+        <Bell className="h-3 w-3" /> {tt('Coach')}
       </span>
       {children}
     </div>
@@ -149,8 +152,8 @@ function Chip({
   )
 }
 
-function countdown(sec: number): string {
-  if (sec <= 0) return 'now'
+function countdown(sec: number, tt: (value: string) => string): string {
+  if (sec <= 0) return tt('now')
   const s = Math.round(sec)
-  return `in ${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
+  return `${tt('in')} ${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
 }

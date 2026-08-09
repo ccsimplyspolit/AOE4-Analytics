@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "name": "Hybrid map opener - Beasty",
+  "civilization": "Jin Dynasty",
+  "author": "daltor",
+  "source": "https://aoe4guides.com/builds/29Sk7zy6ty95t5mWvX53",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 3,
+      "resources": {
+        "food": 0,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue 2 @unit_jin/mounted-villager.webp@, @resource/rally.webp@@resource/resource_wood.webp@",
+        "2 @unit_jin/mounted-villager.webp@ wood, one @unit_jin/mounted-villager.webp@ build @building_military/dock.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 4,
+      "resources": {
+        "food": 1,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @unit_worker/villager-china.webp@, @unit_ship/fishing-boat.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:45",
+      "villager_count": 8,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build@building_economy/house.webp@@building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 2nd @building_military/dock.webp@, @building_economy/mining-camp.webp@on@resource/resource_gold.webp@, @resource/rally.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:45",
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_economy/house.webp@, Once 5 on@resource/resource_gold.webp@,  @resource/rally.webp@@resource/resource_food.webp@(these vills will be used for age up)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 3rd @building_military/dock.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 29,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4@resource/resource_food.webp@@unit_worker/villager-china.webp@Build @age/age_2.webp@@landmark_jin/flower-pagoda.webp@,@resource/rally.webp@@resource/resource_gold.webp@",
+        "Queue 2@unit_jin/mounted-villager.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "6:25",
+      "villager_count": 32,
+      "resources": {
+        "food": 18,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:15",
+      "villager_count": 41,
+      "resources": {
+        "food": 25,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up, @unit_worker/villager-china.webp@from age up go @resource/resource_food.webp@(Reindeer under TC)",
+        "@landmark_jin/flower-pagoda.webp@ability on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 47,
+      "resources": {
+        "food": 25,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Build @age/age_3.webp@@landmark_jin/dragon-pavilion.webp@on @resource/resource_gold.webp@",
+        "Research @technology_economy/extended-lines.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:30",
+      "villager_count": 53,
+      "resources": {
+        "food": 28,
+        "wood": 11,
+        "gold": 14,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_jin/war-stable.webp@@building_jin/grassland.webp@, start @unit_jin/iron-pagoda.webp@production",
+        "Queue @unit_jin/emissary.webp@ and send to market",
+        "Build @building_religious/monastery.webp@for relics",
+        "Start prioritizing maxing out @unit_jin/mounted-villager.webp@as gold eco allows",
+        "eco upgrades @technology_jin/draft-horses.webp@@technology_economy/double-broadaxe.webp@@technology_economy/forestry.webp@@technology_economy/specialized-pick.webp@, military upgrades@technology_military/iron-undermesh.webp@"
+      ]
+    }
+  ],
+  "description": "Specifically on Four Lakes",
+  "video": "",
+  "season": 13,
+  "map": "Hybrid",
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

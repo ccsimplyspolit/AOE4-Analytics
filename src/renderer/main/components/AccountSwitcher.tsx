@@ -11,6 +11,7 @@ import {
   usePlayerSearch,
   useSteamAvatar,
 } from '../queries/useProfile'
+import { useI18n } from '../../i18n'
 
 /**
  * Switch between linked AoE4World accounts — a compact chip in the command bar
@@ -18,6 +19,7 @@ import {
  * dashboard, scout, history, and live polling.
  */
 export function AccountSwitcher() {
+  const { tt } = useI18n()
   const { data: settings } = useSettings()
   const { data: avatar } = useSteamAvatar()
   const setActive = useSetActiveAccount()
@@ -54,60 +56,62 @@ export function AccountSwitcher() {
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        title="Switch or add account"
+        title={tt('Switch or add account')}
         className="flex h-9 w-full items-center gap-2 rounded-sm border border-border bg-black/20 px-1.5 text-left transition-colors hover:border-primary/40 hover:bg-secondary/70"
       >
         <AccountAvatar avatar={avatar ?? null} name={activeName} />
         <div className="min-w-0 flex-1 truncate text-[13px] font-semibold tracking-tight">
-          {activeName ?? 'No account linked'}
+          {activeName ?? tt('No account linked')}
         </div>
         <ChevronsUpDown className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
       </button>
 
       {open && (
         <div className="absolute right-0 top-full z-30 mt-1 w-64 rounded-sm border border-border bg-popover p-1 shadow-2xl shadow-black/50">
-          {accounts.map((a) => (
-            <div
-              key={a.profileId}
-              className={cn(
-                'group flex items-center gap-2 rounded px-2 py-1.5 text-sm',
-                a.profileId === active ? 'bg-primary/15 text-primary' : 'hover:bg-secondary/80',
-              )}
-            >
-              <button
-                type="button"
-                onClick={() => {
-                  if (a.profileId !== active) setActive.mutate(a.profileId)
-                  setOpen(false)
-                }}
-                className="flex min-w-0 flex-1 items-center gap-2 text-left"
+          <div className="max-h-64 overflow-y-auto overscroll-contain">
+            {accounts.map((a) => (
+              <div
+                key={a.profileId}
+                className={cn(
+                  'group flex items-center gap-2 rounded px-2 py-1.5 text-sm',
+                  a.profileId === active ? 'bg-primary/15 text-primary' : 'hover:bg-secondary/80',
+                )}
               >
-                <Check
-                  className={cn(
-                    'h-3.5 w-3.5 shrink-0',
-                    a.profileId === active ? 'text-primary' : 'text-transparent',
-                  )}
-                />
-                <span className={cn('truncate', a.profileId === active && 'font-medium')}>
-                  {a.name}
-                </span>
-              </button>
-              {accounts.length > 1 && (
                 <button
                   type="button"
-                  title="Remove account"
                   onClick={() => {
-                    if (!window.confirm(`Remove ${a.name} from RTSLytics? This cannot be undone.`))
-                      return
-                    remove.mutate(a.profileId)
+                    if (a.profileId !== active) setActive.mutate(a.profileId)
+                    setOpen(false)
                   }}
-                  className="shrink-0 text-muted-foreground opacity-0 transition-opacity hover:text-destructive group-hover:opacity-100"
+                  className="flex min-w-0 flex-1 items-center gap-2 text-left"
                 >
-                  <X className="h-3.5 w-3.5" />
+                  <Check
+                    className={cn(
+                      'h-3.5 w-3.5 shrink-0',
+                      a.profileId === active ? 'text-primary' : 'text-transparent',
+                    )}
+                  />
+                  <span className={cn('truncate', a.profileId === active && 'font-medium')}>
+                    {a.name}
+                  </span>
                 </button>
-              )}
-            </div>
-          ))}
+                {accounts.length > 1 && (
+                  <button
+                    type="button"
+                    title={tt('Remove account')}
+                    onClick={() => {
+                      if (!window.confirm(`Remove ${a.name} from RTSLytics? This cannot be undone.`))
+                        return
+                      remove.mutate(a.profileId)
+                    }}
+                    className="shrink-0 text-muted-foreground opacity-0 transition-opacity hover:text-destructive group-hover:opacity-100"
+                  >
+                    <X className="h-3.5 w-3.5" />
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
 
           <div className="my-1 border-t border-primary/20" />
 
@@ -125,7 +129,7 @@ export function AccountSwitcher() {
               className="flex w-full items-center gap-2 rounded px-2 py-1.5 text-sm text-muted-foreground hover:bg-secondary/80 hover:text-foreground"
             >
               <Plus className="h-3.5 w-3.5" />
-              Add account
+              {tt('Add account')}
             </button>
           )}
         </div>
@@ -166,6 +170,7 @@ export function AccountAvatar({
 }
 
 function AddAccount({ onDone }: { onDone: () => void }) {
+  const { tt } = useI18n()
   const [query, setQuery] = useState('')
   const debounced = useDebounce(query, 350)
   const add = useSetProfile()
@@ -180,14 +185,14 @@ function AddAccount({ onDone }: { onDone: () => void }) {
           autoFocus
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search player name..."
+          placeholder={tt('Search player name...')}
           className="h-8 flex-1 bg-transparent text-sm focus:outline-none"
         />
       </div>
       {query.trim().length >= 3 && (
         <div className="max-h-48 overflow-y-auto">
           {isFetching && hits.length === 0 && (
-            <div className="px-2 py-1.5 text-xs text-muted-foreground">Searching...</div>
+            <div className="px-2 py-1.5 text-xs text-muted-foreground">{tt('Searching...')}</div>
           )}
           {hits.map((h) => (
             <button
@@ -203,7 +208,7 @@ function AddAccount({ onDone }: { onDone: () => void }) {
             </button>
           ))}
           {!isFetching && hits.length === 0 && (
-            <div className="px-2 py-1.5 text-xs text-muted-foreground">No players found.</div>
+            <div className="px-2 py-1.5 text-xs text-muted-foreground">{tt('No players found.')}</div>
           )}
         </div>
       )}

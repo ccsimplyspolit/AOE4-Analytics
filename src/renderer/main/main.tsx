@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom/client'
 import { HashRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { App } from './App'
-import { ErrorBoundary } from '@shared/components/ErrorBoundary'
+import { LocalizedErrorBoundary } from '@shared/components/ErrorBoundary'
 import '@shared/styles/globals.css'
+import { I18nProvider } from '../i18n'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -17,12 +18,14 @@ if (!rootEl) throw new Error('Root element #root not found')
 
 ReactDOM.createRoot(rootEl).render(
   <React.StrictMode>
-    <ErrorBoundary>
-      <QueryClientProvider client={queryClient}>
-        <HashRouter>
-          <App />
-        </HashRouter>
-      </QueryClientProvider>
-    </ErrorBoundary>
+    <I18nProvider>
+      <LocalizedErrorBoundary>
+        <QueryClientProvider client={queryClient}>
+          <HashRouter>
+            <App />
+          </HashRouter>
+        </QueryClientProvider>
+      </LocalizedErrorBoundary>
+    </I18nProvider>
   </React.StrictMode>,
 )

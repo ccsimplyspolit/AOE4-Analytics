@@ -1,0 +1,317 @@
+{
+  "schemaVersion": 1,
+  "name": "Fast Castle Team Play",
+  "civilization": "Japanese",
+  "author": "Norevex",
+  "source": "https://aoe4guides.com/builds/FyhpNEhtV16JuV32zHAp",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager-japanese.webp@ to @resource/sheep.webp@, 1 @unit_worker/villager-japanese.webp@ build @building_japanese/farmhouse-1.webp@ near @resource/berrybush.webp@, the farm @resource/berrybush.webp@ after."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Next 1 @unit_worker/villager-japanese.webp@ Build @building_japanese/forge-1.webp@ Near @resource/resource_gold.webp@and Farm it, Get @technology_japanese/towara-1.webp@ upgrade at @building_japanese/farmhouse-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Next 1 @unit_worker/villager-japanese.webp@ Farm @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Next 1 @unit_worker/villager-japanese.webp@ to @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Next 1 @unit_worker/villager-japanese.webp@ Farm @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Next 4 @unit_worker/villager-japanese.webp@ to @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:35",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Pull 2 @unit_worker/villager-japanese.webp@ of @resource/sheep.webp@ to Build @landmark_japanese/kura-storehouse-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "3 @resource/sheep.webp@@unit_worker/villager-japanese.webp@to @resource/gaiatreeprototypetree.webp@, after 1 tree send back to @resource/sheep.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:05",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Next 1 @unit_worker/villager-japanese.webp@To @resource/resource_gold.webp@, new @unit_worker/villager-japanese.webp@to @resource/berrybush.webp@ After."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Build house on other side of @resource/berrybush.webp@with new @unit_worker/villager-japanese.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 19,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "With 10 on @resource/berrybush.webp@, Que new @unit_worker/villager-japanese.webp@to @resource/sheep.webp@, Use 1 @resource/resource_gold.webp@@unit_worker/villager-japanese.webp@ to build @building_defensive/outpost.webp@ near @resource/resource_gold.webp@ if Needed"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 15,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager-japanese.webp@ from @landmark_japanese/kura-storehouse-1.webp@ to @building_economy/farm.webp@, 1 @unit_worker/villager-japanese.webp@ from @landmark_japanese/kura-storehouse-1.webp@ to @resource/resource_gold.webp@. Que new @unit_worker/villager-japanese.webp@ to @resource/sheep.webp@ and @building_economy/farm.webp@ when Possible"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 25,
+      "resources": {
+        "food": 20,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Que next 1 @unit_worker/villager-japanese.webp@ to@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:35",
+      "villager_count": 25,
+      "resources": {
+        "food": 10,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "7 @unit_worker/villager-japanese.webp@ from @resource/berrybush.webp@Build @landmark_japanese/floating-gate-2.webp@, 3 @unit_worker/villager-japanese.webp@ from @resource/berrybush.webp@ Build @building_japanese/farmhouse-1.webp@ then to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:45",
+      "villager_count": 26,
+      "resources": {
+        "food": 10,
+        "wood": 4,
+        "gold": 5,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "Que next 4 @unit_worker/villager-japanese.webp@ to@resource/resource_gold.webp@, Get @technology_japanese/daimyo-manor-1.webp@ when you can"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 30,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 9,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@150 @resource/resource_wood.webp@ have a @resource/resource_wood.webp@@unit_worker/villager-japanese.webp@ Build @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 30,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 9,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "4 @unit_worker/villager-japanese.webp@ from @landmark_japanese/floating-gate-2.webp@ to @resource/resource_wood.webp@, 3 @unit_worker/villager-japanese.webp@ from @landmark_japanese/floating-gate-2.webp@ to @resource/sheep.webp@/@building_economy/farm.webp@. @unit_japanese/shinto-priest-3.webp@ drop off Yorishiro in TC. Que up @unit_japanese/mounted-samurai-3.webp@ from @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:10",
+      "villager_count": 30,
+      "resources": {
+        "food": 13,
+        "wood": 8,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Que next 3 @unit_worker/villager-japanese.webp@ to @resource/resource_wood.webp@, Use @unit_japanese/shinto-priest-3.webp@ to Grab @resource/relics.webp@ with help of @unit_japanese/mounted-samurai-3.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:50",
+      "villager_count": 33,
+      "resources": {
+        "food": 13,
+        "wood": 9,
+        "gold": 9,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Build @building_japanese/shinto-shrine-3.webp@ then @building_japanese/farmhouse-1.webp@with 2 @resource/resource_wood.webp@@unit_worker/villager-japanese.webp@ then send back to @resource/resource_wood.webp@, Que new @unit_worker/villager-japanese.webp@ to @resource/resource_food.webp@/@resource/resource_wood.webp@ as fit"
+      ]
+    }
+  ],
+  "description": "Fast Castle Team Play",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

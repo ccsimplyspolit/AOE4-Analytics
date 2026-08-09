@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "name": "Agro into mounted samurai",
+  "civilization": "Japanese",
+  "author": "Piepet",
+  "source": "https://aoe4guides.com/builds/4s1KfKflyC2N235tISp2",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:04",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@abilities/repair.webp@ @building_military/barracks.webp@ + @building_japanese/farmhouse-1.webp@. Try not to block @landmark_japanese/kura-storehouse-1.webp@ by @abilities/repair.webp@ near @resource/gaiatreeprototypetree.webp@.",
+        "@unit_cavalry/scout.webp@ goes straight to ennemy base."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:50",
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Produce 2 @unit_infantry/spearman-1.webp@ to harass ennemy gold without overcomitting"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When finished @abilities/repair.webp@@building_japanese/farmhouse-1.webp@, do @technology_japanese/towara-1.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:50",
+      "villager_count": 11,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 4 @resource/sheep.webp@@unit_worker/villager-japanese.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Send @resource/resource_wood.webp@@unit_worker/villager-japanese.webp@ to @resource/sheep.webp@.",
+        "Send 1 @resource/sheep.webp@@unit_worker/villager-japanese.webp@ to build @building_japanese/farmhouse-1.webp@ near @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 9 @resource/sheep.webp@@unit_worker/villager-japanese.webp@ to @resource/berrybush.webp@. The goal is to be greedy and save @resource/sheep.webp@ for safe later food source."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 9,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@abilities/repair.webp@@landmark_japanese/kura-storehouse-1.webp@ with only 1 @unit_worker/villager-japanese.webp@, send @resource/sheep.webp@@unit_worker/villager-japanese.webp@ to @resource/resource_wood.webp@ and @resource/rally.webp@ on @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "When 3 @unit_worker/villager-japanese.webp@ on @resource/resource_wood.webp@, @resource/rally.webp@ on @resource/sheep.webp@ and shift click @resource/resource_wood.webp@@unit_worker/villager-japanese.webp@ on @resource/sheep.webp@ (they just need to cut 1 tree to then @abilities/repair.webp@@building_defensive/outpost.webp@ on @resource/resource_gold.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 11,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "1 @resource/resource_gold.webp@@unit_worker/villager-japanese.webp@@abilities/repair.webp@@building_defensive/outpost.webp@and next @unit_worker/villager-japanese.webp@ goes on @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:40",
+      "villager_count": 25,
+      "resources": {
+        "food": 19,
+        "wood": 0,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Instantly @technology_defensive/arrow-slits.webp@ the @resource/resource_gold.webp@@building_defensive/outpost.webp@.",
+        "@unit_cavalry/scout.webp@ ennemy and if danger is high then @technology_defensive/fortify-outpost.webp@. If not, save @resource/resource_stone.webp@ to get @technology_japanese/daimyo-manor-1.webp@ later.",
+        "Send the @age/age_2.webp@@unit_worker/villager-japanese.webp@ to use first @landmark_japanese/kura-storehouse-1.webp@@building_economy/farm.webp@ but pay attention to ennemy raids."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:45",
+      "villager_count": 26,
+      "resources": {
+        "food": 10,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "@abilities/repair.webp@@landmark_japanese/floating-gate-2.webp@ witth 7 @resource/resource_food.webp@@unit_worker/villager-japanese.webp@ and start collecting @resource/resource_wood.webp@ next to @landmark_japanese/kura-storehouse-1.webp@to @abilities/repair.webp@@building_military/stable.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "7:50",
+      "villager_count": 29,
+      "resources": {
+        "food": 12,
+        "wood": 4,
+        "gold": 6,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "The 7 @age/age_3.webp@ @unit_worker/villager-japanese.webp@ go @abilities/repair.webp@ the @building_military/stable.webp@",
+        "Try to get a 2:1 ration on @resource/resource_food.webp@ / @resource/resource_gold.webp@ to constantly produce @unit_worker/villager-japanese.webp@ + @unit_japanese/mounted-samurai-3.webp@",
+        "First @unit_japanese/shinto-priest-3.webp@ place @ability_japanese/ability-place-yorishiro.webp@ in the @building_military/stable.webp@ and then go grab @resource/relics.webp@. If can easily grab @resource/relics.webp@, put 3 more @unit_worker/villager-japanese.webp@ on @resource/resource_wood.webp@ to @abilities/repair.webp@@building_japanese/shinto-shrine-3.webp@."
+      ]
+    }
+  ],
+  "description": "Good in every matchup except english/house of lancaster (villagers with bow), Rus (don't need gold but can maybe burn hunting cabins) and mongols (can outproduce spearmen)",
+  "video": "https://www.youtube.com/embed/LIOCyXMpqZU",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,6 +1,7 @@
 import type { SessionSummary } from '@domain/session'
 import { cn } from '@shared/lib/utils'
 import { panelBg } from './panelBg'
+import { useI18n } from '../i18n'
 
 /**
  * Today's ladder session at a glance — "TODAY 3W–1L +42" — so a losing streak
@@ -9,13 +10,14 @@ import { panelBg } from './panelBg'
  * omitted when no game carried a rating change (custom/vs-AI only sessions).
  */
 export function SessionWidget({ session }: { session: SessionSummary }) {
+  const { tt } = useI18n()
   const delta = session.ratingDelta
   return (
     <div
       className="pointer-events-none flex select-none items-center gap-2 rounded-md px-2.5 py-1.5 font-sans text-white shadow-xl ring-1 ring-white/10"
       style={{ background: panelBg(0.92), textShadow: '0 1px 3px rgba(0,0,0,0.95)' }}
     >
-      <span className="text-[9px] font-bold uppercase tracking-wider text-white/50">Today</span>
+      <span className="text-[9px] font-bold uppercase tracking-wider text-white/50">{tt('Today')}</span>
       <span className="text-[13px] font-semibold tabular-nums leading-none">
         <span className="text-win">{session.wins}W</span>
         <span className="text-white/45"> – </span>

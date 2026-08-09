@@ -87,10 +87,20 @@ export interface MatchupPlayer {
   name: string
   civ: string | null
   rating: number | null
+  /** Current primary-ladder win rate from the public profile, when available. */
+  winRate: number | null
+  /** Most-played civilizations from the public profile, most-played first. */
+  favoriteCivs: string[]
   rank: number | null
   rankLevel: string | null
   isMe: boolean
   isAI: boolean
+}
+
+/** Public profile data used to enrich one live roster row without extra API calls. */
+export interface LivePlayerSnapshot {
+  rank: RankInfo | null
+  favoriteCivs: string[]
 }
 
 /** The live matchup for the overlay bar. `teams[0]` is always MY team. */
@@ -107,16 +117,23 @@ export interface LiveMatchup {
 export function buildLiveMatchup(
   game: Game,
   myProfileId: number | null,
-  rankByProfileId: Map<number, RankInfo | null>,
+  rankByProfileId: Map<number, RankInfo | LivePlayerSnapshot | null>,
 ): LiveMatchup {
   const teams = normalizeTeams(game).map((team) =>
     team.map((p): MatchupPlayer => {
-      const ri = rankByProfileId.get(p.profile_id) ?? null
+      const snapshot = rankByProfileId.get(p.profile_id) ?? null
+      const enriched =
+        snapshot && 'favoriteCivs' in snapshot
+          ? snapshot
+          : { rank: snapshot as RankInfo | null, favoriteCivs: [] }
+      const ri = enriched.rank
       return {
         profileId: p.profile_id,
         name: p.name,
         civ: p.civilization,
         rating: p.rating ?? p.mmr ?? null,
+        winRate: ri?.winRate ?? null,
+        favoriteCivs: enriched.favoriteCivs,
         rank: ri?.rank ?? null,
         rankLevel: ri?.rankLevel ?? null,
         isMe: myProfileId != null && p.profile_id === myProfileId,
@@ -151,6 +168,8 @@ export function buildLocalLiveMatchup(
       name: p.name,
       civ: civ.slug,
       rating: null,
+      winRate: null,
+      favoriteCivs: [],
       rank: null,
       rankLevel: null,
       isMe: myProfileId != null && p.id === myProfileId,
@@ -205,6 +224,8 @@ export interface LiveMatchInfo {
    * different (previous) game — so opponent/civ/map/startedAt are all left null.
    */
   custom: boolean
+  /** AoE4World's numeric patch id for public live games, when reported. */
+  patch?: string | null
   myCiv: string | null
   opponent: LiveOpponent | null
   /**
@@ -238,6 +259,7 @@ export function buildLiveMatchInfo(
     source: live.source,
     processRunning,
     custom: live.isLive && live.source !== 'ongoing',
+    patch: null,
     myCiv: null,
     opponent: null,
     teams: null,
@@ -280,6 +302,7 @@ export function buildLiveMatchInfo(
   const primary = opp?.modes ? pickPrimaryMode(opp.modes) : null
   return {
     ...base,
+    patch: game.patch == null ? null : String(game.patch),
     myCiv: me?.civilization ?? null,
     teams,
     map: game.map,

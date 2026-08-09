@@ -1,0 +1,41 @@
+name: Distill Tincture snapshots
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tincture-distill
+  cancel-in-progress: false
+
+jobs:
+  distill:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fetch and distill AoE4World meta
+        run: python scripts/distill_tincture.py
+
+      - name: Commit changed snapshots
+        shell: bash
+        run: |
+          if git diff --quiet -- src/data/tinctureMeta.json src/data/tinctureHistory.json; then
+            echo "No snapshot changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/tinctureMeta.json src/data/tinctureHistory.json
+          git commit -m "chore: distill Tincture meta snapshot"
+          git push

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "name": "JD Aggression",
+  "civilization": "Jeanne d'Arc",
+  "author": "Asmitha",
+  "source": "https://aoe4guides.com/builds/4fc9hTXmNy9b3OdMGIxr",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@@building_economy/house.webp@@building_economy/mining-camp.webp@",
+        "5 @unit_worker/villager.webp@ @resource/resource_wood.webp@ (at least 25) )until finding @resource/deer.webp@ @building_economy/mill.webp@@technology_economy/survival-techniques.webp@@technology_economy/wheelbarrow.webp@",
+        "@resource/rally.webp@1@resource/sheep.webp@3@resource/resource_gold.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@+ 4 @resource/sheep.webp@ @landmark_french/school-of-cavalry.webp@",
+        "@resource/sheep.webp@+@resource/rally.webp@-> (1)@resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "2 @abilities/repair.webp@@landmark_french/school-of-cavalry.webp@ -> (6)@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:18",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @abilities/repair.webp@@landmark_french/school-of-cavalry.webp@ -> @resource/resource_gold.webp@",
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@@building_economy/house.webp@",
+        "@unit_french/royal-knight-2.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/9TCvVtXvnj0",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

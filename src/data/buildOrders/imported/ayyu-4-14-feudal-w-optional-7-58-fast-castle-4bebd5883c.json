@@ -1,0 +1,439 @@
+{
+  "schemaVersion": 1,
+  "name": "Ayyu 4:14 Feudal w/ optional 7:58 Fast Castle",
+  "civilization": "Ayyubids",
+  "author": "TimidTsunami",
+  "source": "https://aoe4guides.com/builds/DNJGvXBPgxxZ0FNoRUvI",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Send starting 6 @unit_worker/villager-abbasid.webp@to @resource/berrybush.webp@. Use 2 @unit_worker/villager-abbasid.webp@@abilities/repair.webp@@building_economy/mill.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "-",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Use 1 @unit_worker/villager-abbasid.webp@@building_economy/mill.webp@ builder to@abilities/repair.webp@@building_economy/house.webp@ & back to @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "Rally",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 2@unit_worker/villager-abbasid.webp@ --> @resource/resource_gold.webp@ | @resource/resource_gold.webp@ === 2"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1st @resource/resource_gold.webp@@unit_worker/villager-abbasid.webp@ @abilities/repair.webp@ @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move @resource/sheep.webp@under  @building_economy/town-center.webp@ ((0-walking time))"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "Rally",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 2@unit_worker/villager-abbasid.webp@ --> @resource/sheep.webp@ |  @resource/resource_food.webp@=== 8"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Pre-Blueprint House of Wisdom @landmark_abbasid/house-of-wisdom.webp@ directly next to TC ((0-walking time))"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "Rally",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 1@unit_worker/villager-abbasid.webp@-->@abilities/repair.webp@@landmark_abbasid/house-of-wisdom.webp@--&gt;@resource/resource_gold.webp@ (shift-click TC to HoW then gold)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1@unit_worker/villager-abbasid.webp@@abilities/repair.webp@@landmark_abbasid/house-of-wisdom.webp@ 30s build time. Done at 2:10 ((w/ 0-walking time))"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "Rally",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 1@unit_worker/villager-abbasid.webp@ --> @resource/sheep.webp@ |  @resource/resource_food.webp@=== 9"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "Rally",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@1 @unit_worker/villager-abbasid.webp@ --> @resource/resource_gold.webp@ | @resource/resource_gold.webp@ === 4"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager-abbasid.webp@@landmark_abbasid/house-of-wisdom.webp@ builder goes to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:13",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2:13 force drop @resource/resource_food.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "ReMacro",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "ReMacro 1@unit_worker/villager-abbasid.webp@@resource/sheep.webp@ to @resource/resource_wood.webp@ until 50@resource/resource_wood.webp@ (Straggler @resource/gaiatreeprototypetree.webp@ closest to @resource/resource_gold.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "ReMacro",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "ReMacro 2@unit_worker/villager-abbasid.webp@@resource/sheep.webp@ to @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 New @unit_worker/villager-abbasid.webp@ otw to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "Rally",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@new @unit_worker/villager-abbasid.webp@--> @resource/sheep.webp@ === Castle Age Up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 13,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "-",
+      "villager_count": 18,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "When 50 @resource/resource_wood.webp@, the 1@resource/resource_wood.webp@@unit_worker/villager-abbasid.webp@ --> @abilities/repair.webp@@building_economy/house.webp@ then --&gt; @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:14",
+      "villager_count": 18,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Feudal Age Reached"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "-",
+      "villager_count": 18,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager-abbasid.webp@@building_economy/house.webp@ builder --> @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 19,
+      "resources": {
+        "food": 14,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:57",
+      "villager_count": 23,
+      "resources": {
+        "food": 18,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Force Drop Off @resource/resource_food.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "-",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@civilization_flag/ayy.webp@@civilization_flag/ayy.webp@@civilization_flag/ayy.webp@@civilization_flag/ayy.webp@@civilization_flag/ayy.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "7:58",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "2:14 Feudal Age Up | 5:58 Castle Age Up",
+  "video": "",
+  "season": 13,
+  "map": "Open",
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

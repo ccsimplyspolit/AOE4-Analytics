@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "name": "Byzantine Full Feudal Aggression",
+  "civilization": "Byzantines",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/gxkwxyBgSB1X9c5M5WHr",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0.00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager.webp@ on @resource/sheep.png@ (@resource/rally.png@@unit_worker/villager.png@ until 7 on @resource/sheep.png@)",
+        "1 @unit_worker/villager.png@ build @building_byzantines/cistern-1.png@@building_economy/house.png@ on side of tc opposite @resource/resource_gold.png@. @unit_worker/villager.png@ goes to @resource/resource_gold.png@ after"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@unit_worker/villager.png@ until 3 on @resource/resource_gold.png@ then @resource/rally.png@ @resource/sheep.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:13",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Drop off resources and build @landmark_byzantines/imperial-hippodrome-1.webp@ with 4 @resource/sheep.png@@unit_worker/villager.png@ in the influence of @building_byzantines/cistern-1.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:26",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@unit_worker/villager.png@ on @resource/gaiatreeprototypetree.png@ until 8 @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:56",
+      "villager_count": 16,
+      "resources": {
+        "food": 10,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue  @unit_cavalry/horseman-1.webp@ until 3-4 then @technology_byzantines/expilatores-2.png@ after keep queueing new @unit_cavalry/horseman-1.png@.",
+        "Age-up-@unit_worker/villager.png@ go to build @building_economy/mill.png@ on @resource/berrybush.png@ .",
+        "1 @resource/resource_gold.png@@unit_worker/villager.png@ goes to build @building_byzantines/cistern-1.png@ & @building_byzantines/aqueduct-1.png@ between 2 @building_byzantines/cistern-1.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 17,
+      "resources": {
+        "food": 10,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 19,
+      "resources": {
+        "food": 11,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/lumber-camp.webp@@building_economy/house.png@ & @resource/rally.png@@unit_worker/villager.png@ on @resource/resource_food.png@ until ~18~ then to @resource/resource_wood.png@ again"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 24,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/double-broadaxe.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:20",
+      "villager_count": 25,
+      "resources": {
+        "food": 15,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/archery-range.webp@ then full @unit_infantry/archer-2.png@ production"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 25,
+      "resources": {
+        "food": 15,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_byzantines/mercenary-house-2.webp@ -> Contract: Keshik is very strong & Ghulams in Castle allow for mangonels to be built in the field."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/horticulture.webp@@technology_economy/forestry.png@ + Keshik"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "TIPS",
+        "For the Byzantines, getting horsemen out early allows for quick early vill kills with Triumph from @landmark_byzantines/imperial-hippodrome-1.webp@. Use this ability often for dmg, movement speed and healing.",
+        "Archers as a follow up can come faster if you want it to, but most importantly, Archers should always come before mercenaries. If you go Merc Camp first, you lose too much tempo. I dislike longbows as they cost too much and are slow, so go Javelins if opponent has lots of archers, and Keshiks as standard.",
+        "Always try to gather from berries before deer because the oil gives you a lot of extra power through Mercs.",
+        "When playing aggro, you can often find a lot of damage and play only feudal, but sometimes you have to go Castle to finish a game (especially true for 1tc vs tc aggro)",
+        "Castle LM should be @landmark_byzantines/golden-horn-tower-2.png@",
+        "This doesnt work vs @civilization_flag/rus.png@ @civilization_flag/mon.png@ (trush)"
+      ]
+    }
+  ],
+  "description": "Make use of Hippodrome to overwhelm your opponent early and scale with mercenaries as you hit a ram timing. \n\nGuide video linked",
+  "video": "https://www.youtube.com/embed/etTCQdUzqfU",
+  "season": 6,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

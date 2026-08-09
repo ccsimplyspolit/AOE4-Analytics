@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "name": "Fast Pro Scouts (2026)",
+  "civilization": "Chinese",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/yvmeKhb6Fy8CprVxwx3D",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager-china.webp@ to @resource/resource_food.png@ & build @building_economy/mill.png@ on @resource/berrybush.png@. @resource/rally.png@ 2 @unit_worker/villager-china.png@ to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @unit_worker/villager-china.webp@ to @resource/resource_gold.png@. Build a @building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ back to @resource/resource_food.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_chinese/imperial-academy.webp@ with 5 @unit_worker/villager-china.png@ from @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2.20",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@ until 7"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:12",
+      "villager_count": 15,
+      "resources": {
+        "food": 7,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@: Queue 1 @unit_chinese/imperial-official.webp@ & gather 150 @resource/resource_wood.webp@ from stragglers with your age-up @unit_worker/villager-china.webp@. Make sure you build a @building_chinese/village.webp@ and then @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 16,
+      "resources": {
+        "food": 7,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @unit_chinese/imperial-official.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_chinese/village.webp@ & @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:06",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "queue 3rd @unit_chinese/imperial-official.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 19,
+      "resources": {
+        "food": 7,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "-> @building_military/stable.webp@. Supervise for 3-5 scouts."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 21,
+      "resources": {
+        "food": 10,
+        "wood": 9,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/professional-scouts.webp@ & production buildings for units."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Play out with units and contest deer. Then get castle and take relics. Decide on song if long feudal or add song after relic collection."
+      ]
+    }
+  ],
+  "description": "See video link for guide",
+  "video": "https://www.youtube.com/embed/EKnex4_ESkU",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

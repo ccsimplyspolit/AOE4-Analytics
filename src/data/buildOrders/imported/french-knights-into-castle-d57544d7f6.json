@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "name": "French - knights into Castle",
+  "civilization": "French",
+  "author": "B-SON",
+  "source": "https://aoe4guides.com/builds/8JTB2KSi0lSYiafa0r05",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All @unit_worker/villager.webp@ on @resource/sheep.webp@ Remember to bring back sheep with scout early around 2min mark",
+        "@resource/rally.webp@@resource/resource_food.webp@ til 7"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally 3 @unit_worker/villager.webp@ to @resource/resource_gold.webp@ ; 1st @unit_worker/villager.webp@  build @building_economy/house.webp@ and @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@ til 12"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@@resource/resource_food.webp@ build @landmark_french/school-of-cavalry.webp@ around 2:20 mark then @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "when 9 on @resource/resource_food.webp@ send 2 @unit_worker/villager.webp@ @resource/resource_food.webp@ @abilities/repair.webp@@building_economy/house.webp@ then @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@ @resource/resource_food.webp@@abilities/repair.webp@@building_economy/mill.webp@  at @resource/berrybush.webp@/@resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:15",
+      "villager_count": 21,
+      "resources": {
+        "food": 12,
+        "wood": 4,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "make @unit_french/royal-knight-2.webp@ and raide",
+        "@resource/rally.webp@@resource/resource_wood.webp@",
+        "research @technology_economy/wheelbarrow.webp@ and @technology_economy/specialized-pick.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@@resource/resource_wood.webp@@abilities/repair.webp@@building_economy/house.webp@ then go back"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Leave rally on @resource/resource_wood.webp@ for rest of the game",
+        "--> at 50 @resource/resource_wood.webp@ take 5 @resource/resource_wood.webp@@unit_worker/villager.webp@ and build @building_economy/mill.webp@ on @resource/deer.webp@ and research @technology_economy/survival-techniques.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you have another 100 @resource/resource_wood.webp@ take 5 @unit_worker/villager.webp@ and make @building_defensive/outpost.webp@ on @resource/resource_gold.webp@ then go @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Every 150 @resource/resource_wood.webp@ build extra @building_military/stable.webp@/@building_military/archery-range.webp@ for more @unit_french/royal-knight-2.webp@/@unit_infantry/archer-2.webp@ production - Get eco upgrades when available"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 3x production (@building_military/stable.webp@@building_military/archery-range.webp@@building_military/archery-range.webp@) then @abilities/repair.webp@@building_technology/blacksmith.webp@ with @unit_worker/villager.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you have another 150 @resource/resource_wood.webp@ take 5 @unit_worker/villager.webp@ and make @building_defensive/outpost.webp@ on @resource/resource_stone.webp@ then go @resource/resource_stone.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

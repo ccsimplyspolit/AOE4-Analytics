@@ -1,0 +1,377 @@
+{
+  "schemaVersion": 1,
+  "name": "Tower Rush",
+  "civilization": "Mongols",
+  "author": "Marius Balamb",
+  "source": "https://aoe4guides.com/builds/MH4ggkN3EDXYQAawxt0F",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_mongols/khan-1.webp@ --> SCOUT"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:05",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@ +5 @unit_worker/villager-mongols.webp@-->@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:10",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager-mongols.webp@@abilities/repair.webp@@building_mongols/ovoo.webp@@resource/resource_stone.webp@ & --> @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/sheep.webp@-->@building_economy/town-center.webp@@resource/rally.webp@--&gt;@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:15",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_mongols/ger.webp@-->@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:10",
+      "villager_count": 8,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When: 150 @resource/resource_wood.webp@ then: 2@unit_worker/villager-mongols.webp@@resource/resource_wood.webp@-->@abilities/repair.webp@@building_military/barracks.webp@@building_mongols/ovoo.webp@--&gt;@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@unit_mongols/khan-1.webp@@resource/sheep.webp@-->@building_economy/town-center.webp@    --&gt;    SCOUT @resource/resource_gold.webp@ ENEMIGO"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @unit_infantry/spearman-1.webp@@resource/resource_stone.webp@ + 1@unit_worker/villager-mongols.webp@@resource/resource_food.webp@--> RUSH @resource/resource_gold.webp@ ENEMIGO"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "When:    120 @resource/resource_wood.webp@    then:   3@unit_worker/villager-mongols.webp@@resource/resource_wood.webp@-->@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "When: 80 @resource/resource_stone.webp@ then: 2@unit_infantry/spearman-1.webp@      @building_military/barracks.webp@@resource/rally.webp@-->@abilities/attack-move.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 @unit_worker/villager-mongols.webp@-->@abilities/repair.webp@@building_defensive/outpost.webp@@resource/resource_gold.webp@ --&gt; BASE@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 16,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "When:    400 @resource/resource_food.webp@  200@resource/resource_gold.webp@ :"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager-mongols.webp@@resource/resource_food.webp@-->@abilities/repair.webp@@landmark_mongols/deer-stones.webp@@age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "1 @unit_worker/villager-mongols.webp@@resource/resource_food.webp@-->@resource/resource_gold.webp@ (total 4)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "3 @unit_worker/villager-mongols.webp@@resource/resource_food.webp@-->@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.webp@-->@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@building_mongols/ger.webp@@technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "4 @unit_infantry/spearman-1.webp@ -->@building_defensive/outpost.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 20,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@building_military/barracks.webp@-->@technology_japanese/heated-shot-4.webp@ Mejora Piquero Curtido"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:25",
+      "villager_count": 21,
+      "resources": {
+        "food": 5,
+        "wood": 7,
+        "gold": 4,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@building_defensive/outpost.webp@-->@technology_defensive/arrow-slits.webp@ Mejora aspilleras"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@--> 2@unit_mongols/keshik-2.webp@@resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:10",
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager-mongols.webp@@resource/resource_wood.webp@-->@abilities/repair.webp@@building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_mongols/pasture.webp@@building_technology/blacksmith.webp@..."
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

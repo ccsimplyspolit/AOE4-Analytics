@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "name": "2TC after TC cost update (2026)",
+  "civilization": "Knights Templar",
+  "author": "SwaggaIlya",
+  "source": "https://aoe4guides.com/builds/M2mwZQ9Deo0uiHEJnOgP",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00-2:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 7,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start 6 @unit_worker/villager.webp@ + 1 on @resource/sheep.webp@",
+        "@resource/rally.webp@ 2 @unit_worker/villager.webp@ to @resource/resource_gold.webp@, 1st building @building_economy/mining-camp.webp@ and @building_economy/house.webp@",
+        "@resource/rally.webp@ back to @resource/sheep.webp@ until @age/age_2.webp@",
+        "Age up with @civilization_flag/hos.webp@ when 15 @unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 1,
+        "wood": 7,
+        "gold": 0,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "Macro 5 @unit_worker/villager.webp@to @resource/resource_stone.webp@",
+        "Pull @resource/resource_stone.webp@@unit_worker/villager.webp@ and build 2nd @building_economy/town-center.webp@ in the back on @resource/deer.webp@",
+        "@unit_cavalry/scout.webp@ enemy base and build counter @building_military/barracks.webp@@building_military/archery-range.webp@@building_military/stable.webp@ If enemy not building units can go fast @age/age_3.webp@"
+      ]
+    }
+  ],
+  "description": "Valdemars 2026 2TC build, adapted to TC cost update. ",
+  "video": "https://www.youtube.com/embed/IFUNfAxEhas",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

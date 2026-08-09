@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "name": "OOTD Cav/Archer",
+  "civilization": "Order of the Dragon",
+  "author": "PPQ",
+  "source": "https://aoe4guides.com/builds/FMoKwPuEa27tXkkzWxJR",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.webp@ /@building_economy/house.webp@@building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:26",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2x @abilities/repair.webp@@landmark_hre/meinwerk-palace.webp@ /@resource/rally.webp@1x @unit_dragon/gilded-villager.webp@@resource/sheep.webp@ 1x @unit_dragon/gilded-villager.webp@@building_military/stable.webp@ =>"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2x @unit_dragon/gilded-villager.webp@from @resource/sheep.webp@ to @resource/resource_wood.webp@ / @abilities/repair.webp@@building_economy/lumber-camp.webp@ Rally till 6x on @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Near age up@abilities/repair.webp@@building_economy/mill.webp@@resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_military/stable.webp@ / @technology_economy/wheelbarrow.webp@@technology_economy/double-broadaxe.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@12@unit_dragon/gilded-villager.webp@@resource/sheep.webp@ @resource/rally.webp@@resource/resource_wood.webp@ /after 2nd @unit_dragon/gilded-horseman-2.webp@@abilities/repair.webp@@building_military/archery-range.webp@@unit_dragon/gilded-archer-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 13,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_military/iron-undermesh.webp@@technology_military/steeled-arrow.webp@"
+      ]
+    }
+  ],
+  "description": "Beginner friendly OOTD build",
+  "video": "https://www.youtube.com/embed/yTYNglu4f20",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

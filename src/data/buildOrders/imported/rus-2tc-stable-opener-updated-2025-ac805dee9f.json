@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "name": "RUS 2TC Stable Opener (updated 2025)",
+  "civilization": "Rus",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/TLgUoE5UxFgZ9tWLKk3w",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Queue up @unit_worker/villager.webp@",
+        "Send 5 @unit_worker/villager.png@ to gather 50 @resource/resource_wood.png@ from a @resource/gaiatreeprototypetree.png@ then go to @resource/sheep.png@",
+        "@resource/rally.png@@building_economy/town-center.png@ to @resource/sheep.png@",
+        "1 @unit_worker/villager.png@build @building_rus/hunting-cabin.png@ on first woodline then @building_economy/house.png@ then goes to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "New @unit_worker/villager.webp@ builds 2nd @building_rus/hunting-cabin.png@ on opposite woodline ( or to the side of the first one opposite the first @building_rus/hunting-cabin.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:25",
+      "villager_count": 12,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_rus/kremlin.webp@ with 4 @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:25",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Remacro & @resource/rally.webp@ 2 @unit_worker/villager.png@ to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 11,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 3 to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Upon ageup the 4 age-up vills will build a @building_military/stable.webp@ then @building_economy/house.png@ then @building_economy/mining-camp.png@ on @resource/resource_stone.png@. Rally @resource/resource_stone.png@ with @building_economy/town-center.png@ until 8"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 19,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "queue @unit_cavalry/knight-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_economy/town-center.webp@ on @resource/deer.png@ or @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now make a decision on whether or not you go Castle. feudal play is also fine, just keep wood villagers and remacro rest. You already have wood bonus from kremlin giving you 20% wood."
+      ]
+    }
+  ],
+  "description": "This is the classic Stable Opener with the hunting cabin opener. This means you can make a decision in dark age whether you want to play Golden gate fast castle or Kremlin 2TC. Depends on opponent and map of course.\nI like this build vs civs like Mongols and Malians.\n",
+  "video": "https://www.youtube.com/embed/a_vx9ko5BCw",
+  "season": 9,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

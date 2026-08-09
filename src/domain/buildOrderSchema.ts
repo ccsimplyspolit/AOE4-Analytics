@@ -23,26 +23,61 @@ export interface BuildStep {
 }
 
 export interface BuildOrder {
+  /** Version of the normalized Tincture/RTS_Overlay-compatible schema. */
+  schemaVersion?: 1
   name: string
   civilization: string | string[]
+  /** Optional matchup tag used by the RTS Overlay-style faction filter. */
+  opponentCivilization?: string | string[] | null
   author?: string
   source?: string
+  /** Provider fields preserved when importing from aoe4guides.com. */
+  description?: string | null
+  video?: string | null
+  map?: string | null
+  strategy?: string | null
+  provider?: string | null
+  providerId?: string | null
+  score?: number | null
+  scoreAllTime?: number | null
+  views?: number | null
+  likes?: number | null
+  upvotes?: number | null
+  timeCreated?: string | null
+  timeUpdated?: string | null
   season?: number
+  /** Source classification used by the Tincture archive/import pipeline. */
+  origin?: 'curated' | 'house' | 'imported' | 'video'
+  /** Optional patch/update metadata supplied by an importer. */
+  patch?: string
+  /** Capture timestamp for provider snapshots; distinct from last edit time. */
+  capturedAt?: string | null
+  updatedAt?: string
+  confidence?: number
+  sampleSize?: number
   /** Curation metadata (bundled library): why this build earned its slot. */
   reasoning?: string
   // JSON imports widen literals to string, so accept both.
   difficulty?: 'easy' | 'medium' | 'hard' | (string & {})
   /** e.g. "Feudal aggression", "Economy boom", "Fast Castle", "Timing attack". */
   archetype?: string
+  /** Derived, provenance-linked observations from recent public videos. */
+  video_evidence?: BuildOrderVideoEvidence
+  /** Local video-import analysis; omitted from curated builds. */
+  tactics?: VideoTactic[]
+  transcriptText?: string
   build_order: BuildStep[]
 }
 
 import { parseDuration } from './format'
 import { civDisplayName } from './civ'
+import type { BuildOrderVideoEvidence, VideoTactic } from './videoEvidence'
 
 export type NotePart = { type: 'text'; text: string } | { type: 'image'; path: string }
 
 export type ValidationResult = { ok: true; value: BuildOrder } | { ok: false; errors: string[] }
+
+export const BUILD_ORDER_SCHEMA_VERSION = 1 as const
 
 function isNumber(v: unknown): v is number {
   return typeof v === 'number' && Number.isFinite(v)
@@ -74,6 +109,14 @@ export function validateBuildOrder(input: unknown): ValidationResult {
   const civOk =
     typeof civ === 'string' || (Array.isArray(civ) && civ.every((c) => typeof c === 'string'))
   if (!civOk) errors.push('`civilization` must be a string or array of strings')
+  const opponentCiv = o['opponentCivilization']
+  const opponentCivOk =
+    opponentCiv == null ||
+    typeof opponentCiv === 'string' ||
+    (Array.isArray(opponentCiv) && opponentCiv.every((c) => typeof c === 'string'))
+  if (!opponentCivOk) {
+    errors.push('`opponentCivilization` must be null, a string, or an array of strings')
+  }
 
   const steps = o['build_order']
   if (!Array.isArray(steps) || steps.length === 0) {
@@ -106,8 +149,80 @@ export function validateBuildOrder(input: unknown): ValidationResult {
     })
   }
 
+  const evidence = o['video_evidence']
+  if (evidence !== undefined) {
+    if (!evidence || typeof evidence !== 'object') {
+      errors.push('`video_evidence` must be an object when present')
+    } else {
+      const e = evidence as Record<string, unknown>
+      if (e['schemaVersion'] !== 1) errors.push('`video_evidence.schemaVersion` must be 1')
+      if (typeof e['windowStart'] !== 'string')
+        errors.push('`video_evidence.windowStart` must be a string')
+      if (typeof e['windowEnd'] !== 'string')
+        errors.push('`video_evidence.windowEnd` must be a string')
+      if (!isNumber(e['sampleSize'])) errors.push('`video_evidence.sampleSize` must be a number')
+      if (!isNumber(e['requestedSampleSize']))
+        errors.push('`video_evidence.requestedSampleSize` must be a number')
+      if (!Array.isArray(e['sources'])) errors.push('`video_evidence.sources` must be an array')
+    }
+  }
+
+  if (
+    o['origin'] !== undefined &&
+    !['curated', 'house', 'imported', 'video'].includes(String(o['origin']))
+  ) {
+    errors.push('`origin` must be curated, house, imported, or video when present')
+  }
+  if (o['schemaVersion'] !== undefined && o['schemaVersion'] !== BUILD_ORDER_SCHEMA_VERSION) {
+    errors.push('`schemaVersion` must be 1 when present')
+  }
+  for (const key of ['patch', 'updatedAt'] as const) {
+    if (o[key] !== undefined && typeof o[key] !== 'string')
+      errors.push(`\`${key}\` must be a string when present`)
+  }
+  if (
+    o['capturedAt'] !== undefined &&
+    o['capturedAt'] !== null &&
+    typeof o['capturedAt'] !== 'string'
+  ) {
+    errors.push('`capturedAt` must be a string or null when present')
+  }
+  for (const key of ['description', 'video', 'strategy', 'provider', 'providerId'] as const) {
+    if (o[key] !== undefined && o[key] !== null && typeof o[key] !== 'string')
+      errors.push(`\`${key}\` must be a string when present`)
+  }
+  if (o['map'] !== undefined && o['map'] !== null && typeof o['map'] !== 'string') {
+    errors.push('`map` must be a string or null when present')
+  }
+  for (const key of ['score', 'scoreAllTime', 'views', 'likes', 'upvotes'] as const) {
+    if (o[key] !== undefined && o[key] !== null && !isNumber(o[key]))
+      errors.push(`\`${key}\` must be a number when present`)
+  }
+  for (const key of ['timeCreated', 'timeUpdated'] as const) {
+    if (o[key] !== undefined && o[key] !== null && typeof o[key] !== 'string')
+      errors.push(`\`${key}\` must be a string when present`)
+  }
+  for (const key of ['confidence', 'sampleSize'] as const) {
+    if (o[key] !== undefined && !isNumber(o[key]))
+      errors.push(`\`${key}\` must be a number when present`)
+  }
+
   if (errors.length > 0) return { ok: false, errors }
   return { ok: true, value: input as BuildOrder }
+}
+
+/**
+ * Applies the one normalized envelope used by imported, curated and house
+ * builds. The source JSON stays compatible with the overlay; this function is
+ * the runtime boundary that makes older files behave like current snapshots.
+ */
+export function normalizeBuildOrder(input: unknown): ValidationResult {
+  const result = validateBuildOrder(input)
+  if (!result.ok) return result
+  return {
+    ok: true,
+    value: { ...result.value, schemaVersion: BUILD_ORDER_SCHEMA_VERSION },
+  }
 }
 
 /** Civilization label for display (the format allows a string or array). */

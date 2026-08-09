@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "name": "Dome Of Faith Tempo Build",
+  "civilization": "Delhi Sultanate",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/A9HNZar6pRJJuWqnkBly",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager-delhi.webp@ to @resource/gaiatreeprototypetree.png@. 1 @unit_worker/villager-delhi.png@ to build @building_religious/mosque.png@ then @resource/berrybush.png@(connecting @building_economy/mill.png@ and @building_economy/town-center.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @unit_worker/villager-delhi.webp@ to @resource/resource_gold.png@ + Build @building_economy/house.png@@building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@2 new @unit_worker/villager-delhi.png@ to @resource/berrybush.png@ and then rest to @resource/sheep.png@ until ageup."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 17,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@landmark_delhi/dome-of-the-faith.webp@ with 4 @resource/berrybush.png@ @unit_worker/villager-delhi.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Take your @resource/sheep.webp@ and put them on @resource/gaiatreeprototypetree.png@ then @building_economy/lumber-camp.png@. Keep @resource/rally.png@ @resource/resource_wood.png@ until 10-11ish"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:11",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@: send age-up @unit_worker/villager-delhi.png@ back to @resource/berrybush.png@.  Don't forget to queue all upgrades. Blacksmith upgrades are noted below.",
+        "Queue @unit_delhi/scholar.png@ from @landmark_delhi/dome-of-the-faith.png@ and rally into @building_religious/mosque.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build a @building_technology/blacksmith.webp@ or @building_military/barracks.png@ if against early rush cav civs. Use @unit_delhi/scholar.png@ inside prod. building if in need of fast units. (only against rush)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd building."
+      ]
+    }
+  ],
+  "description": "Incredibly strong ramp up leads to some insane army mass capability and/or tech timings. Use this as a feudal strat to either all in or look for a tempo advantage to go castle with.",
+  "video": "https://www.youtube.com/embed/yaCsijvYIWM",
+  "season": 8,
+  "map": null,
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

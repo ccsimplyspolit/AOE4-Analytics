@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "name": "Lancaster 9 manors",
+  "civilization": "House of Lancaster",
+  "author": "JampiX",
+  "source": "https://aoe4guides.com/builds/lbjGLMslltTLKUCT19dY",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @resource/sheep.webp@, @resource/rally.png@@resource/resource_gold.png@, @resource/resource_gold.png@@abilities/repair.png@@building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:11",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @resource/resource_gold.webp@@abilities/repair.png@@landmark_lancaster/lancaster_castle.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 3,
+        "wood": 2,
+        "gold": 0,
+        "stone": 3,
+        "builder": 3
+      },
+      "notes": [
+        "3 @resource/sheep.webp@ -> @resource/resource_stone.png@, 2 @resource/sheep.png@ -&gt; @resource/resource_wood.png@, @resource/rally.png@@resource/resource_wood.png@ until 8"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_lancaster/manor.png@, @resource/rally.png@@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 9,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "at 2 @building_lancaster/manor.webp@, all @resource/resource_food.png@ -> @resource/resource_gold.png@, at 10 @resource/resource_gold.png@ @resource/rally.png@@resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:40",
+      "villager_count": 30,
+      "resources": {
+        "food": 0,
+        "wood": 12,
+        "gold": 10,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "at 8 @resource/resource_stone.webp@, @resource/rally.png@@resource/resource_wood.png@ until 12, then @resource/rally.png@@resource/resource_food.png@, if got enough @resource/resource_stone.png@, @resource/resource_stone.png@->@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 30,
+      "resources": {
+        "food": 10,
+        "wood": 12,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "At 9 @building_lancaster/manor.webp@ pop @ability_lancaster/call_to_arms.png@,"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:10",
+      "villager_count": 34,
+      "resources": {
+        "food": 10,
+        "wood": 12,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build 2 @building_military/archery-range.webp@ and 2 @building_military/barracks.png@, @building_technology/blacksmith.png@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/kR93WB2WkMM",
+  "season": 10,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

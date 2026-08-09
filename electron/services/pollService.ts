@@ -3,6 +3,7 @@ import {
   evaluateLiveMatch,
   buildLiveMatchInfo,
   buildLiveMatchup,
+  type LivePlayerSnapshot,
   type LiveMatchInfo,
 } from '@domain/liveMatch'
 import { buildScoutReport, pickPrimaryMode } from '@domain/scouting'
@@ -16,10 +17,34 @@ import { getGameClock, getLiveTeamMatchup, getSessionState } from './localDataSe
 import { isGameRunning } from './gameProcess'
 import type { OverlayController } from './overlayController'
 import type { ApmTracker } from './apmService'
+import type { Modes } from '@api/types'
 
 const HIDE_AFTER_MS = 20_000
 /** Keep the post-game results card up long enough to read (or until the next match). */
 const POSTGAME_HIDE_MS = 90_000
+
+/**
+ * AoE4World exposes civilization usage inside each profile mode. Aggregate the
+ * public mode slices so the live bar can show the player's actual most-played
+ * civilizations, while retaining a safe fallback for sparse/private profiles.
+ */
+function favoriteCivsFromModes(modes: Modes): string[] {
+  const counts = new Map<string, number>()
+  for (const stats of Object.values(modes)) {
+    if (!stats) continue
+    const totalGames = stats.games_count ?? 0
+    for (const civ of stats.civilizations ?? []) {
+      const games =
+        civ.games_count ??
+        (civ.pick_rate != null && totalGames > 0 ? (totalGames * civ.pick_rate) / 100 : 0)
+      if (games > 0) counts.set(civ.civilization, (counts.get(civ.civilization) ?? 0) + games)
+    }
+  }
+  return [...counts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .slice(0, 3)
+    .map(([civ]) => civ)
+}
 
 /**
  * Builds the post-game results card from the most-recent analyzed match — only if
@@ -160,10 +185,12 @@ export class PollManager {
     const processRunning = this.overlay.isGameProcessForeground() ? true : await isGameRunning()
 
     let localInMatch: boolean | null = null
-    // Skip the warnings.log read when the game is known to be closed — the
-    // session state would be 'not-running' anyway.
+    // Skip the warnings.log read only when the game is explicitly known to be
+    // closed. If Windows cannot answer the process query, still inspect the
+    // local log: passing `false` here would manufacture a "not-running" state
+    // and block custom-game detection even while AoE4 is actually open.
     if (settings.localData.consentGranted && processRunning !== false) {
-      const state = getSessionState(processRunning === true)
+      const state = getSessionState(true)
       localInMatch = state === 'in-match' ? true : state === 'menu' ? false : null
     }
     // Gate the live-APM counter on actually being in a match (≈ while playing).
@@ -320,8 +347,16 @@ export class PollManager {
       // One batch: every participant's profile (for ranks + the opponent scout).
       const ids = allPlayers(ctx.game).map((p) => p.profile_id)
       const players = await Promise.all(ids.map((id) => client.getPlayer(id).catch(() => null)))
-      const rankByProfileId = new Map<number, RankInfo | null>(
-        ids.map((id, i) => [id, players[i] ? pickPrimaryMode(players[i]!.modes) : null]),
+      const rankByProfileId = new Map<number, RankInfo | LivePlayerSnapshot | null>(
+        ids.map((id, i) => [
+          id,
+          players[i]
+            ? {
+                rank: pickPrimaryMode(players[i]!.modes),
+                favoriteCivs: favoriteCivsFromModes(players[i]!.modes),
+              }
+            : null,
+        ]),
       )
       const matchup = buildLiveMatchup(ctx.game, ctx.myProfileId, rankByProfileId)
 

@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "name": "Varangian Pro Scouts → Varangian Guard Flood Timing by Swaggy Professor",
+  "civilization": "Macedonian Dynasty",
+  "author": "Swaggy Professor",
+  "source": "https://aoe4guides.com/builds/PjgtrAhJErRkbi95X8Co",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send **all villagers** to @resource/sheep.webp@",
+        "First new villager builds @building_economy/house.webp@ and returns to food",
+        "@unit_cavalry/scout.webp@ scouts around base for more @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:30",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Next **3 villagers → @resource/resource_gold.webp@**",
+        "Next **2 villagers → @resource/sheep.webp@**",
+        "Final early distribution: **9 food / 3 gold**"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "1:40",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Set TC @resource/rally.webp@ to straggler @resource/resource_wood.webp@",
+        "Age up with @landmark_byzantines/imperial-hippodrome-1.webp@ using **3 food villagers**"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "During age-up: send 1 food villager → @resource/resource_gold.webp@ (now 4 total)",
+        "Another food villager builds @building_economy/mill.webp@ near @resource/berrybush.webp@ then returns to sheep"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move **1 wood villager → gold**, now **5 on gold total**"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:10",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/professional-scouts.webp@",
+        "Produce extra @unit_cavalry/scout.webp@ from @landmark_byzantines/imperial-hippodrome-1.webp@ (aim for **4 total**)",
+        "The 3 Hippodrome builders place @building_economy/house.webp@ then return to food"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once you float **50 wood**, build @building_economy/lumber-camp.webp@ and move all wood villagers there"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:25",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start **Pro Scouts** deer gathering",
+        "Early gold float → get eco upgrades in order:",
+        "1) @technology_economy/survival-techniques.webp@",
+        "2) @technology_economy/double-broadaxe.webp@",
+        "3) @technology_economy/wheelbarrow.webp@",
+        "4) @technology_economy/specialized-pick.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once deer starts arriving → move villagers to @resource/deer.webp@",
+        "When you reach **200 wood**, build @building_military/barracks.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once another **100 wood**, build @building_technology/blacksmith.webp@ **next to your @building_economy/mining-camp.webp@**",
+        "Start upgrades immediately"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If pressured: produce spears from @building_military/barracks.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:30",
+      "villager_count": 27,
+      "resources": {
+        "food": 12,
+        "wood": 10,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once **10 on wood**, set TC @resource/rally.webp@ back to @resource/resource_food.webp@",
+        "Begin nonstop production of @unit_byzantines/varangian-guard-3.webp@ from all @building_military/barracks.webp@ buildings"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 27,
+      "resources": {
+        "food": 12,
+        "wood": 10,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move your army across the map. You should have:",
+        "- 3 Hippodrome unique units",
+        "- Varangian Guards",
+        "- Melee defense upgrades +2"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "12:00",
+      "villager_count": 31,
+      "resources": {
+        "food": 14,
+        "wood": 5,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If you cannot close the game → stop unit production and send villagers to @resource/resource_food.webp@ + @resource/resource_gold.webp@",
+        "Age up with @landmark_byzantines/grand-winery-1.webp@ for massive food+gold boosts",
+        "Get Relics, veteran upgrades and spam Riddari."
+      ]
+    }
+  ],
+  "description": "Pro Scouts into Varangian Strongholds and nonstop Varangian Guard production. Massive mid-game timing with full melee defense upgrades and Hippodrome support units.",
+  "video": "https://www.youtube.com/embed/ghfR2tmUZXw",
+  "season": 12,
+  "map": "Open",
+  "strategy": "Pro Scouts → Varangian Flood Timing",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

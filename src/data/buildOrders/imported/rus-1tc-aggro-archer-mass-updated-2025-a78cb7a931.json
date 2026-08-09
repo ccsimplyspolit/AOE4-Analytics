@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 1,
+  "name": " RUS 1TC Aggro Archer Mass (updated 2025)",
+  "civilization": "Rus",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/uCjaLGoJuMalZQY6wKsX",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Queue up @unit_worker/villager.webp@",
+        "Send 5 @unit_worker/villager.png@ to gather 50 @resource/resource_wood.png@ from a @resource/gaiatreeprototypetree.png@ then go to @resource/sheep.png@",
+        "@resource/rally.png@@building_economy/town-center.png@ to @resource/sheep.png@",
+        "1 @unit_worker/villager.png@build @building_rus/hunting-cabin.png@ on first woodline then @building_economy/house.png@ then goes to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "New @unit_worker/villager.webp@ builds 2nd @building_rus/hunting-cabin.png@ on opposite woodline ( or to the side of the first one opposite the first @building_rus/hunting-cabin.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_rus/the-golden-gate.webp@ with 4 @resource/resource_food.png@ @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Remacro to @resource/gaiatreeprototypetree.webp@ & @resource/rally.png@ @resource/resource_wood.png@ until 8"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:12",
+      "villager_count": 11,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:55",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 7,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age-up vills build @building_military/stable.webp@ -> @building_economy/house.png@ -&gt; @building_economy/mining-camp.png@ on @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_cavalry/knight-2.webp@ (build 3 in total)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 19,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.png@ until 11"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:05",
+      "villager_count": 21,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:25",
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Sell 100 @resource/resource_food.webp@ and get @technology_economy/double-broadaxe.png@@technology_economy/wheelbarrow.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 23,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_wood.png@ and add 3 ranges in total."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "By min 8 you should have 3 @building_military/archery-range.webp@and a @building_technology/blacksmith.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_military/steeled-arrow.webp@@technology_military/iron-undermesh.png@@technology_military/siege-engineering.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 35,
+      "resources": {
+        "food": 11,
+        "wood": 20,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/barracks.webp@ for a few spears."
+      ]
+    }
+  ],
+  "description": "Aggressive strat using golden gate to balance economy. Early selling for gold for upgrades and later balancing food and wood through buying res with gold. This is a very strong archer ball strat.",
+  "video": "https://www.youtube.com/embed/a_vx9ko5BCw",
+  "season": 9,
+  "map": null,
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

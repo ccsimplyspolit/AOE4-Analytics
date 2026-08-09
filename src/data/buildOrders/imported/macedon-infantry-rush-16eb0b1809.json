@@ -1,0 +1,306 @@
+{
+  "schemaVersion": 1,
+  "name": "Macedon Infantry Rush",
+  "civilization": "Macedonian Dynasty",
+  "author": "Nedapp",
+  "source": "https://aoe4guides.com/builds/1Klp1PnkmDFS8eiwgHcX",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_macedonian/varangian_warcamp.webp@ as first house then take @unit_worker/villager.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 3 @unit_worker/villager.webp@ to @resource/resource_gold.webp@ and build @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 2 @unit_worker/villager.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/gaiatreeprototypetree.webp@ till 10"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~2:10",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@age/age_2.webp@ with 3 @unit_worker/villager.webp@from @resource/resource_food.webp@ for  @landmark_byzantines/imperial-hippodrome-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Move 1 @unit_worker/villager.webp@ from @resource/resource_food.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "1 @resource/sheep.webp@ @unit_worker/villager.webp@ build @building_economy/mill.webp@ on @resource/berrybush.webp@ then @unit_worker/villager.webp@ back to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Once 3 @unit_worker/villager.webp@ on @resource/gaiatreeprototypetree.webp@ move 1 to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~4:10",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/professional-scouts.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 5,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@landmark_byzantines/imperial-hippodrome-1.webp@@unit_worker/villager.webp@ build 1 house then back onto @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~5:25",
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/professional-scouts.webp@ finishes: Make 3 extra scouts for 5 total with original and champion"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get Eco upgrades in this order @technology_economy/survival-techniques.webp@, @technology_economy/double-broadaxe.webp@, @technology_economy/wheelbarrow.webp@, @technology_economy/specialized-pick.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once 200 wood build first @building_macedonian/varangian_stronghold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_food.webp@ (should have @resource/deer.webp@ coming in)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 9,
+        "wood": 10,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Next 100 wood builds @building_macedonian/varangian_arsenal.webp@ on @resource/resource_gold.webp@  (focus on upgrading@technology_macedonian/butted-chainmail-2.webp@ )"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_macedonian/varangian_stronghold.webp@ nonstop and produce @unit_byzantines/varangian-guard-3.webp@ constantly"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~10:00",
+      "villager_count": 35,
+      "resources": {
+        "food": 21,
+        "wood": 5,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "At this point you should have all 3 champions, both armor upgrades and be attacking with mass @unit_byzantines/varangian-guard-3.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Either keep spamming units till GG or pull all villagers onto @resource/resource_food.webp@ and @resource/resource_gold.webp@ and go to @age/age_3.webp@ with @landmark_byzantines/cistern-of-the-first-hill-2.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

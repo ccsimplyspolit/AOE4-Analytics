@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "name": "Knights Templar | Dark Age tower rush",
+  "civilization": "Knights Templar",
+  "author": "Jockxtar",
+  "source": "https://aoe4guides.com/builds/txlg20KyI99bVIoPSWXs",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 2,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@ -> @resource/gaiatreeprototypetree.webp@",
+        "2 @unit_worker/villager.webp@ -&gt; @resource/sheep.webp@",
+        "Send @unit_cavalry/scout.webp@ to opponent base to locate @resource/resource_gold.webp@/@resource/resource_stone.webp@/@resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:05",
+      "villager_count": 6,
+      "resources": {
+        "food": 2,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/sheep.webp@ (8)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:30",
+      "villager_count": 7,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "At 150 @resource/resource_wood.webp@, 1 @resource/gaiatreeprototypetree.webp@@unit_worker/villager.webp@ -> @abilities/repair.webp@@building_military/barracks.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 8,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "At 50 @resource/resource_wood.webp@, 1 @resource/gaiatreeprototypetree.webp@@unit_worker/villager.webp@ -> @abilities/repair.webp@@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:05",
+      "villager_count": 9,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_military/barracks.webp@ make @unit_infantry/spearman-1.webp@. Unless enemy makes defensive units, make only 3"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:35",
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "When 2nd @unit_infantry/spearman-1.webp@ is out, send 1 @resource/gaiatreeprototypetree.webp@@unit_worker/villager.webp@ to build @building_defensive/outpost.webp@ at enemy base"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Where to build @building_defensive/outpost.webp@:",
+        "- On @resource/resource_gold.webp@: Against @age/age_2.webp@@unit_cavalry/knight-2.webp@ civs and fast @age/age_3.webp@ civs",
+        "@civilization_flag/fre.webp@, @civilization_flag/jda.webp@, @civilization_flag/jin.webp@, @civilization_flag/dra.webp@, @civilization_flag/jap.webp@, @civilization_flag/sen.webp@, @civilization_flag/mal.webp@, @civilization_flag/ayy.webp@, @civilization_flag/mac.webp@, @civilization_flag/ott.webp@",
+        "- On @resource/resource_stone.webp@: Against 2 @building_economy/town-center.webp@ civs (except @civilization_flag/eng.webp@ and @civilization_flag/hol.webp@)",
+        "@civilization_flag/kte.webp@, @civilization_flag/abb.webp@, @civilization_flag/tug.webp@, @civilization_flag/goh.webp@",
+        "- On @resource/berrybush.webp@: Against civs with bonuses on @resource/berrybush.webp@ gathering",
+        "@civilization_flag/byz.webp@, @civilization_flag/del.webp@",
+        "Don't do this against @civilization_flag/hre.webp@, @civilization_flag/chi.webp@, @civilization_flag/zxl.webp@, @civilization_flag/eng.webp@, @civilization_flag/hol.webp@, @civilization_flag/mon.webp@, @civilization_flag/rus.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:05",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "You should have enough @resource/resource_wood.webp@ for the outpost now.",
+        "If the enemy is making their own units to defend, make more @unit_infantry/spearman-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:05",
+      "villager_count": 15,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move 6 @resource/resource_wood.webp@@unit_worker/villager.webp@ -> @resource/resource_gold.webp@ once you have 200 @resource/resource_food.webp@ in the bank and are no longer making @unit_infantry/spearman-1.webp@",
+        "1 @abilities/repair.webp@@building_economy/mining-camp.webp@, the other 5 gather @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@civilization_flag/ant.webp@: @unit_templar/serjeant_age_2.webp@ are great in @age/age_2.webp@ against @unit_french/royal-knight-2.webp@, making this the best option in those matchups (@civilization_flag/fre.webp@, @civilization_flag/jda.webp@, @civilization_flag/rus.webp@, @civilization_flag/mon.webp@, @civilization_flag/goh.webp@), but they are quite expensive and weak against @unit_infantry/archer-2.webp@, so you shouldn't commit to a @age/age_2.webp@ all-in. Going @age/age_3.webp@ to get @unit_templar/heavy_spearman_age_3.webp@ and @unit_infantry/crossbowman-3.webp@ would be the best strategy.",
+        "@civilization_flag/hos.webp@: @unit_templar/hospitaller_knight_age_2.webp@ are decently tanky and, with good micro, they can save units from dying even while diving the enemy static defenses. Good for all-ins when supporting @unit_infantry/archer-2.webp@ + @unit_cavalry/horseman-1.webp@ armies.",
+        "@civilization_flag/kof.webp@: Heavy cavalry in @age/age_2.webp@ are super strong and the bonus unit production speed allows you to outproduce most civilizations in the game. Additionally, you will force the enemy to make @unit_infantry/spearman-1.webp@, which you will counter with @unit_infantry/archer-2.webp@. Perfect for @age/age_2.webp@ all-ins unless your opponent can make heavy cavalry (@civilization_flag/fre.webp@, @civilization_flag/jda.webp@, @civilization_flag/rus.webp@, @civilization_flag/mon.webp@, @civilization_flag/goh.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Mine 50 @resource/resource_stone.webp@ and 25 @resource/resource_gold.webp@ to upgrade @building_defensive/outpost.webp@ with @technology_defensive/arrow-slits.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Upon aging up you can do whatever you want.",
+        "- All-in: @building_military/stable.webp@ for @unit_cavalry/horseman-1.webp@/@unit_templar/chevalier_confrere_age_2.webp@ ; @building_military/archery-range.webp@ for @unit_infantry/archer-2.webp@ ; @building_technology/blacksmith.webp@ for @technology_military/iron-undermesh.webp@ & @technology_military/siege-engineering.webp@",
+        "- 2 @building_economy/town-center.webp@: Send @unit_worker/villager.webp@ to @resource/resource_wood.webp@ and @resource/resource_stone.webp@ during age up",
+        "- Fast @age/age_3.webp@: Macro towards @resource/resource_food.webp@ and @resource/resource_gold.webp@ while the enemy is distracted trying to take down the @building_defensive/outpost.webp@"
+      ]
+    }
+  ],
+  "description": "Dark Age tower rush with spearmen to block gold, stone or berries at enemy base.\n\nDO NOT do this build order against HRE, China, Zhu Xi, English, House of Lancaster, Mongol or Rus; they can either make a lot of units very early in the game, have villagers with ranged attacks or both.\n\nMy other Knights Templar build orders:\n- Feudal all-in: https://aoe4guides.com/builds/3zDTNY0CFvLUA8dZ0UnX\n- 2TC: https://aoe4guides.com/builds/4eHSzSzuResmbfKsdVCV",
+  "video": "",
+  "season": 13,
+  "map": "Open",
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

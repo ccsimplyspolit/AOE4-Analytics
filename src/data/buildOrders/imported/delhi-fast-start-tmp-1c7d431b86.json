@@ -1,0 +1,609 @@
+{
+  "schemaVersion": 1,
+  "name": "Delhi Fast Start (TMP)",
+  "civilization": "Delhi Sultanate",
+  "author": "Ambrosius",
+  "source": "https://aoe4guides.com/builds/ysWCysGeUSN4ezVsqQuG",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All @unit_worker/villager-delhi.webp@go@resource/gaiatreeprototypetree.webp@ (Ctrl .)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:05",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 2 @unit_worker/villager-delhi.webp@on@resource/resource_gold.webp@ (HQQ)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:10",
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1  @unit_worker/villager-delhi.webp@ to @abilities/repair.webp@@building_religious/mosque.webp@ & @building_economy/house.webp@ near @building_economy/town-center.webp@go @resource/gaiatreeprototypetree.webp@ (QF + QQ)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:25",
+      "villager_count": 1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @resource/resource_wood.webp@@unit_worker/villager-delhi.webp@ to @abilities/repair.webp@  @building_economy/mill.webp@ on @resource/berrybush.webp@ (When 100 wood) (QW)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:35",
+      "villager_count": 1,
+      "resources": {
+        "food": 0,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/resource_gold.webp@@unit_worker/villager-delhi.webp@  to @abilities/repair.webp@@building_economy/mining-camp.webp@ (QR)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:45",
+      "villager_count": 1,
+      "resources": {
+        "food": 0,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_cavalry/scout.webp@ local via@building_economy/town-center.webp@ (/)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:50",
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.webp@ 2 @unit_worker/villager-delhi.webp@ to @resource/sheep.webp@ (HQQ)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:55",
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @building_religious/mosque.webp@: @technology_delhi/efficient-production.webp@@technology_religious/piety.webp@ (F4 ZS)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research@building_economy/mill.webp@:@technology_economy/wheelbarrow.webp@@technology_economy/survival-techniques.webp@ (F2 WE)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:10",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_cavalry/scout.webp@ que DLS via @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:30",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 3 new @unit_worker/villager-delhi.webp@ to @resource/resource_gold.webp@ (HQQQ)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_cavalry/scout.webp@ que boundary via @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:45",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "find berry, boar, deer? jik"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:25",
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 1,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 2 new @unit_worker/villager-delhi.webp@ to@resource/gaiatreeprototypetree.webp@ (HQQ)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:35",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @resource/gaiatreeprototypetree.webp@@unit_worker/villager-delhi.webp@ to @abilities/repair.webp@@building_economy/lumber-camp.webp@ then to @resource/resource_wood.webp@ (QE & QQ)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 15,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_cavalry/scout.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:10",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 2 new @unit_worker/villager-delhi.webp@ to @resource/resource_wood.webp@ forest (HQQ)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @resource/berrybush.webp@@unit_worker/villager-delhi.webp@ to @age/age_2.webp@ with @landmark_delhi/dome-of-the-faith.webp@ (takes 3:10)  (T)  [5:10 to castle]"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:35",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @building_economy/lumber-camp.webp@: @technology_economy/forestry.webp@ (Q)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:45",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @resource/resource_wood.webp@@unit_worker/villager-delhi.webp@ to @abilities/repair.webp@@building_economy/house.webp@ then go @resource/resource_wood.webp@ (QQ)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:55",
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ back to @resource/sheep.webp@ until 12. Then @resource/resource_wood.webp@ again until 12"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "food to mill 2nd berry?"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Takes 3min10 so barracks by  wood guys ?"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "AGE UP at best bank (LOCK time)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "research all"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 3 new @unit_delhi/scholar.webp@ to @landmark_delhi/dome-of-the-faith.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 2 new @unit_delhi/scholar.webp@ to @building_military/barracks.webp@&@building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@unit_worker/villager-delhi.webp@ from @resource/resource_wood.webp@ build @building_military/stable.webp@ ( put @unit_delhi/scholar.webp@ inside @building_military/stable.webp@ and pump @unit_delhi/ghazi-raider-2.webp@ nonstop )"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Scholar an upgrades on all - + spiky guys"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@  @building_military/archery-range.webp@ @building_military/barracks.webp@ in whatever order makes sense (usually go production buildings first and add 2x blacksmiths later around 8-10 mins)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Only go age 3 when you have secured 2 deer packs with @technology_economy/professional-scouts.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "8min : 30 Up age takes 3:40min"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "In age 3 immediately queue @unit_delhi/war-elephant.webp@ and add 2 more @building_military/archery-range.webp@ for @unit_infantry/archer-2.webp@+@unit_infantry/crossbowman-3.webp@Also Start @resource/resource_stone.webp@ for @building_defensive/keep.webp@ & @technology_delhi/village-fortresses.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "In age 3 immediately queue @unit_delhi/war-elephant.webp@ and add 2 more @building_military/archery-range.webp@ for @unit_infantry/archer-2.webp@+@unit_infantry/crossbowman-3.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:01",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Feudal Age st"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:05",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "feudal age mid"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:10",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "feudal final"
+      ]
+    }
+  ],
+  "description": "Work in Progress",
+  "video": "",
+  "season": 12,
+  "map": "null",
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

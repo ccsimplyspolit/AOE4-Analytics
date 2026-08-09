@@ -21,6 +21,7 @@ import { restoreSteamSession } from './services/relicAuthService'
 import { OverlayController } from './services/overlayController'
 import { PollManager } from './services/pollService'
 import { ApmTracker } from './services/apmService'
+import { disposeStreamManager } from './services/streamManagerService'
 
 // Diagnostic: isolate data to a temp dir when running a live verify/smoke.
 if (process.env['RTSLYTICS_VERIFY'] || process.env['RTSLYTICS_SMOKE'] === '1') {
@@ -122,7 +123,7 @@ function bootstrap(): void {
         `[rtslytics] localData: consent=${local.consentGranted} available=${local.available} (gate ${local.consentGranted ? 'open' : 'closed'})`,
       )
       void isGameRunning().then((r) =>
-        console.log(`[rtslytics] gameRunning(RelicCardinal.exe): ${r}`),
+        console.log(`[rtslytics] gameRunning(AoE4 process): ${r}`),
       )
       void getSteamAccounts().then((a) =>
         console.log(`[rtslytics] steamAccounts: ${a.length} (recent: ${a[0]?.personaName ?? '—'})`),
@@ -178,5 +179,6 @@ if (!gotLock) {
     overlay?.dispose()
     unregisterHotkeys()
     closeAllHistorySync()
+    disposeStreamManager()
   })
 }

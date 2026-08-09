@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "name": "New Player Guide to Mongols - Trigger/Action Version",
+  "civilization": "Mongols",
+  "author": "Elforde",
+  "source": "https://aoe4guides.com/builds/XM27UghrLid0EfSpfeJl",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start",
+        "----------------------------------------------------------------------------------------------------------------------------------",
+        "Place @building_economy/town-center.webp@ by @resource/resource_wood.webp@",
+        "5 @unit_worker/villager-mongols.webp@nearest@resource/gaiatreeprototypetree.webp@ with the @building_mongols/ger.webp@ --> 3@unit_worker/villager-mongols.webp@main @resource/gaiatreeprototypetree.webp@, 1@unit_worker/villager-mongols.webp@ @resource/sheep.webp@, 1@unit_worker/villager-mongols.webp@ @ @building_mongols/ovoo.webp@",
+        "1 @unit_worker/villager-mongols.webp@ @abilities/repair.webp@ @building_mongols/ovoo.webp@ --&gt; @resource/sheep.webp@",
+        "@resource/rally.webp@ @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "150@resource/resource_wood.webp@",
+        "----------------------------------------------------------------------------------------------------------------------------------",
+        "@unit_worker/villager-mongols.webp@ @abilities/repair.webp@@building_military/barracks.webp@ @ @building_mongols/ovoo.webp@ --> @ ennemy @resource/resource_gold.webp@ for @building_defensive/outpost.webp@",
+        "@building_military/barracks.webp@@resource/rally.webp@@ ennemy @resource/resource_gold.webp@",
+        "@building_mongols/ger.webp@ @ @resource/resource_gold.webp@ ou @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/barracks.webp@ ready",
+        "---------------------------------------------------------------------------------------------------------------------------------",
+        "@unit_infantry/spearman-1.webp@X2"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "60 @resource/resource_food.webp@ 20@resource/resource_wood.webp@",
+        "----------------------------------------------------------------------------------------------------------------------------------",
+        "@unit_infantry/spearman-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "60 @resource/resource_food.webp@ 20@resource/resource_wood.webp@ 80@resource/resource_stone.webp@",
+        "----------------------------------------------------------------------------------------------------------------------------------",
+        "@unit_infantry/spearman-1.webp@X2"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "150@resource/resource_wood.webp@",
+        "----------------------------------------------------------------------------------------------------------------------------------",
+        "3@unit_worker/villager-mongols.webp@@resource/gaiatreeprototypetree.webp@ @ @resource/resource_gold.webp@",
+        "1@unit_worker/villager-mongols.webp@@resource/sheep.webp@ @ @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager-mongols.webp@@ennemy @resource/resource_gold.webp@",
+        "----------------------------------------------------------------------------------------------------------------------------------",
+        "@unit_worker/villager-mongols.webp@@abilities/repair.webp@@building_defensive/outpost.webp@ @ennemy @resource/resource_gold.webp@ --> @@resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "12@unit_worker/villager-mongols.webp@@resource/resource_food.webp@",
+        "----------------------------------------------------------------------------------------------------------------------------------",
+        "Ne pas queue le @unit_worker/villager-mongols.webp@ suivant",
+        "@resource/rally.webp@@resource/gaiatreeprototypetree.webp@",
+        "Préparer 6@unit_worker/villager-mongols.webp@ dans groupe de controle pour Age Up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "400@resource/resource_food.webp@ 200@resource/resource_gold.webp@",
+        "----------------------------------------------------------------------------------------------------------------------------------",
+        "6 @unit_worker/villager-mongols.webp@@resource/sheep.webp@@abilities/repair.webp@@landmark_mongols/deer-stones.webp@ --> 5@unit_worker/villager-mongols.webp@@@resource/sheep.webp@, 1@unit_worker/villager-mongols.webp@@@resource/resource_gold.webp@",
+        "1@unit_worker/villager-mongols.webp@@resource/sheep.webp@ @ @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "25@resource/resource_wood.webp@ 75@resource/resource_gold.webp@",
+        "----------------------------------------------------------------------------------------------------------------------------------",
+        "@technology_mongols/superior-mobility.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@",
+        "---------------------------------------------------------------------------------------------------------------------------------",
+        "@unit_worker/villager-mongols.webp@@resource/sheep.webp@@abilities/repair.webp@ @building_military/stable.webp@",
+        "@technology_defensive/arrow-slits.webp@ on @building_defensive/outpost.webp@",
+        "@building_military/barracks.webp@ upgrade @unit_infantry/spearman-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "7@unit_worker/villager-mongols.webp@@resource/resource_wood.webp@",
+        "---------------------------------------------------------------------------------------------------------------------------------",
+        "@resource/rally.webp@ @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "50@resource/resource_wood.webp@ 150@resource/resource_gold.webp@",
+        "---------------------------------------------------------------------------------------------------------------------------------",
+        "@technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 11,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@ ready",
+        "---------------------------------------------------------------------------------------------------------------------------------",
+        "@unit_mongols/keshik-2.webp@X2"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "12@unit_worker/villager-mongols.webp@@resource/resource_food.webp@",
+        "---------------------------------------------------------------------------------------------------------------------------------",
+        "@resource/rally.webp@@resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "200@resource/resource_wood.webp@",
+        "---------------------------------------------------------------------------------------------------------------------------------",
+        "5 @unit_worker/villager-mongols.webp@@resource/sheep.webp@@abilities/repair.webp@@building_defensive/outpost.webp@@ @resource/deer.webp@ --> @abilities/repair.webp@@building_mongols/ger.webp@",
+        "@technology_economy/survival-techniques.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "150@resource/resource_wood.webp@",
+        "---------------------------------------------------------------------------------------------------------------------------------",
+        "@abilities/repair.webp@@building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Add @building_technology/blacksmith.webp@ when able and research @technology_military/steeled-arrow.webp@+@technology_military/iron-undermesh.webp@. Slowly add @building_mongols/pasture.webp@ while being aggressive."
+      ]
+    }
+  ],
+  "description": "As basic as possible Mongol build order for new players. Video below!\n\nThe goal is to be aggressive right from the Dark Age with a tower rush into mass Keshik and Archer. Alternatively, you can start with a fast pasture rather than tower rushing - check out the below video for more detail on the variations.\n\nOn the whole the Mongols have less of a refined build order as the game is a bit more chaotic with the impact of different spawns + dark age aggression. Think of this as more of a guideline for what you're trying to achieve than a strict build! Again, see the video for details.\n\nGood luck!",
+  "video": "https://www.youtube.com/embed/x0dfx-KBU1Q",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

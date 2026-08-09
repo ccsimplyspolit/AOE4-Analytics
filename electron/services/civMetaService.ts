@@ -1,7 +1,7 @@
 import type { CivMetaQuery, CivMetaResult, IpcResult, MatchupLabQuery } from '@ipc/contract'
 import type { GlobalMatchupSummary } from '@domain/matchupLab'
 import { buildGlobalMatchup, isMatchupCivilization } from '@domain/matchupLab'
-import { buildTierList } from '@domain/tierList'
+import { buildTierList, type CivTier } from '@domain/tierList'
 import { buildMapStats, type MapStat } from '@domain/mapStats'
 import type { RankLevel, StatsLeaderboard } from '@api/types'
 import { getClient } from './appContext'
@@ -9,6 +9,17 @@ import { err, errFrom, ok } from './result'
 
 const LEADERBOARDS = new Set<StatsLeaderboard>(['rm_solo', 'qm_1v1', 'rm_2v2', 'rm_3v3', 'rm_4v4'])
 const RANKS = new Set<RankLevel>(['bronze', 'silver', 'gold', 'platinum', 'diamond', 'conqueror'])
+/** Rating buckets accepted by AoE4World's Counter Calculator form. */
+const RATINGS = new Set([
+  '<699', '700-899', '900-999', '1000-1099', '1100-1199', '1200-1299', '1300-1399', '>1400',
+  '>1100', '>1200', '>1300', '>1500', '>1600',
+])
+
+function safePatch(value: unknown): string | undefined {
+  return typeof value === 'string' && /^[0-9]+(?:,[0-9]+)*$/.test(value) && value.length <= 64
+    ? value
+    : undefined
+}
 
 function rankFilterable(leaderboard: StatsLeaderboard): boolean {
   return leaderboard === 'rm_solo' || leaderboard === 'qm_1v1'
@@ -21,12 +32,16 @@ function parseMatchupLabQuery(input: unknown): MatchupLabQuery | null {
   const opponentCivilization = query['opponentCivilization']
   const leaderboard = query['leaderboard'] ?? 'rm_solo'
   const rankLevel = query['rankLevel']
+  const rating = query['rating']
+  const patch = query['patch']
   if (
     !isMatchupCivilization(civilization) ||
     !isMatchupCivilization(opponentCivilization) ||
     typeof leaderboard !== 'string' ||
     !LEADERBOARDS.has(leaderboard as StatsLeaderboard) ||
-    (rankLevel != null && (typeof rankLevel !== 'string' || !RANKS.has(rankLevel as RankLevel)))
+    (rankLevel != null && (typeof rankLevel !== 'string' || !RANKS.has(rankLevel as RankLevel))) ||
+    (rating != null && (typeof rating !== 'string' || !RATINGS.has(rating))) ||
+    (patch != null && safePatch(patch) == null)
   ) {
     return null
   }
@@ -35,6 +50,8 @@ function parseMatchupLabQuery(input: unknown): MatchupLabQuery | null {
     opponentCivilization,
     leaderboard: leaderboard as StatsLeaderboard,
     rankLevel: rankLevel as RankLevel | undefined,
+    rating: rating as string | undefined,
+    patch: safePatch(patch),
   }
 }
 
@@ -45,17 +62,41 @@ function parseMatchupLabQuery(input: unknown): MatchupLabQuery | null {
  */
 export async function getCivMeta(query: CivMetaQuery): Promise<IpcResult<CivMetaResult>> {
   try {
+    const rating = query.rating && RATINGS.has(query.rating) ? query.rating : undefined
+    const patch = safePatch(query.patch)
     const civStats = await getClient().getCivStats({
       leaderboard: query.leaderboard,
       rankLevel: query.rankLevel,
+      rating,
+      patch,
     })
     const tier = buildTierList(civStats)
+
+    let mapCivs: CivTier[] | undefined
+    let selectedMap: string | null = null
+    if (Number.isSafeInteger(query.mapId) && query.mapId! > 0) {
+      try {
+        const mapResponse = await getClient().getMapCivStats(query.mapId!, {
+          leaderboard: query.leaderboard,
+          rankLevel: query.rankLevel,
+          rating,
+          patch,
+        })
+        mapCivs = buildTierList(mapResponse).civs
+        selectedMap = mapResponse.map ?? null
+      } catch {
+        // The map pool can change between the overview and detail request. The
+        // global slice is still useful, so keep the response successful.
+      }
+    }
 
     let maps: MapStat[] = []
     try {
       const mapStats = await getClient().getMapStats({
         leaderboard: query.leaderboard,
         rankLevel: query.rankLevel,
+        rating,
+        patch,
       })
       maps = buildMapStats(mapStats)
     } catch {
@@ -68,6 +109,9 @@ export async function getCivMeta(query: CivMetaQuery): Promise<IpcResult<CivMeta
       leaderboard: tier.leaderboard,
       rankLevel: tier.rankLevel,
       totalCivGames: tier.totalGames,
+      patch: civStats.patch,
+      mapCivs,
+      selectedMap,
     })
   } catch (e) {
     return errFrom(e)
@@ -88,6 +132,8 @@ export async function getMatchupLab(
     const response = await getClient().getMatchupStats({
       leaderboard,
       rankLevel: rankFilterable(leaderboard) ? query.rankLevel : undefined,
+      rating: query.rating,
+      patch: query.patch,
     })
     return ok(buildGlobalMatchup(response, query.civilization, query.opponentCivilization))
   } catch (error) {

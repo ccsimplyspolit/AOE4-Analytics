@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 1,
+  "name": "Beasty's NEW Sengoku Build Order - Belkins ",
+  "civilization": "Sengoku Daimyo",
+  "author": "Belkins",
+  "source": "https://aoe4guides.com/builds/qUIfn366ABFOj4E3pGTI",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_sengoku/matsuri.webp@ on gold (and wood if possible). @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:30",
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Buy @resource/resource_wood.webp@to build @unit_sengoku/yatai.webp@. Put it on the @resource/boar.webp@ or between @resource/deer.webp@+@resource/berrybush.webp@ if closer."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 2,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_japanese/farmhouse-1.webp@on @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:25\n",
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Buy @resource/resource_wood.webp@to build 2nd @unit_sengoku/yatai.webp@. Put it on the @resource/deer.webp@. If @age/age_1.webp@ rushed spent wood to build @building_defensive/outpost.webp@ on gold instead.",
+        "If opponent tries to buid @building_defensive/outpost.webp@ near your gold. Build a second @building_defensive/outpost.webp@ on other side. Then go triple @unit_sengoku/yatai.webp@ into FC."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Buy @resource/resource_wood.webp@to build 3rd @unit_sengoku/yatai.webp@.  Put it between @resource/sheep.webp@+@resource/berrybush.webp@ near your @building_economy/town-center.webp@.",
+        "Then when you have 75-80 @resource/resource_wood.webp@ move vils from @resource/resource_wood.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Age up with 3 @resource/resource_gold.webp@+ 1 new @unit_worker/villager-japanese.webp@. @landmark_japanese/koka-township-1.webp@ if you will use it. Other wise @landmark_sengoku/ryokan.webp@ (It will also save wood for FC all in)."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:25",
+      "villager_count": 16,
+      "resources": {
+        "food": 1,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Remacro 8 @resource/resource_food.webp@ vils except one, to @resource/resource_wood.webp@. Build @building_economy/lumber-camp.webp@. @resource/rally.webp@ to @resource/resource_wood.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 0,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Build @building_japanese/farmhouse-1.webp@ with @resource/resource_food.webp@@unit_worker/villager-japanese.webp@. Research @technology_japanese/towara-1.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 19,
+      "resources": {
+        "food": 6,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up vils and @resource/rally.webp@ to @resource/resource_food.webp@ . Build @building_military/stable.webp@@building_military/stable.webp@ or @building_military/stable.webp@@building_military/archery-range.webp@ with 2 @resource/resource_wood.webp@@unit_worker/villager-japanese.webp@.",
+        "Research @technology_economy/double-broadaxe.webp@@technology_japanese/takezaiku-2.webp@ and build 4th @unit_sengoku/yatai.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 23,
+      "resources": {
+        "food": 7,
+        "wood": 13,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start queing units. @unit_sengoku/yari-2.webp@/@unit_japanese/yumi-ashigaru-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:25",
+      "villager_count": 24,
+      "resources": {
+        "food": 9,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @technology_sengoku/takeda_daimyo_1.webp@/@technology_sengoku/oda_daimyo_1.webp@ depending on if you went @building_military/stable.webp@@building_military/stable.webp@ or @building_military/stable.webp@@building_military/archery-range.webp@. And queue @unit_sengoku/daimyo.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:45",
+      "villager_count": 25,
+      "resources": {
+        "food": 10,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/resource_food.webp@ and when you have too much food, rally onto the @resource/resource_gold.webp@ for @age/age_3.webp@ or onto the @resource/resource_wood.webp@ and build more @building_military/stable.webp@/@building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:15",
+      "villager_count": 27,
+      "resources": {
+        "food": 11,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build a @building_japanese/forge-1.webp@ on the @resource/resource_stone.webp@. Research @technology_military/steeled-arrow.webp@/@technology_military/iron-undermesh.webp@ and @technology_japanese/tatara-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "12:30",
+      "villager_count": 42,
+      "resources": {
+        "food": 22,
+        "wood": 6,
+        "gold": 14,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro @resource/resource_wood.webp@@unit_worker/villager-japanese.webp@ to @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "13:30",
+      "villager_count": 43,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 15,
+        "stone": 0,
+        "builder": 14
+      },
+      "notes": [
+        "Build @landmark_sengoku/sake_brewery.webp@ with 14@resource/resource_food.webp@@unit_worker/villager-japanese.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "14:10",
+      "villager_count": 46,
+      "resources": {
+        "food": 16,
+        "wood": 8,
+        "gold": 22,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get all unit upgrades."
+      ]
+    }
+  ],
+  "description": "Belkins edition",
+  "video": "https://www.youtube.com/embed/MHI9qKc72ro",
+  "season": 12,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "name": "New Player Guide to Golden Horde",
+  "civilization": "Golden Horde",
+  "author": "Shaada",
+  "source": "https://aoe4guides.com/builds/fSAsykoTohMnfzKx5nR6",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 4,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager-mongols.webp@ makes @building_mongols/ovoo.webp@ > @landmark_golden_horde/golden_tent.webp@ &gt; @building_mongols/ger.webp@ @resource/resource_gold.webp@. Rally on @resource/sheep.webp@ until 8, then 2 to @resource/resource_gold.webp@ for 3 total."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rallying back to @resource/resource_food.webp@, age up with @technology_golden_horde/golden_tent_khan_age2.webp@ when you can"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally to @resource/resource_wood.webp@ until 10 total, then back to @resource/resource_food.webp@ to 12. Get @technology_economy/wheelbarrow.webp@ when you can."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 6,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Immediately get 2nd @building_mongols/ovoo.webp@ and queue up @unit_golden_horde/khan.webp@ + @unit_golden_horde/torguud.webp@ (you'll make @unit_golden_horde/torguud.webp@ non-stop in Feudal)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build a @building_golden_horde/fortified_outpost.webp@ near @resource/resource_gold.webp@, queue up @technology_economy/double-broadaxe.webp@ when you can, build @building_military/archery-range.webp@ by @building_golden_horde/fortified_outpost.webp@ and train @unit_infantry/archer-2.webp@ non-stop"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Take 5 @unit_worker/villager-mongols.webp@ and go to @resource/deer.webp@ with @building_golden_horde/fortified_outpost.webp@ + @building_mongols/ger.webp@. Get @technology_economy/survival-techniques.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "As @resource/resource_wood.webp@ begins to float, build @building_military/barracks.webp@ by @building_golden_horde/fortified_outpost.webp@ and train @unit_infantry/spearman-1.webp@ (as needed) and at least 2 @unit_golden_horde/kharash.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "As @resource/resource_wood.webp@ floats even more, can slowly add @building_golden_horde/stockyard.webp@ and/or get @building_technology/blacksmith.webp@ + @technology_military/steeled-arrow.webp@/@technology_military/iron-undermesh.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once feeling safe to age up, reassign @unit_worker/villager-mongols.webp@ to @resource/resource_food.webp@/@resource/resource_gold.webp@ (based on feel) and age up with @technology_golden_horde/golden_tent_lumber_shields_age3.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "While waiting for the age up, get @building_technology/blacksmith.webp@ (if not already), @technology_golden_horde/rotation_grazing.webp@, and add more @building_military/barracks.webp@ + @building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Immediately get 3rd @building_mongols/ovoo.webp@ , upgrade @unit_infantry/archer-2.webp@, train @unit_infantry/man-at-arms-1.webp@ + @unit_infantry/archer-2.webp@/@unit_infantry/crossbowman-3.webp@ + @unit_golden_horde/torguud.webp@ (+ @unit_golden_horde/kharash.webp@ if need), get @technology_military/balanced-projectiles.webp@/@technology_military/wedge-rivets.webp@, and be aggressive!"
+      ]
+    }
+  ],
+  "description": "As basic as possible (it looks scarier than it is!) Golden Horde build order for new players. Video below!\n\nThe goal is to be aggressive in the Feudal Age with Torguud, Archer & Spear/Kharash while slowly going to the Castle Age. This can be played on any land map against any* civilisation allowing you to get a foothold in any game and then diverge from there. Also works in team games!\n\nOnce you get Castle, you can look to end the game early with the help of Muscovy Yasak +2 ranged armour on your Torguud, MAA, and Rus Tributes, or you can save stone and later go for Barracks Reinforcements which is a huge power-spike where the Golden Horde really becomes a horde.\n\n*Against feudal knight civs like French, you will want to alter this build and go Spearmen + Torguud in Feudal instead of massing Archers, even adding in Keshik if they mass their own Archers. Check out Pt2 of the below video for more info.",
+  "video": "https://www.youtube.com/embed/jcaiB7H4aCA",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

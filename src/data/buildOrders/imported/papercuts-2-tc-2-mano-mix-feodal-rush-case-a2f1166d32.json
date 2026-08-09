@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "name": "Papercut's 2 TC 2 Mano / Mix Feodal Rush case",
+  "civilization": "House of Lancaster",
+  "author": "Asmitha",
+  "source": "https://aoe4guides.com/builds/FKAwBqZsITcMnS6RPWcI",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @resource/sheep.webp@ with 1 @abilities/repair.webp@@building_economy/house.webp@",
+        "@resource/rally.webp@to@resource/resource_gold.webp@ until 3"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 3,
+        "wood": 1,
+        "gold": 0,
+        "stone": 5,
+        "builder": 3
+      },
+      "notes": [
+        "all @resource/resource_gold.webp@->@landmark_lancaster/lancaster_castle.webp@back to @abilities/repair.webp@@building_lancaster/manor.webp@ -&gt; cover @resource/resource_gold.webp@ + @resource/resource_wood.webp@/@resource/deer.webp@",
+        "Leave 3 on @resource/resource_food.webp@ and send others to 5 @resource/resource_stone.webp@1 @resource/resource_wood.webp@",
+        "@resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 0,
+        "stone": 3,
+        "builder": 4
+      },
+      "notes": [
+        "3 @resource/resource_gold.webp@+1 @resource/sheep.webp@->@abilities/repair.webp@@landmark_english/abbey-of-kings.webp@-&gt; @resource/resource_gold.webp@",
+        "3 @resource/sheep.webp@ -&gt; @abilities/repair.webp@@building_economy/mining-camp.webp@@resource/resource_stone.webp@ -&gt; @building_lancaster/manor.webp@",
+        "1 @resource/sheep.webp@ -&gt; @resource/rally.webp@@resource/resource_wood.webp@",
+        "4 @unit_lancaster/lord_lancaster.webp@ in @landmark_english/abbey-of-kings.webp@,after 12 at @resource/resource_wood.webp@ @resource/rally.webp@ to @resource/sheep.webp@",
+        "@unit_lancaster/hobelar_age2.webp@@unit_infantry/spearman-1.webp@, add @unit_lancaster/yeoman_age2.webp@ if @unit_infantry/spearman-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 18,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": 10
+      },
+      "notes": [
+        "@age/age_2.webp@finishes at 4:05",
+        "All @resource/resource_wood.webp@vils (7 vil) and age upper (3 vil) go build @building_lancaster/manor.webp@on @resource/resource_wood.webp@then gather@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 19,
+      "resources": {
+        "food": 3,
+        "wood": 11,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "1st @building_lancaster/manor.webp@ ready"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:15",
+      "villager_count": 21,
+      "resources": {
+        "food": 3,
+        "wood": 13,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "When having 400 @resource/resource_wood.webp@ 300@resource/resource_stone.webp@ start @abilities/repair.webp@2nd@building_economy/town-center.webp@ -> on @resource/resource_wood.webp@ against aggression /@resource/resource_gold.webp@if no @landmark_lancaster/lancaster_castle.webp@cover /@resource/deer.webp@ if opponent 2TC",
+        "Stop gathering@resource/resource_stone.webp@ when having 100 extra(700 left on node) (for a 2nd manor)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 23,
+      "resources": {
+        "food": 5,
+        "wood": 18,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd TC ready, Have at least 5-6 on@resource/resource_food.webp@ to produce from both TC",
+        "Can make 2nd @building_lancaster/manor.webp@ on other resource",
+        "Make production buildings and respond to enemy"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "macro @resource/resource_food.webp@@resource/resource_gold.webp@ over @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_lancaster/kings_college.webp@> @technology_lancaster/hill_land_training.webp@, @technology_lancaster/collar_of_esses.webp@ if against MMA rush, @technology_lancaster/burgundian_imports.webp@ if mass @resource/resource_gold.webp@,  @technology_lancaster/military-tactics-training.webp@ GO TO, @technology_lancaster/warwolf_trebuchet.webp@ good",
+        "mass raid with@unit_lancaster/hobelar_age2.webp@",
+        "mass @building_lancaster/manor.webp@",
+        "build infantry"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_english/berkshire-palace.webp@great defense / @landmark_english/wynguard-palace.webp@ @unit_lancaster/gunpowder_contingent.webp@",
+        "@ability_lancaster/earls_guard.webp@ great",
+        "Mass production buildings required"
+      ]
+    }
+  ],
+  "description": "Lancaster Castle, Manor, 2nd TC then 2nd manor build from RTS_Papercut\nAddition on scenarios including Feodal push",
+  "video": "https://www.youtube.com/embed/-3nVdrGLq9E",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

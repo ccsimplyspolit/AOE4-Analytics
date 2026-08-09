@@ -68,6 +68,50 @@ describe('Aoe4WorldClient', () => {
     expect(fake.calls.length).toBe(1)
   })
 
+  it('bypasses the leaderboard cache when fresh is requested', async () => {
+    const body = { total_count: 1, count: 1, per_page: 50, players: [] }
+    const fake = fakeFetch(body)
+    const client = makeClient(fake.fetch)
+
+    await client.getLeaderboard('rm_solo')
+    await client.getLeaderboard('rm_solo')
+    expect(fake.calls).toHaveLength(1)
+
+    await client.getLeaderboard('rm_solo', { fresh: true })
+    expect(fake.calls).toHaveLength(2)
+  })
+
+  it('follows leaderboard pages and de-duplicates profile rows', async () => {
+    const calls: string[] = []
+    const player = (id: number) => ({
+      profile_id: id,
+      name: `P${id}`,
+      rating: 1000,
+      rank: id,
+    })
+    const fetchFn = (async (url: string) => {
+      calls.push(url)
+      const page = Number(new URL(url).searchParams.get('page'))
+      return {
+        ok: true,
+        status: 200,
+        json: async () => ({
+          total_count: 3,
+          per_page: 2,
+          players: page === 1 ? [player(1), player(2)] : [player(2), player(3)],
+        }),
+      }
+    }) as unknown as typeof fetch
+    const client = makeClient(fetchFn)
+
+    const players = await client.getAllLeaderboard('rm_solo', { pageSize: 2, fresh: true })
+
+    expect(players.map((row) => row.profile_id)).toEqual([1, 2, 3])
+    expect(calls).toHaveLength(2)
+    expect(calls[1]).toContain('page=2')
+    expect(calls[0]).toContain('limit=2')
+  })
+
   it('coalesces concurrent identical cache misses', async () => {
     const fake = fakeFetch(loadFixture('player-10240693.json'))
     const client = makeClient(fake.fetch)
@@ -117,6 +161,41 @@ describe('Aoe4WorldClient', () => {
     expect(url).toContain('since=2024-01-01')
   })
 
+  it('follows every account-history page instead of stopping at the first response', async () => {
+    const calls: string[] = []
+    const game = (id: number) => ({
+      game_id: id,
+      started_at: `2024-01-0${id}T00:00:00Z`,
+      duration: 600,
+      map: 'Dry Arabia',
+      kind: 'rm_1v1',
+      leaderboard: 'rm_solo',
+      ongoing: false,
+      just_finished: false,
+      teams: [],
+    })
+    const fetchFn = (async (url: string) => {
+      calls.push(url)
+      const page = Number(new URL(url).searchParams.get('page'))
+      return {
+        ok: true,
+        status: 200,
+        json: async () => ({
+          total_count: 2,
+          count: 1,
+          games: [game(page)],
+        }),
+      }
+    }) as unknown as typeof fetch
+    const client = makeClient(fetchFn)
+
+    const games = await client.getAllPlayerGames(10240693, { pageSize: 1, fresh: true })
+
+    expect(games.map((item) => item.game_id)).toEqual([1, 2])
+    expect(calls).toHaveLength(2)
+    expect(calls[1]).toContain('page=2')
+  })
+
   it('filters head-to-head games by opponent and coalesces identical requests', async () => {
     const fake = fakeFetch(loadFixture('games-10240693-rmsolo.json'))
     const client = makeClient(fake.fetch)
@@ -136,13 +215,14 @@ describe('Aoe4WorldClient', () => {
     const client = makeClient(fake.fetch)
 
     await Promise.all([
-      client.getMatchupStats({ leaderboard: 'qm_1v1', rankLevel: 'gold', patch: '12.1' }),
-      client.getMatchupStats({ leaderboard: 'qm_1v1', rankLevel: 'gold', patch: '12.1' }),
+      client.getMatchupStats({ leaderboard: 'qm_1v1', rankLevel: 'gold', rating: '1100-1199', patch: '12.1' }),
+      client.getMatchupStats({ leaderboard: 'qm_1v1', rankLevel: 'gold', rating: '1100-1199', patch: '12.1' }),
     ])
 
     expect(fake.calls).toHaveLength(1)
     expect(fake.calls[0]!.url).toContain('/stats/qm_1v1/matchups?')
     expect(fake.calls[0]!.url).toContain('rank_level=gold')
+    expect(fake.calls[0]!.url).toContain('rating=1100-1199')
     expect(fake.calls[0]!.url).toContain('patch=12.1')
   })
 
@@ -154,5 +234,23 @@ describe('Aoe4WorldClient', () => {
 
     expect(fake.calls[0]!.url).toContain('/stats/rm_2v2/matchups')
     expect(fake.calls[0]!.url).not.toContain('rank_level')
+  })
+
+  it('requests the full civilization-by-map slice', async () => {
+    const fake = fakeFetch({
+      leaderboard: 'rm_solo',
+      rank_level: null,
+      rating: null,
+      patch: '11308',
+      map_id: 163361,
+      map: 'Dry Arabia',
+      data: [],
+    })
+    const client = makeClient(fake.fetch)
+
+    await client.getMapCivStats(163361, { leaderboard: 'rm_solo', rankLevel: 'diamond' })
+
+    expect(fake.calls[0]!.url).toContain('/stats/rm_solo/maps/163361?')
+    expect(fake.calls[0]!.url).toContain('rank_level=diamond')
   })
 })

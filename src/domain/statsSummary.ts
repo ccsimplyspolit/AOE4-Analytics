@@ -724,6 +724,8 @@ const CIV_TOKEN_TO_SLUG: Record<string, string> = {
   od: 'order_of_the_dragon',
   zx: 'zhu_xis_legacy',
   fre_ha_01: 'jeanne_darc',
+  byzantine_ha_mac: 'macedonian_dynasty',
+  byz_ha_mac: 'macedonian_dynasty',
   japanese_ha_sen: 'sengoku_daimyo',
   sultanate_ha_tug: 'tughlaq_dynasty',
 }

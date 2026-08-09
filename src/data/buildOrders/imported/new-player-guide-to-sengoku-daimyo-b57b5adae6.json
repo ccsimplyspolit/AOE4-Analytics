@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "name": "New Player Guide to Sengoku Daimyo",
+  "civilization": "Sengoku Daimyo",
+  "author": "Shaada",
+  "source": "https://aoe4guides.com/builds/v5v3HBqN5WY3CJ5NvpZF",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@ @building_sengoku/matsuri.webp@ @ @resource/resource_wood.webp@ with all @unit_worker/villager-japanese.webp@. 1 @unit_worker/villager-japanese.webp@ to make a @building_japanese/farmhouse-1.webp@ nearby. Rally @resource/sheep.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make 2x @unit_sengoku/yatai.webp@ and research @technology_japanese/towara-1.webp@, then 5 @resource/resource_wood.webp@ @unit_worker/villager-japanese.webp@ go to @resource/resource_gold.webp@ once enough for a @building_japanese/forge-1.webp@. Last @resource/resource_wood.webp@ @unit_worker/villager-japanese.webp@ to @resource/resource_food.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@landmark_sengoku/ryokan.webp@/@landmark_japanese/koka-township-1.webp@ with 4 @resource/resource_food.webp@@unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 2,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@ @building_japanese/farmhouse-1.webp@ @ @resource/berrybush.webp@ and make another @unit_sengoku/yatai.webp@ (3 total now). Rally @resource/resource_wood.webp@ until 12."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 2,
+        "wood": 12,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 landmark @unit_worker/villager-japanese.webp@ @abilities/repair.webp@ @building_military/stable.webp@ > Oda @building_sengoku/daimyo.webp@ &gt; @building_military/archery-range.webp@. Research @technology_japanese/takezaiku-2.webp@ and get 4th @unit_sengoku/yatai.webp@ when you can."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 6,
+        "wood": 12,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Train @unit_sengoku/yari-2.webp@ + @unit_japanese/yumi-ashigaru-2.webp@ non-stop + @unit_sengoku/daimyo.webp@ . Research @technology_military/steeled-arrow.webp@/@technology_military/iron-undermesh.webp@ + @technology_sengoku/higoyumi.webp@ as you can."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 33,
+      "resources": {
+        "food": 16,
+        "wood": 12,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Add in 2nd @building_military/archery-range.webp@  and @technology_economy/double-broadaxe.webp@ when you can. Add Takeda @building_sengoku/daimyo.webp@ @ 125 @resource/resource_stone.webp@ and get @unit_sengoku/daimyo.webp@+@technology_sengoku/horse_training.webp@."
+      ]
+    }
+  ],
+  "description": "As basic as possible Sengoku build order for new players. Video below!\n\nThe goal is to build a Feudal Age army of Yari Cavalry + Yumi Ashigaru and attack. This can be played on any land map against any civilisation allowing you to get a foothold in any game and then diverge from there. Also works in team games!\n\nThere are 2 recommended choices once you complete the below build and attack:\n1. Go all-in with aggression! Make more production for more units, get siege engineering from the blacksmith so you can make rams with your infantry, and keep your food villagers working by adding farms or putting them on deer, boar or berries.\n2. Go Castle Age! Put a few more villagers to gold (or use the Matsuri market to buy/sell if you're floating resources) and age up with the Sake Brewery. Upgrade your Yumi and spam Mounted Samurai alongside your Daimyo to go kill your opponent with an incredibly strong unit composition!\n\nOnce you're feeling comfortable with this build, look for a more advanced and optimal build order. Note against feudal knight civs, you may want to alter this build and try spear + horsemen in Feudal instead. I recommend checking out a recent build order guide video from a pro player for the next step up. Two good options are Beastyqt and Valdemar.",
+  "video": "https://www.youtube.com/embed/CSB7nfZptbo",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

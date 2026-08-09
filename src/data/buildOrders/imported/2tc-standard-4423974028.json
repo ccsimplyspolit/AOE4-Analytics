@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 1,
+  "name": "2TC Standard",
+  "civilization": "English",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/6h1f95Kn675pXVo7lCg2",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_economy/house.webp@ with 1 @unit_worker/villager.png@ then @resource/resource_food.png@.",
+        "Rally 2 @unit_worker/villager.png@ to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ back to @resource/resource_food.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_english/abbey-of-kings.webp@ with 2 @resource/resource_food.png@ @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Pull 2 @unit_worker/villager.webp@ away from @resource/resource_gold.png@ to @resource/resource_stone.png@. Rebalance the rest of the vills according to tab on left side."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Rally total of 6 @unit_worker/villager.webp@ to @resource/gaiatreeprototypetree.png@ (dont mess trees up or you will need a lumbercamp.)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_stone.png@ until 7"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "Take 1 @unit_worker/villager.webp@ from @landmark_english/abbey-of-kings.png@ to @resource/gaiatreeprototypetree.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "Build 2nd @building_economy/town-center.webp@ on @resource/resource_gold.png@ with @building_economy/farm.png@-space in between main and 2nd.",
+        "Build this with 8+ @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:05",
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ until 8 on @resource/resource_food.png@. Go up to 15 @unit_worker/villager.png@ on @resource/resource_wood.png@.",
+        "build @building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 25,
+      "resources": {
+        "food": 7,
+        "wood": 15,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@3 @resource/resource_gold.png@@unit_worker/villager.png@ from 2nd @building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 8,
+        "wood": 15,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "For production add @building_military/archery-range.webp@ + @building_military/barracks.png@ and slowly add in @building_economy/farm.png@. You are aiming for at least 25 units at minute 11 since most ram timings hit that time. If they are late, you are usually in a great spot because ROI comes in at that mark."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Try to balance eco now with production by 50/50."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If attack is coming focus on getting +1 ranged attack. Otherwise, focus economy techs and age up after farms."
+      ]
+    }
+  ],
+  "description": "The classic 2TC build with feudal defensive units. Good against ram all in where white tower doesn't work. You can, of course, also attempt white tower. :P\n\nUse this build against civs, where Longbow Rush or Stable King Opener doesn't work.\n\nVideo Linked",
+  "video": "https://www.youtube.com/embed/DK8KDAJQxf4",
+  "season": 9,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

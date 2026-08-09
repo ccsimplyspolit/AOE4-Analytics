@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "name": "Sengoku Daimyo Eco Boom",
+  "civilization": "Sengoku Daimyo",
+  "author": "ElectrikBlue",
+  "source": "https://aoe4guides.com/builds/hgehWiQoGmPEa3y83hmD",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 0,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 @unit_worker/villager-japanese.webp@ stays @resource/resource_wood.webp@ at base, 5 on woodline, 1 builds @building_sengoku/matsuri.webp@ on woodline"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:45",
+      "villager_count": 8,
+      "resources": {
+        "food": 2,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Swap @resource/resource_wood.webp@@unit_worker/villager-japanese.webp@ to food + @resource/rally.webp@ on @resource/resource_food.webp@ + Bring back @resource/sheep.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 2,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Create @unit_sengoku/yatai.webp@ + Build @building_japanese/farmhouse-1.webp@ on @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:45",
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Create 2nd @unit_sengoku/yatai.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Create 3rd @unit_sengoku/yatai.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Take 4 @resource/resource_wood.webp@@unit_worker/villager-japanese.webp@ to Build @building_japanese/forge-1.webp@ on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:15",
+      "villager_count": 15,
+      "resources": {
+        "food": 9,
+        "wood": 1,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Take 1 @resource/resource_wood.webp@@unit_worker/villager-japanese.webp@ to @resource/resource_gold.webp@ and  @resource/rally.webp@ on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@landmark_japanese/koka-township-1.webp@ with 3 @resource/resource_gold.webp@@unit_worker/villager-japanese.webp@ + 1 new @unit_worker/villager-japanese.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:10",
+      "villager_count": 18,
+      "resources": {
+        "food": 1,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Remacro 8 @resource/resource_food.webp@ to @resource/resource_wood.webp@ and @resource/rally.webp@ on @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 19,
+      "resources": {
+        "food": 0,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Build @building_japanese/farmhouse-1.webp@ with @resource/resource_food.webp@@unit_worker/villager-japanese.webp@ + Research @technology_japanese/towara-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Workers go back to @resource/resource_food.webp@ + @resource/rally.webp@ on @resource/resource_food.webp@ + 2 workers Build @building_military/archery-range.webp@ and @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 24,
+      "resources": {
+        "food": 8,
+        "wood": 13,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_economy/lumber-camp.webp@ + Research @technology_economy/double-broadaxe.webp@ and @technology_japanese/takezaiku-2.webp@ + Queue @unit_sengoku/yari-2.webp@ and @unit_japanese/yumi-ashigaru-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

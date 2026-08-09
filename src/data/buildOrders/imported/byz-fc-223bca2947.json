@@ -1,0 +1,417 @@
+{
+  "schemaVersion": 1,
+  "name": "BYZ FC",
+  "civilization": "Byzantines",
+  "author": "Dexter",
+  "source": "https://aoe4guides.com/builds/4TTJRUctqWWqbTYrqooQ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00\n",
+      "villager_count": 6,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@build@building_economy/house.webp@then@resource/resource_stone.webp@,2@unit_worker/villager.webp@build@building_economy/mining-camp.webp@@resource/resource_stone.webp@,1@unit_worker/villager.webp@build@building_economy/mining-camp.webp@@resource/resource_gold.webp@,1@unit_worker/villager.webp@build@building_byzantines/cistern-1.webp@then@resource/sheep.webp@,@resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:15",
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 1,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@from@resource/sheep.webp@build@building_byzantines/cistern-1.webp@and connect@building_byzantines/aqueduct-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 1,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@from@resource/sheep.webp@build@building_byzantines/cistern-1.webp@and connect@building_byzantines/aqueduct-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:40",
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 3,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "at 110 @resource/resource_stone.webp@, 3 @unit_worker/villager.webp@ from @resource/resource_stone.webp@to@resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 10,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "at 200 @resource/resource_gold.webp@, 1@unit_worker/villager.webp@from @resource/resource_gold.webp@ build @building_byzantines/cistern-1.webp@ , connect with@building_byzantines/aqueduct-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "4@unit_worker/villager.webp@from @resource/sheep.webp@ build @landmark_byzantines/grand-winery-1.webp@next to @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 3,
+        "wood": 7,
+        "gold": 1,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "3@unit_worker/villager.webp@from@resource/sheep.webp@to@resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "04:10",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 1,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@from@resource/sheep.webp@build@building_military/barracks.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "04:20",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@from@resource/resource_gold.webp@build@building_economy/house.webp@, set middle@building_byzantines/cistern-1.webp@to research speed"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "04:40",
+      "villager_count": 19,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 1,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@from@landmark_byzantines/grand-winery-1.webp@build @building_defensive/outpost.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "05:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 1,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "make @unit_byzantines/limitanei-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:05",
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 1,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "4@unit_worker/villager.webp@from@resource/gaiatreeprototypetree.webp@build@building_economy/lumber-camp.webp@rest@resource/resource_wood.webp@; @unit_worker/villager.webp@from@resource/sheep.webp@to@resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:45",
+      "villager_count": 23,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@from@resource/resource_gold.webp@build@building_byzantines/mercenary-house-2.webp@then@resource/berrybush.webp@; 1@unit_worker/villager.webp@from@resource/resource_wood.webp@build@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:30",
+      "villager_count": 25,
+      "resources": {
+        "food": 17,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "at@building_byzantines/mercenary-house-2.webp@take@technology_byzantines/silk-road-mercenary-contract-1.webp@,build@unit_byzantines/javelin-thrower-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 18,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@from@resource/resource_wood.webp@build@building_technology/blacksmith.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:20",
+      "villager_count": 27,
+      "resources": {
+        "food": 15,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "3@unit_worker/villager.webp@from@resource/resource_food.webp@to@resource/resource_gold.webp@; 1 from@resource/resource_food.webp@build@building_defensive/outpost.webp@then@resource/resource_gold.webp@; 1@unit_worker/villager.webp@from @resource/resource_wood.webp@build@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "08:10",
+      "villager_count": 28,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4@unit_worker/villager.webp@from@resource/resource_food.webp@build@building_economy/mill.webp@on@resource/berrybush.webp@,1@unit_worker/villager.webp@from@resource/resource_food.webp@build@building_byzantines/cistern-1.webp@and connect@building_byzantines/aqueduct-1.webp@then@resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "08:50",
+      "villager_count": 32,
+      "resources": {
+        "food": 16,
+        "wood": 8,
+        "gold": 7,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@from@resource/resource_food.webp@to@resource/resource_gold.webp@, @resource/rally.webp@@resource/resource_gold.webp@,at @building_technology/blacksmith.webp@learn@technology_military/steeled-arrow.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:10",
+      "villager_count": 32,
+      "resources": {
+        "food": 19,
+        "wood": 5,
+        "gold": 7,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@from@resource/resource_wood.webp@build@building_economy/house.webp@, 3@unit_worker/villager.webp@from@resource/resource_wood.webp@to@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 36,
+      "resources": {
+        "food": 25,
+        "wood": 0,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5@unit_worker/villager.webp@from@resource/resource_wood.webp@to@resource/resource_food.webp@,at@building_technology/blacksmith.webp@learn@technology_military/iron-undermesh.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:30",
+      "villager_count": 36,
+      "resources": {
+        "food": 24,
+        "wood": 0,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "at 12@unit_worker/villager.webp@on@resource/resource_gold.webp@@resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:50",
+      "villager_count": 37,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 12,
+        "stone": 0,
+        "builder": 12
+      },
+      "notes": [
+        "12@unit_worker/villager.webp@from@resource/resource_food.webp@build@landmark_byzantines/golden-horn-tower-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": 34,
+      "resources": {
+        "food": 9,
+        "wood": 4,
+        "gold": 12,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "4@unit_worker/villager.webp@from@resource/resource_food.webp@to@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:45",
+      "villager_count": 39,
+      "resources": {
+        "food": 21,
+        "wood": 4,
+        "gold": 12,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "at@building_byzantines/mercenary-house-2.webp@learn@technology_byzantines/veteran-mercenaries-3.webp@,at@building_military/barracks.webp@learn spear upgrade, &lt;- remacro 21@resource/resource_food.webp@4@resource/resource_wood.webp@12@resource/resource_gold.webp@2@resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:00",
+      "villager_count": 40,
+      "resources": {
+        "food": 22,
+        "wood": 4,
+        "gold": 12,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "at@building_technology/blacksmith.webp@learn@technology_military/balanced-projectiles.webp@"
+      ]
+    }
+  ],
+  "description": "hope it helps times might not be perfect. ;/",
+  "video": "https://www.youtube.com/embed/yvaWvgufajk",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

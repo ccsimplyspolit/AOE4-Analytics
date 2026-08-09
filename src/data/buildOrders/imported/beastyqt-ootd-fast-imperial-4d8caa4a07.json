@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "name": "[Beastyqt] OOTD Fast Imperial",
+  "civilization": "Order of the Dragon",
+  "author": "Jemor3357",
+  "source": "https://aoe4guides.com/builds/6xxYo6JwYa5QLWU2FRbi",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @unit_worker/villager.webp@ on @resource/sheep.webp@ ,   @resource/rally.webp@ 3 @unit_worker/villager.webp@ to @resource/resource_gold.webp@  ( First villager builds @building_economy/house.webp@+@building_economy/mining-camp.webp@ )"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:10",
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/sheep.webp@ until @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~2:20",
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Send 1@resource/resource_food.webp@ @unit_worker/villager.webp@ to build @building_economy/mill.webp@ near @resource/berrybush.webp@ , send 1@resource/resource_food.webp@@unit_worker/villager.webp@ to gold."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/resource_wood.webp@.  If you're getting harassed at your gold, @resource/rally.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Send all @resource/resource_gold.webp@@unit_worker/villager.webp@ to @resource/gaiatreeprototypetree.webp@ after you have enough gold for @technology_economy/professional-scouts.webp@ (it's 300 gold)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~4:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_economy/professional-scouts.webp@.      After 10 @resource/resource_wood.webp@@unit_worker/villager.webp@ -> @resource/rally.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/stable.webp@@building_economy/house.webp@ and @building_economy/lumber-camp.webp@ with @resource/resource_wood.webp@@unit_worker/villager.webp@ , Start producing @unit_cavalry/scout.webp@ from @building_military/stable.webp@ to pro-scout."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build with 2@resource/resource_wood.webp@@unit_worker/villager.webp@ -> @building_military/barracks.webp@ and produce x2-3@unit_dragon/gilded-spearman-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 2@resource/resource_wood.webp@@unit_worker/villager.webp@ to @resource/resource_food.webp@. Build @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 13,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 5@resource/resource_wood.webp@@unit_worker/villager.webp@ to @resource/resource_gold.webp@ and build @building_defensive/outpost.webp@ near it."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~7:45",
+      "villager_count": 24,
+      "resources": {
+        "food": 16,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build second @building_defensive/outpost.webp@ near @resource/resource_gold.webp@.  Get @technology_economy/survival-techniques.webp@, @technology_military/iron-undermesh.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~8:30",
+      "villager_count": 27,
+      "resources": {
+        "food": 12,
+        "wood": 3,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 6 @resource/resource_food.webp@@unit_worker/villager.webp@ to @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~9:30",
+      "villager_count": 29,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 12,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "Continue @resource/rally.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "~10:20",
+      "villager_count": 32,
+      "resources": {
+        "food": 16,
+        "wood": 3,
+        "gold": 13,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get -> @technology_economy/wheelbarrow.webp@ ,@technology_economy/specialized-pick.webp@ , @technology_military/wedge-rivets.webp@ , Get @resource/relics.webp@ if you built @landmark_hre/regnitz-cathedral.webp@. Continue @resource/rally.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "~13:00",
+      "villager_count": 39,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 0,
+        "stone": 9,
+        "builder": 22
+      },
+      "notes": [
+        "Send 9@resource/resource_food.webp@@unit_worker/villager.webp@ to @resource/resource_stone.webp@ , Get @technology_economy/textiles.webp@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": 44,
+      "resources": {
+        "food": 8,
+        "wood": 22,
+        "gold": 0,
+        "stone": 14,
+        "builder": -1
+      },
+      "notes": [
+        "Get your eco upgrades, Upgrade your @building_defensive/outpost.webp@s with @technology_defensive/cannon-emplacement.webp@@technology_defensive/fortify-outpost.webp@, Build more @building_defensive/outpost.webp@s"
+      ]
+    }
+  ],
+  "description": "I made some slight adjustments on villager counts to make it more easy to apply. Depending on the map and the opponent you can either go Reignitz or Burgrave.\n\nAim is to endure and use the wonderfull Swabia landmark to close the gap on economy while achieving Fast-Imperial. You need to use your outposts and emergency repairs to endure until you reach this aim.",
+  "video": "https://www.youtube.com/embed/1yzeLSKq3Aw",
+  "season": 11,
+  "map": "Open",
+  "strategy": "Fast Imperial",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

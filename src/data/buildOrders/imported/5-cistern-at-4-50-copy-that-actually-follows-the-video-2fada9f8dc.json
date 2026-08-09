@@ -1,0 +1,423 @@
+{
+  "schemaVersion": 1,
+  "name": "5 Cistern at 4:50 - Copy that actually follows the video",
+  "civilization": "Byzantines",
+  "author": "Readix",
+  "source": "https://aoe4guides.com/builds/S3ljkaBIxojnNHjnc54s",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All @unit_worker/villager.webp@ to @resource/sheep.webp@. @resource/rally.webp@ on @resource/sheep.webp@.",
+        "@unit_cavalry/scout.webp@ the back of your base looking for @resource/berrybush.webp@ then the enemy base.",
+        "Check if the enemy is rusing you, if so, change to the @landmark_byzantines/imperial-hippodrome-1.webp@ build."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:03",
+      "villager_count": 6,
+      "resources": {
+        "food": 2,
+        "wood": 0,
+        "gold": 1,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@ from @resource/sheep.webp@ to @resource/resource_stone.webp@, 1 to @resource/resource_gold.webp@both with a @building_economy/mining-camp.webp@.",
+        "2 @unit_worker/villager.webp@remain on @resource/sheep.webp@.",
+        "@resource/rally.webp@ on @resource/sheep.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:35",
+      "villager_count": 8,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 1,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/house.webp@ then the 1st @building_byzantines/cistern-1.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 1,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "@abilities/repair.webp@ the 2nd @building_byzantines/cistern-1.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 1,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "Extentend @building_byzantines/aqueduct-1.webp@ to the site of the 3rd @building_byzantines/cistern-1.webp@ while waiting for stone."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:05",
+      "villager_count": 14,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 1,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "@abilities/repair.webp@3rd @building_byzantines/cistern-1.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Second  @unit_worker/villager.webp@will be the cistern Builder until you get 5 @building_byzantines/cistern-1.webp@, so control goup it.",
+        "Ctrl group 1: 1x @building_byzantines/cistern-1.webp@@abilities/repair.webp@@unit_worker/villager.webp@.",
+        "Ctrl group 2: 3x @resource/sheep.webp@@unit_worker/villager.webp@, use them to age up when the you have all the resources.",
+        "Ctrl group 3: 3x @resource/resource_stone.webp@@unit_worker/villager.webp@, use them to force drop @resource/resource_stone.webp@ when needed and to accelerate @age/age_2.webp@ age up when the time comes."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:15",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 2,
+        "stone": 3,
+        "builder": 4
+      },
+      "notes": [
+        "Start @age/age_2.webp@@landmark_byzantines/grand-winery-1.webp@with 3 from @resource/sheep.webp@ then they'll go to @resource/berrybush.webp@.",
+        "2 @unit_worker/villager.webp@ from @resource/sheep.webp@to @resource/resource_wood.webp@ and 1@resource/resource_gold.webp@.",
+        "@resource/rally.webp@ on @resource/resource_wood.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:35",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 2,
+        "stone": 3,
+        "builder": 4
+      },
+      "notes": [
+        "Extentend @building_byzantines/aqueduct-1.webp@ to your second @resource/berrybush.webp@ patch."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 2,
+        "stone": 3,
+        "builder": 4
+      },
+      "notes": [
+        "@abilities/repair.webp@the 4th @building_byzantines/cistern-1.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 2,
+        "stone": 3,
+        "builder": 4
+      },
+      "notes": [
+        "When enough stone for the 5th @building_byzantines/cistern-1.webp@:",
+        "Send all @resource/resource_stone.webp@@unit_worker/villager.webp@to help build@landmark_byzantines/grand-winery-1.webp@, then to @resource/berrybush.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:35",
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 2,
+        "stone": 3,
+        "builder": 4
+      },
+      "notes": [
+        "@abilities/repair.webp@the 5th @building_byzantines/cistern-1.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "@landmark_byzantines/grand-winery-1.webp@and all @building_byzantines/cistern-1.webp@ finishes at 4:50.",
+        "Once 8 @unit_worker/villager.webp@ on @resource/resource_wood.webp@, @resource/rally.webp@ on @resource/sheep.webp@ untill @age/age_3.webp@.",
+        "If against aggro civ gather secondary @resource/berrybush.webp@ first."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Whenever you need to @abilities/repair.webp@ something, do it with @resource/resource_wood.webp@@unit_worker/villager.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @landmark_byzantines/grand-winery-1.webp@@unit_worker/villager.webp@ to @resource/berrybush.webp@.",
+        "3@unit_worker/villager.webp@ from @resource/sheep.webp@ to @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:10",
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@ from @resource/resource_wood.webp@ @abilities/repair.webp@ either@building_military/barracks.webp@.",
+        "Make 5 @unit_byzantines/limitanei-1.webp@ then upgrade them.",
+        "Research @technology_economy/wheelbarrow.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:05",
+      "villager_count": 24,
+      "resources": {
+        "food": 11,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@abilities/repair.webp@ @building_byzantines/mercenary-house-2.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:35",
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/barracks.webp@/@building_byzantines/mercenary-house-2.webp@ finishes.",
+        "Get either @technology_byzantines/western-mercenary-contract-1.webp@ or @technology_byzantines/silk-road-mercenary-contract-1.webp@.",
+        "If @technology_byzantines/western-mercenary-contract-1.webp@ make 5 @unit_byzantines/longbowman-2.webp@.",
+        "Consider @building_defensive/outpost.webp@/@building_defensive/palisade-wall.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:35",
+      "villager_count": 30,
+      "resources": {
+        "food": 17,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use your @unit_byzantines/limitanei-1.webp@@unit_byzantines/longbowman-2.webp@ army to either:",
+        "- Guard the @unit_worker/villager.webp@ building @building_defensive/palisade-wall.webp@.",
+        "- Defend @resource/resource_gold.webp@ or secondary @resource/berrybush.webp@.",
+        "- @abilities/attack-move.webp@ the enemy @resource/resource_gold.webp@ or Pro@unit_cavalry/scout.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1st @building_military/barracks.webp@and @building_byzantines/mercenary-house-2.webp@ should be under the influence of 2 @building_byzantines/cistern-1.webp@ (for both Conscriptio and Dialecticus)."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:45",
+      "villager_count": 31,
+      "resources": {
+        "food": 18,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start @age/age_2.webp@@landmark_byzantines/golden-horn-tower-2.webp@ with 8 @unit_worker/villager.webp@ from @resource/resource_food.webp@then back to @resource/resource_food.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:50",
+      "villager_count": 31,
+      "resources": {
+        "food": 10,
+        "wood": 1,
+        "gold": 12,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Send all @resource/resource_wood.webp@@unit_worker/villager.webp@to@resource/resource_gold.webp@.",
+        "@resource/rally.webp@ on @resource/resource_wood.webp@.",
+        "@abilities/repair.webp@ @building_military/stable.webp@+@building_technology/blacksmith.webp@ (@technology_military/iron-undermesh.webp@and@technology_military/steeled-arrow.webp@ then @technology_byzantines/teardrop-shields-3.webp@)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 35,
+      "resources": {
+        "food": 18,
+        "wood": 5,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_byzantines/golden-horn-tower-2.webp@ finishes at 10:00.",
+        "Queue @unit_byzantines/cataphract-3.webp@ from @building_military/stable.webp@ non-stop.",
+        "Queue @unit_religious/monk-3.webp@ from @landmark_byzantines/grand-winery-1.webp@get @resource/relics.webp@.",
+        "Research @technology_economy/double-broadaxe.webp@@technology_economy/specialized-pick.webp@@technology_byzantines/veteran-mercenaries-3.webp@ then @technology_economy/horticulture.webp@ once you have some @building_byzantines/olive-grove-1.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Slowly add @building_byzantines/olive-grove-1.webp@ when possible to easy in the farm transition."
+      ]
+    }
+  ],
+  "description": "Fast 5 cisterns and transitiont o castle",
+  "video": "https://www.youtube.com/embed/GTaAt487-7U",
+  "season": 11,
+  "map": "Open",
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

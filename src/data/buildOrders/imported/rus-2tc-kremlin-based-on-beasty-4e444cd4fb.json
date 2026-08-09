@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "name": "Rus 2TC Kremlin - Based on Beasty",
+  "civilization": "Rus",
+  "author": "TyrusLunarspear",
+  "source": "https://aoe4guides.com/builds/TLVhxK9zxHk0ubbczbMX",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Queue up @unit_worker/villager.webp@",
+        "Send 5 @unit_worker/villager.png@ to gather 50 @resource/resource_wood.png@  from a @resource/gaiatreeprototypetree.png@ then send them to @resource/sheep.png@",
+        "Send 1 @unit_worker/villager.png@ to the woodline and build @building_rus/hunting-cabin.png@ then @building_economy/house.png@ then goes to @resource/sheep.png@",
+        "@resource/rally.png@ to woodline"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "First @unit_worker/villager.webp@ that pops out builds another @building_rus/hunting-cabin.png@ covering different trees then goes to @resource/sheep.png@",
+        "Remember to send 5 @resource/resource_wood.png@@unit_worker/villager.png@ to @resource/sheep.png@",
+        "@resource/rally.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": " 00:45",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Queue up a @unit_cavalry/scout.webp@ when first @building_rus/hunting-cabin.png@ finishes",
+        "Rally onto @resource/sheep.png@ until age-up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:50",
+      "villager_count": 12,
+      "resources": {
+        "food": 11,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally to the chopped @resource/gaiatreeprototypetree.webp@ until 3 on @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:50",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 3,
+        "builder": 4
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@ go to build @landmark_rus/kremlin.png@, try to build it close to @resource/deer.png@ and @resource/resource_wood.png@, if you can push the deer to it. If you can't, you can place it on the @resource/resource_stone.png@",
+        "3 @resource/resource_food.png@ go to gather @resource/resource_stone.png@, build a @building_economy/mining-camp.png@",
+        "3 @resource/resource_wood.png@@unit_worker/villager.png@ on @resource/gaiatreeprototypetree.png@ go to @resource/resource_stone.png@ after they finish gathering, also build a @building_economy/house.png@",
+        "@resource/rally.png@ to @resource/resource_stone.png@ until you have 8 on stone"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:10",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 7,
+        "builder": 4
+      },
+      "notes": [
+        "At this point you should start pushing the @resource/deer.webp@ if you can with 3 @unit_cavalry/scout.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:40",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 0,
+        "stone": 8,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/gaiatreeprototypetree.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "Age up @unit_worker/villager.webp@ go to @resource/resource_wood.png@ near Kremlin, build a @building_economy/lumber-camp.png@",
+        "Also kill the @resource/deer.png@ with @unit_cavalry/scout.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:45",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "You should have enough @resource/resource_stone.webp@ (350), re-macro to @resource/resource_wood.png@ until you have 400"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:50",
+      "villager_count": 22,
+      "resources": {
+        "food": 4,
+        "wood": 18,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "You should have enough @resource/resource_wood.webp@ to build a @building_economy/town-center.png@ on @resource/deer.png@ with 8 @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:00",
+      "villager_count": 23,
+      "resources": {
+        "food": 8,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/resource_gold.png@ until 3"
+      ]
+    }
+  ],
+  "description": "Now that pro scouts is nerfed, 2TC Kremlin is back to being more relevant.\n\nHowever, this is probably not worth doing on any map that isn't Enlightened Horizons, and you shouldn't place Rus on Enlightened Horizons to begin with\n\nThe build order here is taken from the Beasty video I've linked",
+  "video": "https://www.youtube.com/embed/WwSqNwM2fDY",
+  "season": 10,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

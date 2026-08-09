@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "name": "3:30 Mohe Tribesman Rush into FC",
+  "civilization": "Jin Dynasty",
+  "author": "Eldritch",
+  "source": "https://aoe4guides.com/builds/nsgepzfxv60pe7cm2JXh",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 3,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 3 @unit_jin/mounted-villager.webp@ to Reindeers",
+        "Queue @unit_worker/villager-china.webp@ (NORMAL Villagers)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 4,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@ the 3 next to @resource/resource_gold.webp@ and build a @building_economy/house.webp@ as well"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to Reindeers and shift-click to @resource/sheep.webp@ until age-up (so that the villagers automatically switch from Reindeers to Sheep once they're empty)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:05",
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Build @landmark_jin/great-pasture.webp@ with your 3 @unit_jin/mounted-villager.webp@",
+        "Send 2 @unit_worker/villager-china.webp@ from @resource/resource_gold.webp@ to @resource/resource_wood.webp@",
+        "Send 1 @unit_worker/villager-china.webp@ from @resource/resource_gold.webp@ to @resource/resource_food.webp@",
+        "@resource/rally.webp@ 1 more @unit_worker/villager-china.webp@ to @resource/resource_wood.webp@ to have 3 in total"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/resource_food.webp@ until Feudal"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:15",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 2 @unit_jin/mounted-villager.webp@ to @resource/resource_food.webp@ and 1 to @resource/resource_gold.webp@",
+        "Produce @unit_jin/mohe-tribesman.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 1 more @unit_worker/villager-china.webp@ to @resource/resource_wood.webp@ then @resource/rally.webp@ @resource/resource_gold.webp@",
+        "Constantly produce @unit_jin/mohe-tribesman.webp@ until 5-6 and pressure the opponent with them, try to keep them alive and harass villagers"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_economy/house.webp@ with 1 @resource/resource_wood.webp@ @unit_worker/villager-china.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start queuing @unit_jin/mounted-villager.webp@ as soon as you have enough @resource/resource_gold.webp@ and @resource/rally.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:10",
+      "villager_count": 17,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once 2 @resource/gaiatreeprototypetree.webp@ are gathered, send 2 @resource/resource_wood.webp@ @unit_worker/villager-china.webp@ to @resource/resource_gold.webp@ and keep the other 2 on @resource/resource_wood.webp@",
+        "@resource/rally.webp@ all new @unit_jin/mounted-villager.webp@ to @resource/resource_food.webp@",
+        "Don't hesitate to go on @resource/deer.webp@ with @unit_jin/mounted-villager.webp@ if safe to do so, research @technology_jin/mohe-ancestry.webp@ if you do that"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 21,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 7,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Once the third @resource/gaiatreeprototypetree.webp@ is gathered, build @building_economy/house.webp@ with 1 @resource/resource_wood.webp@ @unit_worker/villager-china.webp@ and send the other one on @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:45",
+      "villager_count": 21,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 7,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Age-up with 8 @resource/resource_food.webp@ @unit_worker/villager-china.webp@ with @landmark_jin/dragon-pavilion.webp@ on your @resource/resource_gold.webp@ or other important resource node",
+        "Remacro some @unit_worker/villager-china.webp@ to @resource/resource_wood.webp@ to build production",
+        "Build @building_jin/grassland.webp@"
+      ]
+    }
+  ],
+  "description": "Super fast Feudal with Great Pasture into immediate Mohe Tribesman production to pressure the opponent really early. Can get the first Mohe Tribesman into their back gold on 4:20 on average, and make a small fast very fast behind which you can either prolong feudal or go FC (safest option).",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

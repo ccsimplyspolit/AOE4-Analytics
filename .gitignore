@@ -1,5 +1,6 @@
 # Dependencies
 node_modules/
+**/__pycache__/
 
 # Build output
 out/
@@ -25,3 +26,12 @@ Thumbs.db
 
 # Captured at runtime (never commit real player data)
 /scratch/
+
+# YouTube research artifacts: raw captions are local-only; the generated
+# evidence map is intentionally reviewed before being committed.
+/data/research/raw-transcripts/
+/data/research/aoe4-video-evidence.json
+/data/research/aoe4-source-sync.json
+/data/research/attrib/
+/data/research/cookies*.txt
+/data/research/aoe4world-data/

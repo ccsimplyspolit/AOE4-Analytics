@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "name": "Fast imp team game",
+  "civilization": "Macedonian Dynasty",
+  "author": "daltor",
+  "source": "https://aoe4guides.com/builds/vTqlNOya4XHYy7IQH1Tp",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Go on deer @technology_economy/survival-techniques.webp@1st villager out builds @building_macedonian/varangian_warcamp.webp@ then to deer"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.webp@till 4"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 14,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 15,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@abilities/repair.webp@@landmark_byzantines/imperial-hippodrome-1.webp@",
+        "@resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro",
+        "@abilities/repair.webp@@building_economy/house.webp@ on gold for population",
+        "@abilities/repair.webp@@building_macedonian/varangian_arsenal.webp@on gold for passive silver",
+        "@resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:45",
+      "villager_count": 26,
+      "resources": {
+        "food": 17,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 23,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "@abilities/repair.webp@@landmark_byzantines/golden-horn-tower-2.webp@",
+        "@technology_economy/specialized-pick.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:30",
+      "villager_count": 29,
+      "resources": {
+        "food": 12,
+        "wood": 3,
+        "gold": 14,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/market.webp@@technology_macedonian/scale-barding-2.webp@@technology_economy/shaft-mining.webp@",
+        "Buy @resource/resource_food.webp@for faster imp"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": 32,
+      "resources": {
+        "food": 1,
+        "wood": 3,
+        "gold": 14,
+        "stone": 0,
+        "builder": 14
+      },
+      "notes": [
+        "@abilities/repair.webp@@landmark_byzantines/palatine-school-3.webp@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "time": "14:00",
+      "villager_count": 44,
+      "resources": {
+        "food": 7,
+        "wood": 1,
+        "gold": 22,
+        "stone": 14,
+        "builder": -1
+      },
+      "notes": [
+        "queue @unit_byzantines/cataphract-3.webp@@technology_economy/cupellation.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Imperial",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

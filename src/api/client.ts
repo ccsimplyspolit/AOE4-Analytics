@@ -12,6 +12,7 @@ import type {
   MatchupStatsResponse,
   MapStatsResponse,
   Leaderboard,
+  LeaderboardPlayer,
   StatsLeaderboard,
   RankLevel,
 } from './types'
@@ -70,6 +71,8 @@ export interface GamesQuery {
 export interface StatsQuery {
   leaderboard?: StatsLeaderboard
   rankLevel?: RankLevel
+  /** AoE4World rating bucket, e.g. `1100-1199` or `>1400`. */
+  rating?: string
   patch?: string
 }
 
@@ -150,6 +153,40 @@ export class Aoe4WorldClient {
     )
   }
 
+  /**
+   * Loads every page exposed by AoE4World's player-history endpoint. The API
+   * returns a total_count but caps a single response, so callers that need a
+   * complete account archive must not treat one response as the full history.
+   */
+  async getAllPlayerGames(
+    profileId: number,
+    options: { fresh?: boolean; pageSize?: number; maxGames?: number } = {},
+  ): Promise<Game[]> {
+    const pageSize = Math.max(1, Math.min(100, Math.floor(options.pageSize ?? 100)))
+    const maxGames = Math.max(pageSize, Math.min(50_000, Math.floor(options.maxGames ?? 50_000)))
+    const first = await this.getPlayerGames(profileId, {
+      limit: pageSize,
+      page: 1,
+      fresh: options.fresh,
+    })
+    const games = [...first.games]
+    const total = Number.isSafeInteger(first.total_count) ? first.total_count : games.length
+    const pageCount = Math.min(Math.ceil(total / pageSize), Math.ceil(maxGames / pageSize))
+    for (let page = 2; page <= pageCount && games.length < maxGames; page++) {
+      const response = await this.getPlayerGames(profileId, {
+        limit: pageSize,
+        page,
+        fresh: options.fresh,
+      })
+      if (response.games.length === 0) break
+      games.push(...response.games)
+      if (response.games.length < pageSize) break
+    }
+    const unique = new Map<number, Game>()
+    for (const game of games) unique.set(game.game_id, game)
+    return [...unique.values()].slice(0, maxGames)
+  }
+
   getLastGame(profileId: number): Promise<Game> {
     return this.getJson(`/players/${profileId}/games/last`, TTL.lastGame)
   }
@@ -160,20 +197,73 @@ export class Aoe4WorldClient {
 
   getLeaderboard(
     leaderboard: Leaderboard,
-    query: { page?: number; country?: string } = {},
+    query: { page?: number; country?: string; limit?: number; fresh?: boolean } = {},
   ): Promise<LeaderboardResponse> {
     const params = new URLSearchParams({ page: String(query.page ?? 1) })
     if (query.country) params.set('country', query.country)
-    return this.getJson(`/leaderboards/${leaderboard}?${params.toString()}`, TTL.leaderboard)
+    if (query.limit != null) params.set('limit', String(Math.max(1, Math.min(100, Math.floor(query.limit)))))
+    return this.getJson(
+      `/leaderboards/${leaderboard}?${params.toString()}`,
+      query.fresh ? 0 : TTL.leaderboard,
+    )
+  }
+
+  /** Loads the complete bounded leaderboard slice instead of silently keeping page 1. */
+  async getAllLeaderboard(
+    leaderboard: Leaderboard,
+    options: { country?: string; pageSize?: number; maxPlayers?: number; fresh?: boolean } = {},
+  ): Promise<LeaderboardPlayer[]> {
+    const pageSize = Math.max(1, Math.min(100, Math.floor(options.pageSize ?? 100)))
+    const maxPlayers = Math.max(pageSize, Math.min(100_000, Math.floor(options.maxPlayers ?? 100_000)))
+    const first = await this.getLeaderboard(leaderboard, {
+      country: options.country,
+      limit: pageSize,
+      page: 1,
+      fresh: options.fresh,
+    })
+    const rows = [...first.players]
+    const reportedPageSize = first.per_page && first.per_page > 0 ? first.per_page : pageSize
+    const total = Number.isSafeInteger(first.total_count) ? first.total_count : rows.length
+    const pageCount = Math.min(Math.ceil(total / reportedPageSize), Math.ceil(maxPlayers / reportedPageSize))
+    for (let page = 2; page <= pageCount && rows.length < maxPlayers; page++) {
+      const response = await this.getLeaderboard(leaderboard, {
+        country: options.country,
+        limit: pageSize,
+        page,
+        fresh: options.fresh,
+      })
+      if (response.players.length === 0) break
+      rows.push(...response.players)
+      if (response.players.length < reportedPageSize) break
+    }
+    const unique = new Map<number, LeaderboardPlayer>()
+    for (const row of rows) unique.set(row.profile_id, row)
+    return [...unique.values()].slice(0, maxPlayers)
   }
 
   getCivStats(query: StatsQuery = {}): Promise<CivStatsResponse> {
     const lb = query.leaderboard ?? 'rm_solo'
     const params = new URLSearchParams()
     if (query.rankLevel) params.set('rank_level', query.rankLevel)
+    if (query.rating) params.set('rating', query.rating)
     if (query.patch) params.set('patch', query.patch)
     const qs = params.toString()
     return this.getJson(`/stats/${lb}/civilizations${qs ? `?${qs}` : ''}`, TTL.stats)
+  }
+
+  /**
+   * Full civilization-by-map slice used by the Counter Calculator. This is a
+   * first-class AoE4World endpoint; the map overview only exposes the single
+   * highest-win-rate civ and is not enough to recommend counters.
+   */
+  getMapCivStats(mapId: number, query: StatsQuery = {}): Promise<CivStatsResponse> {
+    const lb = query.leaderboard ?? 'rm_solo'
+    const params = new URLSearchParams()
+    if (query.rankLevel) params.set('rank_level', query.rankLevel)
+    if (query.rating) params.set('rating', query.rating)
+    if (query.patch) params.set('patch', query.patch)
+    const qs = params.toString()
+    return this.getJson(`/stats/${lb}/maps/${mapId}${qs ? `?${qs}` : ''}`, TTL.stats)
   }
 
   /**
@@ -195,6 +285,7 @@ export class Aoe4WorldClient {
     if (query.rankLevel && (lb === 'rm_solo' || lb === 'qm_1v1')) {
       params.set('rank_level', query.rankLevel)
     }
+    if (query.rating) params.set('rating', query.rating)
     if (query.patch) params.set('patch', query.patch)
     const qs = params.toString()
     return this.getJson(`/stats/${lb}/matchups${qs ? `?${qs}` : ''}`, TTL.stats)
@@ -204,6 +295,7 @@ export class Aoe4WorldClient {
     const lb = query.leaderboard ?? 'rm_solo'
     const params = new URLSearchParams()
     if (query.rankLevel) params.set('rank_level', query.rankLevel)
+    if (query.rating) params.set('rating', query.rating)
     if (query.patch) params.set('patch', query.patch)
     const qs = params.toString()
     return this.getJson(`/stats/${lb}/maps${qs ? `?${qs}` : ''}`, TTL.stats)

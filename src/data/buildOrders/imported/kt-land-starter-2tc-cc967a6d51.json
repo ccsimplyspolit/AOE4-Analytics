@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "name": "KT land starter 2TC",
+  "civilization": "Knights Templar",
+  "author": "Asmitha",
+  "source": "https://aoe4guides.com/builds/toFWFQWRWO4Kmj8RjSlc",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@2@resource/resource_gold.webp@@building_economy/house.webp@@building_economy/mining-camp.webp@ @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@civilization_flag/kof.webp@ 7 on 1@resource/gaiatreeprototypetree.webp@ that will go @building_economy/mining-camp.webp@@resource/resource_stone.webp@",
+        "other on all other @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 0,
+        "wood": 7,
+        "gold": 0,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "6 @building_economy/town-center.webp@@resource/rally.webp@@resource/deer.webp@ -> once up, send 5@resource/sheep.webp@ -&gt; @resource/resource_gold.webp@",
+        "@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@@unit_templar/chevalier_confrere_age_2.webp@",
+        "@building_economy/mill.webp@",
+        "@building_military/stable.webp@@unit_templar/chevalier_confrere_age_2.webp@",
+        "10-11 @resource/resource_wood.webp@ -> @resource/rally.webp@@resource/resource_gold.webp@@resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 8,
+        "wood": 11,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_3.webp@ or mass production @building_technology/blacksmith.webp@2@building_military/barracks.webp@ adapt"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": "Open",
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

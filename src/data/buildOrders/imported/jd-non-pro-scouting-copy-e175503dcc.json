@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "name": "JD Non Pro Scouting - copy",
+  "civilization": "Jeanne d'Arc",
+  "author": "BenJir0",
+  "source": "https://aoe4guides.com/builds/5mYaAsfGu6FVGT55drIo",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1.00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@-@building_economy/house.webp@-@building_economy/mining-camp.webp@-@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2.30",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@-@landmark_french/school-of-cavalry.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3x@unit_worker/villager.webp@-@building_economy/lumber-camp.webp@-@resource/resource_wood.webp@ - 6x"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@-@building_economy/mill.webp@-@building_economy/house.webp@-@technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4.40",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@-@building_military/stable.webp@-@unit_french/royal-knight-2.webp@ and UP @unit_jeanne/jeanne-darc-woman-at-arms-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5.00",
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "8x @unit_worker/villager.webp@-@resource/resource_gold.webp@-@technology_economy/specialized-pick.webp@-@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6.00",
+      "villager_count": 24,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5x @unit_worker/villager.webp@-@resource/deer.webp@@building_economy/mill.webp@-@building_defensive/outpost.webp@-@technology_economy/survival-techniques.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8.00",
+      "villager_count": 28,
+      "resources": {
+        "food": 14,
+        "wood": 6,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_french/chivalry.webp@-@technology_economy/horticulture.webp@ 7x@unit_french/royal-knight-2.webp@ ! --@building_technology/blacksmith.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9.00",
+      "villager_count": 32,
+      "resources": {
+        "food": 7,
+        "wood": 15,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Swap  @unit_infantry/archer-2.webp@!!!! @technology_economy/double-broadaxe.webp@-@technology_economy/forestry.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11.00",
+      "villager_count": 36,
+      "resources": {
+        "food": 11,
+        "wood": 15,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_military/iron-undermesh.webp@-@technology_military/steeled-arrow.webp@ - 3@building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "13.00",
+      "villager_count": 40,
+      "resources": {
+        "food": 15,
+        "wood": 15,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_french/royal-knight-2.webp@-@unit_infantry/archer-2.webp@ @technology_military/fitted-leatherwork.webp@-@technology_military/bloomery.webp@  or T3"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/T7W6gD5Rj4g",
+  "season": 11,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 1,
+  "name": "S13 Beasty Feudal Pressure / Castle Rush",
+  "civilization": "Macedonian Dynasty",
+  "author": "Azure",
+  "source": "https://aoe4guides.com/builds/MlLyJrA3B0qeMghGIbWu",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager.webp@ -> @resource/sheep.webp@",
+        "1 @unit_worker/villager.webp@ -&gt; @building_macedonian/varangian_warcamp.webp@ -&gt; @resource/sheep.webp@",
+        "@building_economy/town-center.webp@@resource/rally.webp@  -&gt; @resource/resource_gold.webp@ Till 2, First Villager Builds @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:42",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.webp@ -> @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:16",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@@resource/resource_food.webp@ -> @landmark_byzantines/imperial-hippodrome-1.webp@ -&gt; @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:23",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "2 @unit_worker/villager.webp@@resource/resource_food.webp@ -> @building_economy/lumber-camp.webp@ -&gt; @resource/resource_wood.webp@",
+        "@building_economy/town-center.webp@@resource/rally.webp@ -&gt; @resource/resource_wood.webp@ Till 6 Then @building_economy/town-center.webp@@resource/rally.webp@ -&gt; @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:23",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@@resource/resource_wood.webp@ -> @building_economy/house.webp@ -&gt; @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:53",
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@@landmark_byzantines/imperial-hippodrome-1.webp@ -> @resource/resource_food.webp@",
+        "Queue 1 @unit_cavalry/horseman-1.webp@@landmark_byzantines/imperial-hippodrome-1.webp@ If Playing Safe, Queue 2-3 If Opponent Can Be Harrassed",
+        "1 @unit_worker/villager.webp@@resource/resource_gold.webp@ -&gt; @building_defensive/outpost.webp@ -&gt; @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:34",
+      "villager_count": 19,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 1,
+        "stone": 5,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager.webp@@resource/resource_food.webp@ -> @resource/resource_stone.webp@, Mine 50 Stone -&gt; @resource/resource_food.webp@",
+        "4 @unit_worker/villager.webp@@resource/resource_wood.webp@ -&gt; @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:52",
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 3,
+        "stone": 5,
+        "builder": 2
+      },
+      "notes": [
+        "Other @unit_worker/villager.webp@@resource/resource_gold.webp@ -> @building_macedonian/varangian_arsenal.webp@ -&gt; @resource/resource_gold.webp@",
+        "3 @unit_worker/villager.webp@@resource/resource_food.webp@ -&gt; @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:03",
+      "villager_count": 20,
+      "resources": {
+        "food": 14,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@building_defensive/outpost.webp@@technology_defensive/arrow-slits.webp@",
+        "1 @unit_worker/villager.webp@@resource/resource_wood.webp@ -> @building_economy/house.webp@",
+        "1 @unit_worker/villager.webp@@resource/resource_wood.webp@ -&gt; @resource/resource_gold.webp@",
+        "@building_macedonian/varangian_arsenal.webp@@technology_macedonian/scale-barding-2.webp@ ASAP"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 23,
+      "resources": {
+        "food": 18,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro",
+        "Keep @building_economy/town-center.webp@@resource/rally.webp@ -> @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:27",
+      "villager_count": 25,
+      "resources": {
+        "food": 15,
+        "wood": 0,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @unit_worker/villager.webp@@resource/resource_food.webp@ -> @resource/resource_gold.webp@",
+        "@building_macedonian/varangian_arsenal.webp@@technology_macedonian/blade-inlaying-2.webp@ When Possible"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:12",
+      "villager_count": 27,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 10,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "8 @unit_worker/villager.webp@@resource/resource_food.webp@ -> @landmark_byzantines/golden-horn-tower-2.webp@, Protect Resources / Base"
+      ]
+    }
+  ],
+  "description": "Build Order Based On Beasty's \"BEST Macedonian Dynasty Build Order Guide\"",
+  "video": "https://www.youtube.com/embed/GIErhV3Eeys",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -11,6 +11,10 @@
  */
 import { BUILDING_ICONS } from '@data/vendor/aoe4world-overlay/buildings'
 import { UNIT_ICONS } from '@data/vendor/aoe4world-overlay/units'
+import {
+  normalizeAoE4IconToken,
+  resolveAoE4Icon,
+} from '@data/vendor/aoe4-icons/manifest'
 
 export interface BuildTarget {
   label: string
@@ -19,8 +23,26 @@ export interface BuildTarget {
 }
 
 const CDN = 'https://data.aoe4world.com/images'
-const b = (slug: string): string => BUILDING_ICONS[slug] ?? `${CDN}/buildings/${slug}-1.png`
-const u = (slug: string): string => UNIT_ICONS[slug] ?? `${CDN}/units/${slug}-1.png`
+const b = (slug: string): string =>
+  BUILDING_ICONS[slug] ?? resolveAoE4Icon(`buildings/${slug}`) ?? `${CDN}/buildings/${slug}-1.png`
+const u = (slug: string): string =>
+  UNIT_ICONS[slug] ?? resolveAoE4Icon(`units/${slug}`) ?? `${CDN}/units/${slug}-1.png`
+
+function tokenTarget(token: string): BuildTarget | null {
+  const normalized = normalizeAoE4IconToken(token)
+  const parts = normalized.split('/')
+  const category = parts.find((part) => part.startsWith('unit') || part.startsWith('building') || part.startsWith('landmark'))
+  if (!category) return null
+  const kind: BuildTarget['kind'] = category.startsWith('unit') ? 'unit' : 'building'
+  const url = resolveAoE4Icon(token)
+  if (!url) return null
+  const rawStem = parts.at(-1) ?? normalized
+  const label = rawStem
+    .replace(/-\d+$/, '')
+    .replace(/[-_]/g, ' ')
+    .replace(/\b\w/g, (letter) => letter.toUpperCase())
+  return { label, kind, url }
+}
 
 /**
  * Common beginner-relevant buildings + units, matched word-boundary so "Archery
@@ -62,6 +84,14 @@ export function extractBuildTargets(notes: string[] | undefined, max = 4): Build
   const text = notes.join('   ')
   const found: BuildTarget[] = []
   const seen = new Set<string>()
+  for (const token of text.matchAll(/@([^@]+)@/g)) {
+    if (found.length >= max) break
+    const target = tokenTarget(token[1] ?? '')
+    if (target && !seen.has(target.url)) {
+      seen.add(target.url)
+      found.push(target)
+    }
+  }
   for (const { re, target } of DICT) {
     if (found.length >= max) break
     if (re.test(text) && !seen.has(target.url)) {

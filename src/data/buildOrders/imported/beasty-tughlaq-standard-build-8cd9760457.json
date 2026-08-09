@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "name": "Beasty Tughlaq standard build",
+  "civilization": "Tughlaq Dynasty",
+  "author": "ferg40",
+  "source": "https://aoe4guides.com/builds/1LNid2NxvrK0bQA2Q0QF",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager-delhi.webp@ @resource/sheep.webp@, 1 @unit_tughluq/worker_elephant.webp@ to @resource/resource_gold.webp@, 1 @unit_tughluq/worker_elephant.webp@ scouting for sheep/resources. @resource/rally.webp@ 2@resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 2,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@ until @age/age_2.webp@. @abilities/repair.webp@2x@building_economy/house.webp@ for @building_tughluq/tughluqabad_fort.webp@ by @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "When 200 @resource/resource_gold.webp@ move 2@unit_worker/villager-delhi.webp@ and @unit_tughluq/worker_elephant.webp@ to @resource/resource_stone.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_delhi/dome-of-the-faith.webp@ with 3 @resource/resource_food.webp@@unit_worker/villager-delhi.webp@. Remacro for 7 @unit_worker/villager-delhi.webp@to@resource/resource_stone.webp@. When @age/age_2.webp@ completes move the 3 @unit_worker/villager-delhi.webp@to@resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 6,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.webp@ until 6, and use @unit_tughluq/worker_elephant.webp@ from scouting"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 4,
+        "stone": 10,
+        "builder": -1
+      },
+      "notes": [
+        "Move @landmark_delhi/dome-of-the-faith.webp@ @unit_worker/villager-delhi.webp@ to @resource/resource_stone.webp@, @abilities/repair.webp@@building_tughluq/tughluqabad_fort.webp@ with @resource/resource_gold.webp@@unit_worker/villager-delhi.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 4,
+        "wood": 12,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Gather @resource/resource_stone.webp@ until 320 remaining so you have enough to fully upgrade @building_tughluq/tughluqabad_fort.webp@@ability_tughluq/bhakkar.webp@. Move to @resource/resource_wood.webp@@resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 4,
+        "wood": 12,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@ and get wheelbarrow / @technology_tughluq/elephant_economics_1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_military/barracks.webp@/@building_military/archery-range.webp@/@building_military/stable.webp@ depending on enemy counters. Continually produce @unit_tughluq/healer_elephant.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_technology/blacksmith.webp@ and dump extra @resource/resource_gold.webp@"
+      ]
+    }
+  ],
+  "description": "1tc into food keep",
+  "video": "https://www.youtube.com/embed/iorxhl7QLTc",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

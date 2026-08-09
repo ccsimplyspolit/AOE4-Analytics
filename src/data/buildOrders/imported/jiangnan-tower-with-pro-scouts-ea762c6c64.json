@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "name": "Jiangnan Tower with Pro Scouts",
+  "civilization": "Zhu Xi's Legacy",
+  "author": "Krayt",
+  "source": "https://aoe4guides.com/builds/tL4wX9W9JIEAic6AvD1x",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "With 5 @unit_worker/villager-china.webp@ @abilities/repair.webp@ @building_economy/mill.webp@ under @building_economy/town-center.webp@ to eat @resource/sheep.webp@ | @unit_chinese/imperial-official.webp@ supervise @building_economy/mill.webp@  ."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "The first 2 @unit_worker/villager-china.webp@ @abilities/repair.webp@ @building_economy/house.webp@ and @building_economy/mining-camp.webp@ next to @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:30",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/resource_food.webp@ for age up."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Send 1 @resource/resource_food.webp@ @unit_worker/villager-china.webp@ to build@landmark_zhuxi/jiangnan-tower-2.webp@ (let space to build military buildings around @landmark_zhuxi/jiangnan-tower-2.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Keep 5 @resource/resource_food.webp@ @unit_worker/villager-china.webp@ and send the others to @abilities/repair.webp@ @building_economy/lumber-camp.webp@",
+        "Add 1 @unit_chinese/imperial-official.webp@ to supervise @building_economy/lumber-camp.webp@",
+        "Get 6 @unit_worker/villager-china.webp@ to @resource/resource_wood.webp@, then @resource/rally.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 17,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "If needed, @abilities/repair.webp@ @building_military/barracks.webp@ next to @landmark_zhuxi/jiangnan-tower-2.webp@ and aim to finish the constrction of the ::tower first"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_zhuxi/jiangnan-tower-2.webp@ complete, send @abilities/repair.webp@ @unit_worker/villager-china.webp@ to @resource/resource_food.webp@, @resource/rally.webp@@resource/resource_food.webp@",
+        "@abilities/repair.webp@ the first military building if it is not a @building_military/barracks.webp@ and start producing units"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4.40",
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once 150 @resource/resource_wood.webp@, build @building_military/stable.webp@ near @landmark_zhuxi/jiangnan-tower-2.webp@",
+        "Produce 4 more @unit_cavalry/scout.webp@ from @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/professional-scouts.webp@, send @resource/resource_gold.webp@@unit_worker/villager-china.webp@ to wood."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_military/archery-range.webp@ near @landmark_zhuxi/jiangnan-tower-2.webp@. If against knight civ build @building_military/barracks.webp@ instead."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start training @unit_chinese/zhuge-nu-2.webp@ and @unit_cavalry/horseman-1.webp@ constantly out of mill buildings. Have @unit_cavalry/scout.webp@ take the 2 nearby @resource/deer.webp@ packs. Use @unit_chinese/imperial-official.webp@ to remacro if needed or to change production. Build more @building_military/archery-range.webp@ if fights are going well and it looks like you cand end in feudal, otherwise slowly go for castle and start making @unit_cavalry/lancer-3.webp@."
+      ]
+    }
+  ],
+  "description": "React of Bell vs Beasty match during The Elite Classic IV tournament ",
+  "video": "https://www.youtube.com/embed/eakY7FWDvrM",
+  "season": 13,
+  "map": "Open",
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

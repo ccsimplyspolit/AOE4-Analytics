@@ -1,0 +1,391 @@
+{
+  "schemaVersion": 1,
+  "name": "MarineLord Fast Castle - copy",
+  "civilization": "Japanese",
+  "author": "Didain",
+  "source": "https://aoe4guides.com/builds/nhTfVePvEpr3q1g46Rhl",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Production d'un @unit_worker/villager-japanese.webp@ , Tous les @unit_worker/villager-japanese.webp@ à la @resource/resource_food.webp@, on envoie le @unit_cavalry/scout.webp@ @resource/rally.webp@ sur la @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "un @unit_worker/villager-japanese.webp@ construit une @building_military/barracks.webp@ et on envoie 2 @unit_worker/villager-japanese.webp@de la @resource/resource_food.webp@ au @resource/gaiatreeprototypetree.webp@ proche du @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Dès que la @building_military/barracks.webp@ est finie on lance 2x@unit_infantry/spearman-1.webp@ et le @unit_worker/villager-japanese.webp@ construit une @building_japanese/farmhouse-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2x@unit_infantry/spearman-1.webp@ (SpearRush to enemy @resource/resource_gold.webp@) qu'on scout le plus tôt possible"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When @building_japanese/farmhouse-1.webp@ done @technology_japanese/towara-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When enough @resource/resource_wood.webp@ build @building_economy/mining-camp.webp@ and take 4 @unit_worker/villager-japanese.webp@ of @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:29",
+      "villager_count": 14,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Dès qu'on a assez, on construit @building_japanese/farmhouse-1.webp@ avec les 2 @unit_worker/villager-japanese.webp@ du @resource/resource_wood.webp@ sur les @resource/berrybush.webp@ et on envoie tous les @unit_worker/villager-japanese.webp@ de la @resource/resource_food.webp@ sur les @resource/berrybush.webp@. @resource/rally.webp@ sur @resource/sheep.webp@,"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:26",
+      "villager_count": 16,
+      "resources": {
+        "food": 9,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Un @unit_worker/villager-japanese.webp@ pour construire @landmark_japanese/kura-storehouse-1.webp@ (2 contre adversaire agressif) et @resource/rally.webp@sur le @resource/gaiatreeprototypetree.webp@ proche du @building_economy/town-center.webp@ et on envoie les 2 @unit_worker/villager-japanese.webp@ qui sont resté sur @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 9,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Ensuite @resource/rally.webp@ sur @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:46",
+      "villager_count": 18,
+      "resources": {
+        "food": 12,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager-japanese.webp@ construit @building_defensive/outpost.webp@ près de la @resource/resource_gold.webp@. Puis il retourne sur la @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:05",
+      "villager_count": 19,
+      "resources": {
+        "food": 15,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Lorsque les 3 @unit_worker/villager-japanese.webp@ on finit le @resource/gaiatreeprototypetree.webp@ on les envoie à la  @resource/resource_food.webp@ (Queue Action)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:40",
+      "villager_count": 25,
+      "resources": {
+        "food": 19,
+        "wood": 0,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Utiliser les @building_economy/farm.webp@ du @landmark_japanese/kura-storehouse-1.webp@ quand c'est disponible"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:54",
+      "villager_count": 17,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Prendre 7 @unit_worker/villager-japanese.webp@ de la  @resource/resource_food.webp@pour construire @landmark_japanese/floating-gate-2.webp@ @resource/rally.webp@ @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:01",
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 4,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Mettre 4 @unit_worker/villager-japanese.webp@ au @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:25",
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 4,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Faire les upgrade de la @building_defensive/outpost.webp@ (@technology_defensive/fortify-outpost.webp@@technology_defensive/arrow-slits.webp@)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:12",
+      "villager_count": 23,
+      "resources": {
+        "food": 13,
+        "wood": 4,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Utiliser les 7x@unit_worker/villager-japanese.webp@ du@landmark_japanese/floating-gate-2.webp@ pour construire @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_japanese/mounted-samurai-3.webp@  toujours et @ability_japanese/ability-place-yorishiro.webp@ dans @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:33",
+      "villager_count": 31,
+      "resources": {
+        "food": 18,
+        "wood": 7,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "On ajoute 3 @unit_worker/villager-japanese.webp@ au @resource/resource_wood.webp@ et les 7 @unit_worker/villager-japanese.webp@ qui construisaient à la @resource/resource_food.webp@. Chercher les@resource/relics.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:56",
+      "villager_count": 30,
+      "resources": {
+        "food": 15,
+        "wood": 8,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Maintenant 2 pour 1 @resource/resource_food.webp@@resource/resource_gold.webp@ pour les @unit_worker/villager-japanese.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:46",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2x@unit_worker/villager-japanese.webp@ From wood to @resource/resource_stone.webp@ (optional) if you need second @technology_defensive/fortify-outpost.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:54",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_military/iron-undermesh.webp@ Si pas de défense, pour dive le @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_japanese/shinto-priest-3.webp@ on @building_japanese/farmhouse-1.webp@ or @building_economy/mining-camp.webp@ then @building_military/stable.webp@@building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:11",
+      "villager_count": 36,
+      "resources": {
+        "food": 16,
+        "wood": 8,
+        "gold": 10,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "15 @unit_japanese/mounted-samurai-3.webp@ et on peut accompagner de @unit_japanese/yumi-ashigaru-2.webp@ ou @unit_japanese/onna-bugeisha-2.webp@ (ne pas oublié les upgrade en fonction du choix) et des unités en face."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:44",
+      "villager_count": 39,
+      "resources": {
+        "food": 18,
+        "wood": 11,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "(I'm not the author of the build, i just translated the video into build to help me play it, enjoy !)\n\nThe concept is a (very) fast castle with spear rush on gold at start, then playing with archer and mounted samurai.",
+  "video": "https://www.youtube.com/embed/LIOCyXMpqZU",
+  "season": 13,
+  "map": "Open",
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

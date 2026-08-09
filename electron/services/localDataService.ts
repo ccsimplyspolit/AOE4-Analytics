@@ -1,7 +1,15 @@
 import { app } from 'electron'
-import { closeSync, existsSync, openSync, readdirSync, readFileSync, readSync, statSync } from 'node:fs'
+import {
+  closeSync,
+  existsSync,
+  openSync,
+  readdirSync,
+  readFileSync,
+  readSync,
+  statSync,
+} from 'node:fs'
 import { basename, join, resolve } from 'node:path'
-import type { LocalDataStatus } from '@ipc/contract'
+import type { LocalDataStatus, ReplayArchiveItem, ReplayArchivePage } from '@ipc/contract'
 import {
   determineSessionState,
   parseGameClock,
@@ -26,6 +34,7 @@ import {
   type ReplayMatchup,
   type ReplayPlayer,
 } from '@domain/replay'
+import { parseReplayCommandStream, type ReplayAnalysisResult } from '@domain/replayCommand'
 import { buildLocalLiveMatchup, type LiveMatchup } from '@domain/liveMatch'
 import { parseStatsSummary, type MatchSummary } from '@domain/statsSummary'
 import { getSettings } from './appContext'
@@ -225,6 +234,16 @@ function readHead(path: string, maxBytes = 65536): Uint8Array | null {
   }
 }
 
+function readFullReplay(path: string): Uint8Array | null {
+  try {
+    const stat = statSync(path)
+    if (!stat.isFile() || stat.size <= 0 || stat.size > 100 * 1024 * 1024) return null
+    return new Uint8Array(readFileSync(path))
+  } catch {
+    return null
+  }
+}
+
 /** All saved `.rec` files (named playback replays + per-match copies); skips temp scratch. */
 function findReplayFiles(): string[] {
   const dir = gameDir()
@@ -255,6 +274,125 @@ function findReplayFiles(): string[] {
     // ignore unreadable matchhistory dir
   }
   return out
+}
+
+function replayArchivePath(id: string): string | null {
+  if (id.startsWith('matchhistory:')) {
+    const matchId = id.slice('matchhistory:'.length)
+    if (!/^\d+$/.test(matchId)) return null
+    return join(gameDir(), 'matchhistory', matchId, 'replay.rec')
+  }
+  if (!id.toLowerCase().endsWith('.rec')) return null
+  const root = resolve(gameDir())
+  const path = resolve(id)
+  const prefix = `${root}${process.platform === 'win32' ? '\\' : '/'}`
+  return path === root || path.startsWith(prefix) ? path : null
+}
+
+/** Full local `.rec` analysis, consent-gated and restricted to the AoE4 folder. */
+export function analyzeLocalReplay(id: string): ReplayAnalysisResult | null {
+  if (!getSettings().getAll().localData.consentGranted || typeof id !== 'string') return null
+  const path = replayArchivePath(id)
+  if (!path || !existsSync(path)) return null
+  const bytes = readFullReplay(path)
+  if (!bytes) return null
+  const stat = statSync(path)
+  return {
+    id,
+    source: 'local',
+    sourcePath: path,
+    recordedAtMs: stat.mtimeMs,
+    info: parseReplayHeader(bytes),
+    commandStream: parseReplayCommandStream(bytes),
+  }
+}
+
+/**
+ * Full local archive inventory for the Replay Lab. A match-history folder is a
+ * game even when AoE4 did not leave a replay.rec behind, so those rows are kept
+ * with `hasReplay: false` and the parsed match_history.jsn metadata. The
+ * command stream is never read here; detailed numbers continue through
+ * stats.rgs/Relic and are linked by matchhistory id when available.
+ */
+export function listReplayArchive(page = 1, pageSize = 25): ReplayArchivePage {
+  if (!getSettings().getAll().localData.consentGranted) {
+    return { items: [], page: 1, pageSize: 25, totalCount: 0, hasNext: false }
+  }
+  const safePage = Math.max(1, Math.min(100_000, Math.floor(page)))
+  const safePageSize = Math.max(1, Math.min(100, Math.floor(pageSize)))
+  try {
+    const rows: ReplayArchiveItem[] = []
+    const dir = gameDir()
+    const matchHistoryDir = join(dir, 'matchhistory')
+    if (existsSync(matchHistoryDir)) {
+      const folders = sortMatchHistoryIdsNewestFirst(
+        readdirSync(matchHistoryDir).filter((name) => /^\d+$/.test(name)),
+      )
+      for (const folder of folders) {
+        try {
+          const folderPath = join(matchHistoryDir, folder)
+          const matchPath = join(folderPath, 'match_history.jsn')
+          const recPath = join(folderPath, 'replay.rec')
+          const localMatch = existsSync(matchPath)
+            ? parseMatchHistory(readFileSync(matchPath, 'utf8'), {
+                myProfileId: getSettings().getAll().profileId ?? undefined,
+              })
+            : null
+          const head = existsSync(recPath) ? readHead(recPath) : null
+          const info = head ? parseReplayHeader(head) : null
+          if (!localMatch && !info) continue
+          const statPath = existsSync(recPath) ? recPath : matchPath
+          rows.push({
+            id: `matchhistory:${folder}`,
+            source: 'matchhistory',
+            recordedAtMs: statSync(statPath).mtimeMs,
+            matchId: folder,
+            hasReplay: info != null,
+            hasStatsSummary: existsSync(join(folderPath, 'stats.rgs')),
+            info,
+            localMatch,
+          })
+        } catch {
+          // Skip a folder that is still being written or is no longer readable.
+        }
+      }
+    }
+
+    for (const path of findReplayFiles()) {
+      try {
+        if (/[/\\]matchhistory[/\\]\d+[/\\]replay\.rec$/i.test(path)) continue
+        const stat = statSync(path)
+        const head = readHead(path)
+        const info = head ? parseReplayHeader(head) : null
+        if (!info) continue
+        const normalized = path.replace(/\\/g, '/')
+        rows.push({
+          id: normalized,
+          source: 'playback',
+          recordedAtMs: stat.mtimeMs,
+          matchId: null,
+          hasReplay: true,
+          hasStatsSummary: false,
+          info,
+          localMatch: null,
+        })
+      } catch {
+        // Skip a replay that is being written, locked, or no longer present.
+      }
+    }
+
+    const sorted = rows.sort((a, b) => b.recordedAtMs - a.recordedAtMs)
+    const offset = (safePage - 1) * safePageSize
+    return {
+      items: sorted.slice(offset, offset + safePageSize),
+      page: safePage,
+      pageSize: safePageSize,
+      totalCount: sorted.length,
+      hasNext: offset + safePageSize < sorted.length,
+    }
+  } catch {
+    return { items: [], page: safePage, pageSize: safePageSize, totalCount: 0, hasNext: false }
+  }
 }
 
 export interface LatestReplayResult {

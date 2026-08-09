@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "name": "HoL Rush Abbey + Kings + Hobelars",
+  "civilization": "House of Lancaster",
+  "author": "Sqweez",
+  "source": "https://aoe4guides.com/builds/5XQEhOSd4E66Kwkyl7xD",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 food 1 build @building_economy/mining-camp.webp@ then @resource/resource_gold.webp@ @resource/rally.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "1 build @building_economy/house.webp@ then @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:04",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "3 @resource/resource_gold.webp@ ->@landmark_english/abbey-of-kings.webp@ rally Abbey to opponent Gold"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:18",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "1 vill build  @building_economy/mining-camp.webp@ on @resource/resource_stone.webp@   1 vill build  @building_economy/lumber-camp.webp@ @resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:44",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 2,
+        "builder": 4
+      },
+      "notes": [
+        "3 @resource/resource_food.webp@ -> @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:57",
+      "villager_count": 14,
+      "resources": {
+        "food": 3,
+        "wood": 6,
+        "gold": 0,
+        "stone": 2,
+        "builder": 3
+      },
+      "notes": [
+        "1@resource/resource_food.webp@ -> @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:02",
+      "villager_count": 17,
+      "resources": {
+        "food": 3,
+        "wood": 9,
+        "gold": 3,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "3 age up builders -> @resource/resource_gold.webp@  queue @unit_lancaster/lord_lancaster.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:08",
+      "villager_count": 18,
+      "resources": {
+        "food": 3,
+        "wood": 6,
+        "gold": 3,
+        "stone": 2,
+        "builder": 4
+      },
+      "notes": [
+        "4@resource/resource_wood.webp@ -> manor @building_lancaster/manor.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 3,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@    queue @unit_lancaster/lord_lancaster.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:35",
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 9,
+        "gold": 3,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": [
+        "1 @resource/resource_wood.webp@ build @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 19,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 3,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": [
+        "1 @resource/resource_wood.webp@ -> @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:07",
+      "villager_count": 20,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 3,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @unit_lancaster/hobelar_age2.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/voST_rArhmI",
+  "season": 11,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,987 @@
+{
+  "schemaVersion": 1,
+  "name": "Season 9 New 2TC Build !",
+  "civilization": "Malians",
+  "author": "ßlàçk",
+  "source": "https://aoe4guides.com/builds/iklQOOtczDBstDmJOIht",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:05",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5:@unit_worker/villager-malians.webp@->@resource/gaiatreeprototypetree.png@ Gather Just One Tree [150] @resource/resource_wood.png@",
+        "1:@unit_worker/villager-malians.png@-&gt;@building_malians/pit-mine-1.png@ Slowly add 4x@building_economy/house.png@ and @building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:25",
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/sheep.png@ Until Age Up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:45",
+      "villager_count": 8,
+      "resources": {
+        "food": 2,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:05",
+      "villager_count": 9,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Move 5:@unit_worker/villager-malians.webp@ From @resource/gaiatreeprototypetree.png@->@resource/sheep.png@ When you have [150] @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:25",
+      "villager_count": 10,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:45\n",
+      "villager_count": 11,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Your  @building_malians/pit-mine-1.webp@ Should be Gathering {81}@resource/resource_gold.png@ Per Min"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:05",
+      "villager_count": 12,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:25",
+      "villager_count": 13,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 14,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "[3:00]",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 1,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Age up with 4:@unit_worker/villager-malians.webp@->@landmark_malians/mansa-quarry-2.png@",
+        "Move 5:@unit_worker/villager-malians.png@From @resource/sheep.png@-&gt;@resource/gaiatreeprototypetree.png@ For [50] @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:05",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 1,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@->@building_economy/lumber-camp.png@-&gt;@resource/resource_wood.png@ Up to 15~16"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:25",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 1,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:45",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 1,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 9,
+        "gold": 1,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "[4:40]",
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 14,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move 4:@unit_worker/villager-malians.webp@From @landmark_malians/mansa-quarry-2.png@->@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 15,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "[5:00]",
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 9,
+        "gold": 1,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Move 6:@unit_worker/villager-malians.webp@ From @resource/resource_wood.png@-> Build 2nd@building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:05",
+      "villager_count": 21,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/resource_wood.png@ For total of 10"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:25",
+      "villager_count": 22,
+      "resources": {
+        "food": 5,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/sheep.png@",
+        "Add 3x@building_economy/house.png@ to your  @building_malians/pit-mine-1.png@ For {108}@resource/resource_gold.png@ Per Min"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:45",
+      "villager_count": 23,
+      "resources": {
+        "food": 6,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "@resource/rally.webp@->@building_economy/mill.png@ Close to @resource/berrybush.png@Or@resource/deer.png@",
+        "Build @building_military/barracks.png@ When Ready Start Making @unit_malians/donso-1.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:05",
+      "villager_count": 24,
+      "resources": {
+        "food": 7,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/resource_food.png@ Up to 30"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "[6:25]",
+      "villager_count": 25,
+      "resources": {
+        "food": 14,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_economy/town-center.webp@ Should be Ready Before 6:25 Maximum time",
+        "Move 6:@unit_worker/villager-malians.png@->@resource/resource_food.png@",
+        "Get @technology_economy/wheelbarrow.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:45",
+      "villager_count": 27,
+      "resources": {
+        "food": 16,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/archery-range.webp@ When Ready Start Making @unit_malians/javelin-thrower-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:05",
+      "villager_count": 29,
+      "resources": {
+        "food": 18,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_technology/blacksmith.webp@ and Get @technology_military/iron-undermesh.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:25",
+      "villager_count": 31,
+      "resources": {
+        "food": 20,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_economy/double-broadaxe.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:05",
+      "villager_count": 33,
+      "resources": {
+        "food": 22,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start your 2nd @building_malians/pit-mine-1.webp@ and @building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:25",
+      "villager_count": 35,
+      "resources": {
+        "food": 24,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If you have Extra @resource/resource_gold.webp@ Start Making @resource/cattle.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:45",
+      "villager_count": 37,
+      "resources": {
+        "food": 26,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:05",
+      "villager_count": 39,
+      "resources": {
+        "food": 28,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:25",
+      "villager_count": 41,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/resource_gold.png@ Up to 30"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:45",
+      "villager_count": 43,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build another set @building_military/barracks.webp@-@building_military/archery-range.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:05",
+      "villager_count": 45,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Add 1-2 @building_malians/cattle-ranch-2.webp@ if you have Extra @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:25",
+      "villager_count": 47,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_economy/horticulture.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:45",
+      "villager_count": 49,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:05",
+      "villager_count": 51,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:25",
+      "villager_count": 53,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 13,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "12:05",
+      "villager_count": 55,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 15,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Look For @age/age_3.webp@ Age Up !"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "12:25",
+      "villager_count": 57,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 17,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age Up With @landmark_malians/farimba-garrison-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "12:45",
+      "villager_count": 59,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 19,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make @building_military/barracks.webp@ Depending on how much @resource/resource_wood.png@ you have"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "13:05",
+      "villager_count": 61,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 21,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you Run low on @resource/resource_food.webp@ Put @unit_worker/villager-malians.png@ on @resource/cattle.png@",
+        "Make @building_economy/mill.png@ Close to TC for better @resource/cattle.png@ Production"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "13:25",
+      "villager_count": 63,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 23,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make Some @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "13:45",
+      "villager_count": 65,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 25,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_religious/mosque.webp@->@unit_religious/monk-3.png@ Go after @resource/relics.png@",
+        "Unlock @unit_malians/freeborn-mansa.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "14:05",
+      "villager_count": 67,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 27,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Add another@building_economy/mill.webp@Close to TC for better @resource/cattle.png@ Production",
+        "Start your 3rd @building_malians/pit-mine-1.png@ and @building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "14:25",
+      "villager_count": 69,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 29,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make Some Extra @building_military/barracks.webp@-@building_military/barracks.png@ when you can",
+        "Use Extra @resource/resource_gold.png@ For @technology_economy/fertilization.png@-@technology_economy/lumber-preservation.png@-@technology_military/insulated-helm.png@-@technology_military/wedge-rivets.png@-@technology_military/decarbonization.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "14:45",
+      "villager_count": 71,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 30,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/resource_stone.png@ Up to 15"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "15:05",
+      "villager_count": 73,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 30,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/siege-workshop.webp@->@unit_siege/mangonel-3.png@-@unit_siege/springald.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "15:25",
+      "villager_count": 75,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 30,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "15:45",
+      "villager_count": 77,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 30,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "16:05",
+      "villager_count": 79,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 30,
+        "stone": 9,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "16:25",
+      "villager_count": 81,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 30,
+        "stone": 11,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "16:45",
+      "villager_count": 83,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 30,
+        "stone": 13,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "17:05",
+      "villager_count": 85,
+      "resources": {
+        "food": 30,
+        "wood": 10,
+        "gold": 30,
+        "stone": 15,
+        "builder": -1
+      },
+      "notes": [
+        "Since we are Reliant on @resource/resource_gold.webp@ Start Making @building_defensive/keep.png@ To secure them"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "17:25",
+      "villager_count": 87,
+      "resources": {
+        "food": 30,
+        "wood": 12,
+        "gold": 30,
+        "stone": 15,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/resource_wood.png@ Up to 15"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "17:45",
+      "villager_count": 89,
+      "resources": {
+        "food": 30,
+        "wood": 14,
+        "gold": 30,
+        "stone": 15,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "18:05",
+      "villager_count": 90,
+      "resources": {
+        "food": 30,
+        "wood": 15,
+        "gold": 30,
+        "stone": 15,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "~19:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Look For @age/age_4.webp@ Age Up !"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "~19:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age Up With @landmark_malians/fort-of-the-huntress-3.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move More @unit_worker/villager-malians.webp@ to @resource/resource_gold.png@ For Upgrades"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "time": "~20:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Unlock @unit_malians/musofadi-mansa.webp@ and Elite Upgrade for @unit_malians/freeborn-mansa.png@-@unit_malians/musofadi-mansa.png@-@unit_malians/donso-1.png@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_technology/madrasa.webp@For@technology_military/elite-army-tactics.png@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_military/angled-surfaces.webp@@technology_military/master-smiths.png@@technology_military/damascus-steel.png@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_economy/precision-cross-breeding.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 9,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

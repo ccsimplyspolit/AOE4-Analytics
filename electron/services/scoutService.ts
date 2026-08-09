@@ -2,6 +2,7 @@ import type {
   HeadToHeadData,
   IpcResult,
   ScoutHistoryData,
+  ScoutHistoryQuery,
   ScoutMatchPage,
   ScoutMatchRow,
 } from '@ipc/contract'
@@ -14,9 +15,31 @@ import { err, errFrom, ok } from './result'
 
 const RECENT_MATCH_LIMIT = 10
 const HEAD_TO_HEAD_LIMIT = 20
+const MAX_HISTORY_PAGE = 5_000
 
 function isProfileId(value: unknown): value is number {
   return typeof value === 'number' && Number.isSafeInteger(value) && value > 0
+}
+
+function historyQuery(input: unknown): Required<ScoutHistoryQuery> {
+  if (input == null) return { recentPage: 1, recentPageSize: RECENT_MATCH_LIMIT }
+  if (typeof input !== 'object') throw new Error('Scout history query must be an object.')
+  const value = input as Record<string, unknown>
+  const page = value.recentPage ?? 1
+  const pageSize = value.recentPageSize ?? RECENT_MATCH_LIMIT
+  if (
+    typeof page !== 'number' ||
+    !Number.isSafeInteger(page) ||
+    page < 1 ||
+    page > MAX_HISTORY_PAGE ||
+    typeof pageSize !== 'number' ||
+    !Number.isSafeInteger(pageSize) ||
+    pageSize < 1 ||
+    pageSize > 100
+  ) {
+    throw new Error('Scout history page must be a positive integer up to 5,000.')
+  }
+  return { recentPage: page, recentPageSize: pageSize }
 }
 
 /** Maps an API game without guessing when the requested player is missing. */
@@ -139,20 +162,36 @@ export async function scoutPlayer(profileId: number): Promise<IpcResult<ScoutRep
  * active account exists, the second request is scoped with opponent_profile_id
  * so the head-to-head list is not inferred from unrelated local history.
  */
-export async function getScoutHistory(profileId: unknown): Promise<IpcResult<ScoutHistoryData>> {
+export async function getScoutHistory(
+  profileId: unknown,
+  queryInput?: unknown,
+): Promise<IpcResult<ScoutHistoryData>> {
   if (!isProfileId(profileId)) {
     return err('validation', 'Player profile id must be a positive integer.')
+  }
+
+  let query: Required<ScoutHistoryQuery>
+  try {
+    query = historyQuery(queryInput)
+  } catch (error) {
+    return err('validation', error instanceof Error ? error.message : 'Invalid history query.')
   }
 
   // Capture identity before starting account-scoped IO. The renderer also keys
   // this query by the active profile so a switch cannot reuse another account's data.
   const settings = getSettings().getAll()
   const activeProfileId = isProfileId(settings.profileId) ? settings.profileId : null
-  const shouldLoadHeadToHead = activeProfileId != null && activeProfileId !== profileId
+  const shouldLoadHeadToHead =
+    query.recentPage === 1 && activeProfileId != null && activeProfileId !== profileId
   const client = getClient()
 
+  const recentQuery =
+    query.recentPage === 1
+      ? { limit: query.recentPageSize }
+      : { limit: query.recentPageSize, page: query.recentPage }
+
   const [recentResult, headToHeadResult] = await Promise.allSettled([
-    client.getPlayerGames(profileId, { limit: RECENT_MATCH_LIMIT }),
+    client.getPlayerGames(profileId, recentQuery),
     shouldLoadHeadToHead
       ? client.getPlayerGames(activeProfileId, {
           limit: HEAD_TO_HEAD_LIMIT,
@@ -187,6 +226,8 @@ export async function getScoutHistory(profileId: unknown): Promise<IpcResult<Sco
       activeProfileId == null
         ? null
         : { profileId: activeProfileId, name: settings.playerName ?? null },
+    recentPage: query.recentPage,
+    recentPageSize: query.recentPageSize,
     recent,
     headToHead,
   })

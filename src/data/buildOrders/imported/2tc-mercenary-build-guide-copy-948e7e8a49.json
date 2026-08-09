@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "name": "2TC Mercenary Build Guide - copy",
+  "civilization": "Byzantines",
+  "author": "12345",
+  "source": "https://aoe4guides.com/builds/6YXvRXSxeOs8L5Ahwclt",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Send 5@unit_worker/villager.webp@ to @resource/sheep.png@, 1 @unit_worker/villager.png@ to build @building_byzantines/cistern-1.png@@building_economy/mining-camp.png@ -> @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 new @unit_worker/villager.webp@ to build @building_economy/house.png@ (opposite side of gold) -> @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally @resource/sheep.webp@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:12",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 2,
+        "builder": 4
+      },
+      "notes": [
+        "DROP OFF: 2@resource/resource_food.webp@@unit_worker/villager.png@ build @landmark_byzantines/grand-winery-1.png@ on @resource/berrybush.png@",
+        "2@resource/resource_gold.png@@unit_worker/villager.png@ build @building_economy/mining-camp.png@ on @resource/resource_stone.png@ + 1@resource/resource_food.png@@unit_worker/villager.png@",
+        "Rest to @resource/resource_wood.png@ and @resource/rally.png@@resource/resource_wood.png@ (@resource/gaiatreeprototypetree.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "&lt;- Macro for 2nd @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~4:50~",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@: Build @building_economy/town-center.png@ on @resource/resource_gold.png@ and secure @resource/berrybush.png@. Get @technology_byzantines/border-settlements-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 12,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "&lt;- Macro for Mercenaries: (@building_byzantines/mercenary-house-2.webp@:Eastern Contract:\" KESHIK\")"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:20",
+      "villager_count": 27,
+      "resources": {
+        "food": 10,
+        "wood": 11,
+        "gold": 3,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "3@unit_worker/villager.webp@ to @resource/resource_stone.png@ for @building_byzantines/cistern-1.png@ and Tower Upgrades.",
+        "If under pressure, hurry out units instead: @building_byzantines/mercenary-house-2.png@+@building_military/archery-range.png@(@building_military/stable.png@ if needed) and get @resource/resource_stone.png@for @building_byzantines/cistern-1.png@ by constructing buildings."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Post Build Order Guidance:",
+        "Mercenary advice: Pick \"Longbow Contract\" up against Camel civs and play defensive with @unit_byzantines/limitanei-1.webp@+Longbow. Pick \"Keshik Contract\" against other civs and run \"Keshik\"+@unit_cavalry/horseman-1.png@+@building_military/archery-range.png@+@unit_byzantines/limitanei-1.png@ .  The idea here is, that the \"Keshik\" is your anti-armor, so if your enemy goes @age/age_3.png@, you have \"Keshiks\" against \"MAA\" and @unit_byzantines/limitanei-1.png@ against \"Cavalry\"",
+        "As for pressure: keep responding to it. You are 2@building_economy/town-center.png@ so if you survive and don't lose too many @unit_worker/villager.png@ you will eventually win with eco.",
+        "Aggressive Walling: is key to securing more map. If under a lot of pressure, wall in the opposite of where your opponent is to take more resources.",
+        "Use \"Akritoi Defense\" from @building_byzantines/cistern-1.png@ to arm villagers with defense and spears in case of raids. Build towers on resources.",
+        "Building Layout: Construct @building_technology/blacksmith.png@+@building_technology/university.png@ around 1 @building_byzantines/cistern-1.png@ and use \"Dialecticus\" for additional research speed. Keep military production around other @building_byzantines/cistern-1.png@ and use \"Conscriptio\" for additional production speed."
+      ]
+    }
+  ],
+  "description": "2TC Byzantine playstyle with Grand Winery",
+  "video": "https://www.youtube.com/embed/wiWCQeC6eQU",
+  "season": 6,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

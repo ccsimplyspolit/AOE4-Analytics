@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "name": "GH new",
+  "civilization": "Golden Horde",
+  "author": "EmptyMachinez",
+  "source": "https://aoe4guides.com/builds/79Wsf7jiQPLNm9vBhHQ2",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Standard"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "(OPTIONAL) If vs @unit_infantry/spearman-1.webp@rush, immediately build @building_mongols/ger.webp@ with 2x @unit_worker/villager-mongols.webp@on @resource/resource_gold.webp@then send 1 @resource/sheep.webp@next to it and another @unit_worker/villager-mongols.webp@to gold"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "If not vs @unit_infantry/spearman-1.webp@rush then when @unit_worker/villager-mongols.webp@finishes @landmark_golden_horde/golden_tent.webp@ send 2x @resource/resource_food.webp@@unit_worker/villager-mongols.webp@to build @building_mongols/ger.webp@on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Should be aging up at the end of this."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 7,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro and @resource/rally.webp@@resource/resource_wood.webp@woodline | 2x @unit_worker/villager-mongols.webp@on each @resource/gaiatreeprototypetree.webp@into woodline"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 7,
+        "wood": 12,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When enough @resource/resource_wood.webp@and possible to move out, use @unit_golden_horde/khan.webp@or @unit_cavalry/scout.webp@to pull @resource/boar.webp@with 5x @unit_worker/villager-mongols.webp@or kill @resource/deer.webp@with @unit_cavalry/scout.webp@ or @unit_golden_horde/khan.webp@. Build @building_golden_horde/fortified_outpost.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "[REMINDER STEP] DONT MAKE PRODUCTION IN FRONT OR IN @resource/deer.webp@ OR @resource/boar.webp@@building_golden_horde/fortified_outpost.webp@UNLESS IT'S IN THE BACK. ALWAYS MAKE PRODUCTION IN THE BACK OR WITHIN RANGE OF TC THANK YOU"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 3,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "At some point get another @unit_worker/villager-mongols.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 56,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 56,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "And then later 5-6 with @building_golden_horde/fortified_outpost.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

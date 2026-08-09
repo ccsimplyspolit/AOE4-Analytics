@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "name": "Beasty fast imp",
+  "civilization": "Holy Roman Empire",
+  "author": "daltor",
+  "source": "https://aoe4guides.com/builds/ts0zsOqUogh861ll5Xaw",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_hre/prelate.webp@pushes deer into mill",
+        "1st @unit_worker/villager.webp@@resource/rally.webp@@resource/deer.webp@",
+        "2nd @unit_worker/villager.webp@@abilities/repair.webp@@building_economy/house.webp@on top of TC then @abilities/repair.webp@@building_economy/mining-camp.webp@on @resource/resource_gold.webp@",
+        "@resource/rally.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@till 2"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2 @abilities/repair.webp@@landmark_hre/meinwerk-palace.webp@on top of gold"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@ after 2 @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 8,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "still @resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 22,
+      "resources": {
+        "food": 1,
+        "wood": 5,
+        "gold": 8,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "@abilities/repair.webp@@landmark_hre/regnitz-cathedral.webp@with 8 from deer or sheep + remacro",
+        "send @unit_hre/prelate.webp@to relic",
+        "Make extra @unit_hre/prelate.webp@ from TC for relic pickup",
+        "@resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 18,
+        "wood": 0,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "remacro after @landmark_hre/regnitz-cathedral.webp@done, queue @unit_hre/prelate.webp@ immediately after finishing from regnitz",
+        "want 4 prelates minimum"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:30",
+      "villager_count": 30,
+      "resources": {
+        "food": 22,
+        "wood": 0,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 32,
+      "resources": {
+        "food": 32,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "move all @unit_worker/villager.webp@to food @ 950 gold, relics will get you the rest"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:40",
+      "villager_count": 34,
+      "resources": {
+        "food": 6,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": 17
+      },
+      "notes": [
+        "drop @landmark_hre/palace-of-swabia.webp@on woodline"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": 38,
+      "resources": {
+        "food": 16,
+        "wood": 12,
+        "gold": 0,
+        "stone": 10,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_defensive/outpost.webp@and place relics for defense",
+        "@resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "14:00",
+      "villager_count": 65,
+      "resources": {
+        "food": 12,
+        "wood": 43,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "after stone for all towers, move to gold",
+        "start @building_religious/monastery.webp@@building_economy/farm.webp@and build @building_military/barracks.webp@@building_military/stable.webp@for @unit_infantry/man-at-arms-1.webp@@unit_cavalry/horseman-1.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": "Open",
+  "strategy": "Fast Imperial",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

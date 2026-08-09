@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "name": "Beastyqt mongol kashik",
+  "civilization": "Mongols",
+  "author": "Wanman",
+  "source": "https://aoe4guides.com/builds/0IOAdTsf6t26KxENfkuv",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 build @building_mongols/ovoo.webp@,  5 to close @resource/gaiatreeprototypetree.png@ until unpack"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "8 to @resource/resource_food.webp@ , then 3 to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 build @landmark_mongols/deer-stones.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "when 6 on @resource/resource_food.webp@ ,@resource/rally.png@ to @resource/resource_wood.png@ until 8"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "build @building_military/stable.webp@ on @building_mongols/ovoo.png@ and get @technology_economy/wheelbarrow.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build @building_economy/market.webp@ when stable ready",
+        "go to 8 on @resource/resource_wood.png@ to preduce @unit_worker/trader.png@ and @unit_infantry/archer-2.png@",
+        "build @building_military/archery-range.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "when 8 on @resource/resource_wood.webp@ get 6 on @resource/resource_gold.png@, after @resource/rally.png@ to @resource/resource_food.png@",
+        "start producing @unit_mongols/keshik-2.png@ 4 with ovoo stone"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "strat producing @unit_infantry/archer-2.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/WiavIQwpxhM",
+  "season": 6,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

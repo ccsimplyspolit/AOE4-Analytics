@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "name": "Beasty 2 TC Mass Onna-Samurai (inspired by DeMu and VortiX?) [detailed]",
+  "civilization": "Japanese",
+  "author": null,
+  "source": "https://aoe4guides.com/builds/CfSrtJ6x7wiU5YQ9EOpc",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "3 on @resource/resource_stone.webp@ and builds @building_japanese/forge-1.png@, 3 on @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "first villager builds @building_japanese/farmhouse-1.webp@ on @resource/berrybush.png@ and stays there, @resource/rally.png@ to @resource/resource_stone.png@ until 5 (goal is to mine 650 total)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "after 5 on @resource/resource_stone.webp@, @resource/rally.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:22",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "research @technology_japanese/daimyo-manor-1.webp@ at 300 @resource/resource_stone.png@, make sure it's right after the villager that is currently being made, also make sure NOT to queue up another villager before it finishes, as it will delay the free villager you get from the upgrade"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:24",
+      "villager_count": 16,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": 4
+      },
+      "notes": [
+        "4 @resource/sheep.webp@ villagers build @landmark_japanese/kura-storehouse-1.png@ (preferably 2 tiles away from @building_economy/town-center.png@), make sure not to destroy any @resource/gaiatreeprototypetree.png@ with it as you will need all 3 of them"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:33",
+      "villager_count": 17,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 0,
+        "stone": 5,
+        "builder": 4
+      },
+      "notes": [
+        "all other @resource/sheep.webp@villagers (except 2) go to @resource/gaiatreeprototypetree.png@, rally to @resource/gaiatreeprototypetree.png@, @resource/berrybush.png@ villager will build the next house, also next to @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:14",
+      "villager_count": 19,
+      "resources": {
+        "food": 3,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "at 350 @resource/resource_stone.webp@ send @resource/resource_stone.png@ villagers to @resource/gaiatreeprototypetree.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:13",
+      "villager_count": 21,
+      "resources": {
+        "food": 3,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 12
+      },
+      "notes": [
+        "at 450 @resource/resource_wood.webp@ (after all @resource/gaiatreeprototypetree.png@ are chopped) 8 villagers build second @building_economy/town-center.png@ on nearest @resource/resource_gold.png@, 6 go to @resource/resource_wood.png@ and build @building_economy/lumber-camp.png@, age up should happen around the same time"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:14",
+      "villager_count": 22,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "send 2 age up villagers to @resource/resource_wood.webp@ to get 8 total, others to food (1 on the first kura farm). @resource/rally.png@ to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:05",
+      "villager_count": 24,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 7,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "after @building_economy/town-center.webp@ is done, send those 8 villagers to the @resource/resource_gold.png@, research @technology_japanese/towara-1.png@, @resource/rally.png@ both @building_economy/town-center.png@ to @resource/resource_food.png@, build 2 @building_military/barracks.png@ with one @resource/resource_gold.png@ villager, start producing @unit_japanese/onna-bugeisha-2.png@ and at least one @unit_japanese/katana-bannerman-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:22",
+      "villager_count": 31,
+      "resources": {
+        "food": 15,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "research @technology_japanese/takezaiku-2.webp@ and@technology_economy/double-broadaxe.png@, and @technology_japanese/tatara-1.png@ next, build walls as needed"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:26",
+      "villager_count": 36,
+      "resources": {
+        "food": 20,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "get economy upgrades and military ones that you need, you can harass, you can all in, or you can progress towards @age/age_3.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 46,
+      "resources": {
+        "food": 30,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "use extra @resource/resource_wood.webp@ to build farms around your fist @building_economy/town-center.png@, add some @building_military/barracks.png@ as needed, around 11-12 minutes you can rally some villagers to @resource/resource_stone.png@ to get @technology_japanese/daimyo-palace-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:03",
+      "villager_count": 52,
+      "resources": {
+        "food": 16,
+        "wood": 9,
+        "gold": 11,
+        "stone": 3,
+        "builder": 13
+      },
+      "notes": [
+        "13 villagers build @landmark_japanese/floating-gate-2.webp@, also build 2 @building_japanese/forge-1.png@ next to it"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:54",
+      "villager_count": 55,
+      "resources": {
+        "food": 29,
+        "wood": 9,
+        "gold": 9,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "If you need quick army production then put your @landmark_japanese/floating-gate-2.webp@ relics in military buildings, otherwise put them in @building_japanese/forge-1.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "13:10",
+      "villager_count": 65,
+      "resources": {
+        "food": 16,
+        "wood": 24,
+        "gold": 14,
+        "stone": 11,
+        "builder": -1
+      },
+      "notes": [
+        "Get relics, get more @resource/resource_wood.webp@ so you can transition from @resource/berrybush.png@@resource/sheep.png@ to @building_economy/farm.png@ around your first tc (you should aim for like 30), build more @building_military/barracks.png@ as needed, get @technology_japanese/daimyo-palace-2.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "15:00",
+      "villager_count": 65,
+      "resources": {
+        "food": 21,
+        "wood": 23,
+        "gold": 10,
+        "stone": 11,
+        "builder": -1
+      },
+      "notes": [
+        "make sure to get @technology_japanese/yaki-ire-4.webp@ and other important upgrades, get @technology_japanese/shogunate-castle-3.png@ when you can"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/WkG6pRGlHZQ",
+  "season": 6,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

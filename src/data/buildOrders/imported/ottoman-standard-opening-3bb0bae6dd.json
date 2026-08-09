@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "name": "Ottoman Standard Opening",
+  "civilization": "Ottomans",
+  "author": "Asmitha",
+  "source": "https://aoe4guides.com/builds/Qw883olQI2LzPplEqPES",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:05",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": 1
+      },
+      "notes": [
+        "1@building_economy/house.webp@-> 1 @resource/sheep.webp@",
+        "5@resource/resource_stone.webp@-&gt; 5 @resource/gaiatreeprototypetree.webp@ 50 -&gt; 2 @building_economy/mining-camp.webp@@resource/resource_gold.webp@ + 3 @resource/sheep.webp@",
+        "@resource/rally.webp@@resource/sheep.webp@",
+        "@building_ottomans/military-school-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:22",
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "first @unit_infantry/spearman-1.webp@ either aggression or group @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 1,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "1@resource/resource_gold.webp@-> @resource/gaiatreeprototypetree.webp@",
+        "4 @landmark_ottomans/twin-minaret-medrese-1.webp@",
+        "leave 4 on @resource/sheep.webp@ -&gt; @resource/gaiatreeprototypetree.webp@",
+        "@building_economy/house.webp@ @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@@building_military/barracks.webp@@building_military/archery-range.webp@@building_military/stable.webp@ (adapt)",
+        "2 @resource/resource_food.webp@ -> @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/double-broadaxe.webp@",
+        "@technology_ottomans/field-work-1.webp@/@technology_ottomans/mehter-drums-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_ottomans/istanbul-imperial-palace-2.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/oFfv5cHry68",
+  "season": 13,
+  "map": "Open",
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

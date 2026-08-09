@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "name": "Beasty's Aggro Jin - Copy for me to understand series",
+  "civilization": "Jin Dynasty",
+  "author": "murtuk",
+  "source": "https://aoe4guides.com/builds/DM6whfpxKPjYeEdegCoy",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 3,
+      "resources": {
+        "food": 2,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 to \"rein@resource/deer.webp@\", 1 to @resource/resource_gold.webp@with@building_economy/mining-camp.webp@+@building_economy/house.webp@",
+        "Full produce@unit_jin/mounted-villager.webp@ and @resource/rally.webp@@resource/resource_gold.webp@ until 3"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:10",
+      "villager_count": 5,
+      "resources": {
+        "food": 2,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:45",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 7,
+      "resources": {
+        "food": 2,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Start @age/age_2.webp@@landmark_jin/great-pasture.webp@with 2 from@resource/resource_food.webp@back@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:55",
+      "villager_count": 8,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 9,
+      "resources": {
+        "food": 3,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Now @resource/rally.webp@@resource/resource_wood.webp@ until 6 with @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:55",
+      "villager_count": 9,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_jin/great-pasture.webp@finishes at 3:55",
+        "Make @unit_jin/iron-pagoda.webp@ ASAP continuously and pressure"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/double-broadaxe.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:10",
+      "villager_count": 11,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make @building_jin/war-stable.webp@",
+        "If opponent making spears then make @unit_jin/mohe-tribesman.webp@ if not, make more @unit_jin/iron-pagoda.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:15",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make @building_jin/grassland.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 1 to @resource/resource_gold.webp@ and@resource/rally.webp@@resource/resource_food.webp@",
+        "Make @building_technology/blacksmith.webp@, some @building_defensive/palisade-wall.webp@ if needed"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:30",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Expand to @resource/deer.webp@ with @building_defensive/outpost.webp@, Consider @technology_jin/mohe-ancestry.webp@",
+        "Aim to research @technology_military/steeled-arrow.webp@/@technology_military/iron-undermesh.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:35",
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "For reference, you can have  15 @unit_jin/mohe-tribesman.webp@ 6@unit_jin/iron-pagoda.webp@"
+      ]
+    }
+  ],
+  "description": "Copied from Beasty's video for villagers like me to understand",
+  "video": "https://www.youtube.com/embed/tEfEB9-U0rE",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

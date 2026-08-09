@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "name": "HRE Fast Castle / IMP",
+  "civilization": "Holy Roman Empire",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/KHFPSUZVPY3RVIf8WeGY",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@ to @resource/sheep.png@,",
+        "3 @unit_worker/villager.png@ to @resource/resource_gold.png@  (build @building_economy/house.png@+@building_economy/mining-camp.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to@resource/resource_food.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once buildings are completed and all @resource/resource_gold.webp@@unit_worker/villager.png@ are gathering, you send your @unit_hre/prelate.png@ to inspire the 3 @unit_worker/villager.png@ ONCE, then back to @resource/resource_food.png@@unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_hre/aachen-chapel.webp@ with 4@resource/resource_food.png@@unit_worker/villager.png@ all the way on with 2 tiles between @resource/resource_wood.png@& @building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Take 3 @unit_worker/villager.webp@ to @resource/gaiatreeprototypetree.png@. gather a whole tree (150w) then one round of @resource/resource_stone.png@ for @technology_defensive/arrow-slits.png@ on @building_defensive/outpost.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 10,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 more @unit_worker/villager.webp@ to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:10",
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_defensive/outpost.webp@ on @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:37",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 3,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Upon @age/age_2.webp@ send the 4 age-up @unit_worker/villager.png@ to @resource/resource_wood.png@ and @resource/rally.png@ @building_economy/town-center.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_economy/house.webp@ and @technology_defensive/arrow-slits.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Train 1 @unit_hre/prelate.webp@ and put him on @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:10",
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/farm.webp@ (add in farms whenever you have 75w)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 farms in total at 5 mins"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:20",
+      "villager_count": 22,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Pull 8 @resource/sheep.webp@@unit_worker/villager.png@ for @landmark_hre/regnitz-cathedral.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@ and send both @unit_hre/prelate.png@ on @resource/relics.png@ if safe to move out. If not, then wait for knights."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 27,
+      "resources": {
+        "food": 11,
+        "wood": 12,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_3.webp@: Produce @unit_hre/prelate.png@ and macro.",
+        "Time to make @unit_cavalry/knight-2.png@ and raid/secure relics"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 28,
+      "resources": {
+        "food": 10,
+        "wood": 11,
+        "gold": 4,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Send 3 @unit_worker/villager.webp@ to @resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 30,
+      "resources": {
+        "food": 15,
+        "wood": 8,
+        "gold": 4,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Add 2nd @building_military/stable.webp@ if needed.",
+        "Build more towers to store relics."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:30",
+      "villager_count": 43,
+      "resources": {
+        "food": 14,
+        "wood": 10,
+        "gold": 4,
+        "stone": 3,
+        "builder": 12
+      },
+      "notes": [
+        "Here you can decide to go Imperial with a few knights. Sometimes it is better to just play it out in castle if you opponent is aggressive, but if they are doing 2TC its fine to catch up with @landmark_hre/palace-of-swabia.webp@.",
+        "Just dont forget to store enough stone to make @building_defensive/outpost.png@ with @technology_defensive/cannon-emplacement.png@ and @resource/relics.png@ for defense. Then switch comp in imperial to MAA for example and remember @technology_religious/tithe-barns.png@ and other economy upgrades."
+      ]
+    }
+  ],
+  "description": "This is a Fast Castle build. Classic HRE relic collection into Swabia or aggro castle.\n\nWin Condition: Use knights to secure relics in castle then imperial. Alternatively, all in with knights archer or xbow spear maa",
+  "video": "https://www.youtube.com/embed/TWlaj7MsPpU",
+  "season": 9,
+  "map": null,
+  "strategy": "Fast Imperial",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

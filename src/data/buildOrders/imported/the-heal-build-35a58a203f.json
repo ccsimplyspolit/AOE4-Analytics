@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 1,
+  "name": "The Heal Build",
+  "civilization": "Knights Templar",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/8waVFpLcr2PJnMs3WBdw",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @unit_worker/villager.webp@ to @resource/resource_food.png@ & 1 @unit_worker/villager.png@ to @building_economy/mining-camp.png@@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:10",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build a @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_wood.png@ until 5 @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:27",
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start building @building_economy/farm.webp@ until 4 with @resource/sheep.png@ @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with @civilization_flag/hos.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 11,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:45",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_military/barracks.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "2nd @building_military/barracks.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro again & @resource/rally.webp@ @resource/resource_food.png@. Start producing @unit_templar/hospitaller_knight_age_2.png@ out of your @building_military/barracks.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 17,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_templar/safepassage.webp@ and set a pilgrim destination @resource/sacred_sites.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 23,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When pilgrims start reaching @resource/sacred_sites.webp@ then pull a few @unit_worker/villager.png@ off @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 24,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Macro towards your 2nd unit. I like to add @unit_infantry/archer-2.webp@ but you will have to adapt to what your opponent is doing."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 5,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "We should have about 15 @unit_templar/hospitaller_knight_age_2.webp@ and 2nd unit coming in."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:20",
+      "villager_count": 27,
+      "resources": {
+        "food": 11,
+        "wood": 11,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Add a @building_technology/blacksmith.webp@ for @technology_military/iron-undermesh.png@. Do also get your @technology_military/bloomery.png@ & @technology_military/fitted-leatherwork.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep making units and go for resource denial, ram push or castle timing."
+      ]
+    }
+  ],
+  "description": "Use the Hospitaller age-up for a strong healing frontline. Hospitallers also receive tremendous hp increase in castle and imperial, and thus scale well making this build a good castle build as well.\n\nWe age up to feudal at 4:20 with 4 farms, to have more villagers gathering resources instead of the fastest possible age-up.",
+  "video": "https://www.youtube.com/embed/Hk0EvBkJUAs",
+  "season": 10,
+  "map": null,
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

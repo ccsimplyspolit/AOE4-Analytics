@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "name": "Eco Wing 2TC into feudal cav",
+  "civilization": "Abbasid Dynasty",
+  "author": "joke less",
+  "source": "https://aoe4guides.com/builds/Hs3GVJMzugXY7CcSpVAQ",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 to @resource/berrybush.webp@with 1@abilities/repair.webp@@building_economy/house.webp@+@building_economy/mill.webp@+@landmark_abbasid/house-of-wisdom.webp@",
+        "@resource/rally.webp@@resource/resource_gold.webp@ until 2 with @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now @resource/rally.webp@@resource/sheep.webp@ until age up"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "start@age/age_2.webp@@landmark_abbasid/economic-wing.webp@",
+        "5@resource/resource_food.webp@to@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 2,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "Now @resource/rally.webp@@resource/resource_stone.webp@ until 4"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 2,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "Now @resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 5,
+        "wood": 7,
+        "gold": 2,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@ finishes at 4:00",
+        "Research @technology_abbasid/fertile-crescent-2.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 19,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 2,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_abbasid/fresh-foodstuffs.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@2nd@building_economy/town-center.webp@ on @resource/resource_food.webp@",
+        "and @resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 30,
+      "resources": {
+        "food": 23,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@building_military/stable.webp@1@building_military/archery-range.webp@and vils konstant production, get"
+      ]
+    }
+  ],
+  "description": "Eco Wing into 2 TC build taken and modified a little from Valdemar. Original BO from him: https://aoe4guides.com/builds/q7ShhrWaVgMCyDjPQX9F",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

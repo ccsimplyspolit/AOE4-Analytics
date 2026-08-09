@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "name": "English Rush",
+  "civilization": "English",
+  "author": "siberian_wolf",
+  "source": "https://aoe4guides.com/builds/OG4HzLxrvaRlxJ6Nwy4n",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@civilization_flag/ayy.webp@",
+        "6@unit_worker/villager.webp@>@building_economy/mill.webp@&gt;@technology_economy/survival-techniques.webp@&gt;@resource/deer.webp@",
+        "3@resource/rally.webp@ &gt;@building_economy/house.webp@&gt;@building_economy/mining-camp.webp@&gt;@resource/resource_gold.webp@",
+        "2@resource/rally.webp@ &gt;@resource/deer.webp@",
+        "3@resource/rally.webp@ &gt;@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 4,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "8@resource/rally.webp@>@building_economy/lumber-camp.webp@&gt; @resource/resource_wood.webp@",
+        "4@resource/deer.webp@@unit_worker/villager.webp@&gt;@landmark_english/abbey-of-kings.webp@",
+        "3@resource/sheep.webp@@unit_worker/villager.webp@&gt;@building_economy/lumber-camp.webp@&gt;@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:10",
+      "villager_count": 27,
+      "resources": {
+        "food": 8,
+        "wood": 16,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@landmark_english/abbey-of-kings.webp@@unit_worker/villager.webp@>@resource/deer.webp@",
+        "5@resource/rally.webp@&gt; @resource/resource_wood.webp@",
+        "@building_military/barracks.webp@&gt;@building_military/archery-range.webp@&gt;@building_military/archery-range.webp@&gt;@building_military/archery-range.webp@&gt;@building_technology/blacksmith.webp@",
+        "10@unit_infantry/spearman-1.webp@ +30@unit_english/longbowman-2.webp@ + 2@unit_siege/battering-ram.webp@",
+        "@technology_economy/wheelbarrow.webp@ + @technology_economy/double-broadaxe.webp@ + @technology_military/steeled-arrow.webp@ + @technology_military/siege-engineering.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "12:10",
+      "villager_count": 42,
+      "resources": {
+        "food": 21,
+        "wood": 16,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "8@resource/deer.webp@@unit_worker/villager.webp@> @resource/boar.webp@",
+        "2@resource/rally.webp@&gt;@building_defensive/outpost.webp@&gt;@resource/resource_gold.webp@",
+        "8@resource/rally.webp@&gt; @building_economy/farm.webp@",
+        "8@resource/resource_wood.webp@&gt;@building_economy/farm.webp@",
+        "3@resource/boar.webp@@unit_worker/villager.webp@&gt;@building_defensive/outpost.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 45,
+      "resources": {
+        "food": 21,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": 11
+      },
+      "notes": [
+        "8@building_economy/farm.webp@@unit_worker/villager.webp@> @landmark_english/kings-palace.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@resource/rally.webp@@unit_infantry/man-at-arms-1.webp@ + 2@resource/rally.webp@@unit_worker/villager.webp@= 33 @building_economy/farm.webp@ + 7 @resource/resource_gold.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "name": "Vortix Spear + Fast Castle",
+  "civilization": "Japanese",
+  "author": "Morgui",
+  "source": "https://aoe4guides.com/builds/AZHQNfujZfjeScgOSf4G",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Construir un @building_military/barracks.webp@Cuartel, los aldeanos que nacen a comida"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "El aldeano del cuartel hace una casa en la bayas. Produces Lanceros"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:11",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 aldeano en bayas, 6 en ovejas, 2 madera"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:43",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_japanese/towara-1.webp@Mejora de Recoleccion del molino",
+        "Hacemos la mina y pasamos 3 aldeanos a oro, (2 de comida y 1 de madera)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Hacemos la segunda casa @building_japanese/farmhouse-1.webp@ en las bayas"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:25",
+      "villager_count": 15,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Con dos aldeanos contruyes el edificio de subir a Feudal"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:45",
+      "villager_count": 17,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Pasamos 1 aldeano de oro a comida para tener 5 con el que sale recien."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 23,
+      "resources": {
+        "food": 16,
+        "wood": 0,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Los dos aldeanos que construyen el edificio para feudal pasan a Oro"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:35",
+      "villager_count": 25,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 7,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Empezamos a construir @landmark_japanese/floating-gate-2.webp@ y reorganizamos la economia. Nuevos aldeanos a comida. Y hacemos la mejora de la mansion damio @technology_japanese/daimyo-manor-1.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "7:50",
+      "villager_count": 29,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 8,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Con 4 aldeanos una vez subimos construimos establo o arqueria"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:45",
+      "villager_count": 33,
+      "resources": {
+        "food": 13,
+        "wood": 8,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Empezamos a Sacar tropas y segunda mejora @technology_japanese/takezaiku-2.webp@, mejoras herreria y crear el banner. Aldeanos a Madera"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/VU5YV38JRGA",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

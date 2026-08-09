@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "name": "Zhu XI Feudal Agro - Beastyqt",
+  "civilization": "Zhu Xi's Legacy",
+  "author": "siberian_wolf",
+  "source": "https://aoe4guides.com/builds/LTyVAZiMT9Wb2qsFO8bJ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @unit_worker/villager-china.webp@>@building_economy/mill.webp@&gt;@resource/sheep.webp@",
+        "@resource/sheep.webp@&gt;@building_economy/mill.webp@",
+        "1@unit_chinese/imperial-official.webp@&gt; @building_economy/mill.webp@",
+        "1 @unit_worker/villager-china.webp@&gt;@building_chinese/village.webp@&gt;@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 5,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @resource/rally.webp@>@building_economy/mining-camp.webp@&gt;@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @resource/rally.webp@>@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @resource/rally.webp@>@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:50",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@resource/rally.webp@ @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 @resource/resource_gold.webp@ @unit_worker/villager-china.webp@>@landmark_zhuxi/jiangnan-tower-2.webp@",
+        "-4@resource/sheep.webp@ @unit_worker/villager-china.webp@&gt;@building_economy/lumber-camp.webp@ &gt;@resource/resource_wood.webp@",
+        "6 @resource/rally.webp@&gt;@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:10",
+      "villager_count": 25,
+      "resources": {
+        "food": 15,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_chinese/imperial-official.webp@>@building_economy/lumber-camp.webp@",
+        "@abilities/repair.webp@ 2 @building_military/archery-range.webp@ + 1 @building_military/barracks.webp@ | 1@building_military/stable.webp@ around @landmark_zhuxi/jiangnan-tower-2.webp@",
+        "@technology_economy/horticulture.webp@ + 2级长矛兵",
+        "2@resource/resource_gold.webp@@unit_worker/villager-china.webp@&gt;@resource/resource_food.webp@",
+        "9@resource/rally.webp@ @resource/resource_food.webp@",
+        "8@resource/rally.webp@&gt;@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "&@unit_chinese/zhuge-nu-2.webp@+@unit_infantry/spearman-1.webp@ = 1:1",
+        "@abilities/repair.webp@ @building_chinese/village.webp@ >@building_economy/house.webp@",
+        "@building_technology/blacksmith.webp@ &gt;@technology_military/steeled-arrow.webp@&gt;@technology_military/siege-engineering.webp@",
+        "3rd @unit_chinese/imperial-official.webp@&gt;@building_technology/blacksmith.webp@"
+      ]
+    }
+  ],
+  "description": "https://www.youtube.com/watch?v=krRp71V0lDE",
+  "video": "",
+  "season": 13,
+  "map": "Open",
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "name": "Fast Castle Keshig + Cataphracte - Jeando tuto",
+  "civilization": "Byzantines",
+  "author": "Readix",
+  "source": "https://aoe4guides.com/builds/q8YEFfRnCh37P1J0SUcP",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Envoyer les 6 premiers @unit_worker/villager.webp@ sur les @resource/sheep.webp@ — commencer par les B les plus éloignées du @building_economy/town-center.webp@.",
+        "Un @unit_worker/villager.webp@ construit une @building_economy/house.webp@ en chemin.",
+        "Tip : commencer par les moutons loin du TC protège des rushs — les B proches restent accessibles plus tard."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:45",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Les 2 premiers @unit_worker/villager.webp@ sortant du @building_economy/town-center.webp@ vont directement sur @resource/resource_gold.webp@.",
+        "Construire le @building_economy/mining-camp.webp@ dès que possible sur la @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Dès que le @building_economy/mining-camp.webp@ est terminé, construire immédiatement la @landmark_byzantines/cistern-of-the-first-hill-2.webp@ (citerne).",
+        "Placer la citerne pour booster @resource/resource_food.webp@ moutons + @resource/resource_gold.webp@ + @resource/resource_food.webp@ B si possible.",
+        "Ajouter 2 @unit_worker/villager.webp@ supplémentaires sur @resource/resource_gold.webp@ (total 4 sur or).",
+        "Ajouter 2 @unit_worker/villager.webp@ supplémentaires sur @resource/resource_food.webp@ (total 8 sur nourriture)."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Lancer le passage @age/age_2.webp@ avec 2 @unit_worker/villager.webp@.",
+        "Construire l'@landmark_byzantines/imperial-hippodrome-1.webp@ — le placer dans la zone d'influence (carré) de la citerne pour accélérer la production militaire.",
+        "Envoyer 5 @unit_worker/villager.webp@ depuis les moutons vers @resource/resource_wood.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Dès 100 @resource/resource_wood.webp@ : déplacer 2 @unit_worker/villager.webp@ du bois vers @resource/resource_gold.webp@.",
+        "Rally @building_economy/town-center.webp@ toujours sur @resource/resource_food.webp@ moutons.",
+        "Construire un @building_defensive/outpost.webp@ avancé et une @building_economy/house.webp@ supplémentaire.",
+        "Garder 5 @unit_worker/villager.webp@ sur @resource/resource_wood.webp@ jusqu'à 150 bois."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 14,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "À 150 @resource/resource_wood.webp@ : construire la @building_byzantines/mercenary-house-2.webp@ (maison des mercenaires).",
+        "⚠️ Ne pas supprimer les arbres autour — vous avez besoin de 3 arbres pour ce build.",
+        "Depuis le bois : 1 @unit_worker/villager.webp@ → @resource/resource_gold.webp@, 2 @unit_worker/villager.webp@ → @resource/resource_food.webp@, 2 restants sur @resource/resource_wood.webp@.",
+        "Lancer immédiatement le contrat des @unit_byzantines/keshik-2.webp@ Keshigs (coûte 400 huile d'olive — vous en avez 800 : 2 packs possibles)."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Lancer le 2ème pack de @unit_byzantines/keshik-2.webp@ Keshigs (2x400 huile d'olive depuis les 6 B = 800 au total).",
+        "Lancer le passage @age/age_3.webp@ avec les @landmark_byzantines/cistern-of-the-first-hill-2.webp@.",
+        "Placer la citerne d'avance sur un point d'intérêt : B + @resource/resource_gold.webp@ si possible.",
+        "Envoyer un @unit_worker/villager.webp@ construire un aqueduc pour relier les deux citernes."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 15,
+        "wood": 2,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Dès l'âge 3 : lancer le contrat vétéran sur les @unit_byzantines/keshik-2.webp@ Keshigs.",
+        "Ajouter 5 @unit_worker/villager.webp@ sur @resource/resource_gold.webp@.",
+        "Objectif : 15 @unit_worker/villager.webp@ sur @resource/resource_food.webp@ + 15 sur @resource/resource_gold.webp@.",
+        "Lancer @technology_economy/wheelbarrow.webp@ Brouette dès que possible.",
+        "Si le moulin est sous la citerne, activer Dialectique.",
+        "Activer le Glops automatique sur la citerne : +25 HP/s pendant 6s sur les unités à faible vie.",
+        "Produire @unit_byzantines/cataphract-3.webp@ Cataphractes + @unit_byzantines/keshik-2.webp@ Keshigs en continu.",
+        "Utiliser Triomphe de l'Hippodrome lors des grands combats (+dégâts, +vitesse, régénération)."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "14:00",
+      "villager_count": 32,
+      "resources": {
+        "food": 15,
+        "wood": 2,
+        "gold": 15,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rechercher @technology_military/iron-undermesh.webp@ Résistance aux flèches rang 1 puis @technology_byzantines/teardrop-shields-3.webp@ +1 armure corps à corps ET distance sur @unit_byzantines/cataphract-3.webp@.",
+        "Ajouter des @building_military/stable.webp@ écuries pour produire plus de @unit_byzantines/cataphract-3.webp@ Cataphractes.",
+        "Combo idéal en multi : @unit_byzantines/cataphract-3.webp@ Cataphractes + @unit_byzantines/keshik-2.webp@ Keshigs (allié archer recommandé).",
+        "Réutiliser Triomphe après chaque combat — les points d'approvisionnement (kills) augmentent sa durée.",
+        "Spamm @unit_byzantines/keshik-2.webp@ + @unit_byzantines/cataphract-3.webp@ pour cleaner la map."
+      ]
+    }
+  ],
+  "description": "Fast Castle byzantin avec double pack de Keshigs. Pression rapide en âge 3 grâce aux Keshigs (mercenaires) et transition full cavalerie lourde Cataphracte. Excellent en multi (2v2/3v3/4v4) et jouable en 1v1 contre des civilisations lentes ou double TC.",
+  "video": "https://www.youtube.com/embed/WgbD_9c2nIo",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

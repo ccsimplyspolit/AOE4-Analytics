@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "name": "HoL 2TC - Papercut",
+  "civilization": "House of Lancaster",
+  "author": "ferg40",
+  "source": "https://aoe4guides.com/builds/MspEesSL4lQEUO5yP5R7",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5@unit_worker/villager.webp@@resource/sheep.webp@+1@unit_worker/villager.webp@@building_economy/house.webp@. @resource/rally.webp@3@unit_worker/villager.webp@@building_economy/mining-camp.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @resource/resource_gold.webp@@unit_worker/villager.webp@@abilities/repair.webp@@landmark_lancaster/lancaster_castle.webp@ on @resource/resource_gold.webp@ or @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "Pull 5@resource/sheep.webp@@unit_worker/villager.webp@ to @building_economy/mining-camp.webp@@resource/resource_stone.webp@. @resource/rally.webp@@resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:10",
+      "villager_count": 8,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "Use @landmark_lancaster/lancaster_castle.webp@@unit_worker/villager.webp@ to @abilities/repair.webp@@building_lancaster/manor.webp@ on @resource/resource_wood.webp@ to cover both TCs"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/town-center.webp@ to secure next food or gold"
+      ]
+    }
+  ],
+  "description": "2TC / 1 manor into feudal aggression or FC/White Tower",
+  "video": "https://www.youtube.com/embed/-3nVdrGLq9E",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

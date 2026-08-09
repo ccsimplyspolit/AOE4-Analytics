@@ -5,15 +5,42 @@ import type { BuildOrder } from '@domain/buildOrderSchema'
 import { parseNote } from '@domain/buildOrderSchema'
 import { liveBuildForkPlan } from '@domain/adaptiveBuild'
 import { formatDuration } from '@domain/format'
-import { AGE_ROMAN, RES_GLYPH, TIME_GLYPH, noteTokenGlyph } from './resourceGlyphs'
+import {
+  AGE_ICON,
+  AGE_ROMAN,
+  RES_GLYPH,
+  RES_ICON,
+  TIME_GLYPH,
+  noteTokenGlyph,
+  noteTokenIcon,
+} from './resourceGlyphs'
 import { extractBuildTargets, type BuildTarget } from './buildIcons'
+import { useI18n } from '../i18n'
 
 /** A resource entry on the villager-split line: glyph + value, hidden when negative. */
-function Res({ glyph, value }: { glyph: string; value: number | undefined }) {
+function Res({
+  glyph,
+  icon,
+  value,
+}: {
+  glyph: string
+  icon: string | null
+  value: number | undefined
+}) {
   if (value == null || value < 0) return null
   return (
     <span className="whitespace-nowrap">
-      {glyph} {value}
+      {icon ? (
+        <img
+          src={icon}
+          alt=""
+          aria-hidden="true"
+          className="inline-block h-3.5 w-3.5 object-contain align-[-0.15em]"
+        />
+      ) : (
+        glyph
+      )}{' '}
+      {value}
     </span>
   )
 }
@@ -49,11 +76,24 @@ function renderNote(note: string) {
       <span key={i}>{part.text}</span>
     ) : (
       <span key={i}>
-        {noteTokenGlyph(part.path) ??
+        {noteTokenIcon(part.path) ? (
+          <img
+            src={noteTokenIcon(part.path) ?? undefined}
+            alt={
+              part.path
+                .split('/')
+                .pop()
+                ?.replace(/\.\w+$/, '') ?? 'icon'
+            }
+            className="inline-block h-5 w-5 object-contain align-[-0.2em]"
+          />
+        ) : (
+          (noteTokenGlyph(part.path) ??
           part.path
             .split('/')
             .pop()
-            ?.replace(/\.\w+$/, '')}
+            ?.replace(/\.\w+$/, ''))
+        )}
       </span>
     ),
   )
@@ -64,6 +104,24 @@ function firstClause(s: string | undefined): string {
   if (!s) return ''
   const t = s.split(/[.!]/)[0] ?? s
   return t.length > 44 ? `${t.slice(0, 42).trimEnd()}…` : t
+}
+
+/** Plain-text counterpart of the icon-token note renderer used by the legacy TXT view. */
+function plainNote(s: string | undefined): string {
+  if (!s) return ''
+  return parseNote(s)
+    .map((part) =>
+      part.type === 'text'
+        ? part.text
+        : part.path
+            .split('/')
+            .pop()
+            ?.replace(/\.[^.]+$/, '')
+            .replace(/[-_]/g, ' ') ?? '',
+    )
+    .join('')
+    .replace(/\s+/g, ' ')
+    .trim()
 }
 
 /**
@@ -77,6 +135,9 @@ export function BuildOrderWidget({
   stepIndex,
   elapsedSec,
   auto,
+  fontSize = 14,
+  iconSize = 30,
+  viewMode = 'illustrated',
   noBuildCiv,
   opponentCivs = [],
 }: {
@@ -84,11 +145,18 @@ export function BuildOrderWidget({
   stepIndex: number
   elapsedSec: number | null
   auto: boolean
+  /** Base text size for the widget, controlled from overlay settings. */
+  fontSize?: number
+  /** Main unit/building thumbnail size, controlled from overlay settings. */
+  iconSize?: number
+  /** Rich icon view or compact plain-text view compatible with classic RTS overlays. */
+  viewMode?: 'illustrated' | 'text'
   /** Player's civ name when no bundled build matches it — the shown build is a reference. */
   noBuildCiv?: string | null
   /** Known lobby civilizations only; null entries preserve honest team coverage. */
   opponentCivs?: (string | null | undefined)[]
 }) {
+  const { tt, gameName } = useI18n()
   const step = bo.build_order[stepIndex]
   const next = bo.build_order[stepIndex + 1]
   const r = step?.resources
@@ -97,7 +165,10 @@ export function BuildOrderWidget({
   const responsePlan = liveBuildForkPlan({ reference: bo, opponentCivs })
 
   return (
-    <div className="flex h-full flex-col justify-center px-2.5 py-1 text-white">
+    <div
+      className="flex h-full flex-col justify-center px-2.5 py-1 text-white"
+      style={{ fontSize }}
+    >
       {/* header */}
       <div className="flex items-center gap-2 text-[11px] text-white/55">
         <span className="max-w-[180px] truncate font-medium text-white/80">{bo.name}</span>
@@ -107,17 +178,30 @@ export function BuildOrderWidget({
           </span>
         )}
         {step && AGE_ROMAN[step.age] && (
-          <span className="rounded bg-white/10 px-1 text-[10px]">{AGE_ROMAN[step.age]}</span>
+          <span className="flex items-center gap-0.5 rounded bg-white/10 px-1 text-[10px]">
+            {AGE_ICON[step.age] && (
+              <img
+                src={AGE_ICON[step.age] ?? undefined}
+                alt=""
+                aria-hidden="true"
+                className="h-3.5 w-3.5 object-contain"
+              />
+            )}
+            {AGE_ROMAN[step.age]}
+          </span>
         )}
         <span className="ml-auto tabular-nums">
           {stepIndex + 1}/{bo.build_order.length}
         </span>
-        <span className={auto ? 'text-win' : 'text-warn'}>{auto ? 'auto' : 'manual'}</span>
+        <span className="rounded bg-white/10 px-1 text-[9px] uppercase tracking-wide text-white/45">
+          {viewMode === 'text' ? 'TXT' : 'ICON'}
+        </span>
+        <span className={auto ? 'text-win' : 'text-warn'}>{auto ? tt('auto') : tt('manual')}</span>
       </div>
 
       {noBuildCiv && (
         <div className="mt-0.5 inline-block w-fit rounded bg-warn/10 px-1.5 py-0.5 text-[10px] text-warn/90">
-          reference build — no bundled build for {noBuildCiv}
+          {tt('reference build — no bundled build for')} {gameName(noBuildCiv)}
         </div>
       )}
 
@@ -125,19 +209,28 @@ export function BuildOrderWidget({
         <div className="mt-0.5 rounded-md bg-[#0b1530] px-2 py-1 ring-1 ring-cyan-500/25">
           {/* hero: what to build (images) + villager split */}
           <div className="flex items-center gap-2">
-            {targets.length > 0 && (
+            {viewMode === 'illustrated' && targets.length > 0 && (
               <div className="flex items-center gap-1.5">
                 {targets.map((t) => (
-                  <BuildIcon key={t.url} target={t} />
+                  <BuildIcon key={t.url} target={t} size={iconSize} />
                 ))}
               </div>
             )}
+            {viewMode === 'text' && (
+              <div className="min-w-0 flex-1 text-sm font-medium leading-snug text-white/90">
+                {plainNote(step.notes[0]) || tt('No instruction for this step')}
+              </div>
+            )}
             <div className="ml-auto flex items-center gap-2 text-[12px] tabular-nums text-white/85">
-              <Res glyph={RES_GLYPH.food} value={r?.food} />
-              <Res glyph={RES_GLYPH.wood} value={r?.wood} />
-              <Res glyph={RES_GLYPH.gold} value={r?.gold} />
-              <Res glyph={RES_GLYPH.stone} value={r?.stone} />
-              <Res glyph={RES_GLYPH.villager} value={step.villager_count} />
+              <Res glyph={RES_GLYPH.food} icon={RES_ICON.food} value={r?.food} />
+              <Res glyph={RES_GLYPH.wood} icon={RES_ICON.wood} value={r?.wood} />
+              <Res glyph={RES_GLYPH.gold} icon={RES_ICON.gold} value={r?.gold} />
+              <Res glyph={RES_GLYPH.stone} icon={RES_ICON.stone} value={r?.stone} />
+              <Res
+                glyph={RES_GLYPH.villager}
+                icon={RES_ICON.villager}
+                value={step.villager_count}
+              />
               {step.time && (
                 <span className="whitespace-nowrap text-white/45">
                   {TIME_GLYPH} {step.time}
@@ -147,7 +240,7 @@ export function BuildOrderWidget({
           </div>
 
           {/* the single key instruction for this step */}
-          {step.notes[0] && (
+          {viewMode === 'illustrated' && step.notes[0] && (
             <div className="mt-1 flex items-center gap-[5px] text-sm font-medium leading-snug">
               {renderNote(step.notes[0])}
             </div>
@@ -158,9 +251,11 @@ export function BuildOrderWidget({
       {/* dim "next" preview — keeps you one step ahead without the full list */}
       {next && (
         <div className="mt-1 flex items-center gap-1.5 px-1 text-[11px] text-white/45">
-          <span className="uppercase tracking-wide">next</span>
-          {nextTargets.length > 0 ? (
-            nextTargets.map((t) => <BuildIcon key={t.url} target={t} size={18} />)
+          <span className="uppercase tracking-wide">{tt('next')}</span>
+          {viewMode === 'illustrated' && nextTargets.length > 0 ? (
+            nextTargets.map((t) => (
+              <BuildIcon key={t.url} target={t} size={Math.max(14, Math.round(iconSize * 0.6))} />
+            ))
           ) : (
             <span className="truncate">{firstClause(next.notes[0])}</span>
           )}
@@ -170,7 +265,7 @@ export function BuildOrderWidget({
       {(responsePlan.forks.length > 0 || responsePlan.coverageNote) && (
         <div className="mt-1 border-t border-white/10 px-1 pt-1">
           <div className="text-[9px] font-semibold uppercase tracking-wider text-cyan-300/70">
-            Response forks · scout first
+            {tt('Response forks · scout first')}
           </div>
           <div className="mt-0.5 space-y-0.5 text-[10px] leading-tight text-white/65">
             {responsePlan.forks.map((fork) => (

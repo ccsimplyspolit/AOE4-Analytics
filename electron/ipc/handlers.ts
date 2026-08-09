@@ -13,11 +13,13 @@ import { getSteamAccounts, getSteamAvatar } from '../services/steamService'
 import type { LiveMatchInfo } from './contract'
 import { getDashboard, searchPlayers } from '../services/profileService'
 import { getScoutHistory, scoutPlayer } from '../services/scoutService'
+import { getLastMatchCoach } from '../services/coachService'
 import { getCivMeta, getMatchupLab } from '../services/civMetaService'
 import { getCivDetailStats, getLandmarkStats } from '../services/civDetailService'
 import { getLeaderboardPage } from '../services/leaderboardService'
 import {
   analyzeRecentGames,
+  getBuildAuditHistory,
   deleteMatch,
   getGameSummary,
   getLandmarkRecord,
@@ -27,8 +29,18 @@ import {
 import {
   getLatestLocalMatch,
   getLatestReplay,
+  analyzeLocalReplay,
+  listReplayArchive,
   getLocalDataStatus,
 } from '../services/localDataService'
+import {
+  cacheAccountReplay,
+  cacheAccountReplays,
+  cacheAccountSummary,
+  cacheAccountSummaries,
+  listAccountReplayArchive,
+} from '../services/replayArchiveService'
+import { analyzeCachedReplay } from '../services/replayCacheService'
 import {
   diagnoseRankedFetch,
   getSteamAuthStatus,
@@ -37,9 +49,36 @@ import {
   steamStartLogin,
   steamSubmitSteamGuardCode,
 } from '../services/relicAuthService'
-import { ok, errFrom } from '../services/result'
+import { err, errFrom, ok } from '../services/result'
 import { replayMatchup } from '@domain/replay'
 import type { CivMetaQuery, LatestReplay, LeaderboardQuery } from './contract'
+import {
+  getStreamManagerStatus,
+  resetStreamManagerState,
+  startStreamManager,
+  stopStreamManager,
+  updateStreamManagerState,
+} from '../services/streamManagerService'
+import { importAoe2cmDraft } from '../services/streamDraftService'
+import {
+  importCommunityBuild,
+  listAoe4GuidesBuilds,
+  listCommunityBuilds,
+} from '../services/communityBuildService'
+import { findTwitchVod } from '../services/twitchVodService'
+import { searchOnline } from '../services/onlineSearchService'
+import { getPublicDumpCatalog } from '../services/publicDumpService'
+import { syncExternalSources } from '../services/sourceSyncService'
+import { extractVideoAnalysis } from '../services/videoAnalysisService'
+import { listVideoAnalyses } from '../services/videoAnalysisStore'
+import { getBeastyNumber } from '../services/beastyNumberService'
+import { getPublicGame } from '../services/publicGameService'
+import {
+  clearTranslationCache,
+  configureTranslation,
+  getTranslationStatus,
+  translateBatch,
+} from '../services/translationService'
 
 /**
  * Registers all `ipcMain.handle` channels. Called once from `main.ts` after
@@ -54,8 +93,12 @@ export function registerIpcHandlers(): void {
   ipcMain.handle(IpcChannels.profileSearch, (_e, query: string) => searchPlayers(query))
   ipcMain.handle(IpcChannels.profileDashboard, () => getDashboard())
   ipcMain.handle(IpcChannels.scoutGet, (_e, profileId: number) => scoutPlayer(profileId))
-  ipcMain.handle(IpcChannels.scoutHistoryGet, (_e, profileId: unknown) =>
-    getScoutHistory(profileId),
+  ipcMain.handle(IpcChannels.scoutHistoryGet, (_e, profileId: unknown, query: unknown) =>
+    getScoutHistory(profileId, query),
+  )
+  ipcMain.handle(IpcChannels.publicGameGet, (_e, query: unknown) => getPublicGame(query))
+  ipcMain.handle(IpcChannels.tinctureCoachGet, (_e, profileId: unknown) =>
+    getLastMatchCoach(profileId),
   )
 
   ipcMain.handle(IpcChannels.profileSetCurrent, (_e, profileId: number, name: string) =>
@@ -92,6 +135,9 @@ export function registerIpcHandlers(): void {
   )
   ipcMain.handle(IpcChannels.analysisHistory, (_e, limit?: number) => listHistory(limit))
   ipcMain.handle(IpcChannels.analysisGameSummary, (_e, matchId: string) => getGameSummary(matchId))
+  ipcMain.handle(IpcChannels.analysisBuildAuditHistory, (_e, limit?: number) =>
+    getBuildAuditHistory(limit),
+  )
   ipcMain.handle(IpcChannels.analysisDeleteMatch, (_e, matchId: string) => deleteMatch(matchId))
   ipcMain.handle(IpcChannels.civLandmarkRecord, (_e, civ: string) => getLandmarkRecord(civ))
   ipcMain.handle(IpcChannels.civLandmarkStats, (_e, civ: string) => getLandmarkStats(civ))
@@ -146,8 +192,9 @@ export function registerIpcHandlers(): void {
   ipcMain.handle(IpcChannels.overlayToggle, () => {
     getOverlayController()?.toggle()
   })
-  ipcMain.handle(IpcChannels.overlayTogglePlacement, () =>
-    getOverlayController()?.togglePlacementMode() ?? false,
+  ipcMain.handle(
+    IpcChannels.overlayTogglePlacement,
+    () => getOverlayController()?.togglePlacementMode() ?? false,
   )
   ipcMain.handle(IpcChannels.overlayInteractive, (_e, hover: unknown) => {
     getOverlayController()?.setInteractiveHover(hover === true)
@@ -212,7 +259,86 @@ export function registerIpcHandlers(): void {
     }
     return { ...matchup, recordedAtMs: r.recordedAtMs, opponent }
   })
+  ipcMain.handle(IpcChannels.replayList, (_e, page?: unknown, pageSize?: unknown) =>
+    listReplayArchive(
+      typeof page === 'number' ? page : undefined,
+      typeof pageSize === 'number' ? pageSize : undefined,
+    ),
+  )
+  ipcMain.handle(IpcChannels.replayAccount, (_e, page?: unknown, pageSize?: unknown) =>
+    listAccountReplayArchive(
+      typeof page === 'number' ? page : undefined,
+      typeof pageSize === 'number' ? pageSize : undefined,
+    ),
+  )
+  ipcMain.handle(IpcChannels.replayCache, (_e, gameId: unknown) =>
+    cacheAccountReplay(typeof gameId === 'number' ? gameId : Number(gameId)),
+  )
+  ipcMain.handle(IpcChannels.replayCacheBatch, (_e, gameIds: unknown) =>
+    cacheAccountReplays(
+      Array.isArray(gameIds)
+        ? gameIds.filter((value): value is number => typeof value === 'number')
+        : [],
+    ),
+  )
+  ipcMain.handle(IpcChannels.summaryCache, (_e, gameId: unknown) =>
+    cacheAccountSummary(typeof gameId === 'number' ? gameId : Number(gameId)),
+  )
+  ipcMain.handle(IpcChannels.summaryCacheBatch, (_e, gameIds: unknown) =>
+    cacheAccountSummaries(
+      Array.isArray(gameIds)
+        ? gameIds.filter((value): value is number => typeof value === 'number')
+        : [],
+    ),
+  )
+  ipcMain.handle(IpcChannels.replayAnalyze, (_e, target: unknown) => {
+    try {
+      if (target && typeof target === 'object') {
+        const value = target as Record<string, unknown>
+        if (typeof value.localId === 'string') return ok(analyzeLocalReplay(value.localId))
+        if (typeof value.gameId === 'number' && Number.isSafeInteger(value.gameId))
+          return ok(analyzeCachedReplay(value.gameId))
+      }
+      return err('validation', 'Replay analysis target is invalid.')
+    } catch (error) {
+      return errFrom(error)
+    }
+  })
   ipcMain.handle(IpcChannels.matchupWinRate, (_e, civ: string, oppCiv: string) =>
     getMatchupWinRate(civ, oppCiv),
   )
+  ipcMain.handle(IpcChannels.twitchVodFind, (_e, input: unknown) => findTwitchVod(input))
+  ipcMain.handle(IpcChannels.videoAnalysisExtract, (_e, input: unknown) =>
+    extractVideoAnalysis(input),
+  )
+  ipcMain.handle(IpcChannels.videoAnalysisList, () => ok(listVideoAnalyses()))
+  ipcMain.handle(IpcChannels.translationStatus, () => getTranslationStatus())
+  ipcMain.handle(IpcChannels.translationConfigure, (_e, input: unknown) => {
+    if (!input || typeof input !== 'object') throw new Error('Invalid translation settings.')
+    return configureTranslation(input as Parameters<typeof configureTranslation>[0])
+  })
+  ipcMain.handle(IpcChannels.translationBatch, (_e, input: unknown) => {
+    if (!input || typeof input !== 'object') throw new Error('Invalid translation request.')
+    return translateBatch(input as Parameters<typeof translateBatch>[0])
+  })
+  ipcMain.handle(IpcChannels.translationClearCache, () => clearTranslationCache())
+  ipcMain.handle(IpcChannels.onlineSearch, (_e, query: unknown) => searchOnline(query))
+  ipcMain.handle(IpcChannels.dumpCatalogGet, () => getPublicDumpCatalog())
+  ipcMain.handle(IpcChannels.sourceSync, (_e, options: unknown) => syncExternalSources(options))
+  ipcMain.handle(IpcChannels.beastyNumber, (_e, profileId: unknown) =>
+    getBeastyNumber(typeof profileId === 'number' ? profileId : Number(profileId)),
+  )
+  ipcMain.handle(IpcChannels.streamGetStatus, () => getStreamManagerStatus())
+  ipcMain.handle(IpcChannels.streamStart, (_e, port?: unknown) =>
+    startStreamManager(typeof port === 'number' ? port : 4174),
+  )
+  ipcMain.handle(IpcChannels.streamStop, () => stopStreamManager())
+  ipcMain.handle(IpcChannels.streamUpdate, (_e, patch: unknown) =>
+    updateStreamManagerState(patch && typeof patch === 'object' ? patch : {}),
+  )
+  ipcMain.handle(IpcChannels.streamReset, () => resetStreamManagerState())
+  ipcMain.handle(IpcChannels.streamImportDraft, (_e, url: unknown) => importAoe2cmDraft(url))
+  ipcMain.handle(IpcChannels.communityBuildImport, (_e, url: unknown) => importCommunityBuild(url))
+  ipcMain.handle(IpcChannels.communityBuildList, (_e, input: unknown) => listCommunityBuilds(input))
+  ipcMain.handle(IpcChannels.aoe4GuidesBuildList, (_e, input: unknown) => listAoe4GuidesBuilds(input))
 }

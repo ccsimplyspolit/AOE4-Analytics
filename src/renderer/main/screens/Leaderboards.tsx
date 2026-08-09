@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ChevronLeft, ChevronRight, Radio, Trophy } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Radio, RefreshCw, Trophy } from 'lucide-react'
 import type { Leaderboard } from '@api/types'
 import type { LeaderboardRow } from '@domain/leaderboard'
 import {
   countryFlag,
+  formatCount,
   formatPercent,
   formatRankLevel,
   formatRating,
@@ -15,6 +16,7 @@ import { Card, CardContent } from '@shared/components/ui/card'
 import { Skeleton } from '@shared/components/ui/skeleton'
 import { useLeaderboard } from '../queries/useLeaderboard'
 import { EmptyBox, ErrorBox } from '../components/feedback'
+import { useI18n } from '../../i18n'
 
 const LADDERS: { label: string; value: Leaderboard }[] = [
   { label: 'Ranked 1v1', value: 'rm_solo' },
@@ -87,11 +89,16 @@ const COUNTRIES: { code: string | undefined; label: string }[] = [
 ]
 
 export function LeaderboardPanel({ embedded = false }: { embedded?: boolean } = {}) {
+  const { tt } = useI18n()
   const [leaderboard, setLeaderboard] = useState<Leaderboard>('rm_solo')
   const [country, setCountry] = useState<string | undefined>(undefined)
   const [page, setPage] = useState(1)
 
-  const { data, isLoading, isFetching, refetch } = useLeaderboard({ leaderboard, page, country })
+  const { data, dataUpdatedAt, isLoading, isFetching, refetch } = useLeaderboard({
+    leaderboard,
+    page,
+    country,
+  })
 
   const result = data?.ok ? data.data : null
   const totalPages =
@@ -111,14 +118,21 @@ export function LeaderboardPanel({ embedded = false }: { embedded?: boolean } = 
       <header className="flex flex-wrap items-end justify-between gap-3">
         <div>
           {embedded ? (
-            <h2 className="text-lg font-semibold tracking-tight">Leaderboards</h2>
+            <h2 className="text-lg font-semibold tracking-tight">{tt('Leaderboards')}</h2>
           ) : (
-            <h1 className="text-2xl font-semibold tracking-tight">Leaderboards</h1>
+            <h1 className="text-2xl font-semibold tracking-tight">{tt('Leaderboards')}</h1>
           )}
           <p className="text-sm text-muted-foreground">
-            Top players on the AoE4World ladder. {result ? result.totalCount.toLocaleString() : '—'}{' '}
-            players.
+            {tt('Top players on the AoE4World ladder.')} {result ? formatCount(result.totalCount) : '—'}{' '}
+            {tt('players')}.
           </p>
+          {result && (
+            <p className="mt-1 text-xs text-muted-foreground">
+              {tt('Showing')} {formatCount((result.page - 1) * result.perPage + 1)}–
+              {formatCount(Math.min(result.page * result.perPage, result.totalCount))} {tt('of')}{' '}
+              {formatCount(result.totalCount)} · {tt('Updated')} {formatUpdatedAt(dataUpdatedAt)}
+            </p>
+          )}
         </div>
         <div className="flex flex-wrap gap-2">
           <select
@@ -128,7 +142,7 @@ export function LeaderboardPanel({ embedded = false }: { embedded?: boolean } = 
           >
             {LADDERS.map((l) => (
               <option key={l.value} value={l.value}>
-                {l.label}
+                {tt(l.label)}
               </option>
             ))}
           </select>
@@ -139,10 +153,20 @@ export function LeaderboardPanel({ embedded = false }: { embedded?: boolean } = 
           >
             {COUNTRIES.map((c) => (
               <option key={c.label} value={c.code ?? ''}>
-                {c.label}
+                {tt(c.label)}
               </option>
             ))}
           </select>
+          <button
+            type="button"
+            onClick={() => void refetch()}
+            disabled={isFetching}
+            className="inline-flex h-9 items-center gap-1.5 rounded-md border border-border px-3 text-sm transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-50"
+            title={tt('Refresh')}
+          >
+            <RefreshCw className={cn('h-3.5 w-3.5', isFetching && 'animate-spin')} />
+            {tt('Refresh')}
+          </button>
         </div>
       </header>
 
@@ -151,12 +175,12 @@ export function LeaderboardPanel({ embedded = false }: { embedded?: boolean } = 
           <CardContent className="flex flex-wrap items-center gap-x-8 gap-y-1 p-4">
             <h3 className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
               <Trophy className="h-3.5 w-3.5 text-warn" />
-              Your rank
+              {tt('Your rank')}
             </h3>
-            <Stat label="Rank" value={`#${result.you.rank.toLocaleString()}`} />
-            <Stat label="Rating" value={formatRating(result.you.rating)} />
-            <Stat label="Win rate" value={formatPercent(result.you.winRate)} />
-            <Stat label="Games" value={result.you.games.toLocaleString()} />
+            <Stat label={tt('Rank')} value={`#${formatCount(result.you.rank)}`} />
+            <Stat label={tt('Rating')} value={formatRating(result.you.rating)} />
+            <Stat label={tt('Win rate')} value={formatPercent(result.you.winRate)} />
+            <Stat label={tt('Games')} value={formatCount(result.you.games)} />
           </CardContent>
         </Card>
       )}
@@ -168,7 +192,7 @@ export function LeaderboardPanel({ embedded = false }: { embedded?: boolean } = 
 
       {!isLoading && result && result.rows.length === 0 && (
         <EmptyBox>
-          <p>No players found for this filter.</p>
+          <p>{tt('No players found for this filter.')}</p>
         </EmptyBox>
       )}
 
@@ -180,11 +204,11 @@ export function LeaderboardPanel({ embedded = false }: { embedded?: boolean } = 
                 <thead>
                   <tr className="border-b border-border text-left">
                     <th className="rts-ledger-head px-4 py-2.5">#</th>
-                    <th className="rts-ledger-head px-2 py-2.5">Player</th>
-                    <th className="rts-ledger-head px-2 py-2.5 text-right">Rating</th>
-                    <th className="rts-ledger-head px-2 py-2.5 text-right">Win %</th>
-                    <th className="rts-ledger-head px-2 py-2.5 text-right">Games</th>
-                    <th className="rts-ledger-head px-4 py-2.5 text-right">Streak</th>
+                    <th className="rts-ledger-head px-2 py-2.5">{tt('Player')}</th>
+                    <th className="rts-ledger-head px-2 py-2.5 text-right">{tt('Rating')}</th>
+                    <th className="rts-ledger-head px-2 py-2.5 text-right">{tt('Win %')}</th>
+                    <th className="rts-ledger-head px-2 py-2.5 text-right">{tt('Games')}</th>
+                    <th className="rts-ledger-head px-4 py-2.5 text-right">{tt('Streak')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -204,10 +228,10 @@ export function LeaderboardPanel({ embedded = false }: { embedded?: boolean } = 
               className="inline-flex items-center gap-1 rounded-md border border-border px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground disabled:opacity-40"
             >
               <ChevronLeft className="h-4 w-4" />
-              Prev
+              {tt('Prev')}
             </button>
             <span className="text-sm text-muted-foreground">
-              Page {result.page} of {totalPages.toLocaleString()}
+              {tt('Page')} {result.page} {tt('of')} {formatCount(totalPages)}
             </span>
             <button
               type="button"
@@ -215,7 +239,7 @@ export function LeaderboardPanel({ embedded = false }: { embedded?: boolean } = 
               onClick={() => setPage((p) => p + 1)}
               className="inline-flex items-center gap-1 rounded-md border border-border px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground disabled:opacity-40"
             >
-              Next
+              {tt('Next')}
               <ChevronRight className="h-4 w-4" />
             </button>
           </div>
@@ -234,7 +258,13 @@ function Stat({ label, value }: { label: string; value: string }) {
   )
 }
 
+function formatUpdatedAt(timestamp: number): string {
+  if (!timestamp) return '—'
+  return new Intl.DateTimeFormat(undefined, { hour: '2-digit', minute: '2-digit' }).format(timestamp)
+}
+
 function Row({ r }: { r: LeaderboardRow }) {
+  const { tt } = useI18n()
   return (
     <tr
       className={cn(
@@ -242,7 +272,7 @@ function Row({ r }: { r: LeaderboardRow }) {
         r.isYou && 'bg-primary/10 hover:bg-primary/15',
       )}
     >
-      <td className="px-4 py-2 tabular-nums text-muted-foreground">{r.rank.toLocaleString()}</td>
+      <td className="px-4 py-2 tabular-nums text-muted-foreground">{formatCount(r.rank)}</td>
       <td className="px-2 py-2">
         <span className="flex items-center gap-2">
           <span aria-hidden>{countryFlag(r.country)}</span>
@@ -252,15 +282,15 @@ function Row({ r }: { r: LeaderboardRow }) {
               'font-medium underline-offset-2 hover:text-primary hover:underline',
               r.isYou && 'text-primary',
             )}
-            title={`Open ${r.name}'s full profile`}
+            title={`${tt('Open full profile')}: ${r.name}`}
           >
             {r.name}
           </Link>
-          {r.isYou && <span className="text-[10px] text-primary">you</span>}
+          {r.isYou && <span className="text-[10px] text-primary">{tt('you')}</span>}
           {r.live && (
             <span
               className="inline-flex items-center gap-0.5 rounded bg-loss/15 px-1 py-0.5 text-[10px] font-medium text-loss"
-              title="Live on Twitch"
+              title={tt('Live on Twitch')}
             >
               <Radio className="h-2.5 w-2.5" />
               LIVE
@@ -278,7 +308,7 @@ function Row({ r }: { r: LeaderboardRow }) {
         {formatPercent(r.winRate)}
       </td>
       <td className="px-2 py-2 text-right tabular-nums text-muted-foreground">
-        {r.games.toLocaleString()}
+        {formatCount(r.games)}
       </td>
       <td
         className={cn(

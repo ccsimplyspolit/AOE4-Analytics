@@ -6,7 +6,11 @@ import {
   BarChart3,
   Database,
   Globe2,
+  Compass,
   BookOpen,
+  FlaskConical,
+  FileVideo,
+  Radio,
   Settings as SettingsIcon,
   Info,
   type LucideIcon,
@@ -20,8 +24,14 @@ const Stats = lazy(() => import('./screens/Stats').then((m) => ({ default: m.Sta
 const DataStudio = lazy(() =>
   import('./screens/DataStudio').then((m) => ({ default: m.DataStudio })),
 )
+const Explorer = lazy(() => import('./screens/Explorer').then((m) => ({ default: m.Explorer })))
 const CivMeta = lazy(() => import('./screens/CivMeta').then((m) => ({ default: m.CivMeta })))
 const Guides = lazy(() => import('./screens/Guides').then((m) => ({ default: m.Guides })))
+const Tincture = lazy(() => import('./screens/Tincture').then((m) => ({ default: m.Tincture })))
+const ReplayLab = lazy(() => import('./screens/ReplayLab').then((m) => ({ default: m.ReplayLab })))
+const StreamDesk = lazy(() =>
+  import('./screens/StreamDesk').then((m) => ({ default: m.StreamDesk })),
+)
 const Settings = lazy(() => import('./screens/Settings').then((m) => ({ default: m.Settings })))
 const About = lazy(() => import('./screens/About').then((m) => ({ default: m.About })))
 
@@ -44,9 +54,19 @@ export const navItems: NavItem[] = [
     element: <DataStudio />,
     group: 'main',
   },
+  { path: '/explorer', label: 'Explorer', icon: Compass, element: <Explorer />, group: 'main' },
   { path: '/scout', label: 'Scout', icon: Search, element: <Scout />, group: 'main' },
   { path: '/civ-meta', label: 'Civ Meta', icon: Globe2, element: <CivMeta />, group: 'main' },
   { path: '/guides', label: 'Guides', icon: BookOpen, element: <Guides />, group: 'main' },
+  {
+    path: '/tincture',
+    label: 'Tincture',
+    icon: FlaskConical,
+    element: <Tincture />,
+    group: 'main',
+  },
+  { path: '/replays', label: 'Replay Lab', icon: FileVideo, element: <ReplayLab />, group: 'main' },
+  { path: '/stream', label: 'Stream Desk', icon: Radio, element: <StreamDesk />, group: 'main' },
   {
     path: '/settings',
     label: 'Settings',

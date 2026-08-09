@@ -1,8 +1,10 @@
 import type { RecentForm } from '@domain/types'
 import { cn } from '@shared/lib/utils'
+import { useI18n } from '../../i18n'
 
 /** Renders recent W/L results as colored pips plus a compact record summary. */
 export function FormPips({ form, max = 12 }: { form: RecentForm; max?: number }) {
+  const { tt } = useI18n()
   const pips = form.lastResults.slice(0, max)
   return (
     <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
@@ -19,7 +21,7 @@ export function FormPips({ form, max = 12 }: { form: RecentForm; max?: number })
           </span>
         ))}
         {pips.length === 0 && (
-          <span className="text-xs text-muted-foreground">No recent games</span>
+          <span className="text-xs text-muted-foreground">{tt('No recent games')}</span>
         )}
       </div>
       {form.games > 0 && (

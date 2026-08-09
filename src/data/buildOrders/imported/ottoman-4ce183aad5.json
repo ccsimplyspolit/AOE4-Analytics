@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "name": "Ottoman",
+  "civilization": "Ottomans",
+  "author": "Norevex",
+  "source": "https://aoe4guides.com/builds/EvqBY3APQNwXdXbocaID",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager-ottomans.webp@ farm @resource/sheep.webp@,",
+        "1 @unit_worker/villager-ottomans.webp@ build @building_economy/house.webp@ and @building_economy/mining-camp.webp@ near @resource/resource_gold.webp@ then farm @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:05",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Que 1 @unit_worker/villager-ottomans.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Que 1 @unit_worker/villager-ottomans.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:45",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Que 4 @unit_worker/villager-ottomans.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Age up @age/age_2.webp@ @landmark_ottomans/sultanhani-trade-network-1.webp@ with your 2 @resource/resource_gold.webp@@unit_worker/villager-ottomans.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:25",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 0,
+        "stone": 2,
+        "builder": 2
+      },
+      "notes": [
+        "4 @resource/sheep.webp@@unit_worker/villager-ottomans.webp@ Build @building_economy/lumber-camp.webp@ and farm @resource/resource_wood.webp@,",
+        "2 @resource/sheep.webp@@unit_worker/villager-ottomans.webp@ build @building_economy/mining-camp.webp@ on @resource/resource_stone.webp@,",
+        "Que 6 @unit_worker/villager-ottomans.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:10",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 9,
+        "gold": 0,
+        "stone": 2,
+        "builder": 3
+      },
+      "notes": [
+        "Build @building_economy/house.webp@ with 6th new @resource/resource_wood.webp@@unit_worker/villager-ottomans.webp@ as it walks to @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 0,
+        "stone": 2,
+        "builder": 2
+      },
+      "notes": [
+        "Que 4 @unit_worker/villager-ottomans.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@150 @resource/resource_wood.webp@ and @100 @resource/resource_stone.webp@ Build @building_ottomans/military-school-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 19,
+      "resources": {
+        "food": 5,
+        "wood": 10,
+        "gold": 2,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "Send back 2 @unit_worker/villager-ottomans.webp@ on @age/age_2.webp@ @landmark_ottomans/sultanhani-trade-network-1.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:10",
+      "villager_count": 19,
+      "resources": {
+        "food": 6,
+        "wood": 10,
+        "gold": 2,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "Build 2nd @building_ottomans/military-school-1.webp@ then @building_technology/blacksmith.webp@then send to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 21,
+      "resources": {
+        "food": 14,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Send 6 @resource/resource_wood.webp@@unit_worker/villager-ottomans.webp@ to build @building_economy/house.webp@ and @building_economy/mill.webp@ to @resource/berrybush.webp@,",
+        "Que 3 @unit_worker/villager-ottomans.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:50",
+      "villager_count": 25,
+      "resources": {
+        "food": 14,
+        "wood": 4,
+        "gold": 6,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "Que X @unit_worker/villager-ottomans.webp@ to @resource/resource_food.webp@ until ageing up"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@1 @age/vizier_point.webp@ Spend on @technology_ottomans/field-work-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up @age/age_3.webp@@landmark_ottomans/mehmed-imperial-armory-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "8 @resource/resource_food.webp@@unit_worker/villager-ottomans.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

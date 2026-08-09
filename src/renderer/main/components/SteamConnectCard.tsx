@@ -12,6 +12,7 @@ import {
   useSteamStartLogin,
   useSteamSubmitSteamGuardCode,
 } from '../queries/useSteam'
+import { useI18n } from '../../i18n'
 
 /**
  * Connect Steam so RTSLytics can pull ranked economy/build-order summaries from
@@ -19,6 +20,7 @@ import {
  * for accounts that do not use the mobile QR flow. Passwords are never stored.
  */
 export function SteamConnectCard() {
+  const { tt } = useI18n()
   const { data: status } = useSteamAuthStatus()
   const startLogin = useSteamStartLogin()
   const startCredentialsLogin = useSteamStartCredentialsLogin()
@@ -67,7 +69,7 @@ export function SteamConnectCard() {
       }
       setQrSrc(await QRCode.toDataURL(res.data.challengeUrl, { margin: 1, width: 200 }))
     } catch {
-      setStartError('Could not start the Steam QR login. Try again.')
+      setStartError(tt('Could not start the Steam QR login. Try again.'))
     }
   }
 
@@ -85,10 +87,10 @@ export function SteamConnectCard() {
       }
       setGuardActions(res.data.actions)
       setManualMessage(
-        res.data.message ?? manualLoginMessage(res.data.actions, res.data.actionRequired),
+        tt(res.data.message ?? manualLoginMessage(res.data.actions, res.data.actionRequired)),
       )
     } catch {
-      setStartError('Steam sign-in failed. Try again.')
+      setStartError(tt('Steam sign-in failed. Try again.'))
     } finally {
       setPassword('')
     }
@@ -105,9 +107,9 @@ export function SteamConnectCard() {
         return
       }
       setGuardActions(res.data.actions)
-      setManualMessage(res.data.message ?? 'Waiting for Steam to finish sign-in.')
+      setManualMessage(tt(res.data.message ?? 'Waiting for Steam to finish sign-in.'))
     } catch {
-      setStartError('Could not submit the Steam Guard code. Try again.')
+      setStartError(tt('Could not submit the Steam Guard code. Try again.'))
     } finally {
       setGuardCode('')
     }
@@ -118,19 +120,17 @@ export function SteamConnectCard() {
       <CardContent className="space-y-3 p-4">
         <div className="flex items-center gap-2">
           <Gamepad2 className="h-4 w-4 text-primary" />
-          <h3 className="text-sm font-semibold">Steam connection (ranked economy)</h3>
+          <h3 className="text-sm font-semibold">{tt('Steam connection (ranked economy)')}</h3>
           {connected && (
             <span className="ml-auto inline-flex items-center gap-1 text-xs text-win">
-              <CheckCircle2 className="h-3.5 w-3.5" /> Connected
+              <CheckCircle2 className="h-3.5 w-3.5" /> {tt('Connected')}
               {status?.name ? ` - ${status.name}` : ''}
             </span>
           )}
         </div>
 
         <p className="text-xs text-muted-foreground">
-          Ranked build-order and economy come from Relic, which needs a one-time Steam sign-in.
-          Use QR approval, or sign in with your Steam password plus whatever Steam Guard email/app
-          code Steam asks for. The saved login token is encrypted on this PC only.
+          {tt('Ranked build-order and economy come from Relic, which needs a one-time Steam sign-in. Use QR approval, or sign in with your Steam password plus whatever Steam Guard email/app code Steam asks for. The saved login token is encrypted on this PC only.')}
         </p>
 
         {status?.error && !connecting && (
@@ -146,13 +146,13 @@ export function SteamConnectCard() {
 
         {!connected && qrSrc && (
           <div className="flex items-center gap-4 rounded-lg border border-border p-3">
-            <img src={qrSrc} alt="Steam login QR code" className="h-40 w-40 rounded bg-white p-1" />
+            <img src={qrSrc} alt={tt('Steam login QR code')} className="h-40 w-40 rounded bg-white p-1" />
             <div className="space-y-1 text-xs text-muted-foreground">
-              <p className="font-medium text-foreground">Scan with the Steam mobile app</p>
-              <p>Open Steam, choose QR scan or Steam Guard, point it here, then approve.</p>
+              <p className="font-medium text-foreground">{tt('Scan with the Steam mobile app')}</p>
+              <p>{tt('Open Steam, choose QR scan or Steam Guard, point it here, then approve.')}</p>
               {connecting && (
                 <p className="flex items-center gap-1.5 text-primary">
-                  <Loader2 className="h-3.5 w-3.5 animate-spin" /> Waiting for approval...
+                  <Loader2 className="h-3.5 w-3.5 animate-spin" /> {tt('Waiting for approval...')}
                 </p>
               )}
             </div>
@@ -169,7 +169,7 @@ export function SteamConnectCard() {
                 className="inline-flex items-center gap-2 rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-60"
               >
                 {startLogin.isPending && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
-                {qrSrc ? 'Show a new QR' : 'Connect with QR'}
+                {qrSrc ? tt('Show a new QR') : tt('Connect with QR')}
               </button>
               <button
                 type="button"
@@ -181,7 +181,7 @@ export function SteamConnectCard() {
                 className="inline-flex items-center gap-2 rounded-md border border-border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-secondary"
               >
                 <KeyRound className="h-3.5 w-3.5" />
-                Password / email code
+                {tt('Password / email code')}
               </button>
             </>
           ) : (
@@ -192,7 +192,7 @@ export function SteamConnectCard() {
                 disabled={logout.isPending}
                 className="rounded-md border border-border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-secondary disabled:opacity-60"
               >
-                Disconnect / re-login
+                {tt('Disconnect / re-login')}
               </button>
               <button
                 type="button"
@@ -212,7 +212,7 @@ export function SteamConnectCard() {
                 className="inline-flex items-center gap-2 rounded-md border border-border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-secondary disabled:opacity-60"
               >
                 {testing && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
-                Test ranked fetch
+                {tt('Test ranked fetch')}
               </button>
             </>
           )}
@@ -224,14 +224,14 @@ export function SteamConnectCard() {
               <Input
                 value={accountName}
                 onChange={(e) => setAccountName(e.target.value)}
-                placeholder="Steam account name"
+                placeholder={tt('Steam account name')}
                 autoComplete="username"
                 disabled={startCredentialsLogin.isPending || connecting}
               />
               <Input
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
+                placeholder={tt('Password')}
                 type="password"
                 autoComplete="current-password"
                 disabled={startCredentialsLogin.isPending || connecting}
@@ -244,23 +244,22 @@ export function SteamConnectCard() {
                 {startCredentialsLogin.isPending && (
                   <Loader2 className="h-3.5 w-3.5 animate-spin" />
                 )}
-                Sign in
+                {tt('Sign in')}
               </button>
             </form>
             <p className="text-[11px] leading-relaxed text-muted-foreground">
-              Use this when QR login is not available. Your password is used only for this Steam
-              login attempt and is not stored by RTSLytics.
+              {tt('Use this when QR login is not available. Your password is used only for this Steam login attempt and is not stored by RTSLytics.')}
             </p>
 
             {(manualMessage || guardActions.length > 0) && (
               <div className="space-y-2 rounded-md border border-border/70 bg-secondary/35 p-2 text-xs text-muted-foreground">
                 {manualMessage && <p>{manualMessage}</p>}
                 {guardActions.length > 0 && (
-                  <p>Steam requested: {guardActions.map(guardActionLabel).join(', ')}.</p>
+                  <p>{tt('Steam requested')}: {guardActions.map((action) => guardActionLabel(action, tt)).join(', ')}.</p>
                 )}
                 {waitingForApproval && (
                   <p className="flex items-center gap-1.5 text-primary">
-                    <Loader2 className="h-3.5 w-3.5 animate-spin" /> Waiting for approval...
+                    <Loader2 className="h-3.5 w-3.5 animate-spin" /> {tt('Waiting for approval...')}
                   </p>
                 )}
               </div>
@@ -271,7 +270,7 @@ export function SteamConnectCard() {
                 <Input
                   value={guardCode}
                   onChange={(e) => setGuardCode(e.target.value)}
-                  placeholder="Steam Guard code"
+                  placeholder={tt('Steam Guard code')}
                   autoComplete="one-time-code"
                   disabled={submitSteamGuard.isPending}
                 />
@@ -281,7 +280,7 @@ export function SteamConnectCard() {
                   className="inline-flex items-center justify-center gap-2 rounded-md border border-border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-secondary disabled:opacity-60"
                 >
                   {submitSteamGuard.isPending && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
-                  Submit code
+                  {tt('Submit code')}
                 </button>
               </form>
             )}
@@ -298,18 +297,18 @@ export function SteamConnectCard() {
   )
 }
 
-function guardActionLabel(action: SteamGuardAction): string {
+function guardActionLabel(action: SteamGuardAction, tt: (value: string) => string): string {
   switch (action.type) {
     case 'email-code':
-      return action.detail ? `email code (${action.detail})` : 'email code'
+      return action.detail ? `${tt('email code')} (${action.detail})` : tt('email code')
     case 'device-code':
-      return 'authenticator code'
+      return tt('authenticator code')
     case 'device-confirmation':
-      return 'Steam mobile app approval'
+      return tt('Steam mobile app approval')
     case 'email-confirmation':
-      return 'email approval'
+      return tt('email approval')
     default:
-      return 'additional verification'
+      return tt('additional verification')
   }
 }
 

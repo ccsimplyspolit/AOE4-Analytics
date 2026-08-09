@@ -15,6 +15,7 @@ import { ScoutHistoryPanel } from '../components/ScoutHistoryPanel'
 import { RankBadge } from '../components/RankBadge'
 import { StatTile } from '../components/StatTile'
 import { EmptyBox, ErrorBox, Spinner } from '../components/feedback'
+import { useI18n } from '../../i18n'
 
 /**
  * The full public profile for any player (reachable from a scout card). Everything
@@ -23,6 +24,7 @@ import { EmptyBox, ErrorBox, Spinner } from '../components/feedback'
  * playstyle/rating-trend, which exist only for the signed-in user).
  */
 export function PlayerProfile() {
+  const { tt } = useI18n()
   const { profileId: raw } = useParams()
   const parsed = raw ? Number(raw) : NaN
   const profileId = Number.isSafeInteger(parsed) && parsed > 0 ? parsed : null
@@ -35,16 +37,16 @@ export function PlayerProfile() {
         to="/scout"
         className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
       >
-        <ArrowLeft className="h-4 w-4" /> Scout
+        <ArrowLeft className="h-4 w-4" /> {tt('Scout')}
       </Link>
 
       {profileId == null && (
         <EmptyBox>
-          <p>Player not found.</p>
+          <p>{tt('Player not found.')}</p>
         </EmptyBox>
       )}
 
-      {isLoading && <Spinner label="Loading profile…" />}
+      {isLoading && <Spinner label={tt('Loading profile…')} />}
       {!isLoading && data && !data.ok && (
         <ErrorBox message={data.error.message} onRetry={() => refetch()} />
       )}
@@ -53,11 +55,14 @@ export function PlayerProfile() {
         <>
           <ProfileBody report={data.data} />
           <ScoutHistoryPanel
-            result={history.data}
+            pages={history.data?.pages}
             isLoading={history.isLoading}
             error={history.error}
             viewedName={data.data.name}
             onRetry={() => void history.refetch()}
+            hasNextPage={history.hasNextPage}
+            isFetchingNextPage={history.isFetchingNextPage}
+            onLoadMore={() => void history.fetchNextPage()}
           />
         </>
       )}
@@ -66,6 +71,7 @@ export function PlayerProfile() {
 }
 
 function ProfileBody({ report }: { report: Parameters<typeof ScoutReportCard>[0]['report'] }) {
+  const { tt } = useI18n()
   const { primary, modes } = report
   return (
     <div className="space-y-6">
@@ -79,16 +85,16 @@ function ProfileBody({ report }: { report: Parameters<typeof ScoutReportCard>[0]
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <StatTile
-          label="Rating"
+          label={tt('Rating')}
           value={formatRating(primary?.rating)}
           sub={primary ? formatLeaderboard(primary.leaderboard) : undefined}
         />
-        <StatTile label="Peak" value={formatRating(primary?.maxRating)} />
-        <StatTile label="Rank" value={primary?.rank != null ? `#${primary.rank}` : '—'} />
+        <StatTile label={tt('Peak')} value={formatRating(primary?.maxRating)} />
+        <StatTile label={tt('Rank')} value={primary?.rank != null ? `#${primary.rank}` : '—'} />
         <StatTile
-          label="Win rate"
+          label={tt('Win rate')}
           value={formatPercent(primary?.winRate)}
-          sub={primary ? `${primary.gamesCount} games` : undefined}
+          sub={primary ? `${primary.gamesCount} ${tt('games')}` : undefined}
           accent={primary?.winRate == null ? undefined : primary.winRate >= 50 ? 'win' : 'loss'}
         />
       </div>
@@ -96,7 +102,7 @@ function ProfileBody({ report }: { report: Parameters<typeof ScoutReportCard>[0]
       {modes.length > 0 && (
         <section>
           <h3 className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-            All rated modes
+            {tt('All rated modes')}
           </h3>
           <div className="overflow-hidden rounded-lg border border-border">
             {modes.map((m) => (
@@ -106,7 +112,9 @@ function ProfileBody({ report }: { report: Parameters<typeof ScoutReportCard>[0]
               >
                 <span className="font-medium">{formatLeaderboard(m.leaderboard)}</span>
                 <span className="flex items-center gap-4 text-muted-foreground">
-                  <span style={{ color: rankColor(m.rankLevel) }}>{formatRankLevel(m.rankLevel)}</span>
+                  <span style={{ color: rankColor(m.rankLevel) }}>
+                    {formatRankLevel(m.rankLevel)}
+                  </span>
                   <span className="tabular-nums text-foreground">{formatRating(m.rating)}</span>
                   <span className="w-20 text-right tabular-nums">
                     {formatPercent(m.winRate)} · {m.gamesCount}g

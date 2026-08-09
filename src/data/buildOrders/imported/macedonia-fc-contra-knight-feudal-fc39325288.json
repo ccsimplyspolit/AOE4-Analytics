@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "name": "Macedonia FC contra Knight Feudal",
+  "civilization": "Macedonian Dynasty",
+  "author": "BearlyTanky",
+  "source": "https://aoe4guides.com/builds/5oSkg1Dn7SFBkmKjt0NP",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "(Molino@building_economy/mill.webp@ + Mejora@technology_economy/survival-techniques.webp@ si hay ciervos)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:45",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Campamento de Guerra @building_macedonian/varangian_warcamp.webp@+ Mineria"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:35",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:05",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Empezamos Madera @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:41",
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Pasamos 1 de @resource/resource_food.webp@ a construir el Hippo, 1 de @resource/resource_gold.webp@ a madera y Rally @resource/rally.webp@ a madera."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Bastion Varego @building_macedonian/varangian_stronghold.webp@ + Casa @building_economy/house.webp@ cuando puedas."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:26",
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Al terminar el Bastion Varego@building_macedonian/varangian_stronghold.webp@ manda los aldeanos@unit_worker/villager.webp@ ayudar Subir de Edad@landmark_byzantines/imperial-hippodrome-1.webp@@age/age_2.webp@. Empieza hacer muros@building_defensive/palisade-wall.webp@ de Madera tambien. Quitas el aldeano@unit_worker/villager.webp@ de donde este mas cerca de hacer el muro."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Rally@resource/rally.webp@ a @resource/resource_gold.webp@ hasta 5"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 22,
+      "resources": {
+        "food": 11,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Hasta subir de edad fue mandando los nuevos aldeanos@unit_worker/villager.webp@ a oro paso de 2 a 5. Aqui tiene 3-4 Lanzas@unit_macedonian/atgeir-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 15,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Herreria @building_macedonian/varangian_arsenal.webp@ y hacer @technology_macedonian/scale-barding-2.webp@ y @technology_macedonian/blade-inlaying-2.webp@ cuando puedas."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:40",
+      "villager_count": 28,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": 12
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:35",
+      "villager_count": 31,
+      "resources": {
+        "food": 10,
+        "wood": 9,
+        "gold": 11,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Monasterio + Ridarri"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

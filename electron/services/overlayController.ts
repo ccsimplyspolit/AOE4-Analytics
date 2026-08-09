@@ -11,9 +11,11 @@ import type { GameClock } from '@domain/localStats'
 import { createOverlayWindow } from '../windows/overlayWindow'
 import { ForegroundWatcher, type ForegroundRect } from './foregroundWatcher'
 import { getMainWindow, getSettings } from './appContext'
+import { updateLiveOverlay } from './streamManagerService'
+import { AOE4_PROCESS_NAMES } from './gameProcess'
 
-/** AoE4's process name (no .exe) — the window whose display the canvas follows. */
-const GAME_PROCESS = 'RelicCardinal'
+/** AoE4 process names (no .exe) — Steam and Store/Xbox builds. */
+const GAME_PROCESSES = [...AOE4_PROCESS_NAMES]
 /** Hide only after the foreground has been off-game this long (alt-tab flicker guard). */
 const OFF_GAME_DEBOUNCE_MS = 700
 
@@ -61,7 +63,7 @@ export class OverlayController {
     }
     this.applyLock()
 
-    this.friendlyNames = [GAME_PROCESS, basename(process.execPath).replace(/\.exe$/i, '')]
+    this.friendlyNames = [...GAME_PROCESSES, basename(process.execPath).replace(/\.exe$/i, '')]
     this.refreshGating()
 
     this.win.on('closed', () => {
@@ -222,7 +224,7 @@ export class OverlayController {
       const regained = !this.gameForeground
       this.gameForeground = true
       // The game window's display is authoritative for where the canvas lives.
-      if (rect && isFriendlyForeground(name, [GAME_PROCESS])) this.followGameDisplay(rect)
+      if (rect && isFriendlyForeground(name, GAME_PROCESSES)) this.followGameDisplay(rect)
       if (regained) this.assertAlwaysOnTop()
       this.reconcile()
     } else if (this.gameForeground && !this.offGameTimer) {
@@ -242,7 +244,7 @@ export class OverlayController {
    * lets the poll loop skip its tasklist spawn for that tick.
    */
   isGameProcessForeground(): boolean {
-    return this.watcher.isRunning() && isFriendlyForeground(this.lastForegroundName, [GAME_PROCESS])
+    return this.watcher.isRunning() && isFriendlyForeground(this.lastForegroundName, GAME_PROCESSES)
   }
 
   /**
@@ -385,6 +387,7 @@ export class OverlayController {
   sendUpdate(payload: OverlayUpdatePayload): void {
     this.lastMatchState = payload.matchState
     this.lastUpdatePayload = payload
+    updateLiveOverlay(payload)
     if (this.alive()) this.win!.webContents.send(IpcChannels.overlayUpdate, payload)
     // Forward mouse moves only while the post-game card (with its ✕) is up.
     const wantForward = payload.matchState === 'ended' && payload.postGame != null
@@ -405,6 +408,7 @@ export class OverlayController {
 
   sendApm(apm: number | null): void {
     if (this.alive()) this.win!.webContents.send(IpcChannels.overlayApm, apm)
+    getMainWindow()?.webContents.send(IpcChannels.overlayApm, apm)
   }
 
   /**
@@ -414,9 +418,10 @@ export class OverlayController {
    */
   sendGameClock(clock: GameClock | null): void {
     if (this.alive()) this.win!.webContents.send(IpcChannels.overlayGameClock, clock)
+    getMainWindow()?.webContents.send(IpcChannels.overlayGameClock, clock)
   }
 
-  // DORMANT (D55): no caller/consumer today; kept for the overlay micro-coach.
+  /** Sends click-free build-order controls from global shortcuts to the overlay. */
   sendControl(action: OverlayControlAction): void {
     if (this.alive()) this.win!.webContents.send(IpcChannels.overlayControl, action)
   }

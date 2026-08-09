@@ -49,15 +49,30 @@ const AGE_LABEL: Record<2 | 3 | 4, string> = { 2: 'Feudal', 3: 'Castle', 4: 'Imp
 
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '')
 
+/**
+ * The summary display label sometimes shortens a landmark (for example,
+ * `Landmark Age1 Hippodrome` instead of `Imperial Hippodrome`).  A distinctive
+ * word from the landmark name is enough to identify the age-up; it is safer
+ * than dropping the timing entirely, while generic words such as "of" and
+ * "the" never count as a match.
+ */
+function matchesLandmark(event: BuildEvent, option: string): boolean {
+  const eventText = norm(`${event.name} ${event.blueprint}`)
+  const distinctiveTerms = option
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter((term) => term.length >= 5)
+  return distinctiveTerms.some((term) => eventText.includes(norm(term)))
+}
+
 /** Earliest building event matching one of the civ's landmarks, per age. */
 function landmarkTimes(events: BuildEvent[], civ: string | null): Map<2 | 3 | 4, number> {
   const times = new Map<2 | 3 | 4, number>()
   const landmarks = landmarksForCiv(civ)
   if (!landmarks) return times
   for (const choice of landmarks.ages) {
-    const names = new Set(choice.options.map(norm))
     for (const e of events) {
-      if (e.category !== 'building' || !names.has(norm(e.name))) continue
+      if (e.category !== 'building' || !choice.options.some((option) => matchesLandmark(e, option))) continue
       const prev = times.get(choice.age)
       if (prev == null || e.timeSec < prev) times.set(choice.age, e.timeSec)
     }
@@ -77,7 +92,10 @@ export function gradeBuildFollow(input: {
   const hasData = events.length > 0
   const startingVillagers = reference.build_order[0]?.villager_count ?? 6
   const villagerTimes = events
-    .filter((e) => e.name === 'Villager')
+    // DLC civilizations retain a civilization suffix in their worker blueprint
+    // (and a few use a non-literal display name).  The blueprint is the stable
+    // identity, so accepting it prevents a false "no villagers produced" score.
+    .filter((e) => /villager|worker_elephant/i.test(`${e.blueprint} ${e.name}`))
     .map((e) => e.timeSec)
     .sort((a, b) => a - b)
   const producedBy = (t: number) => villagerTimes.filter((ts) => ts <= t).length

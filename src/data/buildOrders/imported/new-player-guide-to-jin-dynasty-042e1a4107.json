@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "name": "New Player Guide to Jin Dynasty",
+  "civilization": "Jin Dynasty",
+  "author": "Shaada",
+  "source": "https://aoe4guides.com/builds/t60K2AEPjS7ew6d4mHDb",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 3,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally reindeer until 4 @unit_jin/mounted-villager.webp@, then rally @resource/resource_wood.webp@ making the first @building_economy/house.webp@ then. Only make @unit_jin/mounted-villager.webp@ whole build."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@ @landmark_jin/great-pasture.webp@ with 2 @resource/resource_food.webp@@unit_jin/mounted-villager.webp@ (they'll go back to @resource/resource_food.webp@ once done)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 2,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once 3 @unit_jin/mounted-villager.webp@ on @resource/resource_wood.webp@, rally back to @resource/resource_food.webp@ until 7 @unit_jin/mounted-villager.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once up, train a @unit_cavalry/horseman-1.webp@ and @abilities/repair.webp@@building_jin/grassland.webp@  > @building_jin/war-stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Train  @unit_jin/mohe-tribesman.webp@ non-stop from both stables, adding in  @unit_jin/iron-pagoda.webp@ / @unit_cavalry/horseman-1.webp@ as desired (see video for variations)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro @unit_jin/mounted-villager.webp@ as needed for what units you're making (@unit_jin/iron-pagoda.webp@ are very @resource/resource_gold.webp@ heavy). Send 5 @unit_jin/mounted-villager.webp@ to @resource/deer.webp@/@resource/boar.webp@. Be aggressive, raiding and containing your opponent while taking map control."
+      ]
+    }
+  ],
+  "description": "As basic as possible Jin build order for new players making the most of the unique Jin cavalry. Video below!\n\nThe gameplan is Feudal aggression with Horsemen + Iron Pagoda + Mohe Tribesmen. The goal is to contain and raid your opponent, picking up villager kills when possible while taking deer/boar behind. It's a bit micro intensive for new players but very fun!\n\nIt's difficult to Feudal all-in as Jin so you'll often look to turn your advantage into a strong Castle Age timing, and perhaps even fast Imp (see below video!)\n\nGood luck!",
+  "video": "https://www.youtube.com/embed/RYyEbPHaf1g",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

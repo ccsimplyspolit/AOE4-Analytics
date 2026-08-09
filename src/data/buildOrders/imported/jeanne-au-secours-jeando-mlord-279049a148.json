@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "name": "Jeanne, au secours ! (Jeando/MLord)",
+  "civilization": "Jeanne d'Arc",
+  "author": "Djesteur",
+  "source": "https://aoe4guides.com/builds/EriOcMb6gGdCv9FBcwJc",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 2,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@ ->@resource/resource_food.webp@",
+        "3 @unit_worker/villager.webp@ -&gt;@resource/resource_wood.webp@ 1 @resource/gaiatreeprototypetree.webp@(150 wood)",
+        "2 @unit_worker/villager.webp@ -&gt;@resource/resource_food.webp@",
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@ -&gt;@abilities/repair.webp@: @building_economy/mill.webp@@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:30",
+      "villager_count": 7,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@technology_economy/wheelbarrow.webp@ ASAP"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:05",
+      "villager_count": 8,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@ ->@abilities/repair.webp@: @building_defensive/outpost.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:35",
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "When 1 @resource/gaiatreeprototypetree.webp@ ended, 3@unit_worker/villager.webp@@resource/resource_wood.webp@ -> @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@ -> @abilities/repair.webp@: @building_economy/mining-camp.webp@ + 3 @unit_worker/villager.webp@@resource/resource_food.webp@ -&gt; @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@ + 2 @unit_worker/villager.webp@@resource/resource_food.webp@ -> @abilities/repair.webp@:@landmark_french/school-of-cavalry.webp@ -&gt; @resource/resource_gold.webp@",
+        "5  @unit_worker/villager.webp@@resource/resource_food.webp@ -&gt;@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "1  @unit_worker/villager.webp@@resource/resource_wood.webp@ -> @abilities/repair.webp@: @building_economy/house.webp@ -&gt; @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:05",
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@@resource/resource_wood.webp@ -> @abilities/repair.webp@:@building_economy/lumber-camp.webp@ -&gt; @resource/resource_wood.webp@",
+        "@unit_french/royal-knight-2.webp@ spam from @landmark_french/school-of-cavalry.webp@",
+        "@ability_jeanne/ability-consecrate-1.webp@ -&gt; @landmark_french/school-of-cavalry.webp@ -&gt; @building_economy/town-center.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

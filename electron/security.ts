@@ -7,10 +7,11 @@ import { isDev } from './env'
  */
 const PROD_CSP = [
   "default-src 'self'",
-  "img-src 'self' data: https://data.aoe4world.com https://aoe4world.com",
+  "img-src 'self' data: https://data.aoe4world.com https://aoe4world.com https://i.ytimg.com https://static-cdn.jtvnw.net",
   "style-src 'self' 'unsafe-inline'",
   "script-src 'self'",
   "connect-src 'self'",
+  'frame-src https://www.youtube-nocookie.com https://player.twitch.tv',
   "font-src 'self' data:",
   "object-src 'none'",
   "base-uri 'self'",
@@ -29,6 +30,7 @@ const DEV_CSP = [
   "style-src 'self' 'unsafe-inline'",
   "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
   "connect-src 'self' ws: http: https:",
+  'frame-src https://www.youtube-nocookie.com https://player.twitch.tv',
   "font-src 'self' data:",
 ].join('; ')
 

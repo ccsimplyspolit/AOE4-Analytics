@@ -4,9 +4,11 @@ import { buildAdvisoryTeamPlan } from '@domain/teamInsights'
 import { formatRankLevel, formatRating, rankColor } from '@shared/format'
 import { useLiveMatch, useLaunchGame } from '../queries/useLiveMatch'
 import { useSettings } from '../queries/useProfile'
+import { useI18n } from '../../i18n'
 
 /** Top-of-dashboard card: shows the CURRENT live matchup, or a Start AoE4 button. */
 export function LiveMatchCard() {
+  const { tt, gameName } = useI18n()
   const { data: live } = useLiveMatch()
   const { data: settings } = useSettings()
   const launch = useLaunchGame()
@@ -21,8 +23,11 @@ export function LiveMatchCard() {
       <div className="rounded-lg border border-primary/40 bg-primary/5 p-4">
         <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-primary">
           <Radio className="h-3.5 w-3.5 animate-pulse" />
-          Live match
+          {tt('Live match')}
           {live.map && <span className="font-normal text-muted-foreground">· {live.map}</span>}
+          {live.patch && (
+            <span className="font-normal text-muted-foreground">· patch {live.patch}</span>
+          )}
         </div>
 
         {teamPlan && live.teams ? (
@@ -30,24 +35,24 @@ export function LiveMatchCard() {
             <div className="mt-2 flex flex-wrap items-center gap-2 text-sm">
               <Users className="h-4 w-4 text-primary" />
               <span className="font-medium">
-                {myTeam.map((player) => civDisplayName(player.civ ?? '')).join(' + ')}
+                {myTeam.map((player) => gameName(civDisplayName(player.civ ?? ''))).join(' + ')}
               </span>
               <Swords className="h-3.5 w-3.5 text-muted-foreground" />
               <span className="font-medium">
-                {enemyTeam.map((player) => civDisplayName(player.civ ?? '')).join(' + ')}
+                {enemyTeam.map((player) => gameName(civDisplayName(player.civ ?? ''))).join(' + ')}
               </span>
             </div>
             <div className="mt-1 grid gap-x-4 text-[11px] text-muted-foreground sm:grid-cols-2">
-              <span>
-                Your side:{' '}
+            <span>
+                {tt('Your side')}:{' '}
                 {myTeam
-                  .map((player) => `${player.name} (${civDisplayName(player.civ ?? '')})`)
+                  .map((player) => `${player.name} (${gameName(civDisplayName(player.civ ?? ''))})`)
                   .join(' · ')}
               </span>
               <span>
-                Opponents:{' '}
+                {tt('Opponents')}:{' '}
                 {enemyTeam
-                  .map((player) => `${player.name} (${civDisplayName(player.civ ?? '')})`)
+                  .map((player) => `${player.name} (${gameName(civDisplayName(player.civ ?? ''))})`)
                   .join(' · ')}
               </span>
             </div>
@@ -84,12 +89,12 @@ export function LiveMatchCard() {
         ) : live.opponent ? (
           <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1">
             <div className="flex items-center gap-2 text-lg font-semibold">
-              <span>{live.myCiv ? civDisplayName(live.myCiv) : 'You'}</span>
+              <span>{live.myCiv ? gameName(civDisplayName(live.myCiv)) : tt('You')}</span>
               <Swords className="h-4 w-4 text-muted-foreground" />
-              <span>{civDisplayName(live.opponent.civ)}</span>
+              <span>{gameName(civDisplayName(live.opponent.civ))}</span>
             </div>
             <div className="flex items-center gap-2 text-sm">
-              <span className="text-muted-foreground">vs</span>
+              <span className="text-muted-foreground">{tt('vs')}</span>
               <span className="font-medium">{live.opponent.name}</span>
               <span style={{ color: rankColor(live.opponent.rankLevel) }}>
                 {formatRankLevel(live.opponent.rankLevel)}
@@ -100,16 +105,16 @@ export function LiveMatchCard() {
             </div>
           </div>
         ) : live.custom ? (
-          <div className="mt-2 text-sm text-muted-foreground">Custom / AI game in progress.</div>
+          <div className="mt-2 text-sm text-muted-foreground">{tt('Custom / AI game in progress.')}</div>
         ) : (
           <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
             <Loader2 className="h-4 w-4 animate-spin" />
-            Match detected — fetching opponent…
+            {tt('Match detected — fetching opponent…')}
           </div>
         )}
 
         <p className="mt-2 text-xs text-muted-foreground">
-          The overlay shows your matchup — press{' '}
+          {tt('Detection')}: {live.source === 'ongoing' ? tt('AoE4World live roster') : tt('local AoE4 log')} · {tt('The overlay shows your matchup — press')}{' '}
           <kbd className="rounded bg-secondary px-1 py-0.5 font-mono text-[10px]">
             {settings?.hotkeys.toggleOverlay ?? 'Alt+O'}
           </kbd>{' '}
@@ -122,7 +127,9 @@ export function LiveMatchCard() {
   // Not in a live match. Offer to launch when the game is closed; while the game
   // is open there's nothing to say — detection is fast and reliable now, so the
   // old "looking for your match…" status card is gone.
-  const gameClosed = live.processRunning !== true
+  // `null` means Windows could not answer the process query yet; only an
+  // explicit `false` is proof that the game is closed.
+  const gameClosed = live.processRunning === false
   if (!gameClosed) return null
   // The launcher reports failure two ways: a rejected IPC call, or a resolved
   // LaunchResult with ok:false and the launcher's own message.
@@ -130,12 +137,12 @@ export function LiveMatchCard() {
   const launchError =
     launch.data != null && !launch.data.ok && launch.data.message
       ? launch.data.message
-      : "Couldn't launch the game — is it installed?"
+      : tt("Couldn't launch the game — is it installed?")
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-border bg-card/50 p-4">
       <div className="flex items-center gap-2 text-sm text-muted-foreground">
         <Gamepad2 className="h-4 w-4" />
-        Age of Empires IV is not running.
+        {tt('Age of Empires IV is not running.')}
       </div>
       <button
         type="button"
@@ -144,7 +151,7 @@ export function LiveMatchCard() {
         className="inline-flex items-center gap-2 rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-60"
       >
         <Play className="h-3.5 w-3.5" />
-        Start AoE4
+        {tt('Start AoE4')}
       </button>
       {launchFailed && <p className="w-full text-xs text-destructive">{launchError}</p>}
     </div>

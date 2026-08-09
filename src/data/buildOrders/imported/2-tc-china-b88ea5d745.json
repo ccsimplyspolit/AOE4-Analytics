@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "name": "2 TC China",
+  "civilization": "Chinese",
+  "author": "SwaggaIlya",
+  "source": "https://aoe4guides.com/builds/T6jSR8RvUbRi9S9W3Tim",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00-3:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@ 6 to @resource/resource_wood.webp@ 1 time, build @building_economy/mill.webp@",
+        "Next 3 @unit_worker/villager-china.webp@ to @resource/resource_gold.webp@ + build",
+        "Build 1@unit_worker/villager-china.webp@ @landmark_chinese/imperial-academy.webp@ and wait res for @landmark_chinese/barbican-of-the-sun.webp@ (build 3 on @resource/resource_gold.webp@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:00-7:30",
+      "villager_count": 23,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 3,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "If no agro, build @building_economy/town-center.webp@ 8@unit_worker/villager-china.webp@",
+        "If agro, no build @building_economy/town-center.webp@ and start  @building_military/archery-range.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/Hq2pAbB-G4M",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

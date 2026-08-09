@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "name": "Macedonian Dynasty Feudal All In",
+  "civilization": "Macedonian Dynasty",
+  "author": "Edz",
+  "source": "https://aoe4guides.com/builds/U3cZfSj1FF5dv9KrYWbn",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "First 6 to sheep @resource/sheep.webp@, 1 build Varangian War Camp @building_macedonian/varangian_warcamp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Next 3 goto gold @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Next 3 go back to food @resource/sheep.webp@ then at around 2:15 use 3 to build Hyperdome @landmark_byzantines/imperial-hippodrome-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Move 1 more villager to gold then start rallying villagers to wood"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Continue to distribute villagers to wood and gold. Build a Mill @building_economy/mill.webp@ near berries and research Pro Scout @technology_economy/professional-scouts.webp@, start producing scout once Pro Scout Hyperdome @landmark_byzantines/imperial-hippodrome-1.webp@ is complete. Build upto 5 scout (Include 1 free from Hyperdome)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:25",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build house as needed, once Pro Scout @technology_economy/professional-scouts.webp@ completed and start gathering Deer @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 8,
+        "wood": 9,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research Eco Tech in this order  @technology_economy/survival-techniques.webp@@technology_economy/double-broadaxe.webp@@technology_economy/wheelbarrow.webp@@technology_economy/specialized-pick.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:25",
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once have 100 wood build Varangian Arsenal @building_macedonian/varangian_arsenal.webp@ then additional 200 wood build Varangian Stronghold @building_macedonian/varangian_stronghold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:15",
+      "villager_count": 28,
+      "resources": {
+        "food": 14,
+        "wood": 9,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep on building Varangian Stronghold @building_macedonian/varangian_stronghold.webp@ when you have 200 wood and continue to build Varangian Guard @unit_macedonian/varangian-2.webp@@unit_cavalry/horseman-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:45",
+      "villager_count": 33,
+      "resources": {
+        "food": 19,
+        "wood": 5,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_macedonian/butted-chainmail-2.webp@@technology_macedonian/pattern-welding-2.webp@ attack enemy at around 10 minutes mark with @unit_macedonian/varangian-2.webp@@unit_cavalry/horseman-1.webp@"
+      ]
+    }
+  ],
+  "description": "Pressure opponent in Feudal age and win the game around 10 minutes mark",
+  "video": "https://www.youtube.com/embed/ghfR2tmUZXw",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

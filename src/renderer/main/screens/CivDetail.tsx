@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import {
   ArrowLeft,
@@ -19,7 +19,7 @@ import { resultFromPerPlayer } from '@domain/analysis'
 import type { CivMatchup } from '@domain/civDetailStats'
 import { computePlayerStats, type StatGame } from '@domain/playerStats'
 import { civDisplayName } from '@domain/civ'
-import { formatDurationShort, formatPercent } from '@shared/format'
+import { formatCount, formatDurationShort, formatPercent } from '@shared/format'
 import { Badge } from '@shared/components/ui/badge'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { BuildOrderViewer } from '../components/BuildOrderViewer'
@@ -33,6 +33,8 @@ import { useSettings } from '../queries/useProfile'
 import { ErrorBox } from '../components/feedback'
 import { useQuery } from '@tanstack/react-query'
 import { ipc } from '@shared/ipc'
+import { resolveAoE4Icon } from '@data/vendor/aoe4-icons/manifest'
+import { useI18n } from '../../i18n'
 
 const DIFFICULTY_VARIANT = {
   easy: 'success',
@@ -42,13 +44,27 @@ const DIFFICULTY_VARIANT = {
 
 export function CivDetail() {
   const { slug = '' } = useParams()
+  const { tt, gameName } = useI18n()
+  const [visibleBuildCount, setVisibleBuildCount] = useState(6)
+  const [loadHeavySections, setLoadHeavySections] = useState(false)
   const profile = CIV_PROFILES[slug]
+
+  // Let the first paint settle before starting the public stats and landmark
+  // queries. Deep-linking to a civ should never monopolise the renderer.
+  useEffect(() => {
+    setVisibleBuildCount(6)
+    setLoadHeavySections(false)
+    const timer = window.setTimeout(() => setLoadHeavySections(true), 250)
+    return () => window.clearTimeout(timer)
+  }, [slug])
 
   if (!profile) {
     return (
       <div className="animate-fade-in space-y-4">
         <BackLink />
-        <p className="text-sm text-muted-foreground">Unknown civilization: {slug}</p>
+        <p className="text-sm text-muted-foreground">
+          {tt('Unknown civilization: {slug}').replace('{slug}', slug)}
+        </p>
       </div>
     )
   }
@@ -56,6 +72,7 @@ export function CivDetail() {
   const builds = BUNDLED_BUILD_ORDERS.filter(
     (bo) => String(bo.civilization).toLowerCase() === profile.name.toLowerCase(),
   ) as unknown as BuildOrder[]
+  const visibleBuilds = builds.slice(0, visibleBuildCount)
   const units = unitsForCiv(slug)
   const keyUnits = pickKeyUnits(units)
 
@@ -65,8 +82,8 @@ export function CivDetail() {
 
       <header className="space-y-2">
         <div className="flex flex-wrap items-center gap-3">
-          <h1 className="text-2xl font-semibold tracking-tight">{profile.name}</h1>
-          <Badge variant={DIFFICULTY_VARIANT[profile.difficulty]}>{profile.difficulty}</Badge>
+          <h1 className="text-2xl font-semibold tracking-tight">{gameName(profile.name)}</h1>
+          <Badge variant={DIFFICULTY_VARIANT[profile.difficulty]}>{tt(profile.difficulty)}</Badge>
         </div>
         <p className="text-sm text-primary">{profile.focus}</p>
         <p className="text-sm leading-relaxed text-muted-foreground">{profile.summary}</p>
@@ -82,18 +99,18 @@ export function CivDetail() {
         </div>
       </header>
 
-      <CivMetaSection slug={slug} />
+      <CivMetaSection slug={slug} enabled={loadHeavySections} />
 
       <LandmarkPlan civ={slug} />
 
-      <LandmarkStatsCard civ={slug} />
+      <LandmarkStatsCard civ={slug} enabled={loadHeavySections} />
 
-      <LandmarkRecordCard civ={slug} />
+      <LandmarkRecordCard civ={slug} enabled={loadHeavySections} />
 
       <div className="grid gap-4 md:grid-cols-2">
         <Card>
           <CardContent className="space-y-2 p-4">
-            <h3 className="text-sm font-semibold text-win">Strengths</h3>
+            <h3 className="text-sm font-semibold text-win">{tt('Strengths')}</h3>
             <ul className="space-y-1 text-sm text-muted-foreground">
               {profile.strengths.map((s, i) => (
                 <li key={i} className="flex gap-2">
@@ -106,7 +123,7 @@ export function CivDetail() {
         </Card>
         <Card>
           <CardContent className="space-y-2 p-4">
-            <h3 className="text-sm font-semibold text-destructive">Weaknesses</h3>
+            <h3 className="text-sm font-semibold text-destructive">{tt('Weaknesses')}</h3>
             <ul className="space-y-1 text-sm text-muted-foreground">
               {profile.weaknesses.map((s, i) => (
                 <li key={i} className="flex gap-2">
@@ -120,15 +137,15 @@ export function CivDetail() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <InfoCard title="Recommended opening">{profile.opening}</InfoCard>
-        <InfoCard title="Game plan">{profile.gamePlan}</InfoCard>
+        <InfoCard title={tt('Recommended opening')}>{profile.opening}</InfoCard>
+        <InfoCard title={tt('Game plan')}>{profile.gamePlan}</InfoCard>
       </div>
 
       <Card>
         <CardContent className="space-y-2 p-4">
           <h3 className="flex items-center gap-1.5 text-sm font-semibold">
             <Eye className="h-4 w-4 text-primary" />
-            Facing {profile.name}? Watch for
+            {tt('Facing {civ}? Watch for').replace('{civ}', gameName(profile.name))}
           </h3>
           <ul className="space-y-1 text-sm text-muted-foreground">
             {profile.watchFor.map((w, i) => (
@@ -143,10 +160,19 @@ export function CivDetail() {
 
       {builds.length > 0 && (
         <section className="space-y-3">
-          <h2 className="text-lg font-semibold tracking-tight">Recommended build orders</h2>
-          {builds.map((bo, i) => (
+          <h2 className="text-lg font-semibold tracking-tight">{tt('Recommended build orders')}</h2>
+          {visibleBuilds.map((bo, i) => (
             <BuildOrderViewer key={i} bo={bo} />
           ))}
+          {builds.length > visibleBuilds.length && (
+            <button
+              type="button"
+              onClick={() => setVisibleBuildCount((count) => Math.min(count + 6, builds.length))}
+              className="w-full rounded-lg border border-border bg-card/60 px-4 py-3 text-sm text-primary transition-colors hover:bg-secondary"
+            >
+              {tt('Show more build orders')} ({visibleBuilds.length}/{builds.length})
+            </button>
+          )}
         </section>
       )}
 
@@ -154,7 +180,7 @@ export function CivDetail() {
         <section className="space-y-3">
           <h2 className="flex items-center gap-2 text-lg font-semibold tracking-tight">
             <Swords className="h-4 w-4" />
-            Key units
+            {tt('Key units')}
           </h2>
           <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {keyUnits.map((u) => (
@@ -168,19 +194,21 @@ export function CivDetail() {
 }
 
 function BackLink() {
+  const { tt } = useI18n()
   return (
     <Link
       to="/civ-meta"
       className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground"
     >
-      <ArrowLeft className="h-4 w-4" /> Civ Meta
+      <ArrowLeft className="h-4 w-4" /> {tt('Back to Civ Meta')}
     </Link>
   )
 }
 
 /** Live meta stats for the civ: global + your personal win rate, matchups, maps. */
-function CivMetaSection({ slug }: { slug: string }) {
-  const { data, isLoading, refetch } = useCivDetailStats(slug)
+function CivMetaSection({ slug, enabled }: { slug: string; enabled: boolean }) {
+  const { tt, gameName } = useI18n()
+  const { data, isLoading, refetch } = useCivDetailStats(slug, enabled)
   const { data: history } = useHistory()
   const { data: settings } = useSettings()
   const profileId = settings?.profileId ?? null
@@ -203,7 +231,7 @@ function CivMetaSection({ slug }: { slug: string }) {
     return computePlayerStats(games).byCiv.find((b) => b.key === slug) ?? null
   }, [history, slug, profileId])
 
-  if (isLoading) {
+  if (!enabled || isLoading) {
     return (
       <div className="h-24 animate-pulse rounded-lg border border-border bg-card/40" aria-hidden />
     )
@@ -220,7 +248,7 @@ function CivMetaSection({ slug }: { slug: string }) {
     <section className="space-y-4">
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <StatTile
-          label="Win rate (ranked)"
+          label={tt('Win rate (ranked)')}
           value={
             stats?.winRate != null ? (
               <span className="flex items-center gap-2">
@@ -231,30 +259,33 @@ function CivMetaSection({ slug }: { slug: string }) {
               '—'
             )
           }
-          sub={stats?.games ? `${stats.games.toLocaleString()} games` : 'no meta data'}
+          sub={stats?.games ? `${formatCount(stats.games)} ${tt('games')}` : tt('no meta data')}
         />
-        <StatTile label="Pick rate" value={stats?.pickRate != null ? `${stats.pickRate}%` : '—'} />
         <StatTile
-          label="Your win rate"
+          label={tt('Pick rate')}
+          value={stats?.pickRate != null ? `${stats.pickRate}%` : '—'}
+        />
+        <StatTile
+          label={tt('Your win rate')}
           value={formatPercent(mine?.winRate)}
-          sub={mine ? `${mine.games} of your games` : 'play it to track'}
+          sub={mine ? `${mine.games} ${tt('of your games')}` : tt('play it to track')}
         />
         <StatTile
-          label="Your record"
+          label={tt('Your record')}
           value={mine ? `${mine.wins}–${mine.losses}` : '—'}
-          sub={mine ? 'W–L with this civ' : undefined}
+          sub={mine ? tt('W–L with this civ') : undefined}
         />
       </div>
 
       {stats && (stats.best.length > 0 || stats.worst.length > 0) && (
         <div className="grid gap-4 md:grid-cols-2">
           <MatchupList
-            title="Best matchups"
+            title={tt('Best matchups')}
             icon={<TrendingUp className="h-4 w-4 text-win" />}
             rows={stats.best}
           />
           <MatchupList
-            title="Toughest matchups"
+            title={tt('Toughest matchups')}
             icon={<TrendingDown className="h-4 w-4 text-loss" />}
             rows={stats.worst}
           />
@@ -266,7 +297,7 @@ function CivMetaSection({ slug }: { slug: string }) {
           <CardContent className="space-y-2 p-4">
             <h3 className="flex items-center gap-1.5 text-sm font-semibold">
               <MapIcon className="h-4 w-4 text-primary" />
-              Strongest on these maps
+              {tt('Strongest on these maps')}
             </h3>
             <div className="flex flex-wrap gap-1.5">
               {stats.strongMaps.map((m) => (
@@ -279,7 +310,10 @@ function CivMetaSection({ slug }: { slug: string }) {
               ))}
             </div>
             <p className="text-[11px] text-muted-foreground">
-              Maps where {civDisplayName(slug)} has the highest win rate of any civ.
+              {tt('Maps where {civ} has the highest win rate of any civ.').replace(
+                '{civ}',
+                gameName(civDisplayName(slug)),
+              )}
             </p>
           </CardContent>
         </Card>
@@ -314,7 +348,7 @@ function MatchupList({
             >
               <span>{r.civName}</span>
               <span className="flex items-center gap-2 tabular-nums">
-                <span className="text-xs text-muted-foreground">{r.games.toLocaleString()}g</span>
+                <span className="text-xs text-muted-foreground">{formatCount(r.games)}g</span>
                 <WinRateBar winRate={r.winRate} className="w-28 shrink-0" />
               </span>
             </Link>
@@ -337,13 +371,20 @@ function InfoCard({ title, children }: { title: string; children: React.ReactNod
 }
 
 function UnitCard({ unit }: { unit: VendoredUnit }) {
+  const { tt } = useI18n()
   const role = roleFromUnit(unit)
   const counter = role ? counterFor(role) : null
+  const icon = resolveAoE4Icon(unit.icon ?? `units/${unit.name}`)
   return (
     <div className="rounded-lg border border-border bg-card/60 p-3">
       <div className="flex items-center justify-between gap-2">
-        <span className="truncate text-sm font-medium">{unit.name}</span>
-        {unit.unique && <Badge variant="outline">unique</Badge>}
+        <span className="flex min-w-0 items-center gap-2 truncate text-sm font-medium">
+          {icon && (
+            <img src={icon} alt="" aria-hidden className="h-7 w-7 shrink-0 object-contain" />
+          )}
+          <span className="truncate">{unit.name}</span>
+        </span>
+        {unit.unique && <Badge variant="outline">{tt('unique')}</Badge>}
       </div>
       <div className="mt-0.5 text-xs text-muted-foreground">{unit.displayClasses[0] ?? '—'}</div>
       <div className="mt-2 flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-muted-foreground">
@@ -357,7 +398,7 @@ function UnitCard({ unit }: { unit: VendoredUnit }) {
       </div>
       {counter && counter.weakVs.length > 0 && (
         <div className="mt-1.5 text-[11px] text-muted-foreground">
-          Countered by:{' '}
+          {tt('Countered by:')}{' '}
           <span className="text-destructive/90">{counter.weakVs.slice(0, 3).join(', ')}</span>
         </div>
       )}
@@ -386,11 +427,13 @@ function pickKeyUnits(units: VendoredUnit[]): VendoredUnit[] {
  * landmark win rates (AoE4World aggregates at civ level only) — this is the
  * honest, personal version.
  */
-function LandmarkRecordCard({ civ }: { civ: string }) {
+function LandmarkRecordCard({ civ, enabled }: { civ: string; enabled: boolean }) {
+  const { tt, gameName } = useI18n()
   const { data } = useQuery({
     queryKey: ['landmarkRecord', civ],
     queryFn: () => ipc.getLandmarkRecord(civ),
     staleTime: 60_000,
+    enabled,
   })
   const rows = data?.ok ? data.data : []
   if (rows.length === 0) return null
@@ -399,27 +442,27 @@ function LandmarkRecordCard({ civ }: { civ: string }) {
     <Card>
       <CardContent className="space-y-3 p-4">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <h3 className="text-sm">Your landmark record</h3>
+          <h3 className="text-sm">{tt('Your landmark record')}</h3>
           <span className="text-[11px] text-muted-foreground">
-            from your synced {civDisplayName(civ)} games — small sample, real data
+            {`из синхронизированных игр за ${gameName(civDisplayName(civ))} — маленькая, но реальная выборка`}
           </span>
         </div>
         <div className="overflow-x-auto rounded-sm border border-border/70">
           <table className="w-full min-w-[420px] text-sm">
             <thead>
               <tr className="border-b border-border/70 bg-background/40">
-                <th className="rts-ledger-head px-3 py-2 text-left">Landmark</th>
-                <th className="rts-ledger-head px-2 py-2 text-left">Age</th>
-                <th className="rts-ledger-head px-2 py-2 text-left">Results</th>
-                <th className="rts-ledger-head px-3 py-2 text-right">Record</th>
+                <th className="rts-ledger-head px-3 py-2 text-left">{tt('Landmark')}</th>
+                <th className="rts-ledger-head px-2 py-2 text-left">{tt('Age')}</th>
+                <th className="rts-ledger-head px-2 py-2 text-left">{tt('Results')}</th>
+                <th className="rts-ledger-head px-3 py-2 text-right">{tt('Record')}</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((r) => (
                 <tr key={r.landmark} className="border-b border-border/50 last:border-b-0">
-                  <td className="px-3 py-2 font-medium">{r.landmark}</td>
+                  <td className="px-3 py-2 font-medium">{gameName(r.landmark)}</td>
                   <td className="px-2 py-2 text-muted-foreground">
-                    {r.age === 2 ? 'Feudal' : r.age === 3 ? 'Castle' : 'Imperial'}
+                    {gameName(r.age === 2 ? 'Feudal' : r.age === 3 ? 'Castle' : 'Imperial')}
                   </td>
                   <td className="px-2 py-2">
                     <div className="min-w-28">
@@ -441,8 +484,9 @@ function LandmarkRecordCard({ civ }: { civ: string }) {
         </div>
         {totalGames < 5 && (
           <p className="text-[11px] text-muted-foreground">
-            Win rates firm up as you play more games with this civ — under ~5 games per landmark
-            is a hint, not a verdict.
+            {tt(
+              'Win rates firm up as you play more games with this civ — under ~5 games per landmark is a hint, not a verdict.',
+            )}
           </p>
         )}
       </CardContent>
@@ -455,11 +499,13 @@ function LandmarkRecordCard({ civ }: { civ: string }) {
  * ladder data (ranked 1v1, current-patch sampled dataset). Aggregated across
  * every age-up path so each landmark's record covers all games that built it.
  */
-function LandmarkStatsCard({ civ }: { civ: string }) {
+function LandmarkStatsCard({ civ, enabled }: { civ: string; enabled: boolean }) {
+  const { tt, gameName } = useI18n()
   const { data } = useQuery({
     queryKey: ['landmarkStats', civ],
     queryFn: () => ipc.getLandmarkStats(civ),
     staleTime: 60 * 60_000,
+    enabled,
   })
   const rows = data?.ok ? data.data : []
   if (rows.length === 0) return null
@@ -467,34 +513,49 @@ function LandmarkStatsCard({ civ }: { civ: string }) {
     <Card>
       <CardContent className="space-y-3 p-4">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <h3 className="text-sm">Landmark pick &amp; win rates</h3>
+          <h3 className="text-sm">{tt('Landmark pick & win rates')}</h3>
           <span className="text-[11px] text-muted-foreground">
-            AoE4World analytics · ranked 1v1 · current patch (sampled dataset)
+            {tt('AoE4World analytics · ranked 1v1 · current patch (sampled dataset)')}
           </span>
         </div>
         <div className="overflow-x-auto rounded-sm border border-border/70">
           <table className="w-full min-w-[560px] text-sm">
             <thead>
               <tr className="border-b border-border/70 bg-background/40">
-                <th className="rts-ledger-head px-3 py-2 text-left">Landmark</th>
-                <th className="rts-ledger-head px-2 py-2 text-left">Age</th>
-                <th className="rts-ledger-head px-2 py-2 text-right">Pick rate</th>
-                <th className="rts-ledger-head px-2 py-2 text-left">Win rate</th>
-                <th className="rts-ledger-head px-2 py-2 text-right">Games</th>
-                <th className="rts-ledger-head px-3 py-2 text-right">Avg age-up</th>
+                <th className="rts-ledger-head px-3 py-2 text-left">{tt('Landmark')}</th>
+                <th className="rts-ledger-head px-2 py-2 text-left">{tt('Age')}</th>
+                <th className="rts-ledger-head px-2 py-2 text-right">{tt('Pick rate')}</th>
+                <th className="rts-ledger-head px-2 py-2 text-left">{tt('Win rate')}</th>
+                <th className="rts-ledger-head px-2 py-2 text-right">{tt('Games')}</th>
+                <th className="rts-ledger-head px-3 py-2 text-right">{tt('Avg age-up')}</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((r) => (
-                <tr key={`${r.age}-${r.name}`} className="border-b border-border/50 last:border-b-0">
+                <tr
+                  key={`${r.age}-${r.name}`}
+                  className="border-b border-border/50 last:border-b-0"
+                >
                   <td className="px-3 py-2">
                     <span className="flex items-center gap-2 font-medium">
-                      {r.icon && <img src={r.icon} alt="" className="h-6 w-6 rounded-sm object-contain" />}
-                      {r.name}
+                      {(() => {
+                        const icon =
+                          resolveAoE4Icon(`buildings/${r.name}`) ??
+                          (r.icon ? resolveAoE4Icon(r.icon) : null)
+                        return icon ? (
+                          <img
+                            src={icon}
+                            alt=""
+                            aria-hidden
+                            className="h-6 w-6 rounded-sm object-contain"
+                          />
+                        ) : null
+                      })()}
+                      {gameName(r.name)}
                     </span>
                   </td>
                   <td className="px-2 py-2 text-muted-foreground">
-                    {r.age === 2 ? 'Feudal' : r.age === 3 ? 'Castle' : 'Imperial'}
+                    {gameName(r.age === 2 ? 'Feudal' : r.age === 3 ? 'Castle' : 'Imperial')}
                   </td>
                   <td className="px-2 py-2 text-right tabular-nums">{r.pickRate}%</td>
                   <td className="px-2 py-2">
@@ -508,7 +569,7 @@ function LandmarkStatsCard({ civ }: { civ: string }) {
                     </div>
                   </td>
                   <td className="px-2 py-2 text-right tabular-nums text-muted-foreground">
-                    {r.games.toLocaleString()}
+                    {formatCount(r.games)}
                   </td>
                   <td className="px-3 py-2 text-right tabular-nums">
                     {formatDurationShort(r.avgAgeUpSec)}
@@ -519,8 +580,9 @@ function LandmarkStatsCard({ civ }: { civ: string }) {
           </table>
         </div>
         <p className="text-[11px] text-muted-foreground">
-          A low-pick landmark with a high win rate is often a hidden gem for specific matchups —
-          pick rate measures popularity, not strength.
+          {tt(
+            'A low-pick landmark with a high win rate is often a hidden gem for specific matchups — pick rate measures popularity, not strength.',
+          )}
         </p>
       </CardContent>
     </Card>

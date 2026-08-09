@@ -1,0 +1,483 @@
+{
+  "schemaVersion": 1,
+  "name": "Tughlaq | 2TC",
+  "civilization": "Tughlaq Dynasty",
+  "author": "Jockxtar",
+  "source": "https://aoe4guides.com/builds/0R5N4LjgjU9RfQKDHJix",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager-delhi.webp@ -> @resource/berrybush.webp@",
+        "Starting @unit_tughluq/worker_elephant.webp@ -&gt; @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make 1 @unit_tughluq/worker_elephant.webp@ and send it to scout for @resource/sheep.webp@ around @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:05",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_gold.webp@ (1st @unit_worker/villager-delhi.webp@@abilities/repair.webp@@building_economy/house.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:35",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "When @building_economy/house.webp@ is about to finish, position second @unit_tughluq/worker_elephant.webp@ near @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:45",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/sheep.webp@ (4)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 9,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move 2 @resource/resource_gold.webp@@unit_worker/villager-delhi.webp@ and their @unit_tughluq/worker_elephant.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:05",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_wood.webp@ (11)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 0,
+        "stone": 4,
+        "builder": 2
+      },
+      "notes": [
+        "4 @resource/berrybush.webp@@unit_worker/villager-delhi.webp@+@unit_tughluq/worker_elephant.webp@ -> @resource/resource_stone.webp@",
+        "2 @resource/berrybush.webp@@unit_worker/villager-delhi.webp@ -&gt; @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_delhi/tower-of-victory.webp@: Is better for the late game but barely noticeable in the early game. Strong but risky.",
+        "@landmark_delhi/dome-of-the-faith.webp@: @unit_tughluq/healer_elephant.webp@ on @age/age_2.webp@ are super strong, specially in the first few minutes of the game. This can help us defend until we recover the investment on the @building_economy/town-center.webp@. Much safer but worse scaling."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 17,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 0,
+        "stone": 4,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/sheep.webp@@unit_worker/villager-delhi.webp@ -> @abilities/repair.webp@@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 0,
+        "stone": 4,
+        "builder": 8
+      },
+      "notes": [
+        "8 @resource/resource_wood.webp@@unit_worker/villager-delhi.webp@ -> @abilities/repair.webp@@building_economy/town-center.webp@ on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Leave the 4 @unit_worker/villager-delhi.webp@ on @resource/resource_stone.webp@ to later build and upgrade @building_tughluq/tughluqabad_fort.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:05",
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/sheep.webp@ (20)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:25",
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "--- vs cavalry civs ---",
+        "1 @resource/resource_wood.webp@@unit_worker/villager-delhi.webp@ -> @abilities/repair.webp@@building_military/barracks.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 8,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "Main @building_economy/town-center.webp@@resource/rally.webp@ -> @resource/resource_food.webp@",
+        "2nd @building_economy/town-center.webp@@resource/rally.webp@ -&gt; @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/wheelbarrow.webp@ and @technology_tughluq/elephant_economics_1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you get 400 @resource/resource_stone.webp@, build @building_tughluq/tughluqabad_fort.webp@ near your two @building_economy/town-center.webp@ with at least 2 empty tiles around it to build @building_economy/house.webp@ and @building_economy/farm.webp@.",
+        "Select @ability_tughluq/bhakkar.webp@ as the governor for this @building_tughluq/tughluqabad_fort.webp@. The passive @resource/resource_food.webp@ will help us fund the extra @unit_worker/villager-delhi.webp@ production and eventually go to @age/age_3.webp@.",
+        "Prioritize upgrading it rather than building new @building_tughluq/tughluqabad_fort.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If the opponent is playing aggressive and forces you to make units in @age/age_2.webp@, build @building_technology/blacksmith.webp@ and research the upgrades, otherwise you will soon start floating @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_delhi/house-of-learning.webp@: Offers excellent upgrades for our core units (the elephants).",
+        "@landmark_delhi/compound-of-the-defender.webp@: Since we are already playing very greedy with the second @building_economy/town-center.webp@, focusing on building and upgrading @building_tughluq/tughluqabad_fort.webp@ is too greedy."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "During age up make sure to build another @building_tughluq/tughluqabad_fort.webp@ and assign @ability_tughluq/uch.webp@ as its governor for the discounts on upgrades."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Gradually build @building_economy/farm.webp@ and @building_tughluq/tughluqabad_fort.webp@ to complete your economy."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Defend with an infantry army (@unit_infantry/spearman-1.webp@ + @unit_infantry/crossbowman-3.webp@) and raid with @unit_tughluq/elephant_raider_age2.webp@",
+        "Add a few @unit_infantry/man-at-arms-1.webp@ to tank @unit_infantry/spearman-1.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 90,
+      "resources": {
+        "food": 30,
+        "wood": 30,
+        "gold": 20,
+        "stone": 10,
+        "builder": -1
+      },
+      "notes": [
+        "&lt;- Ideal economy balance should look like this:"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Production buildings:",
+        "2 @building_military/barracks.webp@ ; 2 @building_military/archery-range.webp@ ; 4 @building_military/stable.webp@ ; 1 @building_military/siege-workshop.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_tughluq/tughluqabad_fort.webp@ governors priority: @ability_tughluq/bhakkar.webp@ (tier 3) followed by @ability_tughluq/uch.webp@ (tier 1). Then pick based on the situation:",
+        "@ability_tughluq/ajmer.webp@ if under inmediate threat or to help secure an exposed @resource/resource_gold.webp@ vein.",
+        "@ability_tughluq/sehwan.webp@ if you manage to grab some @resource/relics.webp@.",
+        "@ability_tughluq/jalor.webp@ for a stronger cavalry army. Preferably leave it for later.",
+        "@ability_tughluq/multan.webp@ if you don't need/want the others. A bit unnecessary."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_delhi/hisar-academy.webp@: Can generate up to 300 @resource/resource_food.webp@ and 300 @resource/resource_gold.webp@ per minute, which is incredibly useful for the ideal @civilization_flag/tug.webp@ army that requires a lot of @resource/resource_gold.webp@.",
+        "@landmark_delhi/palace-of-the-sultan.webp@: The only tier 4 governor effects that are worth are @ability_tughluq/bhakkar.webp@ for more resources and @ability_tughluq/jalor.webp@ for a bit of extra health on cavalry or @ability_tughluq/sehwan.webp@ for more healing on @unit_tughluq/healer_elephant.webp@.",
+        "Since we have already built and upgraded @ability_tughluq/bhakkar.webp@, we can discard that option.",
+        "@ability_tughluq/jalor.webp@ only grants 15 more health compared to the tier 3 effect, so it's not really worth it, although it can be useful for a timing attack right after aging up; since we are skipping the several minutes it takes to build and upgrade the @building_tughluq/tughluqabad_fort.webp@ (and the @resource/resource_stone.webp@ cost).",
+        "@ability_tughluq/sehwan.webp@ is ok, but nothing too crazy, and adding @unit_tughluq/healer_elephant.webp@ is very expensive for the stats they provide. It's good to have a few of them, but investing an entire landmark to buff them is not optimal."
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Prioritize: @unit_tughluq/elephant_raider_age2.webp@(@age/age_4.webp@) -> @technology_military/biology.webp@ -&gt; @technology_delhi/armored-beasts.webp@ -&gt; @technology_tughluq/ballista_elephant_age4.webp@ -&gt; @technology_tughluq/healer_elephant_age_4.webp@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": 100,
+      "resources": {
+        "food": 40,
+        "wood": 20,
+        "gold": 30,
+        "stone": 10,
+        "builder": -1
+      },
+      "notes": [
+        "&lt;- Ideal economy balance should look like this:"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Production buildings:",
+        "3 @building_military/barracks.webp@ ; 10 @building_military/stable.webp@ ; 4 @building_military/siege-workshop.webp@ ; 1 @building_religious/mosque.webp@"
+      ]
+    }
+  ],
+  "description": "Easy 2 TC build order and tips for the mid and late game.\n\nCheck my other tughlaq guides:\n- FC: https://aoe4guides.com/edit/cQ9LjFfmsY5XCVtfhXQS",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

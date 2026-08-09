@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "name": "Abbasid Build eco ",
+  "civilization": "Abbasid Dynasty",
+  "author": "LVaim",
+  "source": "https://aoe4guides.com/builds/bapQuYMk4F6ndA1wwqtC",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 aux @resource/berrybush.webp@, 2 construisent @building_economy/mill.webp@ , 1 construit @building_economy/house.webp@ et 1 construit @landmark_abbasid/house-of-wisdom.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "les 2 1er  @unit_worker/villager-abbasid.webp@ à @resource/resource_gold.webp@ et @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2m24",
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@ -> @age/age_2.webp@@landmark_abbasid/economic-wing.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 2,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "les 5 des@resource/sheep.webp@ ->@resource/gaiatreeprototypetree.webp@ 1 coup puis@building_economy/mining-camp.webp@@resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 des @resource/berrybush.webp@ -> autres@resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/gaiatreeprototypetree.webp@->@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 2,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_abbasid/fertile-crescent-2.webp@@technology_abbasid/fresh-foodstuffs.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 9,
+        "gold": 2,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "Rally to @resource/resource_wood.webp@ when enough resources build @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 9,
+        "gold": 2,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "push for @age/goldenagetier1.webp@, @resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Go for @age/age_3.webp@ if not under pressure"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If under pressure, mass @unit_infantry/archer-2.webp@ and try to push for @age/age_3.webp@ for @technology_abbasid/composite-bows.webp@ and veteran archer upgrade"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_abbasid/military-wing.webp@ Military wing"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 75,
+      "resources": {
+        "food": 33,
+        "wood": 28,
+        "gold": 14,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Ideal army @unit_abbasid/ghulam-3.webp@@unit_infantry/crossbowman-3.png@ but make counter to what is on the field",
+        "Research @technology_economy/wheelbarrow.png@ @technology_economy/double-broadaxe.png@ @technology_economy/horticulture.png@ @technology_economy/specialized-pick.png@"
+      ]
+    }
+  ],
+  "description": "build perso aba",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

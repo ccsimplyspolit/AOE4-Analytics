@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "name": "HRE Pro Scouts (s11) NEW VERSION",
+  "civilization": "Holy Roman Empire",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/HG7YmWeKqG81fqPf7unQ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3/3 split. 3 @unit_worker/villager.webp@ on @resource/resource_gold.webp@ and 3 @unit_worker/villager.webp@ on @resource/sheep.webp@. @resource/rally.webp@ @resource/resource_food.webp@ until @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:05",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build a @building_economy/mining-camp.webp@ & a @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:55",
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Inspire @resource/resource_gold.webp@@unit_worker/villager.webp@ once with @unit_hre/prelate.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:05",
+      "villager_count": 11,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@abilities/repair.webp@@landmark_hre/aachen-chapel.webp@ with 3 @resource/sheep.webp@@unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Remacro wood & inspire @resource/resource_gold.webp@@unit_worker/villager.webp@ again."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@ until 10-ish then back to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Build a @building_economy/mill.webp@ inbetween the @building_economy/town-center.webp@ and @landmark_hre/aachen-chapel.webp@ for safety of deer collection"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @technology_economy/professional-scouts.webp@ when gold mine is 3500/4000 @resource/resource_gold.webp@. @resource/rally.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make a @building_military/stable.webp@ + @building_military/barracks.webp@ to counter enemy units"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5.15",
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_defensive/outpost.webp@ on @resource/resource_gold.webp@ and now full produce units until 2+ deer packs have been collected. Play the matchup, and in most cases go FC after deers. Then make @unit_cavalry/knight-2.webp@+@unit_infantry/archer-2.webp@ / @unit_infantry/spearman-1.webp@ and take @resource/relics.webp@. Farm transition at min 18 and then map control with keeps etc."
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 11,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

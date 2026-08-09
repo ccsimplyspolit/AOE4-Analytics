@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "name": "BeastyQT Castle Rush with HRE in Season 6 AOE4",
+  "civilization": "Holy Roman Empire",
+  "author": "Lasco senpai",
+  "source": "https://aoe4guides.com/builds/GddxAxozbYxmLhNwtw9z",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@ on food and 3 on gold ASAP. @unit_hre/prelate.png@ moved to inspire ALL gold @unit_worker/villager.png@ and then immediately back to inspire food.  First new @unit_worker/villager.png@ will build @building_economy/house.png@ then @resource/rally.png@@resource/sheep.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "should be able to @age/age_2.webp@ here. Once you have 8 @unit_worker/villager.png@ on  @resource/resource_food.png@, @resource/rally.png@ @resource/resource_wood.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:10~",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@age/age_2.webp@@landmark_hre/aachen-chapel.png@ with 4 @resource/resource_food.png@@unit_worker/villager.png@ and rally them back to @resource/resource_food.png@ after.  IMMORTANT to prioritize safety of this landmark first. Try to avoid front facing @landmark_hre/aachen-chapel.png@ as we will be putting our farms here later.",
+        "Ideal @landmark_hre/aachen-chapel.png@ would be influencing @resource/resource_food.png@@resource/resource_wood.png@ & @resource/resource_gold.png@, but depending on spawn this will not always be the case. More often, we will only be able to get 2/3 of these resources, so prioritize @resource/resource_food.png@ first (Food is the most inportant for fast castle with HRE) and influence either @resource/resource_wood.png@ or @resource/resource_gold.png@ depensing on your spawn."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "After we have found a good spot to palce @landmark_hre/aachen-chapel.webp@, rally to @resource/resource_wood.png@ and move 1 @resource/resource_food.png@@unit_worker/villager.png@ to @resource/resource_wood.png@. We will be getting the straggler @resource/resource_wood.png@ around our @building_economy/town-center.png@ first."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:30~",
+      "villager_count": 15,
+      "resources": {
+        "food": 3,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Once we get 6 @resource/resource_wood.webp@@unit_worker/villager.png@, we should have enough @resource/resource_wood.png@ for our first @building_defensive/outpost.png@ and this will usually be placed close to our @resource/resource_gold.png@@unit_worker/villager.png@. Have 1 @resource/resource_gold.png@@unit_worker/villager.png@ build an @building_defensive/outpost.png@. Try to place @building_defensive/outpost.png@ that it covers as much resources as possible.",
+        "Have 1 @resource/resource_wood.png@@unit_worker/villager.png@ put down another @building_economy/house.png@. Then back on @resource/resource_wood.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:00~",
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 4,
+        "builder": 3
+      },
+      "notes": [
+        "@unit_hre/prelate.webp@ goes inside @landmark_hre/aachen-chapel.png@ as age up is finished.",
+        "Take the time to adjust some @unit_worker/villager.png@ numbers as we will be redistributing our @resource/resource_wood.png@@unit_worker/villager.png@ at this time.",
+        "We will have 5 @resource/resource_gold.png@@unit_worker/villager.png@ once the @building_defensive/outpost.png@ is completed. @building_economy/town-center.png@@resource/rally.png@@resource/resource_food.png@.",
+        "4 @resource/resource_wood.png@@unit_worker/villager.png@ will go straight to @resource/resource_stone.png@. DO NOT BUILD A MINING CAMP. They will complete ONE mining cycle and then @resource/rally.png@@resource/resource_food.png@.",
+        "2@resource/resource_wood.png@@unit_worker/villager.png@ will build a @building_military/stable.png@/@building_military/barracks.png@ OR build a 2nd @building_defensive/outpost.png@ to cover your resources. Don't do both at this time."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:30~",
+      "villager_count": 19,
+      "resources": {
+        "food": 12,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "By this time our @resource/resource_stone.webp@@unit_worker/villager.png@ will have finished one cycle of mining and will go on @resource/resource_food.png@. Our 2@unit_worker/villager.png@ that were building @building_military/barracks.png@/@building_military/stable.png@ OR 2nd @building_defensive/outpost.png@ will go back on @resource/resource_wood.png@ (if they were on @building_defensive/outpost.png@ then it may take them longer to get back).",
+        "If we decided to go militery buildings, make around 3-5 units as needed but dont go overboard. Remember our goal is to leave @age/age_2.png@ asap and the longer we are fighing we worse our odds of winning.",
+        "Get @technology_defensive/arrow-slits.png@ for your towers."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 18,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "These are the numbers we are trying to end @age/age_2.webp@ with."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:30‑07:00~",
+      "villager_count": 26,
+      "resources": {
+        "food": 11,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "@age/age_3.webp@@landmark_hre/regnitz-cathedral.png@ with 8 @resource/resource_food.png@@unit_worker/villager.png@.  Then @building_economy/town-center.png@@resource/rally.png@@resource/resource_wood.png@.",
+        "It is now that we will start getting our economy upgrades. start with @technology_economy/double-broadaxe.png@ & @technology_economy/specialized-pick.png@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "08:00~",
+      "villager_count": 28,
+      "resources": {
+        "food": 13,
+        "wood": 5,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "START GETTING RELICS@resource/relics.webp@! This is very important and will unfortunately make or brake how your game will go. If you can get the age up even earlier and be safe at the same time even better. We are trying to get a minimum on Two (2) Relics. The more the merrier and the faster you will snowball. If you can secure @resource/sacred_sites.png@ as well please do.",
+        "Keep @building_economy/town-center.png@@resource/rally.png@@resource/resource_wood.png@.Start looking to get @technology_economy/forestry.png@ and @technology_economy/wheelbarrow.png@. If you can not leave your base to secure more food start looking to transition into @building_economy/farm.png@. Otherwise, think about getting more @resource/deer.png@ or even @resource/boar.png@ on the map.  Make a @building_economy/market.png@ the first chance you get."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "08:00+",
+      "villager_count": 32,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "It is at this point you have to play and adapt with that is going on in the game. If you have not built a militery building now is the time to do so. The best army to go as HRE as you hit @age/age_3.webp@ are  @unit_cavalry/knight-2.png@ as there is a good chance no one else has age 3 knights at this time in the game. Use your discretion however, as we are almost always going to be using @unit_infantry/man-at-arms-1.png@ as our late game comp as that is our best unit once fully upgraded.",
+        "The remainder of this guide is going to assume the game is reletively stable for you after 8:00~"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:00~",
+      "villager_count": 36,
+      "resources": {
+        "food": 21,
+        "wood": 15,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If  you have been succesfull in obtaining @resource/relics.webp@ and/ or @resource/sacred_sites.png@. HRE has a nice little advantage of not needing any @resource/resource_gold.png@@unit_worker/villager.png@ to reach @age/age_4.png@. Assuming you have at least 3 @resource/relics.png@ and militery units, these numbers are possible to age up with. But its still a good idea to have some @resource/resource_gold.png@@unit_worker/villager.png@.",
+        "Get any unit upgrade as needed and your remaining economy upgrades.",
+        "Try to get to @age/age_4.png@ before 16:00 minutes if possible and good luck!"
+      ]
+    }
+  ],
+  "description": "A guide to help with HRE castle rushing in Season 6 by BeastyQT",
+  "video": "https://www.youtube.com/embed/shOJCWHi764",
+  "season": 6,
+  "map": "Closed",
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

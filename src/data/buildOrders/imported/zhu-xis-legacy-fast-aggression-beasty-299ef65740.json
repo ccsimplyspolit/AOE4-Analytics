@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "name": "Zhu Xi's Legacy Fast Aggression [ Beasty ]",
+  "civilization": "Zhu Xi's Legacy",
+  "author": "Reevh",
+  "source": "https://aoe4guides.com/builds/Wac6M7SJIxpMQ4Ioj5Kz",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "+5 @resource/resource_wood.webp@ on every Villager --> @building_economy/mill.png@ +@unit_chinese/imperial-official.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_chinese/village.webp@ @ @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "+2 @resource/rally.webp@@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "+3 @resource/rally.webp@@resource/resource_gold.png@ + @building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "+5 @resource/rally.webp@@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:35",
+      "villager_count": 15,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "+1 @landmark_zhuxi/meditation-gardens-1.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "+1 @landmark_zhuxi/jiangnan-tower-2.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/resource_food.webp@ --> +7 @resource/resource_wood.png@ // @landmark_zhuxi/meditation-gardens-1.png@ --&gt; +1 @resource/resource_wood.png@ // @unit_chinese/imperial-official.png@ --&gt; @building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 5,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/double-broadaxe.webp@ + @technology_economy/wheelbarrow.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 6,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "+1 @unit_chinese/imperial-official.webp@ --> @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 6,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "+2 @resource/resource_wood.webp@ --> @building_military/barracks.png@1x @building_military/archery-range.png@4x // + Spearman upgrade"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 7,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/horticulture.webp@ + @technology_economy/forestry.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 7,
+        "wood": 15,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "+7  @resource/rally.webp@@resource/resource_wood.png@ +2 @resource/rally.png@@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 40,
+      "resources": {
+        "food": 22,
+        "wood": 15,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "+15 @resource/rally.webp@ @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "7:55",
+      "villager_count": 25,
+      "resources": {
+        "food": 7,
+        "wood": 15,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_chinese/village.webp@ + @building_technology/blacksmith.png@ ( BS when production is finished )"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_military/steeled-arrow.webp@ + @technology_military/iron-undermesh.png@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/A3JwngeiQWg",
+  "season": 6,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

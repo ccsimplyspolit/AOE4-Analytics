@@ -8,7 +8,7 @@ import { useSettings } from './queries/useProfile'
 import { Onboarding } from './screens/Onboarding'
 import { applyAccent } from '@shared/accent'
 import { ipc } from '@shared/ipc'
-import { ErrorBoundary } from '@shared/components/ErrorBoundary'
+import { LocalizedErrorBoundary } from '@shared/components/ErrorBoundary'
 import { CIV_FLAGS } from '@data/vendor/aoe4world-overlay/flags'
 import menuBackdrop from '@shared/assets/strategy-menu-backdrop.jpg'
 
@@ -18,6 +18,9 @@ const PlayerProfile = lazy(() =>
 )
 const GameDetail = lazy(() =>
   import('./screens/GameDetail').then((m) => ({ default: m.GameDetail })),
+)
+const PublicGameDetail = lazy(() =>
+  import('./screens/PublicGameDetail').then((m) => ({ default: m.PublicGameDetail })),
 )
 
 /** Post-game auto-open: the main process pushes the finished game's id. */
@@ -73,7 +76,7 @@ export function App() {
       <main className="chronicle-main relative z-10 flex-1 overflow-y-auto">
         <div className="mx-auto max-w-6xl px-10 py-7">
           {/* Keyed by path so navigating away resets a crashed screen. */}
-          <ErrorBoundary key={location.pathname}>
+          <LocalizedErrorBoundary key={location.pathname}>
             <Suspense
               fallback={
                 <div className="flex items-center justify-center py-12 text-muted-foreground">
@@ -87,11 +90,12 @@ export function App() {
                 ))}
                 <Route path="/civ/:slug" element={<CivDetail />} />
                 <Route path="/profile/:profileId" element={<PlayerProfile />} />
+                <Route path="/public-game/:profileId/:gameId" element={<PublicGameDetail />} />
                 <Route path="/game/:matchId" element={<GameDetail />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </Suspense>
-          </ErrorBoundary>
+          </LocalizedErrorBoundary>
         </div>
       </main>
     )

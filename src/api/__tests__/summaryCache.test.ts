@@ -9,7 +9,11 @@ vi.mock('electron', () => ({
   app: { getPath: () => electronState.userData },
 }))
 
-import { readCachedParsedSummary } from '../../../electron/services/summaryCache'
+import {
+  getCachedSummaryInfo,
+  readCachedParsedSummary,
+  writeCachedSummary,
+} from '../../../electron/services/summaryCache'
 
 let dir: string
 
@@ -30,5 +34,14 @@ describe('ranked summary cache recovery', () => {
 
     expect(readCachedParsedSummary('bad-gzip')).toBeNull()
     expect(existsSync(file)).toBe(false)
+  })
+
+  it('reports persisted summary metadata without inflating the blob', () => {
+    writeCachedSummary('246000001', new Uint8Array([1, 2, 3, 4]))
+
+    const info = getCachedSummaryInfo('246000001')
+    expect(info.cached).toBe(true)
+    expect(info.sizeBytes).toBeGreaterThan(0)
+    expect(info.path).toContain('246000001.rgs.gz')
   })
 })

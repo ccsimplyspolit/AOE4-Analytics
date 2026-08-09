@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 1,
+  "name": "Swaggy Brand New RUS Build",
+  "civilization": "Rus",
+  "author": "SnobbyCoder60",
+  "source": "https://aoe4guides.com/builds/oh6wgyKQpe6JWjgSuWtV",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start sending ALL to @resource/resource_food.webp@@resource/sheep.webp@ + queue 2x @unit_worker/villager.webp@ ( + scout around base @unit_cavalry/scout.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Send 2x @resource/resource_food.webp@@unit_worker/villager.webp@ to @abilities/repair.webp@@building_rus/hunting-cabin.webp@ each one (the influence of the two areas MUST NOT overlap) + 1x @resource/resource_food.webp@@unit_worker/villager.webp@ to @abilities/repair.webp@@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send ALL @unit_worker/villager.webp@ back to @resource/resource_food.webp@+ @resource/rally.webp@@resource/resource_food.webp@ (up to 12)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Retrieve the @resource/sheep.webp@ to the @building_economy/town-center.webp@ with the @unit_cavalry/scout.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@age/age_2.webp@: @abilities/repair.webp@@landmark_rus/kremlin.webp@ with 5x @resource/resource_food.webp@@unit_worker/villager.webp@ (place the @landmark_rus/kremlin.webp@ near @resource/deer.webp@ to protect @unit_worker/villager.webp@@resource/resource_food.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Leave 4x @unit_worker/villager.webp@@resource/resource_food.webp@ and move ALL to @resource/resource_wood.webp@+@resource/rally.webp@@resource/resource_wood.webp@ (up to 8). IMPORTANT: let @resource/resource_wood.webp@@unit_worker/villager.webp@ gather ALL the 3x @resource/gaiatreeprototypetree.webp@ around  @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 7,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "As soon as the 3x @resource/gaiatreeprototypetree.webp@ are gathered move 7x @resource/resource_wood.webp@@unit_worker/villager.webp@ to @abilities/repair.webp@@building_economy/mining-camp.webp@ on @resource/resource_gold.webp@and @abilities/repair.webp@@building_economy/lumber-camp.webp@ with the remaining @resource/resource_wood.webp@@unit_worker/villager.webp@ UNDER the @landmark_rus/kremlin.webp@ area of influence"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 1,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_rus/hunting-cabin.webp@ on @resource/deer.webp@ near the @landmark_rus/kremlin.webp@ with the 5x @age/age_2.webp@@unit_worker/villager.webp@ and gather @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 9,
+        "wood": 1,
+        "gold": 7,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_military/stable.webp@ and start prod. @unit_cavalry/knight-2.webp@+ research @technology_economy/survival-techniques.webp@and @resource/rally.webp@@resource/resource_food.webp@ (predilige @resource/sheep.webp@if aviable)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 26,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 7,
+        "stone": 0,
+        "builder": 12
+      },
+      "notes": [
+        "@age/age_3.webp@: @abilities/repair.webp@@landmark_rus/abbey-of-the-trinity.webp@ with 10-12x@resource/sheep.webp@@unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 30,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 7,
+        "stone": 0,
+        "builder": 12
+      },
+      "notes": [
+        "Leave on @resource/resource_food.webp@ only the 5x @resource/deer.webp@@unit_worker/villager.webp@ and 1-2x @resource/sheep.webp@@unit_worker/villager.webp@, then move ALL @resource/resource_food.webp@@unit_worker/villager.webp@ to @resource/resource_wood.webp@ + get @technology_economy/double-broadaxe.webp@ and @technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 29,
+      "resources": {
+        "food": 6,
+        "wood": 15,
+        "gold": 7,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "IMMEDIATELY prod. @unit_rus/warrior-monk.webp@ and @resource/rally.webp@@resource/relics.webp@ (starting from the FURTHEST ones)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 32,
+      "resources": {
+        "food": 6,
+        "wood": 18,
+        "gold": 7,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_technology/blacksmith.webp@+ 3x@building_military/archery-range.webp@ (see notes to understand which units to produce accordingly)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 39,
+      "resources": {
+        "food": 14,
+        "wood": 10,
+        "gold": 7,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Move 8x@resource/resource_wood.webp@@unit_worker/villager.webp@ to @abilities/repair.webp@@building_rus/hunting-cabin.webp@ on a new @resource/resource_food.webp@ source (can be @resource/deer.webp@ or @resource/berrybush.webp@)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 42,
+      "resources": {
+        "food": 20,
+        "wood": 15,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Leave 10-15x @resource/resource_wood.webp@@unit_worker/villager.webp@ and @resource/rally.webp@@resource/resource_food.webp@ + get ALL @building_technology/blacksmith.webp@ UPGRADES + ALL @landmark_rus/abbey-of-the-trinity.webp@ UPGRADES + ALL ECONOMIC UPGRADES"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 45,
+      "resources": {
+        "food": 30,
+        "wood": 15,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move all @resource/resource_gold.webp@@unit_worker/villager.webp@ to @resource/resource_food.webp@ whenever gathered 3 or MORE @resource/relics.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 50,
+      "resources": {
+        "food": 35,
+        "wood": 15,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Activate ALL @unit_rus/militia-halberdier.webp@ from @landmark_rus/kremlin.webp@ and @abilities/attack-move.webp@@abilities/attack-move.webp@@abilities/attack-move.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "WIN THE GAME!  @civilization_flag/rus.webp@"
+      ]
+    }
+  ],
+  "description": "This is a resume to understand better the new build order for RUS by Swaggy Professor.\n\nGive it a try!",
+  "video": "https://www.youtube.com/embed/n74D7yb6WVg",
+  "season": 13,
+  "map": null,
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

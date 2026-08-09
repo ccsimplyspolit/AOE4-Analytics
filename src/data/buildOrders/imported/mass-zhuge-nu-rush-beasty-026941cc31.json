@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "name": "Mass Zhuge Nu Rush - Beasty",
+  "civilization": "Zhu Xi's Legacy",
+  "author": "Etherz",
+  "source": "https://aoe4guides.com/builds/4DmG1ebr5ddsu0mL3ojn",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @unit_worker/villager-china.webp@ Till Carring 5 to 7 @resource/resource_wood.png@ -> @building_economy/mill.png@ on @resource/berrybush.png@(Dont drop@resource/resource_wood.png@ on TC)",
+        "@unit_chinese/imperial-official.png@ supervise @abilities/repair.png@@building_economy/mill.png@",
+        "Put @resource/sheep.png@ next to @building_economy/mill.png@",
+        "1st  @unit_worker/villager-china.png@ makes@building_chinese/village.png@ near @building_economy/mill.png@-&gt; @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @unit_worker/villager-china.webp@to@resource/sheep.png@",
+        "Rally 3 @unit_worker/villager-china.png@to@building_economy/mining-camp.png@@resource/resource_gold.png@",
+        "Rally @unit_worker/villager-china.png@ to @resource/sheep.png@ until 8 @resource/resource_food.png@@unit_worker/villager-china.png@",
+        "Rally @unit_worker/villager-china.png@ to @resource/gaiatreeprototypetree.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@resource/resource_food.webp@ @unit_worker/villager-china.png@ makes @landmark_zhuxi/meditation-gardens-1.png@ next to as much @resource/berrybush.png@ as possible",
+        "4 @resource/resource_food.png@@unit_worker/villager-china.png@ to @building_economy/lumber-camp.png@@resource/resource_wood.png@, make 1 @unit_chinese/imperial-official.png@ to supervise @building_economy/lumber-camp.png@",
+        "Keep @resource/rally.png@on @resource/resource_wood.png@, get @technology_economy/wheelbarrow.png@ -> @technology_economy/double-broadaxe.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @resource/resource_food.webp@@unit_worker/villager-china.png@ build @landmark_zhuxi/jiangnan-tower-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 9 @resource/resource_wood.webp@@unit_worker/villager-china.png@, Rally to @resource/resource_food.png@ until 8 @resource/resource_food.png@@unit_worker/villager-china.png@",
+        "1 @resource/resource_wood.png@@unit_worker/villager-china.png@ makes 3 @building_military/archery-range.png@ After @landmark_zhuxi/jiangnan-tower-2.png@ is completed (if against horseman, make @building_military/barracks.png@ -> @unit_infantry/spearman-1.png@)",
+        "Always make @unit_chinese/zhuge-nu-2.png@",
+        "Make 1-2 @building_military/barracks.png@ -&gt; @unit_infantry/spearman-1.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 8 @resource/resource_food.webp@@unit_worker/villager-china.png@, Rally to @resource/resource_wood.png@ until 15 @resource/resource_wood.png@@unit_worker/villager-china.png@",
+        "Get @technology_economy/horticulture.png@ and 3rd @unit_chinese/imperial-official.png@ when 12 @resource/resource_wood.png@@unit_worker/villager-china.png@",
+        "Make @building_technology/blacksmith.png@ and @technology_military/steeled-arrow.png@ -> @technology_military/iron-undermesh.png@ -&gt; @technology_military/siege-engineering.png@",
+        "Rally more @unit_worker/villager-china.png@ on @resource/resource_gold.png@ if needed"
+      ]
+    }
+  ],
+  "description": "Mass Zhuge Nu Rush by Beasty.",
+  "video": "https://www.youtube.com/embed/A3JwngeiQWg",
+  "season": 10,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

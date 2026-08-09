@@ -6,6 +6,7 @@ import { cn } from '@shared/lib/utils'
 import { navItems } from '../nav'
 import { useSettings } from '../queries/useProfile'
 import { AccountSwitcher } from './AccountSwitcher'
+import { LOCALE_OPTIONS, useI18n } from '../../i18n'
 
 /**
  * The app's single top bar — launcher style. One row carries the brand (once),
@@ -14,6 +15,7 @@ import { AccountSwitcher } from './AccountSwitcher'
  */
 export function CommandBar() {
   const { data: settings } = useSettings()
+  const { locale, setLocale, tt } = useI18n()
   const hasProfile = settings?.profileId != null
   const [maximized, setMaximized] = useState(false)
 
@@ -54,7 +56,7 @@ export function CommandBar() {
             >
               {({ isActive }) => (
                 <>
-                  {item.label}
+                  {tt(item.label)}
                   {/* Gold underline rail, like the game's ribbon menus. */}
                   <span
                     className={cn(
@@ -74,12 +76,27 @@ export function CommandBar() {
 
       {/* Right cluster: settings/about, account, window controls */}
       <div className="no-drag flex items-center gap-1 pr-1">
+        <label className="mr-1 flex items-center gap-1.5 text-[10px] text-muted-foreground">
+          <span className="sr-only">{tt('Language')}</span>
+          <select
+            value={locale}
+            onChange={(event) => setLocale(event.target.value as typeof locale)}
+            aria-label={tt('Language')}
+            className="h-7 rounded border border-border bg-background px-1.5 text-[11px] text-foreground"
+          >
+            {LOCALE_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </label>
         {hasProfile && (
           <>
-            <IconNav to="/settings" title="Settings">
+            <IconNav to="/settings" title={tt('Settings')}>
               <SettingsIcon className="h-4 w-4" />
             </IconNav>
-            <IconNav to="/about" title="About">
+            <IconNav to="/about" title={tt('About')}>
               <Info className="h-4 w-4" />
             </IconNav>
             <div className="mx-2 h-5 w-px bg-border" aria-hidden />
@@ -89,16 +106,16 @@ export function CommandBar() {
             <div className="mx-2 h-5 w-px bg-border" aria-hidden />
           </>
         )}
-        <WinButton label="Minimize" onClick={() => void ipc.minimizeWindow()}>
+        <WinButton label={tt('Minimize')} onClick={() => void ipc.minimizeWindow()}>
           <Minus className="h-3.5 w-3.5" />
         </WinButton>
         <WinButton
-          label={maximized ? 'Restore' : 'Maximize'}
+          label={tt(maximized ? 'Restore' : 'Maximize')}
           onClick={() => void ipc.toggleMaximizeWindow()}
         >
           {maximized ? <Copy className="h-3 w-3" /> : <Square className="h-3 w-3" />}
         </WinButton>
-        <WinButton label="Close" danger onClick={() => void ipc.closeWindow()}>
+        <WinButton label={tt('Close')} danger onClick={() => void ipc.closeWindow()}>
           <X className="h-4 w-4" />
         </WinButton>
       </div>

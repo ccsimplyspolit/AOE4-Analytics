@@ -16,6 +16,7 @@ export async function getLeaderboardPage(
     const resp = await getClient().getLeaderboard(query.leaderboard, {
       page: query.page,
       country: query.country,
+      fresh: query.fresh,
     })
     const rows = buildLeaderboardRows(resp, profileId)
 

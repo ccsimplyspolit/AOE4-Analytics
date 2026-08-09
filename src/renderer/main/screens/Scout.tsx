@@ -6,6 +6,7 @@ import { PageHead } from '../components/PageHead'
 import { ErrorBox, Spinner } from '../components/feedback'
 import { useScout } from '../queries/useScout'
 import { LeaderboardPanel } from './Leaderboards'
+import { useI18n } from '../../i18n'
 
 /**
  * Scout: the ladder leaderboard is the default view, with a single search bar on
@@ -13,6 +14,7 @@ import { LeaderboardPanel } from './Leaderboards'
  * counters). Clearing the report returns to the leaderboard.
  */
 export function Scout() {
+  const { tt } = useI18n()
   const [selected, setSelected] = useState<{ profileId: number; name: string } | null>(null)
   const { data, isLoading, refetch } = useScout(selected?.profileId ?? null)
 
@@ -27,7 +29,7 @@ export function Scout() {
       <div className="max-w-xl">
         <PlayerSearch
           autoFocus
-          placeholder="Search any player to scout..."
+          placeholder={tt('Search any player to scout...')}
           onSelect={(hit) => setSelected({ profileId: hit.profileId, name: hit.name })}
         />
       </div>
@@ -39,10 +41,10 @@ export function Scout() {
             onClick={() => setSelected(null)}
             className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
-            <ArrowLeft className="h-4 w-4" /> Back to leaderboard
+            <ArrowLeft className="h-4 w-4" /> {tt('Back to leaderboard')}
           </button>
           <div className="max-w-3xl">
-            {isLoading && <Spinner label={`Scouting ${selected.name}...`} />}
+            {isLoading && <Spinner label={tt('Scouting {name}...').replace('{name}', selected.name)} />}
             {!isLoading && data && !data.ok && (
               <ErrorBox message={data.error.message} onRetry={() => refetch()} />
             )}

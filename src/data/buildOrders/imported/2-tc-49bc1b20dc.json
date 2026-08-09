@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "name": "2 TC",
+  "civilization": "Knights Templar",
+  "author": "Perry",
+  "source": "https://aoe4guides.com/builds/nlxHE4i1PhNNXqD2XTAP",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager.webp@ on @resource/sheep.webp@",
+        "@resource/rally.webp@ -> @building_economy/house.webp@ -&gt; @building_economy/mining-camp.webp@ -&gt; @resource/resource_gold.webp@ (2)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:45",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_wood.webp@ (3) don't send these to @resource/gaiatreeprototypetree.webp@ unless @resource/resource_wood.webp@ is far from @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:45",
+      "villager_count": 11,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 0,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "After gathering 200 @resource/resource_gold.webp@ send your 2 @resource/resource_gold.webp@@unit_worker/villager.webp@ to @resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:35",
+      "villager_count": 13,
+      "resources": {
+        "food": 0,
+        "wood": 6,
+        "gold": 0,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_wood.webp@ Send 5 @resource/sheep.webp@@unit_worker/villager.webp@ to @resource/resource_stone.webp@and the other 2 to a different @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:05",
+      "villager_count": 15,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 0,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "@civilization_flag/hos.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "At 300 @resource/resource_stone.webp@ move the @resource/resource_stone.webp@ @unit_worker/villager.webp@ to second @building_economy/town-center.webp@ position. Prio @resource/deer.webp@ unless attacked, in which case build next to @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "At 400 @resource/resource_wood.webp@ move 5 @resource/resource_wood.webp@ @unit_worker/villager.webp@ to @resource/sheep.webp@ and build second @building_economy/town-center.webp@ (@resource/rally.webp@ -> @resource/deer.webp@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 17,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:55",
+      "villager_count": 17,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Build @building_military/barracks.webp@ (If @civilization_flag/eng.webp@ build @building_military/stable.webp@, elif @civilization_flag/mon.webp@@civilization_flag/ayy.webp@ build @building_military/archery-range.webp@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:10",
+      "villager_count": 18,
+      "resources": {
+        "food": 12,
+        "wood": 4,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build  @building_economy/house.webp@, @building_defensive/palisade-wall.webp@ and @building_defensive/outpost.webp@",
+        "Add @building_economy/mill.webp@ on the next source of @resource/resource_food.webp@ to research @technology_economy/survival-techniques.webp@",
+        "Produce  @unit_templar/hospitaller_knight_age_2.webp@  (or @unit_infantry/spearman-1.webp@ against horse raids)",
+        "Add @building_military/archery-range.webp@ for @unit_infantry/archer-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 26,
+      "resources": {
+        "food": 16,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Both @building_economy/town-center.webp@@resource/rally.webp@ -> @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_technology/blacksmith.webp@ and research @technology_military/iron-undermesh.webp@ and/or @technology_military/fitted-leatherwork.webp@",
+        "After securing your base, research @technology_templar/safepassage.webp@ and @technology_templar/sanctuary.webp@. Build @landmark_templar/fortress.webp@ and @age/age_3.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

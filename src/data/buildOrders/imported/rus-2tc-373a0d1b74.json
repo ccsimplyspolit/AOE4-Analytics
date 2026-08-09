@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "name": "Rus 2TC",
+  "civilization": "Rus",
+  "author": "Asmitha",
+  "source": "https://aoe4guides.com/builds/QPVCgL1fI0ZRJGt5gook",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@",
+        "2 @building_rus/hunting-cabin.webp@, send 1@resource/sheep.webp@ per builder -> 2 @unit_cavalry/scout.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 @landmark_rus/kremlin.webp@ cover @resource/resource_stone.webp@@resource/resource_gold.webp@@resource/resource_food.webp@",
+        "leave 4 @resource/sheep.webp@ -> @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 1,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@4@building_economy/mining-camp.webp@@resource/resource_stone.webp@, @building_economy/house.webp@",
+        "Then @resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If opponent goes 2TC: FC @landmark_rus/abbey-of-the-trinity.webp@ -> @resource/relics.webp@, @unit_rus/horse-archer-3.webp@/@unit_infantry/man-at-arms-1.webp@/@unit_cavalry/knight-2.webp@, Farm transition 20/20/9/3 @unit_worker/villager.webp@repartition",
+        "If @age/age_2.webp@ aggression, turtle",
+        "Make sure to secure ahead resources"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/Lku9kFlDULc",
+  "season": 13,
+  "map": "Open",
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

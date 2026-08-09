@@ -2,6 +2,7 @@ import {
   useEffect,
   useMemo,
   useState,
+  useRef,
   type CSSProperties,
   type PointerEvent as ReactPointerEvent,
   type ReactNode,
@@ -13,6 +14,8 @@ import type { LiveMatchup } from '@domain/liveMatch'
 import type { SessionSummary } from '@domain/session'
 import type { OverlayMatchState, PostGameSummary } from '@ipc/contract'
 import { matchupTroopsForTeam } from '@domain/civUnits'
+import { COUNTERABLE_CIVS, counterPlanForCiv } from '@domain/civUnits'
+import { civDisplayName } from '@domain/civ'
 import { gameElapsedSec, todMsFromEpoch } from '@domain/localStats'
 import { bracketFromRankLevel, getBenchmarks } from '@domain/benchmarks'
 import { stepIndexForElapsed, type BuildOrder } from '@domain/buildOrderSchema'
@@ -32,7 +35,10 @@ import { ApmWidget } from './ApmWidget'
 import { BuildOrderWidget } from './BuildOrderWidget'
 import { AgeTargetsWidget } from './AgeTargetsWidget'
 import { SessionWidget } from './SessionWidget'
+import { CounterWidget } from './CounterWidget'
+import { CoachWidget } from './CoachWidget'
 import { panelBg } from './panelBg'
+import { useI18n } from '../i18n'
 
 const PLACEHOLDER_MATCHUP: LiveMatchup = {
   teams: [
@@ -42,8 +48,10 @@ const PLACEHOLDER_MATCHUP: LiveMatchup = {
         name: 'You',
         civ: 'english',
         rating: 950,
+        winRate: null,
         rank: null,
         rankLevel: 'gold_2',
+        favoriteCivs: [],
         isMe: true,
         isAI: false,
       },
@@ -52,8 +60,10 @@ const PLACEHOLDER_MATCHUP: LiveMatchup = {
         name: 'Ally',
         civ: 'abbasid_dynasty',
         rating: 920,
+        winRate: null,
         rank: null,
         rankLevel: 'gold_1',
+        favoriteCivs: [],
         isMe: false,
         isAI: false,
       },
@@ -64,8 +74,10 @@ const PLACEHOLDER_MATCHUP: LiveMatchup = {
         name: 'Enemy 1',
         civ: 'french',
         rating: 980,
+        winRate: null,
         rank: null,
         rankLevel: 'gold_3',
+        favoriteCivs: [],
         isMe: false,
         isAI: false,
       },
@@ -74,8 +86,10 @@ const PLACEHOLDER_MATCHUP: LiveMatchup = {
         name: 'Enemy 2',
         civ: 'mongols',
         rating: 940,
+        winRate: null,
         rank: null,
         rankLevel: 'gold_2',
+        favoriteCivs: [],
         isMe: false,
         isAI: false,
       },
@@ -105,6 +119,8 @@ const WIDGET_LABELS: Record<OverlayWidgetKey, string> = {
   buildOrder: 'Build order',
   ageTargets: 'Age targets',
   session: 'Session record',
+  counter: 'Counter plan',
+  coach: 'Live coach',
 }
 
 /**
@@ -114,6 +130,7 @@ const WIDGET_LABELS: Record<OverlayWidgetKey, string> = {
  * before queueing.
  */
 export function OverlayApp() {
+  const { tt } = useI18n()
   const [matchState, setMatchState] = useState<OverlayMatchState>('idle')
   const [myCiv, setMyCiv] = useState<string | null>(null)
   const [oppCiv, setOppCiv] = useState<string | null>(null)
@@ -125,6 +142,12 @@ export function OverlayApp() {
   const [apm, setApm] = useState<number | null>(null)
   const [session, setSession] = useState<SessionSummary | null>(null)
   const [sessionShown, setSessionShown] = useState(true)
+  const [counterShown, setCounterShown] = useState(true)
+  // Custom/AI/casting games do not always provide an opponent civ. The global
+  // counter hotkey cycles through the same explainable civ plans used by the
+  // matchup helper without changing the detected live roster.
+  const [counterCivOverride, setCounterCivOverride] = useState<string | null>(null)
+  const [coachShown, setCoachShown] = useState(true)
   const [troopsShown, setTroopsShown] = useState(true)
   const [civTheme, setCivTheme] = useState(true)
   const [accentColor, setAccentColor] = useState<string | null>(null)
@@ -136,9 +159,26 @@ export function OverlayApp() {
   // Per-widget scale, applied as a CSS transform around each widget's anchor
   // corner so saved positions stay put across scale changes.
   const [scale, setScale] = useState(1)
+  const [buildOrderFontSize, setBuildOrderFontSize] = useState(14)
+  const [buildOrderImageSize, setBuildOrderImageSize] = useState(30)
+  const [buildOrderViewMode, setBuildOrderViewMode] = useState<'illustrated' | 'text'>('illustrated')
+  const [customCss, setCustomCss] = useState('')
   const [ageTargetsShown, setAgeTargetsShown] = useState(true)
   // The pinned build order's unique name (Guides → "Show in overlay"); null = hidden.
   const [buildOrderId, setBuildOrderId] = useState<string | null>(null)
+  // Null means the build follows the game clock. Global step hotkeys set an
+  // explicit index until the reset hotkey returns it to clock-driven mode.
+  const [manualBuildStep, setManualBuildStep] = useState<number | null>(null)
+  // RTS Overlay-compatible manual timer. The normal mode follows AoE4's
+  // pause-aware local game clock; manual mode is useful for practice, casting,
+  // or a replay where no live clock anchor is available.
+  const [timerMode, setTimerMode] = useState<'game' | 'manual'>('game')
+  const [manualTimerSec, setManualTimerSec] = useState(0)
+  const [manualTimerRunning, setManualTimerRunning] = useState(false)
+  const [manualTimerStartedAt, setManualTimerStartedAt] = useState<number | null>(null)
+  const manualTimerSecRef = useRef(0)
+  const timerModeRef = useRef<'game' | 'manual'>('game')
+  const lastMatchId = useRef<string | null>(null)
   // Live match time in seconds, derived from the pushed game-clock anchor
   // (warnings.log sim start + pauses) + our wall clock; null when not in a match.
   const [elapsedSec, setElapsedSec] = useState<number | null>(null)
@@ -157,8 +197,14 @@ export function OverlayApp() {
         setAccentColor(s.accentColor ?? null)
         setPanelAlpha(clampAlpha(s.overlay.opacity))
         setScale(clampScale(s.overlay.scale))
+        setBuildOrderFontSize(s.overlay.buildOrderFontSize ?? 14)
+        setBuildOrderImageSize(s.overlay.buildOrderImageSize ?? 30)
+        setBuildOrderViewMode(s.overlay.buildOrderViewMode ?? 'illustrated')
+        setCustomCss(s.overlay.customCss ?? '')
         setAgeTargetsShown(s.overlay.showAgeTargets !== false)
         setSessionShown(s.overlay.showSession !== false)
+        setCounterShown(s.overlay.showCounter !== false)
+        setCoachShown(s.overlay.showCoach !== false)
         setBuildOrderId(s.overlay.buildOrderId ?? null)
       })
       .catch(() => {})
@@ -185,14 +231,33 @@ export function OverlayApp() {
       setAccentColor(o.accentColor ?? null)
       setPanelAlpha(clampAlpha(o.opacity))
       setScale(clampScale(o.scale))
+      setBuildOrderFontSize(o.buildOrderFontSize ?? 14)
+      setBuildOrderImageSize(o.buildOrderImageSize ?? 30)
+      setBuildOrderViewMode(o.buildOrderViewMode ?? 'illustrated')
+      setCustomCss(o.customCss ?? '')
       setAgeTargetsShown(o.showAgeTargets !== false)
       setSessionShown(o.showSession !== false)
+      setCounterShown(o.showCounter !== false)
+      setCoachShown(o.showCoach !== false)
       setBuildOrderId(o.buildOrderId ?? null)
     })
 
     const offUpdate = ipc.onOverlayUpdate((p) => {
       setMatchState(p.matchState)
       setSession(p.session ?? null)
+      if (p.matchState !== 'ongoing' || p.matchId !== lastMatchId.current) {
+        setManualBuildStep(null)
+        setCounterCivOverride(null)
+      }
+      if (p.matchState === 'ongoing' && p.matchId !== lastMatchId.current) {
+        setTimerMode('game')
+        timerModeRef.current = 'game'
+        setManualTimerSec(0)
+        manualTimerSecRef.current = 0
+        setManualTimerRunning(false)
+        setManualTimerStartedAt(null)
+      }
+      lastMatchId.current = p.matchId
       if (p.matchState === 'ongoing') {
         setMyCiv(p.myCiv)
         setOppCiv(p.oppCiv)
@@ -223,13 +288,42 @@ export function OverlayApp() {
 
   const inGame = matchState === 'ongoing'
 
+  useEffect(() => {
+    if (!manualTimerRunning || manualTimerStartedAt == null) return
+    const timer = window.setInterval(() => {
+      const next = Math.max(0, (Date.now() - manualTimerStartedAt) / 1000)
+      manualTimerSecRef.current = next
+      setManualTimerSec(next)
+    }, 250)
+    return () => window.clearInterval(timer)
+  }, [manualTimerRunning, manualTimerStartedAt])
+
   // Civilization theme: while a match is live re-accent to your civ's colour;
   // otherwise the user's accent (or default gold).
   useEffect(() => {
     const civHex = civTheme && inGame && myCiv ? (CIV_FLAGS[myCiv]?.color ?? null) : null
     applyAccent(civHex ?? accentColor)
   }, [civTheme, inGame, myCiv, accentColor])
-  const renderMatchup = matchup ?? (!inGame && placementMode ? PLACEHOLDER_MATCHUP : null)
+  const localizedPlaceholderMatchup = useMemo<LiveMatchup>(
+    () => ({
+      ...PLACEHOLDER_MATCHUP,
+      teams: PLACEHOLDER_MATCHUP.teams.map((team) =>
+        team.map((player) => ({
+          ...player,
+          name:
+            player.name === 'You'
+              ? tt('You')
+              : player.name === 'Ally'
+                ? tt('Ally')
+                : player.name === 'Enemy 1'
+                  ? tt('Enemy 1')
+                  : tt('Enemy 2'),
+        })),
+      ),
+    }),
+    [tt],
+  )
+  const renderMatchup = matchup ?? (!inGame && placementMode ? localizedPlaceholderMatchup : null)
   const haveMatchup =
     inGame && ((matchup?.teams.length ?? 0) >= 2 || myCiv != null || oppCiv != null)
   const showMatchup = haveMatchup || placementMode
@@ -251,7 +345,104 @@ export function OverlayApp() {
   const showBuildOrder = selectedBuild != null && (inGame || placementMode)
   const showAgeTargets = ageTargetsShown && (inGame || placementMode)
   // Placement mode outside a match previews with a fake clock (like the other placeholders).
-  const renderElapsed = elapsedSec ?? (placementMode && !inGame ? 312 : null)
+  const renderElapsed =
+    timerMode === 'manual'
+      ? manualTimerSec
+      : (elapsedSec ?? (placementMode && !inGame ? 312 : null))
+  const renderElapsedRef = useRef<number | null>(renderElapsed)
+  renderElapsedRef.current = renderElapsed
+
+  // RTS_Overlay and RTS Overlay both support manual step control for casters
+  // and players who want to override imperfect timing. Keep the existing clock
+  // mode as the default, but make the controls global so the overlay remains
+  // click-through over the game.
+  useEffect(() => {
+    const offControl = ipc.onOverlayControl((action) => {
+      const builds = BUNDLED_BUILD_ORDERS as unknown as BuildOrder[]
+      if (action === 'next-counter') {
+        const current = counterCivOverride ?? oppCiv
+        const currentIndex = current ? COUNTERABLE_CIVS.indexOf(current) : -1
+        const next = COUNTERABLE_CIVS[(currentIndex + 1 + COUNTERABLE_CIVS.length) % COUNTERABLE_CIVS.length]
+        if (next) setCounterCivOverride(next)
+        return
+      }
+      if (action === 'switch-timer') {
+        if (timerModeRef.current === 'game') {
+          const next = elapsedSec ?? manualTimerSecRef.current
+          manualTimerSecRef.current = Math.max(0, next)
+          setManualTimerSec(Math.max(0, next))
+          setTimerMode('manual')
+          timerModeRef.current = 'manual'
+        } else {
+          setTimerMode('game')
+          timerModeRef.current = 'game'
+        }
+        setManualTimerRunning(false)
+        setManualTimerStartedAt(null)
+        return
+      }
+      if (action === 'start-timer') {
+        setTimerMode('manual')
+        timerModeRef.current = 'manual'
+        setManualTimerRunning(true)
+        setManualTimerStartedAt(Date.now() - manualTimerSecRef.current * 1000)
+        return
+      }
+      if (action === 'stop-timer') {
+        setManualTimerRunning(false)
+        setManualTimerStartedAt(null)
+        return
+      }
+      if (action === 'reset-timer') {
+        setTimerMode('manual')
+        timerModeRef.current = 'manual'
+        setManualTimerRunning(false)
+        setManualTimerStartedAt(null)
+        manualTimerSecRef.current = 0
+        setManualTimerSec(0)
+        setManualBuildStep(null)
+        return
+      }
+      if (action === 'next-bo' || action === 'prev-bo') {
+        if (builds.length === 0) return
+        const currentIndex = selectedBuild
+          ? builds.findIndex((build) => build.name === selectedBuild.name)
+          : action === 'next-bo'
+            ? -1
+            : 0
+        const delta = action === 'next-bo' ? 1 : -1
+        const nextIndex = (currentIndex + delta + builds.length) % builds.length
+        const nextBuild = builds[nextIndex]
+        if (!nextBuild) return
+        setBuildOrderId(nextBuild.name)
+        setManualBuildStep(null)
+        void ipc.updateSettings({ overlay: { buildOrderId: nextBuild.name } }).catch(() => {})
+        return
+      }
+      if (!selectedBuild) return
+      const automaticIndex =
+        renderElapsedRef.current != null
+          ? stepIndexForElapsed(selectedBuild.build_order, renderElapsedRef.current)
+          : 0
+      if (action === 'reset-step') {
+        setManualBuildStep(null)
+        return
+      }
+      if (action !== 'next-step' && action !== 'prev-step') return
+      setManualBuildStep((current) => {
+        const base = current ?? automaticIndex
+        const delta = action === 'next-step' ? 1 : -1
+        return Math.max(0, Math.min(selectedBuild.build_order.length - 1, base + delta))
+      })
+    })
+    return offControl
+  }, [counterCivOverride, elapsedSec, oppCiv, selectedBuild])
+
+  const buildStepIndex =
+    manualBuildStep ??
+    (renderElapsed != null && selectedBuild
+      ? stepIndexForElapsed(selectedBuild.build_order, renderElapsed)
+      : 0)
   // The overlay renderer loads at app boot while its window is hidden, so it
   // must not scout the current profile just to prime this view. PollManager
   // sends the enriched team matchup when a live game starts; until then the
@@ -261,6 +452,9 @@ export function OverlayApp() {
 
   const troopMyCiv =
     renderMatchup?.teams[0]?.find((p) => p.isMe)?.civ ?? renderMatchup?.teams[0]?.[0]?.civ ?? myCiv
+  const counterPlan = counterPlanForCiv(counterCivOverride ?? oppCiv)
+  const showCounter = counterShown && counterPlan != null && (inGame || placementMode)
+  const showCoach = coachShown && (inGame || placementMode) && troopMyCiv != null
   const enemyCivs = renderMatchup
     ? renderMatchup.teams
         .slice(1)
@@ -309,9 +503,10 @@ export function OverlayApp() {
 
   return (
     <div
-      className="relative h-screen w-screen select-none text-white"
+      className="rtslytics-overlay-root relative h-screen w-screen select-none text-white"
       style={{ '--panel-alpha': panelAlpha } as CSSProperties}
     >
+      {customCss && <style data-rtslytics-user-css="true">{customCss}</style>}
       {showMatchup && (
         <PlacedWidget
           widgetKey="matchup"
@@ -387,17 +582,17 @@ export function OverlayApp() {
             style={{
               background: `linear-gradient(to bottom right, ${panelBg(0.95)}, ${panelBg(0.7)})`,
               textShadow: '0 1px 3px rgba(0,0,0,0.95)',
+              fontSize: buildOrderFontSize,
             }}
           >
             <BuildOrderWidget
               bo={selectedBuild}
-              stepIndex={
-                renderElapsed != null
-                  ? stepIndexForElapsed(selectedBuild.build_order, renderElapsed)
-                  : 0
-              }
+              stepIndex={buildStepIndex}
               elapsedSec={renderElapsed}
-              auto={renderElapsed != null}
+              auto={timerMode === 'game' && manualBuildStep == null && renderElapsed != null}
+              fontSize={buildOrderFontSize}
+              iconSize={buildOrderImageSize}
+              viewMode={buildOrderViewMode}
               opponentCivs={enemyCivs}
             />
           </div>
@@ -429,10 +624,52 @@ export function OverlayApp() {
         </PlacedWidget>
       )}
 
+      {showCounter && counterPlan && (
+        <PlacedWidget
+          widgetKey="counter"
+          position={widgetPositions.counter}
+          placementMode={placementMode}
+          zIndex={44}
+          scale={scale}
+          onPositionChange={saveWidgetPosition}
+        >
+          <div
+            className="pointer-events-none w-64 select-none rounded-lg text-white shadow-xl ring-1 ring-white/10"
+            style={{
+              background: `linear-gradient(to bottom right, ${panelBg(0.95)}, ${panelBg(0.7)})`,
+              textShadow: '0 1px 3px rgba(0,0,0,0.95)',
+            }}
+          >
+            <CounterWidget
+              plan={counterPlan}
+              manual={counterCivOverride != null || !inGame || oppCiv == null}
+              myCivName={troopMyCiv ? civDisplayName(troopMyCiv) : null}
+            />
+          </div>
+        </PlacedWidget>
+      )}
+
+      {showCoach && (
+        <PlacedWidget
+          widgetKey="coach"
+          position={widgetPositions.coach}
+          placementMode={placementMode}
+          zIndex={43}
+          scale={scale}
+          onPositionChange={saveWidgetPosition}
+        >
+          <CoachWidget
+            elapsedSec={renderElapsed}
+            civ={troopMyCiv}
+            placement={placementMode && !inGame}
+          />
+        </PlacedWidget>
+      )}
+
       {placementMode && (
         <div className="pointer-events-none fixed inset-x-0 bottom-5 z-[90] flex justify-center">
           <span className="rounded-full bg-[#0b0e14]/95 px-4 py-2 text-xs font-medium text-white/85 shadow-2xl ring-1 ring-primary/60">
-            Drag any outlined widget to place it · use the same shortcut when done
+            {tt('Drag any outlined widget to place it · use the same shortcut when done')}
           </span>
         </div>
       )}
@@ -444,10 +681,10 @@ export function OverlayApp() {
             RTSLytics
             <span className="text-white/40">
               {inGame
-                ? 'finding matchup...'
+                ? tt('finding matchup...')
                 : matchState === 'ended'
-                  ? 'analyzing your game...'
-                  : 'waiting for a game'}
+                  ? tt('analyzing your game...')
+                  : tt('waiting for a game')}
             </span>
           </span>
         </div>
@@ -486,6 +723,7 @@ function PlacedWidget({
   children: ReactNode
   onPositionChange: (key: OverlayWidgetKey, position: OverlayWidgetPosition) => void
 }) {
+  const { tt } = useI18n()
   const [draft, setDraft] = useState<OverlayWidgetPosition | null>(null)
   const [drag, setDrag] = useState<{
     dx: number
@@ -527,17 +765,18 @@ function PlacedWidget({
 
   return (
     <div
-      className={placementMode ? 'pointer-events-auto cursor-move' : 'pointer-events-none'}
+      className={`overlay-widget overlay-widget-${widgetKey} ${placementMode ? 'pointer-events-auto cursor-move' : 'pointer-events-none'}`}
+      data-widget-key={widgetKey}
       style={{ ...positionStyle(active, scale), zIndex }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
-      title={placementMode ? 'Move overlay widget' : undefined}
+      title={placementMode ? tt('Move overlay widget') : undefined}
     >
       {placementMode && (
         <span className="pointer-events-none absolute -left-2 -top-3 z-[70] flex h-6 items-center gap-1 rounded-full bg-primary px-2 text-[10px] font-semibold text-primary-foreground shadow-lg ring-1 ring-black/50">
           <Move className="h-3 w-3" />
-          {WIDGET_LABELS[widgetKey]}
+          {tt(WIDGET_LABELS[widgetKey])}
         </span>
       )}
       <div className={placementMode ? 'rounded-md ring-1 ring-primary/70' : undefined}>
@@ -644,5 +883,7 @@ function clampPositions(p: OverlayWidgetPositions): OverlayWidgetPositions {
     buildOrder: clampPosition(p.buildOrder),
     ageTargets: clampPosition(p.ageTargets),
     session: clampPosition(p.session),
+    counter: clampPosition(p.counter),
+    coach: clampPosition(p.coach),
   }
 }

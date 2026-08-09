@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "name": "Malians Basic BO - ChillyEmpire",
+  "civilization": "Malians",
+  "author": "Skill",
+  "source": "https://aoe4guides.com/builds/UnF0ykGVfJELFIFZzOH7",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue up @unit_worker/villager-malians.webp@, @resource/rally.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5x @unit_worker/villager-malians.webp@to @resource/gaiatreeprototypetree.png@, then shift-click to @resource/sheep.png@",
+        "1x @unit_worker/villager-malians.png@to build @building_malians/pit-mine-1.png@ and 6x @building_economy/house.png@around it"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager-malians.webp@that built @building_economy/house.png@, goes to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Aim for 10 @unit_worker/villager-malians.webp@on @resource/sheep.png@, then rally to another @resource/gaiatreeprototypetree.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 10,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @unit_worker/villager-malians.webp@from @resource/sheep.png@ build the @landmark_malians/mansa-quarry-2.png@ to age up."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All @unit_worker/villager-malians.webp@but 4 from @resource/sheep.png@, go to @building_economy/lumber-camp.png@@resource/resource_wood.png@ (or @resource/gaiatreeprototypetree.png@ if not enough wood, then @building_economy/lumber-camp.png@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 2 @building_economy/mill.webp@ (1 next to TC, one next to berries) and 6 @building_malians/cattle-ranch-2.png@ around a blank 4x4 area.",
+        "Constantly produce @resource/cattle.png@, until you fill all the @building_malians/cattle-ranch-2.png@(18 in total).",
+        "@resource/rally.png@ to @building_economy/mining-camp.png@@resource/resource_gold.png@ if required."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 10-12 @unit_worker/villager-malians.webp@ to age up with @landmark_malians/grand-fulani-corral-2.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Mass produce @unit_malians/sofa-2.webp@ and @unit_infantry/archer-2.png@. Build a @building_religious/mosque.png@, and start getting  @resource/relics.png@",
+        "You should also build another @building_malians/pit-mine-1.png@at this point."
+      ]
+    }
+  ],
+  "description": "Simple malian build order made by ChillyEmpire. Modified for season 9 changes.",
+  "video": "https://www.youtube.com/embed/nZ5hAswa4vM",
+  "season": 9,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "name": "Japanese Real FC - Copy for me to understand series",
+  "civilization": "Japanese",
+  "author": "murtuk",
+  "source": "https://aoe4guides.com/builds/5b5bZMerON443zmrx9nz",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "All to @resource/sheep.webp@but 1@abilities/repair.webp@@building_japanese/farmhouse-1.webp@on@resource/berrybush.webp@Research@technology_japanese/towara-1.webp@ASAP"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 more to @resource/sheep.webp@then@resource/rally.webp@@resource/resource_gold.webp@ until 4 with building @building_japanese/forge-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Send all @resource/sheep.webp@@unit_worker/villager-japanese.webp@ to @resource/berrybush.webp@ after @technology_japanese/towara-1.webp@finishes to walk faster"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now @resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Start @age/age_2.webp@@landmark_japanese/kura-storehouse-1.webp@with 4 from @resource/resource_food.webp@ and back to @resource/resource_food.webp@",
+        "@resource/rally.webp@@resource/resource_wood.webp@ until 3, then @resource/rally.webp@@resource/sheep.webp@ again"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 19,
+      "resources": {
+        "food": 12,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_japanese/kura-storehouse-1.webp@finishes at 4:25, rally @resource/sheep.webp@",
+        "@unit_worker/villager-japanese.webp@ to every new @building_economy/farm.webp@ (every 50 seconds)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 13,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After 1st@resource/gaiatreeprototypetree.webp@ finish, 1 go back to @resource/sheep.webp@, others go to wood line near@landmark_japanese/kura-storehouse-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 21,
+      "resources": {
+        "food": 14,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Consider @building_defensive/outpost.webp@ on @resource/resource_gold.webp@ (maybe with @technology_defensive/arrow-slits.webp@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 25,
+      "resources": {
+        "food": 11,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Start @age/age_3.webp@@landmark_japanese/floating-gate-2.webp@with 8 from @resource/resource_food.webp@, queue back to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:50",
+      "villager_count": 26,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_military/stable.webp@, send 4@resource/resource_food.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:20",
+      "villager_count": 28,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Make @technology_japanese/daimyo-manor-1.webp@ ASAP (When@resource/resource_stone.webp@=175)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "7:45",
+      "villager_count": 29,
+      "resources": {
+        "food": 11,
+        "wood": 6,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_japanese/floating-gate-2.webp@finishes at 7:45, 1st YORISHIRO on @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:40",
+      "villager_count": 38,
+      "resources": {
+        "food": 20,
+        "wood": 6,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make @unit_japanese/mounted-samurai-3.webp@ and @unit_japanese/uma-bannerman-2.webp@",
+        "@unit_japanese/shinto-priest-3.webp@go@resource/relics.webp@ with @unit_japanese/mounted-samurai-3.webp@, while @abilities/repair.webp@@building_japanese/shinto-shrine-3.webp@",
+        "Research@technology_japanese/tatara-1.webp@,@technology_military/iron-undermesh.webp@,@technology_japanese/takezaiku-2.webp@,@technology_economy/double-broadaxe.webp@,@technology_military/steeled-arrow.webp@ and so on",
+        "For constant Yorishiroed @unit_japanese/mounted-samurai-3.webp@+Vil production needs 20@resource/resource_food.webp@+10@resource/resource_gold.webp@",
+        "After that, make 2x@building_military/archery-range.webp@, 10x@unit_japanese/yumi-ashigaru-2.webp@(at 10:45) and@building_economy/farm.webp@ and adjust Macro",
+        "Also research Unit upgrades",
+        "Alternatively make @unit_japanese/onna-musha-3.webp@ against Knight civs"
+      ]
+    }
+  ],
+  "description": "Build from Swaggy Professor",
+  "video": "https://www.youtube.com/embed/CArcjDjNGII",
+  "season": 11,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

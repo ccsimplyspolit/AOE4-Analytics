@@ -1,0 +1,273 @@
+{
+  "schemaVersion": 1,
+  "name": "Malian Cow Boom / fast Castle against aggro Civs",
+  "civilization": "Malians",
+  "author": "Nobu",
+  "source": "https://aoe4guides.com/builds/Are9y6DIqsvlLlx9rQmM",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@https://age4builder.com/img/villagerMA.webp@ to build @building_malians/pit-mine-1.png@ + 6@https://age4builder.com/img/house.png@ / 5 @https://age4builder.com/img/villagerMA.png@   to one straggler tree"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 6,
+      "resources": {
+        "food": 1,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@https://age4builder.com/img/rally.webp@ new @https://age4builder.com/img/villagerMA.png@ to @https://age4builder.com/img/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:05",
+      "villager_count": 8,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 150@https://age4builder.com/img/resourcewoodicon.webp@ take all 5@https://age4builder.com/img/villagerMA.png@ from straggler tree to @https://age4builder.com/img/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4@https://age4builder.com/img/villagerMA.webp@build @landmark_malians/mansa-quarry-2.png@ @https://age4builder.com/img/age2dark.png@",
+        "6 @unit_worker/villager-malians.png@ go to @resource/resource_wood.png@ (straggler)",
+        "4 stay on @resource/resource_food.png@@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 1,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "1@unit_worker/villager-malians.webp@ starts building a @building_military/barracks.png@ for @unit_malians/donso-1.png@ against cav",
+        "SCOUT!",
+        "NOTE: If the opponent makes early MAA just build some @unit_malians/musofadi-warrior-2.png@ to kill em",
+        "NOTE: If the opponent is passive suddenly, attack with @unit_malians/javelin-thrower-2.png@@unit_malians/warrior-scout-2.png@ and deny his @resource/resource_gold.png@@resource/resource_food.png@@resource/resource_wood.png@",
+        "@resource/rally.png@ another @unit_worker/villager-malians.png@ to @resource/resource_gold.png@ to build a @building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:25",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Meanwhile build a @building_economy/lumber-camp.webp@ on your closest @resource/resource_wood.png@ with the @unit_worker/villager-malians.png@ that are on stragglers",
+        "@resource/rally.png@ to last straggler @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "1 @unit_worker/villager-malians.webp@ from @resource/resource_food.png@ builds a @building_economy/mill.png@ next to the @building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:18",
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 1 @landmark_malians/mansa-quarry-2.webp@@unit_worker/villager-malians.png@ to @resource/resource_gold.png@",
+        "Send 3 @landmark_malians/mansa-quarry-2.png@@unit_worker/villager-malians.png@ to @resource/resource_food.png@@resource/sheep.png@",
+        "Keep @resource/rally.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:32",
+      "villager_count": 19,
+      "resources": {
+        "food": 7,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "1@unit_worker/villager-malians.webp@ builds @building_military/stable.png@ to produce @unit_malians/warrior-scout-2.png@ for harras",
+        "Get @technology_economy/double-broadaxe.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 7,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "if @resource/sheep.webp@ runs out send @unit_worker/villager-malians.png@ to @resource/resource_gold.png@ if they idle",
+        "Get upgrade for @unit_malians/warrior-scout-2.png@, @technology_economy/wheelbarrow.png@ and @technology_economy/specialized-pick.png@",
+        "Produce another @unit_malians/warrior-scout-2.png@ and HARRASS!"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:27",
+      "villager_count": 22,
+      "resources": {
+        "food": 4,
+        "wood": 9,
+        "gold": 7,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "1@unit_worker/villager-malians.webp@ builds another @building_economy/mill.png@ on the other side of the @building_economy/town-center.png@",
+        "1@unit_worker/villager-malians.png@ start building @building_malians/cattle-ranch-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start building @resource/cattle.webp@ and keep up building @building_malians/cattle-ranch-2.png@ until 7"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 5,
+        "wood": 10,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build another @building_malians/pit-mine-1.webp@ on the big @resource/resource_gold.png@ if the opponent is passive"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 35,
+      "resources": {
+        "food": 0,
+        "wood": 12,
+        "gold": 11,
+        "stone": 0,
+        "builder": 12
+      },
+      "notes": [
+        "11 @resource/resource_food.webp@@unit_worker/villager-malians.png@ start @landmark_malians/grand-fulani-corral-2.png@@age/age_3.png@",
+        "1 @resource/resource_food.png@@unit_worker/villager-malians.png@ builds 2@building_military/stable.png@ start producing @unit_malians/sofa-2.png@",
+        "Second @building_military/stable.png@ produces another @unit_malians/sofa-2.png@",
+        "1@resource/resource_wood.png@@unit_worker/villager-malians.png@ builds @building_technology/blacksmith.png@ for @technology_malians/imported-armor-3.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 35,
+      "resources": {
+        "food": 0,
+        "wood": 23,
+        "gold": 11,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Third @building_military/stable.webp@ gets upgrade for @unit_malians/sofa-2.png@",
+        "1 @unit_worker/villager-malians.png@ build @building_religious/mosque.png@ to get @unit_religious/monk-3.png@ and @resource/relics.png@",
+        "Get @technology_military/iron-undermesh.png@@technology_military/wedge-rivets.png@@technology_economy/lumber-preservation.png@",
+        "Keep producing @unit_malians/sofa-2.png@ and a few more @unit_malians/warrior-scout-2.png@ ATTACK and control the game",
+        "Add @building_malians/pit-mine-1.png@ and @building_economy/house.png@ to another @resource/resource_gold.png@"
+      ]
+    }
+  ],
+  "description": "Cow boom but with infantry defence against aggro Civs like JD, French or English",
+  "video": "https://www.youtube.com/embed/o7DSBtUMj30",
+  "season": 6,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

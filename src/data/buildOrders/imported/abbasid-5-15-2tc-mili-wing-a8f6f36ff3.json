@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "name": "Abbasid 5:15 2tc Mili wing",
+  "civilization": "Abbasid Dynasty",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/g0fxuMehvzguhSrxPIMA",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager-abbasid.webp@ to @resource/berrybush.png@",
+        "2@unit_worker/villager-abbasid.png@ build the @building_economy/mill.png@ on @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "+1 @unit_worker/villager-abbasid.webp@ to @building_economy/house.png@ then to @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 4 @unit_worker/villager-abbasid.png@ to@resource/resource_gold.png@ . 1st @unit_worker/villager-abbasid.png@ builds@building_economy/mining-camp.png@. 2nd @unit_worker/villager-abbasid.png@ builds @landmark_abbasid/house-of-wisdom.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:02",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "+1 @unit_worker/villager-abbasid.webp@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:12",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Click up! @age/age_2.webp@ (@landmark_abbasid/military-wing.png@ )"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Immediately move 4 @resource/berrybush.webp@@unit_worker/villager-abbasid.png@ to @resource/gaiatreeprototypetree.png@ and @resource/rally.png@ new @unit_worker/villager-abbasid.png@ to @resource/resource_wood.png@ until 2nd @building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:23",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "+1 @unit_worker/villager-abbasid.webp@ to @resource/gaiatreeprototypetree.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:41",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When gold mine is 3825/4000 (enough @resource/resource_gold.webp@for @technology_abbasid/fresh-foodstuffs.png@) move the 4@resource/resource_gold.png@@unit_worker/villager-abbasid.png@ to build @building_economy/mining-camp.png@ at @resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/house.webp@ + @building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:57",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "Send @landmark_abbasid/military-wing.webp@: 2x@unit_infantry/spearman-1.png@2x@unit_infantry/archer-2.png@ towards enemy base to harass, but if enemy is rushing you, then keep them at your 2nd @building_economy/town-center.png@ to defend"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:06 + 4:11",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/house.webp@ + @building_economy/house.png@ = @age/goldenagetier1.png@ (4:22)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~5:15~",
+      "villager_count": 22,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 14
+      },
+      "notes": [
+        "Research @technology_abbasid/fresh-foodstuffs.webp@",
+        "10-14 ish vills build @building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 23,
+      "resources": {
+        "food": 11,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@ TC is up and now you macro towards units. Adapt."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "This build is not gonna work against @civilization_flag/eng.webp@ longbow rush",
+        "Macro 50f/50w for longer feudals and get upgrades too with 2-3 vills on gold if possible.",
+        "Avoid making farms until castle age Economic Wing @technology_abbasid/fertile-crescent-2.png@.",
+        "Castle age also unlocks @technology_abbasid/composite-bows.png@ in the @landmark_abbasid/military-wing.png@ which is incredibly strong."
+      ]
+    }
+  ],
+  "description": "Rush + boom + timing? This build does it all\n\nLinked videoguide",
+  "video": "https://www.youtube.com/embed/I1Y5WylRooU",
+  "season": 6,
+  "map": "Open",
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

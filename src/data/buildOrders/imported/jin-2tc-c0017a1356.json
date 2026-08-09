@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "name": "Jin 2TC",
+  "civilization": "Jin Dynasty",
+  "author": "Gult",
+  "source": "https://aoe4guides.com/builds/RNob0Kn57XjGlYLmWsUr",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 4,
+      "resources": {
+        "food": 2,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue 2 @unit_jin/mounted-villager.webp@ to start and Rally to @resource/sheep.webp@.",
+        "2 @unit_jin/mounted-villager.webp@ to @resource/sheep.webp@",
+        "2 @unit_jin/mounted-villager.webp@ to @resource/resource_gold.webp@",
+        "Use @unit_cavalry/scout.webp@to find @resource/boar.webp@/ 2nd @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45-3",
+      "villager_count": 9,
+      "resources": {
+        "food": 2,
+        "wood": 2,
+        "gold": 1,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "Around this time you should be close to Age Up. DON'T FORGET HOUSES!!",
+        "Keep making @unit_jin/mounted-villager.webp@and Rally to Straggler Trees",
+        "Take 2 @unit_jin/mounted-villager.webp@off @resource/sheep.webp@and put them on Straggler Trees",
+        "Take 1 @unit_jin/mounted-villager.webp@off @resource/resource_gold.webp@and move to Stone",
+        "Take 2 @unit_jin/mounted-villager.webp@off @resource/sheep.webp@and move to Stone",
+        "Take 1 @unit_jin/mounted-villager.webp@off @resource/sheep.webp@and @abilities/repair.webp@the @landmark_jin/great-pasture.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 12,
+      "resources": {
+        "food": 2,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Mine @resource/resource_stone.webp@to 300 for 2nd @building_economy/town-center.webp@then remove all Vills",
+        "Send 4 @unit_jin/mounted-villager.webp@to start building 2nd @building_economy/town-center.webp@",
+        "Build @building_economy/lumber-camp.webp@with 3 @unit_jin/mounted-villager.webp@and stick to these until you have enough for @building_economy/mill.webp@/@building_economy/house.webp@",
+        "Switch @resource/rally.webp@to @resource/resource_food.webp@ and move 2 or so @unit_jin/mounted-villager.webp@to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:45-6",
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Send the 4 @unit_jin/mounted-villager.webp@to @resource/resource_food.webp@when they finish building",
+        "@resource/rally.webp@2nd @building_economy/town-center.webp@to @resource/resource_gold.webp@",
+        "1 @unit_jin/mounted-villager.webp@to @abilities/repair.webp@@building_economy/mill.webp@/@building_economy/house.webp@",
+        "Research @technology_jin/mohe-ancestry.webp@at @building_economy/mill.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 8,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Can have very little or 0 Vills on @resource/resource_wood.webp@at this point until Age Up",
+        "1 @abilities/repair.webp@@building_jin/grassland.webp@near @landmark_jin/great-pasture.webp@",
+        "Can make @unit_jin/iron-pagoda.webp@or @unit_cavalry/horseman-1.webp@ if you need early army"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:15",
+      "villager_count": 24,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 10,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "@resource/rally.webp@1st @building_economy/town-center.webp@to @resource/resource_wood.webp@",
+        "7 Vills to @abilities/repair.webp@@landmark_jin/dragon-pavilion.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:20",
+      "villager_count": 26,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research Upgrade to @unit_jin/iron-pagoda.webp@and @technology_economy/double-broadaxe.webp@/// DON'T FORGET HOUSES",
+        "Research @technology_economy/specialized-pick.webp@@technology_jin/draft-horses.webp@@technology_economy/forestry.webp@@technology_economy/wheelbarrow.webp@",
+        "Send @unit_jin/emissary.webp@to Trade Post",
+        "@abilities/repair.webp@@building_religious/monastery.webp@and start grabbing @resource/relics.webp@",
+        "Look to @abilities/repair.webp@@building_jin/machine-workshop.webp@and @building_military/barracks.webp@depending on what you want",
+        "@unit_chinese/nest-of-bees.webp@are good don't forget",
+        "@abilities/repair.webp@more @building_jin/grassland.webp@for free units",
+        "Can go heavier on @resource/resource_food.webp@/@resource/resource_gold.webp@for the later game because you can look for a @unit_infantry/crossbowman-3.webp@/@unit_jin/iron-pagoda.webp@comp"
+      ]
+    }
+  ],
+  "description": "2 TC Jin Build",
+  "video": "https://www.youtube.com/embed/AEGIGZXbSuA",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

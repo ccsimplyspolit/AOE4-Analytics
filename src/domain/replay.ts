@@ -70,6 +70,8 @@ const REC_CIV_TO_SLUG: Record<string, string> = {
   japanese_ha_sen: 'sengoku_daimyo',
   sultanate_ha_tug: 'tughlaq_dynasty',
   french_ha_01: 'jeanne_darc',
+  byzantine_ha_mac: 'macedonian_dynasty',
+  byz_ha_mac: 'macedonian_dynasty',
 }
 
 function prettify(token: string): string {

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "name": "BO Golden Horder",
+  "civilization": "Golden Horde",
+  "author": "Azogs_",
+  "source": "https://aoe4guides.com/builds/eEUBGVInTdEps3EFFY9q",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@unit_worker/villager-mongols.webp@➤@resource/resource_food.webp@",
+        "1@unit_worker/villager-mongols.webp@➤@building_mongols/ovoo.webp@➤@building_mongols/ger.webp@@resource/resource_gold.webp@",
+        "+2@unit_worker/villager-mongols.webp@+@resource/rally.webp@➤@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@➤@landmark_golden_horde/golden_tent.webp@",
+        "+2@unit_worker/villager-mongols.webp@➤@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:45",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@➤@technology_golden_horde/golden_tent_khan_age2.webp@",
+        "5@unit_worker/villager-mongols.webp@@resource/resource_food.webp@➤@resource/resource_wood.webp@",
+        "1@unit_worker/villager-mongols.webp@@resource/resource_food.webp@➤@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "150@resource/resource_wood.webp@➤@building_military/stable.webp@ avec 3@unit_worker/villager-mongols.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_golden_horde/khan.webp@+@unit_golden_horde/torguud.webp@+@unit_mongols/keshik-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2eme @building_mongols/ovoo.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

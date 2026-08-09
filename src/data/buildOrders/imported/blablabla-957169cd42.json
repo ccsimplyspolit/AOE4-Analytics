@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "name": "BLABLABLA",
+  "civilization": "Knights Templar",
+  "author": "Bastos",
+  "source": "https://aoe4guides.com/builds/lLScG2hmlwPkMPsugjvC",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6@unit_worker/villager.webp@@resource/sheep.webp@@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@@resource/resource_gold.webp@@building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3@unit_worker/villager.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 200@resource/resource_gold.webp@move @resource/resource_gold.webp@@unit_worker/villager.webp@to @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 0,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@@resource/resource_stone.webp@@building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 0,
+        "wood": 7,
+        "gold": 0,
+        "stone": 6,
+        "builder": -1
+      },
+      "notes": [
+        "When 400 @resource/resource_food.webp@ move 5@resource/sheep.webp@@unit_worker/villager.webp@to@resource/resource_stone.webp@",
+        "move 2@resource/sheep.webp@@unit_worker/villager.webp@to@resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 0,
+        "stone": 6,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@@resource/gaiatreeprototypetree.webp@",
+        "@civilization_flag/hos.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 0,
+        "stone": 6,
+        "builder": -1
+      },
+      "notes": [
+        "move 3 @resource/gaiatreeprototypetree.webp@@unit_worker/villager.webp@to@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@@resource/sheep.webp@",
+        "move the 6 @resource/resource_stone.webp@@unit_worker/villager.webp@& the 3@resource/resource_wood.webp@@unit_worker/villager.webp@to@abilities/repair.webp@@building_economy/town-center.webp@on @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "move the 9 @abilities/repair.webp@@building_economy/town-center.webp@@unit_worker/villager.webp@to@resource/resource_wood.webp@",
+        "TC 1 @resource/rally.webp@@resource/sheep.webp@ TC 2 @resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:10",
+      "villager_count": 19,
+      "resources": {
+        "food": 7,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@@resource/sheep.webp@",
+        "@technology_templar/safepassage.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 13,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@@resource/resource_wood.webp@",
+        "@building_military/barracks.webp@with 2 @resource/resource_wood.webp@@unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 23,
+      "resources": {
+        "food": 9,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@@resource/sheep.webp@",
+        "1@unit_worker/villager.webp@@resource/resource_wood.webp@",
+        "@building_military/archery-range.webp@with 1 @resource/resource_wood.webp@@unit_worker/villager.webp@",
+        "TC 2 @resource/rally.webp@@resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:10",
+      "villager_count": 25,
+      "resources": {
+        "food": 11,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@@resource/resource_food.webp@",
+        "@building_economy/house.webp@@building_military/barracks.webp@with 2 @resource/resource_wood.webp@@unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 27,
+      "resources": {
+        "food": 13,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@@resource/resource_food.webp@",
+        "@building_economy/mill.webp@with 1@resource/sheep.webp@@unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:50",
+      "villager_count": 29,
+      "resources": {
+        "food": 15,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@@resource/resource_food.webp@",
+        "2@building_economy/farm.webp@with 2@resource/sheep.webp@@unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:10",
+      "villager_count": 31,
+      "resources": {
+        "food": 17,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@@resource/resource_food.webp@",
+        "1@building_economy/farm.webp@with 1@resource/sheep.webp@@unit_worker/villager.webp@",
+        "upgrade @unit_infantry/spearman-1.webp@",
+        "@building_economy/house.webp@with 1 @resource/resource_wood.webp@@unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 35,
+      "resources": {
+        "food": 21,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@unit_worker/villager.webp@@resource/resource_food.webp@",
+        "2@building_economy/farm.webp@with 2@resource/sheep.webp@@unit_worker/villager.webp@"
+      ]
+    }
+  ],
+  "description": "VS FRANCAIS",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

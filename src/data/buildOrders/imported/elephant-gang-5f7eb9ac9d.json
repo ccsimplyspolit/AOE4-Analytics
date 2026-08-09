@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "name": "Elephant gang",
+  "civilization": "Tughlaq Dynasty",
+  "author": "daltor",
+  "source": "https://aoe4guides.com/builds/ELoXZjk91fEff33xIV9r",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@1 vill"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.webp@, 1 @unit_tughluq/worker_elephant.webp@, first gold vill builds house on gold"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:30",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@@landmark_delhi/tower-of-victory.webp@ with 3@unit_worker/villager-delhi.webp@from @resource/resource_food.webp@",
+        "3@unit_worker/villager-delhi.webp@from@resource/resource_gold.webp@to@resource/resource_wood.webp@or @resource/resource_stone.webp@",
+        "@resource/rally.webp@@resource/resource_stone.webp@ till 14 or 320/1200 left on stone"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:45",
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 4,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "keep on stone, farms or houses around it depending on game"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:45",
+      "villager_count": 27,
+      "resources": {
+        "food": 14,
+        "wood": 4,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "save for castle"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:45",
+      "villager_count": 30,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 10,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "@age/age_3.webp@@landmark_delhi/house-of-learning.webp@, Build 2 stables + barracks"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": 36,
+      "resources": {
+        "food": 11,
+        "wood": 12,
+        "gold": 13,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_delhi/war-elephant.webp@production or @unit_tughluq/elephant_raider_age2.webp@ + @building_religious/mosque.webp@for relics"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "13:00",
+      "villager_count": 42,
+      "resources": {
+        "food": 15,
+        "wood": 15,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "playing for relics with elephants and spears, make walls with spears for resources close"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "16:00",
+      "villager_count": 48,
+      "resources": {
+        "food": 17,
+        "wood": 19,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "more production based on game"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

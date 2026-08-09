@@ -258,8 +258,20 @@ describe('buildLiveMatchup', () => {
     expect(m.teams[0]![0]!.isMe).toBe(true)
     expect(m.teams[0]![0]!.name).toBe('Me')
     expect(m.teams[0]![0]!.rank).toBe(28)
+    expect(m.teams[0]![0]!.winRate).toBe(55)
     expect(m.teams[1]![0]!.name).toBe('Opp')
     expect(m.teams[1]![0]!.isMe).toBe(false)
+    expect(m.teams.flat().every((p) => p.favoriteCivs.length === 0)).toBe(true)
+  })
+
+  it('carries most-played civilizations from the profile snapshot', () => {
+    const ranks = new Map<number, RankInfo | { rank: RankInfo; favoriteCivs: string[] }>([
+      [1, { rank: rank(28), favoriteCivs: ['french', 'english'] }],
+      [2, { rank: rank(871), favoriteCivs: ['mongols'] }],
+    ])
+    const m = buildLiveMatchup(twoPlayerGame(), 1, ranks)
+    expect(m.teams[0]![0]!.favoriteCivs).toEqual(['french', 'english'])
+    expect(m.teams[1]![0]!.favoriteCivs).toEqual(['mongols'])
   })
 
   it('falls back rating→mmr, and tolerates a player absent from the rank map', () => {

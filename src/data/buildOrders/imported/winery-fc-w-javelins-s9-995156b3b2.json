@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "name": "Winery FC w/ Javelins (S9)",
+  "civilization": "Byzantines",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/HIcJEcpoCP0WfYTaqsFr",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager.webp@ on @resource/sheep.png@ (@resource/rally.png@@unit_worker/villager.png@ until 7 on @resource/sheep.png@)",
+        "1 @unit_worker/villager.png@ build @building_byzantines/cistern-1.png@ to cover @resource/resource_gold.png@ @resource/berrybush.png@ @resource/sheep.png@(if possible)",
+        "@building_economy/house.png@ as well"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@unit_worker/villager.png@ until 3 on @resource/resource_gold.png@ then @resource/rally.png@ @resource/sheep.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Drop off resources and build @landmark_byzantines/grand-winery-1.webp@ with 5 @resource/sheep.png@@unit_worker/villager.png@ on the @resource/berrybush.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.png@ until 9 @unit_worker/villager.png@ (after rally @resource/resource_food.png@ & @resource/resource_gold.png@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/double-broadaxe.webp@ + @technology_economy/wheelbarrow.png@. Build a 2nd @building_byzantines/cistern-1.png@&@building_byzantines/aqueduct-1.png@ connect. Build a @building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/barracks.webp@ then @building_byzantines/mercenary-house-2.png@ with @technology_byzantines/silk-road-mercenary-contract-1.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 20,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/horticulture.webp@ + @technology_economy/forestry.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:45",
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start making @building_byzantines/olive-grove-1.webp@. Continue making these until 8+ or more depending on how long the feudal age is. (I aim to have 10 farms by min 9)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:20",
+      "villager_count": 26,
+      "resources": {
+        "food": 14,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@ to get @technology_military/iron-undermesh.png@ + @technology_military/steeled-arrow.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:00 ish",
+      "villager_count": 37,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 9,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Age up with @landmark_byzantines/golden-horn-tower-2.webp@ & get 3rd @building_byzantines/cistern-1.png@ when 150 @resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "13:00",
+      "villager_count": 43,
+      "resources": {
+        "food": 21,
+        "wood": 6,
+        "gold": 15,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "Around this time my macro is very food and gold heavy to produce @unit_byzantines/javelin-thrower-2.webp@, @unit_byzantines/varangian-guard-3.png@ & @unit_infantry/crossbowman-3.png@. Your macro might be different to what your game requires, so disconnect from the build order here. You are playing the relic phase in castle, then you decide on 1tc full aggro or 2tc long game. GLHF"
+      ]
+    }
+  ],
+  "description": "An optimized version of the old school classic style of byzantines using javelins and limitanei to raid while you make a farming economy and go castle.",
+  "video": "",
+  "season": 9,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "name": "Songoku teste",
+  "civilization": "Sengoku Daimyo",
+  "author": "leovic6",
+  "source": "https://aoe4guides.com/builds/YccVimadmWrCrLbu7nv0",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "6 @unit_worker/villager-japanese.webp@ -> @building_sengoku/matsuri.webp@4  @unit_worker/villager-japanese.webp@ &gt;&gt; @resource/resource_gold.webp@",
+        "2 @unit_worker/villager-japanese.webp@ &gt;&gt; @resource/resource_wood.webp@@resource/rally.webp@ &gt;&gt;&gt; @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:40",
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Compra 100 @resource/resource_wood.webp@@unit_sengoku/yatai.webp@ >&gt;&gt; @resource/boar.webp@",
+        "1 @unit_worker/villager-japanese.webp@@resource/resource_food.webp@ &gt;&gt;&gt; @building_japanese/farmhouse-1.webp@ &gt;&gt; @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:45",
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/deer.webp@Compra 100 @resource/resource_wood.webp@@unit_sengoku/yatai.webp@>&gt;&gt;  @resource/boar.webp@",
+        "@technology_japanese/towara-1.webp@",
+        "Todos @unit_worker/villager-japanese.webp@@resource/resource_food.webp@&gt;&gt;&gt; @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:30&nbsp;",
+      "villager_count": 16,
+      "resources": {
+        "food": 10,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @unit_worker/villager-japanese.webp@ >&gt;&gt;  @landmark_sengoku/ryokan.webp@ (Frente da Base)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "04:12",
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "1 @unit_worker/villager-japanese.webp@@resource/resource_gold.webp@ >&gt;&gt; @building_defensive/outpost.webp@ &gt;&gt;&gt; @resource/resource_gold.webp@1 @unit_worker/villager-japanese.webp@@resource/berrybush.webp@ &gt;&gt;&gt; @building_japanese/farmhouse-1.webp@ &gt;&gt;&gt; @resource/berrybush.webp@Até 14 @unit_worker/villager-japanese.webp@@resource/resource_food.webp@ &gt;&gt;&gt; @resource/rally.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:15",
+      "villager_count": 23,
+      "resources": {
+        "food": 14,
+        "wood": 4,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:00",
+      "villager_count": 25,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:30",
+      "villager_count": 28,
+      "resources": {
+        "food": 13,
+        "wood": 5,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Setup finalizado"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

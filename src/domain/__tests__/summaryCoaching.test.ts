@@ -61,7 +61,9 @@ describe('summarySignals', () => {
     const behind = summarySignals({
       summary: game(
         player(1000, ME, { resourcesGathered: { food: 3000, wood: 2000, gold: 1500, stone: 200 } }),
-        player(1001, 222, { resourcesGathered: { food: 6000, wood: 5000, gold: 4000, stone: 800 } }),
+        player(1001, 222, {
+          resourcesGathered: { food: 6000, wood: 5000, gold: 4000, stone: 800 },
+        }),
       ),
       myProfileId: ME,
       myCiv: 'english',
@@ -71,7 +73,9 @@ describe('summarySignals', () => {
     const ahead = summarySignals({
       summary: game(
         player(1000, ME, { resourcesGathered: { food: 8000, wood: 6000, gold: 5000, stone: 900 } }),
-        player(1001, 222, { resourcesGathered: { food: 4000, wood: 3000, gold: 2500, stone: 400 } }),
+        player(1001, 222, {
+          resourcesGathered: { food: 4000, wood: 3000, gold: 2500, stone: 400 },
+        }),
       ),
       myProfileId: ME,
       myCiv: 'english',
@@ -106,10 +110,7 @@ describe('summarySignals', () => {
 
   it('compares the age-up against the build target and the enemy', () => {
     const signals = summarySignals({
-      summary: game(
-        player(1000, ME, { age2Sec: 444 }),
-        player(1001, 222, { age2Sec: 330 }),
-      ),
+      summary: game(player(1000, ME, { age2Sec: 444 }), player(1001, 222, { age2Sec: 330 })),
       myProfileId: ME,
       myCiv: 'english',
       feudalTargetSec: 375,
@@ -130,6 +131,102 @@ describe('summarySignals', () => {
     expect(signals.some((s) => s.id === 'sum-vills-behind')).toBe(true)
     expect(signals.some((s) => s.id === 'sum-army-peak')).toBe(true)
     expect(signals.some((s) => s.id === 'sum-relics')).toBe(true)
+  })
+
+  it('flags unspent resources, poor troop trade, and worker losses', () => {
+    const me = player(
+      1000,
+      ME,
+      {
+        resourcesGathered: { food: 6_000, wood: 2_000, gold: 1_000, stone: 0 },
+        resourcesSpent: { food: 3_000, wood: 800, gold: 300, stone: 0 },
+        unitsKilled: 8,
+        unitsLost: 20,
+      },
+      [30, 55, 150],
+    )
+    me.villagersLost = 8
+    me.resources = [
+      {
+        timeSec: 300,
+        bank: { food: 400, wood: 100, gold: 100, stone: 0 },
+        gathered: { food: 2_000, wood: 800, gold: 300, stone: 0 },
+        spent: { food: 1_600, wood: 600, gold: 200, stone: 0 },
+        perMinute: null,
+      },
+      {
+        timeSec: 1_000,
+        bank: { food: 1_500, wood: 800, gold: 300, stone: 0 },
+        gathered: { food: 6_000, wood: 2_000, gold: 1_000, stone: 0 },
+        spent: { food: 3_000, wood: 800, gold: 300, stone: 0 },
+        perMinute: null,
+      },
+    ]
+    me.buildOrder.push({
+      timeSec: 500,
+      playerId: 1000,
+      category: 'unit',
+      blueprint: 'unit_longbowman_1_eng',
+      name: 'Longbowman',
+    })
+    me.buildOrder.push(
+      {
+        timeSec: 650,
+        playerId: 1000,
+        category: 'unit',
+        blueprint: 'unit_longbowman_1_eng',
+        name: 'Longbowman',
+      },
+      {
+        timeSec: 760,
+        playerId: 1000,
+        category: 'unit',
+        blueprint: 'unit_longbowman_1_eng',
+        name: 'Longbowman',
+      },
+    )
+    const enemy = player(1001, 222, { unitsKilled: 20, unitsLost: 10 }, [30, 55, 80, 105])
+    enemy.villagersLost = 0
+
+    const signals = summarySignals({
+      summary: game(me, enemy, 1_200),
+      myProfileId: ME,
+      myCiv: 'english',
+      perPlayer: [
+        {
+          profileId: ME,
+          teamId: 1,
+          civ: 'english',
+          result: 'loss',
+          unitsProduced: 20,
+          kills: 8,
+          deaths: 20,
+          kd: 0.4,
+          buildingsProduced: 4,
+          techsResearched: 5,
+          apm: 80,
+          gameTimeSec: 1_200,
+        },
+        {
+          profileId: 222,
+          teamId: 2,
+          civ: 'english',
+          result: 'win',
+          unitsProduced: 30,
+          kills: 20,
+          deaths: 10,
+          kd: 2,
+          buildingsProduced: 5,
+          techsResearched: 6,
+          apm: 90,
+          gameTimeSec: 1_200,
+        },
+      ],
+    })
+    expect(signals.some((s) => s.id === 'sum-resource-float')).toBe(true)
+    expect(signals.some((s) => s.id === 'sum-combat-trade')).toBe(true)
+    expect(signals.some((s) => s.id === 'sum-villagers-lost')).toBe(true)
+    expect(signals.some((s) => s.id === 'sum-unit-cadence')).toBe(true)
   })
 
   it('returns nothing when the user is not identifiable', () => {

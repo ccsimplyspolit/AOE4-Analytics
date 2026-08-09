@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "name": "English FC",
+  "civilization": "English",
+  "author": "SerJustin",
+  "source": "https://aoe4guides.com/builds/yze88FLyOyj0AbPQoOvc",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 2,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @unit_worker/villager.webp@",
+        "2 @unit_worker/villager.webp@ sheep, 2 @unit_worker/villager.webp@gold, 2@unit_worker/villager.webp@wood (make @building_economy/lumber-camp.webp@)",
+        "Make @building_economy/house.webp@ with 1 sheep @unit_worker/villager.webp@",
+        "@resource/rally.webp@-->@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 2,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Make @building_economy/mill.webp@ with 7th @unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:10",
+      "villager_count": 9,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 12th @unit_worker/villager.webp@ to @resource/resource_gold.webp@",
+        "@resource/rally.webp@ back to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 10,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:25",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_english/abbey-of-kings.webp@ with 4 @resource/sheep.webp@@unit_worker/villager.webp@ (Shift click back to @resource/sheep.webp@)",
+        "Start making @building_economy/farm.webp@ with @resource/sheep.webp@@unit_worker/villager.webp@",
+        "Keep @resource/rally.webp@-->@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 16,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@-->@resource/resource_gold.webp@ until 8"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 26,
+      "resources": {
+        "food": 16,
+        "wood": 2,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@-->@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:20",
+      "villager_count": 28,
+      "resources": {
+        "food": 16,
+        "wood": 4,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Slowly make  @building_economy/farm.webp@ with @resource/resource_wood.webp@@unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:20",
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 4,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_english/kings-palace.webp@ with 4 @resource/sheep.webp@@unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:20",
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 4,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep @resource/rally.webp@-->@resource/resource_wood.webp@",
+        "Start @building_defensive/palisade-wall.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 34,
+      "resources": {
+        "food": 12,
+        "wood": 14,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "BUILD @building_religious/monastery.webp@ FOR RELIC",
+        "Make @building_military/barracks.webp@,@building_military/archery-range.webp@, and/or @building_military/stable.webp@",
+        "Keep @building_defensive/palisade-wall.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:20",
+      "villager_count": 36,
+      "resources": {
+        "food": 21,
+        "wood": 7,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start @resource/rally.webp@-->@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:20",
+      "villager_count": 42,
+      "resources": {
+        "food": 21,
+        "wood": 7,
+        "gold": 14,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Macro @resource/rally.webp@ between @resource/resource_gold.webp@&@resource/resource_wood.webp@",
+        "Keep making @building_economy/farm.webp@ with @resource/resource_wood.webp@@unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "13:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start planning next @resource/resource_gold.webp@spots",
+        "Mine @resource/resource_stone.webp@ for keeps/towers on @resource/resource_gold.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/yJk8MgEDRUE",
+  "season": 11,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

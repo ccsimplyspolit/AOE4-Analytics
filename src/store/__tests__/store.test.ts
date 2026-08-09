@@ -166,6 +166,14 @@ describe('sanitizePatch', () => {
     expect(sanitizePatch({ accentColor: '#00ffaa; url(x)' })).toEqual({})
   })
 
+  it('bounds the optional overlay CSS without executing or reshaping it', () => {
+    const css = '.overlay-widget-buildOrder { opacity: .9; }'
+    expect(sanitizePatch({ overlay: { customCss: css } }).overlay).toEqual({ customCss: css })
+    const longCss = 'a'.repeat(20_100)
+    expect(sanitizePatch({ overlay: { customCss: longCss } }).overlay?.customCss).toHaveLength(20_000)
+    expect(sanitizePatch({ overlay: { customCss: 42 as never } }).overlay).toEqual({})
+  })
+
   it('coerces booleans and validates enums', () => {
     const out = sanitizePatch({
       civTheme: 1 as never,
@@ -201,6 +209,20 @@ describe('sanitizePatch', () => {
     expect(sanitizePatch({ overlay: { showAgeTargets: 0 as never } }).overlay).toEqual({
       showAgeTargets: false,
     })
+  })
+
+  it('accepts only the two safe build-order display modes', () => {
+    expect(sanitizePatch({ overlay: { buildOrderViewMode: 'text' } }).overlay).toEqual({
+      buildOrderViewMode: 'text',
+    })
+    expect(sanitizePatch({ overlay: { buildOrderViewMode: 'script' as never } }).overlay).toEqual({})
+  })
+
+  it('sanitizes the counter-cycle hotkey', () => {
+    expect(sanitizePatch({ hotkeys: { nextCounter: 'Alt+C' } }).hotkeys).toEqual({
+      nextCounter: 'Alt+C',
+    })
+    expect(sanitizePatch({ hotkeys: { nextCounter: 'C' as never } }).hotkeys).toEqual({})
   })
 
   it('accepts positions for the buildOrder and ageTargets widgets', () => {

@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "name": "6 MANORS - S11",
+  "civilization": "House of Lancaster",
+  "author": "Hkeu",
+  "source": "https://aoe4guides.com/builds/rrkJcrEJ2hwuBuJW1SZ8",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All to sheep, Send next 3 @unit_worker/villager.webp@to @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:04",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally next @unit_worker/villager.webp@ to @resource/sheep.webp@ until age up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:09",
+      "villager_count": 15,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Age up with 3 @resource/resource_gold.webp@@unit_worker/villager.webp@",
+        "Move 3 villagers from food/sheep to @resource/resource_stone.webp@and @resource/resource_wood.webp@. Remember to make @building_economy/mining-camp.webp@@building_economy/lumber-camp.webp@",
+        "Rally to @resource/resource_wood.webp@ UNTIL 9!"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:39",
+      "villager_count": 10,
+      "resources": {
+        "food": 3,
+        "wood": 4,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "It should look like this after completed eco-buildings."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "03:55",
+      "villager_count": 17,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 1,
+        "stone": 3,
+        "builder": 2
+      },
+      "notes": [
+        "With two of the villagers building the Landmark, build the first @building_lancaster/manor.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:03",
+      "villager_count": 18,
+      "resources": {
+        "food": 3,
+        "wood": 9,
+        "gold": 1,
+        "stone": 3,
+        "builder": 2
+      },
+      "notes": [
+        "Rally to @resource/resource_gold.webp@ UNTIL 10. Because we want@technology_lancaster/condensed_land_practices.webp@ to get 6 manors."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:50",
+      "villager_count": 21,
+      "resources": {
+        "food": 0,
+        "wood": 9,
+        "gold": 8,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "Halfway done on the second manor, send all the @resource/resource_food.webp@villagers to @resource/resource_gold.webp@.",
+        "Rally to @resource/resource_food.webp@ when you have 10 on @resource/resource_gold.webp@incl. the one's building the manor(s)."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:52",
+      "villager_count": 23,
+      "resources": {
+        "food": 1,
+        "wood": 9,
+        "gold": 9,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "Get @technology_lancaster/condensed_land_practices.webp@ to build last 3 @building_lancaster/manor.webp@. Build the next 2 @building_lancaster/manor.webp@ when you can."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 26,
+      "resources": {
+        "food": 15,
+        "wood": 0,
+        "gold": 9,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "When enough @resource/resource_wood.webp@to build last manor (200) move the @resource/resource_wood.webp@villagers to @resource/resource_food.webp@.",
+        "When enough @resource/resource_stone.webp@to build the last manor (100) move them to @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:57",
+      "villager_count": 24,
+      "resources": {
+        "food": 14,
+        "wood": 0,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Try to get the timing right for 8x  @unit_lancaster/demilancer.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:08",
+      "villager_count": 32,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 8,
+        "stone": 0,
+        "builder": 12
+      },
+      "notes": [
+        "With 12 villagers from @resource/resource_food.webp@ build @landmark_english/the-white-tower.webp@ protecting gold."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:08",
+      "villager_count": 32,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 8,
+        "stone": 0,
+        "builder": 14
+      },
+      "notes": [
+        "Build 2 @building_military/stable.webp@ with @resource/resource_food.webp@villagers.",
+        "Send 5 @resource/resource_food.webp@villagers to @resource/resource_wood.webp@.",
+        "Continue just rally to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 42,
+      "resources": {
+        "food": 11,
+        "wood": 1,
+        "gold": 20,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Rally to @resource/resource_wood.webp@",
+        "Get upgrades @technology_military/iron-undermesh.webp@@technology_military/steeled-arrow.webp@@technology_economy/specialized-pick.webp@",
+        "Try to contest the relics by building @building_religious/monastery.webp@.",
+        "Mass @unit_lancaster/hobelar_age2.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 57,
+      "resources": {
+        "food": 9,
+        "wood": 9,
+        "gold": 20,
+        "stone": 7,
+        "builder": 12
+      },
+      "notes": [
+        "@technology_lancaster/open_field_system.webp@ + 3 manors",
+        "@technology_economy/double-broadaxe.webp@@technology_economy/wheelbarrow.webp@@technology_military/bloomery.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 11,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

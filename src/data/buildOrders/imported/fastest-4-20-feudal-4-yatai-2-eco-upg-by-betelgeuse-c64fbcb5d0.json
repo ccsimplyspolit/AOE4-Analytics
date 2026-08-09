@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "name": "FASTEST 4:20 Feudal + 4 Yatai + 2 eco upg [by betelgeuse]",
+  "civilization": "Sengoku Daimyo",
+  "author": "betelgeuse",
+  "source": "https://aoe4guides.com/builds/n8HOBGpvHrpbDQZ0c0FL",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:01‑0:03",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue [ 1 ] villager @unit_worker/villager-japanese.webp@ in your TC @building_economy/town-center.webp@",
+        "Send [ 6 ] villagers @unit_worker/villager-japanese.webp@ to kill sheep @resource/sheep.webp@(or direct to gold @resource/resource_gold.webp@, if it is very close to your TC @building_economy/town-center.webp@)",
+        "Move your scout @unit_cavalry/scout.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:03‑0:10",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Send [ 2 ] @unit_worker/villager-japanese.webp@ villagers to @resource/gaiatreeprototypetree.webp@ chop a straggler tree (OR pick a tree next to your future Matsuri if wood is close to gold)",
+        "Send [ 1 ] @unit_worker/villager-japanese.webp@ villager @abilities/repair.webp@ to build the @building_sengoku/matsuri.webp@Matsuri  near gold (and wood, if possible)",
+        "Shift-queue the builder to mine gold  after building.",
+        "Send [ 3 ] @unit_worker/villager-japanese.webp@villagers to mine gold @resource/resource_gold.webp@ near the Matsuri @building_sengoku/matsuri.webp@",
+        "Queue more villagers",
+        "@resource/rally.webp@ Rally your @building_economy/town-center.webp@TC to @resource/sheep.webp@ sheep.",
+        "@resource/rally.webp@ Rally your @building_sengoku/matsuri.webp@Matsuri to the 1st SPOT FOR YATAI (usually @resource/boar.webp@boar or boar+smth else to get maximum income)",
+        "***",
+        "Matsuri placement tips:",
+        "Perfect: On gold and a woodline in a safe position for fast drop-offs",
+        "Good: Between gold and a straggler tree near your TC",
+        "***"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20-0:30",
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "[ 3 ] @unit_worker/villager-japanese.webp@villagers will finish mining gold before the Matsuri is built. Use all [ 3 ] @abilities/repair.webp@ to help finish the building",
+        "--->&gt; Drop [ 30 ] gold @resource/resource_gold.webp@",
+        "---&gt;&gt; Buy @resource/resource_wood.webp@wood in the @building_sengoku/matsuri.webp@ Matsuri and buy the 1st Yatai @unit_sengoku/yatai.webp@",
+        "---&gt;&gt; Keep [ 4 ] villagers on gold @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40-0:50",
+      "villager_count": 8,
+      "resources": {
+        "food": 2,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you have [ 50 ] wood @resource/resource_wood.webp@ --->&gt; move [ 1 ] villager from sheep @resource/sheep.webp@ to berries @resource/berrybush.webp@ and build @abilities/repair.webp@ a House @building_japanese/farmhouse-1.webp@.",
+        "@unit_sengoku/yatai.webp@ 1st Yatai finishes: Make sure it goes to the correct spot",
+        "@resource/rally.webp@@building_sengoku/matsuri.webp@ Rally the Matsuri to the 2nd YATAI SPOT(usually @resource/deer.webp@deer or deer+smth)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00-1:15",
+      "villager_count": 9,
+      "resources": {
+        "food": 3,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager-japanese.webp@@unit_worker/villager-japanese.webp@@unit_worker/villager-japanese.webp@ Keep queuing villagers! Queue villagers #10 and #11 as soon as you have [ 50 ] food."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:15-1:25",
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you have [ 120 ] gold @resource/resource_gold.webp@ and your miners hold [ 10 ] gold --->&gt; force-drop it ---&gt;&gt; buy 2nd Yatai @unit_sengoku/yatai.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:30-1:40",
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally villager #12 @unit_worker/villager-japanese.webp@",
+        "2nd Yatai @unit_sengoku/yatai.webp@ finishes: Make sure it goes to the correct spot.",
+        "@resource/rally.webp@@building_sengoku/matsuri.webp@ Rally the Matsuri to the 3rd YATAI SPOT (usually on base between berry @resource/berrybush.webp@ and @resource/sheep.webp@ sheep)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:40-1:50",
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When your @resource/gaiatreeprototypetree.webp@tree has [ 50 ] wood left (or you have [ 50 ] wood @resource/resource_wood.webp@ after getting 2nd yatai@unit_sengoku/yatai.webp@)",
+        "--->&gt; move [ 1 ] woodchopper to sheep @resource/sheep.webp@ and [ 1 ] woodchopper to gold @resource/resource_gold.webp@.",
+        "At this point, you should have [ 40 ] gold @resource/resource_gold.webp@. Force-drop gold villagers @unit_worker/villager-japanese.webp@@resource/resource_gold.webp@ to get [ 50 ] and research the Tawara upgrade in the @building_japanese/farmhouse-1.webp@ House @technology_japanese/towara-1.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:50-2:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you have [ 6 ] on food @resource/resource_food.webp@ --->&gt; @resource/rally.webp@rally the next villager to gold @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:15-2:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Force-drop @unit_worker/villager-japanese.webp@@resource/resource_gold.webp@gold to get [ 130 ] --->&gt; buy wood ---&gt;&gt;buy the 3rd Yatai @unit_sengoku/yatai.webp@",
+        "[ 6 ] on gold @resource/resource_gold.webp@ --&gt; @resource/rally.webp@ rally on food @resource/resource_food.webp@ until [ 8 ]"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40-2:50",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Create group of [ 7 ] villagers @unit_worker/villager-japanese.webp@ ( 3 from gold @resource/resource_gold.webp@, 4 from food) for age up in advance",
+        "@resource/rally.webp@Rally new @unit_worker/villager-japanese.webp@ villagers on @resource/resource_wood.webp@ wood (unfinished @resource/gaiatreeprototypetree.webp@ tree first)",
+        "3rd @unit_sengoku/yatai.webp@ Yatai finishes: Make sure it goes to the correct spot",
+        "@resource/rally.webp@@building_sengoku/matsuri.webp@ Rally the Matsuri to the 4rd YATAI SPOT @unit_sengoku/yatai.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:25-3:30",
+      "villager_count": 17,
+      "resources": {
+        "food": 0,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "Start building the Ryokan @landmark_sengoku/ryokan.webp@ with your prepared group of [ 7 ] villagers @unit_worker/villager-japanese.webp@ ([ 4 ] from food, [ 3 ] from gold)",
+        "Send all remaining food villagers @resource/resource_food.webp@@unit_worker/villager-japanese.webp@ to wood @resource/gaiatreeprototypetree.webp@ (your Yatai will provide enough food to keep queuing new villagers non-stop meanwhile)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20-4:30",
+      "villager_count": 20,
+      "resources": {
+        "food": 5,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "As soon as the Ryokan @landmark_sengoku/ryokan.webp@ is finished, you should have enough resources to research the 2nd economy upgrade @technology_japanese/takezaiku-2.webp@ in the House @building_japanese/farmhouse-1.webp@and buy the 4th Yatai @unit_sengoku/yatai.webp@ right away"
+      ]
+    }
+  ],
+  "description": "Best conditions: This build works best on maps with safe starting gold (close to your TC) or if you are in a safe team position (pocket).\nWhy? \n- Your Matsuri is your main economy building and will be placed on gold. If it is in a bad spot, enemies will attack it early to cut off your gold and yatai which will ruin your economy.\n\nDifficulty: Hard for beginners. It requires many fast actions in the first minutes (like force-dropping resources) while also controlling your scout etc\nI am going to post an easier version of this build (slower timings, but much simpler), click here: [ Link will be available later, i am lazyassss ]",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

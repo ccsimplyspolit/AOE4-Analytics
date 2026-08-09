@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "name": "Golden Horde Feudal Rush 2026 After Patch",
+  "civilization": "Golden Horde",
+  "author": "Ultrabars",
+  "source": "https://aoe4guides.com/builds/Ona5Y6sOPJRiflXGby3q",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "4 @unit_worker/villager-mongols.webp@ on @resource/sheep.webp@, 1@unit_worker/villager-mongols.webp@ builds @building_mongols/ovoo.webp@ > @building_mongols/ger.webp@@resource/resource_gold.webp@ &gt; @landmark_golden_horde/golden_tent.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@@unit_worker/villager-mongols.webp@ to @resource/sheep.webp@ until 8@resource/resource_food.webp@@unit_worker/villager-mongols.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Next 2 @unit_worker/villager-mongols.webp@ to @resource/resource_gold.webp@, then @resource/rally.webp@@unit_worker/villager-mongols.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Final look untill 400 food, 200 gold."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age-up with @technology_golden_horde/golden_tent_building_carts_age2.webp@ at @landmark_golden_horde/golden_tent.webp@",
+        "Send 5 @resource/sheep.webp@@unit_worker/villager-mongols.webp@ to @resource/gaiatreeprototypetree.webp@",
+        "@resource/rally.webp@@unit_worker/villager-mongols.webp@ to @building_mongols/ger.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @resource/resource_wood.webp@@unit_worker/villager-mongols.webp@ builds 2nd @building_mongols/ovoo.webp@",
+        "Make @building_military/stable.webp@ + @building_military/archery-range.webp@ if against non-knight civs",
+        "or @building_military/stable.webp@ + @building_military/barracks.webp@ against knight civs using the 2 @technology_golden_horde/golden_tent_building_carts_age2.webp@",
+        "Get @unit_golden_horde/khan.webp@ at @landmark_golden_horde/golden_tent.webp@",
+        "Always make @unit_mongols/keshik-2.webp@ and @unit_infantry/archer-2.webp@ (or @unit_mongols/keshik-2.webp@ and @unit_infantry/spearman-1.webp@) and harass enemy resources",
+        "@resource/rally.webp@@unit_worker/villager-mongols.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:15",
+      "villager_count": 22,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When all @resource/sheep.webp@ are done, either make @building_golden_horde/stockyard.webp@ (If enemy is aggressive)",
+        "or send @resource/sheep.webp@@unit_worker/villager-mongols.webp@ to @building_mongols/ger.webp@@resource/deer.webp@ with @building_golden_horde/fortified_outpost.webp@ (outpost if needed)",
+        "Get @technology_economy/double-broadaxe.webp@ -> @technology_economy/wheelbarrow.webp@",
+        "Distribute @unit_worker/villager-mongols.webp@ to resources as needed"
+      ]
+    }
+  ],
+  "description": "Beasty Opening but modified after patch. The only difference is you do not make Torguuds at the beginning to compensate for the 1100 stone upgrade at castle age. Boosts your survivalibility for the cost of a less aggressive feudal push.",
+  "video": "https://www.youtube.com/embed/kjlB9JPerk8",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "name": "Beasty 2TC Feudal Aggression",
+  "civilization": "Rus",
+  "author": "Greed",
+  "source": "https://aoe4guides.com/builds/zcliDrcS2DHhl9aa6lj1",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 4,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@resource/resource_food.webp@, 2@building_rus/hunting-cabin.png@@building_economy/house.png@, @resource/rally.png@@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd/3rd @unit_cavalry/scout.webp@ from @building_rus/hunting-cabin.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_cavalry/scout.webp@ drop off @resource/sheep.png@, @resource/rally.png@@resource/resource_wood.png@ after 10 @resource/resource_food.png@@unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @resource/resource_food.webp@@unit_worker/villager.png@ on @landmark_rus/kremlin.png@, @technology_economy/wheelbarrow.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "150 @resource/resource_wood.webp@, @resource/resource_wood.png@@unit_worker/villager.png@ to @resource/resource_stone.png@, build @building_economy/house.png@@building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "After 8 @resource/resource_stone.webp@@unit_worker/villager.png@, @resource/rally.png@@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:10",
+      "villager_count": 18,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 0,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_rus/kremlin.webp@@unit_worker/villager.png@ build @building_economy/lumber-camp.png@,  then @resource/resource_wood.png@, @technology_economy/double-broadaxe.png@, @technology_economy/survival-techniques.png@ when possible"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:55",
+      "villager_count": 21,
+      "resources": {
+        "food": 5,
+        "wood": 16,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "350 @resource/resource_stone.webp@, @resource/resource_stone.png@@unit_worker/villager.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "400 @resource/resource_wood.webp@, 9 @unit_worker/villager.png@ to @building_economy/town-center.png@, @resource/rally.png@ 1st@building_economy/town-center.png@ to @resource/resource_gold.png@,  @resource/rally.png@ 2nd @building_economy/town-center.png@ on @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:10",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @resource/resource_food.webp@@unit_worker/villager.png@ build @building_military/stable.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:40 ",
+      "villager_count": 14,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @resource/resource_food.webp@@unit_worker/villager.png@ build 2nd @building_military/stable.png@, @unit_cavalry/knight-2.png@ queueing"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 13,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_economy/town-center.webp@@unit_worker/villager.png@ to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:10",
+      "villager_count": 33,
+      "resources": {
+        "food": 16,
+        "wood": 8,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "9 @resource/resource_gold.webp@@unit_worker/villager.png@, @resource/rally.png@@building_economy/town-center.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "FOR ALL-IN:"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make @building_military/archery-range.webp@@building_military/archery-range.png@@building_military/archery-range.png@, @unit_infantry/archer-2.png@@unit_cavalry/knight-2.png@, Kill @resource/boar.png@, @building_technology/blacksmith.png@,@technology_military/steeled-arrow.png@@technology_military/siege-engineering.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "FOR CASTLE:"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep enemy in base, 6 @resource/resource_wood.webp@@unit_worker/villager.png@, Rest on @resource/resource_food.png@@resource/resource_gold.png@, @technology_economy/survival-techniques.png@, @resource/rally.png@@building_economy/town-center.png@@building_economy/town-center.png@ on @resource/resource_food.png@@resource/resource_gold.png@ 6 @unit_worker/villager.png@ on @landmark_rus/high-trade-house.png@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/GrwK-ZbrEUM",
+  "season": 7,
+  "map": "Open",
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

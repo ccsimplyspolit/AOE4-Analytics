@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "name": "Sengoku Overpowered",
+  "civilization": "Sengoku Daimyo",
+  "author": "linutux",
+  "source": "https://aoe4guides.com/builds/KU51mZrTdid5f5lbShIA",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue 4 @unit_worker/villager-japanese.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_sengoku/matsuri.webp@ on @resource/resource_gold.webp@ with @resource/berrybush.webp@ or @resource/resource_wood.webp@ in range"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Set @resource/rally.webp@on @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0'45",
+      "villager_count": 8,
+      "resources": {
+        "food": 2,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Buy @resource/resource_wood.webp@from @building_sengoku/matsuri.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0'47",
+      "villager_count": 8,
+      "resources": {
+        "food": 2,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @unit_sengoku/yatai.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0'49",
+      "villager_count": 8,
+      "resources": {
+        "food": 1,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_japanese/farmhouse-1.webp@ with @resource/resource_food.webp@@unit_worker/villager-japanese.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1'34",
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Buy @resource/resource_wood.webp@ from @building_sengoku/matsuri.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1'34",
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @unit_sengoku/yatai.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2'41",
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Buy @resource/resource_wood.webp@ from @building_sengoku/matsuri.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2'41",
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @unit_sengoku/yatai.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3'40",
+      "villager_count": 16,
+      "resources": {
+        "food": 0,
+        "wood": 12,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When reached 400 @resource/resource_food.webp@ move @unit_worker/villager-japanese.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3'53",
+      "villager_count": 17,
+      "resources": {
+        "food": 0,
+        "wood": 12,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_japanese/farmhouse-1.webp@ on @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4'00",
+      "villager_count": 17,
+      "resources": {
+        "food": 0,
+        "wood": 10,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Build @landmark_sengoku/ryokan.webp@ with 2 @unit_worker/villager-japanese.webp@ from @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4'11",
+      "villager_count": 17,
+      "resources": {
+        "food": 1,
+        "wood": 10,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4'19",
+      "villager_count": 17,
+      "resources": {
+        "food": 0,
+        "wood": 10,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Build @building_military/barracks.webp@ near @landmark_sengoku/ryokan.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6'02",
+      "villager_count": 23,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build  @technology_sengoku/takeda_daimyo_1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @landmark_sengoku/sake_brewery.webp@ in @building_sengoku/matsuri.webp@ aura"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/bi9ZBCWKMqY",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

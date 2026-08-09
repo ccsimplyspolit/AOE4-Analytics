@@ -1,0 +1,565 @@
+{
+  "schemaVersion": 1,
+  "name": "Mongodai mark 10 min build order",
+  "civilization": "Mongols",
+  "author": "Maris30091",
+  "source": "https://aoe4guides.com/builds/wNU64SFY50sz8VhLcmbc",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_mongols/khan-1.webp@ activate movespeed arrow.",
+        "@abilities/repair.webp@@building_economy/town-center.webp@ on @resource/resource_wood.webp@ line.",
+        "1 @unit_worker/villager-mongols.webp@ @abilities/repair.webp@ @building_mongols/ovoo.webp@ then to@resource/resource_gold.webp@.",
+        "5 @unit_worker/villager-mongols.webp@ @resource/sheep.webp@ near @building_economy/town-center.webp@.",
+        "@unit_mongols/khan-1.webp@scout around for more @resource/sheep.webp@ and @resource/deer.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:15",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@ done; queue 4 @unit_worker/villager-mongols.webp@ @resource/rally.webp@ @resource/sheep.webp@ ."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:35",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/sheep.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:55",
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@on @resource/sheep.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "1:15",
+      "villager_count": 9,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New @unit_worker/villager-mongols.webp@ on @resource/sheep.webp@.",
+        "Change @building_economy/town-center.webp@ @resource/rally.webp@ to @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "1:35",
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New @unit_worker/villager-mongols.webp@ on @resource/resource_gold.webp@.",
+        "Change @building_economy/town-center.webp@ @resource/rally.webp@ to @resource/resource_wood.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "1:55",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/resource_wood.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/resource_wood.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:35",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/resource_wood.webp@.",
+        "Pull 3  @resource/sheep.webp@@unit_worker/villager-mongols.webp@ and begin @landmark_mongols/deer-stones.webp@construction."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:55",
+      "villager_count": 14,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/resource_wood.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:15",
+      "villager_count": 15,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/resource_wood.webp@.",
+        "2 @resource/sheep.webp@@unit_worker/villager-mongols.webp@ to @abilities/repair.webp@@building_mongols/ger.webp@ on @resource/deer.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:35",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/resource_wood.webp@.",
+        "Upgrade @technology_economy/survival-techniques.webp@for increased hunting rate.",
+        "Herd @resource/deer.webp@with these 2 @unit_worker/villager-mongols.webp@ and @unit_mongols/khan-1.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:55",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/sheep.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/sheep.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:35",
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/sheep.webp@.",
+        "@landmark_mongols/deer-stones.webp@ done; pull those 3 @unit_worker/villager-mongols.webp@ to build @building_military/archery-range.webp@ on @building_mongols/ovoo.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:55",
+      "villager_count": 20,
+      "resources": {
+        "food": 9,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/sheep.webp@.",
+        "@building_military/archery-range.webp@ done; pull those 3 @unit_worker/villager-mongols.webp@ to @resource/deer.webp@.",
+        "Queue  @unit_mongols/mangudai.webp@ x 2."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:15",
+      "villager_count": 21,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/sheep.webp@.",
+        "Build  @building_mongols/pasture.webp@ touching @building_economy/town-center.webp@.",
+        "@building_mongols/pasture.webp@ @resource/rally.webp@to @building_economy/town-center.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:35",
+      "villager_count": 22,
+      "resources": {
+        "food": 14,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/sheep.webp@.",
+        "Queue  @unit_mongols/mangudai.webp@ x 2."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:55",
+      "villager_count": 23,
+      "resources": {
+        "food": 15,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/sheep.webp@.",
+        "Queue  @unit_mongols/mangudai.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "6:15",
+      "villager_count": 24,
+      "resources": {
+        "food": 15,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/sheep.webp@.",
+        "Build  @building_mongols/pasture.webp@ touching @building_economy/town-center.webp@.",
+        "@building_mongols/pasture.webp@ @resource/rally.webp@to @building_economy/town-center.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "6:35",
+      "villager_count": 25,
+      "resources": {
+        "food": 17,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/sheep.webp@.",
+        "Queue  @unit_mongols/mangudai.webp@ x 2."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "6:55",
+      "villager_count": 26,
+      "resources": {
+        "food": 16,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "New @unit_worker/villager-mongols.webp@ on @resource/resource_gold.webp@.",
+        "Queue  @unit_mongols/mangudai.webp@.",
+        "Pull @resource/sheep.webp@ @unit_worker/villager-mongols.webp@ to build @building_military/archery-range.webp@ and resume @resource/sheep.webp@ after."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "7:15",
+      "villager_count": 27,
+      "resources": {
+        "food": 17,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New @unit_worker/villager-mongols.webp@ on @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "7:35",
+      "villager_count": 28,
+      "resources": {
+        "food": 16,
+        "wood": 6,
+        "gold": 5,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "New @unit_worker/villager-mongols.webp@ on @resource/resource_gold.webp@.",
+        "Queue  @unit_mongols/mangudai.webp@.",
+        "Queue  @unit_mongols/mangudai.webp@.",
+        "Build  @building_mongols/pasture.webp@ touching @building_economy/town-center.webp@.",
+        "@building_mongols/pasture.webp@ @resource/rally.webp@to @building_economy/town-center.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "7:55",
+      "villager_count": 29,
+      "resources": {
+        "food": 17,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/resource_wood.webp@.",
+        "Queue  @unit_mongols/mangudai.webp@ x 2."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:15",
+      "villager_count": 30,
+      "resources": {
+        "food": 17,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/resource_wood.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:35",
+      "villager_count": 31,
+      "resources": {
+        "food": 17,
+        "wood": 9,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/resource_wood.webp@.",
+        "Queue  @unit_mongols/mangudai.webp@.",
+        "Queue  @unit_mongols/mangudai.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:55",
+      "villager_count": 32,
+      "resources": {
+        "food": 18,
+        "wood": 9,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/sheep.webp@.",
+        "Queue  @unit_mongols/mangudai.webp@.",
+        "Queue  @unit_mongols/mangudai.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "9:15",
+      "villager_count": 33,
+      "resources": {
+        "food": 19,
+        "wood": 9,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/sheep.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "9:35",
+      "villager_count": 34,
+      "resources": {
+        "food": 20,
+        "wood": 9,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/sheep.webp@.",
+        "Queue  @unit_mongols/mangudai.webp@ x 2.",
+        "Queue  @unit_mongols/mangudai.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "9:55",
+      "villager_count": 35,
+      "resources": {
+        "food": 21,
+        "wood": 9,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/sheep.webp@.",
+        "Queue  @unit_mongols/mangudai.webp@.",
+        "Queue  @unit_mongols/mangudai.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "10:15",
+      "villager_count": 36,
+      "resources": {
+        "food": 22,
+        "wood": 9,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New  @unit_worker/villager-mongols.webp@ on @resource/sheep.webp@.",
+        "Should be 21 @unit_mongols/mangudai.webp@ by this point."
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,7 +1,4 @@
 /**
- * DORMANT (not yet wired into the UI): built + tested, but no screen renders it
- * yet. It is one import from mounting on the Dashboard — a recommended follow-up.
- *
  * "Biggest leak" — the single recurring weakness to highlight on the dashboard
  * (pure), inspired by DPM's "Lens". Aggregates the per-game analysis signals over
  * recent games and surfaces the most frequent, most severe one.

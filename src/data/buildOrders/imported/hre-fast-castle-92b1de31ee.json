@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "name": "HRE fast castle",
+  "civilization": "Holy Roman Empire",
+  "author": "Guillaumcn",
+  "source": "https://aoe4guides.com/builds/7IZ9t7nhjs2NsKwHe3F2",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@@resource/resource_food.webp@ build @building_economy/house.webp@",
+        "3 @unit_worker/villager.webp@@resource/resource_gold.webp@",
+        "@unit_religious/monk-3.webp@ switch until 8 @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 1,
+        "wood": 4,
+        "gold": 3,
+        "stone": 3,
+        "builder": 2
+      },
+      "notes": [
+        "Age up 2 @unit_worker/villager.webp@ @landmark_hre/meinwerk-palace.webp@.",
+        "4 @unit_worker/villager.webp@@resource/resource_wood.webp@ until 250",
+        "3 @resource/resource_stone.webp@ then 2 @resource/resource_gold.webp@1 @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/resource_wood.webp@ back to @resource/resource_food.webp@",
+        "@building_defensive/outpost.webp@ at @resource/resource_gold.webp@ then @technology_naval/naval-arrow-slits.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:10",
+      "villager_count": 20,
+      "resources": {
+        "food": 15,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 13 @resource/resource_food.webp@ switch @resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@ @age/age_2.webp@ switch to @resource/resource_food.webp@",
+        "Build @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:10",
+      "villager_count": 24,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 5,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "10 @unit_worker/villager.webp@@landmark_hre/regnitz-cathedral.webp@",
+        "@building_military/stable.webp@  ASAP then @unit_religious/monk-3.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@+@technology_hre/steel-barding-3.webp@ + @unit_cavalry/knight-2.webp@",
+        "Eco techs and  @resource/relics.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

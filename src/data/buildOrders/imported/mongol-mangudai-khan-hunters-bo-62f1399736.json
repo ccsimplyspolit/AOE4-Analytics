@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "name": "Mongol Mangudai & Khan Hunters BO",
+  "civilization": "Mongols",
+  "author": "Tomioka2003",
+  "source": "https://aoe4guides.com/builds/eST9JVKSuIFQuz6iJ5On",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager-mongols.webp@ to @resource/sheep.png@ and @resource/rally.png@ to @resource/sheep.png@ till 7 @unit_worker/villager-mongols.png@",
+        "1 @abilities/repair.png@@building_mongols/ovoo.png@ on @resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After 7 @unit_worker/villager-mongols.webp@ on @resource/sheep.png@, @resource/rally.png@ to @resource/resource_gold.png@ till 3 @unit_worker/villager-mongols.png@",
+        "@resource/rally.png@ to @resource/sheep.png@  till @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@abilities/repair.webp@@landmark_mongols/deer-stones.png@ from 4 @resource/resource_food.png@@unit_worker/villager-mongols.png@, @resource/rally.png@ on @resource/resource_food.png@ till 5@unit_worker/villager-mongols.png@",
+        "Shift 3 @resource/resource_food.png@@unit_worker/villager-mongols.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @unit_worker/villager-mongols.png@ on @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@landmark_mongols/deer-stones.webp@ @unit_worker/villager-mongols.png@ go back to @resource/sheep.png@",
+        "1 or 2 @resource/resource_wood.png@@unit_worker/villager-mongols.png@ @abilities/repair.png@ an @building_military/archery-range.png@ on @building_mongols/ovoo.png@",
+        "@resource/rally.png@ @unit_worker/villager-mongols.png@  on @resource/resource_gold.png@ till 5"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 9,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager-mongols.webp@ building @building_military/archery-range.png@ go back to @resource/resource_wood.png@",
+        "Instantly queue 2x@unit_mongols/mangudai.png@ from @building_military/archery-range.png@ and harass, also make @unit_mongols/khans-hunter.png@ at some point",
+        "NOTE - DO NOT MAKE @unit_mongols/mangudai.png@ against @civilization_flag/eng.png@",
+        "Research @technology_economy/wheelbarrow.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 5,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Produce @unit_worker/villager-mongols.webp@ on @resource/resource_food.png@",
+        "@abilities/repair.png@ a @building_economy/market.png@ and start trading (if the opponent is going Fast Castle you can go two @building_economy/market.png@ and be greedy while harassing the opponent}"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 6,
+        "wood": 11,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Shift 4 @resource/resource_food.webp@@unit_worker/villager-mongols.png@ to @resource/resource_wood.png@ to get wood for @unit_worker/trader.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 27,
+      "resources": {
+        "food": 11,
+        "wood": 11,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ few @unit_worker/villager-mongols.png@ on @resource/resource_gold.png@",
+        "Research @technology_economy/double-broadaxe.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 29,
+      "resources": {
+        "food": 11,
+        "wood": 11,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "keep @resource/rally.webp@ on @resource/resource_food.png@ (You can shift the @resource/resource_food.png@ @unit_worker/villager-mongols.png@ to other Resources like @resource/resource_wood.png@ or @resource/resource_gold.png@ depending on what you need the most"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 32,
+      "resources": {
+        "food": 9,
+        "wood": 16,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make @building_technology/blacksmith.webp@ and research @technology_military/steeled-arrow.png@ or @technology_military/iron-undermesh.png@",
+        "Keep Spamming @unit_mongols/mangudai.png@ and harass , if the opponent retaliates back with archers make @unit_mongols/keshik-2.png@ or @unit_infantry/archer-2.png@ since you get buff with @unit_mongols/khan-1.png@ and @unit_mongols/khans-hunter.png@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/z4yZhhsf5x8",
+  "season": 8,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

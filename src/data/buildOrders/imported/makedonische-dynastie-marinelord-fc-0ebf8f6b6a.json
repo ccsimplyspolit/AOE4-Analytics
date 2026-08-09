@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "name": "Makedonische Dynastie - Marinelord (FC)",
+  "civilization": "Macedonian Dynasty",
+  "author": "B-SON",
+  "source": "https://aoe4guides.com/builds/xZrhVa6U2I6VLQfqDH1P",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3@unit_worker/villager.webp@>&gt; @resource/sheep.webp@",
+        "2@unit_worker/villager.webp@&gt;&gt; @resource/resource_gold.webp@,",
+        "1 @unit_worker/villager.webp@ &gt;&gt; @building_macedonian/varangian_warcamp.webp@  &gt;&gt; @resource/resource_gold.webp@  --- wall sides off with @building_defensive/palisade-wall.webp@ if exposed and enemy making early troops",
+        "@resource/rally.webp@ &gt; @resource/resource_food.webp@ Until Age Up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:55",
+      "villager_count": 11,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start Building @landmark_byzantines/imperial-hippodrome-1.webp@ with @resource/resource_gold.webp@@unit_worker/villager.webp@ >&gt;&gt; @resource/resource_gold.webp@",
+        "5 @resource/resource_food.webp@@unit_worker/villager.webp@ &gt;&gt; @building_economy/lumber-camp.webp@@resource/resource_wood.webp@",
+        "@resource/rally.webp@  @resource/resource_wood.webp@  till 8 @unit_worker/villager.webp@ &gt;&gt; @resource/rally.webp@@resource/resource_food.webp@",
+        "Build first  @building_economy/house.webp@ with @resource/resource_food.webp@@unit_worker/villager.webp@ near supply cap, later build @building_economy/house.webp@ with  @resource/resource_wood.webp@@unit_worker/villager.webp@",
+        "get @technology_economy/survival-techniques.webp@ and @technology_economy/wheelbarrow.webp@ when you can"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Make  @building_macedonian/varangian_arsenal.webp@ with @resource/resource_gold.webp@@unit_worker/villager.webp@once enough wood and get @technology_macedonian/scale-barding-2.webp@, then upgrade whatever you need",
+        "Make  @unit_cavalry/horseman-1.webp@, build @building_macedonian/varangian_stronghold.webp@ with @resource/resource_food.webp@@unit_worker/villager.webp@ and make @unit_macedonian/bogmadr-2.webp@, prioritize @unit_macedonian/atgeir-1.webp@ if enemy has Cavalry. Keep CONSTANTLY producing military  and upgrade units depending on your need",
+        "If harvesting @resource/deer.webp@ make @building_macedonian/varangian_stronghold.webp@ on it when you can and make troops",
+        "Once 18 @resource/resource_food.webp@@unit_worker/villager.webp@ send 2 @resource/resource_food.webp@@unit_worker/villager.webp@ and 4@resource/resource_wood.webp@@unit_worker/villager.webp@ to @resource/resource_gold.webp@",
+        "Send 5 @resource/resource_food.webp@@unit_worker/villager.webp@ to @resource/resource_stone.webp@ once gathered 50 @resource/resource_stone.webp@ send to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_byzantines/golden-horn-tower-2.webp@ with 13 @resource/resource_food.webp@@unit_worker/villager.webp@ so that it covers valuable resources, if too risky just build wherever it can give you value",
+        "Send 4 @resource/resource_food.webp@@unit_worker/villager.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@ @building_religious/monastery.webp@ and make @unit_religious/monk-3.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

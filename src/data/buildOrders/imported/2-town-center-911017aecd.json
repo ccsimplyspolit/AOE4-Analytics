@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "name": "2 Town Center",
+  "civilization": "Order of the Dragon",
+  "author": "Jitterbug",
+  "source": "https://aoe4guides.com/builds/mA3PdGSlxSXnKpRBtTXM",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All @unit_worker/villager.webp@ to @resource/sheep.png@ --> @resource/rally.png@@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "First @unit_worker/villager.webp@@abilities/repair.png@@building_economy/house.png@+@resource/resource_gold.png@@building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/resource_gold.webp@@unit_worker/villager.png@ @abilities/repair.png@@building_economy/mining-camp.png@ on @resource/resource_stone.png@ @ 200 @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 3,
+        "wood": 4,
+        "gold": 0,
+        "stone": 2,
+        "builder": 2
+      },
+      "notes": [
+        "Remacro at start of age-up --> @resource/rally.webp@@resource/resource_wood.png@ til 5"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_stone.png@ until you have 350 --> @building_economy/town-center.png@ on @resource/deer.png@ with @resource/resource_stone.png@@unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/town-center.png@ on @resource/deer.png@ with @resource/resource_stone.png@@unit_worker/villager.png@ --> Main @building_economy/town-center.png@@resource/rally.png@@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_economy/town-center.webp@@resource/rally.png@@resource/deer.png@ --> If staying in feudal to make units @resource/rally.png@@resource/resource_food.png@+@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "Flexible 2TC start for Order of the Dragon",
+  "video": "",
+  "season": 10,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

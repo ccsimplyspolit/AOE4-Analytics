@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "name": "Tughlaq Healer elephant attack Age 2",
+  "civilization": "Tughlaq Dynasty",
+  "author": "Siro",
+  "source": "https://aoe4guides.com/builds/z2bMRZ89nMJCsI1c3ulS",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager-delhi.webp@ -> @resource/berrybush.webp@",
+        "train 2 @unit_tughluq/worker_elephant.webp@ 1 for @resource/resource_gold.webp@ / 1 to explore around to get @resource/sheep.webp@",
+        "@resource/rally.webp@ until 2@unit_worker/villager-delhi.webp@ on @resource/resource_gold.webp@ then @resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:17",
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @landmark_delhi/dome-of-the-faith.webp@ with 2 @unit_worker/villager-delhi.webp@ from @resource/berrybush.webp@ and 2@unit_worker/villager-delhi.webp@ from@resource/sheep.webp@",
+        "2@unit_worker/villager-delhi.webp@ from @resource/sheep.webp@ -> @resource/resource_gold.webp@",
+        "@resource/rally.webp@@resource/resource_wood.webp@ until 2@unit_worker/villager-delhi.webp@ (scout@unit_tughluq/worker_elephant.webp@ -&gt; @resource/resource_wood.webp@)",
+        "@unit_worker/villager-delhi.webp@@resource/sheep.webp@ -&gt; @building_economy/house.webp@",
+        "@resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Instant -> @unit_tughluq/healer_elephant.webp@ -&gt; @technology_tughluq/elephant_economics_1.webp@-&gt; @unit_tughluq/healer_elephant.webp@-&gt; @unit_tughluq/healer_elephant.webp@-&gt; @unit_tughluq/healer_elephant.webp@-&gt; @unit_tughluq/healer_elephant.webp@",
+        "4 @unit_worker/villager-delhi.webp@ age 2 builders -&gt; @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:36",
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 2,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/resource_wood.webp@-&gt;@building_military/barracks.webp@/@building_military/archery-range.webp@  (@building_military/stable.webp@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 33,
+      "resources": {
+        "food": 15,
+        "wood": 10,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Do @unit_tughluq/healer_elephant.webp@ non stop !"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

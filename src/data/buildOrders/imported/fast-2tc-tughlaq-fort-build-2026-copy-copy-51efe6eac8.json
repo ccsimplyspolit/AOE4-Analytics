@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "name": "Fast 2TC + Tughlaq Fort Build (2026) - copy - copy",
+  "civilization": "Tughlaq Dynasty",
+  "author": "itadvi",
+  "source": "https://aoe4guides.com/builds/Pyah86qFQl0QonxhgQKU",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @unit_worker/villager-delhi.webp@ go to @resource/berrybush.webp@ with @unit_tughluq/worker_elephant.webp@ & 2 go to @resource/sheep.webp@. You also want to spawn a 2nd @unit_tughluq/worker_elephant.webp@ to collect sheep around base and go to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 new @unit_worker/villager-delhi.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ back to @resource/sheep.webp@ until @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:05",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with 2 @resource/sheep.webp@@unit_worker/villager-delhi.webp@ on @landmark_delhi/dome-of-the-faith.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:05",
+      "villager_count": 8,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 2,
+        "builder": 2
+      },
+      "notes": [
+        "Take @resource/resource_gold.webp@@unit_worker/villager-delhi.webp@ + @unit_tughluq/worker_elephant.webp@ and go to @resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "Take 5 @resource/sheep.webp@ @unit_worker/villager-delhi.webp@ and go to @resource/gaiatreeprototypetree.webp@ (make sure you have all 3)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_stone.webp@ until you can build @building_tughluq/tughluqabad_fort.webp@ + @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:32",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 9,
+        "builder": -1
+      },
+      "notes": [
+        "2 age-up @unit_worker/villager-delhi.webp@ will build the @building_tughluq/tughluqabad_fort.webp@ inbetween 2nd TC placement and Main TC with 8 tiles space. (see video for placement guidance here)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:15",
+      "villager_count": 22,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 11,
+        "builder": 2
+      },
+      "notes": [
+        "470/1200 left in @resource/resource_stone.webp@mine pull all @resource/resource_stone.webp@@unit_worker/villager-delhi.webp@ away and walk towards @resource/resource_gold.webp@and build @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Afterwards scout opponent and make units or go FC if they also boom."
+      ]
+    }
+  ],
+  "description": "See build video for very useful advice",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

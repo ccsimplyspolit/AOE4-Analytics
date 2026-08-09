@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "name": "Claude Ottoman ",
+  "civilization": "Ottomans",
+  "author": "Yiuwa",
+  "source": "https://aoe4guides.com/builds/llGQFowJsgCGKchgh1oa",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1x @unit_worker/villager.webp@>@resource/gaiatreeprototypetree.webp@ 5x @unit_worker/villager.webp@&gt; @resource/resource_stone.webp@",
+        "100x @resource/resource_stone.webp@&gt; @building_ottomans/military-school-1.webp@&gt;@building_economy/house.webp@",
+        "100x @resource/resource_wood.webp@&gt; @building_military/barracks.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4-5x @unit_worker/villager.webp@>@landmark_ottomans/twin-minaret-medrese-1.webp@ Minaret",
+        "@resource/rally.webp@&gt;@resource/resource_wood.webp@",
+        "@building_ottomans/military-school-1.webp@&gt;@unit_byzantines/sipahi-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6x @unit_worker/villager.webp@>@resource/resource_gold.webp@ (@age/age_3.webp@)",
+        "@building_technology/blacksmith.webp@@building_military/archery-range.webp@@age/vizier_point.webp@&gt;@technology_ottomans/field-work-1.webp@",
+        "@unit_abbasid/imam.webp@&gt;@resource/relics.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_ottomans/mehmed-imperial-armory-2.webp@+@building_ottomans/military-school-1.webp@+@building_military/stable.webp@or @building_military/archery-range.webp@",
+        "@unit_ottomans/janissary-3.webp@+@unit_byzantines/sipahi-2.webp@+@unit_ottomans/mehter-2.webp@",
+        "@age/vizier_point.webp@>@technology_ottomans/military-campus-1.webp@&gt;@technology_ottomans/advanced-academy-1.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

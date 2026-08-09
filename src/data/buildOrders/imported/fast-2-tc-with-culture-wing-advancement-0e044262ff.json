@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "name": "Fast 2 TC with Culture Wing: Advancement",
+  "civilization": "Ayyubids",
+  "author": "Muthelfuggel",
+  "source": "https://aoe4guides.com/builds/G23OV0qUvmPNBdb8Cpga",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00\n",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5@unit_worker/villager-abbasid.webp@ on @resource/sheep.webp@ / 1@unit_worker/villager-abbasid.webp@ build @building_economy/house.webp@,@landmark_abbasid/house-of-wisdom.webp@,@building_economy/mining-camp.webp@ on @resource/resource_stone.webp@ / @resource/rally.webp@ on @resource/resource_wood.webp@ until 2 (Straggler Tree)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 0,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ on @resource/resource_stone.webp@ until 4"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:10",
+      "villager_count": 9,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 0,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@ with @technology_ayyubids/culture-wing-advancement-1.webp@ / 1 @unit_worker/villager-abbasid.webp@ from @resource/sheep.webp@ to @resource/resource_wood.webp@ (make sure to have enough food for more vills)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:45",
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ on @resource/resource_wood.webp@ (Straggler Tree) until 7, then @resource/rally.webp@ on @resource/resource_food.webp@ until 8"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "all @unit_worker/villager-abbasid.webp@ from @resource/resource_stone.webp@ and 5 @unit_worker/villager-abbasid.webp@ form @resource/resource_wood.webp@ build @building_economy/town-center.webp@, after building @unit_worker/villager-abbasid.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:35",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "when fully gathered 2 @resource/resource_wood.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ on @resource/resource_wood.webp@ until 12 for Golden Age and @building_military/barracks.webp@/@building_military/archery-range.webp@/@building_military/stable.webp@ (Scout enemy) OR go @age/age_3.webp@ if oppo goes FC"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ on @resource/resource_gold.webp@ until 3 for upgrades, then @resource/rally.webp@ on @resource/resource_food.webp@ and @resource/resource_wood.webp@"
+      ]
+    }
+  ],
+  "description": "Super fast 2 TC with Culture Wing: Advancement as seen from Beasty",
+  "video": "https://www.youtube.com/embed/rqJS6mzAho4",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

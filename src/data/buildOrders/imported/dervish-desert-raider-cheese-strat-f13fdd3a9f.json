@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "name": "Dervish Desert Raider Cheese Strat",
+  "civilization": "Ayyubids",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/Jw6CGXl9xuq3v5icuaPv",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "6 @unit_worker/villager-abbasid.webp@to @resource/sheep.png@ and 2 @unit_worker/villager-abbasid.png@ each build a @building_economy/house.png@ and a @landmark_abbasid/house-of-wisdom.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 2 @unit_worker/villager-abbasid.png@ to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1.00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ back to @resource/sheep.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:12",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@@technology_ayyubids/culture-wing-logistics-1.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro and gather wood from @resource/gaiatreeprototypetree.webp@ (@resource/rally.png@ wood until 10 on wood)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:45",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3@building_economy/house.webp@ + @building_economy/lumber-camp.png@ + @building_economy/mill.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:14",
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "remacro and @resource/rally.webp@ to @resource/berrybush.png@. Build a @building_military/stable.png@ & queue @technology_economy/wheelbarrow.png@. Build constant @unit_ayyubids/desert-raider-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "2nd @building_military/stable.webp@ for more @unit_ayyubids/desert-raider-2.png@ production"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:45",
+      "villager_count": 23,
+      "resources": {
+        "food": 11,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep rallying @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 31,
+      "resources": {
+        "food": 14,
+        "wood": 11,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3rd @building_military/stable.webp@ + @building_economy/house.png@ and @building_technology/blacksmith.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you want to go castle, cut desert raider production and go on food / gold. By 10 mins you should have 20 @unit_ayyubids/desert-raider-2.webp@ and your @unit_ayyubids/dervish-3.png@ to heal.",
+        "For age 3, click @technology_ayyubids/military-wing-reinforcement-1.png@ and take @resource/relics.png@"
+      ]
+    }
+  ],
+  "description": "A fast dervish desert raider strat for countering knight civs. This can also work against infantry, but less likely tho. It is good for snowballing and harassing  pro scouts and taking fights with the healers for help-",
+  "video": "https://www.youtube.com/embed/DlK8Z0y_IDY",
+  "season": 9,
+  "map": null,
+  "strategy": "Cheese",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "name": "Corvinus1 ZXL 2 TC S10",
+  "civilization": "Zhu Xi's Legacy",
+  "author": "DsT.Sol",
+  "source": "https://aoe4guides.com/builds/Kq7tEZGkliDuPdh0XM8i",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager-china.webp@ to @resource/resource_wood.png@ and drop after building @building_economy/mill.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "First @unit_worker/villager-china.webp@ @abilities/repair.png@ @building_economy/mining-camp.png@ then @building_chinese/village.png@then to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/resource_food.png@ until Age Up and supervise @building_economy/mill.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Age up with 2 @resource/resource_food.webp@ @unit_worker/villager-china.png@ @landmark_zhuxi/meditation-gardens-1.png@  then @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@to @resource/resource_gold.png@ until @landmark_zhuxi/jiangnan-tower-2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 18,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "2 @resource/resource_gold.webp@ @unit_worker/villager-china.png@ @abilities/repair.png@ @landmark_zhuxi/jiangnan-tower-2.png@ then @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 9,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Remacro, get @resource/gaiatreeprototypetree.webp@ @resource/rally.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:10",
+      "villager_count": 18,
+      "resources": {
+        "food": 9,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 18,
+      "resources": {
+        "food": 9,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Produce 2 @unit_chinese/imperial-official.webp@ supervise@resource/resource_wood.png@ and @resource/resource_stone.png@",
+        "* @abilities/repair.png@@building_military/stable.png@if opp is @civilization_flag/kte.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 17,
+      "resources": {
+        "food": 2,
+        "wood": 7,
+        "gold": 0,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "move 8 @resource/resource_food.webp@@unit_worker/villager-china.png@ to @resource/resource_stone.png@ @resource/rally.png@@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:10",
+      "villager_count": 21,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "@resource/resource_stone.webp@@unit_worker/villager-china.png@ @abilities/repair.png@ @building_economy/town-center.png@, move @resource/resource_wood.png@@unit_worker/villager-china.png@to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If opponent is agressive, get @resource/berrybush.webp@, @resource/sheep.png@ and transition to @building_chinese/granary.png@, otherwise get @resource/deer.png@, map control, then @building_chinese/granary.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:40",
+      "villager_count": 27,
+      "resources": {
+        "food": 17,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start building production facilities to put pressure."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 36,
+      "resources": {
+        "food": 25,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.png@ move 5 @resource/resource_food.png@ to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:40",
+      "villager_count": 10,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Age up with @landmark_zhuxi/mount-lu-academy-1.webp@ and 10 @unit_worker/villager-china.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:10",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "Corvinus1 2TC BO",
+  "video": "https://www.youtube.com/embed/6IV_IhfqxDI",
+  "season": 10,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

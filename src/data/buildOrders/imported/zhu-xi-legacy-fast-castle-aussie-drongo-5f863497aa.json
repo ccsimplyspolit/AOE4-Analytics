@@ -1,0 +1,351 @@
+{
+  "schemaVersion": 1,
+  "name": "Zhu Xi Legacy Fast Castle [Aussie Drongo]",
+  "civilization": "Zhu Xi's Legacy",
+  "author": "Sazed",
+  "source": "https://aoe4guides.com/builds/WZ08iydzsuERZYo15SlQ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ builds @building_economy/mill.png@ by @resource/berrybush.png@ then to @resource/sheep.png@",
+        "5 @unit_worker/villager.png@ to @resource/berrybush.png@ (move to @resource/sheep.png@ once at mill)",
+        "@unit_chinese/imperial-official.png@  surprives @building_economy/mill.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~0:45",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.png@ to @resource/sheep.png@ (until 7)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~1:40",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.png@ to @resource/resource_gold.png@ (until 3), 1st @unit_worker/villager-china.png@ builds @building_economy/house.png@ + @building_economy/mining-camp.png@",
+        "@building_economy/town-center.png@@resource/rally.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~2:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Drop of @resource/resource_gold.webp@ with @unit_chinese/imperial-official.png@ once at 40"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~2:25",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @unit_worker/villager-china.webp@ from @resource/resource_food.png@ build @landmark_zhuxi/meditation-gardens-1.png@ near resources (@resource/rally.png@ them to @resource/resource_gold.png@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Continue @building_economy/town-center.webp@@resource/rally.png@ to @resource/resource_food.png@ (rest of game)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00~",
+      "villager_count": 17,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_economy/house.webp@ with @resource/resource_gold.png@@unit_worker/villager-china.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~5:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @resource/resource_gold.webp@@unit_worker/villager-china.png@ + 3 @resource/resource_food.png@@unit_worker/villager-china.png@ build @landmark_zhuxi/shaolin-monastery-2.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "~5:50",
+      "villager_count": 17,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_zhuxi/shaolin-monastery-2.webp@@unit_worker/villager-china.png@ go to @resource/resource_food.png@ (3) and @resource/resource_wood.png@ (5)",
+        "Start to queue @unit_zhuxi/shaolin-monk-3.png@ and gather @resource/relics.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "-- If enemy @unit_cavalry/horseman-1.webp@, move some @resource/resource_food.png@@unit_worker/villager-china.png@ to @resource/resource_wood.png@ to make @unit_infantry/spearman-1.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "~6:50",
+      "villager_count": 25,
+      "resources": {
+        "food": 20,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Focus on getting to Song with @unit_chinese/imperial-official.webp@@resource/resource_gold.png@ drop off"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "~8:00",
+      "villager_count": 27,
+      "resources": {
+        "food": 22,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @landmark_zhuxi/jiangnan-tower-2.webp@ with 9-10 @resource/resource_food.png@@unit_worker/villager-china.png@ to get to Song Dynasty"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "-- Queue another @unit_chinese/imperial-official.webp@ to gather gold automatically"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "~9:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/barracks.webp@,@building_military/archery-range.png@ or @building_military/stable.png@ to counter enemy army"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "~9:30",
+      "villager_count": 31,
+      "resources": {
+        "food": 26,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Focus on gathering @resource/relics.webp@  and capture @resource/sacred_sites.png@ for more @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "-- Build @unit_infantry/spearman-1.webp@@unit_infantry/crossbowman-3.png@ to go with @unit_zhuxi/shaolin-monk-3.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "~11:00",
+      "villager_count": 33,
+      "resources": {
+        "food": 28,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_technology/blacksmith.webp@ with @resource/resource_food.png@@unit_worker/villager-china.png@ and start upgrading"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "-- Balance resources to go 2nd @building_economy/town-center.webp@ with @resource/resource_stone.png@ from @landmark_zhuxi/meditation-gardens-1.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "-- Continue building @building_military/barracks.webp@,@building_military/archery-range.png@ or @building_military/stable.png@ to counter enemy"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "~15:00",
+      "villager_count": 53,
+      "resources": {
+        "food": 28,
+        "wood": 25,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Transition to @building_chinese/granary.webp@ + @building_economy/farm.png@ when needed"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "~18:00",
+      "villager_count": 61,
+      "resources": {
+        "food": 35,
+        "wood": 26,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Go for 3rd @building_economy/town-center.webp@ if you'd like or go to @age/age_4.png@"
+      ]
+    }
+  ],
+  "description": "Fast Castle Build focusing on gold gathering from relics and sacred sites\n\n- Build 1st landmark near resources with priority on food and stone (if planning 2nd TC for late game)\n- TC is always going to food once you have gold villagers",
+  "video": "https://www.youtube.com/embed/NI5CySGIaKw",
+  "season": 6,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

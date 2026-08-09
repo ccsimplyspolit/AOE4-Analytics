@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "name": "Order of the Dragon Castle Rush",
+  "civilization": "Order of the Dragon",
+  "author": "Mr14",
+  "source": "https://aoe4guides.com/builds/W6IzaUGrQc8VMRzgH84F",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:40",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Find @resource/deer.webp@@building_economy/mill.png@@technology_economy/survival-techniques.png@ then 3@unit_worker/villager.png@@resource/resource_gold.png@@building_economy/house.png@@building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.png@ Till @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:04",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@@resource/sheep.png@build@landmark_hre/aachen-chapel.png@ @resource/rally.png@@resource/gaiatreeprototypetree.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 17,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 5,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@@resource/deer.png@-->&gt;@resource/sheep.png@, @unit_worker/villager.png@@resource/resource_gold.png@--&gt;&gt;@resource/resource_stone.png@, @building_defensive/outpost.png@@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After 50@resource/resource_stone.webp@@technology_defensive/arrow-slits.png@ ( Micro @resource/rally.png@@resource/resource_food.png@@technology_economy/wheelbarrow.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/barracks.webp@ If need @unit_dragon/gilded-spearman-1.png@x2"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 22,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:53",
+      "villager_count": 24,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 8,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "@unit_worker/villager.webp@x2 build @building_technology/blacksmith.png@@building_military/stable.png@, @unit_worker/villager.png@x6 build @landmark_hre/regnitz-cathedral.png@, micro"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:25",
+      "villager_count": 25,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 8,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Kill every thing enemy have @technology_economy/specialized-pick.webp@, @resource/rally.png@@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:03",
+      "villager_count": 27,
+      "resources": {
+        "food": 13,
+        "wood": 6,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "mirco @technology_military/iron-undermesh.webp@, get @resource/relics.png@@resource/relics.png@@resource/relics.png@, @unit_hre/prelate.png@x3"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:29",
+      "villager_count": 29,
+      "resources": {
+        "food": 15,
+        "wood": 6,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_dragon/gilded-spearman-1.webp@x4 @unit_dragon/gilded-knight-3.png@x2 @unit_hre/prelate.png@x3 , start@building_economy/farm.png@@building_economy/farm.png@@building_economy/farm.png@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/v2muNtqmYgM",
+  "season": 7,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

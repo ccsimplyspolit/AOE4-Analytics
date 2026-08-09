@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "name": "Malian S10 Cow Boom",
+  "civilization": "Malians",
+  "author": "Zilarrezko",
+  "source": "https://aoe4guides.com/builds/RWG8y7plphJ1RuaJoZRd",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager-malians.webp@ on 1@resource/gaiatreeprototypetree.png@ shift queue to @resource/sheep.png@",
+        "1 @unit_worker/villager-malians.png@ @abilities/repair.png@ @building_malians/pit-mine-1.png@ and 6 @building_economy/house.png@ then @resource/sheep.png@",
+        "@resource/rally.png@ @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:25",
+      "villager_count": 10,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_malians/pit-mine-1.webp@@unit_worker/villager-malians.png@ finishes 6th house"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:33",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@landmark_malians/mansa-quarry-2.webp@with 4 @unit_worker/villager-malians.png@, queue to @resource/resource_wood.png@",
+        "@resource/resource_wood.png@@unit_worker/villager-malians.png@ on @resource/gaiatreeprototypetree.png@",
+        "@resource/rally.png@@resource/resource_wood.png@and first@unit_worker/villager-malians.png@@abilities/repair.png@@building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "at 8 @resource/resource_wood.webp@@unit_worker/villager-malians.png@ send one to build @building_economy/house.png@ and 2nd @building_malians/pit-mine-1.png@ when @age/age_2.png@. Finish the @building_economy/house.png@ring"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:13",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@landmark_malians/mansa-quarry-2.webp@@unit_worker/villager-malians.png@ going to wood",
+        "1 @resource/resource_wood.png@ @unit_worker/villager-malians.png@ @abilities/repair.png@ @building_economy/mining-camp.png@ and @building_economy/house.png@ at 1st @building_malians/pit-mine-1.png@ to complete the ring"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:00",
+      "villager_count": 21,
+      "resources": {
+        "food": 4,
+        "wood": 14,
+        "gold": 1,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@unit_worker/villager-malians.webp@@abilities/repair.png@2 @building_economy/mill.png@, back to @resource/resource_wood.png@",
+        "@unit_worker/villager-malians.png@@abilities/repair.png@@building_malians/cattle-ranch-2.png@ and fill with @resource/cattle.png@",
+        "@resource/rally.png@@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:50",
+      "villager_count": 26,
+      "resources": {
+        "food": 9,
+        "wood": 7,
+        "gold": 9,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Remacro. Pull @resource/resource_wood.webp@@unit_worker/villager-malians.png@ off @resource/resource_wood.png@to @resource/resource_gold.png@ to produce @resource/cattle.png@",
+        "with @building_malians/cattle-ranch-2.png@@unit_worker/villager-malians.png@@abilities/repair.png@military production and @building_technology/blacksmith.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "08:50",
+      "villager_count": 30,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": 12
+      },
+      "notes": [
+        "@resource/resource_food.webp@@unit_worker/villager-malians.png@@abilities/repair.png@@landmark_malians/grand-fulani-corral-2.png@"
+      ]
+    }
+  ],
+  "description": "Corvinus1 S10 Cow Boom",
+  "video": "https://www.youtube.com/embed/HfXbFSvIrtE",
+  "season": 10,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

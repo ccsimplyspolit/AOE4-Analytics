@@ -1,0 +1,400 @@
+{
+  "schemaVersion": 1,
+  "name": "Detailed Build Order Guide for House of Lancaster - Beastyqt",
+  "civilization": "House of Lancaster",
+  "author": "Tomioka2003",
+  "source": "https://aoe4guides.com/builds/XVraQAAEmoh7x4MNOxOg",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager.webp@ stay on @resource/sheep.png@, Start  @resource/rally.png@ rallying on gold @resource/resource_gold.png@ till 3"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build a @building_economy/house.webp@ and @building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After 3 on Gold @resource/resource_gold.webp@ start rallying @resource/rally.png@ on sheep @resource/sheep.png@ till @age/age_2.png@ Age-Up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Age up with Gold @resource/resource_gold.webp@ villagers and build @abilities/repair.png@ @landmark_lancaster/lancaster_castle.png@ Lancaster Castle"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 4,
+        "gold": 0,
+        "stone": 3,
+        "builder": 3
+      },
+      "notes": [
+        "Shift @resource/sheep.webp@ villagers:  [ 3 on @resource/resource_food.png@ / 3 on @resource/resource_stone.png@ / 4 on @resource/resource_wood.png@ ]"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 3,
+        "wood": 7,
+        "gold": 0,
+        "stone": 3,
+        "builder": 3
+      },
+      "notes": [
+        "Rally on @resource/resource_wood.webp@ till 8 vills @unit_worker/villager.png@ than on Gold @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 1,
+        "stone": 3,
+        "builder": 2
+      },
+      "notes": [
+        "Build @abilities/repair.webp@ @building_lancaster/manor.png@  Manor under the influence of the @landmark_lancaster/lancaster_castle.png@ Castle with your 2 Age-Up @age/age_2.png@ Villagers @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 2,
+        "stone": 3,
+        "builder": 2
+      },
+      "notes": [
+        "Rally @resource/rally.webp@ on gold @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 2,
+        "stone": 3,
+        "builder": 2
+      },
+      "notes": [
+        "Every time you gather 200 wood @resource/resource_wood.webp@ and 100 stone @resource/resource_stone.png@",
+        "Build @abilities/repair.png@ another @building_lancaster/manor.png@ Manor with your gold @resource/resource_gold.png@ villagers."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 9,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "After building 2 @building_lancaster/manor.webp@ Manors you DO NOT NEED villagers on your sheep @resource/sheep.png@ anymore as you are getting 70 food per minute from each @building_lancaster/manor.png@ Manor",
+        "Shift them to gold @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 21,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 10,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Villager split after 5 minute: [ 8 on @resource/resource_wood.webp@ / 10 on @resource/resource_gold.png@ / 3 on @resource/resource_stone.png@ ]"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 9,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "Build 3rd @building_lancaster/manor.webp@ Manor and get the @technology_lancaster/condensed_land_practices.png@ Condensed Land Practices Tech from Manor which allows you to make +3 more Manors!"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 10,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Rally @resource/rally.webp@ on stone @resource/resource_stone.png@ because we are getting  45 wood @resource/resource_wood.png@ per minute per Manor!"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 8,
+        "stone": 6,
+        "builder": 2
+      },
+      "notes": [
+        "After @technology_lancaster/condensed_land_practices.webp@ has been researched make more @building_lancaster/manor.png@ Manors"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 26,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 8,
+        "stone": 8,
+        "builder": 2
+      },
+      "notes": [
+        "Research @technology_lancaster/open_field_system.webp@ from Manor which allows you to make +3 more Manors [Total 9 Manors]"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 26,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 8,
+        "stone": 8,
+        "builder": 2
+      },
+      "notes": [
+        "When you have 300 stone remaining in @resource/resource_stone.webp@ mine you stop gathering it."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 26,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 8,
+        "stone": 8,
+        "builder": 2
+      },
+      "notes": [
+        "Rally @resource/rally.webp@ on wood @resource/resource_wood.png@ till 12"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 30,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Shift stone @unit_worker/villager.webp@@resource/resource_stone.png@ --> @resource/sheep.png@ rally @resource/rally.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 31,
+      "resources": {
+        "food": 9,
+        "wood": 12,
+        "gold": 5,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Make more Manors @building_lancaster/manor.webp@",
+        "try to make the last Manor with with 2-3 gold @resource/resource_gold.png@vills"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 33,
+      "resources": {
+        "food": 10,
+        "wood": 12,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Click @ability_lancaster/call_to_arms.webp@ from @landmark_lancaster/lancaster_castle.png@ and get 11 @unit_lancaster/demilancer.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 34,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 12,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Make @building_military/barracks.webp@ / @building_military/archery-range.png@ / @building_military/stable.png@ from wood @resource/resource_wood.png@ @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 35,
+      "resources": {
+        "food": 0,
+        "wood": 9,
+        "gold": 12,
+        "stone": 0,
+        "builder": 14
+      },
+      "notes": [
+        "Age up @age/age_3.webp@ build @landmark_lancaster/kings_college.png@ Kings College"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 35,
+      "resources": {
+        "food": 0,
+        "wood": 9,
+        "gold": 12,
+        "stone": 0,
+        "builder": 14
+      },
+      "notes": [
+        "Make @building_technology/blacksmith.webp@ research techs, get Economy Techs: @technology_economy/double-broadaxe.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 36,
+      "resources": {
+        "food": 0,
+        "wood": 10,
+        "gold": 12,
+        "stone": 0,
+        "builder": 14
+      },
+      "notes": [
+        "Make @unit_lancaster/yeoman_age2.webp@ / @unit_infantry/spearman-1.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 37,
+      "resources": {
+        "food": 10,
+        "wood": 15,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "At this point your Castle-Age @age/age_3.webp@ get more Economy Techs: @technology_economy/horticulture.png@@technology_economy/specialized-pick.png@@technology_economy/wheelbarrow.png@",
+        "Get @building_technology/blacksmith.png@ Tech: @technology_military/bloomery.png@@technology_military/steeled-arrow.png@@technology_military/balanced-projectiles.png@@technology_military/fitted-leatherwork.png@@technology_military/insulated-helm.png@@technology_military/iron-undermesh.png@@technology_military/wedge-rivets.png@@technology_military/decarbonization.png@",
+        "Upgrade Units: @technology_lancaster/billmen.png@ / Veteran upgrades / @technology_lancaster/synchronized_shot.png@",
+        "Get @ability_lancaster/shire_levy_2.png@ from @landmark_lancaster/lancaster_castle.png@ Castle when possible.",
+        "Make sure to get Tech from @landmark_lancaster/kings_college.png@: @technology_lancaster/hill_land_training.png@@technology_lancaster/burgundian_imports.png@@technology_lancaster/collar_of_esses.png@ and more"
+      ]
+    }
+  ],
+  "description": "what the hell is this civ.",
+  "video": "https://www.youtube.com/embed/kR93WB2WkMM",
+  "season": 10,
+  "map": null,
+  "strategy": "Cheese",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

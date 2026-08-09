@@ -3,11 +3,12 @@
 import { Swords } from 'lucide-react'
 import { civDisplayName } from '@domain/civ'
 import type { CivCounterPlan } from '@domain/civUnits'
+import { useI18n } from '../i18n'
 
 /**
  * Compact "how to beat this civ" cell for the horizontal overlay bar: opponent
  * civ, your matchup win rate, and what to build. Auto-targets a known ranked
- * opponent; Alt+C cycles civs so it's usable in custom/AI games too.
+ * opponent; Ctrl+Alt+C cycles civs so it's usable in custom/AI games too.
  */
 export function CounterWidget({
   plan,
@@ -21,21 +22,22 @@ export function CounterWidget({
   matchupWinRate?: number | null
   myCivName?: string | null
 }) {
+  const { tt, gameName } = useI18n()
   return (
     <div className="flex h-full flex-col justify-center px-3 py-2 text-[11px]">
       <div className="flex items-center justify-between text-white/60">
         <span className="flex items-center gap-1 font-medium text-white/80">
           <Swords className="h-3 w-3 text-loss" />
-          Counter {civDisplayName(plan.civSlug)}
+          {tt('Counter')} {gameName(civDisplayName(plan.civSlug))}
         </span>
         <span className={manual ? 'text-warn' : 'text-win'}>
-          {manual ? 'Alt+C' : 'opp'}
+          {manual ? 'Ctrl+Alt+C' : tt('opp')}
         </span>
       </div>
 
       {matchupWinRate != null && myCivName && (
         <div className="mt-0.5 text-white/55">
-          {myCivName} vs {civDisplayName(plan.civSlug)}:{' '}
+          {myCivName} {tt('vs')} {gameName(civDisplayName(plan.civSlug))}:{' '}
           <span
             className={
               matchupWinRate >= 50
@@ -49,7 +51,7 @@ export function CounterWidget({
       )}
 
       <div className="mt-1 leading-snug text-white/80">
-        <span className="text-white/45">Build </span>
+        <span className="text-white/45">{tt('Build')} </span>
         <span className="font-semibold text-cyan-200">
           {plan.counters.map((c) => c.label).join(' + ') || '—'}
         </span>

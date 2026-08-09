@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { ipc } from '@shared/ipc'
 import type { AppSettings, AppSettingsPatch } from '@store/settings'
 
@@ -95,9 +95,16 @@ export function usePlayerSearch(query: string) {
 export function useScoutHistory(profileId: number | null) {
   const settings = useSettings()
   const activeProfileId = settings.data?.profileId ?? null
-  return useQuery({
+  return useInfiniteQuery({
     queryKey: ['scoutHistory', profileId, activeProfileId],
-    queryFn: () => ipc.getScoutHistory(profileId as number),
+    queryFn: ({ pageParam }) => ipc.getScoutHistory(profileId as number, { recentPage: pageParam }),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      if (!lastPage.ok || !lastPage.data.recent.ok) return undefined
+      const { recentPage, recentPageSize } = lastPage.data
+      const { totalCount } = lastPage.data.recent.data
+      return recentPage * recentPageSize < totalCount ? recentPage + 1 : undefined
+    },
     enabled: profileId != null && settings.isSuccess,
     staleTime: 5 * 60_000,
   })

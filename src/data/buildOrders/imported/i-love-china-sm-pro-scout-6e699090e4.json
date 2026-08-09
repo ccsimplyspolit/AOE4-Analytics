@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "name": "I love China Sm (Pro Scout)",
+  "civilization": "Chinese",
+  "author": "Yony",
+  "source": "https://aoe4guides.com/builds/eXQjt8OPtLrpr3qrGg4N",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5@unit_worker/villager-china.webp@ to @resource/gaiatreeprototypetree.webp@ to collect 50@resource/resource_wood.webp@, then to @resource/sheep.webp@, 1@unit_worker/villager-china.webp@ to build @building_economy/mill.webp@ behind TC and next to wood line"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Once 5@resource/resource_wood.webp@@unit_worker/villager-china.webp@ collect 50 wood, 1@unit_worker/villager-china.webp@ to build @building_chinese/village.webp@ next to @building_economy/mill.webp@, then that @unit_worker/villager-china.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.webp@ until 3, then @resource/rally.webp@@resource/sheep.webp@ until @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with 4@resource/sheep.webp@@unit_worker/villager-china.webp@ ->@landmark_chinese/imperial-academy.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 age up@unit_worker/villager-china.webp@ will go on @resource/resource_wood.webp@,  @resource/rally.webp@@resource/resource_wood.webp@ until 12 - @resource/rally.webp@ to the first tree you chopped down for quick gathering",
+        "Gather the @resource/gaiatreeprototypetree.webp@ until second @unit_chinese/imperial-official.webp@ pops out"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Immediately queue @unit_chinese/imperial-official.webp@ until you have 4/4, first will supervise @building_economy/mill.webp@ (collect & drop off 40 @resource/resource_gold.webp@ with first @unit_chinese/imperial-official.webp@ before supervising)."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "When second @unit_chinese/imperial-official.webp@ pops out, pull all @resource/gaiatreeprototypetree.webp@@unit_worker/villager-china.webp@ to make a @building_economy/lumber-camp.webp@ & have @unit_chinese/imperial-official.webp@ supervise while building - any @resource/resource_wood.webp@ the @unit_worker/villager-china.webp@ are carrying will be boosted once @building_economy/lumber-camp.webp@ is completed"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Third @unit_chinese/imperial-official.webp@ can just be left to roam and collect @resource/resource_gold.webp@ from buildings",
+        "Build a @building_military/stable.webp@ ASAP to produce @unit_cavalry/scout.webp@ for @technology_economy/professional-scouts.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "As you approach the 300@resource/resource_gold.webp@ needed for @technology_economy/professional-scouts.webp@, pull all @resource/resource_gold.webp@@unit_worker/villager-china.webp@ onto @resource/resource_wood.webp@, then @resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Fourth @unit_chinese/imperial-official.webp@ will supervise @building_military/stable.webp@ for fast @unit_cavalry/scout.webp@ production (make 4-6)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once @technology_economy/professional-scouts.webp@ is researched, next upgrade will be @technology_chinese/imperial-examination.webp@ (Very easy to forget as it's inside the landmark but very important!!!)"
+      ]
+    }
+  ],
+  "description": "The Villager #'s aren't perfect as it can vary based on map/opponent civ/how quickly you can macro - more of just an outline that you can play around with!",
+  "video": "https://www.youtube.com/embed/REY85gAXF74",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "name": "Feudal Aggro/Eco - Beasty (optimized for overlay)",
+  "civilization": "Jeanne d'Arc",
+  "author": "Jargo",
+  "source": "https://aoe4guides.com/builds/TU45W4WiVbh5OkMqyeuO",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All @unit_worker/villager.webp@ to @resource/sheep.png@",
+        "@unit_jeanne/jeanne-darc-peasant-1.png@ builds @building_economy/house.png@ ---> @resource/sheep.png@",
+        "7th @unit_worker/villager.png@ to @resource/resource_food.png@",
+        "Next 4 @unit_worker/villager.png@ to @building_economy/mining-camp.png@@resource/resource_gold.png@",
+        "@resource/rally.png@@resource/resource_food.png@ (until 9@resource/resource_food.png@)",
+        "Prepare @unit_jeanne/jeanne-darc-peasant-1.png@ for @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@ builds @landmark_french/school-of-cavalry.png@@age/age_2.png@",
+        "Remacro (8@resource/resource_food.png@ / rest@resource/resource_wood.png@)",
+        "@resource/rally.png@@resource/gaiatreeprototypetree.png@ (until 8@resource/resource_wood.png@)",
+        "Build @building_economy/mill.png@ on @resource/berrybush.png@/@resource/deer.png@",
+        "Research @technology_economy/wheelbarrow.png@",
+        "(60-70% to @age/age_2.png@) add 1 @unit_worker/villager.png@",
+        "Shift-click @age/age_2.png@@unit_worker/villager.png@ to @resource/resource_gold.png@",
+        "Build @building_economy/house.png@ with @resource/resource_wood.png@@unit_worker/villager.png@",
+        "Build @building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@ to @resource/resource_food.png@ for @ability_jeanne/ability-path-of-the-warrior-1.png@",
+        "Queue 1 @unit_french/royal-knight-2.png@",
+        "Research @technology_economy/double-broadaxe.png@ + @technology_economy/specialized-pick.png@",
+        "@ability_jeanne/ability-path-of-the-warrior-1.png@ hunts @resource/boar.png@@resource/boar.png@",
+        "(8@resource/resource_wood.png@) @resource/rally.png@@resource/resource_food.png@",
+        "Build @building_military/archery-range.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 27,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_technology/blacksmith.webp@",
+        "Research @technology_military/iron-undermesh.png@@technology_military/steeled-arrow.png@@technology_military/bloomery.png@@technology_military/fitted-leatherwork.png@@technology_military/siege-engineering.png@",
+        "@ability_jeanne/ability-consecrate-1.png@ = @building_economy/town-center.png@ > @landmark_french/school-of-cavalry.png@ &gt; @building_military/archery-range.png@",
+        "Research @technology_economy/survival-techniques.png@ (go on @resource/deer.png@)"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/A93fRr0ysn4",
+  "season": 7,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

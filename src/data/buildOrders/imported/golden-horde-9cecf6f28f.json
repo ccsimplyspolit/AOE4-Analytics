@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "name": "golden horde",
+  "civilization": "Golden Horde",
+  "author": "siberian_wolf",
+  "source": "https://aoe4guides.com/builds/FK9bK9gIC0ohu0YvvK7L",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@unit_worker/villager-mongols.webp@>@resource/sheep.webp@",
+        "1 @unit_worker/villager-mongols.webp@&gt;@building_mongols/ovoo.webp@&gt;@resource/sheep.webp@",
+        "2 @resource/rally.webp@+@resource/sheep.webp@&gt;@building_mongols/ger.webp@&gt;@resource/resource_gold.webp@(200)&gt;@resource/sheep.webp@",
+        "1 @resource/rally.webp@ &gt; @landmark_golden_horde/golden_tent.webp@ | 5 @resource/rally.webp@&gt;@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_golden_horde/golden_tent_building_carts_age2.webp@ or @technology_golden_horde/khan-and-torguuds.webp@",
+        "7 @resource/sheep.webp@ @unit_worker/villager-mongols.webp@>@resource/gaiatreeprototypetree.webp@",
+        "1@resource/rally.webp@ @unit_worker/villager-mongols.webp@&gt;@resource/gaiatreeprototypetree.webp@ | 1@resource/rally.webp@ @unit_worker/villager-mongols.webp@&gt;@building_golden_horde/fortified_outpost.webp@&gt;@building_mongols/ger.webp@&gt;@resource/deer.webp@",
+        "2@resource/rally.webp@ @unit_worker/villager-mongols.webp@&gt;@resource/deer.webp@",
+        "2@resource/rally.webp@ @unit_worker/villager-mongols.webp@&gt;@building_mongols/ger.webp@&gt;@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_golden_horde/khan.webp@",
+        "2@resource/rally.webp@ @unit_worker/villager-mongols.webp@>@resource/resource_wood.webp@",
+        "2@resource/rally.webp@ @unit_worker/villager-mongols.webp@&gt;@resource/deer.webp@",
+        "2@resource/rally.webp@ @unit_worker/villager-mongols.webp@&gt;@resource/resource_gold.webp@",
+        "2 @resource/sheep.webp@@unit_worker/villager-mongols.webp@&gt;@resource/resource_gold.webp@",
+        "2 @resource/resource_wood.webp@@unit_worker/villager-mongols.webp@&gt;@building_defensive/palisade-wall.webp@",
+        "1@resource/sheep.webp@@unit_worker/villager-mongols.webp@&gt;@building_mongols/ovoo.webp@&gt;@resource/sheep.webp@",
+        "@technology_economy/wheelbarrow.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

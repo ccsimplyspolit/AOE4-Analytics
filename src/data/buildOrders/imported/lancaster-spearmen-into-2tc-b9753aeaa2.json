@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "name": "Lancaster Spearmen into 2TC",
+  "civilization": "House of Lancaster",
+  "author": "Ainswurf",
+  "source": "https://aoe4guides.com/builds/Bhvbz7fRwiJR5jUAGDXp",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@building_economy/town-center.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@ to @resource/resource_food.webp@, 2 @unit_worker/villager.webp@ to @resource/resource_wood.webp@, 1 @unit_worker/villager.webp@builds @building_military/barracks.webp@-> @building_economy/house.webp@ and joins @resource/resource_wood.webp@ || keep them on @resource/resource_wood.webp@until u start the @landmark_english/abbey-of-kings.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 7 @unit_worker/villager.webp@on @resource/resource_food.webp@ move 3 @unit_worker/villager.webp@to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Age up with 3 @resource/resource_gold.webp@@unit_worker/villager.webp@and 1 @resource/resource_food.webp@@unit_worker/villager.webp@ with @landmark_english/abbey-of-kings.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@building_economy/town-center.webp@to @resource/resource_wood.webp@ and build @building_economy/lumber-camp.webp@@building_economy/house.webp@ with @resource/resource_wood.webp@@unit_worker/villager.webp@ || 4 @resource/sheep.webp@@unit_worker/villager.webp@ to @building_economy/mining-camp.webp@ @resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 3,
+        "wood": 7,
+        "gold": 0,
+        "stone": 6,
+        "builder": 3
+      },
+      "notes": [
+        "@resource/rally.webp@@building_economy/town-center.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 3,
+        "wood": 7,
+        "gold": 0,
+        "stone": 6,
+        "builder": 3
+      },
+      "notes": [
+        "2 @landmark_english/abbey-of-kings.webp@@unit_worker/villager.webp@to @resource/resource_stone.webp@ 2 @landmark_english/abbey-of-kings.webp@@unit_worker/villager.webp@ to @resource/resource_wood.webp@ || 3 @resource/resource_wood.webp@@unit_worker/villager.webp@@abilities/repair.webp@@building_lancaster/manor.webp@ and go back to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "@800/1200 Stone @abilities/repair.webp@@building_economy/town-center.webp@ on @resource/resource_gold.webp@ with @resource/resource_stone.webp@@unit_worker/villager.webp@and 2 @resource/resource_wood.webp@@unit_worker/villager.webp@ || After @building_economy/town-center.webp@is done move 5 @unit_worker/villager.webp@ that built the @building_economy/town-center.webp@to @resource/resource_gold.webp@ for @technology_economy/wheelbarrow.webp@@technology_economy/horticulture.webp@@technology_economy/double-broadaxe.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After 10 on @resource/resource_food.webp@ @resource/rally.webp@both @building_economy/town-center.webp@ to @resource/resource_wood.webp@ and start making @building_military/archery-range.webp@@building_military/barracks.webp@ and later @building_technology/blacksmith.webp@ and @building_economy/farm.webp@with excess @resource/resource_wood.webp@ after"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Eventually age up with @landmark_english/the-white-tower.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "Translated the guide from the Goat himself, fresh out of the oven.",
+  "video": "https://www.youtube.com/embed/bkgQvStq0kQ",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

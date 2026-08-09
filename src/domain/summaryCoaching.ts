@@ -7,6 +7,8 @@
  * matches the game's post-match screens (D56).
  */
 import type { Signal } from './analysis'
+import type { PerPlayerMatchStats } from './analysis'
+import { deriveMatchReview } from './matchReview'
 import type { MatchSummary, PlayerSummary } from './statsSummary'
 import { civFromToken } from './statsSummary'
 
@@ -49,8 +51,7 @@ export function villagerGaps(p: PlayerSummary): VillagerProductionRhythm | null 
   const times = p.buildOrder
     .filter(
       (e) =>
-        e.category === 'unit' &&
-        (e.blueprint.startsWith('unit_villager') || e.name === 'Villager'),
+        e.category === 'unit' && (e.blueprint.startsWith('unit_villager') || e.name === 'Villager'),
     )
     .map((e) => e.timeSec)
     .sort((a, b) => a - b)
@@ -80,6 +81,8 @@ export interface SummaryCoachingInput {
   summary: MatchSummary
   myProfileId: number | null
   myCiv: string | null
+  /** Relic counters, when available, for combat-trade context. */
+  perPlayer?: PerPlayerMatchStats[]
   /** The Feudal age-up target (seconds) from the user's chosen build, if any. */
   feudalTargetSec?: number | null
 }
@@ -93,6 +96,12 @@ export function summarySignals(input: SummaryCoachingInput): Signal[] {
   if (!me) return []
   const enemy = input.summary.players.find((p) => p.playerId !== me.playerId) ?? null
   const is1v1 = input.summary.players.length === 2
+  const review = deriveMatchReview(
+    input.summary,
+    input.myProfileId,
+    input.myCiv,
+    input.perPlayer ?? [],
+  )
 
   const signals: Signal[] = []
   const gameLen = input.summary.gameLengthSec
@@ -205,6 +214,89 @@ export function summarySignals(input: SummaryCoachingInput): Signal[] {
       title: `They took the relics (${enemyRelics} vs 0)`,
       detail:
         'Each relic pays 100 gold/min forever. Grab a monk when you hit Castle Age — even one contested relic denies them income.',
+    })
+  }
+
+  // --- Conversion: gathered resources are only useful when they become units,
+  // upgrades or infrastructure. A high last bank plus low conversion is a
+  // stronger read than total gathered alone, but it never claims that saving
+  // was wrong without knowing the player's intended timing.
+  const meReview = review?.me
+  if (
+    meReview?.conversionPct != null &&
+    meReview.gathered != null &&
+    meReview.gathered >= 5_000 &&
+    meReview.lastBank != null &&
+    meReview.lastBank >= 1_200 &&
+    meReview.conversionPct < 75
+  ) {
+    signals.push({
+      id: 'sum-resource-float',
+      severity: meReview.lastBank >= 2_500 ? 'major' : 'minor',
+      title: `Resources were left unspent (${Math.round(meReview.lastBank)} in the last sample)`,
+      detail: `${meReview.conversionPct}% of gathered resources were recorded as spent. This may be intentional saving, but if no age-up or tech was pending, queue production before taking the next fight.`,
+    })
+  }
+
+  // --- Military trade: subtract villagers when the lost-entity list decoded,
+  // so a raid on workers does not masquerade as a bad army trade.
+  const opponentReview = review?.opponent
+  if (
+    is1v1 &&
+    meReview?.tradeRatio != null &&
+    opponentReview?.tradeRatio != null &&
+    meReview.kills != null &&
+    meReview.troopLosses != null &&
+    meReview.kills + meReview.troopLosses >= 8 &&
+    meReview.tradeRatio < opponentReview.tradeRatio * 0.65
+  ) {
+    signals.push({
+      id: 'sum-combat-trade',
+      severity: meReview.tradeRatio < 0.5 ? 'major' : 'minor',
+      title: `Poor troop trade (${meReview.kills} kills for ${meReview.troopLosses} losses)`,
+      detail: `The opponent traded at ${opponentReview.tradeRatio.toFixed(2)} K/D versus your ${meReview.tradeRatio.toFixed(2)}. Review the first fight around the score swing before adding more production.`,
+    })
+  }
+
+  // --- Worker losses are distinct from a low villager high: they are a direct
+  // map-control/defense leak and deserve their own next-game action.
+  if (meReview?.villagersLost != null && meReview.villagersLost >= 5) {
+    signals.push({
+      id: 'sum-villagers-lost',
+      severity: meReview.villagersLost >= 10 ? 'major' : 'minor',
+      title: `Lost ${meReview.villagersLost} villagers`,
+      detail:
+        'Keep the first defensive response simple: scout the approach, pull exposed workers early, and avoid taking a fight while the Town Center is not covered.',
+    })
+  }
+
+  // --- Opening checkpoint: a large gap between the first recorded non-villager
+  // units is useful context, but the event can be a scout rather than army.
+  if (
+    is1v1 &&
+    meReview?.firstNonVillagerUnit &&
+    opponentReview?.firstNonVillagerUnit &&
+    opponentReview.firstNonVillagerUnit.timeSec - meReview.firstNonVillagerUnit.timeSec > 60
+  ) {
+    signals.push({
+      id: 'sum-opening-unit-late',
+      severity: 'minor',
+      title: `First non-villager unit came ${fmtTime(meReview.firstNonVillagerUnit.timeSec)} late`,
+      detail: `Your first recorded unit was ${meReview.firstNonVillagerUnit.name} at ${fmtTime(meReview.firstNonVillagerUnit.timeSec)}; theirs was ${opponentReview.firstNonVillagerUnit.name} at ${fmtTime(opponentReview.firstNonVillagerUnit.timeSec)}. This is an opening checkpoint, not proof of a lost fight.`,
+    })
+  }
+
+  // --- Unit cadence: completion gaps are a safer observable than pretending
+  // the summary can identify an individual production queue's idle time.
+  const unitCompletionGaps = meReview?.unitCompletionGaps ?? 0
+  const longestUnitCompletionGapSec = meReview?.longestUnitCompletionGapSec ?? 0
+  if (unitCompletionGaps >= 2 && longestUnitCompletionGapSec > 90) {
+    signals.push({
+      id: 'sum-unit-cadence',
+      severity: unitCompletionGaps >= 4 ? 'minor' : 'info',
+      title: `Long unit-completion gaps (${fmtTime(longestUnitCompletionGapSec)} max)`,
+      detail:
+        `${unitCompletionGaps} gaps over one minute were visible between completed non-villager units. Check whether production buildings were staffed and whether resources were being floated before the next fight; this is not a direct queue-idle measurement.`,
     })
   }
 

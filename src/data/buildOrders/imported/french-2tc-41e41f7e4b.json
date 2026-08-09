@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "name": "French 2TC",
+  "civilization": "French",
+  "author": "Glazedbagel",
+  "source": "https://aoe4guides.com/builds/UdjmTL1dVwDAtPnzbN7P",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@@resource/sheep.webp@ 6 +1 Vils on sheep"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 4,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@ -> @building_economy/house.webp@@building_economy/mining-camp.webp@ Vil Builds House then Mine"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@200 Gold pull vils and send to Wood - Build @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_french/school-of-cavalry.webp@ 2 Vil Age Up - 4 Vils Build Stone Mine / All Vils from @resource/sheep.webp@ - Rally to @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/house.webp@ With Stone Vil"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "7 Vils on @building_economy/lumber-camp.webp@ Rally to Stone @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "@300 Stone take @building_economy/mining-camp.webp@ Vils and Make @building_economy/town-center.webp@ Total 8 Vils - 7 from Stone / 1 from wood"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_french/school-of-cavalry.webp@ Finishes - 2 Vils to @resource/sheep.webp@ Rally to Sheep"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 27,
+      "resources": {
+        "food": 14,
+        "wood": 5,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@ Finishes - Send Vils to even out economy"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 55,
+      "resources": {
+        "food": 5,
+        "wood": 20,
+        "gold": 0,
+        "stone": 0,
+        "builder": 30
+      },
+      "notes": [
+        "@landmark_french/guild-hall.webp@Split for Castle Age - Can cut unit production to get"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 70,
+      "resources": {
+        "food": 20,
+        "wood": 20,
+        "gold": 0,
+        "stone": 0,
+        "builder": 30
+      },
+      "notes": [
+        "Add More Production @building_military/stable.webp@@building_military/archery-range.webp@ as needed - 2 Stables/2 Archery Ranges - Add @building_religious/monastery.webp@ Go for Relics"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 90,
+      "resources": {
+        "food": 20,
+        "wood": 20,
+        "gold": 20,
+        "stone": 0,
+        "builder": 30
+      },
+      "notes": [
+        "Can start to go into Stone for @building_defensive/keep.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "18:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_french/red-palace.webp@ To Secure Big Gold"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "name": "Malian ",
+  "civilization": "Malians",
+  "author": "BeksBE",
+  "source": "https://aoe4guides.com/builds/2ppmok3TnU9yRSr86OfQ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager-malians.webp@ BOIS jusqu'à 150 @resource/resource_wood.webp@ -> nourriture sur les moutons @resource/sheep.webp@",
+        "1 @unit_worker/villager-malians.webp@ Building @building_malians/pit-mine-1.webp@ =&gt; 6 habitations autour de la mine à ciel ouvert =&gt; 10 @resource/resource_gold.webp@ avant de retourner sur forum =&gt; @resource/sheep.webp@",
+        "Tous les villageois produits =&gt; @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 10,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @unit_worker/villager-malians.webp@ => Building @landmark_malians/mansa-quarry-2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 villageois changement age",
+        "4 nourriture",
+        "2 bois => Production villageois au bois"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:10",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "WHEN 50 BOIS => Moulins @building_economy/mill.webp@ avec un villageois =&gt; @technology_economy/wheelbarrow.webp@ & Le villageois qui a construit @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 17,
+      "resources": {
+        "food": 5,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "WHEN 50 BOIS => @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "+1 villageois sur @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 6,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 du changement d'age => @building_military/barracks.webp@ =&gt; Build @unit_malians/donso-1.webp@",
+        "Dès le changement d'age @technology_economy/double-broadaxe.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 qui construise => sheep @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:24",
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_military/archery-range.webp@ => @building_technology/blacksmith.webp@"
+      ]
+    }
+  ],
+  "description": "SIMPLE & EFFICACE (Défensif)",
+  "video": "https://www.youtube.com/embed/QoMWR6TkUDw",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

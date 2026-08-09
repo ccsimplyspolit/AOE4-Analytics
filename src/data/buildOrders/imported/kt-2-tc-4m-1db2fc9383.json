@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "name": "KT 2 TC 4m",
+  "civilization": "Knights Templar",
+  "author": "JampiX",
+  "source": "https://aoe4guides.com/builds/spAneo9rcC4DWFvUFXJm",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start all 6 @unit_worker/villager.webp@@resource/sheep.webp@; 1 @abilities/repair.webp@@building_economy/house.webp@ and @resource/rally.webp@@resource/resource_gold.webp@ until 2"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "1@resource/rally.webp@ on @resource/resource_food.webp@ then @resource/rally.webp@@resource/gaiatreeprototypetree.webp@ 1 by 1 for each, and nearby @resource/resource_wood.webp@ until 7"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:25",
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "At 200 @resource/resource_gold.webp@ move @resource/resource_gold.webp@@unit_worker/villager.webp@ to wood for 7@resource/resource_food.webp@ 6@resource/resource_wood.webp@ split"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with @civilization_flag/hos.webp@ or @civilization_flag/ant.webp@ and move all @resource/resource_food.webp@ to @resource/resource_stone.webp@ for 7@resource/resource_wood.webp@ 7@resource/resource_stone.webp@split; @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:35",
+      "villager_count": 14,
+      "resources": {
+        "food": 0,
+        "wood": 7,
+        "gold": 0,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "At 4:00 the ageup completes and 2nd @building_economy/town-center.webp@ build on @resource/deer.webp@; remacro to 3 @resource/resource_wood.webp@ rest @resource/resource_food.webp@; @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/B--q6GWPRqA",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

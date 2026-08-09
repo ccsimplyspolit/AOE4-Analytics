@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "name": "6:00 2TC Song Boom",
+  "civilization": "Chinese",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/5QobDDok5JRHubVrr5j6",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @unit_chinese/imperial-official.webp@ from @building_economy/town-center.png@ then @unit_worker/villager-china.png@. You are going to do a special drop off technique which can best be viewed in the video with the early 6 @unit_worker/villager-china.png@ collecting one full drop off from @resource/gaiatreeprototypetree.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_chinese/imperial-official.webp@ @ability_chinese/supervise.png@ the @building_economy/mill.png@ and @unit_worker/villager-china.png@ drop off and go to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_chinese/village.webp@ opposite side of the TC relative to the woodline. Builder goes to collect an additional 3 @resource/resource_wood.png@ from previous @resource/gaiatreeprototypetree.png@. Then drop off and go back to food"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 8,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "8 on @resource/resource_food.webp@. Now @resource/rally.png@ 3 @unit_worker/villager-china.png@ to @resource/resource_gold.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@ability_chinese/collect_tax.webp@ tax from @building_economy/mill.png@ with @unit_chinese/imperial-official.png@ then @ability_chinese/supervise.png@ again."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Continue to @resource/rally.webp@@resource/resource_food.png@ after @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@landmark_chinese/imperial-academy.webp@ with 1 @resource/resource_food.png@@unit_worker/villager-china.png@ towards 1st woodline."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "During construction of @landmark_chinese/imperial-academy.webp@ you just @resource/rally.png@ on @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 16,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@ability_chinese/collect_tax.webp@ and drop off @resource/resource_gold.png@. Then build @landmark_chinese/barbican-of-the-sun.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 17,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Remacro"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@ability_chinese/collect_tax.webp@ and queue up @unit_chinese/imperial-official.png@ from @landmark_chinese/imperial-academy.png@. @resource/rally.png@ @resource/resource_stone.png@ until 10."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 0,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 0,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "Send 3 @unit_worker/villager-china.webp@ from @landmark_chinese/barbican-of-the-sun.png@ to @resource/resource_stone.png@ when construction is done."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:05",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/town-center.png@ and @resource/rally.png@@resource/resource_food.png@ with main @building_economy/town-center.png@ for @unit_worker/villager-china.png@ production (8 on f)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Game is now yours and you can do what you want. I recommend in most 2tc vs 2tc situations, that you just play straight FC and grab relics and start walling, play @unit_chinese/nest-of-bees.webp@ @unit_infantry/spearman-1.png@@unit_infantry/crossbowman-3.png@ for defense, then get map control (8K) gold and @age/age_4.png@ with @building_chinese/granary.png@transition"
+      ]
+    }
+  ],
+  "description": "Classic Chinese Song Dynasty Fast 2nd TC for Economy Play. Great vs other boom civs. Suffers vs aggression. ",
+  "video": "https://www.youtube.com/embed/2hEeHjwWkow",
+  "season": 9,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

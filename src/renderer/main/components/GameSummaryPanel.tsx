@@ -28,6 +28,12 @@ import type {
   ScorePoint,
 } from '@domain/statsSummary'
 import { civFromToken } from '@domain/statsSummary'
+import {
+  deriveMatchReview,
+  type MatchReview,
+  type MatchReviewPlayer,
+  type MatchReviewTeamSide,
+} from '@domain/matchReview'
 import { villagerGaps, type VillagerProductionRhythm } from '@domain/summaryCoaching'
 import { civDisplayName } from '@domain/civ'
 import { landmarksForCiv } from '@domain/landmarks'
@@ -38,10 +44,11 @@ import {
   type TeamContributionBreakdown,
   type TeamContributionPlayer,
 } from '@domain/teamInsights'
-import { formatDurationShort } from '@shared/format'
+import { formatCount, formatDurationShort } from '@shared/format'
 import { cn } from '@shared/lib/utils'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { finiteMetricValue } from './gameSummaryHelpers'
+import { useI18n } from '../../i18n'
 
 const GRID = 'hsl(var(--border))'
 const MUTED = 'hsl(var(--muted-foreground))'
@@ -88,6 +95,7 @@ export function GameSummaryPanel({
   perPlayer?: PerPlayerMatchStats[]
   myProfileId?: number | null
 }) {
+  const { tt } = useI18n()
   const meFirst = (a: PlayerSummary, b: PlayerSummary) =>
     Number(isMe(b, myProfileId ?? null, myCiv)) - Number(isMe(a, myProfileId ?? null, myCiv))
   const players = [...summary.players].sort(meFirst)
@@ -115,6 +123,7 @@ export function GameSummaryPanel({
   const myVillHigh = me?.totals?.villagerHigh ?? null
   const myAge = me ? ageTimings(me, myCiv) : new Map<2 | 3 | 4, number>()
   const contribution = buildTeamContributionBreakdown(perPlayer ?? [], myProfileId ?? null)
+  const review = deriveMatchReview(summary, myProfileId ?? null, myCiv, perPlayer ?? [])
 
   return (
     <div className="space-y-4">
@@ -122,38 +131,40 @@ export function GameSummaryPanel({
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
           <InsightCard
             icon={<Coins className="h-4 w-4 text-primary" />}
-            label="Resources gathered"
+            label={tt('Resources gathered')}
             value={myResources ? fmtInt(totalResources(myResources)) : '-'}
             hint={
-              myResources ? resourceLine(myResources) : 'Summary did not include resource totals.'
+              myResources ? resourceLine(myResources) : tt('Summary did not include resource totals.')
             }
           />
           <InsightCard
             icon={<Trophy className="h-4 w-4 text-primary" />}
-            label="Score"
+            label={tt('Score')}
             value={myScore ? fmtInt(myScore.total) : '-'}
-            hint={myScore ? strongestScoreLane(myScore) : 'No final score split decoded.'}
+            hint={myScore ? strongestScoreLane(myScore, tt) : tt('No final score split decoded.')}
           />
           <InsightCard
             icon={<Clock className="h-4 w-4 text-primary" />}
-            label="Age timing"
+            label={tt('Age timing')}
             value={formatDurationShort(myAge.get(2))}
-            hint={`Castle ${formatDurationShort(myAge.get(3))} / Imperial ${formatDurationShort(myAge.get(4))}`}
+            hint={`${tt('Castle')} ${formatDurationShort(myAge.get(3))} / ${tt('Imperial')} ${formatDurationShort(myAge.get(4))}`}
           />
           <InsightCard
             icon={<Users className="h-4 w-4 text-primary" />}
-            label={myVillHigh != null ? 'Villager high' : 'Town Center rhythm'}
+            label={tt(myVillHigh != null ? 'Villager high' : 'Town Center rhythm')}
             value={
               myVillHigh != null
-                ? `${myVillHigh} villagers`
+                ? `${myVillHigh} ${tt('villagers')}`
                 : myTc
-                  ? `${myTc.villagersMade} vills made`
+                  ? `${myTc.villagersMade} ${tt('vills made')}`
                   : '-'
             }
-            hint={villagerHint(myTc, myVillHigh)}
+            hint={villagerHint(myTc, myVillHigh, tt)}
           />
         </div>
       )}
+
+      {review && <DecisionMetricsCard review={review} />}
 
       <div className="grid gap-4 xl:grid-cols-2">
         <div id="game-summary-score" className="scroll-mt-4">
@@ -169,21 +180,19 @@ export function GameSummaryPanel({
           myProfileId={myProfileId ?? null}
         />
       </div>
+      <SummaryTotalsTable players={players} />
       {contribution.available && (
         <TeamContributionCard breakdown={contribution} summaryPlayers={players} />
       )}
       <p className="text-[11px] leading-relaxed text-muted-foreground">
-        Scores are the game&apos;s last sampled values (up to ~20s before the end screen), so they
-        can sit slightly under the score screen&apos;s finals. Resource totals count DELIVERED
-        resources — the game&apos;s own screen also credits what villagers were still carrying when
-        the game ended.
+        {tt("Scores are the game's last sampled values (up to ~20s before the end screen), so they can sit slightly under the score screen's finals. Resource totals count DELIVERED resources — the game's own screen also credits what villagers were still carrying when the game ended.")}
       </p>
 
       {(hasEco || hasScore) && (
         <div className="grid gap-4 lg:grid-cols-2">
           {hasEco && (
             <ChartCard
-              title="Resources over time"
+              title={tt('Resources over time')}
               icon={<LineChartIcon className="h-4 w-4 text-primary" />}
             >
               <TimeChart
@@ -195,7 +204,7 @@ export function GameSummaryPanel({
             </ChartCard>
           )}
           {hasScore && (
-            <ChartCard title="Score over time" icon={<Trophy className="h-4 w-4 text-primary" />}>
+            <ChartCard title={tt('Score over time')} icon={<Trophy className="h-4 w-4 text-primary" />}>
               <TimeChart
                 data={scoreData}
                 players={players}
@@ -211,7 +220,7 @@ export function GameSummaryPanel({
         <Card id="game-summary-build-order" className="scroll-mt-4">
           <CardContent className="p-4">
             <h3 className="mb-3 flex items-center gap-1.5 text-sm font-semibold">
-              <Hammer className="h-4 w-4 text-primary" /> Build order timeline
+              <Hammer className="h-4 w-4 text-primary" /> {tt('Build order timeline')}
             </h3>
             <div className="grid gap-4 md:grid-cols-2">
               {players.map((p) => (
@@ -255,6 +264,277 @@ function InsightCard({
   )
 }
 
+function DecisionMetricsCard({ review }: { review: MatchReview }) {
+  const { tt } = useI18n()
+  const me = review.me
+  const opponent = review.opponent
+  return (
+    <Card>
+      <CardContent className="space-y-4 p-4">
+        <div className="flex flex-wrap items-start justify-between gap-2">
+          <div>
+            <h3 className="flex items-center gap-1.5 text-sm font-semibold">
+              <Activity className="h-4 w-4 text-primary" /> {tt('Decision metrics')}
+            </h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              {tt('Derived from the game summary and Relic counters. These explain conversion and timing; they are not a single skill score.')}
+            </p>
+          </div>
+          <span className="rounded bg-secondary px-2 py-1 text-[10px] text-muted-foreground">
+            {tt(review.isOneVsOne ? '1v1 comparison' : 'your row only')}
+          </span>
+        </div>
+        <div className="flex flex-wrap items-center gap-2 text-[10px] text-muted-foreground">
+          <span className="rounded border border-border/70 px-2 py-1 uppercase tracking-wide">
+            {tt('Evidence coverage')}: {coverageLabel(review.coverage.confidence, tt)}
+          </span>
+          <span>{coverageFacts(review.coverage).map((fact) => tt(fact)).join(' · ')}</span>
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          <ReviewMetric
+            icon={<Coins className="h-4 w-4 text-primary" />}
+            label={tt('Resource conversion')}
+            value={me.conversionPct == null ? '-' : `${me.conversionPct}%`}
+            hint={
+              me.gathered == null || me.spent == null
+                ? tt('Gathered/spent totals unavailable.')
+                : `${tt('Spent')} ${fmtInt(me.spent)} ${tt('of')} ${fmtInt(me.gathered)} · ${tt('last bank')} ${me.lastBank == null ? '—' : fmtInt(me.lastBank)}`
+            }
+          />
+          <ReviewMetric
+            icon={<Coins className="h-4 w-4 text-primary" />}
+            label={tt('Unspent float')}
+            value={me.resourceFloatPct == null ? '-' : `${me.resourceFloatPct}%`}
+            hint={
+              me.resourceFloatPct == null || me.lastBank == null
+                ? tt('End-bank share unavailable.')
+                : `${fmtInt(me.lastBank)} ${tt('in the last recorded bank')} · ${tt('saving may be intentional')}`
+            }
+          />
+          <ReviewMetric
+            icon={<Swords className="h-4 w-4 text-primary" />}
+            label={tt('Troop trade')}
+            value={tradeValue(me)}
+            hint={
+              me.kills == null || me.troopLosses == null
+                ? tt('Troop losses could not be separated from villagers.')
+                : `${me.kills} ${tt('kills')} · ${me.troopLosses} ${tt('troop losses')}${opponent ? ` · ${tt('opponent')} ${tradeValue(opponent)}` : ''}`
+            }
+          />
+          <ReviewMetric
+            icon={<Hammer className="h-4 w-4 text-primary" />}
+            label={tt('Unit cadence')}
+            value={
+              me.longestUnitCompletionGapSec == null
+                ? '-'
+                : formatDurationShort(me.longestUnitCompletionGapSec)
+            }
+            hint={
+              me.unitCompletionGaps === 0
+                ? tt('No long completion gaps observed.')
+                : `${me.unitCompletionGaps} ${tt('gap(s) over 1:00 between completed non-villager units')}`
+            }
+          />
+          <ReviewMetric
+            icon={<Hammer className="h-4 w-4 text-primary" />}
+            label={tt('Production conversion')}
+            value={
+              me.unitsProduced == null || me.largestArmy == null
+                ? '-'
+                : `${me.unitsProduced} ${tt('units')} · ${me.largestArmy} ${tt('peak')}`
+            }
+            hint={`${me.villagerHigh == null ? tt('Villager high unavailable') : `${me.villagerHigh} ${tt('villager high')}`} · ${me.tcIdleWindows} ${tt('long TC gap(s)')}`}
+          />
+          <ReviewMetric
+            icon={<Clock className="h-4 w-4 text-primary" />}
+            label={tt('Opening checkpoint')}
+            value={
+              me.firstNonVillagerUnit == null
+                ? '-'
+                : `${me.firstNonVillagerUnit.name} · ${formatDurationShort(me.firstNonVillagerUnit.timeSec)}`
+            }
+            hint={[
+              me.firstBuilding == null
+                ? tt('First building event unavailable.')
+                : `${tt('First building')}: ${me.firstBuilding.name} · ${formatDurationShort(me.firstBuilding.timeSec)}`,
+              me.age2Sec == null ? null : `${tt('Feudal')} ${formatDurationShort(me.age2Sec)}`,
+              me.age3Sec == null ? null : `${tt('Castle')} ${formatDurationShort(me.age3Sec)}`,
+            ]
+              .filter((value): value is string => value != null)
+              .join(' · ')}
+          />
+        </div>
+
+        {!review.isOneVsOne && review.teamComparison && (
+          <TeamReviewComparison comparison={review.teamComparison} />
+        )}
+
+        {opponent && review.checkpoints.length > 0 && (
+          <div className="overflow-x-auto rounded-md border border-border/70">
+            <table className="w-full min-w-[560px] text-xs">
+              <thead className="bg-secondary/50 text-[10px] uppercase tracking-wide text-muted-foreground">
+                <tr>
+                  <th className="px-3 py-2 text-left">{tt('Checkpoint')}</th>
+                  <th className="px-3 py-2 text-right">{tt('Time')}</th>
+                  <th className="px-3 py-2 text-right">{tt('Gathered gap')}</th>
+                  <th className="px-3 py-2 text-right">{tt('Score gap')}</th>
+                  <th className="px-3 py-2 text-left">{tt('Read')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {review.checkpoints.map((checkpoint) => (
+                  <tr
+                    key={`${checkpoint.label}-${checkpoint.timeSec}`}
+                    className="border-t border-border/60"
+                  >
+                    <td className="px-3 py-2 font-medium">{checkpoint.label}</td>
+                    <td className="px-3 py-2 text-right tabular-nums">
+                      {formatDurationShort(checkpoint.timeSec)}
+                    </td>
+                    <td className="px-3 py-2 text-right tabular-nums">
+                      {signedMetric(checkpoint.gatheredDelta)}
+                    </td>
+                    <td className="px-3 py-2 text-right tabular-nums">
+                      {signedMetric(checkpoint.scoreDelta)}
+                    </td>
+                    <td className="px-3 py-2 text-muted-foreground">
+                      {checkpoint.gatheredDelta == null && checkpoint.scoreDelta == null
+                        ? tt('Timeline sample unavailable')
+                        : checkpoint.gatheredDelta != null && checkpoint.gatheredDelta < 0
+                          ? tt('Economy behind here')
+                          : checkpoint.scoreDelta != null && checkpoint.scoreDelta < 0
+                            ? tt('Score behind here')
+                            : tt('No recorded deficit here')}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+        <p className="text-[10px] leading-relaxed text-muted-foreground">
+          {tt("A positive gap means your value is higher than the opponent's at the nearest recorded sample. “Last bank” is the last timeline sample, not a claim about the exact end screen.")}
+        </p>
+      </CardContent>
+    </Card>
+  )
+}
+
+function ReviewMetric({
+  icon,
+  label,
+  value,
+  hint,
+}: {
+  icon: ReactNode
+  label: string
+  value: string
+  hint: string
+}) {
+  return (
+    <div className="rounded-md border border-border/70 bg-secondary/20 p-3">
+      <div className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+        {icon}
+        {label}
+      </div>
+      <div className="mt-2 text-lg font-semibold tabular-nums">{value}</div>
+      <p className="mt-1 text-[11px] leading-snug text-muted-foreground">{hint}</p>
+    </div>
+  )
+}
+
+function coverageLabel(
+  confidence: MatchReview['coverage']['confidence'],
+  tt: (value: string) => string,
+): string {
+  return tt(confidence)
+}
+
+function coverageFacts(coverage: MatchReview['coverage']): string[] {
+  return [
+    coverage.summaryTotals ? 'summary totals' : null,
+    coverage.economyTimeline ? 'economy timeline' : null,
+    coverage.scoreTimeline ? 'score timeline' : null,
+    coverage.buildTimeline ? 'build timeline' : null,
+    coverage.combatCounters ? 'combat counters' : null,
+  ].filter((value): value is string => value != null)
+}
+
+function TeamReviewComparison({
+  comparison,
+}: {
+  comparison: NonNullable<MatchReview['teamComparison']>
+}) {
+  const { tt } = useI18n()
+  return (
+    <div className="rounded-md border border-border/70 bg-secondary/10 p-3">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <div>
+          <h4 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            {tt('Team comparison')}
+          </h4>
+          <p className="mt-1 text-[11px] text-muted-foreground">
+            {tt('Aggregated from the decoded summary players; this is a side-level read for team games.')}
+          </p>
+        </div>
+        <span className="text-[10px] text-muted-foreground">
+          {comparison.mine.playerCount} vs {comparison.enemy.playerCount} players
+        </span>
+      </div>
+      <div className="mt-3 overflow-x-auto">
+        <table className="w-full min-w-[560px] text-xs">
+          <thead className="text-[10px] uppercase tracking-wide text-muted-foreground">
+            <tr>
+              <th className="px-2 py-1.5 text-left">{tt('Metric')}</th>
+              <th className="px-2 py-1.5 text-right">{tt('Your team')}</th>
+              <th className="px-2 py-1.5 text-right">{tt('Enemy team')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              [tt('Resources spent / gathered'), teamEconomy(comparison.mine), teamEconomy(comparison.enemy)],
+              [tt('Kills / troop losses'), teamTrade(comparison.mine), teamTrade(comparison.enemy)],
+              [tt('Units produced / peak army'), `${teamInt(comparison.mine.unitsProduced)} / ${teamInt(comparison.mine.largestArmy)}`, `${teamInt(comparison.enemy.unitsProduced)} / ${teamInt(comparison.enemy.largestArmy)}`],
+              [tt('Villager high / TC gaps'), `${teamInt(comparison.mine.villagerHigh)} / ${comparison.mine.tcIdleWindows}`, `${teamInt(comparison.enemy.villagerHigh)} / ${comparison.enemy.tcIdleWindows}`],
+              [tt('Upgrades'), teamInt(comparison.mine.upgrades), teamInt(comparison.enemy.upgrades)],
+            ].map(([label, mine, enemy]) => (
+              <tr key={label} className="border-t border-border/60">
+                <td className="px-2 py-1.5 text-muted-foreground">{label}</td>
+                <td className="px-2 py-1.5 text-right tabular-nums">{mine}</td>
+                <td className="px-2 py-1.5 text-right tabular-nums">{enemy}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )
+}
+
+function teamInt(value: number | null): string {
+  return value == null ? '-' : fmtInt(value)
+}
+
+function teamEconomy(side: MatchReviewTeamSide): string {
+  return `${teamInt(side.spent)} / ${teamInt(side.gathered)}${side.conversionPct == null ? '' : ` · ${side.conversionPct}%`}`
+}
+
+function teamTrade(side: MatchReviewTeamSide): string {
+  const ratio = side.tradeRatio == null ? '-' : `${side.tradeRatio.toFixed(2)} K/D`
+  return `${teamInt(side.kills)} / ${teamInt(side.troopLosses)} · ${ratio}`
+}
+
+function tradeValue(player: MatchReviewPlayer): string {
+  if (player.tradeRatio == null) return '-'
+  return `${player.tradeRatio.toFixed(2)} K/D`
+}
+
+function signedMetric(value: number | null): string {
+  if (value == null) return '-'
+  return `${value > 0 ? '+' : ''}${fmtInt(value)}`
+}
+
 interface TableColumn<T> {
   key: string
   label: string
@@ -281,6 +561,7 @@ function DataTable<T>({
   rowClassName?: (row: T) => string | undefined
   empty?: string
 }) {
+  const { tt } = useI18n()
   const best = new Map<string, number>()
   for (const col of columns) {
     if (!col.better) continue
@@ -299,7 +580,7 @@ function DataTable<T>({
         </div>
         {rows.length === 0 ? (
           <p className="p-4 text-sm text-muted-foreground">
-            {empty ?? 'No data decoded for this table.'}
+            {empty ?? tt('No data decoded for this table.')}
           </p>
         ) : (
           <div className="overflow-x-auto">
@@ -354,53 +635,54 @@ function DataTable<T>({
 }
 
 function ScoreTable({ players }: { players: PlayerSummary[] }) {
+  const { tt } = useI18n()
   const rows = players
     .map((player) => ({ player, score: finalScore(player) }))
     .filter((r): r is { player: PlayerSummary; score: ScorePoint } => r.score != null)
   return (
     <DataTable
-      title="Scoreboard"
+      title={tt('Scoreboard')}
       icon={<Trophy className="h-4 w-4 text-primary" />}
       rows={rows}
       rowKey={(r) => String(r.player.playerId)}
       columns={[
         {
           key: 'player',
-          label: 'Player',
+          label: tt('Player'),
           value: (r) => playerLabel(r.player),
           display: (_, r) => playerLabel(r.player),
         },
         {
           key: 'total',
-          label: 'Total',
+          label: tt('Total'),
           align: 'right',
           better: 'high',
           value: (r) => r.score.total,
         },
         {
           key: 'military',
-          label: 'Military',
+          label: tt('Military'),
           align: 'right',
           better: 'high',
           value: (r) => r.score.military,
         },
         {
           key: 'economy',
-          label: 'Economy',
+          label: tt('Economy'),
           align: 'right',
           better: 'high',
           value: (r) => r.score.economy,
         },
         {
           key: 'technology',
-          label: 'Tech',
+          label: tt('Tech'),
           align: 'right',
           better: 'high',
           value: (r) => r.score.technology,
         },
         {
           key: 'society',
-          label: 'Society',
+          label: tt('Society'),
           align: 'right',
           better: 'high',
           value: (r) => r.score.society,
@@ -411,68 +693,69 @@ function ScoreTable({ players }: { players: PlayerSummary[] }) {
 }
 
 function ResourceTable({ players }: { players: PlayerSummary[] }) {
+  const { tt } = useI18n()
   const rows = players
     .map((player) => ({ player, resources: finalResources(player) }))
     .filter((r): r is { player: PlayerSummary; resources: ResourceAmounts } => r.resources != null)
   return (
     <DataTable
-      title="Economy"
+      title={tt('Economy')}
       icon={<Pickaxe className="h-4 w-4 text-primary" />}
       rows={rows}
       rowKey={(r) => String(r.player.playerId)}
       columns={[
         {
           key: 'player',
-          label: 'Player',
+          label: tt('Player'),
           value: (r) => playerLabel(r.player),
           display: (_, r) => playerLabel(r.player),
         },
         // Whole numbers, like the game's own screen (raw values are floats).
         {
           key: 'total',
-          label: 'Total',
+          label: tt('Total'),
           align: 'right',
           better: 'high',
           value: (r) => Math.round(totalResources(r.resources)),
         },
         {
           key: 'food',
-          label: 'Food',
+          label: tt('Food'),
           align: 'right',
           better: 'high',
           value: (r) => Math.round(r.resources.food),
         },
         {
           key: 'wood',
-          label: 'Wood',
+          label: tt('Wood'),
           align: 'right',
           better: 'high',
           value: (r) => Math.round(r.resources.wood),
         },
         {
           key: 'stone',
-          label: 'Stone',
+          label: tt('Stone'),
           align: 'right',
           better: 'high',
           value: (r) => Math.round(r.resources.stone),
         },
         {
           key: 'gold',
-          label: 'Gold',
+          label: tt('Gold'),
           align: 'right',
           better: 'high',
           value: (r) => Math.round(r.resources.gold),
         },
         {
           key: 'foodRate',
-          label: 'Max food/min',
+          label: tt('Max food/min'),
           align: 'right',
           better: 'high',
           value: (r) => maxGatherRate(r.player, 'food'),
         },
         {
           key: 'woodRate',
-          label: 'Max wood/min',
+          label: tt('Max wood/min'),
           align: 'right',
           better: 'high',
           value: (r) => maxGatherRate(r.player, 'wood'),
@@ -491,6 +774,7 @@ function AgeTable({
   myProfileId: number | null
   myCiv: string | null
 }) {
+  const { tt } = useI18n()
   const rows = players.map((player) => ({
     player,
     timings: ageTimings(
@@ -500,20 +784,20 @@ function AgeTable({
   }))
   return (
     <DataTable
-      title="Technology timing"
+      title={tt('Technology timing')}
       icon={<Activity className="h-4 w-4 text-primary" />}
       rows={rows}
       rowKey={(r) => String(r.player.playerId)}
       columns={[
         {
           key: 'player',
-          label: 'Player',
+          label: tt('Player'),
           value: (r) => playerLabel(r.player),
           display: (_, r) => playerLabel(r.player),
         },
         {
           key: 'age2',
-          label: 'Age II',
+          label: tt('Age II'),
           align: 'right',
           better: 'low',
           value: (r) => r.timings.get(2) ?? null,
@@ -521,7 +805,7 @@ function AgeTable({
         },
         {
           key: 'age3',
-          label: 'Age III',
+          label: tt('Age III'),
           align: 'right',
           better: 'low',
           value: (r) => r.timings.get(3) ?? null,
@@ -529,7 +813,7 @@ function AgeTable({
         },
         {
           key: 'age4',
-          label: 'Age IV',
+          label: tt('Age IV'),
           align: 'right',
           better: 'low',
           value: (r) => r.timings.get(4) ?? null,
@@ -537,7 +821,7 @@ function AgeTable({
         },
         {
           key: 'upgrades',
-          label: 'Upgrades',
+          label: tt('Upgrades'),
           align: 'right',
           better: 'high',
           value: (r) =>
@@ -558,6 +842,7 @@ function CombatTable({
   players: PlayerSummary[]
   myProfileId: number | null
 }) {
+  const { tt } = useI18n()
   const labelByCiv = labelsByCiv(players)
   const rows = [...perPlayer].sort(
     (a, b) => Number(b.profileId === myProfileId) - Number(a.profileId === myProfileId),
@@ -570,72 +855,192 @@ function CombatTable({
     players.find((p) => p.profileId === profileId)?.totals?.villagerHigh ?? null
   return (
     <DataTable
-      title="Military and production"
+      title={tt('Military and production')}
       icon={<Swords className="h-4 w-4 text-primary" />}
       rows={rows}
       rowKey={(r) => String(r.profileId)}
       rowClassName={(r) => (r.profileId === myProfileId ? 'bg-primary/5' : undefined)}
-      empty="Relic comparison counters are not attached to this game yet."
+      empty={tt('Relic comparison counters are not attached to this game yet.')}
       columns={[
         {
           key: 'player',
-          label: 'Player',
+          label: tt('Player'),
           value: (r) => combatPlayerLabel(r, labelByCiv, myProfileId),
           display: (_, r) => combatPlayerLabel(r, labelByCiv, myProfileId),
         },
         {
           key: 'units',
-          label: 'Units made',
+          label: tt('Units made'),
           align: 'right',
           better: 'high',
           value: (r) => r.unitsProduced,
         },
         {
           key: 'army',
-          label: 'Largest army',
+          label: tt('Largest army'),
           align: 'right',
           better: 'high',
           value: (r) => largestArmyFor(r.profileId),
         },
         {
           key: 'villHigh',
-          label: 'Vill high',
+          label: tt('Vill high'),
           align: 'right',
           better: 'high',
           value: (r) => villagerHighFor(r.profileId),
         },
-        { key: 'kills', label: 'Killed', align: 'right', better: 'high', value: (r) => r.kills },
-        { key: 'deaths', label: 'Lost', align: 'right', better: 'low', value: (r) => r.deaths },
+        { key: 'kills', label: tt('Killed'), align: 'right', better: 'high', value: (r) => r.kills },
+        { key: 'deaths', label: tt('Lost'), align: 'right', better: 'low', value: (r) => r.deaths },
         { key: 'kd', label: 'K/D', align: 'right', better: 'high', value: (r) => r.kd },
         {
           key: 'buildings',
-          label: 'Buildings',
+          label: tt('Buildings'),
           align: 'right',
           better: 'high',
           value: (r) => r.buildingsProduced,
         },
         {
           key: 'blost',
-          label: 'Bldgs lost',
+          label: tt('Bldgs lost'),
           align: 'right',
           better: 'low',
           value: (r) => r.buildingsLost ?? null,
         },
         {
           key: 'struct',
-          label: 'Struct dmg',
+          label: tt('Struct dmg'),
           align: 'right',
           better: 'high',
           value: (r) => r.structureDamage ?? null,
         },
         {
           key: 'techs',
-          label: 'Techs',
+          label: tt('Techs'),
           align: 'right',
           better: 'high',
           value: (r) => r.techsResearched,
         },
         { key: 'apm', label: 'APM', align: 'right', better: 'high', value: (r) => r.apm },
+      ]}
+    />
+  )
+}
+
+/**
+ * The STPD header is the authoritative post-game counter set. Keep this table
+ * independent from `perPlayer`: local stats.rgs has these values even when the
+ * Relic report-result counters were never attached to the match.
+ */
+function SummaryTotalsTable({ players }: { players: PlayerSummary[] }) {
+  const { tt } = useI18n()
+  const rows = players.flatMap((player) =>
+    player.totals ? [{ player, totals: player.totals }] : [],
+  )
+  return (
+    <DataTable
+      title={tt('Relic summary totals')}
+      icon={<Activity className="h-4 w-4 text-primary" />}
+      rows={rows}
+      rowKey={(r) => String(r.player.playerId)}
+      empty={tt('The summary header totals were not decoded for this game.')}
+      columns={[
+        {
+          key: 'player',
+          label: tt('Player'),
+          value: (r) => playerLabel(r.player),
+          display: (_, r) => playerLabel(r.player),
+        },
+        {
+          key: 'gathered',
+          label: tt('Gathered'),
+          align: 'right',
+          better: 'high',
+          value: (r) => Math.round(totalResources(r.totals.resourcesGathered)),
+        },
+        {
+          key: 'spent',
+          label: tt('Spent'),
+          align: 'right',
+          better: 'high',
+          value: (r) => Math.round(totalResources(r.totals.resourcesSpent)),
+        },
+        {
+          key: 'produced',
+          label: tt('Units made'),
+          align: 'right',
+          better: 'high',
+          value: (r) => r.totals.unitsProduced,
+        },
+        {
+          key: 'lost',
+          label: tt('Units lost'),
+          align: 'right',
+          better: 'low',
+          value: (r) => r.totals.unitsLost,
+        },
+        {
+          key: 'killed',
+          label: tt('Units killed'),
+          align: 'right',
+          better: 'high',
+          value: (r) => r.totals.unitsKilled,
+        },
+        {
+          key: 'villagersLost',
+          label: tt('Villagers lost'),
+          align: 'right',
+          better: 'low',
+          value: (r) => r.player.villagersLost,
+        },
+        {
+          key: 'buildingsLost',
+          label: tt('Buildings lost'),
+          align: 'right',
+          better: 'low',
+          value: (r) => r.totals.buildingsLost,
+        },
+        {
+          key: 'buildingsRazed',
+          label: tt('Buildings razed'),
+          align: 'right',
+          better: 'high',
+          value: (r) => r.totals.buildingsRazed,
+        },
+        {
+          key: 'techs',
+          label: tt('Techs'),
+          align: 'right',
+          better: 'high',
+          value: (r) => r.totals.techResearched,
+        },
+        {
+          key: 'army',
+          label: tt('Largest army'),
+          align: 'right',
+          better: 'high',
+          value: (r) => r.totals.largestArmy,
+        },
+        {
+          key: 'villHigh',
+          label: tt('Villager high'),
+          align: 'right',
+          better: 'high',
+          value: (r) => r.totals.villagerHigh,
+        },
+        {
+          key: 'relics',
+          label: tt('Relics'),
+          align: 'right',
+          better: 'high',
+          value: (r) => r.totals.relicsCaptured,
+        },
+        {
+          key: 'sacred',
+          label: tt('Sacred'),
+          align: 'right',
+          value: (r) =>
+            `${r.totals.sacredCaptured}/${r.totals.sacredLost}/${r.totals.sacredNeutralized}`,
+        },
       ]}
     />
   )
@@ -648,6 +1053,7 @@ function TeamContributionCard({
   breakdown: TeamContributionBreakdown
   summaryPlayers: PlayerSummary[]
 }) {
+  const { tt } = useI18n()
   const showPressure = breakdown.coverage.pressure.reported > 0
   return (
     <Card>
@@ -655,26 +1061,29 @@ function TeamContributionCard({
         <div className="flex flex-wrap items-start justify-between gap-2">
           <div>
             <h3 className="flex items-center gap-1.5 text-sm font-semibold">
-              <Users className="h-4 w-4 text-primary" /> Team contribution breakdown
+              <Users className="h-4 w-4 text-primary" /> {tt('Team contribution breakdown')}
             </h3>
             <p className="mt-1 text-xs text-muted-foreground">
-              Raw counters and teammate comparisons stay separate — there is no combined carry
-              score.
+              {tt(
+                'Raw counters and teammate comparisons stay separate — there is no combined carry score.',
+              )}
             </p>
           </div>
           <span className="rounded bg-secondary px-2 py-1 text-[10px] text-muted-foreground">
-            {breakdown.basis}
+            {tt(breakdown.basis)}
           </span>
         </div>
 
         <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-muted-foreground">
-          <CoverageLabel label="Production" coverage={breakdown.coverage.production} />
-          <CoverageLabel label="Military" coverage={breakdown.coverage.military} />
-          <CoverageLabel label="Tech" coverage={breakdown.coverage.technology} />
+          <CoverageLabel label={tt('Production')} coverage={breakdown.coverage.production} />
+          <CoverageLabel label={tt('Military')} coverage={breakdown.coverage.military} />
+          <CoverageLabel label={tt('Tech')} coverage={breakdown.coverage.technology} />
           <CoverageLabel label="APM" coverage={breakdown.coverage.activity} />
-          <CoverageLabel label="Pressure" coverage={breakdown.coverage.pressure} />
+          <CoverageLabel label={tt('Pressure')} coverage={breakdown.coverage.pressure} />
           {breakdown.excludedUnknownTeamRows > 0 && (
-            <span>{breakdown.excludedUnknownTeamRows} row(s) excluded: team unknown</span>
+            <span>
+              {breakdown.excludedUnknownTeamRows} {tt('row(s) excluded: team unknown')}
+            </span>
           )}
         </div>
 
@@ -682,12 +1091,12 @@ function TeamContributionCard({
           <table className="w-full min-w-[760px] text-xs">
             <thead className="bg-secondary/60 text-[10px] uppercase tracking-wide text-muted-foreground">
               <tr>
-                <th className="px-3 py-2 text-left">Player</th>
-                <th className="px-3 py-2 text-right">Production</th>
-                <th className="px-3 py-2 text-right">Military efficiency</th>
-                <th className="px-3 py-2 text-right">Technology</th>
-                <th className="px-3 py-2 text-right">Activity</th>
-                {showPressure && <th className="px-3 py-2 text-right">Pressure</th>}
+                <th className="px-3 py-2 text-left">{tt('Player')}</th>
+                <th className="px-3 py-2 text-right">{tt('Production')}</th>
+                <th className="px-3 py-2 text-right">{tt('Military efficiency')}</th>
+                <th className="px-3 py-2 text-right">{tt('Technology')}</th>
+                <th className="px-3 py-2 text-right">{tt('Activity')}</th>
+                {showPressure && <th className="px-3 py-2 text-right">{tt('Pressure')}</th>}
               </tr>
             </thead>
             <tbody>
@@ -700,29 +1109,31 @@ function TeamContributionCard({
                   )}
                 >
                   <td className="px-3 py-2 font-medium">
-                    {contributionPlayerLabel(row, summaryPlayers)}
+                    {contributionPlayerLabel(row, summaryPlayers, tt)}
                   </td>
                   <MetricCell
                     raw={
-                      row.production.value == null ? '-' : `${fmtInt(row.production.value)} units`
+                      row.production.value == null ? '-' : `${fmtInt(row.production.value)} ${tt('units')}`
                     }
-                    detail={metricComparison(row.production, 'team total')}
+                    detail={metricComparison(row.production, 'team total', tt)}
                   />
-                  <MetricCell raw={militaryRaw(row)} detail={militaryComparison(row)} />
+                  <MetricCell raw={militaryRaw(row, tt)} detail={militaryComparison(row, tt)} />
                   <MetricCell
                     raw={
-                      row.technology.value == null ? '-' : `${fmtInt(row.technology.value)} techs`
+                      row.technology.value == null
+                        ? '-'
+                        : `${fmtInt(row.technology.value)} ${tt('techs')}`
                     }
-                    detail={metricComparison(row.technology, 'team total')}
+                    detail={metricComparison(row.technology, 'team total', tt)}
                   />
                   <MetricCell
                     raw={row.activity.value == null ? '-' : `${row.activity.value} APM`}
-                    detail={metricComparison(row.activity, 'team average', false)}
+                    detail={metricComparison(row.activity, 'team average', tt, false)}
                   />
                   {showPressure && (
                     <MetricCell
                       raw={row.pressure.value == null ? '-' : fmtK(row.pressure.value)}
-                      detail={metricComparison(row.pressure, 'team total')}
+                      detail={metricComparison(row.pressure, 'team total', tt)}
                     />
                   )}
                 </tr>
@@ -731,8 +1142,9 @@ function TeamContributionCard({
           </table>
         </div>
         <p className="mt-2 text-[10px] leading-relaxed text-muted-foreground">
-          Shares and averages use reported values from your known team only. Structure damage is
-          shown as pressure when Relic supplies it; it is not the same as buildings razed.
+          {tt(
+            'Shares and averages use reported values from your known team only. Structure damage is shown as pressure when Relic supplies it; it is not the same as buildings razed.',
+          )}
         </p>
       </CardContent>
     </Card>
@@ -759,46 +1171,48 @@ function MetricCell({ raw, detail }: { raw: string; detail: string }) {
 function contributionPlayerLabel(
   row: TeamContributionPlayer,
   summaryPlayers: PlayerSummary[],
+  tt: (value: string) => string,
 ): string {
   const summary = summaryPlayers.find((player) => player.profileId === row.profileId)
   const civ = row.civ ? civDisplayName(row.civ) : null
-  if (row.isMe) return civ ? `You — ${civ}` : 'You'
+  if (row.isMe) return civ ? `${tt('You')} — ${civ}` : tt('You')
   if (summary) return playerLabel(summary)
-  return civ ?? `Profile ${row.profileId}`
+  return civ ?? `${tt('Profile')} ${row.profileId}`
 }
 
 function metricComparison(
   metric: NormalizedTeamMetric,
   denominator: 'team total' | 'team average',
+  tt: (value: string) => string,
   includeShare = true,
 ): string {
-  if (metric.value == null) return 'Not reported'
+  if (metric.value == null) return tt('Not reported')
   const parts: string[] = []
   if (includeShare && metric.teamSharePct != null) {
-    parts.push(`${metric.teamSharePct}% of reported ${denominator}`)
+    parts.push(`${metric.teamSharePct}% ${tt('of reported')} ${tt(denominator)}`)
   }
   if (metric.vsTeamAveragePct != null) {
     const sign = metric.vsTeamAveragePct > 0 ? '+' : ''
-    parts.push(`${sign}${metric.vsTeamAveragePct}% vs reported team average`)
+    parts.push(`${sign}${metric.vsTeamAveragePct}% ${tt('vs reported team average')}`)
   }
-  return parts.join(' · ') || 'Reported; comparison unavailable'
+  return parts.join(' · ') || tt('Reported; comparison unavailable')
 }
 
-function militaryRaw(row: TeamContributionPlayer): string {
+function militaryRaw(row: TeamContributionPlayer, tt: (value: string) => string): string {
   const { kills, deaths, kd, zeroDeaths } = row.military
   if (kills == null && deaths == null) return '-'
-  const raw = `${kills == null ? '?' : fmtInt(kills)} kills · ${deaths == null ? '?' : fmtInt(deaths)} lost`
+  const raw = `${kills == null ? '?' : fmtInt(kills)} ${tt('kills')} · ${deaths == null ? '?' : fmtInt(deaths)} ${tt('lost')}`
   if (zeroDeaths) return raw
   return kd == null ? raw : `${raw} · ${kd.toFixed(2)} K/D`
 }
 
-function militaryComparison(row: TeamContributionPlayer): string {
+function militaryComparison(row: TeamContributionPlayer, tt: (value: string) => string): string {
   const parts: string[] = []
   if (row.military.teamKillSharePct != null) {
-    parts.push(`${row.military.teamKillSharePct}% of reported team kills`)
+    parts.push(`${row.military.teamKillSharePct}% ${tt('of reported team kills')}`)
   }
-  if (row.military.zeroDeaths) parts.push('Zero losses; K/D is not divided by zero')
-  return parts.join(' · ') || 'Military efficiency unavailable'
+  if (row.military.zeroDeaths) parts.push(tt('Zero losses; K/D is not divided by zero'))
+  return parts.join(' · ') || tt('Military efficiency unavailable')
 }
 
 function ChartCard({
@@ -889,7 +1303,7 @@ function TimeChart({
             formatter={(v, key) => {
               const pid = Number(String(key).slice(1))
               const p = players.find((x) => x.playerId === pid)
-              return [Number(v).toLocaleString(), p ? playerLabel(p) : String(key)]
+              return [formatCount(Number(v)), p ? playerLabel(p) : String(key)]
             }}
           />
           {players.map((p) => (
@@ -1027,17 +1441,21 @@ function maxGatherRate(p: PlayerSummary, key: ResourceKey): number | null {
   return max > 0 ? Math.round(max) : null
 }
 
-function villagerHint(tc: VillagerProductionRhythm | null, villagerHigh: number | null): string {
+function villagerHint(
+  tc: VillagerProductionRhythm | null,
+  villagerHigh: number | null,
+  tt: (value: string) => string,
+): string {
   const parts: string[] = []
-  if (villagerHigh != null && tc) parts.push(`${tc.villagersMade} trained`)
+  if (villagerHigh != null && tc) parts.push(`${tc.villagersMade} ${tt('trained')}`)
   if (tc) {
     parts.push(
       tc.idleWindows > 0
-        ? `${tc.idleWindows} long gap(s), longest ${formatDurationShort(tc.longestGapSec)}`
-        : 'no long villager gaps',
+        ? `${tc.idleWindows} ${tt('long gap(s), longest')} ${formatDurationShort(tc.longestGapSec)}`
+        : tt('no long villager gaps'),
     )
   }
-  return parts.length > 0 ? parts.join(' · ') : 'No villager production events decoded.'
+  return parts.length > 0 ? parts.join(' · ') : tt('No villager production events decoded.')
 }
 
 /**
@@ -1074,7 +1492,7 @@ function normName(name: string): string {
     .replace(/[^a-z0-9]+/g, '')
 }
 
-function strongestScoreLane(score: ScorePoint): string {
+function strongestScoreLane(score: ScorePoint, tt: (value: string) => string): string {
   const entries = [
     ['Military', score.military],
     ['Economy', score.economy],
@@ -1082,7 +1500,7 @@ function strongestScoreLane(score: ScorePoint): string {
     ['Society', score.society],
   ] as const
   const [label, value] = [...entries].sort((a, b) => b[1] - a[1])[0]!
-  return `${label} led your score split at ${fmtInt(value)}.`
+  return `${tt(label)} ${tt('led your score split at')} ${fmtInt(value)}.`
 }
 
 function resourceLine(r: ResourceAmounts): string {
@@ -1118,7 +1536,7 @@ function fmtCell(v: number | string | null): string {
 }
 
 function fmtInt(n: number): string {
-  return Math.round(n).toLocaleString()
+  return formatCount(Math.round(n))
 }
 
 function fmtK(n: number): string {

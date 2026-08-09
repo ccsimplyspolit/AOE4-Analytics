@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 1,
+  "name": "Zhu Xi Fast Castle into Lancers",
+  "civilization": "Zhu Xi's Legacy",
+  "author": "cyberspacee",
+  "source": "https://aoe4guides.com/builds/imbfxmuHodr9uIwzh3RS",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5@unit_worker/villager-china.webp@ on wood don't drop to TC create a mill and supervise it."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_chinese/imperial-official.webp@ supervise the @building_economy/mill.webp@",
+        "1 from food builds @building_chinese/village.webp@ and back to food"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Next 4 @resource/rally.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After that @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remember to pick up @resource/resource_gold.webp@ with @unit_chinese/imperial-official.webp@ from @building_economy/mill.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Build @landmark_zhuxi/meditation-gardens-1.webp@ near @resource/berrybush.webp@ and @resource/resource_gold.webp@if possible with 3 from @resource/resource_food.webp@and send 2 to @resource/resource_wood.webp@, @resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After age up move @unit_worker/villager-china.webp@ from @resource/resource_gold.webp@ to @resource/resource_wood.webp@ to  get @technology_economy/professional-scouts.webp@, @resource/rally.webp@@resource/resource_food.webp@ and queue @unit_chinese/imperial-official.webp@ when possible to get taxes"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/archery-range.webp@ or @building_military/barracks.webp@ (depending on units) if enemy is denying @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Build a @building_military/stable.webp@ otherwise and queue 5-6 @unit_cavalry/scout.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move 7 from @resource/resource_wood.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 11,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@ and produce @unit_cavalry/horseman-1.webp@, @unit_chinese/zhuge-nu-2.webp@ or @unit_infantry/spearman-1.webp@ if needed"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 13,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Add more production buildings if needed and supervise with @unit_chinese/imperial-official.webp@ for fast produce"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 27,
+      "resources": {
+        "food": 18,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 27,
+      "resources": {
+        "food": 11,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "Build @landmark_zhuxi/mount-lu-academy-1.webp@ with 7 from @resource/resource_food.webp@ and build @building_technology/blacksmith.webp@ with 1 from @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 29,
+      "resources": {
+        "food": 12,
+        "wood": 3,
+        "gold": 7,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "Return @unit_worker/villager-china.webp@ back to @resource/resource_food.webp@ after age up and @resource/rally.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 30,
+      "resources": {
+        "food": 19,
+        "wood": 3,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue up Regional Inspection from @landmark_zhuxi/mount-lu-academy-1.webp@ instantly with @technology_military/iron-undermesh.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 31,
+      "resources": {
+        "food": 16,
+        "wood": 6,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Supervise @building_military/stable.webp@ with @unit_chinese/imperial-official.webp@ and @resource/rally.webp@@unit_cavalry/lancer-3.webp@ to enemy base"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 31,
+      "resources": {
+        "food": 16,
+        "wood": 6,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_religious/monastery.webp@ and get @resource/relics.webp@ if game goes on and keep producing @unit_cavalry/lancer-3.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/J5ObwXpTWwA",
+  "season": 11,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -5,9 +5,11 @@ import type { SteamAccount } from '@domain/steamAccounts'
 import type { PlayerSearchHit } from '@ipc/contract'
 import { PlayerSearch } from '../components/PlayerSearch'
 import { useSetProfile } from '../queries/useProfile'
+import { useI18n } from '../../i18n'
 
 /** First-run gate: resolve the user's AoE4 name to a profile and save it. */
 export function Onboarding() {
+  const { tt } = useI18n()
   const setProfile = useSetProfile()
 
   const save = (hit: { profileId: number; name: string }) =>
@@ -22,16 +24,15 @@ export function Onboarding() {
           </div>
           <h1 className="text-2xl font-black tracking-[0.08em] text-primary">RTSLytics</h1>
           <p className="text-sm text-muted-foreground">
-            Enter your in-game Age of Empires IV name. We&apos;ll pull your ranks and recent games
-            from AoE4World; no account needed.
+            {tt('Enter your in-game Age of Empires IV name. We’ll pull your ranks and recent games from AoE4World; no account needed.')}
           </p>
         </div>
 
-        <PlayerSearch autoFocus placeholder="Your AoE4 name..." onSelect={save} />
+        <PlayerSearch autoFocus placeholder={tt('Your AoE4 name...')} onSelect={save} />
 
         <div className="flex items-center gap-3">
           <div className="h-px flex-1 bg-primary/25" />
-          <span className="text-xs uppercase tracking-wide text-muted-foreground">or</span>
+          <span className="text-xs uppercase tracking-wide text-muted-foreground">{tt('or')}</span>
           <div className="h-px flex-1 bg-primary/25" />
         </div>
 
@@ -40,15 +41,15 @@ export function Onboarding() {
         {setProfile.isPending && (
           <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
             <Loader2 className="h-4 w-4 animate-spin" />
-            Saving...
+            {tt('Saving...')}
           </div>
         )}
         {setProfile.isError && (
-          <p className="text-center text-sm text-destructive">Could not save profile. Try again.</p>
+          <p className="text-center text-sm text-destructive">{tt('Could not save profile. Try again.')}</p>
         )}
 
         <p className="text-center text-xs text-muted-foreground">
-          Multiple accounts share your name? Pick the one matching your rank and region.
+          {tt('Multiple accounts share your name? Pick the one matching your rank and region.')}
         </p>
       </div>
     </div>
@@ -57,6 +58,7 @@ export function Onboarding() {
 
 /** Detects local Steam accounts and resolves the selected one to an AoE4World profile. */
 function SteamConnect({ onResolved }: { onResolved: (hit: PlayerSearchHit) => void }) {
+  const { tt } = useI18n()
   const [accounts, setAccounts] = useState<SteamAccount[] | null>(null)
   const [loading, setLoading] = useState(false)
   const [resolvingId, setResolvingId] = useState<string | null>(null)
@@ -69,10 +71,10 @@ function SteamConnect({ onResolved }: { onResolved: (hit: PlayerSearchHit) => vo
       const accs = await ipc.detectSteamAccounts()
       setAccounts(accs)
       if (accs.length === 0) {
-        setError('No Steam accounts found on this PC. If you play on Xbox, search by name above.')
+        setError(tt('No Steam accounts found on this PC. If you play on Xbox, search by name above.'))
       }
     } catch {
-      setError('Could not detect Steam accounts. Try again, or search by name above.')
+      setError(tt('Could not detect Steam accounts. Try again, or search by name above.'))
     } finally {
       setLoading(false)
     }
@@ -84,9 +86,9 @@ function SteamConnect({ onResolved }: { onResolved: (hit: PlayerSearchHit) => vo
     try {
       const res = await ipc.searchPlayers(acc.steamId)
       if (res.ok && res.data.length > 0) onResolved(res.data[0]!)
-      else setError(`No AoE4World profile for ${acc.personaName ?? acc.accountName ?? acc.steamId}.`)
+      else setError(tt('No AoE4World profile for {name}.').replace('{name}', acc.personaName ?? acc.accountName ?? acc.steamId))
     } catch {
-      setError('Profile lookup failed. Try again, or search by name above.')
+      setError(tt('Profile lookup failed. Try again, or search by name above.'))
     } finally {
       setResolvingId(null)
     }
@@ -106,7 +108,7 @@ function SteamConnect({ onResolved }: { onResolved: (hit: PlayerSearchHit) => vo
           ) : (
             <Gamepad2 className="h-4 w-4" />
           )}
-          Connect with Steam
+          {tt('Connect with Steam')}
         </button>
         {error && <p className="text-center text-xs text-muted-foreground">{error}</p>}
       </div>
@@ -116,9 +118,9 @@ function SteamConnect({ onResolved }: { onResolved: (hit: PlayerSearchHit) => vo
   return (
     <div className="space-y-2">
       <p className="text-xs text-muted-foreground">
-        Pick your Steam account and we&apos;ll find its AoE4World profile:
+        {tt('Pick your Steam account and we’ll find its AoE4World profile:')}
       </p>
-      <div className="overflow-hidden rounded-lg border border-primary/25">
+      <div className="max-h-72 overflow-y-auto overscroll-contain rounded-lg border border-primary/25">
         {accounts.map((acc) => (
           <button
             key={acc.steamId}
@@ -134,7 +136,7 @@ function SteamConnect({ onResolved }: { onResolved: (hit: PlayerSearchHit) => vo
               </span>
               {acc.mostRecent && (
                 <span className="shrink-0 rounded bg-primary/15 px-1.5 py-0.5 text-[10px] text-primary">
-                  recent
+                  {tt('recent')}
                 </span>
               )}
             </span>
@@ -155,7 +157,7 @@ function SteamConnect({ onResolved }: { onResolved: (hit: PlayerSearchHit) => vo
         }}
         className="text-xs text-muted-foreground hover:text-foreground"
       >
-        Back
+        {tt('Back')}
       </button>
     </div>
   )

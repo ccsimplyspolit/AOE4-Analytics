@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "name": "BO ANGLAIS, simple & puissant 2TC",
+  "civilization": "English",
+  "author": "LaNole",
+  "source": "https://aoe4guides.com/builds/IVfWkZWREF3CgpKCEHpN",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Tout les villageois a la nourriture des le départ"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@x2 (les deux premiers villageois vont a la gold)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@ Jusqu'au passage d'âge tout les villageois a la food (400 food + 100 gold)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:16",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 0,
+        "stone": 5,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/resource_gold.webp@--->@resource/resource_stone.webp@ ( 2 vill gold to stone) / @resource/resource_food.webp@---&gt;@landmark_english/abbey-of-kings.webp@ (2 vill food to Abbaye des rois) / @resource/resource_food.webp@---&gt;@resource/resource_stone.webp@ (3 vill food to stone) / @resource/resource_food.webp@---&gt;@resource/resource_wood.webp@ (2 vill food to wood) / @unit_worker/villager.webp@ Toute la prod vill part au bois jusqu'au passage d'âge"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:46",
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Une fois l'âge 2 il faut 400 stone / @resource/resource_stone.webp@--->@building_economy/town-center.webp@ (Vill stone to forum à coté d'un pack de cerf) / @unit_worker/villager.webp@ Toute la prod vill au bois"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:13",
+      "villager_count": 23,
+      "resources": {
+        "food": 9,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@--->@resource/resource_food.webp@ (Tout les vill qui ont construit le forum passe a la food)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:18",
+      "villager_count": 23,
+      "resources": {
+        "food": 9,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@resource/resource_wood.webp@--->@building_economy/mill.webp@ + @building_defensive/outpost.webp@ (5 vill du wood pour aller construire ferme + tour a coté du deuxièmes camp de cerf)"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/U_HGaxFEvlw",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

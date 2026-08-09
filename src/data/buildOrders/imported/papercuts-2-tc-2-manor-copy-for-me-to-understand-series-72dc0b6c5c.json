@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "name": "Papercut's 2 TC 2 Manor - Copy for me to understand series",
+  "civilization": "House of Lancaster",
+  "author": "murtuk",
+  "source": "https://aoe4guides.com/builds/eWVe0GafMAxmZKWJ8f8b",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 on @resource/sheep.webp@ with 1 @abilities/repair.webp@@building_economy/house.webp@",
+        "@resource/rally.webp@to@resource/resource_gold.webp@ until 3"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now @resource/rally.webp@ to @resource/sheep.webp@ until age up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 3,
+        "wood": 1,
+        "gold": 0,
+        "stone": 5,
+        "builder": 3
+      },
+      "notes": [
+        "Start @age/age_2.webp@@landmark_lancaster/lancaster_castle.webp@with 3 @resource/resource_gold.webp@vils back to @abilities/repair.webp@@building_lancaster/manor.webp@",
+        "Leave 3 on @resource/resource_food.webp@ and send others to 5 @resource/resource_stone.webp@1 @resource/resource_wood.webp@",
+        "@resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 18,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": 10
+      },
+      "notes": [
+        "@age/age_2.webp@finishes at 4:05",
+        "All @resource/resource_wood.webp@vils (7 vil) and age upper (3 vil) go build @building_lancaster/manor.webp@on @resource/resource_wood.webp@then gather@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 19,
+      "resources": {
+        "food": 3,
+        "wood": 11,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "1st @building_lancaster/manor.webp@ ready"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:15",
+      "villager_count": 21,
+      "resources": {
+        "food": 3,
+        "wood": 13,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "When having 400 @resource/resource_wood.webp@ 300@resource/resource_stone.webp@ start @abilities/repair.webp@2nd@building_economy/town-center.webp@",
+        "Stop gathering@resource/resource_stone.webp@ when having 100 extra(700 left on node) (for a 2nd manor)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 23,
+      "resources": {
+        "food": 5,
+        "wood": 18,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd TC ready, Have at least 5-6 on@resource/resource_food.webp@ to produce from both TC"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:10",
+      "villager_count": 25,
+      "resources": {
+        "food": 5,
+        "wood": 18,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Can make 2nd @building_lancaster/manor.webp@ on other resource",
+        "Make production buildings and respond to enemy"
+      ]
+    }
+  ],
+  "description": "Lancaster Castle, Manor, 2nd TC then 2nd manor build from RTS_Papercut\nSome of the timings corrected with testing - but of course can be a little bit better if executed perfectly than shown here\nHave fun!",
+  "video": "https://www.youtube.com/embed/-3nVdrGLq9E",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

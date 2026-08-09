@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 1,
+  "name": "Fast 2 TC Econ Power House",
+  "civilization": "Order of the Dragon",
+  "author": "andymiky",
+  "source": "https://aoe4guides.com/builds/kWILI29NZS4tprhdcHKc",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager-abbasid.webp@ Sheep under TC @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:25",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager-abbasid.webp@ x2 rally to @resource/resource_gold.png@, build @building_economy/mining-camp.png@ , w/ second build @building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:50",
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager-abbasid.webp@ rally 1 to Sheep@resource/sheep.png@, x2 to @resource/resource_stone.png@, build @building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:40",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 2,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_worker/villager-abbasid.webp@ x1 go and age up@abilities/repair.png@, @unit_worker/villager.png@x2 on @resource/resource_wood.png@, rally 6 on wood, build @building_economy/lumber-camp.png@ and @building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "04:25",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 2,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_worker/villager-abbasid.webp@ x1 new vill - Build Mill @building_economy/mill.png@ and leave them there @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "04:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 2,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": [
+        "rally to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:25",
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 7,
+        "gold": 2,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 9,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 2nd @building_economy/town-center.webp@, with the 2 villagers that were on stone, get @technology_economy/wheelbarrow.png@ asap and @technology_economy/double-broadaxe.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:30",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build An Archery Range @building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Continue @unit_worker/villager-abbasid.webp@ rally to Sheep@resource/sheep.png@",
+        "Think about going to @resource/deer.png@or @resource/boar.png@ or @unit_ship/fishing-boat.png@",
+        "@technology_military/steeled-arrow.png@ Research"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "08:30",
+      "villager_count": 24,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager-abbasid.webp@ rally 1 TC to Food@resource/berrybush.png@ / @resource/deer.png@ and 1 TC to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "08:30",
+      "villager_count": 32,
+      "resources": {
+        "food": 15,
+        "wood": 15,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager-abbasid.webp@ Split Evenly"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/barracks.webp@ for Spears and UPGRADE SPEARMEN"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:45",
+      "villager_count": 37,
+      "resources": {
+        "food": 15,
+        "wood": 20,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Spearman @unit_dragon/gilded-spearman-1.webp@ x3  and  Archer @unit_dragon/gilded-archer-2.png@ x6"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:25",
+      "villager_count": 39,
+      "resources": {
+        "food": 16,
+        "wood": 20,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Spearman @unit_dragon/gilded-spearman-1.webp@ x4  and  Archer @unit_dragon/gilded-archer-2.png@ x8 , 1st TC to @resource/resource_gold.png@, 2nd TC to @resource/resource_food.png@ , get @technology_economy/specialized-pick.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:30",
+      "villager_count": 45,
+      "resources": {
+        "food": 18,
+        "wood": 20,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Switch to @resource/deer.webp@, think about @building_economy/farm.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "13:30",
+      "villager_count": 45,
+      "resources": {
+        "food": 16,
+        "wood": 20,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@x5 to @abilities/repair.png@ Burgrave palace"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "13:50",
+      "villager_count": 46,
+      "resources": {
+        "food": 17,
+        "wood": 20,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep building @building_economy/farm.webp@ and rallying to 1st TC @resource/resource_gold.png@ and 2nd TC @resource/resource_food.png@"
+      ]
+    }
+  ],
+  "description": "First time making a guide and I couldn't find any for 2 TC and I like econ. Hope this gets refined by others especially into the wood transition. There is a bit of a delay between when you get 350 stone and the 400 wood. About 10-20 sec depending, but I guess thats a good time to move the stone vills to where you need the 2nd TC made. You can generally start making archers from 6:45 when the archery range gets built but you are still quite vulnerable to pre 2nd TC built rush. Idea is, the second you age up to 2, you should be able to put down your second TC. \n\nIf you are good with sheep, 4 vills on food, and rest and rally to wood should be fine. If you are severely lacking sheep, you should get the 5th vill to make mill and go to berries. Will slow you down by 50 wood though.",
+  "video": "",
+  "season": 6,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

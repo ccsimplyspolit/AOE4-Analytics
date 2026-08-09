@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "name": "What to do with golden Horde",
+  "civilization": "Golden Horde",
+  "author": "Asmitha",
+  "source": "https://aoe4guides.com/builds/AcwGrCsjonTrvmdPS6qf",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_mongols/ovoo.webp@ @landmark_golden_horde/golden_tent.webp@@building_mongols/ger.webp@@resource/resource_gold.webp@",
+        "@resource/rally.webp@@resource/resource_food.webp@",
+        "8th @unit_worker/villager-mongols.webp@@resource/resource_food.webp@send @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:57",
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_golden_horde/golden_tent.webp@@technology_golden_horde/golden_tent_khan_age2.webp@",
+        "Move 8 @unit_worker/villager-mongols.webp@ @resource/gaiatreeprototypetree.webp@",
+        "before age up send @unit_worker/villager-mongols.webp@ for 2nd @building_mongols/ovoo.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If against other : @unit_mongols/keshik-2.webp@ + @unit_infantry/archer-2.webp@ + @unit_golden_horde/khan.webp@ + @unit_golden_horde/torguud.webp@-> Put pressure",
+        "If against knight civ : @unit_infantry/spearman-1.webp@ + @unit_infantry/archer-2.webp@ @building_golden_horde/fortified_outpost.webp@ on @resource/resource_gold.webp@",
+        "go 12 @resource/resource_wood.webp@ to be able to @building_golden_horde/stockyard.webp@",
+        "Always have @unit_golden_horde/kharash.webp@ on army",
+        "@resource/rally.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@",
+        "@technology_economy/double-broadaxe.webp@@technology_economy/wheelbarrow.webp@",
+        "Deny Gold @technology_military/iron-undermesh.webp@",
+        "Pull @resource/resource_wood.webp@ to @resource/resource_gold.webp@ @resource/resource_food.webp@for @age/age_3.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_golden_horde/golden_tent_lumber_shields_age3.webp@ for if close up in @age/age_3.webp@shortly with army from @age/age_2.webp@ or survive push in @age/age_3.webp@, help @building_golden_horde/stockyard.webp@transition",
+        "@technology_golden_horde/golden_tent_relic_ovoos_age3.webp@ for eco bonus with @technology_golden_horde/ovoo-tithe-4.webp@ (@age/age_4.webp@) More Risky"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_golden_horde/golden_tent_stone_armies_age4.webp@ Allow to spend @resource/resource_stone.webp@ for Army",
+        "@technology_golden_horde/golden_tent_yam_network_trade_age4.webp@ Great @resource/resource_gold.webp@ Generation + @ability_golden_horde/stockyard_edict.webp@",
+        "But usually @ability_golden_horde/kharash_edict.webp@ is best over @ability_golden_horde/stockyard_edict.webp@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/x-8opgPFFWQ",
+  "season": 13,
+  "map": null,
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

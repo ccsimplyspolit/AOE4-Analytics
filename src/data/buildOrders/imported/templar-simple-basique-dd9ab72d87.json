@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "name": "TEMPLAR - Simple, Basique",
+  "civilization": "Knights Templar",
+  "author": "m0_0p",
+  "source": "https://aoe4guides.com/builds/t9a0jvsr57eNFF7QNUlA",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.webp@@resource/resource_gold.webp@(2)",
+        "6@unit_worker/villager.webp@ > @resource/sheep.webp@",
+        "@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.webp@@resource/sheep.webp@(12)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "8 @resource/sheep.webp@@unit_worker/villager.webp@ > @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "* HOSPITALLER > Palouf @unit_templar/hospitaller_knight_age_2.webp@ : safe, sustain",
+        "FRANCE &gt; Confrere  @unit_templar/chevalier_confrere_age_2.webp@ : aggro",
+        "(X) ANTIOCH &gt; Serjeant @unit_templar/serjeant_age_2.webp@ : melee++"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/barracks.webp@ / @building_military/archery-range.webp@ /  @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_templar/safepassage.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/mill.webp@ @technology_economy/wheelbarrow.webp@",
+        "@building_technology/blacksmith.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@building_economy/town-center.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "ANGEVIN > Piquier Lourd @unit_templar/heavy_spearman_age_3.webp@ : très très fort MAIS Bonus &gt;&gt; Water Map mais GENOA plus fort",
+        "GENOA &gt; Arba Gênois @unit_templar/genoese_crossbowman_age_3.webp@ : fort au CAC mais trop cher MAIS Bonus &gt;&gt; @resource/resource_gold.webp@",
+        "* CASTILLE  &gt; Jinete @unit_templar/genitour_age_3.webp@ : VS @unit_infantry/archer-2.webp@ et Bonus &gt;&gt; @resource/sacred_sites.webp@ Win"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "* POLAND > Chacha @unit_templar/szlachta_age_4.webp@ : très très fort Caval Late Game @unit_templar/szlachta_age_4.webp@+ @unit_templar/chevalier_confrere_age_2.webp@",
+        "TEUTONIC &gt; Teu Knight @unit_templar/teutonic_knight.webp@",
+        "VENICE &gt; Condo @unit_templar/condottiere.webp@ + Galère @unit_templar/venetian_galley.webp@   |   Bonus &gt;&gt; Water Map"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "Jeando",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

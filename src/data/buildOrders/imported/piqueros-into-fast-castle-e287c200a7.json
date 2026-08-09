@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "name": "Piqueros into Fast Castle",
+  "civilization": "Japanese",
+  "author": "Alnitak",
+  "source": "https://aoe4guides.com/builds/MZaklnu0Mbb9twH9Fu4W",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 3,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 aldeanos iniciales a @resource/resource_food.webp@ (ovejas). 2 aldeanos a @resource/resource_wood.webp@. El aldeano restante va a construir un @building_military/barracks.webp@ inmediato. Manda tu explorador rápido a buscar el recurso clave del rival."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "El aldeano que termina el @building_military/barracks.webp@ construye una @building_japanese/farmhouse-1.webp@ pegada a las bayas (para optimizar la recolección futura) y luego va a @resource/resource_food.webp@. @resource/rally.webp@ a @resource/resource_food.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "1:30",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce exactamente 2 @unit_infantry/spearman-1.webp@ en cuanto termine el cuartel. Envíalos directamente a denegar el oro, las bayas o el recurso más expuesto de la base rival."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Mantén la recolección de @resource/resource_wood.webp@ de tus 2 aldeanos hasta juntar exactamente 75 de madera en total. Esto cubrirá el coste del campamento minero y el @building_japanese/forge-1.webp@ (Taguara)."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Retira aldeanos de madera: deja solo 1 en @resource/resource_wood.webp@ y mueve los otros a @resource/resource_gold.webp@ para tener 3 en total. Desarrolla la mejora de Taguara en tu molino/bayas. Regresa el explorador a dejar ovejas en el @building_economy/town-center.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Cuando el único aldeano de madera termine de talar su árbol individual, construye la segunda @building_japanese/farmhouse-1.webp@ y muévelo a @resource/resource_food.webp@. Nos quedamos temporalmente con 0 en madera para priorizar el pase puro."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Al juntar 400 de comida y 200 de oro, inicia la transición: comienza a construir tu @landmark_japanese/kura-storehouse-1.webp@ con sólo 2 aldeanos extraídos de @resource/resource_food.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Llegada a @age/age_2.webp@. Reubica inmediatamente los 2 constructores del hito y los nuevos aldeanos al oro hasta tener un total estable de 10 en @resource/resource_gold.webp@. Si tu rival no ejerce presión masiva en Feudal, no piques madera ni hagas torres defensivas."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "7:15",
+      "villager_count": 24,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Al acumular 1200 de comida y 600 de oro, inicia la transición: clava el hito @landmark_japanese/floating-gate-2.webp@ con 8 aldeanos. Mueve inmediatamente 5 aldeanos de comida a talar los árboles sueltos que rodean tu @building_economy/town-center.webp@ (sin construir maderero) para conseguir 150 de madera rápidamente."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "7:45",
+      "villager_count": 25,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro tras clickear el hito: manda 5 de los constructores a @resource/resource_gold.webp@ (para un total de 12) y los otros 3 a @resource/resource_food.webp@ (total 13). Con los 150 de madera de los árboles del TC, usa 3 o 4 aldeanos para construir un @building_military/stable.webp@ inmediato. @resource/rally.webp@ general a @resource/resource_wood.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:05",
+      "villager_count": 28,
+      "resources": {
+        "food": 13,
+        "wood": 3,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Llegada a @age/age_3.webp@. Transición completa. Introduce tu primer Yorishiro de la Puerta Flotante en el @building_military/stable.webp@ y arranca la producción constante de Samuráis Montados. Investiga inmediatamente la mejora @technology_japanese/tatara-1.webp@ (el +1 de daño de melé permite que tus caballeros maten aldeanos de solo dos golpes)."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:50",
+      "villager_count": 28,
+      "resources": {
+        "food": 13,
+        "wood": 3,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Construye una @building_military/archery-range.webp@ y deposita allí tu segundo Yorishiro para spamear arqueros de forma masiva. Desarrolla el Portaestandarte de la Arquería. Manda a tus monjes a asegurar las @resource/relics.webp@ sueltas por el mapa, investiga la Carretilla 2 y ahoga económicamente al rival combinando caballería pesada y rango."
+      ]
+    }
+  ],
+  "description": "Apertura estándar por excelencia con Japoneses. Consiste en abrir con un cuartel temprano y producir 2 piqueros para denegar recursos vitales al rival (como el oro del Francés o las bayas del Bizantino) antes de transicionar rápidamente a un Fast Castle eficiente para dominar la partida con Samuráis Montados.",
+  "video": "https://www.youtube.com/embed/VU5YV38JRGA",
+  "season": 9,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,6 +1,13 @@
+import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { ArrowLeft, Trash2 } from 'lucide-react'
+import { ArrowLeft, ScanLine, Trash2 } from 'lucide-react'
 import type { StoredMatch } from '@store/historyStore'
+import type { AppSettings } from '@store/settings'
+import type { VideoAnalysisRecord } from '@domain/videoAnalysis'
+import {
+  CURATED_MATCH_REVIEWS_BY_GAME_ID,
+  type CuratedMatchReview,
+} from '@data/curatedMatchReviews'
 import type { PerPlayerMatchStats, Severity, Signal } from '@domain/analysis'
 import { resultFromPerPlayer, sanitizeStoredSignals, villagersPerMinute } from '@domain/analysis'
 import { comparisonSignals } from '@domain/gameCoaching'
@@ -15,11 +22,19 @@ import { cn } from '@shared/lib/utils'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
 import { useDeleteMatch, useGameSummary, useHistory } from '../queries/useHistory'
+import { useReplayAnalysis } from '../queries/useReplays'
 import { useSettings } from '../queries/useProfile'
 import { GameSummaryPanel } from '../components/GameSummaryPanel'
+import { BuildOrderComparisonCard } from '../components/BuildOrderComparisonCard'
 import { BuildTrainerCard } from '../components/BuildTrainerCard'
+import { ReplayAnalysisPanel } from './ReplayLab'
 import { TurningPointStory } from '../components/TurningPointStory'
+import { TwitchVodCard } from '../components/TwitchVodCard'
+import { VideoAnalysisPanel } from '../components/VideoAnalysisPanel'
+import { CuratedMatchReviewCard } from '../components/CuratedMatchReviewCard'
+import { useVideoAnalyses } from '../queries/useVideoAnalyses'
 import { EmptyBox, ErrorBox, Spinner } from '../components/feedback'
+import { useI18n } from '../../i18n'
 
 const SEVERITY_STYLE: Record<Severity, string> = {
   major: 'bg-destructive/15 text-destructive',
@@ -37,6 +52,7 @@ const SEVERITY_ORDER: Record<Severity, number> = { major: 0, minor: 1, info: 2, 
  * shows when the local stats are available; it's honestly labelled otherwise.
  */
 export function GameDetail() {
+  const { tt } = useI18n()
   const { matchId } = useParams()
   const { data, isLoading, refetch } = useHistory()
   const { data: settings } = useSettings()
@@ -47,10 +63,10 @@ export function GameDetail() {
         to="/stats"
         className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
       >
-        <ArrowLeft className="h-4 w-4" /> My Stats
+        <ArrowLeft className="h-4 w-4" /> {tt('My Stats')}
       </Link>
 
-      {isLoading && <Spinner label="Loading game…" />}
+      {isLoading && <Spinner label={tt('Loading game…')} />}
       {!isLoading && data && !data.ok && (
         <ErrorBox message={data.error.message} onRetry={() => refetch()} />
       )}
@@ -68,15 +84,22 @@ function Resolve({
 }: {
   matchId: string | undefined
   matches: StoredMatch[]
-  settings: { profileId: number | null; playerName: string | null } | undefined
+  settings: AppSettings | undefined
 }) {
+  const { tt } = useI18n()
   const match = matches.find((m) => m.id === matchId)
+  const videoAnalyses = useVideoAnalyses()
+  const linkedVideoAnalysis =
+    match && videoAnalyses.data?.ok
+      ? videoAnalyses.data.data.find((record) => record.gameId === match.id)
+      : undefined
+  const curatedReview = match ? CURATED_MATCH_REVIEWS_BY_GAME_ID.get(Number(match.id)) : undefined
   if (!match) {
     return (
       <EmptyBox>
         <div className="space-y-1">
-          <p>This game isn’t in your synced history.</p>
-          <p className="text-xs">Head to My Stats and click “Sync recent games”.</p>
+          <p>{tt('This game isn’t in your synced history.')}</p>
+          <p className="text-xs">{tt('Head to My Stats and click “Sync recent games”.')}</p>
         </div>
       </EmptyBox>
     )
@@ -86,6 +109,9 @@ function Resolve({
       match={match}
       myProfileId={settings?.profileId ?? null}
       myName={settings?.playerName ?? null}
+      referenceBuildName={settings?.overlay.buildOrderId ?? null}
+      curatedReview={curatedReview}
+      linkedVideoAnalysis={linkedVideoAnalysis}
     />
   )
 }
@@ -94,11 +120,18 @@ function Detail({
   match,
   myProfileId,
   myName,
+  referenceBuildName,
+  curatedReview,
+  linkedVideoAnalysis,
 }: {
   match: StoredMatch
   myProfileId: number | null
   myName: string | null
+  referenceBuildName: string | null
+  curatedReview?: CuratedMatchReview
+  linkedVideoAnalysis?: VideoAnalysisRecord
 }) {
+  const { tt, gameName } = useI18n()
   const navigate = useNavigate()
   const deleteMatch = useDeleteMatch()
   const removeGame = () => {
@@ -108,7 +141,7 @@ function Detail({
   const effectiveResult = match.result ?? resultFromPerPlayer(match.perPlayer, myProfileId)
   const win = effectiveResult === 'win'
   const loss = effectiveResult === 'loss'
-  const resultWord = win ? 'Victory' : loss ? 'Defeat' : 'Result unknown'
+  const resultWord = win ? tt('Victory') : loss ? tt('Defeat') : tt('Result unknown')
 
   const nameByCiv = buildNameByCiv(match)
   const rows = orderRows(match.perPlayer ?? [], myProfileId)
@@ -137,6 +170,7 @@ function Detail({
           summary,
           myProfileId,
           myCiv: match.civ,
+          perPlayer: match.perPlayer ?? [],
           feudalTargetSec: feudalTargetSec ? parseDuration(feudalTargetSec) : null,
         })
       : []),
@@ -163,10 +197,10 @@ function Detail({
           >
             {resultWord}
           </span>
-          <h1 className="text-2xl font-semibold tracking-tight">{matchTitle(match)}</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">{matchTitle(match, gameName)}</h1>
           {match.custom && (
             <Badge variant="secondary" className="text-[10px]">
-              {match.vsAI ? 'vs AI' : 'Custom'}
+              {match.vsAI ? tt('vs AI') : tt('Custom')}
             </Badge>
           )}
           {match.ratingDiff != null && (
@@ -184,11 +218,13 @@ function Detail({
             type="button"
             onClick={removeGame}
             disabled={deleteMatch.isPending}
-            title="Remove this game from your history — for desynced matches the game itself never recorded"
+            title={tt(
+              'Remove this game from your history — for desynced matches the game itself never recorded',
+            )}
             className="ml-auto inline-flex items-center gap-1.5 rounded-sm border border-border px-2.5 py-1.5 text-xs text-muted-foreground transition-colors hover:border-loss/50 hover:text-loss disabled:opacity-50"
           >
             <Trash2 className="h-3.5 w-3.5" />
-            Remove
+            {tt('Remove')}
           </button>
         </div>
         <p className="text-sm text-muted-foreground">
@@ -208,9 +244,9 @@ function Detail({
       ) : (
         <Card>
           <CardContent className="p-4 text-sm text-muted-foreground">
-            No per-player breakdown for this game yet. Click{' '}
-            <span className="font-medium text-foreground">Sync recent games</span> on My Stats to
-            pull the production, combat and tech numbers from Relic.
+            {tt('No per-player breakdown for this game yet. Click')}{' '}
+            <span className="font-medium text-foreground">{tt('Sync recent games')}</span>{' '}
+            {tt('on My Stats to pull the production, combat and tech numbers from Relic.')}
           </CardContent>
         </Card>
       )}
@@ -222,14 +258,18 @@ function Detail({
         myCiv={match.civ}
       />
 
+      <TwitchVodCard match={match} />
+      {curatedReview && <CuratedMatchReviewCard review={curatedReview} />}
+      {linkedVideoAnalysis && <VideoAnalysisPanel record={linkedVideoAnalysis} />}
+
       <section className="space-y-2">
-        <h2 className="text-lg font-semibold tracking-tight">What to improve</h2>
+        <h2 className="text-lg font-semibold tracking-tight">{tt('What to improve')}</h2>
         <Card>
           <CardContent className="space-y-3 p-4">
             <p className="text-sm text-muted-foreground">{summaryText}</p>
             {coaching.length === 0 && (
               <p className="text-xs text-muted-foreground">
-                No standout issues this game — a clean, balanced performance.
+                {tt('No standout issues this game — a clean, balanced performance.')}
               </p>
             )}
             {coaching.map((sig) => (
@@ -252,12 +292,33 @@ function Detail({
         </Card>
       </section>
 
+      <BuildOrderComparisonCard
+        summary={summary}
+        summaryLoading={summaryLoading}
+        myCiv={match.civ}
+        myProfileId={myProfileId}
+        myName={myName}
+        map={match.map}
+        format={match.format}
+        patch={match.patch}
+        referenceBuildName={referenceBuildName}
+        perPlayer={match.perPlayer}
+        linkedVideoAnalysis={linkedVideoAnalysis}
+      />
+
+      <ReplayCommandAnalysis matchId={match.id} />
+
       {summary && (
-        <BuildTrainerCard summary={summary} myCiv={match.civ} myProfileId={myProfileId} />
+        <BuildTrainerCard
+          summary={summary}
+          myCiv={match.civ}
+          myProfileId={myProfileId}
+          referenceBuildName={referenceBuildName}
+        />
       )}
 
       <section id="game-summary-evidence" className="scroll-mt-4 space-y-2">
-        <h2 className="text-lg font-semibold tracking-tight">Economy &amp; build order</h2>
+        <h2 className="text-lg font-semibold tracking-tight">{tt('Economy & build order')}</h2>
         {summary && summary.players.length > 0 ? (
           <GameSummaryPanel
             summary={summary}
@@ -270,21 +331,72 @@ function Detail({
             <CardContent className="space-y-2 p-4 text-sm">
               {vpm != null && (
                 <Metric
-                  label="Villagers / min"
+                  label={tt('Villagers / min')}
                   value={String(vpm)}
-                  hint="your economy pace — the AoE4 CS/min"
+                  hint={tt('your economy pace — the AoE4 CS/min')}
                 />
               )}
               <p className="text-muted-foreground">
                 {summaryLoading
-                  ? 'Reading the game’s stat file…'
-                  : 'No stat file is available for this game yet. Summaries for multiplayer games are uploaded by the players themselves — for lobbies with AI no one may upload one, uploads can lag a few minutes behind the game, and desynced/abandoned matches never get one. Check back shortly; old games also age out of Relic’s window. Ranked/custom summaries need Steam connected in Settings.'}
+                  ? tt('Reading the game’s stat file…')
+                  : tt(
+                      'No stat file is available for this game yet. Summaries for multiplayer games are uploaded by the players themselves — for lobbies with AI no one may upload one, uploads can lag a few minutes behind the game, and desynced/abandoned matches never get one. Check back shortly; old games also age out of Relic’s window. Ranked/custom summaries need Steam connected in Settings.',
+                    )}
               </p>
             </CardContent>
           </Card>
         )}
       </section>
     </div>
+  )
+}
+
+function ReplayCommandAnalysis({ matchId }: { matchId: string }) {
+  const { tt } = useI18n()
+  const [open, setOpen] = useState(false)
+  const [checked, setChecked] = useState(false)
+  const analysis = useReplayAnalysis()
+  const run = () => {
+    void analysis
+      .mutateAsync({ localId: `matchhistory:${matchId}` })
+      .then(() => {
+        setChecked(true)
+        setOpen(true)
+      })
+      .catch(() => undefined)
+  }
+  return (
+    <section className="space-y-2">
+      <div className="flex items-center justify-between gap-2">
+        <h2 className="text-lg font-semibold tracking-tight">{tt('Replay command analysis')}</h2>
+        <button
+          type="button"
+          onClick={run}
+          disabled={analysis.isPending}
+          className="inline-flex h-8 items-center gap-1.5 rounded-md border border-primary/40 px-2.5 text-xs text-primary hover:bg-primary/10 disabled:opacity-40"
+        >
+          <ScanLine className="h-3.5 w-3.5" />
+          {analysis.isPending ? tt('Analyzing…') : tt('Analyze replay')}
+        </button>
+      </div>
+      {analysis.error && <p className="text-xs text-loss">{analysis.error.message}</p>}
+      {analysis.data && (
+        <Card>
+          <CardContent className="p-4">
+            <ReplayAnalysisPanel
+              result={analysis.data}
+              open={open}
+              onToggle={() => setOpen((value) => !value)}
+            />
+          </CardContent>
+        </Card>
+      )}
+      {checked && analysis.data == null && !analysis.error && (
+        <p className="text-xs text-muted-foreground">
+          {tt('No local replay file is available for this game.')}
+        </p>
+      )}
+    </section>
   )
 }
 
@@ -326,18 +438,19 @@ function ComparisonTable({
   myName: string | null
   villagersLostByProfile?: Map<number, number>
 }) {
+  const { tt, gameName } = useI18n()
   return (
     <section className="space-y-2">
-      <h2 className="text-lg font-semibold tracking-tight">Comparison</h2>
+      <h2 className="text-lg font-semibold tracking-tight">{tt('Comparison')}</h2>
       <Card>
         <CardContent className="overflow-x-auto p-0">
           <table className="w-full min-w-[560px] text-sm">
             <thead>
               <tr className="border-b border-border">
-                <th className="rts-ledger-head px-3 py-2 text-left">Player</th>
+                <th className="rts-ledger-head px-3 py-2 text-left">{tt('Player')}</th>
                 {COLS.map((c) => (
-                  <th key={c.key} title={c.title} className="rts-ledger-head px-3 py-2 text-right">
-                    {c.label}
+                  <th key={c.key} title={tt(c.title)} className="rts-ledger-head px-3 py-2 text-right">
+                    {tt(c.label)}
                   </th>
                 ))}
               </tr>
@@ -359,22 +472,26 @@ function ComparisonTable({
                         <Flag civ={r.civ} />
                         <div className="min-w-0">
                           <div className="flex items-center gap-1.5">
-                            <span className="truncate font-medium">{name ?? civLabel(r.civ)}</span>
+                            <span className="truncate font-medium">
+                              {name ?? civLabel(r.civ, gameName, tt('Unknown'))}
+                            </span>
                             {isMe && (
                               <span className="rounded bg-primary/15 px-1 text-[9px] font-semibold uppercase text-primary">
-                                You
+                                {tt('You')}
                               </span>
                             )}
                             {r.result === 'win' && (
-                              <span className="text-[10px] font-semibold text-win">W</span>
+                              <span className="text-[10px] font-semibold text-win">{tt('W')}</span>
                             )}
                             {r.result === 'loss' && (
-                              <span className="text-[10px] font-semibold text-destructive">L</span>
+                              <span className="text-[10px] font-semibold text-destructive">
+                                {tt('L')}
+                              </span>
                             )}
                           </div>
                           {name && (
                             <div className="truncate text-[11px] text-muted-foreground">
-                              {civLabel(r.civ)}
+                              {civLabel(r.civ, gameName, tt('Unknown'))}
                             </div>
                           )}
                         </div>
@@ -389,9 +506,11 @@ function ComparisonTable({
                           {vills != null && vills > 0 && (
                             <span
                               className="ml-1 text-[10px] text-muted-foreground"
-                              title="Villagers included in the deaths count — the game's military tab counts only troops"
+                              title={tt(
+                                "Villagers included in the deaths count — the game's military tab counts only troops",
+                              )}
                             >
-                              ({vills} vills)
+                              ({vills} {tt('vills')})
                             </span>
                           )}
                         </td>
@@ -405,27 +524,28 @@ function ComparisonTable({
         </CardContent>
       </Card>
       <p className="text-[11px] text-muted-foreground">
-        Production, combat, tech and APM from Relic (the same source AoE4World reads). Deaths
-        include villagers — the game's military tab counts troops only. Economy isn't in this feed,
-        so it isn't shown as a column.
+        {tt(
+          "Production, combat, tech and APM from Relic (the same source AoE4World reads). Deaths include villagers — the game's military tab counts troops only. Economy isn't in this feed, so it isn't shown as a column.",
+        )}
       </p>
     </section>
   )
 }
 
 function Flag({ civ }: { civ: string | null }) {
+  const { gameName, tt } = useI18n()
   const entry = civ ? CIV_FLAGS[civ] : undefined
   if (!entry) {
     return (
       <span className="flex h-5 w-9 shrink-0 items-center justify-center rounded-sm bg-secondary text-[8px] font-bold uppercase text-muted-foreground">
-        {civ ? civDisplayName(civ).slice(0, 3) : '—'}
+        {civ ? gameName(civDisplayName(civ)).slice(0, 3) : '—'}
       </span>
     )
   }
   return (
     <img
       src={entry.flag}
-      alt={civ ? civDisplayName(civ) : 'civ'}
+      alt={civ ? gameName(civDisplayName(civ)) : tt('Civilization')}
       style={{ outlineColor: entry.color }}
       className="h-5 w-9 shrink-0 rounded-sm object-cover outline outline-1"
     />
@@ -438,22 +558,26 @@ function fmt(v: number | string | null | undefined): string {
 }
 
 /** civDisplayName that tolerates a null slug (unknown civ). */
-function civLabel(civ: string | null): string {
-  return civ ? civDisplayName(civ) : 'Unknown'
+function civLabel(
+  civ: string | null,
+  gameName: (value: string) => string,
+  unknown: string,
+): string {
+  return civ ? gameName(civDisplayName(civ)) : unknown
 }
 
 /** A "Civ vs Civ" (or team) title for the game header. */
-function matchTitle(match: StoredMatch): string {
-  const mine = civDisplayName(match.civ)
+function matchTitle(match: StoredMatch, gameName: (value: string) => string): string {
+  const mine = gameName(civDisplayName(match.civ))
   const opp =
     match.oppTeam && match.oppTeam.length > 0
-      ? match.oppTeam.map((p) => civDisplayName(p.civ)).join(' + ')
+      ? match.oppTeam.map((p) => gameName(civDisplayName(p.civ))).join(' + ')
       : match.oppCiv
-        ? civDisplayName(match.oppCiv)
+        ? gameName(civDisplayName(match.oppCiv))
         : 'Unknown'
   const myTeam =
     match.myTeam && match.myTeam.length > 0
-      ? [mine, ...match.myTeam.map((p) => civDisplayName(p.civ))].join(' + ')
+      ? [mine, ...match.myTeam.map((p) => gameName(civDisplayName(p.civ)))].join(' + ')
       : mine
   return `${myTeam} vs ${opp}`
 }

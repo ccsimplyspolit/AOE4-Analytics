@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "name": "ELITE 2TC",
+  "civilization": "Order of the Dragon",
+  "author": "OutziderIIX",
+  "source": "https://aoe4guides.com/builds/NgPJhHMlZhHNd3WbGgnE",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:15",
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All @unit_worker/villager.webp@ @ @resource/sheep.png@",
+        "2x new @unit_worker/villager.png@ @ @resource/resource_gold.png@ till @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:15",
+      "villager_count": 11,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 0,
+        "stone": 4,
+        "builder": 1
+      },
+      "notes": [
+        "1x @unit_worker/villager.webp@from @resource/resource_gold.png@ @abilities/repair.png@ @landmark_hre/meinwerk-palace.png@ / @landmark_hre/aachen-chapel.png@",
+        "1x @unit_worker/villager.png@ from @resource/resource_gold.png@ @ @resource/gaiatreeprototypetree.png@",
+        "4 from @resource/resource_food.png@ @ @building_economy/mining-camp.png@>@resource/resource_stone.png@",
+        "@resource/rally.png@ @unit_worker/villager.png@ @ @resource/gaiatreeprototypetree.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:30",
+      "villager_count": 14,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 0,
+        "stone": 4,
+        "builder": 2
+      },
+      "notes": [
+        "1x New @unit_worker/villager.webp@ to UPGRADE"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "10 @unit_worker/villager.webp@ @abilities/repair.png@ @building_economy/town-center.png@",
+        "Leave 5 @unit_worker/villager.png@ on @resource/resource_wood.png@ (@abilities/repair.png@ @building_economy/lumber-camp.png@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 11,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_defensive/outpost.webp@ @ @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "08:50",
+      "villager_count": 35,
+      "resources": {
+        "food": 18,
+        "wood": 5,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "9 @unit_worker/villager.webp@ @abilities/repair.png@ @landmark_hre/regnitz-cathedral.png@",
+        "@technology_economy/wheelbarrow.png@ @technology_economy/double-broadaxe.png@ @technology_military/iron-undermesh.png@ @technology_economy/specialized-pick.png@",
+        "@building_military/barracks.png@ @building_military/archery-range.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "09:20",
+  "video": "https://www.youtube.com/embed/thjwWzufFEU",
+  "season": 9,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

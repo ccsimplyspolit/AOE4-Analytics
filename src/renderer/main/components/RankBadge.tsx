@@ -1,14 +1,16 @@
 import type { RankInfo } from '@domain/types'
 import { formatRankLevel, rankColor, formatRating } from '@shared/format'
 import { RankCrest } from './RankCrest'
+import { useI18n } from '../../i18n'
 
 /** Shows a rank crest, the rank level, and the rating number. */
 export function RankBadge({ rank }: { rank: RankInfo | null }) {
+  const { tt } = useI18n()
   if (!rank) {
     return (
       <span className="inline-flex items-center gap-2">
         <RankCrest rankLevel={null} size={24} />
-        <span className="text-xs font-medium text-muted-foreground">Unranked</span>
+        <span className="text-xs font-medium text-muted-foreground">{tt('Unranked')}</span>
       </span>
     )
   }

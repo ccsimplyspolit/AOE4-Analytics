@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "name": "Jin Dynasty BO",
+  "civilization": "Jin Dynasty",
+  "author": "Zekk",
+  "source": "https://aoe4guides.com/builds/QO4bJlqXO5JBSFt8n9L0",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 3,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @unit_jin/mounted-villager.webp@ on @resource/resource_gold.webp@. Kill @resource/deer.webp@with @unit_cavalry/scout.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@every villager to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "when 400 mined @resource/resource_gold.webp@, build @building_economy/house.webp@ with one @unit_jin/mounted-villager.webp@and @resource/rally.webp@everyone on @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 4,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @unit_jin/mounted-villager.webp@from @resource/resource_food.webp@to age up with Great Pasture"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 4,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "send 2 @unit_jin/mounted-villager.webp@ to @resource/resource_gold.webp@and @resource/rally.webp@to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:55",
+      "villager_count": 9,
+      "resources": {
+        "food": 3,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "age up completed, get 1 @unit_jin/mounted-villager.webp@on @resource/resource_gold.webp@and get 2 @unit_jin/mounted-villager.webp@on @resource/resource_wood.webp@near TC"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "when 100 @resource/resource_wood.webp@take 1 @unit_jin/mounted-villager.webp@ to build Grassland near Great Pasture"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "make Iron Pagoda and harass opponent (using both free horses and regular one). @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "when 8 @unit_jin/mounted-villager.webp@ on @resource/resource_food.webp@, take them to @resource/boar.webp@and get Mohe Ancestry @technology_jin/mohe-ancestry.webp@.  @resource/rally.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:20",
+      "villager_count": 1,
+      "resources": {
+        "food": 0,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "with 5 to 8 @unit_jin/mounted-villager.webp@build dragon pavillon to secure ressources elsewhere on the map depending on the ressource you want"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:10",
+      "villager_count": 25,
+      "resources": {
+        "food": 13,
+        "wood": 5,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "send emissary to trade post"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "play game normally : get unit, eco and blacksmith upgrade - build monestary, get sacred sites, relics, make counter units"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/XF6du6yRz3E",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

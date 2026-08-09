@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "name": "Ultimate English Guide",
+  "civilization": "English",
+  "author": "Artori",
+  "source": "https://aoe4guides.com/builds/tKPyY3QGecBtxdTtWKAL",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 2 @building_economy/farm.webp@ immediatly, +1f, +3g, first built gvill builds @building_economy/house.png@@building_economy/mining-camp.png@ at @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After 7f 3g build 4 on @resource/gaiatreeprototypetree.webp@. Here, you can either go aggresion, or fast @age/age_3.png@ path"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "With 3 @resource/sheep.webp@ vills build @landmark_english/council-hall.png@, in aggression style they are going to f after, in FC - on gold. After that, build +1f and construct @building_economy/mill.png@ to get @technology_economy/wheelbarrow.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "(AGGRO) continue rally on w, build 2 @unit_english/longbowman-2.webp@ and go harass against non-cav civs (defend if @civilization_flag/fre.png@@civilization_flag/jda.png@@civilization_flag/mon.png@@civilization_flag/rus.png@). Get @technology_economy/double-broadaxe.png@, build @building_military/barracks.png@. Hire around 3@unit_infantry/spearman-1.png@ and 5@unit_english/longbowman-2.png@ for initial push, then non-stop harass their food>wood&gt;stone&gt;gold"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 41,
+      "resources": {
+        "food": 16,
+        "wood": 20,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build a @building_technology/blacksmith.webp@ approximately at 6:45 minute mark for @technology_military/steeled-arrow.png@,@technology_military/iron-undermesh.png@ and @technology_military/siege-engineering.png@. Build another @building_military/barracks.png@, start to add @unit_infantry/man-at-arms-1.png@ at some point and send some men to g"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 41,
+      "resources": {
+        "food": 16,
+        "wood": 18,
+        "gold": 5,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "(optional) bring 2 vills to build @building_defensive/outpost.webp@ at enemy base"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "(FC) after 7f 4w 3g in @age/age_1.webp@, start to rally on f"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get your @technology_economy/horticulture.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:25",
+      "villager_count": 28,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 6,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Send 10f vills to build @landmark_english/kings-palace.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "7:55",
+      "villager_count": 30,
+      "resources": {
+        "food": 16,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start ralling onto w to build  @building_military/stable.webp@ and @building_religious/monastery.png@. Get map control with @unit_cavalry/knight-2.png@ and collect @resource/relics.png@"
+      ]
+    }
+  ],
+  "description": "My own approach on English, based on BeastyQT s5 English guide. I will describe Feudal all-in and FC styles here in one BO (f-food, w-wood, g-gold, s-stone)",
+  "video": "https://www.youtube.com/embed/adMvFzdiO-I",
+  "season": 6,
+  "map": null,
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

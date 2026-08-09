@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 1,
+  "name": "Feudal Timing Attack (w/ upgrade notation)",
+  "civilization": "Delhi Sultanate",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/sQlWCoeHkXtn2O4g3tCl",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 starting @unit_worker/villager-delhi.webp@ to @resource/gaiatreeprototypetree.png@ to chop 50 @resource/resource_wood.png@",
+        "1 @unit_worker/villager-delhi.png@ builds@building_economy/mill.png@ on @resource/berrybush.png@ then @building_religious/mosque.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "new @unit_worker/villager-delhi.webp@ builds @building_economy/house.png@ then @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 new @unit_worker/villager-delhi.webp@ to @resource/resource_food.png@ (8)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 new @unit_worker/villager-delhi.webp@ to @building_economy/mining-camp.png@@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 new @unit_worker/villager-delhi.webp@ to chopped @resource/gaiatreeprototypetree.png@, then 1 new @unit_worker/villager-delhi.png@ to build @building_economy/lumber-camp.png@ at woodline (pull the 2 @unit_worker/villager-delhi.png@ from straggler when 50@resource/resource_wood.png@)",
+        "Keep rallying to @resource/resource_wood.png@until 12"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30‑35",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@landmark_delhi/tower-of-victory.webp@ with 4 @resource/resource_food.png@@unit_worker/villager-delhi.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Pull 3 @resource/resource_gold.webp@@unit_worker/villager-delhi.png@ (when 3770G in Gold Vein) to @resource/resource_wood.png@",
+        "Queue @unit_delhi/scholar.png@ in @building_religious/mosque.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Pull 3 @resource/resource_gold.webp@@unit_worker/villager-delhi.png@ (when 3770G in Gold Vein) to @resource/resource_wood.png@",
+        "Queue @unit_delhi/scholar.png@ in @building_religious/mosque.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:10",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Queue all feudal upgrades",
+        "@resource/resource_wood.webp@@unit_worker/villager-delhi.png@build @building_technology/blacksmith.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/resource_wood.webp@@unit_worker/villager-delhi.png@build @building_military/stable.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:15",
+      "villager_count": 22,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/resource_wood.webp@@unit_worker/villager-delhi.png@build @building_military/archery-range.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 12 @unit_worker/villager-delhi.webp@ on @resource/resource_wood.png@ start rallying to @resource/resource_food.png@ (balance eco around your unit comp. More ghazi = more on food and vice versa with archers.)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:50‑7:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send both @unit_delhi/scholar.webp@ to @resource/sacred_sites.png@ at 7 mins. Only wall @resource/sacred_sites.png@ that are furthest away (and therefore toughest to defend)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:50‑8:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_military/steeled-arrow.webp@ finishes"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:30‑11",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_military/iron-undermesh.webp@finishes and you should have an upgrade advantage"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "You should try to have around 12 ghazi + 12 archers at min 10. Macroing with delhi just involves taking pocket resources and balancing around production. Then when you have sacred sites, you produce 5 scholars in total and then spend all your gold income in the market to boost your economy."
+      ]
+    }
+  ],
+  "description": "Feudal all-in guide\n\nThe upgrades are noted in priority\n\nVideo linked.",
+  "video": "https://www.youtube.com/embed/IRiIM0uY4qA",
+  "season": 7,
+  "map": "Open",
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

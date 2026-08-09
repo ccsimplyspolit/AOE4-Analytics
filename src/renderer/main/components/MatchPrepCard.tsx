@@ -12,6 +12,7 @@ import { computePlayerStats, type StatGame } from '@domain/playerStats'
 import { cn } from '@shared/lib/utils'
 import { useLiveMatch } from '../queries/useLiveMatch'
 import { useSettings } from '../queries/useProfile'
+import { useI18n } from '../../i18n'
 
 const UNIT_CDN = 'https://data.aoe4world.com/images/units'
 const AGE_NAME: Record<2 | 3 | 4, string> = { 2: 'Feudal', 3: 'Castle', 4: 'Imperial' }
@@ -24,6 +25,7 @@ const AGE_NAME: Record<2 | 3 | 4, string> = { 2: 'Feudal', 3: 'Castle', 4: 'Impe
  * beginner on-ramp is RecommendedCivs.
  */
 export function MatchPrepCard({ matches }: { matches: StoredMatch[] }) {
+  const { tt, gameName } = useI18n()
   const { data: live } = useLiveMatch()
   const { data: settings } = useSettings()
   const profileId = settings?.profileId ?? null
@@ -63,16 +65,16 @@ export function MatchPrepCard({ matches }: { matches: StoredMatch[] }) {
       <header className="mb-3 flex flex-wrap items-center justify-between gap-2">
         <h3 className="flex items-center gap-1.5 text-sm font-semibold">
           <Swords className="h-4 w-4 text-primary" />
-          Match prep · {civDisplayName(myCiv)}
+          {tt('Match preparation')} · {gameName(civDisplayName(myCiv))}
         </h3>
         {liveOppCiv ? (
           <span className="rounded-sm bg-loss/15 px-2 py-0.5 font-display text-[10px] font-bold uppercase tracking-wide text-loss">
-            Live · vs {civDisplayName(liveOppCiv)}
+            {tt('Live')} · {tt('vs')} {gameName(civDisplayName(liveOppCiv))}
           </span>
         ) : (
           oppCiv != null && (
             <span className="text-[11px] text-muted-foreground">
-              prepped vs {civDisplayName(oppCiv)} (your most-faced civ)
+              {tt('Prepped vs')} {gameName(civDisplayName(oppCiv))} ({tt('your most-faced civ')})
             </span>
           )
         )}
@@ -80,7 +82,7 @@ export function MatchPrepCard({ matches }: { matches: StoredMatch[] }) {
 
       <div className="grid gap-3 sm:grid-cols-2">
         {build && timings.length > 0 && (
-          <PrepCell title="Key timings">
+          <PrepCell title={tt('Key timings')}>
             <ul className="space-y-1">
               {timings.map((t, i) => (
                 <TimingRow key={i} t={t} />
@@ -90,23 +92,22 @@ export function MatchPrepCard({ matches }: { matches: StoredMatch[] }) {
               to={`/civ/${myCiv}`}
               className="mt-2 inline-flex items-center gap-0.5 text-[11px] font-medium text-primary hover:underline"
             >
-              Full build: {build.name}
+              {tt('Full build')}: {build.name}
               <ChevronRight className="h-3 w-3" />
             </Link>
             <p className="mt-1 text-[10px] text-muted-foreground">
-              Practice it in a custom game — the game's detail page grades how closely you followed
-              it.
+              {tt('Practice it in a custom game — the game’s detail page grades how closely you followed it.')}
             </p>
           </PrepCell>
         )}
 
         {landmarks && (
-          <PrepCell title="Landmarks">
+          <PrepCell title={tt('Landmarks')}>
             <ul className="space-y-1">
               {landmarks.ages.map((a) => (
                 <li key={a.age} className="flex items-baseline gap-2 text-xs">
                   <span className="w-14 shrink-0 font-semibold text-primary">
-                    {AGE_NAME[a.age]}
+                    {gameName(AGE_NAME[a.age])}
                   </span>
                   <span className="min-w-0 flex-1 truncate" title={a.reason}>
                     {a.pick}
@@ -118,24 +119,24 @@ export function MatchPrepCard({ matches }: { matches: StoredMatch[] }) {
         )}
 
         {troops && (troops.mine.length > 0 || troops.theirs.length > 0) && oppCiv != null && (
-          <PrepCell title={`Counters vs ${civDisplayName(oppCiv)}`}>
+          <PrepCell title={`${tt('Counters vs')} ${gameName(civDisplayName(oppCiv))}`}>
             <div className="space-y-1.5">
               {troops.mine.length > 0 && (
                 <TroopsLine
-                  label="Build"
+                  label={tt('Build')}
                   units={troops.mine.slice(0, 4)}
                   priority={troops.priority}
                 />
               )}
               {troops.theirs.length > 0 && (
-                <TroopsLine label="Expect" units={troops.theirs.slice(0, 4)} />
+                <TroopsLine label={tt('Expect')} units={troops.theirs.slice(0, 4)} />
               )}
             </div>
           </PrepCell>
         )}
 
         {goals.length > 0 && (
-          <PrepCell title="Focus from your last game">
+          <PrepCell title={tt('Focus from your last game')}>
             <ul className="space-y-1">
               {goals.map((g) => (
                 <li key={g.id} className="flex items-start gap-2 text-xs">
@@ -163,12 +164,13 @@ function PrepCell({ title, children }: { title: string; children: ReactNode }) {
 }
 
 function TimingRow({ t }: { t: BuildKeyTiming }) {
+  const { tt, gameName } = useI18n()
   return (
     <li className="grid grid-cols-[2.5rem_3rem_minmax(0,1fr)] items-start gap-2 text-xs">
       <span className="font-semibold tabular-nums text-primary">{t.time ?? '—'}</span>
-      <span className="tabular-nums text-muted-foreground">{t.villagers} vill</span>
+      <span className="tabular-nums text-muted-foreground">{t.villagers} {tt('vill')}</span>
       <span className="min-w-0 leading-snug">
-        {t.ageUpTo != null ? `${AGE_NAME[t.ageUpTo]} age` : (t.note ?? 'Opening')}
+        {t.ageUpTo != null ? `${gameName(AGE_NAME[t.ageUpTo])} ${tt('age')}` : (t.note ?? tt('Opening'))}
       </span>
     </li>
   )

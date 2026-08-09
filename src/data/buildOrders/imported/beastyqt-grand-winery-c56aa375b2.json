@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "name": "Beastyqt - Grand winery",
+  "civilization": "Byzantines",
+  "author": "Sharp'",
+  "source": "https://aoe4guides.com/builds/EutqekHz5CGUJt7PHxPO",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@@resource/sheep.png@",
+        "1 @unit_worker/villager.png@@resource/gaiatreeprototypetree.png@ , collect 10 @resource/resource_wood.png@then @resource/sheep.png@",
+        "1 @unit_worker/villager.png@@abilities/repair.png@@building_byzantines/cistern-1.png@",
+        "@resource/rally.png@@resource/sheep.png@(until 7 @resource/resource_food.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:25",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@abilities/repair.webp@1@building_byzantines/olive-grove-1.png@ next to @building_economy/town-center.png@",
+        "@resource/rally.png@@resource/resource_gold.png@(until 3)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/house.png@ and @building_economy/mining-camp.png@ with next @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@age/age_2.webp@@landmark_byzantines/grand-winery-1.png@ with 4 @resource/sheep.png@@unit_worker/villager.png@ on @resource/berrybush.png@",
+        "Send 2 @resource/sheep.png@@unit_worker/villager.png@ to @resource/gaiatreeprototypetree.png@",
+        "@resource/rally.png@@resource/resource_wood.png@(until 10)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Send all @resource/resource_food.webp@@unit_worker/villager.png@ to @resource/berrybush.png@",
+        "@abilities/repair.png@@building_byzantines/cistern-1.png@ (+ connect @building_byzantines/aqueduct-1.png@)",
+        "Research @technology_economy/wheelbarrow.png@@technology_economy/double-broadaxe.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:00",
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build production @building_military/barracks.webp@/@building_military/stable.png@ + @building_byzantines/mercenary-house-2.png@ when possible (see notes for production choices)",
+        "And start making units"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:00",
+      "villager_count": 22,
+      "resources": {
+        "food": 9,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 10 @resource/resource_wood.webp@, @resource/rally.png@@resource/sheep.png@",
+        "@abilities/repair.png@@building_byzantines/olive-grove-1.png@ with extra @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 13,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/horticulture.webp@",
+        "@abilities/repair.png@@building_technology/blacksmith.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Harass enemy with your units and slowly build up @resource/resource_food.webp@@resource/resource_gold.png@ for @age/age_3.png@ if you it won't kill you"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_3.webp@ with @landmark_byzantines/golden-horn-tower-2.png@",
+        "@abilities/repair.png@ more @building_military/barracks.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research your upgrades",
+        "Spam @unit_byzantines/varangian-guard-3.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/UVYOlycwqoU",
+  "season": 7,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

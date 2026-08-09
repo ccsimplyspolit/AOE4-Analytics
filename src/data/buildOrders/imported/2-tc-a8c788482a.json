@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "name": "2 TC ",
+  "civilization": "House of Lancaster",
+  "author": "edw1nwow",
+  "source": "https://aoe4guides.com/builds/mxsbTcDRxsD4Oec958o1",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@6 to @resource/resource_food.webp@ next build @building_economy/house.webp@ and @building_economy/mining-camp.webp@ on @resource/resource_gold.webp@ other 2 on @resource/resource_gold.webp@",
+        "@resource/rally.webp@ on @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 3,
+        "wood": 7,
+        "gold": 0,
+        "stone": 5,
+        "builder": 3
+      },
+      "notes": [
+        "3 from gold build @landmark_lancaster/lancaster_castle.webp@ other @unit_worker/villager.webp@ remacro 3 on @resource/resource_food.webp@ 5 on @resource/resource_stone.webp@",
+        "@resource/rally.webp@ on @resource/resource_wood.webp@ before 7 and build first @building_lancaster/manor.webp@ on wood",
+        "when 450 @resource/resource_stone.webp@ move 5 @unit_worker/villager.webp@ to build second @building_economy/town-center.webp@ and farm wood for another @building_lancaster/manor.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 4,
+        "wood": 17,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "make @building_military/archery-range.webp@ and @building_military/barracks.webp@ produce some @unit_infantry/spearman-1.webp@ and @unit_lancaster/yeoman_age2.webp@",
+        "do @technology_lancaster/billmen.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 57,
+      "resources": {
+        "food": 27,
+        "wood": 11,
+        "gold": 15,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "if opponent in feudal all in @unit_worker/villager.webp@,",
+        "if opponent fast castle leave 4 @unit_worker/villager.webp@on @resource/resource_wood.webp@ , 18 on @resource/resource_food.webp@, 8 on @resource/resource_gold.webp@",
+        "and buid @age/age_3.webp@ @landmark_lancaster/kings_college.webp@ for fast @technology_lancaster/hill_land_training.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 75,
+      "resources": {
+        "food": 29,
+        "wood": 27,
+        "gold": 16,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "make farms araund @building_lancaster/manor.webp@ and build as u can @building_economy/farm.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/-3nVdrGLq9E",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

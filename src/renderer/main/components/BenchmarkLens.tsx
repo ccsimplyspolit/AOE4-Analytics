@@ -13,6 +13,7 @@ import {
 import { civDisplayName } from '@domain/civ'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { cn } from '@shared/lib/utils'
+import { useI18n } from '../../i18n'
 
 const SCOPES: { kind: BenchmarkDimension; label: string }[] = [
   { kind: 'recent', label: 'Recent' },
@@ -22,6 +23,7 @@ const SCOPES: { kind: BenchmarkDimension; label: string }[] = [
 ]
 
 export function BenchmarkLens({ games }: { games: BenchmarkGame[] }) {
+  const { tt } = useI18n()
   const options = useMemo(() => benchmarkOptions(games), [games])
   const [selection, setSelection] = useState<BenchmarkSelection>({ kind: 'recent' })
   const effectiveSelection = useMemo<BenchmarkSelection>(() => {
@@ -48,15 +50,15 @@ export function BenchmarkLens({ games }: { games: BenchmarkGame[] }) {
           <div>
             <h3 className="flex items-center gap-1.5 text-sm font-semibold">
               <Scale className="h-4 w-4 text-primary" />
-              Benchmark lens
+              {tt('Benchmark lens')}
             </h3>
             <p className="mt-1 text-xs text-muted-foreground">
-              Compare non-overlapping groups from up to your latest 100 loaded games.
+              {tt('Compare non-overlapping groups from up to your latest 100 loaded games.')}
             </p>
           </div>
           <span className="inline-flex items-center gap-1 rounded-sm border border-border/70 bg-background/40 px-2 py-1 text-[11px] text-muted-foreground">
             <Database className="h-3 w-3" />
-            Up to 100 personal games
+            {tt('Up to 100 personal games')}
           </span>
         </div>
 
@@ -72,7 +74,7 @@ export function BenchmarkLens({ games }: { games: BenchmarkGame[] }) {
                   aria-pressed={effectiveSelection.kind === scope.kind}
                   title={
                     disabled
-                      ? `At least two known ${scope.label.toLowerCase()} values are needed`
+                       ? `${tt('At least two known')} ${tt(scope.label).toLowerCase()} ${tt('values are needed')}`
                       : undefined
                   }
                   onClick={() => {
@@ -89,7 +91,7 @@ export function BenchmarkLens({ games }: { games: BenchmarkGame[] }) {
                       : 'text-muted-foreground hover:text-foreground',
                   )}
                 >
-                  {scope.label}
+                  {tt(scope.label)}
                 </button>
               )
             })}
@@ -97,7 +99,7 @@ export function BenchmarkLens({ games }: { games: BenchmarkGame[] }) {
 
           {effectiveSelection.kind !== 'recent' && (
             <label className="flex items-center gap-2 text-xs text-muted-foreground">
-              Compare
+              {tt('Compare')}
               <select
                 value={effectiveSelection.value}
                 onChange={(event) =>
@@ -126,10 +128,10 @@ export function BenchmarkLens({ games }: { games: BenchmarkGame[] }) {
           <table className="w-full min-w-[640px] text-sm">
             <thead>
               <tr className="border-b border-border/70 bg-background/40 text-left">
-                <th className="rts-ledger-head px-3 py-2">Metric</th>
+                <th className="rts-ledger-head px-3 py-2">{tt('Metric')}</th>
                 <CohortHead label={comparison.leftLabel} games={comparison.leftGames} />
                 <CohortHead label={comparison.rightLabel} games={comparison.rightGames} />
-                <th className="rts-ledger-head px-3 py-2 text-right">Difference</th>
+                <th className="rts-ledger-head px-3 py-2 text-right">{tt('Difference')}</th>
               </tr>
             </thead>
             <tbody>
@@ -161,6 +163,7 @@ function CohortHead({ label, games }: { label: string; games: number }) {
 }
 
 function MetricRow({ metric }: { metric: BenchmarkMetric }) {
+  const { tt } = useI18n()
   return (
     <tr className="border-b border-border/50 last:border-b-0">
       <td className="px-3 py-2.5">
@@ -175,7 +178,7 @@ function MetricRow({ metric }: { metric: BenchmarkMetric }) {
             {formatDelta(metric)}
           </span>
         ) : (
-          <span className="text-[11px] text-muted-foreground">Not enough data</span>
+          <span className="text-[11px] text-muted-foreground">{tt('Not enough data')}</span>
         )}
       </td>
     </tr>

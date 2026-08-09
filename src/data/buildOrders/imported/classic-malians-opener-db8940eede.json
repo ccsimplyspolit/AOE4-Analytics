@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "name": "Classic malians opener",
+  "civilization": "Malians",
+  "author": "Astralfr",
+  "source": "https://aoe4guides.com/builds/HhCfM2EIEHN7ryqffWff",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5@unit_worker/villager-malians.webp@to@resource/gaiatreeprototypetree.webp@take 150@resource/resource_wood.webp@then back@resource/resource_food.webp@, 1@unit_worker/villager-malians.webp@to@abilities/repair.webp@@building_malians/pit-mine-1.webp@and 7@building_economy/house.webp@take 10@resource/resource_gold.webp@then back @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 0,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@1@unit_worker/villager-malians.webp@to 2nd@resource/gaiatreeprototypetree.webp@ to 25@resource/resource_wood.webp@back@resource/resource_food.webp@,                                                @resource/rally.webp@@resource/resource_food.webp@until 14"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:45",
+      "villager_count": 14,
+      "resources": {
+        "food": 14,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5@unit_worker/villager-malians.webp@@landmark_malians/mansa-quarry-2.webp@ back to@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:45",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Gather 50@resource/resource_wood.webp@to @resource/gaiatreeprototypetree.webp@ then @abilities/repair.webp@@building_economy/lumber-camp.webp@to woodline,                                         @resource/rally.webp@until 10 on@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:40",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/mill.webp@@resource/berrybush.webp@then back @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:11",
+      "villager_count": 18,
+      "resources": {
+        "food": 9,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/wheelbarrow.webp@&@technology_economy/double-broadaxe.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:35",
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_military/barracks.webp@produce @unit_malians/donso-1.webp@with 1@unit_worker/villager-malians.webp@from@resource/resource_food.webp@ ,                                                   @resource/rally.webp@@resource/resource_food.webp@when 10 on @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:05",
+      "villager_count": 21,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_military/archery-range.webp@produce @unit_malians/javelin-thrower-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:50",
+      "villager_count": 23,
+      "resources": {
+        "food": 13,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1@unit_worker/villager-malians.webp@from@resource/resource_wood.webp@to@abilities/repair.webp@@building_malians/pit-mine-1.webp@ and start@building_economy/house.webp@(total : 7)  with 2 donsos and 2 javs to protect him, @abilities/repair.webp@@building_economy/mining-camp.webp@ then back @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:10",
+      "villager_count": 24,
+      "resources": {
+        "food": 14,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "upgrade @technology_economy/horticulture.webp@keep producing unit : 07 donsos & 04 jav"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:55",
+      "villager_count": 26,
+      "resources": {
+        "food": 15,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "1@building_malians/cattle-ranch-2.webp@from 1@unit_worker/villager-malians.webp@@resource/resource_food.webp@and produce 03@resource/cattle.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:00",
+      "villager_count": 22,
+      "resources": {
+        "food": 11,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "5@unit_worker/villager-malians.webp@@resource/resource_food.webp@to@resource/deer.webp@ and 4@abilities/repair.webp@@building_economy/mill.webp@,1@unit_worker/villager-malians.webp@@building_malians/toll-outpost-1.webp@, protect them with your army and kill deer near mill"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:30",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "07 donsos & 04 jav : start again to produce",
+        "Continue to make units until you have minimum 12 cows then you can go age 3, if opponent make 2tc and fast castle, don't make more units and go 20 cows to AGE 3"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:55",
+      "villager_count": 27,
+      "resources": {
+        "food": 16,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@unit_worker/villager-malians.webp@from@resource/resource_food.webp@ to @resource/resource_wood.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

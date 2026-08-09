@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "name": "English 2TC",
+  "civilization": "English",
+  "author": "siberian_wolf",
+  "source": "https://aoe4guides.com/builds/DtUBxGnEcXVDqeC67NNo",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6@unit_worker/villager.webp@>@resource/sheep.webp@",
+        "2@resource/rally.webp@ &gt;@building_economy/house.webp@&gt;@building_economy/mining-camp.webp@&gt;@resource/resource_gold.webp@(200)",
+        "2@resource/rally.webp@ &gt;@resource/sheep.webp@",
+        "3@resource/rally.webp@&gt;@building_economy/lumber-camp.webp@&gt;@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 4,
+        "builder": 4
+      },
+      "notes": [
+        "2@resource/resource_gold.webp@@unit_worker/villager.webp@>@landmark_english/abbey-of-kings.webp@",
+        "4@resource/sheep.webp@@unit_worker/villager.webp@&gt;@building_economy/mining-camp.webp@(2)&gt;@resource/resource_stone.webp@",
+        "5@resource/rally.webp@&gt;@resource/gaiatreeprototypetree.webp@",
+        "2@resource/rally.webp@ &gt;@landmark_english/abbey-of-kings.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:50",
+      "villager_count": 43,
+      "resources": {
+        "food": 24,
+        "wood": 8,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @resource/resource_stone.webp@@unit_worker/villager.webp@ + 4 @landmark_english/abbey-of-kings.webp@@unit_worker/villager.webp@ > @building_economy/town-center.webp@",
+        "3 @building_economy/town-center.webp@@unit_worker/villager.webp@&gt;@resource/resource_gold.webp@",
+        "5 @building_economy/town-center.webp@@unit_worker/villager.webp@&gt;@building_economy/mill.webp@&gt;@technology_economy/horticulture.webp@&gt;@building_economy/farm.webp@",
+        "2 @resource/rally.webp@&gt; @building_economy/farm.webp@",
+        "1 @resource/rally.webp@&gt; @building_economy/farm.webp@ + 4 @resource/resource_wood.webp@@unit_worker/villager.webp@&gt;@building_economy/house.webp@&gt;@building_economy/mill.webp@&gt;@building_economy/farm.webp@+ 8@resource/rally.webp@ &gt; @resource/sheep.webp@(12) | 9 @resource/rally.webp@&gt; @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 53,
+      "resources": {
+        "food": 16,
+        "wood": 11,
+        "gold": 14,
+        "stone": 0,
+        "builder": 12
+      },
+      "notes": [
+        "12 @resource/sheep.webp@@unit_worker/villager.webp@ >@landmark_english/the-white-tower.webp@",
+        "∞ @resource/rally.webp@&gt;@resource/resource_wood.webp@ | ∞ @resource/rally.webp@&gt; @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 78,
+      "resources": {
+        "food": 32,
+        "wood": 20,
+        "gold": 20,
+        "stone": 6,
+        "builder": -1
+      },
+      "notes": [
+        "8@landmark_english/the-white-tower.webp@@unit_worker/villager.webp@>@resource/resource_wood.webp@",
+        "4@landmark_english/the-white-tower.webp@@unit_worker/villager.webp@&gt;@building_religious/monastery.webp@&gt;@resource/resource_wood.webp@",
+        "10@resource/rally.webp@&gt;@resource/resource_gold.webp@ +6@resource/rally.webp@&gt;@resource/resource_stone.webp@ | 16 @resource/rally.webp@&gt;@building_economy/farm.webp@",
+        "3@building_military/barracks.webp@+ @building_military/stable.webp@+2@building_military/archery-range.webp@",
+        "∞@resource/resource_wood.webp@@unit_worker/villager.webp@&gt; @building_economy/farm.webp@ or @resource/resource_stone.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "name": "OOTD ",
+  "civilization": "Order of the Dragon",
+  "author": "CaptainSerie",
+  "source": "https://aoe4guides.com/builds/vxP129MIpUXtuOt9B7uZ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@ 1 @unit_worker/villager.webp@ --->@resource/sheep.webp@",
+        "4@unit_worker/villager.webp@ ---&gt; @resource/sheep.webp@",
+        "1@unit_worker/villager.webp@@abilities/repair.webp@@building_economy/house.webp@ PUIS ---&gt; @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6@unit_worker/villager.webp@@resource/sheep.webp@ ---> @abilities/repair.webp@@building_economy/mill.webp@ ---&gt; @resource/deer.webp@",
+        "FAIRE @technology_economy/survival-techniques.webp@ DIRECT",
+        "@resource/rally.webp@4@unit_worker/villager.webp@ ---&gt; @resource/resource_gold.webp@",
+        "LE PREMIER @unit_worker/villager.webp@@resource/resource_gold.webp@@abilities/repair.webp@@building_economy/mining-camp.webp@ PUIS ---&gt; @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "UNE FOIS QUE 4@unit_worker/villager.webp@@resource/rally.webp@@resource/resource_gold.webp@ ---> @resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@@resource/sheep.webp@ ---> @abilities/repair.webp@@landmark_hre/meinwerk-palace.webp@ ---&gt; @resource/sheep.webp@",
+        "@resource/rally.webp@3@unit_worker/villager.webp@ ---&gt; @resource/resource_wood.webp@ (UN SEUL ARBRE)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@@resource/sheep.webp@@abilities/repair.webp@@building_economy/house.webp@ ---> @resource/sheep.webp@",
+        "1@unit_worker/villager.webp@@resource/resource_gold.webp@@abilities/repair.webp@@building_defensive/outpost.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "7@unit_worker/villager.webp@@resource/sheep.webp@ ---> @landmark_hre/burgrave-palace.webp@",
+        "6@unit_worker/villager.webp@@resource/deer.webp@ ---&gt; @resource/sheep.webp@",
+        "1@unit_worker/villager.webp@@resource/sheep.webp@ ---&gt; @resource/resource_gold.webp@",
+        "3@unit_worker/villager.webp@@resource/sheep.webp@ ---&gt; @resource/resource_wood.webp@",
+        "@resource/rally.webp@ ---&gt; @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "7@unit_worker/villager.webp@@abilities/repair.webp@ ---> @resource/sheep.webp@",
+        "@technology_military/military-academy.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "PRDOUCT @unit_dragon/gilded-man-at-arms-2.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@@resource/resource_wood.webp@ ---> @abilities/repair.webp@@building_military/barracks.webp@",
+        "4@resource/resource_wood.webp@ ---&gt; @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "UTILISER @building_military/barracks.webp@ POUR LES AUGMENTS"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "DES QUE 10 @resource/resource_wood.webp@ ---> 5@unit_worker/villager.webp@ ---&gt; @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "ENSUITE @resource/rally.webp@@resource/resource_food.webp@ (UNE FOIS 7 AU BOIS)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "ENSUITE FABRIQUER (@building_religious/monastery.webp@ ---> @building_military/stable.webp@)"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": "Open",
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "name": "2 Mosque | Tower of Victory",
+  "civilization": "Delhi Sultanate",
+  "author": "exe",
+  "source": "https://aoe4guides.com/builds/wMbsmdzvfqUs1M4W5tcF",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager-delhi.webp@on@resource/gaiatreeprototypetree.png@to chop 100@resource/resource_wood.png@",
+        "1 @unit_worker/villager-delhi.png@@abilities/repair.png@@building_religious/mosque.png@@building_economy/house.png@",
+        "Research @technology_delhi/efficient-production.png@@technology_religious/piety.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:30",
+      "villager_count": 7,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "1 @unit_worker/villager-delhi.webp@@abilities/repair.png@@building_economy/lumber-camp.png@",
+        "@resource/rally.png@@resource/resource_food.png@(until 8)",
+        "Research @technology_economy/forestry.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:45",
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @unit_worker/villager-delhi.webp@from@resource/resource_wood.png@@abilities/repair.png@@building_economy/mill.png@on@resource/berrybush.png@",
+        "Research @technology_economy/wheelbarrow.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:30",
+      "villager_count": 9,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.png@(until 3)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager-delhi.webp@on@resource/sheep.png@",
+        "@resource/rally.png@@resource/resource_wood.png@(until 8)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@age/age_2.webp@with@landmark_delhi/tower-of-victory.png@with 4@resource/resource_food.png@@unit_worker/villager-delhi.png@",
+        "Move 1 @unit_worker/villager-delhi.png@from@resource/sheep.png@to@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:15",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@abilities/repair.webp@2nd@building_religious/mosque.png@on@resource/resource_gold.png@",
+        "@building_religious/mosque.png@(2) for@unit_delhi/scholar.png@",
+        "@building_religious/mosque.png@(1) for research"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@abilities/repair.webp@@unit_delhi/scholar.png@and@building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 7,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move @abilities/repair.webp@@unit_worker/villager-delhi.png@back to@resource/resource_food.png@",
+        "@abilities/repair.png@@building_military/stable.png@",
+        "@resource/rally.png@@resource/resource_food.png@",
+        "Research all @age/age_2.png@ Technologies:",
+        "@technology_delhi/sanctity.png@@technology_delhi/all-seeing-eye.png@@technology_economy/double-broadaxe.png@@technology_economy/specialized-pick.png@@technology_economy/horticulture.png@@technology_economy/survival-techniques.png@@technology_economy/professional-scouts.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 21,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_technology/blacksmith.png@@building_military/archery-range.png@",
+        "Research @technology_military/steeled-arrow.png@@technology_military/iron-undermesh.png@@technology_military/bloomery.png@@technology_military/fitted-leatherwork.png@@technology_military/siege-engineering.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When close to @technology_delhi/sanctity.webp@",
+        "Send @unit_delhi/scholar.png@to take@resource/sacred_sites.png@",
+        "Mass @unit_delhi/ghazi-raider-2.png@@unit_infantry/archer-2.png@"
+      ]
+    }
+  ],
+  "description": "If opponent is aggressive, take 1 site at a time with army and wall it. \nKeep adding army and kill in feudal, or end the game by going Compound of the Defender, tech up your units, then drop keeps when you push opponents base. \n\nGameplan:\n- make units\n- take sacred sites\n- (maybe) wall sacred sites\n- age up with compound of the defender\n- take relics\n- build keeps EVERYWHERE",
+  "video": "https://www.youtube.com/embed/O3ydQ8ZzIE0",
+  "season": 5,
+  "map": "Open",
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

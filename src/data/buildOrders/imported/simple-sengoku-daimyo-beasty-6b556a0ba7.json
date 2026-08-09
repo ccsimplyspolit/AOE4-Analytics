@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "name": "Simple Sengoku Daimyo - Beasty",
+  "civilization": "Sengoku Daimyo",
+  "author": "Niki45nk",
+  "source": "https://aoe4guides.com/builds/LZZELb7WlZ84y36QqMSX",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager-japanese.webp@ go to @resource/resource_wood.webp@",
+        "1 @unit_worker/villager-japanese.webp@ builds @building_sengoku/matsuri.webp@ 2 tiles from @building_economy/town-center.webp@ on @resource/resource_wood.webp@, then goes to @resource/deer.webp@",
+        "@resource/rally.webp@@unit_worker/villager-japanese.webp@ to @building_japanese/farmhouse-1.webp@@resource/deer.webp@ until 8 @resource/resource_food.webp@@unit_worker/villager-japanese.webp@",
+        "Make 2 @unit_sengoku/yatai.webp@ from @building_sengoku/matsuri.webp@ and send to @resource/boar.webp@ (or other @resource/resource_food.webp@ sources)",
+        "Get @technology_japanese/towara-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:25",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you have 2 @unit_sengoku/yatai.webp@ and 100 @resource/resource_wood.webp@, all @resource/resource_wood.webp@@unit_worker/villager-japanese.webp@ go to @building_economy/mining-camp.webp@@resource/resource_gold.webp@",
+        "1 @resource/deer.webp@@unit_worker/villager-japanese.webp@ builds @building_defensive/outpost.webp@",
+        "@resource/rally.webp@@unit_worker/villager-japanese.webp@ to @resource/resource_gold.webp@ until 6 @resource/resource_gold.webp@@unit_worker/villager-japanese.webp@",
+        "@resource/rally.webp@@unit_worker/villager-japanese.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 15,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @resource/deer.webp@@unit_worker/villager-japanese.webp@ build @landmark_sengoku/ryokan.webp@ (or @landmark_japanese/koka-township-1.webp@ if preferred)",
+        "Send all but 2 of the @resource/resource_gold.webp@@unit_worker/villager-japanese.webp@to @resource/resource_wood.webp@",
+        "Keep @resource/rally.webp@@unit_worker/villager-japanese.webp@ to @resource/resource_wood.webp@",
+        "1 @resource/deer.webp@@unit_worker/villager-japanese.webp@ builds @building_military/barracks.webp@ near @landmark_sengoku/ryokan.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:05",
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 11,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If against Knight Civ, make @building_military/stable.webp@ + @building_military/barracks.webp@ into @unit_infantry/spearman-1.webp@ + @unit_sengoku/yari-2.webp@",
+        "Otherwise get @building_military/stable.webp@ + @building_military/archery-range.webp@ into @unit_japanese/yumi-ashigaru-2.webp@ + @unit_sengoku/yari-2.webp@",
+        "When 10 @resource/resource_wood.webp@@unit_worker/villager-japanese.webp@, Rally 3 @unit_worker/villager-japanese.webp@ to @building_economy/mining-camp.webp@@resource/resource_stone.webp@, then to @resource/resource_food.webp@",
+        "Get @technology_economy/double-broadaxe.webp@ -> @technology_japanese/takezaiku-2.webp@",
+        "When 150 @resource/resource_stone.webp@, 1 @resource/deer.webp@@unit_worker/villager-japanese.webp@ builds Hojo Daimyo Estate near @building_military/barracks.webp@/@building_military/archery-range.webp@/@building_military/stable.webp@",
+        "3 @resource/resource_stone.webp@@unit_worker/villager-japanese.webp@ go to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:40",
+      "villager_count": 29,
+      "resources": {
+        "food": 13,
+        "wood": 10,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get @unit_sengoku/daimyo.webp@ at Hojo Clan Estate",
+        "Get @technology_japanese/tatara-1.webp@",
+        "When @resource/deer.webp@ are depleted, send @resource/deer.webp@@unit_worker/villager-japanese.webp@ to @building_defensive/outpost.webp@ + @building_japanese/farmhouse-1.webp@ on @resource/deer.webp@/@resource/berrybush.webp@/@resource/boar.webp@",
+        "Now you can either Feudal Rush the opponent or Age-up"
+      ]
+    }
+  ],
+  "description": "Simple Sengoku Daimyo Build Order by Beasty",
+  "video": "https://www.youtube.com/embed/5EHnCk86aaQ",
+  "season": 12,
+  "map": null,
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

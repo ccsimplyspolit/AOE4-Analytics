@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "name": "SengokuNoSkill",
+  "civilization": "Sengoku Daimyo",
+  "author": "Emil30000",
+  "source": "https://aoe4guides.com/builds/2qoei2QlM56qAR0phGGu",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0.00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start @unit_worker/villager-japanese.webp@Build @building_sengoku/matsuri.webp@between @resource/resource_gold.webp@and @resource/resource_wood.webp@,",
+        "4 go to @resource/resource_wood.webp@2 to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0.22",
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@to @resource/berrybush.webp@and build @building_japanese/farmhouse-1.webp@, Upgrade @technology_japanese/towara-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1.37",
+      "villager_count": 9,
+      "resources": {
+        "food": 3,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 1st @unit_sengoku/yatai.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2.20",
+      "villager_count": 11,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 2nd @unit_sengoku/yatai.webp@, as soon as 200  @resource/resource_gold.webp@@unit_worker/villager-japanese.webp@to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3.37",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 3rd @unit_sengoku/yatai.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3.37",
+      "villager_count": 17,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 1,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Age up with 4 @unit_worker/villager-japanese.webp@ from @resource/berrybush.webp@, @resource/rally.webp@to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4.20",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "1 @unit_worker/villager-japanese.webp@from @resource/resource_wood.webp@ builds @building_japanese/farmhouse-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5.16",
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Split @abilities/repair.webp@ @unit_worker/villager-japanese.webp@ into 2 @resource/resource_gold.webp@ and 2 @resource/resource_wood.webp@, Bring out @unit_sengoku/yatai.webp@, @resource/rally.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5.16",
+      "villager_count": 22,
+      "resources": {
+        "food": 9,
+        "wood": 6,
+        "gold": 6,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 1 to @resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6.00",
+      "villager_count": 25,
+      "resources": {
+        "food": 10,
+        "wood": 7,
+        "gold": 7,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "Start building @building_military/barracks.webp@or @building_military/archery-range.webp@ or @building_military/stable.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

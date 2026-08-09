@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "name": "2TC Mass Units and Eco",
+  "civilization": "Zhu Xi's Legacy",
+  "author": "wrekcz",
+  "source": "https://aoe4guides.com/builds/p1bOHp2UFiSwwiPupmSN",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:01",
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5x @unit_worker/villager-china.webp@ chop closest tree unitl each @unit_worker/villager-china.png@ has 7 @resource/resource_wood.png@ each."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:10",
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "5x@unit_worker/villager-china.webp@ build @building_economy/mill.png@ near berries, send starting sheep towards the mill you are making. @unit_chinese/imperial-official.png@ supervises mill while you are building it so you get bonus wood."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5x@unit_worker/villager-china.webp@ to sheep under the @building_economy/mill.png@ with @unit_chinese/imperial-official.png@ supervising. 1x @unit_worker/villager-china.png@ builds @building_chinese/village.png@ near berries."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "7x @unit_worker/villager-china.webp@ on sheep. Start to rally onto the @resource/resource_gold.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~1:40",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally onto gold until you have 3x@unit_worker/villager-china.webp@ on @resource/resource_gold.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally @unit_worker/villager-china.webp@ onto @resource/resource_food.png@ until you have enough for @landmark_zhuxi/meditation-gardens-1.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Collect tax with your @unit_chinese/imperial-official.webp@ from the @building_economy/mill.png@ when it hits 40 then continue to supervise the @building_economy/mill.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~2:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Construct @landmark_zhuxi/meditation-gardens-1.webp@ with 2x @unit_worker/villager-china.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 15,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Continue rallying out to @resource/resource_food.webp@ until you have enough for @landmark_zhuxi/jiangnan-tower-2.png@. Pull your @resource/resource_gold.png@@unit_worker/villager-china.png@ off when you get exactly 170 @resource/resource_gold.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 6,
+        "builder": 2
+      },
+      "notes": [
+        "Send the @resource/resource_gold.webp@@unit_worker/villager-china.png@ to stragler trees near main TC. Send 6x @unit_worker/villager-china.png@ from @resource/resource_food.png@ to construct a mining camp on the @resource/resource_stone.png@. Use the @unit_chinese/imperial-official.png@ to supervise the @resource/resource_stone.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 0,
+        "stone": 6,
+        "builder": 2
+      },
+      "notes": [
+        "The 2x @unit_worker/villager-china.webp@ that were making @landmark_zhuxi/meditation-gardens-1.png@ will then make the @landmark_zhuxi/jiangnan-tower-2.png@ once the @landmark_zhuxi/meditation-gardens-1.png@ is completed. Rally new @unit_worker/villager-china.png@ onto wood."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 16,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once you get 350 @resource/resource_stone.webp@ pull 6x @unit_worker/villager-china.png@ off and go to @resource/resource_wood.png@ until you can afford 2nd @building_economy/town-center.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 21,
+      "resources": {
+        "food": 5,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Construct 2nd @building_economy/town-center.webp@ with 6x @unit_worker/villager-china.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep majority of @unit_worker/villager-china.webp@ on @resource/resource_wood.png@ as spamming production buildings grants you free units essentially driving the cost of the production building down to a fraction of the price. Wood also helps you afford an early @building_chinese/granary.png@ and @building_economy/farm.png@ which means you never need to leave your base."
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 6,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

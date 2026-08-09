@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "name": "Feudal Rush (from Beasty) - Copy for me to understand series",
+  "civilization": "Sengoku Daimyo",
+  "author": "murtuk",
+  "source": "https://aoe4guides.com/builds/olzdibSMJMANLv0s0ulI",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@resource/resource_gold.webp@2@resource/resource_wood.webp@, @resource/rally.webp@@resource/resource_food.webp@",
+        "1 @abilities/repair.webp@@building_sengoku/matsuri.webp@on @resource/resource_gold.webp@(or@resource/resource_wood.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Buy 100@resource/resource_wood.webp@ to make 1st @unit_sengoku/yatai.webp@",
+        "@abilities/repair.webp@@building_japanese/farmhouse-1.webp@ on @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:25",
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Buy another 100@resource/resource_wood.webp@ to make 2nd @unit_sengoku/yatai.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "at 75-80 @resource/resource_wood.webp@, those 2 go to @resource/resource_gold.webp@",
+        "Buy another 100@resource/resource_wood.webp@ to make 3rd @unit_sengoku/yatai.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:15",
+      "villager_count": 15,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Start @age/age_2.webp@@landmark_japanese/koka-township-1.webp@with 3 from@resource/resource_gold.webp@+1@resource/resource_food.webp@, back to@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 1,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "8@resource/resource_food.webp@ to @resource/resource_wood.webp@ with @building_economy/lumber-camp.webp@",
+        "@resource/rally.webp@@resource/resource_wood.webp@ until 10-13 (leave only 1 on @resource/berrybush.webp@ to build more @building_japanese/farmhouse-1.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 1,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Research @technology_japanese/towara-1.webp@, @abilities/repair.webp@@building_japanese/farmhouse-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 21,
+      "resources": {
+        "food": 5,
+        "wood": 13,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@ finishes at 5:00",
+        "Make @building_military/stable.webp@+@building_military/archery-range.webp@",
+        "Research @technology_economy/double-broadaxe.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:15",
+      "villager_count": 21,
+      "resources": {
+        "food": 5,
+        "wood": 13,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_japanese/takezaiku-2.webp@ and make 4th @unit_sengoku/yatai.webp@ whenever possible",
+        "@resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 23,
+      "resources": {
+        "food": 7,
+        "wood": 13,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make @unit_japanese/yumi-ashigaru-2.webp@+@unit_sengoku/yari-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 25,
+      "resources": {
+        "food": 9,
+        "wood": 13,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "At 125 @resource/resource_wood.webp@and@resource/resource_stone.webp@, @abilities/repair.webp@@technology_sengoku/oda_daimyo_1.webp@or@technology_sengoku/takeda_daimyo_1.webp@ASAP"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:10",
+      "villager_count": 26,
+      "resources": {
+        "food": 10,
+        "wood": 13,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make @unit_sengoku/daimyo.webp@ immediately as estate completes",
+        "Make @building_japanese/forge-1.webp@ to make @technology_military/iron-undermesh.webp@/@technology_military/steeled-arrow.webp@ then @technology_japanese/tatara-1.webp@"
+      ]
+    }
+  ],
+  "description": "Build from Beasty's video, transcribed for me to understand it better",
+  "video": "https://www.youtube.com/embed/MHI9qKc72ro",
+  "season": 12,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

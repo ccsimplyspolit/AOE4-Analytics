@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "name": "Jeanne d'Arc: Chamber of Commerce (Trade Boom)",
+  "civilization": "Jeanne d'Arc",
+  "author": "Norevex",
+  "source": "https://aoe4guides.com/builds/KS799ek5mdlHz5SqP4TQ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start 5@unit_worker/villager.webp@ on @resource/sheep.webp@under TC, Que next 2 @unit_worker/villager.webp@to @resource/sheep.webp@. @unit_jeanne/jeanne-darc-peasant-1.webp@Builds @building_economy/house.webp@and @building_economy/mining-camp.webp@ at @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:42",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@Mines @resource/resource_gold.webp@, Que next @unit_worker/villager.webp@to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:22",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Que next @unit_worker/villager.webp@to @resource/sheep.webp@then 2 @unit_worker/villager.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Send @unit_jeanne/jeanne-darc-peasant-1.webp@and 3 @resource/resource_gold.webp@@unit_worker/villager.webp@to build Chamber of Commerce"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Que next 4 @unit_worker/villager.webp@to @resource/resource_gold.webp@, Send 4 @resource/sheep.webp@@unit_worker/villager.webp@ to @resource/resource_wood.webp@and build @building_economy/lumber-camp.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:18",
+      "villager_count": 17,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Once you have 50 @resource/resource_wood.webp@, Take one @resource/sheep.webp@@unit_worker/villager.webp@to @resource/berrybush.webp@to build @building_economy/mill.webp@, then have them farm @resource/berrybush.webp@, Next 1 @unit_worker/villager.webp@to Wood"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 17,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 3 Builders to Wood, Jeanne makes 2 house. Upgrade Wheelbarrow, then send Jeanne to sheep, Que  New Villagers to Food"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:22",
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Upgrade Specialized Pick"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Jeanne Builds Stable, start building units immediately"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 20,
+      "resources": {
+        "food": 6,
+        "wood": 10,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Upgrade Jeanne, Look to upgade Gather for Food and Wood"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "Trade",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

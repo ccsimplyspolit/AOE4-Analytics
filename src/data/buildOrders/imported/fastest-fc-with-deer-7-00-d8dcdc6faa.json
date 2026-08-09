@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "name": "Fastest FC with Deer 7:00",
+  "civilization": "Jin Dynasty",
+  "author": "ElPavelo",
+  "source": "https://aoe4guides.com/builds/4VJ2PMJEd20pe4YsauUL",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3@unit_jin/mounted-villager.webp@>@resource/gaiatreeprototypetree.webp@ for 1 trip -&gt;@resource/resource_gold.webp@@building_economy/house.webp@@building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:35",
+      "villager_count": 3,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "next@unit_jin/mounted-villager.webp@>@resource/gaiatreeprototypetree.webp@ for 5 wood -&gt;@building_economy/mill.webp@@resource/deer.webp@, @resource/rally.webp@&gt;@resource/deer.webp@ till 5"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:15",
+      "villager_count": 5,
+      "resources": {
+        "food": 2,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "when @building_economy/mill.webp@ is built >@technology_jin/mohe-ancestry.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:30",
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "next @unit_jin/mounted-villager.webp@+1@unit_jin/mounted-villager.webp@ from @resource/resource_gold.webp@>@landmark_jin/flower-pagoda.webp@, @resource/rally.webp@&gt;@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@@unit_jin/mounted-villager.webp@>reindeer under TC, Flower Garden Ability on  @resource/resource_gold.webp@/ under TC"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "if attacked, move every @unit_jin/mounted-villager.webp@ but 2 to @resource/resource_gold.webp@ with flower ability, then under TC"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_jin/dragon-pavilion.webp@with 3@unit_jin/mounted-villager.webp@ from reindeer & 2@unit_jin/mounted-villager.webp@ from @resource/resource_gold.webp@, @resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jin/emissary.webp@>@building_economy/market.webp@, adjust to opponent"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "name": "Ottoman Standardized Modern",
+  "civilization": "Ottomans",
+  "author": "TheKuttyW",
+  "source": "https://aoe4guides.com/builds/vnpLDViZvLBkV0biOEsA",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 2,
+        "wood": 2,
+        "gold": 1,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "Build 2 @building_economy/mining-camp.webp@ with the @unit_worker/villager-ottomans.webp@ one at@resource/resource_stone.webp@ one at@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 1,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "Add every @unit_worker/villager-ottomans.webp@ spawned to the@resource/resource_food.webp@. With 1 @unit_worker/villager-ottomans.webp@ on @resource/resource_food.webp@ build @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 10,
+        "wood": 2,
+        "gold": 1,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "When possible, build @building_ottomans/military-school-1.webp@ a keep @building_technology/blacksmith.webp@ layout in mind"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 2,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "When possible @landmark_ottomans/twin-minaret-medrese-1.webp@ , with 4 @unit_worker/villager-ottomans.webp@ and send 1 @unit_worker/villager-ottomans.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 2,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "After @landmark_ottomans/twin-minaret-medrese-1.webp@ leaving 4 on @resource/resource_food.webp@ and sending every new spawned @unit_worker/villager-ottomans.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 2,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "When possible, build 2nd @building_ottomans/military-school-1.webp@ and @building_military/archery-range.webp@/r @building_military/stable.webp@ or @building_military/barracks.webp@ choose it for your opponent to be countered"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 12,
+        "gold": 2,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_economy/double-broadaxe.webp@ , and @technology_economy/horticulture.webp@ instead of because you will need wood, and with @technology_economy/horticulture.webp@ you, you will collect @resource/sheep.webp@ faster"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 10,
+        "wood": 12,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If you want to @building_defensive/outpost.webp@ push with @technology_defensive/arrow-slits.webp@ them, stay one @resource/resource_stone.webp@ with one, but if you are not gonna do that, take him and give him to @resource/resource_wood.webp@ or @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 29,
+      "resources": {
+        "food": 12,
+        "wood": 15,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "name": "china 2TC",
+  "civilization": "Chinese",
+  "author": "siberian_wolf",
+  "source": "https://aoe4guides.com/builds/04lsbXXkIwYtGuyiAtPV",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "6@unit_worker/villager-china.webp@>@building_economy/mill.webp@(@resource/resource_wood.webp@)&gt;@resource/sheep.webp@(@building_economy/mill.webp@)",
+        "2@resource/rally.webp@&gt;@building_economy/house.webp@&gt;@resource/resource_gold.webp@",
+        "5@resource/rally.webp@&gt;@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "5@resource/sheep.webp@@unit_worker/villager-china.webp@ ->@landmark_chinese/imperial-academy.webp@",
+        "3@resource/rally.webp@&gt;@resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 11,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5@landmark_chinese/imperial-academy.webp@@unit_worker/villager-china.webp@ >@resource/sheep.webp@",
+        "@unit_chinese/imperial-official.webp@&gt;@building_economy/mill.webp@&gt;2@ability_chinese/collect_tax.webp@",
+        "@unit_chinese/imperial-official.webp@&gt;4@resource/rally.webp@&gt;@building_economy/lumber-camp.webp@&gt;@resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:10",
+      "villager_count": 24,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @resource/resource_gold.webp@>@landmark_chinese/barbican-of-the-sun.webp@&gt;@resource/resource_stone.webp@",
+        "@building_economy/mill.webp@@unit_chinese/imperial-official.webp@&gt;6@resource/sheep.webp@@unit_worker/villager-china.webp@&gt;@building_economy/mining-camp.webp@&gt;@resource/resource_stone.webp@",
+        "@resource/rally.webp@@unit_chinese/imperial-official.webp@&gt;@building_economy/lumber-camp.webp@",
+        "@resource/rally.webp@&gt;@resource/gaiatreeprototypetree.webp@",
+        "3@resource/rally.webp@&gt;@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 26,
+      "resources": {
+        "food": 18,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "8 @resource/resource_stone.webp@@unit_worker/villager-china.webp@>@building_economy/town-center.webp@&gt;@resource/sheep.webp@",
+        "@resource/rally.webp@@unit_chinese/imperial-official.webp@&gt;@building_economy/mill.webp@",
+        "2@resource/rally.webp@&gt;@resource/sheep.webp@"
+      ]
+    }
+  ],
+  "description": "The Villager #'s aren't perfect as it can vary based on map/opponent civ/how quickly you can macro - more of just an outline that you can play around with!",
+  "video": "https://www.youtube.com/embed/REY85gAXF74",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

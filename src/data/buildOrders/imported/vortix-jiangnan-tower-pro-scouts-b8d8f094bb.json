@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "name": "VortiX: Jiangnan Tower & Pro Scouts",
+  "civilization": "Zhu Xi's Legacy",
+  "author": "PulpyX",
+  "source": "https://aoe4guides.com/builds/3thY2hPRSRvNFqXHQAAl",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "With 5 @unit_worker/villager-china.webp@ @abilities/repair.webp@ @building_economy/mill.webp@ under @building_economy/town-center.webp@ to eat @resource/sheep.webp@ | @unit_chinese/imperial-official.webp@ supervise @building_economy/mill.webp@.",
+        "The 6th @unit_worker/villager-china.webp@ builds a @building_chinese/village.webp@ and then a @building_economy/mining-camp.webp@ next to @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "The first new @unit_worker/villager-china.webp@ goes to @resource/resource_gold.webp@. Set @resource/rally.webp@ to @resource/resource_food.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once you have 8 @unit_worker/villager-china.webp@ on @resource/resource_food.webp@, set @resource/rally.webp@ to @resource/resource_wood.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "First @resource/resource_wood.webp@ @unit_worker/villager-china.webp@ chops a straggler tree, then builds @building_economy/lumber-camp.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Send 2 @unit_worker/villager-china.webp@ from @resource/resource_food.webp@ to build @landmark_zhuxi/jiangnan-tower-2.webp@ (leave 3 tiles of space from TC).",
+        "Send 2 other @unit_worker/villager-china.webp@ from @resource/resource_food.webp@ to @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Train 2nd @unit_chinese/imperial-official.webp@ from TC. Once out, send him to supervise @building_economy/lumber-camp.webp@.",
+        "(Force drop food manually to get tax gold if you lack 150 food)."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 7,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_zhuxi/jiangnan-tower-2.webp@ complete, send the 2 builders to @resource/resource_food.webp@.",
+        "Research @technology_economy/professional-scouts.webp@ at the @building_economy/mill.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Leave only 2 @unit_worker/villager-china.webp@ on @resource/resource_gold.webp@. Send the others to @resource/resource_wood.webp@ / @resource/resource_food.webp@.",
+        "Send 1 @unit_worker/villager-china.webp@ to build @building_military/stable.webp@ near the landmark."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 9,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Train 3rd @unit_chinese/imperial-official.webp@ to temporarily supervise the @building_military/stable.webp@.",
+        "Produce 4 more @unit_cavalry/scout.webp@ from @building_military/stable.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:15",
+      "villager_count": 19,
+      "resources": {
+        "food": 7,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/survival-techniques.webp@. Start taking @resource/deer.webp@ packs.",
+        "Once 10 @unit_worker/villager-china.webp@ on @resource/resource_wood.webp@, set @resource/rally.webp@ to @resource/resource_food.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_military/barracks.webp@ and @building_military/archery-range.webp@ near @landmark_zhuxi/jiangnan-tower-2.webp@.",
+        "Start spamming @unit_chinese/zhuge-nu-2.webp@, @unit_infantry/spearman-1.webp@, and @unit_cavalry/horseman-1.webp@ to proc free units!"
+      ]
+    }
+  ],
+  "description": "This is a build order based on the aggressive Feudal strategy showcased by pro player VortiX for Zhu Xi's Legacy.\n\nThis build revolves around a highly efficient early economy to rush the Jiangnan Tower landmark, transitioning into a massive food boom using Professional Scouts. By micro-managing your Imperial Officials for tax collection and supervising drop-off points, you set up an unstoppable Feudal Age engine.\n\n⚔️ Core Game Plan:\n\nTight Dark Age: A perfectly timed opening to get the Jiangnan Tower down by leaving exactly 3 tiles of space for future production buildings.\n\nThe Pro Scouts Engine: Researching Professional Scouts immediately upon hitting Feudal Age to bring deer packs safely under your Town Center, generating massive, safe food income.\n\nAggressive Feudal Spam: Leveraging the incredible food and wood economy to drop multiple military buildings (Barracks & Archery Ranges) and relentlessly spam Zhuge Nu, Spearmen, and Horsemen to overwhelm your opponent and trigger the free units mechanic.\n\nGLHF!",
+  "video": "https://www.youtube.com/embed/LwC2qsGVxJ4",
+  "season": 13,
+  "map": "Open",
+  "strategy": "Pro Scouts",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

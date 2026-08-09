@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "name": "Beastyqt's feudal knight/archer rush",
+  "civilization": "Jeanne d'Arc",
+  "author": "blomstr4^d",
+  "source": "https://aoe4guides.com/builds/RveVmWPnUAfK1SXWlGLS",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@ builds house -> @resource/resource_food.png@. @resource/rally.png@ on food."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "00:40",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to 4 to@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:25",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Next @unit_worker/villager.webp@ builds @building_economy/mill.png@ on @resource/berrybush.png@. 2 @unit_worker/villager.png@to @resource/gaiatreeprototypetree.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:45",
+      "villager_count": 16,
+      "resources": {
+        "food": 7,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Get @technology_economy/wheelbarrow.webp@. Add worker from food to @landmark_french/school-of-cavalry.png@ at 60-70%."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 26,
+      "resources": {
+        "food": 9,
+        "wood": 12,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Add one to gold. Rally to wood until 12. Then to food.",
+        "Get @technology_economy/survival-techniques.webp@. Build @building_military/archery-range.png@ + @building_technology/blacksmith.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "7:10",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use @ability_jeanne/ability-consecrate-1.webp@ on @building_economy/town-center.png@ and @landmark_french/school-of-cavalry.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Go harrass and fight. Get dat xp!"
+      ]
+    }
+  ],
+  "description": "Taken from beastyqts video",
+  "video": "https://www.youtube.com/embed/A93fRr0ysn4",
+  "season": 6,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}

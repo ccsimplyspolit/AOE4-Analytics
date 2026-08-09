@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 1,
+  "name": "Malian Cow Boom",
+  "civilization": "Malians",
+  "author": "DB43Venom",
+  "source": "https://aoe4guides.com/builds/CsxfR38jct8fQOue7MPG",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5x @unit_worker/villager-malians.webp@ to cut 1x @resource/gaiatreeprototypetree.png@",
+        "1x @unit_worker/villager-malians.png@ to build @building_malians/pit-mine-1.png@",
+        "@resource/rally.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After building @building_malians/pit-mine-1.webp@, @unit_worker/villager-malians.png@ build 6x @building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 8,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After cutting 1x @resource/gaiatreeprototypetree.webp@, send 5x @unit_worker/villager-malians.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Build @landmark_malians/mansa-quarry-2.webp@ with 5x @unit_worker/villager-malians.png@ from @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Send all but 4x @unit_worker/villager-malians.webp@ to @resource/gaiatreeprototypetree.png@",
+        "@resource/rally.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:25",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Build 1x @building_economy/mill.webp@ and constantly produce @resource/cattle.png@",
+        "Build 1x  @building_economy/lumber-camp.png@ when @resource/gaiatreeprototypetree.png@ are depleted",
+        "When you have 8x @unit_worker/villager-japanese.png@ on @resource/resource_wood.png@, @resource/rally.png@ to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 5x @unit_worker/villager-malians.webp@ from @landmark_malians/mansa-quarry-2.png@ to build 1x @building_economy/mining-camp.png@ and then farm @resource/resource_gold.png@",
+        "Build 1x @building_malians/cattle-ranch-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build a second @building_economy/mill.webp@ and @building_malians/cattle-ranch-2.png@",
+        "@resource/rally.png@ the @resource/cattle.png@ to @building_malians/cattle-ranch-2.png@",
+        "*If opponent is being aggressive, build counter units*",
+        "*If not, keep building @resource/cattle.png@ and @building_malians/cattle-ranch-2.png@*"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 22,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you have 10x @unit_worker/villager-japanese.webp@ on @resource/resource_gold.png@, @resource/rally.png@ to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 28,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build a second @building_malians/pit-mine-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:30",
+      "villager_count": 28,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "All @unit_worker/villager-malians.webp@ from @resource/resource_food.png@ build @landmark_malians/grand-fulani-corral-2.png@",
+        "@resource/rally.png@ to @resource/resource_wood.png@",
+        "Build 1x @building_military/stable.png@ and 1x @building_military/archery-range.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 30,
+      "resources": {
+        "food": 2,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Research @technology_economy/horticulture.webp@, @technology_economy/wheelbarrow.png@, and @technology_economy/double-broadaxe.png@",
+        "Then research @technology_economy/fertilization.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:30",
+      "villager_count": 31,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Build 1x @building_military/stable.webp@ and 1x @building_military/archery-range.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 34,
+      "resources": {
+        "food": 0,
+        "wood": 24,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send @unit_worker/villager-malians.webp@ from@landmark_malians/grand-fulani-corral-2.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:15",
+      "villager_count": 35,
+      "resources": {
+        "food": 0,
+        "wood": 25,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build a @building_religious/mosque.webp@ to collect @resource/relics.png@ with @unit_religious/monk-3.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Mass produce @unit_malians/sofa-2.webp@ and @unit_infantry/archer-2.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_malians/imported-armor-3.webp@, @technology_military/steeled-arrow.png@, @technology_military/iron-undermesh.png@, and unit upgrades",
+        "Then research @technology_military/bloomery.png@, @technology_military/fitted-leatherwork.png@, and @technology_malians/poisoned-arrows-3.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Consider adding @building_economy/market.webp@ for @unit_worker/trader.png@",
+        "Add @building_military/siege-workshop.png@ for pushing"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/8Vj1L6JVffk",
+  "season": 9,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "provider": "aoe4guides",
+  "updatedAt": "2026-08-08T19:51:01Z"
+}
