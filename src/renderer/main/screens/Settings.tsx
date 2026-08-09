@@ -17,6 +17,7 @@ import {
   Zap,
   Activity,
   Play,
+  ExternalLink,
 } from 'lucide-react'
 import type { AutomationStatus, AutomationTaskId } from '@domain/automation'
 import type { Leaderboard } from '@api/types'
@@ -1702,6 +1703,15 @@ function ExternalApisCard() {
                 {status?.twitch.configured ? tt('Ready') : tt('Not configured')}
               </span>
             </div>
+            <a
+              href="https://dev.twitch.tv/console/apps"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 text-[11px] text-primary hover:underline"
+            >
+              {tt('Create Twitch credentials')}
+              <ExternalLink className="h-3 w-3" />
+            </a>
             <input
               value={twitchClientId}
               onChange={(event) => setTwitchClientId(event.target.value)}
@@ -1733,6 +1743,15 @@ function ExternalApisCard() {
                 {status?.youtube.configured ? tt('Ready') : tt('Not configured')}
               </span>
             </div>
+            <a
+              href="https://console.cloud.google.com/apis/credentials"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 text-[11px] text-primary hover:underline"
+            >
+              {tt('Create a YouTube API key')}
+              <ExternalLink className="h-3 w-3" />
+            </a>
             <input
               type="password"
               value={youtubeApiKey}
@@ -2112,8 +2131,23 @@ function TranslationApiCard({ onSaved }: { onSaved: () => Promise<void> }) {
         </div>
 
         <label className="space-y-1 text-xs">
-          <span className="block text-muted-foreground">
-            {tt(provider === 'deepl' ? 'DeepL API key' : 'LibreTranslate API key')}
+          <span className="flex items-center justify-between gap-2">
+            <span className="text-muted-foreground">
+              {tt(provider === 'deepl' ? 'DeepL API key' : 'LibreTranslate API key')}
+            </span>
+            <a
+              href={
+                provider === 'deepl'
+                  ? 'https://www.deepl.com/en/pro-api'
+                  : 'https://portal.libretranslate.com/'
+              }
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex shrink-0 items-center gap-1 text-[11px] text-primary hover:underline"
+            >
+              {tt(provider === 'deepl' ? 'Get a DeepL key' : 'Get a LibreTranslate key')}
+              <ExternalLink className="h-3 w-3" />
+            </a>
           </span>
           <input
             type="password"

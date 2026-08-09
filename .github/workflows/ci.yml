@@ -37,7 +37,10 @@ jobs:
         run: npm audit --omit=dev --audit-level=high
 
       - name: Verify
-        run: npm run verify
+        run: |
+          npm run typecheck
+          npm run lint
+          npx vitest run --maxWorkers=1 --minWorkers=1
 
       - name: Build production bundles
         run: npm run bundle
