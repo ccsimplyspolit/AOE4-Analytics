@@ -359,6 +359,12 @@ export function OverlayApp() {
   const showMatchup = haveMatchup || placementMode
   const showPostGame = (matchState === 'ended' && postGame != null) || placementMode
   const showPostGameWidget = postGameShown && showPostGame
+  const showStatusPill =
+    statusShown &&
+    !placementMode &&
+    !showMatchup &&
+    !showPostGameWidget &&
+    !(matchState === 'ended' && postGame != null)
   const showApm = apmShown && (apm != null || placementMode)
   // Shown whenever the overlay is up with a session to report (in-game AND on
   // the post-game screen, where the just-finished game is already counted).
@@ -720,7 +726,7 @@ export function OverlayApp() {
         </div>
       )}
 
-      {!placementMode && statusShown && !showMatchup && !showPostGameWidget && (
+      {showStatusPill && (
         <div className="pointer-events-none fixed inset-x-0 top-1.5 z-50 flex justify-center">
           <span className="flex items-center gap-1.5 rounded-md bg-[#0b0e14]/85 px-2.5 py-1 text-[11px] text-white/70 shadow-lg ring-1 ring-white/10">
             <span className="inline-block h-2 w-2 rounded-full bg-cyan-400" />
