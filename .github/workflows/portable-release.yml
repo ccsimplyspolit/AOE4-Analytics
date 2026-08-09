@@ -1,132 +1,162 @@
 name: Portable Release
 
+# A Windows package is produced only after the Linux CI workflow is green.
+# Every successful main build gets a unique prerelease; the first build for a
+# package.json version also becomes the stable versioned release.
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: portable-release-${{ github.ref }}
+  group: portable-release-main
   cancel-in-progress: false
 
 jobs:
   release:
     name: Build portable Windows release
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == 'main')
     runs-on: windows-latest
 
     env:
       CSC_IDENTITY_AUTO_DISCOVERY: false
 
     steps:
-      - name: Check out repository
+      - name: Check out tested commit
         uses: actions/checkout@v4
-
-      - name: Choose release tag
-        id: release
-        shell: pwsh
-        run: |
-          $package = Get-Content package.json -Raw | ConvertFrom-Json
-          $tag = "v$($package.version)"
-
-          "tag=$tag" >> $env:GITHUB_OUTPUT
-          "name=RTSLytics $tag" >> $env:GITHUB_OUTPUT
-
-      - name: Check whether a build is needed
-        id: gate
-        shell: pwsh
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_TAG: ${{ steps.release.outputs.tag }}
-          IS_DISPATCH: ${{ github.event_name == 'workflow_dispatch' }}
-        run: |
-          gh release view $env:RELEASE_TAG *> $null
-          if ($LASTEXITCODE -eq 0) {
-            if ($env:IS_DISPATCH -eq 'true') {
-              throw "Release $env:RELEASE_TAG already exists. Bump package.json before rebuilding."
-            }
-            Write-Host "Release $env:RELEASE_TAG already exists — skipping the Windows build."
-            "should_build=false" >> $env:GITHUB_OUTPUT
-          } else {
-            "should_build=true" >> $env:GITHUB_OUTPUT
-          }
-
-          # A missing release is the expected build path. Do not carry the
-          # probe's non-zero exit code into the completed workflow step.
-          exit 0
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
 
       - name: Set up Node.js
-        if: ${{ steps.gate.outputs.should_build == 'true' }}
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
 
       - name: Install dependencies
-        if: ${{ steps.gate.outputs.should_build == 'true' }}
         run: npm ci
 
       - name: Audit production dependencies
-        if: ${{ steps.gate.outputs.should_build == 'true' }}
         run: npm audit --omit=dev --audit-level=high
 
       - name: Build portable executable
-        if: ${{ steps.gate.outputs.should_build == 'true' }}
         run: npm run dist:verified
 
-      - name: Prepare release artifact
-        if: ${{ steps.gate.outputs.should_build == 'true' }}
+      - name: Prepare release metadata
         id: artifact
-        shell: pwsh
-        run: |
-          $artifact = Get-ChildItem -Path release -Filter "*-portable.exe" -File |
-            Sort-Object LastWriteTime -Descending |
-            Select-Object -First 1
-
-          if (-not $artifact) {
-            throw "No portable executable found in release/"
-          }
-
-          $checksum = Get-FileHash -Path $artifact.FullName -Algorithm SHA256
-          $checksumPath = "$($artifact.FullName).sha256"
-          "$($checksum.Hash.ToLowerInvariant())  $($artifact.Name)" |
-            Out-File -FilePath $checksumPath -Encoding ascii
-
-          "artifact_path=$($artifact.FullName)" >> $env:GITHUB_OUTPUT
-          "artifact_name=$($artifact.Name)" >> $env:GITHUB_OUTPUT
-          "checksum_path=$checksumPath" >> $env:GITHUB_OUTPUT
-
-      - name: Upload workflow artifact
-        if: ${{ steps.gate.outputs.should_build == 'true' }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ steps.artifact.outputs.artifact_name }}
-          path: |
-            ${{ steps.artifact.outputs.artifact_path }}
-            ${{ steps.artifact.outputs.checksum_path }}
-          if-no-files-found: error
-
-      - name: Publish GitHub release
-        if: ${{ steps.gate.outputs.should_build == 'true' }}
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_TAG: ${{ steps.release.outputs.tag }}
-          RELEASE_NAME: ${{ steps.release.outputs.name }}
+          TARGET_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+        run: |
+          $package = Get-Content package.json -Raw | ConvertFrom-Json
+          $portable = Get-ChildItem -Path release -Filter "*-portable.exe" -File |
+            Sort-Object LastWriteTime -Descending |
+            Select-Object -First 1
+
+          if (-not $portable) {
+            throw "No portable executable found in release/"
+          }
+
+          $shortSha = $env:TARGET_SHA.Substring(0, 7)
+          $stableTag = "v$($package.version)"
+          $buildTag = "build-v$($package.version)-$($env:GITHUB_RUN_NUMBER)-$($env:GITHUB_RUN_ATTEMPT)-$shortSha"
+          $checksum = Get-FileHash -Path $portable.FullName -Algorithm SHA256
+          $checksumPath = "$($portable.FullName).sha256"
+          "$($checksum.Hash.ToLowerInvariant())  $($portable.Name)" |
+            Out-File -FilePath $checksumPath -Encoding ascii
+
+          $manifestPath = Join-Path $portable.DirectoryName "RTSLytics-$($package.version)-manifest.json"
+          [ordered]@{
+            product = 'RTSLytics'
+            version = $package.version
+            commit = $env:TARGET_SHA
+            buildTag = $buildTag
+            stableTag = $stableTag
+            artifact = $portable.Name
+            sha256 = $checksum.Hash.ToLowerInvariant()
+            builtAtUtc = (Get-Date).ToUniversalTime().ToString('o')
+          } | ConvertTo-Json | Out-File -FilePath $manifestPath -Encoding utf8
+
+          gh release view $stableTag *> $null
+          $stableExists = $LASTEXITCODE -eq 0
+
+          "version=$($package.version)" >> $env:GITHUB_OUTPUT
+          "stable_tag=$stableTag" >> $env:GITHUB_OUTPUT
+          "build_tag=$buildTag" >> $env:GITHUB_OUTPUT
+          "stable_exists=$($stableExists.ToString().ToLowerInvariant())" >> $env:GITHUB_OUTPUT
+          "artifact_path=$($portable.FullName)" >> $env:GITHUB_OUTPUT
+          "artifact_name=$($portable.Name)" >> $env:GITHUB_OUTPUT
+          "checksum_path=$checksumPath" >> $env:GITHUB_OUTPUT
+          "manifest_path=$manifestPath" >> $env:GITHUB_OUTPUT
+          "target_sha=$($env:TARGET_SHA)" >> $env:GITHUB_OUTPUT
+          exit 0
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: RTSLytics-${{ steps.artifact.outputs.version }}-build-${{ github.run_number }}
+          retention-days: 14
+          path: |
+            ${{ steps.artifact.outputs.artifact_path }}
+            ${{ steps.artifact.outputs.checksum_path }}
+            ${{ steps.artifact.outputs.manifest_path }}
+          if-no-files-found: error
+
+      - name: Publish continuous prerelease
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BUILD_TAG: ${{ steps.artifact.outputs.build_tag }}
+          BUILD_NAME: RTSLytics ${{ steps.artifact.outputs.version }} build ${{ github.run_number }}
+          TARGET_SHA: ${{ steps.artifact.outputs.target_sha }}
           ARTIFACT_PATH: ${{ steps.artifact.outputs.artifact_path }}
           CHECKSUM_PATH: ${{ steps.artifact.outputs.checksum_path }}
+          MANIFEST_PATH: ${{ steps.artifact.outputs.manifest_path }}
         run: |
-          $notesPath = Join-Path $env:RUNNER_TEMP "release-notes.md"
+          $notesPath = Join-Path $env:RUNNER_TEMP "continuous-release-notes.md"
           @"
-          RTSLytics portable Windows build.
+          Automated RTSLytics Windows build.
 
+          Commit: $env:TARGET_SHA
+          This prerelease is generated automatically after a green CI run.
+          "@ | Out-File -FilePath $notesPath -Encoding utf8
+
+          gh release create $env:BUILD_TAG $env:ARTIFACT_PATH $env:CHECKSUM_PATH $env:MANIFEST_PATH `
+            --title $env:BUILD_NAME `
+            --notes-file $notesPath `
+            --prerelease `
+            --latest=false `
+            --target $env:TARGET_SHA
+
+      - name: Publish stable version release
+        if: ${{ steps.artifact.outputs.stable_exists != 'true' }}
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          STABLE_TAG: ${{ steps.artifact.outputs.stable_tag }}
+          VERSION: ${{ steps.artifact.outputs.version }}
+          TARGET_SHA: ${{ steps.artifact.outputs.target_sha }}
+          ARTIFACT_PATH: ${{ steps.artifact.outputs.artifact_path }}
+          CHECKSUM_PATH: ${{ steps.artifact.outputs.checksum_path }}
+          MANIFEST_PATH: ${{ steps.artifact.outputs.manifest_path }}
+        run: |
+          $notesPath = Join-Path $env:RUNNER_TEMP "stable-release-notes.md"
+          @"
+          RTSLytics $env:VERSION portable Windows release.
+
+          Commit: $env:TARGET_SHA
           Download the portable .exe and run it. No installer is required.
           "@ | Out-File -FilePath $notesPath -Encoding utf8
 
-          gh release create $env:RELEASE_TAG $env:ARTIFACT_PATH $env:CHECKSUM_PATH `
-            --title $env:RELEASE_NAME `
+          gh release create $env:STABLE_TAG $env:ARTIFACT_PATH $env:CHECKSUM_PATH $env:MANIFEST_PATH `
+            --title "RTSLytics $env:STABLE_TAG" `
             --notes-file $notesPath `
-            --target $env:GITHUB_SHA
+            --target $env:TARGET_SHA
