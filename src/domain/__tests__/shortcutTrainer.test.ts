@@ -1,8 +1,10 @@
 import { describe, expect, it } from 'vitest'
 import {
   DEFAULT_KEYBOARD_LAYOUT,
+  KEYBOARD_LAYOUTS,
   keyboardLayoutFor,
   normalizeShortcut,
+  remapShortcutForLayout,
   shortcutFromKeyInput,
   shortcutKey,
 } from '../shortcutTrainer'
@@ -31,5 +33,30 @@ describe('shortcut trainer keyboard profiles', () => {
     ).toBe('CTRL+ALT+1')
     expect(shortcutFromKeyInput({ key: 'q', code: 'KeyQ', shiftKey: true })).toBe('SHIFT+Q')
     expect(shortcutFromKeyInput({ key: 'Control', code: 'ControlLeft', ctrlKey: true })).toBe('')
+  })
+
+  it('captures the label at the physical position of the selected profile', () => {
+    expect(
+      shortcutFromKeyInput(
+        { key: 'y', code: 'KeyZ', shiftKey: true },
+        KEYBOARD_LAYOUTS.QWERTZ,
+      ),
+    ).toBe('SHIFT+Y')
+    expect(
+      shortcutFromKeyInput({ key: 'a', code: 'KeyQ' }, KEYBOARD_LAYOUTS.AZERTY),
+    ).toBe('A')
+  })
+
+  it('keeps saved shortcuts on the same physical key when the profile changes', () => {
+    expect(
+      remapShortcutForLayout(
+        'CTRL+Z,ALT+X',
+        KEYBOARD_LAYOUTS.QWERTY,
+        KEYBOARD_LAYOUTS.QWERTZ,
+      ),
+    ).toBe('CTRL+Y,ALT+X')
+    expect(
+      remapShortcutForLayout('Q', KEYBOARD_LAYOUTS.QWERTY, KEYBOARD_LAYOUTS.AZERTY),
+    ).toBe('A')
   })
 })

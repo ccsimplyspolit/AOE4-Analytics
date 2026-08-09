@@ -5,6 +5,7 @@ import {
   DEFAULT_KEYBOARD_LAYOUT,
   keyboardLayoutFor,
   normalizeShortcut,
+  remapShortcutsForLayout,
   shortcutFromKeyInput,
   shortcutKey,
   type KeyboardLayout,
@@ -190,7 +191,7 @@ export function ShortcutTrainer() {
       setFeedback(null)
       return
     }
-    const value = shortcutFromKeyInput(event)
+    const value = shortcutFromKeyInput(event, keyboardLayout)
     if (!value) return
     event.preventDefault()
     setShortcut(value)
@@ -199,7 +200,15 @@ export function ShortcutTrainer() {
 
   const changeLayout = (layout: ShortcutLayoutId) => {
     setEditingCell(null)
-    setStore((previous) => ({ ...previous, layout }))
+    setStore((previous) => {
+      const fromLayout = keyboardLayoutFor(previous.layout, previous.customLayout)
+      const toLayout = keyboardLayoutFor(layout, previous.customLayout)
+      return {
+        ...previous,
+        layout,
+        shortcuts: remapShortcutsForLayout(previous.shortcuts, fromLayout, toLayout),
+      }
+    })
   }
 
   const changeDisplayStyle = (displayStyle: ShortcutDisplayStyle) => {
