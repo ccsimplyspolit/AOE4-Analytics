@@ -16,6 +16,7 @@ import {
   Table2,
 } from 'lucide-react'
 import type { RankLevel, StatsLeaderboard } from '@api/types'
+import type { PoolMapCivRanking } from '@ipc/contract'
 import type { CivTier, Tier } from '@domain/tierList'
 import { TIERS } from '@domain/tierList'
 import type { MapStat } from '@domain/mapStats'
@@ -132,11 +133,11 @@ export function CivMeta() {
     : undefined
   const ratingParam = searchParams.get('rating')
   const rating = RATINGS.some((entry) => entry.value === ratingParam)
-    ? (ratingParam || undefined)
+    ? ratingParam || undefined
     : undefined
   const patchParam = searchParams.get('patch')
   const patch = PATCHES.some((entry) => entry.value === patchParam)
-    ? (patchParam || undefined)
+    ? patchParam || undefined
     : undefined
   const mapPoolOnly = rankedMapPoolFilterable(leaderboard) && searchParams.get('mapPool') !== 'all'
   const rawMapId = Number(searchParams.get('map'))
@@ -206,8 +207,25 @@ export function CivMeta() {
     mapPoolOnly,
   })
 
-  const maps = data?.ok ? data.data.maps : []
-  const mapPool = data?.ok ? data.data.mapPool ?? null : null
+  const maps = useMemo(() => (data?.ok ? data.data.maps : []), [data])
+  const mapPool = data?.ok ? (data.data.mapPool ?? null) : null
+
+  // The first active map is a useful default for the calculator. Without this
+  // URL sync the map list rendered correctly, but the map-specific civ slice
+  // stayed empty until the user made a second selection manually.
+  useEffect(() => {
+    if (tab !== 'counter' || maps.length === 0) return
+    if (selectedMapId != null && maps.some((map) => map.mapId === selectedMapId)) return
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev)
+        next.set('map', String(maps[0]!.mapId))
+        return next
+      },
+      { replace: true },
+    )
+  }, [maps, selectedMapId, setSearchParams, tab])
+
   const sortedCivs = useMemo(() => {
     const civs = data?.ok ? data.data.civs : []
     const dir = sort.dir === 'asc' ? 1 : -1
@@ -357,6 +375,26 @@ export function CivMeta() {
             {rankedMapPoolFilterable(leaderboard) && mapPool && (
               <MapPoolNotice mapPool={mapPool} filtered={mapPoolOnly} />
             )}
+            {mapPoolOnly && data.data.metaScope === 'ranked-map-pool' && (
+              <div className="rounded-lg border border-primary/25 bg-primary/5 p-3 text-xs text-muted-foreground">
+                {tt('Civ meta is weighted across {maps} active ranked maps.').replace(
+                  '{maps}',
+                  String(data.data.metaPoolMapCount ?? 0),
+                )}
+              </div>
+            )}
+            {mapPoolOnly && data.data.metaScope === 'all-maps' && mapPool?.status === 'current' && (
+              <div className="rounded-lg border border-warn/30 bg-warn/5 p-3 text-xs text-warn">
+                {tt(
+                  'The active map list is filtered, but per-map civ slices were unavailable; win and pick rates use the full current-patch dataset.',
+                )}
+              </div>
+            )}
+            {tab === 'tier' &&
+              data.data.metaScope === 'ranked-map-pool' &&
+              data.data.poolMapRankings && (
+                <PoolBestCivPanel civs={data.data.civs} maps={data.data.poolMapRankings} />
+              )}
             {tab === 'tier' && <TierTab byTier={byTier} />}
             {tab === 'stats' && <CivStatsTable civs={sortedCivs} sort={sort} onSort={toggleSort} />}
             {tab === 'maps' && <MapTable maps={maps} mapPool={mapPool} />}
@@ -385,7 +423,9 @@ export function CivMeta() {
             <div className="flex items-start gap-2 rounded-lg border border-border bg-card/50 p-4 text-xs text-muted-foreground">
               <Info className="mt-0.5 h-4 w-4 shrink-0" />
               <p className="leading-relaxed">
-                {tt('Live aggregates from AoE4World ({games} games in this slice). Win rate near 50% is normal — a few points is a real edge across many games, but at beginner level your own fundamentals matter far more than civ choice. Per-patch history isn’t exposed by the API, so this reflects the current dataset.').replace('{games}', formatCount(data.data.totalCivGames))}
+                {tt(
+                  'Live aggregates from AoE4World ({games} games in this slice). Win rate near 50% is normal — a few points is a real edge across many games, but at beginner level your own fundamentals matter far more than civ choice. Per-patch history isn’t exposed by the API, so this reflects the current dataset.',
+                ).replace('{games}', formatCount(data.data.totalCivGames))}
               </p>
             </div>
           </div>
@@ -396,7 +436,7 @@ export function CivMeta() {
 }
 
 function TierTab({ byTier }: { byTier: Record<Tier, CivTier[]> }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   return (
     <div className="space-y-2">
       {TIERS.map((tier) => (
@@ -418,7 +458,7 @@ function TierTab({ byTier }: { byTier: Record<Tier, CivTier[]> }) {
                 className="group flex items-center gap-2 rounded-md border border-border bg-background px-2.5 py-1.5 text-sm transition-colors hover:border-primary/40 hover:bg-secondary"
                 title={`${c.winRate}% win · ${c.pickRate}% pick · ${formatCount(c.games)} games`}
               >
-                <span className="font-medium group-hover:text-primary">{c.civName}</span>
+                <span className="font-medium group-hover:text-primary">{gameName(c.civName)}</span>
                 <span className="tabular-nums text-xs text-muted-foreground">{c.winRate}%</span>
                 {c.lowSample && (
                   <span className="text-[10px] text-warn" title={tt('Low sample size')}>
@@ -431,6 +471,80 @@ function TierTab({ byTier }: { byTier: Record<Tier, CivTier[]> }) {
         </div>
       ))}
     </div>
+  )
+}
+
+function PoolBestCivPanel({ civs, maps }: { civs: CivTier[]; maps: PoolMapCivRanking[] }) {
+  const { tt, gameName } = useI18n()
+  return (
+    <Card className="border-primary/25 bg-primary/[0.035]">
+      <CardContent className="space-y-4 p-4">
+        <div>
+          <h3 className="text-sm font-semibold">{tt('Best civilizations for current map pool')}</h3>
+          <p className="mt-1 text-xs text-muted-foreground">
+            {tt(
+              'Pool-weighted ranking uses every active ranked map and the selected rank, rating, and patch filters.',
+            )}
+          </p>
+        </div>
+
+        <div>
+          <p className="mb-2 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+            {tt('Overall pool ranking')}
+          </p>
+          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {civs.slice(0, 6).map((civ, index) => (
+              <Link
+                key={civ.civ}
+                to={`/civ/${civ.civ}`}
+                className="rounded-md border border-border bg-background/50 p-3 transition-colors hover:border-primary/40 hover:bg-secondary/50"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-sm font-semibold">
+                    #{index + 1} {gameName(civ.civName)}
+                  </span>
+                  <TierBadge tier={civ.tier} />
+                </div>
+                <div className="mt-2 flex items-baseline justify-between text-xs">
+                  <span className={civ.winRate >= 50 ? 'text-win' : 'text-loss'}>
+                    {civ.winRate}% WR
+                  </span>
+                  <span className="text-muted-foreground">
+                    {civ.pickRate}% {tt('pick')} · {formatCount(civ.games)} {tt('games')}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p className="mb-2 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+            {tt('Best by map')}
+          </p>
+          <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-3">
+            {maps.map((map) => (
+              <div key={map.mapId} className="rounded-md border border-border bg-background/35 p-3">
+                <p className="text-sm font-semibold">{gameName(map.map)}</p>
+                <div className="mt-2 space-y-1.5">
+                  {map.civs.map((civ, index) => (
+                    <div key={civ.civ} className="flex items-center justify-between gap-2 text-xs">
+                      <Link to={`/civ/${civ.civ}`} className="truncate hover:text-primary">
+                        #{index + 1} {gameName(civ.civName)}
+                      </Link>
+                      <span className="shrink-0 tabular-nums text-muted-foreground">
+                        {civ.winRate}% · {formatCount(civ.games)}
+                        {civ.lowSample && <span className="ml-1 text-warn">⚠</span>}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </CardContent>
+    </Card>
   )
 }
 
@@ -507,13 +621,13 @@ function SortBtn({
 }
 
 function CivRow({ c }: { c: CivTier }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const wrColor = c.winRate >= 52 ? 'text-win' : c.winRate < 48 ? 'text-loss' : ''
   return (
     <tr className="border-b border-border/60 last:border-0 hover:bg-secondary/40">
       <td className="px-4 py-2">
         <Link to={`/civ/${c.civ}`} className="font-medium hover:text-primary">
-          {c.civName}
+          {gameName(c.civName)}
         </Link>
         {c.lowSample && (
           <span className="ml-1.5 text-[10px] text-warn" title={tt('Low sample size')}>
@@ -547,15 +661,27 @@ function MapPoolNotice({
   const { tt } = useI18n()
   const captured = new Date(mapPool.snapshot.capturedAt).toLocaleDateString()
   const until = new Date(`${mapPool.snapshot.effectiveUntil}T00:00:00Z`).toLocaleDateString()
+  const refresh = mapPool.autoRefresh
+  const refreshSuffix =
+    refresh?.status === 'error'
+      ? ` · ${tt('auto refresh failed')}`
+      : refresh?.lastCheckedAt
+        ? ` · ${tt('auto checked')} ${new Date(refresh.lastCheckedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`
+        : ''
   const message =
     mapPool.status === 'current'
       ? filtered
-        ? `${tt('Showing only the active ranked map pool')} · ${mapPool.maps.length} ${tt('maps')} · ${tt('as of')} ${captured} · ${tt('through')} ${until}`
-        : `${tt('Active ranked map pool available')} · ${mapPool.maps.length} ${tt('maps')} · ${tt('as of')} ${captured} · ${tt('filter disabled')}`
-      : `${tt('Map pool snapshot needs refresh')} · ${tt('showing the full AoE4World patch map list')}`
+        ? `${tt('Showing only the active ranked map pool')} · ${mapPool.maps.length} ${tt('maps')} · ${tt('as of')} ${captured} · ${tt('through')} ${until}${refreshSuffix}`
+        : `${tt('Active ranked map pool available')} · ${mapPool.maps.length} ${tt('maps')} · ${tt('as of')} ${captured} · ${tt('filter disabled')}${refreshSuffix}`
+      : `${tt('Map pool snapshot needs refresh')} · ${tt('showing the full AoE4World patch map list')}${refreshSuffix}`
   return (
     <div className="flex flex-wrap items-center justify-between gap-2 rounded-md border border-primary/20 bg-primary/5 px-3 py-2 text-xs">
-      <span className={mapPool.status === 'current' ? 'text-primary' : 'text-warn'}>{message}</span>
+      <span
+        className={cn(mapPool.status === 'current' ? 'text-primary' : 'text-warn', refresh?.status === 'error' && 'text-warn')}
+        title={refresh?.lastError ?? undefined}
+      >
+        {message}
+      </span>
       <a
         href={mapPool.snapshot.sourceUrl}
         target="_blank"
@@ -568,14 +694,8 @@ function MapPoolNotice({
   )
 }
 
-function MapTable({
-  maps,
-  mapPool,
-}: {
-  maps: MapStat[]
-  mapPool: RankedMapPoolResolution | null
-}) {
-  const { tt } = useI18n()
+function MapTable({ maps, mapPool }: { maps: MapStat[]; mapPool: RankedMapPoolResolution | null }) {
+  const { tt, gameName } = useI18n()
   if (maps.length === 0) {
     return <EmptyBox>{tt('No map stats for this leaderboard yet — try another ladder.')}</EmptyBox>
   }
@@ -598,7 +718,7 @@ function MapTable({
           <tbody>
             {maps.map((m) => (
               <tr key={m.mapId} className="border-b border-border/60 last:border-0">
-                <td className="py-2 pr-2 font-medium">{m.map}</td>
+                <td className="py-2 pr-2 font-medium">{gameName(m.map)}</td>
                 <td className="px-2 py-2 text-right tabular-nums text-muted-foreground">
                   {m.pickRate}%
                 </td>
@@ -606,14 +726,16 @@ function MapTable({
                   {formatDurationShort(m.durationAverageSec)}
                 </td>
                 <td className="py-2 pl-2 text-right text-muted-foreground">
-                  {m.bestCivName ?? '—'}
+                  {m.bestCivName ? gameName(m.bestCivName) : '—'}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
         <p className="text-[11px] text-muted-foreground">
-          {tt('“Strongest civ” is the single highest-win-rate civ per map (all the API exposes) — not a full civ×map table.')}
+          {tt(
+            '“Strongest civ” is the single highest-win-rate civ per map (all the API exposes) — not a full civ×map table.',
+          )}
         </p>
       </CardContent>
     </Card>
@@ -640,7 +762,7 @@ function CounterCalculator({
   patch: string | undefined
   onMapChange: (mapId: number) => void
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const [opponentCiv, setOpponentCiv] = useState('french')
   const selected = maps.find((map) => map.mapId === selectedMapId) ?? maps[0]
   const sorted = [...civs].sort((a, b) => b.winRate - a.winRate || b.games - a.games)
@@ -675,12 +797,16 @@ function CounterCalculator({
                 {tt('Best civilization by map')}
               </h3>
               <p className="mt-1 max-w-2xl text-xs text-muted-foreground">
-                {tt('Map ranking plus a directional matchup check. The official calculator link below keeps the exact AoE4World map/opponent/rating/patch query.')}
+                {tt(
+                  'Map ranking plus a directional matchup check. The official calculator link below keeps the exact AoE4World map/opponent/rating/patch query.',
+                )}
               </p>
             </div>
             <div className="flex flex-wrap items-end gap-2">
               <label className="flex flex-col gap-1">
-                <span className="text-[10px] uppercase tracking-wide text-muted-foreground">{tt('Map')}</span>
+                <span className="text-[10px] uppercase tracking-wide text-muted-foreground">
+                  {tt('Map')}
+                </span>
                 <select
                   value={selectedMapId ?? ''}
                   onChange={(event) => onMapChange(Number(event.target.value))}
@@ -698,24 +824,36 @@ function CounterCalculator({
                 </select>
               </label>
               <label className="flex flex-col gap-1">
-                <span className="text-[10px] uppercase tracking-wide text-muted-foreground">{tt('Opponent civilization')}</span>
+                <span className="text-[10px] uppercase tracking-wide text-muted-foreground">
+                  {tt('Opponent civilization')}
+                </span>
                 <select
                   value={opponentCiv}
                   onChange={(event) => setOpponentCiv(event.target.value)}
                   aria-label={tt('Opponent civilization')}
                   className="h-9 min-w-44 rounded-md border border-border bg-background px-3 text-sm"
                 >
-                  {CIVS.map((civ) => <option key={civ.slug} value={civ.slug}>{civ.name}</option>)}
+                  {CIVS.map((civ) => (
+                    <option key={civ.slug} value={civ.slug}>
+                      {civ.name}
+                    </option>
+                  ))}
                 </select>
               </label>
             </div>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-2 rounded-md border border-primary/20 bg-primary/5 px-3 py-2 text-xs">
             <span className="text-muted-foreground">
-              {tt('Exact source filters')}: {selected?.map ?? '—'} · {civDisplayName(opponentCiv)} · {rating ?? tt('All ratings')} · {patch ?? tt('Current patch')}
+              {tt('Exact source filters')}: {selected?.map ?? '—'} · {civDisplayName(opponentCiv)} ·{' '}
+              {rating ?? tt('All ratings')} · {patch ?? tt('Current patch')}
             </span>
             {officialUrl && (
-              <a href={officialUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-medium text-primary hover:underline">
+              <a
+                href={officialUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 font-medium text-primary hover:underline"
+              >
                 {tt('Open exact AoE4World calculator')} <ExternalLink className="h-3.5 w-3.5" />
               </a>
             )}
@@ -733,7 +871,9 @@ function CounterCalculator({
               {sorted.map((civ, index) => (
                 <div key={civ.civ} className="rounded-md border border-border bg-background/40 p-3">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="text-sm font-semibold">#{index + 1} {civ.civName}</span>
+                    <span className="text-sm font-semibold">
+                      #{index + 1} {gameName(civ.civName)}
+                    </span>
                     <TierBadge tier={civ.tier} />
                   </div>
                   <div className="mt-2 flex items-baseline justify-between text-sm">
@@ -746,7 +886,10 @@ function CounterCalculator({
                   </div>
                   <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-secondary">
                     <div
-                      className={cn('h-full rounded-full', civ.winRate >= 50 ? 'bg-win' : 'bg-loss')}
+                      className={cn(
+                        'h-full rounded-full',
+                        civ.winRate >= 50 ? 'bg-win' : 'bg-loss',
+                      )}
                       style={{ width: `${Math.max(4, Math.min(100, civ.winRate))}%` }}
                     />
                   </div>
@@ -757,23 +900,41 @@ function CounterCalculator({
           {selected && sorted.length > 0 && (
             <div className="rounded-md border border-border bg-background/40 p-3 text-xs">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="font-medium">{tt('Directional matchup for the current leader')}: {civDisplayName(leadingCiv)} vs {civDisplayName(opponentCiv)}</span>
-                {matchupQuery.isFetching && <span className="text-muted-foreground">{tt('Loading…')}</span>}
+                <span className="font-medium">
+                  {tt('Directional matchup for the current leader')}: {civDisplayName(leadingCiv)}{' '}
+                  vs {civDisplayName(opponentCiv)}
+                </span>
+                {matchupQuery.isFetching && (
+                  <span className="text-muted-foreground">{tt('Loading…')}</span>
+                )}
               </div>
               {matchup ? (
                 <div className="mt-2 flex flex-wrap gap-3 text-muted-foreground">
-                  <span className={matchup.winRate != null && matchup.winRate >= 50 ? 'text-win' : 'text-loss'}>{matchup.winRate != null ? `${matchup.winRate.toFixed(1)}% WR` : '—'}</span>
-                  <span>{formatCount(matchup.games)} {tt('games')}</span>
-                  {matchup.durationMedianSec != null && <span>Med {formatDurationShort(matchup.durationMedianSec)}</span>}
+                  <span
+                    className={
+                      matchup.winRate != null && matchup.winRate >= 50 ? 'text-win' : 'text-loss'
+                    }
+                  >
+                    {matchup.winRate != null ? `${matchup.winRate.toFixed(1)}% WR` : '—'}
+                  </span>
+                  <span>
+                    {formatCount(matchup.games)} {tt('games')}
+                  </span>
+                  {matchup.durationMedianSec != null && (
+                    <span>Med {formatDurationShort(matchup.durationMedianSec)}</span>
+                  )}
                 </div>
               ) : (
-                <p className="mt-2 text-muted-foreground">{tt('No directional matchup row for this filter slice.')}</p>
+                <p className="mt-2 text-muted-foreground">
+                  {tt('No directional matchup row for this filter slice.')}
+                </p>
               )}
             </div>
           )}
           {selected && (
             <p className="text-[11px] text-muted-foreground">
-              {selected.map} · {formatCount(selected.games)} {tt('games')} · {tt('ranked sample from AoE4World')}
+              {selected.map} · {formatCount(selected.games)} {tt('games')} ·{' '}
+              {tt('ranked sample from AoE4World')}
             </p>
           )}
         </CardContent>
@@ -879,7 +1040,7 @@ function MatchupsTab({
     <div className="space-y-5">
       {mapPool && <MapPoolNotice mapPool={mapPool} filtered={mapPoolOnly} />}
       <div className="flex items-end gap-3 rounded-lg border border-border bg-card/50 p-4">
-          <CivSelect label={tt('Your civ')} value={myCiv} onChange={setMyCiv} />
+        <CivSelect label={tt('Your civ')} value={myCiv} onChange={setMyCiv} />
         <button
           type="button"
           onClick={() => {
@@ -948,8 +1109,11 @@ function MatchupsTab({
               <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" />
               <p>
                 {tt(formatLeaderboard(matchup.source.leaderboard))} /{' '}
-                {matchup.source.rankLevel ? tt(formatRankLevel(matchup.source.rankLevel)) : tt('All ranks')}{' '}
-                / {tt('source patch')} {matchup.source.patch?.replace(/,/g, ', ') || tt('not reported')}.{' '}
+                {matchup.source.rankLevel
+                  ? tt(formatRankLevel(matchup.source.rankLevel))
+                  : tt('All ranks')}{' '}
+                / {tt('source patch')}{' '}
+                {matchup.source.patch?.replace(/,/g, ', ') || tt('not reported')}.{' '}
                 {tt(
                   "AoE4World's matchup endpoint does not expose a map filter, so this global sample is not map-filtered.",
                 )}
@@ -978,17 +1142,17 @@ function MatchupsTab({
             {tt('How to beat')} {gameName(civDisplayName(oppCiv))}
           </h2>
           <div className="text-sm text-muted-foreground">
-            They rely on{' '}
+            {tt('They rely on')}{' '}
             <span className="font-medium text-foreground">
-              {plan.keyUnits.map((u) => u.name).join(', ')}
+              {plan.keyUnits.map((u) => gameName(u.name)).join(', ')}
             </span>
             .
           </div>
           <div>
             <div className="text-sm">
-              Build{' '}
+              {tt('Build')}{' '}
               <span className="font-semibold text-foreground">
-                {plan.counters.map((c) => c.label).join(' + ') || '—'}
+                {plan.counters.map((c) => tt(c.label)).join(' + ') || '—'}
               </span>
             </div>
             <ul className="mt-2 space-y-1.5">
@@ -996,8 +1160,8 @@ function MatchupsTab({
                 <li key={c.role} className="flex gap-2 text-sm text-muted-foreground">
                   <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary" />
                   <span>
-                    <span className="font-medium text-foreground">{c.label}</span> —{' '}
-                    {COUNTER_MATRIX[c.role].advice}
+                    <span className="font-medium text-foreground">{tt(c.label)}</span> —{' '}
+                    {tt(COUNTER_MATRIX[c.role].advice)}
                   </span>
                 </li>
               ))}
@@ -1015,9 +1179,9 @@ function MatchupsTab({
           <div>
             <h2 className="text-sm font-semibold">{tt('Unit-level counter candidates')}</h2>
             <p className="mt-1 text-xs text-muted-foreground">
-              War Room-inspired ranking over the vendored AoE4World unit snapshot. It combines role
-              counters with age, cost and training time; active abilities and map effects are not
-              simulated.
+              {tt(
+                'War Room-inspired ranking over the vendored AoE4World unit snapshot. It combines role counters with age, cost and training time; active abilities and map effects are not simulated.',
+              )}
             </p>
           </div>
           <div className="grid gap-2 md:grid-cols-2">
@@ -1027,8 +1191,8 @@ function MatchupsTab({
                 className="rounded-md border border-border/70 bg-background/40 p-3"
               >
                 <div className="flex items-center justify-between gap-2">
-                  <span className="text-sm font-medium">{row.target.name}</span>
-                  <span className="text-[11px] text-muted-foreground">Age {row.target.minAge}</span>
+                  <span className="text-sm font-medium">{gameName(row.target.name)}</span>
+                  <span className="text-[11px] text-muted-foreground">{tt('Age')} {row.target.minAge}</span>
                 </div>
                 <div className="mt-2 flex flex-wrap gap-1.5">
                   {row.candidates.map((candidate) => (
@@ -1037,11 +1201,13 @@ function MatchupsTab({
                       className="rounded-full border border-primary/30 bg-primary/10 px-2 py-0.5 text-[11px] text-primary"
                       title={candidate.reasons.join(' · ')}
                     >
-                      {candidate.unit.name}
+                      {gameName(candidate.unit.name)}
                     </span>
                   ))}
                   {row.candidates.length === 0 && (
-                    <span className="text-xs text-muted-foreground">{tt('No local unit answer')}</span>
+                    <span className="text-xs text-muted-foreground">
+                      {tt('No local unit answer')}
+                    </span>
                   )}
                 </div>
               </div>
@@ -1062,7 +1228,7 @@ function MatchupsTab({
             to={`/guides?tab=builds&build=${buildIndex}`}
             className="mt-3 inline-flex items-center gap-0.5 text-xs font-medium text-primary hover:underline"
           >
-            Open full build
+            {tt('Open full build')}
             <ChevronRight className="h-3 w-3" />
           </Link>
         </section>
@@ -1127,8 +1293,9 @@ function PersonalMatchupSection({
             Your stored history
           </h2>
           <p className="mt-1 text-xs text-muted-foreground">
-            {tt('Exact')} {gameName(civDisplayName(civilization))} {tt('vs')} {gameName(civDisplayName(opponentCivilization))} {tt('results')}.
-            These local filters do not change the global sample above.
+            {tt('Exact')} {gameName(civDisplayName(civilization))} {tt('vs')}{' '}
+            {gameName(civDisplayName(opponentCivilization))} {tt('results')}. These local filters do
+            not change the global sample above.
             {excludePractice ? ' Practice games are hidden by your Settings preference.' : ''}
           </p>
         </div>
@@ -1163,7 +1330,9 @@ function PersonalMatchupSection({
       </header>
 
       {personal.sampleSize === 0 ? (
-        <EmptyBox>{tt('No matching games in your stored history for these local filters.')}</EmptyBox>
+        <EmptyBox>
+          {tt('No matching games in your stored history for these local filters.')}
+        </EmptyBox>
       ) : (
         <>
           <div className="flex flex-wrap gap-4 text-sm">
