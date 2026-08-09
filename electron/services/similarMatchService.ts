@@ -221,8 +221,11 @@ export async function findSimilarMatches(
     // matchups are available even after they leave the global public feed.
     if (query.profileId != null) {
       const archive = readAccountReplayArchive(query.profileId)
+      // The local archive is already the complete persisted source, so do not
+      // discard older matches just because the public-feed lookback is narrow.
+      const archiveQuery: SimilarMatchQuery = { ...query, playedAt: null }
       for (const item of archive?.items ?? []) {
-        const candidate = matchCandidate(item.game, query)
+        const candidate = matchCandidate(item.game, archiveQuery)
         if (candidate) unique.set(candidate.gameId, candidate)
       }
     }

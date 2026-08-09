@@ -63,10 +63,11 @@ afterEach(() => {
 
 describe('findSimilarMatches', () => {
   it('searches the complete cached account archive before the public feed', async () => {
+    const archivedGame = { ...matchingGame, game_id: 41, started_at: '2020-01-01T00:00:00.000Z' }
     writeAccountReplayArchive(123, {
       items: [
         {
-          game: matchingGame,
+          game: archivedGame,
           historySource: 'aoe4world',
           replayAvailable: false,
           summaryAvailable: false,
@@ -86,7 +87,7 @@ describe('findSimilarMatches', () => {
     expect(result).toEqual(
       expect.objectContaining({
         ok: true,
-        data: [expect.objectContaining({ gameId: 42 })],
+        data: [expect.objectContaining({ gameId: 41 })],
       }),
     )
     expect(getGames).toHaveBeenCalledTimes(1)
