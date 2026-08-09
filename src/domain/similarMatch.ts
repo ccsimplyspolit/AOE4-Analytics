@@ -37,6 +37,8 @@ export interface SimilarMatchCandidate {
 }
 
 export interface SimilarMatchQuery {
+  /** Active AoE4World profile whose complete local archive should be searched first. */
+  profileId?: number | null
   gameId?: number | null
   map: string
   kind?: string | null

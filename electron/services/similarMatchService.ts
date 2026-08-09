@@ -14,6 +14,7 @@ import {
   teamResult,
 } from '@domain/similarMatch'
 import { getClient } from './appContext'
+import { readAccountReplayArchive } from './accountReplayArchiveStore'
 import type { IpcResult } from '@ipc/contract'
 import { err, errFrom, ok } from './result'
 
@@ -49,6 +50,10 @@ function parseQuery(input: unknown): SimilarMatchQuery {
       ? value.lookbackDays
       : DEFAULT_LOOKBACK_DAYS
   return {
+    profileId:
+      typeof value.profileId === 'number' && Number.isSafeInteger(value.profileId) && value.profileId > 0
+        ? value.profileId
+        : null,
     gameId:
       typeof value.gameId === 'number' && Number.isSafeInteger(value.gameId) ? value.gameId : null,
     map,
@@ -199,7 +204,7 @@ function matchCandidate(game: Game, query: SimilarMatchQuery): SimilarMatchCandi
   }
 }
 
-/** Search a small, cached slice of the public game feed for a coaching example. */
+/** Search the complete local account archive plus the available public feed window. */
 export async function findSimilarMatches(
   input: unknown,
   gamesSource: Pick<ReturnType<typeof getClient>, 'getGames'> = getClient(),
@@ -211,6 +216,16 @@ export async function findSimilarMatches(
         (query.lookbackDays ?? DEFAULT_LOOKBACK_DAYS) * 86_400_000,
     )
     const unique = new Map<number, SimilarMatchCandidate>()
+    // The account archive is refreshed by the background coordinator and can
+    // contain years of the active player's games. Search it first so old
+    // matchups are available even after they leave the global public feed.
+    if (query.profileId != null) {
+      const archive = readAccountReplayArchive(query.profileId)
+      for (const item of archive?.items ?? []) {
+        const candidate = matchCandidate(item.game, query)
+        if (candidate) unique.set(candidate.gameId, candidate)
+      }
+    }
     // The global feed documents rm_1v1 and qm_* filters, but not every ranked
     // team kind. Keep RM 2v2/3v3/4v4 in the feed and filter those locally.
     const desiredKind =

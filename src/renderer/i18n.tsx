@@ -1393,7 +1393,7 @@ const UI: Record<Locale, Record<string, string>> = {
     'Background automation': 'Фоновая автоматизация',
     'Keep data fresh automatically': 'Автоматически поддерживать данные свежими',
     'Sync history, save recent summaries/replays and warm public catalogues when the game is closed.':
-      'Синхронизировать историю, сохранять свежие сводки и реплеи и прогревать публичные каталоги, когда игра закрыта.',
+      'Синхронизировать полный архив истории, сохранять свежие сводки и реплеи и прогревать публичные каталоги, когда игра закрыта.',
     'Sync account history': 'Синхронизировать историю аккаунта',
     'Refresh complete replay archive': 'Обновлять полный архив реплеев',
     'Find public gameplay automatically': 'Автоматически искать публичный геймплей',
@@ -1498,16 +1498,16 @@ const UI: Record<Locale, Record<string, string>> = {
       'Приложение ищет публичную победную игру на той же карте и с тем же матчапом цивилизаций, затем сравнивает измеримые контрольные точки с вашей игрой.',
     'The app searches public games for a winning example with the same map and civilization matchup, prioritizes matches rated above yours, and compares your measurable checkpoints with that player.':
       'Приложение ищет публичную победную игру на той же карте и с тем же матчапом цивилизаций, сначала выбирает матчи с рейтингом выше вашего и сравнивает измеримые контрольные точки с вашей игрой.',
-    'The app searches the complete available public-game window (up to 1,000 recent matches) for a winning example with the same map and civilization matchup, prioritizes matches rated above yours, and compares your measurable checkpoints with that player.':
-      'Приложение ищет в полном доступном окне публичных игр (до 1 000 последних матчей) победный пример на той же карте и с тем же матчапом цивилизаций, сначала выбирает матчи с рейтингом выше вашего и сравнивает измеримые контрольные точки с вашей игрой.',
+    'The app searches your complete cached account archive first, then the available public-game window (up to 1,000 recent matches), and compares detailed checkpoints for the best matching winner.':
+      'Приложение сначала ищет в полном кэшированном архиве вашего аккаунта, затем в доступном окне публичных игр (до 1 000 последних матчей) и сравнивает подробные контрольные точки с лучшим подходящим победителем.',
     'AoE4World is temporarily limiting public-game searches. Please try again in a minute.':
       'AoE4World временно ограничивает поиск публичных игр. Повторите попытку через минуту.',
     'Searching for similar winning games…': 'Ищу похожие победные игры…',
     'Reference games': 'Эталонные игры',
     'No public match with this exact map and civilization composition was found.':
       'Публичная игра с точно такой картой и составом цивилизаций не найдена.',
-    'No match with this exact map and civilization composition was found in the available public-game window.':
-      'В доступном окне публичных игр не найден матч с этой картой и точным составом цивилизаций.',
+    'No match with this exact map and civilization composition was found in the cached account archive or available public-game window.':
+      'В кэшированном архиве аккаунта и доступном окне публичных игр не найден матч с этой картой и точным составом цивилизаций.',
     'Try again after more games are indexed, or use the build-order comparison below.':
       'Попробуйте позже, когда проиндексируется больше игр, или используйте сравнение билдов ниже.',
     'Reference player': 'Игрок-эталон',

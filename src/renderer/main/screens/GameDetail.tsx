@@ -338,7 +338,7 @@ function Detail({
           match={match}
           summary={summary}
           myProfileId={myProfileId}
-          query={similarMatchQuery(match)}
+          query={similarMatchQuery(match, myProfileId)}
           enabled
         />
       )}
@@ -489,7 +489,7 @@ function Detail({
   )
 }
 
-function similarMatchQuery(match: StoredMatch): SimilarMatchQuery {
+function similarMatchQuery(match: StoredMatch, profileId: number | null): SimilarMatchQuery {
   const targetTeamCivs = [match.civ, ...(match.myTeam ?? []).map((player) => player.civ)]
   const enemyTeamCivs = match.oppTeam?.length
     ? match.oppTeam.map((player) => player.civ)
@@ -497,6 +497,7 @@ function similarMatchQuery(match: StoredMatch): SimilarMatchQuery {
       ? [match.oppCiv]
       : []
   return {
+    profileId,
     gameId: /^\d+$/.test(match.id) ? Number(match.id) : null,
     map: match.map,
     kind: inferGameKind(match.format, targetTeamCivs.length),
@@ -508,7 +509,9 @@ function similarMatchQuery(match: StoredMatch): SimilarMatchQuery {
     winsOnly: true,
     ratingAbove: match.rating,
     limit: 5,
-    lookbackDays: 365,
+    // The background account archive can contain years of games; let the
+    // local-first search use the full supported two-year comparison window.
+    lookbackDays: 730,
   }
 }
 

@@ -1,7 +1,17 @@
-import { describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { mkdtempSync, rmSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { ApiError, type Aoe4WorldClient } from '@api/client'
 import type { Game, GamePlayer, GamesResponse } from '@api/types'
+import { writeAccountReplayArchive } from './accountReplayArchiveStore'
 import { findSimilarMatches } from './similarMatchService'
+
+const electronState = vi.hoisted(() => ({ userData: '' }))
+
+vi.mock('electron', () => ({
+  app: { getPath: () => electronState.userData },
+}))
 
 function player(profileId: number, civilization: string, result: 'win' | 'loss'): GamePlayer {
   return {
@@ -40,7 +50,48 @@ function gamePage(games: Game[]): GamesResponse {
   return { total_count: games.length, count: games.length, games }
 }
 
+let archiveDir: string
+
+beforeEach(() => {
+  archiveDir = mkdtempSync(join(tmpdir(), 'rtslytics-similar-match-archive-'))
+  electronState.userData = archiveDir
+})
+
+afterEach(() => {
+  rmSync(archiveDir, { recursive: true, force: true })
+})
+
 describe('findSimilarMatches', () => {
+  it('searches the complete cached account archive before the public feed', async () => {
+    writeAccountReplayArchive(123, {
+      items: [
+        {
+          game: matchingGame,
+          historySource: 'aoe4world',
+          replayAvailable: false,
+          summaryAvailable: false,
+          summaryCached: false,
+          cacheStatus: 'unavailable',
+          cacheSizeBytes: null,
+        },
+      ],
+      aoe4WorldCount: 1,
+      relicCount: 0,
+      relicOnlyCount: 0,
+    })
+    const getGames = vi.fn<Aoe4WorldClient['getGames']>().mockResolvedValue(gamePage([]))
+
+    const result = await findSimilarMatches({ ...query, profileId: 123 }, { getGames })
+
+    expect(result).toEqual(
+      expect.objectContaining({
+        ok: true,
+        data: [expect.objectContaining({ gameId: 42 })],
+      }),
+    )
+    expect(getGames).toHaveBeenCalledTimes(1)
+  })
+
   it('keeps already found examples when AoE4World rate-limits a later page', async () => {
     const getGames = vi
       .fn<Aoe4WorldClient['getGames']>()
