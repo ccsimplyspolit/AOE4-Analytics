@@ -1,7 +1,12 @@
 import { useMemo, useState } from 'react'
-import { CalendarDays, ExternalLink, Newspaper, RefreshCw, Search } from 'lucide-react'
+import { CalendarDays, ExternalLink, Newspaper, RefreshCw, Rss, Search } from 'lucide-react'
 import { useSearchParams } from 'react-router-dom'
-import type { PatchChangeKind, PatchNotes } from '@domain/patchNotes'
+import type {
+  PatchChangeKind,
+  PatchNewsItem,
+  PatchNewsSource,
+  PatchNotes,
+} from '@domain/patchNotes'
 import { useI18n } from '../../i18n'
 import { usePatchNotes } from '../queries/usePatchNotes'
 import { PageHead } from '../components/PageHead'
@@ -44,6 +49,7 @@ export function PatchNotes() {
   const [query, setQuery] = useState('')
   const [kind, setKind] = useState<PatchChangeKind | ''>('')
   const [season, setSeason] = useState('')
+  const [source, setSource] = useState<PatchNewsSource | ''>('')
   const [refreshNonce, setRefreshNonce] = useState(0)
   const { data, isLoading, isFetching, refetch } = usePatchNotes(selectedId, refreshNonce)
 
@@ -71,6 +77,14 @@ export function PatchNotes() {
       return patch.changeKinds.includes(kind)
     })
   }, [catalog, kind, query, season])
+  const news = useMemo(() => {
+    const normalized = query.trim().toLocaleLowerCase()
+    return (catalog?.news ?? []).filter((item) => {
+      if (source && item.source !== source) return false
+      if (!normalized) return true
+      return `${item.title} ${item.excerpt ?? ''}`.toLocaleLowerCase().includes(normalized)
+    })
+  }, [catalog?.news, query, source])
 
   const selectPatch = (id: string) =>
     setSearchParams(
@@ -210,8 +224,80 @@ export function PatchNotes() {
           · {tt('Patch data is loaded from the public aoe4world/explorer archive.')}
         </p>
       )}
+
+      {catalog && <NewsSources items={news} source={source} onSourceChange={setSource} />}
     </div>
   )
+}
+
+function NewsSources({
+  items,
+  source,
+  onSourceChange,
+}: {
+  items: PatchNewsItem[]
+  source: PatchNewsSource | ''
+  onSourceChange: (source: PatchNewsSource | '') => void
+}) {
+  const { tt, locale } = useI18n()
+  return (
+    <Card>
+      <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-3">
+        <div>
+          <CardTitle className="flex items-center gap-2 text-base">
+            <Rss className="h-4 w-4 text-primary" />
+            {tt('Official news sources')}
+          </CardTitle>
+          <p className="mt-1 text-xs text-muted-foreground">
+            {tt('Patch notes are normalized from AoE4World; news comes from official RSS feeds.')}
+          </p>
+        </div>
+        <select
+          value={source}
+          onChange={(event) => onSourceChange(event.target.value as PatchNewsSource | '')}
+          aria-label={tt('News source')}
+          className="h-9 rounded-md border border-border bg-background px-2 text-xs"
+        >
+          <option value="">{tt('All news sources')}</option>
+          <option value="official">{tt('Age of Empires official news')}</option>
+          <option value="steam">{tt('Steam announcements')}</option>
+        </select>
+      </CardHeader>
+      <CardContent className="grid gap-2 pt-0 md:grid-cols-2">
+        {items.slice(0, 8).map((item) => (
+          <a
+            key={item.id}
+            href={item.url}
+            target="_blank"
+            rel="noreferrer"
+            className="group rounded-md border border-border/70 bg-background/35 p-3 transition-colors hover:border-primary/40 hover:bg-secondary/50"
+          >
+            <div className="flex items-center justify-between gap-2 text-[10px] uppercase tracking-wide text-primary">
+              <span>{tt(item.sourceName)}</span>
+              <span>{tt(newsKindLabel(item.kind))}</span>
+            </div>
+            <h3 className="mt-1 line-clamp-2 text-sm font-medium group-hover:text-primary">
+              {tt(item.title)}
+            </h3>
+            <div className="mt-2 flex items-center justify-between gap-2 text-[11px] text-muted-foreground">
+              <span>{formatDate(item.date, locale)}</span>
+              <ExternalLink className="h-3 w-3 shrink-0" />
+            </div>
+          </a>
+        ))}
+        {items.length === 0 && (
+          <p className="py-5 text-sm text-muted-foreground">{tt('No official news found.')}</p>
+        )}
+      </CardContent>
+    </Card>
+  )
+}
+
+function newsKindLabel(kind: PatchNewsItem['kind']): string {
+  if (kind === 'map-pool') return 'Map pool'
+  if (kind === 'patch') return 'Patch'
+  if (kind === 'release') return 'Release'
+  return 'Announcement'
 }
 
 function PatchDetail({ patch }: { patch: PatchNotes | null }) {

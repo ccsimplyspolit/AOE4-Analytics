@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest'
-import { parsePatchSource, patchSummaryFromFileName, sortPatchNotes } from '../patchNotes'
+import {
+  parsePatchNewsFeed,
+  parsePatchSource,
+  patchSummaryFromFileName,
+  sortPatchNews,
+  sortPatchNotes,
+} from '../patchNotes'
 
 const SOURCE = `
 export const patch = {
@@ -65,5 +71,34 @@ describe('AoE4World patch notes projection', () => {
 
     expect(sorted.map((patch) => patch.buildId)).toEqual(['16.1.9737', '15.3.8338'])
     expect(input[0]?.buildId).toBe('15.3.8338')
+  })
+
+  it('parses official RSS items into safe, typed news cards', () => {
+    const items = parsePatchNewsFeed(
+      'steam',
+      'Steam announcements',
+      `<rss><channel>
+        <item>
+          <title><![CDATA[Age of Empires IV – Patch 16.2.10884]]></title>
+          <description><![CDATA[Balance &amp; map changes<br>Read more.]]></description>
+          <link><![CDATA[https://steamcommunity.com/games/1466860/announcements/detail/1]]></link>
+          <pubDate>Thu, 18 Jun 2026 17:00:00 +0000</pubDate>
+        </item>
+      </channel></rss>`,
+    )
+
+    expect(items).toEqual([
+      {
+        id: 'steam:https://steamcommunity.com/games/1466860/announcements/detail/1',
+        source: 'steam',
+        sourceName: 'Steam announcements',
+        title: 'Age of Empires IV – Patch 16.2.10884',
+        excerpt: 'Balance & map changes Read more.',
+        date: '2026-06-18T17:00:00.000Z',
+        url: 'https://steamcommunity.com/games/1466860/announcements/detail/1',
+        kind: 'patch',
+      },
+    ])
+    expect(sortPatchNews(items)[0]?.kind).toBe('patch')
   })
 })

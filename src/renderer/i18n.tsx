@@ -1650,6 +1650,16 @@ const UI: Record<Locale, Record<string, string>> = {
     Hotkeys: 'Горячие клавиши',
     'UX/UI & Menus': 'Интерфейс и меню',
     'Design Update/Rework': 'Изменение и переработка дизайна',
+    'Official news sources': 'Официальные источники новостей',
+    'Patch notes are normalized from AoE4World; news comes from official RSS feeds.':
+      'Заметки к патчам нормализуются из AoE4World, а новости поступают из официальных RSS-лент.',
+    'News source': 'Источник новостей',
+    'All news sources': 'Все источники новостей',
+    'Age of Empires official news': 'Официальные новости Age of Empires',
+    'Steam announcements': 'Анонсы Steam',
+    'No official news found.': 'Официальных новостей не найдено.',
+    Release: 'Релиз',
+    Announcement: 'Анонс',
     'Imported match review pack': 'Импортированный пакет разборов матчей',
     'Civ meta is weighted across {maps} active ranked maps.':
       'Мета цивилизаций взвешена по {maps} активным картам рейтингового пула.',

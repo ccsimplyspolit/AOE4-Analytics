@@ -1,6 +1,10 @@
 export type PatchChangeKind =
   'buff' | 'nerf' | 'fix' | 'change' | 'rework' | 'add' | 'remove' | 'unknown'
 
+export type PatchNewsSource = 'aoe4world' | 'official' | 'steam'
+
+export type PatchNewsKind = 'patch' | 'map-pool' | 'release' | 'announcement'
+
 export interface PatchChange {
   section: string
   kind: PatchChangeKind
@@ -26,12 +30,34 @@ export interface PatchNotes extends PatchNotesSummary {
   changes: PatchChange[]
 }
 
+export interface PatchNewsItem {
+  id: string
+  source: PatchNewsSource
+  sourceName: string
+  title: string
+  excerpt: string | null
+  date: string | null
+  url: string
+  kind: PatchNewsKind
+}
+
+export interface PatchSourceStatus {
+  source: PatchNewsSource
+  label: string
+  url: string
+  status: 'ok' | 'error'
+  itemCount: number
+  error?: string
+}
+
 export interface PatchNotesCatalog {
   sourceUrl: string
   sourceRepository: string
   capturedAt: string
   patches: PatchNotesSummary[]
   selected: PatchNotes | null
+  news: PatchNewsItem[]
+  sources: PatchSourceStatus[]
 }
 
 const CHANGE_KINDS = new Set<PatchChangeKind>([
@@ -176,5 +202,89 @@ export function sortPatchNotes<T extends PatchNotesSummary>(patches: T[]): T[] {
     const dateDiff = Date.parse(right.date ?? '') - Date.parse(left.date ?? '')
     if (Number.isFinite(dateDiff) && dateDiff !== 0) return dateDiff
     return right.buildId.localeCompare(left.buildId, undefined, { numeric: true })
+  })
+}
+
+function decodeXmlEntities(value: string): string {
+  const named: Record<string, string> = {
+    amp: '&',
+    apos: "'",
+    gt: '>',
+    lt: '<',
+    nbsp: ' ',
+    quot: '"',
+  }
+  return value.replace(/&(#x[\da-f]+|#\d+|[a-z]+);/gi, (full, token: string) => {
+    if (token.startsWith('#x')) return String.fromCodePoint(Number.parseInt(token.slice(2), 16))
+    if (token.startsWith('#')) return String.fromCodePoint(Number.parseInt(token.slice(1), 10))
+    return named[token.toLowerCase()] ?? full
+  })
+}
+
+function xmlTagValue(block: string, tag: string): string | null {
+  const match = new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)</${tag}>`, 'i').exec(block)
+  return match?.[1]?.trim() ?? null
+}
+
+function cleanFeedText(value: string | null): string | null {
+  if (!value) return null
+  const decoded = decodeXmlEntities(value)
+    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+  return decoded || null
+}
+
+function newsKind(title: string, excerpt: string | null): PatchNewsKind {
+  const text = `${title} ${excerpt ?? ''}`.toLocaleLowerCase()
+  if (/map\s*pool|map\s*rotation|ranked\s+maps?/.test(text)) return 'map-pool'
+  if (/patch|hotfix|hot\s*patch|balance\s+update|update\s+\d/.test(text)) return 'patch'
+  if (/release|dlc|expansion|available\s+now|launch/.test(text)) return 'release'
+  return 'announcement'
+}
+
+function feedId(source: PatchNewsSource, url: string, title: string): string {
+  return `${source}:${url || title}`
+}
+
+/** Parses RSS 2.0 feeds without executing or rendering their HTML payload. */
+export function parsePatchNewsFeed(
+  source: PatchNewsSource,
+  sourceName: string,
+  feed: string,
+): PatchNewsItem[] {
+  const items: PatchNewsItem[] = []
+  for (const match of feed.matchAll(/<item(?:\s[^>]*)?>([\s\S]*?)<\/item>/gi)) {
+    const block = match[1] ?? ''
+    const title = cleanFeedText(xmlTagValue(block, 'title'))
+    const url =
+      cleanFeedText(xmlTagValue(block, 'link')) ?? cleanFeedText(xmlTagValue(block, 'guid'))
+    if (!title || !url || !/^https?:\/\//i.test(url)) continue
+    const rawDate = xmlTagValue(block, 'pubDate') ?? xmlTagValue(block, 'dc:date')
+    const parsedDate =
+      rawDate && !Number.isNaN(Date.parse(rawDate)) ? new Date(rawDate).toISOString() : null
+    const excerpt = cleanFeedText(xmlTagValue(block, 'description'))
+    items.push({
+      id: feedId(source, url, title),
+      source,
+      sourceName,
+      title,
+      excerpt: excerpt ? excerpt.slice(0, 360) : null,
+      date: parsedDate,
+      url,
+      kind: newsKind(title, excerpt),
+    })
+  }
+  return items
+}
+
+export function sortPatchNews(items: PatchNewsItem[]): PatchNewsItem[] {
+  return [...items].sort((left, right) => {
+    const dateDiff = Date.parse(right.date ?? '') - Date.parse(left.date ?? '')
+    if (Number.isFinite(dateDiff) && dateDiff !== 0) return dateDiff
+    return left.title.localeCompare(right.title)
   })
 }

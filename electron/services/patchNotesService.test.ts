@@ -13,6 +13,15 @@ const patchSource = (id: string, buildId: string, date: string) => `
   }
 `
 
+const newsFeed = `
+  <rss><channel><item>
+    <title>Age of Empires IV - Patch 16.2.10884</title>
+    <description>Official balance update.</description>
+    <link>https://example.test/patch-16-2</link>
+    <pubDate>Thu, 18 Jun 2026 17:00:00 +0000</pubDate>
+  </item></channel></rss>
+`
+
 function response(body: string, status = 200) {
   return {
     ok: status >= 200 && status < 300,
@@ -53,9 +62,12 @@ describe('AoE4World patch notes service', () => {
       if (url.endsWith('/15.tsx')) {
         return Promise.resolve(response(patchSource('patch-15-3-8338', '15.3.8338', '2026-02-04')))
       }
-      return Promise.resolve(
-        response(patchSource('patch-16-1-9737-season-13', '16.1.9737', '2026-05-07')),
-      )
+      if (url.endsWith('/16.tsx')) {
+        return Promise.resolve(
+          response(patchSource('patch-16-1-9737-season-13', '16.1.9737', '2026-05-07')),
+        )
+      }
+      return Promise.resolve(response(newsFeed))
     })
     vi.stubGlobal('fetch', fetchMock)
 
@@ -67,28 +79,41 @@ describe('AoE4World patch notes service', () => {
 
     const selected = await getPatchNotes('patch-15-3-8338')
     expect(selected.ok && selected.data.selected?.buildId).toBe('15.3.8338')
-    expect(fetchMock).toHaveBeenCalledTimes(3)
+    expect(first.data.news.length).toBe(2)
+    expect(first.data.sources.map((source) => source.source)).toEqual([
+      'aoe4world',
+      'official',
+      'steam',
+    ])
+    expect(fetchMock).toHaveBeenCalledTimes(5)
   })
 
   it('serves the last good catalog when a forced refresh fails', async () => {
-    const fetchMock = vi
-      .fn()
-      .mockResolvedValueOnce(
-        response(
-          JSON.stringify([
-            {
-              name: 'patch-15.3.8338.tsx',
-              type: 'file',
-              download_url: 'https://raw.githubusercontent.com/aoe4world/explorer/15.tsx',
-            },
-          ]),
-        ),
-      )
-      .mockResolvedValueOnce(response(patchSource('patch-15-3-8338', '15.3.8338', '2026-02-04')))
-      .mockRejectedValueOnce(new Error('offline'))
+    let offline = false
+    const fetchMock = vi.fn((url: string) => {
+      if (offline) return Promise.reject(new Error('offline'))
+      if (url.includes('api.github.com')) {
+        return Promise.resolve(
+          response(
+            JSON.stringify([
+              {
+                name: 'patch-15.3.8338.tsx',
+                type: 'file',
+                download_url: 'https://raw.githubusercontent.com/aoe4world/explorer/15.tsx',
+              },
+            ]),
+          ),
+        )
+      }
+      if (url.endsWith('/15.tsx')) {
+        return Promise.resolve(response(patchSource('patch-15-3-8338', '15.3.8338', '2026-02-04')))
+      }
+      return Promise.resolve(response(newsFeed))
+    })
     vi.stubGlobal('fetch', fetchMock)
 
     const first = await getPatchNotes()
+    offline = true
     const stale = await getPatchNotes(undefined, true)
 
     expect(first.ok).toBe(true)
