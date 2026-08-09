@@ -29,6 +29,10 @@ asarUnpack:
 
 win:
   icon: build/icon.ico
+  # The overlay must share (or exceed) the game's UI privilege level, otherwise
+  # Windows can block it from appearing above an elevated game window. Request
+  # elevation for every Windows launch, including the portable build.
+  requestedExecutionLevel: requireAdministrator
   # No installer — a single self-contained portable .exe (double-click to run)
   # plus the unpacked folder (release/win-unpacked/RTSLytics.exe).
   target:
