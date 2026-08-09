@@ -105,11 +105,14 @@ export function MatchPrepCard({ matches }: { matches: StoredMatch[] }) {
           <PrepCell title={tt('Landmarks')}>
             <ul className="space-y-1">
               {landmarks.ages.map((a) => (
-                <li key={a.age} className="flex items-baseline gap-2 text-xs">
-                  <span className="w-14 shrink-0 font-semibold text-primary">
+                <li
+                  key={a.age}
+                  className="grid grid-cols-[minmax(6rem,7rem)_minmax(0,1fr)] items-start gap-x-2 text-xs"
+                >
+                  <span className="min-w-0 font-semibold leading-snug text-primary">
                     {gameName(AGE_NAME[a.age])}
                   </span>
-                  <span className="min-w-0 flex-1 truncate" title={a.reason}>
+                  <span className="min-w-0 break-words leading-snug" title={a.reason}>
                     {a.pick}
                   </span>
                 </li>
@@ -166,9 +169,11 @@ function PrepCell({ title, children }: { title: string; children: ReactNode }) {
 function TimingRow({ t }: { t: BuildKeyTiming }) {
   const { tt, gameName } = useI18n()
   return (
-    <li className="grid grid-cols-[2.5rem_3rem_minmax(0,1fr)] items-start gap-2 text-xs">
+    <li className="grid grid-cols-[3rem_5.5rem_minmax(0,1fr)] items-start gap-2 text-xs">
       <span className="font-semibold tabular-nums text-primary">{t.time ?? '—'}</span>
-      <span className="tabular-nums text-muted-foreground">{t.villagers} {tt('vill')}</span>
+      <span className="whitespace-nowrap tabular-nums text-muted-foreground">
+        {t.villagers} {tt('vill')}
+      </span>
       <span className="min-w-0 leading-snug">
         {t.ageUpTo != null ? `${gameName(AGE_NAME[t.ageUpTo])} ${tt('age')}` : (t.note ?? tt('Opening'))}
       </span>
@@ -187,7 +192,7 @@ function TroopsLine({
 }) {
   return (
     <div className="flex items-center gap-1.5">
-      <span className="w-12 shrink-0 text-[10px] font-bold uppercase text-muted-foreground">
+      <span className="w-16 shrink-0 text-[10px] font-bold uppercase text-muted-foreground">
         {label}
       </span>
       <div className="flex items-center gap-1">
