@@ -1506,7 +1506,7 @@ function OverlayToggle({
   onChange: (checked: boolean) => void
 }) {
   return (
-    <div className="flex min-h-[68px] items-start justify-between gap-3 py-3 transition-colors hover:text-foreground">
+    <div className="group flex min-h-[68px] items-center justify-between gap-3 py-3 transition-colors hover:text-foreground">
       <span className="min-w-0">
         <span className="block text-sm font-medium">{label}</span>
         <span className="mt-0.5 block text-[11px] leading-relaxed text-muted-foreground">
@@ -1520,14 +1520,14 @@ function OverlayToggle({
         aria-label={label}
         onClick={() => onChange(!checked)}
         className={cn(
-          'relative mt-0.5 h-5 w-9 shrink-0 rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+          'relative h-5 w-9 shrink-0 rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
           checked ? 'border-primary bg-primary' : 'border-border bg-secondary',
         )}
       >
         <span
           className={cn(
-            'absolute top-0.5 h-3.5 w-3.5 rounded-full bg-white shadow-sm transition-transform',
-            checked ? 'translate-x-[18px]' : 'translate-x-0.5',
+            'absolute left-0.5 top-0.5 h-3.5 w-3.5 rounded-full bg-white shadow-sm transition-transform',
+            checked ? 'translate-x-[18px]' : 'translate-x-0',
           )}
         />
       </button>
