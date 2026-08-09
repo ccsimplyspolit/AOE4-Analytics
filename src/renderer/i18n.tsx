@@ -1564,7 +1564,6 @@ const UI: Record<Locale, Record<string, string>> = {
     'Move overlay widget': 'Переместить виджет оверлея',
     'Matchup and troops': 'Матчап и войска',
     'Live APM': 'Текущий APM',
-    'Post-game card': 'Послематчевая карточка',
     'Session record': 'Результат сессии',
     Ally: 'Союзник',
     'Enemy 1': 'Соперник 1',
