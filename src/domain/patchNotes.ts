@@ -9,6 +9,8 @@ export interface PatchChange {
   section: string
   kind: PatchChangeKind
   text: string
+  /** AoE4World data codes; an empty list means the change is global. */
+  civilizations: string[]
 }
 
 export interface PatchNotesSummary {
@@ -23,6 +25,7 @@ export interface PatchNotesSummary {
   summary: string | null
   changeCount: number
   changeKinds: PatchChangeKind[]
+  civilizations: string[]
 }
 
 export interface PatchNotes extends PatchNotesSummary {
@@ -120,6 +123,7 @@ export function patchSummaryFromFileName(fileName: string): PatchNotesSummary {
     summary: null,
     changeCount: 0,
     changeKinds: [],
+    civilizations: [],
   }
 }
 
@@ -129,6 +133,29 @@ function changeKind(value: string): PatchChangeKind {
 
 function cleanChangeText(value: string): string {
   return value.replace(/\\"/g, '"').replace(/\\'/g, "'").replace(/\s+/g, ' ').trim()
+}
+
+function sourceStringList(value: string): string[] {
+  return [...value.matchAll(/["']([^"']+)["']/g)]
+    .map((match) => match[1]?.trim().toLocaleLowerCase() ?? '')
+    .filter(Boolean)
+}
+
+/** Reads a nearby `civs: [...]` declaration from an Explorer data object. */
+function sourceCivilizationsBefore(source: string, position: number, start: number): string[] {
+  const block = source.slice(start, position)
+  const matches = [...block.matchAll(/\bcivs\s*:\s*\[([\s\S]*?)\]/g)]
+  return sourceStringList(matches.at(-1)?.[1] ?? '')
+}
+
+export function filterPatchChangesForCivilization(
+  changes: PatchChange[],
+  civilization: string | null,
+): PatchChange[] {
+  if (!civilization) return changes
+  return changes.filter(
+    (change) => change.civilizations.length === 0 || change.civilizations.includes(civilization),
+  )
 }
 
 /**
@@ -163,14 +190,26 @@ export function parsePatchSource(
   )
   const changes: PatchChange[] = []
   const diffPattern =
-    /\[\s*["'](buff|nerf|fix|change|rework|add|remove)["']\s*,\s*(?:"((?:\\.|[^"\\])*)"|`([\s\S]*?)`)\s*\]/g
+    /\[\s*["'](buff|nerf|fix|change|rework|add|remove)["']\s*,\s*(?:"((?:\\.|[^"\\])*)"|`([\s\S]*?)`)(?:\s*,\s*\[([^\]]*)\])?\s*\]/g
   for (const match of source.matchAll(diffPattern)) {
-    const section =
-      [...titleMatches].reverse().find((title) => title.position < (match.index ?? 0))?.title ||
-      'General changes'
+    const position = match.index ?? 0
+    const nearestTitle = [...titleMatches].reverse().find((title) => title.position < position)
+    const section = nearestTitle?.title || 'General changes'
     const text = cleanChangeText(match[2] ?? match[3] ?? '')
-    if (text) changes.push({ section, kind: changeKind(match[1] ?? 'unknown'), text })
+    if (!text) continue
+    const civsStart = nearestTitle?.position ?? 0
+    const civilizations = [
+      ...sourceCivilizationsBefore(source, position, civsStart),
+      ...sourceStringList(match[4] ?? ''),
+    ]
+    changes.push({
+      section,
+      kind: changeKind(match[1] ?? 'unknown'),
+      text,
+      civilizations: [...new Set(civilizations)],
+    })
   }
+  const civilizations = [...new Set(changes.flatMap((change) => change.civilizations))]
   return {
     id,
     buildId,
@@ -187,6 +226,7 @@ export function parsePatchSource(
     changes,
     changeCount: changes.length,
     changeKinds: [...new Set(changes.map((change) => change.kind))],
+    civilizations,
   }
 }
 

@@ -3,6 +3,7 @@ import {
   parsePatchNewsFeed,
   parsePatchSource,
   patchSummaryFromFileName,
+  filterPatchChangesForCivilization,
   sortPatchNews,
   sortPatchNotes,
 } from '../patchNotes'
@@ -45,9 +46,39 @@ describe('AoE4World patch notes projection', () => {
       changeKinds: ['buff', 'fix'],
     })
     expect(patch.changes).toEqual([
-      { section: 'AI Update', kind: 'buff', text: 'AI scouts more efficiently.' },
-      { section: 'AI Update', kind: 'fix', text: 'Fixed a crash.' },
+      {
+        section: 'AI Update',
+        kind: 'buff',
+        text: 'AI scouts more efficiently.',
+        civilizations: [],
+      },
+      { section: 'AI Update', kind: 'fix', text: 'Fixed a crash.', civilizations: [] },
     ])
+  })
+
+  it('keeps civilization scope from Explorer changes and preserves global rows', () => {
+    const patch = parsePatchSource(
+      `const patch = { name: "Scoped", sections: [{ title: "Mongols", changes: [{ title: "Khan", civs: ["mo"], diff: [["buff", "Improved ovoo."]] }, { title: "Global", civs: [], diff: [["fix", "Fixed a crash."]] }] }] }`,
+      'patch-16.1.9737-season-13.tsx',
+    )
+
+    expect(patch.changes).toEqual([
+      {
+        section: 'Khan',
+        kind: 'buff',
+        text: 'Improved ovoo.',
+        civilizations: ['mo'],
+      },
+      {
+        section: 'Global',
+        kind: 'fix',
+        text: 'Fixed a crash.',
+        civilizations: [],
+      },
+    ])
+    expect(patch.civilizations).toEqual(['mo'])
+    expect(filterPatchChangesForCivilization(patch.changes, 'mo')).toHaveLength(2)
+    expect(filterPatchChangesForCivilization(patch.changes, 'en')).toHaveLength(1)
   })
 
   it('keeps a useful fallback summary when an upstream source cannot be parsed', () => {
