@@ -47,6 +47,7 @@ import type {
 import type { ExternalApiConfigInput, ExternalApiStatus } from '../services/externalApiService'
 import type { ReplaysApiStatus } from '../services/replaysApiService'
 import type { AutomationStatus } from '@domain/automation'
+import type { PatchNotesCatalog } from '@domain/patchNotes'
 
 export type Platform = 'win32' | 'darwin' | 'linux' | (string & {})
 
@@ -182,6 +183,7 @@ export const IpcChannels = {
   // Phase 2
   civMetaGet: 'civMeta:get',
   rankedMapPoolGet: 'rankedMapPool:get',
+  patchNotesGet: 'patchNotes:get',
   matchupLabGet: 'matchupLab:get',
   civDetailGet: 'civDetail:get',
   leaderboardGet: 'leaderboard:get',
@@ -827,6 +829,8 @@ export interface RtslyticsApi {
   // Phase 2
   getCivMeta(query: CivMetaQuery): Promise<IpcResult<CivMetaResult>>
   getRankedMapPool(): Promise<IpcResult<RankedMapPoolResolution>>
+  /** Current and historical AoE4World Explorer patch notes. */
+  getPatchNotes(patchId?: string, forceRefresh?: boolean): Promise<IpcResult<PatchNotesCatalog>>
   getMatchupLab(query: MatchupLabQuery): Promise<IpcResult<GlobalMatchupSummary | null>>
   getCivDetailStats(civ: string): Promise<IpcResult<CivDetailStats>>
   getLeaderboard(query: LeaderboardQuery): Promise<IpcResult<LeaderboardPage>>

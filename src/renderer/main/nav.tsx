@@ -13,6 +13,7 @@ import {
   Radio,
   Settings as SettingsIcon,
   Info,
+  Newspaper,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -26,6 +27,9 @@ const DataStudio = lazy(() =>
 )
 const Explorer = lazy(() => import('./screens/Explorer').then((m) => ({ default: m.Explorer })))
 const CivMeta = lazy(() => import('./screens/CivMeta').then((m) => ({ default: m.CivMeta })))
+const PatchNotes = lazy(() =>
+  import('./screens/PatchNotes').then((m) => ({ default: m.PatchNotes })),
+)
 const Guides = lazy(() => import('./screens/Guides').then((m) => ({ default: m.Guides })))
 const Tincture = lazy(() => import('./screens/Tincture').then((m) => ({ default: m.Tincture })))
 const ReplayLab = lazy(() => import('./screens/ReplayLab').then((m) => ({ default: m.ReplayLab })))
@@ -85,6 +89,13 @@ export const navItems: NavItem[] = [
     label: 'Civ Meta',
     icon: Globe2,
     element: <CivMeta />,
+    group: 'main',
+  },
+  {
+    path: '/patches',
+    label: 'News & patches',
+    icon: Newspaper,
+    element: <PatchNotes />,
     group: 'main',
   },
   {

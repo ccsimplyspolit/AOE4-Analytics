@@ -16,6 +16,7 @@ import { getScoutHistory, getScoutMeta, scoutPlayer } from '../services/scoutSer
 import { getLastMatchCoach } from '../services/coachService'
 import { getCivMeta, getMatchupLab } from '../services/civMetaService'
 import { getRankedMapPool } from '../services/rankedMapPoolService'
+import { getPatchNotes } from '../services/patchNotesService'
 import { getCivDetailStats, getLandmarkStats } from '../services/civDetailService'
 import { getLeaderboardPage } from '../services/leaderboardService'
 import {
@@ -136,6 +137,9 @@ export function registerIpcHandlers(): void {
 
   ipcMain.handle(IpcChannels.civMetaGet, (_e, query: CivMetaQuery) => getCivMeta(query))
   ipcMain.handle(IpcChannels.rankedMapPoolGet, () => getRankedMapPool())
+  ipcMain.handle(IpcChannels.patchNotesGet, (_e, patchId: unknown, forceRefresh: unknown) =>
+    getPatchNotes(patchId, forceRefresh === true),
+  )
   ipcMain.handle(IpcChannels.matchupLabGet, (_e, query: unknown) => getMatchupLab(query))
   ipcMain.handle(IpcChannels.civDetailGet, (_e, civ: string) => getCivDetailStats(civ))
   ipcMain.handle(IpcChannels.leaderboardGet, (_e, query: LeaderboardQuery) =>
