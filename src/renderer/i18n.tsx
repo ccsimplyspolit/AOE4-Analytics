@@ -1870,6 +1870,8 @@ const UI: Record<Locale, Record<string, string>> = {
     'Add this URL as an OBS Browser Source. The page polls the local state once per second.':
       'Добавьте этот URL как источник браузера OBS. Страница проверяет локальное состояние раз в секунду.',
     'Aegis-style shortcut practice': 'Тренировка сочетаний клавиш в стиле Aegis',
+    'Training settings': 'Настройки тренировки',
+    'Close settings': 'Закрыть настройки',
     'Construction commands are defined for the standard AoE4 profile. The trainer shows a building and checks the two key presses in order.':
       'Команды строительства заданы для стандартного профиля AoE4. Тренажёр показывает здание и проверяет два нажатия в правильном порядке.',
     'verified commands': 'проверенных команд',
