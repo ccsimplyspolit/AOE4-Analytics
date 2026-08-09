@@ -7,6 +7,13 @@ export function useSimilarMatches(query: SimilarMatchQuery | null, enabled = tru
     queryKey: ['similarMatches', query],
     queryFn: () => ipc.findSimilarMatches(query!),
     enabled: enabled && query != null,
-    staleTime: 10 * 60_000,
+    // Empty results are often temporary: the account archive may still be
+    // refreshing and the public feed changes continuously. Re-run the search
+    // when this match is opened instead of silently reusing an old empty page.
+    staleTime: 5 * 60_000,
+    refetchOnMount: (current) =>
+      current.state.data?.ok && current.state.data.data.length > 0 ? false : 'always',
+    refetchOnWindowFocus: true,
+    retry: 2,
   })
 }

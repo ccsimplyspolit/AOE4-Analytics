@@ -134,7 +134,7 @@ export function SimilarMatchCard({
             )}
           </p>
 
-          {search.isLoading && (
+          {search.isFetching && (
             <Spinner label={tt('Searching for exact civilization-match games…')} />
           )}
           {search.data && !search.data.ok && (
@@ -143,7 +143,7 @@ export function SimilarMatchCard({
               onRetry={() => void search.refetch()}
             />
           )}
-          {!search.isLoading && search.data?.ok && candidates.length === 0 && (
+          {!search.isFetching && search.data?.ok && candidates.length === 0 && (
             <EmptyBox>
               <div className="space-y-1">
                 <p>
