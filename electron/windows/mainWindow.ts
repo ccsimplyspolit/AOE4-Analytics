@@ -31,7 +31,22 @@ export function createMainWindow(): BrowserWindow {
     },
   })
 
-  win.once('ready-to-show', () => win.show())
+  const showWindow = () => {
+    if (win.isDestroyed() || win.isVisible()) return
+    win.show()
+    win.focus()
+  }
+  win.once('ready-to-show', showWindow)
+  // A failed or very slow renderer load must not leave the frameless dashboard
+  // permanently hidden. Showing the window gives the user visible diagnostics
+  // and lets the normal renderer crash-recovery handlers take over.
+  const showFallback = setTimeout(showWindow, 5000)
+  win.once('closed', () => clearTimeout(showFallback))
+  win.webContents.on('did-fail-load', (_event, errorCode, errorDescription, validatedURL, isMainFrame) => {
+    if (isMainFrame) {
+      console.error('[main] dashboard load failed:', errorCode, errorDescription, validatedURL)
+    }
+  })
 
   // Keep the renderer's title-bar maximize/restore icon in sync with the window.
   win.on('maximize', () => win.webContents.send(IpcChannels.windowMaximizedChanged, true))

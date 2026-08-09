@@ -311,7 +311,7 @@ export const DATA_SOURCE_REGISTRY: readonly DataSourceDescriptor[] = [
     version: ESSENCE_PROVENANCE.sourceRevision,
     capturedAt: ESSENCE_PROVENANCE.capturedAt,
     integration:
-      'automatic Attrib.sga discovery plus explicit SGA/RGD/RRTex/RRGeom decoding, bounded RGD projection and provenance through scripts/essence_adapter.py; Electron never executes archive parsers',
+      'automatic Attrib.sga discovery plus explicit SGA/RGD/RRTex/RRGeom decoding, bounded RGD projection, AoE4World attribute cross-check and provenance through scripts/essence_adapter.py; Electron never executes archive parsers',
   },
   {
     id: 'attrib',

@@ -44,6 +44,7 @@ import {
 } from '@domain/productionCalculator'
 import { productionModifiersForCiv } from '@domain/productionModifiers'
 import { PageHead } from '../components/PageHead'
+import { WorkspaceNav } from '../components/WorkspaceNav'
 import { BuildOrderViewer } from '../components/BuildOrderViewer'
 import { BuildEditor } from '../components/BuildEditor'
 import { VideoAnalysisImporter } from '../components/VideoAnalysisImporter'
@@ -153,6 +154,8 @@ export function Tincture() {
           </Badge>
         }
       />
+
+      <WorkspaceNav workspace="command" />
 
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex gap-1" role="tablist" aria-label={tt('Tincture sections')}>

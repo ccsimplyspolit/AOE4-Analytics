@@ -38,6 +38,7 @@ import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
 import { formatCount } from '@shared/format'
 import { PageHead } from '../components/PageHead'
+import { WorkspaceNav } from '../components/WorkspaceNav'
 import { EmptyBox, ErrorBox, Spinner } from '../components/feedback'
 import { GameSummaryPanel } from '../components/GameSummaryPanel'
 import { BuildOrderComparisonCard } from '../components/BuildOrderComparisonCard'
@@ -619,6 +620,8 @@ export function ReplayLab() {
         title="Replay Lab"
         sub="Browse every local match-history record, inspect public account history, and cache available online replays for offline review."
       />
+
+      <WorkspaceNav workspace="matches" />
 
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex gap-1" role="tablist" aria-label={tt('Replay sources')}>

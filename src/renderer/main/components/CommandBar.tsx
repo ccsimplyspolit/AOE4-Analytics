@@ -33,7 +33,7 @@ export function CommandBar() {
   return (
     <header className="drag-region relative z-40 flex h-12 shrink-0 select-none items-stretch overflow-hidden border-b border-border bg-card/95">
       {/* Brand — the only place the name appears. */}
-      <div className="flex shrink-0 items-center gap-2.5 pl-4 pr-6">
+      <div className="flex shrink-0 items-center gap-2.5 border-r border-border/70 pl-4 pr-5">
         <Landmark className="h-4 w-4 text-primary" />
         <span className="whitespace-nowrap font-display text-[13px] font-bold tracking-[0.18em] text-foreground">
           RTSLytics
@@ -42,28 +42,24 @@ export function CommandBar() {
 
       {/* Workspace ribbon: stable top-level destinations only. */}
       {hasProfile && (
-        <div className="no-drag min-w-0 flex-1 overflow-x-auto overflow-y-hidden [scrollbar-width:thin]">
-          <nav aria-label={tt('Main navigation')} className="flex min-w-max items-stretch">
+        <div className="no-drag flex min-w-0 flex-1 items-center justify-center overflow-x-auto overflow-y-hidden px-4 [scrollbar-width:thin]">
+          <nav
+            aria-label={tt('Main navigation')}
+            className="flex h-8 min-w-max items-center gap-0.5 rounded-md border border-border/80 bg-background/45 p-0.5 shadow-sm"
+          >
             {navWorkspaces.map((workspace) => (
               <NavLink
                 key={workspace.id}
                 to={workspace.defaultPath}
                 aria-current={activeWorkspace === workspace.id ? 'page' : undefined}
                 className={cn(
-                  'relative flex shrink-0 items-center whitespace-nowrap px-3 font-display text-[12px] font-semibold tracking-[0.1em] transition-colors',
+                  'flex h-7 shrink-0 items-center rounded-sm px-3 font-display text-[11px] font-semibold tracking-[0.07em] transition-all',
                   activeWorkspace === workspace.id
-                    ? 'text-primary'
-                    : 'text-muted-foreground hover:text-foreground',
+                    ? 'bg-primary/15 text-primary ring-1 ring-primary/35'
+                    : 'text-muted-foreground hover:bg-secondary/70 hover:text-foreground',
                 )}
               >
                 {tt(workspace.label)}
-                {/* Gold underline rail, like the game's ribbon menus. */}
-                <span
-                  className={cn(
-                    'absolute inset-x-2 bottom-0 h-0.5 bg-primary transition-opacity',
-                    activeWorkspace === workspace.id ? 'opacity-100' : 'opacity-0',
-                  )}
-                />
               </NavLink>
             ))}
           </nav>

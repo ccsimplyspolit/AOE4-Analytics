@@ -495,6 +495,7 @@ export interface OverlayUpdatePayload {
 export type OverlayControlAction =
   | 'next-bo'
   | 'prev-bo'
+  | 'toggle-bo'
   | 'next-counter'
   | 'next-step'
   | 'prev-step'

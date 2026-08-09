@@ -47,6 +47,7 @@ import {
 } from '@shared/format'
 import { cn } from '@shared/lib/utils'
 import { PageHead } from '../components/PageHead'
+import { WorkspaceNav } from '../components/WorkspaceNav'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Skeleton } from '@shared/components/ui/skeleton'
 import { useCivMeta, useMatchupLab } from '../queries/useCivMeta'
@@ -87,6 +88,7 @@ type SortKey = 'civName' | 'winRate' | 'pickRate' | 'games'
 
 export function CivMeta() {
   const { tt } = useI18n()
+  const { data: settings } = useSettings()
   // Tab lives in the URL so a refresh or deep link restores it.
   const [searchParams, setSearchParams] = useSearchParams()
   const tabParam = searchParams.get('tab')
@@ -101,9 +103,15 @@ export function CivMeta() {
       { replace: true },
     )
   const ladderParam = searchParams.get('ladder')
+  const configuredLeaderboard = settings?.leaderboard
+  const defaultLeaderboard: StatsLeaderboard = LADDERS.some(
+    (entry) => entry.value === configuredLeaderboard,
+  )
+    ? (configuredLeaderboard as StatsLeaderboard)
+    : 'rm_solo'
   const leaderboard: StatsLeaderboard = LADDERS.some((l) => l.value === ladderParam)
     ? (ladderParam as StatsLeaderboard)
-    : 'rm_solo'
+    : defaultLeaderboard
   const rankParam = searchParams.get('rank')
   const rankLevel = rankLevelFilterable(leaderboard)
     ? RANK_FILTERS.find((b) => b.value === rankParam)?.value
@@ -240,6 +248,8 @@ export function CivMeta() {
         title="Civ Meta"
         sub="Live tier list, win/pick rates, matchups, and maps from AoE4World."
       />
+
+      <WorkspaceNav workspace="intel" />
 
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap gap-1" role="tablist">

@@ -35,6 +35,7 @@ function reg(accelerator: string, fallback: string, handler: () => void): void {
  *   hotkeys.nextCounter     (default Ctrl+Alt+C)     cycle the counter target civ
  *   hotkeys.nextBuildOrder  (default Ctrl+Alt+PageDown) cycle forward a build
  *   hotkeys.previousBuildOrder (default Ctrl+Alt+PageUp) cycle back a build
+ *   hotkeys.toggleBuildOrder (default Ctrl+Alt+B) show/hide only the build widget
  *   hotkeys.switchTimerMode / startTimer / stopTimer / resetTimer control the
  *   manual RTS Overlay timer without taking focus from the game.
  * Idempotent — call again after a settings change to swap bindings live. When a
@@ -58,6 +59,9 @@ export function registerHotkeys(overlay: OverlayController): void {
   reg(hotkeys.nextBuildOrder, DEFAULT_HOTKEYS.nextBuildOrder, () => overlay.sendControl('next-bo'))
   reg(hotkeys.previousBuildOrder, DEFAULT_HOTKEYS.previousBuildOrder, () =>
     overlay.sendControl('prev-bo'),
+  )
+  reg(hotkeys.toggleBuildOrder, DEFAULT_HOTKEYS.toggleBuildOrder, () =>
+    overlay.sendControl('toggle-bo'),
   )
   reg(hotkeys.switchTimerMode, DEFAULT_HOTKEYS.switchTimerMode, () =>
     overlay.sendControl('switch-timer'),

@@ -97,6 +97,8 @@ export interface OverlaySettings {
   buildOrderShowResponsePlan: boolean
   /** Build widget width in pixels [280, 520]. */
   buildOrderPanelWidth: number
+  /** Whether the build-order name/header line is visible. */
+  buildOrderShowTitle: boolean
   /**
    * User-imported build orders available to the in-game overlay. Bundled builds
    * remain in the application catalog; these entries make the classic overlay
@@ -182,6 +184,8 @@ export interface HotkeySettings {
   nextBuildOrder: string
   /** Select the previous bundled build order in the overlay. */
   previousBuildOrder: string
+  /** Show or hide only the build-order widget without hiding the full overlay. */
+  toggleBuildOrder: string
   /** Toggle between the live game clock and the manual RTS Overlay timer. */
   switchTimerMode: string
   /** Start the manual build-order timer. */
@@ -201,6 +205,7 @@ export const DEFAULT_HOTKEYS: HotkeySettings = {
   nextCounter: 'Control+Alt+C',
   nextBuildOrder: 'Control+Alt+PageDown',
   previousBuildOrder: 'Control+Alt+PageUp',
+  toggleBuildOrder: 'Control+Alt+B',
   switchTimerMode: 'Control+Alt+M',
   startTimer: 'Control+Alt+F9',
   stopTimer: 'Control+Alt+F10',
@@ -338,6 +343,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
     buildOrderShowNotes: true,
     buildOrderShowResponsePlan: true,
     buildOrderPanelWidth: 340,
+    buildOrderShowTitle: true,
     customBuildOrders: [],
     buildOrderCycle: [],
     buildOrderDisabled: [],
@@ -573,6 +579,7 @@ function sanitizeOverlay(v: unknown): Partial<OverlaySettings> | undefined {
     const n = clamped(v.buildOrderPanelWidth, 280, 520)
     if (n != null) out.buildOrderPanelWidth = Math.round(n)
   }
+  if ('buildOrderShowTitle' in v) out.buildOrderShowTitle = Boolean(v.buildOrderShowTitle)
   if ('customBuildOrders' in v) {
     const builds = sanitizeBuildOrders(v.customBuildOrders)
     if (builds) out.customBuildOrders = builds
@@ -646,6 +653,10 @@ function sanitizeHotkeys(v: unknown): Partial<HotkeySettings> | undefined {
   if ('previousBuildOrder' in v) {
     const s = sanitizeHotkey(v.previousBuildOrder)
     if (s) out.previousBuildOrder = s
+  }
+  if ('toggleBuildOrder' in v) {
+    const s = sanitizeHotkey(v.toggleBuildOrder)
+    if (s) out.toggleBuildOrder = s
   }
   if ('switchTimerMode' in v) {
     const s = sanitizeHotkey(v.switchTimerMode)

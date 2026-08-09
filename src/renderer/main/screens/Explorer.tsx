@@ -32,6 +32,7 @@ import {
 } from '@data/curatedContent'
 import { civDisplayName } from '@domain/civ'
 import { PageHead } from '../components/PageHead'
+import { WorkspaceNav } from '../components/WorkspaceNav'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
 import { cn } from '@shared/lib/utils'
@@ -90,6 +91,8 @@ export function Explorer() {
         )}
         aside={<Badge variant="outline">{tt('Local-first')}</Badge>}
       />
+
+      <WorkspaceNav workspace="library" />
 
       <div className="flex flex-wrap gap-1" role="tablist">
         {TABS.map((t) => {

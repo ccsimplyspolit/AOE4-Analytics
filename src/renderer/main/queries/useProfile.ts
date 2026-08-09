@@ -49,7 +49,14 @@ export function useUpdateSettings() {
   const qc = useQueryClient()
   return useMutation({
     mutationFn: (patch: AppSettingsPatch) => ipc.updateSettings(patch),
-    onSuccess: (settings) => qc.setQueryData(['settings'], settings),
+    onSuccess: (settings, patch) => {
+      qc.setQueryData(['settings'], settings)
+      // Dashboard recent-form data is fetched with recentGamesCount. Refresh it
+      // immediately when that setting changes instead of waiting for staleTime.
+      if ('recentGamesCount' in patch) {
+        void qc.invalidateQueries({ queryKey: ['dashboard'] })
+      }
+    },
   })
 }
 

@@ -185,11 +185,13 @@ export function OverlayApp() {
   // The pinned build order's unique name (Guides → "Show in overlay"); null = hidden.
   const [buildOrderId, setBuildOrderId] = useState<string | null>(null)
   const [buildOrderMode, setBuildOrderMode] = useState<'manual' | 'auto' | 'hidden'>('manual')
+  const [buildOrderVisible, setBuildOrderVisible] = useState(true)
   const [buildOrderShowNext, setBuildOrderShowNext] = useState(true)
   const [buildOrderShowResources, setBuildOrderShowResources] = useState(true)
   const [buildOrderShowNotes, setBuildOrderShowNotes] = useState(true)
   const [buildOrderShowResponsePlan, setBuildOrderShowResponsePlan] = useState(true)
   const [buildOrderPanelWidth, setBuildOrderPanelWidth] = useState(340)
+  const [buildOrderShowTitle, setBuildOrderShowTitle] = useState(true)
   // Null means the build follows the game clock. Global step hotkeys set an
   // explicit index until the reset hotkey returns it to clock-driven mode.
   const [manualBuildStep, setManualBuildStep] = useState<number | null>(null)
@@ -234,12 +236,14 @@ export function OverlayApp() {
         setBuildOrderShowNotes(s.overlay.buildOrderShowNotes !== false)
         setBuildOrderShowResponsePlan(s.overlay.buildOrderShowResponsePlan !== false)
         setBuildOrderPanelWidth(clampBuildPanelWidth(s.overlay.buildOrderPanelWidth))
+        setBuildOrderShowTitle(s.overlay.buildOrderShowTitle !== false)
         setCustomCss(s.overlay.customCss ?? '')
         setAgeTargetsShown(s.overlay.showAgeTargets !== false)
         setSessionShown(s.overlay.showSession !== false)
         setCounterShown(s.overlay.showCounter !== false)
         setCoachShown(s.overlay.showCoach !== false)
         setBuildOrderId(s.overlay.buildOrderId ?? null)
+        setBuildOrderVisible(s.overlay.buildOrderMode !== 'hidden')
         setCustomBuildOrders(s.overlay.customBuildOrders ?? [])
         setBuildOrderCycle(s.overlay.buildOrderCycle ?? [])
         setBuildOrderDisabled(s.overlay.buildOrderDisabled ?? [])
@@ -282,12 +286,14 @@ export function OverlayApp() {
       setBuildOrderShowNotes(o.buildOrderShowNotes !== false)
       setBuildOrderShowResponsePlan(o.buildOrderShowResponsePlan !== false)
       setBuildOrderPanelWidth(clampBuildPanelWidth(o.buildOrderPanelWidth))
+      setBuildOrderShowTitle(o.buildOrderShowTitle !== false)
       setCustomCss(o.customCss ?? '')
       setAgeTargetsShown(o.showAgeTargets !== false)
       setSessionShown(o.showSession !== false)
       setCounterShown(o.showCounter !== false)
       setCoachShown(o.showCoach !== false)
       setBuildOrderId(o.buildOrderId ?? null)
+      setBuildOrderVisible(o.buildOrderMode !== 'hidden')
       setCustomBuildOrders(o.customBuildOrders ?? [])
       setBuildOrderCycle(o.buildOrderCycle ?? [])
       setBuildOrderDisabled(o.buildOrderDisabled ?? [])
@@ -442,7 +448,7 @@ export function OverlayApp() {
     setBuildOrderId((current) => (current === next ? current : next))
   }, [allBuilds, buildOrderMode, inGame, myCiv])
   const showBuildOrder =
-    buildOrderMode !== 'hidden' && selectedBuild != null && (inGame || placementMode)
+    buildOrderVisible && buildOrderMode !== 'hidden' && selectedBuild != null && (inGame || placementMode)
   const showAgeTargets = ageTargetsShown && (inGame || placementMode)
   // Placement mode outside a match previews with a fake clock (like the other placeholders).
   const renderElapsed =
@@ -520,6 +526,10 @@ export function OverlayApp() {
         void ipc
           .updateSettings({ overlay: { buildOrderId: nextBuild.name, buildOrderMode: 'manual' } })
           .catch(() => {})
+        return
+      }
+      if (action === 'toggle-bo') {
+        setBuildOrderVisible((visible) => !visible)
         return
       }
       if (!selectedBuild) return
@@ -689,7 +699,7 @@ export function OverlayApp() {
               fontSize: buildOrderFontSize,
             }}
           >
-            <BuildOrderWidget
+        <BuildOrderWidget
               bo={selectedBuild}
               stepIndex={buildStepIndex}
               elapsedSec={renderElapsed}
@@ -700,7 +710,8 @@ export function OverlayApp() {
               showNext={buildOrderShowNext}
               showResources={buildOrderShowResources}
               showNotes={buildOrderShowNotes}
-              showResponsePlan={buildOrderShowResponsePlan}
+          showResponsePlan={buildOrderShowResponsePlan}
+          showTitle={buildOrderShowTitle}
               opponentCivs={enemyCivs}
             />
           </div>

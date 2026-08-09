@@ -55,11 +55,11 @@ export interface NavWorkspace {
 
 /** The few persistent destinations in the command bar. */
 export const navWorkspaces: NavWorkspace[] = [
-  { id: 'command', label: 'Command Center', icon: LayoutDashboard, defaultPath: '/' },
-  { id: 'matches', label: 'Match Lab', icon: Database, defaultPath: '/data-studio' },
+  { id: 'command', label: 'Home', icon: LayoutDashboard, defaultPath: '/' },
+  { id: 'matches', label: 'Analysis', icon: Database, defaultPath: '/data-studio' },
   { id: 'intel', label: 'Intel', icon: Search, defaultPath: '/scout' },
   { id: 'library', label: 'Library', icon: BookOpen, defaultPath: '/guides' },
-  { id: 'broadcast', label: 'Broadcast', icon: Radio, defaultPath: '/stream' },
+  { id: 'broadcast', label: 'Stream', icon: Radio, defaultPath: '/stream' },
 ]
 
 /** Single source of truth for routes and contextual workspace links. */

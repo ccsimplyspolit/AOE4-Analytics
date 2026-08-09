@@ -37,18 +37,30 @@ import { useI18n } from '../../i18n'
 
 const LEADERBOARDS: { value: Leaderboard; label: string }[] = [
   { value: 'rm_solo', label: 'Ranked 1v1 (Solo)' },
-  { value: 'qm_1v1', label: 'Quick Match 1v1' },
+  { value: 'rm_1v1', label: 'Ranked 1v1 (API)' },
   { value: 'rm_team', label: 'Ranked Team' },
+  { value: 'rm_2v2', label: 'Ranked 2v2' },
+  { value: 'rm_3v3', label: 'Ranked 3v3' },
+  { value: 'rm_4v4', label: 'Ranked 4v4' },
+  { value: 'qm_1v1', label: 'Quick Match 1v1' },
+  { value: 'qm_2v2', label: 'Quick Match 2v2' },
+  { value: 'qm_3v3', label: 'Quick Match 3v3' },
+  { value: 'qm_4v4', label: 'Quick Match 4v4' },
 ]
 const POLL_OPTIONS = [
+  { value: 4_000, label: '4s' },
+  { value: 8_000, label: '8s' },
   { value: 10_000, label: '10s' },
   { value: 15_000, label: '15s (recommended)' },
   { value: 30_000, label: '30s' },
+  { value: 60_000, label: '60s' },
 ]
 const SETTINGS_SECTIONS = [
   ['settings-appearance', 'Appearance'],
   ['settings-account', 'Account'],
   ['settings-integrations', 'Integrations'],
+  ['settings-translation', 'Translation'],
+  ['settings-replays', 'Replay parser'],
   ['settings-overlay', 'Overlay'],
   ['settings-polling', 'Polling'],
   ['settings-stats', 'Stats'],
@@ -71,6 +83,8 @@ export function Settings() {
   const nextBuildOrderHotkey = settings?.hotkeys.nextBuildOrder ?? DEFAULT_HOTKEYS.nextBuildOrder
   const previousBuildOrderHotkey =
     settings?.hotkeys.previousBuildOrder ?? DEFAULT_HOTKEYS.previousBuildOrder
+  const toggleBuildOrderHotkey =
+    settings?.hotkeys.toggleBuildOrder ?? DEFAULT_HOTKEYS.toggleBuildOrder
   const switchTimerModeHotkey = settings?.hotkeys.switchTimerMode ?? DEFAULT_HOTKEYS.switchTimerMode
   const startTimerHotkey = settings?.hotkeys.startTimer ?? DEFAULT_HOTKEYS.startTimer
   const stopTimerHotkey = settings?.hotkeys.stopTimer ?? DEFAULT_HOTKEYS.stopTimer
@@ -158,7 +172,7 @@ export function Settings() {
       <PageHead
         kicker="Preferences"
         title="Settings"
-        sub="Profile, appearance, overlay, and data."
+        sub="Profile, appearance, integrations, overlay, and data."
       />
 
       <nav className="sticky top-0 z-20 -mx-1 flex flex-wrap items-center gap-1 rounded-md border border-border bg-background/95 p-1 shadow-lg backdrop-blur">
@@ -813,6 +827,17 @@ export function Settings() {
                     )
                   }
                 />
+                <OverlayToggle
+                  label={tt('Build title and timer')}
+                  description={tt('Show the build name, elapsed timer, age, and step counter.')}
+                  checked={settings?.overlay.buildOrderShowTitle ?? true}
+                  onChange={(checked) =>
+                    update.mutate(
+                      { overlay: { buildOrderShowTitle: checked } },
+                      { onSuccess: () => void ipc.applyOverlaySettings() },
+                    )
+                  }
+                />
               </div>
             </div>
             <div className="space-y-2 border-t border-border pt-3">
@@ -950,6 +975,14 @@ export function Settings() {
               }
             />
             <HotkeyInput
+              label={tt('Show / hide build order hotkey')}
+              value={toggleBuildOrderHotkey}
+              defaultValue={DEFAULT_HOTKEYS.toggleBuildOrder}
+              onCommit={(accelerator) =>
+                update.mutate({ hotkeys: { toggleBuildOrder: accelerator } })
+              }
+            />
+            <HotkeyInput
               label={tt('Switch timer mode hotkey')}
               value={switchTimerModeHotkey}
               defaultValue={DEFAULT_HOTKEYS.switchTimerMode}
@@ -987,15 +1020,30 @@ export function Settings() {
               Match polling
             </h2>
             <label className="block space-y-1 text-sm">
-              <span className="text-muted-foreground">{tt('Check for a new game every')}</span>
+              <span className="text-muted-foreground">{tt('When no game is open')}</span>
               <select
                 value={settings?.polling.idleIntervalMs ?? 15_000}
                 onChange={(e) => {
                   if (!settings) return
                   const v = Number(e.target.value)
-                  update.mutate({
-                    polling: { ...settings.polling, idleIntervalMs: v, activeIntervalMs: v },
-                  })
+                  update.mutate({ polling: { idleIntervalMs: v } })
+                }}
+                className="h-9 w-full rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {POLL_OPTIONS.map((o) => (
+                  <option key={o.value} value={o.value}>
+                    {o.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="block space-y-1 text-sm">
+              <span className="text-muted-foreground">{tt('While a game is open')}</span>
+              <select
+                value={settings?.polling.activeIntervalMs ?? 8_000}
+                onChange={(e) => {
+                  if (!settings) return
+                  update.mutate({ polling: { activeIntervalMs: Number(e.target.value) } })
                 }}
                 className="h-9 w-full rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
@@ -1007,8 +1055,9 @@ export function Settings() {
               </select>
             </label>
             <p className="text-xs text-muted-foreground">
-              15s is the community-polite rate. RTSLytics caches aggressively and never
-              bulk-scrapes.
+              {tt(
+                'The app polls more often while AoE4 is open so the overlay reacts quickly. API responses are cached and transient limits use retries/backoff.',
+              )}
             </p>
           </CardContent>
         </Card>
@@ -1028,7 +1077,7 @@ export function Settings() {
               ))}
             </select>
             <p className="text-xs text-muted-foreground">
-              Used for your dashboard form, scouting, and post-game analysis.
+              {tt('Used as the initial ladder in Civ Meta and Leaderboards; a URL ladder still wins.')}
             </p>
           </CardContent>
         </Card>
@@ -1037,6 +1086,27 @@ export function Settings() {
       <Card id="settings-stats" className="scroll-mt-14">
         <CardContent className="space-y-3 p-5">
           <h2 className="text-base font-semibold">{tt('Stats')}</h2>
+          <label className="block space-y-1.5 text-sm">
+            <span className="flex items-center justify-between gap-3">
+              <span>
+                {tt('Recent games in dashboard')}
+                <span className="block text-[11px] text-muted-foreground">
+                  {tt('How many recent games are fetched for the dashboard and recent-form card.')}
+                </span>
+              </span>
+              <select
+                value={settings?.recentGamesCount ?? 10}
+                onChange={(event) => update.mutate({ recentGamesCount: Number(event.target.value) })}
+                className="h-8 shrink-0 rounded-md border border-border bg-background px-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {[10, 25, 50, 100].map((count) => (
+                  <option key={count} value={count}>
+                    {count}
+                  </option>
+                ))}
+              </select>
+            </span>
+          </label>
           <label className="flex cursor-pointer items-center justify-between gap-3 text-sm">
             <span>
               Exclude AI / custom games from win rate
@@ -1073,6 +1143,7 @@ export function Settings() {
               className="h-4 w-4 shrink-0 accent-[hsl(var(--primary))]"
             />
           </label>
+          <LocalDataStatusCard />
         </CardContent>
       </Card>
 
@@ -1091,6 +1162,12 @@ export function Settings() {
               [resetBuildStepHotkey, 'Reset build step'],
               [nextBuildOrderHotkey, 'Next build order'],
               [previousBuildOrderHotkey, 'Previous build order'],
+              [toggleBuildOrderHotkey, 'Show / hide build order'],
+              [nextCounterHotkey, 'Cycle counter target'],
+              [switchTimerModeHotkey, 'Switch timer mode'],
+              [startTimerHotkey, 'Start timer'],
+              [stopTimerHotkey, 'Stop timer'],
+              [resetTimerHotkey, 'Reset timer'],
             ].map(([key, desc]) => (
               <div key={desc} className="flex items-center justify-between py-1.5">
                 <span className="text-muted-foreground">{desc}</span>
@@ -1148,20 +1225,108 @@ function OverlayToggle({
   )
 }
 
+type LocalDataStatus = Awaited<ReturnType<typeof ipc.getLocalDataStatus>>
+
+/** Shows whether the consent-free local AoE4 data source is usable on this machine. */
+function LocalDataStatusCard() {
+  const { tt } = useI18n()
+  const [status, setStatus] = useState<LocalDataStatus | null>(null)
+  const [checking, setChecking] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const refresh = useCallback(async () => {
+    setChecking(true)
+    setError(null)
+    try {
+      setStatus(await ipc.getLocalDataStatus())
+    } catch {
+      setError(tt('Local game data status could not be checked.'))
+    } finally {
+      setChecking(false)
+    }
+  }, [tt])
+
+  useEffect(() => {
+    void refresh()
+  }, [refresh])
+
+  const available = status?.available === true
+  return (
+    <div className="space-y-2 rounded-md border border-border/60 bg-secondary/20 p-3 text-sm">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <span className="font-medium">{tt('Local AoE4 data')}</span>
+        <span
+          className={cn(
+            'rounded px-2 py-0.5 text-[11px]',
+            available
+              ? 'bg-emerald-500/10 text-emerald-400'
+              : 'bg-amber-500/10 text-amber-300',
+          )}
+        >
+          {checking
+            ? tt('Checking…')
+            : available
+              ? tt('Available')
+              : status
+                ? tt('Not detected')
+                : tt('Unknown')}
+        </span>
+      </div>
+      <p className="text-[11px] leading-relaxed text-muted-foreground">
+        {status
+          ? status.logExists
+            ? tt('The local warnings log was found; custom games and live telemetry can use it.')
+            : tt('The default AoE4 user-data folder or warnings log was not found yet.')
+          : tt('Checking the default AoE4 user-data folder…')}
+      </p>
+      {status && (
+        <p className="break-all font-mono text-[10px] text-muted-foreground">{status.gameDir}</p>
+      )}
+      {(error || !available) && (
+        <div className="flex flex-wrap items-center gap-2">
+          {error && <span className="text-xs text-loss">{error}</span>}
+          <button
+            type="button"
+            onClick={() => void refresh()}
+            disabled={checking}
+            className="rounded border border-border px-2 py-1 text-[11px] text-muted-foreground hover:bg-secondary disabled:opacity-50"
+          >
+            {checking ? tt('Checking…') : tt('Re-check')}
+          </button>
+        </div>
+      )}
+    </div>
+  )
+}
+
 type ExternalApiStatus = Awaited<ReturnType<typeof ipc.getExternalApiStatus>>
 
 function ExternalApisCard() {
   const { tt } = useI18n()
   const [status, setStatus] = useState<ExternalApiStatus | null>(null)
+  const [checking, setChecking] = useState(false)
+  const [statusError, setStatusError] = useState<string | null>(null)
   const [twitchClientId, setTwitchClientId] = useState('')
   const [twitchClientSecret, setTwitchClientSecret] = useState('')
   const [youtubeApiKey, setYoutubeApiKey] = useState('')
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
 
+  const refreshStatus = useCallback(async () => {
+    setChecking(true)
+    setStatusError(null)
+    try {
+      setStatus(await ipc.getExternalApiStatus())
+    } catch {
+      setStatusError(tt('External API status could not be checked.'))
+    } finally {
+      setChecking(false)
+    }
+  }, [tt])
+
   useEffect(() => {
-    void ipc.getExternalApiStatus().then(setStatus)
-  }, [])
+    void refreshStatus()
+  }, [refreshStatus])
 
   const save = async () => {
     setSaving(true)
@@ -1185,9 +1350,14 @@ function ExternalApisCard() {
   }
 
   const clear = async () => {
-    const next = await ipc.clearExternalApis()
-    setStatus(next)
-    setMessage(tt('External API credentials cleared.'))
+    setMessage(null)
+    try {
+      const next = await ipc.clearExternalApis()
+      setStatus(next)
+      setMessage(tt('External API credentials cleared.'))
+    } catch {
+      setMessage(tt('External API credentials could not be cleared.'))
+    }
   }
 
   return (
@@ -1206,9 +1376,13 @@ function ExternalApisCard() {
             </p>
           </div>
           <span className="rounded bg-secondary px-2 py-1 text-[10px] text-muted-foreground">
-            {status?.twitch.configured || status?.youtube.configured
-              ? tt('At least one provider ready')
-              : tt('Optional')}
+            {checking
+              ? tt('Checking…')
+              : statusError
+                ? tt('Unavailable')
+                : status?.twitch.configured || status?.youtube.configured
+                  ? tt('At least one provider ready')
+                  : tt('Optional')}
           </span>
         </div>
 
@@ -1273,6 +1447,19 @@ function ExternalApisCard() {
             'Credentials are encrypted by the operating system and never exposed to the renderer, overlay, or OBS source.',
           )}
         </p>
+        {statusError && (
+          <div className="flex flex-wrap items-center gap-2 text-xs text-loss">
+            <span>{statusError}</span>
+            <button
+              type="button"
+              onClick={() => void refreshStatus()}
+              disabled={checking}
+              className="rounded border border-border px-2 py-1 text-[11px] text-muted-foreground hover:bg-secondary disabled:opacity-50"
+            >
+              {checking ? tt('Checking…') : tt('Retry')}
+            </button>
+          </div>
+        )}
         <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
@@ -1375,7 +1562,7 @@ function ReplaysApiCard({
   }
 
   return (
-    <Card className="scroll-mt-14">
+    <Card id="settings-replays" className="scroll-mt-14">
       <CardContent className="space-y-3 p-5">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
@@ -1418,7 +1605,7 @@ function ReplaysApiCard({
         >
           <div className="flex flex-wrap items-center justify-between gap-2">
             <span className="font-medium">
-              {checking
+              {checking || !status
                 ? tt('Checking replay parser…')
                 : status?.available
                   ? tt('Replay parser is ready.')
@@ -1490,17 +1677,30 @@ function TranslationApiCard({ onSaved }: { onSaved: () => Promise<void> }) {
   const [apiKey, setApiKey] = useState('')
   const [enabled, setEnabled] = useState(false)
   const [status, setStatus] = useState<TranslationStatus | null>(null)
+  const [checking, setChecking] = useState(false)
+  const [statusError, setStatusError] = useState<string | null>(null)
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
 
-  useEffect(() => {
-    void ipc.getTranslationStatus().then((current) => {
+  const refreshStatus = useCallback(async () => {
+    setChecking(true)
+    setStatusError(null)
+    try {
+      const current = await ipc.getTranslationStatus()
       setStatus(current)
       setEnabled(current.enabled)
       setProvider(current.provider)
       setEndpoint(current.endpoint)
-    })
-  }, [])
+    } catch {
+      setStatusError(tt('Translation API status could not be checked.'))
+    } finally {
+      setChecking(false)
+    }
+  }, [tt])
+
+  useEffect(() => {
+    void refreshStatus()
+  }, [refreshStatus])
 
   const changeProvider = (next: TranslationProvider) => {
     setProvider(next)
@@ -1531,9 +1731,13 @@ function TranslationApiCard({ onSaved }: { onSaved: () => Promise<void> }) {
   }
 
   const clearCache = async () => {
-    const next = await ipc.clearTranslationCache()
-    setStatus(next)
-    setMessage(tt('Translation cache cleared.'))
+    try {
+      const next = await ipc.clearTranslationCache()
+      setStatus(next)
+      setMessage(tt('Translation cache cleared.'))
+    } catch {
+      setMessage(tt('Translation cache could not be cleared.'))
+    }
   }
 
   return (
@@ -1552,7 +1756,13 @@ function TranslationApiCard({ onSaved }: { onSaved: () => Promise<void> }) {
             </p>
           </div>
           <span className="rounded bg-secondary px-2 py-1 text-[10px] text-muted-foreground">
-            {status?.hasApiKey ? tt('Configured') : tt('Not configured')}
+            {checking
+              ? tt('Checking…')
+              : statusError
+                ? tt('Unavailable')
+                : status?.hasApiKey
+                  ? tt('Configured')
+                  : tt('Not configured')}
           </span>
         </div>
 
@@ -1607,6 +1817,19 @@ function TranslationApiCard({ onSaved }: { onSaved: () => Promise<void> }) {
             'API key is stored encrypted by the operating system and never exposed to the renderer or overlay.',
           )}
         </p>
+        {statusError && (
+          <div className="flex flex-wrap items-center gap-2 text-xs text-loss">
+            <span>{statusError}</span>
+            <button
+              type="button"
+              onClick={() => void refreshStatus()}
+              disabled={checking}
+              className="rounded border border-border px-2 py-1 text-[11px] text-muted-foreground hover:bg-secondary disabled:opacity-50"
+            >
+              {checking ? tt('Checking…') : tt('Retry')}
+            </button>
+          </div>
+        )}
 
         <div className="flex flex-wrap items-center gap-2">
           <button

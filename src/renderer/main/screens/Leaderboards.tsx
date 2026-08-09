@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronLeft, ChevronRight, Radio, RefreshCw, Trophy } from 'lucide-react'
 import type { Leaderboard } from '@api/types'
@@ -15,6 +15,7 @@ import { cn } from '@shared/lib/utils'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Skeleton } from '@shared/components/ui/skeleton'
 import { useLeaderboard } from '../queries/useLeaderboard'
+import { useSettings } from '../queries/useProfile'
 import { EmptyBox, ErrorBox } from '../components/feedback'
 import { useI18n } from '../../i18n'
 
@@ -90,9 +91,18 @@ const COUNTRIES: { code: string | undefined; label: string }[] = [
 
 export function LeaderboardPanel({ embedded = false }: { embedded?: boolean } = {}) {
   const { tt } = useI18n()
+  const { data: settings } = useSettings()
   const [leaderboard, setLeaderboard] = useState<Leaderboard>('rm_solo')
   const [country, setCountry] = useState<string | undefined>(undefined)
   const [page, setPage] = useState(1)
+
+  useEffect(() => {
+    if (!settings?.leaderboard || !LADDERS.some((entry) => entry.value === settings.leaderboard)) {
+      return
+    }
+    setLeaderboard(settings.leaderboard)
+    setPage(1)
+  }, [settings?.leaderboard])
 
   const { data, dataUpdatedAt, isLoading, isFetching, refetch } = useLeaderboard({
     leaderboard,

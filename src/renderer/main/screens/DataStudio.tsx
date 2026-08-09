@@ -27,12 +27,14 @@ import { formatDurationShort } from '@shared/format'
 import { cn } from '@shared/lib/utils'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { PageHead } from '../components/PageHead'
+import { WorkspaceNav } from '../components/WorkspaceNav'
 import { EmptyBox, ErrorBox, Spinner } from '../components/feedback'
 import { useFullHistory } from '../queries/useHistory'
 import { useSettings } from '../queries/useProfile'
 import { useI18n } from '../../i18n'
 import { ipc } from '@shared/ipc'
 import type { EssenceSyncStatus } from '@domain/sourceSync'
+import { compareEssenceAttributes } from '@data/essenceAttributes'
 
 type FilterKey = keyof DataStudioFilters
 
@@ -93,6 +95,8 @@ export function DataStudio() {
           </button>
         }
       />
+
+      <WorkspaceNav workspace="matches" />
 
       <DataSourcePanel />
 
@@ -205,6 +209,7 @@ function DataSourcePanel() {
   const { tt } = useI18n()
   const active = DATA_SOURCE_REGISTRY.filter((source) => source.status === 'active').length
   const patchAware = DATA_SOURCE_REGISTRY.filter((source) => source.patchAware).length
+  const essenceComparison = useMemo(() => compareEssenceAttributes(), [])
   const [syncing, setSyncing] = useState(false)
   const [syncStatus, setSyncStatus] = useState<string | null>(null)
   const [syncOutput, setSyncOutput] = useState<string | null>(null)
@@ -342,6 +347,17 @@ function DataSourcePanel() {
           )}
         </div>
       )}
+      <div className="border-t border-border px-4 py-2 text-xs text-muted-foreground">
+        <span className="font-medium text-foreground">{tt('Essence validation')}</span>{' · '}
+        {essenceComparison.matched.toLocaleString()} {tt('exact matches')} ·{' '}
+        {essenceComparison.partial.toLocaleString()} {tt('variant groups')} ·{' '}
+        {essenceComparison.conflicts.toLocaleString()} {tt('attribute conflicts')} ·{' '}
+        {essenceComparison.missing.toLocaleString()} {tt('unmatched units')}
+        <span className="ml-1 text-[11px]">
+          ({essenceComparison.compared.toLocaleString()} {tt('AoE4World units checked')};{' '}
+          {essenceComparison.projectionErrors.toLocaleString()} {tt('projection warnings')})
+        </span>
+      </div>
       <details className="group border-t border-border">
         <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm font-medium [&::-webkit-details-marker]:hidden">
           <span>{tt('Show source coverage')}</span>

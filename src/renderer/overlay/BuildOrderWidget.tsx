@@ -139,6 +139,7 @@ export function BuildOrderWidget({
   showResources = true,
   showNotes = true,
   showResponsePlan = true,
+  showTitle = true,
   noBuildCiv,
   opponentCivs = [],
 }: {
@@ -160,6 +161,8 @@ export function BuildOrderWidget({
   showNotes?: boolean
   /** Show the contextual counter/scouting response plan. */
   showResponsePlan?: boolean
+  /** Keep the build name/header line visible. */
+  showTitle?: boolean
   /** Player's civ name when no bundled build matches it — the shown build is a reference. */
   noBuildCiv?: string | null
   /** Known lobby civilizations only; null entries preserve honest team coverage. */
@@ -179,34 +182,36 @@ export function BuildOrderWidget({
       style={{ fontSize }}
     >
       {/* header */}
-      <div className="flex items-center gap-2 text-[11px] text-white/55">
-        <span className="max-w-[180px] truncate font-medium text-white/80">{bo.name}</span>
-        {elapsedSec != null && (
-          <span className="rounded bg-cyan-500/20 px-1.5 py-0.5 font-mono text-cyan-300">
-            {formatDuration(elapsedSec)}
+      {showTitle && (
+        <div className="flex items-center gap-2 text-[11px] text-white/55">
+          <span className="max-w-[180px] truncate font-medium text-white/80">{bo.name}</span>
+          {elapsedSec != null && (
+            <span className="rounded bg-cyan-500/20 px-1.5 py-0.5 font-mono text-cyan-300">
+              {formatDuration(elapsedSec)}
+            </span>
+          )}
+          {step && AGE_ROMAN[step.age] && (
+            <span className="flex items-center gap-0.5 rounded bg-white/10 px-1 text-[10px]">
+              {AGE_ICON[step.age] && (
+                <img
+                  src={AGE_ICON[step.age] ?? undefined}
+                  alt=""
+                  aria-hidden="true"
+                  className="h-3.5 w-3.5 object-contain"
+                />
+              )}
+              {AGE_ROMAN[step.age]}
+            </span>
+          )}
+          <span className="ml-auto tabular-nums">
+            {stepIndex + 1}/{bo.build_order.length}
           </span>
-        )}
-        {step && AGE_ROMAN[step.age] && (
-          <span className="flex items-center gap-0.5 rounded bg-white/10 px-1 text-[10px]">
-            {AGE_ICON[step.age] && (
-              <img
-                src={AGE_ICON[step.age] ?? undefined}
-                alt=""
-                aria-hidden="true"
-                className="h-3.5 w-3.5 object-contain"
-              />
-            )}
-            {AGE_ROMAN[step.age]}
+          <span className="rounded bg-white/10 px-1 text-[9px] uppercase tracking-wide text-white/45">
+            {viewMode === 'text' ? 'TXT' : 'ICON'}
           </span>
-        )}
-        <span className="ml-auto tabular-nums">
-          {stepIndex + 1}/{bo.build_order.length}
-        </span>
-        <span className="rounded bg-white/10 px-1 text-[9px] uppercase tracking-wide text-white/45">
-          {viewMode === 'text' ? 'TXT' : 'ICON'}
-        </span>
-        <span className={auto ? 'text-win' : 'text-warn'}>{auto ? tt('auto') : tt('manual')}</span>
-      </div>
+          <span className={auto ? 'text-win' : 'text-warn'}>{auto ? tt('auto') : tt('manual')}</span>
+        </div>
+      )}
 
       {noBuildCiv && (
         <div className="mt-0.5 inline-block w-fit rounded bg-warn/10 px-1.5 py-0.5 text-[10px] text-warn/90">
