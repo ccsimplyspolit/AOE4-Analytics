@@ -49,7 +49,10 @@ export function SimilarMatchCard({
   // Defense in depth: the service excludes the current game, but a stale IPC
   // response must never turn the match currently on screen into its "reference".
   const candidates = useMemo(
-    () => (search.data?.ok ? search.data.data.filter((candidate) => candidate.gameId !== query.gameId) : []),
+    () =>
+      search.data?.ok
+        ? search.data.data.filter((candidate) => candidate.gameId !== query.gameId)
+        : [],
     [query.gameId, search.data],
   )
   const [selectedGameId, setSelectedGameId] = useState<number | null>(null)
@@ -465,7 +468,11 @@ function ReferenceFit({
       <div className="font-medium">{tt('Why this is a useful reference')}</div>
       <div className="flex flex-wrap gap-1.5">
         {candidate.reasons.slice(0, 5).map((reason) => (
-          <Badge key={reason} variant="outline" className="border-border/70 bg-background/40 text-[10px]">
+          <Badge
+            key={reason}
+            variant="outline"
+            className="border-border/70 bg-background/40 text-[10px]"
+          >
             {tt(reason)}
           </Badge>
         ))}
@@ -473,20 +480,22 @@ function ReferenceFit({
       {measured.length > 0 ? (
         <p className="leading-relaxed text-muted-foreground">
           {referenceAhead.length > 0
-            ? tt('Reference is measurably ahead in {count} checkpoint(s); open the rows below to see the exact difference.').replace(
-                '{count}',
-                String(referenceAhead.length),
-              )
+            ? tt(
+                'Reference is measurably ahead in {count} checkpoint(s); open the rows below to see the exact difference.',
+              ).replace('{count}', String(referenceAhead.length))
             : yoursAhead.length > 0
-              ? tt('Your game is ahead in {count} measured checkpoint(s); use the reference mainly as a timing check.').replace(
-                  '{count}',
-                  String(yoursAhead.length),
-                )
-              : tt('The recorded checkpoints are level. Use the opening timeline and VOD to compare decisions that the totals cannot show.')}
+              ? tt(
+                  'Your game is ahead in {count} measured checkpoint(s); use the reference mainly as a timing check.',
+                ).replace('{count}', String(yoursAhead.length))
+              : tt(
+                  'The recorded checkpoints are level. Use the opening timeline and VOD to compare decisions that the totals cannot show.',
+                )}
         </p>
       ) : (
         <p className="leading-relaxed text-muted-foreground">
-          {tt('Match identity is confirmed, but detailed reference statistics are still loading or unavailable.')}
+          {tt(
+            'Match identity is confirmed, but detailed reference statistics are still loading or unavailable.',
+          )}
         </p>
       )}
     </div>
@@ -511,7 +520,8 @@ function ComparisonTable({ metrics }: { metrics: Metric[] }) {
           {metrics.map((metric) => {
             const delta = metricDelta(metric)
             const state = comparisonState(metric)
-            const better = state === 'reference-ahead' ? true : state === 'your-game-ahead' ? false : null
+            const better =
+              state === 'reference-ahead' ? true : state === 'your-game-ahead' ? false : null
             return (
               <tr key={metric.label} className="border-t border-border/50">
                 <td className="px-2 py-1.5 font-medium">{tt(metric.label)}</td>
@@ -533,14 +543,16 @@ function ComparisonTable({ metrics }: { metrics: Metric[] }) {
                 >
                   {formatDelta(delta, metric.kind)}
                 </td>
-                <td className={cn(
-                  'px-2 py-1.5',
-                  state === 'reference-ahead'
-                    ? 'text-loss'
-                    : state === 'your-game-ahead'
-                      ? 'text-win'
-                      : 'text-muted-foreground',
-                )}>
+                <td
+                  className={cn(
+                    'px-2 py-1.5',
+                    state === 'reference-ahead'
+                      ? 'text-loss'
+                      : state === 'your-game-ahead'
+                        ? 'text-win'
+                        : 'text-muted-foreground',
+                  )}
+                >
                   {tt(comparisonRead(metric, state))}
                 </td>
               </tr>

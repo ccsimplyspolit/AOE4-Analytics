@@ -1,4 +1,5 @@
-import { AlertTriangle, CheckCircle2, Users } from 'lucide-react'
+import { AlertTriangle, CheckCircle2, ExternalLink, Users } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import type { PerPlayerMatchStats, Severity, Signal } from '@domain/analysis'
 import { comparisonSignals } from '@domain/gameCoaching'
 import type { MatchSummary } from '@domain/statsSummary'
@@ -54,9 +55,10 @@ export function TeamMateReviewCard({
   const { tt, gameName } = useI18n()
   const self = summaryPlayerForMe(summary, myProfileId, myCiv, myPlayerId)
   const selfProfileId = self?.profileId ?? myProfileId
-  const ownCounter = selfProfileId == null
-    ? null
-    : perPlayer.find((row) => row.profileId === selfProfileId) ?? null
+  const ownCounter =
+    selfProfileId == null
+      ? null
+      : (perPlayer.find((row) => row.profileId === selfProfileId) ?? null)
   if (!ownCounter || ownCounter.teamId == null) return null
 
   const teamCounters = perPlayer.filter((row) => row.teamId === ownCounter.teamId)
@@ -113,18 +115,27 @@ export function TeamMateReviewCard({
               <CardContent className="space-y-3 p-4">
                 <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0">
-                    {row.player ? (
-                      <button
-                        type="button"
-                        onClick={() => onSelectPlayer?.(row.player!.playerId)}
-                        className="truncate text-left text-sm font-semibold hover:text-primary hover:underline"
-                        title={tt('Show this player’s full match evidence')}
+                    <div className="flex min-w-0 items-center gap-2">
+                      {row.player ? (
+                        <button
+                          type="button"
+                          onClick={() => onSelectPlayer?.(row.player!.playerId)}
+                          className="truncate text-left text-sm font-semibold hover:text-primary hover:underline"
+                          title={tt('Show this player’s full match evidence')}
+                        >
+                          {name}
+                        </button>
+                      ) : (
+                        <div className="truncate text-sm font-semibold">{name}</div>
+                      )}
+                      <Link
+                        to={`/profile/${row.counter.profileId}`}
+                        title={tt('Open this player’s scout profile')}
+                        className="shrink-0 text-primary hover:text-primary/80"
                       >
-                        {name}
-                      </button>
-                    ) : (
-                      <div className="truncate text-sm font-semibold">{name}</div>
-                    )}
+                        <ExternalLink className="h-3 w-3" />
+                      </Link>
+                    </div>
                     <div className="text-xs text-muted-foreground">
                       {civ ? gameName(civDisplayName(civ)) : tt('Civilization unavailable')}
                       {row.isMe && <span className="ml-1.5 text-primary">· {tt('You')}</span>}
@@ -154,7 +165,10 @@ export function TeamMateReviewCard({
                     label={tt('Kills / losses')}
                     value={`${formatNumber(row.counter.kills)} / ${formatNumber(row.counter.deaths)}`}
                   />
-                  <Fact label={tt('K/D')} value={row.counter.kd == null ? '—' : row.counter.kd.toFixed(2)} />
+                  <Fact
+                    label={tt('K/D')}
+                    value={row.counter.kd == null ? '—' : row.counter.kd.toFixed(2)}
+                  />
                   <Fact label="APM" value={formatNumber(row.counter.apm)} />
                 </div>
 
@@ -163,7 +177,8 @@ export function TeamMateReviewCard({
                 <div className="space-y-2">
                   <div className="flex items-center gap-1.5 text-xs font-semibold">
                     <AlertTriangle className="h-3.5 w-3.5 text-warn" />
-                    {tt('Confirmed findings')} <span className="text-muted-foreground">({findings.length})</span>
+                    {tt('Confirmed findings')}{' '}
+                    <span className="text-muted-foreground">({findings.length})</span>
                   </div>
                   {findings.length === 0 ? (
                     <p className="text-xs text-muted-foreground">
@@ -198,7 +213,8 @@ export function TeamMateReviewCard({
                   </span>
                   {row.coverage && (
                     <span>
-                      {tt('Summary timeline')}: {row.coverage.summaryReported}/{row.coverage.summaryTotal}
+                      {tt('Summary timeline')}: {row.coverage.summaryReported}/
+                      {row.coverage.summaryTotal}
                     </span>
                   )}
                 </div>
@@ -229,7 +245,12 @@ function Finding({ signal }: { signal: Signal }) {
   const { tt } = useI18n()
   return (
     <div className="flex items-start gap-2">
-      <span className={cn('mt-0.5 shrink-0 rounded px-1.5 py-0.5 text-[10px] font-medium uppercase', SEVERITY_STYLE[signal.severity])}>
+      <span
+        className={cn(
+          'mt-0.5 shrink-0 rounded px-1.5 py-0.5 text-[10px] font-medium uppercase',
+          SEVERITY_STYLE[signal.severity],
+        )}
+      >
         {signal.severity === 'major'
           ? tt('Major')
           : signal.severity === 'minor'

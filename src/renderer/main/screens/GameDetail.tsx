@@ -191,7 +191,7 @@ function Detail({
   const ownCounter =
     myProfileId == null
       ? null
-      : (match.perPlayer ?? []).find((row) => row.profileId === myProfileId) ?? null
+      : ((match.perPlayer ?? []).find((row) => row.profileId === myProfileId) ?? null)
   const teamReviewEligible =
     ownCounter?.teamId != null &&
     (match.perPlayer ?? []).filter((row) => row.teamId === ownCounter.teamId).length > 1
@@ -336,7 +336,11 @@ function Detail({
         hasSummary={summary != null}
         hasVerifiedVod={verifiedVod != null}
         hasTeamReview={teamReviewEligible}
-        onReplay={() => document.getElementById('replay-command-analysis')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+        onReplay={() =>
+          document
+            .getElementById('replay-command-analysis')
+            ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
       />
 
       {summary && summary.players.length > 1 && (
@@ -607,11 +611,13 @@ function MatchSectionNav({
       </button>
       <span className="ml-auto flex items-center gap-2 px-2 text-[10px] text-muted-foreground">
         <span className={cn('inline-flex items-center gap-1', hasSummary ? 'text-win' : '')}>
-          <CheckCircle2 className="h-3 w-3" /> {hasSummary ? tt('Summary ready') : tt('Summary pending')}
+          <CheckCircle2 className="h-3 w-3" />{' '}
+          {hasSummary ? tt('Summary ready') : tt('Summary pending')}
         </span>
         {isPublicGame && (
           <span className={cn('inline-flex items-center gap-1', hasVerifiedVod ? 'text-win' : '')}>
-            <ExternalLink className="h-3 w-3" /> {hasVerifiedVod ? tt('VOD linked') : tt('VOD search')}
+            <ExternalLink className="h-3 w-3" />{' '}
+            {hasVerifiedVod ? tt('VOD linked') : tt('VOD search')}
           </span>
         )}
       </span>
@@ -672,7 +678,7 @@ function ReplayCommandAnalysis({ match }: { match: StoredMatch }) {
   return (
     <section id="replay-command-analysis" className="scroll-mt-4 space-y-2">
       <div className="flex items-center justify-between gap-2">
-        <h2 className="text-lg font-semibold tracking-tight">{tt('Replay command analysis')}</h2>
+        <h2 className="text-lg font-semibold tracking-tight">{tt('Replay evidence')}</h2>
         <button
           type="button"
           onClick={run}
@@ -689,7 +695,9 @@ function ReplayCommandAnalysis({ match }: { match: StoredMatch }) {
                 : tt('Analyze replay')}
         </button>
       </div>
-      {analysis.error && !isOnlineGame && <p className="text-xs text-loss">{analysis.error.message}</p>}
+      {analysis.error && !isOnlineGame && (
+        <p className="text-xs text-loss">{analysis.error.message}</p>
+      )}
       {fullAnalysis.error && <p className="text-xs text-loss">{fullAnalysis.error.message}</p>}
       {fullResult && (
         <p className="border-t border-border/60 pt-2 text-[11px] text-muted-foreground">
@@ -758,10 +766,11 @@ function MatchPlayerFocus({
           {tt('Select any player to update the detailed match evidence below.')}
         </span>
       </div>
-      <div className="flex flex-wrap gap-2 rounded-md border border-border/70 bg-secondary/20 p-3">
+      <div className="grid gap-3 rounded-md border border-border/70 bg-secondary/20 p-3 sm:grid-cols-2 xl:grid-cols-3">
         {selectable.map((player) => {
           const profileId = player.profileId
           const active = player.playerId === activePlayerId
+          const counter = profileId != null ? countersByProfile.get(profileId) : undefined
           const civ =
             (profileId != null ? civByProfile.get(profileId) : undefined) ??
             civFromToken(player.civToken)
@@ -769,52 +778,128 @@ function MatchPlayerFocus({
             player,
             profileId != null ? countersByProfile.get(profileId) : null,
           )
+          const result = counter?.result
+          const resultLabel =
+            result === 'win'
+              ? tt('Victory')
+              : result === 'loss'
+                ? tt('Defeat')
+                : tt('Result unknown')
           return (
-            <button
+            <article
               // profileId is optional for local/AI rows; playerId is the
               // stable identity and prevents duplicate React keys in those
               // matches.
               key={player.playerId}
-              type="button"
-              aria-pressed={active}
-              onClick={() => onSelect(player.playerId)}
               className={cn(
-                'rounded-md border px-2.5 py-1.5 text-left text-xs transition-colors',
+                'rounded-md border p-3 text-xs transition-colors',
                 active
-                  ? 'border-primary/60 bg-primary/10 text-foreground'
-                  : 'border-border/70 text-muted-foreground hover:border-primary/40 hover:text-foreground',
+                  ? 'border-primary/60 bg-primary/10 ring-1 ring-primary/20'
+                  : 'border-border/70 bg-background/20 hover:border-primary/40',
               )}
             >
-              <span className="font-medium">{player.name || `Player ${player.playerId}`}</span>
-              {civ && (
-                <span className="ml-1 text-muted-foreground">
-                  · {gameName(civDisplayName(civ))}
+              <div className="flex items-start gap-2">
+                <Flag civ={civ ?? null} />
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <button
+                      type="button"
+                      aria-pressed={active}
+                      onClick={() => onSelect(player.playerId)}
+                      title={tt('Focus this player in the match review')}
+                      className="truncate text-left font-semibold hover:text-primary hover:underline"
+                    >
+                      {player.name || `Player ${player.playerId}`}
+                    </button>
+                    {profileId != null && profileId === ownProfileId && (
+                      <span className="rounded bg-primary/15 px-1 text-[9px] font-semibold uppercase text-primary">
+                        {tt('You')}
+                      </span>
+                    )}
+                  </div>
+                  <div className="truncate text-[11px] text-muted-foreground">
+                    {civ ? gameName(civDisplayName(civ)) : tt('Civilization unavailable')}
+                  </div>
+                </div>
+                <span
+                  className={cn(
+                    'shrink-0 rounded px-1.5 py-0.5 text-[9px] font-semibold uppercase',
+                    result === 'win'
+                      ? 'bg-win/15 text-win'
+                      : result === 'loss'
+                        ? 'bg-destructive/15 text-destructive'
+                        : 'bg-secondary text-muted-foreground',
+                  )}
+                >
+                  {resultLabel}
                 </span>
-              )}
-              {profileId != null && profileId === ownProfileId && (
-                <span className="ml-1.5 rounded bg-primary/15 px-1 text-[9px] font-semibold uppercase text-primary">
-                  {tt('You')}
+              </div>
+              <div className="mt-3 grid grid-cols-3 gap-2 border-y border-border/50 py-2 text-[11px]">
+                <PlayerCardStat
+                  label="APM"
+                  value={counter?.apm == null ? '—' : counter.apm.toFixed(1)}
+                />
+                <PlayerCardStat
+                  label={tt('Units')}
+                  value={counter?.unitsProduced == null ? '—' : String(counter.unitsProduced)}
+                />
+                <PlayerCardStat
+                  label={tt('K/D')}
+                  value={counter?.kd == null ? '—' : counter.kd.toFixed(2)}
+                />
+              </div>
+              <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
+                <span
+                  className={cn(
+                    'rounded px-1.5 py-0.5 text-[9px] font-medium uppercase',
+                    coverage.level === 'full'
+                      ? 'bg-win/15 text-win'
+                      : coverage.level === 'unavailable'
+                        ? 'bg-secondary text-muted-foreground'
+                        : 'bg-warn/15 text-warn',
+                  )}
+                  title={`${tt('Summary')}: ${coverage.summaryReported}/${coverage.summaryTotal} · ${tt('Relic counters')}: ${coverage.counterReported}/${coverage.counterTotal}${coverage.missing.length > 0 ? ` · ${tt('Missing')}: ${coverage.missing.map((field) => tt(field)).join(', ')}` : ''}`}
+                >
+                  {tt('Evidence')}: {coverage.summaryReported + coverage.counterReported}/
+                  {coverage.summaryTotal + coverage.counterTotal}
                 </span>
-              )}
-              <span
-                className={cn(
-                  'ml-1.5 rounded px-1 text-[9px] font-medium uppercase',
-                  coverage.level === 'full'
-                    ? 'bg-win/15 text-win'
-                    : coverage.level === 'unavailable'
-                      ? 'bg-secondary text-muted-foreground'
-                      : 'bg-warn/15 text-warn',
-                )}
-                title={`${tt('Summary')}: ${coverage.summaryReported}/${coverage.summaryTotal} · ${tt('Relic counters')}: ${coverage.counterReported}/${coverage.counterTotal}${coverage.missing.length > 0 ? ` · ${tt('Missing')}: ${coverage.missing.map((field) => tt(field)).join(', ')}` : ''}`}
-              >
-                {coverage.summaryReported + coverage.counterReported}/
-                {coverage.summaryTotal + coverage.counterTotal}
-              </span>
-            </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => onSelect(player.playerId)}
+                    className="text-primary hover:underline"
+                  >
+                    {active ? tt('Viewing') : tt('Open match analysis')}
+                  </button>
+                  {profileId != null ? (
+                    <Link
+                      to={`/profile/${profileId}`}
+                      title={tt('Open this player’s scout profile')}
+                      className="inline-flex items-center gap-1 text-primary hover:underline"
+                    >
+                      <ExternalLink className="h-3 w-3" /> {tt('Scout profile')}
+                    </Link>
+                  ) : (
+                    <span className="text-[10px] text-muted-foreground">{tt('Local / AI')}</span>
+                  )}
+                </div>
+              </div>
+            </article>
           )
         })}
       </div>
     </section>
+  )
+}
+
+function PlayerCardStat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="min-w-0">
+      <div className="truncate text-[9px] uppercase tracking-wide text-muted-foreground">
+        {label}
+      </div>
+      <div className="mt-0.5 font-semibold tabular-nums text-foreground">{value}</div>
+    </div>
   )
 }
 
@@ -897,6 +982,13 @@ function ComparisonTable({
                             >
                               {name ?? civLabel(r.civ, gameName, tt('Unknown'))}
                             </button>
+                            <Link
+                              to={`/profile/${r.profileId}`}
+                              title={tt('Open this player’s scout profile')}
+                              className="shrink-0 text-primary hover:text-primary/80"
+                            >
+                              <ExternalLink className="h-3 w-3" />
+                            </Link>
                             {isOwner && (
                               <span className="rounded bg-primary/15 px-1 text-[9px] font-semibold uppercase text-primary">
                                 {tt('You')}

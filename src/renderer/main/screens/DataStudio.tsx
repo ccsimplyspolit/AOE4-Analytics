@@ -27,7 +27,6 @@ import { formatDurationShort } from '@shared/format'
 import { cn } from '@shared/lib/utils'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { PageHead } from '../components/PageHead'
-import { WorkspaceNav } from '../components/WorkspaceNav'
 import { EmptyBox, ErrorBox, Spinner } from '../components/feedback'
 import { useFullHistory } from '../queries/useHistory'
 import { useSettings } from '../queries/useProfile'
@@ -95,8 +94,6 @@ export function DataStudio() {
           </button>
         }
       />
-
-      <WorkspaceNav workspace="matches" />
 
       <DataSourcePanel />
 

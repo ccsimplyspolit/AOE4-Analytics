@@ -5,9 +5,13 @@ import {
   keyboardLayoutFor,
   normalizeShortcut,
   remapShortcutForLayout,
+  shortcutKeysForPositions,
   shortcutFromKeyInput,
   shortcutKey,
+  trainerBuildingActions,
+  trainerKeyFromInput,
 } from '../shortcutTrainer'
+import { EXPLORER_RECORDS_BY_KIND } from '@data/explorerData'
 
 describe('shortcut trainer keyboard profiles', () => {
   it('provides the common AoE keyboard profiles', () => {
@@ -58,5 +62,23 @@ describe('shortcut trainer keyboard profiles', () => {
     expect(
       remapShortcutForLayout('Q', KEYBOARD_LAYOUTS.QWERTY, KEYBOARD_LAYOUTS.AZERTY),
     ).toBe('A')
+  })
+
+  it('provides verified default two-key construction commands without user mapping', () => {
+    const actions = trainerBuildingActions(EXPLORER_RECORDS_BY_KIND.building)
+    const house = actions.find((action) => action.name === 'House')
+    const mongolStable = actions.find(
+      (action) => action.name === 'Stable' && action.civilizations.includes('mo'),
+    )
+
+    expect(house?.shortcut).toEqual(['0:0', '0:0'])
+    expect(shortcutKeysForPositions(house?.shortcut ?? [], KEYBOARD_LAYOUTS.QWERTY)).toEqual(['Q', 'Q'])
+    expect(shortcutKeysForPositions(house?.shortcut ?? [], KEYBOARD_LAYOUTS.AZERTY)).toEqual(['A', 'A'])
+    expect(mongolStable?.shortcut).toEqual(['0:0', '1:3'])
+  })
+
+  it('reads a trainer command from its physical keyboard position', () => {
+    expect(trainerKeyFromInput({ key: 'y', code: 'KeyZ' }, KEYBOARD_LAYOUTS.QWERTZ)).toBe('Y')
+    expect(trainerKeyFromInput({ key: 'a', code: 'KeyQ' }, KEYBOARD_LAYOUTS.AZERTY)).toBe('A')
   })
 })

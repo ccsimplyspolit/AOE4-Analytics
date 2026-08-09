@@ -308,6 +308,7 @@ export function CounterHelper() {
               units={matchupAttackers}
               onChange={setAttackerId}
               gameName={gameName}
+              tt={tt}
             />
             <UnitSelect
               label={tt('Enemy unit')}
@@ -315,6 +316,7 @@ export function CounterHelper() {
               units={matchupDefenders}
               onChange={setDefenderId}
               gameName={gameName}
+              tt={tt}
             />
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
@@ -446,12 +448,14 @@ function UnitSelect({
   units,
   onChange,
   gameName,
+  tt,
 }: {
   label: string
   value: string
   units: VendoredUnit[]
   onChange: (value: string) => void
   gameName: (value: string) => string
+  tt: (value: string) => string
 }) {
   return (
     <label className="space-y-1 text-xs text-muted-foreground">
@@ -463,7 +467,7 @@ function UnitSelect({
       >
         {units.map((unit) => (
           <option key={unit.id} value={unit.id}>
-            {gameName(unit.name)} · {roleLabel(roleFromUnitSafe(unit), (value) => value)}
+            {gameName(unit.name)} · {roleLabel(roleFromUnitSafe(unit), tt)}
           </option>
         ))}
       </select>
@@ -530,7 +534,7 @@ function MatchupResultCard({
         <div>
           <div className="flex items-center gap-2 text-sm font-semibold">
             <SlidersHorizontal className="h-4 w-4 text-primary" />
-            {gameName(attacker.name)} <span className="text-muted-foreground">vs</span>{' '}
+            {gameName(attacker.name)} <span className="text-muted-foreground">{tt('vs')}</span>{' '}
             {gameName(defender.name)}
           </div>
           <div className="mt-1 text-xs text-muted-foreground">
@@ -560,7 +564,7 @@ function MatchupResultCard({
       </div>
       <div className="mt-3 grid gap-1 text-[11px] leading-relaxed text-muted-foreground">
         {result.reasons.map((reason) => (
-          <div key={reason}>• {reason}</div>
+          <div key={reason}>• {tt(reason)}</div>
         ))}
       </div>
     </div>

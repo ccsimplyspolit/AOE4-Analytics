@@ -25,7 +25,6 @@ import { RankBadge } from '../components/RankBadge'
 import { FormPips } from '../components/FormPips'
 import { AccountAvatar } from '../components/AccountSwitcher'
 import { PageHead } from '../components/PageHead'
-import { WorkspaceNav } from '../components/WorkspaceNav'
 import { ErrorBox } from '../components/feedback'
 import { useI18n } from '../../i18n'
 
@@ -66,8 +65,6 @@ export function Dashboard() {
           ) : null
         }
       />
-
-      <WorkspaceNav workspace="command" />
 
       <LiveMatchCard />
       <LiveTelemetryCard />

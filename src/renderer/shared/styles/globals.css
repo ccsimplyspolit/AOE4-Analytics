@@ -52,7 +52,7 @@
     --input: 220 13% 86%;
     --ring: 199 89% 48%;
     /* Squared, plate-like corners — the game's panels are near-square, not pills. */
-    --radius: 0.3rem;
+    --radius: 0.25rem;
 
     --tier-s: 280 86% 66%;
     --tier-a: 142 71% 45%;
@@ -270,6 +270,13 @@
   .chronicle-main header p,
   .chronicle-main .text-muted-foreground {
     color: hsl(var(--muted-foreground) / 0.92);
+  }
+
+  /* The reference UI uses closely fitted, engraved plates rather than floating
+     product cards. Shared primitives inherit the same flat edge and inset line
+     so every existing screen adopts the treatment without changing its data UI. */
+  .chronicle-main .rts-menu-card {
+    border-radius: var(--radius);
   }
 }
 

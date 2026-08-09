@@ -41,28 +41,9 @@ export interface NavItem {
   icon: LucideIcon
   element: ReactNode
   group: 'main' | 'secondary'
-  workspace?: WorkspaceId
 }
 
-export type WorkspaceId = 'command' | 'matches' | 'intel' | 'library' | 'broadcast'
-
-export interface NavWorkspace {
-  id: WorkspaceId
-  label: string
-  icon: LucideIcon
-  defaultPath: string
-}
-
-/** The few persistent destinations in the command bar. */
-export const navWorkspaces: NavWorkspace[] = [
-  { id: 'command', label: 'Home', icon: LayoutDashboard, defaultPath: '/' },
-  { id: 'matches', label: 'Analysis', icon: Database, defaultPath: '/data-studio' },
-  { id: 'intel', label: 'Intel', icon: Search, defaultPath: '/scout' },
-  { id: 'library', label: 'Library', icon: BookOpen, defaultPath: '/guides' },
-  { id: 'broadcast', label: 'Stream', icon: Radio, defaultPath: '/stream' },
-]
-
-/** Single source of truth for routes and contextual workspace links. */
+/** Single source of truth for routes and the command-bar menu. */
 export const navItems: NavItem[] = [
   {
     path: '/',
@@ -70,7 +51,6 @@ export const navItems: NavItem[] = [
     icon: LayoutDashboard,
     element: <Dashboard />,
     group: 'main',
-    workspace: 'command',
   },
   {
     path: '/stats',
@@ -78,7 +58,6 @@ export const navItems: NavItem[] = [
     icon: BarChart3,
     element: <Stats />,
     group: 'main',
-    workspace: 'command',
   },
   {
     path: '/data-studio',
@@ -86,7 +65,6 @@ export const navItems: NavItem[] = [
     icon: Database,
     element: <DataStudio />,
     group: 'main',
-    workspace: 'matches',
   },
   {
     path: '/explorer',
@@ -94,7 +72,6 @@ export const navItems: NavItem[] = [
     icon: Compass,
     element: <Explorer />,
     group: 'main',
-    workspace: 'library',
   },
   {
     path: '/scout',
@@ -102,7 +79,6 @@ export const navItems: NavItem[] = [
     icon: Search,
     element: <Scout />,
     group: 'main',
-    workspace: 'intel',
   },
   {
     path: '/civ-meta',
@@ -110,7 +86,6 @@ export const navItems: NavItem[] = [
     icon: Globe2,
     element: <CivMeta />,
     group: 'main',
-    workspace: 'intel',
   },
   {
     path: '/guides',
@@ -118,7 +93,6 @@ export const navItems: NavItem[] = [
     icon: BookOpen,
     element: <Guides />,
     group: 'main',
-    workspace: 'library',
   },
   {
     path: '/tincture',
@@ -126,7 +100,6 @@ export const navItems: NavItem[] = [
     icon: FlaskConical,
     element: <Tincture />,
     group: 'main',
-    workspace: 'command',
   },
   {
     path: '/replays',
@@ -134,7 +107,6 @@ export const navItems: NavItem[] = [
     icon: FileVideo,
     element: <ReplayLab />,
     group: 'main',
-    workspace: 'matches',
   },
   {
     path: '/stream',
@@ -142,7 +114,6 @@ export const navItems: NavItem[] = [
     icon: Radio,
     element: <StreamDesk />,
     group: 'main',
-    workspace: 'broadcast',
   },
   {
     path: '/settings',
@@ -153,13 +124,3 @@ export const navItems: NavItem[] = [
   },
   { path: '/about', label: 'About', icon: Info, element: <About />, group: 'secondary' },
 ]
-
-/** Resolve the workspace for top navigation, including detail routes. */
-export function workspaceForPath(pathname: string): WorkspaceId | null {
-  const direct = navItems.find((item) => item.path === pathname)?.workspace
-  if (direct) return direct
-  if (pathname.startsWith('/game/')) return 'command'
-  if (pathname.startsWith('/profile/') || pathname.startsWith('/civ/')) return 'intel'
-  if (pathname.startsWith('/public-game/')) return 'matches'
-  return null
-}

@@ -40,7 +40,6 @@ import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
 import { formatCount } from '@shared/format'
 import { PageHead } from '../components/PageHead'
-import { WorkspaceNav } from '../components/WorkspaceNav'
 import { EmptyBox, ErrorBox, Spinner } from '../components/feedback'
 import { GameSummaryPanel } from '../components/GameSummaryPanel'
 import { BuildOrderComparisonCard } from '../components/BuildOrderComparisonCard'
@@ -649,8 +648,6 @@ export function ReplayLab() {
         sub="Browse every local match-history record, inspect public account history, and cache available online replays for offline review."
       />
 
-      <WorkspaceNav workspace="matches" />
-
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex gap-1" role="tablist" aria-label={tt('Replay sources')}>
           <SourceTab active={source === 'local'} onClick={() => setSource('local')}>
@@ -1066,7 +1063,10 @@ function LocalMatchOverview({
           label={tt('Duration')}
           value={duration == null ? tt('not available') : formatDuration(duration)}
         />
-        <Metric label={tt('Players')} value={String(Math.max(players.length, localPlayers.length))} />
+        <Metric
+          label={tt('Players')}
+          value={String(Math.max(players.length, localPlayers.length))}
+        />
         <Metric
           label={tt('Source')}
           value={item.source === 'matchhistory' ? tt('match history') : tt('playback')}
@@ -1137,17 +1137,15 @@ function AccountMatchOverview({
         <Metric label={tt('Mode')} value={item.game.leaderboard || item.game.kind || '—'} />
         <Metric
           label={tt('Duration')}
-          value={item.game.duration == null ? tt('not available') : formatDuration(item.game.duration)}
+          value={
+            item.game.duration == null ? tt('not available') : formatDuration(item.game.duration)
+          }
         />
         <Metric label={tt('Average rating')} value={String(item.game.average_rating ?? '—')} />
         <Metric
           label={tt('Result')}
           value={
-            me?.result === 'win'
-              ? tt('Win')
-              : me?.result === 'loss'
-                ? tt('Loss')
-                : tt('unknown')
+            me?.result === 'win' ? tt('Win') : me?.result === 'loss' ? tt('Loss') : tt('unknown')
           }
         />
       </div>
@@ -1159,13 +1157,22 @@ function AccountMatchOverview({
             </div>
             <div className="space-y-1">
               {team.map((player) => (
-                <div key={player.profile_id} className="flex items-center justify-between gap-2 text-xs">
-                  <span className={player.profile_id === profileId ? 'font-semibold text-primary' : ''}>
+                <div
+                  key={player.profile_id}
+                  className="flex items-center justify-between gap-2 text-xs"
+                >
+                  <span
+                    className={player.profile_id === profileId ? 'font-semibold text-primary' : ''}
+                  >
                     {player.name}
                   </span>
                   <span className="text-muted-foreground">
                     {civDisplayName(player.civilization)} ·{' '}
-                    {player.result === 'win' ? tt('Win') : player.result === 'loss' ? tt('Loss') : '—'}
+                    {player.result === 'win'
+                      ? tt('Win')
+                      : player.result === 'loss'
+                        ? tt('Loss')
+                        : '—'}
                   </span>
                 </div>
               ))}
@@ -1765,38 +1772,40 @@ function AccountReplayRow({
             {tt('Run replay analysis to open the command stream.')}
           </p>
         )}
-        {activeTab === 'match' && (item.summaryAvailable || displayedSummary != null) && showSummary && (
-          <div className="border-t border-border/60 pt-3">
-            {summaryQuery.isFetching && <Spinner label={tt('Loading summary…')} />}
-            {summaryError && <p className="text-xs text-loss">{summaryError}</p>}
-            {!summaryQuery.isFetching && !summaryError && !displayedSummary && (
-              <p className="text-xs text-muted-foreground">
-                {tt('Relic summary is not available for this match yet.')}
-              </p>
-            )}
-            {displayedSummary && (
-              <div className="space-y-4">
-                <TwitchVodCard input={myPlayer ? twitchVodInput : null} />
-                <BuildOrderComparisonCard
-                  summary={displayedSummary}
-                  myCiv={myPlayer?.civilization ?? null}
-                  myProfileId={profileId}
-                  myName={myPlayer?.name ?? null}
-                  map={game.map}
-                  format={game.kind}
-                  patch={game.patch == null ? null : String(game.patch)}
-                  linkedVideoAnalysis={linkedVideoAnalysis}
-                  verifiedVod={verifiedVod}
-                />
-                <GameSummaryPanel
-                  summary={displayedSummary}
-                  myCiv={myPlayer?.civilization ?? null}
-                  myProfileId={profileId}
-                />
-              </div>
-            )}
-          </div>
-        )}
+        {activeTab === 'match' &&
+          (item.summaryAvailable || displayedSummary != null) &&
+          showSummary && (
+            <div className="border-t border-border/60 pt-3">
+              {summaryQuery.isFetching && <Spinner label={tt('Loading summary…')} />}
+              {summaryError && <p className="text-xs text-loss">{summaryError}</p>}
+              {!summaryQuery.isFetching && !summaryError && !displayedSummary && (
+                <p className="text-xs text-muted-foreground">
+                  {tt('Relic summary is not available for this match yet.')}
+                </p>
+              )}
+              {displayedSummary && (
+                <div className="space-y-4">
+                  <TwitchVodCard input={myPlayer ? twitchVodInput : null} />
+                  <BuildOrderComparisonCard
+                    summary={displayedSummary}
+                    myCiv={myPlayer?.civilization ?? null}
+                    myProfileId={profileId}
+                    myName={myPlayer?.name ?? null}
+                    map={game.map}
+                    format={game.kind}
+                    patch={game.patch == null ? null : String(game.patch)}
+                    linkedVideoAnalysis={linkedVideoAnalysis}
+                    verifiedVod={verifiedVod}
+                  />
+                  <GameSummaryPanel
+                    summary={displayedSummary}
+                    myCiv={myPlayer?.civilization ?? null}
+                    myProfileId={profileId}
+                  />
+                </div>
+              )}
+            </div>
+          )}
       </CardContent>
     </Card>
   )
@@ -1843,9 +1852,13 @@ export function ReplayAnalysisPanel({
   const playerActions = filteredEvents.filter(isMeaningfulReplayAction)
   const hiddenServiceRecords = filteredEvents.length - playerActions.length
   const visibleEvents = playerActions.slice(0, eventLimit)
-  const knownCommands = stream.players.reduce((total, player) => total + player.knownCommandCount, 0)
+  const knownCommands = stream.players.reduce(
+    (total, player) => total + player.knownCommandCount,
+    0,
+  )
   const playerCommands = stream.players.reduce((total, player) => total + player.commandCount, 0)
-  const decodedPercent = playerCommands > 0 ? Math.round((knownCommands / playerCommands) * 100) : null
+  const decodedPercent =
+    playerCommands > 0 ? Math.round((knownCommands / playerCommands) * 100) : null
   const playerNames = new Map(
     stream.setup?.players.map((player) => [player.playerId, replayPlayerLabel(player)]) ?? [],
   )
@@ -1864,7 +1877,9 @@ export function ReplayAnalysisPanel({
       {open && (
         <div className="mt-3 space-y-3 text-xs">
           <div className="rounded-md border border-primary/25 bg-primary/5 p-3 text-xs leading-relaxed text-muted-foreground">
-            <span className="font-medium text-foreground">{tt('What this replay evidence shows')}. </span>
+            <span className="font-medium text-foreground">
+              {tt('What this replay evidence shows')}.{' '}
+            </span>
             {tt(
               'Only recognized player orders are shown below. Synchronization records and unknown payloads are hidden from the coaching view, but remain available in the technical journal. Use the match summary for economy, combat and unit-loss conclusions.',
             )}
@@ -1896,10 +1911,15 @@ export function ReplayAnalysisPanel({
               </div>
               <div className="grid gap-1 sm:grid-cols-2 lg:grid-cols-3">
                 {stream.setup.players.map((player) => (
-                  <div key={`${player.playerId}-${player.hostComputerId}`} className="rounded border border-border/50 px-2 py-1.5">
+                  <div
+                    key={`${player.playerId}-${player.hostComputerId}`}
+                    className="rounded border border-border/50 px-2 py-1.5"
+                  >
                     <div className="font-medium">
                       {player.name || `P${player.playerId}`}{' '}
-                      <span className="text-muted-foreground">· {civDisplayName(civFromToken(player.civToken) ?? player.civToken)}</span>
+                      <span className="text-muted-foreground">
+                        · {civDisplayName(civFromToken(player.civToken) ?? player.civToken)}
+                      </span>
                     </div>
                     <div className="text-[10px] text-muted-foreground">
                       {tt('Team')} {player.team} · P{player.playerId} · host {player.hostComputerId}
@@ -1921,8 +1941,10 @@ export function ReplayAnalysisPanel({
                     <span className="tabular-nums text-muted-foreground">
                       {message.timeSec == null ? '—' : formatDuration(message.timeSec)}
                     </span>{' '}
-                    <span className="font-medium">{message.playerName ?? `P${message.playerId ?? '?'}`}</span>:{' '}
-                    {message.message ?? tt('system message')}
+                    <span className="font-medium">
+                      {message.playerName ?? `P${message.playerId ?? '?'}`}
+                    </span>
+                    : {message.message ?? tt('system message')}
                   </div>
                 ))}
               </div>
@@ -1930,7 +1952,8 @@ export function ReplayAnalysisPanel({
           )}
           {stream.chunks.length > 0 && (
             <div className="text-[11px] text-muted-foreground">
-              {tt('Replay data chunks')}: {stream.chunks.map((chunk) => `${chunk.kind}:${chunk.id}`).join(' · ')}
+              {tt('Replay data chunks')}:{' '}
+              {stream.chunks.map((chunk) => `${chunk.kind}:${chunk.id}`).join(' · ')}
             </div>
           )}
           {stream.players.length > 0 && (
@@ -1946,56 +1969,60 @@ export function ReplayAnalysisPanel({
               </div>
               <div className="overflow-x-auto rounded-md border border-border/60">
                 <table className="w-full min-w-[900px] text-left text-[11px]">
-                <thead className="bg-secondary/40 text-muted-foreground">
-                  <tr>
-                    <th className="px-2 py-1.5">{tt('Player')}</th>
-                    <th className="px-2 py-1.5">{tt('Observed actions')}</th>
-                    <th className="px-2 py-1.5">{tt('APM')}</th>
-                    <th className="px-2 py-1.5">{tt('Input gaps')}</th>
-                    <th className="px-2 py-1.5">{tt('Longest gap')}</th>
-                    <th className="px-2 py-1.5">{tt('Schema confidence')}</th>
-                    <th className="px-2 py-1.5">{tt('Main actions')}</th>
-                    <th className="px-2 py-1.5">{tt('Activity trend')}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {stream.players.map((player) => (
-                    <tr key={player.playerId} className="border-t border-border/50">
-                      <td className="px-2 py-1.5 font-medium">
-                        {playerNames.get(player.playerId) ?? `P${player.playerId}`}
-                      </td>
-                      <td className="px-2 py-1.5 tabular-nums">{player.commandCount}</td>
-                      <td className="px-2 py-1.5 tabular-nums">{player.apm.toFixed(1)}</td>
-                      <td className="px-2 py-1.5 tabular-nums">
-                        {formatDuration(player.commandGapSec)}
-                      </td>
-                      <td className="px-2 py-1.5 tabular-nums">
-                        {formatDuration(player.maxCommandGapSec)}
-                      </td>
-                      <td className="px-2 py-1.5 tabular-nums">
-                        {player.knownCommandPct == null
-                          ? '—'
-                          : `${player.knownCommandPct.toFixed(1)}%`}
-                        <span className="ml-1 text-muted-foreground">
-                          ({player.knownCommandCount}/{player.commandCount})
-                        </span>
-                      </td>
-                      <td className="max-w-[300px] truncate px-2 py-1.5 text-muted-foreground">
-                        {commandMixLabel(player.commandTypes)}
-                      </td>
-                      <td className="px-2 py-1.5 tabular-nums">
-                        {activityTrendLabel(player.activityDropPct, player.activityWindows.length)}
-                      </td>
+                  <thead className="bg-secondary/40 text-muted-foreground">
+                    <tr>
+                      <th className="px-2 py-1.5">{tt('Player')}</th>
+                      <th className="px-2 py-1.5">{tt('Observed actions')}</th>
+                      <th className="px-2 py-1.5">{tt('APM')}</th>
+                      <th className="px-2 py-1.5">{tt('Input gaps')}</th>
+                      <th className="px-2 py-1.5">{tt('Longest gap')}</th>
+                      <th className="px-2 py-1.5">{tt('Schema confidence')}</th>
+                      <th className="px-2 py-1.5">{tt('Main actions')}</th>
+                      <th className="px-2 py-1.5">{tt('Activity trend')}</th>
                     </tr>
-                  ))}
-                </tbody>
+                  </thead>
+                  <tbody>
+                    {stream.players.map((player) => (
+                      <tr key={player.playerId} className="border-t border-border/50">
+                        <td className="px-2 py-1.5 font-medium">
+                          {playerNames.get(player.playerId) ?? `P${player.playerId}`}
+                        </td>
+                        <td className="px-2 py-1.5 tabular-nums">{player.commandCount}</td>
+                        <td className="px-2 py-1.5 tabular-nums">{player.apm.toFixed(1)}</td>
+                        <td className="px-2 py-1.5 tabular-nums">
+                          {formatDuration(player.commandGapSec)}
+                        </td>
+                        <td className="px-2 py-1.5 tabular-nums">
+                          {formatDuration(player.maxCommandGapSec)}
+                        </td>
+                        <td className="px-2 py-1.5 tabular-nums">
+                          {player.knownCommandPct == null
+                            ? '—'
+                            : `${player.knownCommandPct.toFixed(1)}%`}
+                          <span className="ml-1 text-muted-foreground">
+                            ({player.knownCommandCount}/{player.commandCount})
+                          </span>
+                        </td>
+                        <td className="max-w-[300px] truncate px-2 py-1.5 text-muted-foreground">
+                          {commandMixLabel(player.commandTypes, tt)}
+                        </td>
+                        <td className="px-2 py-1.5 tabular-nums">
+                          {activityTrendLabel(
+                            player.activityDropPct,
+                            player.activityWindows.length,
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
                 </table>
               </div>
             </>
           )}
           <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
             <ListChecks className="h-3.5 w-3.5" />
-            {tt('Production orders are queue commands, not completed units')}: {totalCommandType(stream, 'queue-unit')}
+            {tt('Production orders are queue commands, not completed units')}:{' '}
+            {totalCommandType(stream, 'queue-unit')}
           </div>
           {stream.players.length > 0 && (
             <label className="flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
@@ -2028,25 +2055,27 @@ export function ReplayAnalysisPanel({
                   {tt('Action timeline')} · {tt('only decisions recognized by the replay schema')}
                 </div>
                 <div className="max-h-64 overflow-auto">
-                {visibleEvents.map((event, index) => (
-                  <div
-                    key={`${event.offset}-${index}`}
-                    className="grid grid-cols-[52px_1fr_auto] gap-2 border-b border-border/40 px-2 py-2 last:border-b-0"
-                  >
-                    <span className="tabular-nums text-muted-foreground">
-                      {formatDuration(event.timeSec)}
-                    </span>
-                    <span className="min-w-0">
-                      <span className="font-medium">{tt(replayActionLabel(event.commandName))}</span>
-                      <span className="ml-1 text-muted-foreground">
-                        {replayActionDetail(event, tt)}
+                  {visibleEvents.map((event, index) => (
+                    <div
+                      key={`${event.offset}-${index}`}
+                      className="grid grid-cols-[52px_1fr_auto] gap-2 border-b border-border/40 px-2 py-2 last:border-b-0"
+                    >
+                      <span className="tabular-nums text-muted-foreground">
+                        {formatDuration(event.timeSec)}
                       </span>
-                    </span>
-                    <span className="truncate text-muted-foreground">
-                      {playerNames.get(event.playerId) ?? `P${event.playerId}`}
-                    </span>
-                  </div>
-                ))}
+                      <span className="min-w-0">
+                        <span className="font-medium">
+                          {tt(replayActionLabel(event.commandName))}
+                        </span>
+                        <span className="ml-1 text-muted-foreground">
+                          {replayActionDetail(event, tt)}
+                        </span>
+                      </span>
+                      <span className="truncate text-muted-foreground">
+                        {playerNames.get(event.playerId) ?? `P${event.playerId}`}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
               {eventLimit < playerActions.length ? (
@@ -2064,7 +2093,9 @@ export function ReplayAnalysisPanel({
           )}
           {visibleEvents.length === 0 && (
             <p className="rounded-md border border-border/60 bg-secondary/10 p-3 text-muted-foreground">
-              {tt('No player decision was identified by the current replay schema in this selection. This does not mean that the player was inactive.')}
+              {tt(
+                'No player decision was identified by the current replay schema in this selection. This does not mean that the player was inactive.',
+              )}
             </p>
           )}
           <div className="rounded-md border border-border/60 bg-secondary/10 p-3">
@@ -2072,7 +2103,9 @@ export function ReplayAnalysisPanel({
               <div>
                 <div className="font-medium">{tt('Technical journal and parser notes')}</div>
                 <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">
-                  {tt('Open this only to inspect raw decoded records or parser limitations. It is not used as coaching evidence.')}
+                  {tt(
+                    'Open this only to inspect raw decoded records or parser limitations. It is not used as coaching evidence.',
+                  )}
                 </p>
               </div>
               <button
@@ -2106,7 +2139,9 @@ export function ReplayAnalysisPanel({
 
 type ReplayEvent = ReplayAnalysisResult['commandStream']['events'][number]
 type ReplayPlayer = ReplayAnalysisResult['commandStream']['players'][number]
-type ReplaySetupPlayer = NonNullable<ReplayAnalysisResult['commandStream']['setup']>['players'][number]
+type ReplaySetupPlayer = NonNullable<
+  ReplayAnalysisResult['commandStream']['setup']
+>['players'][number]
 
 function isMeaningfulReplayAction(event: ReplayEvent): boolean {
   return (
@@ -2213,7 +2248,9 @@ function TechnicalJournal({
                 key={`${event.offset}-${index}`}
                 className="grid grid-cols-[52px_1fr_auto] gap-2 border-b border-border/40 px-2 py-1.5 last:border-b-0"
               >
-                <span className="tabular-nums text-muted-foreground">{formatDuration(event.timeSec)}</span>
+                <span className="tabular-nums text-muted-foreground">
+                  {formatDuration(event.timeSec)}
+                </span>
                 <span>{event.commandName}</span>
                 <span className="text-muted-foreground">P{event.playerId}</span>
               </div>
@@ -2265,12 +2302,15 @@ function activityTrendLabel(dropPct: number | null, windowCount: number): string
   return `${sign}${dropPct}% APM`
 }
 
-function commandMixLabel(commandTypes: Record<string, number>): string {
+function commandMixLabel(
+  commandTypes: Record<string, number>,
+  tt: (value: string) => string,
+): string {
   const entries = Object.entries(commandTypes).sort((a, b) => b[1] - a[1])
   return (
     entries
       .slice(0, 3)
-      .map(([name, count]) => `${name} ${count}`)
+      .map(([name, count]) => `${tt(replayActionLabel(name))} ${count}`)
       .join(' · ') || '—'
   )
 }

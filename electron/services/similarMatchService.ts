@@ -57,7 +57,9 @@ function parseQuery(input: unknown): SimilarMatchQuery {
       : null
   return {
     profileId:
-      typeof value.profileId === 'number' && Number.isSafeInteger(value.profileId) && value.profileId > 0
+      typeof value.profileId === 'number' &&
+      Number.isSafeInteger(value.profileId) &&
+      value.profileId > 0
         ? value.profileId
         : null,
     gameId:
@@ -239,11 +241,7 @@ async function searchFinderReferences(
   for (const reference of references) {
     if (reference.profileId == null) continue
     const gameId = Number(reference.gameId)
-    if (
-      !Number.isSafeInteger(gameId) ||
-      (query.gameId != null && gameId === query.gameId)
-    )
-      continue
+    if (!Number.isSafeInteger(gameId) || (query.gameId != null && gameId === query.gameId)) continue
     try {
       const game = await getClient().getGame(reference.profileId, gameId)
       const candidate = matchCandidate(game, query)

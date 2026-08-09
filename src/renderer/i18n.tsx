@@ -929,6 +929,21 @@ const UI: Record<Locale, Record<string, string>> = {
     'Age timing': 'Тайминг эпох',
     'Resources over time': 'Ресурсы во времени',
     'Score over time': 'Счёт во времени',
+    'Cumulative delivered resources. A higher line means more gathered economy, not necessarily more resources currently banked.':
+      'Накопленные доставленные ресурсы. Более высокая линия означает большую собранную экономику, но не обязательно больший текущий запас.',
+    'The game’s score components sampled over time. Use it to locate a swing, then confirm the cause in the checkpoint table and turning points.':
+      'Компоненты игрового счёта, зафиксированные во времени. Используйте график, чтобы найти перелом, затем подтвердите причину по контрольным точкам и переломным моментам.',
+    'What the timelines say': 'Что говорят временные шкалы',
+    'These readings name the last recorded lead so the charts are not just coloured lines. They do not assign a cause by themselves.':
+      'Эти выводы называют преимущество на последнем записанном отсчёте, чтобы графики не были просто цветными линиями. Сами по себе они не устанавливают причину.',
+    'last sample for each player': 'последний отсчёт каждого игрока',
+    'Economy lead': 'Преимущество по экономике',
+    'Score lead': 'Преимущество по счёту',
+    'delivered resources': 'доставленных ресурсов',
+    'You lead': 'Вы впереди',
+    'You trail': 'Вы отстаёте от',
+    by: 'на',
+    'Only one recorded player has this': 'Только у одного записанного игрока есть этот показатель',
     Scoreboard: 'Таблица счёта',
     Technology: 'Технологии',
     Tech: 'Технологии',
@@ -1370,6 +1385,72 @@ const UI: Record<Locale, Record<string, string>> = {
     'Full replay analysis': 'Полный разбор реплея',
     'Replay stream': 'Поток реплея',
     'Replay command analysis': 'Анализ командного потока',
+    'Replay evidence': 'Доказательства из реплея',
+    'What this replay evidence shows': 'Что подтверждают данные реплея',
+    'Only recognized player orders are shown below. Synchronization records and unknown payloads are hidden from the coaching view, but remain available in the technical journal. Use the match summary for economy, combat and unit-loss conclusions.':
+      'Ниже показаны только распознанные приказы игроков. Записи синхронизации и неизвестные данные скрыты из тренерского разбора, но доступны в техническом журнале. Для выводов об экономике, боях и потерях используйте сводку матча.',
+    'Recognized player actions': 'Распознанные действия игроков',
+    'Production orders': 'Приказы производства',
+    'Schema recognized': 'Распознано схемой',
+    'Hidden service records': 'Скрытые служебные записи',
+    'Observed actions': 'Наблюдаемые действия',
+    'Input gaps': 'Паузы ввода',
+    'Longest gap': 'Самая длинная пауза',
+    'Schema confidence': 'Уверенность схемы',
+    'Main actions': 'Основные действия',
+    'Production orders are queue commands, not completed units':
+      'Приказы производства — это очередь, а не завершённые юниты',
+    'Show actions for': 'Показывать действия игрока',
+    'recognized actions in view': 'распознанных действий в представлении',
+    'Action timeline': 'Шкала действий',
+    'only decisions recognized by the replay schema': 'только решения, распознанные схемой реплея',
+    'Show more actions': 'Показать ещё действия',
+    'No player decision was identified by the current replay schema in this selection. This does not mean that the player was inactive.':
+      'В этой выборке текущая схема реплея не распознала решений игрока. Это не означает, что игрок бездействовал.',
+    'Technical journal and parser notes': 'Технический журнал и заметки парсера',
+    'Open this only to inspect raw decoded records or parser limitations. It is not used as coaching evidence.':
+      'Открывайте этот раздел только для проверки сырых декодированных записей или ограничений парсера. Он не используется как тренерское доказательство.',
+    'Hide technical journal': 'Скрыть технический журнал',
+    'Open technical journal': 'Открыть технический журнал',
+    'Input gaps estimate periods without decoded player orders; they are not direct villager-idle measurements. Failed actions, worker allocation and scouting are not explicit replay events, so they are not presented as confirmed mistakes.':
+      'Паузы ввода оценивают периоды без декодированных приказов игрока; это не прямое измерение простоя крестьян. Неудачные действия, распределение рабочих и разведка не записываются как явные события реплея, поэтому не показываются как подтверждённые ошибки.',
+    'Queued unit': 'Поставлен юнит в очередь',
+    'Queued villager or unit': 'Поставлен в очередь крестьянин или юнит',
+    'Set rally point': 'Назначена точка сбора',
+    'Returned workers to work': 'Рабочие возвращены к работе',
+    'Started technology': 'Начато исследование технологии',
+    'Moved selected units': 'Перемещены выбранные юниты',
+    'Cancelled an order': 'Отменён приказ',
+    'Placed a building order': 'Отдан приказ строительства',
+    'Attack-move order': 'Приказ атаки с перемещением',
+    'Used unit ability': 'Использована способность юнита',
+    'Sought shelter': 'Отдан приказ укрыться',
+    'Gather or return-resource order': 'Приказ сбора или возврата ресурса',
+    'Changed unit stance': 'Изменена стойка юнитов',
+    'Patrol order': 'Приказ патруля',
+    'Placed area/building order': 'Приказ размещения области или здания',
+    'Recognized player action': 'Распознанное действие игрока',
+    selected: 'выбрано',
+    queued: 'в очереди',
+    'The replay did not provide enough command data for a confidence read.':
+      'В реплее недостаточно данных команд для оценки уверенности.',
+    'of this player’s decoded commands are understood by the current schema; avoid micro conclusions.':
+      'декодированных команд этого игрока понимаются текущей схемой; не делайте выводов о микроконтроле.',
+    'of decoded commands are recognized; the action timeline is usable as supporting evidence.':
+      'декодированных команд распознаны; шкалу действий можно использовать как вспомогательное доказательство.',
+    'No input gap longer than five seconds was observed.':
+      'Пауза ввода длиннее пяти секунд не наблюдалась.',
+    'input gap(s) longer than five seconds': 'пауз(ы) ввода длиннее пяти секунд',
+    longest: 'самая длинная',
+    'This is not proof of idle villagers.': 'Это не доказывает простой крестьян.',
+    'Observed command rate fell': 'Наблюдаемая частота команд снизилась на',
+    'Observed command rate rose': 'Наблюдаемая частота команд выросла на',
+    'between the first and last five-minute windows.':
+      'между первым и последним пятиминутными окнами.',
+    'No large recorded command-rate change across five-minute windows.':
+      'Существенного изменения частоты команд между пятиминутными окнами не зафиксировано.',
+    'decoded orders': 'декодированных приказов',
+    'Loading technical journal…': 'Загрузка технического журнала…',
     'full command stream': 'полный командный поток',
     'partial command stream': 'частичный командный поток',
     'header only': 'только заголовок',
@@ -1506,6 +1587,12 @@ const UI: Record<Locale, Record<string, string>> = {
     Victory: 'Победа',
     Defeat: 'Поражение',
     'Result unknown': 'Результат неизвестен',
+    'Focus this player in the match review': 'Сфокусировать разбор на этом игроке',
+    'Open match analysis': 'Открыть разбор матча',
+    'Open this player’s scout profile': 'Открыть разведданные игрока',
+    'Scout profile': 'Профиль разведки',
+    'Local / AI': 'Локальный / ИИ',
+    Viewing: 'Просмотр',
     Remove: 'Удалить',
     'No per-player breakdown for this game yet. Click':
       'Для этого матча пока нет разбора по игрокам. Нажмите',
@@ -1584,6 +1671,15 @@ const UI: Record<Locale, Record<string, string>> = {
     'Searching for similar winning games…': 'Ищу похожие победные игры…',
     'Searching for exact civilization-match games…': 'Ищу игры с точным составом цивилизаций…',
     'Reference games': 'Эталонные игры',
+    'Why this is a useful reference': 'Почему этот матч полезен как эталон',
+    'Reference is measurably ahead in {count} checkpoint(s); open the rows below to see the exact difference.':
+      'Эталон измеримо впереди по {count} контрольным точкам; откройте строки ниже, чтобы увидеть точную разницу.',
+    'Your game is ahead in {count} measured checkpoint(s); use the reference mainly as a timing check.':
+      'Ваша игра впереди по {count} измеримым контрольным точкам; используйте эталон в основном для сверки таймингов.',
+    'The recorded checkpoints are level. Use the opening timeline and VOD to compare decisions that the totals cannot show.':
+      'По записанным контрольным точкам игры равны. Сравните открытие и VOD, чтобы увидеть решения, которые не видны в итогах.',
+    'Match identity is confirmed, but detailed reference statistics are still loading or unavailable.':
+      'Совпадение матча подтверждено, но подробная статистика эталона ещё загружается или недоступна.',
     'No public match with this exact map and civilization composition was found.':
       'Публичная игра с точно такой картой и составом цивилизаций не найдена.',
     'No match with this exact map and civilization composition was found in the cached account archive or available public-game window.':
@@ -1618,6 +1714,21 @@ const UI: Record<Locale, Record<string, string>> = {
     'Open the reference game': 'Открыть эталонную игру',
     'Your game': 'Ваша игра',
     'Game length': 'Длительность игры',
+    'What it means': 'Что это означает',
+    'Missing in one of the match summaries': 'Нет данных в одной из сводок матчей',
+    'Context only — duration is not a quality score':
+      'Только контекст — длительность не является оценкой качества',
+    'Same recorded value': 'Записанные значения совпадают',
+    'Reference is ahead here': 'Эталон впереди по этому показателю',
+    'Your game is ahead here': 'Ваша игра впереди по этому показателю',
+    'Exact map': 'Та же карта',
+    'Same game mode': 'Тот же режим',
+    'Same civilization sides': 'Те же стороны цивилизаций',
+    'Same civilizations, side order may differ': 'Те же цивилизации, но стороны могут отличаться',
+    'Same map and target civilization, partial matchup':
+      'Та же карта и ваша цивилизация, частичный матчап',
+    'Same patch': 'Тот же патч',
+    'Target civilization won': 'Ваша цивилизация победила в эталоне',
     'Feudal timing': 'Переход в Феодал',
     'Castle timing': 'Переход в Замок',
     'Military units produced': 'Произведено военных юнитов',
@@ -1759,6 +1870,36 @@ const UI: Record<Locale, Record<string, string>> = {
     'Add this URL as an OBS Browser Source. The page polls the local state once per second.':
       'Добавьте этот URL как источник браузера OBS. Страница проверяет локальное состояние раз в секунду.',
     'Aegis-style shortcut practice': 'Тренировка сочетаний клавиш в стиле Aegis',
+    'Construction commands are defined for the standard AoE4 profile. The trainer shows a building and checks the two key presses in order.':
+      'Команды строительства заданы для стандартного профиля AoE4. Тренажёр показывает здание и проверяет два нажатия в правильном порядке.',
+    'verified commands': 'проверенных команд',
+    'Series settings': 'Параметры серии',
+    'Choose a set. Unknown or new commands are never presented as real bindings.':
+      'Выберите набор. Неизвестные и новые команды никогда не выдаются за настоящие сочетания.',
+    'Tasks per series': 'Заданий в серии',
+    'Building types': 'Типы зданий',
+    Fortifications: 'Оборона',
+    Research: 'Исследования',
+    'Choose a keyboard layout. Rebinding is available only for the custom grid.':
+      'Выберите раскладку клавиатуры. Переназначение доступно только для пользовательской сетки.',
+    'New series': 'Новая серия',
+    Series: 'Серия',
+    'Reset current series': 'Сбросить текущую серию',
+    'Construction grid': 'Сетка строительства',
+    'Click a cell, then press a key to rebind it.':
+      'Нажмите ячейку, затем клавишу для её переназначения.',
+    'This profile uses the standard AoE4 commands.':
+      'Этот профиль использует стандартные команды AoE4.',
+    'Press keys directly. Waiting for the first press.':
+      'Нажимайте клавиши напрямую. Ожидается первое нажатие.',
+    'First key accepted: {key}.': 'Первое нажатие принято: {key}.',
+    'Escape starts the command again.': 'Escape начинает команду заново.',
+    'This set has no verified standard construction commands yet.':
+      'В этом наборе пока нет проверенных стандартных команд строительства.',
+    'Not quite. Start the command again.': 'Неверно. Начните команду заново.',
+    'Series complete. Start a new one when you are ready.':
+      'Серия завершена. Когда будете готовы, начните новую.',
+    'Correct.': 'Верно.',
     'Keyboard profile': 'Профиль клавиатуры',
     'Choose the keyboard layout used by your AoE4 profile.':
       'Выберите раскладку клавиатуры, которую используете в профиле AoE4.',
@@ -3029,6 +3170,94 @@ function russianDynamic(input: string): string | null {
     if (translatedCiv) return `${labelledGameName[1]} - ${translatedCiv}`
   }
 
+  // Contextual Matchup Lab builds these explanations from numeric inputs and
+  // the domain role graph, so they cannot be represented by a fixed dictionary
+  // key. Keep the calculation in English and translate the rendered sentence.
+  const roleGraph = /^Role graph: (hard counter|soft answer|disadvantage|no explicit edge)\.$/.exec(
+    input,
+  )
+  if (roleGraph) {
+    const labels: Record<string, string> = {
+      'hard counter': 'жёсткий контр',
+      'soft answer': 'мягкий ответ',
+      disadvantage: 'невыгодный матчап',
+      'no explicit edge': 'явная связь не найдена',
+    }
+    return `Граф ролей: ${labels[roleGraph[1]!] ?? roleGraph[1]}.`
+  }
+  const attackerBonus = /^\+(\d+) bonus damage against the target classes\.$/.exec(input)
+  if (attackerBonus) return `+${attackerBonus[1]} бонусного урона против классов цели.`
+  const defenderBonus = /^The target has \+(\d+) bonus damage against the attacker classes\.$/.exec(
+    input,
+  )
+  if (defenderBonus) return `У цели +${defenderBonus[1]} бонусного урона против классов атакующего.`
+  const resourcesAt = /^At ([\d.]+) resources: ([\d.]+) vs ([\d.]+) units\.$/.exec(input)
+  if (resourcesAt) {
+    return `При ${resourcesAt[1]} ресурсов: ${resourcesAt[2]} против ${resourcesAt[3]} юнитов.`
+  }
+  const equalCount = /^At equal count: ([\d.]+) vs ([\d.]+) units\.$/.exec(input)
+  if (equalCount) return `При равной численности: ${equalCount[1]} против ${equalCount[2]} юнитов.`
+  const contextualReason =
+    /^(Choke: frontage, ranged fire and siege matter more\.|Forest: shortened sight lines reduce ranged efficiency\.|Open field: mobility and kiting have more room\.|Strong micro rewards range, speed and focus fire\.|A-move: control-dependent advantages are reduced\.)$/.exec(
+      input,
+    )
+  if (contextualReason) {
+    const translated: Record<string, string> = {
+      'Choke: frontage, ranged fire and siege matter more.':
+        'Узкий проход: важнее ширина фронта, дальний огонь и осада.',
+      'Forest: shortened sight lines reduce ranged efficiency.':
+        'Лес: короткие линии обзора снижают эффективность дальнего боя.',
+      'Open field: mobility and kiting have more room.':
+        'Открытое поле: больше пространства для мобильности и кайтинга.',
+      'Strong micro rewards range, speed and focus fire.':
+        'Сильный микроконтроль усиливает дальность, скорость и фокус огня.',
+      'A-move: control-dependent advantages are reduced.':
+        'А-мув: преимущества, зависящие от контроля, сокращаются.',
+    }
+    return translated[contextualReason[1]!] ?? contextualReason[1]!
+  }
+  const upgradeDelta = /^Relative upgrade advantage: ([+-]?\d+)\.$/.exec(input)
+  if (upgradeDelta) return `Относительное преимущество улучшений: ${upgradeDelta[1]}.`
+  if (input === 'Damage, durability and economy align better in this scenario.') {
+    return 'В этом сценарии лучше сочетаются урон, выживаемость и экономика.'
+  }
+  if (input === 'Without a class edge, positioning, support and focus fire remain decisive.') {
+    return 'Без преимущества класса решающими остаются позиция, поддержка и фокус огня.'
+  }
+  if (input === 'Learning model only: not a frame-accurate simulator or win probability.') {
+    return 'Это обучающая модель, а не покадровый симулятор и не вероятность победы.'
+  }
+  if (input === 'Land and naval units are evaluated in separate domains.') {
+    return 'Наземные и морские юниты оцениваются в отдельных моделях.'
+  }
+
+  const roleAnswer = /^(.+?) is a (.+?) answer to (.+)$/.exec(input)
+  if (roleAnswer) {
+    const roles: Record<string, string> = {
+      spearman: 'копейщик',
+      horseman: 'всадник',
+      knight: 'рыцарь',
+      archer: 'лучник',
+      crossbow: 'арбалетчик',
+      handcannon: 'ручной стрелок',
+      manatarms: 'мечник',
+      mangonel: 'мангол',
+      springald: 'спрингалд',
+      camel: 'верблюжий всадник',
+      elephant: 'слон',
+      scout: 'разведчик',
+    }
+    const unit = GAME_NAMES.ru[roleAnswer[1]!] ?? roleAnswer[1]
+    const target = GAME_NAMES.ru[roleAnswer[3]!] ?? roleAnswer[3]
+    return `${unit} — это ${roles[roleAnswer[2]!] ?? roleAnswer[2]}, ответ ${target}.`
+  }
+  if (input === 'available by the same age') return 'доступен в той же эпохе'
+  const availableAge = /^available in age (\d+)$/.exec(input)
+  if (availableAge) return `доступен в возрасте ${availableAge[1]}`
+  if (input === 'lower resource cost') return 'более низкая стоимость ресурсов'
+  if (input === 'faster training line') return 'более быстрая тренировочная линия'
+  if (input === 'anti-siege role') return 'противоосадная роль'
+
   const relative = /^(\d+)(m|h|d|mo|y) ago$/.exec(input)
   if (relative) {
     const units: Record<string, string> = {
@@ -3216,8 +3445,7 @@ function russianDynamic(input: string): string | null {
   const highKd = /^You won your fights \(K\/D ([\d.]+)\)$/.exec(input)
   if (highKd) return `Сражения выиграны (У/П ${highKd[1]})`
   const fewerUpgrades = /^Fewer upgrades \((\d+) vs (\d+)\)$/.exec(input)
-  if (fewerUpgrades)
-    return `Меньше улучшений (${fewerUpgrades[1]} против ${fewerUpgrades[2]})`
+  if (fewerUpgrades) return `Меньше улучшений (${fewerUpgrades[1]} против ${fewerUpgrades[2]})`
   if (
     input ===
     'Your opponent built a bigger army. Keep every production building working and spend banked resources — idle production loses the unit count.'
@@ -3308,18 +3536,34 @@ function russianBuildNote(input: string): string | null {
   }
   const exactTranslation = exact[input] ?? exact[`${input}.`]
   if (typeof exactTranslation === 'string') return exactTranslation
-  const put = /^Put (\d+) villagers on (food|wood|gold|stone) and build (?:a|an) (.+)\.$/.exec(input)
+  const put = /^Put (\d+) villagers on (food|wood|gold|stone) and build (?:a|an) (.+)\.$/.exec(
+    input,
+  )
   if (put) {
-    const resource = { food: 'еду', wood: 'дерево', gold: 'золото', stone: 'камень' }[put[2]!] ?? put[2]!
+    const resource =
+      { food: 'еду', wood: 'дерево', gold: 'золото', stone: 'камень' }[put[2]!] ?? put[2]!
     const building =
-      ({ 'Lumber Camp': 'лесопилку', 'Mining Camp': 'рудник', Mill: 'мельницу', House: 'дом' } as Record<string, string>)[put[3]!] ?? put[3]!
+      (
+        {
+          'Lumber Camp': 'лесопилку',
+          'Mining Camp': 'рудник',
+          Mill: 'мельницу',
+          House: 'дом',
+        } as Record<string, string>
+      )[put[3]!] ?? put[3]!
     return `Отправьте ${put[1]} крестьян на ${resource} и постройте ${building}`
   }
   const send = /^Send (\d+) villagers to (food|wood|gold|stone) with (?:a|an) (.+)\.$/.exec(input)
   if (send) {
-    const resource = { food: 'еде', wood: 'дереву', gold: 'золоту', stone: 'камню' }[send[2]!] ?? send[2]!
+    const resource =
+      { food: 'еде', wood: 'дереву', gold: 'золоту', stone: 'камню' }[send[2]!] ?? send[2]!
     const building =
-      ({ 'Lumber Camp': 'лесопилкой', 'Mining Camp': 'рудником', Mill: 'мельницей' } as Record<string, string>)[send[3]!] ?? send[3]!
+      (
+        { 'Lumber Camp': 'лесопилкой', 'Mining Camp': 'рудником', Mill: 'мельницей' } as Record<
+          string,
+          string
+        >
+      )[send[3]!] ?? send[3]!
     return `Отправьте ${send[1]} крестьян к ${resource} с ${building}`
   }
   return null

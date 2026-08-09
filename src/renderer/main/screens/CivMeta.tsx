@@ -51,7 +51,6 @@ import {
 } from '@shared/format'
 import { cn } from '@shared/lib/utils'
 import { PageHead } from '../components/PageHead'
-import { WorkspaceNav } from '../components/WorkspaceNav'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Skeleton } from '@shared/components/ui/skeleton'
 import { useCivMeta, useMatchupLab } from '../queries/useCivMeta'
@@ -253,8 +252,6 @@ export function CivMeta() {
         title="Civ Meta"
         sub="Live tier list, win/pick rates, matchups, and maps from AoE4World."
       />
-
-      <WorkspaceNav workspace="intel" />
 
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap gap-1" role="tablist">

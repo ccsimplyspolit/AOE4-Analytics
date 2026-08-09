@@ -6,7 +6,6 @@ import { PlayerSearch } from '../components/PlayerSearch'
 import { ScoutReportCard } from '../components/ScoutReportCard'
 import { ScoutLiveMetaCard } from '../components/ScoutLiveMetaCard'
 import { PageHead } from '../components/PageHead'
-import { WorkspaceNav } from '../components/WorkspaceNav'
 import { ErrorBox, Spinner } from '../components/feedback'
 import { useScout, useScoutMeta } from '../queries/useScout'
 import { useLiveMatch } from '../queries/useLiveMatch'
@@ -33,8 +32,6 @@ export function Scout() {
         title={tt('Scout')}
         sub={tt('Look up any opponent: rank, recent form, favourite civs and maps, and how to counter them.')}
       />
-
-      <WorkspaceNav workspace="intel" />
 
       <div className="max-w-xl">
         <PlayerSearch

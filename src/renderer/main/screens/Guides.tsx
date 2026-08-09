@@ -41,7 +41,6 @@ import { Markdown } from '@shared/components/Markdown'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
 import { PageHead } from '../components/PageHead'
-import { WorkspaceNav } from '../components/WorkspaceNav'
 import { BuildOrderViewer } from '../components/BuildOrderViewer'
 import { CommunityBuildSources } from '../components/CommunityBuildSources'
 import { CounterHelper } from '../components/tools/CounterHelper'
@@ -93,8 +92,6 @@ export function Guides() {
         title="Guides & Tools"
         sub="Beginner tactics, build orders, a counter helper, and a civ-picker quiz."
       />
-
-      <WorkspaceNav workspace="library" />
 
       <div className="flex gap-1 border-b border-border" role="tablist">
         {TABS.map((t) => {

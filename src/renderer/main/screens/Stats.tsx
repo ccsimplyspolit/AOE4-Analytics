@@ -44,7 +44,6 @@ import { PlaystyleRadar } from '../components/PlaystyleRadar'
 import { StatTile } from '../components/StatTile'
 import { CivOverviewTable, ProfileIdentityCard } from '../components/ProfileOverview'
 import { PageHead } from '../components/PageHead'
-import { WorkspaceNav } from '../components/WorkspaceNav'
 import { BenchmarkLens } from '../components/BenchmarkLens'
 import { EmptyBox, Spinner, ErrorBox } from '../components/feedback'
 import { CorpusAnalysisCard } from '../components/CorpusAnalysisCard'
@@ -156,8 +155,6 @@ export function Stats() {
           </div>
         }
       />
-
-      <WorkspaceNav workspace="command" />
 
       {analyze.data && !analyze.data.ok && (
         <ErrorBox message={analyze.data.error.message} onRetry={() => analyze.mutate(undefined)} />

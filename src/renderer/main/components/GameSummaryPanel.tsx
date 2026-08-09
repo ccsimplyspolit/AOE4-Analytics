@@ -137,6 +137,15 @@ export function GameSummaryPanel({
     perPlayer ?? [],
     myPlayerId ?? null,
   )
+  const economyTimelineRead = me
+    ? buildTimelineRead(players, me, (player) => {
+        const resources = lastTimelineResources(player)
+        return resources ? totalResources(resources) : null
+      })
+    : null
+  const scoreTimelineRead = me
+    ? buildTimelineRead(players, me, (player) => finalScore(player)?.total ?? null)
+    : null
 
   return (
     <div className="space-y-4">
@@ -229,34 +238,43 @@ export function GameSummaryPanel({
       </p>
 
       {(hasEco || hasScore) && (
-        <div className="grid gap-4 lg:grid-cols-2">
-          {hasEco && (
-            <ChartCard
-              title={tt('Resources over time')}
-              icon={<LineChartIcon className="h-4 w-4 text-primary" />}
-            >
-              <TimeChart
-                data={ecoData}
-                players={players}
-                colorOf={colorOf}
-                meId={me?.playerId ?? null}
-              />
-            </ChartCard>
-          )}
-          {hasScore && (
-            <ChartCard
-              title={tt('Score over time')}
-              icon={<Trophy className="h-4 w-4 text-primary" />}
-            >
-              <TimeChart
-                data={scoreData}
-                players={players}
-                colorOf={colorOf}
-                meId={me?.playerId ?? null}
-              />
-            </ChartCard>
-          )}
-        </div>
+        <>
+          <TimelineReadCard economy={economyTimelineRead} score={scoreTimelineRead} />
+          <div className="grid gap-4 lg:grid-cols-2">
+            {hasEco && (
+              <ChartCard
+                title={tt('Resources over time')}
+                icon={<LineChartIcon className="h-4 w-4 text-primary" />}
+                description={tt(
+                  'Cumulative delivered resources. A higher line means more gathered economy, not necessarily more resources currently banked.',
+                )}
+              >
+                <TimeChart
+                  data={ecoData}
+                  players={players}
+                  colorOf={colorOf}
+                  meId={me?.playerId ?? null}
+                />
+              </ChartCard>
+            )}
+            {hasScore && (
+              <ChartCard
+                title={tt('Score over time')}
+                icon={<Trophy className="h-4 w-4 text-primary" />}
+                description={tt(
+                  'The game’s score components sampled over time. Use it to locate a swing, then confirm the cause in the checkpoint table and turning points.',
+                )}
+              >
+                <TimeChart
+                  data={scoreData}
+                  players={players}
+                  colorOf={colorOf}
+                  meId={me?.playerId ?? null}
+                />
+              </ChartCard>
+            )}
+          </div>
+        </>
       )}
 
       {hasBuild && (
@@ -270,7 +288,7 @@ export function GameSummaryPanel({
                 <BuildOrderColumn
                   key={p.playerId}
                   player={p}
-                me={isMe(p, myProfileId ?? null, myCiv, myPlayerId ?? null)}
+                  me={isMe(p, myProfileId ?? null, myCiv, myPlayerId ?? null)}
                   color={colorOf.get(p.playerId)!}
                 />
               ))}
@@ -902,10 +920,10 @@ function AgeTable({
 }) {
   const { tt } = useI18n()
   const rows = players.map((player) => ({
+    player,
+    timings: ageTimings(
       player,
-      timings: ageTimings(
-        player,
-        isMe(player, myProfileId, myCiv, myPlayerId) ? myCiv : civFromToken(player.civToken),
+      isMe(player, myProfileId, myCiv, myPlayerId) ? myCiv : civFromToken(player.civToken),
     ),
   }))
   return (
@@ -1349,13 +1367,118 @@ function militaryComparison(row: TeamContributionPlayer, tt: (value: string) => 
   return parts.join(' · ') || tt('Military efficiency unavailable')
 }
 
+interface TimelineRead {
+  meId: number
+  mine: number | null
+  leader: PlayerSummary | null
+  leaderValue: number | null
+  runnerUp: PlayerSummary | null
+  runnerUpValue: number | null
+}
+
+function buildTimelineRead(
+  players: PlayerSummary[],
+  me: PlayerSummary,
+  value: (player: PlayerSummary) => number | null,
+): TimelineRead {
+  const rows = players
+    .map((player) => ({ player, value: value(player) }))
+    .filter((row): row is { player: PlayerSummary; value: number } => row.value != null)
+    .sort((left, right) => right.value - left.value)
+  const mine = rows.find((row) => row.player.playerId === me.playerId)?.value ?? null
+  return {
+    meId: me.playerId,
+    mine,
+    leader: rows[0]?.player ?? null,
+    leaderValue: rows[0]?.value ?? null,
+    runnerUp: rows.find((row) => row.player.playerId !== me.playerId)?.player ?? null,
+    runnerUpValue: rows.find((row) => row.player.playerId !== me.playerId)?.value ?? null,
+  }
+}
+
+function TimelineReadCard({
+  economy,
+  score,
+}: {
+  economy: TimelineRead | null
+  score: TimelineRead | null
+}) {
+  const { tt } = useI18n()
+  return (
+    <Card>
+      <CardContent className="p-4">
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <div>
+            <h3 className="text-sm font-semibold">{tt('What the timelines say')}</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              {tt(
+                'These readings name the last recorded lead so the charts are not just coloured lines. They do not assign a cause by themselves.',
+              )}
+            </p>
+          </div>
+          <span className="text-[10px] text-muted-foreground">
+            {tt('last sample for each player')}
+          </span>
+        </div>
+        <div className="mt-3 grid gap-3 md:grid-cols-2">
+          <TimelineReadItem
+            label={tt('Economy lead')}
+            read={economy}
+            measure={tt('delivered resources')}
+          />
+          <TimelineReadItem label={tt('Score lead')} read={score} measure={tt('score')} />
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+
+function TimelineReadItem({
+  label,
+  read,
+  measure,
+}: {
+  label: string
+  read: TimelineRead | null
+  measure: string
+}) {
+  const { tt } = useI18n()
+  if (!read || read.mine == null || !read.leader || read.leaderValue == null) {
+    return (
+      <div className="rounded-md border border-border/60 bg-secondary/10 p-3">
+        <div className="text-[10px] uppercase tracking-wide text-muted-foreground">{label}</div>
+        <p className="mt-1 text-xs text-muted-foreground">{tt('Timeline sample unavailable')}</p>
+      </div>
+    )
+  }
+  const iLead = read.leader.playerId === read.meId
+  const other = iLead ? read.runnerUp : read.leader
+  const otherValue = iLead ? read.runnerUpValue : read.leaderValue
+  const gap = otherValue == null ? null : Math.abs(read.mine - otherValue)
+  return (
+    <div className="rounded-md border border-border/60 bg-secondary/10 p-3">
+      <div className="text-[10px] uppercase tracking-wide text-muted-foreground">{label}</div>
+      <div className="mt-1 text-lg font-semibold tabular-nums">{fmtInt(read.mine)}</div>
+      <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">
+        {other && gap != null
+          ? iLead
+            ? `${tt('You lead')} ${tt(playerLabel(other))} ${tt('by')} ${fmtInt(gap)} ${measure}.`
+            : `${tt('You trail')} ${tt(playerLabel(other))} ${tt('by')} ${fmtInt(gap)} ${measure}.`
+          : `${tt('Only one recorded player has this')} ${measure}.`}
+      </p>
+    </div>
+  )
+}
+
 function ChartCard({
   title,
   icon,
+  description,
   children,
 }: {
   title: string
   icon: ReactNode
+  description?: string
   children: ReactNode
 }) {
   return (
@@ -1365,6 +1488,9 @@ function ChartCard({
           {icon}
           {title}
         </h3>
+        {description && (
+          <p className="mb-3 text-[11px] leading-relaxed text-muted-foreground">{description}</p>
+        )}
         {children}
       </CardContent>
     </Card>
@@ -1405,56 +1531,70 @@ function TimeChart({
 }) {
   const { tt } = useI18n()
   return (
-    <div className="h-52 w-full overflow-hidden">
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data} margin={{ top: 8, right: 12, bottom: 4, left: -8 }}>
-          <CartesianGrid stroke={GRID} strokeDasharray="3 3" vertical={false} />
-          <XAxis
-            dataKey="t"
-            stroke={MUTED}
-            fontSize={11}
-            tickLine={false}
-            axisLine={false}
-            tickFormatter={formatDurationShort}
-          />
-          <YAxis
-            stroke={MUTED}
-            fontSize={11}
-            tickLine={false}
-            axisLine={false}
-            width={44}
-            tickFormatter={fmtK}
-          />
-          <Tooltip
-            contentStyle={{
-              background: 'hsl(var(--popover))',
-              color: 'hsl(var(--popover-foreground))',
-              border: `1px solid ${GRID}`,
-              borderRadius: 8,
-              fontSize: 12,
-            }}
-            labelStyle={{ color: MUTED }}
-            labelFormatter={(t) => formatDurationShort(Number(t))}
-            formatter={(v, key) => {
-              const pid = Number(String(key).slice(1))
-              const p = players.find((x) => x.playerId === pid)
-              return [formatCount(Number(v)), p ? tt(playerLabel(p)) : String(key)]
-            }}
-          />
-          {players.map((p) => (
-            <Line
-              key={p.playerId}
-              type="monotone"
-              dataKey={`p${p.playerId}`}
-              stroke={colorOf.get(p.playerId)}
-              strokeWidth={p.playerId === meId ? 2.5 : 1.5}
-              dot={false}
-              connectNulls
-              isAnimationActive={false}
+    <div className="space-y-2">
+      <div className="flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-muted-foreground">
+        {players.map((player) => (
+          <span key={player.playerId} className="inline-flex items-center gap-1.5">
+            <span
+              className="h-2 w-2 rounded-full"
+              style={{ backgroundColor: colorOf.get(player.playerId) }}
             />
-          ))}
-        </LineChart>
-      </ResponsiveContainer>
+            {tt(playerLabel(player))}
+            {player.playerId === meId && <span className="text-primary">({tt('You')})</span>}
+          </span>
+        ))}
+      </div>
+      <div className="h-48 w-full overflow-hidden">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={data} margin={{ top: 8, right: 12, bottom: 4, left: -8 }}>
+            <CartesianGrid stroke={GRID} strokeDasharray="3 3" vertical={false} />
+            <XAxis
+              dataKey="t"
+              stroke={MUTED}
+              fontSize={11}
+              tickLine={false}
+              axisLine={false}
+              tickFormatter={formatDurationShort}
+            />
+            <YAxis
+              stroke={MUTED}
+              fontSize={11}
+              tickLine={false}
+              axisLine={false}
+              width={44}
+              tickFormatter={fmtK}
+            />
+            <Tooltip
+              contentStyle={{
+                background: 'hsl(var(--popover))',
+                color: 'hsl(var(--popover-foreground))',
+                border: `1px solid ${GRID}`,
+                borderRadius: 8,
+                fontSize: 12,
+              }}
+              labelStyle={{ color: MUTED }}
+              labelFormatter={(t) => formatDurationShort(Number(t))}
+              formatter={(v, key) => {
+                const pid = Number(String(key).slice(1))
+                const p = players.find((x) => x.playerId === pid)
+                return [formatCount(Number(v)), p ? tt(playerLabel(p)) : String(key)]
+              }}
+            />
+            {players.map((p) => (
+              <Line
+                key={p.playerId}
+                type="monotone"
+                dataKey={`p${p.playerId}`}
+                stroke={colorOf.get(p.playerId)}
+                strokeWidth={p.playerId === meId ? 2.5 : 1.5}
+                dot={false}
+                connectNulls
+                isAnimationActive={false}
+              />
+            ))}
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   )
 }
@@ -1543,6 +1683,11 @@ function isMe(
 /** Exact end-game totals from the header; last timeline sample only as fallback. */
 function finalResources(p: PlayerSummary): ResourceAmounts | null {
   if (p.totals && totalResources(p.totals.resourcesGathered) > 0) return p.totals.resourcesGathered
+  return lastTimelineResources(p)
+}
+
+/** Last plotted economy sample; used only to explain the resource chart. */
+function lastTimelineResources(p: PlayerSummary): ResourceAmounts | null {
   const last = [...p.resources].sort((a, b) => a.timeSec - b.timeSec).at(-1)
   return last?.gathered ?? null
 }
