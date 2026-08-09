@@ -514,6 +514,7 @@ function similarMatchQuery(match: StoredMatch, profileId: number | null): Simila
     enemyTeamCivs,
     winsOnly: true,
     ratingAbove: match.rating,
+    durationMaxSec: match.durationSec,
     limit: 5,
     // The background account archive can contain years of games; let the
     // local-first search use the full supported two-year comparison window.

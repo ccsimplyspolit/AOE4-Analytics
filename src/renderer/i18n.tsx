@@ -2813,6 +2813,12 @@ const UI: Record<Locale, Record<string, string>> = {
     'Get a LibreTranslate key': 'Получить ключ LibreTranslate',
     'Create Twitch credentials': 'Создать данные Twitch',
     'Create a YouTube API key': 'Создать API-ключ YouTube',
+    'Shorter reference game': 'Эталонный матч короче',
+    'Similar game length': 'Похожая длительность игры',
+    'Longer reference game': 'Эталонный матч дольше',
+    'Game length unavailable': 'Длительность неизвестна',
+    'The reference produced more military units — add production before floating resources and queue units continuously.':
+      'Эталон создал больше военных юнитов — раньше добавляйте производство, не копите ресурсы и поддерживайте очереди непрерывно.',
   },
   en: {},
   uk: {

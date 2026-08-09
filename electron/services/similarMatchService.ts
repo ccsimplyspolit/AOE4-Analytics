@@ -7,6 +7,7 @@ import type {
   SimilarMatchTeam,
 } from '@domain/similarMatch'
 import {
+  compareMatchDurations,
   gamePlayerRow,
   normalizeMatchToken,
   rankSimilarMatchCandidates,
@@ -49,6 +50,10 @@ function parseQuery(input: unknown): SimilarMatchQuery {
     typeof value.lookbackDays === 'number' && Number.isFinite(value.lookbackDays)
       ? value.lookbackDays
       : DEFAULT_LOOKBACK_DAYS
+  const durationMaxSec =
+    typeof value.durationMaxSec === 'number' && Number.isFinite(value.durationMaxSec)
+      ? Math.max(1, value.durationMaxSec)
+      : null
   return {
     profileId:
       typeof value.profileId === 'number' && Number.isSafeInteger(value.profileId) && value.profileId > 0
@@ -68,6 +73,7 @@ function parseQuery(input: unknown): SimilarMatchQuery {
       typeof value.ratingAbove === 'number' && Number.isFinite(value.ratingAbove)
         ? value.ratingAbove
         : null,
+    durationMaxSec,
     limit: Math.max(1, Math.min(5, Math.floor(limit))),
     lookbackDays: Math.max(30, Math.min(730, Math.floor(lookbackDays))),
   }
@@ -165,6 +171,8 @@ function matchCandidate(game: Game, query: SimilarMatchQuery): SimilarMatchCandi
     )
   if (!reference) return null
 
+  const duration = compareMatchDurations(query.durationMaxSec, game.duration)
+
   const reasons = ['Exact map']
   if (kindExact) reasons.push('Same game mode')
   if (targetTeamExact && enemyTeamExact) reasons.push('Same civilization sides')
@@ -172,6 +180,8 @@ function matchCandidate(game: Game, query: SimilarMatchQuery): SimilarMatchCandi
   else reasons.push('Same map and target civilization, partial matchup')
   if (patchExact) reasons.push('Same patch')
   if (targetTeamWon) reasons.push('Target civilization won')
+  if (duration.relation === 'shorter') reasons.push('Shorter reference game')
+  else if (duration.relation === 'similar') reasons.push('Similar game length')
 
   const score =
     50 +
@@ -182,7 +192,8 @@ function matchCandidate(game: Game, query: SimilarMatchQuery): SimilarMatchCandi
     (distance == null
       ? 0
       : Math.max(0, 5 - (distance / (query.lookbackDays ?? DEFAULT_LOOKBACK_DAYS)) * 5)) +
-    Math.min(6, (averageRating(teams) ?? 0) / 300)
+    Math.min(6, (averageRating(teams) ?? 0) / 300) +
+    (duration.relation === 'shorter' ? 8 : duration.relation === 'similar' ? 6 : 0)
 
   return {
     gameId: game.game_id,
@@ -191,6 +202,8 @@ function matchCandidate(game: Game, query: SimilarMatchQuery): SimilarMatchCandi
     kind: game.kind,
     patch: game.patch == null ? null : String(game.patch),
     durationSec: game.duration,
+    durationRelation: duration.relation,
+    durationDeltaSec: duration.deltaSec,
     averageRating: averageRating(teams) ?? game.average_rating ?? null,
     score: Math.round(score * 10) / 10,
     quality,

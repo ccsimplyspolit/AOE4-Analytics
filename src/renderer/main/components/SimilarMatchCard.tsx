@@ -34,6 +34,7 @@ interface Metric {
   reference: number | null
   kind?: 'seconds' | 'number'
   lowerIsBetter?: boolean
+  neutral?: boolean
 }
 
 export function SimilarMatchCard({
@@ -128,7 +129,7 @@ export function SimilarMatchCard({
         <CardContent className="space-y-4 p-4">
           <p className="text-sm text-muted-foreground">
             {tt(
-              'The app searches your complete cached account archive first, then the available public-game window (up to 1,000 recent matches), and compares detailed checkpoints for the best matching winner.',
+              'The app searches your complete cached account archive first, then the available public-game window (up to 1,000 recent matches). It prefers a higher-rated winner with the same map and civilization sides; a shorter or similarly timed game is a valid reference.',
             )}
           </p>
 
@@ -298,6 +299,11 @@ function ReferenceGameButton({
           <div className="mt-1 text-[11px] text-muted-foreground">
             {new Date(candidate.startedAt).toLocaleDateString()} ·{' '}
             {formatDurationShort(candidate.durationSec)}
+            {candidate.durationRelation !== 'unknown' && (
+              <span className="ml-2 text-primary">
+                · {durationLabel(candidate.durationRelation, tt)}
+              </span>
+            )}
           </div>
         </div>
         <span className="shrink-0 text-xs tabular-nums text-primary">
@@ -341,6 +347,11 @@ function ReferenceHeader({ candidate }: { candidate: SimilarMatchCandidate }) {
           {tt('Reference game')} · {civDisplayName(candidate.referenceCiv)}
           {candidate.targetTeamWon && (
             <Badge className="border-win/30 bg-win/10 text-win">{tt('win')}</Badge>
+          )}
+          {candidate.durationRelation !== 'unknown' && (
+            <Badge variant="outline" className="text-[10px]">
+              {durationLabel(candidate.durationRelation, tt)}
+            </Badge>
           )}
         </div>
         <div className="mt-1 text-xs text-muted-foreground">
@@ -422,7 +433,11 @@ function ComparisonTable({ metrics }: { metrics: Metric[] }) {
                 ? metric.reference - metric.current
                 : null
             const better =
-              delta == null || delta === 0 ? null : metric.lowerIsBetter ? delta < 0 : delta > 0
+              metric.neutral || delta == null || delta === 0
+                ? null
+                : metric.lowerIsBetter
+                  ? delta < 0
+                  : delta > 0
             return (
               <tr key={metric.label} className="border-t border-border/50">
                 <td className="px-2 py-1.5 font-medium">{tt(metric.label)}</td>
@@ -533,7 +548,7 @@ function buildMetrics(
       current: currentDuration,
       reference: referenceDuration,
       kind: 'seconds',
-      lowerIsBetter: false,
+      neutral: true,
     },
     {
       label: 'Feudal timing',
@@ -619,6 +634,15 @@ function buildLessons(metrics: Metric[], candidate: SimilarMatchCandidate | null
     lessons.push(
       'The reference reached a larger army — spend resources sooner and keep production buildings active.',
     )
+  const produced = metric('Military units produced')
+  if (
+    produced?.current != null &&
+    produced.reference != null &&
+    produced.reference > produced.current + 4
+  )
+    lessons.push(
+      'The reference produced more military units — add production before floating resources and queue units continuously.',
+    )
   const losses = metric('Units lost')
   if (losses?.current != null && losses.reference != null && losses.reference < losses.current - 3)
     lessons.push(
@@ -629,6 +653,16 @@ function buildLessons(metrics: Metric[], candidate: SimilarMatchCandidate | null
       'Use the reference replay as a timing template: compare the first age-up, first army, and first decisive fight.',
     )
   return lessons.slice(0, 4)
+}
+
+function durationLabel(
+  relation: SimilarMatchCandidate['durationRelation'],
+  translate: (value: string) => string,
+): string {
+  if (relation === 'shorter') return translate('Shorter reference game')
+  if (relation === 'similar') return translate('Similar game length')
+  if (relation === 'longer') return translate('Longer reference game')
+  return translate('Game length unavailable')
 }
 
 function youtubeSearchUrl(candidate: SimilarMatchCandidate): string {

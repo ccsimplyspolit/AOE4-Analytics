@@ -1,6 +1,7 @@
 import type { GameResult, GamePlayer } from '@api/types'
 
 export type SimilarMatchQuality = 'exact' | 'same-matchup' | 'similar'
+export type SimilarMatchDuration = 'shorter' | 'similar' | 'longer' | 'unknown'
 
 export interface SimilarMatchPlayer {
   profileId: number
@@ -24,6 +25,10 @@ export interface SimilarMatchCandidate {
   kind: string
   patch: string | null
   durationSec: number | null
+  /** How the reference game's length compares with the current match. */
+  durationRelation: SimilarMatchDuration
+  /** Reference duration minus current duration, in seconds. */
+  durationDeltaSec: number | null
   averageRating: number | null
   score: number
   quality: SimilarMatchQuality
@@ -51,6 +56,8 @@ export interface SimilarMatchQuery {
   winsOnly?: boolean
   /** Prefer candidates whose average player rating is above this game rating. */
   ratingAbove?: number | null
+  /** Prefer a reference that is no longer than the current game. */
+  durationMaxSec?: number | null
   limit?: number
   lookbackDays?: number
 }
@@ -81,10 +88,39 @@ export function rankSimilarMatchCandidates(
       if (averageRatingDelta !== 0) return averageRatingDelta
       const referenceRatingDelta = (b.referenceRating ?? -1) - (a.referenceRating ?? -1)
       if (referenceRatingDelta !== 0) return referenceRatingDelta
+      const durationPreference: Record<SimilarMatchDuration, number> = {
+        shorter: 3,
+        similar: 2,
+        longer: 1,
+        unknown: 0,
+      }
+      const durationDelta =
+        durationPreference[b.durationRelation] - durationPreference[a.durationRelation]
+      if (durationDelta !== 0) return durationDelta
       if (b.score !== a.score) return b.score - a.score
       return Date.parse(b.startedAt) - Date.parse(a.startedAt)
     })
     .slice(0, safeLimit)
+}
+
+export function compareMatchDurations(
+  currentSec: number | null | undefined,
+  referenceSec: number | null | undefined,
+): { relation: SimilarMatchDuration; deltaSec: number | null } {
+  if (
+    currentSec == null ||
+    referenceSec == null ||
+    !Number.isFinite(currentSec) ||
+    !Number.isFinite(referenceSec) ||
+    currentSec <= 0 ||
+    referenceSec <= 0
+  ) {
+    return { relation: 'unknown', deltaSec: null }
+  }
+  const deltaSec = Math.round(referenceSec - currentSec)
+  if (deltaSec <= -60) return { relation: 'shorter', deltaSec }
+  if (deltaSec <= 90) return { relation: 'similar', deltaSec }
+  return { relation: 'longer', deltaSec }
 }
 
 export function normalizeMatchToken(value: string | null | undefined): string {

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import {
+  compareMatchDurations,
   civMultiset,
   inferGameKind,
   normalizeMatchToken,
@@ -11,6 +12,13 @@ import {
 } from '../similarMatch'
 
 describe('similar match matching primitives', () => {
+  it('accepts shorter references and labels duration context', () => {
+    expect(compareMatchDurations(900, 780)).toEqual({ relation: 'shorter', deltaSec: -120 })
+    expect(compareMatchDurations(900, 950)).toEqual({ relation: 'similar', deltaSec: 50 })
+    expect(compareMatchDurations(900, 1_100)).toEqual({ relation: 'longer', deltaSec: 200 })
+    expect(compareMatchDurations(null, 900)).toEqual({ relation: 'unknown', deltaSec: null })
+  })
+
   it('normalizes local 1v1 formats to AoE4World rm_solo', () => {
     expect(inferGameKind('1v1')).toBe('rm_solo')
     expect(inferGameKind('rm_1v1')).toBe('rm_solo')
@@ -46,6 +54,8 @@ describe('similar match matching primitives', () => {
       kind: 'rm_1v1',
       patch: '12',
       durationSec: 900,
+      durationRelation: 'similar',
+      durationDeltaSec: 0,
       averageRating,
       score: 50,
       quality: 'exact',
@@ -74,6 +84,8 @@ describe('similar match matching primitives', () => {
       kind: 'rm_1v1',
       patch: '12',
       durationSec: 900,
+      durationRelation: 'similar',
+      durationDeltaSec: 0,
       averageRating,
       score: 50,
       quality: 'exact',
