@@ -79,7 +79,7 @@ function ProfileBody({ report }: { report: Parameters<typeof ScoutReportCard>[0]
         <span className="text-2xl" aria-hidden>
           {countryFlag(report.country)}
         </span>
-        <h1 className="text-2xl font-semibold tracking-tight">{report.name}</h1>
+        <h1 className="min-w-0 break-words text-2xl font-semibold tracking-tight">{report.name}</h1>
         <RankBadge rank={primary} />
       </header>
 
@@ -108,10 +108,12 @@ function ProfileBody({ report }: { report: Parameters<typeof ScoutReportCard>[0]
             {modes.map((m) => (
               <div
                 key={m.leaderboard}
-                className="flex items-center justify-between border-b border-border px-4 py-2 text-sm last:border-b-0"
+                className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-b border-border px-4 py-2 text-sm last:border-b-0"
               >
-                <span className="font-medium">{tt(formatLeaderboard(m.leaderboard))}</span>
-                <span className="flex items-center gap-4 text-muted-foreground">
+                <span className="min-w-0 flex-1 break-words font-medium">
+                  {tt(formatLeaderboard(m.leaderboard))}
+                </span>
+                <span className="flex flex-wrap items-center justify-end gap-x-4 gap-y-1 text-muted-foreground">
                   <span style={{ color: rankColor(m.rankLevel) }}>
                     {tt(formatRankLevel(m.rankLevel))}
                   </span>

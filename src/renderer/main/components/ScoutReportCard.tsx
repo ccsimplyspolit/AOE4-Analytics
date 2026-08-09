@@ -2,7 +2,13 @@ import type { ScoutReport } from '@domain/types'
 import { Link } from 'react-router-dom'
 import { Swords, Map as MapIcon, Info, ShieldCheck, ArrowRight } from 'lucide-react'
 import { Card, CardContent } from '@shared/components/ui/card'
-import { countryFlag, formatPercent, formatRating, formatDurationShort, winRateTone } from '@shared/format'
+import {
+  countryFlag,
+  formatPercent,
+  formatRating,
+  formatDurationShort,
+  winRateTone,
+} from '@shared/format'
 import { counterPlanForCiv } from '@domain/civUnits'
 import { RankBadge } from './RankBadge'
 import { FormPips } from './FormPips'
@@ -29,7 +35,7 @@ export function ScoutReportCard({
   return (
     <Card className="overflow-hidden">
       <CardContent className="space-y-5 p-5">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="min-w-0">
             <div className="flex items-center gap-2">
               <span className="text-lg" aria-hidden>
@@ -43,9 +49,15 @@ export function ScoutReportCard({
           </div>
           <div className="shrink-0 text-right text-xs text-muted-foreground">
             {report.primary?.maxRating != null && (
-              <div>{tt('Peak')} {formatRating(report.primary.maxRating)}</div>
+              <div>
+                {tt('Peak')} {formatRating(report.primary.maxRating)}
+              </div>
             )}
-            {report.primary && <div>{report.primary.gamesCount} {tt('games')}</div>}
+            {report.primary && (
+              <div>
+                {report.primary.gamesCount} {tt('games')}
+              </div>
+            )}
             {showProfileLink && (
               <Link
                 to={`/profile/${report.profileId}`}
@@ -59,7 +71,9 @@ export function ScoutReportCard({
 
         {!report.hasData && (
           <div className="rounded-md border border-border bg-secondary/40 px-3 py-2 text-xs text-muted-foreground">
-            {tt('Limited public data — this player may have a private match history or few rated games.')}
+            {tt(
+              'Limited public data — this player may have a private match history or few rated games.',
+            )}
           </div>
         )}
 
@@ -113,7 +127,8 @@ export function ScoutReportCard({
                   .join(' + ')}
               </span>{' '}
               <span className="text-muted-foreground">
-                — {tt('Answers their {units}.').replace(
+                —{' '}
+                {tt('Answers their {units}.').replace(
                   '{units}',
                   counterPlan.keyUnits.map((u) => gameName(u.name)).join(' & '),
                 )}
@@ -158,12 +173,14 @@ function localizedScoutNote(
   gameName: (value: string) => string,
 ): string {
   const { topCivs, recentForm } = report
-  if (topCivs.length === 0) return tt('No recent public games to scout. Play your standard opening and scout in-game to read their plan.')
+  if (topCivs.length === 0)
+    return tt(
+      'No recent public games to scout. Play your standard opening and scout in-game to read their plan.',
+    )
 
   const main = topCivs[0]!
-  const win = main.winRate != null
-    ? tt(', {rate}% win').replace('{rate}', String(main.winRate))
-    : ''
+  const win =
+    main.winRate != null ? tt(', {rate}% win').replace('{rate}', String(main.winRate)) : ''
   const parts = [
     tt('Mostly plays {civ} ({games} of last {total}{win}).')
       .replace('{civ}', gameName(main.civName))
@@ -175,12 +192,20 @@ function localizedScoutNote(
     parts.push(
       tt('Also seen on: {civs}.').replace(
         '{civs}',
-        topCivs.slice(1).map((civ) => gameName(civ.civName)).join(', '),
+        topCivs
+          .slice(1)
+          .map((civ) => gameName(civ.civName))
+          .join(', '),
       ),
     )
   }
   if (recentForm.streak <= -3) parts.push(tt('On a losing streak — may play it safe or tilt.'))
-  else if (recentForm.streak >= 3) parts.push(tt('On a win streak — likely confident and aggressive.'))
-  parts.push(tt('Scout early, deny their key economy, and prepare a counter to their main composition. (Civ-specific counters arrive in Phase 2.)'))
+  else if (recentForm.streak >= 3)
+    parts.push(tt('On a win streak — likely confident and aggressive.'))
+  parts.push(
+    tt(
+      'Scout early, deny their key economy, and prepare a counter to their main composition. (Civ-specific counters arrive in Phase 2.)',
+    ),
+  )
   return parts.join(' ')
 }
