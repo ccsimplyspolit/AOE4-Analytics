@@ -59,7 +59,7 @@ describe('local replay archive discovery', () => {
     expect(getLocalDataStatus()).toEqual(
       expect.objectContaining({
         consentGranted: true,
-        available: true,
+        available: process.platform === 'win32',
         logExists: false,
       }),
     )
