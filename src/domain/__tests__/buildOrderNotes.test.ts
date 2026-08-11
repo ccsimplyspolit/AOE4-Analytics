@@ -10,6 +10,10 @@ const bundledNoteChunks = Array.from(
   { length: Math.ceil(bundledNotes.length / 100) },
   (_, index) => bundledNotes.slice(index * 100, (index + 1) * 100),
 )
+const corpusSlice = Number.parseInt(process.env.RTSLYTICS_CORPUS_SLICE ?? '', 10)
+const selectedNoteChunks = Number.isInteger(corpusSlice) && corpusSlice >= 0
+  ? bundledNoteChunks.slice(corpusSlice * 50, (corpusSlice + 1) * 50)
+  : bundledNoteChunks
 
 describe('build-order note iconification', () => {
   it('adds icons to ordinary prose for resources, actions, ages, and units', () => {
@@ -72,7 +76,7 @@ describe('build-order note iconification', () => {
     expect(icons.every((part) => part.type === 'icon' && resolveAoE4Icon(part.path))).toBe(true)
   })
 
-  bundledNoteChunks.forEach((notes, index) => {
+  selectedNoteChunks.forEach((notes, index) => {
     it(`keeps bundled build-order notes renderable (chunk ${index + 1})`, () => {
     const iconParts = notes.flatMap((note) =>
       parseBuildOrderDisplayNote(note).filter((part) => part.type === 'icon'),

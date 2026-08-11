@@ -50,8 +50,12 @@ jobs:
           npx vitest run --pool=forks --maxWorkers=2 --minWorkers=1 \
             --exclude src/domain/__tests__/buildOrderNotes.test.ts \
             --exclude src/renderer/overlay/__tests__/buildIcons.test.ts
-          npx vitest run --pool=forks src/domain/__tests__/buildOrderNotes.test.ts
-          npx vitest run --pool=forks src/renderer/overlay/__tests__/buildIcons.test.ts
+          for slice in 0 1 2; do
+            RTSLYTICS_CORPUS_SLICE="$slice" npx vitest run --pool=forks src/domain/__tests__/buildOrderNotes.test.ts
+          done
+          for slice in 0 1 2 3 4 5; do
+            RTSLYTICS_CORPUS_SLICE="$slice" npx vitest run --pool=forks src/renderer/overlay/__tests__/buildIcons.test.ts
+          done
 
       - name: Build production bundles
         run: npm run bundle

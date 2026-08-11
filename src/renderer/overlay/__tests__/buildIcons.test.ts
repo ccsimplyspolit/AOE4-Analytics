@@ -7,6 +7,10 @@ const bundledStepChunks = Array.from(
   { length: Math.ceil(bundledSteps.length / 40) },
   (_, index) => bundledSteps.slice(index * 40, (index + 1) * 40),
 )
+const corpusSlice = Number.parseInt(process.env.RTSLYTICS_CORPUS_SLICE ?? '', 10)
+const selectedStepChunks = Number.isInteger(corpusSlice) && corpusSlice >= 0
+  ? bundledStepChunks.slice(corpusSlice * 50, (corpusSlice + 1) * 50)
+  : bundledStepChunks
 
 describe('extractBuildTargets', () => {
   it('pulls buildings and units from prose notes', () => {
@@ -61,7 +65,7 @@ describe('extractBuildTargets', () => {
     expect(targets.every((target) => !target.url.startsWith('https:'))).toBe(true)
   })
 
-  bundledStepChunks.forEach((steps, index) => {
+  selectedStepChunks.forEach((steps, index) => {
     it(`keeps bundled build steps offline-renderable (chunk ${index + 1})`, () => {
     const targets = steps.flatMap((step) => extractBuildTargets(step.notes))
 
