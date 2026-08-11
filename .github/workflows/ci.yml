@@ -43,7 +43,7 @@ jobs:
           # Keep the worker count bounded for the large bundled guide/icon corpus,
           # but don't serialize the long iconification suite past Vitest's worker
           # heartbeat timeout on ubuntu-latest.
-          npx vitest run --maxWorkers=2 --minWorkers=1
+          npx vitest run --pool=forks --maxWorkers=2 --minWorkers=1
 
       - name: Build production bundles
         run: npm run bundle
