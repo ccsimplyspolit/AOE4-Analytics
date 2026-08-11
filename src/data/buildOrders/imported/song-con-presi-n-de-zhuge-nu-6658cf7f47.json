@@ -1,0 +1,161 @@
+{
+  "name": "SONG con PRESIÓN DE ZHUGE NU",
+  "civilization": "Zhu Xi's Legacy",
+  "author": "Abadacus",
+  "source": "https://aoe4guides.com/builds/2MgYb9DcFv3cnwLn1RRN",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5@resource/resource_wood.webp@ sólo 10 madera ===@building_economy/mill.png@ en bayas ===@resource/sheep.png@",
+        "(el sexto aldeano tumba una oveja)",
+        "1º@unit_chinese/imperial-official.png@INSPIRA molino",
+        "@resource/rally.png@:@resource/sheep.png@8"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "00:15",
+      "villager_count": 8,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_chinese/village.webp@",
+        "---8 oveja@resource/rally.png@:@resource/resource_gold.png@4"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "01:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "--- 4 oro@resource/rally.webp@:@resource/sheep.png@10",
+        "DESCARGAR 4-5 VECES CON LOS ALDEANOS DE OVEJAS PARA GENERAR ORO",
+        "RECOLECTAR ORO CON @unit_chinese/imperial-official.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "02:30",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@@landmark_zhuxi/meditation-gardens-1.png@ JARDINES MEDITACIÓN (oro, comida, piedra) con 2 comida ===@resource/resource_food.png@2"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "03:45",
+      "villager_count": 16,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "---10 comida@resource/rally.webp@:@resource/resource_wood.png@∞",
+        "@landmark_zhuxi/jiangnan-tower-2.png@con 4 oro===@resource/resource_gold.png@4",
+        "3 comida a @resource/resource_wood.png@3",
+        "2º@unit_chinese/imperial-official.png@ IMPUESTOS",
+        "VERSUS CIVILIZACIONES DE CABALLERÍA @building_military/barracks.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "04:45",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "1º@unit_chinese/imperial-official.webp@ INSPIRA maderero",
+        "@technology_economy/wheelbarrow.png@ INSPIRA@unit_chinese/imperial-official.png@",
+        "@technology_economy/double-broadaxe.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "05:45",
+      "villager_count": 21,
+      "resources": {
+        "food": 7,
+        "wood": 10,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3@building_military/archery-range.webp@@unit_chinese/zhuge-nu-2.png@",
+        "@building_technology/blacksmith.png@@technology_military/platecutter-point.png@ INSPIRA@unit_chinese/imperial-official.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "TRANSICIONAR SEGÚN JUEGA EL RIVAL",
+        "A RAM PUSH @technology_military/siege-engineering.webp@@unit_siege/battering-ram.png@",
+        "A @building_military/barracks.png@@unit_infantry/spearman-1.png@",
+        "DEFENSIVO Y @building_chinese/granary.png@@building_economy/farm.png@@technology_economy/horticulture.png@"
+      ]
+    }
+  ],
+  "description": "Build order Con Zhu'Xi donde activamos la dinastía song lo más rápido posible y metemos presión con Zhuge Nus mientras transicionamos a granjas rápido.\nMuy buen build order contra Delhi y Otomanos.\n\nLos números son siempre (o casi) número de aldeanos.\nLos tres guiones — significan “Cuando”.\nLos tres signos de igual === significan “Después”",
+  "video": "https://www.youtube.com/embed/PqVsOfRv4Hg",
+  "season": 6,
+  "map": "Open",
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

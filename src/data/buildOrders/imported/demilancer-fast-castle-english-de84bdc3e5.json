@@ -1,0 +1,327 @@
+{
+  "name": "Demilancer Fast Castle [english]",
+  "civilization": "House of Lancaster",
+  "author": "Pilsen",
+  "source": "https://aoe4guides.com/builds/0y3b8Zxc5gd2V3N9mNCd",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "6x @unit_worker/villager.webp@ to @resource/sheep.png@ and build 1x@building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Next 3x @unit_worker/villager.webp@ to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:48",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When there is x3900 @resource/resource_gold.webp@ left ->",
+        "Build @landmark_lancaster/lancaster_castle.png@ with the @unit_worker/villager.png@from @resource/resource_gold.png@",
+        "(then they go back to @resource/resource_gold.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 3,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Move 6x@unit_worker/villager.webp@from@resource/sheep.png@to @building_economy/lumber-camp.png@@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 6,
+        "gold": 0,
+        "stone": 1,
+        "builder": 3
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_stone.png@ until you have 5x @unit_worker/villager.png@ there. --> Then",
+        "@resource/rally.png@ @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:56",
+      "villager_count": 12,
+      "resources": {
+        "food": 3,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1x @unit_worker/villager.webp@from @resource/resource_gold.png@ builds a @building_lancaster/manor.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 7,
+        "gold": 1,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Another 1x @unit_worker/villager.webp@from @resource/resource_gold.png@ builds a 2nd @building_lancaster/manor.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 21,
+      "resources": {
+        "food": 3,
+        "wood": 9,
+        "gold": 7,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "When there is x900 @resource/resource_stone.webp@ left -->",
+        "Move all @unit_worker/villager.png@ from @resource/resource_stone.png@to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 11,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "When you have another x200 @resource/resource_wood.webp@, build the 3rd @building_lancaster/manor.png@",
+        "Move all @unit_worker/villager.png@ from @resource/resource_wood.png@ to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 11,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Macro 12 on @resource/resource_gold.webp@ and rest to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5.45",
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 11,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Call @ability_lancaster/call_to_arms.webp@ in @landmark_lancaster/lancaster_castle.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:15",
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Raid with @unit_lancaster/demilancer.webp@ while Ageing Up"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:15",
+      "villager_count": 27,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 12,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Age up to @age/age_3.webp@ with 10x @unit_worker/villager.png@from @resource/resource_food.png@building @landmark_lancaster/kings_college.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:45",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 2x @building_military/stable.webp@",
+        "@resource/rally.png@ @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:15",
+      "villager_count": 31,
+      "resources": {
+        "food": 17,
+        "wood": 2,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @technology_lancaster/collar_of_esses.webp@ if against Armored and start spamming @unit_cavalry/knight-2.png@ and take @resource/relics.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:15",
+      "villager_count": 33,
+      "resources": {
+        "food": 18,
+        "wood": 2,
+        "gold": 12,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_religious/monastery.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:15",
+      "villager_count": 35,
+      "resources": {
+        "food": 15,
+        "wood": 6,
+        "gold": 14,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start taking stone again for additional @building_lancaster/manor.webp@ and 2nd @building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Win condition is the same as usual: demilancer harass into FC knights relics. After that we go all in or more manors and 2tc for a strong lategame. Good luck!"
+      ]
+    }
+  ],
+  "description": "All credits to VALDEMAR. I only translated the BO to my own \"language\"",
+  "video": "https://www.youtube.com/embed/KcC6PNT0C4s",
+  "season": 10,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

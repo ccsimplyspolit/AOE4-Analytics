@@ -1,0 +1,363 @@
+{
+  "name": "Aussie_Drongo Fast Castle",
+  "civilization": "Japanese",
+  "author": "Moisty",
+  "source": "https://aoe4guides.com/builds/0HrqBjcBGfGqv6zx6QLe",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "First villagers to @resource/berrybush.webp@, 2 villagers to build @building_japanese/farmhouse-1.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally to @resource/berrybush.webp@ and get @technology_japanese/towara-1.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally to gold, first gold villager build @building_japanese/forge-1.webp@ and get 3 villagers on gold."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally to @resource/sheep.webp@ until 11 on food."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Build @landmark_japanese/kura-storehouse-1.webp@ with all 4 sheep villagers."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Rally villagers to @resource/resource_wood.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Build another @building_japanese/farmhouse-1.webp@ with 1 berry villager."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Once 5 on @resource/resource_wood.webp@ move to tree line rally to tree line where you will build @building_economy/lumber-camp.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use 2 villagers from age up to go on @resource/resource_gold.webp@ and other 2 on to @resource/sheep.png@while also rally villagers to sheep."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@resource/resource_gold.webp@ villagers to build @building_defensive/outpost.png@ to secure gold and get @technology_defensive/arrow-slits.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 27,
+      "resources": {
+        "food": 17,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If have aggression on @resource/berrybush.webp@ pull villagers to sheep and @building_economy/farm.png@ from @landmark_japanese/kura-storehouse-1.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 26,
+      "resources": {
+        "food": 17,
+        "wood": 4,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build another @building_japanese/farmhouse-1.webp@ from @resource/resource_wood.png@ villager."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 29,
+      "resources": {
+        "food": 14,
+        "wood": 5,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move 5 villagers from @resource/resource_food.webp@ to @resource/resource_gold.png@ and build another @building_defensive/outpost.png@ on gold if there is aggression."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 29,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 10,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Build @landmark_japanese/floating-gate-2.webp@ with 10 @resource/resource_food.png@ villagers rally to food."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 29,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 10,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Move 2 @resource/resource_wood.webp@ villagers to @resource/resource_food.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 31,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 10,
+        "stone": 0,
+        "builder": 11
+      },
+      "notes": [
+        "Use villager from @resource/resource_food.webp@ to build @building_military/stable.png@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 34,
+      "resources": {
+        "food": 17,
+        "wood": 7,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Put first Yorishiro into @building_military/stable.webp@ and train @unit_japanese/mounted-samurai-3.png@, go pick up @resource/relics.png@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 34,
+      "resources": {
+        "food": 17,
+        "wood": 7,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Don't forget upgrades from @building_japanese/forge-1.webp@ if floating @resource/resource_gold.png@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 35,
+      "resources": {
+        "food": 17,
+        "wood": 8,
+        "gold": 9,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Rally to @resource/resource_wood.webp@ and build @building_japanese/shinto-shrine-3.png@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 37,
+      "resources": {
+        "food": 17,
+        "wood": 10,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Second Yorishiro goes in @building_economy/town-center.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 41,
+      "resources": {
+        "food": 16,
+        "wood": 15,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Villager from @resource/resource_food.webp@ to build 3 @building_military/archery-range.png@ and pump out @unit_japanese/yumi-ashigaru-2.png@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 44,
+      "resources": {
+        "food": 27,
+        "wood": 7,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move 8 @resource/resource_wood.webp@ villagers to @resource/resource_food.png@, rally to @resource/resource_wood.png@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 45,
+      "resources": {
+        "food": 27,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Third Yorishiro goes into @building_japanese/farmhouse-1.webp@."
+      ]
+    }
+  ],
+  "description": "Build order from Aussie_Drongo's youtube channel.",
+  "video": "https://www.youtube.com/embed/clEC3e-CgnI",
+  "season": 7,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

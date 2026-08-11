@@ -18,15 +18,36 @@ import { useLeaderboard } from '../queries/useLeaderboard'
 import { useSettings } from '../queries/useProfile'
 import { EmptyBox, ErrorBox } from '../components/feedback'
 import { useI18n } from '../../i18n'
+import { PageHead } from '../components/PageHead'
 
 const LADDERS: { label: string; value: Leaderboard }[] = [
   { label: 'Ranked 1v1', value: 'rm_solo' },
-  { label: 'Ranked Team', value: 'rm_team' },
+  { label: 'Ranked 2v2', value: 'rm_2v2' },
+  { label: 'Ranked 3v3', value: 'rm_3v3' },
+  { label: 'Ranked 4v4', value: 'rm_4v4' },
+  { label: 'Ranked Team (legacy)', value: 'rm_team' },
   { label: 'Quick Match 1v1', value: 'qm_1v1' },
   { label: 'Quick Match 2v2', value: 'qm_2v2' },
   { label: 'Quick Match 3v3', value: 'qm_3v3' },
   { label: 'Quick Match 4v4', value: 'qm_4v4' },
 ]
+
+/** Standalone ladder page; Scout keeps the same panel embedded for quick recon. */
+export function LeaderboardsScreen() {
+  const { tt } = useI18n()
+  return (
+    <div className="animate-fade-in space-y-5">
+      <PageHead
+        kicker={tt('AoE4World ladder')}
+        title={tt('Leaderboards')}
+        sub={tt(
+          'Browse ranked and Quick Match ladders by queue and country, then open any player profile for the full scout report.',
+        )}
+      />
+      <LeaderboardPanel />
+    </div>
+  )
+}
 
 const COUNTRIES: { code: string | undefined; label: string }[] = [
   { code: undefined, label: 'All countries' },

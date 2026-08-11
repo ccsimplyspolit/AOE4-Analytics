@@ -1,0 +1,1570 @@
+[
+  {
+    "description": "Standard build order with wheelbarrow during age up to not slow down the timing on the first knight.",
+    "civilization": "Jeanne d'Arc",
+    "name": "Jeanne D'arc Feudal | Wheelbarrow feudal aggro - copy",
+    "author": "xpro",
+    "source": "https://aoe4guides.com/builds/LMlHjQnfxvAAj6U26ZJF",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "5 @unit_worker/villager.webp@ -> @resource/sheep.webp@",
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@ -&gt; @abilities/repair.webp@@building_economy/house.webp@ + @building_economy/mining-camp.webp@ -&gt; @resource/resource_gold.webp@",
+          "@resource/rally.webp@ -&gt; @resource/sheep.webp@ (8)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:05",
+        "villager_count": 9,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ -> @resource/resource_gold.webp@ (2 more; total of 3 with @unit_jeanne/jeanne-darc-peasant-1.webp@)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:45",
+        "villager_count": 11,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ -> @resource/sheep.webp@ (1 more)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:05",
+        "villager_count": 12,
+        "resources": {
+          "food": 9,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ -> @resource/gaiatreeprototypetree.webp@ (3)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:20",
+        "villager_count": 12,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@ + 1 @resource/sheep.webp@@unit_worker/villager.webp@ -> @abilities/repair.webp@@landmark_french/school-of-cavalry.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:25",
+        "villager_count": 12,
+        "resources": {
+          "food": 4,
+          "wood": 2,
+          "gold": 4,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "1 @resource/sheep.webp@@unit_worker/villager.webp@ -> @abilities/repair.webp@@building_economy/mill.webp@ on @resource/berrybush.webp@/@resource/deer.webp@",
+          "2 @resource/sheep.webp@@unit_worker/villager.webp@ -&gt; @resource/resource_gold.webp@",
+          "1 @resource/sheep.webp@@unit_worker/villager.webp@ -&gt; @resource/gaiatreeprototypetree.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:45",
+        "villager_count": 14,
+        "resources": {
+          "food": 5,
+          "wood": 3,
+          "gold": 4,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "@resource/rally.webp@ -> @resource/sheep.webp@ (12)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:05",
+        "villager_count": 15,
+        "resources": {
+          "food": 6,
+          "wood": 3,
+          "gold": 4,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "@building_economy/mill.webp@ -> @technology_economy/wheelbarrow.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "4:05",
+        "villager_count": 17,
+        "resources": {
+          "food": 9,
+          "wood": 2,
+          "gold": 4,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "1 @resource/gaiatreeprototypetree.webp@@unit_worker/villager.webp@ -> @abilities/repair.webp@@building_economy/lumber-camp.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:15",
+        "villager_count": 17,
+        "resources": {
+          "food": 9,
+          "wood": 2,
+          "gold": 5,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "@landmark_french/school-of-cavalry.webp@ produce @unit_french/royal-knight-2.webp@ nonstop",
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@ -> @abilities/repair.webp@@building_economy/house.webp@ -&gt; @resource/resource_gold.webp@ until level 2",
+          "The other @unit_worker/villager.webp@ on @landmark_french/school-of-cavalry.webp@ -&gt; @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:05",
+        "villager_count": 20,
+        "resources": {
+          "food": 12,
+          "wood": 3,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ -> @resource/resource_wood.webp@ (5)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "First @ability_jeanne/ability-consecrate-1.webp@ on @landmark_french/school-of-cavalry.webp@, second one on @building_economy/town-center.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:45",
+        "villager_count": 22,
+        "resources": {
+          "food": 12,
+          "wood": 5,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ -> @resource/resource_gold.webp@ (8)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Research economic upgrades with excess @resource/resource_gold.webp@:",
+          "@technology_economy/specialized-pick.webp@ -> @technology_economy/survival-techniques.webp@ -&gt; @technology_economy/horticulture.webp@ -&gt; @technology_economy/double-broadaxe.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:45",
+        "villager_count": 25,
+        "resources": {
+          "food": 12,
+          "wood": 5,
+          "gold": 8,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ -> @resource/resource_food.webp@ (until @age/age_3.webp@)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "With excess @resource/resource_wood.webp@ build either @building_military/barracks.webp@ or @building_military/archery-range.webp@ depending on the enemy units.",
+          "If they are playing greedy (for example, trying to go Fast Castle with just an @building_defensive/outpost.webp@), build @building_technology/blacksmith.webp@ first and research @technology_military/iron-undermesh.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@landmark_french/royal-institute.webp@: Since you want to level up Jeanne as fast as possible, the upgrades on this landmark are super important to win fights and get more experience.",
+          "@landmark_french/guild-hall.webp@: Is better for a faster @age/age_4.webp@ or @building_economy/farm.webp@ transition. But neither is good with this civilization."
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 12",
+    "map": null,
+    "strategy": "Rush"
+  },
+  {
+    "description": "Trade",
+    "civilization": "Jeanne d'Arc",
+    "name": "Jeanne d'Arc: Chamber of Commerce (Trade Boom)",
+    "author": "Norevex",
+    "source": "https://aoe4guides.com/builds/KS799ek5mdlHz5SqP4TQ",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 5,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Start 5@unit_worker/villager.webp@ on @resource/sheep.webp@under TC, Que next 2 @unit_worker/villager.webp@to @resource/sheep.webp@. @unit_jeanne/jeanne-darc-peasant-1.webp@Builds @building_economy/house.webp@and @building_economy/mining-camp.webp@ at @resource/resource_gold.webp@."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:42",
+        "villager_count": 9,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@Mines @resource/resource_gold.webp@, Que next @unit_worker/villager.webp@to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:22",
+        "villager_count": 12,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Que next @unit_worker/villager.webp@to @resource/sheep.webp@then 2 @unit_worker/villager.webp@ to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:15",
+        "villager_count": 12,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Send @unit_jeanne/jeanne-darc-peasant-1.webp@and 3 @resource/resource_gold.webp@@unit_worker/villager.webp@to build Chamber of Commerce"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:30",
+        "villager_count": 16,
+        "resources": {
+          "food": 4,
+          "wood": 4,
+          "gold": 4,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Que next 4 @unit_worker/villager.webp@to @resource/resource_gold.webp@, Send 4 @resource/sheep.webp@@unit_worker/villager.webp@ to @resource/resource_wood.webp@and build @building_economy/lumber-camp.webp@."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:18",
+        "villager_count": 17,
+        "resources": {
+          "food": 3,
+          "wood": 5,
+          "gold": 4,
+          "stone": 0,
+          "builder": 5
+        },
+        "notes": [
+          "Once you have 50 @resource/resource_wood.webp@, Take one @resource/sheep.webp@@unit_worker/villager.webp@to @resource/berrybush.webp@to build @building_economy/mill.webp@, then have them farm @resource/berrybush.webp@, Next 1 @unit_worker/villager.webp@to Wood"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:50",
+        "villager_count": 17,
+        "resources": {
+          "food": 5,
+          "wood": 8,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Send 3 Builders to Wood, Jeanne makes 2 house. Upgrade Wheelbarrow, then send Jeanne to sheep, Que  New Villagers to Food"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "4:22",
+        "villager_count": 18,
+        "resources": {
+          "food": 6,
+          "wood": 8,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Upgrade Specialized Pick"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "4:50",
+        "villager_count": 20,
+        "resources": {
+          "food": 7,
+          "wood": 8,
+          "gold": 4,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Jeanne Builds Stable, start building units immediately"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "5:20",
+        "villager_count": 20,
+        "resources": {
+          "food": 6,
+          "wood": 10,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Upgrade Jeanne, Look to upgade Gather for Food and Wood"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      }
+    ],
+    "video": "",
+    "season": "Season 13",
+    "map": null,
+    "strategy": "Boom"
+  },
+  {
+    "description": "JD Deer Opener Into Double Stable Aggro",
+    "civilization": "Jeanne d'Arc",
+    "name": "(2026) JD Aggression - copy",
+    "author": "xpro",
+    "source": "https://aoe4guides.com/builds/CH3LcLLslXrvjXhtfFaa",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Start 6 on @resource/sheep.webp@ and look for the 1st @resource/deer.webp@pack around your base (there are two, one will be immediately outside tc vision range). @resource/rally.webp@@resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:35",
+        "villager_count": 7,
+        "resources": {
+          "food": 2,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Once @resource/deer.webp@is found, take 5 @unit_worker/villager.webp@ and gather 50 wood and  @building_economy/house.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:50",
+        "villager_count": 8,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 5
+        },
+        "notes": [
+          "build a @building_economy/mill.webp@ on @resource/deer.webp@. Research @technology_economy/survival-techniques.webp@->@technology_economy/wheelbarrow.webp@ immediately"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:20",
+        "villager_count": 10,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Pull 4 @unit_worker/villager.webp@ from @resource/sheep.webp@ to @resource/resource_gold.webp@ when @building_economy/mill.webp@ is finished"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_food.webp@ until @age/age_2.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:13",
+        "villager_count": 15,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@ + 3 @resource/sheep.webp@@unit_worker/villager.webp@ build @landmark_french/school-of-cavalry.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:13",
+        "villager_count": 15,
+        "resources": {
+          "food": 5,
+          "wood": 2,
+          "gold": 4,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Take rest of @resource/sheep.webp@@unit_worker/villager.webp@ and go to ."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:20",
+        "villager_count": 16,
+        "resources": {
+          "food": 5,
+          "wood": 3,
+          "gold": 4,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_wood.webp@ until 8"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:37",
+        "villager_count": 15,
+        "resources": {
+          "food": 5,
+          "wood": 6,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Queue @unit_french/royal-knight-2.webp@ and @technology_economy/specialized-pick.webp@ upon reaching feudal"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Once 8 on @resource/resource_wood.webp@ rally then to @resource/resource_gold.webp@ until 8 and then back to @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:36",
+        "villager_count": 21,
+        "resources": {
+          "food": 8,
+          "wood": 8,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "2nd @building_military/stable.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:30",
+        "villager_count": 25,
+        "resources": {
+          "food": 9,
+          "wood": 8,
+          "gold": 8,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_military/archery-range.webp@ & @building_defensive/outpost.webp@ if needed on @resource/resource_gold.webp@ and @resource/deer.webp@"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 12",
+    "map": null,
+    "strategy": "Rush"
+  },
+  {
+    "description": "",
+    "civilization": "Jeanne d'Arc",
+    "name": "JD Aggression",
+    "author": "Asmitha",
+    "source": "https://aoe4guides.com/builds/4fc9hTXmNy9b3OdMGIxr",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@@building_economy/house.webp@@building_economy/mining-camp.webp@",
+          "5 @unit_worker/villager.webp@ @resource/resource_wood.webp@ (at least 25) )until finding @resource/deer.webp@ @building_economy/mill.webp@@technology_economy/survival-techniques.webp@@technology_economy/wheelbarrow.webp@",
+          "@resource/rally.webp@1@resource/sheep.webp@3@resource/resource_gold.webp@@resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:00",
+        "villager_count": 14,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@+ 4 @resource/sheep.webp@ @landmark_french/school-of-cavalry.webp@",
+          "@resource/sheep.webp@+@resource/rally.webp@-> (1)@resource/gaiatreeprototypetree.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "4:00",
+        "villager_count": 17,
+        "resources": {
+          "food": 5,
+          "wood": 4,
+          "gold": 3,
+          "stone": 0,
+          "builder": 5
+        },
+        "notes": [
+          "2 @abilities/repair.webp@@landmark_french/school-of-cavalry.webp@ -> (6)@resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:18",
+        "villager_count": 15,
+        "resources": {
+          "food": 6,
+          "wood": 6,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "2 @abilities/repair.webp@@landmark_french/school-of-cavalry.webp@ -> @resource/resource_gold.webp@",
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@@building_economy/house.webp@",
+          "@unit_french/royal-knight-2.webp@"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/9TCvVtXvnj0",
+    "season": "Season 13",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "Good vs, Japan, England etc.",
+    "civilization": "Jeanne d'Arc",
+    "name": "JD Feudal aggro/rush vs Ranged FC civ",
+    "author": "resdxcvi",
+    "source": "https://aoe4guides.com/builds/idCB5WyssSleaLqCVZC9",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "5 @unit_worker/villager.webp@ on @resource/sheep.webp@, make @unit_jeanne/jeanne-darc-peasant-1.webp@ @abilities/repair.webp@ @building_economy/house.webp@ + @resource/resource_gold.webp@ @building_economy/mining-camp.webp@, @resource/rally.webp@ next 2 @unit_worker/villager.webp@ @resource/sheep.webp@ then 1 on @resource/resource_gold.webp@."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "01:10",
+        "villager_count": 9,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ next @unit_worker/villager.webp@ on  @resource/sheep.webp@ then the next on @resource/resource_gold.webp@,  @unit_cavalry/scout.webp@ @resource/deer.webp@."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "01:50",
+        "villager_count": 11,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Send new @unit_worker/villager.webp@to @abilities/repair.webp@ @building_economy/lumber-camp.webp@, @resource/rally.webp@ next 2 to @resource/resource_wood.webp@. *If rushed before 200 @resource/resource_gold.webp@, use @unit_jeanne/jeanne-darc-peasant-1.webp@ to block @resource/resource_gold.webp@ @unit_worker/villager.webp@*."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "02:50",
+        "villager_count": 14,
+        "resources": {
+          "food": 8,
+          "wood": 3,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Go @age/age_2.webp@ @landmark_french/school-of-cavalry.webp@ with only @unit_jeanne/jeanne-darc-peasant-1.webp@. Send 5 @resource/sheep.webp@ @unit_worker/villager.webp@ to  @abilities/repair.webp@ @building_economy/mill.webp@ on  @resource/deer.webp@, then @resource/rally.webp@1 on @resource/resource_wood.webp@ + 2 on @resource/resource_gold.webp@. (Use @unit_cavalry/scout.webp@ to guard @resource/resource_food.webp@ or @resource/resource_gold.webp@@unit_worker/villager.webp@)."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "03:10",
+        "villager_count": 15,
+        "resources": {
+          "food": 5,
+          "wood": 4,
+          "gold": 6,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ next 2 to @resource/resource_food.webp@+ @resource/resource_gold.webp@. *If you were dark age aggro'd*  @abilities/repair.webp@@building_military/stable.webp@ with the @resource/resource_food.webp@@unit_worker/villager.webp@ 1st."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "03:50",
+        "villager_count": 17,
+        "resources": {
+          "food": 6,
+          "wood": 4,
+          "gold": 7,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Get @technology_economy/survival-techniques.webp@+ @technology_economy/wheelbarrow.webp@, then just pump @resource/resource_food.webp@ and @resource/resource_gold.webp@ respectively. @abilities/repair.webp@2nd @building_economy/house.webp@ with @resource/resource_gold.webp@ @unit_worker/villager.webp@."
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "05:10",
+        "villager_count": 22,
+        "resources": {
+          "food": 9,
+          "wood": 5,
+          "gold": 8,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@age/age_2.webp@ complete, Get @technology_economy/specialized-pick.webp@, @abilities/repair.webp@ @building_military/stable.webp@ . Move 3 off @resource/resource_wood.webp@ to 2 on @resource/resource_gold.webp@ + 1 on @resource/resource_food.webp@. Produce @unit_french/royal-knight-2.webp@ and get @technology_french/chivalry.webp@ after first que. Lock off enemy side @resource/resource_food.webp@ or @resource/resource_gold.webp@ with @unit_french/royal-knight-2.webp@+ @unit_jeanne/jeanne-darc-woman-at-arms-2.webp@ for XP."
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "05:30",
+        "villager_count": 23,
+        "resources": {
+          "food": 9,
+          "wood": 6,
+          "gold": 8,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Opt for 11 @resource/resource_food.webp@, 10 @resource/resource_gold.webp@ and no more than 8 @resource/resource_wood.webp@, then pump @resource/resource_stone.webp@ to 6, maintain ratio."
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 13",
+    "map": null,
+    "strategy": "Rush"
+  },
+  {
+    "description": "",
+    "civilization": "Jeanne d'Arc",
+    "name": "Jeanne YZY Opener",
+    "author": "Yiuwa",
+    "source": "https://aoe4guides.com/builds/VvsJSr5z9igqwzzdvke3",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 5,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "5x@unit_worker/villager.webp@ >  @resource/resource_food.webp@",
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@ &gt; @building_economy/house.webp@ &gt; @building_economy/mill.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 7,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_gold.webp@ (2)",
+          "1x @unit_worker/villager.webp@ > @building_economy/mining-camp.webp@",
+          "5x @unit_worker/villager.webp@ &gt; @resource/gaiatreeprototypetree.webp@",
+          "@technology_economy/wheelbarrow.webp@ &gt; 5x @unit_worker/villager.webp@ &gt; @resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 14,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_food.webp@ (10)",
+          "@resource/rally.webp@@resource/resource_gold.webp@ (4)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 20,
+        "resources": {
+          "food": 10,
+          "wood": 5,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@ + 2x @unit_worker/villager.webp@ > @landmark_french/school-of-cavalry.webp@",
+          "@resource/rally.webp@@resource/gaiatreeprototypetree.webp@ (3)",
+          "@resource/rally.webp@@resource/resource_food.webp@(10)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 16,
+        "resources": {
+          "food": 6,
+          "wood": 5,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_french/royal-knight-2.webp@ (nonstop) @unit_jeanne/jeanne-darc-peasant-1.webp@ > @resource/boar.webp@",
+          "1x @unit_worker/villager.webp@&gt;@resource/resource_gold.webp@",
+          "@resource/rally.webp@@resource/gaiatreeprototypetree.webp@",
+          "@resource/rally.webp@@resource/resource_wood.webp@ + 3x @unit_worker/villager.webp@&gt;@resource/resource_wood.webp@&gt;@building_economy/lumber-camp.webp@",
+          "5x @unit_worker/villager.webp@&gt;@resource/boar.webp@&gt;@building_economy/mill.webp@&gt;@building_defensive/outpost.webp@",
+          "@resource/rally.webp@&gt;@resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 42,
+        "resources": {
+          "food": 18,
+          "wood": 14,
+          "gold": 10,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_wood.webp@",
+          "@building_military/archery-range.webp@@building_technology/blacksmith.webp@@technology_military/iron-undermesh.webp@@technology_economy/forestry.webp@",
+          "@unit_infantry/archer-2.webp@(nonstop) @technology_military/steeled-arrow.webp@@technology_military/siege-engineering.webp@",
+          "@building_military/stable.webp@@technology_military/fitted-leatherwork.webp@@technology_french/chivalry.webp@",
+          "@landmark_french/royal-institute.webp@@technology_french/royal-bloodlines.webp@@unit_french/royal-knight-2.webp@(upgrade veteran)"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 13",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "MarineLorD",
+    "civilization": "Jeanne d'Arc",
+    "name": "JEANNE D'ARC - Pro Scout",
+    "author": "m0_0p",
+    "source": "https://aoe4guides.com/builds/cT1JCWvoq9IEhi88yYlv",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 2,
+          "wood": 3,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "@building_economy/town-center.webp@@resource/rally.webp@@resource/sheep.webp@(7)",
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@ > @building_economy/house.webp@ &gt; @building_economy/mill.webp@ &gt; @building_economy/mining-camp.webp@ &gt;&gt; @resource/resource_gold.webp@",
+          "3 @resource/resource_wood.webp@@unit_worker/villager.webp@ &gt; 150 &gt;&gt; @resource/sheep.webp@",
+          "@technology_economy/wheelbarrow.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 7,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_economy/town-center.webp@@resource/rally.webp@@resource/resource_gold.webp@(4)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 11,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_economy/town-center.webp@@resource/rally.webp@@resource/sheep.webp@(3)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:50",
+        "villager_count": 14,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1@resource/sheep.webp@@unit_worker/villager.webp@+ @unit_jeanne/jeanne-darc-peasant-1.webp@ > @landmark_french/school-of-cavalry.webp@ &gt;&gt; @resource/resource_gold.webp@",
+          "@building_economy/town-center.webp@@resource/rally.webp@@resource/resource_wood.webp@(5)",
+          "3 @resource/sheep.webp@@unit_worker/villager.webp@ &gt; @resource/resource_wood.webp@",
+          "@building_economy/lumber-camp.webp@",
+          "@building_economy/house.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 17,
+        "resources": {
+          "food": 7,
+          "wood": 5,
+          "gold": 3,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "@building_economy/town-center.webp@@resource/rally.webp@@resource/sheep.webp@(12)",
+          "@technology_economy/wheelbarrow.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:45",
+        "villager_count": 20,
+        "resources": {
+          "food": 9,
+          "wood": 5,
+          "gold": 5,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "@technology_economy/professional-scouts.webp@",
+          "@unit_french/royal-knight-2.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 22,
+        "resources": {
+          "food": 12,
+          "wood": 3,
+          "gold": 7,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "5 @resource/sheep.webp@@unit_worker/villager.webp@ + @unit_jeanne/jeanne-darc-woman-at-arms-2.webp@ > @resource/boar.webp@ / @resource/deer.webp@  @building_defensive/outpost.webp@@building_economy/mill.webp@",
+          "3 @unit_cavalry/scout.webp@",
+          "@ability_jeanne/ability-consecrate-1.webp@ on @landmark_french/school-of-cavalry.webp@@building_military/stable.webp@",
+          "=&gt; @resource/resource_gold.webp@ / @resource/resource_food.webp@ &lt;=&gt; 50/50"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@landmark_french/royal-institute.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@technology_military/biology.webp@  @technology_french/cantled-saddles.webp@ @technology_jeanne/companion-equipment-3.webp@ @technology_jeanne/ordinance-company-3.webp@"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 13",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "",
+    "civilization": "Jeanne d'Arc",
+    "name": "Lorfo",
+    "author": "Lorfo",
+    "source": "https://aoe4guides.com/builds/h3whLljOM7QkQ8urhBym",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 13,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "All @unit_worker/villager.webp@ to @resource/sheep.webp@",
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@ builds @building_economy/house.webp@ ---> @resource/sheep.webp@",
+          "7th @unit_worker/villager.webp@ + @unit_jeanne/jeanne-darc-peasant-1.webp@ to @resource/resource_food.webp@",
+          "Next 5 @unit_worker/villager.webp@ to @building_economy/mining-camp.webp@@resource/resource_gold.webp@",
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@+1@unit_worker/villager.webp@@resource/resource_gold.webp@ for @age/age_2.webp@ (2:40) ---&gt;(4:50)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "5 max",
+        "villager_count": 21,
+        "resources": {
+          "food": 8,
+          "wood": 8,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_worker/villager.webp@@resource/resource_food.webp@Build @building_economy/lumber-camp.webp@",
+          "@resource/rally.webp@@resource/gaiatreeprototypetree.webp@ (until 8@resource/resource_wood.webp@)",
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@Build @building_economy/mill.webp@ farm  LVL 2",
+          "Research @technology_economy/wheelbarrow.webp@ + @technology_economy/double-broadaxe.webp@ + @technology_economy/specialized-pick.webp@",
+          "Build @building_economy/house.webp@ with @resource/resource_wood.webp@@unit_worker/villager.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 22,
+        "resources": {
+          "food": 8,
+          "wood": 8,
+          "gold": 6,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@hunts@resource/boar.webp@",
+          "Queue 1 @unit_french/royal-knight-2.webp@",
+          "(8@resource/resource_wood.webp@) @resource/rally.webp@@resource/resource_food.webp@",
+          "Build @building_military/archery-range.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 30,
+        "resources": {
+          "food": 14,
+          "wood": 8,
+          "gold": 8,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "(14@resource/resource_food.webp@) @resource/rally.webp@ (until 8@resource/resource_gold.webp@)",
+          "Build @building_technology/blacksmith.webp@",
+          "Research @technology_military/iron-undermesh.webp@@technology_military/steeled-arrow.webp@@technology_military/bloomery.webp@@technology_military/fitted-leatherwork.webp@@technology_military/siege-engineering.webp@",
+          "@ability_jeanne/ability-consecrate-1.webp@ = @building_economy/town-center.webp@ > @landmark_french/school-of-cavalry.webp@ &gt; @building_military/archery-range.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 40,
+        "resources": {
+          "food": 20,
+          "wood": 10,
+          "gold": 10,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "5 next @resource/rally.webp@ build @age/age_3.webp@@landmark_french/royal-institute.webp@ for @technology_jeanne/companion-equipment-3.webp@ ->@technology_french/royal-bloodlines.webp@-&gt;@technology_french/cantled-saddles.webp@-&gt;@technology_french/enlistment-incentives.webp@ -&gt;@technology_french/merchant-guilds-4.webp@",
+          "Research @technology_military/wedge-rivets.webp@@technology_military/balanced-projectiles.webp@@technology_military/decarbonization.webp@@technology_military/fitted-leatherwork.webp@",
+          "build @building_economy/market.webp@"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 13",
+    "map": null,
+    "strategy": "Rush"
+  },
+  {
+    "description": "",
+    "civilization": "Jeanne d'Arc",
+    "name": "Jeanne, au secours ! (Jeando/MLord)",
+    "author": "Djesteur",
+    "source": "https://aoe4guides.com/builds/EriOcMb6gGdCv9FBcwJc",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 2,
+          "wood": 3,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "@resource/rally.webp@ ->@resource/resource_food.webp@",
+          "3 @unit_worker/villager.webp@ -&gt;@resource/resource_wood.webp@ 1 @resource/gaiatreeprototypetree.webp@(150 wood)",
+          "2 @unit_worker/villager.webp@ -&gt;@resource/resource_food.webp@",
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@ -&gt;@abilities/repair.webp@: @building_economy/mill.webp@@building_economy/house.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:30",
+        "villager_count": 7,
+        "resources": {
+          "food": 3,
+          "wood": 3,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "@technology_economy/wheelbarrow.webp@ ASAP"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:05",
+        "villager_count": 8,
+        "resources": {
+          "food": 4,
+          "wood": 3,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@ ->@abilities/repair.webp@: @building_defensive/outpost.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:35",
+        "villager_count": 10,
+        "resources": {
+          "food": 6,
+          "wood": 3,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "When 1 @resource/gaiatreeprototypetree.webp@ ended, 3@unit_worker/villager.webp@@resource/resource_wood.webp@ -> @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:40",
+        "villager_count": 11,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@ -> @abilities/repair.webp@: @building_economy/mining-camp.webp@ + 3 @unit_worker/villager.webp@@resource/resource_food.webp@ -&gt; @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:30",
+        "villager_count": 16,
+        "resources": {
+          "food": 12,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@ + 2 @unit_worker/villager.webp@@resource/resource_food.webp@ -> @abilities/repair.webp@:@landmark_french/school-of-cavalry.webp@ -&gt; @resource/resource_gold.webp@",
+          "5  @unit_worker/villager.webp@@resource/resource_food.webp@ -&gt;@resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "4:05",
+        "villager_count": 18,
+        "resources": {
+          "food": 7,
+          "wood": 5,
+          "gold": 3,
+          "stone": 0,
+          "builder": 3
+        },
+        "notes": [
+          "1  @unit_worker/villager.webp@@resource/resource_wood.webp@ -> @abilities/repair.webp@: @building_economy/house.webp@ -&gt; @resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:05",
+        "villager_count": 19,
+        "resources": {
+          "food": 9,
+          "wood": 5,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 @unit_worker/villager.webp@@resource/resource_wood.webp@ -> @abilities/repair.webp@:@building_economy/lumber-camp.webp@ -&gt; @resource/resource_wood.webp@",
+          "@unit_french/royal-knight-2.webp@ spam from @landmark_french/school-of-cavalry.webp@",
+          "@ability_jeanne/ability-consecrate-1.webp@ -&gt; @landmark_french/school-of-cavalry.webp@ -&gt; @building_economy/town-center.webp@"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 13",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "Early Knight build order *Credit to OneofNine",
+    "civilization": "Jeanne d'Arc",
+    "name": "Jean D'arc - Feudal Aggression FIXED",
+    "author": "Waarmy",
+    "source": "https://aoe4guides.com/builds/FS6nClHslGV4B2hqn4SX",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_jeanne/jeanne-darc-peasant-1.webp@  Builds @building_economy/house.png@ > @building_economy/mining-camp.png@ and mines gold"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 9,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "3 Villagers to Food @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "01:15",
+        "villager_count": 11,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Next 2 to Gold @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 13,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Next 2 to Food@resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "02:20",
+        "villager_count": 11,
+        "resources": {
+          "food": 9,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build @landmark_french/school-of-cavalry.webp@ with  @unit_jeanne/jeanne-darc-peasant-1.webp@+1@resource/sheep.webp@@unit_worker/villager.webp@ -> @abilities/repair.webp@@landmark_french/school-of-cavalry.webp@ &gt; Rally to@resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "04:25",
+        "villager_count": 17,
+        "resources": {
+          "food": 8,
+          "wood": 5,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "05:40",
+        "villager_count": 21,
+        "resources": {
+          "food": 9,
+          "wood": 8,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build @building_military/archery-range.webp@ when you can to protect Knights from spears"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 23,
+        "resources": {
+          "food": 9,
+          "wood": 10,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Upgrade Jean > @unit_jeanne/jeanne-darc-peasant-1.webp@ &gt; @unit_jeanne/jeanne-darc-woman-at-arms-2.webp@ &gt; send to fight"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/_Dk5v-ee73k",
+    "season": "Season 10",
+    "map": null,
+    "strategy": "Rush"
+  }
+]

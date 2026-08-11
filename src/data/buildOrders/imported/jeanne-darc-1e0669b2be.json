@@ -1,0 +1,108 @@
+{
+  "name": "Jeanne d'Arc",
+  "civilization": "Jeanne d'Arc",
+  "author": "TAZZUS",
+  "source": "https://aoe4guides.com/builds/2stO7B23oMSAnKfqoEuQ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@x6@resource/sheep.png@|@unit_jeanne/jeanne-darc-peasant-1.png@@building_economy/house.png@|@building_economy/mining-camp.png@@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@x7@resource/sheep.png@|@unit_jeanne/jeanne-darc-peasant-1.png@@unit_worker/villager.png@x3@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@unit_worker/villager.webp@x10@resource/sheep.png@|@unit_jeanne/jeanne-darc-peasant-1.png@@unit_worker/villager.png@x2@landmark_french/school-of-cavalry.png@|@unit_worker/villager.png@x1@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 7,
+        "wood": 7,
+        "gold": 1,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@unit_worker/villager.webp@x7@resource/sheep.png@|@unit_worker/villager.png@x3@building_economy/lumber-camp.png@=>@unit_worker/villager.png@x7@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 7,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_french/school-of-cavalry.webp@x2@unit_french/royal-knight-2.png@|@unit_jeanne/jeanne-darc-peasant-1.png@@building_defensive/outpost.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 0,
+        "stone": 10,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@x10@resource/resource_stone.png@ => @building_economy/town-center.png@"
+      ]
+    }
+  ],
+  "description": "Rush",
+  "video": "",
+  "season": 7,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

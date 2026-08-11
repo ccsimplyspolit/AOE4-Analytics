@@ -1,0 +1,244 @@
+{
+  "name": "LaSh HRE Build Order (June 2024)",
+  "civilization": "Holy Roman Empire",
+  "author": "zebb",
+  "source": "https://aoe4guides.com/builds/33ICeUSLAjHFCPrp0vih",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@ > @resource/sheep.png@",
+        "1 @unit_worker/villager.png@ &gt; @resource/resource_gold.png@",
+        "1 @unit_worker/villager.png@&gt; @abilities/repair.png@ @building_economy/mining-camp.png@",
+        "1 @unit_worker/villager.png@&gt;@abilities/repair.png@ @building_economy/house.png@",
+        "@resource/rally.png@ &gt; @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:30",
+      "villager_count": 7,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 2 @abilities/repair.webp@ > @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Send 4 @unit_worker/villager.webp@ from @resource/sheep.png@ to @abilities/repair.png@@landmark_hre/aachen-chapel.png@ (in range of wood and sheep + ideally gold)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Send 1 @unit_worker/villager.webp@ from @resource/sheep.png@ to @resource/resource_wood.png@(@resource/gaiatreeprototypetree.png@)",
+        "@resource/rally.png@ >@resource/resource_wood.png@(@resource/gaiatreeprototypetree.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:35",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Send 2 @unit_worker/villager.webp@ from @resource/resource_wood.png@ to @abilities/repair.png@@building_economy/mill.png@ and @building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:50",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "4 from @landmark_hre/aachen-chapel.webp@ to @abilities/repair.png@@building_economy/lumber-camp.png@",
+        "@unit_hre/prelate.png@ > @landmark_hre/aachen-chapel.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:10",
+      "villager_count": 18,
+      "resources": {
+        "food": 5,
+        "wood": 11,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 1 @unit_worker/villager.webp@ from @resource/resource_gold.png@ to @resource/resource_wood.png@",
+        "Research @technology_economy/double-broadaxe.png@ and @technology_economy/wheelbarrow.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:35",
+      "villager_count": 19,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@ from @resource/resource_wood.png@ @abilities/repair.png@ @building_military/stable.png@",
+        "@resource/rally.png@ to @resource/sheep.png@",
+        "Start recruiting @unit_cavalry/horseman-1.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:20",
+      "villager_count": 21,
+      "resources": {
+        "food": 7,
+        "wood": 11,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 from @resource/sheep.webp@@abilities/repair.png@@building_military/archery-range.png@",
+        "Start recruiting @unit_infantry/archer-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:40",
+      "villager_count": 22,
+      "resources": {
+        "food": 8,
+        "wood": 11,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@abilities/repair.webp@ 2nd @building_military/archery-range.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:00",
+      "villager_count": 23,
+      "resources": {
+        "food": 9,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "1 from @resource/resource_wood.webp@ @abilities/repair.png@@building_economy/house.png@",
+        "1 from @resource/resource_gold.png@@abilities/repair.png@@building_technology/blacksmith.png@",
+        "Research @technology_military/steeled-arrow.png@ and @technology_military/iron-undermesh.png@ then later ::@technology_military/siege-engineering.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 12,
+        "wood": 12,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Benchmark at 07:00:",
+        "6 @unit_infantry/archer-2.webp@",
+        "3 @unit_cavalry/horseman-1.png@",
+        "Pressure @resource/resource_gold.png@@resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:00",
+      "villager_count": 32,
+      "resources": {
+        "food": 15,
+        "wood": 15,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Benchmark at 09:00:",
+        "14 @unit_infantry/archer-2.webp@",
+        "5 @unit_cavalry/horseman-1.png@",
+        "1 @unit_siege/battering-ram.png@"
+      ]
+    }
+  ],
+  "description": "HRE Feudal Age aggression with good economy. Fake horseman to make enemy go on spearmen and then pump archers to put pressure to prevent enemy from going Castle Age. Finish with rams through the blacksmith upgrade or transition into Castle Age.",
+  "video": "https://www.youtube.com/embed/cTo7N1mcgVY",
+  "season": 7,
+  "map": "Open",
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

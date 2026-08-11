@@ -1,0 +1,284 @@
+{
+  "name": "ByzVald",
+  "civilization": "Byzantines",
+  "author": "C4DER4DE",
+  "source": "https://aoe4guides.com/builds/0rWkrwDRXtKVsJLWGKQ3",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 > @resource/sheep.webp@ | 1 &gt;@resource/resource_gold.webp@@building_economy/mining-camp.webp@ | 1 &gt; @resource/resource_stone.webp@@building_economy/mining-camp.webp@ | 1 &gt; @building_economy/house.webp@ &gt; @resource/resource_stone.webp@ | @resource/rally.webp@@resource/sheep.webp@ until 7"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @resource/sheep.webp@ &lt;> @building_byzantines/cistern-1.webp@ (cover @resource/resource_stone.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 1,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ (1) > @resource/resource_gold.webp@ | @resource/rally.webp@@resource/sheep.webp@ until 8"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 120,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 120,
+        "builder": -1
+      },
+      "notes": [
+        "@building_byzantines/cistern-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "4 @resource/sheep.webp@ > @landmark_byzantines/grand-winery-1.webp@ &gt; @resource/berrybush.webp@ | @resource/rally.webp@@resource/gaiatreeprototypetree.webp@ until 8"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/house.webp@ (@resource/resource_stone.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_byzantines/grand-winery-1.webp@ finishes... all @resource/sheep.webp@ > @resource/berrybush.webp@ | @building_byzantines/cistern-1.webp@ | @technology_economy/horticulture.webp@ or @technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_byzantines/mercenary-house-2.webp@ (or @building_military/barracks.webp@ / @building_military/stable.webp@) | set cistern modes | all @resource/gaiatreeprototypetree.webp@ >@resource/resource_wood.webp@@building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 2,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/berrybush.webp@ | @building_byzantines/cistern-1.webp@ | all @resource/resource_stone.webp@ >@resource/resource_gold.webp@ (get 5th cistern from production stone)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_byzantines/silk-road-mercenary-contract-1.webp@@unit_byzantines/javelin-thrower-2.webp@ | @building_military/barracks.webp@ or @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/double-broadaxe.webp@ | @unit_byzantines/limitanei-1.webp@@unit_byzantines/limitanei-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/house.webp@@building_economy/house.webp@ | [Upgrade Spears]"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@ | 5+ @resource/berrybush.webp@ > @resource/berrybush.webp@@building_economy/mill.webp@@building_defensive/outpost.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_military/balanced-projectiles.webp@@technology_military/bloomery.webp@@technology_military/iron-undermesh.webp@@technology_military/fitted-leatherwork.webp@ | and/or @technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/house.webp@ | @building_byzantines/cistern-1.webp@ | [Presidium] for towers"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Prioritize @resource/resource_wood.webp@ or @resource/resource_gold.webp@ for either @unit_byzantines/cheirosiphon-3.webp@ or @age/age_3.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

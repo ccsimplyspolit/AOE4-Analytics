@@ -1,0 +1,138 @@
+{
+  "name": "2TC TOV Draft",
+  "civilization": "Tughlaq Dynasty",
+  "author": "lewisaaronwelch",
+  "source": "https://aoe4guides.com/builds/5Mpm0f2zQnAOj1eEgqeG",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "(starting @unit_worker/villager-delhi.webp@ & @unit_tughluq/worker_elephant.webp@), @unit_tughluq/worker_elephant.webp@ &amp; 6 @unit_worker/villager-delhi.webp@ to @resource/berrybush.webp@.",
+        "make 1 @unit_tughluq/worker_elephant.webp@ and scout near @resource/resource_gold.webp@",
+        "@resource/rally.webp@ @unit_worker/villager-delhi.webp@ to @resource/resource_gold.webp@ until 2"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @unit_worker/villager-delhi.webp@ to @resource/sheep.webp@ until age up."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @resource/resource_gold.webp@ @unit_worker/villager-delhi.webp@ @abilities/repair.webp@ @landmark_delhi/tower-of-victory.webp@, Shift @resource/rally.webp@them to @resource/resource_wood.webp@ once complete",
+        "6 @resource/berrybush.webp@ @unit_worker/villager-delhi.webp@ go to @resource/resource_stone.webp@",
+        "@resource/rally.webp@ to @resource/resource_wood.webp@ and send @resource/resource_gold.webp@ @unit_tughluq/worker_elephant.webp@ there"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00\n‑\n4:25",
+      "villager_count": 21,
+      "resources": {
+        "food": 3,
+        "wood": 10,
+        "gold": 0,
+        "stone": 6,
+        "builder": 2
+      },
+      "notes": [
+        "make @building_economy/house.webp@ with a @resource/resource_wood.webp@ @unit_worker/villager-delhi.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 6,
+        "builder": 10
+      },
+      "notes": [
+        "10 @resource/resource_wood.webp@ @unit_worker/villager-delhi.webp@ @abilities/repair.webp@ @building_economy/town-center.webp@, remaining @resource/resource_wood.webp@ @unit_worker/villager-delhi.webp@ to @resource/sheep.webp@",
+        "Location depends on spawn, if safe @resource/deer.webp@, @building_economy/town-center.webp@ on @resource/deer.webp@ otherwise @building_economy/town-center.webp@ on @resource/resource_gold.webp@",
+        "Shift @resource/rally.webp@ them to @resource/deer.webp@ if safe, otherwise @resource/sheep.webp@",
+        "@resource/rally.webp@ main @building_economy/town-center.webp@ onto @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:15",
+      "villager_count": 21,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 16
+      },
+      "notes": [
+        "@resource/resource_stone.webp@ @unit_worker/villager-delhi.webp@ build @building_tughluq/tughluqabad_fort.webp@, then goes onto @resource/resource_gold.webp@ (+@unit_tughluq/worker_elephant.webp@ if @building_tughluq/tughluqabad_fort.webp@ on @resource/resource_gold.webp@)",
+        "Location depends on spawn, if safe @resource/deer.webp@, @building_tughluq/tughluqabad_fort.webp@ on @resource/resource_gold.webp@, otherwise @building_tughluq/tughluqabad_fort.webp@ on @resource/deer.webp@ & once built send 10 @resource/sheep.webp@ @unit_worker/villager-delhi.webp@ to @resource/deer.webp@ with 1 @unit_tughluq/worker_elephant.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:20\n‑\n6:30",
+      "villager_count": 26,
+      "resources": {
+        "food": 20,
+        "wood": 0,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "assign @ability_tughluq/multan.webp@ to @building_tughluq/tughluqabad_fort.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

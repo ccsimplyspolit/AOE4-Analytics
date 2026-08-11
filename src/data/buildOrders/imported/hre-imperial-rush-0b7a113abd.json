@@ -1,0 +1,310 @@
+{
+  "name": "hre imperial rush",
+  "civilization": "Holy Roman Empire",
+  "author": "asphyxia",
+  "source": "https://aoe4guides.com/builds/3MfPmbL4O7rW5pX1hbGj",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "queue 4@unit_worker/villager.webp@in tc@resource/rally.png@to@resource/sheep.png@",
+        "3@unit_worker/villager.png@to@resource/sheep.png@",
+        "3@unit_worker/villager.png@to@building_economy/mining-camp.png@then@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:21",
+      "villager_count": 7,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "7th@unit_worker/villager.webp@on@building_economy/house.png@then@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4@unit_worker/villager.webp@from@resource/sheep.png@to@landmark_hre/aachen-chapel.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:22",
+      "villager_count": 13,
+      "resources": {
+        "food": 1,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "off of 13th@unit_worker/villager.webp@ pop, move 5@unit_worker/villager.png@from@resource/sheep.png@to@resource/gaiatreeprototypetree.png@(chop anywhere from 1 to all 3 trees depending on other civ's aggressiveness)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 2,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@from@resource/resource_gold.png@to@building_defensive/outpost.png@on@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:10‑4:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 5,
+        "builder": 4
+      },
+      "notes": [
+        "upon chopping anywhere from 1-3 trees, move 5@unit_worker/villager.webp@from@resource/gaiatreeprototypetree.png@to@resource/resource_stone.png@until",
+        "113@resource/resource_stone.png@, move 5@unit_worker/villager.png@from @resource/resource_stone.png@to@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:48",
+      "villager_count": 17,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@from@landmark_hre/aachen-chapel.png@to@resource/sheep.png@, other 2@unit_worker/villager.png@to@resource/resource_gold.png@",
+        "17th@unit_worker/villager.png@to@building_economy/house.png@then@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:48",
+      "villager_count": 17,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "OPTIONAL: 2@unit_worker/villager.webp@from@resource/resource_stone.png@to@building_military/barracks.png@/@building_military/archery-range.png@/@building_military/stable.png@(IF AGGRO CIV)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00‑4:50",
+      "villager_count": 18,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "get@technology_defensive/arrow-slits.webp@and@technology_defensive/fortify-outpost.png@for@building_defensive/outpost.png@on@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 17,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@building_economy/town-center.png@to@resource/resource_gold.png@before 23rd@unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:55",
+      "villager_count": 24,
+      "resources": {
+        "food": 3,
+        "wood": 4,
+        "gold": 7,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "10@unit_worker/villager.webp@from@resource/sheep.png@to@landmark_hre/regnitz-cathedral.png@, 4@unit_worker/villager.png@from@resource/sheep.png@to@resource/resource_wood.png@, @resource/rally.png@@building_economy/town-center.png@to@resource/sheep.png@(Wood can be straggler trees, wood line if Aachen Chapel is near enough to drop off to, or wood line until enough wood for lumber camp)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:15",
+      "villager_count": 24,
+      "resources": {
+        "food": 3,
+        "wood": 4,
+        "gold": 7,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "queue@unit_hre/prelate.webp@from@building_economy/town-center.png@for@resource/relics.png@(NOTE: Can't pickup relics before Age 3)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 25,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 7,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "take@unit_hre/prelate.webp@from@landmark_hre/aachen-chapel.png@for@resource/relics.png@(NOTE: Can't pickup relics before Age 3)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "6:57",
+      "villager_count": 25,
+      "resources": {
+        "food": 10,
+        "wood": 4,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6@unit_worker/villager.webp@from@landmark_hre/regnitz-cathedral.png@to@resource/resource_food.png@, other 4@unit_worker/villager.png@to@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "6:57",
+      "villager_count": 25,
+      "resources": {
+        "food": 10,
+        "wood": 4,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Immediately queue@unit_hre/prelate.webp@from@landmark_hre/regnitz-cathedral.png@for@landmark_hre/aachen-chapel.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 3@building_defensive/outpost.webp@in the shape of a triangle around your base, get @technology_defensive/springald-emplacement.png@and@technology_defensive/fortify-outpost.png@for all 3 as well as the stone necessary for them before hand"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "13:25",
+      "villager_count": 20,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 20
+      },
+      "notes": [
+        "Move about 20-30@unit_worker/villager.webp@to@landmark_hre/palace-of-swabia.png@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "time": "14:05",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "boom"
+      ]
+    }
+  ],
+  "description": "based off beasty's gameplay",
+  "video": "",
+  "season": 7,
+  "map": "Open",
+  "strategy": "Fast Imperial",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

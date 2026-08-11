@@ -1,0 +1,161 @@
+{
+  "name": "Abbasid Dark Age Fishing Order (No Villager Shuffling)",
+  "civilization": "Abbasid Dynasty",
+  "author": "Kaige",
+  "source": "https://aoe4guides.com/builds/1qm9p06HAigsXywrFuP6",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 Villagers to Wood, 1 goes to build Docks. Villager who builds docks will shore fish afterwards. Rally 3 Villagers to sheep, and build a house with the first sheep villager. Maintain fishing boat production"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally villagers to wood until you have 8 villagers on wood."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:30",
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build a lumber camp after you have queued up the 3rd fishing boat"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally 1 villagers to sheep"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally 4 Villagers to gold"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 5,
+        "wood": 7,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build a 2nd house with a sheep villager after you have queued up your 5th fishing boat."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 7,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally 2 villagers to sheep"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:45",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build the House of Wisdom with a sheep villager after you have queued up you 6th fishing boat"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:21",
+      "villager_count": 19,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 11,
+  "map": "Water",
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

@@ -1,0 +1,222 @@
+{
+  "name": "Jon Dark",
+  "civilization": "Jeanne d'Arc",
+  "author": "MOB1OUS",
+  "source": "https://aoe4guides.com/builds/15WFtO4HxCq7B48aQ6um",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.png@ rally Sheep to 8",
+        "@unit_jeanne/jeanne-darc-peasant-1.png@ build@building_economy/house.png@@building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.png@ rally Gold to 3 (inc. Jon)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:30",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "⏰ send  @unit_cavalry/scout.webp@ home for drop off"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.png@ rally Sheep"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_french/school-of-cavalry.webp@ with @unit_jeanne/jeanne-darc-peasant-1.png@ & 1 Vil from Sheep",
+        "SHIFT click Vil to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move 2 Vils from Sheep > Wood",
+        "@resource/rally.webp@ @resource/resource_wood.png@ to 5"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 100 Gold build @building_economy/house.webp@ with Gold VIl"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.png@ rally Sheep to 11"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 17,
+      "resources": {
+        "food": 10,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/archery-range.webp@ with @unit_jeanne/jeanne-darc-peasant-1.png@ & Vil > Gold",
+        "@unit_french/royal-knight-2.png@ KNIGHT"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 11,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.png@ rally Gold to 6"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@ability_jeanne/ability-path-of-the-warrior-1.webp@ kill @resource/boar.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_infantry/archer-2.webp@ ARCHER"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 11,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.png@/@resource/sheep.png@"
+      ]
+    }
+  ],
+  "description": "Adapted from Valdemar",
+  "video": "",
+  "season": 6,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

@@ -1,0 +1,93 @@
+{
+  "name": "Simple Build Order - Feudal Heal Aggression [Valdemar]",
+  "civilization": "Knights Templar",
+  "author": "Niki45nk",
+  "source": "https://aoe4guides.com/builds/0tmtEHaquGwgFArfCfwa",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@ on @resource/sheep.png@, 1 @unit_worker/villager.png@ -> @building_economy/mining-camp.png@@resource/resource_gold.png@",
+        "1 @unit_worker/villager.png@ makes @building_economy/house.png@ -&gt; @resource/sheep.png@",
+        "Rally 5 @unit_worker/villager.png@ on @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:30",
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start making 4 @building_economy/farm.webp@ around @building_economy/town-center.png@ with @resource/sheep.png@@unit_worker/villager.png@",
+        "When 5@resource/resource_wood.png@@unit_worker/villager.png@, @resource/rally.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with @civilization_flag/hos.webp@",
+        "5 @resource/sheep.png@@unit_worker/villager.png@ go to @resource/resource_wood.png@",
+        "1 @resource/resource_wood.png@@unit_worker/villager.png@ makes 2@building_military/barracks.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @resource/resource_wood.webp@@unit_worker/villager.png@ go to @resource/resource_gold.png@",
+        "2 @resource/resource_wood.png@@unit_worker/villager.png@ go to @resource/sheep.png@",
+        "Get @technology_templar/safepassage.png@ at @building_economy/town-center.png@",
+        "Always make @unit_templar/hospitaller_knight_age_2.png@ to raid/defend Pilgrims",
+        "Keep @resource/rally.png@ to @resource/sheep.png@",
+        "When 11 @resource/resource_food.png@@unit_worker/villager.png@, @resource/rally.png@ to other resources (probably @resource/resource_wood.png@)",
+        "Go either for @unit_templar/hospitaller_knight_age_2.png@/@unit_infantry/spearman-1.png@ or @unit_templar/hospitaller_knight_age_2.png@/@unit_infantry/archer-2.png@"
+      ]
+    }
+  ],
+  "description": "Simple Build Order - Feudal Heal Aggression by Valdemar",
+  "video": "https://www.youtube.com/embed/Hk0EvBkJUAs",
+  "season": 10,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

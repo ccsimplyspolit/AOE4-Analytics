@@ -1,0 +1,79 @@
+{
+  "name": "Malian Feudal Aggression - TyrantZaar",
+  "civilization": "Malians",
+  "author": "TyrantZaar",
+  "source": "https://aoe4guides.com/builds/0HhyYXr8mPIMdmEFPhap",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 vils to finish one nearby TC tree, then to sheep, 1 vil to create @building_malians/pit-mine-1.webp@ and 5 @building_economy/house.webp@.",
+        "@resource/rally.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "60s",
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "All vils on sheep, except the builder",
+        "@resource/rally.webp@ to sheep"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Send 5 to take space and create @landmark_malians/saharan-trade-network-1.webp@ on Gold vein, create new @building_malians/pit-mine-1.webp@ and @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

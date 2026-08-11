@@ -1,0 +1,175 @@
+{
+  "name": "HOL - Basic Start",
+  "civilization": "House of Lancaster",
+  "author": "BWP_Mello",
+  "source": "https://aoe4guides.com/builds/1tFoJn5kzDrARyY56IkJ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Starting @unit_worker/villager.webp@ to @resource/sheep.webp@ , @resource/rally.webp@ @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": ":25",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "First @resource/resource_gold.webp@ @unit_worker/villager.webp@ builds @building_economy/house.webp@@building_economy/mining-camp.webp@ , +2@unit_worker/villager.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/sheep.webp@ until @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "All @resource/resource_gold.webp@@unit_worker/villager.webp@ build @landmark_lancaster/lancaster_castle.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:05",
+      "villager_count": 12,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 0,
+        "stone": 3,
+        "builder": 3
+      },
+      "notes": [
+        "Leave 3 @unit_worker/villager.webp@ on @resource/sheep.webp@,3 @unit_worker/villager.webp@ to @resource/resource_stone.webp@  and 3@unit_worker/villager.webp@ to @resource/resource_wood.webp@. First @unit_worker/villager.webp@ to @resource/resource_stone.webp@@resource/resource_wood.webp@ to build a @building_economy/mining-camp.webp@@building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 0,
+        "stone": 3,
+        "builder": 3
+      },
+      "notes": [
+        "@resource/rally.webp@ all new @unit_worker/villager.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:58",
+      "villager_count": 17,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 1,
+        "stone": 3,
+        "builder": 2
+      },
+      "notes": [
+        "Once @landmark_lancaster/lancaster_castle.webp@ completes, take 2 @unit_worker/villager.webp@ and build a @building_lancaster/manor.webp@ send the last one back to @resource/resource_gold.webp@, @resource/rally.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 21,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 10,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Once the second @building_lancaster/manor.webp@ is completed, send 1@resource/resource_food.webp@@unit_worker/villager.webp@ to @resource/resource_gold.webp@, @resource/rally.webp@@resource/resource_gold.webp@ until 10@unit_worker/villager.webp@. Once at 10, @resource/rally.webp@@resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 25,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 8,
+        "stone": 7,
+        "builder": 2
+      },
+      "notes": [
+        "When you get 250 @resource/resource_gold.webp@ start researching @technology_lancaster/open_field_system.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "Basic roll out",
+  "video": "",
+  "season": 11,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

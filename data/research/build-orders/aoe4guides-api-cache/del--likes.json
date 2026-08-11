@@ -1,0 +1,2473 @@
+[
+  {
+    "description": "Standard Opener for the Delhi civilization with either Castle age or Feudal direction. \n\nTechnologies are not provided here, as they should always be queued up. This is explained in the video.\n\nSee Video Provided for Reference",
+    "civilization": "Delhi Sultanate",
+    "name": "Standard ToV Delhi Opener for Castle / Feudal Rush",
+    "author": "Valdemar1902",
+    "source": "https://aoe4guides.com/builds/cuoaFU7jsHTcEfw46e27",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 7,
+        "resources": {
+          "food": 1,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "1 @unit_worker/villager-delhi.webp@&nbsp;starts@building_economy/mill.png@&nbsp;and goes to build&nbsp;@building_religious/mosque.png@&nbsp;/ 5&nbsp;@unit_worker/villager-delhi.png@&nbsp;to straggler&nbsp;@resource/resource_wood.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:20",
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 new @unit_worker/villager-delhi.webp@&nbsp;builds&nbsp;@building_economy/house.png@&nbsp;/&nbsp;@resource/resource_wood.png@@unit_worker/villager-delhi.png@&nbsp;go to&nbsp;@resource/resource_food.png@&nbsp;(Do drop off on unbuilt&nbsp;@building_economy/mill.png@&nbsp;if less travel distance)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:40",
+        "villager_count": 8,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 new @unit_worker/villager-delhi.webp@&nbsp;to&nbsp;@resource/resource_food.png@&nbsp;(8)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:00",
+        "villager_count": 11,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "3 new @unit_worker/villager-delhi.webp@&nbsp;to&nbsp;@building_economy/mining-camp.png@@resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:00",
+        "villager_count": 11,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "2 new @unit_worker/villager-delhi.webp@&nbsp;to chopped straggler&nbsp;@resource/resource_wood.png@, then 1 new&nbsp;@unit_worker/villager-delhi.png@&nbsp;to build&nbsp;@building_economy/lumber-camp.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:30",
+        "villager_count": 13,
+        "resources": {
+          "food": 4,
+          "wood": 2,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "4@resource/resource_food.webp@@unit_worker/villager-delhi.png@ build&nbsp;@landmark_delhi/tower-of-victory.png@. Keep&nbsp;@resource/rally.png@onto&nbsp;@resource/resource_wood.png@."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:40",
+        "villager_count": 9,
+        "resources": {
+          "food": 4,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Pull @resource/resource_gold.webp@@unit_worker/villager-delhi.png@&nbsp;at 3770G in Gold Vein -> Queue&nbsp;@unit_delhi/scholar.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:30",
+        "villager_count": 9,
+        "resources": {
+          "food": 4,
+          "wood": 2,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Keep @resource/rally.webp@onto&nbsp;@resource/resource_wood.png@."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:40",
+        "villager_count": 9,
+        "resources": {
+          "food": 4,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Pull @resource/resource_gold.webp@@unit_worker/villager-delhi.png@&nbsp;at 3770G in Gold Vein onto @resource/resource_wood.png@&nbsp;&nbsp;-> Queue&nbsp;@unit_delhi/scholar.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:09",
+        "villager_count": 18,
+        "resources": {
+          "food": 8,
+          "wood": 10,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build @building_technology/blacksmith.webp@&nbsp;(2 if opponent is not immediatly aggressive)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Balance economy approx 50/50 to build @resource/resource_food.webp@+@resource/resource_wood.png@heavy units and&nbsp;@building_defensive/palisade-wall.png@around&nbsp;@resource/sacred_sites.png@. Make&nbsp;@unit_delhi/scholar.png@&nbsp;from&nbsp;@resource/sacred_sites.png@&nbsp;@resource/resource_gold.png@&nbsp;.&nbsp;"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Now head into units.",
+          "Open @building_military/stable.webp@+@building_military/archery-range.png@&nbsp;for standard opener vs&nbsp;@civilization_flag/eng.png@@civilization_flag/mal.png@@civilization_flag/hre.png@@civilization_flag/chi.png@.",
+          "Open&nbsp;@building_military/barracks.png@+@building_military/archery-range.png@&nbsp;if against&nbsp;@civilization_flag/abb.png@@civilization_flag/del.png@@civilization_flag/ott.png@",
+          "Open&nbsp;@building_military/barracks.png@+@building_military/stable.png@&nbsp;vs&nbsp;@civilization_flag/fre.png@@civilization_flag/rus.png@@civilization_flag/mon.png@",
+          "Of course, scout opponent and build units that counter his. This is just a guide.&nbsp;"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "For Castle TIMING use @landmark_delhi/compound-of-the-defender.webp@&nbsp;(not if opponent is in castle): build 3-4&nbsp;@building_military/barracks.png@&nbsp;(total with scholars) and mass@unit_infantry/man-at-arms-1.png@. Send Age up vills to&nbsp;@resource/resource_stone.png@and&nbsp;@building_defensive/keep.png@-drop opponents base when pushing. Go siege, if necessary, and if you can't push, build economy with&nbsp;@building_defensive/keep.png@"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/amSVlXvc0d0",
+    "season": "Season 5",
+    "map": "Open",
+    "strategy": null
+  },
+  {
+    "description": "Delhi Fast Imperial build into Elephants inspired by Corvinus1 - video starts at 01:17\n\nhttps://www.twitch.tv/videos/2293374213?t=4624s",
+    "civilization": "Delhi Sultanate",
+    "name": "Delhi Fast Imperial build into Elephants",
+    "author": "FiddyWow",
+    "source": "https://aoe4guides.com/builds/rSdZ5y8cJPQY8Yg2eKmx",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "5 @unit_worker/villager-delhi.webp@ to @resource/gaiatreeprototypetree.png@ for one trip",
+          "1 @unit_worker/villager-delhi.png@ to @abilities/repair.png@@building_religious/mosque.png@ + @building_economy/house.png@ near @resource/berrybush.png@ (stays on berrys)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:25\n‑\n01:20",
+        "villager_count": 11,
+        "resources": {
+          "food": 9,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ 2 new @unit_worker/villager-delhi.png@ to @resource/resource_gold.png@ and first @unit_worker/villager-delhi.png@@abilities/repair.png@@building_economy/mining-camp.png@",
+          "5 @resource/resource_wood.png@   @unit_worker/villager-delhi.png@ to @abilities/repair.png@@building_economy/mill.png@ near @resource/berrybush.png@ (stays on berrys)",
+          "@resource/rally.png@ 3 new@unit_worker/villager-delhi.png@ to @resource/berrybush.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "02:45",
+        "villager_count": 11,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": 5
+        },
+        "notes": [
+          "@landmark_delhi/dome-of-the-faith.webp@ with 5 @resource/berrybush.png@@unit_worker/villager-delhi.png@ then back to @resource/berrybush.png@",
+          "@resource/rally.png@ 7 new @unit_worker/villager-delhi.png@ to @resource/resource_wood.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "04:00\n‑ \n06:30",
+        "villager_count": 18,
+        "resources": {
+          "food": 9,
+          "wood": 7,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ 3 new @unit_worker/villager.png@ to @resource/resource_food.png@ (12 total) and 4 new @unit_worker/villager.png@ to @resource/resource_gold.png@",
+          "@resource/rally.png@@unit_delhi/scholar.png@ from @landmark_delhi/dome-of-the-faith.png@ to @building_religious/mosque.png@ and research all upgrades",
+          "@abilities/repair.png@@building_military/stable.png@ to harass/pressure the enemy then@building_technology/blacksmith.png@",
+          "@abilities/repair.png@ second @building_economy/mill.png@ on @resource/berrybush.png@ and research   @technology_economy/professional-scouts.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "06:30\n‑\n08:00",
+        "villager_count": 29,
+        "resources": {
+          "food": 16,
+          "wood": 7,
+          "gold": 6,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ 4 new @unit_worker/villager.png@ to @resource/resource_food.png@",
+          "@abilities/repair.png@ second @building_technology/blacksmith.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "08:20",
+        "villager_count": 29,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 0,
+          "stone": 13,
+          "builder": 11
+        },
+        "notes": [
+          "@resource/rally.webp@ all @resource/resource_wood.png@ and @resource/resource_gold.png@@unit_worker/villager.png@ to @resource/resource_stone.png@ (for 750 stone)",
+          "@landmark_delhi/compound-of-the-defender.png@ with 11 @resource/resource_food.png@@unit_worker/villager.png@ then to @resource/resource_gold.png@",
+          "@resource/rally.png@ new    @unit_worker/villager.png@to@resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "09:20",
+        "villager_count": 32,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 11,
+          "stone": 13,
+          "builder": -1
+        },
+        "notes": [
+          "Research @technology_delhi/village-fortresses.webp@ and @technology_defensive/boiling-oil.png@ from @landmark_delhi/compound-of-the-defender.png@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "10:00",
+        "villager_count": 32,
+        "resources": {
+          "food": 21,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 11
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_stone.png@@unit_worker/villager.png@ to @resource/sheep.png@",
+          "@abilities/repair.png@@building_defensive/keep.png@ with @resource/resource_gold.png@@unit_worker/villager.png@ near @resource/resource_gold.png@ then to @resource/resource_food.png@",
+          "@resource/rally.png@ new    @unit_worker/villager.png@to@resource/resource_food.png@ (40 + in total)",
+          "@resource/rally.png@ 3/4 @unit_cavalry/scout.png@ and bring @resource/deer.png@ under your TC"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "12:00",
+        "villager_count": 42,
+        "resources": {
+          "food": 7,
+          "wood": 17,
+          "gold": 0,
+          "stone": 0,
+          "builder": 18
+        },
+        "notes": [
+          "7  @unit_worker/villager.webp@ on @resource/resource_food.png@",
+          "17 @unit_worker/villager.png@ on @resource/resource_wood.png@",
+          "@landmark_delhi/palace-of-the-sultan.png@with remaining@unit_worker/villager.png@then send 13@unit_worker/villager.png@on@resource/resource_wood.png@and rest on@resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": 4,
+        "population_count": -1,
+        "time": "13:00",
+        "villager_count": 47,
+        "resources": {
+          "food": 12,
+          "wood": 30,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ 4 @unit_delhi/scholar.png@ into @landmark_delhi/palace-of-the-sultan.png@",
+          "@resource/rally.png@ new @unit_worker/villager.png@to@resource/resource_food.png@ (30 total) then to @resource/resource_gold.png@",
+          "@abilities/repair.png@ 3x @building_technology/university.png@ + 1x @building_military/archery-range.png@ + 3x @building_military/stable.png@ + 3rd @building_technology/blacksmith.png@"
+        ]
+      },
+      {
+        "age": 4,
+        "population_count": -1,
+        "time": "15:00",
+        "villager_count": 50,
+        "resources": {
+          "food": 30,
+          "wood": 15,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Keep 15 @unit_worker/villager.webp@ on @resource/resource_wood.png@ and sent remaining @unit_worker/villager.png@ to @resource/resource_food.png@",
+          "Start producing ONLY @unit_byzantines/war-elephant.png@ form your stables.@technology_delhi/armored-beasts.png@"
+        ]
+      },
+      {
+        "age": 4,
+        "population_count": -1,
+        "time": "18 +",
+        "villager_count": 65,
+        "resources": {
+          "food": 30,
+          "wood": 15,
+          "gold": 20,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "At this point you can start @building_economy/mining-camp.webp@@resource/resource_stone.png@ and add more keeps on the map or kill your enemy with mass elephants + keeps insider their base."
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/xtwOCXzM7OQ",
+    "season": "Season 9",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "Feudal all-in guide\n\nThe upgrades are noted in priority\n\nVideo linked.",
+    "civilization": "Delhi Sultanate",
+    "name": "Feudal Timing Attack (w/ upgrade notation)",
+    "author": "Valdemar1902",
+    "source": "https://aoe4guides.com/builds/sQlWCoeHkXtn2O4g3tCl",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "5 starting @unit_worker/villager-delhi.webp@ to @resource/gaiatreeprototypetree.png@ to chop 50 @resource/resource_wood.png@",
+          "1 @unit_worker/villager-delhi.png@ builds@building_economy/mill.png@ on @resource/berrybush.png@ then @building_religious/mosque.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:20",
+        "villager_count": 7,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "new @unit_worker/villager-delhi.webp@ builds @building_economy/house.png@ then @resource/berrybush.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:40",
+        "villager_count": 8,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "1 new @unit_worker/villager-delhi.webp@ to @resource/resource_food.png@ (8)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:00",
+        "villager_count": 11,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "3 new @unit_worker/villager-delhi.webp@ to @building_economy/mining-camp.png@@resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:00",
+        "villager_count": 12,
+        "resources": {
+          "food": 8,
+          "wood": 1,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "2 new @unit_worker/villager-delhi.webp@ to chopped @resource/gaiatreeprototypetree.png@, then 1 new @unit_worker/villager-delhi.png@ to build @building_economy/lumber-camp.png@ at woodline (pull the 2 @unit_worker/villager-delhi.png@ from straggler when 50@resource/resource_wood.png@)",
+          "Keep rallying to @resource/resource_wood.png@until 12"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:30‑35",
+        "villager_count": 13,
+        "resources": {
+          "food": 4,
+          "wood": 2,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "@landmark_delhi/tower-of-victory.webp@ with 4 @resource/resource_food.png@@unit_worker/villager-delhi.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:40",
+        "villager_count": 16,
+        "resources": {
+          "food": 4,
+          "wood": 8,
+          "gold": 0,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Pull 3 @resource/resource_gold.webp@@unit_worker/villager-delhi.png@ (when 3770G in Gold Vein) to @resource/resource_wood.png@",
+          "Queue @unit_delhi/scholar.png@ in @building_religious/mosque.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:40",
+        "villager_count": 16,
+        "resources": {
+          "food": 4,
+          "wood": 8,
+          "gold": 0,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Pull 3 @resource/resource_gold.webp@@unit_worker/villager-delhi.png@ (when 3770G in Gold Vein) to @resource/resource_wood.png@",
+          "Queue @unit_delhi/scholar.png@ in @building_religious/mosque.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:10",
+        "villager_count": 18,
+        "resources": {
+          "food": 8,
+          "wood": 9,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Queue all feudal upgrades",
+          "@resource/resource_wood.webp@@unit_worker/villager-delhi.png@build @building_technology/blacksmith.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:50",
+        "villager_count": 20,
+        "resources": {
+          "food": 8,
+          "wood": 11,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "@resource/resource_wood.webp@@unit_worker/villager-delhi.png@build @building_military/stable.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:15",
+        "villager_count": 22,
+        "resources": {
+          "food": 8,
+          "wood": 12,
+          "gold": 0,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "@resource/resource_wood.webp@@unit_worker/villager-delhi.png@build @building_military/archery-range.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "When 12 @unit_worker/villager-delhi.webp@ on @resource/resource_wood.png@ start rallying to @resource/resource_food.png@ (balance eco around your unit comp. More ghazi = more on food and vice versa with archers.)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:50‑7:00",
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Send both @unit_delhi/scholar.webp@ to @resource/sacred_sites.png@ at 7 mins. Only wall @resource/sacred_sites.png@ that are furthest away (and therefore toughest to defend)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "7:30",
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "2nd @building_military/stable.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "7:50‑8:00",
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@technology_military/steeled-arrow.webp@ finishes"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "10:30‑11",
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@technology_military/iron-undermesh.webp@finishes and you should have an upgrade advantage"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "You should try to have around 12 ghazi + 12 archers at min 10. Macroing with delhi just involves taking pocket resources and balancing around production. Then when you have sacred sites, you produce 5 scholars in total and then spend all your gold income in the market to boost your economy."
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/IRiIM0uY4qA",
+    "season": "Season 7",
+    "map": "Open",
+    "strategy": "Timing Attack"
+  },
+  {
+    "description": "Incredibly strong ramp up leads to some insane army mass capability and/or tech timings. Use this as a feudal strat to either all in or look for a tempo advantage to go castle with.",
+    "civilization": "Delhi Sultanate",
+    "name": "Dome Of Faith Tempo Build",
+    "author": "Valdemar1902",
+    "source": "https://aoe4guides.com/builds/A9HNZar6pRJJuWqnkBly",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "5 @unit_worker/villager-delhi.webp@ to @resource/gaiatreeprototypetree.png@. 1 @unit_worker/villager-delhi.png@ to build @building_religious/mosque.png@ then @resource/berrybush.png@(connecting @building_economy/mill.png@ and @building_economy/town-center.png@)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:20",
+        "villager_count": 6,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "2 @unit_worker/villager-delhi.webp@ to @resource/resource_gold.png@ + Build @building_economy/house.png@@building_economy/mining-camp.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:00",
+        "villager_count": 9,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@2 new @unit_worker/villager-delhi.png@ to @resource/berrybush.png@ and then rest to @resource/sheep.png@ until ageup."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:30",
+        "villager_count": 17,
+        "resources": {
+          "food": 11,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "@landmark_delhi/dome-of-the-faith.webp@ with 4 @resource/berrybush.png@ @unit_worker/villager-delhi.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:30",
+        "villager_count": 9,
+        "resources": {
+          "food": 4,
+          "wood": 3,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Take your @resource/sheep.webp@ and put them on @resource/gaiatreeprototypetree.png@ then @building_economy/lumber-camp.png@. Keep @resource/rally.png@ @resource/resource_wood.png@ until 10-11ish"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:11",
+        "villager_count": 18,
+        "resources": {
+          "food": 8,
+          "wood": 8,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@age/age_2.webp@: send age-up @unit_worker/villager-delhi.png@ back to @resource/berrybush.png@.  Don't forget to queue all upgrades. Blacksmith upgrades are noted below.",
+          "Queue @unit_delhi/scholar.png@ from @landmark_delhi/dome-of-the-faith.png@ and rally into @building_religious/mosque.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:25",
+        "villager_count": 19,
+        "resources": {
+          "food": 8,
+          "wood": 8,
+          "gold": 2,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Build a @building_technology/blacksmith.webp@ or @building_military/barracks.png@ if against early rush cav civs. Use @unit_delhi/scholar.png@ inside prod. building if in need of fast units. (only against rush)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:00",
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "2nd building."
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/yaCsijvYIWM",
+    "season": "Season 8",
+    "map": null,
+    "strategy": "Timing Attack"
+  },
+  {
+    "description": "Gameplan:\n- make units (Ghazi into 1x1x1 composition)\n- take sacred sites\n- (optional) wall sacred sites\n- trade gold for food/wood to further increase your army advantage\n- sacred site win or deny food",
+    "civilization": "Delhi Sultanate",
+    "name": "DEL | 1 Mosque | Tower of Victory | Ghazi into 1x1x1",
+    "author": "exe",
+    "source": "https://aoe4guides.com/builds/UNLuy0UFkKp5Hf9mHkMo",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "5 @unit_worker/villager-delhi.webp@to@resource/gaiatreeprototypetree.png@ to chop 50@resource/resource_wood.png@",
+          "1 @unit_worker/villager-delhi.png@@abilities/repair.png@@building_economy/house.png@and@building_religious/mosque.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:30",
+        "villager_count": 7,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/gaiatreeprototypetree.webp@@unit_worker/villager-delhi.png@@abilities/repair.png@@building_economy/mill.png@on@resource/berrybush.png@",
+          "Research @technology_economy/wheelbarrow.png@,@technology_delhi/efficient-production.png@, and@technology_religious/piety.png@",
+          "@resource/rally.png@@resource/resource_food.png@(until 8)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:45",
+        "villager_count": 8,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 @unit_worker/villager-delhi.webp@@abilities/repair.png@@building_economy/mining-camp.png@on@resource/resource_gold.png@",
+          "@resource/rally.png@@resource/resource_gold.png@(until 3)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "01:45",
+        "villager_count": 11,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_food.png@(until @age/age_2.png@)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "02:45",
+        "villager_count": 14,
+        "resources": {
+          "food": 4,
+          "wood": 3,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Age up with @landmark_delhi/tower-of-victory.webp@with 4@resource/resource_food.png@@unit_worker/villager-delhi.png@",
+          "@resource/rally.png@@resource/resource_wood.png@(until @building_military/stable.png@)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "03:30",
+        "villager_count": 15,
+        "resources": {
+          "food": 4,
+          "wood": 7,
+          "gold": 0,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "When 130 @resource/resource_gold.webp@, move@resource/resource_gold.png@@unit_worker/villager-delhi.png@to@resource/resource_wood.png@",
+          "@abilities/repair.png@@building_economy/lumber-camp.png@",
+          "Train @unit_delhi/scholar.png@, queue@technology_religious/piety.png@, research@technology_economy/forestry.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "04:30",
+        "villager_count": 18,
+        "resources": {
+          "food": 8,
+          "wood": 10,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@abilities/repair.webp@@unit_worker/villager-delhi.png@to@resource/resource_food.png@",
+          "Research @technology_delhi/sanctity.png@and@technology_delhi/all-seeing-eye.png@",
+          "Research @technology_economy/double-broadaxe.png@,@technology_economy/specialized-pick.png@,@technology_economy/horticulture.png@,@technology_economy/survival-techniques.png@, and@technology_economy/professional-scouts.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "04:45",
+        "villager_count": 19,
+        "resources": {
+          "food": 12,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "When 150 @resource/resource_wood.webp@, @abilities/repair.png@@building_military/stable.png@",
+          "Move @unit_worker/villager-delhi.png@from@resource/resource_wood.png@to@resource/resource_food.png@(until 14)",
+          "Continuously train @unit_delhi/ghazi-raider-2.png@ and pressure opponent"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "06:00",
+        "villager_count": 23,
+        "resources": {
+          "food": 14,
+          "wood": 8,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "When 150 @resource/resource_wood.webp@, @abilities/repair.png@@building_technology/blacksmith.png@",
+          "Research @technology_military/steeled-arrow.png@,@technology_military/bloomery.png@, and@technology_military/siege-engineering.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "06:45",
+        "villager_count": 26,
+        "resources": {
+          "food": 14,
+          "wood": 11,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "When 150 @resource/resource_wood.webp@, @abilities/repair.png@second@building_technology/blacksmith.png@",
+          "Research @technology_military/iron-undermesh.png@and@technology_military/fitted-leatherwork.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "07:45",
+        "villager_count": 29,
+        "resources": {
+          "food": 14,
+          "wood": 15,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Send @unit_delhi/scholar.webp@to capture@resource/sacred_sites.png@",
+          "@abilities/repair.png@@building_military/archery-range.png@and@building_military/barracks.png@",
+          "Continuously train @unit_delhi/ghazi-raider-2.png@,@unit_infantry/archer-2.png@, and@unit_infantry/spearman-1.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "09:00",
+        "villager_count": 32,
+        "resources": {
+          "food": 14,
+          "wood": 18,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@abilities/repair.webp@@building_economy/market.png@",
+          "Trade @resource/resource_gold.png@for@resource/resource_food.png@and@resource/resource_wood.png@",
+          "Train additional @unit_delhi/scholar.png@with extra@resource/resource_gold.png@"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/qInAABSC2Bo",
+    "season": "Season 6",
+    "map": "Open",
+    "strategy": "Rush"
+  },
+  {
+    "description": "See video link for more tips",
+    "civilization": "Delhi Sultanate",
+    "name": "Delhi Fast Ghazi into Age 3 (2026)",
+    "author": "Valdemar1902",
+    "source": "https://aoe4guides.com/builds/S3FUuhz7WEB8VYUL5qPb",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "5 starting @unit_worker/villager-delhi.webp@ to @resource/gaiatreeprototypetree.webp@ to chop 50 @resource/resource_wood.webp@ then build @building_economy/mill.webp@ on @resource/berrybush.webp@",
+          "1 @unit_worker/villager-delhi.webp@ builds @building_religious/mosque.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:20",
+        "villager_count": 7,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "new @unit_worker/villager-delhi.webp@ builds @building_economy/house.webp@ then @resource/berrybush.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:40",
+        "villager_count": 8,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "1 new @unit_worker/villager-delhi.webp@ to @resource/resource_food.webp@ (8 total)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:00",
+        "villager_count": 9,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "3 new @unit_worker/villager-delhi.webp@ to @building_economy/mining-camp.webp@@resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:00",
+        "villager_count": 12,
+        "resources": {
+          "food": 8,
+          "wood": 1,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "2 new @unit_worker/villager-delhi.webp@ to chopped @resource/gaiatreeprototypetree.webp@, then 1 new @unit_worker/villager-delhi.webp@ to build @building_economy/lumber-camp.webp@ at woodline (pull the 2 @unit_worker/villager-delhi.webp@ from straggler when 50@resource/resource_wood.webp@)",
+          "Keep rallying to @resource/resource_wood.webp@until 5"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:30",
+        "villager_count": 13,
+        "resources": {
+          "food": 4,
+          "wood": 2,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "@landmark_delhi/dome-of-the-faith.webp@ on @resource/berrybush.webp@ with 4 @resource/berrybush.webp@@unit_worker/villager-delhi.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 18,
+        "resources": {
+          "food": 10,
+          "wood": 5,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "when 5 on @resource/resource_wood.webp@ you @resource/rally.webp@ back to @resource/sheep.webp@ until 12. Then @resource/resource_wood.webp@ again until 12"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:15",
+        "villager_count": 21,
+        "resources": {
+          "food": 11,
+          "wood": 5,
+          "gold": 3,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "Queue all feudal upgrades",
+          "2@unit_worker/villager-delhi.webp@ from @resource/resource_wood.webp@ build @building_military/stable.webp@ ( put @unit_delhi/scholar.webp@ inside @building_military/stable.webp@ and pump @unit_delhi/ghazi-raider-2.webp@ nonstop )"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:25",
+        "villager_count": 24,
+        "resources": {
+          "food": 12,
+          "wood": 9,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_technology/blacksmith.webp@  @building_military/archery-range.webp@ @building_military/barracks.webp@ in whatever order makes sense (usually go production buildings first and add 2x blacksmiths later around 8-10 mins)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Only go age 3 when you have secured 2 deer packs with @technology_economy/professional-scouts.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "In age 3 immediately queue @unit_delhi/war-elephant.webp@ and add 2 more @building_military/archery-range.webp@ for @unit_infantry/archer-2.webp@+@unit_infantry/crossbowman-3.webp@",
+          "Also Start @resource/resource_stone.webp@ for @building_defensive/keep.webp@ & @technology_delhi/village-fortresses.webp@"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/dRvmG-HSfz4",
+    "season": "Season 12",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "",
+    "civilization": "Delhi Sultanate",
+    "name": "Delhi Fast Ghazi Style",
+    "author": "Valdemar1902",
+    "source": "https://aoe4guides.com/builds/1XSFHsmxss25etyV8XSC",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "5 starting @unit_worker/villager-delhi.webp@ to @resource/gaiatreeprototypetree.webp@ to chop 50 @resource/resource_wood.webp@ then build @building_economy/mill.webp@ on @resource/berrybush.webp@",
+          "1 @unit_worker/villager-delhi.webp@ builds @building_religious/mosque.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:20",
+        "villager_count": 7,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "new @unit_worker/villager-delhi.webp@ builds @building_economy/house.webp@ then @resource/berrybush.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:40",
+        "villager_count": 8,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "1 new @unit_worker/villager-delhi.webp@ to @resource/resource_food.webp@ (8 total)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:00",
+        "villager_count": 9,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "3 new @unit_worker/villager-delhi.webp@ to @building_economy/mining-camp.webp@@resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:00",
+        "villager_count": 12,
+        "resources": {
+          "food": 8,
+          "wood": 1,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "2 new @unit_worker/villager-delhi.webp@ to chopped @resource/gaiatreeprototypetree.webp@, then 1 new @unit_worker/villager-delhi.webp@ to build @building_economy/lumber-camp.webp@ at woodline (pull the 2 @unit_worker/villager-delhi.webp@ from straggler when 50@resource/resource_wood.webp@)",
+          "Keep rallying to @resource/resource_wood.webp@until 5"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:40 ish",
+        "villager_count": 13,
+        "resources": {
+          "food": 4,
+          "wood": 2,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "@landmark_delhi/dome-of-the-faith.webp@ on @resource/berrybush.webp@ with 4 @resource/berrybush.webp@@unit_worker/villager-delhi.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 18,
+        "resources": {
+          "food": 10,
+          "wood": 5,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "when 5 on @resource/resource_wood.webp@ you @resource/rally.webp@ back to @resource/sheep.webp@ until 14. Then @resource/resource_wood.webp@ again"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:15",
+        "villager_count": 21,
+        "resources": {
+          "food": 11,
+          "wood": 5,
+          "gold": 3,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "Queue all feudal upgrades",
+          "2@unit_worker/villager-delhi.webp@ from @resource/resource_wood.webp@ build @building_military/stable.webp@ ( put @unit_delhi/scholar.webp@ inside @building_military/stable.webp@ and pump @unit_delhi/ghazi-raider-2.webp@ nonstop )"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:25",
+        "villager_count": 24,
+        "resources": {
+          "food": 14,
+          "wood": 7,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_technology/blacksmith.webp@ then @building_military/archery-range.webp@ and @building_military/barracks.webp@ (if tricomp from opp)"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 11",
+    "map": null,
+    "strategy": "Timing Attack"
+  },
+  {
+    "description": "Tower of Victory build with a 2 mosque opening to accelerate tech and scholars to heal up units from early fights. This build is very aggressive and should be won in feudal or through aging up and dropping keeps everywhere with Compound Of The Defender. ",
+    "civilization": "Delhi Sultanate",
+    "name": "ToV Ghazi/Archer/Scholar build",
+    "author": "Valdemar1902",
+    "source": "https://aoe4guides.com/builds/CzEVNl8SmJfdUsBun6lS",
+    "build_order": [
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "5@unit_worker/villager-delhi.webp@ to&nbsp;@resource/gaiatreeprototypetree.png@&nbsp;to chop 100@resource/resource_wood.png@. 1&nbsp;@unit_worker/villager-delhi.png@&nbsp;builds&nbsp;@building_religious/mosque.png@&nbsp;+&nbsp;@building_economy/house.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "0:21",
+        "villager_count": 7,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "1st new@unit_worker/villager-delhi.webp@ builds&nbsp;@building_economy/lumber-camp.png@&nbsp;:&nbsp;@technology_economy/forestry.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "0:33",
+        "villager_count": 7,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "@building_religious/mosque.webp@: @technology_delhi/efficient-production.png@&nbsp;+&nbsp;@technology_religious/piety.png@&nbsp;"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "0:43",
+        "villager_count": 8,
+        "resources": {
+          "food": 7,
+          "wood": 1,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "5@unit_worker/villager-delhi.webp@@resource/gaiatreeprototypetree.png@ go to&nbsp;@resource/berrybush.png@and build&nbsp;@building_economy/mill.png@:&nbsp;@technology_economy/wheelbarrow.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "1:22",
+        "villager_count": 12,
+        "resources": {
+          "food": 8,
+          "wood": 1,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "3@unit_worker/villager-delhi.webp@ to&nbsp;@resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "2:20",
+        "villager_count": 13,
+        "resources": {
+          "food": 9,
+          "wood": 1,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1@unit_worker/villager-delhi.webp@ to&nbsp;@resource/resource_food.png@then&nbsp;@resource/rally.png@@resource/resource_wood.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "2:55",
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build @landmark_delhi/tower-of-victory.webp@&nbsp;with 4@resource/resource_food.png@@unit_worker/villager-delhi.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "3:14",
+        "villager_count": 15,
+        "resources": {
+          "food": 4,
+          "wood": 3,
+          "gold": 4,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Build 2nd @building_religious/mosque.webp@&nbsp;on&nbsp;@resource/resource_gold.png@.&nbsp;"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "4:02",
+        "villager_count": 18,
+        "resources": {
+          "food": 4,
+          "wood": 6,
+          "gold": 4,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Queue @unit_delhi/scholar.webp@+ Build@building_economy/house.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "4:34",
+        "villager_count": 19,
+        "resources": {
+          "food": 8,
+          "wood": 7,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@age/age_2.webp@: Queue all techs. @building_religious/mosque.png@&nbsp;on&nbsp;@resource/resource_gold.png@&nbsp;builds scholars. 1st&nbsp;@building_religious/mosque.png@&nbsp;does the research.&nbsp;",
+          "Build a&nbsp;@building_military/stable.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "5:27",
+        "villager_count": 21,
+        "resources": {
+          "food": 10,
+          "wood": 7,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_technology/blacksmith.webp@ then&nbsp;@building_military/archery-range.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Just before @technology_delhi/sanctity.webp@&nbsp;finishes, send out 3&nbsp;@unit_delhi/scholar.png@&nbsp;to the 3 Sacred Sites. If opponent is aggressive, take 1 site at a time with army and wall it. Keep adding army and kill in feudal, or end the game by going&nbsp;@landmark_delhi/compound-of-the-defender.png@, tech up your units, then drop keeps when you push opponents base.&nbsp;"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/O3ydQ8ZzIE0",
+    "season": "Season 5",
+    "map": "Open",
+    "strategy": "Rush"
+  },
+  {
+    "description": "Season 10 + 11",
+    "civilization": "Delhi Sultanate",
+    "name": "Dome of Faith Guide by Beasty",
+    "author": "dB",
+    "source": "https://aoe4guides.com/builds/B9Qz6jaqhi8NeaBdwQ6x",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 5,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "5 Villagers gather @resource/resource_wood.webp@ until 10 on each Then to @resource/berrybush.webp@ ,  6th @unit_worker/villager-delhi.webp@ builds @building_religious/mosque.webp@and then@building_economy/house.webp@ near @resource/berrybush.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "When  @building_religious/mosque.webp@ is done research @technology_delhi/efficient-production.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 8,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "@resource/rally.webp@ @unit_worker/villager-delhi.webp@ to @resource/berrybush.webp@ 1st @unit_worker/villager-delhi.webp@ builds @building_economy/mill.webp@ research@technology_economy/wheelbarrow.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 9,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ 2 @unit_worker/villager-delhi.webp@ to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 10,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ 1@unit_worker/villager-delhi.webp@ @resource/berrybush.webp@ (8 on berries)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 13,
+        "resources": {
+          "food": 11,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 11,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "4@unit_worker/villager-delhi.webp@ from @resource/berrybush.webp@ to age up@landmark_delhi/dome-of-the-faith.webp@ add 1 @unit_worker/villager-delhi.webp@@resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 10,
+        "resources": {
+          "food": 4,
+          "wood": 3,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_worker/villager-delhi.webp@ on @resource/sheep.webp@ move to @resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 7,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1@unit_worker/villager-delhi.webp@ @resource/resource_wood.webp@ make@building_economy/lumber-camp.webp@ and then @building_economy/house.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:13",
+        "villager_count": 17,
+        "resources": {
+          "food": 8,
+          "wood": 6,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Move the age up @unit_worker/villager-delhi.webp@ back to @resource/berrybush.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 19,
+        "resources": {
+          "food": 8,
+          "wood": 8,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Queue @unit_delhi/scholar.webp@ and@resource/rally.webp@@building_religious/mosque.webp@ research @technology_delhi/sanctity.webp@@technology_religious/piety.webp@@technology_delhi/all-seeing-eye.webp@ (in this order)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 19,
+        "resources": {
+          "food": 8,
+          "wood": 8,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Research @technology_economy/specialized-pick.webp@@technology_economy/double-broadaxe.webp@@technology_economy/forestry.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 19,
+        "resources": {
+          "food": 8,
+          "wood": 8,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Research @technology_economy/professional-scouts.webp@@technology_economy/survival-techniques.webp@@technology_economy/horticulture.webp@ (you can build another @building_economy/mill.webp@ to speed up)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 20,
+        "resources": {
+          "food": 9,
+          "wood": 8,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build @building_military/stable.webp@ and put 1@unit_delhi/scholar.webp@ into the @building_military/stable.webp@ (no matter the CIV)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "make 4  @unit_cavalry/scout.webp@ and get @resource/deer.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Keep producing @unit_delhi/scholar.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 21,
+        "resources": {
+          "food": 10,
+          "wood": 8,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_food.webp@ until 14"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 25,
+        "resources": {
+          "food": 14,
+          "wood": 8,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Once 14 on @resource/resource_food.webp@, @resource/rally.webp@@resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Keep makings@unit_worker/villager-delhi.webp@ and put them wherever depending on your resources"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "At 150 @resource/resource_wood.webp@ either build @building_military/archery-range.webp@ or @building_technology/blacksmith.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "If enemy has @unit_infantry/spearman-1.webp@ Build @building_military/archery-range.webp@ otherwise @building_technology/blacksmith.webp@ (remember to put @unit_delhi/scholar.webp@ in @building_military/archery-range.webp@ too)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "If knight CIV build @building_military/barracks.webp@ after @building_military/stable.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Remember to take map control to solidify @resource/sacred_sites.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "When @technology_delhi/sanctity.webp@ is almost done, move @unit_delhi/scholar.webp@ to @resource/sacred_sites.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "If playing against a knight CIV or Cavalry take 1 @resource/sacred_sites.webp@ at a time"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 31,
+        "resources": {
+          "food": 19,
+          "wood": 12,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Research  @technology_military/iron-undermesh.webp@@technology_military/steeled-arrow.webp@@technology_military/bloomery.webp@@technology_military/fitted-leatherwork.webp@@technology_military/siege-engineering.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "If you have @resource/sacred_sites.webp@ you can pull @unit_worker/villager-delhi.webp@ off @resource/resource_gold.webp@ and put them to other places @resource/resource_wood.webp@@resource/resource_food.webp@ otherwise keep them on gold"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 34,
+        "resources": {
+          "food": 29,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Depending on how the game is going,  you can pull @unit_worker/villager-delhi.webp@ off @resource/resource_wood.webp@ and put them on @resource/resource_food.webp@ to age up quicker"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 35,
+        "resources": {
+          "food": 20,
+          "wood": 6,
+          "gold": 0,
+          "stone": 0,
+          "builder": 9
+        },
+        "notes": [
+          "@landmark_delhi/compound-of-the-defender.webp@ is the META if you have total map control.... but you can choose for unique upgrades @landmark_delhi/house-of-learning.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Take  @unit_delhi/scholar.webp@ out of @building_religious/mosque.webp@ and get @resource/relics.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Keep producing@unit_delhi/scholar.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "At this point make 5 or 6 production buildings @building_military/stable.webp@@building_military/archery-range.webp@@building_military/barracks.webp@ and research"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Make a 2nd @building_technology/blacksmith.webp@ to Research faster"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Research @technology_economy/fertilization.webp@@technology_economy/lumber-preservation.webp@@technology_economy/shaft-mining.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Research @technology_religious/herbal-medicine.webp@@technology_delhi/swiftness.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "If you chose @landmark_delhi/house-of-learning.webp@ queue in this order..@technology_delhi/paiks.webp@@technology_delhi/honed-blades.webp@@technology_delhi/hearty-rations.webp@@technology_delhi/mahouts.webp@@technology_delhi/tranquil-venue.webp@@technology_delhi/reinforced-foundations.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "If the opponent has a lot of Knights get @unit_delhi/war-elephant.webp@@unit_delhi/tower-elephant-3.webp@@unit_infantry/spearman-1.webp@@unit_infantry/crossbowman-3.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "If the opponent has a lot of archers get @unit_cavalry/lancer-3.webp@@unit_infantry/man-at-arms-1.webp@@unit_delhi/tower-elephant-3.webp@@unit_delhi/war-elephant.webp@"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/FFBvDoGsmQc",
+    "season": "Season 11",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "If opponent is aggressive, take 1 site at a time with army and wall it. \nKeep adding army and kill in feudal, or end the game by going Compound of the Defender, tech up your units, then drop keeps when you push opponents base. \n\nGameplan:\n- make units\n- take sacred sites\n- (maybe) wall sacred sites\n- age up with compound of the defender\n- take relics\n- build keeps EVERYWHERE",
+    "civilization": "Delhi Sultanate",
+    "name": "2 Mosque | Tower of Victory",
+    "author": "exe",
+    "source": "https://aoe4guides.com/builds/wMbsmdzvfqUs1M4W5tcF",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "5 @unit_worker/villager-delhi.webp@on@resource/gaiatreeprototypetree.png@to chop 100@resource/resource_wood.png@",
+          "1 @unit_worker/villager-delhi.png@@abilities/repair.png@@building_religious/mosque.png@@building_economy/house.png@",
+          "Research @technology_delhi/efficient-production.png@@technology_religious/piety.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:30",
+        "villager_count": 7,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "1 @unit_worker/villager-delhi.webp@@abilities/repair.png@@building_economy/lumber-camp.png@",
+          "@resource/rally.png@@resource/resource_food.png@(until 8)",
+          "Research @technology_economy/forestry.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:45",
+        "villager_count": 8,
+        "resources": {
+          "food": 7,
+          "wood": 1,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "5 @unit_worker/villager-delhi.webp@from@resource/resource_wood.png@@abilities/repair.png@@building_economy/mill.png@on@resource/berrybush.png@",
+          "Research @technology_economy/wheelbarrow.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:30",
+        "villager_count": 9,
+        "resources": {
+          "food": 8,
+          "wood": 1,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_gold.png@(until 3)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:30",
+        "villager_count": 13,
+        "resources": {
+          "food": 9,
+          "wood": 1,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 @unit_worker/villager-delhi.webp@on@resource/sheep.png@",
+          "@resource/rally.png@@resource/resource_wood.png@(until 8)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:00",
+        "villager_count": 14,
+        "resources": {
+          "food": 4,
+          "wood": 2,
+          "gold": 4,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "@age/age_2.webp@with@landmark_delhi/tower-of-victory.png@with 4@resource/resource_food.png@@unit_worker/villager-delhi.png@",
+          "Move 1 @unit_worker/villager-delhi.png@from@resource/sheep.png@to@resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:15",
+        "villager_count": 15,
+        "resources": {
+          "food": 4,
+          "wood": 3,
+          "gold": 4,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "@abilities/repair.webp@2nd@building_religious/mosque.png@on@resource/resource_gold.png@",
+          "@building_religious/mosque.png@(2) for@unit_delhi/scholar.png@",
+          "@building_religious/mosque.png@(1) for research"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "4:15",
+        "villager_count": 18,
+        "resources": {
+          "food": 4,
+          "wood": 6,
+          "gold": 4,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "@abilities/repair.webp@@unit_delhi/scholar.png@and@building_economy/house.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:45",
+        "villager_count": 19,
+        "resources": {
+          "food": 8,
+          "wood": 7,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Move @abilities/repair.webp@@unit_worker/villager-delhi.png@back to@resource/resource_food.png@",
+          "@abilities/repair.png@@building_military/stable.png@",
+          "@resource/rally.png@@resource/resource_food.png@",
+          "Research all @age/age_2.png@ Technologies:",
+          "@technology_delhi/sanctity.png@@technology_delhi/all-seeing-eye.png@@technology_economy/double-broadaxe.png@@technology_economy/specialized-pick.png@@technology_economy/horticulture.png@@technology_economy/survival-techniques.png@@technology_economy/professional-scouts.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:00",
+        "villager_count": 20,
+        "resources": {
+          "food": 8,
+          "wood": 8,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:30",
+        "villager_count": 21,
+        "resources": {
+          "food": 9,
+          "wood": 8,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@abilities/repair.webp@@building_technology/blacksmith.png@@building_military/archery-range.png@",
+          "Research @technology_military/steeled-arrow.png@@technology_military/iron-undermesh.png@@technology_military/bloomery.png@@technology_military/fitted-leatherwork.png@@technology_military/siege-engineering.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "7:00",
+        "villager_count": 26,
+        "resources": {
+          "food": 14,
+          "wood": 8,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "When close to @technology_delhi/sanctity.webp@",
+          "Send @unit_delhi/scholar.png@to take@resource/sacred_sites.png@",
+          "Mass @unit_delhi/ghazi-raider-2.png@@unit_infantry/archer-2.png@"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/O3ydQ8ZzIE0",
+    "season": "Season 5",
+    "map": "Open",
+    "strategy": "Rush"
+  }
+]

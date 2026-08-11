@@ -1,0 +1,259 @@
+{
+  "name": "Fast Imperial y Elefantes",
+  "civilization": "Delhi Sultanate",
+  "author": "Pilsen",
+  "source": "https://aoe4guides.com/builds/523a2WhLhowXDQuFHVuw",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5x @unit_worker/villager-delhi.webp@ a @resource/gaiatreeprototypetree.png@ (un viaje) Luego a@building_economy/mill.png@@resource/berrybush.png@",
+        "1x @unit_worker/villager-delhi.png@ a @abilities/repair.png@@building_religious/mosque.png@@building_economy/house.png@ luego @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Los siguientes 2x@unit_worker/villager-delhi.webp@ a @building_economy/mining-camp.png@@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.png@ (until @age/age_2.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Construye @landmark_delhi/dome-of-the-faith.webp@ con 5x @unit_worker/villager-delhi.png@ de @resource/berrybush.png@",
+        "(Luego vuelven a @resource/berrybush.png@)",
+        "@resource/rally.png@@resource/resource_wood.png@ (hasta tener 7x@unit_worker/villager-delhi.png@ allí)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 9,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.png@ (hasta tener 12x@unit_worker/villager-delhi.png@ allí)",
+        "@resource/rally.png@@unit_delhi/scholar.png@ de @landmark_delhi/dome-of-the-faith.png@ a @building_religious/mosque.png@ e investigar todas las tecnologías.",
+        "@abilities/repair.png@@building_military/stable.png@ para presionar al enemigo, y luego @building_technology/blacksmith.png@",
+        "@abilities/repair.png@ segundo@building_economy/mill.png@ en @resource/berrybush.png@ e investiga @technology_economy/professional-scouts.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 21,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.png@ (hasta tener 6x@unit_worker/villager-delhi.png@ allí)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 29,
+      "resources": {
+        "food": 16,
+        "wood": 7,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.png@ (hasta tener 16x@unit_worker/villager-delhi.png@ allí)",
+        "@abilities/repair.png@ otra @building_technology/blacksmith.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:30",
+      "villager_count": 29,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 13,
+        "builder": 11
+      },
+      "notes": [
+        "Mueve todos los @unit_worker/villager.webp@ de @resource/resource_wood.png@ y @resource/resource_gold.png@ a @resource/resource_stone.png@ (para conseguir 750 de piedra)",
+        "Construye @landmark_delhi/compound-of-the-defender.png@ con 11x@unit_worker/villager.png@de @resource/resource_food.png@. Luego van a @resource/resource_gold.png@",
+        "@resource/rally.png@@resource/resource_food.png@ (hasta tener 30x@unit_worker/villager-delhi.png@ allí)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:20",
+      "villager_count": 32,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 11,
+        "stone": 13,
+        "builder": -1
+      },
+      "notes": [
+        "Investiga @technology_delhi/village-fortresses.webp@ y @technology_defensive/boiling-oil.png@ en el @landmark_delhi/compound-of-the-defender.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 32,
+      "resources": {
+        "food": 21,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 11
+      },
+      "notes": [
+        "Mueve los aldeanos @unit_worker/villager-delhi.webp@de @resource/resource_stone.png@ a @resource/sheep.png@",
+        "Construye un @building_defensive/keep.png@ con los@unit_worker/villager-delhi.png@de @resource/resource_gold.png@. Luego a @resource/resource_food.png@",
+        "Entrena 3 o 4 @unit_cavalry/scout.png@ y trae los @resource/deer.png@ a tu @building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:00",
+      "villager_count": 42,
+      "resources": {
+        "food": 7,
+        "wood": 17,
+        "gold": 0,
+        "stone": 0,
+        "builder": 18
+      },
+      "notes": [
+        "7x  @unit_worker/villager-delhi.webp@ a @resource/resource_food.png@",
+        "17x @unit_worker/villager-delhi.png@ a @resource/resource_wood.png@",
+        "Sube de edad @landmark_delhi/palace-of-the-sultan.png@con los restantes@unit_worker/villager-delhi.png@",
+        "(cuando esté construido, envía 13x@unit_worker/villager-delhi.png@a @resource/resource_wood.png@y el resto a @resource/resource_food.png@)"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "time": "13:00",
+      "villager_count": 47,
+      "resources": {
+        "food": 12,
+        "wood": 30,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Mueve 4x @unit_delhi/scholar.webp@ dentro del @landmark_delhi/palace-of-the-sultan.png@",
+        "Construye 3x @building_technology/madrasa.png@ + 1x @building_military/archery-range.png@ + 3x @building_military/stable.png@ + una tercera @building_technology/blacksmith.png@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "time": "15:00",
+      "villager_count": 50,
+      "resources": {
+        "food": 30,
+        "wood": 15,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.png@ (hasta tener 20x@unit_worker/villager-delhi.png@allí)",
+        "Mantén 15x @unit_worker/villager-delhi.png@ en @resource/resource_wood.png@ y el resto de@unit_worker/villager-delhi.png@ a @resource/resource_food.png@",
+        "Empieza a producir SOLO @unit_delhi/war-elephant.png@ de tus establos."
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "time": "18 +",
+      "villager_count": 65,
+      "resources": {
+        "food": 30,
+        "wood": 15,
+        "gold": 20,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "En este punto, puedes seguir haciendo @building_economy/mining-camp.webp@@resource/resource_stone.png@ y añadir más@building_defensive/keep.png@en el mapa, o acabar con tu enemigo con una masa de elefantes y castillos dentro de su base."
+      ]
+    }
+  ],
+  "description": "BO by Corvinus1. Uploaded by FiddyWow and Exe. Edited (minor adjustment) by me",
+  "video": "https://www.youtube.com/embed/xtwOCXzM7OQ",
+  "season": 9,
+  "map": null,
+  "strategy": "Fast Imperial",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

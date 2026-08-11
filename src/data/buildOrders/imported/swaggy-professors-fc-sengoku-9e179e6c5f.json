@@ -1,0 +1,171 @@
+{
+  "name": "Swaggy Professor's FC Sengoku",
+  "civilization": "Sengoku Daimyo",
+  "author": "Miklos Oinos",
+  "source": "https://aoe4guides.com/builds/1yjQ5X3UhweWNOC431tC",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_sengoku/matsuri.webp@ on gold (and wood if possible). @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Buy @resource/resource_wood.webp@to build @unit_sengoku/yatai.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 2,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_japanese/farmhouse-1.webp@on @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 10,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Buy @resource/resource_wood.webp@to build @unit_sengoku/yatai.webp@. If expecting to be rushed, build @building_defensive/outpost.webp@ on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 16,
+      "resources": {
+        "food": 10,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Age up with @landmark_sengoku/ryokan.webp@ (will save wood for FC all in)."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:15",
+      "villager_count": 24,
+      "resources": {
+        "food": 16,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:40",
+      "villager_count": 25,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "Age up with @landmark_sengoku/sake_brewery.webp@, build a @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 27,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @unit_japanese/mounted-samurai-3.webp@, rally @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 31,
+      "resources": {
+        "food": 12,
+        "wood": 10,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build second @building_military/stable.webp@ and @technology_sengoku/takeda_daimyo_1.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": 39,
+      "resources": {
+        "food": 17,
+        "wood": 11,
+        "gold": 10,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "Start building farms @building_economy/farm.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/_2fO9xkWaQE",
+  "season": 12,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

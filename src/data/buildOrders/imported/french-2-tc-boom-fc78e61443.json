@@ -1,0 +1,190 @@
+{
+  "name": "French 2 TC Boom",
+  "civilization": "French",
+  "author": "dasrab",
+  "source": "https://aoe4guides.com/builds/1XN5icn28FIZCmV1ZlVA",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "build @building_economy/mining-camp.webp@ on @resource/resource_gold.webp@ into @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "55",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:30",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "@200 @resource/resource_gold.webp@ pull 3x@resource/resource_gold.webp@@unit_worker/villager.webp@ to build @building_economy/mining-camp.webp@ on @resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:25",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 3,
+        "builder": 3
+      },
+      "notes": [
+        "3x @resource/resource_food.webp@@unit_worker/villager.webp@ build @landmark_french/school-of-cavalry.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:35",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 0,
+        "stone": 5,
+        "builder": 3
+      },
+      "notes": [
+        "transfer 4x @resource/resource_food.webp@@unit_worker/villager.webp@ to @resource/resource_wood.webp@ and @resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 5,
+        "builder": 3
+      },
+      "notes": [
+        "build @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 21,
+      "resources": {
+        "food": 7,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@350 @resource/resource_stone.webp@ pull 5x @resource/resource_stone.webp@@unit_worker/villager.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 22,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "@400 @resource/resource_wood.webp@ pull 10x @resource/resource_wood.webp@@unit_worker/villager.webp@ build @building_economy/town-center.webp@ on @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Where to @resource/rally.webp@@unit_worker/villager.webp@ depends on the enemy",
+        "VS fast @age/age_3.webp@ or greed on @resource/resource_food.webp@ for @unit_cavalry/horseman-1.webp@/@unit_french/royal-knight-2.webp@ harras into fast @age/age_3.webp@",
+        "VS aggressive to @resource/resource_wood.webp@ for production @unit_infantry/archer-2.webp@/@unit_french/royal-knight-2.webp@/@unit_infantry/spearman-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 25,
+      "resources": {
+        "food": 18,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@ done"
+      ]
+    }
+  ],
+  "description": "Good against:\n+ other 2 TC builds\n+ fast castle builds\n+ proscouting to deny deer\nWeak against:\n- agressiv Civs like JD\n\nsponsored by Beastyqt on Youtube",
+  "video": "https://www.youtube.com/embed/xLoK9FdmNRY",
+  "season": 12,
+  "map": "Open",
+  "strategy": "Boom",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

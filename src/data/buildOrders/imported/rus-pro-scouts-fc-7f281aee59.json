@@ -1,0 +1,215 @@
+{
+  "name": "RUS - Pro scouts -  FC ",
+  "civilization": "Rus",
+  "author": "Gissa777",
+  "source": "https://aoe4guides.com/builds/0FZt5qvfYCp35iBuitDX",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_rus/hunting-cabin.webp@@resource/sheep.webp@@building_economy/house.webp@   @resource/rally.webp@@building_rus/hunting-cabin.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_cavalry/scout.webp@@landmark_rus/the-golden-gate.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@@building_economy/house.webp@@building_economy/lumber-camp.webp@  Sell 100 food for Gold"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:46 Proscout",
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@@technology_economy/professional-scouts.webp@  @unit_cavalry/scout.webp@ @unit_cavalry/scout.webp@   vs aggro civs tower @building_rus/wooden-fortress.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 11,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:59",
+      "villager_count": 32,
+      "resources": {
+        "food": 13,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "@landmark_rus/high-trade-house.webp@@resource/rally.webp@@resource/resource_wood.webp@@technology_economy/double-broadaxe.webp@@technology_economy/wheelbarrow.webp@@technology_economy/survival-techniques.webp@@building_military/archery-range.webp@3x @building_military/stable.webp@ +- f"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:13",
+      "villager_count": 32,
+      "resources": {
+        "food": 16,
+        "wood": 16,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/house.webp@@building_religious/monastery.webp@@resource/relics.webp@ @unit_rus/warrior-monk.webp@@unit_cavalry/knight-2.webp@@unit_rus/horse-archer-3.webp@or @unit_rus/horse-archer-3.webp@@building_economy/market.webp@@building_technology/blacksmith.webp@@building_military/stable.webp@3x stable@technology_military/steeled-arrow.webp@@technology_military/iron-undermesh.webp@@technology_military/military-academy.webp@@building_rus/wooden-fortress.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 49,
+      "resources": {
+        "food": 18,
+        "wood": 26,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_rus/hunting-cabin.webp@@building_rus/hunting-cabin.webp@@building_rus/hunting-cabin.webp@@technology_economy/lumber-preservation.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 52,
+      "resources": {
+        "food": 30,
+        "wood": 17,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_rus/boyars-fortitude.webp@@building_military/stable.webp@@building_military/archery-range.webp@@building_economy/town-center.webp@@building_rus/wooden-fortress.webp@@resource/boar.webp@@technology_military/balanced-projectiles.webp@@technology_military/wedge-rivets.webp@@technology_military/fitted-leatherwork.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 59,
+      "resources": {
+        "food": 24,
+        "wood": 19,
+        "gold": 13,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "@building_rus/fortified-palisade-wall.webp@@building_economy/farm.webp@@technology_economy/fertilization.webp@@technology_rus/blessing-duration.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 60,
+      "resources": {
+        "food": 33,
+        "wood": 17,
+        "gold": 0,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "@building_military/stable.webp@@building_military/stable.webp@@unit_cavalry/horseman-1.webp@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": 58,
+      "resources": {
+        "food": 17,
+        "wood": 22,
+        "gold": 19,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_rus/wooden-fortress.webp@@resource/resource_gold.png@@technology_economy/crosscut-saw.png@@technology_economy/shaft-mining.png@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": 76,
+      "resources": {
+        "food": 33,
+        "wood": 26,
+        "gold": 17,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_rus/streltsy.webp@@unit_siege/mangonel-3.png@@unit_siege/mangonel-3.png@@unit_siege/mangonel-3.png@@unit_siege/bombard.png@@unit_siege/springald.png@@unit_cavalry/horseman-1.png@@unit_rus/warrior-monk.png@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 10,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

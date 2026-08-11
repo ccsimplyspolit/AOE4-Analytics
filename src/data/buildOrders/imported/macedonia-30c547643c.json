@@ -1,0 +1,413 @@
+{
+  "name": "Macedonia",
+  "civilization": "Macedonian Dynasty",
+  "author": "123",
+  "source": "https://aoe4guides.com/builds/45qJ3NytRywjuGtTza5I",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All on @resource/resource_food.webp@ Rally @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_macedonian/varangian_warcamp.webp@ and @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Finish building, then to gold"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally to @resource/resource_food.webp@@building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_economy/lumber-camp.webp@Rally to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @landmark_byzantines/grand-winery-1.webp@ with 3 from @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_economy/farm.webp@ around winery, rally to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build House"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Build @landmark_byzantines/grand-winery-1.webp@ with 3 from @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Rally @resource/resource_wood.webp@ 1 @resource/resource_food.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Build @building_economy/farm.webp@ around winery, rally to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Build House"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 19,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Build @building_macedonian/varangian_stronghold.webp@ if @civilization_flag/del.webp@@civilization_flag/tug.webp@@civilization_flag/fre.webp@or @building_military/stable.webp@  if not early horse/ele civ"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/horticulture.webp@ and rally @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce units and rally @resource/resource_food.webp@, if elephant rush, build another @building_macedonian/varangian_stronghold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 22,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally @resource/resource_food.webp@ to 14",
+        "THEN @resource/resource_wood.webp@ to 12",
+        "THEN @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:20",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 37,
+      "resources": {
+        "food": 14,
+        "wood": 3,
+        "gold": 9,
+        "stone": 3,
+        "builder": 8
+      },
+      "notes": [
+        "Build @landmark_byzantines/golden-horn-tower-2.webp@ on lots of resources (big gold veins, etc.)  with 8 @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:25",
+      "villager_count": 43,
+      "resources": {
+        "food": 16,
+        "wood": 14,
+        "gold": 11,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "Have 2-3 on @resource/resource_stone.webp@ for Arrowslits",
+        "TAKE OVER MAP - @building_macedonian/varangian_stronghold.webp@ with arrowslits around map"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "16:00",
+      "villager_count": 50,
+      "resources": {
+        "food": 17,
+        "wood": 15,
+        "gold": 14,
+        "stone": 2,
+        "builder": 2
+      },
+      "notes": [
+        "SPAM @unit_byzantines/varangian-guard-3.webp@@unit_macedonian/atgeir-1.webp@ to defend Golden Tower & stronghold (if Elephant civ, you can dive tc)",
+        "Make @unit_macedonian/riddari-3.webp@ To raid",
+        "Take over map"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "16:20",
+      "villager_count": 54,
+      "resources": {
+        "food": 22,
+        "wood": 13,
+        "gold": 16,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_macedonian/varangian_arsenal.webp@ with arrowslits around @landmark_byzantines/golden-horn-tower-2.webp@ and @resource/resource_gold.webp@"
+      ]
+    }
+  ],
+  "description": "Grand Winery",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

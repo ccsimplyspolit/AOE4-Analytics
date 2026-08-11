@@ -1,0 +1,204 @@
+{
+  "name": "standard french feudal aggro",
+  "civilization": "French",
+  "author": "azdipoj",
+  "source": "https://aoe4guides.com/builds/1BI7MQNkNqd2vIZtXqC1",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.webp@until x2",
+        "@abilities/repair.webp@@building_economy/house.webp@@building_economy/mill.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@until x9"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.webp@ until x3"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@ until x10"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.webp@ until x4",
+        "x4@resource/sheep.webp@@unit_worker/villager.webp@@abilities/repair.webp@@landmark_french/school-of-cavalry.webp@ -> shift x1 to @resource/resource_gold.webp@ and x3 to @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@ until x7"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/gaiatreeprototypetree.webp@ until x7 & @technology_economy/wheelbarrow.webp@asap"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 7,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@ until x12 &@building_economy/lumber-camp.webp@+@technology_economy/double-broadaxe.webp@asap"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@ until x11 & @abilities/repair.webp@@building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 24,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "x5@resource/sheep.webp@@unit_worker/villager.webp@->@resource/deer.webp@&@technology_economy/survival-techniques.webp@asap)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 28,
+      "resources": {
+        "food": 12,
+        "wood": 11,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:15",
+      "villager_count": 30,
+      "resources": {
+        "food": 14,
+        "wood": 10,
+        "gold": 5,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@&@technology_military/steeled-arrow.webp@@technology_military/iron-undermesh.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 11,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

@@ -1,0 +1,235 @@
+{
+  "name": "Fast Castle and Mounted Samurai [eng]",
+  "civilization": "Japanese",
+  "author": "Pilsen",
+  "source": "https://aoe4guides.com/builds/0NGL0ElNj9LQkZBUjD48",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "00.00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6x @unit_worker/villager-japanese.webp@ to @resource/sheep.png@",
+        "Next 2x @unit_worker/villager-japanese.png@ to @building_japanese/forge-1.png@:@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "01.00",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Next @unit_worker/villager-japanese.webp@to @abilities/repair.png@ @building_japanese/farmhouse-1.png@ and then @resource/berrybush.png@",
+        "Next @unit_worker/villager-japanese.png@to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "01:30",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "02.00 ",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up @age/age_2.webp@ building @landmark_japanese/kura-storehouse-1.png@ with 3x@unit_worker/villager-japanese.png@from @resource/sheep.png@",
+        "When @landmark_japanese/kura-storehouse-1.png@ is built, move the 3x@unit_worker/villager-japanese.png@to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_japanese/towara-1.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "03.00",
+      "villager_count": 15,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Move 3x@unit_worker/villager-japanese.webp@ from @resource/resource_food.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "04.30",
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_defensive/outpost.png@ on the @resource/resource_gold.png@ and upgrade @technology_naval/naval-arrow-slits.png@",
+        "Take @resource/berrybush.png@ is the @resource/sheep.png@run out",
+        "Research @technology_japanese/takezaiku-2.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "07.00",
+      "villager_count": 27,
+      "resources": {
+        "food": 18,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up building @landmark_japanese/floating-gate-2.webp@ with x12@unit_worker/villager-japanese.png@from@resource/resource_food.png@",
+        "At the same time, @abilities/repair.png@ @building_military/stable.png@",
+        "When we reach @age/age_3.png@, our goal will be:",
+        "x14 on @resource/resource_food.png@, x10 on @resource/resource_gold.png@ and the rest on @resource/resource_wood.png@",
+        "@resource/rally.png@@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "08.00",
+      "villager_count": 29,
+      "resources": {
+        "food": 14,
+        "wood": 5,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "First Yorishiro @unit_japanese/shinto-priest-3.webp@ --> @building_military/stable.png@",
+        "Create @unit_japanese/mounted-samurai-3.png@ on mass and raid the enemy",
+        "Research @technology_japanese/tatara-1.png@",
+        "With the @unit_japanese/shinto-priest-3.png@ take the@resource/relics.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "09.00",
+      "villager_count": 32,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@ @building_japanese/buddhist-temple-3.png@ to deposit the @resource/relics.png@",
+        "Research @technology_economy/double-broadaxe.png@ @technology_japanese/fudasashi-3.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "10.30",
+      "villager_count": 37,
+      "resources": {
+        "food": 18,
+        "wood": 9,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_military/archery-range.png@",
+        "Second Yorishiro @unit_japanese/shinto-priest-3.png@ to @building_military/archery-range.png@ si la hacemos",
+        "Mass create @unit_japanese/mounted-samurai-3.png@ and @unit_japanese/yumi-ashigaru-2.png@ and raid",
+        "Research @technology_japanese/daimyo-manor-1.png@"
+      ]
+    }
+  ],
+  "description": "Build order o by Vortix. Uploaded by Abadacus. Edited by me",
+  "video": "https://www.youtube.com/embed/Ln1CN0EmlAc",
+  "season": 8,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

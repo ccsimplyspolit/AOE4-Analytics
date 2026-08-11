@@ -1,0 +1,293 @@
+{
+  "name": "OTTO CLASSIC S10",
+  "civilization": "Ottomans",
+  "author": "Shoucoulat",
+  "source": "https://aoe4guides.com/builds/0Z9dckWy30DJrLnwXUjA",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": 1
+      },
+      "notes": [
+        "5@unit_worker/villager-ottomans.webp@@resource/resource_stone.png@(1 TRAVEL)     /          1@unit_worker/villager-ottomans.png@@building_economy/house.png@@resource/resource_food.png@      /       @resource/rally.png@2@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager-ottomans.webp@@resource/resource_stone.png@->@resource/resource_wood.png@ (1 TRAVEL)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.png@@building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "ONCE @resource/resource_food.webp@400 -> 5@unit_worker/villager-ottomans.png@@resource/resource_food.png@-&gt;@resource/resource_wood.png@",
+        "ONCE @resource/resource_gold.png@200-&gt; 2@unit_worker/villager-ottomans.png@@resource/resource_gold.png@-&gt;@resource/resource_stone.png@@building_economy/mining-camp.png@",
+        "1@resource/resource_food.png@-&gt;@building_ottomans/military-school-1.png@",
+        "@resource/rally.png@@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "4@unit_worker/villager-ottomans.webp@@resource/resource_food.png@->@landmark_ottomans/sultanhani-trade-network-1.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "PUSH DEERS WITH @unit_infantry/spearman-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/lumber-camp.webp@+1 @unit_worker/villager-ottomans.png@@resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 0,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_worker/villager-ottomans.webp@@landmark_ottomans/sultanhani-trade-network-1.png@->@resource/resource_food.png@ / @resource/rally.png@@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 7,
+        "wood": 11,
+        "gold": 0,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "ONCE @resource/resource_stone.webp@ 200->@unit_worker/villager-ottomans.png@@resource/resource_stone.png@-&gt;@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 7,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_military/stable.webp@ &@building_technology/blacksmith.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 7,
+        "wood": 15,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build 2nd @building_ottomans/military-school-1.webp@ & 2-4@building_military/archery-range.png@ (OR GO ***CASTLE)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 8,
+        "wood": 15,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_ottomans/field-work-1.webp@( FC & AGGRESSION) / @technology_ottomans/anatolian-hills-1.png@ (NO FOOD)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 32,
+      "resources": {
+        "food": 17,
+        "wood": 15,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "PRESSION OR CASTTE"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 38,
+      "resources": {
+        "food": 22,
+        "wood": 5,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "REMACRO PREPARE FOR CASTLE BY PUTTING @unit_abbasid/imam.webp@( if @technology_ottomans/field-work-1.png@) close to @resource/relics.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 42,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 15,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "10@unit_worker/villager-ottomans.webp@@resource/resource_food.png@->@landmark_ottomans/mehmed-imperial-armory-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/vizier_point.webp@@technology_ottomans/military-campus-1.png@ and Build@building_ottomans/military-school-1.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 36,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 12,
+        "stone": 10,
+        "builder": -1
+      },
+      "notes": [
+        "REMACRO DEPENDING:",
+        "@resource/resource_stone.webp@for 2TC",
+        "12@unit_worker/villager-ottomans.png@@resource/resource_gold.png@ and rest @resource/resource_wood.png@@resource/resource_food.png@ FOR AGGRESSION"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 10,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

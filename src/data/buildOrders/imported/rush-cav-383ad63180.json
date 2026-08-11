@@ -1,0 +1,111 @@
+{
+  "name": "Rush Cav",
+  "civilization": "English",
+  "author": "MoonTyv",
+  "source": "https://aoe4guides.com/builds/0sQ02TGHJZenoGQUQ9J6",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@  to  @resource/sheep.webp@ then 2 @building_economy/farm.webp@ near to base"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ build @building_economy/house.webp@ and come back to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "00:05",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 2 @resource/resource_gold.webp@, 1 @building_economy/mining-camp.webp@ near to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "00:50",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ back to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "02:24",
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_english/abbey-of-kings.webp@ With 2 @unit_worker/villager.webp@ and 5 of @resource/sheep.webp@ go to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

@@ -1,0 +1,53 @@
+{
+  "name": "Triple Cistern Dark age",
+  "civilization": "Byzantines",
+  "author": "Arigor",
+  "source": "https://aoe4guides.com/builds/0u1iY50MFbKvYLBFKofJ",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 2,
+        "wood": 0,
+        "gold": 1,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ builds @resource/resource_stone.png@@building_economy/mining-camp.png@ stays",
+        "1 @unit_worker/villager.png@ builds @resource/resource_gold.png@@building_economy/mining-camp.png@ stays",
+        "1st @unit_worker/villager.png@ out of @building_economy/town-center.png@ builds @building_byzantines/cistern-1.png@,@building_economy/house.png@ then goes on @resource/resource_stone.png@",
+        "2nd @unit_worker/villager.png@ builds 2 additional @building_byzantines/cistern-1.png@ and connects them"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Redistribute once 3 @building_byzantines/cistern-1.webp@ are built",
+        "Rally additional @unit_worker/villager.png@ to @resource/sheep.png@ until age up",
+        "Use 6 @unit_worker/villager.png@ on @landmark_byzantines/grand-winery-1.png@/@landmark_byzantines/imperial-hippodrome-1.png@ for competitive timing"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 9,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

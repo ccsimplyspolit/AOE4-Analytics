@@ -1,0 +1,219 @@
+{
+  "name": "Abbey+WT FC Timing - Copy for me to understand series",
+  "civilization": "House of Lancaster",
+  "author": "murtuk",
+  "source": "https://aoe4guides.com/builds/0VkZWPEMVFJaRikdbzXx",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All to @resource/sheep.webp@",
+        "@resource/rally.webp@3 to@resource/resource_gold.webp@with@abilities/repair.webp@@building_economy/mining-camp.webp@and@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 3,
+        "wood": 4,
+        "gold": 0,
+        "stone": 2,
+        "builder": 3
+      },
+      "notes": [
+        "Start @age/age_2.webp@@landmark_english/abbey-of-kings.webp@with 3 from @resource/resource_gold.webp@ then back to @resource/resource_gold.webp@",
+        "2@resource/resource_food.webp@ to @resource/resource_stone.webp@ (with@building_economy/mining-camp.webp@)",
+        "4@resource/resource_food.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 4,
+        "gold": 1,
+        "stone": 2,
+        "builder": 3
+      },
+      "notes": [
+        "Now @resource/rally.webp@@resource/resource_gold.webp@ until 4"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:40",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 4,
+        "stone": 2,
+        "builder": 3
+      },
+      "notes": [
+        "Now @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:45",
+      "villager_count": 17,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "When have 100 @resource/resource_stone.webp@, those 2 go to @resource/resource_food.webp@",
+        "When have 225 @resource/resource_wood.webp@, 2 @resource/resource_wood.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "03:55",
+      "villager_count": 17,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@age/age_2.webp@ finishes at 3:55",
+        "@abilities/repair.webp@@building_lancaster/manor.webp@ with 4 from @resource/resource_gold.webp@on a central location then back to@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:25",
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 2,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1st @building_lancaster/manor.webp@ finishes, Also@unit_lancaster/lord_lancaster.webp@ spawned, go harass enemy"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:15",
+      "villager_count": 25,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 7,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Start@age/age_3.webp@@landmark_english/the-white-tower.webp@with 8 from @resource/resource_food.webp@then back to: 2@resource/resource_food.webp@5@resource/resource_gold.webp@1@resource/resource_stone.webp@",
+        "@abilities/repair.webp@2x@building_military/stable.webp@ and @building_economy/house.webp@ when possible"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:20",
+      "villager_count": 26,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 7,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@ now",
+        "Make 2nd @unit_lancaster/lord_lancaster.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "07:30",
+      "villager_count": 29,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 12,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_3.webp@finishes at 07:30",
+        "Make @unit_cavalry/knight-2.webp@ constantly and harass"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "08:55",
+      "villager_count": 33,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 12,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@ @building_religious/monastery.webp@ and go for @resource/relics.webp@",
+        "Make @building_technology/blacksmith.webp@when possible"
+      ]
+    }
+  ],
+  "description": "Build copied from Swaggy Professor and modified for me to understand.\nOriginal BO and video follows:\nhttps://aoe4guides.com/builds/M8kq5gbI2a7sx3hwRMAg\n\n\"Flexible Abbey of Kings Fast Castle into White Tower with adaptive Feudal defense. Early stone for Manor influence, optional pressure with Lords, and strong eco transition with Manors and Relics.\"",
+  "video": "https://www.youtube.com/embed/YUOo8KE3tRY",
+  "season": 12,
+  "map": null,
+  "strategy": "Abbey of Kings Fast Castle → White Tower Knight Pressure",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

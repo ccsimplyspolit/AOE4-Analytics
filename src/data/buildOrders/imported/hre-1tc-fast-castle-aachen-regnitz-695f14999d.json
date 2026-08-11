@@ -1,0 +1,193 @@
+{
+  "name": "HRE | 1TC | Fast Castle | Aachen + Regnitz",
+  "civilization": "Holy Roman Empire",
+  "author": "exe",
+  "source": "https://aoe4guides.com/builds/1yCmZ4IOeirS8rl6V7Qp",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 on @resource/resource_food.webp@ and 3 on @resource/resource_gold.png@",
+        "@resource/rally.png@@resource/sheep.png@ (until @age/age_2.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_hre/prelate.webp@ to inspire all @resource/resource_gold.png@@unit_worker/villager.png@ once",
+        "Send @unit_hre/prelate.png@ back to @resource/resource_food.png@@unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 3,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@landmark_hre/aachen-chapel.webp@ with 4 @resource/resource_food.png@@unit_worker/villager.png@",
+        "@resource/rally.png@ @resource/gaiatreeprototypetree.png@ (until 6)",
+        "move 1 @resource/resource_food.png@@unit_worker/villager.png@to@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:30",
+      "villager_count": 15,
+      "resources": {
+        "food": 3,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@building_defensive/outpost.webp@ with 1@resource/resource_gold.png@@unit_worker/villager.png@",
+        "@resource/rally.png@@resource/resource_food.png@ (until @age/age_3.png@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:10",
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 5,
+        "stone": 4,
+        "builder": 2
+      },
+      "notes": [
+        "@unit_hre/prelate.webp@>@landmark_hre/aachen-chapel.png@ and redistribute@unit_worker/villager.png@",
+        "5 @resource/resource_wood.png@@unit_worker/villager.png@ on a single trip to @resource/resource_stone.png@, then@resource/resource_food.png@",
+        "2 @resource/resource_wood.png@@unit_worker/villager.png@ build a @building_military/stable.png@ or @building_military/barracks.png@ or @building_defensive/outpost.png@, then &gt; @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 14,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/resource_stone.webp@@unit_worker/villager.png@ on @resource/resource_food.png@",
+        "Train 3-5 @unit_cavalry/horseman-1.png@ to distract the opponent and buy you time",
+        "@technology_defensive/arrow-slits.png@ for@building_defensive/outpost.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:00",
+      "villager_count": 24,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "@landmark_hre/regnitz-cathedral.webp@ with 8 @resource/resource_food.png@@unit_worker/villager.png@",
+        "Build @unit_hre/prelate.png@ from @building_economy/town-center.png@ if possible",
+        "Economy upgrades: @technology_economy/double-broadaxe.png@,@technology_economy/specialized-pick.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "08:00",
+      "villager_count": 29,
+      "resources": {
+        "food": 14,
+        "wood": 5,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@unit_worker/villager.png@ to @resource/resource_gold.png@ and @resource/resource_wood.png@",
+        "@resource/rally.png@@resource/resource_wood.png@",
+        "Get @resource/relics.png@, then secure @resource/sacred_sites.png@, goals is 3 or more @resource/relics.png@",
+        "Economy upgrades: @technology_economy/forestry.png@,@technology_economy/wheelbarrow.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "08:40",
+      "villager_count": 32,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Train @unit_cavalry/knight-2.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": 36,
+      "resources": {
+        "food": 21,
+        "wood": 15,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When @resource/relics.webp@ are in @landmark_hre/regnitz-cathedral.png@, move @resource/resource_gold.png@@unit_worker/villager.png@ to @resource/resource_food.png@ and @resource/resource_wood.png@",
+        "Get remaining upgrades!"
+      ]
+    }
+  ],
+  "description": "Based on Beasty's season 6 guide",
+  "video": "https://www.youtube.com/embed/shOJCWHi764",
+  "season": 6,
+  "map": "Closed",
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

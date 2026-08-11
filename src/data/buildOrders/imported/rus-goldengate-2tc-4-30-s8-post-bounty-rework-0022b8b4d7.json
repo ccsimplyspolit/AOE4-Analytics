@@ -1,0 +1,140 @@
+{
+  "name": "RUS GoldenGate 2TC 4:30 S8 post-bounty rework",
+  "civilization": "Rus",
+  "author": "nelsgh",
+  "source": "https://aoe4guides.com/builds/4fYwHBOGB3Y04IWJ2Amd",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6@unit_worker/villager.webp@on @resource/sheep.png@, next @unit_worker/villager.png@to @building_economy/mining-camp.png@@resource/resource_gold.png@. 1@unit_worker/villager.png@@resource/sheep.png@ build @building_economy/house.png@ and back to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.png@to @resource/sheep.png@ till 10"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:05",
+      "villager_count": 12,
+      "resources": {
+        "food": 3,
+        "wood": 1,
+        "gold": 1,
+        "stone": 1,
+        "builder": 6
+      },
+      "notes": [
+        "6@unit_worker/villager.webp@@resource/sheep.png@ build @landmark_rus/the-golden-gate.png@, when finished, 3 to @resource/resource_gold.png@, 3 to @resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 3,
+        "wood": 2,
+        "gold": 1,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "re-macro, @building_economy/town-center.webp@@resource/rally.png@@resource/resource_stone.png@ till 9"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 3,
+        "wood": 2,
+        "gold": 4,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "build @building_economy/house.webp@, when having 100@resource/resource_wood.png@, @unit_worker/villager.png@1 to @resource/resource_gold.png@, 1 to @resource/resource_stone.png@, @building_economy/town-center.png@@resource/rally.png@@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 5,
+        "stone": 9,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.png@@resource/resource_food.png@, @landmark_rus/the-golden-gate.png@buys @resource/resource_wood.png@ x2"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "when 350@resource/resource_stone.webp@, build 2nd @building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 9,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 8,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

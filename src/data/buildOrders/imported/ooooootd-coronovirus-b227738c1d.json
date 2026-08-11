@@ -1,0 +1,252 @@
+{
+  "name": "ooooootd coronovirus",
+  "civilization": "Order of the Dragon",
+  "author": "Abo",
+  "source": "https://aoe4guides.com/builds/0Hi967guXc3aCU4mwDyx",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "all @unit_worker/villager.webp@ to @resource/deer.png@ or @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "new @unit_worker/villager.webp@ to @building_economy/house.png@+@building_economy/mining-camp.png@+@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "new @unit_worker/villager.webp@ to @resource/sheep.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@on @resource/sheep.png@3 to @resource/resource_wood.png@ 2 to @age/age_2.png@@landmark_hre/meinwerk-palace.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@unit_worker/villager.webp@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 3,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "3@unit_worker/villager.webp@ from @resource/resource_wood.png@ make 2  @building_defensive/outpost.png@ on  @resource/resource_gold.png@ get some @resource/resource_stone.png@ for  @technology_defensive/arrow-slits.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@to@resource/resource_food.png@ and upgrade @building_defensive/outpost.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 15,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@resource/resource_wood.webp@to@resource/resource_food.png@ and @resource/rally.png@to@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 28,
+      "resources": {
+        "food": 18,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "@resource/rally.webp@to@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "7@unit_worker/villager.webp@ to @age/age_3.png@@landmark_hre/burgrave-palace.png@ 8 @unit_worker/villager.png@to @resource/gaiatreeprototypetree.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 34,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "age up@unit_worker/villager.webp@ to @resource/resource_food.png@ @resource/rally.png@new @unit_worker/villager.png@ to @resource/resource_gold.png@ get @technology_military/military-academy.png@ and @technology_military/iron-undermesh.png@ x2"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 38,
+      "resources": {
+        "food": 14,
+        "wood": 6,
+        "gold": 9,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "make @unit_dragon/gilded-man-at-arms-2.webp@ from burger@landmark_hre/burgrave-palace.png@ rush enemy, make @building_economy/farm.png@ around @building_economy/town-center.png@ when @resource/sheep.png@ finish"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build @building_religious/monastery.webp@ collect @resource/relics.png@"
+      ]
+    }
+  ],
+  "description": "ooootd coronovirus",
+  "video": "https://www.youtube.com/embed/q1C5jwxTHBk",
+  "season": 10,
+  "map": "Open",
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

@@ -1,0 +1,181 @@
+{
+  "name": "Beasty's Early Agro - copy - copy",
+  "civilization": "Knights Templar",
+  "author": "paomian",
+  "source": "https://aoe4guides.com/builds/0vrPQO3vTbEsB040HcgP",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager.webp@ on @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "将1 @unit_worker/villager.webp@从 @resource/sheep.webp@移动到建造@building_economy/house.webp@和 @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "第7个 @unit_worker/villager.webp@在@resource/resource_gold.webp@ 集结 @building_economy/town-center.webp@到@resource/sheep.webp@ 直到升级"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "当有200 @resource/resource_gold.webp@ 拉2 @unit_worker/villager.webp@ 从 @resource/resource_gold.webp@ 到 @resource/resource_wood.webp@ 拉3 @unit_worker/villager.webp@ 从 @resource/sheep.webp@到@resource/resource_wood.webp@ 并且开始升@age/age_2.webp@ 用城镇 @civilization_flag/kof.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "在升级行动时，使用 @unit_cavalry/scout.webp@探索地图和收集 @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "在升级后立刻获取 @technology_templar/safepassage.webp@ 并生产两个 @unit_worker/villager.webp@  去@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "在1个 @unit_worker/villager.webp@生产出来后，将一个 @unit_worker/villager.webp@从@resource/sheep.webp@ 移动到@resource/resource_wood.webp@，并且尽快列队@technology_templar/sanctuary.webp@ ，将@building_economy/town-center.webp@ 集结到 @resource/sheep.webp@ 并继续生产 @unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "从@resource/resource_wood.webp@ 取下一个@unit_worker/villager.webp@ 建造一个@building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "从 @resource/sheep.webp@取下一个@unit_worker/villager.webp@建造@building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "当 @building_military/stable.webp@完成时生产 @unit_templar/chevalier_confrere_age_2.webp@ 当@building_military/archery-range.webp@ 完成时生产@unit_infantry/archer-2.webp@"
+      ]
+    }
+  ],
+  "description": "Beasty does not make written guides so i am doing it for him",
+  "video": "https://www.youtube.com/embed/YLYSQa2m4RE",
+  "season": 10,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

@@ -1,0 +1,138 @@
+{
+  "name": "3 yatai beasty",
+  "civilization": "Sengoku Daimyo",
+  "author": "elgeorge",
+  "source": "https://aoe4guides.com/builds/2K582zU4rm2dmXsYsbPe",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "2 on @resource/resource_wood.webp@, 3 on @resource/resource_gold.webp@, 1 builds @building_sengoku/matsuri.webp@ on @resource/resource_gold.webp@, rally to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_sengoku/matsuri.webp@ completes, buy 100@resource/resource_wood.webp@ with 130@resource/resource_gold.webp@ and make @unit_sengoku/yatai.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Buy another 100@resource/resource_wood.webp@ and make another @unit_sengoku/yatai.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once you have 75@resource/resource_wood.webp@, send the 2 vills to@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Buy another 100@resource/resource_wood.webp@ and make another @unit_sengoku/yatai.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Age up with@landmark_japanese/koka-township-1.webp@ using 3 @resource/resource_gold.webp@@unit_worker/villager-japanese.webp@ and 1 @resource/sheep.webp@@unit_worker/villager-japanese.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 1,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Leave 1 vill on @resource/berrybush.webp@ to build @building_japanese/farmhouse-1.webp@ and put 8 on @resource/resource_wood.webp@, rally on @resource/resource_wood.webp@, get @technology_japanese/towara-1.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 6,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_japanese/koka-township-1.webp@ completes, the vills go to @resource/sheep.webp@, once you have 11 on @resource/resource_wood.webp@, rally to @resource/sheep.webp@. Make @building_military/stable.webp@+@building_military/archery-range.webp@ for @unit_sengoku/yari-2.webp@+@unit_japanese/yumi-ashigaru-2.webp@, get all the eco+forge techs, build horse estate if you play against knight civs, and archer estate if you dont and win the damn game"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

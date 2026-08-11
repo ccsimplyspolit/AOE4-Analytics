@@ -1111,6 +1111,252 @@ After three games, mark the guide **works**, **needs adaptation**, or **stale**.
     bodyRu:
       '## Начните с конца\n\nПосмотрите последние две минуты и назовите условие поражения: армия, экономика, тайминг, технология или падение тиммейта. Затем проверьте производство, экономику, информацию, позицию и конверсию победной драки. Простой подтверждает отсутствие юнита в очереди, но не причину; отставание счёта подтверждает разрыв, но не ошибку. Помечайте выводы как подтверждённые, вероятные или неизвестные и выберите одну измеримую цель.',
   },
+  {
+    slug: 'mechanics-placement-and-micro',
+    title: 'Game Mechanics: Farms, Deer, Hotkeys & Kiting',
+    titleRu: 'Механики игры: фермы, олени, хоткеи и кайт',
+    category: 'fundamentals',
+    summary:
+      'Use legal execution mechanics to shorten walking, control fights, and run production without losing the camera.',
+    summaryRu:
+      'Используйте честные механики исполнения: меньше ходьбы, лучше контроль боя и производство без потери камеры.',
+    readMinutes: 8,
+    body: `## Learn the principle, not a one-patch trick
+
+The useful mechanics in AoE IV improve **information, unit control, or worker travel time**. They are repeatable with normal controls and still need a decision behind them. A technique that only works through a bug, a broken interaction, or an old patch is not a reliable build-order step.
+
+Use the loop **observe → execute → return to the plan**. A fast command is only good if your villagers, production, and army are still doing the right thing afterward.
+
+## Farms: compact, safe, and planned
+
+Move to farms because the food plan requires it, not because a particular minute arrived. Before placing a large farm block, make sure you have the wood income, a safe drop-off point, and enough room for production and defenses.
+
+- Put farms around the food drop-off that benefits your civilization, keeping the walking routes short and easy to protect.
+- Leave clear exits from the Town Center and production. Do not make workers walk around a decorative wall of farms or houses.
+- Build the next group before the current food source is exhausted; replace it in batches so villagers do not stand idle.
+- Keep the block inside the area your army or Town Center can reasonably protect. A cheap exposed farm is often more expensive than a slightly later safe one.
+
+Farm bonuses, available food sources, and the best landmark differ by civilization. Check the current Explorer and patch notes before copying a civilization-specific layout.
+
+## Deer: reduce walking, but do not lose the hunt
+
+Deer are a fast food source and a map-control test. If the hunt is safe enough to hold, a mill beside it can be a good temporary drop-off. A scout can also **push deer** toward that mill: approach from the far side and guide the deer closer in small, controlled moves. The value is reduced villager travel, not a magical increase in food.
+
+Stop if the scout is needed for information, the enemy can punish the exposed villagers, or the deer are being driven into an awkward route. Scouting an enemy move is often worth more than saving a few seconds of walking.
+
+## Building placement is a tactical resource
+
+Place buildings for a purpose: protect a resource, create a small choke, shorten a rally route, or preserve space for the next age.
+
+- Keep houses and short wall segments tight enough that enemy units cannot slip through, but leave villagers an exit before completing the segment.
+- Put production close enough to reinforce a fight quickly, yet not so far forward that one raid removes it for free.
+- Use an outpost where it buys reaction time on exposed gold, wood, deer, trade, or a crossing. Vision is part of the value.
+- Set rally points deliberately after each move-out. A perfect fight is wasted if reinforcements walk through danger one by one.
+
+Pathing and collision can change after patches. Treat unusual wall gaps or building collisions as a situation to test, not as a guaranteed trick.
+
+## The F-key myth: selection and camera focus are separate
+
+In the standard keyboard-grid layout, **F itself is a construction-grid key**. It is not a universal "teleport between buildings" command. The fast workflow comes from the configurable *Find and cycle units and buildings* controls.
+
+- Default profiles commonly use **F1** for military buildings, **F2** for economic buildings, **F3** for research, and **F4** for landmarks, wonders, or the capital Town Center.
+- After selecting a building group, **Tab** cycles the selected building type so you can queue units or upgrades efficiently.
+- In Settings → Controls, choose whether a find/cycle command should **Select only** or **Select and center**. Select only lets you queue production without dragging the camera away from a fight; centering is useful when you need to inspect a threatened building.
+- Bind camera focus and control groups to keys you can reach consistently. Custom profiles change all of these defaults, so check the displayed binding rather than memorising someone else's setup.
+
+Practice one drill: while watching your army, select production, queue two rounds, press Tab to check the next building, then return to the fight. The goal is no idle production and no lost army.
+
+## Kiting and small-scale micro
+
+Kiting (stutter-stepping) means giving a ranged attack, moving while the unit reloads, then attacking again. It creates distance and makes slow melee units spend more time walking.
+
+1. Focus a valuable or vulnerable target.
+2. Move the ranged group back or sideways during its attack cooldown.
+3. Re-engage before the next shot, using a screen of melee units when possible.
+4. Stop kiting if the enemy is faster, reinforcements are arriving, or your movement exposes the army to a surround.
+
+Add formations, control groups, and a front-line screen before chasing fancy micro. A retreat path, a rally point, and an army that stays together usually matter more than one extra shot.
+
+## "Abuse" checklist
+
+Call it a **mechanic** when it works through normal commands, has a clear counterplay, and remains consistent after a patch. Deer pushing, shift-queued worker tasks, production cycling, target fire, and kiting pass that test.
+
+Do not build your plan around an exploit, UI failure, desync, or a pathing bug. If a clip calls something an "abuse," verify it in a custom game on the current patch and keep a normal fallback. The linked videos are a practice library; patch notes remain the final authority for balance-sensitive details.`,
+    bodyRu: `## Учите принцип, а не трюк одного патча
+
+Полезные механики AoE IV улучшают **информацию, контроль армии или путь крестьян**. Их можно повторить обычными командами, но за ними всё равно должно стоять решение. Приём, который держится только на баге, сломанном взаимодействии или старом патче, нельзя считать надёжным шагом билда.
+
+Рабочий цикл: **увидели → исполнили → вернулись к плану**. Быстрая команда ценна, только если после неё крестьяне, производство и армия продолжают делать нужное.
+
+## Фермы: компактно, безопасно, заранее
+
+Переходите на фермы, когда этого требует план по еде, а не потому что наступила «правильная» минута. Перед большим блоком ферм обеспечьте доход дерева, безопасную точку сдачи и место под производство с защитой.
+
+- Ставьте фермы вокруг точки сдачи еды, выгодной вашей цивилизации: путь короче, защищать проще.
+- Оставляйте свободные выходы из ТЦ и производства. Не заставляйте крестьян обходить декоративную стену из ферм и домов.
+- Закладывайте следующую группу до исчерпания текущего источника еды; заменяйте пачками, чтобы не было простоя.
+- Держите блок в зоне, которую реально прикрывают ТЦ или армия. Дешёвая, но открытая ферма часто обходится дороже чуть более поздней безопасной.
+
+Бонусы ферм, доступные источники еды и лучший landmark различаются по цивилизациям. Перед копированием раскладки проверьте текущий Explorer и патчноут.
+
+## Олени: сокращаем путь, но не теряем охоту
+
+Олени — быстрый источник еды и проверка контроля карты. Если охоту можно удержать, мельница рядом с ней даёт удобную временную точку сдачи. Разведчик также может **подгонять оленей** к мельнице: подойдите с дальней стороны и небольшими, контролируемыми движениями направляйте их ближе. Ценность в меньшем пути крестьян, а не в «создании» новой еды.
+
+Остановитесь, если разведчик нужен для информации, соперник может наказать открытых крестьян или олени уходят по неудобному маршруту. Обнаружить выход вражеской армии часто ценнее, чем сэкономить несколько секунд ходьбы.
+
+## Расстановка зданий — это тактический ресурс
+
+У каждого здания должна быть цель: прикрыть ресурс, создать узкое место, сократить путь подкреплений или сохранить место под следующую эпоху.
+
+- Ставьте дома и короткие сегменты стен плотно, чтобы враг не прошёл в щель, но до завершения оставляйте крестьянам выход.
+- Производство держите достаточно близко для быстрых подкреплений, но не настолько впереди, чтобы один рейд забрал его бесплатно.
+- Ставьте заставу там, где она даёт время на реакцию: открытое золото, лес, олени, торговля, переход. Обзор — часть её ценности.
+- После каждого выхода армии осознанно меняйте точку сбора. Идеальный бой не поможет, если подкрепления по одному идут через опасную зону.
+
+Патч может изменить путь и коллизии. Необычные щели в стенах и столкновения зданий сначала проверяйте в кастомной игре, а не делайте основой плана.
+
+## Миф про кнопку F: выбор и фокус камеры — разные вещи
+
+В стандартной keyboard-grid раскладке **сама F — это клавиша сетки строительства**. Это не универсальная «телепортация между зданиями». Быстрый цикл строится на настраиваемых командах *Find and cycle units and buildings*.
+
+- В типовых профилях **F1** выбирает военные здания, **F2** — экономические, **F3** — исследования, **F4** — landmark, wonder или столичный ТЦ.
+- После выбора группы зданий **Tab** перебирает выбранный тип: так удобно быстро ставить юнитов и улучшения в очередь.
+- В Settings → Controls задайте режим **Select only** или **Select and center**. Первый позволяет ставить производство в очередь, не уводя камеру с боя; второй нужен, когда требуется осмотреть атакуемое здание.
+- Назначьте фокус камеры и контрольные группы на удобные клавиши. В кастомном профиле все эти значения меняются, поэтому сверяйтесь с показанной привязкой, а не с чужой раскладкой.
+
+Тренировка: наблюдая за армией, выберите производство, поставьте две очереди, нажмите Tab для следующего здания и вернитесь к бою. Цель — не терять ни производство, ни армию.
+
+## Кайт и микро малых боёв
+
+Кайт (stutter-step) — это выстрел дальней группой, движение во время перезарядки и новый выстрел. Так медленные мили-юниты дольше идут пешком и не наносят урон.
+
+1. Выберите ценную или уязвимую цель.
+2. Во время перезарядки отведите дальнюю группу назад или в сторону.
+3. Вернитесь к атаке к следующему выстрелу; по возможности прикрывайте дальних мили-линией.
+4. Прекратите кайт, если враг быстрее, подходят подкрепления или движение открывает армию для окружения.
+
+Сначала добавьте формации, контрольные группы и переднюю линию, а уже потом усложняйте микро. Путь отхода, точка сбора и армия, которая остаётся вместе, обычно важнее одного лишнего выстрела.
+
+## Чек-лист для «абуза»
+
+Называйте приём **механикой**, если он работает обычными командами, имеет понятный контрплей и остаётся стабильным после патча. Подгон оленей, очереди задач через Shift, перебор производства, фокусный огонь и кайт этому соответствуют.
+
+Не стройте план на эксплойте, ошибке интерфейса, рассинхроне или баге пути. Если в ролике приём называют «абузом», проверьте его в кастомной игре на текущем патче и держите обычный запасной план. Видео ниже — библиотека для тренировки; последнее слово за патчноутами.`,
+  },
+  {
+    slug: 'video-research-findings',
+    title: 'What 1,000 AoE4 Guides Repeat',
+    titleRu: 'Что повторяют 1000 гайдов по AoE4',
+    category: 'strategy',
+    summary:
+      'A cross-video synthesis: repeated habits, false shortcuts, and a practice loop that turns advice into measurable improvement.',
+    summaryRu:
+      'Сводка повторяющихся советов, ложных shortcuts и цикла тренировки по массиву из 1000 видео.',
+    readMinutes: 7,
+    body: `## What was actually analysed
+
+The catalogue contains 1,000 unique AoE4 videos collected from 24 focused YouTube searches and grouped by topic and difficulty. The synthesis below uses titles, channel metadata, descriptions where available, and the existing recent video-signal report; it does **not** reproduce full copyrighted transcripts. Treat each conclusion as a strong practice hypothesis and verify patch-sensitive details in the linked source and current Explorer.
+
+## Six findings that survive across topics
+
+### 1. Macro is the common denominator
+
+Beginner, civilization, and professional-analysis videos keep returning to the same failure: an idle Town Center, a missing house, or resources floating without a production plan. A clean opening is not a memorized timestamp; it is continuous villager production plus a resource split that pays for the next decision.
+
+**Practice test:** after each game, count Town Center idle time, supply blocks, and unspent resources at the first fight. Fix the largest number first.
+
+### 2. Scouting is a trigger for a branch
+
+The useful scout information is not a screenshot of the enemy base. It is a branch: early stable → spears and protected food; stone mining → confirm a second Town Center or defensive structure; missing army → scout the exits and outer resources. The same build can be correct or terrible depending on that branch.
+
+**Practice test:** write one response beside each scout observation before you queue the next building.
+
+### 3. The strongest "farm/deer tips" save walking without sacrificing information
+
+Farm blocks near the right drop-off and a safe deer hunt reduce worker travel. Pushing deer with a scout is useful when the hunt is safe, but it is never worth losing the scout before the opponent's transition is known. Videos that show a trick without its safety condition are incomplete.
+
+### 4. Micro has a priority order
+
+The recurring order is target selection → formation/front line → attack-move or focus fire → movement during cooldown → retreat before the surround. Kiting is one tool inside that sequence, not a replacement for a screen, reinforcements, or a safe path.
+
+**Practice test:** review one fight and mark the first preventable loss: wrong target, broken formation, idle reinforcement, or late retreat.
+
+### 5. Hotkeys are about camera discipline
+
+The best workflow keeps the army on screen while production is queued. Use control groups, select-only building commands, Tab cycling, rally points, and Shift queues. A key that moves the camera to a building is only useful when you actually need to inspect that building.
+
+### 6. Professional play is a loop, not a trick list
+
+High-level analysis repeatedly follows **information → resource allocation → production → position → conversion**. After a won fight, take a resource, production building, landmark, sacred site, trade route, or map space. Damage with no conversion gives the opponent time to reset.
+
+## A 20-minute practice block
+
+1. Watch one beginner or economy source and choose one measurable habit.
+2. Play one AI or unranked game with that habit written beside the minimap.
+3. Watch the replay at 4× speed until the first divergence from the plan.
+4. Check the current patch and Explorer before changing a cost, timing, or civilization recommendation.
+5. Repeat the same experiment three times; only then promote it into your default build.
+
+## Direct reading to pair with the videos
+
+- The official shortcut reference explains remapping, control groups, Shift commands, and F1/F2/F3 + Tab cycling.
+- The official starter guide covers rally-point resources, age-up decisions, scouting, counters, multiple production buildings, and camera-safe groups.
+- The current Academix and Seven Swords beginner articles are useful reading passes; AoE4World's curated catalogue is the place to find civilization-specific follow-ups.
+
+The catalogue is a discovery map, not a promise that every old video survives the current patch. Prefer evidence that names its season, map, civilization, and first adaptation point.`,
+    bodyRu: `## Что именно анализировалось
+
+В каталоге 1000 уникальных видео AoE4 из 24 точечных поисковых запросов YouTube. Материалы разбиты по темам и сложности. Сводка ниже использует заголовки, метаданные каналов, доступные описания и существующий отчёт по свежим видеосигналам; **полные защищённые авторским правом расшифровки не копируются**. Каждый вывод — сильная гипотеза для тренировки; точные значения и патчевые советы проверяйте по источнику и текущему Explorer.
+
+## Шесть выводов, которые повторяются в разных темах
+
+### 1. Макро — общий знаменатель
+
+В гайдах для новичков, по цивилизациям и в профессиональных разборах постоянно повторяется одна ошибка: простой ТЦ, пропущенный дом или накопленные ресурсы без плана производства. Чистое открытие — не заученная секунда, а непрерывное производство крестьян и расклад ресурсов под следующее решение.
+
+**Проверка:** после игры посчитайте простой ТЦ, блоки снабжения и неистраченные ресурсы к первой драке. Сначала исправьте самое большое число.
+
+### 2. Разведка включает ветку плана
+
+Полезный результат разведки — не скриншот базы. Это ветка: ранняя конюшня → копейщики и защищённая еда; добыча камня → подтвердить второй ТЦ или оборонительное здание; армия исчезла → проверить выходы и внешние ресурсы. Один и тот же билд может быть правильным или плохим в зависимости от ветки.
+
+**Проверка:** рядом с каждым наблюдением разведчика запишите ответ до постановки следующего здания.
+
+### 3. Лучшие советы про фермы и оленей сокращают путь, но не информацию
+
+Блок ферм у правильной точки сдачи и безопасная охота на оленей сокращают путь работников. Подгон оленей разведчиком полезен, когда охота удерживается, но не стоит потери разведчика до того, как вы увидели переход соперника. Ролик, где показан только трюк без условия безопасности, неполон.
+
+### 4. У микро есть порядок приоритетов
+
+Повторяющийся порядок: выбор цели → формация и передняя линия → attack-move или фокусный огонь → движение во время перезарядки → отход до окружения. Кайт — один инструмент в этой цепочке, а не замена прикрытию, подкреплениям и пути отхода.
+
+**Проверка:** в одном бою отметьте первую предотвратимую потерю: неверная цель, сломанная формация, простоявшее подкрепление или поздний отход.
+
+### 5. Хоткеи нужны для дисциплины камеры
+
+Лучший рабочий процесс оставляет армию на экране, пока вы ставите производство в очередь. Используйте контрольные группы, Select only для зданий, цикл Tab, точки сбора и очереди Shift. Клавиша, уводящая камеру к зданию, полезна только когда здание действительно нужно осмотреть.
+
+### 6. Профессиональная игра — это цикл, а не список трюков
+
+В сильных разборах повторяется цепочка **информация → распределение ресурсов → производство → позиция → конвертация**. После выигранного боя забирайте ресурс, производство, landmark, святыню, торговый маршрут или пространство карты. Урон без конвертации даёт сопернику время восстановиться.
+
+## 20 минут практики
+
+1. Посмотрите один материал для новичка или по экономике и выберите одну измеримую привычку.
+2. Сыграйте одну игру против ИИ или без рейтинга, записав привычку рядом с миникартой.
+3. Просмотрите реплей на скорости 4× до первого отклонения от плана.
+4. Перед изменением стоимости, тайминга или совета по цивилизации проверьте текущий патч и Explorer.
+5. Повторите один эксперимент три раза; только после этого делайте его стандартным билдом.
+
+## Статьи в пару к видео
+
+- Официальная памятка хоткеев объясняет переназначение, контрольные группы, Shift и цикл F1/F2/F3 + Tab.
+- Официальный стартовый гайд разбирает rally points ресурсов, переход эпох, разведку, контры, несколько производственных зданий и группы без прыжка камеры.
+- Свежие статьи Academix и Seven Swords подходят для первого чтения, а кураторский каталог AoE4World — для продолжения по цивилизации.
+
+Каталог — карта для поиска, а не гарантия, что каждый старый ролик пережил текущий патч. Предпочитайте материалы, где указаны сезон, карта, цивилизация и точка первой адаптации.`,
+  },
 ]
 
 /** Additional references retained for deeper patch and civilization context. */
@@ -1193,5 +1439,214 @@ export const GUIDE_RESOURCES: readonly GuideResource[] = [
     source: 'Game Truth',
     url: 'https://www.gametruth.com/guides/age-of-empires-4-jin-dynasty-beginner-guide-build-orders-unique-units/',
     publishedAt: '2026-05-01',
+  },
+  {
+    id: 'spirit-farm-mechanics',
+    kind: 'video',
+    title: 'AoE4 farming mechanics, tips, and civ bonuses',
+    titleRu: 'Механики ферм, советы и бонусы цивилизаций',
+    description:
+      'A focused explanation of farm placement, worker travel, and civilization-specific farm bonuses. Verify exact values against the current patch.',
+    descriptionRu:
+      'Разбор размещения ферм, пути крестьян и бонусов цивилизаций. Точные значения сверяйте с текущим патчем.',
+    source: 'Spirit Of The Law · YouTube',
+    url: 'https://www.youtube.com/watch?v=4VvsA3wVNyI',
+  },
+  {
+    id: 'farmman-push-deer',
+    kind: 'video',
+    title: 'How to PUSH DEER | Age of Empires 4 HINTS and TIPS',
+    titleRu: 'Как подгонять оленей: советы AoE4',
+    description:
+      'A short practical demonstration of moving a hunt closer to the mill with a scout.',
+    descriptionRu:
+      'Короткая практическая демонстрация: как подвести охоту разведчиком ближе к мельнице.',
+    source: 'Farm Man Official · YouTube',
+    url: 'https://www.youtube.com/watch?v=uJbxap4ChIM',
+  },
+  {
+    id: 'beasty-ultimate-micro',
+    kind: 'video',
+    title: 'Age of Empires 4 Ultimate Micro Guide',
+    titleRu: 'Полный гайд по микро в Age of Empires 4',
+    description:
+      'Target fire, stutter-stepping, formations, screens, surrounds, and the decisions that make micro useful.',
+    descriptionRu:
+      'Фокусный огонь, кайт, формации, прикрытие, окружения и решения, которые делают микро полезным.',
+    source: 'BeastyqtSC2 · YouTube',
+    url: 'https://www.youtube.com/watch?v=FdJFDsXr4ws',
+  },
+  {
+    id: 'beasty-hotkeys-tips',
+    kind: 'video',
+    title: 'Hotkeys Tips and Tricks',
+    titleRu: 'Советы и приёмы по хоткеям',
+    description:
+      'A workflow-focused hotkey guide for production, control groups, and faster execution.',
+    descriptionRu:
+      'Гайд по рабочему процессу с хоткеями: производство, контрольные группы и скорость исполнения.',
+    source: 'BeastyqtSC2 · YouTube',
+    url: 'https://www.youtube.com/watch?v=asw0FKnIcEo',
+  },
+  {
+    id: 'amerath-attack-commands-formations',
+    kind: 'video',
+    title: 'Attack Commands and Formations in Age of Empires IV',
+    titleRu: 'Команды атаки и формации в Age of Empires IV',
+    description:
+      'A focused reference for attack-move, target commands, and formation choices in live fights.',
+    descriptionRu:
+      'Точечный разбор attack-move, команд по цели и выбора формаций в реальном бою.',
+    source: 'Amerath · YouTube',
+    url: 'https://www.youtube.com/watch?v=-ICXJvJYpjI',
+  },
+  {
+    id: 'nakamura-efficient-farm-placement',
+    kind: 'video',
+    title: 'How to Place Farms Efficiently in Age of Empires 4',
+    titleRu: 'Как эффективно размещать фермы в Age of Empires 4',
+    description:
+      'A placement-oriented practice video; adapt the layout to the civilization, drop-off, and safety of the map.',
+    descriptionRu:
+      'Практическое видео о раскладке: адаптируйте её под цивилизацию, точку сдачи и безопасность карты.',
+    source: 'Nakamura RTS · YouTube',
+    url: 'https://www.youtube.com/watch?v=7R4KrjoVNjo',
+  },
+  {
+    id: 'aussie-simple-improvements',
+    kind: 'video',
+    title: '6 Simple Things You Can Do To Get Better At AoE4',
+    titleRu: '6 простых вещей, которые улучшат вашу игру в AoE4',
+    description:
+      'Broad, high-signal execution habits to pair with the mechanics guide.',
+    descriptionRu:
+      'Широкий набор полезных привычек исполнения в паре с гайдом по механикам.',
+    source: 'Aussie_Drongo · YouTube',
+    url: 'https://www.youtube.com/watch?v=9ovvhWn9XRc',
+  },
+  {
+    id: 'valdy-settings-hotkeys',
+    kind: 'video',
+    title: '7 Tips & Tricks To Get Faster At AoE4',
+    titleRu: '7 советов, как играть быстрее в AoE4',
+    description:
+      'Settings and hotkey ideas for faster inputs; compare every binding with your own Controls screen.',
+    descriptionRu:
+      'Идеи по настройкам и хоткеям для быстрых команд; каждую привязку сверяйте со своим экраном Controls.',
+    source: 'Valdy · YouTube',
+    url: 'https://www.youtube.com/watch?v=yqf-_YOFc8U',
+  },
+  {
+    id: 'crack-mechanics-pros-use',
+    kind: 'video',
+    title: '5 Advanced Game Mechanics That Pros Use',
+    titleRu: '5 продвинутых игровых механик от профессионалов',
+    description:
+      'Advanced-mechanics examples. Treat any patch-sensitive or unusual interaction as a custom-game test, not a guaranteed exploit.',
+    descriptionRu:
+      'Примеры продвинутых механик. Любое зависящее от патча или необычное взаимодействие проверяйте в кастомной игре, а не считайте гарантированным эксплойтом.',
+    source: 'CrackedyHere · YouTube',
+    url: 'https://www.youtube.com/watch?v=Fgl4Ve9akzA',
+  },
+  {
+    id: 'official-shortcuts-reference',
+    kind: 'article',
+    title: 'Age of Empires IV Shortcuts Revealed',
+    titleRu: 'Официальная памятка хоткеев Age of Empires IV',
+    description:
+      'Official shortcut reference: remapping, control groups, Shift commands, F1/F2/F3 + Tab cycling, and the keyboard grid.',
+    descriptionRu:
+      'Официальная памятка: переназначение, контрольные группы, Shift, цикл F1/F2/F3 + Tab и keyboard grid.',
+    source: 'Age of Empires Official',
+    url: 'https://www.ageofempires.com/news/aoeiv-shortcuts-revealed/',
+    publishedAt: '2021-10-22',
+  },
+  {
+    id: 'official-army-up-to-speed',
+    kind: 'article',
+    title: 'Tips to Help Get Your Army Up to Speed',
+    titleRu: 'Советы, которые помогут разогнать армию',
+    description:
+      'Official fundamentals: rally-point resources, age-up decisions, scouting, counters, multiple production buildings, and camera-safe groups.',
+    descriptionRu:
+      'Официальные основы: rally points ресурсов, переход эпох, разведка, контры, несколько производственных зданий и группы без прыжка камеры.',
+    source: 'Age of Empires Official',
+    url: 'https://www.ageofempires.com/news/age-of-empires-iv-tips-to-help-you-get-started/',
+    publishedAt: '2021-11-03',
+  },
+  {
+    id: 'academix-dark-age-first-steps',
+    kind: 'article',
+    title: 'Dark Age: First Steps',
+    titleRu: 'Тёмная эпоха: первые шаги',
+    description:
+      'A current editorial lesson on nonstop Town Center production, early sheep scouting, houses, and reading build orders.',
+    descriptionRu:
+      'Свежий урок о непрерывном производстве в ТЦ, ранней разведке овец, домах и чтении билдов.',
+    source: 'AoE4 Academix',
+    url: 'https://aoe4academix.com/en/guides/eo-primeros-pasos',
+    publishedAt: '2026-05-01',
+  },
+  {
+    id: 'seven-swords-beginner-guide',
+    kind: 'article',
+    title: 'Age of Empires IV Beginner Guide: Tips, Civilisations and Strategy',
+    titleRu: 'Гайд для новичка: советы, цивилизации и стратегия',
+    description:
+      'A recent beginner pass through the four ages, first civilizations, nonstop villagers, scouting, build orders, and counters.',
+    descriptionRu:
+      'Свежий вводный текст о четырёх эпохах, первых цивилизациях, крестьянах без простоя, разведке, билдах и контрах.',
+    source: 'Seven Swords',
+    url: 'https://sevenswords.uk/age-of-empires-iv-beginner-guide/',
+    publishedAt: '2026-06-12',
+  },
+  {
+    id: 'aoedb-beginner-guide',
+    kind: 'article',
+    title: 'Age of Empires 4 Beginner Guide',
+    titleRu: 'Гайд AOEDB для новичка',
+    description:
+      'Reference chapters for basics, economy, age advancement, military counters, and beginner civilizations.',
+    descriptionRu:
+      'Справочник по основам, экономике, эпохам, военным контрам и цивилизациям для новичка.',
+    source: 'AOEDB.net',
+    url: 'https://aoedb.net/aoe4/beginner-guide/',
+  },
+  {
+    id: 'my-gaming-tutorials-beginner',
+    kind: 'article',
+    title: 'Beginner’s Guide: From Basics to Building Your Empire',
+    titleRu: 'Гайд: от основ до строительства империи',
+    description:
+      'A short reading pass on victory conditions, resource drop-offs, economy, unit roles, and practicing against AI.',
+    descriptionRu:
+      'Короткий текст о целях победы, точках сдачи ресурсов, экономике, ролях юнитов и тренировке против ИИ.',
+    source: 'My Gaming Tutorials',
+    url: 'https://mygamingtutorials.com/2025/06/15/beginners-guide-to-age-of-empires-iv-aoe4-from-basics-to-building-your-empire/',
+    publishedAt: '2025-06-15',
+  },
+  {
+    id: 'aoe4-french-fundamentals',
+    kind: 'article',
+    title: 'Les fondamentaux',
+    titleRu: 'Основы AoE4: французский справочник',
+    description:
+      'A structured fundamentals index covering economy, army, ages, maps, civilizations, and strategy.',
+    descriptionRu:
+      'Структурированный справочник по экономике, армии, эпохам, картам, цивилизациям и стратегиям.',
+    source: 'Age of Empires IV Communauté Française',
+    url: 'https://www.ageofempire4.fr/docs/guide/fondamentaux/',
+  },
+  {
+    id: 'aoe4world-explorer-about',
+    kind: 'article',
+    title: 'AoE4World Explorer: how to read unit and technology data',
+    titleRu: 'AoE4World Explorer: как читать данные юнитов и технологий',
+    description:
+      'Explains age filters, combat-stat breakdowns, upgrades, technology effects, and civilization comparisons.',
+    descriptionRu:
+      'Объясняет фильтры эпох, разбор боевых характеристик, улучшения, технологии и сравнение цивилизаций.',
+    source: 'AoE4World',
+    url: 'https://aoe4world.com/explorer/about',
   },
 ]

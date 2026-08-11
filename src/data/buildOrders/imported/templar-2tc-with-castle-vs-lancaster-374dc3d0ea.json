@@ -1,0 +1,248 @@
+{
+  "name": "Templar: 2TC with Castle vs Lancaster ",
+  "civilization": "Knights Templar",
+  "author": "frag@dd!ct",
+  "source": "https://aoe4guides.com/builds/0XzqiQNCNL22tfOLHfxt",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1x@unit_worker/villager.webp@->@building_economy/mining-camp.png@-&gt;@resource/resource_gold.png@5x@unit_worker/villager.png@-&gt;@resource/sheep.png@ +1x@unit_worker/villager.png@-&gt;@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1x@unit_worker/villager.webp@->@building_economy/house.png@-&gt;@resource/resource_gold.png@@resource/rally.png@-&gt;@resource/resource_wood.png@ for 3x@unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/resource_stone.png@+1.@unit_worker/villager.png@-&gt;@building_economy/mining-camp.png@-&gt;@resource/resource_stone.png@  @200 @resource/resource_gold.png@ 2x@unit_worker/villager.png@ -&gt;@resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~2:50",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "@15 Supply -> @age/age_2.webp@@civilization_flag/kof.png@ +Reallocate @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 1,
+        "wood": 7,
+        "gold": 0,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "reallocate @unit_worker/villager.webp@:  1x@resource/resource_food.png@ 7x@resource/resource_wood.png@ 7x@resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/sheep.png@ @350 Stone 7x @unit_worker/villager.png@-&gt;@building_economy/town-center.png@ @ @resource/deer.png@ -&gt;@resource/rally.png@@resource/deer.png@",
+        "reallocate @unit_worker/villager.png@: 4x@resource/resource_food.png@ 5x@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 13,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 14,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@@building_economy/house.webp@ reallocate @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 16,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_templar/safepassage.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:10",
+      "villager_count": 22,
+      "resources": {
+        "food": 17,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5@unit_worker/villager.webp@@resource/resource_food.png@->@resource/resource_wood.png@ and 1. @building_economy/town-center.png@-&gt;@resource/rally.png@@resource/resource_gold.png@+@technology_economy/survival-techniques.png@",
+        "@150 @resource/resource_wood.png@ @building_military/stable.png@ +@building_economy/mill.png@@@resource/deer.png@  +@150@resource/resource_wood.png@ @building_military/barracks.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 30,
+      "resources": {
+        "food": 18,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@100@resource/resource_wood.webp@@technology_templar/sanctuary.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:20",
+      "villager_count": 43,
+      "resources": {
+        "food": 25,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@abilities/repair.webp@ @building_defensive/palisade-wall.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~10:25+",
+      "villager_count": 46,
+      "resources": {
+        "food": 25,
+        "wood": 7,
+        "gold": 9,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@age/age_3.webp@@civilization_flag/ang.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2x @building_religious/monastery.webp@ go for relics"
+      ]
+    }
+  ],
+  "description": "EL.LoueMT Build  on Ladder vs Lancaster Horsman & Speerman",
+  "video": "",
+  "season": 10,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

@@ -1,0 +1,275 @@
+{
+  "name": "ToV Feudal Rush into Castle Push",
+  "civilization": "Delhi Sultanate",
+  "author": "Fumblez",
+  "source": "https://aoe4guides.com/builds/2MdMCewDznDRruxNxm4x",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 1,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager-delhi.webp@ starts@building_economy/mill.png@ and goes to build @building_religious/mosque.png@ (queue @technology_delhi/efficient-production.png@ first) / 5 @unit_worker/villager-delhi.png@ to straggler @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 new @unit_worker/villager-delhi.webp@ builds @building_economy/house.png@ / @resource/resource_wood.png@@unit_worker/villager-delhi.png@ go to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 new @unit_worker/villager-delhi.webp@ to @resource/resource_food.png@ (8)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 new @unit_worker/villager-delhi.webp@ to @building_economy/mining-camp.png@@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 new @unit_worker/villager-delhi.webp@ to chopped straggler @resource/resource_wood.png@, then 1 new @unit_worker/villager-delhi.png@ to build @building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@resource/resource_food.webp@@unit_worker/villager-delhi.png@ build @landmark_delhi/tower-of-victory.png@. Keep @resource/rally.png@onto @resource/resource_wood.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Pull @resource/resource_gold.webp@@unit_worker/villager-delhi.png@ at 3770G in Gold Vein onto @resource/resource_wood.png@  -> Queue @unit_delhi/scholar.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:10",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally @landmark_delhi/tower-of-victory.webp@@unit_worker/villager-delhi.png@ back to @resource/resource_food.png@. Build @building_technology/blacksmith.png@. Then either build a second @building_technology/blacksmith.png@ immediately if space or   @building_military/archery-range.png@ if under pressure"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:10",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "QUEUE MOSQUE TECHS. Prioritize @technology_delhi/sanctity.webp@, then @technology_delhi/all-seeing-eye.png@, then @technology_religious/piety.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 22,
+      "resources": {
+        "food": 8,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager-delhi.webp@ split should be heavier on @resource/resource_wood.png@ initially to get down @building_technology/blacksmith.png@ + prod buildings (make @building_military/stable.png@ or @building_military/barracks.png@ + @building_military/archery-range.png@). Garrison @unit_delhi/scholar.png@ in prod buildings to spam units"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 25,
+      "resources": {
+        "food": 13,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now balance economy approx 50/50 to build @resource/resource_food.webp@+@resource/resource_wood.png@heavy units and @building_defensive/palisade-wall.png@around @resource/sacred_sites.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00‑7:30",
+      "villager_count": 27,
+      "resources": {
+        "food": 15,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remove @unit_delhi/scholar.webp@ from prod. buildings and send to @resource/sacred_sites.png@. It's okay to split units for sites so long as you aren't losing too many. Make @unit_delhi/scholar.png@ from @resource/sacred_sites.png@ @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "13:00",
+      "villager_count": 44,
+      "resources": {
+        "food": 26,
+        "wood": 18,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "At this point, producing out of ~3 @building_military/archery-range.webp@ and 2 @building_military/barracks.png@ (w/ 1 @unit_delhi/scholar.png@ garrisoned)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "CASTLE TIMING - Use @landmark_delhi/compound-of-the-defender.webp@ (not if opponent is in castle): build 3-4 @building_military/barracks.png@ (total with scholars) and mass@unit_infantry/man-at-arms-1.png@. Send age up vills to @resource/resource_stone.png@and @building_defensive/keep.png@-drop opponents base when pushing. Go siege, if necessary, and, if you can't push, build economy with @building_defensive/keep.png@. Valdemar drops his @landmark_delhi/compound-of-the-defender.png@ at around 15:50 (this changes based on game state) using 12 villagers from wood. Only ever go @landmark_delhi/house-of-learning.png@ if you are very late/the last person to reach castle (maybe 5% of games)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "OPENERS -",
+        "Open @building_military/stable.webp@+@building_military/archery-range.png@ for standard opener vs @civilization_flag/eng.png@@civilization_flag/mal.png@@civilization_flag/hre.png@@civilization_flag/chi.png@.",
+        "Open @building_military/barracks.png@+@building_military/archery-range.png@ if against @civilization_flag/abb.png@@civilization_flag/del.png@@civilization_flag/ott.png@",
+        "Open @building_military/barracks.png@+@building_military/stable.png@ vs @civilization_flag/fre.png@@civilization_flag/rus.png@@civilization_flag/mon.png@",
+        "Of course, scout opponent and build units that counter his. This is just a guide."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "SCHOLARS - Shoot for 10-12 @unit_delhi/scholar.webp@ in castle and ~20 @unit_delhi/scholar.png@ in imperial to get techs in a reasonable amount of time."
+      ]
+    }
+  ],
+  "description": "All credit to Valdemar. Based on his build order (https://aoe4guides.com/builds/cuoaFU7jsHTcEfw46e27), see video below.",
+  "video": "https://www.youtube.com/embed/amSVlXvc0d0",
+  "season": 5,
+  "map": "Open",
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

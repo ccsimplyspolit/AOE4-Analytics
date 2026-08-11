@@ -1,0 +1,192 @@
+{
+  "name": "Rus 1TC Kremlin → Abbey Fast Castle",
+  "civilization": "Rus",
+  "author": "DrewCarryMore",
+  "source": "https://aoe4guides.com/builds/4gDQ0TDnBY4nzp1A54oi",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@unit_worker/villager.webp@x6 -> @resource/sheep.webp@",
+        "@resource/rally.webp@-&gt;@resource/sheep.webp@",
+        "-----------------------------------------",
+        "Immediately, 2x@unit_worker/villager.webp@ -&gt; 2x@building_rus/hunting-cabin.webp@",
+        "Shift-queue -&gt; @resource/sheep.webp@",
+        "-----------------------------------------",
+        "@abilities/repair.webp@@building_economy/house.webp@ with @resource/sheep.webp@@unit_worker/villager.webp@",
+        "Leave space for @building_economy/farm.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@ -> 12",
+        "----------------------",
+        "Scout @resource/deer.webp@ for @landmark_rus/kremlin.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@resource/sheep.webp@@unit_worker/villager.webp@x5 -> @abilities/repair.webp@@landmark_rus/kremlin.webp@ on @resource/deer.webp@ or @resource/boar.webp@",
+        "-----------------------",
+        "@resource/sheep.webp@@unit_worker/villager.webp@x4 -&gt; @resource/gaiatreeprototypetree.webp@",
+        "@resource/rally.webp@-&gt;@resource/gaiatreeprototypetree.webp@ (to 8 total)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@resource/rally.webp@->@resource/resource_food.webp@ for rest of feudal",
+        "-----------------",
+        "@landmark_rus/kremlin.webp@@unit_worker/villager.webp@@abilities/repair.webp@x5 -&gt; @building_military/stable.webp@ -&gt; @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 1,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "queue @unit_cavalry/knight-2.webp@x(1-4) depending on raid potential",
+        "0–2 if the opponent is completely safe",
+        "2-4 if there are exposed targets",
+        "4 can raid as two groups of two",
+        "-------------------",
+        "when @resource/gaiatreeprototypetree.webp@x3 cut:",
+        "@unit_worker/villager.webp@x1 -> @building_economy/lumber-camp.webp@ inside @landmark_rus/kremlin.webp@range (or woodline)",
+        "@unit_worker/villager.webp@x7 -&gt; @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 29,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 7,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "@resource/sheep.webp@@unit_worker/villager.webp@x10 -> @abilities/repair.webp@@landmark_rus/abbey-of-the-trinity.webp@",
+        "@resource/sheep.webp@@unit_worker/villager.webp@x5 -&gt; @resource/resource_wood.webp@",
+        "@resource/rally.webp@-&gt;@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 32,
+      "resources": {
+        "food": 6,
+        "wood": 19,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@landmark_rus/abbey-of-the-trinity.webp@@unit_worker/villager.webp@ -> @resource/resource_wood.webp@",
+        "@resource/rally.webp@@unit_rus/warrior-monk.webp@ -&gt; @resource/relics.webp@ (furthest first)",
+        "@technology_economy/double-broadaxe.webp@/@technology_economy/wheelbarrow.webp@/@unit_cavalry/knight-2.webp@ as needed"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 35,
+      "resources": {
+        "food": 16,
+        "wood": 12,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@ @building_military/archery-range.webp@x3",
+        "@unit_infantry/archer-2.webp@ when opponent has @unit_infantry/spearman-1.webp@",
+        "@unit_infantry/crossbowman-3.webp@ when opponent has @unit_cavalry/knight-2.webp@ or @unit_infantry/man-at-arms-1.webp@",
+        "@unit_rus/horse-archer-3.webp@ for raiding",
+        "--------------------------------------",
+        "@resource/resource_wood.webp@@unit_worker/villager.webp@x8 -> @resource/deer.webp@ with @building_rus/wooden-fortress.webp@",
+        "-------------------------------------",
+        "Keep building @unit_rus/warrior-monk.webp@ to ~5 total"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 47,
+      "resources": {
+        "food": 29,
+        "wood": 18,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "As we are @resource/rally.webp@@resource/resource_wood.webp@ rest of game, keep ~15 @unit_worker/villager.webp@ on @resource/resource_wood.webp@ put rest on a @resource/resource_food.webp@ source",
+        "-------------------------",
+        "Get @building_technology/blacksmith.webp@ upgrades",
+        "Get @technology_rus/blessing-duration.webp@@technology_rus/improved-blessing.webp@",
+        "------------------------",
+        "Take @resource/relics.webp@ and @resource/sacred_sites.webp@, when enough passive @resource/resource_gold.webp@, move @unit_worker/villager.webp@ off @resource/resource_gold.webp@",
+        "-----------------------",
+        "Overbuild @building_economy/house.webp@ to levy all militia from @landmark_rus/kremlin.webp@ and go attack"
+      ]
+    }
+  ],
+  "description": "Use two early Hunting Cabins, protect a strong food source with the Kremlin, make between zero and four Early Knights, then reach Castle Age around 8:30–8:40. Secure relics and Sacred Sites with Warrior Monks, mass the appropriate ranged unit, and overwhelm the opponent with Levy Militia plus the Warrior Monk blessing.",
+  "video": "https://www.youtube.com/embed/n74D7yb6WVg",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

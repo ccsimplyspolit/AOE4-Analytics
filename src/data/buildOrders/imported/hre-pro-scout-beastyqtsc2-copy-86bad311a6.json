@@ -1,0 +1,213 @@
+{
+  "name": "HRE Pro Scout - BeastyqtSC2 - copy",
+  "civilization": "Holy Roman Empire",
+  "author": "gamushiro",
+  "source": "https://aoe4guides.com/builds/333AaSClGKbaHFiYDTPl",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@ -> @resource/resource_food.png@     /    3 @unit_worker/villager.png@ @abilities/repair.png@-&gt;@building_economy/mining-camp.png@ @resource/resource_gold.png@",
+        "1  @unit_worker/villager.png@ from @resource/resource_gold.png@@abilities/repair.png@-&gt;@building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:10",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:19",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "AGE UP: 4 @unit_worker/villager.webp@ from @resource/resource_food.png@ -> @landmark_hre/aachen-chapel.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ from @resource/resource_food.png@ -> @resource/resource_gold.png@",
+        "2 @unit_worker/villager.png@ from @resource/resource_food.png@ -&gt; @resource/resource_wood.png@",
+        "@resource/rally.png@ -&gt; @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:05",
+      "villager_count": 14,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "1  @unit_worker/villager.webp@ @abilities/repair.png@ -> @building_economy/mill.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "1  @unit_worker/villager.webp@ from @resource/resource_gold.png@@abilities/repair.png@->@building_economy/house.png@-&gt;@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 19,
+      "resources": {
+        "food": 7,
+        "wood": 6,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_gold.png@ until 6 then -&gt; @resource/resource_food.png@",
+        "4 @unit_worker/villager.png@@abilities/repair.png@ -&gt; @resource/resource_food.png@",
+        "ECO TEC @technology_economy/professional-scouts.png@ PROFESSIONAL SCOUTS"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "‑‑‑",
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ from @resource/resource_wood.png@ -> @building_military/stable.png@ FOR 4@unit_cavalry/scout.png@ -&gt; @resource/resource_food.png@",
+        "ECO TEC @technology_economy/survival-techniques.png@ SURVIVAL TECHNIQUES",
+        "1 @unit_worker/villager.png@ from @resource/resource_wood.png@  -&gt; @building_defensive/outpost.png@-&gt; @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 15,
+        "wood": 4,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ from @resource/resource_wood.png@ -> @building_economy/house.png@ -&gt; @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 29,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": 15
+      },
+      "notes": [
+        "AGE UP: 15 @unit_worker/villager.webp@ from @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 29,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 8,
+        "stone": 0,
+        "builder": 15
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ from @resource/resource_food.png@ -> @building_economy/house.png@*3 -&gt; @resource/resource_gold.png@",
+        "1 @unit_worker/villager.png@ from @resource/resource_food.png@ -&gt; @building_technology/blacksmith.png@ -&gt; @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "HRE Pro Scout Guide made by \nBeastyqtSC2",
+  "video": "https://www.youtube.com/embed/4nGHtDdDZgs",
+  "season": 9,
+  "map": null,
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

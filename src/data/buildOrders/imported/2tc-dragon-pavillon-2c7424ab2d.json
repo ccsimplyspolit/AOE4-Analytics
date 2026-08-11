@@ -1,0 +1,161 @@
+{
+  "name": "2TC Dragon Pavillon",
+  "civilization": "Jin Dynasty",
+  "author": "Asmitha",
+  "source": "https://aoe4guides.com/builds/0lFZmzMH2Sie2OfWdDLt",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 3,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jin/mounted-villager.webp@@building_economy/mining-camp.webp@, @unit_jin/mounted-villager.webp@@resource/resource_gold.webp@, @unit_jin/mounted-villager.webp@@resource/deer.webp@",
+        "Queue 5 @unit_jin/mounted-villager.webp@ @resource/rally.webp@@resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:30",
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@landmark_jin/flower-pagoda.webp@,"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 1,
+        "wood": 4,
+        "gold": 0,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "From @resource/resource_gold.webp@ & @resource/resource_food.webp@-> 3@unit_jin/mounted-villager.webp@@building_economy/mining-camp.webp@@resource/resource_stone.webp@, 4@unit_jin/mounted-villager.webp@@resource/resource_wood.webp@ queue@unit_worker/villager-china.webp@ on food, @building_economy/house.webp@",
+        "Gather just enough for @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:37",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/deer.webp@@resource/resource_gold.webp@ with  all@unit_jin/mounted-villager.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 4,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "produce @unit_jin/mounted-villager.webp@ whenever possible till max"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/lumber-camp.webp@@resource/resource_wood.webp@ -> @building_defensive/outpost.webp@@resource/resource_gold.webp@, can @technology_chinese/handcannon-slits.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "08:05",
+      "villager_count": 27,
+      "resources": {
+        "food": 22,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_jin/dragon-pavilion.webp@ with all @unit_jin/mounted-villager.webp@ (9)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "08:50",
+      "villager_count": 31,
+      "resources": {
+        "food": 14,
+        "wood": 7,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_jin/mengan-mouke-emplacement.webp@ to @building_defensive/outpost.webp@, @unit_jin/emissary.webp@ -> Trade Posts"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/market.webp@?",
+        "Start Army, @building_technology/blacksmith.webp@@building_religious/monastery.webp@@resource/relics.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/NVfrP-ZbeC0",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

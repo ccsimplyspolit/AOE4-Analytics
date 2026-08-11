@@ -1,0 +1,167 @@
+{
+  "name": "Byz 5 cistern",
+  "civilization": "Byzantines",
+  "author": "Yogii",
+  "source": "https://aoe4guides.com/builds/3DPXuObi3466zhj56BSk",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 1,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ to sheep",
+        "3 @unit_worker/villager.webp@ to build @building_economy/mining-camp.webp@@resource/resource_stone.webp@",
+        "1 @unit_worker/villager.webp@ to build @building_economy/mining-camp.webp@@resource/resource_gold.webp@",
+        "1 @unit_worker/villager.webp@ to build @building_byzantines/cistern-1.webp@@building_economy/house.webp@@building_byzantines/aqueduct-1.webp@+3 more @building_byzantines/cistern-1.webp@@building_byzantines/aqueduct-1.webp@ (when finished put on gold; around age up)",
+        "Set  @resource/rally.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After 4th @building_byzantines/cistern-1.webp@ is built + 60 @resource/resource_stone.webp@, move @resource/resource_stone.webp@@unit_worker/villager.webp@ to @resource/gaiatreeprototypetree.webp@ (all 3 stragglers)"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "5 @resource/sheep.webp@@unit_worker/villager.webp@ age up with @landmark_byzantines/grand-winery-1.webp@@resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "2 @resource/sheep.webp@@unit_worker/villager.webp@ move to @resource/gaiatreeprototypetree.webp@",
+        "Set @resource/rally.webp@ to @resource/gaiatreeprototypetree.webp@ up to 7"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@resource/resource_wood.webp@@unit_worker/villager.webp@ build @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:35",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "4 @resource/sheep.webp@@unit_worker/villager.webp@ move to @resource/berrybush.webp@",
+        "Set @resource/rally.webp@ to @resource/berrybush.webp@ up to 13"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 11,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/resource_wood.webp@@unit_worker/villager.webp@ build @building_military/barracks.webp@@building_byzantines/mercenary-house-2.webp@@building_economy/house.webp@ then 5th @building_byzantines/cistern-1.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:55",
+      "villager_count": 22,
+      "resources": {
+        "food": 13,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Set @resource/rally.webp@ to @resource/sheep.webp@ till ~18 @resource/resource_food.webp@@unit_worker/villager.webp@ then start @resource/rally.webp@ to @resource/resource_gold.webp@ till castle (unless committing feudal)"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/wheelbarrow.webp@@technology_economy/horticulture.webp@ and whichever @technology_byzantines/silk-road-mercenary-contract-1.webp@ (usually longbow if feudal push jav if castle)"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

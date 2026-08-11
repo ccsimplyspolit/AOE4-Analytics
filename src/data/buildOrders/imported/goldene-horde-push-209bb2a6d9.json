@@ -1,0 +1,165 @@
+{
+  "name": "Goldene Horde Push",
+  "civilization": "Golden Horde",
+  "author": "nRage_Reaper",
+  "source": "https://aoe4guides.com/builds/85JbDAqQWqjF0ayQB4oZ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@unit_worker/villager-mongols.webp@ --> @resource/resource_food.webp@",
+        "1x@unit_worker/villager-mongols.webp@ --&gt; @abilities/repair.webp@@building_mongols/ovoo.webp@ --&gt; @abilities/repair.webp@@building_mongols/ger.webp@ --&gt; @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:40",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2x@unit_worker/villager-mongols.webp@ --> @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1x@unit_worker/villager-mongols.webp@ --> @abilities/repair.webp@@landmark_golden_horde/golden_tent.webp@ --&gt; @resource/resource_gold.webp@",
+        "1x@unit_worker/villager-mongols.webp@ --&gt;@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @unit_worker/villager-mongols.webp@ --> @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:10",
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@ --> @technology_golden_horde/golden_tent_horde_rally_age3.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:15",
+      "villager_count": 13,
+      "resources": {
+        "food": 2,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "8x@resource/resource_food.webp@@unit_worker/villager-mongols.webp@ --> @resource/gaiatreeprototypetree.webp@ --&gt; 1x@unit_worker/villager-mongols.webp@@abilities/repair.webp@@building_mongols/ger.webp@ on @resource/resource_wood.webp@",
+        "@resource/rally.webp@ @unit_worker/villager-mongols.webp@ --&gt; @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:55",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "By 80% Age Up 1x@resource/resource_gold.webp@@unit_worker/villager-mongols.webp@ Move to @resource/resource_stone.webp@ --> @abilities/repair.webp@@building_mongols/ovoo.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "04:55",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_mongols/ger.webp@ --> @technology_economy/wheelbarrow.webp@ + @technology_economy/double-broadaxe.webp@",
+        "Wenn keine Schafe mehr da sind. @abilities/repair.webp@@building_mongols/ger.webp@ --&gt; @resource/berrybush.webp@ oder @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:55",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_golden_horde/golden_tent.webp@ --> @unit_golden_horde/khan.webp@@unit_golden_horde/torguud.webp@",
+        "@abilities/repair.webp@ --&gt; @building_military/stable.webp@&@building_military/archery-range.webp@ --&gt; @unit_cavalry/horseman-1.webp@, @unit_infantry/archer-2.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

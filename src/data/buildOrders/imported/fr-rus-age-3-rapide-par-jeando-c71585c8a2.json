@@ -1,0 +1,319 @@
+{
+  "name": "[FR] RUS - Age 3 Rapide - par Jeando",
+  "civilization": "Rus",
+  "author": "Twister",
+  "source": "https://aoe4guides.com/builds/1aum7aj4FTeoi0adotew",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2 @unit_worker/villager.webp@ =>@abilities/repair.webp@ 2 @building_rus/hunting-cabin.webp@ si Civ qui aggro alors mettre sous TC ; Sinon greed le max de gold ; Rallye du TC sur @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@abilities/repair.webp@ 1 @building_economy/house.webp@ pour pop cap ;"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Ramener les vil sur @resource/sheep.webp@ ; Faire un 2e @unit_cavalry/scout.webp@ pour scout et ramener des moutons"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Faire des vil en boucle avec rallye sur @resource/sheep.webp@ jusqu'à @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "8 vil pour @abilities/repair.webp@ 1 @landmark_rus/kremlin.webp@ sur un @resource/deer.webp@ / @resource/boar.webp@ + source de @resource/resource_wood.webp@pas loin - sinon sur @resource/resource_gold.webp@ + @resource/resource_wood.webp@ // Mettre le rallye TC sur @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 11,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Garder les 8 vil pour récolter et construire à côté du Kremlin"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 11,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@ 1 @building_rus/hunting-cabin.webp@ à côté de @landmark_rus/kremlin.webp@ pour récolter les cerfs // ne pas oublier @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "lorsque les @resource/deer.webp@ / @resource/boar.webp@ sont setup mettre les vil près de TC sur bois sauf 1 sur mouton puis mettre le rally du TC sur@resource/resource_wood.webp@ jusqu'à 10 vil ; ensuite remettre sur @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Une fois que les @resource/gaiatreeprototypetree.webp@ proche TC sont finis, faire un @building_economy/lumber-camp.webp@ près du @landmark_rus/kremlin.webp@ avec les 10 vills"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "env 05:30",
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Ensuite lorsqu'on a assez de @resource/resource_wood.webp@ faire 1 @building_rus/wooden-fortress.webp@ et 1 @building_economy/mining-camp.webp@ près de @resource/resource_gold.webp@ pour @age/age_3.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 13,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "si besoin de construire, utiliser les vil qui sont au @resource/resource_wood.webp@ // faire @technology_economy/survival-techniques.webp@ ainsi que 2 @building_military/archery-range.webp@ lorsque possible"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 28,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "faire @landmark_rus/abbey-of-the-trinity.webp@ pour moines guerriers et arriver à avoir 2 @building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Objectif durant passage d'âge : @technology_economy/survival-techniques.webp@ & @technology_economy/double-broadaxe.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 32,
+      "resources": {
+        "food": 15,
+        "wood": 12,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Faire des @unit_rus/warrior-monk.webp@ & @unit_rus/horse-archer-3.webp@ en continu / Lorsqu'on a un peu de gold, faire des technos"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 15,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rallye TC à la @resource/resource_food.webp@ jusqu'à 15 puis les mettre au @resource/resource_wood.webp@ pour récupérer d'autres sources de @resource/deer.webp@ / @resource/boar.webp@ / @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Ajouter @building_technology/blacksmith.webp@ et@technology_military/steeled-arrow.webp@ @technology_military/balanced-projectiles.webp@ @technology_rus/boyars-fortitude.webp@ @technology_military/iron-undermesh.webp@@technology_military/wedge-rivets.webp@; Aller chercher les @resource/relics.webp@ sur la carte"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Faire @technology_rus/improved-blessing.webp@& @technology_rus/blessing-duration.webp@ dans @landmark_rus/abbey-of-the-trinity.webp@ // Prendre les @resource/sacred_sites.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Pour le reste de la partie : Si l'ennemi aggro => se défendre ; Sinon poser un 2e @building_economy/town-center.webp@ et faire une game macro"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Ensuite on peut swap sur n'importe quelle compo d'armées"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Si @age/age_4.webp@ alors ne pas oublier @technology_rus/saints-veneration-4.webp@ @technology_religious/herbal-medicine.webp@"
+      ]
+    }
+  ],
+  "description": "Build order pour faire Age 3 rapide et prendre un avantage - via les BO de Jeando",
+  "video": "https://www.youtube.com/embed/6cirGThqqSg",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

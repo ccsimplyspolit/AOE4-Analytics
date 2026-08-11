@@ -1,0 +1,136 @@
+{
+  "name": "English fast Season 7 castle Men at Arms",
+  "civilization": "English",
+  "author": "Papipeanut",
+  "source": "https://aoe4guides.com/builds/1XwhQDjwckvpde4qzXTj",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "First worker goes sheep til 7 workers@unit_worker/villager.webp@ ->@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 Next workers rally to gold, build House@building_economy/house.webp@ and Quary@building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally workers on @resource/sheep.webp@ til 200 gold to age up. Age from sheep workers @unit_worker/villager.png@ X5 --->@landmark_english/council-hall.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_english/council-hall.webp@ Workers from age up goes to @unit_worker/villager.png@ -> @building_economy/lumber-camp.png@ wood. Build extra house.@building_economy/house.png@. First 100 extra wood builds tower at gold @building_defensive/outpost.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 10,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Villager split should be 5 on wood, for first  @building_military/barracks.webp@, then rest of the wood goes for @building_economy/farm.png@. Barracks is used to counter horsemen aggression, 2-5 spearmen at gold location."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 26,
+      "resources": {
+        "food": 15,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1200 food and 600 gold is our target to age up. @landmark_english/kings-palace.webp@ Kings Palace in team games for extra villagers, or if aggressive team game go for @landmark_english/the-white-tower.png@ White tower to build early knights or Men at arms"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 62,
+      "resources": {
+        "food": 40,
+        "wood": 10,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When going to Castle age, prio is to get all Eco upgrades and more focus on gold. @technology_economy/wheelbarrow.webp@--> @technology_economy/double-broadaxe.png@-&gt;@technology_economy/lumber-preservation.png@-&gt;@technology_economy/horticulture.png@-&gt;@technology_economy/fertilization.png@-&gt;@technology_economy/specialized-pick.png@-&gt;@technology_economy/acid-distilization.png@ | 12 @unit_worker/villager.png@ on gold is enough to produce @unit_infantry/man-at-arms-1.png@x3 @unit_english/longbowman-2.png@x2 @unit_infantry/crossbowman-3.png@x2."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 7,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

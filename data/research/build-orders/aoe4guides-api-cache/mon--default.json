@@ -1,0 +1,1937 @@
+[
+  {
+    "description": "",
+    "civilization": "Mongols",
+    "name": "Mongol build attempt #1",
+    "author": "phoenixchamp",
+    "source": "https://aoe4guides.com/builds/03GDMuUKtmFHWoS2z1fu",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Unpack town center near large tree patch, unpack ger at gold, khan gets sheep"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 10,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Build @building_mongols/ovoo.webp@ on stone"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 10,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 17,
+        "resources": {
+          "food": 4,
+          "wood": 6,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "@landmark_mongols/deer-stones.webp@Build it next to @building_mongols/ovoo.png@, Spawn new villagers on wood"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 19,
+        "resources": {
+          "food": 6,
+          "wood": 7,
+          "gold": 4,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "Build @building_military/archery-range.webp@ and @building_economy/market.png@, start trading, eventually have 10 @unit_worker/trader.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 21,
+        "resources": {
+          "food": 10,
+          "wood": 6,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Start to harass with 2 @unit_mongols/mangudai.webp@, once you have 4 of them, make 1 @unit_mongols/khans-hunter.png@. Keep in mind mangudai lose to archers."
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "You can completely stop enemy from growing outside of the range of their town center with the mangudai, stop them from getting secondary food (deer) etc, build @building_defensive/outpost.webp@ close to their base for eyes"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Have one more market than enemy has trade centers to stay on top economically"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Whenever you run out of sheep, have all but 2 food villagers go to @resource/berrybush.webp@, build @building_mongols/ger.png@. 2 food villagers build at least three @building_mongols/pasture.png@ next to town center"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build @building_military/stable.webp@, @building_military/barracks.png@ if necessary depending on what units enemy has"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@landmark_mongols/kurultai.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Keep building more and more @building_mongols/pasture.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@landmark_mongols/khaganate-palace.webp@"
+        ]
+      },
+      {
+        "age": 4,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      }
+    ],
+    "video": "",
+    "season": "Season 8",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "",
+    "civilization": "Mongols",
+    "name": " Mongol",
+    "author": "Myff",
+    "source": "https://aoe4guides.com/builds/05cekfGGlgFAzc0Xsn3y",
+    "build_order": [
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "5 @unit_worker/villager-mongols.webp@ go on @resource/resource_wood.png@, 1@unit_worker/villager-mongols.png@ build @building_mongols/ovoo.png@ then to @resource/resource_gold.png@.  After the TC is placed near a forest, switch the 5 to @resource/resource_food.png@."
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "0:42",
+        "villager_count": 7,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 @unit_worker/villager-mongols.webp@ to @resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "1:02",
+        "villager_count": 8,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 @unit_worker/villager-mongols.webp@ to @resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "1:22",
+        "villager_count": 9,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_food.png@ until @age/age_2.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "2:35",
+        "villager_count": 12,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Age up with 3@resource/resource_food.webp@@unit_worker/villager-mongols.png@ on either @landmark_mongols/the-silver-tree.png@ for trade / @landmark_mongols/deer-stones.png@ if Trade Posts spawn bad. (add markets later)"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "2:45",
+        "villager_count": 10,
+        "resources": {
+          "food": 4,
+          "wood": 4,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Keep 4@resource/resource_food.webp@@unit_worker/villager-mongols.png@ & 2@resource/resource_gold.png@@unit_worker/villager-mongols.png@. Rest to @resource/resource_wood.png@until @building_military/stable.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "3:55",
+        "villager_count": 11,
+        "resources": {
+          "food": 9,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build @building_military/stable.webp@ with 2@unit_worker/villager-mongols.png@ and @resource/rally.png@@resource/resource_food.png@ until 11@resource/resource_food.png@@unit_worker/villager-mongols.png@ then add 2@unit_worker/villager-mongols.png@to @resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "4:30",
+        "villager_count": 18,
+        "resources": {
+          "food": 11,
+          "wood": 3,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@age/age_2.webp@: Queue 2x@unit_mongols/keshik-2.png@ &@resource/rally.png@@resource/resource_wood.png@ until 5"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "5:35",
+        "villager_count": 21,
+        "resources": {
+          "food": 11,
+          "wood": 6,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "add @building_military/archery-range.webp@ and constantly produce @unit_mongols/keshik-2.png@+@unit_infantry/archer-2.png@",
+          "@resource/rally.png@ @resource/resource_food.png@until 14 then @resource/resource_wood.png@until 11 then@resource/resource_gold.png@until 8  and add @unit_worker/trader.png@ + more production"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Keep building army and when you can, start adding traders. Ultimately you want to take full map control, pocket resources, then go castle, get veterancy upgrades and win with a castle timing attack through @landmark_mongols/kurultai.webp@.",
+          "Remember @resource/relics.png@ and all the eco upgrades."
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/vn52vRaBJnU",
+    "season": "Season 5",
+    "map": null,
+    "strategy": "Rush"
+  },
+  {
+    "description": "",
+    "civilization": "Mongols",
+    "name": "Mongol - 2 - import - import",
+    "author": "NightsPrower",
+    "source": "https://aoe4guides.com/builds/0E8Qy49SIp6Uz3Xb8jGc",
+    "build_order": [
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "/////////////// @age/age_1.webp@ //////////////////"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "5 @unit_worker/villager-mongols.webp@ @resource/resource_wood.png@</img> ------ 1 @unit_worker/villager-mongols.png@</img> @building_mongols/ovoo.png@</img> ------ @building_mongols/ger.png@</img>@resource/resource_gold.png@</img>"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "5 @unit_worker/villager-mongols.webp@ @resource/resource_food.png@</img> --- 1 @unit_worker/villager-mongols.png@</img>@resource/resource_gold.png@</img>"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "<span style=\"color: rgba(var(--v-theme-on-surface),var(--v-high-emphasis-opacity));\">+1 </span>@unit_worker/villager-mongols.webp@@resource/resource_food.png@</img><span style=\"color: rgba(var(--v-theme-on-surface),var(--v-high-emphasis-opacity));\"> ------ +1 </span>@unit_worker/villager-mongols.png@</img>@resource/resource_gold.png@</img><span style=\"color: rgba(var(--v-theme-on-surface),var(--v-high-emphasis-opacity));\"> -----</span>@building_economy/town-center.png@</img>@resource/resource_food.png@</img>"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "4 @resource/resource_food.webp@=@resource/resource_wood.png@</img> ----- 4 @resource/resource_food.png@</img>=@age/age_2.png@</img>=@landmark_mongols/the-silver-tree.png@</img>"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "///////////////  @age/age_2.webp@@landmark_mongols/the-silver-tree.png@ //////////////////"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "2 @unit_worker/villager-mongols.webp@ = @building_military/stable.png@ ----- °2x@unit_mongols/keshik-2.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "14@unit_worker/villager-mongols.webp@@resource/resource_food.png@</img> ----- 6@unit_worker/villager-mongols.png@</img>@resource/resource_wood.png@</img>----- 4@unit_worker/villager-mongols.png@</img>@resource/resource_gold.png@</img>"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@technology_economy/survival-techniques.webp@@building_mongols/ger.png@@resource/deer.png@ ---&nbsp;@unit_worker/villager-mongols.png@@resource/resource_food.png@&nbsp;=&nbsp;@building_military/archery-range.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "14@unit_worker/villager-mongols.webp@@resource/resource_food.png@ ----- 8@unit_worker/villager-mongols.png@@resource/resource_gold.png@&nbsp;-----11@unit_worker/villager-mongols.png@@resource/resource_wood.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "°2x @unit_infantry/archer-2.webp@------°2x @unit_mongols/keshik-2.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@technology_economy/wheelbarrow.webp@ -- @unit_worker/trader.png@9M"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_technology/blacksmith.webp@ ---&nbsp;@building_military/stable.png@&nbsp;---&nbsp;@building_mongols/ovoo.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "///////////////  @age/age_3.webp@ @landmark_mongols/kurultai.png@ //////////////////"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "--- @technology_mongols/whistling-arrows.webp@ --- @technology_military/balanced-projectiles.png@ --- @technology_mongols/superior-mobility.png@ ---&nbsp;@technology_military/siege-engineering.png@"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 5",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "",
+    "civilization": "Mongols",
+    "name": "Beastyqt mongol kashik",
+    "author": "Wanman",
+    "source": "https://aoe4guides.com/builds/0IOAdTsf6t26KxENfkuv",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "1 build @building_mongols/ovoo.webp@,  5 to close @resource/gaiatreeprototypetree.png@ until unpack"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 11,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "8 to @resource/resource_food.webp@ , then 3 to @resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 13,
+        "resources": {
+          "food": 4,
+          "wood": 2,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "4 build @landmark_mongols/deer-stones.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 15,
+        "resources": {
+          "food": 6,
+          "wood": 2,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "when 6 on @resource/resource_food.webp@ ,@resource/rally.png@ to @resource/resource_wood.png@ until 8"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 18,
+        "resources": {
+          "food": 9,
+          "wood": 5,
+          "gold": 3,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "build @building_military/stable.webp@ on @building_mongols/ovoo.png@ and get @technology_economy/wheelbarrow.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 20,
+        "resources": {
+          "food": 9,
+          "wood": 8,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "build @building_economy/market.webp@ when stable ready",
+          "go to 8 on @resource/resource_wood.png@ to preduce @unit_worker/trader.png@ and @unit_infantry/archer-2.png@",
+          "build @building_military/archery-range.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 23,
+        "resources": {
+          "food": 9,
+          "wood": 8,
+          "gold": 6,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "when 8 on @resource/resource_wood.webp@ get 6 on @resource/resource_gold.png@, after @resource/rally.png@ to @resource/resource_food.png@",
+          "start producing @unit_mongols/keshik-2.png@ 4 with ovoo stone"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 24,
+        "resources": {
+          "food": 10,
+          "wood": 8,
+          "gold": 6,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "strat producing @unit_infantry/archer-2.webp@"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/WiavIQwpxhM",
+    "season": "Season 6",
+    "map": null,
+    "strategy": "Rush"
+  },
+  {
+    "description": "The fastest way to age up as Mongols, a raw build for getting keshik out ASAP. no particular build after this opening.\n\nIf the BO is a little convulated let me know what can be changed in the comments and ill modify",
+    "civilization": "Mongols",
+    "name": "4:15 9-2 Fastest Age up into Keshik for Mongols",
+    "author": "TheIncan",
+    "source": "https://aoe4guides.com/builds/0IrIBlTSmK9ynNbLY6CD",
+    "build_order": [
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 1,
+          "builder": -1
+        },
+        "notes": [
+          "Drop TC onto @resource/resource_wood.webp@, Send khan to scout, speed arrow, 5&nbsp;@unit_worker/villager-mongols.png@&nbsp;to&nbsp;@resource/gaiatreeprototypetree.png@&nbsp;nearest your tc, 1&nbsp;@unit_worker/villager-mongols.png@&nbsp;to build&nbsp;@building_mongols/ovoo.png@. villager that builds ovoo > gather&nbsp;@resource/resource_gold.png@&nbsp;&nbsp;5 vills on wood gather 50&nbsp;@resource/resource_wood.png@&nbsp;then begin to collect&nbsp;@resource/sheep.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "0:15-0:20",
+        "villager_count": 6,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 1,
+          "builder": -1
+        },
+        "notes": [
+          "2 @unit_worker/villager-mongols.webp@&nbsp;rally onto&nbsp;@resource/resource_food.png@@resource/sheep.png@&nbsp; Take 4 of your vills on wood and put them on a ctrl group for age up."
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "0:25-0:30",
+        "villager_count": 6,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 0,
+          "stone": 1,
+          "builder": -1
+        },
+        "notes": [
+          "your 5 @unit_worker/villager-mongols.webp@&nbsp;on wood rotate"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "0:30-0:35",
+        "villager_count": 6,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 @unit_worker/villager-mongols.webp@&nbsp;on ovoo rotate to gold"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "0:35-0:40",
+        "villager_count": 7,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_worker/villager-mongols.webp@>@resource/rally.png@@resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "0:55-1:00",
+        "villager_count": 8,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_worker/villager-mongols.webp@>@resource/rally.png@@resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "1:15",
+        "villager_count": 9,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_worker/villager-mongols.webp@>@resource/rally.png@@resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "1:35",
+        "villager_count": 10,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_worker/villager-mongols.webp@>@resource/rally.png@@resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "1:55",
+        "villager_count": 11,
+        "resources": {
+          "food": 9,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_worker/villager-mongols.webp@>@resource/rally.png@@resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "2:15",
+        "villager_count": 12,
+        "resources": {
+          "food": 9,
+          "wood": 1,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "3@unit_worker/villager-mongols.webp@>@resource/rally.png@@resource/resource_wood.png@  be aware when your vills drop off the 140 wood, try not to rally all vills onto the same straggler you chopped inititally. i send usually just 1 vill to the initial straggler if it is close. your 150 wood will be spent on stable built in ovoo range."
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "2:45",
+        "villager_count": 9,
+        "resources": {
+          "food": 5,
+          "wood": 2,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "4@unit_worker/villager-mongols.webp@ pulled from&nbsp;@resource/resource_food.png@&nbsp;build&nbsp;@landmark_mongols/deer-stones.png@/@landmark_mongols/the-silver-tree.png@&nbsp;These 4 vills need to be shiftclicked to go to seperate resources after the age up. depending on your build this varies i usually go 2@resource/resource_gold.png@,1@resource/resource_wood.png@,1@resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "2:55",
+        "villager_count": 10,
+        "resources": {
+          "food": 5,
+          "wood": 3,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1@unit_worker/villager-mongols.webp@@resource/rally.png@@resource/resource_wood.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "3:15",
+        "villager_count": 11,
+        "resources": {
+          "food": 6,
+          "wood": 3,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1@unit_worker/villager-mongols.webp@@resource/rally.png@@resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "3:35",
+        "villager_count": 11,
+        "resources": {
+          "food": 6,
+          "wood": 2,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1@unit_worker/villager-mongols.webp@@resource/rally.png@@resource/resource_gold.png@  &nbsp; &nbsp; &nbsp;1@resource/resource_wood.png@@unit_worker/villager-mongols.png@&nbsp;>@abilities/repair.png@@building_military/stable.png@&nbsp;1 vill around this time will be pulled from wood, the villager who drops your 140th wood will walk to build your stable by the time he arrives at ovoo you should have 150 he will return to gathering wood after. shiftclick the commands"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "3:55",
+        "villager_count": 12,
+        "resources": {
+          "food": 7,
+          "wood": 2,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1@unit_worker/villager-mongols.webp@@resource/rally.png@@resource/resource_food.png@, you will try to get to aroudn 9-11 vills on food depending on your build order i like to shoot for 10"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "4:15",
+        "villager_count": 17,
+        "resources": {
+          "food": 9,
+          "wood": 4,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1@unit_worker/villager-mongols.webp@@resource/rally.png@@resource/resource_food.png@, If all has gone well with your build order, RNG can affect the build delay up to 15-20 seconds. you will have finished your age up and have this villager split and 2@unit_mongols/keshik-2.png@ in production."
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/xIB-2oaW-70",
+    "season": "Season 5",
+    "map": null,
+    "strategy": "Rush"
+  },
+  {
+    "description": "Fast feudal age-up with instant 2x Keshik into archers with late trade. ",
+    "civilization": "Mongols",
+    "name": "4:30 Feudal Rush Mongol - import",
+    "author": "Mortifer",
+    "source": "https://aoe4guides.com/builds/0NeK6uQeTU4mErAxqz7I",
+    "build_order": [
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 5,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_economy/town-center.webp@ goes on @resource/resource_wood.webp@, 1@unit_worker/villager-mongols.webp@ build @building_mongols/ovoo.webp@ then to @resource/resource_gold.webp@. 5 to @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "0:42",
+        "villager_count": 7,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 @unit_worker/villager-mongols.webp@ to @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "1:02",
+        "villager_count": 8,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 @unit_worker/villager-mongols.webp@ to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "1:22",
+        "villager_count": 9,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_food.webp@ until @age/age_2.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "2:35",
+        "villager_count": 12,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Age up with 3@resource/resource_food.webp@@unit_worker/villager-mongols.webp@ on either @landmark_mongols/the-silver-tree.webp@ for trade / @landmark_mongols/deer-stones.webp@ if Trade Posts spawn bad. (add markets later)"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "2:45",
+        "villager_count": 10,
+        "resources": {
+          "food": 4,
+          "wood": 4,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Keep 4@resource/resource_food.webp@@unit_worker/villager-mongols.webp@ & 2@resource/resource_gold.webp@@unit_worker/villager-mongols.webp@. Rest to @resource/resource_wood.webp@until @building_military/stable.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "3:55",
+        "villager_count": 11,
+        "resources": {
+          "food": 9,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build @building_military/stable.webp@ with 2@unit_worker/villager-mongols.webp@ and @resource/rally.webp@@resource/resource_food.webp@ until 11@resource/resource_food.webp@@unit_worker/villager-mongols.webp@ then add 2@unit_worker/villager-mongols.webp@to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "4:30",
+        "villager_count": 18,
+        "resources": {
+          "food": 11,
+          "wood": 3,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@age/age_2.webp@: Queue 2x@unit_mongols/keshik-2.webp@ &@resource/rally.webp@@resource/resource_wood.webp@ until 5"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "5:35",
+        "villager_count": 21,
+        "resources": {
+          "food": 11,
+          "wood": 6,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "add @building_military/archery-range.webp@ and constantly produce @unit_mongols/keshik-2.webp@+@unit_infantry/archer-2.webp@",
+          "@resource/rally.webp@ @resource/resource_food.webp@until 14 then @resource/resource_wood.webp@until 11 then@resource/resource_gold.webp@until 8  and add @unit_worker/trader.webp@ + more production"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Keep building army and when you can, start adding traders. Ultimately you want to take full map control, pocket resources, then go castle, get veterancy upgrades and win with a castle timing attack through @landmark_mongols/kurultai.webp@.",
+          "Remember @resource/relics.webp@ and all the eco upgrades."
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/vn52vRaBJnU",
+    "season": "Season 5",
+    "map": null,
+    "strategy": "Rush"
+  },
+  {
+    "description": "Beasty",
+    "civilization": "Mongols",
+    "name": "Hoserman Drush",
+    "author": "Hasan",
+    "source": "https://aoe4guides.com/builds/0SM3MDxIFpsNLgkeciiw",
+    "build_order": [
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "1ovoo {150 madera}"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": 9,
+        "resources": {
+          "food": 5,
+          "wood": 3,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "P. reunión alimento- 1establo"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "2:05",
+        "villager_count": 12,
+        "resources": {
+          "food": 8,
+          "wood": 3,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "jinete(x2)- 1aldeano hacia el rival"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": 13,
+        "resources": {
+          "food": 8,
+          "wood": 2,
+          "gold": 2,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "1aldeano hacia el rival {130 madera}"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": 13,
+        "resources": {
+          "food": 11,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "3:40",
+        "villager_count": 15,
+        "resources": {
+          "food": 11,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "tower rush"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": 16,
+        "resources": {
+          "food": 12,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "tower rush- jinete(x2)"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "4:25",
+        "villager_count": 17,
+        "resources": {
+          "food": 6,
+          "wood": 4,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Landmark- P. reunion madera"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "5:25",
+        "villager_count": 21,
+        "resources": {
+          "food": 6,
+          "wood": 7,
+          "gold": 3,
+          "stone": 0,
+          "builder": 5
+        },
+        "notes": [
+          "Torre"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 4",
+    "map": null,
+    "strategy": "Rush"
+  },
+  {
+    "description": "Counter: Rus, ayy, eng, ottoman, HRE\n\nWin by outscaling with traders. Dont dive, just resource deny and protect traders. Add in towers on the trade line for protection and speed bonus. Then try to hit castle between 12-14 mins (if it makes sense in the moment",
+    "civilization": "Mongols",
+    "name": "4:25 Feudal Rush",
+    "author": "norse",
+    "source": "https://aoe4guides.com/builds/0rmp2ppB7uO8uoDGPaLL",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Pop \"\"Maneuver Arrow\",",
+          "5 @unit_worker/villager-mongols.webp@ on @resource/resource_food.png@ and place @building_mongols/ger.png@ on @resource/resource_gold.png@.",
+          "1 @unit_worker/villager-mongols.png@ to build @building_mongols/ovoo.png@ on @resource/resource_stone.png@ then @resource/resource_food.png@",
+          "@building_economy/town-center.png@ unpacked at @resource/resource_wood.png@ (@resource/rally.png@starting @resource/sheep.png@to @building_economy/town-center.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:15",
+        "villager_count": 5,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_gold.png@ 2 @unit_worker/villager-mongols.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:55",
+        "villager_count": 8,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_food.png@ until @age/age_2.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:23",
+        "villager_count": 12,
+        "resources": {
+          "food": 8,
+          "wood": 2,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build @landmark_mongols/the-silver-tree.webp@ with 3 @unit_worker/villager-mongols.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:30",
+        "villager_count": 10,
+        "resources": {
+          "food": 5,
+          "wood": 3,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Remacro @resource/rally.webp@@resource/resource_wood.png@ until 5. Then @resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:35",
+        "villager_count": 12,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_military/stable.webp@ when 150 @resource/resource_wood.png@ after remacro again by removing all wood vills and macroing food. @building_military/stable.png@unpacks at @building_mongols/ovoo.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "4:10",
+        "villager_count": 13,
+        "resources": {
+          "food": 11,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_wood.png@ when 11 on @resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:25",
+        "villager_count": 18,
+        "resources": {
+          "food": 11,
+          "wood": 2,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "3 age up @unit_worker/villager-mongols.webp@ to @resource/resource_gold.png@ and start @unit_mongols/keshik-2.png@ (dont double produce, save stone for archers)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:40",
+        "villager_count": 19,
+        "resources": {
+          "food": 11,
+          "wood": 3,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Send @landmark_mongols/the-silver-tree.webp@ to corner opposite trade post."
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:40",
+        "villager_count": 20,
+        "resources": {
+          "food": 10,
+          "wood": 5,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_military/archery-range.webp@ then double produce @unit_infantry/archer-2.png@ nonstop"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:30",
+        "villager_count": 24,
+        "resources": {
+          "food": 11,
+          "wood": 8,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Time to start trading. Build @unit_worker/trader.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      }
+    ],
+    "video": "",
+    "season": "Season 9",
+    "map": null,
+    "strategy": "Rush"
+  },
+  {
+    "description": "Mongol new",
+    "civilization": "Mongols",
+    "name": "Mongol - 2",
+    "author": "NightsPrower",
+    "source": "https://aoe4guides.com/builds/0zj4zDkAjYlYKesYZ5mg",
+    "build_order": [
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "/////////////// @age/age_1.webp@&nbsp;//////////////////"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "5 @unit_worker/villager-mongols.webp@@unit_worker/villager-mongols.png@&nbsp;@unit_worker/villager-mongols.png@@resource/resource_wood.png@&nbsp;------ 1&nbsp;@unit_worker/villager-mongols.png@&nbsp;@building_mongols/ovoo.png@&nbsp;------&nbsp;@building_mongols/ger.png@@resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "5 @unit_worker/villager-mongols.webp@&nbsp;@resource/resource_food.png@&nbsp;--- 1&nbsp;@unit_worker/villager-mongols.png@@resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "<span style=\"color: rgba(var(--v-theme-on-surface),var(--v-high-emphasis-opacity));\">+1 </span>@unit_worker/villager-mongols.webp@@resource/resource_food.png@<span style=\"color: rgba(var(--v-theme-on-surface),var(--v-high-emphasis-opacity));\">&nbsp;------ +1&nbsp;</span>@unit_worker/villager-mongols.png@@resource/resource_gold.png@<span style=\"color: rgba(var(--v-theme-on-surface),var(--v-high-emphasis-opacity));\">&nbsp;-----</span>@building_economy/town-center.png@@resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "4 @resource/resource_food.webp@=@resource/resource_wood.png@&nbsp;----- 4&nbsp;@resource/resource_food.png@=@age/age_2.png@=@landmark_mongols/the-silver-tree.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "/////////////// &nbsp;@age/age_2.webp@@landmark_mongols/the-silver-tree.png@&nbsp;//////////////////"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "2 @unit_worker/villager-mongols.webp@&nbsp;=&nbsp;@building_military/stable.png@&nbsp;----- °2x@unit_mongols/keshik-2.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "14@unit_worker/villager-mongols.webp@@resource/resource_food.png@ ----- 6@unit_worker/villager-mongols.png@@resource/resource_wood.png@----- 4@unit_worker/villager-mongols.png@@resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_worker/villager-mongols.webp@@resource/resource_food.png@ =&nbsp;@building_military/archery-range.png@&nbsp;-----&nbsp;@technology_economy/survival-techniques.png@@building_mongols/ger.png@@resource/deer.png@&nbsp;@building_mongols/ger.png@@building_mongols/ger.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "14@unit_worker/villager-mongols.webp@@resource/resource_food.png@ ----- 11@unit_worker/villager-mongols.png@@resource/resource_wood.png@----- 8@unit_worker/villager-mongols.png@@resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "°2x @unit_infantry/archer-2.webp@------°2x&nbsp;@unit_mongols/keshik-2.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@technology_economy/wheelbarrow.webp@ --&nbsp;@unit_worker/trader.png@&nbsp;--&nbsp;@building_technology/blacksmith.png@@building_mongols/ger.png@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@technology_military/siege-engineering.webp@ ----&nbsp;@building_military/stable.png@&nbsp;"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "/////////////// &nbsp;@age/age_3.webp@&nbsp;@landmark_mongols/kurultai.png@&nbsp;//////////////////"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "--- @technology_mongols/whistling-arrows.webp@&nbsp;---&nbsp;@technology_military/balanced-projectiles.png@&nbsp;---&nbsp;@technology_mongols/superior-mobility.png@"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 5",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "by Kaen",
+    "civilization": "Mongols",
+    "name": "Mongols TR draft*",
+    "author": "viBalton",
+    "source": "https://aoe4guides.com/builds/1UOAFwdMVle1yl5csqKV",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 0,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "5 @unit_worker/villager-mongols.webp@on @resource/resource_wood.png@ for 3 round-around",
+          "1 @unit_worker/villager-mongols.png@ build @building_mongols/ovoo.png@ -> @resource/resource_food.png@",
+          "@building_mongols/ger.png@ on @resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 8,
+        "resources": {
+          "food": 4,
+          "wood": 3,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "2 @unit_worker/villager-mongols.webp@ from @resource/resource_wood.png@ -> @resource/resource_food.png@",
+          "1 Build @building_military/barracks.png@ near @building_mongols/ovoo.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 13,
+        "resources": {
+          "food": 8,
+          "wood": 3,
+          "gold": 0,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "2 x @unit_infantry/spearman-1.webp@x2",
+          "Go to @resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 11,
+        "resources": {
+          "food": 8,
+          "wood": 3,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 4,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Build @landmark_mongols/the-silver-tree.webp@ with @resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@technology_mongols/superior-mobility.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Move @landmark_mongols/the-silver-tree.webp@ for trades"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 6",
+    "map": null,
+    "strategy": null
+  }
+]

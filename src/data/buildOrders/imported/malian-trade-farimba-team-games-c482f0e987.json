@@ -1,0 +1,504 @@
+{
+  "name": "Malian | Trade Farimba - Team Games",
+  "civilization": "Malians",
+  "author": "Jockxtar",
+  "source": "https://aoe4guides.com/builds/1xP04ElZkibR5E8HT3SD",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5@unit_worker/villager-malians.webp@-> @resource/gaiatreeprototypetree.png@ -&gt; @resource/sheep.png@",
+        "1@unit_worker/villager-malians.png@ -&gt; @building_malians/pit-mine-1.png@ -&gt; 2@building_economy/house.png@ -&gt; 2@building_economy/house.png@ -&gt; 2@building_economy/house.png@ -&gt; @resource/sheep.png@",
+        "@resource/rally.png@ -&gt; @resource/sheep.png@ (13)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/gaiatreeprototypetree.png@ (14)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "5 @unit_worker/villager-malians.webp@ -> @landmark_malians/saharan-trade-network-1.png@ -&gt; @resource/resource_wood.png@",
+        "The ideal position for @landmark_malians/saharan-trade-network-1.png@ is the closest point to your base that's in the future trade route.",
+        "3 @unit_worker/villager-malians.png@ -&gt; @resource/gaiatreeprototypetree.png@",
+        "This build plays around trade for the extra gold economy. This landmark provides protection and extra value to the @unit_worker/trader.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "1 @resource/sheep.webp@@unit_worker/villager-malians.png@ -> @abilities/repair.png@@building_economy/mill.png@ on @resource/deer.png@/@resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If you built @building_economy/mill.webp@ near @resource/deer.png@: research @technology_economy/survival-techniques.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 17,
+      "resources": {
+        "food": 5,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Research @technology_economy/double-broadaxe.webp@ ASAP"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 19,
+      "resources": {
+        "food": 5,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/barracks.webp@ to produce @unit_malians/donso-1.png@",
+        "You will need at least 4 @unit_malians/donso-1.png@ to protect yourself from early raids",
+        "Next @unit_worker/villager-malians.png@ -> 1 @building_economy/house.png@ -&gt; @building_economy/mining-camp.png@ on @building_malians/pit-mine-1.png@",
+        "@resource/rally.png@ -&gt; @resource/resource_gold.png@ (8)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager-malians.webp@ -> 2nd @building_malians/pit-mine-1.png@ with full @building_economy/house.png@ and @building_economy/mining-camp.png@ around it (keep them mining @resource/resource_gold.png@ there)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:40",
+      "villager_count": 27,
+      "resources": {
+        "food": 5,
+        "wood": 14,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_food.png@ (12)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/archery-range.webp@ to produce @unit_malians/javelin-thrower-2.png@",
+        "6 @unit_malians/donso-1.png@ and 6 @unit_malians/javelin-thrower-2.png@ should be enough to defend yourself from early harassment.",
+        "If you scout an opponent is going to all-in you, make more units that properly counter their army and ask for help until you have numbers advantage."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce @resource/cattle.webp@ from @building_economy/mill.png@ as you get the @resource/resource_gold.png@",
+        "Slowly add @building_malians/cattle-ranch-2.png@ as you produce @resource/cattle.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 34,
+      "resources": {
+        "food": 12,
+        "wood": 14,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_wood.png@ (20)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@2@building_economy/market.png@ and start making @unit_worker/trader.png@ only after securing your base with units and/or @building_defensive/palisade-wall.png@.",
+        "Remember to build @building_malians/toll-outpost-1.png@ in the trade route to defend and boost your trade, but make sure their influence areas don't overlap or you won't gain the bonus @resource/resource_gold.png@ and @resource/resource_food.png@!!"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/horticulture.webp@ after you run out of @resource/deer.png@ and move to @resource/berrybush.png@",
+        "Stop producing @resource/cattle.png@ and @unit_worker/trader.png@ when you feel ready to @age/age_3.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": 40,
+      "resources": {
+        "food": 2,
+        "wood": 20,
+        "gold": 8,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "10 @resource/resource_food.webp@ -> @abilities/repair.png@@landmark_malians/farimba-garrison-2.png@ -&gt; @resource/resource_gold.png@",
+        "@resource/rally.png@ -&gt; @resource/resource_food.png@ (16) {If you run out of @resource/berrybush.png@ and @resource/deer.png@, build @building_economy/farm.png@}"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 2nd @building_military/barracks.webp@, 2nd @building_military/archery-range.png@ & 3 @building_military/stable.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Gather @resource/resource_stone.webp@ for @building_defensive/stone-wall.png@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 42,
+      "resources": {
+        "food": 4,
+        "wood": 20,
+        "gold": 18,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce units from @landmark_malians/farimba-garrison-2.webp@ constantly.",
+        "First 30 @unit_infantry/archer-2.png@ ; then 20 @unit_malians/donso-1.png@ and/or @unit_malians/musofadi-warrior-2.png@ depending on how the opponent decides to counter your @unit_infantry/archer-2.png@, although @unit_malians/donso-1.png@ are always nice to have around in case any enemy decides to flank your army with cavalry.",
+        "If they make mass ranged units, you can make one or two @unit_siege/mangonel-3.png@ to break them. Still, with good micro, the poison arrows and the high production speed should be enough to win you the fight."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce @unit_malians/warrior-scout-2.webp@ from stables and slowly transition into @unit_malians/sofa-2.png@ as you get more @unit_worker/trader.png@.",
+        "These units will work as a meat shield for your infantry and maybe even force the opponent into making @unit_infantry/spearman-1.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Don't forget to research all economic upgrades and build more @building_military/barracks.webp@, @building_military/archery-range.png@ & @building_military/stable.png@ (5 of each is ok for now but as you get more @unit_worker/trader.png@ you will need more)",
+        "Don't produce @unit_infantry/archer-2.png@ from @building_military/archery-range.png@ at first, spend the @resource/resource_wood.png@ on buildings."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Choose an opponent and all-in them. If you are not able to finish them off completely, ask an ally to send a few troops to aid you.",
+        "You should win any 1v1 and 2v2 if you produce the right units and keep your @unit_infantry/archer-2.webp@ mass high enough.",
+        "Build @unit_siege/battering-ram.png@ to destroy buildings for more permanent damage. Prioritize additional @building_economy/town-center.png@ then @building_military/barracks.png@, @building_military/archery-range.png@ & @building_military/stable.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If the all-in fails, @building_defensive/stone-wall.webp@ your base and start raiding with @unit_malians/sofa-2.png@.",
+        "Send the rest of your army to support your allies wherever they go.",
+        "If you get attacked, ask your allies for help."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_malians/fort-of-the-huntress-3.webp@ is a good choice if your team has control of a key area in the map. Rally your reinforcements wherever you build it so that they will be safe until you decide to make them join the rest of the army or go to a different location to defend.",
+        "It's also ok if you desperately need a keep in your base to defend from an inminent attack, but remember that it has the stats of a regular @building_defensive/keep.png@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_malians/griot-bara-3.webp@ has two unique active abilities that can help a lot at replenishing lost army and a third one that's very powerful to finish off opponents by giving your units additional siege damage.",
+        "If your team doesn't have map control or things between both teams are even, this landmark will be more useful."
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": 56,
+      "resources": {
+        "food": 8,
+        "wood": 20,
+        "gold": 18,
+        "stone": 10,
+        "builder": -1
+      },
+      "notes": [
+        "&lt;- Eco should look like this",
+        "Stop at 40 @unit_worker/trader.webp@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "10 @building_military/barracks.webp@, 10 @building_military/archery-range.png@, 10 @building_military/stable.png@ & 4 @building_military/siege-workshop.png@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "For @building_technology/madrasa.webp@ upgrades, prioritize this order: @technology_military/biology.png@ -> @technology_military/chemistry.png@ -&gt; @technology_defensive/court-architects.png@ -&gt; @technology_military/siege-works.png@ -&gt; @technology_military/elite-army-tactics.png@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Your role at this stage of the game will be to defend your team's side of the map and support your allies in combat.",
+        "Don't forget to raid the enemies' economy and wall areas with important resources."
+      ]
+    }
+  ],
+  "description": "Trade build for team games. Play defensive at the beginning like usual and make cows.\nStart producing traders only when it's safe to do so (you have a big enough standing army and/or good walls).\nThis build order works well in closed maps where you can take a bit more time to ramp up your trade eco and catch enemies off-guard by making more than 30 units in 3 minutes (yep, Farimba is that insane).",
+  "video": "",
+  "season": 8,
+  "map": "Closed",
+  "strategy": "Boom",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

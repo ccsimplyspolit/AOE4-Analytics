@@ -1,0 +1,143 @@
+{
+  "name": "Jin dynasty 2TC (4:50-5:00)",
+  "civilization": "Jin Dynasty",
+  "author": "Akors",
+  "source": "https://aoe4guides.com/builds/AnBPwiumOI0RnftWwe6r",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 3,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 buduje @building_economy/mining-camp.webp@, potem @resource/resource_gold.webp@",
+        "1 idzie na renifera @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 4,
+      "resources": {
+        "food": 2,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Ustaw nowe @unit_jin/mounted-villager.webp@ na renifera @resource/resource_food.webp@@resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "W okolicach tych liczb na surowcach powinno się móc przejść do @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 2,
+        "gold": 2,
+        "stone": 1,
+        "builder": 1
+      },
+      "notes": [
+        "1@unit_jin/mounted-villager.webp@ z @resource/resource_food.webp@@unit_jin/reindeer-trader.webp@ -> @abilities/repair.webp@@landmark_jin/flower-pagoda.webp@",
+        "2@unit_jin/mounted-villager.webp@ z @resource/resource_food.webp@@resource/deer.webp@ -&gt; @resource/resource_wood.webp@@resource/gaiatreeprototypetree.webp@",
+        "1@unit_jin/mounted-villager.webp@ z @resource/resource_food.webp@@resource/deer.webp@ -&gt; @abilities/repair.webp@@building_economy/mining-camp.webp@@resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 1,
+        "wood": 2,
+        "gold": 2,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "Podczas przechodzenia do II ery, dorzuć 1@unit_jin/mounted-villager.webp@ na @resource/gaiatreeprototypetree.webp@, potem 1@unit_jin/mounted-villager.webp@@resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 1,
+        "wood": 3,
+        "gold": 1,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Kiedy masz uzbierane dodatkowe 50+@resource/resource_gold.webp@ (po to żeby mieć dodatkowego @unit_jin/mounted-villager.webp@ w kolejce)",
+        "Przenosisz jednego @unit_jin/mounted-villager.webp@@resource/resource_gold.webp@ -> @resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 1,
+        "wood": 4,
+        "gold": 1,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Podczas poprzednich kroków dalej @unit_jin/mounted-villager.webp@ -> @resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 1,
+        "wood": 5,
+        "gold": 1,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Po przejściu do @age/age_2.webp@ od razu!!! użyj umiejętności z @landmark_jin/flower-pagoda.webp@ na @resource/gaiatreeprototypetree.webp@@resource/resource_wood.webp@",
+        "UWAGA. Czasem @building_jin/grassland.webp@ może zniszczyć jedno/dwa @resource/gaiatreeprototypetree.webp@, wtedy trzeba dać umiejkę na zwykłym @resource/resource_wood.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

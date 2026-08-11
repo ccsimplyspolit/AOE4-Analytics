@@ -1,0 +1,397 @@
+{
+  "name": "Imperial Superior Supervision",
+  "civilization": "Zhu Xi's Legacy",
+  "author": "4N0R13N",
+  "source": "https://aoe4guides.com/builds/11oRPKqDR8JaBmHmvSKP",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@ place mill at berries and gather wood",
+        "Imperial Official supervising prebuild mill, rally tc to deer",
+        "move deer to berries"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:30",
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@@building_economy/mill.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@@building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@building_economy/mining-camp.webp@@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 1,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 1,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 10,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 10,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@@landmark_zhuxi/jiangnan-tower-2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@@landmark_zhuxi/jiangnan-tower-2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 10,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 10,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 10,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@@building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@@landmark_zhuxi/meditation-gardens-1.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@@building_military/barracks.png@ or @building_military/archery-range.png@ or @building_military/stable.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "@building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 5,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@@unit_chinese/imperial-official.png@->@building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 6,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@unit_chinese/imperial-official.webp@->@building_economy/mill.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 6,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 7,
+        "wood": 9,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@unit_chinese/imperial-official.webp@@building_military/barracks.png@ or @building_military/archery-range.png@ or @building_military/stable.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 7,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@@unit_chinese/imperial-official.png@->@building_military/barracks.png@ or @building_military/archery-range.png@ or @building_military/stable.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 8,
+        "wood": 9,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@unit_chinese/imperial-official.webp@@building_chinese/village.png@@building_technology/blacksmith.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 8,
+        "wood": 9,
+        "gold": 2,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@"
+      ]
+    }
+  ],
+  "description": "The idea is to push the potential of the imperial official\nStone-Villagers = Imperial Official\n\nMath:\nvillager:\n  cost: 50/0/0\n  time: 20 s\n  gather: ~ 40 resources/min     +10\n  supervised: ~ 48 resources/min  +12\n  eco. upgrade: ~ 52 resouces/min +18\n\nZhuge Nu:\n  cost: 30/30/30\n  supervised:  -  / +  /  ++ (III)\n  time: 15  /  6  /  4 s\n  units/min: 4  /  10  /  15 \n  cost/min: 120/120/120  / 300/300/300  /  450/450/450 \n  total_cost/min: 360  /  900  /  1350\n  villagers/max_units/min:\n  villager: 3/3/3  /  8/8/8  /  12/12/12  =  9/24/36\n  supervised\n  villager: 3/3/3  /  7/7/7  /  10/10/10  =  9/21/30\n  eco. upgraded\n  villager: 2/2/2  /  6/6/6  /  9/9/9  =  6/18/27\n\nPalace Guard:\n  cost: 100/0/25\n  supervised:  -  / +  /  ++ (III)\n  time: 23  /  9  /  6 s\n  units/min: 2.6  /  6.6  /  10 \n  cost/min: 260/0/65  / 660/0/165  /  1000/0/250 \n  total_cost/min: 325  /  725  /  1250\n  villagers/max_units/min:\n  villager: 7/0/2  /  17/0/4  /  25/0/6  =  9/21/31\n  supervised\n  villager: 6/0/1  /  14/0/3  /  21/0/5  =  7/17/26\n  eco. upgraded\n  villager: 2/2/2  /  6/6/6  /  9/9/9  =  6/18/27\n\nHorsemen:\n  cost: 100/20/0\n  supervised:  -  / +  /  ++ (III)\n  time: 23  /  9  /  6 s\n  units/min: 2.6  /  6.6  /  10 \n  cost/min: 260/52/0  / 660/132/0  /  1000/200/0 \n  total_cost/min: 312  /  792  /  1200\n  villagers/max_units/min:\n  villager: 3/3/3  /  8/8/8  /  12/12/12  =  9/24/36\n  supervised\n  villager: 3/3/3  /  7/7/7  /  10/10/10  =  9/21/30\n  eco. upgraded\n  villager: 2/2/2  /  6/6/6  /  9/9/9  =  6/18/27",
+  "video": "",
+  "season": 6,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

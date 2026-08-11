@@ -1,0 +1,162 @@
+{
+  "name": "Corvinus 1 Abba trade opener",
+  "civilization": "Abbasid Dynasty",
+  "author": "ReporterZ",
+  "source": "https://aoe4guides.com/builds/1nmYHqnfqWOAitETe5bc",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "6 @unit_worker/villager-abbasid.webp@build@building_economy/mill.png@on@resource/berrybush.png@, @resource/rally.png@ onto @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "First @unit_worker/villager-abbasid.webp@ build @building_economy/mining-camp.png@, Second@unit_worker/villager-abbasid.png@ build  @building_economy/house.png@next to @building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1@unit_worker/villager-abbasid.webp@ builds @landmark_abbasid/house-of-wisdom.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro with @unit_worker/villager-abbasid.webp@ on @resource/sheep.png@, Age up with@landmark_abbasid/trade-wing.png@, @resource/rally.png@ onto@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 17,
+      "resources": {
+        "food": 5,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Build @building_economy/house.webp@ with 1 @unit_worker/villager-abbasid.png@ on @resource/berrybush.png@, pull another @unit_worker/villager-abbasid.png@ from @resource/resource_wood.png@ to prepare for 2@building_economy/market.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Place down@building_economy/market.webp@, and start researching @technology_abbasid/armored-caravans.png@ and @technology_abbasid/fresh-foodstuffs.png@, start trading with the 3 free @unit_abbasid/trade-caravan-1.png@ from @landmark_abbasid/house-of-wisdom.png@ to the Neutral Trade Post"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 19,
+      "resources": {
+        "food": 6,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Re@resource/rally.webp@ @unit_abbasid/trade-caravan-1.png@ to the newly built @building_economy/market.png@, and start producing @unit_abbasid/trade-caravan-1.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 6,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Start putting down@building_defensive/palisade-wall.webp@ to protect@building_economy/market.png@and@unit_abbasid/trade-caravan-1.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 23,
+      "resources": {
+        "food": 6,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Put down@building_military/stable.webp@and@building_military/archery-range.png@for @unit_cavalry/horseman-1.png@or@unit_abbasid/camel-archer-2.png@ or a mix of both to protect your trade; you should reach @age/goldenagetier1.png@ at this point"
+      ]
+    }
+  ],
+  "description": "A copy of the Corvinus 1 Aoe4 - Abbasid trade guide - Season 10 - 2025 Guide aoe4",
+  "video": "https://www.youtube.com/embed/gPvRTDgTiEs",
+  "season": 10,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

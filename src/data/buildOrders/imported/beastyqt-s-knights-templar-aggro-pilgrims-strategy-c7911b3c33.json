@@ -1,0 +1,183 @@
+{
+  "name": "Beastyqt’s Knights Templar Aggro - Pilgrims Strategy",
+  "civilization": "Knights Templar",
+  "author": "RMSeba13",
+  "source": "https://aoe4guides.com/builds/060kYcgT8lGktGqrlVYc",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send all 6 @unit_worker/villager.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send the next @unit_worker/villager.webp@ to build @building_economy/house.webp@ and another @unit_worker/villager.webp@ from @resource/sheep.webp@ to build @building_economy/mining-camp.webp@. Then send them both to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally @unit_worker/villager.webp@ to @resource/sheep.webp@ until you have 10"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you gather 200 @resource/resource_gold.webp@, send the 2 @unit_worker/villager.webp@ from @resource/resource_gold.webp@, 2 from @resource/sheep.webp@ and the next to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up to @age/age_2.webp@ with @civilization_flag/kof.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you age up to @age/age_2.webp@, inmediately research @technology_templar/safepassage.webp@ and send them to the best @resource/sacred_sites.webp@ location"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send the next 2 @unit_worker/villager.webp@ alongside with 1 from @resource/sheep.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @technology_templar/sanctuary.webp@. This should be perfectly timed so the next time your pilgrims spawn (every 60 seconds), you can have 2 instead of 1 (start researching @technology_templar/sanctuary.webp@ at least 20 seconds before the spawn)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally @unit_worker/villager.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 8,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Build a @building_military/stable.webp@ and start producing @unit_templar/chevalier_confrere_age_2.webp@. Build an @building_military/archery-range.webp@ and produce @unit_infantry/archer-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Go harass your enemy @unit_worker/villager.webp@"
+      ]
+    }
+  ],
+  "description": "This Build Order is meant to help you build a strong economy. You will be able to afford any units that you want, in any of the many combinations you will have to choose from with Knights Templar.\nThis Build Order was created by Beastyqt.",
+  "video": "https://www.youtube.com/embed/YLYSQa2m4RE",
+  "season": 11,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

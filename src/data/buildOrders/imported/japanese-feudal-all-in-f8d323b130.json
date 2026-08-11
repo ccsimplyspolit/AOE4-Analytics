@@ -1,0 +1,517 @@
+{
+  "name": "Japanese | Feudal all-in",
+  "civilization": "Japanese",
+  "author": "Jockxtar",
+  "source": "https://aoe4guides.com/builds/0AloblREG8fqZjucs0AU",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager-japanese.webp@ -> @resource/sheep.webp@",
+        "1 @unit_worker/villager-japanese.webp@ -&gt; build @building_japanese/farmhouse-1.webp@ at @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:05",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/resource_gold.webp@ (2)",
+        "First one builds @building_japanese/forge-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:45",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/sheep.webp@ (10)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:05",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/gaiatreeprototypetree.webp@ (5)",
+        "We need to chop 2 entire @resource/gaiatreeprototypetree.webp@ before building a @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Build @landmark_japanese/koka-township-1.webp@ with 3 @resource/sheep.webp@@unit_worker/villager-japanese.webp@",
+        "Of the 3 @unit_worker/villager-japanese.webp@@abilities/repair.webp@@landmark_japanese/koka-township-1.webp@: 2 to @resource/resource_gold.webp@, 1 to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "2 @resource/sheep.webp@@unit_worker/villager-japanese.webp@ -> @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 14,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@building_japanese/farmhouse-1.webp@ -> @technology_japanese/towara-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:15",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@building_japanese/forge-1.webp@ -> @technology_japanese/tatara-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Build @building_japanese/farmhouse-1.webp@ at @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:45",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@resource/rally.webp@ -> @resource/sheep.webp@ (30)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:55",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_military/barracks.webp@ with 1 @resource/resource_food.webp@@unit_worker/villager-japanese.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:10",
+      "villager_count": 18,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 6,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_japanese/farmhouse-1.webp@ -> @technology_japanese/takezaiku-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/barracks.webp@ upgrade @unit_japanese/samurai-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce @unit_japanese/shinobi-2.webp@ on @landmark_japanese/koka-township-1.webp@",
+        "@unit_japanese/shinobi-2.webp@ role will be to use sabotage on enemy production buildings, nothing more. Once they do that, retreat them to safety."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "--- vs @civilization_flag/del.webp@@civilization_flag/fre.webp@@civilization_flag/jda.webp@@civilization_flag/rus.webp@@civilization_flag/kte.webp@@civilization_flag/mon.webp@@civilization_flag/byz.webp@(@landmark_byzantines/imperial-hippodrome-1.webp@) ---",
+        "Upgrade and produce @unit_infantry/spearman-1.webp@ to counter their cavalry. Keep a few protecting your @resource/resource_food.webp@@unit_worker/villager-japanese.webp@, move the rest to help in the all-in."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once @technology_japanese/takezaiku-2.webp@ is finished, move @resource/sheep.webp@@unit_worker/villager-japanese.webp@ to @resource/berrybush.webp@",
+        "@resource/rally.webp@ -> @resource/berrybush.webp@ (30)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:25",
+      "villager_count": 19,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_military/stable.webp@ with 1 @resource/resource_wood.webp@@unit_worker/villager-japanese.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 19,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_japanese/forge-1.webp@ -> @technology_military/iron-undermesh.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_japanese/farmhouse-1.webp@ with @resource/resource_food.webp@@unit_worker/villager-japanese.webp@ as you need them"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:50",
+      "villager_count": 23,
+      "resources": {
+        "food": 11,
+        "wood": 6,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_japanese/forge-1.webp@ -> @technology_japanese/hizukuri-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce @unit_japanese/shinobi-2.webp@, @unit_cavalry/horseman-1.webp@ and @unit_japanese/samurai-1.webp@ nonstop.",
+        "Add @unit_infantry/spearman-1.webp@ vs @unit_cavalry/knight-2.webp@",
+        "6 @unit_japanese/shinobi-2.webp@ is enough to constantly sabotage up to 3 production buildings. But, because they might die during fights, it's best to have at least 9.",
+        "Prioritize @unit_cavalry/horseman-1.webp@ over @unit_japanese/samurai-1.webp@, as they are more useful at both killing @unit_worker/villager-japanese.webp@ and ranged units.",
+        "While you mass a decently sized army, focus on blocking resources such as @resource/resource_gold.webp@ and @resource/resource_stone.webp@, and sabotage production buildings with @unit_japanese/shinobi-2.webp@.",
+        "To do this, move the @unit_japanese/samurai-1.webp@ first to tank the @building_economy/town-center.webp@ shots, then move the @unit_cavalry/horseman-1.webp@ to force enemy ranged units away or get some @unit_worker/villager-japanese.webp@ kills. Last, move the @unit_japanese/shinobi-2.webp@ to use the sabotage skill.",
+        "Don't fully dive the enemy @building_economy/town-center.webp@ too soon or you will not be able to reach critical mass."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you start to gather from @resource/deer.webp@ and @resource/boar.webp@, research @technology_economy/survival-techniques.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:05",
+      "villager_count": 26,
+      "resources": {
+        "food": 14,
+        "wood": 6,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@ cancel all @unit_worker/villager-japanese.webp@ on queue and research @technology_japanese/daimyo-manor-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:25",
+      "villager_count": 27,
+      "resources": {
+        "food": 15,
+        "wood": 6,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@ make 1 @unit_japanese/uma-bannerman-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_japanese/tatara-1.webp@+@technology_japanese/hizukuri-2.webp@+@unit_japanese/uma-bannerman-2.webp@ aura allows @unit_cavalry/horseman-1.webp@ to reach killing breakpoints on @unit_worker/villager-japanese.webp@ even if they have @technology_economy/textiles.webp@ (6 hits with it, 4 hits without it). This makes them really strong raiders."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once the @unit_japanese/uma-bannerman-2.webp@ reaches the @unit_cavalry/horseman-1.webp@ army, it's the perfect moment to go for the dive. Focus production buildings first, then @building_defensive/outpost.webp@ and then additional @building_economy/town-center.webp@ before going for the main @building_economy/town-center.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "With excess @resource/resource_wood.webp@ build a second @building_military/stable.webp@ and a second @building_military/barracks.webp@",
+        "With excess @resource/resource_gold.webp@ research @technology_economy/specialized-pick.webp@, @technology_economy/double-broadaxe.webp@ and @technology_military/fitted-leatherwork.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If you see an angle to finish the opponent, research @technology_military/siege-engineering.webp@ and build 2 @unit_siege/battering-ram.webp@.",
+        "You can put @unit_japanese/shinobi-2.webp@ inside @unit_siege/battering-ram.webp@ to protect them against @building_economy/town-center.webp@ fire while waiting for a new round of sabotages on the enemy production."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If you can't quite finish off the opponent and end up with a high bank of @resource/resource_gold.webp@, stop producing units for a bit and age up @age/age_3.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_japanese/floating-gate-2.webp@ to boost production further and research veteran upgrade for @unit_cavalry/horseman-1.webp@ quicker."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research veteran upgrade for @unit_cavalry/horseman-1.webp@ and @unit_japanese/samurai-1.webp@, @technology_military/wedge-rivets.webp@ and @technology_japanese/kobuse-gitae-3.webp@",
+        "That's all you should need to close the game by simply torching down enemy landmarks."
+      ]
+    }
+  ],
+  "description": "Aggressive build order to try and overwhelm the opponent with a strong push in Feudal Age.\nBlock enemy production with shinobis' sabotage abilty and win by simply outnumbering the opponent.\n\nOther japanese builds:\n- FC: https://aoe4guides.com/builds/vEngvoom6xbHijnpEYRl\n- 2TC: https://aoe4guides.com/builds/BKgxe5CAXfcRTj4Sbq5C",
+  "video": "",
+  "season": 11,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

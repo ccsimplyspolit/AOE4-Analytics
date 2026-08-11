@@ -1,0 +1,125 @@
+{
+  "name": "Mongols TR draft*",
+  "civilization": "Mongols",
+  "author": "viBalton",
+  "source": "https://aoe4guides.com/builds/1UOAFwdMVle1yl5csqKV",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager-mongols.webp@on @resource/resource_wood.png@ for 3 round-around",
+        "1 @unit_worker/villager-mongols.png@ build @building_mongols/ovoo.png@ -> @resource/resource_food.png@",
+        "@building_mongols/ger.png@ on @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "2 @unit_worker/villager-mongols.webp@ from @resource/resource_wood.png@ -> @resource/resource_food.png@",
+        "1 Build @building_military/barracks.png@ near @building_mongols/ovoo.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2 x @unit_infantry/spearman-1.webp@x2",
+        "Go to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 4,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Build @landmark_mongols/the-silver-tree.webp@ with @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_mongols/superior-mobility.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move @landmark_mongols/the-silver-tree.webp@ for trades"
+      ]
+    }
+  ],
+  "description": "by Kaen",
+  "video": "",
+  "season": 6,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

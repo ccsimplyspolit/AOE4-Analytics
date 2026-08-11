@@ -1,0 +1,159 @@
+{
+  "name": "sipahi 3v3",
+  "civilization": "Ottomans",
+  "author": "Sethek",
+  "source": "https://aoe4guides.com/builds/1mOvkvJY0iIVBi05i0ly",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "make @building_economy/mining-camp.webp@ on stone / send rest to sheep"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 1,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "first vill spawn make @building_economy/mining-camp.webp@ on gold and house / 3 next vill go stagger tree"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 1,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "rally to food"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2;15",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 1,
+        "stone": 1,
+        "builder": 1
+      },
+      "notes": [
+        "build your first @building_ottomans/military-school-1.webp@ with a wood villager"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 14,
+      "resources": {
+        "food": 9,
+        "wood": 2,
+        "gold": 2,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "move one from food to gold and keep rally on food"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:15",
+      "villager_count": 15,
+      "resources": {
+        "food": 10,
+        "wood": 2,
+        "gold": 2,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "age up with 4 @landmark_ottomans/twin-minaret-medrese-1.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 2,
+        "stone": 1,
+        "builder": 4
+      },
+      "notes": [
+        "at 17 vill move food vill to wood / build a house with gold vill"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 21,
+      "resources": {
+        "food": 9,
+        "wood": 9,
+        "gold": 2,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "build 2nd @building_ottomans/military-school-1.webp@ / @building_technology/blacksmith.webp@ and two@building_military/stable.webp@ with two vill"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 13,
+        "wood": 9,
+        "gold": 2,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "keep rallying on food and take @technology_ottomans/anatolian-hills-1.webp@ / start to produce sipahi and harass"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 11,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

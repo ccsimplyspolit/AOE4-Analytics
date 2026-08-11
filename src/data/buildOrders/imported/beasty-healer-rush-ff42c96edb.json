@@ -1,0 +1,174 @@
+{
+  "name": "Beasty Healer Rush",
+  "civilization": "Tughlaq Dynasty",
+  "author": "Nd",
+  "source": "https://aoe4guides.com/builds/6MHuHEru0lS9CA3Cnf4T",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Make 2 @unit_tughluq/worker_elephant.webp@ scout with them 1 @unit_tughluq/worker_elephant.webp@ to gold after",
+        "1 @unit_worker/villager-delhi.webp@ builds house",
+        "@resource/rally.webp@>@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@>@resource/resource_gold.webp@ when 8 @unit_worker/villager-delhi.webp@ on @resource/resource_food.webp@",
+        "Rally until 5 @unit_worker/villager-delhi.webp@ on gold"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:35",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Build @landmark_delhi/dome-of-the-faith.webp@ with 4 @resource/resource_food.webp@@unit_worker/villager-delhi.webp@",
+        "@resource/rally.webp@>@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:05",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Start @resource/rally.webp@>@resource/resource_wood.webp@",
+        "Bring 1 @unit_tughluq/worker_elephant.webp@ to @resource/gaiatreeprototypetree.webp@",
+        "Bring 1 @unit_tughluq/worker_elephant.webp@ to @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:05",
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 4 @landmark_delhi/dome-of-the-faith.webp@ @unit_worker/villager-delhi.webp@ to @resource/resource_wood.webp@",
+        "Build @unit_tughluq/healer_elephant.webp@ and @resource/rally.webp@ to opponents base - harass",
+        "@unit_cavalry/scout.webp@ what opponent builds (@building_military/barracks.webp@@building_military/archery-range.webp@@building_military/stable.webp@) counter with the other",
+        "8 @unit_worker/villager-delhi.webp@ on @resource/resource_wood.webp@ then @resource/rally.webp@>@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:25",
+      "villager_count": 22,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Buy @technology_tughluq/elephant_economics_1.webp@ on @unit_tughluq/worker_elephant.webp@",
+        "Make @unit_tughluq/healer_elephant.webp@ for rest of game",
+        "Check what opponent built and counter @building_military/barracks.webp@@building_military/archery-range.webp@@building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 13,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/stable.webp@ and @building_technology/blacksmith.webp@ make @unit_tughluq/elephant_raider_age2.webp@ and get @technology_military/iron-undermesh.webp@@technology_military/bloomery.webp@",
+        "Harass with @unit_tughluq/healer_elephant.webp@ making sure not to die"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:00",
+      "villager_count": 30,
+      "resources": {
+        "food": 18,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start transitioning to wood and extra gold with @resource/rally.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": 39,
+      "resources": {
+        "food": 19,
+        "wood": 9,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Good luck :)"
+      ]
+    }
+  ],
+  "description": "You know it",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

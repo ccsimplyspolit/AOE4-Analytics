@@ -1,0 +1,231 @@
+{
+  "name": "Abbasid standard opening",
+  "civilization": "Abbasid Dynasty",
+  "author": "notKeenanL",
+  "source": "https://aoe4guides.com/builds/1JYTLRoUl7Q461uFSx1e",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @unit_worker/villager-abbasid.webp@ to @resource/berrybush.png@ and 1 @unit_worker/villager-abbasid.png@ @building_economy/lumber-camp.png@,@resource/resource_wood.png@",
+        "2 @resource/resource_food.png@ to @building_economy/mill.png@ on berries, 1 @resource/resource_food.png@ to @building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/berrybush.png@ (until 7)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager-abbasid.webp@ @building_economy/mining-camp.png@ on @resource/resource_gold.png@",
+        "@resource/rally.png@@resource/resource_gold.png@ (until 4)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "When 50 @resource/resource_wood.webp@ @landmark_abbasid/house-of-wisdom.png@ with @resource/resource_wood.png@ @unit_worker/villager-abbasid.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/rally.webp@@abilities/repair.png@@landmark_abbasid/house-of-wisdom.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager-abbasid.webp@'s from @landmark_abbasid/house-of-wisdom.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.png@ (until 5)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@ with @landmark_abbasid/economic-wing.png@",
+        "3 @unit_worker/villager-abbasid.png@ from @resource/berrybush.png@ to @resource/resource_wood.png@",
+        "@resource/rally.png@@resource/resource_wood.png@ (until 7)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_stone.png@ (until 9)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 9,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_economy/wheelbarrow.webp@",
+        "Get @technology_abbasid/fresh-foodstuffs.png@",
+        "Get @technology_abbasid/fertile-crescent-2.png@",
+        "Then @resource/resource_gold.png@@unit_worker/villager-abbasid.png@'s to @resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 9,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 5,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "Once (930) @resource/resource_stone.webp@ on @resource/resource_stone.png@ resource build 2'nd@building_economy/town-center.png@ on @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "Basic 2tc opening",
+  "video": "https://www.youtube.com/embed/a6YFYcONRXY",
+  "season": 7,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

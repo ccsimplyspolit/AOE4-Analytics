@@ -1,0 +1,1695 @@
+[
+  {
+    "description": "Feudal Aggro with Raider Elephants supported by a Healer Elephant. Super fast aggro that bullies the opponent into idling vills lest you trample them. Follow with Archers to deal with Spearmen.",
+    "civilization": "Tughlaq Dynasty",
+    "name": "Feudal Aggro with Raider and Healer Elephants",
+    "author": "Eldritch",
+    "source": "https://aoe4guides.com/builds/M34oie9cbJkdYxZgdhGa",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Queue @unit_worker/villager-delhi.webp@an send all @unit_worker/villager-delhi.webp@ and the @unit_tughluq/worker_elephant.webp@ on @resource/berrybush.webp@",
+          "Send the first new @unit_worker/villager-delhi.webp@ on @resource/berrybush.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:20",
+        "villager_count": 7,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ the second new @unit_worker/villager-delhi.webp@ to @resource/resource_gold.webp@ and build @building_economy/house.webp@ first",
+          "Create @unit_tughluq/worker_elephant.webp@ and send to @resource/resource_gold.webp@",
+          "@resource/rally.webp@ until 3 on @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:20",
+        "villager_count": 10,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ 1 more @unit_worker/villager-delhi.webp@ to @resource/berrybush.webp@ then @resource/rally.webp@ to @resource/sheep.webp@ until age-up"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:15",
+        "villager_count": 12,
+        "resources": {
+          "food": 4,
+          "wood": 2,
+          "gold": 2,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Age-up with @landmark_delhi/dome-of-the-faith.webp@ with 4 @resource/berrybush.webp@@unit_worker/villager-delhi.webp@",
+          "Move @resource/sheep.webp@@unit_worker/villager-delhi.webp@ and 1 @resource/resource_gold.webp@@unit_worker/villager-delhi.webp@ to @resource/gaiatreeprototypetree.webp@ and @resource/rally.webp@ there until 4"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:40",
+        "villager_count": 14,
+        "resources": {
+          "food": 4,
+          "wood": 4,
+          "gold": 2,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "@resource/rally.webp@ to @resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:20",
+        "villager_count": 16,
+        "resources": {
+          "food": 6,
+          "wood": 4,
+          "gold": 1,
+          "stone": 0,
+          "builder": 5
+        },
+        "notes": [
+          "Build @building_economy/house.webp@ with 1 @resource/resource_gold.webp@@unit_worker/villager-delhi.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "3:55",
+        "villager_count": 17,
+        "resources": {
+          "food": 7,
+          "wood": 4,
+          "gold": 2,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Build @building_military/stable.webp@ with the 4 age-up @unit_worker/villager-delhi.webp@ then go back to @resource/berrybush.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:20",
+        "villager_count": 19,
+        "resources": {
+          "food": 13,
+          "wood": 4,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Produce 2 @unit_tughluq/elephant_raider_age2.webp@ and @resource/rally.webp@ to enemy base to deny resources"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:15",
+        "villager_count": 20,
+        "resources": {
+          "food": 15,
+          "wood": 3,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Produce 1 @unit_tughluq/healer_elephant.webp@ and send to assist your 2 @unit_tughluq/elephant_raider_age2.webp@",
+          "Build @building_economy/house.webp@ with a @resource/resource_wood.webp@@unit_worker/villager-delhi.webp@",
+          "Once at 16 @unit_worker/villager-delhi.webp@ on @resource/resource_food.webp@ @resource/rally.webp@ to @resource/resource_wood.webp@ and produce a @unit_tughluq/worker_elephant.webp@ if necessary",
+          "Once you have 2 @unit_tughluq/elephant_raider_age2.webp@ and 1 @unit_tughluq/healer_elephant.webp@ produce 2 more @unit_tughluq/elephant_raider_age2.webp@ an 1 more @unit_tughluq/healer_elephant.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "7:10",
+        "villager_count": 27,
+        "resources": {
+          "food": 16,
+          "wood": 8,
+          "gold": 2,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Build @building_military/archery-range.webp@ if opponent goes @unit_infantry/spearman-1.webp@ and produce @unit_infantry/archer-2.webp@"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 12",
+    "map": null,
+    "strategy": "Rush"
+  },
+  {
+    "description": "",
+    "civilization": "Tughlaq Dynasty",
+    "name": "2 tc fort build feudal into raider elephants etc season 12",
+    "author": "PeNDraGoN",
+    "source": "https://aoe4guides.com/builds/oXV1l7k0vt8shbv6tKhI",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "6 @unit_worker/villager-delhi.webp@ to @resource/sheep.webp@ , build 1 @unit_tughluq/worker_elephant.webp@ instantly and use them to scout for sheep left and right"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:05",
+        "villager_count": 8,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@2 @unit_worker/villager-delhi.webp@ to  @resource/resource_gold.webp@ build @building_economy/house.webp@ with 1st civ (make sure this is a good place for fort later, you surround the fort with farms and houses  then change @resource/rally.webp@ to @resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:40",
+        "villager_count": 10,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Bring @unit_tughluq/worker_elephant.webp@ back to @resource/resource_gold.webp@ for 50 ish seconds"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:05",
+        "villager_count": 4,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 4,
+          "builder": -1
+        },
+        "notes": [
+          "On 200 @resource/resource_gold.webp@  move 2  @unit_worker/villager-delhi.webp@ from @resource/resource_gold.webp@  and 2 @unit_worker/villager-delhi.webp@ from @resource/sheep.webp@  to @resource/resource_stone.webp@and also move the @unit_tughluq/worker_elephant.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:15",
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "move other @unit_tughluq/worker_elephant.webp@ to @resource/resource_wood.webp@ line and drop of its @resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:19",
+        "villager_count": 12,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 0,
+          "stone": 4,
+          "builder": -1
+        },
+        "notes": [
+          "on age up use 2 @unit_worker/villager-delhi.webp@   from  @resource/sheep.webp@ and 1 @unit_worker/villager-delhi.webp@   @resource/rally.webp@from  @building_economy/town-center.webp@to age up with @landmark_delhi/tower-of-victory.webp@ 2nd @resource/rally.webp@ to @resource/resource_stone.webp@ (TOTAL OF 5)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:25",
+        "villager_count": 9,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 0,
+          "stone": 5,
+          "builder": -1
+        },
+        "notes": [
+          "rally @building_economy/town-center.webp@ to @resource/resource_wood.webp@ till 8  move 2 @unit_worker/villager-delhi.webp@  from @resource/sheep.webp@ to @resource/resource_wood.webp@ ( you want 4 on food)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 18,
+        "resources": {
+          "food": 5,
+          "wood": 8,
+          "gold": 0,
+          "stone": 5,
+          "builder": -1
+        },
+        "notes": [
+          "when age up is complete take 2 @unit_worker/villager-delhi.webp@ from @landmark_delhi/tower-of-victory.webp@   and move to @resource/sheep.webp@  then take 1 other @unit_worker/villager-delhi.webp@ and move to build @building_economy/house.webp@  at 1st @building_economy/house.webp@ rally 2nd house @unit_worker/villager-delhi.webp@ to build  @building_tughluq/tughluqabad_fort.webp@ with @resource/resource_wood.webp@ @unit_worker/villager-delhi.webp@(step below)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "4:15",
+        "villager_count": 14,
+        "resources": {
+          "food": 5,
+          "wood": 4,
+          "gold": 0,
+          "stone": 5,
+          "builder": -1
+        },
+        "notes": [
+          "take 4 @unit_worker/villager-delhi.webp@ from @resource/resource_wood.webp@ and build @building_tughluq/tughluqabad_fort.webp@ near @building_economy/house.webp@ and @resource/resource_gold.webp@ total of 5 @unit_worker/villager-delhi.webp@ building it"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 14,
+        "resources": {
+          "food": 5,
+          "wood": 4,
+          "gold": 0,
+          "stone": 5,
+          "builder": -1
+        },
+        "notes": [
+          "after building @building_tughluq/tughluqabad_fort.webp@ move 5 @unit_worker/villager-delhi.webp@ to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "5:15",
+        "villager_count": 19,
+        "resources": {
+          "food": 5,
+          "wood": 4,
+          "gold": 5,
+          "stone": 5,
+          "builder": -1
+        },
+        "notes": [
+          "research @ability_tughluq/bhakkar.webp@ governor in the @building_tughluq/tughluqabad_fort.webp@ for @building_economy/farm.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 5,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "when 350 @resource/resource_stone.webp@  and 400 @resource/resource_wood.webp@ build 2nd @building_economy/town-center.webp@ on line @resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "at around 7 mins to 7-30 build @building_military/barracks.webp@@building_military/archery-range.webp@@building_military/stable.webp@  depending on whats best, @building_military/barracks.webp@ into  @building_military/stable.webp@    vs @unit_cavalry/lancer-3.webp@ civs"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      }
+    ],
+    "video": "https://www.youtube.com/embed/WgXJGGudj9Q",
+    "season": "Season 12",
+    "map": null,
+    "strategy": "Boom"
+  },
+  {
+    "description": "",
+    "civilization": "Tughlaq Dynasty",
+    "name": "Tughlaq Dynasty - Rush Fort - Beastyqt",
+    "author": "Krayt",
+    "source": "https://aoe4guides.com/builds/nge2ztzfcrkHJLDYmQG7",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "6 @unit_worker/villager-delhi.webp@ on @resource/sheep.webp@ | send 1 @unit_tughluq/worker_elephant.webp@ gather @resource/sheep.webp@ and 1 @unit_tughluq/worker_elephant.webp@ on @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 8,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "add 2 @unit_worker/villager-delhi.webp@on @resource/resource_gold.webp@ until 200 | 1st @unit_worker/villager-delhi.webp@ @abilities/repair.webp@ @building_economy/house.webp@",
+          "Then @resource/rally.webp@ on @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Age up with 3 @resource/resource_food.webp@ @unit_worker/villager-delhi.webp@ with @landmark_delhi/dome-of-the-faith.webp@ (@landmark_delhi/tower-of-victory.webp@ can be playable)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 14,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 0,
+          "stone": 7,
+          "builder": 3
+        },
+        "notes": [
+          "Let 4 @unit_worker/villager-delhi.webp@ on @resource/sheep.webp@ | 7 @unit_worker/villager-delhi.webp@ on @resource/resource_stone.webp@",
+          "@resource/rally.webp@ on @resource/resource_gold.webp@ until 6"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:10",
+        "villager_count": 18,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 4,
+          "stone": 10,
+          "builder": -1
+        },
+        "notes": [
+          "Send age up @unit_worker/villager-delhi.webp@ to @resource/resource_stone.webp@",
+          "@abilities/repair.webp@ @building_tughluq/tughluqabad_fort.webp@ withh @resource/resource_gold.webp@ @unit_worker/villager-delhi.webp@ and choose @ability_tughluq/bhakkar.webp@ (build @building_economy/house.webp@)",
+          "Keep mining @resource/resource_stone.webp@ until there is 320 stone remaining then send @unit_worker/villager-delhi.webp@ to @resource/resource_wood.webp@ and add 2 more @unit_worker/villager-delhi.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 22,
+        "resources": {
+          "food": 4,
+          "wood": 12,
+          "gold": 6,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 @resource/resource_gold.webp@ @unit_worker/villager-delhi.webp@ @abilities/repair.webp@ @building_economy/house.webp@ around @building_tughluq/tughluqabad_fort.webp@",
+          "Get @technology_tughluq/elephant_economics_1.webp@ ::Wheelbarrow"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 30,
+        "resources": {
+          "food": 12,
+          "wood": 12,
+          "gold": 6,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Produce army to counter ennemy civ and produce @unit_tughluq/healer_elephant.webp@",
+          "Get @building_technology/blacksmith.webp@ upgrades"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/iorxhl7QLTc",
+    "season": "Season 12",
+    "map": "Open",
+    "strategy": "Boom"
+  },
+  {
+    "description": "1tc into food keep",
+    "civilization": "Tughlaq Dynasty",
+    "name": "Beasty Tughlaq standard build",
+    "author": "ferg40",
+    "source": "https://aoe4guides.com/builds/1LNid2NxvrK0bQA2Q0QF",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 8,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "6 @unit_worker/villager-delhi.webp@ @resource/sheep.webp@, 1 @unit_tughluq/worker_elephant.webp@ to @resource/resource_gold.webp@, 1 @unit_tughluq/worker_elephant.webp@ scouting for sheep/resources. @resource/rally.webp@ 2@resource/resource_gold.webp@."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 2,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_food.webp@ until @age/age_2.webp@. @abilities/repair.webp@2x@building_economy/house.webp@ for @building_tughluq/tughluqabad_fort.webp@ by @resource/resource_gold.webp@."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:10",
+        "villager_count": 12,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 0,
+          "stone": 2,
+          "builder": -1
+        },
+        "notes": [
+          "When 200 @resource/resource_gold.webp@ move 2@unit_worker/villager-delhi.webp@ and @unit_tughluq/worker_elephant.webp@ to @resource/resource_stone.webp@."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 0,
+          "stone": 2,
+          "builder": -1
+        },
+        "notes": [
+          "@landmark_delhi/dome-of-the-faith.webp@ with 3 @resource/resource_food.webp@@unit_worker/villager-delhi.webp@. Remacro for 7 @unit_worker/villager-delhi.webp@to@resource/resource_stone.webp@. When @age/age_2.webp@ completes move the 3 @unit_worker/villager-delhi.webp@to@resource/resource_stone.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 17,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 6,
+          "stone": 7,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_gold.webp@ until 6, and use @unit_tughluq/worker_elephant.webp@ from scouting"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:15",
+        "villager_count": 18,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 4,
+          "stone": 10,
+          "builder": -1
+        },
+        "notes": [
+          "Move @landmark_delhi/dome-of-the-faith.webp@ @unit_worker/villager-delhi.webp@ to @resource/resource_stone.webp@, @abilities/repair.webp@@building_tughluq/tughluqabad_fort.webp@ with @resource/resource_gold.webp@@unit_worker/villager-delhi.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 22,
+        "resources": {
+          "food": 4,
+          "wood": 12,
+          "gold": 6,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Gather @resource/resource_stone.webp@ until 320 remaining so you have enough to fully upgrade @building_tughluq/tughluqabad_fort.webp@@ability_tughluq/bhakkar.webp@. Move to @resource/resource_wood.webp@@resource/rally.webp@@resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:30",
+        "villager_count": 22,
+        "resources": {
+          "food": 4,
+          "wood": 12,
+          "gold": 6,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_food.webp@ and get wheelbarrow / @technology_tughluq/elephant_economics_1.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@abilities/repair.webp@@building_military/barracks.webp@/@building_military/archery-range.webp@/@building_military/stable.webp@ depending on enemy counters. Continually produce @unit_tughluq/healer_elephant.webp@."
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@abilities/repair.webp@@building_technology/blacksmith.webp@ and dump extra @resource/resource_gold.webp@"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/iorxhl7QLTc",
+    "season": "Season 12",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "See build video for very useful advice",
+    "civilization": "Tughlaq Dynasty",
+    "name": "Fast 2TC + Tughlaq Fort Build (2026)",
+    "author": "Valdemar1902",
+    "source": "https://aoe4guides.com/builds/xpvxxr73hj7CwnbqB5AK",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "4 @unit_worker/villager-delhi.webp@ go to @resource/berrybush.webp@ with @unit_tughluq/worker_elephant.webp@ & 2 go to @resource/sheep.webp@. You also want to spawn a 2nd @unit_tughluq/worker_elephant.webp@ to collect sheep around base and go to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:20",
+        "villager_count": 7,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "2 new @unit_worker/villager-delhi.webp@ to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:00",
+        "villager_count": 9,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ back to @resource/sheep.webp@ until @age/age_2.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:05",
+        "villager_count": 12,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Age up with 2 @resource/sheep.webp@@unit_worker/villager-delhi.webp@ on @landmark_delhi/dome-of-the-faith.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:05",
+        "villager_count": 8,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 0,
+          "stone": 2,
+          "builder": 2
+        },
+        "notes": [
+          "Take @resource/resource_gold.webp@@unit_worker/villager-delhi.webp@ + @unit_tughluq/worker_elephant.webp@ and go to @resource/resource_stone.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:10",
+        "villager_count": 10,
+        "resources": {
+          "food": 4,
+          "wood": 4,
+          "gold": 0,
+          "stone": 2,
+          "builder": -1
+        },
+        "notes": [
+          "Take 4 @resource/sheep.webp@ @unit_worker/villager-delhi.webp@ and go to @resource/gaiatreeprototypetree.webp@ (make sure you have all 3)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_stone.webp@ until you can build @building_tughluq/tughluqabad_fort.webp@ + @building_economy/town-center.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:32",
+        "villager_count": 17,
+        "resources": {
+          "food": 4,
+          "wood": 4,
+          "gold": 0,
+          "stone": 9,
+          "builder": -1
+        },
+        "notes": [
+          "2 age-up @unit_worker/villager-delhi.webp@ will build the @building_tughluq/tughluqabad_fort.webp@ inbetween 2nd TC placement and Main TC with 8 tiles space. (see video for placement guidance here)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:15",
+        "villager_count": 21,
+        "resources": {
+          "food": 4,
+          "wood": 4,
+          "gold": 0,
+          "stone": 11,
+          "builder": 2
+        },
+        "notes": [
+          "470/1200 left in @resource/resource_stone.webp@mine pull all @resource/resource_stone.webp@@unit_worker/villager-delhi.webp@ away and walk towards @resource/resource_gold.webp@and build @building_economy/town-center.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Afterwards scout opponent and make units or go FC if they also boom."
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 12",
+    "map": null,
+    "strategy": "Boom"
+  },
+  {
+    "description": "",
+    "civilization": "Tughlaq Dynasty",
+    "name": "1TC Healer Ele Aggro (2026)",
+    "author": "Valdemar1902",
+    "source": "https://aoe4guides.com/builds/GKdD2xU1gY5TCchyPzK0",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "6 @unit_worker/villager-delhi.webp@ go to @resource/berrybush.webp@ with @unit_tughluq/worker_elephant.webp@. You also want to spawn a 2nd @unit_tughluq/worker_elephant.webp@ to collect sheep around base and go to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:20",
+        "villager_count": 7,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 @unit_worker/villager-delhi.webp@ to @resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:40",
+        "villager_count": 8,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ 3 new @unit_worker/villager-delhi.webp@ to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:40",
+        "villager_count": 11,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ back to @resource/sheep.webp@ until @age/age_2.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:05",
+        "villager_count": 12,
+        "resources": {
+          "food": 9,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Age up with 3 @resource/sheep.webp@@unit_worker/villager-delhi.webp@ on @landmark_delhi/dome-of-the-faith.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:10",
+        "villager_count": 13,
+        "resources": {
+          "food": 6,
+          "wood": 1,
+          "gold": 3,
+          "stone": 0,
+          "builder": 3
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_wood.webp@ until 8 + 3rd @unit_tughluq/worker_elephant.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:05",
+        "villager_count": 18,
+        "resources": {
+          "food": 7,
+          "wood": 8,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Queue @unit_tughluq/healer_elephant.webp@ & macro villagers correctly and @resource/rally.webp@ @resource/resource_food.webp@ (see vill split on the left side of this build order)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:20",
+        "villager_count": 19,
+        "resources": {
+          "food": 8,
+          "wood": 6,
+          "gold": 3,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "Make first production buildings now. You want to scout and go counter units. If no units to counter, default to @unit_infantry/spearman-1.webp@ + @unit_infantry/archer-2.webp@ + @unit_tughluq/healer_elephant.webp@ spam"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Start attacking opponent very aggressively when you get the first units out, and get blacksmith techs and push. You can find feudal dmg and try to win there, or go for a timing attack in early castle age."
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 12",
+    "map": null,
+    "strategy": "Rush"
+  },
+  {
+    "description": "",
+    "civilization": "Tughlaq Dynasty",
+    "name": "Tughlaq Healer elephant attack Age 2",
+    "author": "Siro",
+    "source": "https://aoe4guides.com/builds/z2bMRZ89nMJCsI1c3ulS",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 8,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "6 @unit_worker/villager-delhi.webp@ -> @resource/berrybush.webp@",
+          "train 2 @unit_tughluq/worker_elephant.webp@ 1 for @resource/resource_gold.webp@ / 1 to explore around to get @resource/sheep.webp@",
+          "@resource/rally.webp@ until 2@unit_worker/villager-delhi.webp@ on @resource/resource_gold.webp@ then @resource/rally.webp@@resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:17",
+        "villager_count": 10,
+        "resources": {
+          "food": 4,
+          "wood": 2,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build @landmark_delhi/dome-of-the-faith.webp@ with 2 @unit_worker/villager-delhi.webp@ from @resource/berrybush.webp@ and 2@unit_worker/villager-delhi.webp@ from@resource/sheep.webp@",
+          "2@unit_worker/villager-delhi.webp@ from @resource/sheep.webp@ -> @resource/resource_gold.webp@",
+          "@resource/rally.webp@@resource/resource_wood.webp@ until 2@unit_worker/villager-delhi.webp@ (scout@unit_tughluq/worker_elephant.webp@ -&gt; @resource/resource_wood.webp@)",
+          "@unit_worker/villager-delhi.webp@@resource/sheep.webp@ -&gt; @building_economy/house.webp@",
+          "@resource/rally.webp@@resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:00",
+        "villager_count": 18,
+        "resources": {
+          "food": 8,
+          "wood": 2,
+          "gold": 8,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Instant -> @unit_tughluq/healer_elephant.webp@ -&gt; @technology_tughluq/elephant_economics_1.webp@-&gt; @unit_tughluq/healer_elephant.webp@-&gt; @unit_tughluq/healer_elephant.webp@-&gt; @unit_tughluq/healer_elephant.webp@-&gt; @unit_tughluq/healer_elephant.webp@",
+          "4 @unit_worker/villager-delhi.webp@ age 2 builders -&gt; @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:36",
+        "villager_count": 19,
+        "resources": {
+          "food": 9,
+          "wood": 2,
+          "gold": 8,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@->@resource/resource_wood.webp@-&gt;@building_military/barracks.webp@/@building_military/archery-range.webp@  (@building_military/stable.webp@)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 33,
+        "resources": {
+          "food": 15,
+          "wood": 10,
+          "gold": 8,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Do @unit_tughluq/healer_elephant.webp@ non stop !"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 12",
+    "map": null,
+    "strategy": "Timing Attack"
+  },
+  {
+    "description": "Transcripted from Corvinus1's video for me to understand",
+    "civilization": "Tughlaq Dynasty",
+    "name": "Corvinus' Tower of victory+2TC+Fort BOOM - CookieRexYum",
+    "author": "CookieRexYum",
+    "source": "https://aoe4guides.com/builds/wh7c1nYszaIezngFNa1X",
+    "build_order": [
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "All to@resource/berrybush.webp@ , @resource/rally.webp@@resource/resource_gold.webp@",
+          "Make 1 @unit_tughluq/worker_elephant.webp@ try to get @resource/sheep.webp@",
+          "@abilities/repair.webp@@building_economy/house.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "1:00",
+        "villager_count": 9,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "2:00",
+        "villager_count": 10,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 0,
+          "stone": 6,
+          "builder": -1
+        },
+        "notes": [
+          "Start @age/age_2.webp@@landmark_delhi/tower-of-victory.webp@with 2 from@resource/resource_gold.webp@and back to@resource/resource_wood.webp@",
+          "6 from @resource/berrybush.webp@ to @resource/resource_stone.webp@ bring @unit_tughluq/worker_elephant.webp@ send rest from berry to sheep"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "2:30",
+        "villager_count": 11,
+        "resources": {
+          "food": 3,
+          "wood": 2,
+          "gold": 0,
+          "stone": 6,
+          "builder": -1
+        },
+        "notes": [
+          "2@resource/resource_food.webp@to@resource/resource_wood.webp@bring @unit_tughluq/worker_elephant.webp@ from @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "3:00",
+        "villager_count": 13,
+        "resources": {
+          "food": 3,
+          "wood": 4,
+          "gold": 0,
+          "stone": 6,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "4:25",
+        "villager_count": 19,
+        "resources": {
+          "food": 3,
+          "wood": 10,
+          "gold": 0,
+          "stone": 6,
+          "builder": -1
+        },
+        "notes": [
+          "@landmark_delhi/tower-of-victory.webp@finishes at 4:25"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "4:50",
+        "villager_count": 10,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 0,
+          "stone": 6,
+          "builder": -1
+        },
+        "notes": [
+          "Make 2nd @building_economy/town-center.webp@ on @resource/resource_gold.webp@or@resource/deer.webp@ with 10 from @resource/resource_wood.webp@ back to @resource/resource_food.webp@",
+          "1@resource/resource_wood.webp@ to @resource/resource_food.webp@",
+          "@resource/rally.webp@@resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "5:10",
+        "villager_count": 5,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@abilities/repair.webp@@building_tughluq/tughluqabad_fort.webp@ on @resource/resource_gold.webp@or@resource/deer.webp@ with 6 from @resource/resource_stone.webp@ back to @resource/resource_gold.webp@",
+          "@unit_tughluq/worker_elephant.webp@from @resource/resource_stone.webp@to @building_tughluq/tughluqabad_fort.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "5:40",
+        "villager_count": 17,
+        "resources": {
+          "food": 17,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "2nd @building_economy/town-center.webp@ finishes.@resource/rally.webp@@resource/resource_food.webp@+@resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "6:25",
+        "villager_count": 26,
+        "resources": {
+          "food": 20,
+          "wood": 0,
+          "gold": 6,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_tughluq/tughluqabad_fort.webp@ finishes. Select @ability_tughluq/multan.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "7:00",
+        "villager_count": 30,
+        "resources": {
+          "food": 21,
+          "wood": 0,
+          "gold": 9,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Both @resource/rally.webp@@resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "7:40",
+        "villager_count": 35,
+        "resources": {
+          "food": 13,
+          "wood": 8,
+          "gold": 14,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "8@resource/resource_food.webp@to@resource/resource_wood.webp@",
+          "@resource/rally.webp@@resource/resource_food.webp@+@resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "8:05",
+        "villager_count": 28,
+        "resources": {
+          "food": 14,
+          "wood": 8,
+          "gold": 6,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Start @age/age_3.webp@@landmark_delhi/compound-of-the-defender.webp@with 9 from @resource/resource_gold.webp@, back to @resource/resource_wood.webp@",
+          "create @unit_tughluq/worker_elephant.webp@send to @resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "8:15",
+        "villager_count": 29,
+        "resources": {
+          "food": 15,
+          "wood": 0,
+          "gold": 6,
+          "stone": 8,
+          "builder": -1
+        },
+        "notes": [
+          "8@resource/resource_wood.webp@to@resource/resource_stone.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "8:40",
+        "villager_count": 32,
+        "resources": {
+          "food": 8,
+          "wood": 8,
+          "gold": 8,
+          "stone": 8,
+          "builder": -1
+        },
+        "notes": [
+          "split to 8-8-8-8"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "9:05",
+        "villager_count": 44,
+        "resources": {
+          "food": 9,
+          "wood": 19,
+          "gold": 8,
+          "stone": 8,
+          "builder": -1
+        },
+        "notes": [
+          "@landmark_delhi/compound-of-the-defender.webp@finishes at 9:05",
+          "Upgrade fort",
+          "Research @technology_tughluq/elephant_economics_1.webp@+@technology_economy/wheelbarrow.webp@",
+          "Now go production (@unit_infantry/spearman-1.webp@+@unit_infantry/archer-2.webp@) then @unit_tughluq/elephant_raider_age2.webp@ and WIN!"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "10:25",
+        "villager_count": 48,
+        "resources": {
+          "food": 16,
+          "wood": 23,
+          "gold": 9,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Research @technology_tughluq/elephant_economics_2.webp@"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/qcLb6DVCCfc",
+    "season": "Season 12",
+    "map": null,
+    "strategy": "Boom"
+  },
+  {
+    "description": "Copied from Swaggy Professor's Tughlaqlaqabad Fort Rush for me to understand\noriginal BO from him: https://aoe4guides.com/builds/NgZR0BG7IShiPG7WH5hC",
+    "civilization": "Tughlaq Dynasty",
+    "name": "Tughlaqabad Fort Rush - Copy for me to understand series - copy",
+    "author": "Wado321",
+    "source": "https://aoe4guides.com/builds/sZHXm6GovrAXIdN3b7z8",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 1,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "5 to@resource/gaiatreeprototypetree.webp@, 1 to@resource/sheep.webp@ , @resource/rally.webp@@resource/sheep.webp@ until age up",
+          "After 1st @resource/resource_wood.webp@ drop, 1 @abilities/repair.webp@@building_military/barracks.webp@+1@building_economy/house.webp@ and back to @resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:00",
+        "villager_count": 9,
+        "resources": {
+          "food": 6,
+          "wood": 3,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "make 2 @unit_infantry/spearman-1.webp@ and harrass"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:25",
+        "villager_count": 10,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "After finishing@resource/gaiatreeprototypetree.webp@, all 3 to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:30",
+        "villager_count": 13,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 0,
+          "stone": 3,
+          "builder": -1
+        },
+        "notes": [
+          "After having 200 @resource/resource_gold.webp@, all 3 to @resource/resource_stone.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:15",
+        "villager_count": 15,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 0,
+          "stone": 8,
+          "builder": 3
+        },
+        "notes": [
+          "Start @age/age_2.webp@@landmark_delhi/dome-of-the-faith.webp@with 3 from@resource/rally.webp@ and back to @resource/resource_food.webp@",
+          "ALL go @resource/resource_stone.webp@ except 4 from @resource/resource_food.webp@,@resource/rally.webp@@resource/resource_stone.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "4:20",
+        "villager_count": 7,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 3
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_wood.webp@",
+          "At 425 @resource/resource_stone.webp@ (795 left with %5 bonus) send all 11 +@unit_tughluq/worker_elephant.webp@to enemy, @abilities/repair.webp@@building_tughluq/tughluqabad_fort.webp@with Defensive Ajmer@ability_tughluq/ajmer.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:15",
+        "villager_count": 21,
+        "resources": {
+          "food": 7,
+          "wood": 3,
+          "gold": 0,
+          "stone": 0,
+          "builder": 11
+        },
+        "notes": [
+          "@landmark_delhi/dome-of-the-faith.webp@finishes at 5:15, start the @building_tughluq/tughluqabad_fort.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:30",
+        "villager_count": 22,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": 11
+        },
+        "notes": [
+          "4@resource/resource_wood.webp@ to @resource/resource_gold.webp@ with a new @unit_tughluq/worker_elephant.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:55",
+        "villager_count": 23,
+        "resources": {
+          "food": 7,
+          "wood": 12,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_tughluq/tughluqabad_fort.webp@ finishes, set to @ability_tughluq/ajmer.webp@",
+          "11 builder to @resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:20",
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Now build front @building_military/archery-range.webp@s and make @unit_infantry/archer-2.webp@,",
+          "make 2 @unit_tughluq/healer_elephant.webp@ and attack with",
+          "when lots of units, 4 @unit_tughluq/healer_elephant.webp@, can gather stone again to make 2nd fort for @ability_tughluq/bhakkar.webp@"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/p9wa3MrOEYA",
+    "season": "Season 12",
+    "map": null,
+    "strategy": "Cheese"
+  },
+  {
+    "description": "Simple Tughlaq Dynasty Build Order by Beasty",
+    "civilization": "Tughlaq Dynasty",
+    "name": "Simple Tughlaq Dynasty - Beasty - copy",
+    "author": "Wado321",
+    "source": "https://aoe4guides.com/builds/pz5AcJXJilXPts6RxZMK",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "[If desired] Immediately make 2 @unit_tughluq/worker_elephant.webp@ from @building_economy/town-center.webp@ to collect @resource/sheep.webp@",
+          "1 @unit_tughluq/worker_elephant.webp@ scouts behind your base, then goes to @resource/resource_gold.webp@",
+          "5 @unit_worker/villager-delhi.webp@ go to @resource/sheep.webp@",
+          "1 @unit_worker/villager-delhi.webp@ builds @building_economy/house.webp@ -> @resource/sheep.webp@",
+          "@resource/rally.webp@@unit_worker/villager-delhi.webp@ to @resource/sheep.webp@ until 8 @resource/sheep.webp@@unit_worker/villager-delhi.webp@",
+          "Rally 4-5  @unit_worker/villager-delhi.webp@ to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:30",
+        "villager_count": 13,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "4 @resource/sheep.webp@@unit_worker/villager-delhi.webp@ build @landmark_delhi/dome-of-the-faith.webp@ -> @resource/gaiatreeprototypetree.webp@",
+          "Rally 2 @unit_worker/villager-delhi.webp@ to @resource/sheep.webp@",
+          "Rally @unit_worker/villager-delhi.webp@ to @resource/gaiatreeprototypetree.webp@ and Right-click 1 @unit_tughluq/worker_elephant.webp@ to the same @resource/gaiatreeprototypetree.webp@",
+          "When 3rd @unit_tughluq/worker_elephant.webp@ returns, Right-click on @resource/berrybush.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:05",
+        "villager_count": 18,
+        "resources": {
+          "food": 6,
+          "wood": 3,
+          "gold": 5,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Send 4 @landmark_delhi/dome-of-the-faith.webp@@unit_worker/villager-delhi.webp@ to @resource/gaiatreeprototypetree.webp@",
+          "Immediately and Always make @unit_tughluq/healer_elephant.webp@ at @landmark_delhi/dome-of-the-faith.webp@ to harass enemy @resource/resource_gold.webp@",
+          "Respond to opponent army composition",
+          "[If they make @building_military/barracks.webp@, then make @building_military/archery-range.webp@]",
+          "[If they make @building_military/archery-range.webp@, then make @building_military/stable.webp@]",
+          "[If they make @building_military/stable.webp@, then make @building_military/barracks.webp@ or @building_military/stable.webp@]"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:30",
+        "villager_count": 19,
+        "resources": {
+          "food": 6,
+          "wood": 8,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "When 8 @resource/resource_wood.webp@@unit_worker/villager-delhi.webp@, Rally @unit_worker/villager-delhi.webp@ to @resource/sheep.webp@",
+          "Get @technology_tughluq/elephant_economics_1.webp@ at a @unit_tughluq/worker_elephant.webp@"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/AcNwBJ7eiPE",
+    "season": "Season 12",
+    "map": null,
+    "strategy": "Rush"
+  }
+]

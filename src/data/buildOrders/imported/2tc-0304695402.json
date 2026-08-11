@@ -1,0 +1,141 @@
+{
+  "name": "2tc",
+  "civilization": "Jin Dynasty",
+  "author": "Bastos",
+  "source": "https://aoe4guides.com/builds/3FIDZdXrWGtmWqd4pSvw",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 3,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_jin/mounted-villager.webp@@resource/sheep.webp@",
+        "2 @unit_jin/mounted-villager.webp@@abilities/repair.webp@@building_economy/mining-camp.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @unit_jin/mounted-villager.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Move 1 @resource/sheep.webp@@unit_worker/villager-china.webp@@abilities/repair.webp@@landmark_jin/flower-pagoda.webp@ then go @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 2,
+        "gold": 1,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_jin/mounted-villager.webp@@resource/gaiatreeprototypetree.webp@",
+        "Move 3@resource/sheep.webp@@unit_worker/villager-china.webp@@abilities/repair.webp@@building_economy/mining-camp.webp@@resource/resource_stone.webp@",
+        "Move 1@resource/resource_gold.webp@@unit_worker/villager-china.webp@@abilities/repair.webp@@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 1,
+        "wood": 5,
+        "gold": 1,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "3@unit_jin/mounted-villager.webp@@resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 1,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 300 @resource/resource_stone.webp@ move the 3 @resource/resource_stone.webp@@unit_jin/mounted-villager.webp@to@resource/gaiatreeprototypetree.webp@",
+        "Move the 1 @landmark_jin/flower-pagoda.webp@@unit_jin/mounted-villager.webp@to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_jin/mounted-villager.webp@@resource/sheep.webp@",
+        "When 400 @resource/resource_wood.webp@ move the 8 @resource/gaiatreeprototypetree.webp@@unit_jin/mounted-villager.webp@@abilities/repair.webp@@building_economy/town-center.webp@on @resource/resource_wood.webp@and @resource/resource_gold.webp@ or @resource/resource_wood.webp@ and @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

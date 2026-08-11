@@ -15,6 +15,12 @@ import {
   PlayCircle,
 } from 'lucide-react'
 import { GUIDE_RESOURCES, GUIDES, type Guide } from '@data/guides'
+import {
+  GUIDE_CATALOG,
+  GUIDE_CATALOG_DISCOVERY,
+  type GuideCatalogBlock,
+  type GuideCatalogDifficulty,
+} from '@data/guideCatalog.generated'
 import { LEARNING_RESOURCES } from '@data/learningResources'
 import { BUILD_CATALOG } from '@data/buildCatalog'
 import {
@@ -43,6 +49,7 @@ import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
 import { PageHead } from '../components/PageHead'
 import { BuildOrderViewer } from '../components/BuildOrderViewer'
+import { VideoPlayer } from '../components/VideoPlayer'
 import { CommunityBuildSources } from '../components/CommunityBuildSources'
 import { CounterHelper } from '../components/tools/CounterHelper'
 import { CivQuiz } from '../components/tools/CivQuiz'
@@ -88,6 +95,27 @@ const TABS = [
   { id: 'trainer', label: 'Shortcut Trainer', icon: Keyboard },
   { id: 'beasty', label: 'Beasty Number', icon: Network },
 ] as const
+
+/** Keep the written guide focused while surfacing the closest existing videos. */
+const GUIDE_VIDEO_IDS: Readonly<Record<string, readonly string[]>> = {
+  'economy-fundamentals': ['spirit-farm-mechanics', 'nakamura-efficient-farm-placement'],
+  'army-composition': ['beasty-ultimate-micro', 'amerath-attack-commands-formations'],
+  'when-to-attack': ['amerath-attack-commands-formations', 'aussie-simple-improvements'],
+  'age-up-benchmarks': ['vortix-four-ages'],
+  'first-ten-minutes': ['ru-beginner-guide-2026', 'vortix-four-ages'],
+  'map-control-resource-safety': ['farmman-push-deer', 'spirit-farm-mechanics'],
+  'build-order-reading': ['ru-beginner-guide-2026'],
+  'mechanics-placement-and-micro': [
+    'spirit-farm-mechanics',
+    'farmman-push-deer',
+    'beasty-ultimate-micro',
+    'beasty-hotkeys-tips',
+    'amerath-attack-commands-formations',
+    'nakamura-efficient-farm-placement',
+    'valdy-settings-hotkeys',
+    'crack-mechanics-pros-use',
+  ],
+}
 
 export function Guides() {
   const { tt } = useI18n()
@@ -169,6 +197,10 @@ function GuideLibrary() {
     const title = locale === 'ru' ? (active.titleRu ?? active.title) : tt(active.title)
     const category = tt(active.category)
     const body = locale === 'ru' ? (active.bodyRu ?? active.body) : active.body
+    const relatedVideos = GUIDE_RESOURCES.filter(
+      (resource) =>
+        resource.kind === 'video' && GUIDE_VIDEO_IDS[active.slug]?.includes(resource.id),
+    )
     return (
       <div className="space-y-4">
         <button
@@ -193,6 +225,27 @@ function GuideLibrary() {
             <Markdown content={body} />
           </CardContent>
         </Card>
+        {relatedVideos.length > 0 && (
+          <section className="space-y-3">
+            <div>
+              <h3 className="text-base font-semibold">{tt('Related videos')}</h3>
+              <p className="mt-1 text-xs text-muted-foreground">
+                {locale === 'ru'
+                  ? 'Видео открываются внутри приложения после нажатия «Смотреть».'
+                  : 'Videos open inside the app after you press Watch.'}
+              </p>
+            </div>
+            <div className="grid gap-3 lg:grid-cols-2">
+              {relatedVideos.map((resource) => (
+                <VideoPlayer
+                  key={resource.id}
+                  url={resource.url}
+                  title={locale === 'ru' ? resource.titleRu : resource.title}
+                />
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     )
   }
@@ -223,7 +276,232 @@ function GuideLibrary() {
           )
         })}
       </div>
+      <GuideCatalogShelf locale={locale} />
     </div>
+  )
+}
+
+const GUIDE_DIFFICULTIES: readonly GuideCatalogDifficulty[] = [
+  'beginner',
+  'intermediate',
+  'advanced',
+  'professional',
+]
+
+const GUIDE_BLOCKS: readonly GuideCatalogBlock[] = [
+  'fundamentals',
+  'economy',
+  'military',
+  'mechanics',
+  'map',
+  'team',
+  'civilizations',
+  'strategy',
+  'professional',
+]
+
+const GUIDE_DIFFICULTY_RANK: Record<GuideCatalogDifficulty, number> = {
+  beginner: 0,
+  intermediate: 1,
+  advanced: 2,
+  professional: 3,
+}
+
+const GUIDE_DIFFICULTY_LABEL: Record<GuideCatalogDifficulty, { en: string; ru: string }> = {
+  beginner: { en: 'Complete beginner', ru: 'Полный новичок' },
+  intermediate: { en: 'Intermediate', ru: 'Средний уровень' },
+  advanced: { en: 'Advanced', ru: 'Продвинутый' },
+  professional: { en: 'Professional', ru: 'Профессиональный' },
+}
+
+const GUIDE_BLOCK_LABEL: Record<GuideCatalogBlock, { en: string; ru: string }> = {
+  fundamentals: { en: 'Fundamentals', ru: 'Основы' },
+  economy: { en: 'Economy & build orders', ru: 'Экономика и билды' },
+  military: { en: 'Army & combat', ru: 'Армия и бой' },
+  mechanics: { en: 'Mechanics & hotkeys', ru: 'Механики и хоткеи' },
+  map: { en: 'Map & resources', ru: 'Карта и ресурсы' },
+  team: { en: 'Team games', ru: 'Командная игра' },
+  civilizations: { en: 'Civilizations', ru: 'Цивилизации' },
+  strategy: { en: 'Strategy', ru: 'Стратегия' },
+  professional: { en: 'Pro analysis', ru: 'Профессиональный разбор' },
+}
+
+function GuideCatalogShelf({ locale }: { locale: string }) {
+  const isRussian = locale === 'ru'
+  const [query, setQuery] = useState('')
+  const [difficulty, setDifficulty] = useState<'all' | GuideCatalogDifficulty>('all')
+  const [block, setBlock] = useState<'all' | GuideCatalogBlock>('all')
+  const [sort, setSort] = useState<'difficulty' | 'rank' | 'views'>('difficulty')
+
+  const visible = useMemo(() => {
+    const normalized = query.trim().toLocaleLowerCase()
+    return GUIDE_CATALOG.filter((entry) => {
+      if (difficulty !== 'all' && entry.difficulty !== difficulty) return false
+      if (block !== 'all' && entry.block !== block) return false
+      if (!normalized) return true
+      return `${entry.title} ${entry.channel} ${entry.query} ${entry.block}`
+        .toLocaleLowerCase()
+        .includes(normalized)
+    }).toSorted((left, right) => {
+      if (sort === 'views') return (right.views ?? -1) - (left.views ?? -1)
+      if (sort === 'rank') return left.rank - right.rank
+      return (
+        GUIDE_DIFFICULTY_RANK[left.difficulty] - GUIDE_DIFFICULTY_RANK[right.difficulty] ||
+        left.rank - right.rank
+      )
+    })
+  }, [block, difficulty, query, sort])
+
+  const formatViews = (views: number | null) => {
+    if (views == null) return null
+    return new Intl.NumberFormat(isRussian ? 'ru-RU' : 'en-US', {
+      notation: 'compact',
+      maximumFractionDigits: 1,
+    }).format(views)
+  }
+
+  return (
+    <section className="space-y-4 rounded-lg border border-primary/25 bg-primary/5 p-4">
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h2 className="text-base font-semibold">
+            {isRussian ? 'Каталог из 1000 учебных материалов' : '1,000-guide learning catalogue'}
+          </h2>
+          <p className="mt-1 max-w-3xl text-xs leading-relaxed text-muted-foreground">
+            {isRussian
+              ? 'Выборка YouTube по 24 тематическим запросам: материалы дедуплицированы, разбиты по блокам и отсортированы от полного новичка до профессионала. Это навигационный рейтинг, а не обещание актуальности конкретного билда.'
+              : 'A YouTube discovery set from 24 topic queries: deduplicated, split into blocks, and ordered from complete beginner to professional. It is a navigation ranking, not a patch-validity guarantee for a specific build.'}
+          </p>
+        </div>
+        <span className="text-[11px] text-muted-foreground">
+          {isRussian
+            ? `${GUIDE_CATALOG_DISCOVERY.collected} материалов · ${GUIDE_CATALOG_DISCOVERY.queries} запросов`
+            : `${GUIDE_CATALOG_DISCOVERY.collected} materials · ${GUIDE_CATALOG_DISCOVERY.queries} queries`}
+        </span>
+      </div>
+
+      <div className="grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <label className="space-y-1 text-xs text-muted-foreground">
+          <span>{isRussian ? 'Поиск' : 'Search'}</span>
+          <input
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder={isRussian ? 'Название, канал, тема…' : 'Title, channel, topic…'}
+            className="h-9 w-full rounded-sm border border-border bg-background px-2 text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-primary"
+          />
+        </label>
+        <label className="space-y-1 text-xs text-muted-foreground">
+          <span>{isRussian ? 'Сложность' : 'Difficulty'}</span>
+          <select
+            value={difficulty}
+            onChange={(event) =>
+              setDifficulty(event.target.value as 'all' | GuideCatalogDifficulty)
+            }
+            className="h-9 w-full rounded-sm border border-border bg-background px-2 text-sm text-foreground outline-none focus:border-primary"
+          >
+            <option value="all">{isRussian ? 'Все уровни' : 'All levels'}</option>
+            {GUIDE_DIFFICULTIES.map((level) => (
+              <option key={level} value={level}>
+                {GUIDE_DIFFICULTY_LABEL[level][isRussian ? 'ru' : 'en']}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="space-y-1 text-xs text-muted-foreground">
+          <span>{isRussian ? 'Блок' : 'Block'}</span>
+          <select
+            value={block}
+            onChange={(event) => setBlock(event.target.value as 'all' | GuideCatalogBlock)}
+            className="h-9 w-full rounded-sm border border-border bg-background px-2 text-sm text-foreground outline-none focus:border-primary"
+          >
+            <option value="all">{isRussian ? 'Все блоки' : 'All blocks'}</option>
+            {GUIDE_BLOCKS.map((item) => (
+              <option key={item} value={item}>
+                {GUIDE_BLOCK_LABEL[item][isRussian ? 'ru' : 'en']}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="space-y-1 text-xs text-muted-foreground">
+          <span>{isRussian ? 'Сортировка' : 'Sort'}</span>
+          <select
+            value={sort}
+            onChange={(event) => setSort(event.target.value as typeof sort)}
+            className="h-9 w-full rounded-sm border border-border bg-background px-2 text-sm text-foreground outline-none focus:border-primary"
+          >
+            <option value="difficulty">
+              {isRussian ? 'От новичка к профессионалу' : 'Beginner to professional'}
+            </option>
+            <option value="rank">{isRussian ? 'По позиции в выборке' : 'Discovery rank'}</option>
+            <option value="views">{isRussian ? 'По просмотрам' : 'Most viewed'}</option>
+          </select>
+        </label>
+      </div>
+
+      <p className="text-[11px] text-muted-foreground">
+        {isRussian
+          ? `Показано ${visible.length} из ${GUIDE_CATALOG.length}`
+          : `${visible.length} of ${GUIDE_CATALOG.length} materials shown`}
+      </p>
+
+      {GUIDE_DIFFICULTIES.map((level) => {
+        const levelEntries = visible.filter((entry) => entry.difficulty === level)
+        if (levelEntries.length === 0) return null
+        return (
+          <section key={level} className="space-y-3">
+            <div className="flex items-center gap-2 border-b border-border/70 pb-2">
+              <h3 className="text-sm font-semibold">
+                {GUIDE_DIFFICULTY_LABEL[level][isRussian ? 'ru' : 'en']}
+              </h3>
+              <Badge variant="secondary">{levelEntries.length}</Badge>
+            </div>
+            {GUIDE_BLOCKS.map((group) => {
+              const entries = levelEntries.filter((entry) => entry.block === group)
+              if (entries.length === 0) return null
+              return (
+                <div key={`${level}-${group}`} className="space-y-2">
+                  <div className="text-xs font-medium text-muted-foreground">
+                    {GUIDE_BLOCK_LABEL[group][isRussian ? 'ru' : 'en']} · {entries.length}
+                  </div>
+                  <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-3">
+                    {entries.map((entry) => {
+                      const views = formatViews(entry.views)
+                      return (
+                        <article
+                          key={`${entry.id}-${entry.rank}`}
+                          className="group rounded-md border border-border bg-background/55 p-3 transition-colors hover:border-primary/60 hover:bg-primary/5"
+                        >
+                          <div className="flex items-start justify-between gap-2">
+                            <a
+                              href={entry.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="flex min-w-0 items-start gap-2 text-sm font-medium leading-snug hover:text-primary"
+                            >
+                              <span className="line-clamp-2">{entry.title}</span>
+                              <ExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground" />
+                            </a>
+                          </div>
+                          <div className="mt-2 flex flex-wrap items-center gap-1.5 text-[10px] text-muted-foreground">
+                            <Badge variant="secondary" className="px-1.5 py-0 text-[10px]">
+                              #{entry.rank}
+                            </Badge>
+                            <span>{entry.channel}</span>
+                            {views && <span>· {views}</span>}
+                          </div>
+                          <VideoPlayer url={entry.url} title={entry.title} compact className="mt-2" />
+                        </article>
+                      )
+                    })}
+                  </div>
+                </div>
+              )
+            })}
+          </section>
+        )
+      })}
+    </section>
   )
 }
 
@@ -288,11 +566,8 @@ function LearningShelf({ locale }: { locale: string }) {
                 } as const
               )[resource.kind]
           return (
-            <a
+            <article
               key={resource.id}
-              href={resource.url}
-              target="_blank"
-              rel="noreferrer"
               className="group rounded-lg border border-border bg-card p-3 transition-colors hover:border-primary/60 hover:bg-primary/5"
             >
               <div className="flex gap-2">
@@ -303,10 +578,15 @@ function LearningShelf({ locale }: { locale: string }) {
                 )}
                 <div className="min-w-0">
                   <div className="flex items-start justify-between gap-2">
-                    <h3 className="text-sm font-medium leading-snug group-hover:text-primary">
-                      {title}
-                    </h3>
-                    <ExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground group-hover:text-primary" />
+                    <a
+                      href={resource.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex min-w-0 items-start gap-2 text-sm font-medium leading-snug hover:text-primary"
+                    >
+                      <h3>{title}</h3>
+                      <ExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground" />
+                    </a>
                   </div>
                   <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
                     {description}
@@ -322,9 +602,10 @@ function LearningShelf({ locale }: { locale: string }) {
                       </span>
                     )}
                   </div>
+                  {isVideo && <VideoPlayer url={resource.url} title={title} className="mt-3" />}
                 </div>
               </div>
-            </a>
+            </article>
           )
         })}
       </div>
@@ -336,6 +617,12 @@ const DIFFICULTY_TONE: Record<string, string> = {
   easy: 'bg-win/15 text-win',
   medium: 'bg-warn/15 text-warn',
   hard: 'bg-loss/15 text-loss',
+}
+
+const DIFFICULTY_RANK: Record<string, number> = {
+  easy: 0,
+  medium: 1,
+  hard: 2,
 }
 
 /**
@@ -359,7 +646,9 @@ function BuildLibrary() {
   const [patchFilter, setPatchFilter] = useState<BuildPatchFilter>('all')
   const [seasonFilter, setSeasonFilter] = useState<BuildSeasonFilter>('all')
   const [mapPoolFilter, setMapPoolFilter] = useState<BuildMapPoolFilter>('all')
-  const [sort, setSort] = useState<'library' | 'score' | 'updated'>('library')
+  const [sort, setSort] = useState<
+    'library' | 'score' | 'updated' | 'difficultyAsc' | 'difficultyDesc'
+  >('library')
   const [onlineSearch, setOnlineSearch] = useState(false)
   const [onlineItems, setOnlineItems] = useState<Aoe4GuidesBuildSummary[]>([])
   const [onlineSelected, setOnlineSelected] = useState<Aoe4GuidesBuildSummary | null>(null)
@@ -402,12 +691,14 @@ function BuildLibrary() {
     const timer = window.setTimeout(() => {
       setOnlineLoading(true)
       setOnlineError(null)
+      const onlineOrder =
+        sort === 'updated'
+          ? 'timeCreated'
+          : sort === 'library' || sort === 'difficultyAsc' || sort === 'difficultyDesc'
+            ? 'score'
+            : sort
       void ipc
-        .listAoe4GuidesBuilds(
-          query,
-          onlineGuidesCiv,
-          sort === 'updated' ? 'timeCreated' : sort === 'library' ? 'score' : sort,
-        )
+        .listAoe4GuidesBuilds(query, onlineGuidesCiv, onlineOrder)
         .then((result) => {
           if (cancelled) return
           if (!result.ok) {
@@ -505,6 +796,12 @@ function BuildLibrary() {
       }
       if (sort === 'updated') {
         return (right.entry.updatedAt ?? '').localeCompare(left.entry.updatedAt ?? '')
+      }
+      if (sort === 'difficultyAsc' || sort === 'difficultyDesc') {
+        const leftDifficulty = DIFFICULTY_RANK[left.entry.build.difficulty ?? ''] ?? 1
+        const rightDifficulty = DIFFICULTY_RANK[right.entry.build.difficulty ?? ''] ?? 1
+        const direction = sort === 'difficultyAsc' ? 1 : -1
+        return (leftDifficulty - rightDifficulty) * direction || left.i - right.i
       }
       return left.i - right.i
     })
@@ -606,6 +903,8 @@ function BuildLibrary() {
             <option value="library">{tt('Recommended library order')}</option>
             <option value="score">{tt('Community score')}</option>
             <option value="updated">{tt('Most recently updated')}</option>
+            <option value="difficultyAsc">{tt('Beginner to professional')}</option>
+            <option value="difficultyDesc">{tt('Professional to beginner')}</option>
           </select>
         </label>
       </div>
@@ -818,16 +1117,20 @@ function BuildLibrary() {
         ) : (
           <div className="mt-3 grid gap-2 md:grid-cols-2 xl:grid-cols-3">
             {curatedVideos.map((item) => (
-              <a
+              <article
                 key={item.id}
-                href={item.url}
-                target="_blank"
-                rel="noreferrer"
                 className="rounded-md border border-border bg-background/40 px-3 py-2 transition-colors hover:border-primary/50 hover:bg-primary/5"
               >
                 <div className="flex items-start justify-between gap-2">
-                  <span className="line-clamp-2 text-sm font-medium">{item.title}</span>
-                  <ExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex min-w-0 items-start gap-2 text-sm font-medium hover:text-primary"
+                  >
+                    <span className="line-clamp-2">{item.title}</span>
+                    <ExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                  </a>
                 </div>
                 <div className="mt-1 line-clamp-1 text-[11px] text-muted-foreground">
                   {item.civilizations.map((civ) => gameName(civ)).join(' · ')} ·{' '}
@@ -836,7 +1139,8 @@ function BuildLibrary() {
                 <div className="mt-1 text-[10px] uppercase tracking-wide text-primary">
                   {item.type === 'Shorts' ? 'YouTube Shorts' : 'YouTube'}
                 </div>
-              </a>
+                <VideoPlayer url={item.url} title={item.title} compact className="mt-2" />
+              </article>
             ))}
           </div>
         )}

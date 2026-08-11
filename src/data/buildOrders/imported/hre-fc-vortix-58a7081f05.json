@@ -1,0 +1,218 @@
+{
+  "name": "HRE FC (VortiX)",
+  "civilization": "Holy Roman Empire",
+  "author": "Sabrosito",
+  "source": "https://aoe4guides.com/builds/04sjK5xQd7LmCPdtAPb9",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@to@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1*@unit_worker/villager.webp@ to@building_economy/house.png@ then @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2*@unit_worker/villager.webp@@resource/sheep.png@ to @landmark_hre/meinwerk-palace.png@",
+        "2*@unit_worker/villager.png@@resource/sheep.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "create 1 * @unit_hre/prelate.webp@ to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "when @unit_hre/prelate.webp@ arrive 2*@unit_worker/villager.png@@resource/sheep.png@ to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 new@unit_worker/villager.webp@  to @resource/resource_wood.webp@",
+        "then  @resource/rally.webp@ to@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "8* @unit_worker/villager.webp@ @resource/sheep.webp@  to @landmark_hre/regnitz-cathedral.webp@ (near @resource/gaiatreeprototypetree.webp@)",
+        "1* @unit_worker/villager.webp@ @resource/resource_gold.webp@ to @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "2* @unit_hre/prelate.webp@ to @resource/relics.webp@",
+        "@resource/rally.webp@ to@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 14,
+        "wood": 3,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "in @landmark_hre/regnitz-cathedral.webp@->@technology_hre/cistercian-churches.webp@",
+        "in @building_military/stable.webp@-&gt;@unit_cavalry/knight-2.webp@",
+        "in @landmark_hre/meinwerk-palace.webp@ -&gt;@technology_hre/steel-barding-3.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "WHEN @technology_hre/cistercian-churches.webp@ ->8*@unit_worker/villager.webp@ to @resource/resource_wood.webp@",
+        "@unit_hre/prelate.webp@ to @landmark_hre/regnitz-cathedral.webp@",
+        "@resource/rally.webp@ to@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When have @resource/relics.webp@ you can split @resource/resource_gold.webp@@unit_worker/villager.webp@ to @resource/resource_wood.webp@@resource/resource_food.webp@",
+        "Use @building_religious/monastery.webp@ as drop-off"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/UPt25Rk4cjo",
+  "season": 10,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

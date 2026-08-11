@@ -1,0 +1,101 @@
+{
+  "name": " 3x Manors Rush [english]",
+  "civilization": "House of Lancaster",
+  "author": "Pilsen",
+  "source": "https://aoe4guides.com/builds/08HscBHsc5fXBAUtkUys",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6x @unit_worker/villager.webp@ on @resource/sheep.png@",
+        "Next 2x @unit_worker/villager.png@ on @building_economy/mining-camp.png@@resource/resource_gold.png@ and make 1x @building_economy/house.png@",
+        "Next 2x @unit_worker/villager.png@ on @building_economy/lumber-camp.png@@resource/resource_wood.png@",
+        "Next 3x @unit_worker/villager.png@ on @building_economy/mining-camp.png@@resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 2,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "When 3900 @resource/resource_gold.webp@ left --->",
+        "Age up building @landmark_lancaster/lancaster_castle.png@with 3x@unit_worker/villager.png@ from @resource/sheep.png@",
+        "Move 2x@unit_worker/villager.png@from @resource/resource_gold.png@ to @resource/resource_wood.png@",
+        "@resource/rally.png@@resource/resource_wood.png@ until you have 15x@unit_worker/villager.png@ there"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 18,
+      "resources": {
+        "food": 3,
+        "wood": 9,
+        "gold": 0,
+        "stone": 3,
+        "builder": 3
+      },
+      "notes": [
+        "When @landmark_lancaster/lancaster_castle.webp@ is FINISHED:",
+        "Move 3x@unit_worker/villager.png@ who built @landmark_lancaster/lancaster_castle.png@and 2x@unit_worker/villager.png@from @resource/sheep.png@and build @building_lancaster/manor.png@",
+        "When @building_lancaster/manor.png@ is FINISHED:",
+        "Move 2x @unit_worker/villager.png@back to @resource/sheep.png@",
+        "The other 3x @unit_worker/villager.png@build another @building_lancaster/manor.png@, then to @resource/resource_wood.png@",
+        "When there is x900 @resource/resource_stone.png@ -->",
+        "The 3x @unit_worker/villager.png@ from @resource/resource_stone.png@make 3rd @building_lancaster/manor.png@, then to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 21,
+      "resources": {
+        "food": 3,
+        "wood": 15,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you have x15@unit_worker/villager.webp@ on @resource/resource_wood.png@--> Then",
+        "@resource/rally.png@@resource/sheep.png@",
+        "Build @building_military/archery-range.png@",
+        "Build @building_military/barracks.png@",
+        "Build @building_military/archery-range.png@",
+        "Always make @unit_lancaster/yeoman_age2.png@ and @unit_infantry/spearman-1.png@ (or @unit_lancaster/hobelar_age2.png@)",
+        "Upgrade @unit_infantry/spearman-1.png@ and get @technology_lancaster/billmen.png@ when possible",
+        "Make @building_technology/blacksmith.png@ -&gt; @technology_military/steeled-arrow.png@ -&gt; @technology_military/iron-undermesh.png@ -&gt; @technology_military/siege-engineering.png@"
+      ]
+    }
+  ],
+  "description": "All credits to Niki45nk and AussieDrongo. I only translated the BO to my own \"language\"",
+  "video": "https://www.youtube.com/embed/WqGEg2AsO_o",
+  "season": 10,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

@@ -3,7 +3,8 @@ import { BUNDLED_BUILD_ORDERS } from '../buildOrders'
 
 function buildIdentity(civilization: string | string[], name: string): string {
   const labels = Array.isArray(civilization) ? civilization : [civilization]
-  const compact = (value: string) => value.toLocaleLowerCase().replace(/[^a-z0-9]+/g, '')
+  const compact = (value: string) =>
+    value.normalize('NFKC').toLocaleLowerCase().replace(/[^\p{L}\p{N}|]+/gu, '')
   return `${labels.map(compact).join('|')}::${compact(name)}`
 }
 

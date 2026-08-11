@@ -1,0 +1,1879 @@
+[
+  {
+    "description": "The First AGGRESSIVE Build You Should Learn by Swaggy Professor.\n\nMade to be compatible with Overlay.",
+    "civilization": "French",
+    "name": "The First AGGRESSIVE Build You Should Learn - Swaggy Professor - Dum Dum's copy",
+    "author": "Private Dum Dum",
+    "source": "https://aoe4guides.com/builds/Oy65roQDvzsMagbVEnyT",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Send all @unit_worker/villager.webp@ to @resource/sheep.webp@",
+          "1st @unit_worker/villager.webp@ to @resource/sheep.webp@",
+          "Rally next 3 @unit_worker/villager.webp@ to build @building_economy/house.webp@ and @building_economy/mining-camp.webp@@resource/resource_gold.webp@",
+          "Find at least 2 @resource/sheep.webp@ with @unit_cavalry/scout.webp@ and send back to @building_economy/town-center.webp@",
+          "Rally to @resource/sheep.webp@ until @age/age_2.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:15",
+        "villager_count": 13,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "5 @resource/sheep.webp@@unit_worker/villager.webp@ build @landmark_french/school-of-cavalry.webp@ at corner of @building_economy/town-center.webp@",
+          "Keep @resource/rally.webp@@unit_worker/villager.webp@ to @resource/sheep.webp@ until 12 @resource/resource_food.webp@@unit_worker/villager.webp@",
+          "Make sure to scout enemy base for exposed @unit_worker/villager.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "3:40",
+        "villager_count": 18,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 5
+        },
+        "notes": [
+          "2 @landmark_french/school-of-cavalry.webp@@unit_worker/villager.webp@ go to @resource/resource_gold.webp@",
+          "3 @landmark_french/school-of-cavalry.webp@@unit_worker/villager.webp@ build @building_economy/house.webp@ then go to @resource/gaiatreeprototypetree.webp@",
+          "Always make @unit_french/royal-knight-2.webp@ at @landmark_french/school-of-cavalry.webp@ and send to harass enemy @unit_worker/villager.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:10",
+        "villager_count": 20,
+        "resources": {
+          "food": 12,
+          "wood": 3,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "When you make 1st @unit_french/royal-knight-2.webp@, send 5@resource/sheep.webp@@unit_worker/villager.webp@ to @building_economy/mill.webp@@resource/deer.webp@",
+          "If desired, use 1 @unit_french/royal-knight-2.webp@ to defend @resource/deer.webp@",
+          "When 12 @resource/resource_food.webp@@unit_worker/villager.webp@, Rally @unit_worker/villager.webp@ to @resource/gaiatreeprototypetree.webp@ (and @resource/resource_gold.webp@ if needed)",
+          "Get @technology_economy/survival-techniques.webp@ -> @technology_economy/specialized-pick.webp@ -&gt; @technology_economy/wheelbarrow.webp@ -&gt; @technology_economy/double-broadaxe.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "~6:30",
+        "villager_count": 27,
+        "resources": {
+          "food": 12,
+          "wood": 7,
+          "gold": 8,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "If your opponent also has Cavalry, build @building_defensive/outpost.webp@ near @resource/resource_gold.webp@",
+          "If your opponent has many @unit_infantry/spearman-1.webp@, build @building_military/archery-range.webp@ and make @unit_infantry/archer-2.webp@",
+          "Otherwise, first build @building_military/stable.webp@, then build @building_military/archery-range.webp@",
+          "Now, continue making @unit_french/royal-knight-2.webp@ and @unit_infantry/archer-2.webp@ to attack your opponent",
+          "When you want to Age-Up transfer all @resource/resource_wood.webp@@unit_worker/villager.webp@ to @resource/resource_food.webp@ and @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "~13:10",
+        "villager_count": 42,
+        "resources": {
+          "food": 18,
+          "wood": 4,
+          "gold": 20,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "12 @resource/resource_gold.webp@@unit_worker/villager.webp@ build @landmark_french/guild-hall.webp@or @landmark_french/royal-institute.webp@",
+          "Build a @building_technology/blacksmith.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "13:50",
+        "villager_count": 45,
+        "resources": {
+          "food": 26,
+          "wood": 6,
+          "gold": 13,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Immediately upgrade your @unit_french/royal-knight-2.webp@ and @unit_infantry/archer-2.webp@",
+          "Send ~10 @unit_worker/villager.webp@ to @building_economy/mining-camp.webp@@resource/resource_stone.webp@",
+          "When you have 900 @resource/resource_stone.webp@, all @resource/resource_stone.webp@@unit_worker/villager.webp@ build @building_defensive/keep.webp@ around your Military buildings"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/4DLhhb91xSg",
+    "season": "Season 12",
+    "map": null,
+    "strategy": "Rush"
+  },
+  {
+    "description": "",
+    "civilization": "French",
+    "name": "French 2TC",
+    "author": "Glazedbagel",
+    "source": "https://aoe4guides.com/builds/UdjmTL1dVwDAtPnzbN7P",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 7,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_worker/villager.webp@@resource/sheep.webp@ 6 +1 Vils on sheep"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 4,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_worker/villager.webp@ -> @building_economy/house.webp@@building_economy/mining-camp.webp@ Vil Builds House then Mine"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 13,
+        "resources": {
+          "food": 9,
+          "wood": 4,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@200 Gold pull vils and send to Wood - Build @building_economy/lumber-camp.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 12,
+        "resources": {
+          "food": 4,
+          "wood": 4,
+          "gold": 0,
+          "stone": 4,
+          "builder": -1
+        },
+        "notes": [
+          "@landmark_french/school-of-cavalry.webp@ 2 Vil Age Up - 4 Vils Build Stone Mine / All Vils from @resource/sheep.webp@ - Rally to @building_economy/lumber-camp.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 13,
+        "resources": {
+          "food": 4,
+          "wood": 5,
+          "gold": 0,
+          "stone": 4,
+          "builder": -1
+        },
+        "notes": [
+          "@building_economy/house.webp@ With Stone Vil"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 16,
+        "resources": {
+          "food": 4,
+          "wood": 7,
+          "gold": 0,
+          "stone": 5,
+          "builder": -1
+        },
+        "notes": [
+          "7 Vils on @building_economy/lumber-camp.webp@ Rally to Stone @building_economy/mining-camp.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 18,
+        "resources": {
+          "food": 4,
+          "wood": 7,
+          "gold": 0,
+          "stone": 7,
+          "builder": -1
+        },
+        "notes": [
+          "@300 Stone take @building_economy/mining-camp.webp@ Vils and Make @building_economy/town-center.webp@ Total 8 Vils - 7 from Stone / 1 from wood"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 12,
+        "resources": {
+          "food": 6,
+          "wood": 6,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@landmark_french/school-of-cavalry.webp@ Finishes - 2 Vils to @resource/sheep.webp@ Rally to Sheep"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 27,
+        "resources": {
+          "food": 14,
+          "wood": 5,
+          "gold": 8,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_economy/town-center.webp@ Finishes - Send Vils to even out economy"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 55,
+        "resources": {
+          "food": 5,
+          "wood": 20,
+          "gold": 0,
+          "stone": 0,
+          "builder": 30
+        },
+        "notes": [
+          "@landmark_french/guild-hall.webp@Split for Castle Age - Can cut unit production to get"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": 70,
+        "resources": {
+          "food": 20,
+          "wood": 20,
+          "gold": 0,
+          "stone": 0,
+          "builder": 30
+        },
+        "notes": [
+          "Add More Production @building_military/stable.webp@@building_military/archery-range.webp@ as needed - 2 Stables/2 Archery Ranges - Add @building_religious/monastery.webp@ Go for Relics"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": 90,
+        "resources": {
+          "food": 20,
+          "wood": 20,
+          "gold": 20,
+          "stone": 0,
+          "builder": 30
+        },
+        "notes": [
+          "Can start to go into Stone for @building_defensive/keep.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "18:00",
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@landmark_french/red-palace.webp@ To Secure Big Gold"
+        ]
+      },
+      {
+        "age": 4,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      }
+    ],
+    "video": "",
+    "season": "Season 13",
+    "map": null,
+    "strategy": "Boom"
+  },
+  {
+    "description": "bon c'est un bo pas forcément opti mais j\"ai gagner pas mal de game avec donc c'est cool ",
+    "civilization": "French",
+    "name": "Français",
+    "author": "Winkl",
+    "source": "https://aoe4guides.com/builds/vjTsudlmouYkAx2uAFdn",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "tout les@unit_worker/villager.webp@sur la @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 9,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "3 sur la @resource/resource_gold.webp@@abilities/repair.webp@ d'une@building_economy/mining-camp.webp@avec le premier et le 2eme@abilities/repair.webp@@building_economy/house.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 10,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "ensuite tout le monde sur la @resource/resource_food.webp@jusqu'au passage @age/age_2.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 16,
+        "resources": {
+          "food": 9,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": []
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:00",
+        "villager_count": 16,
+        "resources": {
+          "food": 9,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "pendant le passage d'âge 2@unit_worker/villager.webp@ sur le @resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "une fois terminer le passage d'age deux @unit_worker/villager.webp@sur le bois et les deux autres sur la"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 20,
+        "resources": {
+          "food": 11,
+          "wood": 4,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "tout les @unit_worker/villager.webp@sur la@resource/rally.webp@ @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 34,
+        "resources": {
+          "food": 20,
+          "wood": 4,
+          "gold": 10,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "dés que asser de bois faire une écurie@building_military/stable.webp@pour doubler la prod de"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "ensuite faire plein de chevalier@unit_french/royal-knight-2.webp@ jusqu'a mort sans suive"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 13",
+    "map": "Hybrid",
+    "strategy": "Rush"
+  },
+  {
+    "description": "",
+    "civilization": "French",
+    "name": "French - knights into Castle",
+    "author": "B-SON",
+    "source": "https://aoe4guides.com/builds/8JTB2KSi0lSYiafa0r05",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "All @unit_worker/villager.webp@ on @resource/sheep.webp@ Remember to bring back sheep with scout early around 2min mark",
+          "@resource/rally.webp@@resource/resource_food.webp@ til 7"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 10,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Rally 3 @unit_worker/villager.webp@ to @resource/resource_gold.webp@ ; 1st @unit_worker/villager.webp@  build @building_economy/house.webp@ and @building_economy/mining-camp.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 10,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_food.webp@ til 12"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:20",
+        "villager_count": 14,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "4 @unit_worker/villager.webp@@resource/resource_food.webp@ build @landmark_french/school-of-cavalry.webp@ around 2:20 mark then @resource/gaiatreeprototypetree.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 16,
+        "resources": {
+          "food": 9,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "when 9 on @resource/resource_food.webp@ send 2 @unit_worker/villager.webp@ @resource/resource_food.webp@ @abilities/repair.webp@@building_economy/house.webp@ then @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 16,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 6
+        },
+        "notes": [
+          "1@unit_worker/villager.webp@ @resource/resource_food.webp@@abilities/repair.webp@@building_economy/mill.webp@  at @resource/berrybush.webp@/@resource/deer.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "04:15",
+        "villager_count": 21,
+        "resources": {
+          "food": 12,
+          "wood": 4,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "make @unit_french/royal-knight-2.webp@ and raide",
+          "@resource/rally.webp@@resource/resource_wood.webp@",
+          "research @technology_economy/wheelbarrow.webp@ and @technology_economy/specialized-pick.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 25,
+        "resources": {
+          "food": 12,
+          "wood": 7,
+          "gold": 5,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "@unit_worker/villager.webp@@resource/resource_wood.webp@@abilities/repair.webp@@building_economy/house.webp@ then go back"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Leave rally on @resource/resource_wood.webp@ for rest of the game",
+          "--> at 50 @resource/resource_wood.webp@ take 5 @resource/resource_wood.webp@@unit_worker/villager.webp@ and build @building_economy/mill.webp@ on @resource/deer.webp@ and research @technology_economy/survival-techniques.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "When you have another 100 @resource/resource_wood.webp@ take 5 @unit_worker/villager.webp@ and make @building_defensive/outpost.webp@ on @resource/resource_gold.webp@ then go @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Every 150 @resource/resource_wood.webp@ build extra @building_military/stable.webp@/@building_military/archery-range.webp@ for more @unit_french/royal-knight-2.webp@/@unit_infantry/archer-2.webp@ production - Get eco upgrades when available"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build 3x production (@building_military/stable.webp@@building_military/archery-range.webp@@building_military/archery-range.webp@) then @abilities/repair.webp@@building_technology/blacksmith.webp@ with @unit_worker/villager.webp@@resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "When you have another 150 @resource/resource_wood.webp@ take 5 @unit_worker/villager.webp@ and make @building_defensive/outpost.webp@ on @resource/resource_stone.webp@ then go @resource/resource_stone.webp@"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 12",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "",
+    "civilization": "French",
+    "name": "French COC Build",
+    "author": "Glazedbagel",
+    "source": "https://aoe4guides.com/builds/pYqLFUYmou5glAzbrqWF",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "6 on @resource/sheep.webp@ first @unit_worker/villager.webp@ builds @building_economy/house.webp@/@building_economy/mining-camp.webp@@resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 10,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "4 @unit_worker/villager.webp@ on @resource/resource_gold.webp@ - Rest rally to @resource/resource_food.webp@ until Age Up"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 9,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "4 @unit_worker/villager.webp@ to @landmark_french/chamber-of-commerce.webp@ Rally to @resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 13,
+        "resources": {
+          "food": 6,
+          "wood": 4,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build @building_economy/house.webp@@building_economy/lumber-camp.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 21,
+        "resources": {
+          "food": 6,
+          "wood": 12,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Get more Eco upgrades to trigger @landmark_french/chamber-of-commerce.webp@ - @technology_economy/forestry.webp@@technology_economy/double-broadaxe.webp@@technology_economy/specialized-pick.webp@@technology_economy/horticulture.webp@ - Forestry is a cheap upgrade and in turn a cheap @unit_worker/trader.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 21,
+        "resources": {
+          "food": 6,
+          "wood": 12,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_military/stable.webp@ and Rally to @resource/resource_food.webp@"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 13",
+    "map": null,
+    "strategy": "Boom"
+  },
+  {
+    "description": "",
+    "civilization": "French",
+    "name": "French MarineLord - Moulin Tech Pre-Age II",
+    "author": "Phyouko",
+    "source": "https://aoe4guides.com/builds/8RXCLxhOSBhH5KiXT50g",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "6 @unit_worker/villager.webp@ @resource/sheep.webp@ | @resource/rally.webp@@resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 7,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "@unit_worker/villager.webp@@abilities/repair.webp@@building_economy/house.webp@ -> @abilities/repair.webp@@building_economy/mining-camp.webp@@resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 8,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "7 @unit_worker/villager.webp@@resource/sheep.webp@-> @building_economy/mill.webp@@resource/deer.webp@@technology_economy/survival-techniques.webp@@technology_economy/wheelbarrow.webp@ | @resource/rally.webp@@resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 12,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 15,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:15",
+        "villager_count": 16,
+        "resources": {
+          "food": 10,
+          "wood": 1,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "3@unit_worker/villager.webp@@resource/sheep.webp@ + 2@unit_worker/villager.webp@@resource/resource_gold.webp@ -> @abilities/repair.webp@@landmark_french/school-of-cavalry.webp@ -&gt; @resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 19,
+        "resources": {
+          "food": 7,
+          "wood": 4,
+          "gold": 3,
+          "stone": 0,
+          "builder": 5
+        },
+        "notes": [
+          "4@unit_worker/villager.webp@@resource/resource_wood.webp@@abilities/repair.webp@@building_economy/house.webp@ -> @resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 20,
+        "resources": {
+          "food": 7,
+          "wood": 10,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Harass & Control @unit_french/royal-knight-2.webp@  + @resource/rally.webp@@resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 21,
+        "resources": {
+          "food": 8,
+          "wood": 10,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "5 @unit_worker/villager.webp@@resource/resource_wood.webp@@abilities/repair.webp@@building_military/archery-range.webp@ -> @resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 25,
+        "resources": {
+          "food": 12,
+          "wood": 10,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 27,
+        "resources": {
+          "food": 12,
+          "wood": 10,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "2 @unit_worker/villager.webp@@resource/resource_wood.webp@@abilities/repair.webp@@building_technology/blacksmith.webp@ -> @resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 29,
+        "resources": {
+          "food": 12,
+          "wood": 10,
+          "gold": 7,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/berrybush.webp@"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 13",
+    "map": null,
+    "strategy": "Cheese"
+  },
+  {
+    "description": "",
+    "civilization": "French",
+    "name": "Braindead Macro French Fast Feudal - Dum Dum's copy",
+    "author": "Private Dum Dum",
+    "source": "https://aoe4guides.com/builds/VVY4UPWzRj3TVz91uH2P",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "All @unit_worker/villager.webp@ to @resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 7,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ 1 @unit_worker/villager.webp@ to @resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 3,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ 3 @unit_worker/villager.webp@to @resource/resource_gold.webp@ with first one building @building_economy/house.webp@ and @building_economy/mining-camp.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 13,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ to @resource/sheep.webp@ until @age/age_2.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:15",
+        "villager_count": 8,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build @landmark_french/school-of-cavalry.webp@ with 5 @unit_worker/villager.webp@ from @resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 8,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Keep @resource/rally.webp@ to @resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 8,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Que  @unit_worker/villager.webp@@abilities/repair.webp@ @landmark_french/school-of-cavalry.webp@ to build @building_economy/house.webp@ and then @building_economy/lumber-camp.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 20,
+        "resources": {
+          "food": 12,
+          "wood": 5,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "At 12 @unit_worker/villager.webp@ on @resource/resource_food.webp@ rally to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 25,
+        "resources": {
+          "food": 12,
+          "wood": 5,
+          "gold": 8,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ back to @resource/resource_food.webp@ and build @building_economy/mill.webp@ for @technology_economy/wheelbarrow.webp@ and @building_military/archery-range.webp@"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 13",
+    "map": null,
+    "strategy": "Rush"
+  },
+  {
+    "description": "",
+    "civilization": "French",
+    "name": "Fransız Şövalye Spam - Turkish",
+    "author": "Sonsuz",
+    "source": "https://aoe4guides.com/builds/vOEGXbduwCx1DUu4jH1b",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 İŞÇİ DEĞİRMENE (Değirmene gittikten sonra orada böğürtlen toplamaya devam edecek ve DEĞİRMEN BİTİNCE @technology_economy/wheelbarrow.webp@ AL)",
+          "2 İŞÇİ ALTINA MADEN KAMPI"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 7,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "YENİ ÇIKAN İŞÇİYLE EV İNŞA ET"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 8,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "BİR SONRAKİ YEN İŞÇİYLE ALTINA"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 11,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "02:50",
+        "villager_count": 15,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "4 İŞÇİYLE SÜVARİ OKULU İNŞA ET"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "02:58",
+        "villager_count": 16,
+        "resources": {
+          "food": 6,
+          "wood": 3,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "ETTEN 3 İŞÇİ ODUNA AKTAR, YENİ İŞÇİLER ODUNA"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "04:13",
+        "villager_count": 20,
+        "resources": {
+          "food": 8,
+          "wood": 5,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": []
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "04:30",
+        "villager_count": 21,
+        "resources": {
+          "food": 13,
+          "wood": 5,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "ÇAĞ ATLANMIŞ OLACAK",
+          "ÇAĞDAKİ 3 İŞÇİ KOYUNA GİDECEK, 1 TANESİ ALTINA",
+          "ŞÖVALYE BASILMAYA BAŞLANACAK"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "04:54",
+        "villager_count": 22,
+        "resources": {
+          "food": 12,
+          "wood": 5,
+          "gold": 4,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "1 TANE AHIR İNŞA ET"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "05:19",
+        "villager_count": 24,
+        "resources": {
+          "food": 13,
+          "wood": 4,
+          "gold": 5,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "ODUNCUYLA 1 EV İNŞA ET, YENİ İŞÇİLER ALTINA"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "05:45",
+        "villager_count": 25,
+        "resources": {
+          "food": 13,
+          "wood": 5,
+          "gold": 7,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "06:07",
+        "villager_count": 27,
+        "resources": {
+          "food": 14,
+          "wood": 4,
+          "gold": 8,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "1 ODUNCUYLA DEMİRCİ İNŞA ET"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "06:30",
+        "villager_count": 30,
+        "resources": {
+          "food": 14,
+          "wood": 5,
+          "gold": 11,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "MADENCİ UP'INI AL"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "07:35",
+        "villager_count": 32,
+        "resources": {
+          "food": 15,
+          "wood": 5,
+          "gold": 12,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "BAHÇIVANLIK UP'INI AL"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "07:56",
+        "villager_count": 34,
+        "resources": {
+          "food": 19,
+          "wood": 5,
+          "gold": 10,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "ŞÖVALYELİK UP'INI AL"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "09:00",
+        "villager_count": 35,
+        "resources": {
+          "food": 18,
+          "wood": 7,
+          "gold": 10,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "HAYATTA KALMA TEKNİKLERİ UP'INI AL VE KOYUNDAKİLERİ GEYİĞE GÖNDER",
+          "(yani koyun ne zaman bitmeye başlarsa, bu up'ı alıp işçileri geyiğe gönder.)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "09:40",
+        "villager_count": 39,
+        "resources": {
+          "food": 23,
+          "wood": 3,
+          "gold": 11,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "OK ZIRH UP'INI AL"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "11:00",
+        "villager_count": 44,
+        "resources": {
+          "food": 29,
+          "wood": 3,
+          "gold": 12,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "12:07",
+        "villager_count": 47,
+        "resources": {
+          "food": 9,
+          "wood": 16,
+          "gold": 12,
+          "stone": 0,
+          "builder": 10
+        },
+        "notes": [
+          "10 İŞÇİYLE KRALYET ENSİTİTÜSÜ İNŞA ET"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "12:25",
+        "villager_count": 48,
+        "resources": {
+          "food": 17,
+          "wood": 4,
+          "gold": 17,
+          "stone": 0,
+          "builder": 10
+        },
+        "notes": [
+          "TAHTA UP'INI AL"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 13",
+    "map": "Hybrid",
+    "strategy": "Rush"
+  },
+  {
+    "description": "Good Against Fast Castle Civs ",
+    "civilization": "French",
+    "name": "French 2tc to Fast Castle - copy",
+    "author": "Private Dum Dum",
+    "source": "https://aoe4guides.com/builds/RMryZcpWN1fESAbMiDQy",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 7,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 10,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 14,
+        "resources": {
+          "food": 11,
+          "wood": 0,
+          "gold": 0,
+          "stone": 3,
+          "builder": -1
+        },
+        "notes": [
+          "After getting 200 @resource/resource_gold.webp@@unit_worker/villager.webp@@resource/resource_gold.webp@--->@resource/resource_stone.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 14,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 0,
+          "stone": 3,
+          "builder": 3
+        },
+        "notes": [
+          "3x@unit_worker/villager.webp@@resource/sheep.webp@--->@landmark_french/school-of-cavalry.webp@ ---&gt; @resource/resource_food.webp@&&amp; (Train @unit_cavalry/horseman-1.webp@or@unit_french/royal-knight-2.webp@ but not too many)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 14,
+        "resources": {
+          "food": 4,
+          "wood": 2,
+          "gold": 0,
+          "stone": 5,
+          "builder": 3
+        },
+        "notes": [
+          "2x@unit_worker/villager.webp@@resource/sheep.webp@--->@resource/resource_stone.webp@ &&amp; 2x@unit_worker/villager.webp@@resource/sheep.webp@---&gt;@resource/resource_wood.webp@ (About half way to @age/age_2.webp@)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 21,
+        "resources": {
+          "food": 4,
+          "wood": 9,
+          "gold": 0,
+          "stone": 5,
+          "builder": 3
+        },
+        "notes": [
+          "@resource/rally.webp@7x@unit_worker/villager.webp@--->@resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 21,
+        "resources": {
+          "food": 7,
+          "wood": 9,
+          "gold": 0,
+          "stone": 5,
+          "builder": -1
+        },
+        "notes": [
+          "3@unit_worker/villager.webp@@landmark_french/school-of-cavalry.webp@>@resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 21,
+        "resources": {
+          "food": 7,
+          "wood": 14,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "350@resource/resource_stone.webp@>5@unit_worker/villager.webp@@resource/resource_stone.webp@&gt;450@resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 21,
+        "resources": {
+          "food": 7,
+          "wood": 4,
+          "gold": 0,
+          "stone": 0,
+          "builder": 10
+        },
+        "notes": [
+          "10x@unit_worker/villager.webp@@resource/resource_wood.webp@ ---> @abilities/repair.webp@@building_economy/town-center.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 21,
+        "resources": {
+          "food": 14,
+          "wood": 4,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "7x@unit_worker/villager.webp@@abilities/repair.webp@ ---> @resource/resource_food.webp@@resource/deer.webp@ &&amp; 3x@unit_worker/villager.webp@@abilities/repair.webp@ ---&gt; @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 30,
+        "resources": {
+          "food": 21,
+          "wood": 4,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1st@building_economy/town-center.webp@@resource/rally.webp@ --->@resource/resource_food.webp@ &&amp; 2nd@building_economy/town-center.webp@@resource/rally.webp@ ---&gt; @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 47,
+        "resources": {
+          "food": 20,
+          "wood": 10,
+          "gold": 10,
+          "stone": 0,
+          "builder": 7
+        },
+        "notes": [
+          "7x@unit_worker/villager.webp@@resource/resource_food.webp@ ---> @abilities/repair.webp@@landmark_french/guild-hall.webp@ (@landmark_french/royal-institute.webp@ for all in or a lot of feudal units)"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": 70,
+        "resources": {
+          "food": 25,
+          "wood": 20,
+          "gold": 10,
+          "stone": 15,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_french/royal-knight-2.webp@@unit_french/arbaletrier-3.webp@TA-DAA"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@landmark_french/red-palace.webp@"
+        ]
+      },
+      {
+        "age": 4,
+        "population_count": -1,
+        "villager_count": 105,
+        "resources": {
+          "food": 35,
+          "wood": 25,
+          "gold": 30,
+          "stone": 15,
+          "builder": -1
+        },
+        "notes": [
+          "Max"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/xLoK9FdmNRY",
+    "season": "Season 11",
+    "map": null,
+    "strategy": "Fast Castle"
+  },
+  {
+    "description": "",
+    "civilization": "French",
+    "name": "Francs MLord",
+    "author": "Dinosenko",
+    "source": "https://aoe4guides.com/builds/v4tBF8xWs97Sci4WFxp6",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_economy/mill.webp@@building_economy/mining-camp.webp@@building_economy/house.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 10,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@technology_economy/wheelbarrow.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 15,
+        "resources": {
+          "food": 11,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@landmark_french/school-of-cavalry.webp@  x 4 @unit_worker/villager.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 16,
+        "resources": {
+          "food": 6,
+          "wood": 6,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "6 bouffe, 4 or, reste au bois"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 20,
+        "resources": {
+          "food": 10,
+          "wood": 6,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_economy/lumber-camp.webp@@building_economy/house.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 22,
+        "resources": {
+          "food": 10,
+          "wood": 8,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_french/royal-knight-2.webp@@building_military/archery-range.webp@ attaquez avec scout plus chevalier@unit_cavalry/scout.webp@@unit_cavalry/scout.webp@@unit_cavalry/scout.webp@@unit_cavalry/scout.webp@scout pour cerfs@building_military/stable.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 31,
+        "resources": {
+          "food": 15,
+          "wood": 8,
+          "gold": 8,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "un fois écurie fini, prod @unit_infantry/archer-2.webp@ en continue puis @building_technology/blacksmith.webp@@building_economy/house.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      }
+    ],
+    "video": "",
+    "season": "Season 13",
+    "map": null,
+    "strategy": null
+  }
+]

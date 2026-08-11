@@ -1,0 +1,330 @@
+{
+  "name": "fast castle with Culture wing",
+  "civilization": "Abbasid Dynasty",
+  "author": "Obsidian",
+  "source": "https://aoe4guides.com/builds/167H4ZhKNOkFS53OVnwX",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use 4 @unit_worker/villager-abbasid.webp@ to build @building_economy/mill.png@ onto @resource/berrybush.png@ and 2 to build@landmark_abbasid/house-of-wisdom.png@ @resource/rally.png@ those 2 @unit_worker/villager-abbasid.png@ also onto @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:28",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@1@unit_worker/villager-abbasid.png@ to @resource/berrybush.png@3@unit_worker/villager-abbasid.png@ to @resource/resource_gold.png@ but first build@building_economy/house.png@ and @building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:17",
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 3 @unit_worker/villager-abbasid.png@ to @resource/gaiatreeprototypetree.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with@landmark_abbasid/culture-wing.webp@ (culture not Economy)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 11,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@4@unit_worker/villager-abbasid.png@ onto @resource/berrybush.png@ and rally onto @resource/resource_wood.png@ afterwards"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 23,
+      "resources": {
+        "food": 11,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use your intial 3 @unit_worker/villager-abbasid.webp@ from @resource/gaiatreeprototypetree.png@ to build a@building_economy/house.png@ and @building_economy/lumber-camp.png@,@resource/rally.png@ 6 @unit_worker/villager-abbasid.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 23,
+      "resources": {
+        "food": 11,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research@technology_abbasid/preservation-of-knowledge.webp@ then@technology_economy/wheelbarrow.png@@technology_economy/double-broadaxe.png@@technology_economy/horticulture.png@@technology_abbasid/fresh-foodstuffs.png@(optional@technology_economy/horticulture.png@@technology_economy/forestry.png@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 30,
+      "resources": {
+        "food": 11,
+        "wood": 9,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After@technology_abbasid/fresh-foodstuffs.webp@ @resource/rally.png@@unit_worker/villager-abbasid.png@to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/barracks.webp@@building_military/archery-range.png@ and research@technology_abbasid/phalanx.png@ and @unit_infantry/spearman-1.png@ upgrade make @unit_infantry/spearman-1.png@ and@unit_infantry/archer-2.png@ if you are getting pushed"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:40",
+      "villager_count": 30,
+      "resources": {
+        "food": 11,
+        "wood": 9,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "once @resource/berrybush.webp@ are depleted send your @unit_worker/villager-abbasid.png@ onto @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 30,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_technology/blacksmith.webp@ and research all the beginning for ranged as for melee(depends if your getting attacked if not attacked just save for age) (make sure your not getting vill capped and make @building_economy/house.png@ when needed wich hen you get @age/goldenagetier1.png@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:53",
+      "villager_count": 30,
+      "resources": {
+        "food": 11,
+        "wood": 9,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with @landmark_abbasid/military-wing.webp@ (militairy wing)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally Vills to food and wood"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build an extra @building_technology/blacksmith.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:41",
+      "villager_count": 40,
+      "resources": {
+        "food": 21,
+        "wood": 9,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research@technology_abbasid/composite-bows.webp@ and @technology_abbasid/boot-camp.png@ and make@unit_infantry/archer-2.png@ after this"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:36",
+      "villager_count": 55,
+      "resources": {
+        "food": 21,
+        "wood": 24,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once run out of @resource/sheep.webp@ look either for another @resource/berrybush.png@ patch or build @building_economy/farm.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "‑‑:‑‑",
+      "villager_count": 63,
+      "resources": {
+        "food": 21,
+        "wood": 24,
+        "gold": 10,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "Optional but recommended @resource/rally.webp@@unit_worker/villager-abbasid.png@ to stone between 8 to 10 and build once possible stone walls and @building_defensive/keep.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "16:20",
+      "villager_count": 63,
+      "resources": {
+        "food": 21,
+        "wood": 24,
+        "gold": 10,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with Economy wing or Trade wing Depending on whats more important (gold or food depends on your unit creations i prefer economy)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "‑‑:‑‑",
+      "villager_count": 70,
+      "resources": {
+        "food": 21,
+        "wood": 31,
+        "gold": 10,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 5,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

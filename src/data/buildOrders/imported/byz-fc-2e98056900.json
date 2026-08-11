@@ -1,0 +1,130 @@
+{
+  "name": "Byz FC",
+  "civilization": "Byzantines",
+  "author": "Emsde123",
+  "source": "https://aoe4guides.com/builds/1LM0EGmigWHM0RZpT0DV",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "00:15",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5x @unit_worker/villager.webp@to @resource/sheep.png@",
+        "1x @unit_worker/villager.png@ builds @building_byzantines/cistern-1.png@ in range of @resource/resource_gold.png@@resource/sheep.png@, then builds @building_economy/house.png@",
+        "Next 1x @unit_worker/villager.png@ a @resource/sheep.png@(7)",
+        "Next 3x @unit_worker/villager.png@ a @building_economy/mining-camp.png@@resource/resource_gold.png@",
+        "@resource/rally.png@ @resource/sheep.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "02:45 ",
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @landmark_byzantines/grand-winery-1.webp@ with 4x @unit_worker/villager.png@from @resource/sheep.png@> Then to @resource/berrybush.png@",
+        "5x @resource/rally.png@@resource/resource_wood.png@(5), build @building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "04:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If against aggro, make @building_defensive/outpost.webp@ then @building_economy/house.png@",
+        "Otherwise, usually @technology_economy/wheelbarrow.png@",
+        "Build next @building_byzantines/cistern-1.png@ to cover @resource/berrybush.png@ and @resource/resource_wood.png@ then connect @building_byzantines/aqueduct-1.png@",
+        "Take 1x @resource/resource_wood.png@@unit_worker/villager.png@ and build @building_byzantines/mercenary-house-2.png@",
+        "Use one @building_byzantines/cistern-1.png@ as a production center, and the other @building_byzantines/cistern-1.png@ for research (@building_technology/blacksmith.png@)",
+        "1x @resource/rally.png@@resource/resource_gold.png@(4),  then  @resource/rally.png@@resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:10",
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get your @technology_economy/wheelbarrow.webp@ + @technology_economy/specialized-pick.png@ + @technology_economy/horticulture.png@",
+        "Start the @technology_byzantines/eastern-mercenary-contract-1.png@ and begin producing @unit_byzantines/keshik-2.png@",
+        "x3 @resource/rally.png@@resource/resource_gold.png@ (7)",
+        "@resource/rally.png@ @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_technology/blacksmith.webp@, then @building_military/stable.png@",
+        "After exhausting @resource/berrybush.png@, build new @building_economy/mill.png@ on next berries"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up to @age/age_3.webp@ with @landmark_byzantines/cistern-of-the-first-hill-2.png@, if against aggro build close to base, if safe you can build near forward @resource/resource_gold.png@ & @resource/berrybush.png@",
+        "(Use around 8 @resource/berrybush.png@@unit_worker/villager.png@)",
+        "After age up, move 3x @resource/berrybush.png@@unit_worker/villager.png@ to @resource/resource_wood.png@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/b2KC2vaiDW0",
+  "season": 9,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

@@ -1,0 +1,207 @@
+{
+  "name": "Jeanne D'Arc - Trade - Beasty",
+  "civilization": "Jeanne d'Arc",
+  "author": "Snafucius",
+  "source": "https://aoe4guides.com/builds/0hJ9iyhf5jtXQP5SMZzy",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@ to build @building_economy/house.png@ then to @resource/resource_food.png@",
+        "@resource/rally.png@@resource/resource_food.png@ until 7"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.png@ until 4, first  @unit_worker/villager.png@ building @building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with only @unit_jeanne/jeanne-darc-peasant-1.webp@ building@landmark_french/chamber-of-commerce.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rebalance Eco for even split @resource/resource_food.webp@@resource/resource_wood.png@@resource/resource_gold.png@ with @resource/gaiatreeprototypetree.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/berrybush.png@ to build @building_economy/mill.png@",
+        "@resource/rally.png@ back to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_economy/wheelbarrow.webp@ to complete after age up",
+        "Build @building_economy/lumber-camp.png@ when needed"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Before age up rebalance eco",
+        "Get @technology_economy/forestry.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-woman-at-arms-2.webp@",
+        "Notes:",
+        "@building_military/stable.png@>@building_technology/blacksmith.png@&gt; more Production (probably 2nd @building_military/stable.png@&gt;@building_military/archery-range.png@ or@building_military/barracks.png@)",
+        "Get Eco Upgrades: @technology_economy/fertilization.png@&gt;@technology_economy/acid-distilization.png@@technology_economy/lumber-preservation.png@",
+        "@building_defensive/palisade-wall.png@ Trade",
+        "@ability_jeanne/ability-consecrate-1.png@ Production Buildings"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 3,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Resource Splits: @unit_worker/villager.webp@@unit_worker/trader.png@@unit_french/royal-knight-2.png@ (consecrated with eco upgrades)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 29,
+      "resources": {
+        "food": 15,
+        "wood": 3,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Resource Splits: @unit_worker/villager.webp@@unit_worker/trader.png@@unit_french/royal-knight-2.png@@unit_french/royal-knight-2.png@ (consecrated with eco upgrades)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 28,
+      "resources": {
+        "food": 12,
+        "wood": 9,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Resource Splits: @unit_worker/villager.webp@@unit_worker/trader.png@@unit_french/royal-knight-2.png@@unit_infantry/archer-2.png@ (consecrated with eco upgrades)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 38,
+      "resources": {
+        "food": 18,
+        "wood": 9,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Resource Splits: @unit_worker/villager.webp@@unit_worker/trader.png@@unit_french/royal-knight-2.png@@unit_french/royal-knight-2.png@@unit_infantry/archer-2.png@ (consecrated with eco upgrades)"
+      ]
+    }
+  ],
+  "description": "Open Chamber of commerce to invite force enemy out of base to engage",
+  "video": "https://www.youtube.com/embed/ZIhTyjV7evI",
+  "season": 6,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

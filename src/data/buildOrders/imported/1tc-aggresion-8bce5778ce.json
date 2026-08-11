@@ -1,0 +1,99 @@
+{
+  "name": "1TC Aggresion",
+  "civilization": "Jin Dynasty",
+  "author": "lewisaaronwelch",
+  "source": "https://aoe4guides.com/builds/5rbj3AeiXYScQa5zQqlq",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 3,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "2 @unit_jin/mounted-villager.webp@ to shoot @unit_jin/reindeer-trader.webp@, 2 on @resource/resource_gold.webp@, other on @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @unit_jin/mounted-villager.webp@ on @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 5,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @resource/sheep.webp@@unit_jin/mounted-villager.webp@ to build @landmark_jin/great-pasture.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 5,
+      "resources": {
+        "food": 1,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro, @resource/resource_food.webp@ should be @unit_jin/reindeer-trader.webp@, @resource/rally.webp@ on @unit_jin/reindeer-trader.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "2 Age up @unit_jin/mounted-villager.webp@ goes to @unit_jin/reindeer-trader.webp@, make sure to use one to build @building_jin/grassland.webp@",
+        "Que up @unit_jin/iron-pagoda.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

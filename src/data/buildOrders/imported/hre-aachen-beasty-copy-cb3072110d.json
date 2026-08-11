@@ -1,0 +1,154 @@
+{
+  "name": "HRE Aachen Beasty Copy",
+  "civilization": "Holy Roman Empire",
+  "author": "Blackbaiter",
+  "source": "https://aoe4guides.com/builds/2KBxAHSYXXpOTiXl3vMV",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@ on @resource/resource_gold.png@, 3 @unit_worker/villager.png@ on @resource/resource_food.png@. @resource/rally.png@ on @resource/resource_food.png@ till @age/age_2.png@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@ @building_economy/house.png@ with Vill from @resource/resource_gold.png@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Age up with 4 from @resource/resource_food.webp@. Q them onto Food."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 3,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "3 on @resource/resource_food.webp@, rest on @resource/resource_wood.png@. @resource/rally.png@ on @resource/resource_wood.png@ Till 10."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 3,
+        "wood": 4,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Get @resource/resource_stone.webp@ with @resource/resource_gold.png@ Vills for @technology_defensive/arrow-slits.png@. (??? Stone)"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start Building @building_defensive/outpost.webp@ + @building_military/barracks.png@ + @building_economy/farm.png@ when enough @resource/resource_wood.png@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ on @resource/resource_food.png@ when 10 on @resource/resource_wood.png@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 12,
+        "wood": 9,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start adding Vills on @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age Up"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 10,
+  "map": "Open",
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

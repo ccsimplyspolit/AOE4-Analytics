@@ -1,0 +1,157 @@
+{
+  "name": "Jin Imp Rush - Eat Opponents Food",
+  "civilization": "Jin Dynasty",
+  "author": "Mekanation",
+  "source": "https://aoe4guides.com/builds/94NfPAmMKMEvOYm8pSFd",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 2,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @unit_jin/mounted-villager.webp@@resource/resource_gold.webp@, 1 @unit_jin/mounted-villager.webp@ @building_economy/mill.webp@ next to @building_economy/town-center.webp@(leave gap for farm), @building_economy/mill.webp@@unit_jin/mounted-villager.webp@ -> @resource/resource_gold.webp@, @resource/rally.webp@@building_economy/town-center.webp@@resource/resource_food.webp@(deer under tc). - @resource/resource_gold.webp@ til 3k left in vein."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "35",
+      "villager_count": 4,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@building_economy/town-center.webp@@resource/resource_wood.webp@ Get @technology_jin/mohe-ancestry.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:10",
+      "villager_count": 5,
+      "resources": {
+        "food": 1,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@building_economy/town-center.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:45",
+      "villager_count": 6,
+      "resources": {
+        "food": 2,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 3,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:55",
+      "villager_count": 8,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 9,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@building_economy/town-center.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 4,
+      "resources": {
+        "food": 0,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 on age up"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_jin/mounted-villager.webp@-> @resource/boar.webp@, @technology_jin/hunting-tradition.webp@."
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": "Open",
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

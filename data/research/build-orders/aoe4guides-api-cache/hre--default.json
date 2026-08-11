@@ -1,0 +1,1908 @@
+[
+  {
+    "description": "",
+    "civilization": "Holy Roman Empire",
+    "name": "HRE FC (VortiX)",
+    "author": "Sabrosito",
+    "source": "https://aoe4guides.com/builds/04sjK5xQd7LmCPdtAPb9",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@to@resource/sheep.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 7,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 8,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "1*@unit_worker/villager.webp@ to@building_economy/house.png@ then @resource/sheep.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 12,
+        "resources": {
+          "food": 9,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 13,
+        "resources": {
+          "food": 6,
+          "wood": 2,
+          "gold": 3,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "2*@unit_worker/villager.webp@@resource/sheep.png@ to @landmark_hre/meinwerk-palace.png@",
+          "2*@unit_worker/villager.png@@resource/sheep.png@ to @resource/resource_wood.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 15,
+        "resources": {
+          "food": 8,
+          "wood": 2,
+          "gold": 3,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "create 1 * @unit_hre/prelate.webp@ to @resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 15,
+        "resources": {
+          "food": 6,
+          "wood": 2,
+          "gold": 5,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "when @unit_hre/prelate.webp@ arrive 2*@unit_worker/villager.png@@resource/sheep.png@ to @resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 16,
+        "resources": {
+          "food": 8,
+          "wood": 3,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 new@unit_worker/villager.webp@  to @resource/resource_wood.webp@",
+          "then  @resource/rally.webp@ to@resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 23,
+        "resources": {
+          "food": 7,
+          "wood": 3,
+          "gold": 4,
+          "stone": 0,
+          "builder": 9
+        },
+        "notes": [
+          "8* @unit_worker/villager.webp@ @resource/sheep.webp@  to @landmark_hre/regnitz-cathedral.webp@ (near @resource/gaiatreeprototypetree.webp@)",
+          "1* @unit_worker/villager.webp@ @resource/resource_gold.webp@ to @building_military/stable.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 24,
+        "resources": {
+          "food": 8,
+          "wood": 3,
+          "gold": 5,
+          "stone": 0,
+          "builder": 8
+        },
+        "notes": [
+          "2* @unit_hre/prelate.webp@ to @resource/relics.webp@",
+          "@resource/rally.webp@ to@resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": 24,
+        "resources": {
+          "food": 14,
+          "wood": 3,
+          "gold": 7,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "in @landmark_hre/regnitz-cathedral.webp@->@technology_hre/cistercian-churches.webp@",
+          "in @building_military/stable.webp@-&gt;@unit_cavalry/knight-2.webp@",
+          "in @landmark_hre/meinwerk-palace.webp@ -&gt;@technology_hre/steel-barding-3.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": 25,
+        "resources": {
+          "food": 8,
+          "wood": 10,
+          "gold": 7,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "WHEN @technology_hre/cistercian-churches.webp@ ->8*@unit_worker/villager.webp@ to @resource/resource_wood.webp@",
+          "@unit_hre/prelate.webp@ to @landmark_hre/regnitz-cathedral.webp@",
+          "@resource/rally.webp@ to@resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "When have @resource/relics.webp@ you can split @resource/resource_gold.webp@@unit_worker/villager.webp@ to @resource/resource_wood.webp@@resource/resource_food.webp@",
+          "Use @building_religious/monastery.webp@ as drop-off"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/UPt25Rk4cjo",
+    "season": "Season 10",
+    "map": null,
+    "strategy": "Fast Castle"
+  },
+  {
+    "description": "My HRE build order",
+    "civilization": "Holy Roman Empire",
+    "name": "HRE",
+    "author": "Kili",
+    "source": "https://aoe4guides.com/builds/0jmdgk88ZNbRmDOlSOeF",
+    "build_order": [
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      }
+    ],
+    "video": "",
+    "season": "Season 12",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "Based on Beasty's season 6 guide",
+    "civilization": "Holy Roman Empire",
+    "name": "HRE | 1TC | Fast Castle | Aachen + Regnitz",
+    "author": "exe",
+    "source": "https://aoe4guides.com/builds/1yCmZ4IOeirS8rl6V7Qp",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "3 on @resource/resource_food.webp@ and 3 on @resource/resource_gold.png@",
+          "@resource/rally.png@@resource/sheep.png@ (until @age/age_2.png@)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "01:00",
+        "villager_count": 9,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_hre/prelate.webp@ to inspire all @resource/resource_gold.png@@unit_worker/villager.png@ once",
+          "Send @unit_hre/prelate.png@ back to @resource/resource_food.png@@unit_worker/villager.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "02:10",
+        "villager_count": 12,
+        "resources": {
+          "food": 3,
+          "wood": 2,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "@landmark_hre/aachen-chapel.webp@ with 4 @resource/resource_food.png@@unit_worker/villager.png@",
+          "@resource/rally.png@ @resource/gaiatreeprototypetree.png@ (until 6)",
+          "move 1 @resource/resource_food.png@@unit_worker/villager.png@to@resource/resource_wood.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "03:30",
+        "villager_count": 15,
+        "resources": {
+          "food": 3,
+          "wood": 6,
+          "gold": 2,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "@building_defensive/outpost.webp@ with 1@resource/resource_gold.png@@unit_worker/villager.png@",
+          "@resource/rally.png@@resource/resource_food.png@ (until @age/age_3.png@)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "04:10",
+        "villager_count": 19,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 5,
+          "stone": 4,
+          "builder": 2
+        },
+        "notes": [
+          "@unit_hre/prelate.webp@>@landmark_hre/aachen-chapel.png@ and redistribute@unit_worker/villager.png@",
+          "5 @resource/resource_wood.png@@unit_worker/villager.png@ on a single trip to @resource/resource_stone.png@, then@resource/resource_food.png@",
+          "2 @resource/resource_wood.png@@unit_worker/villager.png@ build a @building_military/stable.png@ or @building_military/barracks.png@ or @building_defensive/outpost.png@, then &gt; @resource/resource_wood.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "04:30",
+        "villager_count": 19,
+        "resources": {
+          "food": 14,
+          "wood": 0,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/resource_stone.webp@@unit_worker/villager.png@ on @resource/resource_food.png@",
+          "Train 3-5 @unit_cavalry/horseman-1.png@ to distract the opponent and buy you time",
+          "@technology_defensive/arrow-slits.png@ for@building_defensive/outpost.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "07:00",
+        "villager_count": 24,
+        "resources": {
+          "food": 11,
+          "wood": 0,
+          "gold": 5,
+          "stone": 0,
+          "builder": 8
+        },
+        "notes": [
+          "@landmark_hre/regnitz-cathedral.webp@ with 8 @resource/resource_food.png@@unit_worker/villager.png@",
+          "Build @unit_hre/prelate.png@ from @building_economy/town-center.png@ if possible",
+          "Economy upgrades: @technology_economy/double-broadaxe.png@,@technology_economy/specialized-pick.png@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "08:00",
+        "villager_count": 29,
+        "resources": {
+          "food": 14,
+          "wood": 5,
+          "gold": 10,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@abilities/repair.webp@@unit_worker/villager.png@ to @resource/resource_gold.png@ and @resource/resource_wood.png@",
+          "@resource/rally.png@@resource/resource_wood.png@",
+          "Get @resource/relics.png@, then secure @resource/sacred_sites.png@, goals is 3 or more @resource/relics.png@",
+          "Economy upgrades: @technology_economy/forestry.png@,@technology_economy/wheelbarrow.png@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "08:40",
+        "villager_count": 32,
+        "resources": {
+          "food": 14,
+          "wood": 8,
+          "gold": 10,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Train @unit_cavalry/knight-2.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "11:00",
+        "villager_count": 36,
+        "resources": {
+          "food": 21,
+          "wood": 15,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "When @resource/relics.webp@ are in @landmark_hre/regnitz-cathedral.png@, move @resource/resource_gold.png@@unit_worker/villager.png@ to @resource/resource_food.png@ and @resource/resource_wood.png@",
+          "Get remaining upgrades!"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/shOJCWHi764",
+    "season": "Season 6",
+    "map": "Closed",
+    "strategy": "Fast Castle"
+  },
+  {
+    "description": "",
+    "civilization": "Holy Roman Empire",
+    "name": "HRE Aachen Beasty Copy",
+    "author": "Blackbaiter",
+    "source": "https://aoe4guides.com/builds/2KBxAHSYXXpOTiXl3vMV",
+    "build_order": [
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "3 @unit_worker/villager.webp@ on @resource/resource_gold.png@, 3 @unit_worker/villager.png@ on @resource/resource_food.png@. @resource/rally.png@ on @resource/resource_food.png@ till @age/age_2.png@."
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@abilities/repair.webp@ @building_economy/house.png@ with Vill from @resource/resource_gold.png@."
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": 12,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Age up with 4 from @resource/resource_food.webp@. Q them onto Food."
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": 12,
+        "resources": {
+          "food": 3,
+          "wood": 2,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "3 on @resource/resource_food.webp@, rest on @resource/resource_wood.png@. @resource/rally.png@ on @resource/resource_wood.png@ Till 10."
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": 10,
+        "resources": {
+          "food": 3,
+          "wood": 4,
+          "gold": 0,
+          "stone": 3,
+          "builder": -1
+        },
+        "notes": [
+          "Get @resource/resource_stone.webp@ with @resource/resource_gold.png@ Vills for @technology_defensive/arrow-slits.png@. (??? Stone)"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Start Building @building_defensive/outpost.webp@ + @building_military/barracks.png@ + @building_economy/farm.png@ when enough @resource/resource_wood.png@."
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ on @resource/resource_food.png@ when 10 on @resource/resource_wood.png@."
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "8:00",
+        "villager_count": 26,
+        "resources": {
+          "food": 12,
+          "wood": 9,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Start adding Vills on @resource/resource_gold.webp@."
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Age Up"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 10",
+    "map": "Open",
+    "strategy": "Fast Castle"
+  },
+  {
+    "description": "By LaSh",
+    "civilization": "Holy Roman Empire",
+    "name": "HRE Feudal Agression Stable opener ",
+    "author": "johnsen",
+    "source": "https://aoe4guides.com/builds/2Mq9TZUBR7fD5VE5vILK",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "starting distribution"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 9,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ to @resource/resource_food.png@ till age up"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 13,
+        "resources": {
+          "food": 9,
+          "wood": 1,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "age up with 4 food Vills @landmark_hre/aachen-chapel.webp@ close to @resource/resource_wood.png@line,  move 1 vill from @resource/resource_food.png@ to @resource/resource_wood.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 8,
+        "resources": {
+          "food": 4,
+          "wood": 1,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ to @resource/resource_wood.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 10,
+        "resources": {
+          "food": 4,
+          "wood": 3,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "build @building_economy/mill.webp@ on @resource/berrybush.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Get enough Gold for upgrades then move 1 gold vill to food if you can"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 17,
+        "resources": {
+          "food": 5,
+          "wood": 10,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Get eco upgrades @technology_economy/wheelbarrow.webp@ @technology_economy/double-broadaxe.png@   @resource/rally.png@ to @resource/resource_wood.png@ till enough wood for @building_military/stable.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 18,
+        "resources": {
+          "food": 5,
+          "wood": 11,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "build @building_military/stable.webp@ with wood vills (1 to 3) then back to wood and @resource/rally.png@ to @resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "produce @unit_cavalry/horseman-1.webp@ and start harassing external ressources like @resource/resource_gold.png@ or @resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 21,
+        "resources": {
+          "food": 8,
+          "wood": 11,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "build @building_military/archery-range.webp@ produce @unit_infantry/archer-2.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 23,
+        "resources": {
+          "food": 10,
+          "wood": 12,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "build @building_technology/blacksmith.webp@ with gold vill, when finished back to gold"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 24,
+        "resources": {
+          "food": 10,
+          "wood": 12,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "get @building_technology/blacksmith.webp@ upgrades based on opponents' strat and build production buildings based on opponents' strat"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 30,
+        "resources": {
+          "food": 14,
+          "wood": 14,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "trasit to @building_economy/farm.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 37,
+        "resources": {
+          "food": 15,
+          "wood": 20,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ to @resource/resource_gold.png@ and prepare for slowly age up with @landmark_hre/regnitz-cathedral.png@"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/cTo7N1mcgVY",
+    "season": "Season 8",
+    "map": null,
+    "strategy": "Rush"
+  },
+  {
+    "description": "Just Testing Off-Meta playstyle efficiencies\n",
+    "civilization": "Holy Roman Empire",
+    "name": "Meinwerk 2-3 TC -> Burgrave",
+    "author": "FunGuiseGames",
+    "source": "https://aoe4guides.com/builds/2mSC8HKgIbKo5kevsVq3",
+    "build_order": [
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": 7,
+        "resources": {
+          "food": 2,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Que Scout and (2) Villagers, Rally sheep;",
+          "(4) Villagers Build Mining Camp on Gold, (2) Villagers Build House then to Sheep;",
+          "(1rst) Scout herds Sheep towards Gold While Vills build house;",
+          "Prelate inspires Gold then moves to Sheep:"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": 10,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "As soon as you've gathered (100) Gold Que 2nd Prelate, the earlier the better, then (2-3) Villagers;",
+          "(1) Prelate on Gold the other on Food, start bringing a Scout back then send it to scout the enemy;",
+          "Put (3) Food Vills in Control Group (1) (these will Age Up soon):"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": 13,
+        "resources": {
+          "food": 7,
+          "wood": 4,
+          "gold": 0,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "Once you've collected (400) Gold everyone from Gold (4 Villagers & 1 Prelate) build Lumber Camp on Wood Line;",
+          "Que (2) Villagers then (1) Prelate, Put (3) Ungrouped Food Villagers &amp; a Prelate in Control Group (2):"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": 16,
+        "resources": {
+          "food": 9,
+          "wood": 4,
+          "gold": 0,
+          "stone": 0,
+          "builder": 3
+        },
+        "notes": [
+          "Control Group (1) builds Meinwerk then to Stone, Control Group (2) builds Mining Camp on Stone;",
+          "Bring (2nd) Scout back, If time finish scouting the whole map, if the opponent is making units, react;",
+          "Wood Vill Builds House then back to wood unless reaction is warranted:"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": 16,
+        "resources": {
+          "food": 3,
+          "wood": 4,
+          "gold": 0,
+          "stone": 3,
+          "builder": 6
+        },
+        "notes": [
+          "Que Vills Continuously through age up, Rally (2) Villagers to Wood then (2) to Meinwerk shift-clicked on to the Wood Line;",
+          "After the (2) are added to the Age Up Rally Food thru Castle, Build Mill on Berries/Deer pack if Sheep run Low;"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": 20,
+        "resources": {
+          "food": 3,
+          "wood": 8,
+          "gold": 0,
+          "stone": 6,
+          "builder": 3
+        },
+        "notes": [
+          "Prelate check: 1 on every resource, don't train another until there are 3+ uninspired workers;"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": 19,
+        "resources": {
+          "food": 5,
+          "wood": 8,
+          "gold": 0,
+          "stone": 6,
+          "builder": -1
+        },
+        "notes": [
+          "Everyone on Stone (6 Villagers & a Prelate) Build TC;",
+          "on Stone if going 3 TC, Gold if only 2, once TC's are complete inspire (8) Villagers on Gold;",
+          "Rally Food thru Castle, begin Farm transition:"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "While aging up build necessary towers to garrison relics, houses for Burgrave and 2-3 Stables for horseman/Knights to counter the crossbows your enemy making after they scout the Burger;",
+          "research siege and push with MAA/Landshits Make Rams just outside their LOS, when you push leave (1) MAA building rams;",
+          "Rally all cavalry to the flank of your ram push, hold there until your opponent engages the infantry"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": 91,
+        "resources": {
+          "food": 57,
+          "wood": 12,
+          "gold": 22,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "this is the macro required for constant production assuming no one is inspired and no eco upgrades"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 4",
+    "map": null,
+    "strategy": "Fast Castle"
+  },
+  {
+    "description": "HRE Pro Scout Guide made by \nBeastyqtSC2",
+    "civilization": "Holy Roman Empire",
+    "name": "HRE Pro Scout - BeastyqtSC2 - copy",
+    "author": "gamushiro",
+    "source": "https://aoe4guides.com/builds/333AaSClGKbaHFiYDTPl",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "3 @unit_worker/villager.webp@ -> @resource/resource_food.png@     /    3 @unit_worker/villager.png@ @abilities/repair.png@-&gt;@building_economy/mining-camp.png@ @resource/resource_gold.png@",
+          "1  @unit_worker/villager.png@ from @resource/resource_gold.png@@abilities/repair.png@-&gt;@building_economy/house.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:10",
+        "villager_count": 6,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ -> @resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:19",
+        "villager_count": 12,
+        "resources": {
+          "food": 9,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "AGE UP: 4 @unit_worker/villager.webp@ from @resource/resource_food.png@ -> @landmark_hre/aachen-chapel.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:20",
+        "villager_count": 13,
+        "resources": {
+          "food": 3,
+          "wood": 2,
+          "gold": 4,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "1 @unit_worker/villager.webp@ from @resource/resource_food.png@ -> @resource/resource_gold.png@",
+          "2 @unit_worker/villager.png@ from @resource/resource_food.png@ -&gt; @resource/resource_wood.png@",
+          "@resource/rally.png@ -&gt; @resource/resource_wood.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:05",
+        "villager_count": 14,
+        "resources": {
+          "food": 3,
+          "wood": 3,
+          "gold": 4,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "1  @unit_worker/villager.webp@ @abilities/repair.png@ -> @building_economy/mill.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:30",
+        "villager_count": 16,
+        "resources": {
+          "food": 3,
+          "wood": 5,
+          "gold": 4,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "1  @unit_worker/villager.webp@ from @resource/resource_gold.png@@abilities/repair.png@->@building_economy/house.png@-&gt;@resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:00",
+        "villager_count": 19,
+        "resources": {
+          "food": 7,
+          "wood": 6,
+          "gold": 6,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ -> @resource/resource_gold.png@ until 6 then -&gt; @resource/resource_food.png@",
+          "4 @unit_worker/villager.png@@abilities/repair.png@ -&gt; @resource/resource_food.png@",
+          "ECO TEC @technology_economy/professional-scouts.png@ PROFESSIONAL SCOUTS"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "‑‑‑",
+        "villager_count": 18,
+        "resources": {
+          "food": 7,
+          "wood": 5,
+          "gold": 6,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 @unit_worker/villager.webp@ from @resource/resource_wood.png@ -> @building_military/stable.png@ FOR 4@unit_cavalry/scout.png@ -&gt; @resource/resource_food.png@",
+          "ECO TEC @technology_economy/survival-techniques.png@ SURVIVAL TECHNIQUES",
+          "1 @unit_worker/villager.png@ from @resource/resource_wood.png@  -&gt; @building_defensive/outpost.png@-&gt; @resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 25,
+        "resources": {
+          "food": 15,
+          "wood": 4,
+          "gold": 6,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 @unit_worker/villager.webp@ from @resource/resource_wood.png@ -> @building_economy/house.png@ -&gt; @resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "8:00",
+        "villager_count": 29,
+        "resources": {
+          "food": 5,
+          "wood": 3,
+          "gold": 6,
+          "stone": 0,
+          "builder": 15
+        },
+        "notes": [
+          "AGE UP: 15 @unit_worker/villager.webp@ from @resource/resource_food.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 29,
+        "resources": {
+          "food": 3,
+          "wood": 3,
+          "gold": 8,
+          "stone": 0,
+          "builder": 15
+        },
+        "notes": [
+          "1 @unit_worker/villager.webp@ from @resource/resource_food.png@ -> @building_economy/house.png@*3 -&gt; @resource/resource_gold.png@",
+          "1 @unit_worker/villager.png@ from @resource/resource_food.png@ -&gt; @building_technology/blacksmith.png@ -&gt; @resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      }
+    ],
+    "video": "https://www.youtube.com/embed/4nGHtDdDZgs",
+    "season": "Season 9",
+    "map": null,
+    "strategy": "Timing Attack"
+  },
+  {
+    "description": "HRE Feudal Age aggression with good economy. Fake horseman to make enemy go on spearmen and then pump archers to put pressure to prevent enemy from going Castle Age. Finish with rams through the blacksmith upgrade or transition into Castle Age.",
+    "civilization": "Holy Roman Empire",
+    "name": "LaSh HRE Build Order (June 2024)",
+    "author": "zebb",
+    "source": "https://aoe4guides.com/builds/33ICeUSLAjHFCPrp0vih",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "3 @unit_worker/villager.webp@ > @resource/sheep.png@",
+          "1 @unit_worker/villager.png@ &gt; @resource/resource_gold.png@",
+          "1 @unit_worker/villager.png@&gt; @abilities/repair.png@ @building_economy/mining-camp.png@",
+          "1 @unit_worker/villager.png@&gt;@abilities/repair.png@ @building_economy/house.png@",
+          "@resource/rally.png@ &gt; @resource/sheep.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:30",
+        "villager_count": 7,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Send 2 @abilities/repair.webp@ > @resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "02:10",
+        "villager_count": 12,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Send 4 @unit_worker/villager.webp@ from @resource/sheep.png@ to @abilities/repair.png@@landmark_hre/aachen-chapel.png@ (in range of wood and sheep + ideally gold)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "02:15",
+        "villager_count": 12,
+        "resources": {
+          "food": 4,
+          "wood": 1,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Send 1 @unit_worker/villager.webp@ from @resource/sheep.png@ to @resource/resource_wood.png@(@resource/gaiatreeprototypetree.png@)",
+          "@resource/rally.png@ >@resource/resource_wood.png@(@resource/gaiatreeprototypetree.png@)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "03:35",
+        "villager_count": 16,
+        "resources": {
+          "food": 4,
+          "wood": 3,
+          "gold": 3,
+          "stone": 0,
+          "builder": 6
+        },
+        "notes": [
+          "Send 2 @unit_worker/villager.webp@ from @resource/resource_wood.png@ to @abilities/repair.png@@building_economy/mill.png@ and @building_economy/house.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "03:50",
+        "villager_count": 17,
+        "resources": {
+          "food": 4,
+          "wood": 5,
+          "gold": 3,
+          "stone": 0,
+          "builder": 5
+        },
+        "notes": [
+          "4 from @landmark_hre/aachen-chapel.webp@ to @abilities/repair.png@@building_economy/lumber-camp.png@",
+          "@unit_hre/prelate.png@ > @landmark_hre/aachen-chapel.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "04:10",
+        "villager_count": 18,
+        "resources": {
+          "food": 5,
+          "wood": 11,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Send 1 @unit_worker/villager.webp@ from @resource/resource_gold.png@ to @resource/resource_wood.png@",
+          "Research @technology_economy/double-broadaxe.png@ and @technology_economy/wheelbarrow.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "04:35",
+        "villager_count": 19,
+        "resources": {
+          "food": 5,
+          "wood": 8,
+          "gold": 2,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "4 @unit_worker/villager.webp@ from @resource/resource_wood.png@ @abilities/repair.png@ @building_military/stable.png@",
+          "@resource/rally.png@ to @resource/sheep.png@",
+          "Start recruiting @unit_cavalry/horseman-1.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "05:20",
+        "villager_count": 21,
+        "resources": {
+          "food": 7,
+          "wood": 11,
+          "gold": 2,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "1 from @resource/sheep.webp@@abilities/repair.png@@building_military/archery-range.png@",
+          "Start recruiting @unit_infantry/archer-2.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "05:40",
+        "villager_count": 22,
+        "resources": {
+          "food": 8,
+          "wood": 11,
+          "gold": 2,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "@abilities/repair.webp@ 2nd @building_military/archery-range.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "06:00",
+        "villager_count": 23,
+        "resources": {
+          "food": 9,
+          "wood": 10,
+          "gold": 1,
+          "stone": 0,
+          "builder": 3
+        },
+        "notes": [
+          "1 from @resource/resource_wood.webp@ @abilities/repair.png@@building_economy/house.png@",
+          "1 from @resource/resource_gold.png@@abilities/repair.png@@building_technology/blacksmith.png@",
+          "Research @technology_military/steeled-arrow.png@ and @technology_military/iron-undermesh.png@ then later ::@technology_military/siege-engineering.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "07:00",
+        "villager_count": 26,
+        "resources": {
+          "food": 12,
+          "wood": 12,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Benchmark at 07:00:",
+          "6 @unit_infantry/archer-2.webp@",
+          "3 @unit_cavalry/horseman-1.png@",
+          "Pressure @resource/resource_gold.png@@resource/berrybush.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "09:00",
+        "villager_count": 32,
+        "resources": {
+          "food": 15,
+          "wood": 15,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Benchmark at 09:00:",
+          "14 @unit_infantry/archer-2.webp@",
+          "5 @unit_cavalry/horseman-1.png@",
+          "1 @unit_siege/battering-ram.png@"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/cTo7N1mcgVY",
+    "season": "Season 7",
+    "map": "Open",
+    "strategy": "Timing Attack"
+  },
+  {
+    "description": "",
+    "civilization": "Holy Roman Empire",
+    "name": "神罗直城",
+    "author": "321313",
+    "source": "https://aoe4guides.com/builds/3Lb1SkQ8Y1SF1Ag91pY6",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "3个@unit_worker/villager.webp@去@resource/sheep.webp@,",
+          "3个@unit_worker/villager.webp@去@resource/resource_gold.webp@,",
+          "其中2个@unit_worker/villager.webp@先去造 @building_economy/mining-camp.webp@,",
+          "1个 @unit_worker/villager.webp@先去造 @building_economy/house.webp@,",
+          "建造完后都去@resource/resource_gold.webp@."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 10,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_economy/town-center.webp@@resource/rally.webp@设置到@resource/sheep.webp@一直到食物农7个为止."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 13,
+        "resources": {
+          "food": 7,
+          "wood": 3,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "然后把@building_economy/town-center.webp@@resource/rally.webp@设置到 @resource/resource_wood.webp@一直到砍树农民3个为止，",
+          "后面的集结点都设为@resource/resource_food.webp@."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 13,
+        "resources": {
+          "food": 4,
+          "wood": 3,
+          "gold": 3,
+          "stone": 0,
+          "builder": 3
+        },
+        "notes": [
+          "3个@resource/resource_food.webp@@unit_worker/villager.webp@去建造亚琛教堂,",
+          "@landmark_hre/aachen-chapel.webp@并编队使其建造完后采集@resource/resource_gold.webp@."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@landmark_hre/aachen-chapel.webp@覆盖资源的优先级:@resource/berrybush.webp@@resource/deer.webp@,  @resource/resource_wood.webp@,    @resource/resource_gold.webp@,@resource/resource_stone.webp@.",
+          "如果@landmark_hre/aachen-chapel.webp@建造范围内没有能覆盖的金矿@resource/resource_gold.webp@",
+          "那么在@building_economy/town-center.webp@生产1个@unit_hre/prelate.webp@去@resource/resource_gold.webp@旁边鼓舞."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "最先的150个@resource/resource_wood.webp@的用途:用1个@unit_worker/villager.png@@resource/resource_food.png@依次建造@building_economy/mill.png@,@resource/resource_wood.png@,@building_economy/house.png@,",
+          "以及在@building_economy/mill.png@里升级@technology_economy/wheelbarrow.png@."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 24,
+        "resources": {
+          "food": 15,
+          "wood": 3,
+          "gold": 6,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "准备充足的@resource/resource_food.webp@t发展到第四时代 @age/age_4.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@landmark_hre/aachen-chapel.webp@建造好后让@unit_hre/prelate.webp@入驻,",
+          "如果对手有进攻意图，或者@landmark_hre/aachen-chapel.webp@的位置比较危险,",
+          "补充@resource/resource_wood.webp@@unit_worker/villager.webp@至5个,",
+          "增加1个@unit_worker/villager.webp@采@resource/resource_stone.webp@,",
+          "建造1个@building_defensive/outpost.webp@并升级@technology_defensive/arrow-slits.webp@防守."
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "8个@unit_worker/villager.webp@@resource/sheep.webp@去建造雷格尼茨大教堂@landmark_hre/regnitz-cathedral.webp@,生产 2个@unit_hre/prelate.webp@拿@resource/relics.webp@.",
+          "如果已被进攻，那么建造城主宫殿@landmark_hre/burgrave-palace.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "根据对手出兵情况灵活应对, 通常建造2个@building_military/stable.webp@生产4-12个 @unit_cavalry/knight-2.webp@",
+          "在有雷格尼茨大教堂@landmark_hre/regnitz-cathedral.webp@的情况"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "在第三时代有@landmark_hre/regnitz-cathedral.webp@并抢夺到几个圣物，",
+          "会有大量黄金资源支持大量出兵+点科技"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 11",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "based off beasty's gameplay",
+    "civilization": "Holy Roman Empire",
+    "name": "hre imperial rush",
+    "author": "asphyxia",
+    "source": "https://aoe4guides.com/builds/3MfPmbL4O7rW5pX1hbGj",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "00:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "queue 4@unit_worker/villager.webp@in tc@resource/rally.png@to@resource/sheep.png@",
+          "3@unit_worker/villager.png@to@resource/sheep.png@",
+          "3@unit_worker/villager.png@to@building_economy/mining-camp.png@then@resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:21",
+        "villager_count": 7,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "7th@unit_worker/villager.webp@on@building_economy/house.png@then@resource/sheep.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:10",
+        "villager_count": 12,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "4@unit_worker/villager.webp@from@resource/sheep.png@to@landmark_hre/aachen-chapel.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:22",
+        "villager_count": 13,
+        "resources": {
+          "food": 1,
+          "wood": 5,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "off of 13th@unit_worker/villager.webp@ pop, move 5@unit_worker/villager.png@from@resource/sheep.png@to@resource/gaiatreeprototypetree.png@(chop anywhere from 1 to all 3 trees depending on other civ's aggressiveness)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:00",
+        "villager_count": 14,
+        "resources": {
+          "food": 2,
+          "wood": 5,
+          "gold": 2,
+          "stone": 0,
+          "builder": 5
+        },
+        "notes": [
+          "1@unit_worker/villager.webp@from@resource/resource_gold.png@to@building_defensive/outpost.png@on@resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:10‑4:00",
+        "villager_count": 15,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 3,
+          "stone": 5,
+          "builder": 4
+        },
+        "notes": [
+          "upon chopping anywhere from 1-3 trees, move 5@unit_worker/villager.webp@from@resource/gaiatreeprototypetree.png@to@resource/resource_stone.png@until",
+          "113@resource/resource_stone.png@, move 5@unit_worker/villager.png@from @resource/resource_stone.png@to@resource/sheep.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "3:48",
+        "villager_count": 17,
+        "resources": {
+          "food": 11,
+          "wood": 0,
+          "gold": 5,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "2@unit_worker/villager.webp@from@landmark_hre/aachen-chapel.png@to@resource/sheep.png@, other 2@unit_worker/villager.png@to@resource/resource_gold.png@",
+          "17th@unit_worker/villager.png@to@building_economy/house.png@then@resource/sheep.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "3:48",
+        "villager_count": 17,
+        "resources": {
+          "food": 11,
+          "wood": 0,
+          "gold": 5,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "OPTIONAL: 2@unit_worker/villager.webp@from@resource/resource_stone.png@to@building_military/barracks.png@/@building_military/archery-range.png@/@building_military/stable.png@(IF AGGRO CIV)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:00‑4:50",
+        "villager_count": 18,
+        "resources": {
+          "food": 13,
+          "wood": 0,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "get@technology_defensive/arrow-slits.webp@and@technology_defensive/fortify-outpost.png@for@building_defensive/outpost.png@on@resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:30",
+        "villager_count": 22,
+        "resources": {
+          "food": 17,
+          "wood": 0,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@building_economy/town-center.png@to@resource/resource_gold.png@before 23rd@unit_worker/villager.png@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:55",
+        "villager_count": 24,
+        "resources": {
+          "food": 3,
+          "wood": 4,
+          "gold": 7,
+          "stone": 0,
+          "builder": 10
+        },
+        "notes": [
+          "10@unit_worker/villager.webp@from@resource/sheep.png@to@landmark_hre/regnitz-cathedral.png@, 4@unit_worker/villager.png@from@resource/sheep.png@to@resource/resource_wood.png@, @resource/rally.png@@building_economy/town-center.png@to@resource/sheep.png@(Wood can be straggler trees, wood line if Aachen Chapel is near enough to drop off to, or wood line until enough wood for lumber camp)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:15",
+        "villager_count": 24,
+        "resources": {
+          "food": 3,
+          "wood": 4,
+          "gold": 7,
+          "stone": 0,
+          "builder": 10
+        },
+        "notes": [
+          "queue@unit_hre/prelate.webp@from@building_economy/town-center.png@for@resource/relics.png@(NOTE: Can't pickup relics before Age 3)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:30",
+        "villager_count": 25,
+        "resources": {
+          "food": 4,
+          "wood": 4,
+          "gold": 7,
+          "stone": 0,
+          "builder": 10
+        },
+        "notes": [
+          "take@unit_hre/prelate.webp@from@landmark_hre/aachen-chapel.png@for@resource/relics.png@(NOTE: Can't pickup relics before Age 3)"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "6:57",
+        "villager_count": 25,
+        "resources": {
+          "food": 10,
+          "wood": 4,
+          "gold": 11,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "6@unit_worker/villager.webp@from@landmark_hre/regnitz-cathedral.png@to@resource/resource_food.png@, other 4@unit_worker/villager.png@to@resource/resource_gold.png@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "6:57",
+        "villager_count": 25,
+        "resources": {
+          "food": 10,
+          "wood": 4,
+          "gold": 11,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Immediately queue@unit_hre/prelate.webp@from@landmark_hre/regnitz-cathedral.png@for@landmark_hre/aachen-chapel.png@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "10:00",
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build 3@building_defensive/outpost.webp@in the shape of a triangle around your base, get @technology_defensive/springald-emplacement.png@and@technology_defensive/fortify-outpost.png@for all 3 as well as the stone necessary for them before hand"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "13:25",
+        "villager_count": 20,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 20
+        },
+        "notes": [
+          "Move about 20-30@unit_worker/villager.webp@to@landmark_hre/palace-of-swabia.png@"
+        ]
+      },
+      {
+        "age": 4,
+        "population_count": -1,
+        "time": "14:05",
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "boom"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 7",
+    "map": "Open",
+    "strategy": "Fast Imperial"
+  }
+]

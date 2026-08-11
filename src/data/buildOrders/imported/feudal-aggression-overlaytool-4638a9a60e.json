@@ -1,0 +1,94 @@
+{
+  "name": "Feudal Aggression  - OverlayTool",
+  "civilization": "Jeanne d'Arc",
+  "author": "schwazza",
+  "source": "https://aoe4guides.com/builds/14VpiMgY3j3pcAnBdLC5",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @unit_worker/villager.png@ on@resource/resource_food.png@til 8",
+        "All @unit_worker/villager.png@ to @resource/resource_food.png@, @unit_jeanne/jeanne-darc-peasant-1.png@ builds @building_economy/house.png@ + @building_economy/mining-camp.png@ @resource/resource_gold.png@",
+        "@resource/rally.png@ @unit_worker/villager.png@ on @resource/resource_gold.png@ til 3",
+        "@resource/rally.png@ @unit_worker/villager.png@ on@resource/resource_food.png@til@age/age_2.png@",
+        "@unit_jeanne/jeanne-darc-peasant-1.png@+1@resource/resource_food.png@@unit_worker/villager.png@@abilities/repair.png@@age/age_2.png@@landmark_french/school-of-cavalry.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro: 7@resource/resource_food.webp@/2@resource/resource_wood.png@/2@resource/resource_gold.png@",
+        "@resource/rally.png@@unit_worker/villager.png@on@resource/gaiatreeprototypetree.png@ til 5",
+        "@resource/rally.png@@unit_worker/villager.png@on@resource/resource_food.png@",
+        "1 @resource/resource_gold.png@@unit_worker/villager.png@ builds a @building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "In @age/age_3.webp@:@landmark_french/school-of-cavalry.png@@unit_worker/villager.png@->@resource/resource_gold.png@",
+        "Remacro: 9@resource/resource_food.png@/5@resource/resource_wood.png@/3@resource/resource_gold.png@",
+        "@unit_jeanne/jeanne-darc-peasant-1.png@ builds @building_military/archery-range.png@-&gt;@unit_jeanne/jeanne-darc-peasant-1.png@@ability_jeanne/ability-path-of-the-warrior-1.png@",
+        "Queue 1 @unit_french/royal-knight-2.png@",
+        "@resource/rally.png@ @unit_worker/villager.png@on@resource/resource_food.png@til 12",
+        "Keep queueing @unit_french/royal-knight-2.png@&@unit_infantry/archer-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@ability_jeanne/ability-path-of-the-warrior-1.webp@ -> @resource/boar.png@(x2) then fight enemy to gain exp.",
+        "@resource/rally.png@ @unit_worker/villager.png@ on@resource/resource_gold.png@til 6",
+        "@resource/rally.png@ @unit_worker/villager.png@ on@resource/resource_wood.png@",
+        "@abilities/repair.png@@building_economy/house.png@+@building_economy/lumber-camp.png@",
+        "@resource/rally.png@ @unit_worker/villager.png@on@resource/resource_food.png@"
+      ]
+    }
+  ],
+  "description": "A heavy feudal focused build to gain experience for Jeanne. You want her to hit lvl 3 for Holy Wrath to do effective dmg. \n\nOverlayTool:\nhttps://github.com/CraftySalamander/RTS_Overlay",
+  "video": "https://www.youtube.com/embed/4tPvYbswjlY",
+  "season": 6,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

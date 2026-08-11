@@ -416,6 +416,7 @@ const UI: Record<Locale, Record<string, string>> = {
     'Custom stream CSS': 'Пользовательский CSS стрима',
     'Data sources and coverage': 'Источники данных и покрытие',
     Watch: 'Смотреть',
+    'Related videos': 'Связанные видео',
     auto: 'авто',
     'YouTube captions': 'субтитры YouTube',
     'Twitch captions': 'субтитры Twitch',
@@ -3167,8 +3168,11 @@ const GAME_NAMES: Record<Locale, Record<string, string>> = {
     'Palatine School': 'Палатинская школа',
     'Foreign Engineering Company': 'Иностранная инженерная компания',
     'Meditation Gardens': 'Сады медитации',
+    'Jiangnan Tower': 'Башня Цзяннань',
     'Mount Lu Academy': 'Академия горы Лу',
+    'Shaolin Monastery': 'Монастырь Шаолинь',
     "Zhu Xi's Library": 'Библиотека Чжу Си',
+    'Temple of the Sun': 'Храм Солнца',
     'Ancient Spires': 'Древние шпили',
     'Boulder Bay': 'Бухта валунов',
     Cliffside: 'Утёс',
@@ -3221,6 +3225,26 @@ type I18nValue = {
 function russianDynamic(input: string): string | null {
   const gameName = GAME_NAMES.ru[input]
   if (gameName) return gameName
+
+  // Landmark plans are persisted as English domain copy so the same records
+  // can be used by the English UI and tests. Keep the long, high-visibility
+  // plan explanations translated locally as well; otherwise the Russian UI
+  // silently falls back to English when no translation provider is configured.
+  const landmarkPlanCopy: Record<string, string> = {
+    'Like base Chinese, Zhu Xi\'s Legacy uses a NON-EXCLUSIVE Dynasty mechanic: you are not limited to one landmark per age. You can build BOTH landmarks of an age, and building the second one unlocks that age\'s Dynasty bonus (Feudal both = Song Dynasty / unit & eco discounts; Castle both = Yuan Dynasty; Imperial both = Ming Dynasty). So the "choice" below is really WHICH landmark to build FIRST/prioritize, not an either/or lock — a player with the economy to afford it typically builds both for the dynasty.':
+      'Как и базовые китайцы, Наследие Чжу Си использует НЕИСКЛЮЧАЮЩУЮ механику династий: вы не ограничены одним лендмарком за эпоху. Можно построить ОБА лендмарка эпохи, а строительство второго открывает бонус династии этой эпохи (оба в Феодале = династия Сун и скидки на юнитов и экономику; оба в Замке = династия Юань; оба в Имперской эпохе = династия Мин). Поэтому «выбор» ниже означает, КАКОЙ лендмарк построить ПЕРВЫМ и сделать приоритетным, а не жёсткое «или/или»: игрок с достаточной экономикой обычно строит оба ради династии.',
+    "It is the safe economic landmark that boosts nearby resources and dumps a large one-time resource boon, fueling a beginner's whole game; place it near berries.":
+      'Это безопасный экономический лендмарк: он усиливает соседние ресурсы и даёт большой разовый запас ресурсов, поддерживая экономику новичка всю игру. Ставьте его рядом с ягодами.',
+    'Its faster tax collection plus bonus food turns Imperial Officials into a snowballing eco engine, the more forgiving default; pick Shaolin Monastery instead if you want Shaolin Monk aggression.':
+      'Ускоренный сбор налогов и дополнительная еда превращают имперских чиновников в разгоняющийся экономический двигатель. Это более надёжный вариант по умолчанию; выбирайте монастырь Шаолинь для агрессии через монахов Шаолиня.',
+    'go Shaolin Monastery if playing aggressive monk/military pressure':
+      'выбирайте монастырь Шаолинь при агрессивном давлении монахами и армией',
+    "It houses the powerful unique techs (including Dynastic Protectors for the Imperial Guard) that define the civ's late game, giving a beginner the strongest payoff.":
+      'В нём доступны мощные уникальные технологии, включая династических защитников для имперской гвардии. Они определяют позднюю игру цивилизации и дают новичку самый сильный результат.',
+  }
+  const landmarkTranslation = landmarkPlanCopy[input]
+  if (landmarkTranslation) return landmarkTranslation
+
   const labelledGameName = /^(.+?) - (.+)$/.exec(input)
   if (labelledGameName) {
     const translatedCiv = GAME_NAMES.ru[labelledGameName[2]!]

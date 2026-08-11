@@ -1,0 +1,1814 @@
+[
+  {
+    "description": "Copied from Swaggy Professor's video for me to understand",
+    "civilization": "Jin Dynasty",
+    "name": "Swaggy's Jin Starter- Copy for me to understand series",
+    "author": "murtuk",
+    "source": "https://aoe4guides.com/builds/tu8Z6S1y6myRbMBsEfWO",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 3,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "3@unit_jin/mounted-villager.webp@ to @resource/resource_gold.webp@with@building_economy/mining-camp.webp@",
+          "@resource/rally.webp@ \"rein@resource/deer.webp@\""
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:35",
+        "villager_count": 4,
+        "resources": {
+          "food": 1,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Full produce@unit_jin/mounted-villager.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "When mined 400 @resource/resource_gold.webp@(3600 left on node) all go to @resource/deer.webp@",
+          "Build 1st @building_economy/house.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:45",
+        "villager_count": 6,
+        "resources": {
+          "food": 1,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": 3
+        },
+        "notes": [
+          "Start @age/age_2.webp@@landmark_jin/great-pasture.webp@with 3 from@resource/resource_food.webp@back to 1 @resource/resource_gold.webp@2@resource/resource_food.webp@",
+          "3 @resource/deer.webp@ to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "3:55",
+        "villager_count": 9,
+        "resources": {
+          "food": 3,
+          "wood": 2,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@landmark_jin/great-pasture.webp@finishes at 3:55",
+          "Make @unit_jin/iron-pagoda.webp@ ASAP and pressure"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:30",
+        "villager_count": 10,
+        "resources": {
+          "food": 4,
+          "wood": 2,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 from @resource/resource_wood.webp@ to @abilities/repair.webp@@building_jin/grassland.webp@",
+          "1@resource/resource_food.webp@to@resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:00",
+        "villager_count": 11,
+        "resources": {
+          "food": 5,
+          "wood": 1,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_jin/grassland.webp@ finishes, builder goes to@resource/resource_gold.webp@",
+          "If opponent go spears, then make @unit_jin/mohe-tribesman.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:30",
+        "villager_count": 14,
+        "resources": {
+          "food": 8,
+          "wood": 1,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "When having 8 on @resource/resource_food.webp@, send them to @resource/boar.webp@/@resource/deer.webp@",
+          "Also research @technology_jin/mohe-ancestry.webp@ from @building_economy/mill.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "7:00",
+        "villager_count": 15,
+        "resources": {
+          "food": 8,
+          "wood": 1,
+          "gold": 6,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "10:10",
+        "villager_count": 20,
+        "resources": {
+          "food": 8,
+          "wood": 1,
+          "gold": 4,
+          "stone": 0,
+          "builder": 7
+        },
+        "notes": [
+          "Start @age/age_3.webp@with @landmark_jin/dragon-pavilion.webp@ 7 from @resource/resource_gold.webp@ back to @resource/resource_gold.webp@",
+          "20 @unit_jin/mounted-villager.webp@ fulled up (at 9:55 if perfect timing)"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "11:10",
+        "villager_count": 22,
+        "resources": {
+          "food": 8,
+          "wood": 7,
+          "gold": 7,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@landmark_jin/dragon-pavilion.webp@ finishes at 11:10",
+          "@unit_jin/emissary.webp@ goes to neutral @building_economy/market.webp@ to use ability"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/XF6du6yRz3E",
+    "season": "Season 13",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "The ONLY Jin Dynasty Build You Need To Get Conqueror by Swaggy Professor. \n\nFor a more simple version of this build, please check out murtuk's 'Copy for me to understand series' found here: https://aoe4guides.com/builds/tu8Z6S1y6myRbMBsEfWO",
+    "civilization": "Jin Dynasty",
+    "name": "The ONLY Jin Dynasty Build You Need - Swaggy Professor",
+    "author": "Niki45nk",
+    "source": "https://aoe4guides.com/builds/pj6ztHDSiVv9xpo1NsXy",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 3,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Send all 3 @unit_jin/mounted-villager.webp@ to @building_economy/mining-camp.webp@@resource/resource_gold.webp@",
+          "Rally @unit_jin/mounted-villager.webp@ to Reindeer @resource/deer.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "When you have 300 @resource/resource_gold.webp@, 2 @resource/resource_gold.webp@@unit_jin/mounted-villager.webp@ go to @resource/sheep.webp@",
+          "1 @resource/resource_gold.webp@@unit_jin/mounted-villager.webp@ builds @building_economy/house.webp@, then also goes to @resource/sheep.webp@",
+          "Use your @unit_cavalry/scout.webp@ to scout opponent's base"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:45",
+        "villager_count": 7,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "3 @resource/resource_food.webp@@unit_jin/mounted-villager.webp@ build @landmark_jin/great-pasture.webp@",
+          "Send 3 @resource/resource_food.webp@@unit_jin/mounted-villager.webp@ to @resource/resource_gold.webp@",
+          "Keep @resource/rally.webp@@unit_jin/mounted-villager.webp@ to @resource/resource_food.webp@",
+          "[If you are Tower Rushed]",
+          "Immediately make a few @unit_jin/mohe-tribesman.webp@ from @landmark_jin/great-pasture.webp@ to defend"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "3:55",
+        "villager_count": 9,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 3
+        },
+        "notes": [
+          "Always train @unit_jin/iron-pagoda.webp@ from @landmark_jin/great-pasture.webp@ (@unit_jin/mohe-tribesman.webp@ if you are spear rushed)",
+          "Send 1 @landmark_jin/great-pasture.webp@@unit_jin/mounted-villager.webp@ to @resource/resource_gold.webp@ and 2 @landmark_jin/great-pasture.webp@@unit_jin/mounted-villager.webp@ to @resource/gaiatreeprototypetree.webp@",
+          "When you have 100 @resource/resource_wood.webp@, 1 @resource/gaiatreeprototypetree.webp@@unit_jin/mounted-villager.webp@ builds @building_jin/grassland.webp@ near @landmark_jin/great-pasture.webp@, then goes to @resource/resource_gold.webp@",
+          "Use your @unit_jin/iron-pagoda.webp@ to harass opponent's @unit_worker/villager-china.webp@ or defend your own",
+          "If opponent makes many @unit_infantry/spearman-1.webp@, make a few @unit_jin/mohe-tribesman.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:50",
+        "villager_count": 14,
+        "resources": {
+          "food": 8,
+          "wood": 1,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "When you have 8 @resource/resource_food.webp@@unit_jin/mounted-villager.webp@, send them all to @resource/deer.webp@/@resource/boar.webp@ and build @building_economy/mill.webp@",
+          "Get @technology_jin/mohe-ancestry.webp@ -> @technology_economy/wheelbarrow.webp@ at @building_economy/mill.webp@",
+          "@resource/rally.webp@ @unit_jin/mounted-villager.webp@ to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "10:15",
+        "villager_count": 20,
+        "resources": {
+          "food": 8,
+          "wood": 1,
+          "gold": 11,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Send 5-8 @resource/resource_gold.webp@@unit_jin/mounted-villager.webp@ to build @landmark_jin/dragon-pavilion.webp@ at forward @resource/resource_gold.webp@",
+          "Send all other @resource/resource_gold.webp@@unit_jin/mounted-villager.webp@ to @resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "11:10",
+        "villager_count": 29,
+        "resources": {
+          "food": 8,
+          "wood": 7,
+          "gold": 7,
+          "stone": 0,
+          "builder": 7
+        },
+        "notes": [
+          "Send all @landmark_jin/dragon-pavilion.webp@@unit_jin/mounted-villager.webp@ to @resource/resource_gold.webp@",
+          "Send @unit_jin/emissary.webp@ to nearby Trade Posts",
+          "Build @building_jin/grassland.webp@ near@landmark_jin/dragon-pavilion.webp@",
+          "Start getting Eco Upgrades",
+          "Build @building_technology/blacksmith.webp@ and @building_religious/monastery.webp@"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/XF6du6yRz3E",
+    "season": "Season 13",
+    "map": null,
+    "strategy": "Rush"
+  },
+  {
+    "description": "[Jin Dynasty] Late Game Build by Valdemar.\n\nWarning: Based on the previous games with this Civ, it seems to be fairly weak early game, but very strong late game Civ. It may also be a bit of a advanced civilization to learn and master.",
+    "civilization": "Jin Dynasty",
+    "name": "[Jin Dynasty] Knight Opener - Valdemar ",
+    "author": "Niki45nk",
+    "source": "https://aoe4guides.com/builds/CfxPrNtfLVa97Jb3Ifwq",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 3,
+        "resources": {
+          "food": 1,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 @unit_jin/mounted-villager.webp@ to Elk @resource/deer.webp@",
+          "2 @unit_jin/mounted-villager.webp@ to @building_economy/mining-camp.webp@@resource/resource_gold.webp@",
+          "Rally 4 @unit_jin/mounted-villager.webp@ to Elk @resource/deer.webp@ -> @resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:30",
+        "villager_count": 7,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 @unit_jin/mounted-villager.webp@  from @resource/sheep.webp@ builds @landmark_jin/great-pasture.webp@ between @resource/resource_gold.webp@ and @building_economy/town-center.webp@",
+          "Send 2 @unit_jin/mounted-villager.webp@ from @resource/sheep.webp@ to @building_economy/lumber-camp.webp@@resource/resource_wood.webp@ and build @building_economy/house.webp@",
+          "Rally 1 @unit_jin/mounted-villager.webp@ to @resource/resource_gold.webp@, then rally to @resource/sheep.webp@",
+          "If safe, Send 3 @unit_jin/mounted-villager.webp@ from @resource/sheep.webp@ to @building_economy/mill.webp@@resource/deer.webp@ (and build @building_defensive/outpost.webp@)",
+          "When @resource/sheep.webp@ run out, send @unit_jin/mounted-villager.webp@ to other @resource/resource_food.webp@ sources (and build @building_defensive/outpost.webp@ there too)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:20",
+        "villager_count": 9,
+        "resources": {
+          "food": 4,
+          "wood": 2,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Get  @technology_jin/mohe-ancestry.webp@ upgrade at @building_economy/mill.webp@",
+          "Use your @landmark_jin/great-pasture.webp@to make ~ 6-8 @unit_jin/iron-pagoda.webp@",
+          "Build @building_jin/grassland.webp@ near the @landmark_jin/great-pasture.webp@",
+          "When 4 @resource/resource_food.webp@@unit_worker/villager-china.webp@, Rally 2 @unit_jin/mounted-villager.webp@ to @resource/resource_wood.webp@ and 2 to @resource/resource_gold.webp@",
+          "Build @building_military/stable.webp@ near @building_jin/grassland.webp@ and make @unit_jin/iron-pagoda.webp@ from there as well",
+          "Use your Cavalry to either attack opponent's @unit_worker/villager-china.webp@ or defend your own"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:30",
+        "villager_count": 13,
+        "resources": {
+          "food": 4,
+          "wood": 4,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Rally 1 @unit_jin/mounted-villager.webp@ to @building_economy/mining-camp.webp@@resource/resource_stone.webp@",
+          "Then @resource/rally.webp@ @unit_jin/mounted-villager.webp@ to @resource/resource_food.webp@",
+          "If opponent makes @unit_infantry/spearman-1.webp@, train ~ 10 @unit_jin/mohe-tribesman.webp@at @landmark_jin/great-pasture.webp@ + @building_military/stable.webp@",
+          "Use @resource/resource_stone.webp@ to get @technology_chinese/handcannon-slits.webp@ + @building_defensive/stone-wall-tower.webp@ at @building_defensive/outpost.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "~12:00",
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "[When you feel safe to Age-Up]",
+          "After a good fight, send all @unit_worker/villager-china.webp@ at @resource/resource_wood.webp@ to @resource/resource_food.webp@ and @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "13:00",
+        "villager_count": 29,
+        "resources": {
+          "food": 17,
+          "wood": 0,
+          "gold": 11,
+          "stone": 1,
+          "builder": -1
+        },
+        "notes": [
+          "6 Mounted and 2 Regular @resource/resource_food.webp@@unit_worker/villager-china.webp@ build @landmark_jin/dragon-pavilion.webp@near forward @resource/resource_gold.webp@ vein"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "14:20",
+        "villager_count": 30,
+        "resources": {
+          "food": 5,
+          "wood": 9,
+          "gold": 7,
+          "stone": 1,
+          "builder": 8
+        },
+        "notes": [
+          "All @landmark_jin/dragon-pavilion.webp@ @unit_worker/villager-china.webp@ go to nearby @resource/resource_gold.webp@",
+          "Send @unit_jin/emissary.webp@ from @landmark_jin/dragon-pavilion.webp@ to Neutral Trade Posts",
+          "Upgrade your Units and build @building_technology/blacksmith.webp@",
+          "Get @technology_economy/wheelbarrow.webp@",
+          "Try to maintain @resource/resource_food.webp@|@resource/resource_wood.webp@|@resource/resource_gold.webp@ ratio of 2 | 3 | 1"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/YkSMCs_b9C4",
+    "season": "Season 13",
+    "map": null,
+    "strategy": "Timing Attack"
+  },
+  {
+    "description": "",
+    "civilization": "Jin Dynasty",
+    "name": "2TC->Castle",
+    "author": "ElPavelo",
+    "source": "https://aoe4guides.com/builds/g5v65v26XATuup1K7yzy",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 3,
+        "resources": {
+          "food": 1,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "2@unit_jin/mounted-villager.webp@to @resource/resource_gold.webp@, 1@unit_jin/mounted-villager.webp@ to @resource/resource_food.webp@, @resource/rally.webp@@resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:40",
+        "villager_count": 7,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1@unit_jin/mounted-villager.webp@@landmark_jin/flower-pagoda.webp@, 2@unit_jin/mounted-villager.webp@ to @resource/resource_wood.webp@(1 from@resource/resource_gold.webp@, 1 from@resource/resource_food.webp@), 2@unit_jin/mounted-villager.webp@ on @resource/resource_stone.webp@, @resource/rally.webp@@resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:30",
+        "villager_count": 10,
+        "resources": {
+          "food": 2,
+          "wood": 5,
+          "gold": 1,
+          "stone": 2,
+          "builder": -1
+        },
+        "notes": [
+          "@age/age_2.webp@@unit_jin/mounted-villager.webp@ to @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:55",
+        "villager_count": 8,
+        "resources": {
+          "food": 2,
+          "wood": 5,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@building_economy/town-center.webp@on@resource/resource_gold.webp@, @resource/rally.webp@@resource/resource_food.webp@+@resource/resource_gold.webp@->@age/age_3.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "7:45",
+        "villager_count": 19,
+        "resources": {
+          "food": 9,
+          "wood": 1,
+          "gold": 9,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "4@unit_jin/mounted-villager.webp@->@landmark_jin/dragon-pavilion.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "8:55",
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@age/age_3.webp@"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 13",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "Specifically on Four Lakes",
+    "civilization": "Jin Dynasty",
+    "name": "Hybrid map opener - Beasty",
+    "author": "daltor",
+    "source": "https://aoe4guides.com/builds/29Sk7zy6ty95t5mWvX53",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 3,
+        "resources": {
+          "food": 0,
+          "wood": 3,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Queue 2 @unit_jin/mounted-villager.webp@, @resource/rally.webp@@resource/resource_wood.webp@",
+          "2 @unit_jin/mounted-villager.webp@ wood, one @unit_jin/mounted-villager.webp@ build @building_military/dock.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:00",
+        "villager_count": 4,
+        "resources": {
+          "food": 1,
+          "wood": 3,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Queue @unit_worker/villager-china.webp@, @unit_ship/fishing-boat.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:45",
+        "villager_count": 8,
+        "resources": {
+          "food": 3,
+          "wood": 5,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build@building_economy/house.webp@@building_economy/lumber-camp.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:00",
+        "villager_count": 13,
+        "resources": {
+          "food": 4,
+          "wood": 8,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build 2nd @building_military/dock.webp@, @building_economy/mining-camp.webp@on@resource/resource_gold.webp@, @resource/rally.webp@@resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:45",
+        "villager_count": 18,
+        "resources": {
+          "food": 7,
+          "wood": 8,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build @building_economy/house.webp@, Once 5 on@resource/resource_gold.webp@,  @resource/rally.webp@@resource/resource_food.webp@(these vills will be used for age up)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "4:45",
+        "villager_count": 25,
+        "resources": {
+          "food": 12,
+          "wood": 8,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build 3rd @building_military/dock.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "5:20",
+        "villager_count": 29,
+        "resources": {
+          "food": 12,
+          "wood": 8,
+          "gold": 5,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "4@resource/resource_food.webp@@unit_worker/villager-china.webp@Build @age/age_2.webp@@landmark_jin/flower-pagoda.webp@,@resource/rally.webp@@resource/resource_gold.webp@",
+          "Queue 2@unit_jin/mounted-villager.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "6:25",
+        "villager_count": 32,
+        "resources": {
+          "food": 18,
+          "wood": 8,
+          "gold": 6,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build @building_economy/house.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "7:15",
+        "villager_count": 41,
+        "resources": {
+          "food": 25,
+          "wood": 8,
+          "gold": 8,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Age up, @unit_worker/villager-china.webp@from age up go @resource/resource_food.webp@(Reindeer under TC)",
+          "@landmark_jin/flower-pagoda.webp@ability on @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "8:00",
+        "villager_count": 47,
+        "resources": {
+          "food": 25,
+          "wood": 8,
+          "gold": 8,
+          "stone": 0,
+          "builder": 6
+        },
+        "notes": [
+          "Build @age/age_3.webp@@landmark_jin/dragon-pavilion.webp@on @resource/resource_gold.webp@",
+          "Research @technology_economy/extended-lines.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "9:30",
+        "villager_count": 53,
+        "resources": {
+          "food": 28,
+          "wood": 11,
+          "gold": 14,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Build @building_jin/war-stable.webp@@building_jin/grassland.webp@, start @unit_jin/iron-pagoda.webp@production",
+          "Queue @unit_jin/emissary.webp@ and send to market",
+          "Build @building_religious/monastery.webp@for relics",
+          "Start prioritizing maxing out @unit_jin/mounted-villager.webp@as gold eco allows",
+          "eco upgrades @technology_jin/draft-horses.webp@@technology_economy/double-broadaxe.webp@@technology_economy/forestry.webp@@technology_economy/specialized-pick.webp@, military upgrades@technology_military/iron-undermesh.webp@"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 13",
+    "map": "Hybrid",
+    "strategy": null
+  },
+  {
+    "description": "Just for me to follow this build",
+    "civilization": "Jin Dynasty",
+    "name": "Jin Dynasty: 2TC+Castle in 9 min!!",
+    "author": "SkweezyLemon",
+    "source": "https://aoe4guides.com/builds/wNVkqNbu609TXvEhS2Eb",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 3,
+        "resources": {
+          "food": 1,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Kill reindeer @resource/deer.webp@ move 2 @unit_jin/mounted-villager.webp@ to @resource/resource_gold.webp@ and construct @building_economy/mining-camp.webp@, than @resource/rally.webp@@unit_jin/mounted-villager.webp@ to @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:24",
+        "villager_count": 7,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "When 4 @unit_jin/mounted-villager.webp@ on @resource/resource_food.webp@, @resource/rally.webp@ new @unit_jin/mounted-villager.webp@ to @resource/resource_gold.webp@ then back to @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:30",
+        "villager_count": 7,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Build @building_economy/house.webp@ with 1 @resource/resource_food.webp@@unit_jin/mounted-villager.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:40",
+        "villager_count": 7,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Take 1 @resource/resource_food.webp@@unit_jin/mounted-villager.webp@ to age up with @landmark_jin/flower-pagoda.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:11",
+        "villager_count": 9,
+        "resources": {
+          "food": 1,
+          "wood": 3,
+          "gold": 1,
+          "stone": 3,
+          "builder": 1
+        },
+        "notes": [
+          "Take 2@resource/resource_gold.webp@@unit_jin/mounted-villager.webp@ to @resource/resource_wood.webp@ (construct @building_economy/lumber-camp.webp@), take 1@resource/resource_food.webp@@unit_jin/mounted-villager.webp@ to @resource/resource_wood.webp@, take 2@resource/resource_food.webp@@unit_jin/mounted-villager.webp@ to @resource/resource_stone.webp@, and @resource/rally.webp@ to @resource/resource_stone.webp@ for one. more @unit_jin/mounted-villager.webp@ than start producing @unit_worker/villager-china.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:54",
+        "villager_count": 10,
+        "resources": {
+          "food": 2,
+          "wood": 3,
+          "gold": 1,
+          "stone": 3,
+          "builder": 1
+        },
+        "notes": [
+          "@resource/rally.webp@@unit_worker/villager-china.webp@to@resource/resource_food.webp@, then switch back to @unit_jin/mounted-villager.webp@ and @resource/rally.webp@to@resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:40",
+        "villager_count": 11,
+        "resources": {
+          "food": 2,
+          "wood": 5,
+          "gold": 1,
+          "stone": 3,
+          "builder": -1
+        },
+        "notes": [
+          "Take age up @unit_jin/mounted-villager.webp@ to @resource/resource_wood.webp@, and use ability of @landmark_jin/flower-pagoda.webp@ on the woodline"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:50",
+        "villager_count": 11,
+        "resources": {
+          "food": 2,
+          "wood": 8,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "When reaching 320@resource/resource_stone.webp@ move all @resource/resource_stone.webp@@unit_jin/mounted-villager.webp@ to @resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:10",
+        "villager_count": 12,
+        "resources": {
+          "food": 2,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": 8
+        },
+        "notes": [
+          "Use all @resource/resource_wood.webp@@unit_jin/mounted-villager.webp@ to construct new @building_economy/town-center.webp@ closest to dens resources (eg woodline with nearby gold), move 1 @unit_jin/mounted-villager.webp@ to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:50",
+        "villager_count": 15,
+        "resources": {
+          "food": 6,
+          "wood": 5,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@@unit_jin/mounted-villager.webp@/@unit_worker/villager-china.webp@ to @resource/resource_food.webp@ (make normal when you don't have the gold), take 2 @resource/resource_food.webp@@unit_jin/mounted-villager.webp@ to @resource/resource_gold.webp@, and @resource/rally.webp@ to @resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:22",
+        "villager_count": 19,
+        "resources": {
+          "food": 7,
+          "wood": 6,
+          "gold": 4,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "Construct @building_military/barracks.webp@ with 2 @resource/resource_wood.webp@@unit_jin/mounted-villager.webp@, and start producing 5 @unit_infantry/spearman-1.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "7:10",
+        "villager_count": 19,
+        "resources": {
+          "food": 12,
+          "wood": 0,
+          "gold": 7,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Take all @resource/resource_wood.webp@@unit_jin/mounted-villager.webp@ and spread to get new division of villagers @resource/rally.webp@to @resource/resource_food.webp@, construct @building_economy/house.webp@ with @resource/resource_gold.webp@@unit_jin/mounted-villager.webp@ if necessary, remacro when hitting 600@resource/resource_gold.webp@, keep min 5 on @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "8:18",
+        "villager_count": 21,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 5,
+          "stone": 0,
+          "builder": 9
+        },
+        "notes": [
+          "Start age up with 8@resource/resource_food.webp@, move towards strategic position for @landmark_jin/dragon-pavilion.webp@, when hitting 1200@resource/resource_food.webp@ take 5@unit_jin/mounted-villager.webp@ to @resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "9:00",
+        "villager_count": 26,
+        "resources": {
+          "food": 16,
+          "wood": 5,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Rally age up vils to @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "9:30",
+        "villager_count": 28,
+        "resources": {
+          "food": 15,
+          "wood": 8,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "remacro start getting the first @unit_jin/emissary.webp@ tributary, start getting eco upgrades, get relics, build army"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/IvIwlP5wqpA",
+    "season": "Season 13",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "https://www.youtube.com/@SwaggyProfessor",
+    "civilization": "Jin Dynasty",
+    "name": "Fast Imperial",
+    "author": "OutziderIIX",
+    "source": "https://aoe4guides.com/builds/awup04fPlQjf2I6iJCt1",
+    "build_order": [
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1x @unit_jin/mounted-villager.webp@ @resource/deer.webp@",
+          "2x@unit_jin/mounted-villager.webp@ @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "If @unit_cavalry/scout.webp@ found @resource/deer.webp@ kill 2-3 | send 3 @unit_jin/mounted-villager.webp@ @resource/resource_food.webp@ there with @building_economy/mill.webp@",
+          "@technology_jin/mohe-ancestry.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "01:52",
+        "villager_count": 5,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Next @unit_jin/mounted-villager.webp@ @resource/resource_wood.webp@ and 1 @unit_worker/villager-china.webp@ to @resource/resource_wood.webp@",
+          "@unit_jin/mounted-villager.webp@ gather 30 @resource/resource_wood.webp@ then go to @resource/resource_gold.webp@",
+          "2x @unit_jin/mounted-villager.webp@ @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "02.44",
+        "villager_count": 7,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "50 @resource/resource_wood.webp@ build @building_economy/house.webp@ with @unit_worker/villager-china.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "03:30",
+        "villager_count": 8,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Regular @unit_worker/villager-china.webp@ @abilities/repair.webp@ @landmark_jin/flower-pagoda.webp@ @resource/rally.webp@ @resource/deer.webp@ (Check if RUSH)",
+          "10 @unit_jin/mounted-villager.webp@ > Start Regular @unit_worker/villager-china.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "04:50",
+        "villager_count": 11,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1225 @resource/resource_gold.webp@ (600 Bank) > send @unit_jin/mounted-villager.webp@ @resource/deer.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "05.00",
+        "villager_count": 11,
+        "resources": {
+          "food": 11,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_cavalry/scout.webp@ a Spot with @resource/resource_food.webp@ and @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "05:42",
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1200 @resource/resource_food.webp@ and 600 @resource/resource_gold.webp@ @ banK move @unit_jin/mounted-villager.webp@ to Spot"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "06:20",
+        "villager_count": 10,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 10
+        },
+        "notes": [
+          "@landmark_jin/dragon-pavilion.webp@ > @unit_jin/emissary.webp@@building_economy/market.webp@",
+          "All @unit_jin/mounted-villager.webp@ to @resource/resource_gold.webp@",
+          "Flower Pagoda on Gold"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "09:00",
+        "villager_count": 24,
+        "resources": {
+          "food": 17,
+          "wood": 5,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1200 @resource/resource_gold.webp@ 8 @unit_jin/mounted-villager.webp@ @resource/boar.webp@ only 2 @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "10:10",
+        "villager_count": 28,
+        "resources": {
+          "food": 6,
+          "wood": 14,
+          "gold": 0,
+          "stone": 0,
+          "builder": 8
+        },
+        "notes": [
+          "@landmark_jin/great-wall-bastion.webp@ all @unit_worker/villager-china.webp@ to @resource/resource_wood.webp@ (Flower on Wood)",
+          "4 @building_military/barracks.webp@ back to @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "11:20",
+        "villager_count": 28,
+        "resources": {
+          "food": 19,
+          "wood": 5,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@unit_jin/zhanma-swordsman.webp@"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/UNit1HZLVzw",
+    "season": "Season 13",
+    "map": null,
+    "strategy": "Fast Imperial"
+  },
+  {
+    "description": "Copied from Swaggy Professor's video for me to understand",
+    "civilization": "Jin Dynasty",
+    "name": "Swaggy's 8 Minute Ender - Copy for me to understand series",
+    "author": "murtuk",
+    "source": "https://aoe4guides.com/builds/ykQT03vouoF0bLuK83V2",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 3,
+        "resources": {
+          "food": 2,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "2@unit_jin/mounted-villager.webp@\"rein@resource/deer.webp@\",  1 to @resource/resource_gold.webp@with@building_economy/mining-camp.webp@",
+          "@resource/rally.webp@ normal @unit_worker/villager-china.webp@ to @resource/deer.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:40",
+        "villager_count": 8,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Ready to force drop off to age up"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:45",
+        "villager_count": 8,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "Force drop + Start @age/age_2.webp@@landmark_jin/great-pasture.webp@with 2 @unit_jin/mounted-villager.webp@from@resource/resource_food.webp@ back to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:00",
+        "villager_count": 9,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "Make @building_economy/house.webp@ with @resource/resource_gold.webp@ vil"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:20",
+        "villager_count": 10,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "@resource/rally.webp@1 to@resource/resource_gold.webp@ now, then @resource/resource_food.webp@ again"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "3:12",
+        "villager_count": 12,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@landmark_jin/great-pasture.webp@finishes at 3:12",
+          "Make @unit_jin/iron-pagoda.webp@+@unit_jin/mohe-tribesman.webp@ ASAP and pressure"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "3:40",
+        "villager_count": 14,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "After reaching 10 @resource/resource_food.webp@ + 4@resource/resource_gold.webp@",
+          "@resource/rally.webp@@resource/resource_wood.webp@WITH making @unit_jin/mounted-villager.webp@ from now on"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:15",
+        "villager_count": 15,
+        "resources": {
+          "food": 10,
+          "wood": 1,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Make more @unit_jin/mohe-tribesman.webp@ to defend your @unit_jin/iron-pagoda.webp@ raids, also pressure open points"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/FCxJui0XL9I",
+    "season": "Season 13",
+    "map": null,
+    "strategy": "Timing Attack"
+  },
+  {
+    "description": "",
+    "civilization": "Jin Dynasty",
+    "name": "Jin Dynasty BO",
+    "author": "Zekk",
+    "source": "https://aoe4guides.com/builds/QO4bJlqXO5JBSFt8n9L0",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 3,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "3 @unit_jin/mounted-villager.webp@ on @resource/resource_gold.webp@. Kill @resource/deer.webp@with @unit_cavalry/scout.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@every villager to @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:00",
+        "villager_count": 7,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "when 400 mined @resource/resource_gold.webp@, build @building_economy/house.webp@ with one @unit_jin/mounted-villager.webp@and @resource/rally.webp@everyone on @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:45",
+        "villager_count": 4,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "3 @unit_jin/mounted-villager.webp@from @resource/resource_food.webp@to age up with Great Pasture"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 4,
+        "resources": {
+          "food": 1,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "send 2 @unit_jin/mounted-villager.webp@ to @resource/resource_gold.webp@and @resource/rally.webp@to @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "3:55",
+        "villager_count": 9,
+        "resources": {
+          "food": 3,
+          "wood": 2,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "age up completed, get 1 @unit_jin/mounted-villager.webp@on @resource/resource_gold.webp@and get 2 @unit_jin/mounted-villager.webp@on @resource/resource_wood.webp@near TC"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 9,
+        "resources": {
+          "food": 4,
+          "wood": 1,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "when 100 @resource/resource_wood.webp@take 1 @unit_jin/mounted-villager.webp@ to build Grassland near Great Pasture"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 11,
+        "resources": {
+          "food": 5,
+          "wood": 1,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "make Iron Pagoda and harass opponent (using both free horses and regular one). @resource/rally.webp@@resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 17,
+        "resources": {
+          "food": 8,
+          "wood": 1,
+          "gold": 8,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "when 8 @unit_jin/mounted-villager.webp@ on @resource/resource_food.webp@, take them to @resource/boar.webp@and get Mohe Ancestry @technology_jin/mohe-ancestry.webp@.  @resource/rally.webp@@resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "10:20",
+        "villager_count": 1,
+        "resources": {
+          "food": 0,
+          "wood": 1,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "with 5 to 8 @unit_jin/mounted-villager.webp@build dragon pavillon to secure ressources elsewhere on the map depending on the ressource you want"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "11:10",
+        "villager_count": 25,
+        "resources": {
+          "food": 13,
+          "wood": 5,
+          "gold": 7,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "send emissary to trade post"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "play game normally : get unit, eco and blacksmith upgrade - build monestary, get sacred sites, relics, make counter units"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/XF6du6yRz3E",
+    "season": "Season 13",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "Super fast Feudal with Great Pasture into immediate Mohe Tribesman production to pressure the opponent really early. Can get the first Mohe Tribesman into their back gold on 4:20 on average, and make a small fast very fast behind which you can either prolong feudal or go FC (safest option).",
+    "civilization": "Jin Dynasty",
+    "name": "3:30 Mohe Tribesman Rush into FC",
+    "author": "Eldritch",
+    "source": "https://aoe4guides.com/builds/nsgepzfxv60pe7cm2JXh",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 3,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Send 3 @unit_jin/mounted-villager.webp@ to Reindeers",
+          "Queue @unit_worker/villager-china.webp@ (NORMAL Villagers)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:20",
+        "villager_count": 4,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "@resource/rally.webp@ the 3 next to @resource/resource_gold.webp@ and build a @building_economy/house.webp@ as well"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 3,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ to Reindeers and shift-click to @resource/sheep.webp@ until age-up (so that the villagers automatically switch from Reindeers to Sheep once they're empty)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:05",
+        "villager_count": 9,
+        "resources": {
+          "food": 4,
+          "wood": 2,
+          "gold": 0,
+          "stone": 0,
+          "builder": 3
+        },
+        "notes": [
+          "Build @landmark_jin/great-pasture.webp@ with your 3 @unit_jin/mounted-villager.webp@",
+          "Send 2 @unit_worker/villager-china.webp@ from @resource/resource_gold.webp@ to @resource/resource_wood.webp@",
+          "Send 1 @unit_worker/villager-china.webp@ from @resource/resource_gold.webp@ to @resource/resource_food.webp@",
+          "@resource/rally.webp@ 1 more @unit_worker/villager-china.webp@ to @resource/resource_wood.webp@ to have 3 in total"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:20",
+        "villager_count": 10,
+        "resources": {
+          "food": 4,
+          "wood": 3,
+          "gold": 0,
+          "stone": 0,
+          "builder": 3
+        },
+        "notes": [
+          "@resource/rally.webp@ to @resource/resource_food.webp@ until Feudal"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "3:15",
+        "villager_count": 11,
+        "resources": {
+          "food": 7,
+          "wood": 3,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Send 2 @unit_jin/mounted-villager.webp@ to @resource/resource_food.webp@ and 1 to @resource/resource_gold.webp@",
+          "Produce @unit_jin/mohe-tribesman.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "3:20",
+        "villager_count": 12,
+        "resources": {
+          "food": 8,
+          "wood": 3,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@resource/rally.webp@ 1 more @unit_worker/villager-china.webp@ to @resource/resource_wood.webp@ then @resource/rally.webp@ @resource/resource_gold.webp@",
+          "Constantly produce @unit_jin/mohe-tribesman.webp@ until 5-6 and pressure the opponent with them, try to keep them alive and harass villagers"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:00",
+        "villager_count": 15,
+        "resources": {
+          "food": 8,
+          "wood": 3,
+          "gold": 3,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Build @building_economy/house.webp@ with 1 @resource/resource_wood.webp@ @unit_worker/villager-china.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:20",
+        "villager_count": 16,
+        "resources": {
+          "food": 8,
+          "wood": 4,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Start queuing @unit_jin/mounted-villager.webp@ as soon as you have enough @resource/resource_gold.webp@ and @resource/rally.webp@ to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:10",
+        "villager_count": 17,
+        "resources": {
+          "food": 8,
+          "wood": 2,
+          "gold": 7,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Once 2 @resource/gaiatreeprototypetree.webp@ are gathered, send 2 @resource/resource_wood.webp@ @unit_worker/villager-china.webp@ to @resource/resource_gold.webp@ and keep the other 2 on @resource/resource_wood.webp@",
+          "@resource/rally.webp@ all new @unit_jin/mounted-villager.webp@ to @resource/resource_food.webp@",
+          "Don't hesitate to go on @resource/deer.webp@ with @unit_jin/mounted-villager.webp@ if safe to do so, research @technology_jin/mohe-ancestry.webp@ if you do that"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "7:30",
+        "villager_count": 21,
+        "resources": {
+          "food": 13,
+          "wood": 0,
+          "gold": 7,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Once the third @resource/gaiatreeprototypetree.webp@ is gathered, build @building_economy/house.webp@ with 1 @resource/resource_wood.webp@ @unit_worker/villager-china.webp@ and send the other one on @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "7:45",
+        "villager_count": 21,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 7,
+          "stone": 0,
+          "builder": 8
+        },
+        "notes": [
+          "Age-up with 8 @resource/resource_food.webp@ @unit_worker/villager-china.webp@ with @landmark_jin/dragon-pavilion.webp@ on your @resource/resource_gold.webp@ or other important resource node",
+          "Remacro some @unit_worker/villager-china.webp@ to @resource/resource_wood.webp@ to build production",
+          "Build @building_jin/grassland.webp@"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 13",
+    "map": null,
+    "strategy": "Rush"
+  }
+]

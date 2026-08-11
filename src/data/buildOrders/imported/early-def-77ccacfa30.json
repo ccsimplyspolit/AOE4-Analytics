@@ -1,0 +1,130 @@
+{
+  "name": "Early Def",
+  "civilization": "Byzantines",
+  "author": "Yiellow",
+  "source": "https://aoe4guides.com/builds/1q7BleQud2k7o9ki1G67",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5@unit_worker/villager.webp@@resource/sheep.png@ When @unit_worker/villager.png@@resource/resource_wood.png@ Got 10 go @abilities/repair.png@@building_byzantines/olive-grove-1.png@",
+        "@resource/rally.png@@unit_worker/villager.png@@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "first @unit_worker/villager.webp@@resource/resource_gold.png@@abilities/repair.png@@building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Second @unit_worker/villager.webp@@resource/resource_gold.png@@abilities/repair.png@@building_economy/house.png@",
+        "@resource/rally.png@@unit_worker/villager.png@@resource/sheep.png@",
+        "@unit_worker/villager.png@@resource/resource_food.png@@abilities/repair.png@@building_byzantines/cistern-1.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "6 @unit_worker/villager.webp@@resource/resource_food.png@@abilities/repair.png@ @age/age_2.png@@landmark_byzantines/grand-winery-1.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 7,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6@unit_worker/villager.webp@@resource/resource_food.png@ go @resource/berrybush.png@",
+        "5 @unit_worker/villager.png@@resource/resource_food.png@ go @resource/resource_wood.png@",
+        "2 @unit_worker/villager.png@@resource/resource_food.png@@abilities/repair.png@@building_byzantines/cistern-1.png@ then go @resource/resource_wood.png@",
+        "1 @unit_worker/villager.png@@abilities/repair.png@@building_byzantines/mercenary-house-2.png@ then go @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:12",
+      "villager_count": 24,
+      "resources": {
+        "food": 10,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/wheelbarrow.webp@",
+        "1 @unit_worker/villager.png@@resource/resource_wood.png@@abilities/repair.png@@building_military/stable.png@ then @unit_cavalry/horseman-1.png@",
+        "@building_byzantines/mercenary-house-2.png@@unit_byzantines/longbowman-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 26,
+      "resources": {
+        "food": 10,
+        "wood": 12,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "Probably not an accurate BO",
+  "video": "",
+  "season": 7,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

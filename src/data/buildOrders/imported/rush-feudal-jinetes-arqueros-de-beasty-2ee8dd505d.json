@@ -1,0 +1,259 @@
+{
+  "name": "Rush Feudal (Jinetes + Arqueros) de Beasty",
+  "civilization": "Order of the Dragon",
+  "author": "Pilsen",
+  "source": "https://aoe4guides.com/builds/0JU6IbPvNH2svIRjy8g4",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Aldes iniciales @unit_worker/villager.webp@ a ovejas @resource/sheep.png@  y exploramos el mapa @unit_cavalry/scout.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Siguiente aldeano, construye @building_economy/house.webp@ luego campamento@building_economy/mining-camp.png@ y toma @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Otro alde más a oro @resource/resource_gold.webp@ , hasta tener 2 allí"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Los siguientes 4 aldeanos a ovejas @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Subimos con Meinwerk @landmark_hre/meinwerk-palace.webp@ con 2 aldes @unit_worker/villager.png@ de @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Movemos 3 aldes @unit_worker/villager.webp@de @resource/sheep.png@ a árbol cercano@resource/gaiatreeprototypetree.png@ al TC"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "El siguiente alde creado @unit_worker/villager.webp@ a bayas @resource/berrybush.png@ y construye @building_economy/mill.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "El siguiente alde creado construye @building_economy/lumber-camp.webp@ (queremos tener 6 en madera)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Investigamos @technology_economy/wheelbarrow.webp@ @technology_economy/double-broadaxe.png@, y ponemos aldes en @resource/sheep.png@ hasta tener 12 allí"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Construimos @building_military/stable.webp@ con los aldes de Meinwerk@landmark_hre/meinwerk-palace.png@ @unit_worker/villager.png@ y producimos constantemente jinetes. @unit_cavalry/horseman-1.png@ Luego, esos @unit_worker/villager.png@ a @resource/sheep.png@ hasta tener 14 allí"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 14,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Construimos @building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 14,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Movemos 8 aldes @unit_worker/villager.webp@ de @resource/sheep.png@ a @resource/boar.png@, hacemos @building_economy/mill.png@ y @technology_economy/survival-techniques.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 31,
+      "resources": {
+        "food": 14,
+        "wood": 15,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Nuevos aldes a madera @resource/gaiatreeprototypetree.webp@ hasta tener 15 allí"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 31,
+      "resources": {
+        "food": 14,
+        "wood": 15,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Investigamos @technology_military/steeled-arrow.webp@@technology_economy/horticulture.png@@technology_military/fitted-leatherwork.png@ @technology_military/siege-engineering.png@ en la medida de lo posible"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 51,
+      "resources": {
+        "food": 20,
+        "wood": 20,
+        "gold": 5,
+        "stone": 3,
+        "builder": 3
+      },
+      "notes": [
+        "Subimos a Castillos con @landmark_hre/burgrave-palace.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Construimos @building_economy/town-center.webp@"
+      ]
+    }
+  ],
+  "description": "Traducción (con algunos cambios) del artículo de Stellar https://aoe4guides.com/builds/f8wfYKtrMQJak7v3QOsz",
+  "video": "https://www.youtube.com/embed/GEzcw-eYp0E",
+  "season": 6,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

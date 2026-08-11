@@ -1,0 +1,354 @@
+{
+  "name": "直城",
+  "civilization": "Japanese",
+  "author": "Caeliverlan",
+  "source": "https://aoe4guides.com/builds/08FbuilfFXcjv8cmvxVl",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:05",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "开局5农吃羊@resource/sheep.webp@，1农去@resource/berrybush.webp@造@building_japanese/farmhouse-1.webp@，造好升级@technology_japanese/towara-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "把剩下5农拉去@resource/berrybush.webp@，TC先1金后1果再2金，正常3农采金@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "7农之后在家吃羊@resource/sheep.webp@，造3农去伐散木@resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:35",
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "手操果农交@resource/resource_food.webp@，拉吃羊的1农去造地标@landmark_japanese/kura-storehouse-1.webp@（约190秒）"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 9,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "木头到达100，拉1金农造@building_defensive/outpost.webp@，TC补1农采金@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 17,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "1果农造@building_japanese/farmhouse-1.webp@，伐完一颗散木的3农去吃羊@resource/sheep.webp@（此时余25@resource/resource_wood.webp@），TC补1农采金@resource/resource_gold.webp@，然后补农吃羊@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:10",
+      "villager_count": 21,
+      "resources": {
+        "food": 15,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "目前100@resource/resource_stone.webp@，维持7农吃@resource/berrybush.webp@，8农吃羊@resource/sheep.webp@，并编号这8个农，准备造三本地标"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 23,
+      "resources": {
+        "food": 18,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "拉造地标的农种第一块田@building_economy/farm.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 24,
+      "resources": {
+        "food": 14,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "果农拉5农去伐木@resource/resource_wood.webp@，剩下2农设置路径点吃羊@resource/sheep.webp@（约7:15吃完果子）"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:25",
+      "villager_count": 25,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "拉吃羊的8农去造地标@landmark_japanese/floating-gate-2.webp@（约67秒），路径点吃羊@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:50",
+      "villager_count": 26,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "拉1农种第二块田@building_economy/farm.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:05",
+      "villager_count": 27,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "目前175@resource/resource_stone.webp@，研究@technology_japanese/daimyo-manor-1.webp@（完成赠送农），拉3羊农造@building_japanese/farmhouse-1.webp@和@building_military/stable.webp@，造完吃羊@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 29,
+      "resources": {
+        "food": 19,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "造@unit_japanese/mounted-samurai-3.webp@（约16秒/个），拉1木农种第三块田@building_economy/farm.webp@，TC补到10农采金@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:30",
+      "villager_count": 32,
+      "resources": {
+        "food": 19,
+        "wood": 5,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "拉1农种第四块田@building_economy/farm.webp@，多余资源升级科技@technology_economy/specialized-pick.webp@@technology_japanese/tatara-1.webp@@technology_military/iron-undermesh.webp@，目前3@unit_japanese/mounted-samurai-3.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:45",
+      "villager_count": 33,
+      "resources": {
+        "food": 19,
+        "wood": 2,
+        "gold": 9,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "拉3木农去造@building_japanese/farmhouse-1.webp@吃@resource/berrybush.webp@或者@resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 34,
+      "resources": {
+        "food": 19,
+        "wood": 2,
+        "gold": 10,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "TC补农伐木@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:40",
+      "villager_count": 36,
+      "resources": {
+        "food": 22,
+        "wood": 4,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "将第二个@unit_japanese/shinto-priest-3.webp@的依代放进@building_japanese/farmhouse-1.webp@或@building_japanese/forge-1.webp@，目前7@unit_japanese/mounted-samurai-3.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 37,
+      "resources": {
+        "food": 18,
+        "wood": 6,
+        "gold": 10,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "拉3羊农造第2个@building_military/stable.webp@，路径点吃羊@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:40",
+      "villager_count": 39,
+      "resources": {
+        "food": 23,
+        "wood": 6,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "造@building_military/archery-range.webp@，视情况出@unit_japanese/onna-musha-3.webp@或@unit_japanese/yumi-ashigaru-2.webp@（最少资源调配：@unit_japanese/onna-musha-3.webp@24：0：14，@unit_japanese/yumi-ashigaru-2.webp@22：5：10）"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "15:00",
+      "villager_count": 52,
+      "resources": {
+        "food": 23,
+        "wood": 14,
+        "gold": 15,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "采完第一个金矿后可以开石矿，研究@technology_japanese/daimyo-palace-2.webp@（完成赠送农），或者开第二个TC@building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "20:00",
+      "villager_count": 69,
+      "resources": {
+        "food": 30,
+        "wood": 24,
+        "gold": 15,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "资源够了之后上@age/age_4.webp@，造@landmark_japanese/tanegashima-gunsmith-3.webp@加强攻势"
+      ]
+    }
+  ],
+  "description": "7分30秒上三本金马",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

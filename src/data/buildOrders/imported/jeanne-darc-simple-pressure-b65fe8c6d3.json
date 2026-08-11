@@ -1,0 +1,112 @@
+{
+  "name": "Jeanne d'Arc Simple Pressure ",
+  "civilization": "Jeanne d'Arc",
+  "author": "TzuAxe",
+  "source": "https://aoe4guides.com/builds/2PRrsUzihDaS1GnQoO70",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All@unit_worker/villager.webp@ to food,@unit_jeanne/jeanne-darc-peasant-1.png@builds@building_economy/house.png@+@building_economy/mining-camp.png@ and gathers @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@unitl 8"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:13",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@+1@unit_worker/villager.png@and build @landmark_french/school-of-cavalry.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "<img class=\"v-img__img v-img__img--contain\" src=\"https://aoe4guides.com/assets/pictures/age/age_2.png\">3:30<img class=\"v-img__img v-img__img--contain\" src=\"https://aoe4guides.com/assets/pictures/age/age_2.png\">",
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@resource/resource_gold.webp@@unit_worker/villager.png@builds @building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:14",
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_french/royal-knight-2.webp@@unit_jeanne/jeanne-darc-peasant-1.png@builds@building_military/archery-range.png@then levels @ability_jeanne/ability-path-of-the-warrior-1.png@up on 2@resource/boar.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_infantry/archer-2.webp@@unit_french/royal-knight-2.png@ spam"
+      ]
+    }
+  ],
+  "description": "Simple Pressure",
+  "video": "",
+  "season": 7,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

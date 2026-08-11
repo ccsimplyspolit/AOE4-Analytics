@@ -33,9 +33,8 @@ win:
   # Windows can block it from appearing above an elevated game window. Request
   # elevation for every Windows launch, including the portable build.
   requestedExecutionLevel: requireAdministrator
-  # NSIS is the supported Windows target for electron-updater. Keep portable and
-  # unpacked builds for users who prefer them, but publish the installer so
-  # installed copies receive future updates automatically.
+  # NSIS uses electron-updater. Portable builds use the app's GitHub-release
+  # updater, which verifies and swaps the portable wrapper after exit.
   target:
     - nsis
     - portable

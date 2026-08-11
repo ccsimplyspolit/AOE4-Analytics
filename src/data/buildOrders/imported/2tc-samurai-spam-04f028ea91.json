@@ -1,0 +1,229 @@
+{
+  "name": "2TC Samurai Spam",
+  "civilization": "Japanese",
+  "author": "Darkfalz",
+  "source": "https://aoe4guides.com/builds/0Q6c62RqODbxUZqchX6S",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "3 @unit_worker/villager-japanese.webp@ on @resource/resource_stone.png@, 3 on @resource/sheep.png@, @abilities/repair.png@ @building_japanese/forge-1.png@ on @resource/resource_stone.png@ with 1 @resource/resource_stone.png@@unit_worker/villager-japanese.png@. Send 7th @unit_worker/villager-japanese.png@ to @abilities/repair.png@@building_japanese/farmhouse-1.png@ and harvest @resource/berrybush.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "Send 8th and 9th @unit_worker/villager-japanese.webp@ to @resource/resource_stone.png@ and leave on until @650 Total @resource/resource_stone.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@on @resource/resource_food.png@ until @11 @unit_worker/villager-japanese.png@, send 4 @resource/resource_food.png@@unit_worker/villager-japanese.png@ to @abilities/repair.png@@landmark_japanese/kura-storehouse-1.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 5,
+        "builder": 4
+      },
+      "notes": [
+        "Keep 4 @unit_worker/villager-japanese.webp@ on @resource/resource_food.png@, rest on @resource/resource_wood.png@, and 5 on @resource/resource_stone.png@, upgrade @building_economy/town-center.png@ to @technology_japanese/daimyo-manor-1.png@, stop at 350 @resource/resource_stone.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Pull @resource/resource_stone.webp@@unit_worker/villager-japanese.png@ to all @resource/gaiatreeprototypetree.png@, wait on @abilities/repair.png@@building_economy/lumber-camp.png@!"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 5,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Send 8 @resource/gaiatreeprototypetree.webp@@unit_worker/villager-japanese.png@ to @abilities/repair.png@2nd @building_economy/town-center.png@on @resource/resource_gold.png@ and rally them all on @resource/resource_gold.png@afterward. Send 4 @landmark_japanese/kura-storehouse-1.png@@unit_worker/villager-japanese.png@ to @resource/resource_wood.png@, @abilities/repair.png@@building_economy/lumber-camp.png@. Send @unit_worker/villager-japanese.png@ to @landmark_japanese/kura-storehouse-1.png@ generated @building_economy/farm.png@ as they spawn. Farm @resource/berrybush.png@ if screwed on @resource/sheep.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 1st @building_military/barracks.webp@ and make @unit_japanese/onna-bugeisha-2.png@, use extra @resource/resource_wood.png@ to make @building_defensive/palisade-wall.png@, more @building_military/barracks.png@, and @building_economy/farm.png@ around @building_economy/town-center.png@ and as needed."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 34,
+      "resources": {
+        "food": 18,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ both @building_economy/town-center.png@ on @resource/resource_food.png@, research @technology_japanese/towara-1.png@,@technology_japanese/takezaiku-2.png@,@technology_economy/crosscut-saw.png@,@technology_japanese/tatara-1.png@, and @technology_economy/specialized-pick.png@. Use 2+ @unit_japanese/onna-bugeisha-2.png@ to harass eco, always have @unit_japanese/katana-bannerman-2.png@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 41,
+      "resources": {
+        "food": 25,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_japanese/hizukuri-2.webp@, hardened @unit_japanese/samurai-1.png@, and mass @unit_japanese/samurai-1.png@ + @unit_japanese/onna-bugeisha-2.png@ against regular units + @unit_cavalry/horseman-1.png@, or @unit_infantry/spearman-1.png@ against knights."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 49,
+      "resources": {
+        "food": 29,
+        "wood": 9,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_cavalry/scout.webp@ opponent and determine whether to @age/age_3.png@ or mass units."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 51,
+      "resources": {
+        "food": 16,
+        "wood": 9,
+        "gold": 11,
+        "stone": 3,
+        "builder": 12
+      },
+      "notes": [
+        "When ready to advance, @abilities/repair.webp@@landmark_japanese/floating-gate-2.png@ with 12 @unit_worker/villager-japanese.png@ and @abilities/repair.png@ 2 @building_japanese/forge-1.png@ next to it. Put @landmark_japanese/floating-gate-2.png@@resource/relics.png@ in @building_japanese/forge-1.png@ or military buildings (if being all in'd) as needed. Research ,@technology_military/decarbonization.png@,@technology_military/fitted-leatherwork.png@, and@technology_military/iron-undermesh.png@. Keep pop cap up with @building_japanese/farmhouse-1.png@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 63,
+      "resources": {
+        "food": 28,
+        "wood": 18,
+        "gold": 9,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "Collect stone for @technology_japanese/daimyo-palace-2.webp@, start moving more @unit_worker/villager-japanese.png@ to @resource/resource_wood.png@ to start pushing towards 40+@building_economy/farm.png@ and research @technology_economy/acid-distilization.png@,@technology_japanese/kobuse-gitae-3.png@,@technology_military/insulated-helm.png@,@technology_military/wedge-rivets.png@, and @technology_japanese/odachi-3.png@. Use extra @resource/resource_wood.png@ to mass @building_military/barracks.png@ and/or @building_military/archery-range.png@/@building_military/stable.png@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "16:00",
+      "villager_count": 55,
+      "resources": {
+        "food": 32,
+        "wood": 12,
+        "gold": 0,
+        "stone": 11,
+        "builder": -1
+      },
+      "notes": [
+        "Pull some @unit_worker/villager-japanese.webp@ from @resource/resource_wood.png@ to @resource/resource_stone.png@ to farm @technology_japanese/shogunate-castle-3.png@ for 70% @building_economy/farm.png@ bonus."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 77,
+      "resources": {
+        "food": 55,
+        "wood": 14,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get remaining upgrades/research, go @age/age_4.webp@ with @landmark_japanese/tanegashima-gunsmith-3.png@ or mass in castle. Make @unit_japanese/ozutsu-4.png@ from @landmark_japanese/tanegashima-gunsmith-3.png@, and mass @unit_japanese/samurai-1.png@ with @unit_japanese/onna-bugeisha-2.png@/@unit_infantry/spearman-1.png@/@unit_japanese/onna-musha-3.png@ and nuke buildings with @unit_japanese/ozutsu-4.png@ and siege depending on enemy comps."
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 6,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

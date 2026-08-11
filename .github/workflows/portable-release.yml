@@ -183,8 +183,8 @@ jobs:
           RTSLytics $env:VERSION Windows release.
 
           Commit: $env:TARGET_SHA
-          Install the Setup executable to receive automatic updates. The portable
-          executable remains available for manual-use scenarios.
+          Both the Setup and portable executables receive automatic updates.
+          Portable updates are installed after the running app exits.
           "@ | Out-File -FilePath $notesPath -Encoding utf8
 
           gh release create $env:STABLE_TAG $env:PORTABLE_PATH $env:INSTALLER_PATH $env:BLOCKMAP_PATH $env:UPDATE_METADATA_PATH $env:CHECKSUM_PATH $env:MANIFEST_PATH `

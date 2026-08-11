@@ -1,0 +1,155 @@
+{
+  "name": "Ayyubids Aggro Teamgame",
+  "civilization": "Ayyubids",
+  "author": "Gissa777",
+  "source": "https://aoe4guides.com/builds/SJfVSxOGYJeOk2jIBIod",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @unit_worker/villager-abbasid.webp@@building_economy/mill.webp@ 3 @unit_worker/villager-abbasid.webp@@resource/sheep.webp@ 7 @resource/resource_food.webp@ ->  @resource/rally.webp@@resource/resource_gold.webp@  @building_economy/house.webp@@building_economy/mining-camp.webp@  @technology_ayyubids/culture-wing-logistics-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@@building_economy/lumber-camp.webp@ #8 @technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "@technology_economy/double-broadaxe.webp@ @building_military/stable.webp@ @resource/rally.webp@@resource/resource_gold.webp@#5"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 84,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 71
+      },
+      "notes": [
+        "@building_economy/house.webp@@age/goldenagetier1.webp@ @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 27,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 13
+      },
+      "notes": [
+        "@technology_economy/horticulture.webp@ @building_technology/blacksmith.webp@@technology_military/iron-undermesh.webp@@technology_military/steeled-arrow.webp@ #8 @unit_ayyubids/desert-raider-2.webp@ u can dive TC"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 29,
+      "resources": {
+        "food": 6,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": 14
+      },
+      "notes": [
+        "@building_economy/mill.webp@@resource/deer.webp@@technology_economy/wheelbarrow.webp@@technology_ayyubids/military-wing-reinforcement-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:50",
+      "villager_count": 44,
+      "resources": {
+        "food": 17,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": 16
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@@technology_economy/specialized-pick.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 44,
+      "resources": {
+        "food": 17,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": 16
+      },
+      "notes": [
+        "@building_economy/farm.webp@ @resource/relics.webp@@building_religious/mosque.webp@@building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Add @building_economy/market.webp@ or @building_economy/town-center.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T17:53:23Z",
+  "updatedAt": "2026-08-09T17:53:23Z"
+}

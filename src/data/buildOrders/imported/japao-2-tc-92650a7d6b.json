@@ -1,0 +1,346 @@
+{
+  "name": "Japao 2 TC",
+  "civilization": "Japanese",
+  "author": "Lipe",
+  "source": "https://aoe4guides.com/builds/0OnOdRK4XVm4BorAGM2W",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "3 aldeões constroem  @building_japanese/forge-1.webp@ junto a @resource/resource_stone.png@ , os outros 3 ficam nas @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Primeiro aldeão constrói  @building_japanese/farmhouse-1.webp@ junto ás @resource/berrybush.png@ e fica.",
+        "Todos novos aldeões vão para @resource/resource_stone.png@ até estarem 5, objetivo recolher 650 no total"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "Depois de 5 na @resource/resource_stone.webp@ todos para @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:22",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "Pesquisar @technology_japanese/daimyo-manor-1.webp@ logo que tenha 300 @resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:24",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "4 aldeões das @resource/sheep.webp@ constroem @landmark_japanese/kura-storehouse-1.png@ de preferência a 2 quadrados do @building_economy/town-center.png@Não destruir as 3 @resource/gaiatreeprototypetree.png@ que estão á volta do Centro Urbano"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "AGE UP @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:33",
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "Todos aldeões das @resource/sheep.webp@menos 2, vão para @resource/gaiatreeprototypetree.png@, e todos os novos também, o aldeão perto @resource/berrybush.png@constrói casa perto @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:14",
+      "villager_count": 15,
+      "resources": {
+        "food": 3,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Quando os aldeões da pedra atingirem 350 @resource/resource_stone.webp@ envia-los para @resource/gaiatreeprototypetree.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:13",
+      "villager_count": 9,
+      "resources": {
+        "food": 3,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Depois de 400 @resource/resource_wood.webp@ 8 aldeões constroem o segundo @building_economy/town-center.png@ perto do @resource/resource_gold.png@,",
+        "6 vão para  @resource/resource_wood.png@ e constroem  @building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:14",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Enviar 2 aldeões que contruíram marco, para @resource/resource_wood.webp@ no total de 8, e todos os outros na @resource/resource_food.png@ e um na quinta que surge do Kura."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "6:05",
+      "villager_count": 23,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Depois do @building_economy/town-center.webp@ contruído, enviar 8 para o @resource/resource_gold.png@, pesquisar @technology_japanese/towara-1.png@",
+        "1 aldeão constrói 2 @building_military/barracks.png@, e começar a produzir @unit_japanese/onna-bugeisha-2.png@ e pelo menos um @unit_japanese/katana-bannerman-2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "7:22",
+      "villager_count": 31,
+      "resources": {
+        "food": 15,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Pesquisar @technology_japanese/takezaiku-2.webp@ e @technology_economy/double-broadaxe.png@ e  @technology_japanese/tatara-1.png@ , se necessário começar a construir paliçadas"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "8:26",
+      "villager_count": 36,
+      "resources": {
+        "food": 20,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Pesquisar os upgrades económicos e militares mais importantes, e continuar com progresso."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 46,
+      "resources": {
+        "food": 30,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Usar a madeira extra @resource/resource_wood.webp@ para construir quintas á volta do primeiro @building_economy/town-center.png@, por volta do minuto 11-12  enviar alguns aldeões para @resource/resource_stone.png@ para pesquisar @technology_japanese/daimyo-palace-2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "11:03",
+      "villager_count": 39,
+      "resources": {
+        "food": 16,
+        "wood": 9,
+        "gold": 11,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "13 aldeões constroem @landmark_japanese/floating-gate-2.webp@, e mais 2 @building_japanese/forge-1.png@ perto dele."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "AGE UP   @age/age_3.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "11:54",
+      "villager_count": 55,
+      "resources": {
+        "food": 29,
+        "wood": 9,
+        "gold": 9,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "Se precisar produzir unidades rápido, colocar o Yorishiro nos edifícios militares, ou então coloca-los nas @building_japanese/forge-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "13:10",
+      "villager_count": 65,
+      "resources": {
+        "food": 16,
+        "wood": 24,
+        "gold": 14,
+        "stone": 11,
+        "builder": -1
+      },
+      "notes": [
+        "Apanhar máximo de relíquias, conseguir mais @resource/resource_wood.webp@ para a transição das @resource/berrybush.png@ e @resource/sheep.png@ para as @building_economy/farm.png@  sempre á volta do primeiro Centro Urbano. (Pelo menos 30 quintas), construir mais @building_military/barracks.png@ , e logo possivel, pesquisar @technology_japanese/daimyo-palace-2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "15:00",
+      "villager_count": 65,
+      "resources": {
+        "food": 21,
+        "wood": 23,
+        "gold": 10,
+        "stone": 11,
+        "builder": -1
+      },
+      "notes": [
+        "Pesquisar o  @technology_japanese/yaki-ire-4.webp@ e outro importante upgrade, pesquisar @technology_japanese/shogunate-castle-3.png@ logo possível"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "Economia",
+  "video": "https://www.youtube.com/embed/WkG6pRGlHZQ",
+  "season": 6,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

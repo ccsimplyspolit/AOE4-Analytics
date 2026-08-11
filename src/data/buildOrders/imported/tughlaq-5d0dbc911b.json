@@ -1,0 +1,106 @@
+{
+  "name": "tughlaq",
+  "civilization": "Tughlaq Dynasty",
+  "author": "nayr",
+  "source": "https://aoe4guides.com/builds/4LCoZalDoIU0vRknrJXh",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@unit_worker/villager-delhi.webp@@resource/rally.webp@@resource/sheep.webp@+DOVOMIN @unit_worker/villager-delhi.webp@@building_economy/house.webp@+2@unit_tughluq/worker_elephant.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5@unit_worker/villager-delhi.webp@@resource/rally.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "CREATE@unit_tughluq/healer_elephant.webp@+@unit_worker/villager-delhi.webp@@resource/rally.webp@@resource/resource_food.webp@/20+@technology_tughluq/elephant_economics_1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "ATTACK  WITH@unit_tughluq/healer_elephant.webp@+COUNTER THE ENEMTY UNIT WITH@building_military/barracks.webp@@unit_tughluq/elephant_raider_age2.webp@@building_military/archery-range.webp@@unit_infantry/archer-2.webp@@building_military/stable.webp@@unit_cavalry/lancer-3.webp@@unit_delhi/war-elephant.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 50,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 50
+      },
+      "notes": [
+        "@landmark_delhi/house-of-learning.webp@@technology_tughluq/spearman_cavalry_damage_production_speed.webp@@technology_tughluq/infantry_improved_charge.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 12,
+  "map": "Open",
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

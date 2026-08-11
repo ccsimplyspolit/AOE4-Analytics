@@ -1,0 +1,181 @@
+{
+  "name": "Abassid Poly",
+  "civilization": "Abbasid Dynasty",
+  "author": "Urago",
+  "source": "https://aoe4guides.com/builds/0Y1v0ra1wNRqK2grVwUI",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@building_economy/mill.webp@ @landmark_abbasid/house-of-wisdom.webp@@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 build sur gold@building_economy/mining-camp.webp@ + 1 sur gold --> peons sur moutons"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 4,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_abbasid/military-wing.webp@ peons sur mouton passe au bois - 2 des baies passe sur gold -> 75 gold pour @technology_abbasid/fresh-foodstuffs.webp@-&gt; @building_economy/mining-camp.webp@ + pierre"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "quand 8 peon sur bois --> passe sur pierre --- NE PAS OUBLIER @building_economy/house.webp@ + @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_abbasid/fresh-foodstuffs.webp@ - quand 7 peon sur pierre --> passe sur bois"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "peons sur pierre build @building_economy/town-center.webp@ (sur gold + bois si possible) - 4 peons sur bois passe sur bouffe"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "ramener des cerfs vers forum"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "potentiellement défendre forum avec archers légers"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build armée (3 types) ?"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "le plus tôt possible - potentiellement défense avec archers chameaux"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 11,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

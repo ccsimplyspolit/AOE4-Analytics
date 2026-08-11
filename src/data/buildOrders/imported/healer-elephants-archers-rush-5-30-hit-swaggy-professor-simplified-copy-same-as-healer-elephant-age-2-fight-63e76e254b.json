@@ -1,0 +1,260 @@
+{
+  "name": "Healer Elephants + Archers Rush (5:30 Hit) - Swaggy PRofessor - simplified - copy - same as \"healer elephant age 2 fight\"",
+  "civilization": "Tughlaq Dynasty",
+  "author": "Wado321",
+  "source": "https://aoe4guides.com/builds/7cuDdf7VaFcfJ99Pb5hZ",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6@unit_worker/villager.webp@ to @resource/sheep.webp@",
+        "@unit_cavalry/scout.webp@ scouts one flank; starting worker elephant scouts the opposite flank (they can capture @resource/sheep.webp@ as drop-off).",
+        "Immediately queue a 2nd worker elephant (this one scouts near your @resource/resource_gold.webp@ only)."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "First new vil → @resource/sheep.webp@. Next 3 vils will go to @resource/resource_gold.webp@ as they pop."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "First gold vil builds @building_economy/house.webp@ under TC coverage (vs spear rush).",
+        "Worker elephants will bring back sheep they pass; use them to path through herds."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "1:30",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After 3 on gold, @resource/rally.webp@ to @resource/resource_food.webp@ until 9 on food."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with @landmark_delhi/dome-of-the-faith.webp@ using 3@unit_worker/villager.webp@.",
+        "Now set TC @resource/rally.webp@ to @resource/resource_wood.webp@ for the rest of Feudal.",
+        "If the second worker elephant hasn’t returned yet, send wood vils to stragglers until it does, then to the woodline."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 16,
+      "resources": {
+        "food": 9,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Feudal completes: queue 1 @unit_tughluq/healer_elephant.webp@ immediately",
+        "Landmark builders place @building_military/archery-range.webp@, then return to eco.",
+        "Rally army to an exposed enemy resource (gold / berries)."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:10",
+      "villager_count": 18,
+      "resources": {
+        "food": 9,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Begin @unit_infantry/archer-2.webp@ production nonstop.",
+        "Every time you place a @building_economy/house.webp@, follow a 4x4 grid layout (prep for Fort aura economy later)."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 20,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "First timing: Healer Elephant (~500 HP) + Archers can dive short under towers/TC due to healing.",
+        "If enemy spams horsemen, add 1–2 @building_military/barracks.webp@ and produce @unit_infantry/spearman-1.webp@ alongside archers."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Scale to ~4 @unit_tughluq/healer_elephant.webp@ total while massing.",
+        "Spend gold on @building_technology/blacksmith.webp@ and key eco upgrades.",
+        "If short on food: go @resource/berrybush.webp@ first, then @resource/deer.webp@ once you have map control."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send a large group to collect 425@resource/resource_stone.webp@.",
+        "Build @building_tughluq/tughluqabad_fort.webp@ centered within your 4x4 @building_economy/house.webp@ grid.",
+        "Assign the Food Governor to the Fort to generate ~240 @resource/resource_food.webp@/min passively."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:30",
+      "villager_count": 28,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Shift eco toward @resource/resource_food.webp@ and @resource/resource_gold.webp@ to prepare Castle.",
+        "Keep pressure with Healer Elephants + Archers; deny deer/berries and punish over-extensions."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "9:30",
+      "villager_count": 30,
+      "resources": {
+        "food": 16,
+        "wood": 6,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with House of wisdom",
+        "Keep army close to enemy for immediate post-Castle timing."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": 34,
+      "resources": {
+        "food": 16,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Instantly research: @technology_military/wedge-rivets.webp@ , @technology_military/balanced-projectiles.webp@, Veteran Archers and House of Wisdom Upgrades.",
+        "If you added Barracks: research the Spearman training/upgrade techs as well.",
+        "Tughlaq techs complete in ~5s → hit your timing immediately with fully upgraded Castle army."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "11:30",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Push for game-ending fight: Healer Elephants + Veteran Archers (+ Spearmen if needed).",
+        "Keep adding @building_economy/farm.webp@ or @building_economy/house.webp@ around Fort as wood floats"
+      ]
+    }
+  ],
+  "description": "Feudal power spike with Healer Elephants from Dome of Faith, backed by mass Archers. Transition to Castle for instant upgrades and timing.",
+  "video": "https://www.youtube.com/embed/Hsd0AohL_40",
+  "season": 12,
+  "map": "Open",
+  "strategy": "Feudal Power Spike → Castle Timing",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

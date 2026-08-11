@@ -1,0 +1,100 @@
+{
+  "name": "The First DEFENSIVE Build You Should Learn - Swaggy Professor",
+  "civilization": "English",
+  "author": "Niki45nk",
+  "source": "https://aoe4guides.com/builds/0K4ymGIOg7qfPuuT2Tky",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send all 6 @unit_worker/villager.webp@ to @resource/sheep.webp@",
+        "1st @unit_worker/villager.webp@ builds @building_economy/house.webp@ near @building_economy/town-center.webp@, then goes to @resource/sheep.webp@",
+        "Next 3 @unit_worker/villager.webp@ go to @building_economy/mining-camp.webp@@resource/resource_gold.webp@",
+        "@resource/rally.webp@@unit_worker/villager.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 3 @resource/resource_gold.webp@@unit_worker/villager.webp@ to @resource/gaiatreeprototypetree.webp@",
+        "2 @resource/sheep.webp@@unit_worker/villager.webp@ build @landmark_english/abbey-of-kings.webp@ away from @resource/resource_gold.webp@ vein",
+        "5 @resource/sheep.webp@@unit_worker/villager.webp@ go to @building_economy/mining-camp.webp@@resource/resource_stone.webp@",
+        "When you have 4 @resource/sheep.webp@@unit_worker/villager.webp@, Rally @unit_worker/villager.webp@ to @resource/gaiatreeprototypetree.webp@",
+        "When 8 @resource/resource_wood.webp@@unit_worker/villager.webp@, Rally @unit_worker/villager.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 5,
+        "builder": 2
+      },
+      "notes": [
+        "Send all @landmark_english/abbey-of-kings.webp@ and @resource/resource_stone.webp@@unit_worker/villager.webp@ to build @building_economy/town-center.webp@ near @resource/resource_gold.webp@ (Delete @building_economy/mining-camp.webp@ if needed)",
+        "All 8 @resource/gaiatreeprototypetree.webp@@unit_worker/villager.webp@ build @building_economy/lumber-camp.webp@",
+        "Use your @unit_english/king-2.webp@ to either defend or harass opponent's @unit_worker/villager.webp@",
+        "Send 3 @building_economy/town-center.webp@@unit_worker/villager.webp@ to @resource/resource_gold.webp@ and other @building_economy/town-center.webp@@unit_worker/villager.webp@ to @resource/resource_wood.webp@",
+        "@resource/rally.webp@@unit_worker/villager.webp@ to @resource/resource_wood.webp@ and @building_economy/farm.webp@",
+        "Start making @building_economy/mill.webp@@building_economy/farm.webp@ near both @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:50",
+      "villager_count": 25,
+      "resources": {
+        "food": 11,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Generally, making @unit_infantry/spearman-1.webp@ and @unit_english/longbowman-2.webp@ together is the best option",
+        "Use your @resource/resource_gold.webp@ to get @technology_economy/double-broadaxe.webp@ -> @technology_economy/horticulture.webp@ -&gt; @technology_economy/wheelbarrow.webp@",
+        "Then get @technology_military/steeled-arrow.webp@ and make a few @building_defensive/palisade-wall.webp@ if needed",
+        "[When you feel safe to Age-Up]",
+        "Transfer all but 4 @resource/resource_wood.webp@@unit_worker/villager.webp@ to @resource/resource_gold.webp@",
+        "14 @resource/resource_wood.webp@@unit_worker/villager.webp@ build @landmark_english/the-white-tower.webp@ near @resource/resource_gold.webp@",
+        "In Castle Age, start making @unit_infantry/man-at-arms-1.webp@ and @unit_infantry/crossbowman-3.webp@"
+      ]
+    }
+  ],
+  "description": "The First DEFENSIVE Build You Should Learn (English 2TC) by Swaggy Professor.\n\nMade to be compatible with Overlay!",
+  "video": "https://www.youtube.com/embed/bnhqetcFmkU",
+  "season": 12,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

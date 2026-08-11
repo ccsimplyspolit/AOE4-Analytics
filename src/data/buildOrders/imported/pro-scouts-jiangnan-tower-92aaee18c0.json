@@ -1,0 +1,210 @@
+{
+  "name": "Pro Scouts Jiangnan Tower",
+  "civilization": "Zhu Xi's Legacy",
+  "author": "Krayt",
+  "source": "https://aoe4guides.com/builds/3HvHk74xt0Q0KeDMGIES",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Gather 50 @resource/resource_wood.webp@ from @resource/gaiatreeprototypetree.webp@ , then @abilities/repair.webp@ @building_economy/mill.webp@ under @building_economy/town-center.webp@ to eat @resource/sheep.webp@ | @unit_chinese/imperial-official.webp@ supervise @building_economy/mill.webp@  ."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:30",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "First @unit_worker/villager-china.webp@ to @resource/sheep.webp@, then send next @unit_worker/villager-china.webp@ to build @building_chinese/village.webp@ and @building_economy/mining-camp.webp@ next to @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:30",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally 1 more @unit_worker/villager-china.webp@ to @resource/resource_gold.webp@, then @resource/rally.webp@ to @resource/resource_food.webp@ for age up."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Send 2 @resource/resource_food.webp@ @unit_worker/villager-china.webp@ to build@landmark_zhuxi/jiangnan-tower-2.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:35",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/resource_gold.webp@ until 4 @unit_worker/villager-china.webp@",
+        "Keep 4 @resource/resource_food.webp@ @unit_worker/villager-china.webp@ and send the others to @abilities/repair.webp@ @building_economy/lumber-camp.webp@ | @unit_chinese/imperial-official.webp@supervise@building_economy/lumber-camp.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Get 6 @unit_worker/villager-china.webp@ to @resource/resource_wood.webp@, then @resource/rally.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 16,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_zhuxi/jiangnan-tower-2.webp@ complete, send @abilities/repair.webp@ @unit_worker/villager-china.webp@ to @resource/resource_food.webp@, @resource/rally.webp@@resource/resource_food.webp@ till 12 @unit_worker/villager-china.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Once 150 @resource/resource_wood.webp@, build @building_military/stable.webp@ near @landmark_zhuxi/jiangnan-tower-2.webp@. @unit_chinese/imperial-official.webp@ supervise @resource/resource_food.webp@. Train@unit_chinese/imperial-official.webp@ to supervise @building_military/stable.webp@ ."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce 4 more @unit_cavalry/scout.webp@ from @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/professional-scouts.webp@, send 1 @resource/resource_gold.webp@@unit_worker/villager-china.webp@ to food."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_military/archery-range.webp@ near @landmark_zhuxi/jiangnan-tower-2.webp@. If against knight civ build @building_military/barracks.webp@ instead."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 21,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start training @unit_chinese/zhuge-nu-2.webp@ and @unit_cavalry/horseman-1.webp@ constantly out of mill buildings. Have @unit_cavalry/scout.webp@ take the 2 nearby @resource/deer.webp@ packs. Use @unit_chinese/imperial-official.webp@ to remacro if needed or to change production. Build more @building_military/archery-range.webp@ if fights are going well and it looks like you cand end in feudal, otherwise slowly go for castle and start making @unit_cavalry/lancer-3.webp@."
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": "Open",
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

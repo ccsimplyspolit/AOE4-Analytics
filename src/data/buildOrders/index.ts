@@ -96,7 +96,9 @@ function buildIdentity(build: BuildOrder): string {
   const civilizations = Array.isArray(build.civilization)
     ? build.civilization.join('|')
     : build.civilization
-  return `${civilizations}::${build.name}`.toLocaleLowerCase().replace(/[^a-z0-9|]+/g, '')
+  const compact = (value: string) =>
+    value.normalize('NFKC').toLocaleLowerCase().replace(/[^\p{L}\p{N}|]+/gu, '')
+  return `${compact(civilizations)}::${compact(build.name)}`
 }
 
 function buildQuality(build: BuildOrder): number {

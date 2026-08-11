@@ -1,0 +1,251 @@
+{
+  "name": "HoL黑暗叉接直城",
+  "civilization": "House of Lancaster",
+  "author": "muzhikid",
+  "source": "https://aoe4guides.com/builds/1NmVn0Rhn7RyWRhEl2iA",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@@building_military/barracks.webp@@building_economy/house.webp@，5@unit_worker/villager.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:25",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "50@resource/resource_wood.webp@后，转为4@unit_worker/villager.webp@@resource/resource_food.webp@，2@unit_worker/villager.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@设在@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:10",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "生产1@unit_infantry/spearman-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:38",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "调配2@resource/sheep.webp@@unit_worker/villager.webp@和1@resource/resource_wood.webp@@unit_worker/villager.webp@去@resource/resource_gold.webp@，继续出@unit_infantry/spearman-1.webp@，总共3个之后不出了"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:44",
+      "villager_count": 14,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@@resource/resource_wood.webp@去@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 5,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:13",
+      "villager_count": 15,
+      "resources": {
+        "food": 9,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@@resource/resource_food.webp@造@landmark_english/abbey-of-kings.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 5,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "05:17",
+      "villager_count": 21,
+      "resources": {
+        "food": 13,
+        "wood": 1,
+        "gold": 5,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:43",
+      "villager_count": 23,
+      "resources": {
+        "food": 16,
+        "wood": 1,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:25",
+      "villager_count": 25,
+      "resources": {
+        "food": 9,
+        "wood": 1,
+        "gold": 6,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "9@unit_worker/villager.webp@@resource/resource_food.webp@去造@landmark_english/the-white-tower.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 6,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "07:32",
+      "villager_count": 28,
+      "resources": {
+        "food": 13,
+        "wood": 9,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "造地标的9@unit_worker/villager.webp@去造@building_military/stable.webp@，然后去@resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "生产@unit_cavalry/knight-2.webp@"
+      ]
+    }
+  ],
+  "description": "非原创，仅自己学习使用",
+  "video": "",
+  "season": 11,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

@@ -1,0 +1,160 @@
+{
+  "name": " Templar 2TC [eng]",
+  "civilization": "Knights Templar",
+  "author": "Pilsen",
+  "source": "https://aoe4guides.com/builds/1bl0qECkgO9SjV6J1Kc8",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6x @unit_worker/villager.webp@to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@>@resource/resource_gold.png@ until 2x@unit_worker/villager.png@ there"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@>@resource/resource_wood.png@ until 3x@unit_worker/villager.png@ there"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@>@resource/resource_food.png@ until 8x@unit_worker/villager.png@ there"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:25",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move 2x@unit_worker/villager.webp@from @resource/resource_gold.png@to @resource/resource_stone.png@",
+        "Move 5x@unit_worker/villager.png@from @resource/resource_food.png@to @resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:50",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with @civilization_flag/kof.webp@ or @civilization_flag/hos.png@ or @civilization_flag/ant.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 0,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "Move all @unit_worker/villager.webp@from @resource/resource_food.png@ to@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04::00",
+      "villager_count": 15,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 0,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "Build the 2nd@building_economy/town-center.webp@ (near @resource/deer.png@ if possible) with the villagers of the @resource/resource_stone.png@",
+        "Move 6x @unit_worker/villager.png@from @resource/resource_wood.png@to@resource/resource_food.png@",
+        "@resource/rally.png@to@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 2nd @building_economy/town-center.webp@ is completed, balance your eco to defend with @unit_infantry/spearman-1.png@,@unit_infantry/archer-2.png@ and unique units."
+      ]
+    }
+  ],
+  "description": "All credits to Pavelo and crackedy. This is only a edition with my own language of his BO. ",
+  "video": "https://www.youtube.com/embed/1IlDQcG1DBg",
+  "season": 10,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

@@ -32,6 +32,7 @@ import { BuildOrderComparisonCard } from '../components/BuildOrderComparisonCard
 import { BuildTrainerCard } from '../components/BuildTrainerCard'
 import { ReplayAnalysisPanel } from './ReplayLab'
 import { TurningPointStory } from '../components/TurningPointStory'
+import { FirstCauseReviewCard } from '../components/FirstCauseReviewCard'
 import { TwitchVodCard } from '../components/TwitchVodCard'
 import { VideoAnalysisPanel } from '../components/VideoAnalysisPanel'
 import { AutoGameplayCard } from '../components/AutoGameplayCard'
@@ -420,6 +421,16 @@ function Detail({
         myCiv={subjectCiv}
       />
 
+      <FirstCauseReviewCard
+        summary={summary}
+        loading={summaryLoading}
+        myProfileId={subjectProfileId}
+        myPlayerId={subjectPlayerId}
+        myCiv={subjectCiv}
+        perPlayer={match.perPlayer}
+        feudalTargetSec={feudalTargetSec ? parseDuration(feudalTargetSec) : null}
+      />
+
       <TwitchVodCard match={match} profileId={myProfileId} />
       {curatedReview && <CuratedMatchReviewCard review={curatedReview} />}
       {linkedVideoAnalysis && <VideoAnalysisPanel record={linkedVideoAnalysis} />}
@@ -584,6 +595,7 @@ function MatchSectionNav({
   const links = [
     ...(hasTeamReview ? [{ id: 'team-mate-review', label: tt('Team review') }] : []),
     { id: 'turning-point-story', label: tt('Turning points') },
+    { id: 'first-cause-review', label: tt('First cause') },
     { id: 'build-order-audit', label: tt('Build audit') },
     { id: 'game-summary-evidence', label: tt('Economy & build order') },
   ]

@@ -11,6 +11,9 @@ import {
   FlaskConical,
   FileVideo,
   Radio,
+  Trophy,
+  Wrench,
+  Swords,
   Settings as SettingsIcon,
   Info,
   Newspaper,
@@ -36,6 +39,17 @@ const ReplayLab = lazy(() => import('./screens/ReplayLab').then((m) => ({ defaul
 const StreamDesk = lazy(() =>
   import('./screens/StreamDesk').then((m) => ({ default: m.StreamDesk })),
 )
+const Leaderboards = lazy(() =>
+  import('./screens/Leaderboards').then((m) => ({ default: m.LeaderboardsScreen })),
+)
+const Tools = lazy(() => import('./screens/Tools').then((m) => ({ default: m.Tools })))
+const Tournaments = lazy(() =>
+  import('./screens/Tournaments').then((m) => ({ default: m.Tournaments })),
+)
+const TwitchFinder = lazy(() =>
+  import('./screens/TwitchFinder').then((m) => ({ default: m.TwitchFinder })),
+)
+const Matchups = lazy(() => import('./screens/Matchups').then((m) => ({ default: m.Matchups })))
 const Settings = lazy(() => import('./screens/Settings').then((m) => ({ default: m.Settings })))
 const About = lazy(() => import('./screens/About').then((m) => ({ default: m.About })))
 
@@ -85,10 +99,24 @@ export const navItems: NavItem[] = [
     group: 'main',
   },
   {
+    path: '/leaderboards',
+    label: 'Leaderboards',
+    icon: Trophy,
+    element: <Leaderboards />,
+    group: 'main',
+  },
+  {
     path: '/civ-meta',
     label: 'Civ Meta',
     icon: Globe2,
     element: <CivMeta />,
+    group: 'main',
+  },
+  {
+    path: '/matchups',
+    label: 'Matchups',
+    icon: Swords,
+    element: <Matchups />,
     group: 'main',
   },
   {
@@ -124,6 +152,27 @@ export const navItems: NavItem[] = [
     label: 'Stream Desk',
     icon: Radio,
     element: <StreamDesk />,
+    group: 'main',
+  },
+  {
+    path: '/tournaments',
+    label: 'Tournaments',
+    icon: Trophy,
+    element: <Tournaments />,
+    group: 'main',
+  },
+  {
+    path: '/twitch-finder',
+    label: 'Twitch Finder',
+    icon: Radio,
+    element: <TwitchFinder />,
+    group: 'main',
+  },
+  {
+    path: '/tools',
+    label: 'Tools',
+    icon: Wrench,
+    element: <Tools />,
     group: 'main',
   },
   {

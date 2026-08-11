@@ -1,0 +1,321 @@
+{
+  "name": "EC4 Sengoku Feudal Build",
+  "civilization": "Sengoku Daimyo",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/4w5XI2oEyJvkiZSoEpnZ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @unit_worker/villager-japanese.webp@ to build @building_sengoku/matsuri.webp@ on @resource/resource_gold.webp@ & 2 @unit_worker/villager-japanese.webp@ to @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:30",
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Buy wood when @building_sengoku/matsuri.webp@ is finished and build 1 @unit_sengoku/yatai.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 8,
+      "resources": {
+        "food": 2,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_japanese/farmhouse-1.webp@ with new vill & @technology_japanese/towara-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:27",
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @unit_sengoku/yatai.webp@ (buy 100 @resource/resource_wood.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:50",
+      "villager_count": 11,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 50w in bank pull 2 @resource/gaiatreeprototypetree.webp@ vills to @resource/resource_gold.webp@. (straggler has 50/150)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:35",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "buy 100 @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 6,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Build @landmark_sengoku/ryokan.webp@ with 5 @resource/sheep.webp@ vills EXACTLY at 3:20"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/gaiatreeprototypetree.webp@ and take the last sheep vill to wood as well"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_sengoku/matsuri.webp@ on @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 9,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "ageup @unit_worker/villager-japanese.webp@ go to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:55",
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_sengoku/daimyo.webp@ for either ranged or cav depending"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 5,
+        "wood": 10,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@ & @technology_japanese/takezaiku-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:25",
+      "villager_count": 22,
+      "resources": {
+        "food": 6,
+        "wood": 10,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@ & @unit_sengoku/daimyo.webp@ + @unit_sengoku/yari-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 23,
+      "resources": {
+        "food": 7,
+        "wood": 10,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_military/stable.webp@ & @building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:20",
+      "villager_count": 24,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3rd @unit_sengoku/yatai.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:45",
+      "villager_count": 25,
+      "resources": {
+        "food": 9,
+        "wood": 10,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_sengoku/daimyo.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:20",
+      "villager_count": 27,
+      "resources": {
+        "food": 11,
+        "wood": 10,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_military/archery-range.webp@ & get important upgrades @technology_sengoku/higoyumi.webp@ and blacksmith upgrades by building @building_japanese/forge-1.webp@ on @resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 35,
+      "resources": {
+        "food": 18,
+        "wood": 10,
+        "gold": 6,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "Can buy 100 stone now and build 2nd stable @building_sengoku/daimyo.webp@ if feudal v feudal game."
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

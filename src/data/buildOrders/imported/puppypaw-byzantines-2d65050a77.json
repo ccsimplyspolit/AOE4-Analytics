@@ -1,0 +1,183 @@
+{
+  "name": "Puppypaw Byzantines",
+  "civilization": "Byzantines",
+  "author": "Nylon",
+  "source": "https://aoe4guides.com/builds/1Of9ZQEPitfDmGcJ68Rc",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@@abilities/repair.png@@building_byzantines/cistern-1.png@+@building_economy/house.png@,  4@unit_worker/villager.png@to@resource/resource_food.png@, 1 to @resource/resource_wood.png@ for 10 wood, then @abilities/repair.png@@building_byzantines/olive-grove-1.png@ (indirection of future winery position)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@3@unit_worker/villager.png@@building_economy/mining-camp.png@@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@to@resource/resource_food.png@until age up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@abilities/repair.webp@@landmark_byzantines/grand-winery-1.png@with 3@resource/resource_food.png@@unit_worker/villager.png@ ,@resource/rally.png@to @resource/gaiatreeprototypetree.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "With 100 gold send one @resource/resource_gold.webp@@unit_worker/villager.png@ to@resource/gaiatreeprototypetree.png@, 5th@resource/resource_wood.png@@unit_worker/villager.png@ @abilities/repair.png@@building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 9,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send all @resource/resource_food.webp@@unit_worker/villager.png@ to@resource/berrybush.png@, 1 @abilities/repair.png@@building_byzantines/cistern-1.png@, get @technology_economy/wheelbarrow.png@, with 7 on @resource/resource_wood.png@ start @resource/rally.png@to@resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 11,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_military/barracks.png@first, then @building_byzantines/mercenary-house-2.png@, then add another @building_byzantines/olive-grove-1.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 14,
+        "wood": 9,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "produce @unit_byzantines/limitanei-1.webp@@unit_byzantines/javelin-thrower-2.png@, get @technology_economy/horticulture.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 35,
+      "resources": {
+        "food": 16,
+        "wood": 5,
+        "gold": 7,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "Send 5@unit_worker/villager.webp@@resource/resource_wood.png@ to @resource/resource_gold.png@ and @abilities/repair.png@@building_defensive/outpost.png@@technology_defensive/arrow-slits.png@on @resource/resource_gold.png@, rally to @resource/resource_food.png@ until age up, keep producing @unit_byzantines/limitanei-1.png@ if threatened, with the @resource/berrybush.png@ under @landmark_byzantines/grand-winery-1.png@ and the @building_byzantines/olive-grove-1.png@ you should be able to add 3 sets of @unit_byzantines/javelin-thrower-2.png@ without going to outer resources, slowly keep adding @building_byzantines/olive-grove-1.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 40,
+      "resources": {
+        "food": 11,
+        "wood": 9,
+        "gold": 10,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Age up with @landmark_byzantines/golden-horn-tower-2.webp@, @resource/rally.png@to@resource/resource_wood.png@,  shift command @landmark_byzantines/grand-winery-1.png@ to @resource/relics.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 44,
+      "resources": {
+        "food": 20,
+        "wood": 12,
+        "gold": 10,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "Add @building_military/barracks.webp@/@building_military/archery-range.png@@building_byzantines/cistern-1.png@, get @resource/relics.png@ with @landmark_byzantines/grand-winery-1.png@@unit_religious/monk-3.png@, @technology_byzantines/veteran-mercenaries-3.png@, keep adding @building_byzantines/olive-grove-1.png@ around @landmark_byzantines/grand-winery-1.png@, get @technology_economy/lumber-preservation.png@@technology_economy/fertilization.png@@technology_economy/acid-distilization.png@, add @building_technology/blacksmith.png@ for upgrades, send 2 on @resource/resource_stone.png@ for more @building_byzantines/cistern-1.png@ and mangonel emplacments"
+      ]
+    }
+  ],
+  "description": "Seen in his semi final match verus beasty",
+  "video": "",
+  "season": 7,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

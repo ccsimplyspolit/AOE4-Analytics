@@ -1,0 +1,126 @@
+{
+  "name": "Trade Wing",
+  "civilization": "Abbasid Dynasty",
+  "author": "Whorrified",
+  "source": "https://aoe4guides.com/builds/1htJVOxwUmX6KgKmNZz1",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager-abbasid.webp@@resource/berrybush.png@ (@building_economy/mill.png@ with 2)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager-abbasid.webp@@building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager-abbasid.webp@@building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_abbasid/house-of-wisdom.webp@ with food vil"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_abbasid/trade-wing.webp@",
+        "leave 6 @unit_worker/villager-abbasid.png@@resource/resource_food.png@",
+        "@resource/rally.png@@resource/resource_wood.png@ until 15-16"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@technology_abbasid/fresh-foodstuffs.webp@@technology_abbasid/armored-caravans.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@: @unit_cavalry/horseman-1.png@",
+        "@building_military/archery-range.png@: @unit_abbasid/camel-archer-2.png@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/gPvRTDgTiEs",
+  "season": 10,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

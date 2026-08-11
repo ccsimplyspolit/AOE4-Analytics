@@ -1,0 +1,219 @@
+{
+  "name": "Delhi ",
+  "civilization": "Delhi Sultanate",
+  "author": "Asmitha",
+  "source": "https://aoe4guides.com/builds/5BBH1My4R9eecQnhkYEw",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "make @unit_worker/villager-delhi.webp@ (-> will rally to @resource/berrybush.png@)",
+        "6 on @resource/gaiatreeprototypetree.png@, one of them goes to to @building_religious/mosque.png@",
+        "once 5 @unit_worker/villager-delhi.png@with 10 @resource/resource_wood.png@each, build@building_economy/mill.png@ -&gt; @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "8th build @building_economy/house.webp@",
+        "then @building_economy/mining-camp.png@ @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "back to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Next 3 on @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 from @resource/berrybush.webp@ ->@landmark_delhi/tower-of-victory.png@",
+        "From @resource/sheep.png@ drop and go to @resource/resource_wood.png@, rally wood"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Once 50 @resource/resource_wood.webp@ -> @building_economy/lumber-camp.png@",
+        "Once 130 @resource/resource_gold.png@ -&gt;@resource/resource_wood.png@ + @building_economy/house.png@",
+        "Add a @unit_delhi/scholar.png@ before @technology_religious/piety.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/double-broadaxe.webp@ (@technology_economy/forestry.png@)  +  @technology_economy/horticulture.png@ (@technology_economy/survival-techniques.png@@technology_economy/professional-scouts.png@)  +  @technology_economy/specialized-pick.png@",
+        "@building_technology/blacksmith.png@ then @building_military/barracks.png@/@building_military/stable.png@ (swap if agressif civ)",
+        "cancel @technology_religious/piety.png@ for @technology_delhi/sanctity.png@ then @technology_religious/piety.png@@technology_delhi/all-seeing-eye.png@",
+        "@unit_delhi/scholar.png@ goes in @building_military/barracks.png@ for prod or @building_technology/blacksmith.png@ for tech"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_infantry/spearman-1.webp@ can make wall to protect",
+        "try priorities @unit_delhi/scholar.png@ in @building_religious/mosque.png@ for @age/age_2.png@ techs",
+        "priorities @technology_military/iron-undermesh.png@@technology_military/steeled-arrow.png@ then @technology_military/siege-engineering.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_delhi/compound-of-the-defender.webp@",
+        "@landmark_delhi/house-of-learning.png@ (only against someone in 2TC, english, etc... if cannot hold @resource/sacred_sites.png@)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_delhi/hisar-academy.webp@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "Against those\nJapan \nAbbaside Gazzi Riders\nMalian Take sites, push archer + Gazzi (+ belier)\nFrench A bit of everything, shoot eco\nOOTD hit before T3, make units\nHRE hit before T3, make units\nMongols if trade, block, if not, deny food, force pasture, deny ressource\nBe agressif T2\n\nothers :\nfast T3",
+  "video": "https://www.youtube.com/embed/3PPTiRwokzw",
+  "season": 7,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

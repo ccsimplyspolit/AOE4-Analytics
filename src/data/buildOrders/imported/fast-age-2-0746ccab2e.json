@@ -1,0 +1,346 @@
+{
+  "name": "Fast Age 2 ",
+  "civilization": "Macedonian Dynasty",
+  "author": "tc",
+  "source": "https://aoe4guides.com/builds/4kBPnBDdr2MZMVOM2d1L",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_macedonian/varangian_warcamp.webp@  - 1er créé @unit_worker/villager.webp@ build@building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "+ 1 @unit_worker/villager.webp@ à @resource/resource_gold.webp@ et après @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@landmark_byzantines/imperial-hippodrome-1.webp@- build avec 4  @unit_worker/villager.webp@ de la food"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@building_economy/mill.webp@ et @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@-> @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_cavalry/horseman-1.webp@en boucle"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1er champ + 2 cav mettre la pression"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_economy/lumber-camp.webp@+@technology_economy/wheelbarrow.webp@+@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_macedonian/varangian_stronghold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Si cav lourd @unit_macedonian/atgeir-1.webp@@unit_cavalry/horseman-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Sinon @unit_byzantines/varangian-guard-3.webp@@unit_cavalry/horseman-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 21,
+      "resources": {
+        "food": 10,
+        "wood": 1,
+        "gold": 5,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "5@unit_worker/villager.webp@->@building_defensive/outpost.webp@@building_economy/mill.webp@vers @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "6:50",
+      "villager_count": 21,
+      "resources": {
+        "food": 15,
+        "wood": 1,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/survival-techniques.webp@ et @technology_economy/horticulture.webp@ si masse @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 27,
+      "resources": {
+        "food": 15,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_byzantines/varangian-guard-3.webp@ en boucle pour def et cav attack"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 31,
+      "resources": {
+        "food": 15,
+        "wood": 11,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_macedonian/varangian_arsenal.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "9:10",
+      "villager_count": 33,
+      "resources": {
+        "food": 15,
+        "wood": 13,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_macedonian/scale-barding-2.webp@ - On a 5@unit_byzantines/varangian-guard-3.webp@et 10@unit_cavalry/horseman-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Ajout @building_macedonian/varangian_stronghold.webp@ si trop bois -> @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/double-broadaxe.webp@@technology_economy/horticulture.webp@@technology_economy/specialized-pick.webp@@technology_macedonian/scale-barding-2.webp@@technology_macedonian/butted-chainmail-2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "14:30",
+      "villager_count": 47,
+      "resources": {
+        "food": 22,
+        "wood": 1,
+        "gold": 16,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "@landmark_byzantines/golden-horn-tower-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "14:30",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_byzantines/varangian-guard-3.webp@ passé vétéran@technology_macedonian/butted-chainmail-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/9RHniKRFOew",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

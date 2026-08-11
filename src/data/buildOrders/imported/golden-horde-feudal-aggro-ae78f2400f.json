@@ -1,0 +1,161 @@
+{
+  "name": "Golden Horde Feudal Aggro",
+  "civilization": "Golden Horde",
+  "author": "Eldritch",
+  "source": "https://aoe4guides.com/builds/9UCs9vo5xkVVjoV8Xudy",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Queue 2 @unit_worker/villager-mongols.webp@ batches and @resource/rally.webp@ to @resource/sheep.webp@",
+        "Send 4 to @resource/sheep.webp@",
+        "Send 1 to build @building_mongols/ovoo.webp@ then @landmark_golden_horde/golden_tent.webp@ (near @resource/resource_gold.webp@ if front because you'll make @building_golden_horde/fortified_outpost.webp@ later on it) and then go @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:37",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Send 1 of the 2 new @unit_worker/villager-mongols.webp@ to build @building_mongols/ger.webp@ on @resource/resource_gold.webp@ and mine",
+        "Keep 2 @unit_worker/villager-mongols.webp@ on @resource/resource_gold.webp@ and @resource/rally.webp@@resource/sheep.webp@ until age-up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age-up with @technology_golden_horde/golden_tent_building_carts_age2.webp@",
+        "Send 4 @resource/sheep.webp@@unit_worker/villager-mongols.webp@ to @resource/gaiatreeprototypetree.webp@ and @resource/rally.webp@ the next @unit_worker/villager-mongols.webp@ batch to it as well, then @resource/rally.webp@ back to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 6,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "As soon as you have 150 @resource/resource_wood.webp@ build @building_golden_horde/fortified_outpost.webp@ on @resource/resource_gold.webp@ with 1 @resource/resource_gold.webp@@unit_worker/villager-mongols.webp@",
+        "Try to have the @landmark_golden_horde/golden_tent.webp@ in the influence zone and space around for at least the first two military production buildings"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 19,
+      "resources": {
+        "food": 11,
+        "wood": 6,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Produce @unit_golden_horde/khan.webp@ from @landmark_golden_horde/golden_tent.webp@ and send to enemy @resource/resource_gold.webp@ to harass, try to keep him alive, dodge @unit_infantry/spearman-1.webp@",
+        "From the free carts, build @building_military/archery-range.webp@ and @building_military/stable.webp@ around @building_golden_horde/fortified_outpost.webp@ for 20% production speed increase",
+        "Send 1 @resource/resource_wood.webp@@unit_worker/villager-mongols.webp@ to build @building_mongols/ger.webp@ on @resource/resource_wood.webp@",
+        "@resource/rally.webp@ the next @unit_worker/villager-mongols.webp@ batch to @resource/resource_gold.webp@ then @resource/rally.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce 1 @unit_infantry/archer-2.webp@ batch and 1 @unit_mongols/keshik-2.webp@ batch as soon as possible and rally to the enemy base",
+        "Continue producing @unit_infantry/archer-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:10",
+      "villager_count": 23,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce @unit_golden_horde/torguud.webp@ as soon as you have 200 @resource/resource_stone.webp@ and rally to enemy base, heal @unit_golden_horde/khan.webp@ if necessary",
+        "Research @technology_economy/double-broadaxe.webp@",
+        "Once 10 @unit_worker/villager-mongols.webp@ on @resource/resource_wood.webp@ @resource/rally.webp@ @resource/resource_gold.webp@ until 5 then 1 more to @resource/resource_wood.webp@ then @resource/rally.webp@ @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:45",
+      "villager_count": 27,
+      "resources": {
+        "food": 10,
+        "wood": 11,
+        "gold": 5,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Send 1 @resource/resource_food.webp@@unit_worker/villager-mongols.webp@ to build second @building_mongols/ovoo.webp@",
+        "Continue producing @unit_infantry/archer-2.webp@ and try to deny enemy @resource/resource_gold.webp@ or @resource/resource_food.webp@",
+        "Make more @unit_mongols/keshik-2.webp@ when your resources allow it",
+        "Whenever possible build @building_technology/blacksmith.webp@ and research @technology_military/steeled-arrow.webp@ and @technology_military/iron-undermesh.webp@",
+        "Research @technology_military/siege-engineering.webp@ if enemy goes 2 TC and you're in a safe position to push it with 2 rams"
+      ]
+    }
+  ],
+  "description": "A Build Order to simply go aggro in Feudal, with Keshiks + Archers, either all-in or into Castle. Works best against booming/passive opponents. ",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

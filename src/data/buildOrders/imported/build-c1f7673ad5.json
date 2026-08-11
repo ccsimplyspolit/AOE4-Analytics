@@ -1,0 +1,199 @@
+{
+  "name": "神罗直城",
+  "civilization": "Holy Roman Empire",
+  "author": "321313",
+  "source": "https://aoe4guides.com/builds/3Lb1SkQ8Y1SF1Ag91pY6",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3个@unit_worker/villager.webp@去@resource/sheep.webp@,",
+        "3个@unit_worker/villager.webp@去@resource/resource_gold.webp@,",
+        "其中2个@unit_worker/villager.webp@先去造 @building_economy/mining-camp.webp@,",
+        "1个 @unit_worker/villager.webp@先去造 @building_economy/house.webp@,",
+        "建造完后都去@resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.webp@设置到@resource/sheep.webp@一直到食物农7个为止."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "然后把@building_economy/town-center.webp@@resource/rally.webp@设置到 @resource/resource_wood.webp@一直到砍树农民3个为止，",
+        "后面的集结点都设为@resource/resource_food.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "3个@resource/resource_food.webp@@unit_worker/villager.webp@去建造亚琛教堂,",
+        "@landmark_hre/aachen-chapel.webp@并编队使其建造完后采集@resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_hre/aachen-chapel.webp@覆盖资源的优先级:@resource/berrybush.webp@@resource/deer.webp@,  @resource/resource_wood.webp@,    @resource/resource_gold.webp@,@resource/resource_stone.webp@.",
+        "如果@landmark_hre/aachen-chapel.webp@建造范围内没有能覆盖的金矿@resource/resource_gold.webp@",
+        "那么在@building_economy/town-center.webp@生产1个@unit_hre/prelate.webp@去@resource/resource_gold.webp@旁边鼓舞."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "最先的150个@resource/resource_wood.webp@的用途:用1个@unit_worker/villager.png@@resource/resource_food.png@依次建造@building_economy/mill.png@,@resource/resource_wood.png@,@building_economy/house.png@,",
+        "以及在@building_economy/mill.png@里升级@technology_economy/wheelbarrow.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 15,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "准备充足的@resource/resource_food.webp@t发展到第四时代 @age/age_4.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_hre/aachen-chapel.webp@建造好后让@unit_hre/prelate.webp@入驻,",
+        "如果对手有进攻意图，或者@landmark_hre/aachen-chapel.webp@的位置比较危险,",
+        "补充@resource/resource_wood.webp@@unit_worker/villager.webp@至5个,",
+        "增加1个@unit_worker/villager.webp@采@resource/resource_stone.webp@,",
+        "建造1个@building_defensive/outpost.webp@并升级@technology_defensive/arrow-slits.webp@防守."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "8个@unit_worker/villager.webp@@resource/sheep.webp@去建造雷格尼茨大教堂@landmark_hre/regnitz-cathedral.webp@,生产 2个@unit_hre/prelate.webp@拿@resource/relics.webp@.",
+        "如果已被进攻，那么建造城主宫殿@landmark_hre/burgrave-palace.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "根据对手出兵情况灵活应对, 通常建造2个@building_military/stable.webp@生产4-12个 @unit_cavalry/knight-2.webp@",
+        "在有雷格尼茨大教堂@landmark_hre/regnitz-cathedral.webp@的情况"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "在第三时代有@landmark_hre/regnitz-cathedral.webp@并抢夺到几个圣物，",
+        "会有大量黄金资源支持大量出兵+点科技"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 11,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

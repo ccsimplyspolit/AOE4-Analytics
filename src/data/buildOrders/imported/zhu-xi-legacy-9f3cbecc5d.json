@@ -1,0 +1,246 @@
+{
+  "name": "Zhu Xi Legacy",
+  "civilization": "Zhu Xi's Legacy",
+  "author": "Dan9575",
+  "source": "https://aoe4guides.com/builds/35p6obCkbF3OjLIGFuGA",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/mill.webp@ at @resource/berrybush.png@ + @unit_chinese/imperial-official.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/house.webp@ then @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.png@ build @building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:25",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.png@ @building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 build @landmark_zhuxi/meditation-gardens-1.webp@ then to @resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@building_chinese/village.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 4,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/wheelbarrow.webp@@technology_economy/double-broadaxe.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/specialized-pick.webp@@technology_economy/horticulture.png@@resource/rally.png@@resource/resource_stone.png@ @building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:15",
+      "villager_count": 23,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 6,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.png@ @landmark_zhuxi/jiangnan-tower-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build military @building_military/barracks.webp@@building_military/archery-range.png@@building_technology/blacksmith.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@ with stone villigers"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 30,
+      "resources": {
+        "food": 8,
+        "wood": 16,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_chinese/granary.webp@ Transition to farms"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 6,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

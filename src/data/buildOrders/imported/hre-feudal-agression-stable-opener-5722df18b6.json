@@ -1,0 +1,228 @@
+{
+  "name": "HRE Feudal Agression Stable opener ",
+  "civilization": "Holy Roman Empire",
+  "author": "johnsen",
+  "source": "https://aoe4guides.com/builds/2Mq9TZUBR7fD5VE5vILK",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "starting distribution"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/resource_food.png@ till age up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "age up with 4 food Vills @landmark_hre/aachen-chapel.webp@ close to @resource/resource_wood.png@line,  move 1 vill from @resource/resource_food.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build @building_economy/mill.webp@ on @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get enough Gold for upgrades then move 1 gold vill to food if you can"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 5,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get eco upgrades @technology_economy/wheelbarrow.webp@ @technology_economy/double-broadaxe.png@   @resource/rally.png@ to @resource/resource_wood.png@ till enough wood for @building_military/stable.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 5,
+        "wood": 11,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build @building_military/stable.webp@ with wood vills (1 to 3) then back to wood and @resource/rally.png@ to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "produce @unit_cavalry/horseman-1.webp@ and start harassing external ressources like @resource/resource_gold.png@ or @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 11,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build @building_military/archery-range.webp@ produce @unit_infantry/archer-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 10,
+        "wood": 12,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build @building_technology/blacksmith.webp@ with gold vill, when finished back to gold"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 10,
+        "wood": 12,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "get @building_technology/blacksmith.webp@ upgrades based on opponents' strat and build production buildings based on opponents' strat"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 30,
+      "resources": {
+        "food": 14,
+        "wood": 14,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "trasit to @building_economy/farm.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 37,
+      "resources": {
+        "food": 15,
+        "wood": 20,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/resource_gold.png@ and prepare for slowly age up with @landmark_hre/regnitz-cathedral.png@"
+      ]
+    }
+  ],
+  "description": "By LaSh",
+  "video": "https://www.youtube.com/embed/cTo7N1mcgVY",
+  "season": 8,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

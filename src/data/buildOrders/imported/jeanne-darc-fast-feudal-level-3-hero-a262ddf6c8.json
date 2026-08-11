@@ -1,0 +1,244 @@
+{
+  "name": "Jeanne d'Arc Fast Feudal Level 3 Hero",
+  "civilization": "Jeanne d'Arc",
+  "author": "BudOrang",
+  "source": "https://aoe4guides.com/builds/2djnMPmdPHiJeI4njNk5",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@ build @building_economy/house.png@ after go @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "first build @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_cavalry/scout.webp@ spot @resource/wolf.png@ and memorize them for after"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@ build @landmark_french/school-of-cavalry.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/resource_wood.webp@ first tree"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "new @unit_worker/villager.webp@@building_economy/mill.png@ -> @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "70%@landmark_french/school-of-cavalry.webp@ transfer @unit_worker/villager.png@@resource/sheep.png@ to @abilities/repair.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 7,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@unit_worker/villager.webp@@resource/resource_wood.png@@building_economy/house.png@ / @technology_economy/wheelbarrow.png@ / when tree finish@unit_worker/villager.png@@resource/resource_wood.png@@building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:42",
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/double-broadaxe.webp@@technology_economy/specialized-pick.png@@unit_french/royal-knight-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-woman-at-arms-2.webp@@resource/boar.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@@resource/sheep.png@ build @building_military/archery-range.png@                                                             @ability_jeanne/ability-consecrate-1.png@@building_economy/town-center.png@@landmark_french/school-of-cavalry.png@@building_military/archery-range.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:12",
+      "villager_count": 21,
+      "resources": {
+        "food": 7,
+        "wood": 9,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/boar.webp@ 1 kill"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 7,
+        "wood": 12,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@@resource/resource_wood.png@@building_technology/blacksmith.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 26,
+      "resources": {
+        "food": 9,
+        "wood": 12,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:21",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-knight-3.webp@ you can sacrifice your units but don't kill Jeanne to xp her"
+      ]
+    }
+  ],
+  "description": "Not like traditionnal french civ, you have to wipe map from wolfs and boars before raiding.\nPermanent producing royal knight and archer.\nWhen you have your lvl3 in feodal with Jeanne, you can push your opposent to finish him.",
+  "video": "",
+  "season": 6,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

@@ -1,0 +1,129 @@
+{
+  "name": "2TC Beasty ",
+  "civilization": "Chinese",
+  "author": "lxwrncx",
+  "source": "https://aoe4guides.com/builds/0J3IxwHLQxmFqANb76Og",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/mill.webp@ direction to @resource/resource_gold.webp@, collect @resource/sheep.webp@ on @building_economy/mill.webp@with 7 @unit_worker/villager-china.webp@; @resource/rally.webp@3 @resource/resource_gold.webp@; @building_economy/house.webp@near @building_economy/mill.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2 @unit_worker/villager-china.webp@@abilities/repair.webp@@landmark_chinese/imperial-academy.webp@-> cover @building_economy/mill.webp@@resource/resource_wood.webp@  (return @resource/resource_food.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/resource_wood.webp@to get to 150"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 10,
+        "builder": 2
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/mining-camp.webp@@building_economy/house.webp@-> @resource/resource_stone.webp@",
+        "@resource/rally.webp@@resource/resource_wood.webp@@building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 0,
+        "stone": 10,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_chinese/imperial-official.webp@ASAP -> @building_economy/mining-camp.webp@@resource/resource_stone.webp@ to 350 -&gt; @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 7,
+        "wood": 16,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "can @building_defensive/palisade-wall.webp@ to prevent Cav civs",
+        "@building_economy/town-center.webp@ASAP + Safest"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 8,
+        "wood": 15,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@",
+        "15 on @resource/resource_wood.webp@ to have enough to protect military",
+        "@technology_economy/double-broadaxe.webp@@technology_economy/wheelbarrow.webp@",
+        "@building_defensive/palisade-wall.webp@Where opponent isnt to secure slowly map",
+        "@landmark_chinese/barbican-of-the-sun.webp@ to secure food and Song Dynasty"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/C2-p6YbqjqU",
+  "season": 11,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

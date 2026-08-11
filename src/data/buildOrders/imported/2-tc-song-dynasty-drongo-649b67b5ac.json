@@ -1,0 +1,307 @@
+{
+  "name": "2 TC Song Dynasty Drongo",
+  "civilization": "Zhu Xi's Legacy",
+  "author": "Vakr",
+  "source": "https://aoe4guides.com/builds/0sVcZTsesSp6uIxy9Ljk",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:01",
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "gather straggler tree. dont drop off"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:25",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "build @building_economy/mill.webp@by @building_economy/town-center.png@",
+        "@unit_chinese/imperial-official.png@supervise @building_economy/mill.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.png@till 7"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:45",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.png@till 3",
+        "build @building_economy/house.png@and @building_economy/mining-camp.png@",
+        "then @resource/rally.png@@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:25",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 @unit_worker/villager-china.webp@goes to build @landmark_zhuxi/meditation-gardens-1.png@ by @resource/berrybush.png@shift click to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 14,
+      "resources": {
+        "food": 11,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "once 170 @resource/resource_gold.webp@move @resource/resource_gold.png@@unit_worker/villager-china.png@to straggler tree"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 15,
+      "resources": {
+        "food": 2,
+        "wood": 3,
+        "gold": 0,
+        "stone": 8,
+        "builder": 2
+      },
+      "notes": [
+        "once 340 @resource/resource_food.webp@move 2 @resource/resource_food.png@@unit_worker/villager-china.png@to build @landmark_zhuxi/jiangnan-tower-2.png@ shift click to @resource/resource_food.png@",
+        "8 @resource/resource_food.png@@unit_worker/villager-china.png@to @resource/resource_stone.png@",
+        "@unit_chinese/imperial-official.png@ supervise @resource/resource_stone.png@",
+        "@resource/rally.png@@resource/resource_wood.png@till 7 then @resource/rally.png@@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:10",
+      "villager_count": 19,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Song Dynasty Begins",
+        "once 350 @resource/resource_stone.webp@build 2nd @building_economy/town-center.png@with @resource/resource_stone.png@@unit_worker/villager-china.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 21,
+      "resources": {
+        "food": 10,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @unit_worker/villager-china.webp@building @building_economy/town-center.png@go @resource/resource_food.png@",
+        "4 @unit_worker/villager-china.png@building @building_economy/town-center.png@go @resource/resource_wood.png@.",
+        "@resource/rally.png@@resource/resource_food.png@ till 14",
+        "then split @resource/rally.png@ between @resource/resource_food.png@ and @resource/resource_wood.png@",
+        "get @technology_economy/double-broadaxe.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 25,
+      "resources": {
+        "food": 13,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "start building @building_military/archery-range.webp@'s with extra @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 27,
+      "resources": {
+        "food": 9,
+        "wood": 13,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "move 5 @resource/resource_food.webp@@unit_worker/villager-china.png@to @resource/resource_gold.png@, build @building_defensive/outpost.png@",
+        "produce @unit_chinese/imperial-official.png@",
+        "produce @unit_chinese/zhuge-nu-2.png@ constantly"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:40",
+      "villager_count": 39,
+      "resources": {
+        "food": 17,
+        "wood": 17,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/specialized-pick.webp@",
+        "once 17 @resource/resource_food.png@",
+        "@resource/rally.png@ @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:50",
+      "villager_count": 41,
+      "resources": {
+        "food": 17,
+        "wood": 18,
+        "gold": 5,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "build @building_technology/blacksmith.webp@",
+        "produce 2 @unit_chinese/imperial-official.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:30",
+      "villager_count": 41,
+      "resources": {
+        "food": 17,
+        "wood": 19,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "keep building @building_military/archery-range.webp@'s. should have around 25-30 @unit_chinese/zhuge-nu-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:15",
+      "villager_count": 46,
+      "resources": {
+        "food": 17,
+        "wood": 24,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_chinese/imperial-official.webp@ supervise @building_technology/blacksmith.png@ and get @technology_military/steeled-arrow.png@ , @technology_military/siege-engineering.png@, @technology_military/iron-undermesh.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:25",
+      "villager_count": 56,
+      "resources": {
+        "food": 17,
+        "wood": 34,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "transition to @building_chinese/granary.webp@once @resource/berrybush.png@are gone"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "12:20",
+      "villager_count": 55,
+      "resources": {
+        "food": 18,
+        "wood": 32,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "start building @unit_siege/battering-ram.webp@",
+        "push or go castle and get upgrades immediately"
+      ]
+    }
+  ],
+  "description": "Play Defensive.\nUse extra wood for outposts.\nGo 3 TC if you want.",
+  "video": "https://www.youtube.com/embed/Ds0RmlfSYqI",
+  "season": 6,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

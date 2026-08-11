@@ -1,0 +1,349 @@
+{
+  "name": "法国手推车背鹿 - 中文",
+  "civilization": "French",
+  "author": "Cherihawn",
+  "source": "https://aoe4guides.com/builds/00I7J47dv26cPbKmXYkO",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "双击6 @unit_worker/villager.webp@ to @resource/sheep.webp@ ，HQQ，1 农@building_economy/mill.webp@ & @building_economy/house.webp@ 返回吃羊."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:18",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1  @unit_worker/villager.webp@ to @resource/resource_gold.webp@ & @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:36",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 4 @unit_worker/villager.webp@ to @resource/resource_gold.webp@ &@technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:48",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/sheep.webp@ 直到 @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 15,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "二本地标 @landmark_french/school-of-cavalry.webp@ 提前 编号4 @resource/sheep.webp@@unit_worker/villager.webp@，385以上手动提交"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 16,
+      "resources": {
+        "food": 7,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/gaiatreeprototypetree.webp@ until 5 @unit_worker/villager.webp@ on @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "1@resource/resource_gold.webp@农，建造@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 21,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "点@technology_economy/professional-scouts.webp@ & @unit_french/royal-knight-2.webp@，吃羊农手动提交，骑兵学校生产3 @unit_cavalry/scout.webp@去鹿区"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5.30",
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1伐木农，建造@building_military/archery-range.webp@ ，1金农建造@building_economy/house.webp@，@resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6.10",
+      "villager_count": 26,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1吃羊农，建造@building_military/archery-range.webp@，5农民TC穿越，去吃鹿。  持续生产@unit_infantry/archer-2.webp@保护背鹿"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6.42",
+      "villager_count": 26,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/archery-range.webp@建造好，转移3个吃羊农去采金，金农补@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7.09",
+      "villager_count": 29,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "持续金马和小弓，保护金区和背鹿，尽量不要断，持续生产@unit_infantry/archer-2.webp@@unit_french/royal-knight-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8.00",
+      "villager_count": 33,
+      "resources": {
+        "food": 17,
+        "wood": 8,
+        "gold": 7,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1农补 @building_technology/blacksmith.webp@，点@technology_military/iron-undermesh.webp@@technology_military/steeled-arrow.webp@，8分钟差不多6个小弓，3匹金马"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 36,
+      "resources": {
+        "food": 18,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_french/chivalry.webp@@technology_french/cantled-saddles.webp@，@resource/rally.webp@@resource/resource_gold.webp@，金马小弓不要断"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "10农采金后，木农补@building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10.00",
+      "villager_count": 40,
+      "resources": {
+        "food": 17,
+        "wood": 13,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "差不多9金马，15个小弓"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11.00",
+      "villager_count": 43,
+      "resources": {
+        "food": 20,
+        "wood": 13,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "差不多14金马，18个小弓"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "12.00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "开始吃浆果，点@technology_economy/horticulture.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "12.30",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "开始8农吃猪肉，立塔，尽早开二金"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 41,
+      "resources": {
+        "food": 17,
+        "wood": 8,
+        "gold": 11,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "兵回来，TC十几个吃肉农民去建造@landmark_french/guild-hall.webp@，TC补吃肉"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "上3以后，补5农挖石头"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 11,
+  "map": "Open",
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

@@ -1,0 +1,239 @@
+{
+  "name": "Jeando's Fast Castle into Ghulams",
+  "civilization": "Ayyubids",
+  "author": "NoobPower",
+  "source": "https://aoe4guides.com/builds/BTwyb02KceCCNeEmsGRi",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 on @resource/berrybush.webp@ ; 2 vil @abilities/repair.webp@@building_economy/mill.webp@ ; 1 vil @abilities/repair.webp@ @building_economy/house.webp@ ; 1 vil @abilities/repair.webp@ @landmark_abbasid/house-of-wisdom.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "+2 @unit_worker/villager-abbasid.webp@ on @resource/resource_gold.webp@ then @resource/rally.webp@ on @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age-up with @landmark_abbasid/culture-wing.webp@ : Logistic"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "(after remacro)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 9,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once starting building @building_defensive/outpost.webp@ on @resource/resource_gold.webp@, send 3 @unit_worker/villager-abbasid.webp@ from @resource/resource_wood.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 12,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "(at age up)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:00",
+      "villager_count": 21,
+      "resources": {
+        "food": 14,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 14 @unit_worker/villager-abbasid.webp@ on @resource/resource_food.webp@, @resource/rally.webp@ on @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:50",
+      "villager_count": 26,
+      "resources": {
+        "food": 14,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age-up with @landmark_abbasid/economic-wing.webp@ : Military / Master smiths if opponent is passive.",
+        "If under attack, ahe up with Economy / Industry"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 26,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "(after remacro)",
+        "If necessary @abilities/repair.webp@ 2nd @building_defensive/outpost.webp@ on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@ @building_technology/blacksmith.webp@ then @building_military/barracks.webp@",
+        "Immediately research @technology_military/iron-undermesh.webp@ then @technology_military/bloomery.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@ 2nd and 3rd @building_military/barracks.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "08:50",
+      "villager_count": 32,
+      "resources": {
+        "food": 12,
+        "wood": 13,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "(at age up)",
+        "Start making"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "From now, if control map, balance from @resource/resource_wood.webp@ to @resource/resource_food.webp@ by taking 5 @unit_worker/villager-abbasid.webp@ to next @resource/berrybush.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/wPY96Ap66Lk",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T17:53:23Z",
+  "updatedAt": "2026-08-09T17:53:23Z"
+}

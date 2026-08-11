@@ -1,0 +1,121 @@
+{
+  "name": "Chamber of Commerce [eng]  - copy",
+  "civilization": "French",
+  "author": "A din",
+  "source": "https://aoe4guides.com/builds/1B3fNtwn2mpknZTgkk5N",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6x@unit_worker/villager.webp@to @resource/sheep.png@",
+        "Next 3x @unit_worker/villager.png@ build @building_economy/house.png@ and @building_economy/mining-camp.png@@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:45",
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.png@ until 9x@unit_worker/villager.png@ there. Next >",
+        "@resource/rally.png@@resource/resource_wood.png@ (build @building_economy/lumber-camp.png@ )"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 3,
+        "wood": 6,
+        "gold": 2,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "When you can, age up @age/age_2.webp@@landmark_french/school-of-cavalry.png@ with 4x@unit_worker/villager.png@from @resource/sheep.png@",
+        "(When finished @landmark_french/school-of-cavalry.png@, they go to @resource/resource_wood.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move 1x @unit_worker/villager.webp@ from @resource/resource_wood.png@ and build@building_economy/mill.png@@resource/berrybush.png@",
+        "(When finished @building_economy/mill.png@ he goes to @resource/resource_wood.png@)",
+        "Move 1x  @unit_worker/villager.png@from @resource/resource_wood.png@ to  @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/stable.webp@ and produce @unit_french/royal-knight-2.png@",
+        "Build@building_economy/house.png@ and",
+        "Build@building_economy/market.png@ to trade",
+        "When you can, research @technology_economy/double-broadaxe.png@@technology_economy/horticulture.png@@technology_economy/survival-techniques.png@@technology_economy/specialized-pick.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move 5x@unit_worker/villager.webp@ from @resource/resource_wood.png@ to @resource/deer.png@",
+        "Build another @building_military/stable.png@ and 2x @building_military/archery-range.png@",
+        "Produce  @unit_french/royal-knight-2.png@ and @unit_infantry/archer-2.png@",
+        "When you can, Age Up @age/age_3.png@"
+      ]
+    }
+  ],
+  "description": "BO from Vortix. Uploaded by Abadacus. Edited by me.\n\nTrade Chamber: With the French, we use knights and archers to apply pressure or defend our trade, quickly advancing to the Castle Age to take advantage of the technological upgrades from the Royal Institute.",
+  "video": "https://www.youtube.com/embed/vcZXg1BION4",
+  "season": 9,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

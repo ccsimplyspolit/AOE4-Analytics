@@ -1,0 +1,161 @@
+{
+  "name": "Jeando's economy-focused Fast Castle",
+  "civilization": "Ayyubids",
+  "author": "NoobPower",
+  "source": "https://aoe4guides.com/builds/LRAji71lr1yLVMrG5Dz1",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 on @resource/berrybush.webp@ ; 2 vil @abilities/repair.webp@@building_economy/mill.webp@ ; 1 vil @abilities/repair.webp@ @building_economy/house.webp@ ; 1 vil @abilities/repair.webp@ @landmark_abbasid/house-of-wisdom.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "+2 @unit_worker/villager-abbasid.webp@ on @resource/resource_gold.webp@ then @resource/rally.webp@ on @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age-up with @landmark_abbasid/culture-wing.webp@ : Logistic"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "(After remacro)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 9,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once starting building @building_defensive/outpost.webp@ on @resource/resource_gold.webp@, send 3 @unit_worker/villager-abbasid.webp@ from @resource/resource_wood.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:40",
+      "villager_count": 23,
+      "resources": {
+        "food": 16,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Add a @building_defensive/outpost.webp@ on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:30",
+      "villager_count": 26,
+      "resources": {
+        "food": 19,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age-up with @landmark_abbasid/economic-wing.webp@ : Industry"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Click eco tech when possible (@technology_economy/double-broadaxe.webp@, @technology_economy/horticulture.webp@, @technology_economy/wheelbarrow.webp@, @technology_economy/specialized-pick.webp@)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "08:30",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use the bonus 900 @resource/resource_wood.webp@ to build military production building depending on what ennemy produces and start produce army.",
+        "Use @unit_ayyubids/dervish-3.webp@ to gather relics.",
+        "Build 2nd @building_economy/town-center.webp@ if not under too much pressure"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/ASKscUN5XJg",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T17:53:23Z",
+  "updatedAt": "2026-08-09T17:53:23Z"
+}

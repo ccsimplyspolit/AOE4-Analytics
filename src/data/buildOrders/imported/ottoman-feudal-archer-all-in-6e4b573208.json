@@ -1,0 +1,228 @@
+{
+  "name": "Ottoman Feudal Archer All-in",
+  "civilization": "Ottomans",
+  "author": "C4DER4DE",
+  "source": "https://aoe4guides.com/builds/0vrYNnFWVMAJjPmoHw3V",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 > @resource/resource_stone.webp@ 1 + @resource/rally.webp@ &gt; @resource/sheep.webp@ until 10 | @building_economy/house.webp@ (@resource/sheep.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@ 100 @resource/resource_stone.webp@, all @resource/resource_stone.webp@ > @resource/gaiatreeprototypetree.webp@ (2 trips) &gt; @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_ottomans/military-school-1.webp@ (@resource/sheep.webp@) ASAP | harass with @unit_infantry/spearman-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@building_economy/mining-camp.webp@@resource/resource_gold.webp@ until 3"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 3,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @resource/sheep.webp@ + @resource/rally.webp@ > @building_economy/lumber-camp.webp@@resource/resource_wood.webp@ until 8"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @resource/sheep.webp@ > @landmark_ottomans/twin-minaret-medrese-1.webp@ &gt; @resource/berrybush.webp@ | all @resource/resource_gold.webp@ &gt; @resource/sheep.webp@ | all (but 1) @resource/sheep.webp@ &gt; @resource/resource_wood.webp@ ..."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "... @resource/rally.webp@@building_economy/mining-camp.webp@@resource/resource_stone.webp@ until 3 | @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 3,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.webp@ until 5"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "all @resource/sheep.webp@ > @resource/resource_wood.webp@ | @building_military/archery-range.webp@@building_technology/blacksmith.webp@ (@resource/resource_wood.webp@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@ 100 @resource/resource_stone.webp@, @building_ottomans/military-school-1.webp@ (@resource/resource_gold.webp@) ASAP"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_ottomans/sipahi-2.webp@ or @unit_infantry/spearman-1.webp@ from @building_ottomans/military-school-1.webp@ | @building_military/archery-range.webp@ x3-4 (@resource/resource_gold.webp@) | @resource/rally.webp@@resource/resource_food.webp@ until 12"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@100 @resource/resource_stone.webp@, all @resource/resource_stone.webp@ > @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@ | pressure with @unit_infantry/archer-2.webp@@unit_ottomans/sipahi-2.webp@/@unit_infantry/spearman-1.webp@ + @unit_ottomans/mehter-2.webp@@unit_siege/battering-ram.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/double-broadaxe.webp@@technology_economy/wheelbarrow.webp@@technology_military/steeled-arrow.webp@@technology_military/iron-undermesh.webp@@technology_military/siege-engineering.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

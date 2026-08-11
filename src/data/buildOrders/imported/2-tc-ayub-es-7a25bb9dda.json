@@ -1,0 +1,150 @@
+{
+  "name": "2 TC Ayubíes ",
+  "civilization": "Ayyubids",
+  "author": "Pilsen",
+  "source": "https://aoe4guides.com/builds/08ALa0DT8EWZ3X972wQY",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 2,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1x @unit_worker/villager-abbasid.webp@construye @landmark_abbasid/house-of-wisdom.png@y@building_economy/house.png@. Luego va a @resource/sheep.png@",
+        "2x@unit_worker/villager-abbasid.png@a @resource/sheep.png@",
+        "3x@unit_worker/villager-abbasid.png@a @resource/resource_gold.png@(no construyas@building_economy/mining-camp.png@, toma sólo x30@resource/resource_gold.png@) Luego a @resource/sheep.png@",
+        "@resource/rally.png@@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "1:31",
+      "villager_count": 10,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Cuando puedas, sube de edad con  @technology_ayyubids/culture-wing-advancement-1.webp@",
+        "Move 6x@unit_worker/villager-abbasid.png@a @building_economy/mining-camp.png@@resource/resource_stone.png@",
+        "@resource/rally.png@@resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Cuando tengas x350 @resource/resource_stone.webp@, mueve los@unit_worker/villager-abbasid.png@de @resource/resource_stone.png@ a @resource/resource_wood.png@",
+        "@resource/rally.png@@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:15",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Cuando puedas, construye otro @building_economy/town-center.webp@con los @unit_worker/villager-abbasid.png@ de @resource/resource_wood.png@ (excepto 4x@unit_worker/villager-abbasid.png@)",
+        "Con esos 4x @unit_worker/villager-abbasid.png@de @resource/resource_wood.png@, muévelos a@resource/resource_food.png@  para garantizar la producción de @unit_worker/villager-abbasid.png@ con el segundo @building_economy/town-center.png@",
+        "The@unit_worker/villager-abbasid.png@ que construyeron el @building_economy/town-center.png@ vuelven a @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:35",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Construye  @building_military/stable.webp@ y @building_military/archery-range.png@, y produce @unit_cavalry/horseman-1.png@ y @unit_infantry/archer-2.png@",
+        "(Construye @building_military/barracks.png@ en lugar de@building_military/archery-range.png@ si te enfrentas a una civilización de caballería)",
+        "Balancea tu economía entre @resource/resource_food.png@, @resource/resource_wood.png@ y @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "12:05",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Sube de edad con @technology_ayyubids/economic-wing-growth-1.webp@ (si puedes, no tomes@resource/berrybush.png@hasta haber subido de edad)"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Cuando llegues a @age/age_3.webp@ produce@unit_ayyubids/camel-lancer-3.png@+@unit_infantry/archer-2.png@ para presionar al enemigo."
+      ]
+    }
+  ],
+  "description": "BO by Beasty, uploaded by PatatasFritas, modified by me",
+  "video": "https://www.youtube.com/embed/sgHTNrF1zeM",
+  "season": 9,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

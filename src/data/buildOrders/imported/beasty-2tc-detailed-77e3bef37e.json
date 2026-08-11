@@ -1,0 +1,139 @@
+{
+  "name": "Beasty 2TC (detailed) - 中文翻譯",
+  "civilization": "Japanese",
+  "author": "leadingtw",
+  "source": "https://aoe4guides.com/builds/02BIVxvLq9i3kF2IdyrJ",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "3 村民吃 @resource/sheep.webp@, 3 村民採 @resource/resource_stone.png@",
+        "第一位產生村民蓋 @building_japanese/farmhouse-1.png@ 去採 @resource/berrybush.png@, 之後 @resource/rally.png@ 至 @resource/resource_stone.png@ 直到 5 人"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "1:10",
+      "villager_count": 8,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "集結採 @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "存 300  @resource/resource_stone.webp@, 升級 @technology_japanese/daimyo-manor-1.png@",
+        "注意: 升級 @technology_japanese/daimyo-manor-1.png@ 時, 不要排 @unit_worker/villager-japanese.png@ 在後面生產"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "4 @resource/resource_food.webp@ 村民去蓋 @landmark_japanese/kura-storehouse-1.png@",
+        "@resource/resource_food.png@ 村民留 4 個, 其他採 @resource/resource_wood.png@ (不要蓋 @building_economy/lumber-camp.png@, 去採靠近 TC 的 @resource/gaiatreeprototypetree.png@)",
+        "@resource/rally.png@ 至 @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "存到 350 @resource/resource_stone.webp@, 讓採 @resource/resource_stone.png@ 村民去採 @resource/resource_wood.png@ (靠近 TC 的@resource/gaiatreeprototypetree.png@)"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 14,
+      "resources": {
+        "food": 5,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "拉 8 採 @resource/resource_wood.webp@ 村民去造 2 TC 在 @resource/resource_gold.png@ 旁",
+        "蓋 @building_economy/lumber-camp.png@, 保持 8 ~ 10 村民採 @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "6:05",
+      "villager_count": 24,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "蓋 2TC 村民去採 @resource/resource_gold.webp@",
+        "兩TC @resource/rally.png@ 至 @resource/resource_food.png@",
+        "1 村民蓋 @building_military/barracks.png@ 開始產 @unit_japanese/onna-bugeisha-2.png@",
+        "如果可以, 升級 @technology_japanese/towara-1.png@, @technology_economy/double-broadaxe.png@, @technology_japanese/takezaiku-2.png@, @technology_japanese/tatara-1.png@ (如果敵人有弓箭手, 升級 @technology_military/iron-undermesh.png@)",
+        "用額外的 @resource/resource_wood.png@ 去蓋 @building_defensive/palisade-wall.png@"
+      ]
+    }
+  ],
+  "description": "2TC",
+  "video": "https://www.youtube.com/embed/WkG6pRGlHZQ",
+  "season": 8,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

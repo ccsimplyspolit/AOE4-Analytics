@@ -1,0 +1,257 @@
+{
+  "name": "Chinese Tax Mill into Pro Scouts & Fast Castle",
+  "civilization": "Chinese",
+  "author": "PengPrimate",
+  "source": "https://aoe4guides.com/builds/07iO1BfCWtNzQwERIvKy",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build an @unit_chinese/imperial-official.webp@ and send 6 @unit_worker/villager-china.webp@ to @resource/sheep.webp@ with a @building_economy/mill.webp@ + @building_economy/house.webp@ close to @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 2 @unit_worker/villager-china.webp@ build a @building_economy/mining-camp.webp@ & gather @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ back to @resource/sheep.webp@ at @building_economy/mill.webp@ until @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:12",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build @landmark_chinese/imperial-academy.webp@ near @building_economy/mill.webp@ and wood line with 3 @unit_worker/villager-china.webp@ from @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro (see tab to the left) and @resource/rally.webp@ @unit_worker/villager-china.webp@ to @resource/gaiatreeprototypetree.webp@ -> @resource/resource_wood.webp@ until 8 @unit_worker/villager-china.webp@ on @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "at 50 wood: build @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:17",
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue 2 @unit_chinese/imperial-official.webp@ consecutively from @landmark_chinese/imperial-academy.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 17,
+      "resources": {
+        "food": 8,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build a @building_economy/lumber-camp.webp@ and @ability_chinese/supervise.webp@ @resource/resource_food.webp@/@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_military/stable.webp@ & 3-4 @unit_cavalry/scout.webp@ from @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@technology_economy/professional-scouts.webp@ from @building_economy/mill.webp@. After @technology_economy/professional-scouts.webp@ started get 3rd @unit_chinese/imperial-official.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 21,
+      "resources": {
+        "food": 13,
+        "wood": 2,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_defensive/outpost.webp@ on @resource/resource_gold.webp@ and remacro (see tab to the left). @resource/rally.webp@ @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 14,
+        "wood": 2,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_chinese/village.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:10",
+      "villager_count": 27,
+      "resources": {
+        "food": 11,
+        "wood": 2,
+        "gold": 6,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Build @landmark_chinese/imperial-palace.webp@ with 8 @unit_worker/villager-china.webp@ from @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:20",
+      "villager_count": 27,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Remacro and get economy upgrades. You will be up fast, so prepare to macro for @ability_chinese/supervise.webp@ @unit_cavalry/lancer-3.png@ or @unit_chinese/palace-guard-3.png@ production."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "7:50",
+      "villager_count": 29,
+      "resources": {
+        "food": 16,
+        "wood": 5,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_religious/monastery.webp@ & @unit_cavalry/lancer-3.png@ production. Keep making lancers until opponent makes mass @unit_infantry/spearman-1.png@ / @unit_infantry/crossbowman-3.png@. Then it will be time for archers for you and therefore remacro. You can take this many other directions too, but now you are set for a safe castle age with food and relics. Do with that what you want :P"
+      ]
+    }
+  ],
+  "description": "A unique way to play Chinese with pro scouts and fast age up behind it leading into PGs or Lancer Spam",
+  "video": "https://www.youtube.com/embed/2hEeHjwWkow",
+  "season": 11,
+  "map": "Open",
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

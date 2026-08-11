@@ -1,0 +1,237 @@
+{
+  "name": "Simple Jeanne D'arc Feudal Aggression  - Fast Castle 1TC",
+  "civilization": "Jeanne d'Arc",
+  "author": "LachyTheo",
+  "source": "https://aoe4guides.com/builds/2Nue7BPFdoM2XEIWpwYm",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All @unit_worker/villager.webp@ to food, @unit_jeanne/jeanne-darc-peasant-1.png@ builds @building_economy/house.png@ + @building_economy/mining-camp.png@ and gathers @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ new @unit_worker/villager.png@ to @resource/resource_food.png@ until 8"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@2 new @unit_worker/villager.png@ to @resource/resource_gold.png@ then @resource/rally.png@to food again"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:13",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "when @resource/resource_gold.webp@-vein is 3900/4000 drop off all @resource/resource_food.png@/@resource/resource_gold.png@ and build @landmark_french/school-of-cavalry.png@ with@unit_jeanne/jeanne-darc-peasant-1.png@+1 @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "&lt;- Remacro according to tab. @resource/rally.webp@ to @resource/gaiatreeprototypetree.png@ until 5 then @resource/rally.png@ back to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "1 @resource/resource_gold.webp@@unit_worker/villager.png@ builds a @building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:14",
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "&lt;- Remacro according to tab. Queue 1 @unit_french/royal-knight-2.webp@. @unit_jeanne/jeanne-darc-peasant-1.png@ builds @building_military/archery-range.png@ then levels up with @ability_jeanne/ability-path-of-the-warrior-1.png@. @resource/rally.png@ @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use @unit_jeanne/jeanne-darc-woman-at-arms-2.webp@ to kill 2x @resource/boar.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue 1 @unit_french/royal-knight-2.webp@ and @unit_infantry/archer-2.png@.",
+        "Aim for 6 knights and 6 archers"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_technology/blacksmith.webp@ and research @technology_military/iron-undermesh.png@ and @technology_military/bloomery.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Harass enemy @resource/resource_gold.webp@ or @resource/resource_wood.png@ aim to kill 6-8 villagers to stunt growth"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 34,
+      "resources": {
+        "food": 18,
+        "wood": 6,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once @building_economy/town-center.webp@ is built re-macro and build @landmark_french/guild-hall.png@ with 8 vills"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 45,
+      "resources": {
+        "food": 20,
+        "wood": 10,
+        "gold": 15,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Ratio Macro 4:2:3 - transition to farms once Berry Bushes used up"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 75,
+      "resources": {
+        "food": 30,
+        "wood": 15,
+        "gold": 25,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_religious/monastery.webp@ and collect relics and take @resource/sacred_sites.png@"
+      ]
+    }
+  ],
+  "description": "A heavy feudal focused build to gain experience for Jeanne. You want her to hit lvl 3 for Holy Wrath to do effective dmg. ",
+  "video": "",
+  "season": 6,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

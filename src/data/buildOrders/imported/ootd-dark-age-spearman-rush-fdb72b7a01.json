@@ -1,0 +1,143 @@
+{
+  "name": "OOTD dark age spearman rush",
+  "civilization": "Order of the Dragon",
+  "author": "Donki",
+  "source": "https://aoe4guides.com/builds/0eMOBRrxGaCNXQzcaTYg",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 4,
+      "resources": {
+        "food": 3,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3@unit_worker/villager.webp@ -> @resource/sheep.png@",
+        "1@unit_worker/villager.png@ -&gt; strangler@resource/resource_wood.png@",
+        "1@unit_worker/villager.png@ -&gt; @building_military/barracks.png@ -&gt; @resource/resource_wood.png@",
+        "@building_economy/town-center.png@@resource/rally.png@ -&gt; @resource/sheep.png@",
+        "@building_military/barracks.png@ -&gt; 2@unit_dragon/gilded-spearman-1.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@ from @resource/resource_wood.png@ -> @building_economy/house.png@ and back to @resource/resource_wood.png@",
+        "Harass @resource/resource_gold.png@ with 2@unit_dragon/gilded-spearman-1.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@ from @resource/sheep.png@ -> @resource/resource_gold.png@",
+        "@building_economy/town-center.png@@resource/rally.png@ -&gt; @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3@unit_worker/villager.webp@ -> @landmark_hre/meinwerk-palace.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.png@ -> @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "move 5 @unit_worker/villager.webp@ -> @resource/deer.png@",
+        "@technology_economy/survival-techniques.png@ + @technology_military/iron-undermesh.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 12,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/barracks.webp@ -> @unit_dragon/gilded-man-at-arms-2.png@ keep the pressure up and adapt"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 6,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

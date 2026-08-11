@@ -1,0 +1,231 @@
+{
+  "name": "Chad's Guard",
+  "civilization": "House of Lancaster",
+  "author": "bigvon",
+  "source": "https://aoe4guides.com/builds/2Cqujxh9Q1BHb4qoQymJ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send @unit_worker/villager.webp@to @resource/resource_food.webp@, rally @resource/rally.webp@ rally on @resource/resource_gold.webp@ until 3. First @unit_worker/villager.webp@ builds @building_economy/house.webp@ and @building_economy/mining-camp.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally @resource/rally.webp@ back on to @resource/resource_food.webp@ until enough resources to build @landmark_english/abbey-of-kings.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Build @landmark_english/abbey-of-kings.webp@ close to @resource/resource_gold.webp@ with 2 @resource/resource_food.webp@@unit_worker/villager.webp@.",
+        "Transfer two additional @resource/resource_food.webp@@unit_worker/villager.webp@, one to @resource/gaiatreeprototypetree.webp@, the other to @resource/resource_gold.webp@.",
+        "The two @unit_worker/villager.webp@ building @landmark_english/abbey-of-kings.webp@ should be queued to @resource/gaiatreeprototypetree.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 10,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep @resource/rally.webp@ on @resource/resource_food.webp@ until ready to go @age/age_3.webp@.",
+        "Build a @building_economy/house.webp@ with @resource/gaiatreeprototypetree.webp@@unit_worker/villager.webp@.",
+        "Build another @building_economy/house.webp@ and @building_military/barracks.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 4,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "If the enemy is making units, skip @building_military/barracks.webp@and build a @building_defensive/outpost.webp@ , send 5 @unit_worker/villager.webp@ to make a single trip to @resource/resource_stone.webp@ for @technology_defensive/arrow-slits.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 10,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send  free @unit_lancaster/lord_lancaster.webp@ to defend @resource/resource_gold.webp@ or harass enemy @resource/resource_gold.webp@ if possible."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:15",
+      "villager_count": 23,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Send 10 @unit_worker/villager.webp@ from @resource/resource_food.webp@(9 @unit_worker/villager.webp@) and @resource/resource_wood.webp@ (1 @unit_worker/villager.webp@) to build @landmark_english/the-white-tower.webp@ to protect @resource/resource_gold.webp@ + @resource/boar.webp@ / @resource/deer.webp@@resource/resource_food.webp@ if possible.",
+        "@resource/boar.webp@ > @resource/deer.webp@.",
+        "The @unit_worker/villager.webp@ building @landmark_english/the-white-tower.webp@ should be queued to go to build @building_economy/mill.webp@ and harvest new @resource/deer.webp@/@resource/boar.webp@ or @resource/berrybush.webp@.",
+        "If not able to secure @resource/resource_food.webp@, you can be vulnerable to raids and risk running out of food."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Leave 4  @unit_worker/villager.webp@ on @resource/resource_food.webp@, sending one to @resource/resource_gold.webp@ and the rest to @resource/resource_wood.webp@ and rally @resource/rally.webp@ on @resource/resource_wood.webp@ until the end of the game."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "7:15",
+      "villager_count": 27,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build more @unit_lancaster/lord_lancaster.webp@ from @landmark_english/abbey-of-kings.webp@ and send with the 3 free @unit_lancaster/elitechampion.webp@ from @landmark_english/the-white-tower.webp@ to kill villager with ranged shot + harass."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 27,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start producing @unit_lancaster/elitechampion.webp@ from @building_military/barracks.webp@ to keep harassing.",
+        "Wounded units can go to @landmark_english/abbey-of-kings.webp@ and restore HP"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:15",
+      "villager_count": 29,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "One @resource/resource_wood.webp@@unit_worker/villager.webp@ builds a house, then back to @resource/resource_wood.webp@.",
+        "Research @technology_economy/wheelbarrow.webp@@technology_economy/double-broadaxe.webp@ @technology_economy/specialized-pick.webp@",
+        "Another @resource/resource_wood.webp@@unit_worker/villager.webp@ builds a @building_religious/monastery.webp@ then back to @resource/resource_wood.webp@. @technology_economy/double-broadaxe.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:50",
+      "villager_count": 30,
+      "resources": {
+        "food": 14,
+        "wood": 10,
+        "gold": 5,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Start producing @unit_religious/monk-3.webp@ to gather @resource/relics.webp@.  Send one @resource/resource_wood.webp@@unit_worker/villager.webp@ to build @building_technology/blacksmith.webp@ for @technology_military/iron-undermesh.webp@ and @technology_military/wedge-rivets.webp@ + @technology_military/military-academy.webp@ + @technology_military/bloomery.webp@ @technology_military/decarbonization.webp@ + @technology_military/siege-engineering.webp@.",
+        "Send one @resource/resource_wood.webp@@unit_worker/villager.webp@ to build a @building_economy/house.webp@ and second @building_military/barracks.webp@ to produce more @unit_lancaster/elitechampion.webp@."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:30",
+      "villager_count": 44,
+      "resources": {
+        "food": 14,
+        "wood": 18,
+        "gold": 8,
+        "stone": 3,
+        "builder": 1
+      },
+      "notes": [
+        "Start building @building_military/archery-range.webp@ to produce @unit_lancaster/yeoman_age2.webp@ to counter their @unit_infantry/crossbowman-3.webp@. Get some @unit_worker/villager.webp@ on @resource/resource_stone.webp@ to build @building_lancaster/manor.webp@.  Research @technology_lancaster/condensed_land_practices.webp@@technology_lancaster/open_field_system.webp@ as needed."
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/b2ebsi6rAEc",
+  "season": 11,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

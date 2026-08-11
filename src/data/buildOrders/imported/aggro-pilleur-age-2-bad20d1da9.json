@@ -1,0 +1,146 @@
+{
+  "name": "aggro pilleur age 2",
+  "civilization": "Ayyubids",
+  "author": "cestluimeme",
+  "source": "https://aoe4guides.com/builds/1PkzeWB49HuxfK4Lu0eQ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Départ aux @resource/berrybush.webp@ . Construire @building_economy/mill.webp@ sur@resource/berrybush.webp@avec 2 @unit_worker/villager-abbasid.webp@ . Construire @landmark_abbasid/house-of-wisdom.webp@ et @building_economy/house.webp@ avec un@unit_worker/villager-abbasid.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "construire @building_economy/mining-camp.webp@ sur @resource/resource_gold.webp@ , avec le @resource/rally.webp@ sur@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@sur@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "cliquer l'âge 2 avec @unit_ayyubids/dervish-3.webp@ . Mettre@resource/rally.webp@sur@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "cliquer @technology_economy/wheelbarrow.webp@  , et construire@building_economy/house.webp@avec un@unit_worker/villager-abbasid.webp@du@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 11,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "construire @building_economy/lumber-camp.webp@ sur @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 7,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Une fois âge 2, construire une @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "construire @building_defensive/outpost.webp@ sur@resource/resource_gold.webp@, changer le@resource/rally.webp@sur @resource/sheep.webp@ . Produire des @unit_ayyubids/desert-raider-2.webp@ dans @building_military/stable.webp@ , et bonne agression."
+      ]
+    }
+  ],
+  "description": "",
+  "video": "https://www.youtube.com/embed/oWfCZ0WwOSs",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

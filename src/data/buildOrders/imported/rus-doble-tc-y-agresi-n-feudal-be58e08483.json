@@ -1,0 +1,263 @@
+{
+  "name": "Rus (Doble TC) y agresión feudal ",
+  "civilization": "Rus",
+  "author": "Pilsen",
+  "source": "https://aoe4guides.com/builds/1m8s3ot80i9pjoxWIMpZ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "3x@unit_worker/villager.webp@ -> @abilities/repair.png@@building_rus/hunting-cabin.png@y@building_economy/house.png@  -&gt; @resource/resource_food.png@@resource/sheep.png@",
+        "3x@unit_worker/villager.png@-&gt; @resource/resource_food.png@@resource/sheep.png@",
+        "@resource/rally.png@@resource/sheep.png@ hasta tener 10 ahí"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Crea 2x @unit_cavalry/scout.webp@ en la@building_rus/hunting-cabin.png@",
+        "Con los @unit_cavalry/scout.png@ caza @resource/deer.png@ y luego @resource/wolf.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~1:17",
+      "villager_count": 9,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Investiga @technology_economy/wheelbarrow.webp@ cuando puedas"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:25",
+      "villager_count": 10,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Cuando tengas 10x@unit_worker/villager.webp@en@resource/sheep.png@->  @resource/rally.png@@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~2:39",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Construye estratégicamente @landmark_rus/kremlin.webp@ con  5x @unit_worker/villager.png@ de@resource/sheep.png@",
+        "Cuando acaben @landmark_rus/kremlin.png@ mueven los 5x@unit_worker/villager.png@ -> @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:41",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Cuando tengas 5x@unit_worker/villager.webp@@resource/resource_wood.png@ ->  @building_economy/mining-camp.png@ @resource/resource_stone.png@ (hasta 350 piedra)",
+        "Cuando la tengan -&gt; vuelven a @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~3:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": 5
+      },
+      "notes": [
+        "Sigue @resource/rally.webp@@resource/resource_wood.png@",
+        "Construye casa @building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~4:21",
+      "villager_count": 19,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 0,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "Construye @building_economy/lumber-camp.webp@ cerca del @landmark_rus/kremlin.png@ e investiga @technology_economy/double-broadaxe.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~04:58",
+      "villager_count": 20,
+      "resources": {
+        "food": 5,
+        "wood": 15,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Investiga  @technology_economy/survival-techniques.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~05:41",
+      "villager_count": 21,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Construye el @building_economy/town-center.webp@ en @resource/deer.png@ o @resource/boar.png@, con 8x@unit_worker/villager.png@ de @resource/resource_wood.png@",
+        "@resource/rally.png@ @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~06:44",
+      "villager_count": 25,
+      "resources": {
+        "food": 13,
+        "wood": 7,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Construye 2x @building_military/stable.webp@y 2x@building_military/archery-range.png@ y crea @unit_cavalry/knight-2.png@y@unit_infantry/archer-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~07:16",
+      "villager_count": 28,
+      "resources": {
+        "food": 15,
+        "wood": 5,
+        "gold": 7,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Construye @building_technology/blacksmith.webp@ e investiga @technology_military/iron-undermesh.png@@technology_military/fitted-leatherwork.png@@technology_military/siege-engineering.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 29,
+      "resources": {
+        "food": 16,
+        "wood": 5,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_food.png@ y @resource/resource_wood.png@, de forma balanceada."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~11:53",
+      "villager_count": 56,
+      "resources": {
+        "food": 35,
+        "wood": 10,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Acaba con el rival en  @age/age_2.webp@ o sube a @age/age_3.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~11:55",
+      "villager_count": 56,
+      "resources": {
+        "food": 25,
+        "wood": 10,
+        "gold": 11,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Sube @landmark_rus/high-trade-house.webp@ con 10x @unit_worker/villager.png@ de @resource/resource_food.png@",
+        "vs @civilization_flag/hre.png@ quizás sube con @landmark_rus/abbey-of-the-trinity.png@"
+      ]
+    }
+  ],
+  "description": "Build Order de Beastyqt, escrita por Tecki, traducida y modificada por mí. ",
+  "video": "https://www.youtube.com/embed/GrwK-ZbrEUM",
+  "season": 7,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

@@ -1,0 +1,71 @@
+{
+  "name": "Standerd opening ",
+  "civilization": "Sengoku Daimyo",
+  "author": "Chadric",
+  "source": "https://aoe4guides.com/builds/33AAq0T5S6LqU23HHnY2",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "00.00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Q3@unit_worker/villager-japanese.webp@ @resource/rally.webp@@resource/resource_wood.webp@",
+        "3 @resource/resource_food.webp@ 1@building_japanese/farmhouse-1.webp@+@resource/resource_food.webp@",
+        "1@building_economy/mining-camp.webp@1@building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "X",
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_cavalry/scout.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "X",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Spam produce@unit_worker/villager-japanese.webp@ and @resource/rally.webp@@resource/resource_food.webp@",
+        "Just keep a 4 to 1 ratio of",
+        "4 @resource/resource_food.webp@4@resource/resource_wood.webp@ 1@resource/resource_gold.webp@",
+        "And the rest is unkown"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

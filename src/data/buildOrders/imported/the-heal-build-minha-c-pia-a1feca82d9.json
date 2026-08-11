@@ -1,0 +1,130 @@
+{
+  "name": "The Heal Build - MINHA CÓPIA",
+  "civilization": "Knights Templar",
+  "author": "HanaTomic",
+  "source": "https://aoe4guides.com/builds/0YUGyxCNBAKLwj1dLXFZ",
+  "build_order": [
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 17,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_templar/safepassage.webp@ and set a pilgrim destination @resource/sacred_sites.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 23,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When pilgrims start reaching @resource/sacred_sites.webp@ then pull a few @unit_worker/villager.webp@ off @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 23,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "IMMEDIATELY research @technology_templar/sanctuary.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 24,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Macro towards your 2nd unit. I like to add @unit_infantry/archer-2.webp@ but you will have to adapt to what your opponent is doing."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 26,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 5,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "We should have about 15 @unit_templar/hospitaller_knight_age_2.webp@ and 2nd unit coming in."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:20",
+      "villager_count": 27,
+      "resources": {
+        "food": 11,
+        "wood": 11,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Add a @building_technology/blacksmith.webp@ for @technology_military/iron-undermesh.webp@. Do also get your @technology_military/bloomery.webp@ & @technology_military/fitted-leatherwork.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep making units and go for resource denial, ram push or castle timing."
+      ]
+    }
+  ],
+  "description": "Use the Hospitaller age-up for a strong healing frontline. Hospitallers also receive tremendous hp increase in castle and imperial, and thus scale well making this build a good castle build as well.\n\nWe age up to feudal at 4:20 with 4 farms, to have more villagers gathering resources instead of the fastest possible age-up.",
+  "video": "https://www.youtube.com/embed/Hk0EvBkJUAs",
+  "season": 10,
+  "map": null,
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

@@ -1,0 +1,211 @@
+{
+  "name": "Varangian guard all in",
+  "civilization": "Macedonian Dynasty",
+  "author": "Skoozy",
+  "source": "https://aoe4guides.com/builds/35IO5MGYfpefumBRFI7x",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally 2 @unit_worker/villager.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally @unit_worker/villager.webp@ to @resource/sheep.webp@ until age up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@ from @resource/sheep.webp@ to @landmark_byzantines/imperial-hippodrome-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@ from @resource/sheep.webp@ move to @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once @age/age_2.webp@ Send 2 @unit_worker/villager.webp@ to @resource/resource_gold.webp@ and the other 2 @unit_worker/villager.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Continue to rally to @resource/resource_food.webp@ until 12 @unit_worker/villager.webp@ then rally to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 26,
+      "resources": {
+        "food": 12,
+        "wood": 10,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_economy/horticulture.webp@@technology_economy/specialized-pick.webp@@technology_economy/double-broadaxe.webp@@technology_economy/wheelbarrow.webp@ when you can"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "From here split @unit_worker/villager.webp@ whenever you need them to go. More @resource/resource_food.webp@ @resource/resource_gold.webp@ for @unit_macedonian/varangian-2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use @unit_cavalry/horseman-1.webp@ to harass enemy resources and force enemy to build @building_defensive/outpost.webp@ / Spears"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_macedonian/varangian_stronghold.webp@for @unit_macedonian/varangian-2.webp@ and build @building_macedonian/varangian_arsenal.webp@ for upgrades using silver"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_macedonian/butted-chainmail-2.webp@ , @technology_macedonian/pattern-welding-2.webp@ and @technology_military/siege-engineering.webp@ ASAP"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 12,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

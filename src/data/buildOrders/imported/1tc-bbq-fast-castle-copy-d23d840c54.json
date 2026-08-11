@@ -1,0 +1,288 @@
+{
+  "name": "1TC BBQ Fast Castle - copy",
+  "civilization": "Chinese",
+  "author": "Anomaly",
+  "source": "https://aoe4guides.com/builds/2HWTvy8zOuJbSVleewaA",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_chinese/imperial-official.webp@ @unit_worker/villager-china.png@,  6@unit_worker/villager-china.png@@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "6 @unit_worker/villager-china.webp@  @building_economy/mill.png@ , @unit_chinese/imperial-official.png@@technology_chinese/imperial-examination.png@ @building_economy/mill.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager-china.webp@ -> @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1st @unit_worker/villager-china.webp@ for 3 @resource/resource_wood.png@->@building_economy/mining-camp.png@@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_worker/villager-china.webp@@resource/resource_food.png@@building_chinese/village.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.png@ : 3"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.png@ : 15"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@landmark_chinese/barbican-of-the-sun.webp@ within @building_economy/town-center.png@ on @resource/resource_gold.png@ (2:50)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 15,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_wood.png@ for @building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 14,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1200 @resource/resource_food.webp@ send @unit_worker/villager-china.png@@unit_chinese/imperial-official.png@>@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 9,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "5 @resource/resource_gold.webp@@unit_worker/villager-china.png@>@landmark_chinese/imperial-palace.png@/@landmark_chinese/astronomical-clocktower.png@ (6:00)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 11,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Balance @resource/resource_food.webp@@resource/resource_wood.png@ to build @building_military/barracks.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@resource/resource_wood.webp@@unit_worker/villager-china.png@@abilities/repair.png@@building_military/barracks.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 26,
+      "resources": {
+        "food": 13,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_chinese/imperial-official.webp@:@building_military/barracks.png@, @abilities/attack-move.png@ w/ 2 x@unit_chinese/palace-guard-3.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@building_military/barracks.png@@abilities/attack-move.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 28,
+      "resources": {
+        "food": 20,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_technology/blacksmith.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 28,
+      "resources": {
+        "food": 20,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_military/iron-undermesh.webp@ + @technology_military/wedge-rivets.png@"
+      ]
+    }
+  ],
+  "description": "Hyper Agressive Fast Castle to counter English MAA or even HRE Fast Castle to steal relics. Does not work against all civs, but its fun!",
+  "video": "https://www.youtube.com/embed/L1wIRYzvK6k",
+  "season": 5,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

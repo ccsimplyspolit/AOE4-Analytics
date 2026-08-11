@@ -1,0 +1,100 @@
+{
+  "name": "Fast 2nd TC - OverlayTool",
+  "civilization": "Ottomans",
+  "author": "schwazza",
+  "source": "https://aoe4guides.com/builds/1N5bLW343Pjr4iI7GnE7",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 12,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@unit_worker/villager-ottomans.png@on @resource/sheep.png@til 9",
+        "5 @unit_worker/villager-ottomans.png@on @resource/resource_stone.png@,1 @unit_worker/villager-ottomans.png@on @resource/sheep.png@",
+        "5 @resource/resource_stone.png@@unit_worker/villager-ottomans.png@after 1 trip -> @resource/gaiatreeprototypetree.png@for 50 @resource/resource_wood.png@-&gt;@resource/sheep.png@",
+        "2 @unit_worker/villager-ottomans.png@@abilities/repair.png@@building_ottomans/military-school-1.png@-&gt;@building_economy/house.png@-&gt;@resource/sheep.png@",
+        "@resource/rally.png@@unit_worker/villager-ottomans.png@on @building_economy/mining-camp.png@@resource/resource_gold.png@ til 3",
+        "@resource/rally.png@@unit_worker/villager-ottomans.png@on @resource/resource_food.png@til 12",
+        "If 200 @resource/resource_gold.png@: 3 @resource/resource_gold.png@@unit_worker/villager-ottomans.png@-&gt; @resource/resource_wood.png@",
+        "5 @resource/resource_food.png@@unit_worker/villager-ottomans.png@@abilities/repair.png@@age/age_2.png@@landmark_ottomans/twin-minaret-medrese-1.png@-&gt; LM @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 26,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/vizier_point.webp@: 1st @technology_ottomans/anatolian-hills-1.png@, 2nd @technology_ottomans/military-campus-1.png@,3rd @technology_ottomans/fast-training-1.png@, 4th @technology_ottomans/advanced-academy-1.png@",
+        "4 @resource/resource_food.png@@unit_worker/villager-ottomans.png@-> @resource/resource_wood.png@-&gt;@building_economy/mining-camp.png@@resource/resource_stone.png@",
+        "@resource/rally.png@@unit_worker/villager-ottomans.png@on @resource/resource_wood.png@til 10",
+        "In @age/age_2.png@: @building_ottomans/military-school-1.png@-&gt; @unit_ottomans/sipahi-2.png@& 1 @unit_ottomans/mehter-2.png@",
+        "2 @resource/resource_wood.png@@unit_worker/villager-ottomans.png@-&gt; @resource/resource_stone.png@",
+        "10 @unit_worker/villager-ottomans.png@on @resource/resource_wood.png@: @resource/rally.png@@unit_worker/villager-ottomans.png@on @resource/resource_stone.png@til 9",
+        "If 350 @resource/resource_stone.png@: 8 @resource/resource_wood.png@@unit_worker/villager-ottomans.png@@abilities/repair.png@@building_economy/town-center.png@on @resource/resource_gold.png@",
+        "If 300 @resource/resource_stone.png@: 5 @resource/resource_stone.png@@unit_worker/villager-ottomans.png@ -&gt; @resource/resource_food.png@, 4 @resource/resource_stone.png@@unit_worker/villager-ottomans.png@-&gt; @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 43,
+      "resources": {
+        "food": 20,
+        "wood": 8,
+        "gold": 15,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "9 @unit_worker/villager-ottomans.webp@on @resource/resource_stone.png@: @resource/rally.png@@unit_worker/villager-ottomans.png@on @resource/resource_wood.png@til 8",
+        "@resource/rally.png@@unit_worker/villager-ottomans.png@on @resource/sheep.png@&@resource/resource_gold.png@",
+        "@abilities/repair.png@2nd @building_ottomans/military-school-1.png@&amp;@building_technology/blacksmith.png@",
+        "get @technology_economy/horticulture.png@,@technology_economy/specialized-pick.png@,@technology_economy/wheelbarrow.png@,@technology_economy/double-broadaxe.png@,@technology_economy/forestry.png@,@technology_military/steeled-arrow.png@,@technology_military/iron-undermesh.png@",
+        "8 @resource/resource_food.png@@unit_worker/villager-ottomans.png@@abilities/repair.png@@age/age_3.png@@landmark_ottomans/mehmed-imperial-armory-2.png@-> @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_military/barracks.png@,@building_military/archery-range.png@,3rd & 4th @building_ottomans/military-school-1.png@",
+        "@abilities/repair.png@@building_religious/mosque.png@-> @resource/relics.png@",
+        "get @technology_economy/textiles.png@,@technology_military/bloomery.png@, @technology_economy/fertilization.png@, @technology_economy/acid-distilization.png@,@technology_military/fitted-leatherwork.png@",
+        "adapat @building_ottomans/military-school-1.png@ production",
+        "@abilities/repair.png@@age/age_4.png@@landmark_ottomans/istanbul-observatory-3.png@"
+      ]
+    }
+  ],
+  "description": "Beastyqt Ottoman 2TC Build Order\n\nOverlayTool:\nhttps://github.com/CraftySalamander/RTS_Overlay",
+  "video": "https://www.youtube.com/embed/GR1YprGU1go",
+  "season": 6,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

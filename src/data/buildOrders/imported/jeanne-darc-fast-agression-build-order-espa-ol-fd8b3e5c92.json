@@ -1,0 +1,228 @@
+{
+  "name": "Jeanne D'Arc Fast Agression Build Order Español",
+  "civilization": "Jeanne d'Arc",
+  "author": "Cronnos907",
+  "source": "https://aoe4guides.com/builds/3yjnXFWZxydqyNla3SKU",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 Aldeanos @unit_worker/villager.webp@ a ovejas@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Juana @unit_jeanne/jeanne-darc-peasant-1.webp@ Construye una casa @building_economy/house.png@, construye un campamento minero@building_economy/mining-camp.png@ y va a oro@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 aldeanos@unit_worker/villager.webp@ más a comida de ovejas @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 aldeanos@unit_worker/villager.webp@ más a oro @resource/resource_gold.png@ hasta completar 3 junto con Juana @unit_jeanne/jeanne-darc-peasant-1.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 aldeanos@unit_worker/villager.webp@ al oro hasta completar 11 en ovejas @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Usas 4 aldeanos @unit_worker/villager.webp@ y a Juana @unit_jeanne/jeanne-darc-peasant-1.png@ para construir la Escuela de Caballería @landmark_french/school-of-cavalry.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "5 aldeanos @unit_worker/villager.webp@ a la comida de ovejas @resource/sheep.png@ hasta completar 12"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 12,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 aldeanos @unit_worker/villager.webp@ de los 5 que construyeron la Escuela de Caballería @landmark_french/school-of-cavalry.png@ van hacia los árboles cercanos @resource/resource_wood.png@ del centro urbano @building_economy/town-center.png@ y Juana @unit_jeanne/jeanne-darc-peasant-1.png@ y el otro aldeano que sobra @unit_worker/villager.png@ van hacía el oro @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 12,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Inmediatamente cuando pasas a segunda edad @age/age_2.webp@ con la escuela de caballería @landmark_french/school-of-cavalry.png@ sacamos caballeros reales @unit_french/royal-knight-2.png@ constantemente para molestar al rival y todos tus aldeanos@unit_worker/villager.png@ irán a madera @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Cuando tengas cerca de unos 5 aldeanos@unit_worker/villager.webp@ a la madera @resource/resource_wood.png@ construyes el campamento maderero @building_economy/lumber-camp.png@ en un bosque cercano y sigues mandando aldeanos@unit_worker/villager.png@ a madera@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Cuando hayas sacado tú tercer Caballero Real @unit_french/royal-knight-2.webp@ investigas Hacha de doble filo @technology_economy/double-broadaxe.png@en tu campamento maderero @building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 9,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Con la madera @resource/resource_wood.webp@ que te vaya sobrando, construyes una Galería de Tiro con Arco @building_military/archery-range.png@ y una herrería @building_technology/blacksmith.png@ y comienzas a sacar Arqueros @unit_infantry/archer-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "En este punto, Juana @unit_jeanne/jeanne-darc-peasant-1.webp@ ya tendrá experiencia suficiente para subir de nivel, dependiendo de la partida puede elegir Juana Campeona @unit_jeanne/jeanne-darc-woman-at-arms-2.png@ o Juana Arquera @unit_jeanne/jeanne-darc-hunter-2.png@, sea cual sea el caso, vas con Juana a por el Jabalí @resource/boar.png@ junto con 8 aldeanos de la comida @resource/resource_food.png@ y ellos construyen un molino @building_economy/mill.png@ cerca del Jabalí @resource/boar.png@ y mejoras la tecnología de técnicas de supervivencia @technology_economy/survival-techniques.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 29,
+      "resources": {
+        "food": 12,
+        "wood": 12,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Mandas 2 aldeanos @unit_worker/villager.webp@ más al oro @resource/resource_gold.png@ y desde este punto es Adaptación según la partida"
+      ]
+    }
+  ],
+  "description": "Agresión temprana con Juana de Arco para tener una buena agresión en buen timing de la partida, más adelante haré una versión en Inglés si la veo conveniente \n\n\nBuild order By: [REAL] ALUKAR ",
+  "video": "",
+  "season": 7,
+  "map": "Open",
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

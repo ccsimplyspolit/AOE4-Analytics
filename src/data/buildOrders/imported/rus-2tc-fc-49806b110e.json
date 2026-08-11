@@ -1,0 +1,171 @@
+{
+  "name": "Rus 2TC FC",
+  "civilization": "Rus",
+  "author": "Galrauch",
+  "source": "https://aoe4guides.com/builds/1AE3qCGm6v3lDMA9TmwQ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "4@unit_worker/villager.webp@->@resource/sheep.png@ ; 2@unit_worker/villager.png@-&gt;@building_rus/hunting-cabin.png@@building_economy/house.png@-&gt;@resource/sheep.png@ ; @unit_cavalry/scout.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager.webp@->@resource/sheep.png@ (Hasta 11) ; @building_rus/hunting-cabin.png@-&gt;@unit_cavalry/scout.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4@unit_worker/villager.webp@@resource/sheep.png@->@landmark_rus/kremlin.png@ ; 1@unit_worker/villager.png@@resource/sheep.png@-&gt;@resource/gaiatreeprototypetree.png@ ; @unit_worker/villager.png@-&gt;@resource/gaiatreeprototypetree.png@ (Hasta 5)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "4@unit_worker/villager.webp@@landmark_rus/kremlin.png@->@building_military/stable.png@@building_economy/house.png@@building_economy/mining-camp.png@-&gt;@resource/resource_stone.png@ +  @unit_cavalry/knight-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 6,
+        "wood": 8,
+        "gold": 0,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "*@unit_worker/villager.webp@->@resource/resource_wood.png@ (Hasta 8)  +  *@unit_worker/villager.png@-&gt;@resource/resource_stone.png@ (Hasta 8)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:20",
+      "villager_count": 24,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "3@unit_worker/villager.webp@@resource/resource_stone.png@->@building_economy/mining-camp.png@@resource/resource_gold.png@ ; 5@unit_worker/villager.png@@resource/resource_stone.png@ + 5@unit_worker/villager.png@@resource/resource_wood.png@-&gt;@building_economy/town-center.png@-&gt;@resource/deer.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 37,
+      "resources": {
+        "food": 25,
+        "wood": 1,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5@unit_worker/villager.webp@@resource/resource_wood.png@->@resource/resource_food.png@ ; @unit_worker/villager.png@-&gt;@resource/resource_food.png@&@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:40",
+      "villager_count": 38,
+      "resources": {
+        "food": 14,
+        "wood": 3,
+        "gold": 11,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "10@unit_worker/villager.webp@@resource/resource_food.png@->@landmark_rus/high-trade-house.png@-&gt;@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 53,
+      "resources": {
+        "food": 25,
+        "wood": 17,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@@building_military/stable.png@+@building_religious/monastery.png@+@building_military/archery-range.png@@building_military/archery-range.png@@building_military/archery-range.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 59,
+      "resources": {
+        "food": 25,
+        "wood": 22,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Mejoras"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 7,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

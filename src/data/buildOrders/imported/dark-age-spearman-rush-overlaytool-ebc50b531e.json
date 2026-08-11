@@ -1,0 +1,58 @@
+{
+  "name": "dark age spearman rush - OverlayTool",
+  "civilization": "Order of the Dragon",
+  "author": "schwazza",
+  "source": "https://aoe4guides.com/builds/0p1bTq5jdghtq4gFdWFW",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@unit_worker/villager.png@ to @resource/sheep.png@til 9",
+        "3@unit_worker/villager.png@ to @resource/sheep.png@,1@unit_worker/villager.png@ to@resource/gaiatreeprototypetree.png@,1@unit_worker/villager.png@@abilities/repair.png@@building_military/barracks.png@ -> @resource/gaiatreeprototypetree.png@",
+        "@building_military/barracks.png@ -&gt; 2@unit_dragon/gilded-spearman-1.png@ -&gt; harass @resource/resource_gold.png@",
+        "2 @resource/gaiatreeprototypetree.png@@unit_worker/villager.png@ -&gt; @building_economy/house.png@-&gt; @resource/resource_wood.png@",
+        "2 @resource/resource_food.png@@unit_worker/villager.png@ -&gt; @building_economy/mining-camp.png@ @resource/resource_gold.png@",
+        "@resource/rally.png@@unit_worker/villager.png@on @resource/resource_gold.png@til 5",
+        "3 @resource/resource_gold.png@@unit_worker/villager.png@ -&gt; @landmark_hre/meinwerk-palace.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 12,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@unit_worker/villager.png@on @resource/resource_wood.png@ til 4",
+        "move 5 @unit_worker/villager.png@ -> @resource/deer.png@",
+        "@technology_economy/survival-techniques.png@ + @technology_military/iron-undermesh.png@",
+        "@building_military/barracks.png@ -&gt; @unit_dragon/gilded-man-at-arms-2.png@",
+        "@resource/rally.png@@unit_worker/villager.png@on @resource/resource_food.png@"
+      ]
+    }
+  ],
+  "description": "OverlayTool:\nhttps://github.com/CraftySalamander/RTS_Overlay",
+  "video": "",
+  "season": 6,
+  "map": null,
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

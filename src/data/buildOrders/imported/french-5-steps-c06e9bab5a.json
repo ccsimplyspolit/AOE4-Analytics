@@ -1,0 +1,118 @@
+{
+  "name": "French- 5 steps",
+  "civilization": "French",
+  "author": "siberian_wolf",
+  "source": "https://aoe4guides.com/builds/1Ffv9VcYPqt5HC6lEViz",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6@unit_worker/villager.webp@ -> @resource/sheep.webp@",
+        "1@resource/rally.webp@@unit_worker/villager.webp@ -&gt; @resource/sheep.webp@",
+        "3@resource/rally.webp@ @unit_worker/villager.webp@-&gt;@building_economy/house.webp@-&gt; @building_economy/mining-camp.webp@-&gt; @resource/resource_gold.webp@",
+        "5@resource/rally.webp@@unit_worker/villager.webp@-&gt;@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 4,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@resource/sheep.webp@@unit_worker/villager-ottomans.webp@->@landmark_french/school-of-cavalry.webp@",
+        "1 @resource/sheep.webp@@unit_worker/villager.webp@-&gt;@building_economy/mill.webp@@resource/berrybush.webp@-&gt;@technology_economy/wheelbarrow.webp@-&gt;@building_economy/house.webp@-&gt;@landmark_french/school-of-cavalry.webp@",
+        "4@resource/rally.webp@@unit_worker/villager.webp@-&gt;@resource/gaiatreeprototypetree.webp@",
+        "5 @landmark_french/school-of-cavalry.webp@@unit_worker/villager.webp@-&gt;@resource/sheep.webp@-&gt;@technology_economy/survival-techniques.webp@-&gt;@resource/deer.webp@",
+        "@technology_economy/specialized-pick.webp@-&gt;@technology_economy/horticulture.webp@-&gt;@technology_economy/double-broadaxe.webp@",
+        "@building_technology/blacksmith.webp@-&gt;@technology_military/iron-undermesh.webp@-&gt;@technology_military/fitted-leatherwork.webp@",
+        "9@landmark_french/school-of-cavalry.webp@  @unit_french/royal-knight-2.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 39,
+      "resources": {
+        "food": 18,
+        "wood": 6,
+        "gold": 15,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6@resource/rally.webp@@unit_worker/villager.webp@ ->@resource/resource_gold.webp@",
+        "2@resource/rally.webp@@unit_worker/villager.webp@-&gt; @resource/resource_wood.webp@",
+        "1@resource/rally.webp@@unit_worker/villager.webp@-&gt;@resource/sheep.webp@",
+        "5@resource/rally.webp@@unit_worker/villager.webp@-&gt;@resource/berrybush.webp@",
+        "12@resource/rally.webp@@unit_worker/villager.webp@ -&gt;1000@resource/resource_stone.webp@-&gt;@building_defensive/keep.webp@-&gt;@resource/resource_gold.webp@",
+        "∞@resource/rally.webp@@unit_worker/villager.webp@ -&gt; @resource/resource_wood.webp@-&gt;@building_economy/farm.webp@",
+        "8@resource/sheep.webp@@unit_worker/villager.webp@-&gt;@landmark_french/guild-hall.webp@-&gt;-&gt;@resource/berrybush.webp@ or @resource/deer.webp@",
+        "∞@landmark_french/school-of-cavalry.webp@@unit_french/royal-knight-2.webp@X4"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 100,
+      "resources": {
+        "food": 50,
+        "wood": 20,
+        "gold": 30,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3@building_military/stable.webp@，20@building_economy/farm.webp@，600@resource/resource_wood.webp@时，-10@resource/resource_wood.webp@@unit_worker/villager.webp@->@resource/resource_gold.webp@",
+        "1@building_economy/house.webp@ = 4@resource/resource_wood.webp@@unit_worker/villager.webp@",
+        "2@unit_worker/trader.webp@ = 6@resource/resource_gold.webp@@unit_worker/villager.webp@ + 6@resource/resource_wood.webp@@unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 100,
+      "resources": {
+        "food": 50,
+        "wood": 20,
+        "gold": 30,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/resource_food.webp@@unit_worker/villager.webp@: @resource/resource_wood.webp@@unit_worker/villager.webp@ : @unit_worker/trader.webp@ :@resource/resource_stone.webp@@unit_worker/villager.webp@= 48::20::30::10",
+        "@technology_military/military-academy.webp@@building_defensive/keep.webp@",
+        "@unit_french/royal-knight-2.webp@:@unit_infantry/archer-2.webp@ = 60:30",
+        "@unit_infantry/archer-2.webp@ = 3@resource/resource_food.webp@@unit_worker/villager.webp@ +5@resource/resource_wood.webp@@unit_worker/villager.webp@",
+        "8@unit_french/royal-knight-2.webp@ = 56@resource/resource_food.webp@@unit_worker/villager.webp@ +32@resource/resource_gold.webp@@unit_worker/villager.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": "Open",
+  "strategy": "Rush",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

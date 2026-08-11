@@ -1,0 +1,247 @@
+{
+  "name": "Ottomans Comandra Way",
+  "civilization": "Ottomans",
+  "author": "Comandra",
+  "source": "https://aoe4guides.com/builds/1zJJr4BOziFYK2K0GaVa",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager-ottomans.webp@ to gather 50@resource/resource_stone.webp@ (long distance gather) & 1 @unit_worker/villager-ottomans.webp@ to build a @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 2,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:30",
+      "villager_count": 7,
+      "resources": {
+        "food": 2,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Drop off 50 @resource/resource_stone.webp@ and gather 50 @resource/resource_wood.webp@ from @resource/gaiatreeprototypetree.webp@ then go @resource/resource_food.webp@.",
+        "@building_ottomans/military-school-1.webp@@abilities/repair.webp@ with 1 from @resource/resource_stone.webp@.",
+        "@resource/resource_wood.webp@@unit_worker/villager-ottomans.webp@ go back to @resource/resource_food.webp@ until 8."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:04",
+      "villager_count": 9,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 8 on @resource/resource_food.webp@ go 2 on @resource/resource_gold.webp@ (1 from @building_ottomans/military-school-1.webp@@abilities/repair.webp@ + 1 from @resource/rally.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ back to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @landmark_ottomans/twin-minaret-medrese-1.webp@ with 5 @resource/resource_food.webp@@unit_worker/villager-ottomans.webp@. 5 from @landmark_ottomans/twin-minaret-medrese-1.webp@will stay @resource/resource_food.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/lumber-camp.webp@@building_economy/house.webp@ & @resource/rally.webp@ @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 age-up @unit_worker/villager-ottomans.webp@ to @landmark_ottomans/twin-minaret-medrese-1.webp@@resource/berrybush.webp@. (10 on food might be a lot here maybe go to 8 but need more vil manage cause from sheep)",
+        "@landmark_ottomans/mehmed-imperial-armory-2.webp@= @unit_siege/trebuchet.webp@ (if eng and they got castle and stuffs or maybe just try this so they come out of base otherwise @unit_siege/mangonel-3.webp@ if infantary or for late game 1x mango + rest @unit_siege/springald.webp@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "get 2nd @building_ottomans/military-school-1.webp@.",
+        "1x @building_military/archery-range.webp@ when wood make it 2x @building_military/archery-range.webp@ constant archers for @age/vizier_point.webp@.",
+        "1x of the @building_military/archery-range.webp@ should be @building_military/barracks.webp@if light or heavy cavalary.",
+        "pump archers + @building_ottomans/military-school-1.webp@ = sipahi +@landmark_ottomans/mehmed-imperial-armory-2.webp@= @unit_siege/trebuchet.webp@ (if eng and they got castle and stuffs or maybe just try this so they come out of base otherwise @unit_siege/mangonel-3.webp@ if infantary or for late game 1x mango + rest @unit_siege/springald.webp@)",
+        "get @building_technology/blacksmith.webp@ and @technology_military/steeled-arrow.webp@ when possible.",
+        "Still @resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "08:00",
+      "villager_count": 30,
+      "resources": {
+        "food": 8,
+        "wood": 16,
+        "gold": 4,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_military/siege-engineering.webp@ if possible to ram maybe outer tower otherwise @technology_military/iron-undermesh.webp@ .",
+        "When 16 @unit_worker/villager-ottomans.webp@on @resource/resource_wood.webp@ @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11.30",
+      "villager_count": 31,
+      "resources": {
+        "food": 9,
+        "wood": 16,
+        "gold": 4,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_economy/town-center.webp@after it finishes send em to @resource/resource_gold.webp@also build it near @resource/resource_gold.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "9x to age up, now get eco upgrades.",
+        "add 2x @building_military/stable.webp@ have aroun 4-5 prod building. 2x archer 2x stable maybe."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 3,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "OBJECTIVES:",
+        "Build da @building_religious/mosque.webp@ get da @resource/relics.webp@ + get da @resource/sacred_sites.webp@.",
+        "ARMY:",
+        "Always 1x @building_ottomans/military-school-1.webp@=@unit_ottomans/mehter-2.webp@ and;",
+        "{",
+        "if enemy = cav:  @unit_ottomans/sipahi-2.webp@+@unit_infantry/archer-2.webp@+@unit_ottomans/janissary-3.webp@",
+        "if enemy = no-cav: @unit_ottomans/sipahi-2.webp@+@unit_infantry/archer-2.webp@+@unit_infantry/crossbowman-3.webp@",
+        "} @unit_siege/springald.webp@+@unit_siege/mangonel-3.webp@+@unit_siege/trebuchet.webp@ to taste. Mix in @unit_cavalry/lancer-3.webp@ to juice up with gold.",
+        "VIZIER SUM-UP:",
+        "1st @age/vizier_point.webp@ = @technology_ottomans/field-work-1.webp@",
+        "2nd @age/vizier_point.webp@ = @technology_ottomans/extensive-fortifications.webp@",
+        "3rd @age/vizier_point.webp@ = @technology_ottomans/military-campus-1.webp@",
+        "4th @age/vizier_point.webp@ = @technology_ottomans/advanced-academy-1.webp@",
+        "Switch @building_ottomans/military-school-1.webp@ to @unit_ottomans/sipahi-2.webp@ 2nd @building_ottomans/military-school-1.webp@ will build @unit_ottomans/mehter-2.webp@."
+      ]
+    }
+  ],
+  "description": "STOLEN AND MIXED AND REVERBED",
+  "video": "",
+  "season": 12,
+  "map": "Open",
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

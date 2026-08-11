@@ -1,0 +1,221 @@
+{
+  "name": "Order of the Dragon Feudal Aggression",
+  "civilization": "Order of the Dragon",
+  "author": "Seanomatic123",
+  "source": "https://aoe4guides.com/builds/1DyHSRmczFDwVr6dH294",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 5 @unit_worker/villager.webp@ to @resource/sheep.png@",
+        "Send 2 @unit_worker/villager.png@ to build @building_economy/house.png@ to @building_economy/mining-camp.png@ to @resource/resource_gold.png@",
+        "@resource/rally.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Age Up with @landmark_hre/meinwerk-palace.webp@ with 2@unit_worker/villager.png@ from @resource/sheep.png@",
+        "Send 3 @unit_worker/villager.png@ from @resource/sheep.png@ to @resource/resource_wood.png@ near @building_economy/town-center.png@",
+        "@resource/rally.png@ to @resource/sheep.png@ until there are 5 @unit_worker/villager.png@ on @resource/sheep.png@",
+        "Send 1 @unit_worker/villager.png@ from @resource/sheep.png@ to build @building_economy/mill.png@ to @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Research @technology_economy/wheelbarrow.webp@ from @building_economy/mill.png@ when you have enough @resource/resource_wood.png@ and @resource/resource_gold.png@",
+        "Build @building_economy/lumber-camp.png@ with 1 @unit_worker/villager.png@ on @resource/resource_wood.png@",
+        "@resource/rally.png@ to @resource/resource_wood.png@ until there are 6 @unit_worker/villager.png@ on @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Build @building_military/stable.webp@with 2@unit_worker/villager.png@ from @landmark_hre/meinwerk-palace.png@",
+        "@resource/rally.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Send the 2 @unit_worker/villager.webp@ from @building_military/stable.png@ to @resource/sheep.png@",
+        "Build @building_economy/house.png@ with 1@unit_worker/villager.png@ from @resource/sheep.png@",
+        "Research @technology_economy/double-broadaxe.png@ from @building_economy/lumber-camp.png@ when there is enough @resource/resource_food.png@ and @resource/resource_gold.png@",
+        "Train @unit_dragon/gilded-horseman-2.png@ from @building_military/stable.png@ when there is enough @resource/resource_food.png@ and @resource/resource_wood.png@",
+        "@resource/rally.png@ to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_military/archery-range.webp@ with 1 @unit_worker/villager.png@ from @resource/resource_food.png@ when there is enough @resource/resource_wood.png@",
+        "@resource/rally.png@ to @resource/resource_food.png@ until there are 14 @unit_worker/villager.png@ on @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 14,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Train @unit_dragon/gilded-archer-2.webp@ from @building_military/archery-range.png@ when there is enough @resource/resource_food.png@ and @resource/resource_wood.png@",
+        "Research @technology_military/iron-undermesh.png@ from @landmark_hre/meinwerk-palace.png@ when there is enough @resource/resource_wood.png@ and @resource/resource_gold.png@",
+        "Research @technology_military/steeled-arrow.png@ from @landmark_hre/meinwerk-palace.png@ when there is enough @resource/resource_wood.png@ and @resource/resource_gold.png@",
+        "@resource/rally.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Optional: Send 8 @unit_worker/villager.webp@ from @resource/sheep.png@to @resource/boar.png@ and research @technology_economy/survival-techniques.png@ from @building_economy/mill.png@",
+        "Otherwise: Send @unit_worker/villager.png@ from @resource/sheep.png@ to @resource/berrybush.png@ and research @technology_economy/horticulture.png@ from @building_economy/mill.png@",
+        "@resource/rally.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 28,
+      "resources": {
+        "food": 14,
+        "wood": 12,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_military/fitted-leatherwork.webp@ from @landmark_hre/meinwerk-palace.png@ when there is enough @resource/resource_wood.png@ and @resource/resource_gold.png@",
+        "Build another @building_military/archery-range.png@ and train @unit_dragon/gilded-archer-2.png@",
+        "@resource/rally.png@ to @resource/resource_wood.png@ until there are 16 @unit_worker/villager.png@ on @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 32,
+      "resources": {
+        "food": 14,
+        "wood": 16,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/specialized-pick.webp@ from @building_economy/mining-camp.png@",
+        "Research @technology_military/bloomery.png@ from @landmark_hre/meinwerk-palace.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 38,
+      "resources": {
+        "food": 20,
+        "wood": 16,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/barracks.webp@ and train @unit_dragon/gilded-spearman-1.png@ if opponent is making cavalry.",
+        "Build another @building_military/barracks.png@ and train @unit_dragon/gilded-spearman-1.png@ if opponent continues with cavalry.",
+        "Build another @building_military/archery-range.png@ and train @unit_dragon/gilded-archer-2.png@"
+      ]
+    }
+  ],
+  "description": "Order of the Dragon Single Town Center Feudal Aggression By Beastyqt",
+  "video": "",
+  "season": 6,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

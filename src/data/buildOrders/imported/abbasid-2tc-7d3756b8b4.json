@@ -1,0 +1,236 @@
+{
+  "name": "Abbasid 2TC",
+  "civilization": "Abbasid Dynasty",
+  "author": "FLΔID",
+  "source": "https://aoe4guides.com/builds/1WSs7fEBJKivHcnb0Fgu",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "4 @unit_worker/villager-abbasid.webp@ to @resource/sheep.png@",
+        "1 @unit_worker/villager-abbasid.png@ build @building_economy/house.png@ then to @resource/sheep.png@",
+        "1 @unit_worker/villager-abbasid.png@ build @landmark_abbasid/house-of-wisdom.png@ then to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @resource/rally.webp@@resource/resource_gold.png@. 1st @unit_worker/villager-abbasid.png@ build @building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:12",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When @resource/resource_gold.webp@ mine 3900/4000:",
+        "@landmark_abbasid/economic-wing.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 2,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "Move 4 @unit_worker/villager-abbasid.webp@ from @resource/sheep.png@to @resource/resource_stone.png@",
+        "@resource/rally.png@@resource/gaiatreeprototypetree.png@ until @building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:10",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "When @resource/resource_gold.webp@ mine 3825/4000:",
+        "Move 1 @unit_worker/villager-abbasid.png@ from @resource/resource_gold.png@ to @resource/gaiatreeprototypetree.png@",
+        "Move 1 @unit_worker/villager-abbasid.png@ from @resource/resource_gold.png@ to build @building_economy/house.png@ then to @resource/gaiatreeprototypetree.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "03:58",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 9,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_abbasid/fertile-crescent-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When @resource/resource_stone.webp@mine 955/1200:",
+        "Move 4 @unit_worker/villager-abbasid.png@ from @resource/resource_stone.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:28",
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 15
+      },
+      "notes": [
+        "Move 15 @unit_worker/villager-abbasid.webp@ from @resource/resource_wood.png@ to build 2nd @building_economy/town-center.png@",
+        "Main TC @resource/rally.png@@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:55",
+      "villager_count": 20,
+      "resources": {
+        "food": 7,
+        "wood": 12,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move 3 @unit_worker/villager-abbasid.webp@ from @abilities/repair.png@@building_economy/town-center.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 7,
+        "wood": 13,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd TC @resource/rally.webp@@resource/resource_wood.png@",
+        "Main TC 1 @resource/rally.png@@resource/berrybush.png@. 1st @unit_worker/villager-abbasid.png@build @building_economy/mill.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Main TC @resource/rally.webp@@resource/sheep.png@",
+        "Move 1 @unit_worker/villager-abbasid.png@ from @resource/sheep.png@ to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/archery-range.webp@ and @building_military/barracks.png@ for defensive units."
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 10,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}

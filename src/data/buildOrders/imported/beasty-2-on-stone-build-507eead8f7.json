@@ -1,0 +1,367 @@
+{
+  "name": "Beasty 2 on Stone build",
+  "civilization": "Byzantines",
+  "author": "Sadge",
+  "source": "https://aoe4guides.com/builds/1xODO5TdftQcGjTPrJ2a",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": [
+        "2 on @resource/resource_stone.webp@, 3 @resource/resource_food.png@ & 1 builds @building_economy/house.png@ +@building_economy/mining-camp.png@ then @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@ food"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "00:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "01:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": [
+        "1 @resource/resource_food.webp@ @unit_worker/villager.png@ to build@building_byzantines/cistern-1.png@ (cover sheep primarily, next to @building_economy/town-center.png@) then back to @resource/resource_food.png@",
+        "@resource/rally.png@1 @resource/resource_gold.png@ then @resource/rally.png@ @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "01:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "01:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "02:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": [
+        "1 @resource/resource_food.webp@ @unit_worker/villager.png@ to build@building_byzantines/cistern-1.png@ (in vid this is next to berries)"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "02:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "02:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 2,
+        "stone": 2,
+        "builder": 1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "02:50",
+      "villager_count": 14,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 2,
+        "builder": 5
+      },
+      "notes": [
+        "Age up with 4, in vid it's @landmark_byzantines/imperial-hippodrome-1.webp@",
+        "@resource/rally.png@ to @resource/gaiatreeprototypetree.png@  until can build @building_economy/house.png@ then @building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "03:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 2,
+        "stone": 2,
+        "builder": 5
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "03:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 2,
+        "stone": 2,
+        "builder": 4
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "03:40",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 2,
+        "stone": 2,
+        "builder": 4
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "03:50",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 2,
+        "stone": 1,
+        "builder": 5
+      },
+      "notes": [
+        "1 @resource/resource_stone.webp@ @unit_worker/villager.png@ builds @building_byzantines/cistern-1.png@ next to 2nd @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "04:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 2,
+        "stone": 1,
+        "builder": 5
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "04:10",
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 1,
+        "stone": 1,
+        "builder": 6
+      },
+      "notes": [
+        "1 @resource/resource_gold.webp@@unit_worker/villager.png@ builds @building_economy/house.png@  and back to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "04:25",
+      "villager_count": 19,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 2,
+        "stone": 1,
+        "builder": 5
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "04:40",
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 2,
+        "stone": 1,
+        "builder": 1
+      },
+      "notes": [
+        "After @age/age_2.webp@ 3 @unit_worker/villager.png@ to wood 1 @unit_worker/villager.png@ to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "05:10",
+      "villager_count": 21,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 2,
+        "stone": 1,
+        "builder": 1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 10,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-09T18:25:04Z",
+  "updatedAt": "2026-08-09T18:25:04Z"
+}
