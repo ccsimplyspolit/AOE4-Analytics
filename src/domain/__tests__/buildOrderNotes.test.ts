@@ -3,6 +3,14 @@ import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
 import { resolveAoE4Icon } from '@data/vendor/aoe4-icons/manifest'
 import { parseBuildOrderDisplayNote } from '../buildOrderNotes'
 
+const bundledNotes = BUNDLED_BUILD_ORDERS.flatMap((build) =>
+  build.build_order.flatMap((step) => step.notes),
+)
+const bundledNoteChunks = Array.from(
+  { length: Math.ceil(bundledNotes.length / 100) },
+  (_, index) => bundledNotes.slice(index * 100, (index + 1) * 100),
+)
+
 describe('build-order note iconification', () => {
   it('adds icons to ordinary prose for resources, actions, ages, and units', () => {
     const parts = parseBuildOrderDisplayNote(
@@ -64,10 +72,8 @@ describe('build-order note iconification', () => {
     expect(icons.every((part) => part.type === 'icon' && resolveAoE4Icon(part.path))).toBe(true)
   })
 
-  it('keeps every bundled build order renderable', () => {
-    const notes = BUNDLED_BUILD_ORDERS.flatMap((build) =>
-      build.build_order.flatMap((step) => step.notes),
-    )
+  bundledNoteChunks.forEach((notes, index) => {
+    it(`keeps bundled build-order notes renderable (chunk ${index + 1})`, () => {
     const iconParts = notes.flatMap((note) =>
       parseBuildOrderDisplayNote(note).filter((part) => part.type === 'icon'),
     )
@@ -81,7 +87,8 @@ describe('build-order note iconification', () => {
         return typeof source === 'string' && !source.startsWith('http')
       }),
     ).toBe(true)
-  }, 120_000)
+    }, 120_000)
+  })
 
   it('keeps explicit provider icon tokens intact', () => {
     const parts = parseBuildOrderDisplayNote('5 @unit_worker/villager.webp@ on @resource/resource_gold.webp@')

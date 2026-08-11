@@ -2,6 +2,12 @@ import { describe, it, expect } from 'vitest'
 import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
 import { extractBuildTargets } from '../buildIcons'
 
+const bundledSteps = BUNDLED_BUILD_ORDERS.flatMap((build) => build.build_order)
+const bundledStepChunks = Array.from(
+  { length: Math.ceil(bundledSteps.length / 40) },
+  (_, index) => bundledSteps.slice(index * 40, (index + 1) * 40),
+)
+
 describe('extractBuildTargets', () => {
   it('pulls buildings and units from prose notes', () => {
     const labels = extractBuildTargets([
@@ -55,12 +61,13 @@ describe('extractBuildTargets', () => {
     expect(targets.every((target) => !target.url.startsWith('https:'))).toBe(true)
   })
 
-  it('keeps every bundled build step offline-renderable', () => {
-    const steps = BUNDLED_BUILD_ORDERS.flatMap((build) => build.build_order)
+  bundledStepChunks.forEach((steps, index) => {
+    it(`keeps bundled build steps offline-renderable (chunk ${index + 1})`, () => {
     const targets = steps.flatMap((step) => extractBuildTargets(step.notes))
 
     expect(steps.length).toBeGreaterThan(0)
     expect(targets.length).toBeGreaterThan(0)
     expect(targets.every((target) => !target.url.startsWith('https:'))).toBe(true)
-  }, 120_000)
+    }, 120_000)
+  })
 })
