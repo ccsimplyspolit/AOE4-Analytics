@@ -19,6 +19,7 @@ import {
   Activity,
   Play,
   ExternalLink,
+  Volume2,
 } from 'lucide-react'
 import type { AutomationStatus, AutomationTaskId } from '@domain/automation'
 import type { Leaderboard } from '@api/types'
@@ -29,6 +30,7 @@ import {
   type OverlayWidgetAnchor,
 } from '@store/settings'
 import { matchSteamAccount, type SteamAccount } from '@domain/steamAccounts'
+import { playAudioCue } from '@domain/overlayAudio'
 import { ipc } from '@shared/ipc'
 import { cn } from '@shared/lib/utils'
 import { useDebounce } from '@shared/hooks/useDebounce'
@@ -493,6 +495,82 @@ export function Settings() {
                 )
               }
             />
+            <OverlayToggle
+              label={tt('Eco Target Split HUD')}
+              description={tt('Show active villager distribution balance (Food, Wood, Gold, Stone) on the overlay.')}
+              checked={settings?.overlay.showEcoSplit ?? true}
+              onChange={(checked) =>
+                update.mutate(
+                  { overlay: { showEcoSplit: checked } },
+                  { onSuccess: () => void ipc.applyOverlaySettings() },
+                )
+              }
+            />
+            <OverlayToggle
+              label={tt('Mini-HUD ultra-compact mode')}
+              description={tt('Minimalist padding and compressed layout optimized for 1080p and smaller screens.')}
+              checked={settings?.overlay.miniHud ?? false}
+              onChange={(checked) =>
+                update.mutate(
+                  { overlay: { miniHud: checked } },
+                  { onSuccess: () => void ipc.applyOverlaySettings() },
+                )
+              }
+            />
+            <OverlayToggle
+              label={tt('Timing Checkpoints & Reminders')}
+              description={tt('Macro match checkpoints (2:30 gold scout, 4:15 Feudal, 7:00 relics/sacred sites).')}
+              checked={settings?.overlay.timingCheckpoints ?? true}
+              onChange={(checked) =>
+                update.mutate(
+                  { overlay: { timingCheckpoints: checked } },
+                  { onSuccess: () => void ipc.applyOverlaySettings() },
+                )
+              }
+            />
+            <div className="py-2.5">
+              <OverlayToggle
+                label={tt('Synthetic Audio Cues')}
+                description={tt('Play subtle harmonic chimes when approaching key match timings.')}
+                checked={settings?.overlay.audioCues ?? true}
+                onChange={(checked) =>
+                  update.mutate(
+                    { overlay: { audioCues: checked } },
+                    { onSuccess: () => void ipc.applyOverlaySettings() },
+                  )
+                }
+              />
+              {(settings?.overlay.audioCues ?? true) && (
+                <div className="mt-2 flex items-center gap-3 pl-1">
+                  <Volume2 className="h-4 w-4 text-primary shrink-0" />
+                  <input
+                    type="range"
+                    min={0.05}
+                    max={1}
+                    step={0.05}
+                    value={settings?.overlay.audioCueVolume ?? 0.3}
+                    onChange={(e) => {
+                      const vol = Number(e.target.value)
+                      update.mutate(
+                        { overlay: { audioCueVolume: vol } },
+                        { onSuccess: () => void ipc.applyOverlaySettings() },
+                      )
+                    }}
+                    className="w-40 accent-[hsl(var(--primary))]"
+                  />
+                  <span className="text-xs text-muted-foreground tabular-nums">
+                    {Math.round((settings?.overlay.audioCueVolume ?? 0.3) * 100)}%
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => playAudioCue(settings?.overlay.audioCueVolume ?? 0.3, 'checkpoint')}
+                    className="rounded border border-border px-2 py-0.5 text-xs text-primary hover:bg-primary/10 transition-colors"
+                  >
+                    {tt('Test Sound')}
+                  </button>
+                </div>
+              )}
+            </div>
               </div>
             </section>
           </div>

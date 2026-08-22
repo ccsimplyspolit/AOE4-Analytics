@@ -13,6 +13,7 @@ import {
   ExternalLink,
   Loader2,
   PlayCircle,
+  Layers,
 } from 'lucide-react'
 import { GUIDE_RESOURCES, GUIDES, type Guide } from '@data/guides'
 import {
@@ -49,6 +50,7 @@ import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
 import { PageHead } from '../components/PageHead'
 import { BuildOrderViewer } from '../components/BuildOrderViewer'
+import { BuildPlaylistManager } from '../components/BuildPlaylistManager'
 import { VideoPlayer } from '../components/VideoPlayer'
 import { CommunityBuildSources } from '../components/CommunityBuildSources'
 import { CounterHelper } from '../components/tools/CounterHelper'
@@ -58,7 +60,17 @@ import { BeastyNumber } from '../components/tools/BeastyNumber'
 import { useI18n } from '../../i18n'
 import { useRankedMapPool } from '../queries/useCivMeta'
 
-type Tab = 'guides' | 'builds' | 'counters' | 'quiz' | 'trainer' | 'beasty'
+import { ValdemarMasterclassHub } from '../components/ValdemarMasterclassHub'
+
+type Tab =
+  | 'guides'
+  | 'builds'
+  | 'valdemar'
+  | 'playlists'
+  | 'counters'
+  | 'quiz'
+  | 'trainer'
+  | 'beasty'
 
 /** AoE4Guides uses its own civ abbreviations (e.g. HRE/JDA/ZXL). */
 const GUIDES_CODE_BY_DATA_CODE: Record<string, string> = {
@@ -90,6 +102,8 @@ const GUIDES_CODE_BY_DATA_CODE: Record<string, string> = {
 const TABS = [
   { id: 'guides', label: 'Guides', icon: BookOpen },
   { id: 'builds', label: 'Build Orders', icon: ListOrdered },
+  { id: 'valdemar', label: 'Valdemar Hub', icon: PlayCircle },
+  { id: 'playlists', label: 'Practice Playlists', icon: Layers },
   { id: 'counters', label: 'Counter Helper', icon: Shield },
   { id: 'quiz', label: 'Civ Quiz', icon: Sparkles },
   { id: 'trainer', label: 'Shortcut Trainer', icon: Keyboard },
@@ -105,6 +119,9 @@ const GUIDE_VIDEO_IDS: Readonly<Record<string, readonly string[]>> = {
   'first-ten-minutes': ['ru-beginner-guide-2026', 'vortix-four-ages'],
   'map-control-resource-safety': ['farmman-push-deer', 'spirit-farm-mechanics'],
   'build-order-reading': ['ru-beginner-guide-2026'],
+  'valdemar-replay-analysis': ['valdemar-fix-mistakes', 'valdemar-win-no-micro'],
+  'valdemar-countering-turtles': ['valdemar-counter-turtles', 'valdemar-defense-tips'],
+  'valdemar-mistakes-hardstuck': ['valdemar-fix-mistakes', 'valdemar-win-no-micro', 'valdemar-conqueror-byz'],
   'mechanics-placement-and-micro': [
     'spirit-farm-mechanics',
     'farmman-push-deer',
@@ -114,6 +131,7 @@ const GUIDE_VIDEO_IDS: Readonly<Record<string, readonly string[]>> = {
     'nakamura-efficient-farm-placement',
     'valdy-settings-hotkeys',
     'crack-mechanics-pros-use',
+    'valdemar-defense-tips',
   ],
 }
 
@@ -167,6 +185,10 @@ export function Guides() {
       <div role="tabpanel">
         {tab === 'guides' && <GuideLibrary />}
         {tab === 'builds' && <BuildLibrary />}
+        {tab === 'valdemar' && <ValdemarMasterclassHub />}
+        {tab === 'playlists' && (
+          <BuildPlaylistManager allBuilds={BUILD_CATALOG.map((e) => e.build)} />
+        )}
         {tab === 'counters' && <CounterHelper />}
         {tab === 'quiz' && <CivQuiz />}
         {tab === 'trainer' && <ShortcutTrainer />}

@@ -451,9 +451,10 @@ async function analyzeRankedGames(
     const { store } = history
     const oldestFirst = [...games].filter((g) => !g.ongoing).reverse()
     let analyzed = 0
-    // At most this many ranked-summary DOWNLOADS per sync (disk-cached blobs and
-    // local stats.rgs reads are free) — keeps a sync snappy on a fresh install.
-    const summaryBudget: SummaryBudget = { remaining: 8, recentHistory: relicRecent }
+    const summaryBudget: SummaryBudget = {
+      remaining: Math.max(50, getSettings().getAll().automation.maxSummariesPerRun),
+      recentHistory: relicRecent,
+    }
 
     for (const game of oldestFirst) {
       const id = String(game.game_id)

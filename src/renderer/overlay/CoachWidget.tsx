@@ -1,73 +1,81 @@
-import { useMemo } from 'react'
-import { Bell, Eye, Landmark as LandmarkIcon, Users } from 'lucide-react'
+import { useEffect, useMemo, useRef } from 'react'
+import { Bell, Eye, Landmark as LandmarkIcon, Users, Compass, ShieldAlert, Sparkles } from 'lucide-react'
 import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
+import { buildIndexForCiv, type BuildOrder } from '@domain/buildOrderSchema'
 import {
-  buildIndexForCiv,
-  condenseBuildOrder,
-  type BuildKeyTiming,
-} from '@domain/buildOrderSchema'
-import { parseDuration } from '@domain/format'
+  type MacroCheckpoint,
+  resolveActiveCheckpoints,
+  getUpcomingCheckpoint,
+} from '@domain/macroCheckpoints'
+import { playAudioCue } from '@domain/overlayAudio'
 import { cn } from '@shared/lib/utils'
 import { useI18n } from '../i18n'
 
-const AGE_NAME: Record<number, string> = { 2: 'Feudal Age', 3: 'Castle Age', 4: 'Imperial Age' }
-/** Show a checkpoint chip from this long before its target time. */
-const LEAD_SEC = 90
-/** Pulse the chip when the checkpoint is this close. */
-const URGENT_SEC = 30
-/** The early scouting nudge window. */
-const SCOUT_FROM = 15
-const SCOUT_UNTIL = 75
-
-interface Checkpoint {
-  atSec: number
-  timing: BuildKeyTiming
-}
-
-/**
- * DORMANT (2026-07-02): built, shipped, and REMOVED from the overlay the same day
- * — the user found log-clock-driven reminders too rough in practice. NOT imported
- * by OverlayApp. The overlay:gameClock channel it would use IS live (pollService
- * pushes the anchor each second for the build/age widgets), so re-enabling is
- * render-only — but don't without a fundamentally tighter design.
- *
- * The in-game coach: quiet, timed reminder chips driven by the REAL game clock
- * (warnings.log sim start + pauses — no game memory is ever read). Shows the
- * next key checkpoint of your civ's bundled build with a live countdown and
- * villager target, plus an early "scout them" nudge. Chips pulse gold as a
- * checkpoint arrives — the "look here" cue.
- */
 export function CoachWidget({
   elapsedSec,
   civ,
+  activeBuild,
+  timingCheckpoints = true,
+  audioCues = true,
+  audioCueVolume = 0.3,
+  miniHud = false,
   placement,
 }: {
   /** Match time in seconds (log clock preferred, wall-clock fallback). */
   elapsedSec: number | null
-  /** Your live civ slug, to pick the bundled build. */
+  /** Your live civ slug, to pick the bundled build if no active build is pinned. */
   civ: string | null
+  /** Pinned or active build order object. */
+  activeBuild?: BuildOrder | null
+  /** Whether macro match checkpoints are enabled. */
+  timingCheckpoints?: boolean
+  /** Whether audio cues are enabled. */
+  audioCues?: boolean
+  /** Volume for audio cues [0, 1]. */
+  audioCueVolume?: number
+  /** Ultra-compact mini-HUD mode. */
+  miniHud?: boolean
   /** Placement mode renders a static preview. */
   placement?: boolean
 }) {
   const { tt } = useI18n()
-  const checkpoints = useMemo<Checkpoint[]>(() => {
-    const idx = buildIndexForCiv(BUNDLED_BUILD_ORDERS, civ)
-    if (idx == null) return []
-    const bo = BUNDLED_BUILD_ORDERS[idx]!
-    return condenseBuildOrder(bo)
-      .map((timing) => ({ atSec: timing.time ? parseDuration(timing.time) : null, timing }))
-      .filter((c): c is Checkpoint => c.atSec != null && c.atSec > 0)
-      .sort((a, b) => a.atSec - b.atSec)
-  }, [civ])
+  const soundPlayedRef = useRef<Set<string>>(new Set())
 
+  // Reset played sounds when match restarts
+  useEffect(() => {
+    if (elapsedSec == null || elapsedSec < 10) {
+      soundPlayedRef.current.clear()
+    }
+  }, [elapsedSec])
+
+  const bo = useMemo<BuildOrder | null>(() => {
+    if (activeBuild) return activeBuild
+    const idx = buildIndexForCiv(BUNDLED_BUILD_ORDERS, civ)
+    return idx != null ? BUNDLED_BUILD_ORDERS[idx] ?? null : null
+  }, [activeBuild, civ])
+
+  const allCheckpoints = useMemo<MacroCheckpoint[]>(() => {
+    return resolveActiveCheckpoints(bo, timingCheckpoints, civ)
+  }, [bo, timingCheckpoints, civ])
+
+  // Placement mode preview
   if (placement) {
     return (
-      <Shell>
-        <Chip icon={<LandmarkIcon className="h-3.5 w-3.5" />} title={`${tt('Feudal Age')} — 6:15`} urgent>
-          18 {tt('villagers')} · {tt('in')} 0:24
+      <Shell miniHud={miniHud}>
+        <Chip
+          icon={<Eye className="h-3.5 w-3.5" />}
+          title={`${tt('Scout Enemy Gold & Wood')} — 2:30`}
+          urgent
+          miniHud={miniHud}
+        >
+          {tt('Check opponent gold mining: Fast Castle, 2TC or Feudal aggression')}
         </Chip>
-        <Chip icon={<Eye className="h-3.5 w-3.5" />} title={tt('Scout their base')}>
-          {tt('find their gold + army buildings')}
+        <Chip
+          icon={<LandmarkIcon className="h-3.5 w-3.5" />}
+          title={`${tt('Feudal Transition Check')} — 4:15`}
+          miniHud={miniHud}
+        >
+          {tt('Landmark should begin or finish; scout military production buildings')}
         </Chip>
       </Shell>
     )
@@ -75,50 +83,63 @@ export function CoachWidget({
 
   if (elapsedSec == null) return null
 
-  const next = checkpoints.find((c) => c.atSec > elapsedSec - 5)
-  const showNext = next != null && next.atSec - elapsedSec <= LEAD_SEC
-  const showScout = elapsedSec >= SCOUT_FROM && elapsedSec <= SCOUT_UNTIL
-  if (!showNext && !showScout) return null
+  const upcoming = getUpcomingCheckpoint(allCheckpoints, elapsedSec, 90)
+  if (!upcoming) return null
+
+  const { checkpoint, remainingSec } = upcoming
+  const isUrgent = remainingSec <= 15
+
+  // Trigger audio cue when 10 seconds remain
+  if (audioCues && isUrgent && remainingSec <= 10 && !soundPlayedRef.current.has(checkpoint.id)) {
+    soundPlayedRef.current.add(checkpoint.id)
+    playAudioCue(audioCueVolume, checkpoint.priority === 'high' ? 'urgent' : 'checkpoint')
+  }
+
+  const getCategoryIcon = (category: MacroCheckpoint['category']) => {
+    switch (category) {
+      case 'scouting':
+        return <Eye className="h-3.5 w-3.5" />
+      case 'age':
+        return <LandmarkIcon className="h-3.5 w-3.5" />
+      case 'map_control':
+        return <Compass className="h-3.5 w-3.5" />
+      case 'economy':
+        return <Users className="h-3.5 w-3.5" />
+      case 'army':
+        return <ShieldAlert className="h-3.5 w-3.5" />
+      default:
+        return <Sparkles className="h-3.5 w-3.5" />
+    }
+  }
 
   return (
-    <Shell>
-      {showNext && next && (
-        <Chip
-          icon={
-            next.timing.ageUpTo != null ? (
-              <LandmarkIcon className="h-3.5 w-3.5" />
-            ) : (
-              <Users className="h-3.5 w-3.5" />
-            )
-          }
-          title={
-            next.timing.ageUpTo != null
-              ? `${tt(AGE_NAME[next.timing.ageUpTo] ?? 'Age targets')} — ${next.timing.time}`
-              : `${tt('Opening')} — ${next.timing.time ?? tt('now')}`
-          }
-          urgent={next.atSec - elapsedSec <= URGENT_SEC}
-        >
-          {next.timing.villagers} {tt('villagers')} · {countdown(next.atSec - elapsedSec, tt)}
-        </Chip>
-      )}
-      {showScout && (
-        <Chip icon={<Eye className="h-3.5 w-3.5" />} title={tt('Scout their base')}>
-          {tt('find their gold + army buildings')}
-        </Chip>
-      )}
+    <Shell miniHud={miniHud}>
+      <Chip
+        icon={getCategoryIcon(checkpoint.category)}
+        title={`${tt(checkpoint.title)} — ${formatSec(checkpoint.timeSec)}`}
+        urgent={isUrgent}
+        miniHud={miniHud}
+      >
+        <div className="flex items-center justify-between gap-2">
+          <span className="truncate">{tt(checkpoint.detail)}</span>
+          <span className="shrink-0 font-mono font-bold text-amber-300">
+            {countdown(remainingSec, tt)}
+          </span>
+        </div>
+      </Chip>
     </Shell>
   )
 }
 
-function Shell({ children }: { children: React.ReactNode }) {
+function Shell({ children, miniHud }: { children: React.ReactNode; miniHud?: boolean }) {
   const { tt } = useI18n()
   return (
     <div
-      className="flex w-64 select-none flex-col gap-1.5 font-sans"
+      className={cn('flex select-none flex-col gap-1.5 font-sans', miniHud ? 'w-56' : 'w-72')}
       style={{ textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}
     >
       <span className="flex items-center gap-1 font-display text-[9px] font-bold uppercase tracking-[0.2em] text-white/55">
-        <Bell className="h-3 w-3" /> {tt('Coach')}
+        <Bell className="h-3 w-3" /> {tt('Macro Coach')}
       </span>
       {children}
     </div>
@@ -130,26 +151,35 @@ function Chip({
   title,
   children,
   urgent,
+  miniHud,
 }: {
   icon: React.ReactNode
   title: string
   children: React.ReactNode
   urgent?: boolean
+  miniHud?: boolean
 }) {
   return (
     <div
       className={cn(
-        'rounded-sm bg-[#0a0e1a]/90 px-2.5 py-1.5 ring-1',
-        urgent ? 'rts-coach-pulse ring-primary/80' : 'ring-white/15',
+        'rounded-md bg-[#0a0e1a]/95 transition-all duration-300 ring-1',
+        urgent ? 'rts-coach-pulse ring-amber-400/90 shadow-[0_0_15px_rgba(251,191,36,0.35)]' : 'ring-white/15 shadow-md',
+        miniHud ? 'px-2 py-1 text-[11px]' : 'px-2.5 py-1.5 text-xs',
       )}
     >
-      <div className="flex items-center gap-1.5 text-[12px] font-bold text-white">
-        <span className={urgent ? 'text-primary' : 'text-white/70'}>{icon}</span>
-        {title}
+      <div className="flex items-center gap-1.5 font-bold text-white">
+        <span className={urgent ? 'text-amber-300' : 'text-cyan-400'}>{icon}</span>
+        <span className="truncate">{title}</span>
       </div>
-      <div className="pl-5 text-[11px] text-white/75">{children}</div>
+      <div className="mt-0.5 text-white/80">{children}</div>
     </div>
   )
+}
+
+function formatSec(sec: number): string {
+  const m = Math.floor(sec / 60)
+  const s = sec % 60
+  return `${m}:${String(s).padStart(2, '0')}`
 }
 
 function countdown(sec: number, tt: (value: string) => string): string {

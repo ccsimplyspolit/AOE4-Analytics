@@ -39,6 +39,7 @@ import {
 import {
   cacheAccountReplay,
   cacheAccountReplays,
+  cachePlayerArchive,
   cacheAccountSummary,
   cacheAccountSummaries,
   downloadAndAnalyzeAccountReplay,
@@ -313,6 +314,18 @@ export function registerIpcHandlers(): void {
         ? gameIds.filter((value): value is number => typeof value === 'number')
         : [],
     ),
+  )
+  ipcMain.handle(
+    IpcChannels.replayCachePlayerArchive,
+    (_e, profileId: unknown, options?: unknown) => {
+      const pId = typeof profileId === 'number' ? profileId : Number(profileId)
+      const opts =
+        options && typeof options === 'object' ? (options as Record<string, unknown>) : {}
+      return cachePlayerArchive(pId, {
+        maxReplays: typeof opts.maxReplays === 'number' ? opts.maxReplays : undefined,
+        maxSummaries: typeof opts.maxSummaries === 'number' ? opts.maxSummaries : undefined,
+      })
+    },
   )
   ipcMain.handle(IpcChannels.summaryCache, (_e, gameId: unknown) =>
     cacheAccountSummary(typeof gameId === 'number' ? gameId : Number(gameId)),

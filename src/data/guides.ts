@@ -1357,6 +1357,167 @@ The catalogue is a discovery map, not a promise that every old video survives th
 
 Каталог — карта для поиска, а не гарантия, что каждый старый ролик пережил текущий патч. Предпочитайте материалы, где указаны сезон, карта, цивилизация и точка первой адаптации.`,
   },
+  {
+    slug: 'valdemar-replay-analysis',
+    title: 'Pro Replay Analysis: How to Review Your Matches',
+    titleRu: 'Профессиональный анализ реплеев: как разбирать свои матчи',
+    category: 'strategy',
+    summary:
+      "Valdemar's structured methodology for reviewing replays: finding the First Cause of defeat, tracking TC uptime, timing checks, and resource floating.",
+    summaryRu:
+      'Структурированная методология разбора реплеев от Valdemar: поиск первопричины поражения (First Cause), проверка аптайма ТЦ, таймингов и утечек ресурсов.',
+    readMinutes: 6,
+    body: `## The First Cause Principle
+
+When watching a loss, most players jump to the final big battle where their army died and blame their micro. **Valdemar's golden rule: the match was usually decided 5 to 10 minutes earlier.**
+
+To find the true reason you lost, ask this diagnostic sequence:
+
+1. **Town Center Uptime (Minutes 0–8):** Did you stop making villagers during your Feudal transition or when harassed? A 30-second TC idle costs 1.5 villagers, which compounds into hundreds of lost resources by minute 12.
+2. **The Scouting Decision Point:** What did your scout see between 2:30 and 4:00? Did you see a forward stable, a second TC, or gold mining, and did your production immediately answer it?
+3. **Floating Resources:** If you had 800 excess wood and 600 gold while your army was overwhelmed, the issue was not unit counters—it was missing production buildings (barracks, stables, ranges).
+
+## The Replay Scrubbing Method
+
+When reviewing in the in-game replay viewer or RTSLytics ReplayLab, follow this systematic timeline:
+
+- **Minute 3:30 (Opening Check):** Verify your age-up landmark start time and villager allocations. Ensure zero queued idle time.
+- **Minute 5:30 (First Military Timing):** Check who produced the first military units. If the opponent was aggressive, where were your defensive units and scout positioned?
+- **Minute 8:00 (Macro Branch):** Look at total villager counts and resource gather rates. If the enemy expanded to a 2nd TC, did you either punish outer resources, match the expansion, or advance to Castle Age with relics?
+- **Minute 12:00 (Tech & Farm Transition):** Did you get +1 ranged/melee armor? Did you transition to farms before sheep/deer ran out, or were your villagers forced to idle under the Town Center?
+
+## Actionable Takeaway Rule
+
+Never close a replay without writing down **one specific mechanical rule** for your next match:
+- *Example:* "Next game vs French: place barracks at 3:15 and build 4 spearmen before attempting deer gathering."
+- *Example:* "Next game vs 2TC boom: build a ram and 8 archers by 6:30 instead of idling in base."`,
+    bodyRu: `## Принцип первопричины (First Cause)
+
+Разбирая поражение, большинство игроков смотрят на финальное сражение, где пала их армия, и винят свой микроконтроль. **Главное правило Valdemar: исход матча почти всегда решается за 5–10 минут до решающего боя.**
+
+Чтобы найти истинную причину поражения, проверьте следующие контрольные точки:
+
+1. **Аптайм ТЦ (0–8 минуты):** Останавливалось ли производство крестьян во время перехода в Феодал или при раннем харассе? Простой ТЦ даже на 30 секунд стоит 1.5 крестьян, что к 12-й минуте превращается в сотни потерянных ресурсов.
+2. **Точка решения по разведке:** Что увидел ваш разведчик между 2:30 и 4:00? Увидели ли вы раннюю конюшню, второй ТЦ или сбор камня, и перестроилось ли ваше производство мгновенно под этот сигнал?
+3. **Излишки ресурсов (Floating Resources):** Если у вас скопилось 800 дерева и 600 золота в момент, когда вас задавили, проблема не в контр-юнитах, а в нехватке производственных зданий (казарм, стрельбищ, конюшен).
+
+## Метод разбора по таймлайну
+
+В реплеере игры или ReplayLab RTSLytics двигайтесь по следующим ключевым отсечкам:
+
+- **3:30 (Старт и переход):** Проверьте время закладки landmark и распределение рабочих. Убедитесь в отсутствии простоя очереди.
+- **5:30 (Первый военный тайминг):** Кто первым вышел в армию? Если оппонент пошёл в агрессию, где стояло ваше прикрытие и разведчик?
+- **8:00 (Макро-развилка):** Сравните число рабочих. Если противник поставил 2-й ТЦ, наказали ли вы его внешние ресурсы, поставили свой ТЦ или вышли в Замок за реликвиями?
+- **12:00 (Грейды и переход на фермы):** Сделали ли вы +1 броню? Перешли ли на фермы до исчерпания овец/оленей, или крестьяне встали под ратушей?
+
+## Правило одного вывода
+
+Никогда не закрывайте реплей без **одного конкретного правила** на следующую игру:
+- *Пример:* «В игре против Франции: ставить казарму в 3:15 и делать 4 копейщиков до выхода на дальних оленей».
+- *Пример:* «Против 2 ТЦ бума: делать таран и 8 лучников к 6:30, а не пассивно стоять на базе».`,
+  },
+  {
+    slug: 'valdemar-countering-turtles',
+    title: 'Countering Turtles: Map Dominance Without Dives',
+    titleRu: 'Контр-игра против закрытых баз: доминирование на карте без дайвов',
+    category: 'strategy',
+    summary:
+      'How to punish passive turtling players (Golden Horde, HRE, English) by starving neutral resources, booming with 2TC, and bringing timely siege instead of throwing units under Town Centers.',
+    summaryRu:
+      'Как наказывать пассивных оппонентов без самоубийственных штурмов: контроль нейтральных ресурсов, безопасный бум и своевременная осадная подготовка.',
+    readMinutes: 5,
+    body: `## The Turtle Trap
+
+When an opponent builds early walls, outposts, and gathers exclusively under their Town Center or defensive landmarks, beginner and intermediate players often make the fatal mistake: **diving the base too early and losing their entire army to defensive fire.**
+
+A turtle player spends hundreds of resources on walls, towers, and defensive structures that cannot move or gather resources. If you do not dive them, those investments generate zero return.
+
+## The 3-Pillar Anti-Turtle Strategy
+
+### 1. Total Neutral Resource Denial
+- Take all contested deer packs, boar, and outer berry patches with total safety.
+- Your food gathering rate on hunt is significantly faster (~0.83 vs ~0.66 food/sec) than their safe farm gathering under the Town Center.
+- Place small outposts or palisade walls near contested gold veins and neutral resources to ensure they cannot step out.
+
+### 2. Economic Scaling (2nd Town Center or Fast Castle)
+- Because the turtle has zero map presence and cannot threaten your base, you are 100% safe to add a second Town Center or safely advance to Castle Age.
+- Secure all 5 relics on the map without contest. Five relics generate 400 gold/min permanently—equivalent to 10 free gold villagers.
+- Capture Sacred Sites for steady gold generation and victory pressure timer.
+
+### 3. Assembled Siege Strike (Minute 12–15)
+- Do not attack with pure infantry or cavalry.
+- Wait until you have 2–3 Trebuchets or Mangonels/Springalds and a solid screen of counter-units.
+- Slowly breach the outer walls from outside Town Center and Keep range, forcing the turtle to walk out into your prepared army.`,
+    bodyRu: `## Ловушка черепашьей игры
+
+Когда соперник ставит глухие стены, башни и сидит исключительно под защитой ратуши или оборонительных landmark, начинающие игроки часто совершают фатальную ошибку: **идут на штурм базы и теряют всю армию под огнём стрел.**
+
+Игрок в обороне тратит сотни ресурсов на стены и башни, которые не двигаются и не приносят ресурсов. Если вы не штурмуете их в лоб, эти затраты противника не окупаются.
+
+## Стратегия победы из 3 шагов
+
+### 1. Полный контроль нейтральных ресурсов
+- Забирайте все нейтральные стада оленей, кабанов и внешние ягоды в полной безопасности.
+- Скорость сбора с охоты (~0.83 ед/сек) существенно выше сбора с ферм (~0.66 ед/сек), что даёт вам колоссальное преимущество по темпу.
+- Ставьте передовые аванпосты у нейтральных залежей золота, чтобы противник не мог выйти с базы.
+
+### 2. Экономическое масштабирование (2 ТЦ или Быстрый Замок)
+- Пока оппонент заперт и не имеет армии на карте, вы можете абсолютно безопасно поставить второй ТЦ или выйти в Замковую эпоху.
+- Соберите все 5 реликвий на карте. Пять реликвий дают 400 золота/мин бессрочно — это эквивалентно 10 бесплатным крестьянам на золоте.
+- Захватывайте Священные места (Sacred Sites), запуская таймер победы.
+
+### 3. Подготовленный осадный удар (12–15 минута)
+- Не атакуйте одной пехотой или кавалерией.
+- Дождитесь готовности 2–3 требушетов или мангонелей и постройте плотный скрининг из контр-юнитов.
+- Разрушайте ключевые укрепления с безопасной дистанции вне радиуса огня ратуши, вынуждая соперника выходить в открытое поле на ваших условиях.`,
+  },
+  {
+    slug: 'valdemar-mistakes-hardstuck',
+    title: 'Fixing the 5 Mistakes That Keep Players Hardstuck',
+    titleRu: 'Исправление 5 ошибок, удерживающих игроков в Платине и Даймонде',
+    category: 'fundamentals',
+    summary:
+      "Valdemar's coaching checklist for breaking into Conqueror: army screen discipline, floating resources, delayed farm transitions, idle TC in fights, and blindly matching the enemy.",
+    summaryRu:
+      'Коучинговый чеклист Valdemar для выхода в Conqueror: дисциплина прикрытия армии, излишки ресурсов, своевременный переход на фермы и постоянное производство крестьян.',
+    readMinutes: 6,
+    body: `## The 5 Breakthrough Adjustments
+
+From analyzing hundreds of coaching games between Gold and Conqueror, Valdemar highlights five recurring habits that prevent players from climbing:
+
+### 1. Attacking Without an Army Screen
+Archers without spearmen or men-at-arms in front will be wiped in seconds by horsemen or knight flanks. Always maintain a 1:2 or 1:3 frontline-to-backline unit ratio before leaving your base.
+
+### 2. Floating Unspent Resources
+Having 1,500 unspent food and wood is the same as playing with 20 fewer military units. Rule of thumb: add 1 production building for every 3–4 excess workers beyond basic maintenance, or queue Blacksmith upgrades immediately.
+
+### 3. Neglecting the Farm Transition Window
+When your starting sheep and nearby berries run dry around minute 7–9, scrambling to place 10 farms all at once costs 750 wood and stalls your military production. **Solution:** Transition 1–2 villagers to farms every minute starting from minute 6.
+
+### 4. Panicking During Defense and Idling 20 Villagers
+When 2 enemy horsemen raid your woodline, ringing the Town Bell pulls your entire economy off work. Instead, select only the 3 attacked villagers, send them to garrison or move behind the TC, while the rest of your economy continues gathering.
+
+### 5. Blindly Copying the Opponent's Strategy
+If your civ has strong early Feudal tempo (e.g. English, French, Delhi) and you see an opponent booming on 2TC, do not panic and build a slow 2TC yourself. Exploit your civilization's asymmetric advantage by applying immediate pressure on their exposed gold or stone!`,
+    bodyRu: `## 5 ключевых исправлений для роста ранга
+
+На основе сотен коучинг-сессий от уровня Gold до Conqueror Valdemar выделяет 5 главных привычек, мешающих росту:
+
+### 1. Атака без защитного скрининга
+Лучницы без прикрытия копейщиков или латников уничтожаются за секунды любым фланговым чарджем кавалерии. Всегда держите соотношение передней линии к стрелкам как минимум 1:2 или 1:3 перед выходом с базы.
+
+### 2. Накопление нереализованных ресурсов (Floating)
+1500 непотраченной еды и дерева равносильны игре с отставанием в 20 боевых единиц. Правило: добавляйте по 1 производственному зданию на каждые 3–4 свободных крестьянина или мгновенно заказывайте улучшения в кузнице.
+
+### 3. Пропуск окна перехода на фермы
+Когда стартовые овцы и ближние ягоды заканчиваются на 7–9 минутах, резкая закладка 10 ферм разом требует 750 дерева и полностью парализует производство армии. **Решение:** переводите по 1–2 крестьянина на фермы каждую минуту, начиная с 6-й минуты.
+
+### 4. Панический гарнизон и простой экономики
+При набеге двух вражеских всадников колокол ратуши останавливает работу всей базы. Выделяйте только тех 2–3 рабочих, которых атакуют, пока остальная экономика продолжает непрерывно приносить ресурсы.
+
+### 5. Слепое копирование чужой стратегии
+Если ваша цивилизация имеет мощный феодальный темп (Англия, Франция, Дели), а соперник ставит 2-й ТЦ, не нужно паниковать и ставить медленный 2-й ТЦ в ответ. Реализуйте асимметричное преимущество своей цивилизации через жесткое давление на открытые ресурсы врага!`,
+  },
 ]
 
 /** Additional references retained for deeper patch and civilization context. */
@@ -1648,5 +1809,70 @@ export const GUIDE_RESOURCES: readonly GuideResource[] = [
       'Объясняет фильтры эпох, разбор боевых характеристик, улучшения, технологии и сравнение цивилизаций.',
     source: 'AoE4World',
     url: 'https://aoe4world.com/explorer/about',
+  },
+  {
+    id: 'valdemar-fix-mistakes',
+    kind: 'video',
+    title: 'Fix These Platinum Mistakes Or Be Hardstuck | AoE4 Coaching',
+    titleRu: 'Исправьте эти ошибки Платины или останетесь на месте | Коучинг AoE4',
+    description:
+      'Valdemar breaks down crucial macro habits, army screens, and production scaling during a replay review.',
+    descriptionRu:
+      'Valdemar разбирает важнейшие привычки макро, прикрытие армии и масштабирование производства на разборе реплея.',
+    source: 'Valdy · YouTube',
+    url: 'https://www.youtube.com/watch?v=ydDt3gp56fQ',
+    publishedAt: '2026-08-10',
+  },
+  {
+    id: 'valdemar-counter-turtles',
+    kind: 'video',
+    title: 'How To Counter Turtle Players (Without Attacking)',
+    titleRu: 'Как контрить закрывающихся игроков (не атакуя в лоб)',
+    description:
+      'Masterclass on map control, resource denial, and economic advantage when facing heavy defense.',
+    descriptionRu:
+      'Мастер-класс по контролю карты, удушению ресурсов и получению экономического перевеса против глухой обороны.',
+    source: 'Valdy · YouTube',
+    url: 'https://www.youtube.com/watch?v=7_c9_X0tK_E',
+    publishedAt: '2026-07-20',
+  },
+  {
+    id: 'valdemar-conqueror-byz',
+    kind: 'video',
+    title: 'Easily Achieve Conqueror 3 With These Byz Strats | AoE4 Valdy',
+    titleRu: 'Легко берите Conqueror 3 с этими стратегиями за Византию',
+    description:
+      'Deep walkthrough of Winery placement, berry scaling, mercenary adaptation, and matchup timing against China and others.',
+    descriptionRu:
+      'Глубокий разбор Винодельни, сбора ягод, наемников и таймингов матчапа против Китая и других цивилизаций.',
+    source: 'Valdy · YouTube',
+    url: 'https://www.youtube.com/watch?v=0pkvLN16f4o',
+    publishedAt: '2026-08-14',
+  },
+  {
+    id: 'valdemar-defense-tips',
+    kind: 'video',
+    title: '5 Defense Tips Every AoE4 Player Needs',
+    titleRu: '5 советов по защите, необходимых каждому игроку AoE4',
+    description:
+      'Practical defensive layouts, emergency outposts, small walls, and minimizing worker idle time under attack.',
+    descriptionRu:
+      'Практическая расстановка обороны, аванпосты, стенки и минимизация простоя рабочих под атакой.',
+    source: 'Valdy · YouTube',
+    url: 'https://www.youtube.com/watch?v=s9TkSQV1Mhg',
+    publishedAt: '2026-07-15',
+  },
+  {
+    id: 'valdemar-win-no-micro',
+    kind: 'video',
+    title: 'How To Win Without Good Micro | AoE4 Diamond Coaching',
+    titleRu: 'Как побеждать без идеального микро | Коучинг Даймонда',
+    description:
+      'Winning through superior macro setup, counter-composition choices, and positioning rather than twitch APM.',
+    descriptionRu:
+      'Победа за счет превосходного макро, правильного подбора контр-состава и позиционирования вместо запредельного APM.',
+    source: 'Valdy · YouTube',
+    url: 'https://www.youtube.com/watch?v=-PPntvN34sE',
+    publishedAt: '2026-08-05',
   },
 ]

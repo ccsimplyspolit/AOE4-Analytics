@@ -1,6 +1,7 @@
+import { useState } from 'react'
 import type { ScoutReport } from '@domain/types'
 import { Link } from 'react-router-dom'
-import { Swords, Map as MapIcon, Info, ShieldCheck, ArrowRight } from 'lucide-react'
+import { Swords, Map as MapIcon, Info, ShieldCheck, ArrowRight, Download, RefreshCw } from 'lucide-react'
 import { Card, CardContent } from '@shared/components/ui/card'
 import {
   countryFlag,
@@ -10,8 +11,10 @@ import {
   winRateTone,
 } from '@shared/format'
 import { counterPlanForCiv } from '@domain/civUnits'
+import { ipc } from '@shared/ipc'
 import { RankBadge } from './RankBadge'
 import { FormPips } from './FormPips'
+import { MatchupNotesEditor } from './MatchupNotesEditor'
 import { useI18n } from '../../i18n'
 
 const CIV_BAR_FILL = { win: 'bg-win/80', loss: 'bg-loss/80', even: 'bg-primary/70' } as const
@@ -29,6 +32,28 @@ export function ScoutReportCard({
   showProfileLink?: boolean
 }) {
   const { tt, gameName } = useI18n()
+  const [downloading, setDownloading] = useState(false)
+  const [downloadResult, setDownloadResult] = useState<string | null>(null)
+
+  const handleFetchReplays = async () => {
+    setDownloading(true)
+    setDownloadResult(null)
+    try {
+      const res = await ipc.cachePlayerArchive(report.profileId, { maxReplays: 50, maxSummaries: 100 })
+      if (res.ok) {
+        setDownloadResult(
+          `Найдено ${res.data.totalGames} матчей: сохранено ${res.data.cachedReplays} реплеев и ${res.data.cachedSummaries} сводок (${res.data.analyzedReplays} проанализировано)`,
+        )
+      } else {
+        setDownloadResult(res.error.message)
+      }
+    } catch (e) {
+      setDownloadResult(e instanceof Error ? e.message : 'Ошибка загрузки')
+    } finally {
+      setDownloading(false)
+    }
+  }
+
   const topCiv = report.topCivs[0]
   const topGames = topCiv?.games ?? 1
   const counterPlan = counterPlanForCiv(topCiv?.civ)
@@ -59,12 +84,34 @@ export function ScoutReportCard({
               </div>
             )}
             {showProfileLink && (
-              <Link
-                to={`/profile/${report.profileId}`}
-                className="mt-1.5 inline-flex items-center gap-1 rounded-md border border-primary/30 px-2 py-1 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
-              >
-                {tt('View full profile')} <ArrowRight className="h-3 w-3" />
-              </Link>
+              <div className="mt-1.5 flex flex-wrap items-center justify-end gap-2">
+                <button
+                  type="button"
+                  disabled={downloading}
+                  onClick={handleFetchReplays}
+                  className="inline-flex items-center gap-1 rounded-md border border-border bg-secondary/60 px-2 py-1 text-xs font-medium text-foreground transition-colors hover:bg-secondary disabled:opacity-50"
+                  title="Скачать и разобрать все доступные реплеи и сводки"
+                >
+                  {downloading ? (
+                    <>
+                      <RefreshCw className="h-3 w-3 animate-spin" /> Загрузка…
+                    </>
+                  ) : (
+                    <>
+                      <Download className="h-3 w-3 text-primary" /> Скачать реплеи
+                    </>
+                  )}
+                </button>
+                <Link
+                  to={`/profile/${report.profileId}`}
+                  className="inline-flex items-center gap-1 rounded-md border border-primary/30 px-2 py-1 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
+                >
+                  {tt('View full profile')} <ArrowRight className="h-3 w-3" />
+                </Link>
+              </div>
+            )}
+            {downloadResult && (
+              <div className="mt-1 text-[11px] text-emerald-400">{downloadResult}</div>
             )}
           </div>
         </div>
@@ -162,6 +209,17 @@ export function ScoutReportCard({
             {localizedScoutNote(report, tt, gameName)}
           </p>
         </section>
+
+        {(topCiv?.civ || report.topMaps[0]?.map) && (
+          <div className="pt-2">
+            <MatchupNotesEditor
+              context={{
+                oppCiv: topCiv?.civ ?? null,
+                map: report.topMaps[0]?.map ?? null,
+              }}
+            />
+          </div>
+        )}
       </CardContent>
     </Card>
   )

@@ -22,6 +22,7 @@ import { VideoAnalysisPanel } from '../components/VideoAnalysisPanel'
 import { TwitchVodCard } from '../components/TwitchVodCard'
 import { BuildOrderComparisonCard } from '../components/BuildOrderComparisonCard'
 import { CuratedMatchReviewCard } from '../components/CuratedMatchReviewCard'
+import { ValdemarMatchCoachCard } from '../components/ValdemarMatchCoachCard'
 import { usePublicGame } from '../queries/usePublicGame'
 import { useVideoAnalyses } from '../queries/useVideoAnalyses'
 import { useTwitchVod } from '../queries/useTwitchVod'
@@ -126,6 +127,12 @@ function PublicGameBody({
       <TeamsCard teams={teams} gameId={detail.game.game_id} />
       <TwitchVodCard input={viewedCiv ? twitchVodInput : null} />
       {curatedReview && <CuratedMatchReviewCard review={curatedReview} />}
+      <ValdemarMatchCoachCard
+        myCiv={viewedCiv}
+        opponentCiv={
+          players.find((player) => player.profile_id !== detail.profileId)?.civilization ?? null
+        }
+      />
 
       {detail.perPlayer.length > 0 ? (
         <ComparisonTable

@@ -383,10 +383,10 @@ export class AutomationCoordinator {
   ): Promise<void> {
     const items = accountItems(archive)
     const connected = getSteamAuthStatus().connected
-    const replayIdsForAnalysis = new Set(
+    const replayIdsForAnalysis = new Set<number>(
       items
         .filter((item) => item.cacheStatus === 'cached')
-        .slice(0, automation.maxReplaysPerRun)
+        .slice(0, Math.max(automation.maxReplaysPerRun * 2, 100))
         .map((item) => item.game.game_id),
     )
 

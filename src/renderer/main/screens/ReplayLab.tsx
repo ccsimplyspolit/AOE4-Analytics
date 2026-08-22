@@ -59,6 +59,7 @@ import { useGameSummary } from '../queries/useHistory'
 import { useSteamAuthStatus } from '../queries/useSteam'
 import { useTwitchVod } from '../queries/useTwitchVod'
 import { useVideoAnalyses } from '../queries/useVideoAnalyses'
+import { ValdemarReplayReviewsPanel } from '../components/ValdemarReplayReviewsPanel'
 import { useI18n } from '../../i18n'
 
 const LOCAL_PAGE_SIZE = 25
@@ -187,11 +188,11 @@ function Pager({
 }
 
 export function ReplayLab() {
-  const { tt } = useI18n()
+  const { tt, locale } = useI18n()
   const settings = useSettings()
   const updateSettings = useUpdateSettings()
   const steam = useSteamAuthStatus()
-  const [source, setSource] = useState<'local' | 'account'>('local')
+  const [source, setSource] = useState<'local' | 'account' | 'valdemar'>('local')
   const [localPage, setLocalPage] = useState(1)
   const [accountPage, setAccountPage] = useState(1)
   const [accountRefreshVersion, setAccountRefreshVersion] = useState(0)
@@ -656,6 +657,10 @@ export function ReplayLab() {
           <SourceTab active={source === 'account'} onClick={() => setSource('account')}>
             <CloudDownload className="h-3.5 w-3.5" /> {tt('Account history')}
           </SourceTab>
+          <SourceTab active={source === 'valdemar'} onClick={() => setSource('valdemar')}>
+            <FileVideo className="h-3.5 w-3.5" />{' '}
+            {locale === 'ru' ? 'Разборы про-матчей (Valdemar)' : 'Pro Match Reviews'}
+          </SourceTab>
         </div>
         <div className="flex flex-wrap items-center gap-3">
           {source === 'account' && (
@@ -670,19 +675,21 @@ export function ReplayLab() {
               {tt('Auto-cache available page replays')}
             </label>
           )}
-          <label className="inline-flex items-center gap-2 text-xs text-muted-foreground">
-            <input
-              type="checkbox"
-              checked={autoAnalyze}
-              onChange={(event) =>
-                updateSettings.mutate({ automation: { analyzeReplays: event.target.checked } })
-              }
-            />
-            {tt(
-              source === 'account' ? 'Auto-analyze cached replays' : 'Auto-analyze local replays',
-            )}
-          </label>
-          {autoAnalysis && (
+          {source !== 'valdemar' && (
+            <label className="inline-flex items-center gap-2 text-xs text-muted-foreground">
+              <input
+                type="checkbox"
+                checked={autoAnalyze}
+                onChange={(event) =>
+                  updateSettings.mutate({ automation: { analyzeReplays: event.target.checked } })
+                }
+              />
+              {tt(
+                source === 'account' ? 'Auto-analyze cached replays' : 'Auto-analyze local replays',
+              )}
+            </label>
+          )}
+          {autoAnalysis && source !== 'valdemar' && (
             <Badge variant="outline" className="border-primary/40 text-primary">
               {tt('Auto-analysis')} {autoAnalysis.done}/{autoAnalysis.total}
               {autoAnalysis.errors > 0 ? ` · ${autoAnalysis.errors} ${tt('errors')}` : ''}
@@ -703,7 +710,7 @@ export function ReplayLab() {
           page={localPage}
           onPage={setLocalPage}
         />
-      ) : (
+      ) : source === 'account' ? (
         <AccountArchive
           profileId={settings.data?.profileId ?? null}
           steamConnected={steam.data?.connected ?? false}
@@ -732,6 +739,8 @@ export function ReplayLab() {
           page={accountPage}
           onPage={setAccountPage}
         />
+      ) : (
+        <ValdemarReplayReviewsPanel />
       )}
     </div>
   )

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { ArrowLeft, CheckCircle2, ExternalLink, ScanLine, Trash2 } from 'lucide-react'
+import { ArrowLeft, CheckCircle2, Download, ExternalLink, RefreshCw, ScanLine, Share2, Trash2 } from 'lucide-react'
 import type { StoredMatch } from '@store/historyStore'
 import type { AppSettings } from '@store/settings'
 import type { FullReplayAnalysis } from '@ipc/contract'
@@ -24,6 +24,7 @@ import { formatDurationShort, relativeTime } from '@shared/format'
 import { cn } from '@shared/lib/utils'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
+import { ipc } from '@shared/ipc'
 import { useDeleteMatch, useGameSummary, useHistory } from '../queries/useHistory'
 import { useDownloadAndAnalyzeReplay, useReplayAnalysis } from '../queries/useReplays'
 import { useSettings } from '../queries/useProfile'
@@ -37,10 +38,13 @@ import { TwitchVodCard } from '../components/TwitchVodCard'
 import { VideoAnalysisPanel } from '../components/VideoAnalysisPanel'
 import { AutoGameplayCard } from '../components/AutoGameplayCard'
 import { CuratedMatchReviewCard } from '../components/CuratedMatchReviewCard'
+import { MatchShareCardModal } from '../components/MatchShareCardModal'
+import { analyzeTcIdleTime } from '@domain/tcIdleDetector'
 import { useVideoAnalyses } from '../queries/useVideoAnalyses'
 import { useTwitchVod } from '../queries/useTwitchVod'
 import { SimilarMatchCard } from '../components/SimilarMatchCard'
 import { TeamMateReviewCard } from '../components/TeamMateReviewCard'
+import { ValdemarMatchCoachCard } from '../components/ValdemarMatchCoachCard'
 import { inferGameKind, type SimilarMatchQuery } from '@domain/similarMatch'
 import { playerEvidenceCoverage } from '@domain/statsCoverage'
 import { EmptyBox, ErrorBox, Spinner } from '../components/feedback'
@@ -148,8 +152,13 @@ function Detail({
   // an AoE4World profile id. Use that stable row id for focus so every decoded
   // participant remains selectable.
   const [focusedPlayerId, setFocusedPlayerId] = useState<number | null>(null)
+  const [showShareModal, setShowShareModal] = useState(false)
+  const [downloadingParticipants, setDownloadingParticipants] = useState(false)
+  const [participantsDownloadMsg, setParticipantsDownloadMsg] = useState<string | null>(null)
+
   useEffect(() => {
     setFocusedPlayerId(null)
+    setParticipantsDownloadMsg(null)
   }, [match.id])
   // Keep the exact-game lookup here as well as in TwitchVodCard. React Query
   // de-duplicates the request, while this screen can attach the verified VOD
@@ -219,6 +228,12 @@ function Detail({
     (focusedPlayerId == null ? match.civ : null) ??
     (subjectSummaryPlayer ? civFromToken(subjectSummaryPlayer.civToken) : null) ??
     match.civ
+  const opponentRow = rows.find(
+    (player) =>
+      player.profileId !== subjectProfileId &&
+      (subjectCounter?.teamId == null || player.teamId !== subjectCounter.teamId),
+  )
+  const opponentCiv = opponentRow?.civ ?? null
   const subjectName =
     subjectSummaryPlayer?.name ??
     (subjectProfileId === myProfileId ? myName : null) ??
@@ -311,17 +326,83 @@ function Detail({
           )}
           <button
             type="button"
+            disabled={downloadingParticipants}
+            onClick={async () => {
+              setDownloadingParticipants(true)
+              setParticipantsDownloadMsg(null)
+              const profileIds = new Set<number>()
+              for (const p of summary?.players ?? []) {
+                if (p.profileId != null && p.profileId > 0) profileIds.add(p.profileId)
+              }
+              for (const p of match.perPlayer ?? []) {
+                if (p.profileId != null && p.profileId > 0) profileIds.add(p.profileId)
+              }
+              if (profileIds.size === 0) {
+                setParticipantsDownloadMsg('Нет участников с открытыми профилями')
+                setDownloadingParticipants(false)
+                return
+              }
+              let totalCached = 0
+              let totalSummaries = 0
+              let totalAnalyzed = 0
+              try {
+                for (const pId of profileIds) {
+                  const res = await ipc.cachePlayerArchive(pId, { maxReplays: 25, maxSummaries: 50 })
+                  if (res.ok) {
+                    totalCached += res.data.cachedReplays
+                    totalSummaries += res.data.cachedSummaries
+                    totalAnalyzed += res.data.analyzedReplays
+                  }
+                }
+                setParticipantsDownloadMsg(
+                  `Успешно загружено для ${profileIds.size} игроков: ${totalCached} реплеев и ${totalSummaries} сводок (${totalAnalyzed} проанализировано)`,
+                )
+              } catch (e) {
+                setParticipantsDownloadMsg(e instanceof Error ? e.message : 'Ошибка загрузки')
+              } finally {
+                setDownloadingParticipants(false)
+              }
+            }}
+            title="Скачать и проанализировать все доступные демки и сводки всех участников этого матча"
+            className="ml-auto inline-flex items-center gap-1.5 rounded-sm border border-emerald-500/40 bg-emerald-500/10 px-2.5 py-1.5 text-xs font-medium text-emerald-400 transition-colors hover:bg-emerald-500/20 disabled:opacity-50"
+          >
+            {downloadingParticipants ? (
+              <>
+                <RefreshCw className="h-3.5 w-3.5 animate-spin" /> Скачивание демок участников…
+              </>
+            ) : (
+              <>
+                <Download className="h-3.5 w-3.5" /> Скачать демки участников
+              </>
+            )}
+          </button>
+          <button
+            type="button"
+            onClick={() => setShowShareModal(true)}
+            title={tt('Create and share match infographic card')}
+            className="inline-flex items-center gap-1.5 rounded-sm border border-primary/40 bg-primary/10 px-2.5 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/20"
+          >
+            <Share2 className="h-3.5 w-3.5" />
+            {tt('Share Recap')}
+          </button>
+          <button
+            type="button"
             onClick={removeGame}
             disabled={deleteMatch.isPending}
             title={tt(
               'Remove this game from your history — for desynced matches the game itself never recorded',
             )}
-            className="ml-auto inline-flex items-center gap-1.5 rounded-sm border border-border px-2.5 py-1.5 text-xs text-muted-foreground transition-colors hover:border-loss/50 hover:text-loss disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 rounded-sm border border-border px-2.5 py-1.5 text-xs text-muted-foreground transition-colors hover:border-loss/50 hover:text-loss disabled:opacity-50"
           >
             <Trash2 className="h-3.5 w-3.5" />
             {tt('Remove')}
           </button>
         </div>
+        {participantsDownloadMsg && (
+          <div className="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 text-xs text-emerald-300">
+            {participantsDownloadMsg}
+          </div>
+        )}
         <p className="text-sm text-muted-foreground">
           {match.format ? `${match.format} · ` : ''}
           {match.map} · {formatDurationShort(match.durationSec)} · {relativeTime(match.playedAt)}
@@ -434,6 +515,7 @@ function Detail({
       <TwitchVodCard match={match} profileId={myProfileId} />
       {curatedReview && <CuratedMatchReviewCard review={curatedReview} />}
       {linkedVideoAnalysis && <VideoAnalysisPanel record={linkedVideoAnalysis} />}
+      <ValdemarMatchCoachCard myCiv={subjectCiv} opponentCiv={opponentCiv} />
 
       <section className="space-y-2">
         <h2 className="text-lg font-semibold tracking-tight">{tt('What to improve')}</h2>
@@ -543,6 +625,34 @@ function Detail({
           </Card>
         )}
       </section>
+
+      <MatchShareCardModal
+        open={showShareModal}
+        onClose={() => setShowShareModal(false)}
+        input={{
+          matchId: match.id,
+          result: ownResult,
+          myCiv: subjectCiv,
+          oppCiv: match.oppCiv ?? null,
+          myPlayerName: isOwnFocus ? myName || 'You' : subjectCiv ? civDisplayName(subjectCiv) : 'Player',
+          oppPlayerName: match.oppName || (match.oppCiv ? civDisplayName(match.oppCiv) : 'Opponent'),
+          myRating: match.rating ?? null,
+          oppRating: null,
+          mapName: match.map,
+          durationSec: match.durationSec,
+          kills: subjectStats?.kills ?? null,
+          deaths: subjectStats?.deaths ?? null,
+          villagersHigh: subjectSummaryPlayer?.totals?.villagerHigh ?? null,
+          tcIdleSec: subjectSummaryPlayer ? analyzeTcIdleTime(subjectSummaryPlayer, match.durationSec ?? undefined).totalIdleSec : null,
+          tcUptimePercent: subjectSummaryPlayer ? analyzeTcIdleTime(subjectSummaryPlayer, match.durationSec ?? undefined).first15MinUptimePercent : null,
+          resourceFloatGrade: match.analysis.grade ?? null,
+          apm: subjectStats?.apm ?? null,
+          feudalTimingSec: subjectSummaryPlayer?.totals?.age2Sec ?? null,
+          castleTimingSec: subjectSummaryPlayer?.totals?.age3Sec ?? null,
+          coachVerdict: coaching[0]?.detail ?? null,
+          secondarySignal: coaching[1]?.detail ?? null,
+        }}
+      />
     </div>
   )
 }

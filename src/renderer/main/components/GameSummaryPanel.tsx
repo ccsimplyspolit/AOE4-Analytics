@@ -47,6 +47,10 @@ import {
 import { formatCount, formatDurationShort } from '@shared/format'
 import { cn } from '@shared/lib/utils'
 import { Card, CardContent } from '@shared/components/ui/card'
+import { TcIdleTimelineCard } from './TcIdleTimelineCard'
+import { ResourceLeakageCard } from './ResourceLeakageCard'
+import { RelicSacredCard } from './RelicSacredCard'
+import { BaseLayoutCoachCard } from './BaseLayoutCoachCard'
 import { finiteMetricValue } from './gameSummaryHelpers'
 import { useI18n } from '../../i18n'
 
@@ -207,6 +211,25 @@ export function GameSummaryPanel({
       )}
 
       {review && <DecisionMetricsCard review={review} />}
+
+      {me && (
+        <div className="space-y-4">
+          <div className="grid gap-4 lg:grid-cols-2">
+            <TcIdleTimelineCard player={me} matchDurationSec={summary.gameLengthSec ?? undefined} />
+            <ResourceLeakageCard player={me} matchDurationSec={summary.gameLengthSec ?? undefined} />
+          </div>
+          <RelicSacredCard
+            player={me}
+            events={me.buildOrder}
+            matchDurationSec={summary.gameLengthSec ?? undefined}
+          />
+          <BaseLayoutCoachCard
+            player={me}
+            events={me.buildOrder}
+            matchDurationSec={summary.gameLengthSec ?? undefined}
+          />
+        </div>
+      )}
 
       <div className="grid items-start gap-4 xl:grid-cols-2">
         <div id="game-summary-score" className="scroll-mt-4">

@@ -105,6 +105,8 @@ const api: RtslyticsApi = {
   cacheReplays: (gameIds) => ipcRenderer.invoke(IpcChannels.replayCacheBatch, gameIds),
   cacheSummary: (gameId) => ipcRenderer.invoke(IpcChannels.summaryCache, gameId),
   cacheSummaries: (gameIds) => ipcRenderer.invoke(IpcChannels.summaryCacheBatch, gameIds),
+  cachePlayerArchive: (profileId, options) =>
+    ipcRenderer.invoke(IpcChannels.replayCachePlayerArchive, profileId, options),
   getReplaysApiStatus: () => ipcRenderer.invoke(IpcChannels.replaysApiStatus),
   analyzeReplay: (target) => ipcRenderer.invoke(IpcChannels.replayAnalyze, target),
   getReplayActions: (target, offset, limit, playerId) =>

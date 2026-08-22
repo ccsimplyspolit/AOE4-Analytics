@@ -149,8 +149,8 @@ describe('sanitizePatch', () => {
       enabled: false,
       refreshReplayArchive: true,
       analyzeReplays: false,
-      intervalMinutes: 5,
-      maxSummariesPerRun: 50,
+      intervalMinutes: 2,
+      maxSummariesPerRun: 500,
       maxReplaysPerRun: 1,
     })
   })

@@ -2,6 +2,7 @@ import type { Leaderboard } from '../api/types'
 import type { OverlayPosition } from '../domain/overlayBounds'
 import type { BuildOrder } from '../domain/buildOrderSchema'
 import { normalizeBuildOrder } from '../domain/buildOrderSchema'
+import type { BuildPlaylist } from '../domain/buildPlaylists'
 import type { Store } from './Store'
 
 export interface OverlaySettings {
@@ -109,6 +110,20 @@ export interface OverlaySettings {
   buildOrderCycle: string[]
   /** Build-order names paused within the active pool (still selectable manually). */
   buildOrderDisabled: string[]
+  /** Show the compact Eco Target Worker Split HUD widget. */
+  showEcoSplit: boolean
+  /** Ultra-compact mini-HUD presentation for 1080p and smaller screens. */
+  miniHud: boolean
+  /** Whether synthetic Web Audio cues (chimes/pings) sound for match timing checkpoints. */
+  audioCues: boolean
+  /** Volume of audio cues [0, 1]. */
+  audioCueVolume: number
+  /** Whether macro match checkpoints (2:30 gold check, 4:15 Feudal, etc.) are active. */
+  timingCheckpoints: boolean
+  /** Per-widget custom scale multipliers. */
+  widgetScales: Partial<Record<OverlayWidgetKey, number>>
+  /** Per-widget custom opacity multipliers. */
+  widgetOpacities: Partial<Record<OverlayWidgetKey, number>>
   /** Optional user CSS for the transparent overlay (CSS only; scripts are never executed). */
   customCss: string
 }
@@ -126,7 +141,15 @@ export interface OverlayWidgets {
 }
 
 export type OverlayWidgetKey =
-  'matchup' | 'apm' | 'postGame' | 'buildOrder' | 'ageTargets' | 'session' | 'counter' | 'coach'
+  | 'matchup'
+  | 'apm'
+  | 'postGame'
+  | 'buildOrder'
+  | 'ageTargets'
+  | 'session'
+  | 'counter'
+  | 'coach'
+  | 'ecoSplit'
 
 export type OverlayWidgetAnchor =
   'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-right' | 'center'
@@ -164,6 +187,7 @@ export const DEFAULT_OVERLAY_WIDGET_POSITIONS: OverlayWidgetPositions = {
   session: { anchor: 'bottom-left', x: 12, y: 56 },
   counter: { anchor: 'top-left', x: 12, y: 360 },
   coach: { anchor: 'bottom-right', x: 12, y: 92 },
+  ecoSplit: { anchor: 'top-left', x: 12, y: 310 },
 }
 
 /** Global hotkey bindings, in Electron accelerator format (e.g. "Alt+O"). */
@@ -317,6 +341,12 @@ export interface AppSettings {
    * plain http(s) base URL and rejects query strings / userinfo.
    */
   replaysApiUrl: string | null
+  /** User-created notes attached to civilizations, matchups, or maps. */
+  matchupNotes: Record<string, string>
+  /** Curated practice playlists of build orders. */
+  buildPlaylists: BuildPlaylist[]
+  /** ID of the currently active practice playlist. */
+  activeBuildPlaylistId: string | null
   overlay: OverlaySettings
   hotkeys: HotkeySettings
   polling: PollingSettings
@@ -346,6 +376,9 @@ export const DEFAULT_SETTINGS: AppSettings = {
   openSummaryOnGameEnd: true,
   civTheme: true,
   replaysApiUrl: null,
+  matchupNotes: {},
+  buildPlaylists: [],
+  activeBuildPlaylistId: null,
   overlay: {
     opacity: 0.92,
     position: 'top-center',
@@ -376,13 +409,20 @@ export const DEFAULT_SETTINGS: AppSettings = {
     buildOrderShowResponsePlan: true,
     buildOrderPanelWidth: 340,
     buildOrderShowTitle: true,
+    showEcoSplit: true,
+    miniHud: false,
+    audioCues: true,
+    audioCueVolume: 0.3,
+    timingCheckpoints: true,
+    widgetScales: {},
+    widgetOpacities: {},
     customBuildOrders: [],
     buildOrderCycle: [],
     buildOrderDisabled: [],
     customCss: '',
   },
   hotkeys: DEFAULT_HOTKEYS,
-  polling: { idleIntervalMs: 15_000, activeIntervalMs: 8_000 },
+  polling: { idleIntervalMs: 5_000, activeIntervalMs: 3_000 },
   localData: { consentGranted: true, gameDir: null, excludeAiFromStats: false },
   automation: {
     enabled: true,
@@ -394,10 +434,10 @@ export const DEFAULT_SETTINGS: AppSettings = {
     cacheReplays: true,
     analyzeReplays: true,
     warmCatalogs: true,
-    intervalMinutes: 30,
-    maxSummariesPerRun: 50,
-    maxReplaysPerRun: 3,
-    maxGameplayPerRun: 2,
+    intervalMinutes: 5,
+    maxSummariesPerRun: 100,
+    maxReplaysPerRun: 50,
+    maxGameplayPerRun: 5,
   },
 }
 
@@ -519,6 +559,30 @@ function sanitizeWidgetPositions(v: unknown): Partial<OverlayWidgetPositions> | 
   return out
 }
 
+function sanitizeWidgetScales(v: unknown): Partial<Record<OverlayWidgetKey, number>> | undefined {
+  if (!isObject(v)) return undefined
+  const out: Partial<Record<OverlayWidgetKey, number>> = {}
+  for (const key of Object.keys(DEFAULT_OVERLAY_WIDGET_POSITIONS) as OverlayWidgetKey[]) {
+    if (key in v) {
+      const n = clamped(v[key], 0.5, 2.0)
+      if (n != null) out[key] = n
+    }
+  }
+  return out
+}
+
+function sanitizeWidgetOpacities(v: unknown): Partial<Record<OverlayWidgetKey, number>> | undefined {
+  if (!isObject(v)) return undefined
+  const out: Partial<Record<OverlayWidgetKey, number>> = {}
+  for (const key of Object.keys(DEFAULT_OVERLAY_WIDGET_POSITIONS) as OverlayWidgetKey[]) {
+    if (key in v) {
+      const n = clamped(v[key], 0.1, 1.0)
+      if (n != null) out[key] = n
+    }
+  }
+  return out
+}
+
 function sanitizeBuildOrders(v: unknown): BuildOrder[] | undefined {
   if (!Array.isArray(v)) return undefined
   const out: BuildOrder[] = []
@@ -546,6 +610,47 @@ function sanitizeBuildOrderNames(v: unknown): string[] | undefined {
     if (!name || seen.has(name)) continue
     seen.add(name)
     out.push(name)
+  }
+  return out
+}
+
+function sanitizeMatchupNotes(v: unknown): Record<string, string> | undefined {
+  if (!isObject(v)) return undefined
+  const out: Record<string, string> = {}
+  let count = 0
+  for (const [key, val] of Object.entries(v)) {
+    if (count++ > 500) break
+    if (typeof key === 'string' && typeof val === 'string') {
+      const cleanKey = key.trim().slice(0, 128)
+      const cleanVal = val.trim().slice(0, 5000)
+      if (cleanKey && cleanVal) {
+        out[cleanKey] = cleanVal
+      }
+    }
+  }
+  return out
+}
+
+function sanitizeBuildPlaylists(v: unknown): BuildPlaylist[] | undefined {
+  if (!Array.isArray(v)) return undefined
+  const out: BuildPlaylist[] = []
+  for (const item of v.slice(0, 50)) {
+    if (!isObject(item)) continue
+    if (typeof item.id !== 'string' || typeof item.name !== 'string') continue
+    const id = item.id.trim()
+    const name = item.name.trim()
+    if (!id || !name) continue
+    const description = typeof item.description === 'string' ? item.description.trim().slice(0, 500) : ''
+    const civ = typeof item.civ === 'string' ? item.civ.trim() : null
+    const buildOrderIds = Array.isArray(item.buildOrderIds)
+      ? item.buildOrderIds
+          .filter((b): b is string => typeof b === 'string')
+          .map((b) => b.trim())
+          .filter(Boolean)
+      : []
+    const createdAt = typeof item.createdAt === 'string' ? item.createdAt : new Date().toISOString()
+    const updatedAt = typeof item.updatedAt === 'string' ? item.updatedAt : new Date().toISOString()
+    out.push({ id, name, description, civ, buildOrderIds, createdAt, updatedAt })
   }
   return out
 }
@@ -639,6 +744,22 @@ function sanitizeOverlay(v: unknown): Partial<OverlaySettings> | undefined {
   if ('buildOrderDisabled' in v) {
     const names = sanitizeBuildOrderNames(v.buildOrderDisabled)
     if (names) out.buildOrderDisabled = names
+  }
+  if ('showEcoSplit' in v) out.showEcoSplit = Boolean(v.showEcoSplit)
+  if ('miniHud' in v) out.miniHud = Boolean(v.miniHud)
+  if ('audioCues' in v) out.audioCues = Boolean(v.audioCues)
+  if ('audioCueVolume' in v) {
+    const n = clamped(v.audioCueVolume, 0, 1)
+    if (n != null) out.audioCueVolume = n
+  }
+  if ('timingCheckpoints' in v) out.timingCheckpoints = Boolean(v.timingCheckpoints)
+  if ('widgetScales' in v) {
+    const ws = sanitizeWidgetScales(v.widgetScales)
+    if (ws) out.widgetScales = ws
+  }
+  if ('widgetOpacities' in v) {
+    const wo = sanitizeWidgetOpacities(v.widgetOpacities)
+    if (wo) out.widgetOpacities = wo
   }
   if ('customCss' in v && typeof v.customCss === 'string') {
     // Keep the setting bounded so a malformed renderer patch cannot turn the
@@ -765,19 +886,19 @@ function sanitizeAutomation(v: unknown): Partial<AutomationSettings> | undefined
   if ('warmCatalogs' in v) out.warmCatalogs = Boolean(v.warmCatalogs)
   if ('intervalMinutes' in v) {
     const n = finite(v.intervalMinutes)
-    if (n != null) out.intervalMinutes = Math.round(Math.min(24 * 60, Math.max(5, n)))
+    if (n != null) out.intervalMinutes = Math.round(Math.min(24 * 60, Math.max(1, n)))
   }
   if ('maxSummariesPerRun' in v) {
     const n = finite(v.maxSummariesPerRun)
-    if (n != null) out.maxSummariesPerRun = Math.round(Math.min(50, Math.max(1, n)))
+    if (n != null) out.maxSummariesPerRun = Math.round(Math.min(500, Math.max(1, n)))
   }
   if ('maxReplaysPerRun' in v) {
     const n = finite(v.maxReplaysPerRun)
-    if (n != null) out.maxReplaysPerRun = Math.round(Math.min(10, Math.max(1, n)))
+    if (n != null) out.maxReplaysPerRun = Math.round(Math.min(200, Math.max(1, n)))
   }
   if ('maxGameplayPerRun' in v) {
     const n = finite(v.maxGameplayPerRun)
-    if (n != null) out.maxGameplayPerRun = Math.round(Math.min(10, Math.max(1, n)))
+    if (n != null) out.maxGameplayPerRun = Math.round(Math.min(50, Math.max(1, n)))
   }
   return out
 }
@@ -829,6 +950,18 @@ export function sanitizePatch(patch: AppSettingsPatch): AppSettingsPatch {
     const url = replaysApiUrlOrNull(p.replaysApiUrl)
     if (url !== undefined) out.replaysApiUrl = url
   }
+  if ('matchupNotes' in p) {
+    const n = sanitizeMatchupNotes(p.matchupNotes)
+    if (n) out.matchupNotes = n
+  }
+  if ('buildPlaylists' in p) {
+    const pl = sanitizeBuildPlaylists(p.buildPlaylists)
+    if (pl) out.buildPlaylists = pl
+  }
+  if ('activeBuildPlaylistId' in p) {
+    const s = stringOrNull(p.activeBuildPlaylistId)
+    if (s !== undefined) out.activeBuildPlaylistId = s
+  }
   if ('overlay' in p) {
     const o = sanitizeOverlay(p.overlay)
     if (o) out.overlay = o
@@ -861,6 +994,9 @@ export class SettingsService {
     const merged: AppSettings = {
       ...DEFAULT_SETTINGS,
       ...stored,
+      matchupNotes: stored.matchupNotes ?? {},
+      buildPlaylists: stored.buildPlaylists ?? [],
+      activeBuildPlaylistId: stored.activeBuildPlaylistId ?? null,
       overlay: {
         ...DEFAULT_SETTINGS.overlay,
         ...(stored.overlay ?? {}),
@@ -898,6 +1034,14 @@ export class SettingsService {
     const next: AppSettings = {
       ...current,
       ...patch,
+      matchupNotes: patch.matchupNotes
+        ? { ...current.matchupNotes, ...patch.matchupNotes }
+        : current.matchupNotes,
+      buildPlaylists: patch.buildPlaylists !== undefined ? patch.buildPlaylists : current.buildPlaylists,
+      activeBuildPlaylistId:
+        patch.activeBuildPlaylistId !== undefined
+          ? patch.activeBuildPlaylistId
+          : current.activeBuildPlaylistId,
       overlay: patch.overlay
         ? {
             ...current.overlay,

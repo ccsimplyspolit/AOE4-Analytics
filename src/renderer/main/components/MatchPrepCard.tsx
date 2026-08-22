@@ -12,6 +12,7 @@ import { computePlayerStats, type StatGame } from '@domain/playerStats'
 import { cn } from '@shared/lib/utils'
 import { useLiveMatch } from '../queries/useLiveMatch'
 import { useSettings } from '../queries/useProfile'
+import { MatchupNotesEditor } from './MatchupNotesEditor'
 import { useI18n } from '../../i18n'
 
 const UNIT_CDN = 'https://data.aoe4world.com/images/units'
@@ -19,10 +20,7 @@ const AGE_NAME: Record<2 | 3 | 4, string> = { 2: 'Feudal', 3: 'Castle', 4: 'Impe
 
 /**
  * The pre-queue "match prep" surface (op.gg-style): your civ's key build
- * timings, landmark picks, matchup counters, and last-game goals in one card.
- * Idle mode preps vs your most-faced opponent civ; when a live ranked match is
- * detected it flips to the real opponent. Hidden until history exists — the
- * beginner on-ramp is RecommendedCivs.
+ * timings, landmark picks, matchup counters, notes, and last-game goals in one card.
  */
 export function MatchPrepCard({ matches }: { matches: StoredMatch[] }) {
   const { tt, gameName } = useI18n()
@@ -151,6 +149,18 @@ export function MatchPrepCard({ matches }: { matches: StoredMatch[] }) {
           </PrepCell>
         )}
       </div>
+
+      {(oppCiv != null || live?.map != null) && (
+        <div className="mt-3">
+          <MatchupNotesEditor
+            context={{
+              myCiv,
+              oppCiv,
+              map: live?.map ?? null,
+            }}
+          />
+        </div>
+      )}
     </section>
   )
 }

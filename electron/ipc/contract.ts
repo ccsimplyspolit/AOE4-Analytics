@@ -254,6 +254,7 @@ export const IpcChannels = {
   replayAccountAll: 'replay:accountAll',
   replayCache: 'replay:cache',
   replayCacheBatch: 'replay:cacheBatch',
+  replayCachePlayerArchive: 'replay:cachePlayerArchive',
   summaryCache: 'summary:cache',
   summaryCacheBatch: 'summary:cacheBatch',
   /** Readiness and provenance of the optional aoe4world/replays-api decoder. */
@@ -401,6 +402,14 @@ export interface SummaryCacheBatchResult {
   alreadyCached: number
   unavailable: number
   results: SummaryCacheResult[]
+}
+
+export interface PlayerArchiveCacheResult {
+  profileId: number
+  totalGames: number
+  cachedReplays: number
+  cachedSummaries: number
+  analyzedReplays: number
 }
 
 export type ReplayAnalysisTarget = { localId: string } | { gameId: number }
@@ -947,6 +956,11 @@ export interface RtslyticsApi {
   /** Download and persist datatype-1 summaries for the supplied game ids. */
   cacheSummary(gameId: number): Promise<IpcResult<SummaryCacheResult>>
   cacheSummaries(gameIds: number[]): Promise<IpcResult<SummaryCacheBatchResult>>
+  /** Download and parse all available replays and summaries for ANY player (scouted opponent or match participant). */
+  cachePlayerArchive(
+    profileId: number,
+    options?: { maxReplays?: number; maxSummaries?: number },
+  ): Promise<IpcResult<PlayerArchiveCacheResult>>
   /** Verifies the configured or bundled upstream-compatible replay parser. */
   getReplaysApiStatus(): Promise<ReplaysApiStatus>
   /** Decode the recorded command stream from a local replay or cached Relic replay. */

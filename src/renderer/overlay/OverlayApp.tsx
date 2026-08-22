@@ -41,6 +41,8 @@ import { AgeTargetsWidget } from './AgeTargetsWidget'
 import { SessionWidget } from './SessionWidget'
 import { CounterWidget } from './CounterWidget'
 import { CoachWidget } from './CoachWidget'
+import { EcoSplitWidget } from './EcoSplitWidget'
+import { playAudioCue } from '@domain/overlayAudio'
 import { panelBg } from './panelBg'
 import { useI18n } from '../i18n'
 
@@ -125,6 +127,7 @@ const WIDGET_LABELS: Record<OverlayWidgetKey, string> = {
   session: 'Session record',
   counter: 'Counter plan',
   coach: 'Live coach',
+  ecoSplit: 'Eco Target Split',
 }
 
 /**
@@ -179,6 +182,13 @@ export function OverlayApp() {
   const [buildOrderViewMode, setBuildOrderViewMode] = useState<'illustrated' | 'text'>('illustrated')
   const [customCss, setCustomCss] = useState('')
   const [ageTargetsShown, setAgeTargetsShown] = useState(true)
+  const [showEcoSplit, setShowEcoSplit] = useState(true)
+  const [miniHud, setMiniHud] = useState(false)
+  const [audioCues, setAudioCues] = useState(true)
+  const [audioCueVolume, setAudioCueVolume] = useState(0.3)
+  const [timingCheckpoints, setTimingCheckpoints] = useState(true)
+  const [widgetScales, setWidgetScales] = useState<Partial<Record<OverlayWidgetKey, number>>>({})
+  const [widgetOpacities, setWidgetOpacities] = useState<Partial<Record<OverlayWidgetKey, number>>>({})
   const [customBuildOrders, setCustomBuildOrders] = useState<BuildOrder[]>([])
   const [buildOrderCycle, setBuildOrderCycle] = useState<string[]>([])
   const [buildOrderDisabled, setBuildOrderDisabled] = useState<string[]>([])
@@ -239,6 +249,13 @@ export function OverlayApp() {
         setBuildOrderShowTitle(s.overlay.buildOrderShowTitle !== false)
         setCustomCss(s.overlay.customCss ?? '')
         setAgeTargetsShown(s.overlay.showAgeTargets !== false)
+        setShowEcoSplit(s.overlay.showEcoSplit !== false)
+        setMiniHud(s.overlay.miniHud === true)
+        setAudioCues(s.overlay.audioCues !== false)
+        setAudioCueVolume(s.overlay.audioCueVolume ?? 0.3)
+        setTimingCheckpoints(s.overlay.timingCheckpoints !== false)
+        setWidgetScales(s.overlay.widgetScales ?? {})
+        setWidgetOpacities(s.overlay.widgetOpacities ?? {})
         setSessionShown(s.overlay.showSession !== false)
         setCounterShown(s.overlay.showCounter !== false)
         setCoachShown(s.overlay.showCoach !== false)
@@ -289,6 +306,13 @@ export function OverlayApp() {
       setBuildOrderShowTitle(o.buildOrderShowTitle !== false)
       setCustomCss(o.customCss ?? '')
       setAgeTargetsShown(o.showAgeTargets !== false)
+      setShowEcoSplit(o.showEcoSplit !== false)
+      setMiniHud(o.miniHud === true)
+      setAudioCues(o.audioCues !== false)
+      setAudioCueVolume(o.audioCueVolume ?? 0.3)
+      setTimingCheckpoints(o.timingCheckpoints !== false)
+      setWidgetScales(o.widgetScales ?? {})
+      setWidgetOpacities(o.widgetOpacities ?? {})
       setSessionShown(o.showSession !== false)
       setCounterShown(o.showCounter !== false)
       setCoachShown(o.showCoach !== false)
@@ -542,6 +566,9 @@ export function OverlayApp() {
         return
       }
       if (action !== 'next-step' && action !== 'prev-step') return
+      if (audioCues) {
+        playAudioCue(audioCueVolume, 'step_change')
+      }
       setManualBuildStep((current) => {
         const base = current ?? automaticIndex
         const delta = action === 'next-step' ? 1 : -1
@@ -549,7 +576,7 @@ export function OverlayApp() {
       })
     })
     return offControl
-  }, [counterCivOverride, cycleBuilds, elapsedSec, oppCiv, selectedBuild])
+  }, [audioCues, audioCueVolume, counterCivOverride, cycleBuilds, elapsedSec, oppCiv, selectedBuild])
 
   const buildStepIndex =
     manualBuildStep ??
@@ -626,7 +653,8 @@ export function OverlayApp() {
           position={widgetPositions.matchup}
           placementMode={placementMode}
           zIndex={50}
-          scale={scale}
+          scale={widgetScales.matchup ?? scale}
+          opacity={widgetOpacities.matchup ?? 1}
           onPositionChange={saveWidgetPosition}
         >
           <MatchupBar
@@ -644,7 +672,8 @@ export function OverlayApp() {
           position={widgetPositions.postGame}
           placementMode={placementMode}
           zIndex={60}
-          scale={scale}
+          scale={widgetScales.postGame ?? scale}
+          opacity={widgetOpacities.postGame ?? 1}
           onPositionChange={saveWidgetPosition}
         >
           {/* No ✕ in placement mode: the card is a drag handle there (and may be a placeholder). */}
@@ -661,7 +690,8 @@ export function OverlayApp() {
           position={widgetPositions.apm}
           placementMode={placementMode}
           zIndex={55}
-          scale={scale}
+          scale={widgetScales.apm ?? scale}
+          opacity={widgetOpacities.apm ?? 1}
           onPositionChange={saveWidgetPosition}
         >
           <ApmWidget apm={apm ?? 72} />
@@ -674,7 +704,8 @@ export function OverlayApp() {
           position={widgetPositions.session}
           placementMode={placementMode}
           zIndex={55}
-          scale={scale}
+          scale={widgetScales.session ?? scale}
+          opacity={widgetOpacities.session ?? 1}
           onPositionChange={saveWidgetPosition}
         >
           <SessionWidget session={session ?? PLACEHOLDER_SESSION} />
@@ -687,7 +718,8 @@ export function OverlayApp() {
           position={widgetPositions.buildOrder}
           placementMode={placementMode}
           zIndex={40}
-          scale={scale}
+          scale={widgetScales.buildOrder ?? scale}
+          opacity={widgetOpacities.buildOrder ?? 1}
           onPositionChange={saveWidgetPosition}
         >
           <div
@@ -699,7 +731,7 @@ export function OverlayApp() {
               fontSize: buildOrderFontSize,
             }}
           >
-        <BuildOrderWidget
+            <BuildOrderWidget
               bo={selectedBuild}
               stepIndex={buildStepIndex}
               elapsedSec={renderElapsed}
@@ -710,11 +742,39 @@ export function OverlayApp() {
               showNext={buildOrderShowNext}
               showResources={buildOrderShowResources}
               showNotes={buildOrderShowNotes}
-          showResponsePlan={buildOrderShowResponsePlan}
-          showTitle={buildOrderShowTitle}
+              showResponsePlan={buildOrderShowResponsePlan}
+              showTitle={buildOrderShowTitle}
               opponentCivs={enemyCivs}
+              availableBuilds={cycleBuilds}
+              onSelectBuild={(name) => {
+                setBuildOrderId(name)
+                setBuildOrderMode('manual')
+                setManualBuildStep(null)
+                void ipc.updateSettings({ overlay: { buildOrderId: name, buildOrderMode: 'manual' } })
+              }}
+              miniHud={miniHud}
             />
           </div>
+        </PlacedWidget>
+      )}
+
+      {showEcoSplit && (selectedBuild || placementMode) && (inGame || placementMode) && (
+        <PlacedWidget
+          widgetKey="ecoSplit"
+          position={widgetPositions.ecoSplit ?? DEFAULT_OVERLAY_WIDGET_POSITIONS.ecoSplit}
+          placementMode={placementMode}
+          zIndex={42}
+          scale={widgetScales.ecoSplit ?? scale}
+          opacity={widgetOpacities.ecoSplit ?? 1}
+          onPositionChange={saveWidgetPosition}
+        >
+          <EcoSplitWidget
+            step={selectedBuild?.build_order[buildStepIndex] ?? null}
+            stepIndex={buildStepIndex}
+            totalSteps={selectedBuild?.build_order.length ?? 0}
+            placement={placementMode && !inGame}
+            miniHud={miniHud}
+          />
         </PlacedWidget>
       )}
 
@@ -724,7 +784,8 @@ export function OverlayApp() {
           position={widgetPositions.ageTargets}
           placementMode={placementMode}
           zIndex={45}
-          scale={scale}
+          scale={widgetScales.ageTargets ?? scale}
+          opacity={widgetOpacities.ageTargets ?? 1}
           onPositionChange={saveWidgetPosition}
         >
           <div
@@ -749,7 +810,8 @@ export function OverlayApp() {
           position={widgetPositions.counter}
           placementMode={placementMode}
           zIndex={44}
-          scale={scale}
+          scale={widgetScales.counter ?? scale}
+          opacity={widgetOpacities.counter ?? 1}
           onPositionChange={saveWidgetPosition}
         >
           <div
@@ -774,12 +836,18 @@ export function OverlayApp() {
           position={widgetPositions.coach}
           placementMode={placementMode}
           zIndex={43}
-          scale={scale}
+          scale={widgetScales.coach ?? scale}
+          opacity={widgetOpacities.coach ?? 1}
           onPositionChange={saveWidgetPosition}
         >
           <CoachWidget
             elapsedSec={renderElapsed}
             civ={troopMyCiv}
+            activeBuild={selectedBuild}
+            timingCheckpoints={timingCheckpoints}
+            audioCues={audioCues}
+            audioCueVolume={audioCueVolume}
+            miniHud={miniHud}
             placement={placementMode && !inGame}
           />
         </PlacedWidget>
@@ -830,6 +898,7 @@ function PlacedWidget({
   placementMode,
   zIndex,
   scale = 1,
+  opacity,
   children,
   onPositionChange,
 }: {
@@ -839,6 +908,8 @@ function PlacedWidget({
   zIndex: number
   /** Widget scale, applied around the anchor corner so positions stay put. */
   scale?: number
+  /** Optional per-widget opacity [0.1, 1]. */
+  opacity?: number
   children: ReactNode
   onPositionChange: (key: OverlayWidgetKey, position: OverlayWidgetPosition) => void
 }) {
@@ -886,7 +957,11 @@ function PlacedWidget({
     <div
       className={`overlay-widget overlay-widget-${widgetKey} ${placementMode ? 'pointer-events-auto cursor-move' : 'pointer-events-none'}`}
       data-widget-key={widgetKey}
-      style={{ ...positionStyle(active, scale), zIndex }}
+      style={{
+        ...positionStyle(active, scale),
+        opacity: opacity != null ? opacity : undefined,
+        zIndex,
+      }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
@@ -1009,5 +1084,6 @@ function clampPositions(p: OverlayWidgetPositions): OverlayWidgetPositions {
     session: clampPosition(p.session),
     counter: clampPosition(p.counter),
     coach: clampPosition(p.coach),
+    ecoSplit: clampPosition(p.ecoSplit ?? DEFAULT_OVERLAY_WIDGET_POSITIONS.ecoSplit),
   }
 }

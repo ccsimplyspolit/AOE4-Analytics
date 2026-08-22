@@ -20,6 +20,7 @@ import { useHistory } from '../queries/useHistory'
 import { LiveMatchCard } from '../components/LiveMatchCard'
 import { LiveTelemetryCard } from '../components/LiveTelemetryCard'
 import { MatchPrepCard } from '../components/MatchPrepCard'
+import { MapPoolAdvisorCard } from '../components/MapPoolAdvisorCard'
 import { RecommendedCivs } from '../components/RecommendedCivs'
 import { RankBadge } from '../components/RankBadge'
 import { FormPips } from '../components/FormPips'
@@ -80,6 +81,7 @@ export function Dashboard() {
       <RecurringLeakCard leak={biggestLeak(matches.map((match) => match.analysis.signals))} />
 
       <MatchPrepCard matches={matches} />
+      <MapPoolAdvisorCard />
 
       {/* Beginner on-ramp — only while the player is still light on synced games. */}
       {matches.length < 15 && <RecommendedCivs />}

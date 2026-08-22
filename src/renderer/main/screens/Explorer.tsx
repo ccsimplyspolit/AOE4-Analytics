@@ -7,6 +7,7 @@ import {
   Download,
   ExternalLink,
   FlaskConical,
+  Globe,
   History,
   RefreshCw,
   Search,
@@ -40,14 +41,16 @@ import { useI18n } from '../../i18n'
 import { ExplorerQuiz } from '../components/tools/ExplorerQuiz'
 import { VideoPlayer } from '../components/VideoPlayer'
 import { CuratedMatchPack } from '../components/CuratedMatchReviewCard'
+import { MapPoolAdvisorCard } from '../components/MapPoolAdvisorCard'
 import { ipc } from '@shared/ipc'
 import type { OnlineSearchData, OnlineSearchResult, PublicDumpCategory } from '@ipc/contract'
 import { usePublicDumpCatalog } from '../queries/usePublicDumpCatalog'
 
-type Tab = 'units' | ExplorerRecordKind | 'patches' | 'dumps' | 'videos' | 'quiz'
+type Tab = 'units' | ExplorerRecordKind | 'patches' | 'dumps' | 'videos' | 'quiz' | 'mappool'
 
 const TABS: { id: Tab; label: string; icon: typeof Search }[] = [
   { id: 'units', label: 'Unit Explorer', icon: Search },
+  { id: 'mappool', label: 'Map Pool Strategy', icon: Globe },
   { id: 'building', label: 'Buildings', icon: Building2 },
   { id: 'technology', label: 'Technologies', icon: FlaskConical },
   { id: 'upgrade', label: 'Upgrades', icon: Shield },
@@ -117,6 +120,8 @@ export function Explorer() {
 
       {tab === 'units' ? (
         <UnitExplorer />
+      ) : tab === 'mappool' ? (
+        <MapPoolAdvisorCard />
       ) : tab === 'videos' ? (
         <VideoExplorer />
       ) : tab === 'quiz' ? (

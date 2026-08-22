@@ -9,6 +9,7 @@ import type {
   SummaryCacheBatchResult,
   SummaryCacheResult,
   FullReplayAnalysis,
+  PlayerArchiveCacheResult,
 } from '@ipc/contract'
 import { analyzeCachedReplay, getCachedReplayInfo } from './replayCacheService'
 import { getCachedSummaryInfo } from './summaryCache'
@@ -292,8 +293,8 @@ export async function cacheAccountSummaries(
   const uniqueIds = [...new Set(gameIds)].filter(
     (id) => Number.isSafeInteger(id) && id > 0,
   )
-  if (uniqueIds.length > MAX_PAGE_SIZE) {
-    return err('validation', `A maximum of ${MAX_PAGE_SIZE} summaries can be cached at once.`)
+  if (uniqueIds.length > 500) {
+    return err('validation', 'A maximum of 500 summaries can be cached at once.')
   }
 
   let recent: RelicRecentMatchHistoryResponse | null = null
@@ -388,12 +389,20 @@ export async function cacheAccountReplays(gameIds: number[]): Promise<IpcResult<
   const uniqueIds = [...new Set(gameIds)].filter(
     (id) => Number.isSafeInteger(id) && id > 0,
   )
-  if (uniqueIds.length > MAX_PAGE_SIZE) return err('validation', `A maximum of ${MAX_PAGE_SIZE} replays can be cached at once.`)
+  if (uniqueIds.length > 500) return err('validation', `A maximum of 500 replays can be cached at once.`)
 
   const results: ReplayCacheResult[] = []
   for (const gameId of uniqueIds) {
     try {
-      results.push(await cacheRemoteReplay(gameId, getSettings().getAll().profileId!))
+      const cached = await cacheRemoteReplay(gameId, getSettings().getAll().profileId!)
+      results.push(cached)
+      if (cached.status === 'cached' || cached.status === 'already_cached') {
+        try {
+          analyzeCachedReplay(gameId)
+        } catch {
+          /* non-fatal */
+        }
+      }
     } catch {
       results.push({ gameId, status: 'unavailable', sizeBytes: null, path: null })
     }
@@ -406,3 +415,92 @@ export async function cacheAccountReplays(gameIds: number[]): Promise<IpcResult<
     results,
   })
 }
+
+/**
+ * Downloads and parses all available replays and summaries for ANY given player profile ID.
+ * Works for scouted opponents, match participants, or arbitrary players.
+ */
+export async function cachePlayerArchive(
+  profileId: number,
+  options?: { maxReplays?: number; maxSummaries?: number },
+): Promise<IpcResult<PlayerArchiveCacheResult>> {
+  if (!Number.isSafeInteger(profileId) || profileId <= 0) {
+    return err('validation', 'Invalid player profile ID.')
+  }
+  const maxReplays = options?.maxReplays ?? 50
+  const maxSummaries = options?.maxSummaries ?? 100
+
+  let recent: RelicRecentMatchHistoryResponse | null = null
+  try {
+    recent = await getRelicClient().getRecentMatchHistory(profileId)
+  } catch {
+    // Relic history unavailable
+  }
+
+  let aoe4Games: Game[] = []
+  try {
+    const page = await getClient().getPlayerGames(profileId, {
+      page: 1,
+      limit: Math.min(50, maxSummaries),
+    })
+    aoe4Games = page.games ?? []
+  } catch {
+    // AoE4World games unavailable
+  }
+
+  const allGameIds = new Set<number>()
+  for (const g of aoe4Games) {
+    if (g.game_id) allGameIds.add(g.game_id)
+  }
+  for (const m of recent?.matchHistoryStats ?? []) {
+    if (m.id) allGameIds.add(m.id)
+  }
+
+  let cachedSummariesCount = 0
+  let cachedReplaysCount = 0
+  let analyzedReplaysCount = 0
+
+  const gameIds = [...allGameIds]
+
+  // 1. Download and persist summaries
+  const summaryIds = gameIds.slice(0, maxSummaries)
+  for (const id of summaryIds) {
+    try {
+      const s = await cacheOneSummary(id, profileId, recent)
+      if (s.status === 'cached' || s.status === 'already_cached') {
+        cachedSummariesCount++
+      }
+    } catch {
+      // non-fatal
+    }
+  }
+
+  // 2. Download and persist replays, then analyze
+  const replayIds = gameIds.slice(0, maxReplays)
+  for (const id of replayIds) {
+    try {
+      const r = await cacheRemoteReplay(id, profileId)
+      if (r.status === 'cached' || r.status === 'already_cached') {
+        cachedReplaysCount++
+        try {
+          if (analyzeCachedReplay(id) != null) {
+            analyzedReplaysCount++
+          }
+        } catch {
+          // non-fatal
+        }
+      }
+    } catch {
+      // non-fatal
+    }
+  }
+
+  return ok({
+    profileId,
+    totalGames: gameIds.length,
+    cachedReplays: cachedReplaysCount,
+    cachedSummaries: cachedSummariesCount,
+    analyzedReplays: analyzedReplaysCount,
+  })
+}
+

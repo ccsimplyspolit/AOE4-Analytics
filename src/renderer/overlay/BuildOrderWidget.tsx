@@ -1,6 +1,7 @@
 // Re-activated (2026-07-07): mounted by OverlayApp as a placeable widget, driven
 // by the live game clock + the build order pinned from Guides ("Show in overlay").
-import { useState } from 'react'
+import { useState, useRef, useEffect, type WheelEvent } from 'react'
+import { ChevronDown, Check } from 'lucide-react'
 import { decodeHtmlEntities, type BuildOrder } from '@domain/buildOrderSchema'
 import { parseBuildOrderDisplayNote } from '@domain/buildOrderNotes'
 import { liveBuildForkPlan } from '@domain/adaptiveBuild'
@@ -16,6 +17,7 @@ import {
 } from './resourceGlyphs'
 import { extractBuildTargets, type BuildTarget } from './buildIcons'
 import { useI18n } from '../i18n'
+import { cn } from '@shared/lib/utils'
 
 /** A resource entry on the villager-split line: glyph + value, hidden when negative. */
 function Res({
@@ -98,34 +100,18 @@ function renderNote(note: string) {
 function firstClause(s: string | undefined): string {
   if (!s) return ''
   const t = decodeHtmlEntities(s).split(/[.!]/)[0] ?? s
-  return t.length > 44 ? `${t.slice(0, 42).trimEnd()}…` : t
+  return t.replace(/@[^@]+@/g, '').trim()
 }
 
-/** Plain-text counterpart of the icon-token note renderer used by the legacy TXT view. */
-function plainNote(s: string | undefined): string {
-  if (!s) return ''
-  return parseBuildOrderDisplayNote(s)
-    .map((part) =>
-      part.type === 'text'
-        ? part.text
-        : part.type === 'icon'
-          ? part.label
-          : part.path
-              .split('/')
-              .pop()
-              ?.replace(/\.[^.]+$/, '')
-              .replace(/[-_]/g, ' ') ?? '',
-    )
-    .join('')
-    .replace(/\s+/g, ' ')
-    .trim()
+function plainNote(note: string | undefined): string {
+  if (!note) return ''
+  return decodeHtmlEntities(note).replace(/@[^@]+@/g, '').trim()
 }
 
 /**
- * The build-order centerpiece of the overlay. Shows the build ONE STEP AT A TIME
- * (current + a dim "next" preview) image-first — the buildings/units to make as
- * thumbnails with a single key instruction — instead of dumping the whole list
- * as prose. The build clock auto-advances the step (works in custom games too).
+ * Compact in-game build-order HUD. Driven either by the live match clock (log
+ * sim start) or manual step hotkeys. Shows current targets, villager split,
+ * instructions, and next-step preview.
  */
 export function BuildOrderWidget({
   bo,
@@ -142,33 +128,32 @@ export function BuildOrderWidget({
   showTitle = true,
   noBuildCiv,
   opponentCivs = [],
+  availableBuilds = [],
+  onSelectBuild,
+  miniHud = false,
 }: {
   bo: BuildOrder
   stepIndex: number
   elapsedSec: number | null
   auto: boolean
-  /** Base text size for the widget, controlled from overlay settings. */
   fontSize?: number
-  /** Main unit/building thumbnail size, controlled from overlay settings. */
   iconSize?: number
-  /** Rich icon view or compact plain-text view compatible with classic RTS overlays. */
   viewMode?: 'illustrated' | 'text'
-  /** Keep the dim next-step preview below the active step. */
   showNext?: boolean
-  /** Show resource/villager requirements in the active step. */
   showResources?: boolean
-  /** Show the active step's instruction text. */
   showNotes?: boolean
-  /** Show the contextual counter/scouting response plan. */
   showResponsePlan?: boolean
-  /** Keep the build name/header line visible. */
   showTitle?: boolean
-  /** Player's civ name when no bundled build matches it — the shown build is a reference. */
   noBuildCiv?: string | null
-  /** Known lobby civilizations only; null entries preserve honest team coverage. */
   opponentCivs?: (string | null | undefined)[]
+  availableBuilds?: BuildOrder[]
+  onSelectBuild?: (name: string) => void
+  miniHud?: boolean
 }) {
   const { tt, gameName } = useI18n()
+  const [showPicker, setShowPicker] = useState(false)
+  const pickerRef = useRef<HTMLDivElement>(null)
+
   const step = bo.build_order[stepIndex]
   const next = bo.build_order[stepIndex + 1]
   const r = step?.resources
@@ -176,15 +161,87 @@ export function BuildOrderWidget({
   const nextTargets = extractBuildTargets(next?.notes, 3)
   const responsePlan = liveBuildForkPlan({ reference: bo, opponentCivs })
 
+  // Close picker on outside click
+  useEffect(() => {
+    if (!showPicker) return
+    const handleClickOutside = (e: MouseEvent) => {
+      if (pickerRef.current && !pickerRef.current.contains(e.target as Node)) {
+        setShowPicker(false)
+      }
+    }
+    window.addEventListener('pointerdown', handleClickOutside)
+    return () => window.removeEventListener('pointerdown', handleClickOutside)
+  }, [showPicker])
+
+  // Wheel scroll to cycle builds
+  const handleWheel = (e: WheelEvent) => {
+    if (!onSelectBuild || availableBuilds.length <= 1) return
+    e.stopPropagation()
+    const currentIndex = availableBuilds.findIndex((b) => b.name === bo.name)
+    if (currentIndex === -1) return
+    if (e.deltaY > 0) {
+      const nextIdx = (currentIndex + 1) % availableBuilds.length
+      onSelectBuild(availableBuilds[nextIdx]!.name)
+    } else if (e.deltaY < 0) {
+      const prevIdx = (currentIndex - 1 + availableBuilds.length) % availableBuilds.length
+      onSelectBuild(availableBuilds[prevIdx]!.name)
+    }
+  }
+
   return (
     <div
-      className="flex h-full flex-col justify-center px-2.5 py-1 text-white"
+      className={cn('flex h-full flex-col justify-center text-white', miniHud ? 'px-2 py-0.5' : 'px-2.5 py-1')}
       style={{ fontSize }}
     >
       {/* header */}
       {showTitle && (
-        <div className="flex items-center gap-2 text-[11px] text-white/55">
-          <span className="max-w-[180px] truncate font-medium text-white/80">{bo.name}</span>
+        <div
+          onWheel={handleWheel}
+          className="relative flex items-center gap-2 text-[11px] text-white/55"
+        >
+          <div
+            onClick={() => onSelectBuild && availableBuilds.length > 0 && setShowPicker((v) => !v)}
+            title={tt('Click or scroll wheel to switch build order')}
+            className={cn(
+              'flex items-center gap-1 max-w-[200px] truncate font-medium text-white/80 transition-colors',
+              availableBuilds.length > 1 ? 'cursor-pointer hover:text-cyan-300' : '',
+            )}
+          >
+            <span className="truncate">{bo.name}</span>
+            {availableBuilds.length > 1 && <ChevronDown className="h-3 w-3 shrink-0 opacity-70" />}
+          </div>
+
+          {/* Hot-swap Dropdown */}
+          {showPicker && availableBuilds.length > 0 && (
+            <div
+              ref={pickerRef}
+              className="absolute left-0 top-full mt-1 z-50 max-h-56 w-64 overflow-y-auto rounded-lg border border-cyan-500/40 bg-[#070e1c] p-1 shadow-2xl animate-fade-in text-xs space-y-0.5"
+            >
+              <div className="px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-400">
+                {tt('Hot-swap Build Order')} ({availableBuilds.length})
+              </div>
+              {availableBuilds.map((b) => (
+                <button
+                  key={b.name}
+                  type="button"
+                  onClick={() => {
+                    onSelectBuild?.(b.name)
+                    setShowPicker(false)
+                  }}
+                  className={cn(
+                    'flex w-full items-center justify-between rounded px-2 py-1.5 text-left transition-colors',
+                    b.name === bo.name
+                      ? 'bg-cyan-500/20 text-cyan-200 font-semibold'
+                      : 'text-white/80 hover:bg-white/10',
+                  )}
+                >
+                  <span className="truncate">{b.name}</span>
+                  {b.name === bo.name && <Check className="h-3.5 w-3.5 text-cyan-300 shrink-0" />}
+                </button>
+              ))}
+            </div>
+          )}
+
           {elapsedSec != null && (
             <span className="rounded bg-cyan-500/20 px-1.5 py-0.5 font-mono text-cyan-300">
               {formatDuration(elapsedSec)}

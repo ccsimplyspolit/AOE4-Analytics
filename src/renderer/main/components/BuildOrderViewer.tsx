@@ -1,6 +1,8 @@
-import { Download, ExternalLink, Monitor, MonitorX } from 'lucide-react'
+import { useState } from 'react'
+import { Download, ExternalLink, Monitor, MonitorX, Layers, Plus, Check } from 'lucide-react'
 import type { BuildOrder, BuildStep } from '@domain/buildOrderSchema'
 import { buildOrderCivLabel } from '@domain/buildOrderSchema'
+import { addBuildToPlaylist } from '@domain/buildPlaylists'
 import {
   parseBuildOrderDisplayNote,
   type BuildOrderDisplayNotePart,
@@ -16,6 +18,7 @@ import { useSettings, useUpdateSettings } from '../queries/useProfile'
 import { useI18n } from '../../i18n'
 import { VideoPlayer } from './VideoPlayer'
 import { BuildOrderInsights } from './BuildOrderInsights'
+import { VisualMilestoneCoachCard } from './VisualMilestoneCoachCard'
 
 const AGE_NAMES: Record<number, string> = { 1: 'Dark', 2: 'Feudal', 3: 'Castle', 4: 'Imperial' }
 
@@ -176,6 +179,23 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
   const update = useUpdateSettings()
   // Bundled builds are keyed by their unique name (validated by the test suite).
   const inOverlay = settings?.overlay.buildOrderId === bo.name
+  const playlists = settings?.buildPlaylists || []
+  const [showPlaylistPicker, setShowPlaylistPicker] = useState(false)
+  const [addedPlaylistName, setAddedPlaylistName] = useState<string | null>(null)
+
+  const handleAddToPlaylist = async (playlistId: string, plName: string) => {
+    const target = playlists.find((p) => p.id === playlistId)
+    if (!target) return
+    const updated = addBuildToPlaylist(target, bo.name)
+    const next = playlists.map((p) => (p.id === playlistId ? updated : p))
+    await update.mutateAsync({
+      buildPlaylists: next,
+    })
+    setAddedPlaylistName(plName)
+    setShowPlaylistPicker(false)
+    setTimeout(() => setAddedPlaylistName(null), 2500)
+  }
+
   const toggleOverlayPin = () => {
     update.mutate(
       {
@@ -207,7 +227,51 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
             )}
           </div>
         </div>
-        <div className="flex shrink-0 items-center gap-3">
+        <div className="flex shrink-0 items-center gap-2">
+          {/* Playlist Dropdown */}
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setShowPlaylistPicker((v) => !v)}
+              className="flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+            >
+              {addedPlaylistName ? <Check className="h-4 w-4 text-emerald-400" /> : <Layers className="h-4 w-4 text-primary" />}
+              {addedPlaylistName ? `${tt('Added to')} ${addedPlaylistName}` : tt('Add to Playlist')}
+            </button>
+
+            {showPlaylistPicker && (
+              <div className="absolute right-0 top-full mt-1.5 z-30 w-56 rounded-lg border border-border bg-popover p-1.5 shadow-xl animate-fade-in text-xs space-y-1">
+                <div className="px-2 py-1 font-semibold text-muted-foreground text-[10px] uppercase">
+                  {tt('Select Playlist')}
+                </div>
+                {playlists.length === 0 ? (
+                  <div className="p-2 text-center text-muted-foreground text-[11px]">
+                    {tt('No playlists created yet. Create one in the Practice Playlists tab.')}
+                  </div>
+                ) : (
+                  playlists.map((pl) => {
+                    const alreadyIn = pl.buildOrderIds.includes(bo.name)
+                    return (
+                      <button
+                        key={pl.id}
+                        type="button"
+                        onClick={() => handleAddToPlaylist(pl.id, pl.name)}
+                        className="flex w-full items-center justify-between rounded px-2 py-1.5 text-left text-foreground hover:bg-secondary transition-colors"
+                      >
+                        <span className="truncate">{pl.name}</span>
+                        {alreadyIn ? (
+                          <span className="text-[10px] text-muted-foreground">{tt('In list')}</span>
+                        ) : (
+                          <Plus className="h-3 w-3 text-primary shrink-0" />
+                        )}
+                      </button>
+                    )
+                  })
+                )}
+              </div>
+            )}
+          </div>
+
           <button
             type="button"
             onClick={() => exportOverlayBuild(bo)}
@@ -434,6 +498,11 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
           </p>
         </details>
       )}
+      <div className="p-4 pb-0">
+        <VisualMilestoneCoachCard
+          civ={buildOrderCivLabel(bo).toLowerCase().replace(/[\s-]/g, '_')}
+        />
+      </div>
       <ol className="divide-y divide-border">
         {bo.build_order.map((step, i) => (
           <li key={i} className="flex gap-3 px-4 py-2.5 text-sm">
