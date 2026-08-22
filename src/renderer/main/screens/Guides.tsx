@@ -14,6 +14,7 @@ import {
   Loader2,
   PlayCircle,
   Layers,
+  Timer,
 } from 'lucide-react'
 import { GUIDE_RESOURCES, GUIDES, type Guide } from '@data/guides'
 import {
@@ -61,11 +62,13 @@ import { useI18n } from '../../i18n'
 import { useRankedMapPool } from '../queries/useCivMeta'
 
 import { ValdemarMasterclassHub } from '../components/ValdemarMasterclassHub'
+import { TimingMatrixExplorer } from '../components/tools/TimingMatrixExplorer'
 
 type Tab =
   | 'guides'
   | 'builds'
   | 'valdemar'
+  | 'timings'
   | 'playlists'
   | 'counters'
   | 'quiz'
@@ -103,6 +106,7 @@ const TABS = [
   { id: 'guides', label: 'Guides', icon: BookOpen },
   { id: 'builds', label: 'Build Orders', icon: ListOrdered },
   { id: 'valdemar', label: 'Valdemar Hub', icon: PlayCircle },
+  { id: 'timings', label: 'Timing Matrix', icon: Timer },
   { id: 'playlists', label: 'Practice Playlists', icon: Layers },
   { id: 'counters', label: 'Counter Helper', icon: Shield },
   { id: 'quiz', label: 'Civ Quiz', icon: Sparkles },
@@ -122,6 +126,12 @@ const GUIDE_VIDEO_IDS: Readonly<Record<string, readonly string[]>> = {
   'valdemar-replay-analysis': ['valdemar-fix-mistakes', 'valdemar-win-no-micro'],
   'valdemar-countering-turtles': ['valdemar-counter-turtles', 'valdemar-defense-tips'],
   'valdemar-mistakes-hardstuck': ['valdemar-fix-mistakes', 'valdemar-win-no-micro', 'valdemar-conqueror-byz'],
+  'valdemar-frame-timings-complete': [
+    'valdemar-fix-mistakes',
+    'valdemar-conqueror-byz',
+    'valdemar-counter-turtles',
+    'valdemar-defense-tips',
+  ],
   'mechanics-placement-and-micro': [
     'spirit-farm-mechanics',
     'farmman-push-deer',
@@ -186,6 +196,7 @@ export function Guides() {
         {tab === 'guides' && <GuideLibrary />}
         {tab === 'builds' && <BuildLibrary />}
         {tab === 'valdemar' && <ValdemarMasterclassHub />}
+        {tab === 'timings' && <TimingMatrixExplorer />}
         {tab === 'playlists' && (
           <BuildPlaylistManager allBuilds={BUILD_CATALOG.map((e) => e.build)} />
         )}

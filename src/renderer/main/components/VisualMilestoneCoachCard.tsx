@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react'
 import {
-  AlertTriangle,
   Clock,
   Compass,
   ExternalLink,
@@ -14,7 +13,6 @@ import {
 } from 'lucide-react'
 import {
   VALDEMAR_MILESTONES_BY_CIV,
-  type VisualMilestoneEntry,
 } from '@data/valdemarVisualMilestones.generated'
 import { civDisplayName } from '@domain/civ'
 import { Badge } from '@shared/components/ui/badge'
@@ -61,7 +59,7 @@ export function VisualMilestoneCoachCard({
     return null
   }
 
-  const { workers, layout, landmark } = activeMilestone
+  const { workers, layout } = activeMilestone
   const totalWorkers = workers.food + workers.wood + workers.gold + workers.stone
   const foodPct = totalWorkers > 0 ? (workers.food / totalWorkers) * 100 : 0
   const woodPct = totalWorkers > 0 ? (workers.wood / totalWorkers) * 100 : 0

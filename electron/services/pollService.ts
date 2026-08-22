@@ -337,10 +337,20 @@ export class PollManager {
         const myCivStr = ctx.myCiv ? ctx.myCiv.toUpperCase() : 'Вы'
         const oppCivStr = ctx.oppCiv ? ctx.oppCiv.toUpperCase() : (ctx.custom ? 'AI / Соперник' : 'Соперник')
         const mapStr = ctx.map ? ` (${ctx.map})` : ''
-        new Notification({
+        const notif = new Notification({
           title: '⚔️ RTSLytics: Новый матч начался!',
-          body: `${myCivStr} vs ${oppCivStr}${mapStr}`,
-        }).show()
+          body: `${myCivStr} vs ${oppCivStr}${mapStr}\nНажмите для открытия полной разведки противника!`,
+        })
+        notif.on('click', () => {
+          const win = getMainWindow()
+          if (win) {
+            if (win.isMinimized()) win.restore()
+            win.show()
+            win.focus()
+            win.webContents.send(IpcChannels.appOpenGame, ctx.matchId)
+          }
+        })
+        notif.show()
       }
     } catch {
       /* notification non-fatal */

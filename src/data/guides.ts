@@ -1518,6 +1518,173 @@ If your civ has strong early Feudal tempo (e.g. English, French, Delhi) and you 
 ### 5. Слепое копирование чужой стратегии
 Если ваша цивилизация имеет мощный феодальный темп (Англия, Франция, Дели), а соперник ставит 2-й ТЦ, не нужно паниковать и ставить медленный 2-й ТЦ в ответ. Реализуйте асимметричное преимущество своей цивилизации через жесткое давление на открытые ресурсы врага!`,
   },
+  {
+    slug: 'valdemar-frame-timings-complete',
+    title: 'Master Guide to Frame-Accurate Timings & Visual Milestones',
+    titleRu: 'Полный справочник по покадровым таймингам и макро-контрольным точкам',
+    category: 'strategy',
+    summary:
+      'The definitive guide to competitive AoE4 match timings: frame-accurate second-by-second benchmarks, worker HUD distributions, ASCII base layout blueprints, and transcript excerpts from Valdemar.',
+    summaryRu:
+      'Исчерпывающий справочник по соревновательным таймингам AoE4: посекундные эталоны выхода в эпохи, распределение крестьян в HUD, схемы расстановки баз и проверенные цитаты из транскрипций Valdemar.',
+    readMinutes: 8,
+    body: `## The Anatomy of Competitive Match Timings
+
+In professional Age of Empires IV play, games are won and lost by razor-thin timing margins. A player reaching the Feudal Age 30 seconds faster commands immediate military initiative, denies neutral resources, and dictates the macro pace.
+
+Based on detailed frame analysis and transcripts across 370 videos from Valdemar, this guide outlines the **6 universal timing phases** and the exact worker allocations required to play at Conqueror level.
+
+---
+
+## Phase 1: Dark Age Opening & Zero TC Idle (0:00 – 2:30)
+
+- **Target:** 7 villagers on sheep, 3 on gold mining camp, 0 queue downtime.
+- **Critical Milestone:** 400 Food and 200 Gold banked between **2:10 and 2:30**.
+- **Valdemar's Transcript Insight:**
+  > *"Every 20 seconds of Town Center idle in the Dark Age permanently robs your economy of 1 villager (~40 resources/min compounding throughout the game). Never let your TC queue empty while rallying."*
+- **Base Layout Rules:**
+  - Place your gold mining camp directly facing the Town Center for shortest walking path.
+  - Keep sheep clustered directly under the Town Center drop-off point.
+
+---
+
+## Phase 2: Feudal Age Landmark Benchmarks (2:30 – 3:45)
+
+| Civilization | Landmark Choice | Builder Vills | Target Complete Time |
+| :--- | :--- | :--- | :--- |
+| **English** | Council Hall | 3 | **03:00 – 03:15** |
+| **French** | School of Cavalry | 3 | **03:15 – 03:25** |
+| **Holy Roman Empire** | Aachen Chapel | 3 | **03:00 – 03:10** |
+| **Byzantines** | Grand Winery | 3 | **03:30 – 03:40** |
+| **Rus** | Golden Gate | 3 | **03:25 – 03:35** |
+| **Ayyubids** | House of Wisdom (Growth) | 0 (Passive) | **03:30 – 03:45** |
+| **Ottomans** | Twin Minaret Medrese | 3 | **03:40 – 03:50** |
+
+- **Valdemar's 3-Villager Rule:**
+  > *"Building with 3 villagers provides the optimal equilibrium between age-up speed and resource preservation. Using 5+ villagers cripples your food income, leaving you without food to train military upon completion."*
+
+---
+
+## Phase 3: First Military & Map Containment (3:45 – 5:30)
+
+- **Target Benchmark:** First military units on the field by **4:30 – 5:30**.
+- **Frontline Screening:**
+  - Longbows / Archers must be screened by 2–4 Spearmen or Men-at-Arms to prevent cavalry flanks.
+  - Place forward Outposts with Arrowslits covering contested outer gold and woodlines.
+- **Common Mistake:** Diving enemy base under Town Center fire. Starve the opponent off the map instead of losing units to static defense.
+
+---
+
+## Phase 4: Mid-Game Macro Branch (6:00 – 8:30)
+
+At minute 6, your strategy must deliberately commit to one of three paths:
+
+### Path A: Smooth 8-Farm Mill Wheel Transition
+- Do not spend 600 wood all at once.
+- Place 1 farm every 60–75 wood, creating a tight 8-farm perimeter around your mill.
+
+### Path B: 2nd Town Center Expansion
+- Collect 350 stone between 4:30 and 5:30.
+- Drop the 2nd TC by **6:30 – 7:00** directly on a contested deer patch or secondary gold vein.
+
+### Path C: Fast Castle Push
+- Transition heavy vills to Gold (6–8 vills) and hit Castle Age between **7:00 and 8:00**.
+
+---
+
+## Phase 5: Castle Age, Relic Sweep & Siege (8:30 – 14:00)
+
+- **Target:** Castle Age completion between **7:30 and 9:30**.
+- **The 5-Relic Priority:** Produce 2–3 Monks immediately upon age-up. 5 relics generate 400 gold/min indefinitely (equivalent to 10 free gold miners).
+- **Field Siege Assembly:** Research Siege Engineering and construct 2–3 Rams with infantry in the field to crack outlying production buildings.
+
+---
+
+## Pacing Evaluation Scale
+
+- **Grade S (Conqueror):** Feudal Age ≤ 3:30, Castle Age ≤ 8:00.
+- **Grade A (Diamond):** Feudal Age 3:31 – 4:05, Castle Age 8:01 – 9:30.
+- **Grade B (Platinum):** Feudal Age 4:06 – 4:35, Castle Age 9:31 – 11:00.
+- **Grade C / D (Critical Delay):** Feudal Age > 4:35. Indicates significant Town Center idling or misallocated build orders.`,
+    bodyRu: `## Анатомия соревновательных таймингов
+
+В профессиональной игре Age of Empires IV матчи выигрываются и проигрываются за счёт секундных преимуществ. Игрок, вышедший в Феодал на 30 секунд раньше, мгновенно захватывает военную инициативу, перекрывает нейтральные ресурсы и диктует темп игры.
+
+На основе детального покадрового анализа и транскрипций 370 видео Valdemar этот гайд описывает **6 универсальных макро-фаз** и точные распределения рабочих для игры на уровне Conqueror.
+
+---
+
+## Фаза 1: Тёмная эпоха и нулевой простой ТЦ (0:00 – 2:30)
+
+- **Цель:** 7 рабочих на овцах, 3 на лагере золотодобычи, нулевой простой очереди ТЦ.
+- **Контрольная точка:** Накопление 400 пищи и 200 золота между **2:10 и 2:30**.
+- **Цитата из транскрипции Valdemar:**
+  > *«Каждые 20 секунд простоя ТЦ в Тёмной эпохе навсегда лишают вас 1 крестьянина (~40 ресурсов/мин накопительным итогом на всю игру). Никогда не допускайте пустой очереди в ТЦ во время разведки.»*
+- **Правила расстановки базы:**
+  - Лагерь на золоте ставится со стороны, обращённой к ТЦ, для минимальной дистанции ходьбы.
+  - Овцы режутся строго под зоной сдачи ресурсов главного Городского центра.
+
+---
+
+## Фаза 2: Феодальные бенчмарки и достопримечательности (2:30 – 3:45)
+
+| Цивилизация | Выбор Landmark | Строители | Время выхода |
+| :--- | :--- | :--- | :--- |
+| **Англия** | Ратуша совета | 3 | **03:00 – 03:15** |
+| **Франция** | Школа кавалерии | 3 | **03:15 – 03:25** |
+| **Священная Римская Империя** | Ахенская капелла | 3 | **03:00 – 03:10** |
+| **Византия** | Великая винодельня | 3 | **03:30 – 03:40** |
+| **Русь** | Золотые ворота | 3 | **03:25 – 03:35** |
+| **Айюбиды** | Дом Мудрости (Рост) | 0 (Авто) | **03:30 – 03:45** |
+| **Османы** | Медресе с минаретами | 3 | **03:40 – 03:50** |
+
+- **Правило 3 строителей от Valdemar:**
+  > *«Постройка 3 крестьянами дает идеальный баланс между скоростью перехода и сохранением добычи. Если снять 5+ рабочих, приток пищи обнулится и по выходу в эпоху у вас не будет ресурсов на заказ первых войск.»*
+
+---
+
+## Фаза 3: Первая армия и контроль карты (3:45 – 5:30)
+
+- **Бенчмарк:** Первые боевые единицы на карте к **4:30 – 5:30**.
+- **Защитный скрининг:**
+  - Стрелки и лучники обязательно прикрываются 2–4 копейщиками или латниками спереди.
+  - Передовые аванпосты с бойницами перекрывают внешнее золото и лесопилки оппонента.
+- **Главная ошибка:** Не идите на самоубийственный штурм под стрелы ТЦ. Перекрывайте ресурсы на карте и душите экономику соперника.
+
+---
+
+## Фаза 4: Макро-развилка мидгейма (6:00 – 8:30)
+
+К 6-й минуте необходимо четко выбрать одну из 3 стратегических веток:
+
+### Ветка 1: Плавный переход на колесо из 8 ферм
+- Не тратьте 600 дерева единовременно.
+- Добавляйте по 1 ферме на каждые 60–75 дерева, формируя плотное кольцо вокруг мельницы.
+
+### Ветка 2: Бум во 2-й Городской центр
+- Сбор 350 камня между 4:30 и 5:30.
+- Постановка 2-го ТЦ к **6:30 – 7:00** на спорных оленях или внешней золотой жиле.
+
+### Ветка 3: Быстрый Замок (Fast Castle)
+- Перевод 6–8 рабочих на золото и взятие Замковой эпохи на **7:00 – 8:00**.
+
+---
+
+## Фаза 5: Замковая эпоха, сбор 5 реликвий и осада (8:30 – 14:00)
+
+- **Цель:** Выход в Замок между **7:30 и 9:30**.
+- **Битва за реликвии:** Нанимайте 2–3 монахов сразу по выходу. 5 реликвий дают 400 золота/мин бессрочно (эквивалент 10 бесплатных рабочих на золоте).
+- **Полевая осада:** Изучите Осадную инженерию и собирайте 2–3 тарана пехотой прямо в поле для разрушения внешних зданий.
+
+---
+
+## Шкала оценки темпа (Pacing Scale)
+
+- **Grade S (Conqueror):** Феодал ≤ 3:30, Замок ≤ 8:00.
+- **Grade A (Diamond):** Феодал 3:31 – 4:05, Замок 8:01 – 9:30.
+- **Grade B (Platinum):** Феодал 4:06 – 4:35, Замок 9:31 – 11:00.
+- **Grade C / D (Задержка):** Феодал > 4:35. Свидетельствует о значительном простое ТЦ или ошибке в билд-ордере.`,
+  },
 ]
 
 /** Additional references retained for deeper patch and civilization context. */

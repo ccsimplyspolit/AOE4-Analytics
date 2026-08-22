@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 /**
  * Auto-generated visual milestones and frame-by-frame analysis from Valdemar1902 masterclasses.
  * Generated on: 2026-08-22T17:25:00Z
