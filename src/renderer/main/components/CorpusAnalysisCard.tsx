@@ -13,11 +13,13 @@ export function CorpusAnalysisCard({
   isPending,
   error,
   onRun,
+  auto = false,
 }: {
   report: MatchCorpusReport | null
   isPending: boolean
   error: string | null
   onRun: () => void
+  auto?: boolean
 }) {
   const { tt, gameName } = useI18n()
   return (
@@ -27,15 +29,26 @@ export function CorpusAnalysisCard({
           <Microscope className="h-4 w-4 text-primary" />
           {tt('Detailed match corpus analysis')}
         </h2>
-        <button
-          type="button"
-          onClick={onRun}
-          disabled={isPending}
-          className="inline-flex items-center gap-1.5 rounded-sm border border-primary/40 px-3 py-1.5 text-xs text-primary transition-colors hover:bg-primary/10 disabled:opacity-50"
-        >
-          <RefreshCw className={cn('h-3.5 w-3.5', isPending && 'animate-spin')} />
-          {isPending ? tt('Decoding all matches…') : tt('Analyze all found matches')}
-        </button>
+        {auto ? (
+          isPending ? (
+            <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+              <RefreshCw className="h-3.5 w-3.5 animate-spin text-primary" />
+              {tt('Decoding all matches…')}
+            </span>
+          ) : report ? (
+            <span className="text-xs text-muted-foreground">{tt('Updated automatically')}</span>
+          ) : null
+        ) : (
+          <button
+            type="button"
+            onClick={onRun}
+            disabled={isPending}
+            className="inline-flex items-center gap-1.5 rounded-sm border border-primary/40 px-3 py-1.5 text-xs text-primary transition-colors hover:bg-primary/10 disabled:opacity-50"
+          >
+            <RefreshCw className={cn('h-3.5 w-3.5', isPending && 'animate-spin')} />
+            {isPending ? tt('Decoding all matches…') : tt('Analyze all found matches')}
+          </button>
+        )}
       </div>
       <p className="text-xs text-muted-foreground">
         {tt(
@@ -199,7 +212,7 @@ function ReportBody({
                     {row.result === 'win' ? tt('W') : row.result === 'loss' ? tt('L') : '—'}
                   </td>
                   <td className="px-2 py-2">{gameName(row.civ)}</td>
-                  <td className="px-2 py-2 text-muted-foreground">{row.map}</td>
+                  <td className="px-2 py-2 text-muted-foreground">{row.map ? gameName(row.map) : '—'}</td>
                   <td className="px-2 py-2 text-right tabular-nums">{row.summaryStatus === 'available' ? tt('Available') : tt('Unavailable')}</td>
                   <td className="px-2 py-2 text-right tabular-nums">{display(row.metrics.apm)}</td>
                   <td className="px-2 py-2 text-right tabular-nums">{row.buildScore == null ? '—' : `${row.buildScore}%`}</td>

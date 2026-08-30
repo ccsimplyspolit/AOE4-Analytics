@@ -1,0 +1,305 @@
+{
+  "name": "[1x1][SAFE][KTE][2TC] VortiX Serjeant Genitour pilgrim",
+  "civilization": "Knights Templar",
+  "author": "VortiX / murtuk (AoE4Guides)",
+  "source": "https://aoe4guides.com/builds/41yOCHHtg3snki8AopmV",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 to @resource/resource_food.webp@, @resource/rally.webp@@resource/resource_gold.webp@until 2 with @abilities/repair.webp@@building_economy/house.webp@+@building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now @resource/rally.webp@@resource/resource_wood.webp@ until 7"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:23",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 0,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "2 @resource/resource_gold.webp@ to @resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:48",
+      "villager_count": 14,
+      "resources": {
+        "food": 1,
+        "wood": 8,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @age/age_2.webp@@civilization_flag/ant.webp@ (15 vil-age up)",
+        "5@resource/resource_food.webp@goes to 3@resource/resource_stone.webp@+2@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 1,
+        "wood": 9,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "@civilization_flag/ant.webp@finishes at 4:00, Research @technology_templar/safepassage.webp@ immediately"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 15,
+      "resources": {
+        "food": 1,
+        "wood": 6,
+        "gold": 0,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "3 @resource/resource_wood.webp@to@resource/resource_stone.webp@, @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 15,
+      "resources": {
+        "food": 1,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "@abilities/repair.webp@2nd@building_economy/town-center.webp@ with 8 @resource/resource_stone.webp@ on @resource/deer.webp@",
+        "1@resource/resource_food.webp@go @abilities/repair.webp@@building_economy/mill.webp@ then get @technology_economy/survival-techniques.webp@ immediately"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:25",
+      "villager_count": 18,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@ finishes, those go to @resource/deer.webp@  near"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 21,
+      "resources": {
+        "food": 15,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@2x @building_military/barracks.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:20",
+      "villager_count": 22,
+      "resources": {
+        "food": 14,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@resource/resource_food.webp@ to @resource/resource_gold.webp@, set 1 @resource/rally.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:40",
+      "villager_count": 25,
+      "resources": {
+        "food": 16,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/barracks.webp@ go make @unit_templar/serjeant_age_2.webp@(later @unit_infantry/spearman-1.webp@too with upgrade)",
+        "@abilities/repair.webp@@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 31,
+      "resources": {
+        "food": 19,
+        "wood": 6,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_technology/blacksmith.webp@ and get @technology_military/bloomery.webp@ (both unit types utilize this)",
+        "Stop making units and rush castle if enemy gets archers"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:15",
+      "villager_count": 41,
+      "resources": {
+        "food": 24,
+        "wood": 6,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @age/age_3.webp@@civilization_flag/koc.webp@",
+        "@abilities/repair.webp@2x@building_military/archery-range.webp@+@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 43,
+      "resources": {
+        "food": 18,
+        "wood": 13,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Set 2nd @resource/rally.webp@ from @resource/resource_food.webp@ to @resource/resource_wood.webp@",
+        "4@resource/resource_food.webp@to@resource/resource_wood.webp@",
+        "@abilities/repair.webp@@building_religious/monastery.webp@to get"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:05",
+      "villager_count": 43,
+      "resources": {
+        "food": 18,
+        "wood": 13,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_3.webp@finishes at 10:05",
+        "Get VETERAN upgrades for @unit_templar/serjeant_age_2.webp@+@unit_infantry/spearman-1.webp@",
+        "Make @unit_templar/genitour_age_3.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": 49,
+      "resources": {
+        "food": 18,
+        "wood": 19,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/deer.webp@finished, go to @resource/berrybush.webp@",
+        "Research @technology_military/decarbonization.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:30",
+      "villager_count": 50,
+      "resources": {
+        "food": 18,
+        "wood": 12,
+        "gold": 12,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "(for reference, 8@unit_templar/serjeant_age_2.webp@+5@unit_infantry/spearman-1.webp@+3@unit_templar/genitour_age_3.webp@ present)",
+        "8@resource/resource_wood.webp@to@resource/resource_stone.webp@ to start making"
+      ]
+    }
+  ],
+  "description": "Vortix's Principality of Antioch (Serjeants) and the Kingdom of Castile (Genitour) build. This strategy focuses on a potent mid-game composition of Serjeant+Spearmen+Genitour to counter diverse enemy unit types. Goes Pilgrim then 2nd TC into Castle Age. Uses healing and damage bonuses of Castilian influence near holy sites.",
+  "video": "https://www.youtube.com/embed/_l1eR5f9gW4",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "curated",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-22T21:13:45Z",
+  "updatedAt": "2026-08-22T21:13:45Z",
+  "patch": "16.3.11308",
+  "archetype": "Economy boom",
+  "difficulty": "hard",
+  "reasoning": "Live Templar 2TC: Antioch serjeants + Castile genitours, pilgrim then second TC into Castle. Matches August sacred-site maps (Relic River / Hidden Valley) better than a dock opening."
+}

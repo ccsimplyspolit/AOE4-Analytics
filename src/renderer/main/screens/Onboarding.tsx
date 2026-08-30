@@ -17,12 +17,12 @@ export function Onboarding() {
 
   return (
     <div className="relative flex h-full w-full items-center justify-center overflow-hidden p-8">
-      <div className="rts-menu-card w-full max-w-md space-y-6 rounded-lg border border-primary/25 p-6">
+      <div className="rts-menu-card w-full max-w-md space-y-6 rounded-sm border border-border p-6">
         <div className="space-y-2 text-center">
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-md border border-primary/45 bg-gradient-to-br from-primary to-primary/50 text-xl font-black text-primary-foreground">
             R
           </div>
-          <h1 className="text-2xl font-black tracking-[0.08em] text-primary">RTSLytics</h1>
+          <h1 className="text-2xl font-bold tracking-[0.12em] text-foreground">RTSLytics</h1>
           <p className="text-sm text-muted-foreground">
             {tt('Enter your in-game Age of Empires IV name. We’ll pull your ranks and recent games from AoE4World; no account needed.')}
           </p>

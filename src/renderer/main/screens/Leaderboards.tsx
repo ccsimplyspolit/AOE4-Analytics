@@ -19,37 +19,44 @@ import { useSettings } from '../queries/useProfile'
 import { EmptyBox, ErrorBox } from '../components/feedback'
 import { useI18n } from '../../i18n'
 import { PageHead } from '../components/PageHead'
+import { ScreenTabs } from '../components/ScreenTabs'
+import { useDebounce } from '@shared/hooks/useDebounce'
 
-const LADDERS: { label: string; value: Leaderboard }[] = [
-  { label: 'Ranked 1v1', value: 'rm_solo' },
-  { label: 'Ranked 2v2', value: 'rm_2v2' },
-  { label: 'Ranked 3v3', value: 'rm_3v3' },
-  { label: 'Ranked 4v4', value: 'rm_4v4' },
-  { label: 'Ranked Team (legacy)', value: 'rm_team' },
-  { label: 'Quick Match 1v1', value: 'qm_1v1' },
-  { label: 'Quick Match 2v2', value: 'qm_2v2' },
-  { label: 'Quick Match 3v3', value: 'qm_3v3' },
-  { label: 'Quick Match 4v4', value: 'qm_4v4' },
+const LADDERS: { label: string; value: Leaderboard; family: 'pc' | 'console' }[] = [
+  { label: 'Ranked 1v1', value: 'rm_solo', family: 'pc' },
+  { label: 'Ranked 2v2', value: 'rm_2v2', family: 'pc' },
+  { label: 'Ranked 3v3', value: 'rm_3v3', family: 'pc' },
+  { label: 'Ranked 4v4', value: 'rm_4v4', family: 'pc' },
+  { label: 'Ranked Team (legacy)', value: 'rm_team', family: 'pc' },
+  { label: 'Quick Match 1v1', value: 'qm_1v1', family: 'pc' },
+  { label: 'Quick Match 2v2', value: 'qm_2v2', family: 'pc' },
+  { label: 'Quick Match 3v3', value: 'qm_3v3', family: 'pc' },
+  { label: 'Quick Match 4v4', value: 'qm_4v4', family: 'pc' },
+  { label: 'Quick Match FFA', value: 'qm_ffa', family: 'pc' },
+  { label: 'Console Solo Ranked', value: 'rm_solo_console', family: 'console' },
+  { label: 'Console Team Ranked', value: 'rm_team_console', family: 'console' },
+  { label: 'Console QM 1v1', value: 'qm_1v1_console', family: 'console' },
+  { label: 'Console QM 2v2', value: 'qm_2v2_console', family: 'console' },
+  { label: 'Console QM 3v3', value: 'qm_3v3_console', family: 'console' },
+  { label: 'Console QM 4v4', value: 'qm_4v4_console', family: 'console' },
+  { label: 'Console QM FFA', value: 'qm_ffa_console', family: 'console' },
 ]
 
-/** Standalone ladder page; Scout keeps the same panel embedded for quick recon. */
+/** Standalone ladder page. */
 export function LeaderboardsScreen() {
-  const { tt } = useI18n()
   return (
-    <div className="animate-fade-in space-y-5">
+    <div className="animate-fade-in space-y-6">
       <PageHead
-        kicker={tt('AoE4World ladder')}
-        title={tt('Leaderboards')}
-        sub={tt(
-          'Browse ranked and Quick Match ladders by queue and country, then open any player profile for the full scout report.',
-        )}
+        kicker="AoE4World ladder"
+        title="Leaderboards"
+        sub="Browse ranked and Quick Match ladders by queue and country, then open any player profile for the full scout report."
       />
-      <LeaderboardPanel />
+      <LeaderboardPanel hideHeading />
     </div>
   )
 }
 
-const COUNTRIES: { code: string | undefined; label: string }[] = [
+export const LEADERBOARD_COUNTRIES: { code: string | undefined; label: string }[] = [
   { code: undefined, label: 'All countries' },
   { code: 'ar', label: 'Argentina' },
   { code: 'au', label: 'Australia' },
@@ -110,12 +117,17 @@ const COUNTRIES: { code: string | undefined; label: string }[] = [
   { code: 'vn', label: 'Vietnam' },
 ]
 
-export function LeaderboardPanel({ embedded = false }: { embedded?: boolean } = {}) {
+export function LeaderboardPanel({
+  embedded = false,
+  hideHeading = false,
+}: { embedded?: boolean; hideHeading?: boolean } = {}) {
   const { tt } = useI18n()
   const { data: settings } = useSettings()
   const [leaderboard, setLeaderboard] = useState<Leaderboard>('rm_solo')
   const [country, setCountry] = useState<string | undefined>(undefined)
   const [page, setPage] = useState(1)
+  const [searchInput, setSearchInput] = useState('')
+  const search = useDebounce(searchInput.trim(), 400)
 
   useEffect(() => {
     if (!settings?.leaderboard || !LADDERS.some((entry) => entry.value === settings.leaderboard)) {
@@ -125,15 +137,29 @@ export function LeaderboardPanel({ embedded = false }: { embedded?: boolean } = 
     setPage(1)
   }, [settings?.leaderboard])
 
+  useEffect(() => {
+    setPage(1)
+  }, [search])
+
   const { data, dataUpdatedAt, isLoading, isFetching, refetch } = useLeaderboard({
     leaderboard,
     page,
     country,
+    search: search || undefined,
   })
 
   const result = data?.ok ? data.data : null
   const totalPages =
     result && result.perPage > 0 ? Math.max(1, Math.ceil(result.totalCount / result.perPage)) : 1
+  const family: 'pc' | 'console' =
+    LADDERS.find((entry) => entry.value === leaderboard)?.family ?? 'pc'
+  const familyLadders = LADDERS.filter((entry) => entry.family === family)
+
+  const changeFamily = (next: 'pc' | 'console') => {
+    if (next === family) return
+    const first = LADDERS.find((entry) => entry.family === next)
+    if (first) changeLadder(first.value)
+  }
 
   const changeLadder = (lb: Leaderboard) => {
     setLeaderboard(lb)
@@ -148,15 +174,18 @@ export function LeaderboardPanel({ embedded = false }: { embedded?: boolean } = 
     <div className={cn(embedded ? 'space-y-4' : 'animate-fade-in space-y-6')}>
       <header className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          {embedded ? (
-            <h2 className="text-lg font-semibold tracking-tight">{tt('Leaderboards')}</h2>
-          ) : (
-            <h1 className="text-2xl font-semibold tracking-tight">{tt('Leaderboards')}</h1>
+          {!hideHeading &&
+            (embedded ? (
+              <h2 className="text-lg font-semibold tracking-tight">{tt('Leaderboards')}</h2>
+            ) : (
+              <h1 className="text-2xl font-semibold tracking-tight">{tt('Leaderboards')}</h1>
+            ))}
+          {!hideHeading && (
+            <p className="text-sm text-muted-foreground">
+              {tt('Top players on the AoE4World ladder.')} {result ? formatCount(result.totalCount) : '—'}{' '}
+              {tt('players')}.
+            </p>
           )}
-          <p className="text-sm text-muted-foreground">
-            {tt('Top players on the AoE4World ladder.')} {result ? formatCount(result.totalCount) : '—'}{' '}
-            {tt('players')}.
-          </p>
           {result && (
             <p className="mt-1 text-xs text-muted-foreground">
               {tt('Showing')} {formatCount((result.page - 1) * result.perPage + 1)}–
@@ -165,24 +194,42 @@ export function LeaderboardPanel({ embedded = false }: { embedded?: boolean } = 
             </p>
           )}
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-col items-end gap-2">
+          <ScreenTabs
+            items={[
+              { id: 'pc', label: 'PC' },
+              { id: 'console', label: 'Console' },
+            ]}
+            value={family}
+            onChange={changeFamily}
+            ariaLabel={tt('Leaderboard platform')}
+            size="sm"
+          />
+          <div className="flex flex-wrap justify-end gap-2">
           <select
             value={leaderboard}
             onChange={(e) => changeLadder(e.target.value as Leaderboard)}
             className="h-9 rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            {LADDERS.map((l) => (
+            {familyLadders.map((l) => (
               <option key={l.value} value={l.value}>
                 {tt(l.label)}
               </option>
             ))}
           </select>
+          <input
+            type="search"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            placeholder={tt('Search player on this ladder')}
+            className="h-9 w-48 rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          />
           <select
             value={country ?? ''}
             onChange={(e) => changeCountry(e.target.value || undefined)}
             className="h-9 rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            {COUNTRIES.map((c) => (
+            {LEADERBOARD_COUNTRIES.map((c) => (
               <option key={c.label} value={c.code ?? ''}>
                 {tt(c.label)}
               </option>
@@ -198,6 +245,7 @@ export function LeaderboardPanel({ embedded = false }: { embedded?: boolean } = 
             <RefreshCw className={cn('h-3.5 w-3.5', isFetching && 'animate-spin')} />
             {tt('Refresh')}
           </button>
+          </div>
         </div>
       </header>
 

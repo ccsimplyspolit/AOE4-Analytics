@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { buildLeaderboardRows } from '../leaderboard'
+import { buildEsportsLeaderboardRows, buildLeaderboardRows } from '../leaderboard'
 import type { LeaderboardResponse } from '../../api/types'
 
 const resp: LeaderboardResponse = {
@@ -61,6 +61,35 @@ describe('buildLeaderboardRows', () => {
       streak: 0,
       rankLevel: null,
       live: false,
+    })
+  })
+})
+
+describe('buildEsportsLeaderboardRows', () => {
+  it('keeps tournament Elo fields', () => {
+    const rows = buildEsportsLeaderboardRows(
+      [
+        {
+          rank: 1,
+          profile_id: 8,
+          name: 'MarineLorD',
+          country: 'fr',
+          rating: 2292.5,
+          win_rate: 76,
+          games_count: 1301,
+          wins_count: 989,
+          losses_count: 312,
+          is_active: true,
+          liquipedia_name: 'MarineLorD',
+        },
+      ],
+      8,
+    )
+    expect(rows[0]).toMatchObject({
+      name: 'MarineLorD',
+      active: true,
+      isYou: true,
+      liquipediaName: 'MarineLorD',
     })
   })
 })

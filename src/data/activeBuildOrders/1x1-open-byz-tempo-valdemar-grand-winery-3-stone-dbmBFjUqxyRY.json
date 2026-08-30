@@ -1,0 +1,351 @@
+{
+  "description": "Стандартный 3-stone Grand Winery (Valdemar). Ставить vs French, Jeanne (JD), Malians — и vs Golden Horde, Rus, Sengoku, Delhi (mill туда не открывать). Жадный: трое на камне, умирает от spear rush — тогда mill Hippodrome D7Jsk12Fl2FCyiJf7q9L. Feudal 4:38. VOD 0pkvLN16f4o, катка 1 vs China (копья у China слабые).",
+  "civilization": "Byzantines",
+  "opponentCivilization": [
+    "French",
+    "Jeanne d'Arc",
+    "Malians",
+    "Golden Horde",
+    "Rus",
+    "Sengoku Daimyo",
+    "Delhi Sultanate",
+    "Chinese"
+  ],
+  "name": "[1x1][OPEN][BYZ][TEMPO] Valdemar: Grand Winery 3 Stone",
+  "author": "Valdemar1902 / Valdy",
+  "source": "https://aoe4guides.com/builds/dbmBFjUqxyRYFSWCVHXH, https://www.youtube.com/watch?v=0pkvLN16f4o",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "timeProvenance": "stated",
+      "villager_count": 6,
+      "resources": { "food": 1, "wood": 0, "gold": 1, "stone": 3, "builder": 1 },
+      "notes": [
+        "3 на @resource/resource_stone.webp@, 1 на @resource/resource_gold.webp@, 1 ставит @building_economy/house.webp@ + @building_byzantines/cistern-1.webp@ в зоне ТЦ, затем на @resource/sheep.webp@.",
+        "@unit_cavalry/scout.webp@: ягоды по бокам и олени. На Flankwoods камень/золото сзади. 3-stone vs French / Jeanne / Malians / China — у них нет сильного spear opener.",
+        "Винодельню позже на свои ягоды. Копья на камне = сразу mill BO, не этот."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "timeProvenance": "stated",
+      "villager_count": 7,
+      "resources": { "food": 3, "wood": 0, "gold": 1, "stone": 3, "builder": -1 },
+      "notes": ["@resource/rally.webp@ на @resource/sheep.webp@ до феодала."]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:20",
+      "timeProvenance": "stated",
+      "villager_count": 10,
+      "resources": { "food": 6, "wood": 0, "gold": 1, "stone": 2, "builder": 1 },
+      "notes": [
+        "2-я @building_byzantines/cistern-1.webp@ и @building_byzantines/aqueduct-1.webp@. Аквидукт обычно едой; если каменьщик рядом — им."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:38",
+      "timeProvenance": "stated",
+      "villager_count": 13,
+      "resources": { "food": 8, "wood": 0, "gold": 1, "stone": 3, "builder": 1 },
+      "notes": [
+        "3-я @building_byzantines/cistern-1.webp@. Камня хватает на 4 цистерны — дальше флот."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:57",
+      "timeProvenance": "stated",
+      "villager_count": 14,
+      "resources": { "food": 9, "wood": 0, "gold": 1, "stone": 3, "builder": 4 },
+      "notes": [
+        "4 с @resource/sheep.webp@ на @landmark_byzantines/grand-winery-1.webp@ (vs China 4). Если сами делаем копья vs French/Jeanne knights — ап с 2–3, не с 4.",
+        "1 на золоте всю тёмную эпоху. 8 на дерево после клика, остальное еда."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:17",
+      "timeProvenance": "stated",
+      "villager_count": 14,
+      "resources": { "food": 4, "wood": 5, "gold": 1, "stone": 0, "builder": 4 },
+      "notes": [
+        "Снять камень на страглеры. На 100 камня — 4-я @building_byzantines/cistern-1.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:20",
+      "timeProvenance": "stated",
+      "villager_count": 14,
+      "resources": { "food": 4, "wood": 6, "gold": 1, "stone": 0, "builder": 4 },
+      "notes": [
+        "@resource/rally.webp@ страглеры до 8 дерева. Золото снять после 35g на ап @unit_byzantines/limitanei-1.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "04:00",
+      "timeProvenance": "stated",
+      "villager_count": 14,
+      "resources": { "food": 5, "wood": 8, "gold": 0, "stone": 0, "builder": 1 },
+      "notes": [
+        "@building_economy/house.webp@. Аквидукт → ягоды. Центральная цистерна: research, остальные: production speed."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:38",
+      "timeProvenance": "stated",
+      "villager_count": 17,
+      "resources": { "food": 9, "wood": 8, "gold": 0, "stone": 0, "builder": -1 },
+      "notes": [
+        "Feudal. Вся еда на ягоды у @landmark_byzantines/grand-winery-1.webp@. Казармы, если скаут видит лучников/конницу."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:50",
+      "timeProvenance": "stated",
+      "villager_count": 18,
+      "resources": { "food": 10, "wood": 8, "gold": 0, "stone": 0, "builder": 1 },
+      "notes": [
+        "@building_byzantines/mercenary-house-2.webp@. Контракт: @unit_byzantines/javelin-thrower-2.webp@ vs рыцари; иначе @unit_english/longbowman-2.webp@.",
+        "Комплект: longbow + spear + horseman. Vs French/JD: spear + jav. Longbows дешевле — пачка по 4."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:55",
+      "timeProvenance": "stated",
+      "villager_count": 23,
+      "resources": { "food": 12, "wood": 8, "gold": 3, "stone": 0, "builder": -1 },
+      "notes": [
+        "Очередь @unit_english/longbowman-2.webp@. ~12 на еде. Не бить barbican — играть как English: харраст дерева, свои ягоды, потом castle."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:00",
+      "timeProvenance": "stated",
+      "villager_count": 25,
+      "resources": { "food": 13, "wood": 8, "gold": 4, "stone": 0, "builder": -1 },
+      "notes": [
+        "@building_military/blacksmith.webp@: @technology_military/steeled-arrow.webp@ и @technology_military/iron-undermesh.webp@. 4 на золото, закрыть ещё ягоды. Ап копий."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:00",
+      "timeProvenance": "stated",
+      "villager_count": 27,
+      "resources": { "food": 14, "wood": 8, "gold": 5, "stone": 0, "builder": -1 },
+      "notes": [
+        "@building_military/outpost.webp@ + @building_economy/mill.webp@ + 5-я @building_byzantines/cistern-1.webp@ на 2-х ягодах 5 жителями."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "08:18",
+      "timeProvenance": "stated",
+      "villager_count": 29,
+      "resources": { "food": 18, "wood": 6, "gold": 5, "stone": 0, "builder": -1 },
+      "notes": [
+        "@technology_economy/wheelbarrow.webp@. Три патча ягод → castle. Не форсить урон — оппонент должен ошибиться."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:00",
+      "timeProvenance": "stated",
+      "villager_count": 38,
+      "resources": { "food": 23, "wood": 3, "gold": 12, "stone": 0, "builder": -1 },
+      "notes": [
+        "Стоп юнитов. Макро в castle: 2–3 дерево, остальное еда/золото."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "13:05",
+      "timeProvenance": "derived",
+      "villager_count": 41,
+      "resources": { "food": 23, "wood": 3, "gold": 15, "stone": 0, "builder": 10 },
+      "notes": [
+        "8–12 на @landmark_byzantines/golden-horn-tower-2.webp@ + @building_military/stable.webp@. Дерево на @building_religious/monastery.webp@, затем @unit_byzantines/cataphract-3.webp@ + longbows, реликвии.",
+        "Апы цистерн влетают быстро — это окно урона. Castle ~12–13 мин."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/watch?v=0pkvLN16f4o",
+  "season": 13,
+  "map": "Flankwoods и открытые гибридные карты с безопасным задним камнем",
+  "strategy": "3-stone Grand Winery, olive oil, longbow/spear/horseman, Castle ~13:05",
+  "provider": "aoe4guides",
+  "providerId": "dbmBFjUqxyRYFSWCVHXH",
+  "score": 4.2,
+  "views": 112,
+  "likes": 0,
+  "upvotes": 0,
+  "timeCreated": "2026-08-20T00:00:00Z",
+  "timeUpdated": "2026-08-20T00:00:00Z",
+  "mode": ["1x1"],
+  "map_type": ["open", "hybrid"],
+  "role": "tempo",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "strategy_key": "tempo",
+  "meta_tier": "meta_core",
+  "build_group": "byzantines_winery",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-23",
+  "game_build": "16.3.11308",
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-23T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-23T00:00:00Z",
+  "archetype": "Timing attack",
+  "difficulty": "medium",
+  "reasoning": "Valdemar: 3-stone vs French / Jeanne / Malians и vs civs с которых mill не открывают (Golden Horde, Rus, Sengoku, Delhi). China в VOD — копья слабые. Не контрит spear opener: трое на камне. Vs English/Ottoman/HRE/Japanese spear — mill Hippodrome.",
+  "ageTimings": [
+    { "age": 2, "seconds": 278, "derived": false, "stepIndex": 8 },
+    { "age": 3, "seconds": 785, "derived": true, "stepIndex": 15 }
+  ],
+  "tactics": [
+    {
+      "id": "winery-3stone-open",
+      "category": "opening",
+      "title": "3 stone vs French / Jeanne / Malians, not vs spears",
+      "detail": "Valdemar’s default 3-stone: French, Jeanne, Malians, plus China (spears are weak there). Three vills on exposed stone die to a spear rush — then switch to the mill BO. Vs French/Jeanne YOU may make spears vs their knights and age with 2–3 vills; they are not spear openers.",
+      "timeSec": 43,
+      "confidence": 0.95
+    },
+    {
+      "id": "winery-ageup-vills",
+      "category": "economy",
+      "title": "Age up 4 vs China; 2–3 if you spear vs knights",
+      "detail": "One gold villager banks the entire Dark Age. 4 vs China. Default 3. Age with 2 if YOU queue spears vs French/Jeanne royal knights — that is your counter, not their opener.",
+      "timeSec": 128,
+      "confidence": 0.93
+    },
+    {
+      "id": "winery-four-cisterns",
+      "category": "economy",
+      "title": "Stone only for four cisterns",
+      "detail": "Pull stone at 100, drop the 4th cistern, then stragglers to 8 wood. Extra stone just floats.",
+      "timeSec": 232,
+      "confidence": 0.92
+    },
+    {
+      "id": "winery-cistern-toggle",
+      "category": "economy",
+      "title": "Center cistern research, others production",
+      "detail": "Flip the middle cistern to research and the rest to production speed before Feudal production.",
+      "timeSec": 264,
+      "confidence": 0.9
+    },
+    {
+      "id": "winery-longbow-plan",
+      "category": "military",
+      "title": "Play like English: longbow wood harass",
+      "detail": "Do not dive a barbican. Longbows are cheaper — queue four. Secure three berry patches, then Castle. Song Dynasty into this is a free win.",
+      "timeSec": 416,
+      "confidence": 0.9
+    },
+    {
+      "id": "winery-12min-castle",
+      "category": "transition",
+      "title": "Stop units at 11:00, Castle ~12–13 min",
+      "detail": "2–3 on wood, rest food/gold. Golden Horn + stable, cistern-scaled upgrades, then the damage window.",
+      "timeSec": 660,
+      "confidence": 0.88
+    }
+  ],
+  "transcriptText": "[00:19] vs China on Flankwoods — 3-stone Winery is allowed because China cannot really open spears.\n[00:43] Open 3 stone, 1 gold; Winery later on these berries.\n[02:08] One gold villager for the whole Dark Age. Age up with 3, or 2 if spears vs French/JD; this matchup 4.\n[02:16] Then 8 on wood, rest food. Longbow / spear / horseman. Spear+jav vs French/JD.\n[02:51] Castle around 12 minutes. Mill opener is useful now; Triumph is very powerful.\n[03:32] Pull stone at 100, fourth cistern. Only gather for four cisterns or you float stone.\n[03:59] Keep one on gold for the spear upgrade.\n[04:23] Middle cistern research, others production speed.\n[04:46] Barracks if scout sees archers/horsemen.\n[05:54] Get the four longbows — cheaper now.\n[06:57] Play as if English: longbows, harass wood, berries, Castle.\n[08:04] Fifth cistern. Three berry patches then Castle.\n[08:36] Wheelbarrow. Do not slow yourself trying to force damage.\n[09:36] He went Song — the game is over.\n[10:19] That was the Vinarii triple-stone opener.",
+  "video_evidence": {
+    "schemaVersion": 1,
+    "windowStart": "2026-08-20",
+    "windowEnd": "2026-08-23",
+    "sampleSize": 1,
+    "requestedSampleSize": 1,
+    "coverageNote": "Full local transcript (714 captions) of Valdy Conqueror 3 Byz video; first game is this 3-stone Winery. Captions are timed to ~0.1s, not decoded video frames.",
+    "commonActions": ["3-stone opener", "Grand Winery", "Cistern network", "Longbow harass", "12-min Castle"],
+    "commonResources": ["stone", "gold", "berries", "olive oil", "wood"],
+    "commonTopics": ["Opening military", "Age-up", "Economy", "Matchup vs China"],
+    "commonOpponents": ["Chinese", "French", "Jeanne d'Arc", "Malians"],
+    "commonMilitaryMentions": ["Longbowman", "Spearman", "Horseman", "Javelin Thrower"],
+    "timingSignals": [
+      { "label": "3 stone + 1 gold", "timeSec": 43, "mentions": 1 },
+      { "label": "Age-up 4 vills", "timeSec": 128, "mentions": 1 },
+      { "label": "Feudal 4:38", "timeSec": 278, "mentions": 1 },
+      { "label": "Longbows cheaper / queue 4", "timeSec": 354, "mentions": 1 },
+      { "label": "Castle ~12 min", "timeSec": 171, "mentions": 2 }
+    ],
+    "sources": [
+      {
+        "id": "0pkvLN16f4o",
+        "title": "Easily Achieve Conqueror 3 With These Byz Strats | AoE4 Valdy",
+        "url": "https://www.youtube.com/watch?v=0pkvLN16f4o",
+        "channel": "Valdy",
+        "publishedAt": "2026-08-20T00:00:00Z",
+        "viewCount": null,
+        "transcriptLanguage": "en",
+        "transcriptSource": "auto",
+        "transcriptProvider": "local",
+        "transcriptStatus": "available",
+        "transcriptWordCount": 4200,
+        "transcriptExcerpt": "What we're doing is we open with three on stone, we're going with one on gold. Then we're going to build winery later on these berries.",
+        "sourceKind": "guide",
+        "frameCheckpoints": [
+          { "timeSec": 19, "label": "Matchup / map", "quote": "Playing against China on Flankwoods" },
+          { "timeSec": 28, "label": "Winery allowed", "quote": "you can actually go for winery. Now, many matchups nowadays don't allow that" },
+          { "timeSec": 43, "label": "3 stone 1 gold", "quote": "we open with three on stone, we're going with one on gold" },
+          { "timeSec": 128, "label": "Age-up vill count", "quote": "age up with three villagers, maybe two villagers if we're going to make spears" },
+          { "timeSec": 232, "label": "Fourth cistern / 100 stone", "quote": "you pull off stone, you have a 100 and you're building your fourth cistern" },
+          { "timeSec": 264, "label": "Cistern modes", "quote": "set the middle one here to be research and the other ones to be production speed" },
+          { "timeSec": 278, "label": "Feudal ~4:38", "quote": "We can start our barracks now if you want to" },
+          { "timeSec": 354, "label": "Four longbows", "quote": "You only get four, but they're cheaper, so that's nice" },
+          { "timeSec": 416, "label": "English-style plan", "quote": "We'll be making longbows. We'll be harassing the wood line" },
+          { "timeSec": 484, "label": "Fifth cistern", "quote": "Connect that and that's a fifth cistern" },
+          { "timeSec": 500, "label": "Three berries → Castle", "quote": "Once we've secured like three berry patches, we'll go castle" },
+          { "timeSec": 576, "label": "Song punish", "quote": "That's because he went Song Dynasty. So, we we just win" },
+          { "timeSec": 619, "label": "End of Winery game", "quote": "I just showed you the Vinarii opener with the triple stone" }
+        ],
+        "signals": {
+          "archetype": "Timing attack",
+          "actions": ["3-stone opener", "Grand Winery", "Longbow harass"],
+          "resources": ["stone", "berries", "olive oil"],
+          "topics": ["Opening military", "Age-up", "Economy"],
+          "opponentCivs": ["Chinese"],
+          "militaryMentions": ["Longbowman", "Spearman", "Horseman"],
+          "timings": [
+            { "label": "3 stone + 1 gold", "timeSec": 43, "mentions": 1 },
+            { "label": "Feudal", "timeSec": 278, "mentions": 1 }
+          ],
+          "confidence": 0.94
+        }
+      }
+    ]
+  }
+}

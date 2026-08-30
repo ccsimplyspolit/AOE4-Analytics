@@ -1,6 +1,12 @@
 import { describe, it, expect } from 'vitest'
 import { COUNTER_MATRIX } from '../counters'
-import { counterPlanForCiv, matchupTroops, matchupTroopsForTeam } from '../civUnits'
+import {
+  counterPlanForCiv,
+  counterPlanForMatchup,
+  matchupTroops,
+  matchupTroopsForTeam,
+  overlayMatchupTroops,
+} from '../civUnits'
 
 describe('counterPlanForCiv', () => {
   it('lists a civ key units and what beats them', () => {
@@ -67,6 +73,27 @@ describe('matchupTroops', () => {
     expect(m.theirs.map((u) => u.name)).toContain('Mangudai')
     expect(m.priority.has('Spearman')).toBe(true)
     expect(m.theirs.filter((u) => u.name === 'Spearman')).toHaveLength(1)
+  })
+})
+
+describe('overlayMatchupTroops', () => {
+  it('recommends counters to the enemy army, not your identity roster (Byzantines vs Chinese)', () => {
+    const m = overlayMatchupTroops('byzantines', ['chinese'])!
+    expect(m.theirs.map((u) => u.name)).toEqual(
+      expect.arrayContaining(['Palace Guard', 'Zhuge Nu', 'Nest of Bees']),
+    )
+    expect(m.mine.map((u) => u.role)).toEqual(expect.arrayContaining(['horseman', 'mangonel']))
+    expect(m.mine.map((u) => u.name)).not.toContain('Spearman')
+    expect(m.mine.map((u) => u.name)).not.toContain('Varangian Guard')
+  })
+})
+
+describe('counterPlanForMatchup', () => {
+  it('labels counters with units you can make (Byzantines vs Chinese)', () => {
+    const plan = counterPlanForMatchup('byzantines', 'chinese')!
+    const labels = plan.counters.map((c) => c.label)
+    expect(labels).toEqual(expect.arrayContaining(['Horseman', 'Mangonel']))
+    expect(labels.join(' ')).not.toMatch(/Spearman|Varangian/)
   })
 })
 

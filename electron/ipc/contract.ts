@@ -7,10 +7,22 @@
  * This contract grows one block per phase; the renderer never calls IPC
  * channels directly, only through the typed `window.rtslytics.*` methods.
  */
-import type { RankInfo, RecentForm, ScoutReport } from '@domain/types'
+import type {
+  RankInfo,
+  RecentForm,
+  ScoutReport,
+  MapUsage,
+  ModeCivUsage,
+  ModeCivGroup,
+  RatingHistoryPoint,
+  RatingHistorySeries,
+  TeammateStat,
+  PreviousSeason,
+  PlayerSocialLinks,
+} from '@domain/types'
 import type { CivTier } from '@domain/tierList'
 import type { MapStat } from '@domain/mapStats'
-import type { LeaderboardRow } from '@domain/leaderboard'
+import type { LeaderboardRow, EsportsLeaderboardRow } from '@domain/leaderboard'
 import type { CivDetailStats } from '@domain/civDetailStats'
 import type { LiveMatchInfo, LiveOpponent, LiveMatchup, MatchupPlayer } from '@domain/liveMatch'
 import type { ReplayInfo, ReplayMatchup, ReplayPlayer } from '@domain/replay'
@@ -187,6 +199,7 @@ export const IpcChannels = {
   matchupLabGet: 'matchupLab:get',
   civDetailGet: 'civDetail:get',
   leaderboardGet: 'leaderboard:get',
+  esportsLeaderboardGet: 'esports:leaderboardGet',
   // Phase 3
   analysisAnalyzeRecent: 'analysis:analyzeRecent',
   analysisHistory: 'analysis:history',
@@ -534,6 +547,11 @@ export interface CivMetaQuery {
   mapId?: number
   /** Limit map stats and map-specific analytics to the active ranked rotation. */
   mapPoolOnly?: boolean
+  /**
+   * Re-aggregate civ rows from every active ranked map. Slow (one request per
+   * map); the overview query should omit this and let a follow-up fill it in.
+   */
+  includePoolRankings?: boolean
 }
 
 /** Civ meta explorer payload: sortable civ rows + map popularity for a bracket. */
@@ -578,6 +596,8 @@ export interface LeaderboardQuery {
   page?: number
   /** ISO 3166-1 alpha-2 country code (lowercase), e.g. "us". */
   country?: string
+  /** Ladder name search (`/leaderboards/:key?query=`). */
+  search?: string
   /** Bypass the disk cache when the user explicitly refreshes/live polling runs. */
   fresh?: boolean
 }
@@ -597,6 +617,24 @@ export interface LeaderboardPage {
   totalCount: number
   leaderboard: string
   you: LeaderboardYou | null
+}
+
+export interface EsportsLeaderboardQuery {
+  page?: number
+  search?: string
+  showInactive?: boolean
+  country?: string
+  fresh?: boolean
+}
+
+export interface EsportsLeaderboardPage {
+  rows: EsportsLeaderboardRow[]
+  page: number
+  perPage: number
+  totalCount: number
+  name: string | null
+  siteUrl: string | null
+  you: EsportsLeaderboardRow | null
 }
 
 export interface AnalyzeResult {
@@ -656,6 +694,16 @@ export interface ScoutMatchRow {
   civilization: string | null
   opponentCivilizations: string[]
   opponentNames: string[]
+  teammateNames?: string[]
+  teammateProfileIds?: number[]
+  rating?: number | null
+  ratingDiff?: number | null
+  mmrDiff?: number | null
+  server?: string | null
+  kind?: string | null
+  patch?: number | string | null
+  averageRating?: number | null
+  inputType?: string | null
 }
 
 /** A bounded page of public matches. `totalCount` is the API's scoped count. */
@@ -808,6 +856,18 @@ export interface DashboardData {
   primary: RankInfo | null
   modes: RankInfo[]
   recentForm: RecentForm
+  modeCivs: ModeCivUsage[]
+  modeCivGroups: ModeCivGroup[]
+  ratingHistory: RatingHistoryPoint[]
+  ratingHistories: RatingHistorySeries[]
+  teammates: TeammateStat[]
+  opponents: TeammateStat[]
+  previousSeasons: PreviousSeason[]
+  maps: MapUsage[]
+  avatarUrl: string | null
+  social: PlayerSocialLinks
+  lastGameAt: string | null
+  siteUrl: string | null
 }
 
 /** The typed API exposed on `window.rtslytics`. */
@@ -843,6 +903,7 @@ export interface RtslyticsApi {
   getMatchupLab(query: MatchupLabQuery): Promise<IpcResult<GlobalMatchupSummary | null>>
   getCivDetailStats(civ: string): Promise<IpcResult<CivDetailStats>>
   getLeaderboard(query: LeaderboardQuery): Promise<IpcResult<LeaderboardPage>>
+  getEsportsLeaderboard(query: EsportsLeaderboardQuery): Promise<IpcResult<EsportsLeaderboardPage>>
   // Phase 3
   analyzeRecentGames(count?: number): Promise<IpcResult<AnalyzeResult>>
   getHistory(limit?: number): Promise<IpcResult<StoredMatch[]>>

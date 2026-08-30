@@ -1,0 +1,209 @@
+{
+  "name": "OOTD Fast castle - Vortix's Burg Build",
+  "civilization": "Order of the Dragon",
+  "author": "taktaktab",
+  "source": "https://aoe4guides.com/builds/ARrUu1WyUPpYkpgSViXT",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All @unit_dragon/gilded-villager.webp@ to @resource/sheep.webp@ and look for @resource/deer.webp@ with @unit_cavalry/scout.webp@",
+        "once @resource/deer.webp@is found move all @unit_dragon/gilded-villager.webp@ to @resource/deer.webp@",
+        "Build @building_economy/mill.webp@and get @technology_economy/survival-techniques.webp@ right away",
+        "set @resource/rally.webp@to @resource/resource_gold.webp@ untill we have 3",
+        "First @unit_dragon/gilded-villager.webp@ that goes to @resource/resource_gold.webp@ builds @building_economy/house.webp@ and @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:23",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "First @unit_dragon/gilded-villager.webp@ that goes to @resource/resource_gold.webp@ builds @building_economy/house.webp@ and @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:09",
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Set @resource/rally.webp@ to @resource/sheep.webp@ until age up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Age up with 2-3 @resource/sheep.webp@@unit_dragon/gilded-villager.webp@ and build @landmark_hre/aachen-chapel.webp@",
+        "and set @resource/rally.webp@to @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:29",
+      "villager_count": 14,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Once we have 3 @unit_dragon/gilded-villager.webp@ on @resource/resource_wood.webp@ we set @resource/rally.webp@ back to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:22",
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "once @landmark_hre/aachen-chapel.webp@ is done, move 2 Builder @unit_dragon/gilded-villager.webp@to @resource/resource_gold.webp@and 1 to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:22",
+      "villager_count": 21,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Age up wiith 8 @resource/sheep.webp@@unit_dragon/gilded-villager.webp@ and go for @landmark_hre/burgrave-palace.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:09",
+      "villager_count": 23,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Once we have  2 @unit_dragon/gilded-villager.webp@ on @resource/sheep.webp@, set @resource/rally.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "7:38",
+      "villager_count": 23,
+      "resources": {
+        "food": 10,
+        "wood": 4,
+        "gold": 8,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Once aged up, 1 @resource/sheep.webp@@unit_dragon/gilded-villager.webp@ will @abilities/repair.webp@@building_religious/monastery.webp@",
+        "Go for @resource/relics.webp@, make @unit_dragon/gilded-spearman-1.webp@ and @unit_dragon/gilded-man-at-arms-2.webp@ from @landmark_hre/burgrave-palace.webp@",
+        "Play the rest of the game and make sure to keep on macro-ing based on your needs.",
+        "Also add @building_military/archery-range.webp@ and go for @unit_dragon/gilded-archer-2.webp@/@unit_dragon/gilded-crossbowman-3.webp@"
+      ]
+    }
+  ],
+  "description": "This Build Order is  from Vortix's Video on OOTD. \nPlease watch his Video for more info.",
+  "video": "https://www.youtube.com/embed/f-BzxMnvN-Y",
+  "season": 13,
+  "map": null,
+  "strategy": "Fast Castle",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-22T21:13:45Z",
+  "updatedAt": "2026-08-22T21:13:45Z",
+  "patch": "16.3.11308"
+}

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { History } from 'lucide-react'
 import type { DashboardData } from '@ipc/contract'
 import { filterPersonalHistory } from '@domain/historyFilters'
+import { foldEloIntoLadders } from '@domain/scouting'
 import { biggestLeak, type Leak } from '@domain/leaks'
 import {
   countryFlag,
@@ -21,6 +22,8 @@ import { LiveMatchCard } from '../components/LiveMatchCard'
 import { LiveTelemetryCard } from '../components/LiveTelemetryCard'
 import { MatchPrepCard } from '../components/MatchPrepCard'
 import { MapPoolAdvisorCard } from '../components/MapPoolAdvisorCard'
+import { MetaBriefingCard } from '../components/MetaBriefingCard'
+import { CURRENT_RANKED_MAP_POOL } from '@domain/rankedMapPool'
 import { RecommendedCivs } from '../components/RecommendedCivs'
 import { RankBadge } from '../components/RankBadge'
 import { FormPips } from '../components/FormPips'
@@ -28,6 +31,8 @@ import { AccountAvatar } from '../components/AccountSwitcher'
 import { PageHead } from '../components/PageHead'
 import { ErrorBox } from '../components/feedback'
 import { useI18n } from '../../i18n'
+import { useAnalyzeRecent } from '../queries/useHistory'
+import { useAutoAction } from '../hooks/useAutoAction'
 
 /**
  * The landing surface: a hero ladder-standing slab (identity, vitals, form,
@@ -40,6 +45,10 @@ export function Dashboard() {
   const hasProfile = settings?.profileId != null
   const { data, isLoading, refetch } = useDashboard(!!hasProfile)
   const { data: history } = useHistory()
+  const analyze = useAnalyzeRecent()
+  useAutoAction('sync-history', () => analyze.mutateAsync(undefined), {
+    enabled: hasProfile,
+  })
   const excludeAi = settings?.localData.excludeAiFromStats ?? false
   // Stable reference so MatchPrepCard's useMemo doesn't recompute every render.
   const matches = useMemo(
@@ -49,7 +58,7 @@ export function Dashboard() {
   const latestMatch = matches[0]
 
   return (
-    <div className="animate-fade-in space-y-5">
+    <div className="animate-fade-in space-y-6">
       <PageHead
         kicker="War room"
         title="Dashboard"
@@ -58,7 +67,7 @@ export function Dashboard() {
           latestMatch ? (
             <Link
               to={`/game/${latestMatch.id}`}
-              className="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:border-primary/40 hover:bg-secondary hover:text-foreground"
+              className="rts-btn"
             >
               <History className="h-3.5 w-3.5" />
               {tt('Review latest game')}
@@ -66,6 +75,8 @@ export function Dashboard() {
           ) : null
         }
       />
+
+      <MetaBriefingCard compact />
 
       <LiveMatchCard />
       <LiveTelemetryCard />
@@ -81,7 +92,11 @@ export function Dashboard() {
       <RecurringLeakCard leak={biggestLeak(matches.map((match) => match.analysis.signals))} />
 
       <MatchPrepCard matches={matches} />
-      <MapPoolAdvisorCard />
+      <MapPoolAdvisorCard
+        maps={[...new Set([...CURRENT_RANKED_MAP_POOL.solo, ...CURRENT_RANKED_MAP_POOL.team])]}
+        foldedByDefault
+        foldId="dashboard-map-pool-advisor"
+      />
 
       {/* Beginner on-ramp — only while the player is still light on synced games. */}
       {matches.length < 15 && <RecommendedCivs />}
@@ -121,6 +136,7 @@ function LadderStanding({ data }: { data: DashboardData }) {
   const { tt } = useI18n()
   const { data: avatar } = useSteamAvatar()
   const { primary, recentForm, modes } = data
+  const modeRows = foldEloIntoLadders(modes)
   return (
     <section className="rts-menu-card overflow-hidden rounded-md border">
       {/* Identity row */}
@@ -155,7 +171,17 @@ function LadderStanding({ data }: { data: DashboardData }) {
           value={formatRating(primary?.rating)}
           sub={tt(formatLeaderboard(primary?.leaderboard))}
         />
-        <Vital label={tt('Peak')} value={formatRating(primary?.maxRating)} />
+        <Vital
+          label={tt('Peak')}
+          value={formatRating(primary?.maxRating)}
+          sub={
+            primary?.maxRating7d != null
+              ? `${tt('7d')} ${formatRating(primary.maxRating7d)}`
+              : primary?.maxRating1m != null
+                ? `${tt('30d')} ${formatRating(primary.maxRating1m)}`
+                : undefined
+          }
+        />
         <Vital label={tt('Rank')} value={primary?.rank != null ? `#${primary.rank}` : '—'} />
         <Vital
           label={tt('Win rate')}
@@ -166,7 +192,7 @@ function LadderStanding({ data }: { data: DashboardData }) {
       </div>
 
       {/* Every rated mode */}
-      {modes.length > 0 && (
+      {modeRows.length > 0 && (
         <div>
           <div className="grid grid-cols-[1fr_auto_auto_auto] items-center gap-x-6 px-4 pb-1 pt-2.5">
             <span className="rts-ledger-head">{tt('Mode')}</span>
@@ -174,12 +200,19 @@ function LadderStanding({ data }: { data: DashboardData }) {
             <span className="rts-ledger-head w-16 text-right">{tt('Rating')}</span>
             <span className="rts-ledger-head w-24 text-right">{tt('Record')}</span>
           </div>
-          {modes.map((m) => (
+          {modeRows.map((m) => (
             <div
               key={m.leaderboard}
               className="grid grid-cols-[1fr_auto_auto_auto] items-center gap-x-6 border-t border-border/60 px-4 py-2 text-sm"
             >
-              <span className="font-medium">{tt(formatLeaderboard(m.leaderboard))}</span>
+              <span className="min-w-0">
+                <span className="block font-medium">{tt(formatLeaderboard(m.leaderboard))}</span>
+                {m.matchmakingElo != null && m.matchmakingElo !== m.rating ? (
+                  <span className="text-[11px] text-muted-foreground">
+                    {tt('Matchmaking Elo')} {formatRating(m.matchmakingElo)}
+                  </span>
+                ) : null}
+              </span>
               {/* Quick Match has no rank tiers — only Ranked ladders do, so a QM
                   row showing "Unranked" would be misleading. */}
               {m.leaderboard?.startsWith('qm') || m.leaderboard?.startsWith('Quick Match') ? (
@@ -191,10 +224,17 @@ function LadderStanding({ data }: { data: DashboardData }) {
               )}
               <span className="w-16 text-right tabular-nums">{formatRating(m.rating)}</span>
               <span className="w-24 text-right tabular-nums text-muted-foreground">
-                {formatPercent(m.winRate)} · {m.gamesCount} {tt('games')}
+                {m.winsCount != null && m.lossesCount != null
+                  ? `${m.winsCount}W ${m.lossesCount}L`
+                  : `${formatPercent(m.winRate)} · ${m.gamesCount} ${tt('games')}`}
               </span>
             </div>
           ))}
+          <p className="border-t border-border/60 px-4 py-2 text-[11px] leading-relaxed text-muted-foreground">
+            {tt(
+              'Ranked Team is the combined team ladder. 2v2 / 3v3 / 4v4 are the same ranked games split by size. (Elo) is hidden matchmaking rating — not a second rank.',
+            )}
+          </p>
         </div>
       )}
     </section>

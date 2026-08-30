@@ -1,0 +1,78 @@
+{
+  "name": "KT",
+  "civilization": "Knights Templar",
+  "author": "Gissa777",
+  "source": "https://aoe4guides.com/builds/NUJWvxnimYuJvv3UoZ4O",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.webp@#2 @building_economy/mining-camp.webp@@building_economy/house.webp@ @resource/rally.webp@@resource/resource_wood.webp@ , 200 Move @unit_worker/villager.webp@ @resource/resource_gold.webp@ @resource/rally.webp@@resource/resource_stone.webp@@building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 1,
+        "wood": 7,
+        "gold": 0,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "Move @resource/resource_food.webp@@unit_worker/villager.webp@@resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 12,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@ @resource/resource_gold.webp@@technology_templar/safepassage.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 32,
+      "resources": {
+        "food": 28,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-22T21:13:45Z",
+  "updatedAt": "2026-08-22T21:13:45Z",
+  "patch": "16.3.11308"
+}

@@ -31,9 +31,11 @@ import { LandmarkPlan } from '../components/LandmarkPlan'
 import { useHistory } from '../queries/useHistory'
 import { useSettings } from '../queries/useProfile'
 import { ErrorBox } from '../components/feedback'
+import { PageHead } from '../components/PageHead'
 import { useQuery } from '@tanstack/react-query'
 import { ipc } from '@shared/ipc'
 import { resolveAoE4Icon } from '@data/vendor/aoe4-icons/manifest'
+import { CIV_FLAGS } from '@data/vendor/aoe4world-overlay/flags'
 import { useI18n } from '../../i18n'
 
 const DIFFICULTY_VARIANT = {
@@ -41,6 +43,29 @@ const DIFFICULTY_VARIANT = {
   medium: 'default',
   hard: 'destructive',
 } as const
+
+function civKey(value: string): string {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, '')
+}
+
+function recommendedBuildsForCiv(civName: string): BuildOrder[] {
+  const want = civKey(civName)
+  const matched = BUNDLED_BUILD_ORDERS.filter((build) => {
+    const labels = Array.isArray(build.civilization) ? build.civilization : [build.civilization]
+    return labels.some((label) => civKey(label) === want)
+  })
+  return [...matched]
+    .sort((left, right) => {
+      const score = (build: (typeof matched)[number]) =>
+        (build.video ? 40 : 0) +
+        (build.video_evidence?.sources.length ? 20 : 0) +
+        (build.reasoning ? 15 : 0) +
+        (build.origin === 'curated' ? 10 : 0) +
+        build.build_order.length
+      return score(right) - score(left)
+    })
+    .slice(0, 3)
+}
 
 export function CivDetail() {
   const { slug = '' } = useParams()
@@ -67,9 +92,7 @@ export function CivDetail() {
     )
   }
 
-  const builds = BUNDLED_BUILD_ORDERS.filter(
-    (bo) => String(bo.civilization).toLowerCase() === profile.name.toLowerCase(),
-  ) as unknown as BuildOrder[]
+  const builds = recommendedBuildsForCiv(profile.name)
   const units = unitsForCiv(slug)
   const keyUnits = pickKeyUnits(units)
 
@@ -77,24 +100,20 @@ export function CivDetail() {
     <div className="animate-fade-in space-y-6">
       <BackLink />
 
-      <header className="space-y-2">
-        <div className="flex flex-wrap items-center gap-3">
-          <h1 className="text-2xl font-semibold tracking-tight">{gameName(profile.name)}</h1>
-          <Badge variant={DIFFICULTY_VARIANT[profile.difficulty]}>{tt(profile.difficulty)}</Badge>
-        </div>
-        <p className="text-sm text-primary">{tt(profile.focus)}</p>
-        <p className="text-sm leading-relaxed text-muted-foreground">{tt(profile.summary)}</p>
-        <div className="flex flex-wrap gap-1.5 pt-1">
-          {profile.tags.map((t) => (
-            <span
-              key={t}
-              className="rounded bg-secondary px-2 py-0.5 text-xs text-muted-foreground"
-            >
-              {tt(t)}
-            </span>
-          ))}
-        </div>
-      </header>
+      <PageHead
+        kicker="Civilization"
+        title={gameName(profile.name)}
+        sub={tt(profile.summary)}
+        raw
+        aside={<Badge variant={DIFFICULTY_VARIANT[profile.difficulty]}>{tt(profile.difficulty)}</Badge>}
+      />
+      <div className="flex flex-wrap gap-1.5">
+        {profile.tags.map((t) => (
+          <span key={t} className="rts-chip">
+            {tt(t)}
+          </span>
+        ))}
+      </div>
 
       <CivMetaSection slug={slug} enabled={loadHeavySections} />
 
@@ -158,6 +177,9 @@ export function CivDetail() {
       {builds.length > 0 && (
         <section className="space-y-3">
           <h2 className="text-lg font-semibold tracking-tight">{tt('Recommended build orders')}</h2>
+          <p className="text-xs text-muted-foreground">
+            {tt('Each build and its video are for this civilization only.')}
+          </p>
           {builds.map((bo, i) => (
             <BuildOrderViewer key={i} bo={bo} />
           ))}
@@ -272,12 +294,26 @@ function CivMetaSection({ slug, enabled }: { slug: string; enabled: boolean }) {
             icon={<TrendingUp className="h-4 w-4 text-win" />}
             rows={stats.best}
             gameName={gameName}
+            caption={tt('Highest win rate for {civ} in ranked samples.').replace(
+              '{civ}',
+              gameName(civDisplayName(slug)),
+            )}
           />
           <MatchupList
             title={tt('Toughest matchups')}
             icon={<TrendingDown className="h-4 w-4 text-loss" />}
             rows={stats.worst}
             gameName={gameName}
+            caption={
+              stats.worst.every((row) => row.winRate >= 50)
+                ? tt(
+                    'Still winning overall — these are the closest games for {civ}, not losing matchups.',
+                  ).replace('{civ}', gameName(civDisplayName(slug)))
+                : tt('Lowest win rate for {civ} in ranked samples.').replace(
+                    '{civ}',
+                    gameName(civDisplayName(slug)),
+                  )
+            }
           />
         </div>
       )}
@@ -295,7 +331,7 @@ function CivMetaSection({ slug, enabled }: { slug: string; enabled: boolean }) {
                   key={m}
                   className="rounded bg-secondary px-2 py-0.5 text-xs text-muted-foreground"
                 >
-                  {m}
+                  {gameName(m)}
                 </span>
               ))}
             </div>
@@ -317,12 +353,15 @@ function MatchupList({
   icon,
   rows,
   gameName,
+  caption,
 }: {
   title: string
   icon: React.ReactNode
   rows: CivMatchup[]
   gameName: (value: string) => string
+  caption: string
 }) {
+  const { tt } = useI18n()
   if (rows.length === 0) return null
   return (
     <Card>
@@ -331,19 +370,32 @@ function MatchupList({
           {icon}
           {title}
         </h3>
+        <p className="text-[11px] text-muted-foreground">{caption}</p>
         <div className="space-y-0.5">
           {rows.map((r) => (
-            <Link
+            <div
               key={r.civ}
-              to={`/civ/${r.civ}`}
-              className="-mx-2 flex items-baseline justify-between gap-2 rounded-md px-2 py-1 text-sm transition-colors hover:bg-secondary/70 hover:text-primary"
+              className="-mx-2 flex items-center justify-between gap-2 rounded-md px-2 py-1.5 text-sm"
             >
-              <span>{gameName(r.civName)}</span>
-              <span className="flex items-center gap-2 tabular-nums">
-                <span className="text-xs text-muted-foreground">{formatCount(r.games)}g</span>
+              <span className="flex min-w-0 items-center gap-2">
+                {CIV_FLAGS[r.civ] ? (
+                  <img
+                    src={CIV_FLAGS[r.civ]!.flag}
+                    alt=""
+                    aria-hidden
+                    className="h-5 w-9 shrink-0 rounded-sm object-cover"
+                    style={{ outline: `1px solid ${CIV_FLAGS[r.civ]!.color}` }}
+                  />
+                ) : null}
+                <span className="truncate font-medium">{gameName(r.civName)}</span>
+              </span>
+              <span className="flex shrink-0 items-center gap-2 tabular-nums">
+                <span className="text-xs text-muted-foreground">
+                  {formatCount(r.games)} {tt('games')}
+                </span>
                 <WinRateBar winRate={r.winRate} className="w-28 shrink-0" />
               </span>
-            </Link>
+            </div>
           ))}
         </div>
       </CardContent>
@@ -440,7 +492,10 @@ function LandmarkRecordCard({ civ, enabled }: { civ: string; enabled: boolean })
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h3 className="text-sm">{tt('Your landmark record')}</h3>
           <span className="text-[11px] text-muted-foreground">
-            {`из синхронизированных игр за ${gameName(civDisplayName(civ))} — маленькая, но реальная выборка`}
+            {tt('From your synced games with {civ} — a small but real sample.').replace(
+              '{civ}',
+              gameName(civDisplayName(civ)),
+            )}
           </span>
         </div>
         <div className="overflow-x-auto rounded-sm border border-border/70">

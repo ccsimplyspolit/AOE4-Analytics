@@ -8,7 +8,7 @@
  */
 import { decodeHtmlEntities, type BuildOrder } from './buildOrderSchema'
 import type { TrainerCheckpoint, TrainerReport } from './buildTrainer'
-import { counterPlanForCiv } from './civUnits'
+import { counterPlanForCiv, counterPlanForMatchup } from './civUnits'
 import { formatDuration } from './format'
 
 export type RecoveryKind = 'late-age' | 'villager-deficit' | 'data-gap'
@@ -130,6 +130,12 @@ export interface LiveBuildFork {
   /** Always framed as a condition the player must verify by scouting. */
   condition: string
   advice: string
+  /** Enemy unit names to scout; overlay localizes these. */
+  scoutNames?: string[]
+  /** Selected build title; overlay localizes the civ prefix. */
+  baselineName?: string
+  /** Counter unit names (your civ when known); overlay localizes these. */
+  counterLabels?: string[]
 }
 
 export interface LiveBuildForkPlan {
@@ -146,6 +152,7 @@ export interface LiveBuildForkPlan {
 export function liveBuildForkPlan(input: {
   reference: BuildOrder
   opponentCivs: (string | null | undefined)[]
+  myCiv?: string | null
   maxForks?: number
 }): LiveBuildForkPlan {
   const maxForks = Math.max(0, Math.floor(input.maxForks ?? 2))
@@ -153,7 +160,7 @@ export function liveBuildForkPlan(input: {
   const unknownCount = input.opponentCivs.length - input.opponentCivs.filter(isKnownCiv).length
   const forks: LiveBuildFork[] = []
 
-  const staticFork = matchupFork(input.reference, knownCivs)
+  const staticFork = matchupFork(input.reference, knownCivs, input.myCiv)
   if (staticFork) forks.push(staticFork)
 
   const buildFork = referenceBuildFork(input.reference)
@@ -171,7 +178,11 @@ export function liveBuildForkPlan(input: {
   return { forks: forks.slice(0, maxForks), coverageNote }
 }
 
-function matchupFork(reference: BuildOrder, knownCivs: string[]): LiveBuildFork | null {
+function matchupFork(
+  reference: BuildOrder,
+  knownCivs: string[],
+  myCiv?: string | null,
+): LiveBuildFork | null {
   const plans = knownCivs.map((civ) => counterPlanForCiv(civ, 2)).filter((plan) => plan != null)
   if (plans.length === 0) return null
 
@@ -181,8 +192,11 @@ function matchupFork(reference: BuildOrder, knownCivs: string[]): LiveBuildFork 
     plans.map((plan) => plan.keyUnits.map((unit) => unit.name)),
     2,
   )
+  const counterPlans = myCiv
+    ? knownCivs.map((civ) => counterPlanForMatchup(myCiv, civ, 2)).filter((plan) => plan != null)
+    : plans
   const counters = mergeLimited(
-    plans.map((plan) => plan.counters.map((counter) => counter.label)),
+    counterPlans.map((plan) => plan.counters.map((counter) => counter.label)),
     2,
   )
   if (threats.length === 0 || counters.length === 0) return null
@@ -191,6 +205,9 @@ function matchupFork(reference: BuildOrder, knownCivs: string[]): LiveBuildFork 
     source: 'static-matchup',
     condition: `If you scout ${joinOr(threats)}:`,
     advice: `Keep ${reference.name} as the baseline; prioritize ${joinAnd(counters)}.`,
+    scoutNames: threats,
+    baselineName: reference.name,
+    counterLabels: counters,
   }
 }
 

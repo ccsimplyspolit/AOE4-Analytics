@@ -7,22 +7,21 @@ import {
   type PointerEvent as ReactPointerEvent,
   type ReactNode,
 } from 'react'
-import { Move } from 'lucide-react'
 import { ipc } from '@shared/ipc'
 import type { ScoutReport } from '@domain/types'
-import type { LiveMatchup } from '@domain/liveMatch'
+import { liveOpponentCivilizations, type LiveMatchup } from '@domain/liveMatch'
+import { overlayBuildForCiv, buildSupportsCiv, selectLiveOverlayBuild } from '@domain/buildOrderComparison'
 import type { SessionSummary } from '@domain/session'
 import type {
   OverlayDetectionPayload,
   OverlayMatchState,
   PostGameSummary,
 } from '@ipc/contract'
-import { matchupTroopsForTeam } from '@domain/civUnits'
-import { COUNTERABLE_CIVS, counterPlanForCiv } from '@domain/civUnits'
-import { civDisplayName } from '@domain/civ'
+import { overlayMatchupTroops } from '@domain/civUnits'
+import { COUNTERABLE_CIVS, counterPlanForMatchup } from '@domain/civUnits'
 import { gameElapsedSec, todMsFromEpoch } from '@domain/localStats'
 import { bracketFromRankLevel, getBenchmarks } from '@domain/benchmarks'
-import { buildIndexForCiv, stepIndexForElapsed, type BuildOrder } from '@domain/buildOrderSchema'
+import { stepIndexForElapsed, type BuildOrder } from '@domain/buildOrderSchema'
 import { applyAccent } from '@shared/accent'
 import { CIV_FLAGS } from '@data/vendor/aoe4world-overlay/flags'
 import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
@@ -34,6 +33,7 @@ import {
   type OverlayWidgetPositions,
 } from '@store/settings'
 import { MatchupBar, type MatchupSide } from './MatchupBar'
+import { OVERLAY_PANEL_CLASS, overlayPanelStyle } from './overlayChrome'
 import { PostGameCard } from './PostGameCard'
 import { ApmWidget } from './ApmWidget'
 import { BuildOrderWidget } from './BuildOrderWidget'
@@ -43,7 +43,6 @@ import { CounterWidget } from './CounterWidget'
 import { CoachWidget } from './CoachWidget'
 import { EcoSplitWidget } from './EcoSplitWidget'
 import { playAudioCue } from '@domain/overlayAudio'
-import { panelBg } from './panelBg'
 import { useI18n } from '../i18n'
 
 const PLACEHOLDER_MATCHUP: LiveMatchup = {
@@ -137,7 +136,7 @@ const WIDGET_LABELS: Record<OverlayWidgetKey, string> = {
  * before queueing.
  */
 export function OverlayApp() {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const [matchState, setMatchState] = useState<OverlayMatchState>('idle')
   const [detection, setDetection] = useState<OverlayDetectionPayload>({
     processRunning: null,
@@ -162,7 +161,7 @@ export function OverlayApp() {
   // matchup helper without changing the detected live roster.
   const [counterCivOverride, setCounterCivOverride] = useState<string | null>(null)
   const [coachShown, setCoachShown] = useState(true)
-  const [apmShown, setApmShown] = useState(true)
+  const [apmShown, setApmShown] = useState(false)
   const [matchupShown, setMatchupShown] = useState(true)
   const [postGameShown, setPostGameShown] = useState(true)
   const [statusShown, setStatusShown] = useState(true)
@@ -183,7 +182,7 @@ export function OverlayApp() {
   const [customCss, setCustomCss] = useState('')
   const [ageTargetsShown, setAgeTargetsShown] = useState(true)
   const [showEcoSplit, setShowEcoSplit] = useState(true)
-  const [miniHud, setMiniHud] = useState(false)
+  const [miniHud, setMiniHud] = useState(true)
   const [audioCues, setAudioCues] = useState(true)
   const [audioCueVolume, setAudioCueVolume] = useState(0.3)
   const [timingCheckpoints, setTimingCheckpoints] = useState(true)
@@ -233,7 +232,7 @@ export function OverlayApp() {
         setAccentColor(s.accentColor ?? null)
         setPanelAlpha(clampAlpha(s.overlay.opacity))
         setScale(clampScale(s.overlay.scale))
-        setApmShown(s.overlay.apm !== false)
+        setApmShown(s.overlay.apm === true)
         setMatchupShown(s.overlay.showMatchup !== false)
         setPostGameShown(s.overlay.showPostGame !== false)
         setStatusShown(s.overlay.showStatus !== false)
@@ -250,7 +249,7 @@ export function OverlayApp() {
         setCustomCss(s.overlay.customCss ?? '')
         setAgeTargetsShown(s.overlay.showAgeTargets !== false)
         setShowEcoSplit(s.overlay.showEcoSplit !== false)
-        setMiniHud(s.overlay.miniHud === true)
+        setMiniHud(s.overlay.miniHud !== false)
         setAudioCues(s.overlay.audioCues !== false)
         setAudioCueVolume(s.overlay.audioCueVolume ?? 0.3)
         setTimingCheckpoints(s.overlay.timingCheckpoints !== false)
@@ -290,7 +289,7 @@ export function OverlayApp() {
       setAccentColor(o.accentColor ?? null)
       setPanelAlpha(clampAlpha(o.opacity))
       setScale(clampScale(o.scale))
-      setApmShown(o.apm !== false)
+      setApmShown(o.apm === true)
       setMatchupShown(o.showMatchup !== false)
       setPostGameShown(o.showPostGame !== false)
       setStatusShown(o.showStatus !== false)
@@ -307,7 +306,7 @@ export function OverlayApp() {
       setCustomCss(o.customCss ?? '')
       setAgeTargetsShown(o.showAgeTargets !== false)
       setShowEcoSplit(o.showEcoSplit !== false)
-      setMiniHud(o.miniHud === true)
+      setMiniHud(o.miniHud !== false)
       setAudioCues(o.audioCues !== false)
       setAudioCueVolume(o.audioCueVolume ?? 0.3)
       setTimingCheckpoints(o.timingCheckpoints !== false)
@@ -316,7 +315,9 @@ export function OverlayApp() {
       setSessionShown(o.showSession !== false)
       setCounterShown(o.showCounter !== false)
       setCoachShown(o.showCoach !== false)
-      setBuildOrderId(o.buildOrderId ?? null)
+      if ((o.buildOrderMode ?? 'manual') !== 'auto') {
+        setBuildOrderId(o.buildOrderId ?? null)
+      }
       setBuildOrderVisible(o.buildOrderMode !== 'hidden')
       setCustomBuildOrders(o.customBuildOrders ?? [])
       setBuildOrderCycle(o.buildOrderCycle ?? [])
@@ -458,19 +459,35 @@ export function OverlayApp() {
       .map((name) => byName.get(name))
       .filter((build): build is BuildOrder => !!build && !buildOrderDisabled.includes(build.name))
   }, [allBuilds, buildOrderCycle, buildOrderDisabled])
-  const selectedBuild = useMemo<BuildOrder | null>(
-    () =>
-      buildOrderId
-        ? (allBuilds.find((b) => b.name === buildOrderId) ?? null)
-        : null,
-    [allBuilds, buildOrderId],
-  )
+  const selectedBuild = useMemo<BuildOrder | null>(() => {
+    if (inGame && myCiv) {
+      return overlayBuildForCiv(cycleBuilds, allBuilds, {
+        civ: myCiv,
+        selectedName: buildOrderId,
+        opponentCivilizations: liveOpponentCivilizations(matchup, oppCiv),
+      })
+    }
+    return buildOrderId ? (allBuilds.find((b) => b.name === buildOrderId) ?? null) : null
+  }, [allBuilds, buildOrderId, cycleBuilds, inGame, matchup, myCiv, oppCiv])
+  const overlayCycle = useMemo(() => {
+    if (!inGame || !myCiv) return cycleBuilds
+    const matching = cycleBuilds.filter((build) => buildSupportsCiv(build, myCiv))
+    if (matching.length > 0) return matching
+    return allBuilds.filter((build) => buildSupportsCiv(build, myCiv))
+  }, [allBuilds, cycleBuilds, inGame, myCiv])
   useEffect(() => {
     if (buildOrderMode !== 'auto' || !inGame || !myCiv) return
-    const index = buildIndexForCiv(cycleBuilds, myCiv)
-    const next = index == null ? null : cycleBuilds[index]?.name ?? null
-    setBuildOrderId((current) => (current === next ? current : next))
-  }, [buildOrderMode, cycleBuilds, inGame, myCiv])
+    const picked = selectLiveOverlayBuild(cycleBuilds, {
+      civ: myCiv,
+      opponentCivilizations: liveOpponentCivilizations(matchup, oppCiv),
+    })
+    const next = picked?.name ?? null
+    setBuildOrderId((current) => {
+      if (current === next) return current
+      setManualBuildStep(null)
+      return next
+    })
+  }, [buildOrderMode, cycleBuilds, inGame, matchup, myCiv, oppCiv])
   const showBuildOrder =
     buildOrderVisible && buildOrderMode !== 'hidden' && selectedBuild != null && (inGame || placementMode)
   const showAgeTargets = ageTargetsShown && (inGame || placementMode)
@@ -488,7 +505,7 @@ export function OverlayApp() {
   // click-through over the game.
   useEffect(() => {
     const offControl = ipc.onOverlayControl((action) => {
-      const builds = cycleBuilds
+      const builds = overlayCycle
       if (action === 'next-counter') {
         const current = counterCivOverride ?? oppCiv
         const currentIndex = current ? COUNTERABLE_CIVS.indexOf(current) : -1
@@ -576,7 +593,7 @@ export function OverlayApp() {
       })
     })
     return offControl
-  }, [audioCues, audioCueVolume, counterCivOverride, cycleBuilds, elapsedSec, oppCiv, selectedBuild])
+  }, [audioCues, audioCueVolume, counterCivOverride, overlayCycle, elapsedSec, oppCiv, selectedBuild])
 
   const buildStepIndex =
     manualBuildStep ??
@@ -590,19 +607,18 @@ export function OverlayApp() {
   const matchupMe = renderMatchup?.teams.flat().find((p) => p.isMe) ?? null
   const bracket = bracketFromRankLevel(matchupMe?.rankLevel)
 
-  const troopMyCiv =
-    renderMatchup?.teams[0]?.find((p) => p.isMe)?.civ ?? renderMatchup?.teams[0]?.[0]?.civ ?? myCiv
-  const counterPlan = counterPlanForCiv(counterCivOverride ?? oppCiv)
+  const troopMyCiv = matchupMe?.civ ?? myCiv
+  const counterPlan = counterPlanForMatchup(troopMyCiv, counterCivOverride ?? oppCiv)
   const showCounter = counterShown && counterPlan != null && (inGame || placementMode)
   const showCoach = coachShown && (inGame || placementMode) && troopMyCiv != null
   const enemyCivs = renderMatchup
     ? renderMatchup.teams
-        .slice(1)
+        .filter((team) => !team.some((p) => p.isMe))
         .flat()
         .map((p) => p.civ)
     : [oppCiv]
   const troops =
-    (inGame || placementMode) && troopsShown ? matchupTroopsForTeam(troopMyCiv, enemyCivs) : null
+    (inGame || placementMode) && troopsShown ? overlayMatchupTroops(troopMyCiv, enemyCivs) : null
 
   const me: MatchupSide = {
     civ: matchupMe?.civ ?? myCiv,
@@ -662,6 +678,7 @@ export function OverlayApp() {
             opponent={opponent}
             matchup={renderMatchup}
             troops={troopsShown ? troops : null}
+            compact={miniHud}
           />
         </PlacedWidget>
       )}
@@ -680,6 +697,7 @@ export function OverlayApp() {
           <PostGameCard
             summary={postGame ?? PLACEHOLDER_POST_GAME}
             onDismiss={postGame && !placementMode ? dismissPostGame : undefined}
+            compact={miniHud}
           />
         </PlacedWidget>
       )}
@@ -694,7 +712,7 @@ export function OverlayApp() {
           opacity={widgetOpacities.apm ?? 1}
           onPositionChange={saveWidgetPosition}
         >
-          <ApmWidget apm={apm ?? 72} />
+          <ApmWidget apm={apm ?? 72} compact={miniHud} />
         </PlacedWidget>
       )}
 
@@ -708,7 +726,7 @@ export function OverlayApp() {
           opacity={widgetOpacities.session ?? 1}
           onPositionChange={saveWidgetPosition}
         >
-          <SessionWidget session={session ?? PLACEHOLDER_SESSION} />
+          <SessionWidget session={session ?? PLACEHOLDER_SESSION} compact={miniHud} />
         </PlacedWidget>
       )}
 
@@ -723,12 +741,11 @@ export function OverlayApp() {
           onPositionChange={saveWidgetPosition}
         >
           <div
-            className="pointer-events-none select-none rounded-lg py-1 shadow-xl ring-1 ring-white/10"
+            className={`${OVERLAY_PANEL_CLASS} pointer-events-none select-none py-0.5`}
             style={{
-              width: buildOrderPanelWidth,
-              background: `linear-gradient(to bottom right, ${panelBg(0.95)}, ${panelBg(0.7)})`,
-              textShadow: '0 1px 3px rgba(0,0,0,0.95)',
-              fontSize: buildOrderFontSize,
+              width: miniHud ? Math.min(buildOrderPanelWidth, 292) : buildOrderPanelWidth,
+              ...overlayPanelStyle(miniHud ? 0.55 : 0.7),
+              fontSize: miniHud ? Math.min(buildOrderFontSize, 12) : buildOrderFontSize,
             }}
           >
             <BuildOrderWidget
@@ -736,16 +753,17 @@ export function OverlayApp() {
               stepIndex={buildStepIndex}
               elapsedSec={renderElapsed}
               auto={timerMode === 'game' && manualBuildStep == null && renderElapsed != null}
-              fontSize={buildOrderFontSize}
-              iconSize={buildOrderImageSize}
+              fontSize={miniHud ? Math.min(buildOrderFontSize, 12) : buildOrderFontSize}
+              iconSize={miniHud ? Math.min(buildOrderImageSize, 22) : buildOrderImageSize}
               viewMode={buildOrderViewMode}
               showNext={buildOrderShowNext}
               showResources={buildOrderShowResources}
               showNotes={buildOrderShowNotes}
-              showResponsePlan={buildOrderShowResponsePlan}
+              showResponsePlan={buildOrderShowResponsePlan && !miniHud}
               showTitle={buildOrderShowTitle}
               opponentCivs={enemyCivs}
-              availableBuilds={cycleBuilds}
+              myCiv={troopMyCiv}
+              availableBuilds={overlayCycle}
               onSelectBuild={(name) => {
                 setBuildOrderId(name)
                 setBuildOrderMode('manual')
@@ -789,16 +807,14 @@ export function OverlayApp() {
           onPositionChange={saveWidgetPosition}
         >
           <div
-            className="pointer-events-none w-48 select-none rounded-lg text-white shadow-xl ring-1 ring-white/10"
-            style={{
-              background: `linear-gradient(to bottom right, ${panelBg(0.95)}, ${panelBg(0.7)})`,
-              textShadow: '0 1px 3px rgba(0,0,0,0.95)',
-            }}
+            className={`${OVERLAY_PANEL_CLASS} pointer-events-none w-44 select-none text-white`}
+            style={overlayPanelStyle(miniHud ? 0.55 : 0.7)}
           >
             <AgeTargetsWidget
               benchmarks={getBenchmarks(bracket)}
               bracket={bracket}
               elapsedSec={renderElapsed}
+              compact={miniHud}
             />
           </div>
         </PlacedWidget>
@@ -815,16 +831,14 @@ export function OverlayApp() {
           onPositionChange={saveWidgetPosition}
         >
           <div
-            className="pointer-events-none w-64 select-none rounded-lg text-white shadow-xl ring-1 ring-white/10"
-            style={{
-              background: `linear-gradient(to bottom right, ${panelBg(0.95)}, ${panelBg(0.7)})`,
-              textShadow: '0 1px 3px rgba(0,0,0,0.95)',
-            }}
+            className={`${OVERLAY_PANEL_CLASS} pointer-events-none w-56 select-none text-white`}
+            style={overlayPanelStyle(miniHud ? 0.55 : 0.7)}
           >
             <CounterWidget
               plan={counterPlan}
               manual={counterCivOverride != null || !inGame || oppCiv == null}
-              myCivName={troopMyCiv ? civDisplayName(troopMyCiv) : null}
+              myCivName={troopMyCiv ? gameName(troopMyCiv) : null}
+              compact={miniHud}
             />
           </div>
         </PlacedWidget>
@@ -855,7 +869,7 @@ export function OverlayApp() {
 
       {placementMode && (
         <div className="pointer-events-none fixed inset-x-0 bottom-5 z-[90] flex justify-center">
-          <span className="rounded-full bg-[#0b0e14]/95 px-4 py-2 text-xs font-medium text-white/85 shadow-2xl ring-1 ring-primary/60">
+          <span className={`${OVERLAY_PANEL_CLASS} px-3 py-1 text-[11px] font-medium text-white/80`}>
             {tt('Drag any outlined widget to place it · use the same shortcut when done')}
           </span>
         </div>
@@ -863,10 +877,9 @@ export function OverlayApp() {
 
       {showStatusPill && (
         <div className="pointer-events-none fixed inset-x-0 top-1.5 z-50 flex justify-center">
-          <span className="flex items-center gap-1.5 rounded-md bg-[#0b0e14]/85 px-2.5 py-1 text-[11px] text-white/70 shadow-lg ring-1 ring-white/10">
-            <span className="inline-block h-2 w-2 rounded-full bg-cyan-400" />
-            RTSLytics
-            <span className="text-white/40">
+          <span className={`${OVERLAY_PANEL_CLASS} flex items-center gap-1.5 px-2 py-0.5 text-[10px] text-white/65`}>
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-white/50" />
+            <span className="text-white/45">
               {inGame
                 ? tt('finding matchup...')
                 : matchState === 'ended'
@@ -913,7 +926,7 @@ function PlacedWidget({
   children: ReactNode
   onPositionChange: (key: OverlayWidgetKey, position: OverlayWidgetPosition) => void
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const [draft, setDraft] = useState<OverlayWidgetPosition | null>(null)
   const [drag, setDrag] = useState<{
     dx: number
@@ -968,12 +981,11 @@ function PlacedWidget({
       title={placementMode ? tt('Move overlay widget') : undefined}
     >
       {placementMode && (
-        <span className="pointer-events-none absolute -left-2 -top-3 z-[70] flex h-6 items-center gap-1 rounded-full bg-primary px-2 text-[10px] font-semibold text-primary-foreground shadow-lg ring-1 ring-black/50">
-          <Move className="h-3 w-3" />
+        <span className={`${OVERLAY_PANEL_CLASS} pointer-events-none absolute -left-1.5 -top-2.5 z-[70] px-1.5 py-0.5 text-[9px] font-medium text-white/70`}>
           {tt(WIDGET_LABELS[widgetKey])}
         </span>
       )}
-      <div className={placementMode ? 'rounded-md ring-1 ring-primary/70' : undefined}>
+      <div className={placementMode ? 'outline outline-1 outline-white/35' : undefined}>
         {children}
       </div>
     </div>

@@ -31,7 +31,8 @@ win:
   icon: build/icon.ico
   # The overlay must share (or exceed) the game's UI privilege level, otherwise
   # Windows can block it from appearing above an elevated game window. Request
-  # elevation for every Windows launch, including the portable build.
+  # elevation for every Windows launch, including the portable build. The main
+  # process also self-elevates if a launch path skipped this manifest.
   requestedExecutionLevel: requireAdministrator
   # NSIS uses electron-updater. Portable builds use the app's GitHub-release
   # updater, which verifies and swaps the portable wrapper after exit.
@@ -48,7 +49,9 @@ publish:
 nsis:
   artifactName: ${productName}-${version}-Setup.${ext}
   oneClick: true
-  perMachine: false
+  # Per-machine install so the Setup EXE and Start Menu/desktop shortcuts run
+  # elevated together with the requireAdministrator application manifest.
+  perMachine: true
 
 portable:
   artifactName: ${productName}-${version}-portable.${ext}

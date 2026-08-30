@@ -1,6 +1,6 @@
 import { CIV_FLAGS } from '@data/vendor/aoe4world-overlay/flags'
-import { civDisplayName } from '@domain/civ'
 import { cn } from '@shared/lib/utils'
+import { useI18n } from '../i18n'
 
 /**
  * A civilization flag for the matchup bar. Renders the vendored flag image with
@@ -8,8 +8,10 @@ import { cn } from '@shared/lib/utils'
  * a slug isn't vendored (e.g. a future civ) — never a wrong/placeholder flag.
  */
 export function CivFlag({ civ, compact }: { civ: string | null; compact: boolean }) {
+  const { gameName } = useI18n()
   const dims = compact ? 'h-5 w-9' : 'h-9 w-[60px]'
   const entry = civ ? CIV_FLAGS[civ] : undefined
+  const civLabel = civ ? gameName(civ) : null
   if (!entry) {
     return (
       <span
@@ -19,14 +21,14 @@ export function CivFlag({ civ, compact }: { civ: string | null; compact: boolean
           compact ? 'text-[8px]' : 'text-[10px]',
         )}
       >
-        {civ ? civDisplayName(civ).slice(0, 3) : '—'}
+        {civLabel ? civLabel.slice(0, 3) : '—'}
       </span>
     )
   }
   return (
     <img
       src={entry.flag}
-      alt={civ ? civDisplayName(civ) : 'civ'}
+      alt={civLabel ?? 'civ'}
       style={{ outlineColor: entry.color }}
       className={cn('shrink-0 rounded-sm object-cover outline outline-1', dims)}
     />

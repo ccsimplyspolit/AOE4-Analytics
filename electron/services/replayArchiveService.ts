@@ -19,6 +19,7 @@ import {
   type AccountReplayArchiveSnapshot,
 } from './accountReplayArchiveStore'
 import { getClient, getRelicClient, getSettings } from './appContext'
+import { yieldToEventLoop } from './eventLoop'
 import { cacheRemoteReplay, fetchRankedSummary, getSteamAuthStatus } from './relicAuthService'
 import { err, errFrom, ok } from './result'
 import { decodeOutcome } from '@domain/relic'
@@ -159,7 +160,7 @@ export async function listAccountReplayArchive(
 
   try {
     const [aoe4WorldGames, relicResponse] = await Promise.all([
-      getClient().getAllPlayerGames(profileId, { fresh: true, pageSize: 100 }),
+      getClient().getAllPlayerGames(profileId, { fresh: true, pageSize: 100, includeAlts: true }),
       getRelicClient().getRecentMatchHistory(profileId).catch(() => null),
     ])
     const relicById = new Map((relicResponse?.matchHistoryStats ?? []).map((match) => [match.id, match]))
@@ -177,12 +178,14 @@ export async function listAccountReplayArchive(
           historySource: 'relic' as const,
         })),
     ].sort((left, right) => right.game.started_at.localeCompare(left.game.started_at))
-    const snapshotItems: AccountReplayItem[] = mergedGames.map(({ game, historySource }) => {
+    const snapshotItems: AccountReplayItem[] = []
+    for (let i = 0; i < mergedGames.length; i++) {
+      const { game, historySource } = mergedGames[i]!
       const relicMatch = relicById.get(game.game_id) ?? null
       const available = replayAvailable(relicMatch)
       const cached = getCachedReplayInfo(game.game_id)
       const cachedSummary = getCachedSummaryInfo(String(game.game_id))
-      return {
+      snapshotItems.push({
         game,
         historySource,
         replayAvailable: available,
@@ -193,8 +196,9 @@ export async function listAccountReplayArchive(
         summaryCached: cachedSummary.cached,
         cacheStatus: cached.cached ? 'cached' : available ? 'available' : relicResponse ? 'unavailable' : 'not_checked',
         cacheSizeBytes: cached.sizeBytes,
-      }
-    })
+      })
+      if (i % 40 === 0) await yieldToEventLoop()
+    }
     const snapshot = {
       items: snapshotItems,
       aoe4WorldCount: aoe4WorldGames.length,

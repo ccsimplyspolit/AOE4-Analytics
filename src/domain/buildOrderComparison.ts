@@ -1,5 +1,5 @@
 import type { BuildOrder } from './buildOrderSchema'
-import { buildIndexForCiv, parseNote } from './buildOrderSchema'
+import { buildIndexForCiv, flattenNote } from './buildOrderSchema'
 import { parseDuration } from './format'
 import { gradeBuildFollow, type TrainerReport } from './buildTrainer'
 import type { PerPlayerMatchStats } from './analysis'
@@ -57,8 +57,12 @@ function normalizedContext(value: string | null | undefined): string {
   return (value ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '')
 }
 
-function supportsCiv(build: BuildOrder, civ: string | null): boolean {
+export function buildSupportsCiv(build: BuildOrder, civ: string | null): boolean {
   return civ != null && buildIndexForCiv([build], civ) === 0
+}
+
+function supportsCiv(build: BuildOrder, civ: string | null): boolean {
+  return buildSupportsCiv(build, civ)
 }
 
 function contextKeys(value: string | string[] | null | undefined): Set<string> {
@@ -194,6 +198,62 @@ export function selectReferenceBuild(
     observedExpectedActions: fit?.expectedActions ?? 0,
     observedConfidence: fit?.confidence ?? 'none',
   }
+}
+
+function isMatchupTagged(build: BuildOrder): boolean {
+  return contextKeys(build.opponentCivilization).size > 0
+}
+
+/**
+ * Live overlay picker: keep pool order as the civ default, then swap to a
+ * matchup-tagged build when the opponent civ is known. Untagged generics win
+ * over a tagged build that does not list this opponent (mill vs French would
+ * otherwise steal the 3-stone Winery slot).
+ */
+export function selectLiveOverlayBuild(
+  builds: BuildOrder[],
+  input: { civ: string | null; opponentCivilizations?: string[] },
+): BuildOrder | null {
+  const { civ, opponentCivilizations = [] } = input
+  const compatible = builds.filter((build) => supportsCiv(build, civ))
+  if (compatible.length === 0) return null
+  const opponents = opponentCivilizations.filter(Boolean)
+  if (opponents.length === 0) return compatible[0] ?? null
+  const matchupHits = compatible.filter((build) => supportsMatchup(build, opponents))
+  if (matchupHits.length === 1) return matchupHits[0] ?? null
+  if (matchupHits.length > 1) {
+    return selectReferenceBuild(matchupHits, { civ, opponentCivilizations: opponents }).reference
+  }
+  return compatible.find((build) => !isMatchupTagged(build)) ?? compatible[0] ?? null
+}
+
+/**
+ * Live overlay pick: keep a pinned build only when it is this civ. Sibling
+ * variants (Macedonian Dynasty vs Byzantines) must not stay on screen.
+ * If the cycle has no matching build, fall back to the full library.
+ */
+export function overlayBuildForCiv(
+  cycleBuilds: BuildOrder[],
+  allBuilds: BuildOrder[],
+  input: {
+    civ: string | null
+    selectedName?: string | null
+    opponentCivilizations?: string[]
+  },
+): BuildOrder | null {
+  const { civ, selectedName = null, opponentCivilizations = [] } = input
+  if (!civ) {
+    return selectedName ? (allBuilds.find((build) => build.name === selectedName) ?? null) : null
+  }
+  if (selectedName) {
+    const selected =
+      cycleBuilds.find((build) => build.name === selectedName) ??
+      allBuilds.find((build) => build.name === selectedName) ??
+      null
+    if (selected && supportsCiv(selected, civ)) return selected
+  }
+  const pool = cycleBuilds.filter((build) => supportsCiv(build, civ))
+  return selectLiveOverlayBuild(pool.length > 0 ? pool : allBuilds, { civ, opponentCivilizations })
 }
 
 interface ObservedBuildFit {
@@ -392,15 +452,7 @@ function singular(value: string): string {
 }
 
 function noteText(note: string): string {
-  return parseNote(note)
-    .filter(
-      (part): part is Extract<ReturnType<typeof parseNote>[number], { type: 'text' }> =>
-        part.type === 'text',
-    )
-    .map((part) => part.text)
-    .join(' ')
-    .replace(/\s+/g, ' ')
-    .trim()
+  return flattenNote(note)
 }
 
 function actionCategory(note: string): BuildEvent['category'] | null {

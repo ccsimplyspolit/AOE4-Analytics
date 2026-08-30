@@ -243,7 +243,7 @@ async function searchFinderReferences(
     const gameId = Number(reference.gameId)
     if (!Number.isSafeInteger(gameId) || (query.gameId != null && gameId === query.gameId)) continue
     try {
-      const game = await getClient().getGame(reference.profileId, gameId)
+      const game = await getClient().getGame(reference.profileId, gameId, { includeAlts: true })
       const candidate = matchCandidate(game, query)
       if (candidate) unique.set(candidate.gameId, candidate)
     } catch {

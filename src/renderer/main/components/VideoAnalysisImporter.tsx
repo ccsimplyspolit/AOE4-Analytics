@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
-import { FileText, LoaderCircle, Save, Sparkles, Video } from 'lucide-react'
+import { FileText, LoaderCircle, Save, Video } from 'lucide-react'
 import { buildOrderCivLabel } from '@domain/buildOrderSchema'
 import type { VideoAnalysisRecord } from '@domain/videoAnalysis'
 import type { TwitchVodFinderInput } from '@domain/twitchVodFinder'
@@ -122,14 +122,26 @@ export function VideoAnalysisImporter({
     if (!initialUrl) return
     setUrl(initialUrl)
     if (initialCivilization) setCivilization(initialCivilization)
-    // The Cellar component stays mounted while hash query parameters change;
-    // remember the URL rather than a single boolean so every newly linked VOD
-    // is analyzed once, while ordinary rerenders cannot start duplicates.
     if (autoStartedUrlRef.current !== initialUrl) {
       autoStartedUrlRef.current = initialUrl
       void extract(initialUrl)
     }
   }, [extract, initialCivilization, initialUrl])
+
+  useEffect(() => {
+    const candidate = url.trim()
+    if (candidate === initialUrl.trim()) return
+    if (candidate.length < 12 || !/^https?:\/\//i.test(candidate)) return
+    const timer = window.setTimeout(() => void extract(candidate), 700)
+    return () => window.clearTimeout(timer)
+  }, [extract, initialUrl, url])
+
+  useEffect(() => {
+    if (initialUrl) return
+    void analyzeLinkedVods()
+    // One background pass when the Cellar opens without a deep-linked VOD.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <Card className="border-primary/25 bg-primary/[0.035]">
@@ -165,33 +177,19 @@ export function VideoAnalysisImporter({
             className="h-9 text-xs"
             aria-label={tt('Civilization (optional)')}
           />
-          <button
-            type="button"
-            onClick={() => void extract()}
-            disabled={loading || url.trim().length < 8}
-            className="inline-flex h-9 items-center justify-center gap-1.5 rounded-md bg-primary px-3 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:pointer-events-none disabled:opacity-50"
-          >
-            {loading ? (
+          {loading ? (
+            <span className="inline-flex h-9 items-center gap-1.5 text-xs text-muted-foreground">
               <LoaderCircle className="h-3.5 w-3.5 animate-spin" />
-            ) : (
-              <Sparkles className="h-3.5 w-3.5" />
-            )}
-            {loading ? tt('Extracting…') : tt('Extract and save')}
-          </button>
+              {tt('Extracting…')}
+            </span>
+          ) : null}
         </div>
-        <button
-          type="button"
-          onClick={() => void analyzeLinkedVods()}
-          disabled={batchLoading || loading}
-          className="inline-flex h-8 items-center gap-1.5 rounded-md border border-violet-400/35 px-3 text-[11px] text-violet-200 transition-colors hover:bg-violet-500/10 disabled:pointer-events-none disabled:opacity-50"
-        >
-          {batchLoading ? (
+        {batchLoading && (
+          <p className="inline-flex items-center gap-1.5 text-[11px] text-violet-200">
             <LoaderCircle className="h-3.5 w-3.5 animate-spin" />
-          ) : (
-            <Sparkles className="h-3.5 w-3.5" />
-          )}
-          {batchLoading ? tt('Checking linked Twitch VODs…') : tt('Analyze all linked Twitch VODs')}
-        </button>
+            {tt('Checking linked Twitch VODs…')}
+          </p>
+        )}
         {batchProgress && (
           <p className="text-[11px] text-muted-foreground">
             {tt('Processed')}: {batchProgress.current}/{batchProgress.total} · {tt('Linked VODs')}:{' '}

@@ -17,6 +17,13 @@ describe('rankedMapAdvisor', () => {
     expect(advice.recommendedBuildStyles.some((b) => b.includes('Relic Rush'))).toBe(true)
   })
 
+  it('treats West Lake as land because ranked docks are disabled', () => {
+    const advice = getMapStrategyAdvice('West Lake')
+    expect(advice.archetype).toBe('open_land')
+    expect(advice.description.toLowerCase()).toContain('dock')
+    expect(advice.topCivilizations.some((c) => c.civ === 'macedonian_dynasty')).toBe(true)
+  })
+
   it('provides sensible fallback for unknown or custom maps', () => {
     const advice = getMapStrategyAdvice('MegaRandom 2026')
     expect(advice.archetype).toBe('open_land')

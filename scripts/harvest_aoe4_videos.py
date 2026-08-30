@@ -30,6 +30,8 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
+from neodlp_toolchain import apply_ytdlp_options, ensure_pot_server, resolve_neodlp_home
+
 try:
     import yt_dlp
 except ImportError as exc:  # pragma: no cover - exercised in the user environment
@@ -206,14 +208,14 @@ def search_candidates(aliases: tuple[str, ...], cap: int) -> list[dict[str, Any]
             f'AoE4 {alias} ranked gameplay',
         ))
     found: dict[str, dict[str, Any]] = {}
-    options = {
+    options = apply_ytdlp_options({
         'quiet': True,
         'no_warnings': True,
         'ignoreerrors': True,
         'extract_flat': 'in_playlist',
         'skip_download': True,
         'logger': QuietYdlLogger(),
-    }
+    })
     with yt_dlp.YoutubeDL(options) as ydl:
         for query in queries:
             result = ydl.extract_info(f'ytsearch50:{query}', download=False) or {}
@@ -257,22 +259,67 @@ def full_metadata(candidate: dict[str, Any], ydl: yt_dlp.YoutubeDL) -> dict[str,
     }
 
 
-def matches_civilization(metadata: dict[str, Any], aliases: tuple[str, ...]) -> bool:
+def _alias_in_text(text: str, aliases: tuple[str, ...]) -> bool:
+    lower = text.lower()
+    return any(
+        re.search(r'(?<![a-z0-9])' + re.escape(alias.lower()) + r'(?![a-z0-9])', lower)
+        for alias in aliases
+    )
+
+
+def title_subject_slug(title: str) -> str | None:
+    """Civilization the title is teaching — not one named only as a matchup."""
+    how_to_play = re.search(
+        r'how to play(?: the)?\s+(.+?)(?:\s+like a pro|\s+[-–—]|\s+masterclass|\s+build|\s+guide|\s+in\b|$)',
+        title,
+        re.I,
+    )
+    ranked = sorted(
+        ((len(alias), slug, alias) for slug, aliases in CIVS.items() for alias in aliases),
+        reverse=True,
+    )
+
+    def slug_in(fragment: str) -> str | None:
+        lower = fragment.lower()
+        for _length, slug, alias in ranked:
+            if re.search(r'(?<![a-z0-9])' + re.escape(alias.lower()) + r'(?![a-z0-9])', lower):
+                return slug
+        return None
+
+    if how_to_play:
+        subject = slug_in(how_to_play.group(1))
+        if subject:
+            return subject
+    versus = re.match(r'^(.+?)\s+vs\.?\s+', title, re.I)
+    if versus:
+        subject = slug_in(versus.group(1))
+        if subject:
+            return subject
+    return slug_in(title)
+
+
+def matches_civilization(
+    metadata: dict[str, Any],
+    aliases: tuple[str, ...],
+    civ_slug: str | None = None,
+) -> bool:
     """Reject search-result bleed from adjacent factions.
 
     YouTube search often returns a popular AoE4 video for a nearby query even
-    when the faction is absent from the result. Search queries alone are not
-    evidence: require an explicit alias in the title or description, where a
-    multi-faction matchup/chapter can still legitimately qualify.
+    when the faction is absent from the result. A masterclass titled
+    "How to Play HRE" must not become Macedonian evidence just because the
+    description names that matchup.
     """
-    searchable = clean_text(
-        f"{metadata.get('title', '')}\n{metadata.get('descriptionExcerpt', '')}"
-    ).lower()
-    for alias in aliases:
-        pattern = r'(?<![a-z0-9])' + re.escape(alias.lower()) + r'(?![a-z0-9])'
-        if re.search(pattern, searchable, re.I):
-            return True
-    return False
+    title = metadata.get('title') or ''
+    subject = title_subject_slug(title)
+    if civ_slug and subject and subject != civ_slug:
+        return False
+    if _alias_in_text(title, aliases):
+        return True
+    if subject:
+        return False
+    searchable = clean_text(str(metadata.get('descriptionExcerpt') or ''))
+    return _alias_in_text(searchable, aliases)
 
 
 def clean_text(value: str) -> str:
@@ -532,7 +579,7 @@ def merge_video_evidence(
             continue
         if not published or published < start or published > end:
             continue
-        if not matches_civilization(video, aliases):
+        if not matches_civilization(video, aliases, civ):
             continue
         merged[video_id] = video
     ranked = sorted(merged.values(), key=lambda video: (
@@ -769,7 +816,7 @@ def main() -> int:
     RESEARCH_DIR.mkdir(parents=True, exist_ok=True)
     RAW_TRANSCRIPT_DIR.mkdir(parents=True, exist_ok=True)
 
-    ydl_options = {
+    ydl_options = apply_ytdlp_options({
         'quiet': True,
         'no_warnings': True,
         'ignoreerrors': False,
@@ -777,7 +824,11 @@ def main() -> int:
         'socket_timeout': 20,
         'sleep_interval_requests': 0.15,
         'logger': QuietYdlLogger(),
-    }
+    })
+    neodlp_home = resolve_neodlp_home()
+    if neodlp_home:
+        pot_ok = ensure_pot_server(neodlp_home)
+        print(f'Using NeoDLP toolchain at {neodlp_home} (PO-token server {"up" if pot_ok else "unavailable"})', flush=True)
     if args.cookies_from_browser:
         ydl_options['cookiesfrombrowser'] = (args.cookies_from_browser,)
     if args.cookies_file:
@@ -843,7 +894,7 @@ def main() -> int:
                     break
                 if not metadata:
                     continue
-                if not matches_civilization(metadata, CIVS[civ]):
+                if not matches_civilization(metadata, CIVS[civ], civ):
                     continue
                 published = parse_utc(metadata.get('publishedAt'))
                 if not published or published < start or published > end:

@@ -22,7 +22,7 @@ export function BeastyNumber() {
   const search = usePlayerSearch(numericQuery ? '' : debouncedQuery)
   const hits = search.data?.ok ? search.data.data : []
   const searchError = search.data && !search.data.ok ? search.data.error.message : null
-  const showResults = !selectedPlayer && !numericQuery && debouncedQuery.trim().length >= 3
+  const showResults = !selectedPlayer && !numericQuery && debouncedQuery.trim().length >= 2
 
   const selectPlayer = (hit: PlayerSearchHit) => {
     setSelectedPlayer(hit)

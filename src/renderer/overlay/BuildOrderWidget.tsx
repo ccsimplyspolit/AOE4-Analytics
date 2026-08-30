@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, type WheelEvent } from 'react'
 import { ChevronDown, Check } from 'lucide-react'
 import { decodeHtmlEntities, type BuildOrder } from '@domain/buildOrderSchema'
 import { parseBuildOrderDisplayNote } from '@domain/buildOrderNotes'
-import { liveBuildForkPlan } from '@domain/adaptiveBuild'
+import { liveBuildForkPlan, type LiveBuildFork } from '@domain/adaptiveBuild'
 import { formatDuration } from '@domain/format'
 import {
   AGE_ICON,
@@ -16,7 +16,8 @@ import {
   noteTokenIcon,
 } from './resourceGlyphs'
 import { extractBuildTargets, type BuildTarget } from './buildIcons'
-import { useI18n } from '../i18n'
+import { localizeCatalogTitle, useI18n } from '../i18n'
+import { localizeOverlayCopy } from '../localizeOverlayCopy'
 import { cn } from '@shared/lib/utils'
 
 /** A resource entry on the villager-split line: glyph + value, hidden when negative. */
@@ -72,9 +73,9 @@ function BuildIcon({ target, size = 30 }: { target: BuildTarget; size?: number }
   )
 }
 
-function renderNote(note: string) {
+function renderNote(note: string, copy: (text: string) => string) {
   return parseBuildOrderDisplayNote(note).map((part, i) => {
-    if (part.type === 'text') return <span key={i}>{part.text}</span>
+    if (part.type === 'text') return <span key={i}>{copy(part.text)}</span>
     const icon = noteTokenIcon(part.path)
     const label = part.type === 'icon' ? part.label : part.path.split('/').pop()?.replace(/\.\w+$/, '') ?? 'icon'
     return (
@@ -97,15 +98,52 @@ function renderNote(note: string) {
 }
 
 /** First sentence of a note, trimmed — used for the dim "next" preview. */
-function firstClause(s: string | undefined): string {
+function firstClause(s: string | undefined, copy: (text: string) => string): string {
   if (!s) return ''
   const t = decodeHtmlEntities(s).split(/[.!]/)[0] ?? s
-  return t.replace(/@[^@]+@/g, '').trim()
+  return copy(t.replace(/@[^@]+@/g, '').trim())
 }
 
-function plainNote(note: string | undefined): string {
+function plainNote(note: string | undefined, copy: (text: string) => string): string {
   if (!note) return ''
-  return decodeHtmlEntities(note).replace(/@[^@]+@/g, '').trim()
+  return copy(decodeHtmlEntities(note).replace(/@[^@]+@/g, '').trim())
+}
+
+function joinLocalized(
+  items: string[],
+  tt: (value: string) => string,
+  conjunction: 'or' | 'and',
+): string {
+  if (items.length <= 1) return items[0] ?? ''
+  const word = tt(conjunction)
+  if (items.length === 2) return `${items[0]} ${word} ${items[1]}`
+  return `${items.slice(0, -1).join(', ')} ${word} ${items[items.length - 1]}`
+}
+
+function localizeFork(
+  fork: LiveBuildFork,
+  tt: (value: string) => string,
+  gameName: (value: string) => string,
+  locale: 'en' | 'ru' | 'uk' | 'de',
+): { condition: string; advice: string } {
+  if (fork.scoutNames?.length && fork.baselineName && fork.counterLabels?.length) {
+    const units = joinLocalized(fork.scoutNames.map((name) => gameName(name)), tt, 'or')
+    const counters = joinLocalized(
+      fork.counterLabels.map((name) => gameName(name)),
+      tt,
+      'and',
+    )
+    const build = localizeCatalogTitle(fork.baselineName, locale, gameName)
+    return {
+      condition: tt('If you scout {units}:').replace('{units}', units),
+      advice: tt('Keep {build} as the baseline; prioritize {counters}.')
+        .replace('{build}', build)
+        .replace('{counters}', counters),
+    }
+  }
+  const copy = (text: string) =>
+    locale === 'ru' ? localizeOverlayCopy(text, { gameName, terms: true }) : tt(text)
+  return { condition: copy(fork.condition), advice: copy(fork.advice) }
 }
 
 /**
@@ -128,6 +166,7 @@ export function BuildOrderWidget({
   showTitle = true,
   noBuildCiv,
   opponentCivs = [],
+  myCiv = null,
   availableBuilds = [],
   onSelectBuild,
   miniHud = false,
@@ -146,20 +185,24 @@ export function BuildOrderWidget({
   showTitle?: boolean
   noBuildCiv?: string | null
   opponentCivs?: (string | null | undefined)[]
+  myCiv?: string | null
   availableBuilds?: BuildOrder[]
   onSelectBuild?: (name: string) => void
   miniHud?: boolean
 }) {
-  const { tt, gameName } = useI18n()
+  const { tt, gameName, locale } = useI18n()
   const [showPicker, setShowPicker] = useState(false)
   const pickerRef = useRef<HTMLDivElement>(null)
+  const buildTitle = localizeCatalogTitle(bo.name, locale, gameName)
+  const copy = (text: string) =>
+    locale === 'ru' ? localizeOverlayCopy(text, { gameName, terms: true }) : text
 
   const step = bo.build_order[stepIndex]
   const next = bo.build_order[stepIndex + 1]
   const r = step?.resources
   const targets = extractBuildTargets(step?.notes)
   const nextTargets = extractBuildTargets(next?.notes, 3)
-  const responsePlan = liveBuildForkPlan({ reference: bo, opponentCivs })
+  const responsePlan = liveBuildForkPlan({ reference: bo, opponentCivs, myCiv })
 
   // Close picker on outside click
   useEffect(() => {
@@ -207,7 +250,7 @@ export function BuildOrderWidget({
               availableBuilds.length > 1 ? 'cursor-pointer hover:text-cyan-300' : '',
             )}
           >
-            <span className="truncate">{bo.name}</span>
+            <span className="truncate">{buildTitle}</span>
             {availableBuilds.length > 1 && <ChevronDown className="h-3 w-3 shrink-0 opacity-70" />}
           </div>
 
@@ -235,7 +278,7 @@ export function BuildOrderWidget({
                       : 'text-white/80 hover:bg-white/10',
                   )}
                 >
-                  <span className="truncate">{b.name}</span>
+                  <span className="truncate">{localizeCatalogTitle(b.name, locale, gameName)}</span>
                   {b.name === bo.name && <Check className="h-3.5 w-3.5 text-cyan-300 shrink-0" />}
                 </button>
               ))}
@@ -243,7 +286,7 @@ export function BuildOrderWidget({
           )}
 
           {elapsedSec != null && (
-            <span className="rounded bg-cyan-500/20 px-1.5 py-0.5 font-mono text-cyan-300">
+            <span className={cn('font-mono', miniHud ? 'text-white/70' : 'rounded bg-cyan-500/20 px-1.5 py-0.5 text-cyan-300')}>
               {formatDuration(elapsedSec)}
             </span>
           )}
@@ -260,13 +303,17 @@ export function BuildOrderWidget({
               {AGE_ROMAN[step.age]}
             </span>
           )}
-          <span className="ml-auto tabular-nums">
+          <span className={cn('ml-auto tabular-nums', miniHud && 'text-white/50')}>
             {stepIndex + 1}/{bo.build_order.length}
           </span>
-          <span className="rounded bg-white/10 px-1 text-[9px] uppercase tracking-wide text-white/45">
-            {viewMode === 'text' ? 'TXT' : 'ICON'}
-          </span>
-          <span className={auto ? 'text-win' : 'text-warn'}>{auto ? tt('auto') : tt('manual')}</span>
+          {!miniHud && (
+            <>
+              <span className="rounded bg-white/10 px-1 text-[9px] uppercase tracking-wide text-white/45">
+                {viewMode === 'text' ? 'TXT' : 'ICON'}
+              </span>
+              <span className={auto ? 'text-win' : 'text-warn'}>{auto ? tt('auto') : tt('manual')}</span>
+            </>
+          )}
         </div>
       )}
 
@@ -277,7 +324,7 @@ export function BuildOrderWidget({
       )}
 
       {step && (
-        <div className="mt-0.5 rounded-md bg-[#0b1530] px-2 py-1 ring-1 ring-cyan-500/25">
+        <div className={cn('mt-0.5 px-1.5 py-0.5', !miniHud && 'rounded-sm bg-black/25')}>
           {/* hero: what to build (images) + villager split */}
           <div className="flex items-center gap-2">
             {viewMode === 'illustrated' && targets.length > 0 && (
@@ -289,7 +336,7 @@ export function BuildOrderWidget({
             )}
             {showNotes && viewMode === 'text' && (
               <div className="min-w-0 flex-1 text-sm font-medium leading-snug text-white/90">
-                {plainNote(step.notes[0]) || tt('No instruction for this step')}
+                {plainNote(step.notes[0], copy) || tt('No instruction for this step')}
               </div>
             )}
             {showResources && (
@@ -315,7 +362,7 @@ export function BuildOrderWidget({
           {/* the single key instruction for this step */}
           {showNotes && viewMode === 'illustrated' && step.notes[0] && (
             <div className="mt-1 flex items-center gap-[5px] text-sm font-medium leading-snug">
-              {renderNote(step.notes[0])}
+              {renderNote(step.notes[0], copy)}
             </div>
           )}
         </div>
@@ -330,7 +377,7 @@ export function BuildOrderWidget({
               <BuildIcon key={t.url} target={t} size={Math.max(14, Math.round(iconSize * 0.6))} />
             ))
           ) : (
-            <span className="truncate">{firstClause(next.notes[0])}</span>
+            <span className="truncate">{firstClause(next.notes[0], copy)}</span>
           )}
         </div>
       )}
@@ -341,13 +388,17 @@ export function BuildOrderWidget({
             {tt('Response forks · scout first')}
           </div>
           <div className="mt-0.5 space-y-0.5 text-[10px] leading-tight text-white/65">
-            {responsePlan.forks.map((fork) => (
-              <p key={`${fork.source}-${fork.condition}`}>
-                <span className="font-semibold text-white/85">{fork.condition}</span> {fork.advice}
-              </p>
-            ))}
+            {responsePlan.forks.map((fork) => {
+              const localized = localizeFork(fork, tt, gameName, locale)
+              return (
+                <p key={`${fork.source}-${fork.condition}`}>
+                  <span className="font-semibold text-white/85">{localized.condition}</span>{' '}
+                  {localized.advice}
+                </p>
+              )
+            })}
             {responsePlan.coverageNote && (
-              <p className="text-white/40">{responsePlan.coverageNote}</p>
+              <p className="text-white/40">{copy(tt(responsePlan.coverageNote))}</p>
             )}
           </div>
         </div>

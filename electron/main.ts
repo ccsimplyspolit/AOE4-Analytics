@@ -5,6 +5,7 @@ import { registerIpcHandlers } from './ipc/handlers'
 import { registerHotkeys, unregisterHotkeys } from './hotkeys'
 import { applySecurityPolicy } from './security'
 import { join } from 'node:path'
+import { ensureWindowsElevation } from './elevation'
 import {
   closeAllHistorySync,
   getHistory,
@@ -30,6 +31,11 @@ import {
 } from './services/rankedMapPoolService'
 import { startAutomation, stopAutomation } from './services/automationService'
 import { startAutoUpdate } from './services/updateService'
+
+// Overlay hotkeys and z-order need the same integrity level as an elevated
+// AoE4 process. Relaunch via UAC before taking the single-instance lock so
+// the elevated copy is not treated as a second instance.
+const continueLaunch = ensureWindowsElevation((code) => app.exit(code))
 
 // Diagnostic: isolate data to a temp dir when running a live verify/smoke.
 if (process.env['RTSLYTICS_VERIFY'] || process.env['RTSLYTICS_SMOKE'] === '1') {
@@ -192,37 +198,39 @@ function bootstrap(): void {
 }
 
 // Single-instance lock: a second launch focuses the existing window.
-const gotLock = app.requestSingleInstanceLock()
-if (!gotLock) {
-  app.quit()
-} else {
-  app.on('second-instance', () => {
-    if (mainWindow) {
-      if (mainWindow.isMinimized()) mainWindow.restore()
-      mainWindow.focus()
-    }
-  })
-
-  app.whenReady().then(() => {
-    bootstrap()
-    app.on('activate', () => {
-      if (BrowserWindow.getAllWindows().length === 0) bootstrap()
+if (continueLaunch) {
+  const gotLock = app.requestSingleInstanceLock()
+  if (!gotLock) {
+    app.quit()
+  } else {
+    app.on('second-instance', () => {
+      if (mainWindow) {
+        if (mainWindow.isMinimized()) mainWindow.restore()
+        mainWindow.focus()
+      }
     })
-  })
 
-  app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') app.quit()
-  })
+    app.whenReady().then(() => {
+      bootstrap()
+      app.on('activate', () => {
+        if (BrowserWindow.getAllWindows().length === 0) bootstrap()
+      })
+    })
 
-  app.on('will-quit', () => {
-    poll?.stop()
-    stopRankedMapPoolAutoRefresh()
-    stopAutomation()
-    apmTracker?.stop()
-    overlay?.dispose()
-    unregisterHotkeys()
-    closeAllHistorySync()
-    disposeStreamManager()
-    disposeReplaysApiSidecar()
-  })
+    app.on('window-all-closed', () => {
+      if (process.platform !== 'darwin') app.quit()
+    })
+
+    app.on('will-quit', () => {
+      poll?.stop()
+      stopRankedMapPoolAutoRefresh()
+      stopAutomation()
+      apmTracker?.stop()
+      overlay?.dispose()
+      unregisterHotkeys()
+      closeAllHistorySync()
+      disposeStreamManager()
+      disposeReplaysApiSidecar()
+    })
+  }
 }

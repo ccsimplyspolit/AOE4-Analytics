@@ -20,21 +20,20 @@ import {
   type TimingGrade,
 } from '@domain/timingMatrix'
 import { CIV_SLUGS } from '@data/civs'
-import { civDisplayName } from '@domain/civ'
 import { Badge } from '@shared/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@shared/components/ui/card'
 import { useI18n } from '../../../i18n'
 
 const GRADE_COLORS: Record<TimingGrade, string> = {
-  S: 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border-emerald-500/40',
-  A: 'bg-primary/20 text-primary border-primary/40',
-  B: 'bg-amber-500/20 text-amber-600 dark:text-amber-400 border-amber-500/40',
-  C: 'bg-orange-500/20 text-orange-600 dark:text-orange-400 border-orange-500/40',
-  D: 'bg-destructive/20 text-destructive border-destructive/40',
+  S: 'bg-win/15 text-win border-win/35',
+  A: 'bg-primary/15 text-primary border-primary/35',
+  B: 'bg-warn/15 text-warn border-warn/35',
+  C: 'bg-warn/10 text-warn border-warn/25',
+  D: 'bg-destructive/15 text-destructive border-destructive/35',
 }
 
 export function TimingMatrixExplorer() {
-  const { locale } = useI18n()
+  const { locale, gameName } = useI18n()
   const isRu = locale === 'ru'
 
   const [selectedCiv, setSelectedCiv] = useState<string>('byzantines')
@@ -99,7 +98,7 @@ export function TimingMatrixExplorer() {
               >
                 {CIV_SLUGS.map((slug) => (
                   <option key={slug} value={slug}>
-                    {civDisplayName(slug)}
+                    {gameName(slug)}
                   </option>
                 ))}
               </select>

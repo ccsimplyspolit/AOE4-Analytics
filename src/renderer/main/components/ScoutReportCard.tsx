@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { ScoutReport } from '@domain/types'
 import { Link } from 'react-router-dom'
-import { Swords, Map as MapIcon, Info, ShieldCheck, ArrowRight, Download, RefreshCw } from 'lucide-react'
+import { Swords, Map as MapIcon, Info, ShieldCheck, ArrowRight, RefreshCw } from 'lucide-react'
 import { Card, CardContent } from '@shared/components/ui/card'
 import {
   countryFlag,
@@ -11,11 +11,11 @@ import {
   winRateTone,
 } from '@shared/format'
 import { counterPlanForCiv } from '@domain/civUnits'
-import { ipc } from '@shared/ipc'
 import { RankBadge } from './RankBadge'
 import { FormPips } from './FormPips'
 import { MatchupNotesEditor } from './MatchupNotesEditor'
 import { useI18n } from '../../i18n'
+import { cachePlayerArchiveOnce, peekAutoAction } from '../hooks/useAutoAction'
 
 const CIV_BAR_FILL = { win: 'bg-win/80', loss: 'bg-loss/80', even: 'bg-primary/70' } as const
 
@@ -27,32 +27,45 @@ const CIV_BAR_FILL = { win: 'bg-win/80', loss: 'bg-loss/80', even: 'bg-primary/7
 export function ScoutReportCard({
   report,
   showProfileLink = false,
+  insightsOnly = false,
 }: {
   report: ScoutReport
   showProfileLink?: boolean
+  /** Skip identity / civs / maps already shown by PlayerWorldOverview. */
+  insightsOnly?: boolean
 }) {
   const { tt, gameName } = useI18n()
-  const [downloading, setDownloading] = useState(false)
+  const [downloading, setDownloading] = useState(
+    () => peekAutoAction(`player-archive:${report.profileId}`) === 'running',
+  )
   const [downloadResult, setDownloadResult] = useState<string | null>(null)
 
-  const handleFetchReplays = async () => {
-    setDownloading(true)
-    setDownloadResult(null)
-    try {
-      const res = await ipc.cachePlayerArchive(report.profileId, { maxReplays: 50, maxSummaries: 100 })
+  useEffect(() => {
+    let cancelled = false
+    const key = `player-archive:${report.profileId}`
+    if (peekAutoAction(key) !== 'done') setDownloading(true)
+    void cachePlayerArchiveOnce(report.profileId).then((res) => {
+      if (cancelled) return
+      setDownloading(false)
+      if (!res) return
       if (res.ok) {
         setDownloadResult(
-          `Найдено ${res.data.totalGames} матчей: сохранено ${res.data.cachedReplays} реплеев и ${res.data.cachedSummaries} сводок (${res.data.analyzedReplays} проанализировано)`,
+          tt(
+            'Found {games} matches: saved {replays} replays and {summaries} summaries ({analyzed} analyzed)',
+          )
+            .replace('{games}', String(res.data.totalGames))
+            .replace('{replays}', String(res.data.cachedReplays))
+            .replace('{summaries}', String(res.data.cachedSummaries))
+            .replace('{analyzed}', String(res.data.analyzedReplays)),
         )
       } else {
         setDownloadResult(res.error.message)
       }
-    } catch (e) {
-      setDownloadResult(e instanceof Error ? e.message : 'Ошибка загрузки')
-    } finally {
-      setDownloading(false)
+    })
+    return () => {
+      cancelled = true
     }
-  }
+  }, [report.profileId, tt])
 
   const topCiv = report.topCivs[0]
   const topGames = topCiv?.games ?? 1
@@ -60,7 +73,10 @@ export function ScoutReportCard({
   return (
     <Card className="overflow-hidden">
       <CardContent className="space-y-5 p-5">
-        <div className="flex flex-wrap items-start justify-between gap-4">
+        {insightsOnly && (
+          <h3 className="text-sm font-semibold">{tt('Scout notes')}</h3>
+        )}
+        <div className={insightsOnly ? 'hidden' : 'flex flex-wrap items-start justify-between gap-4'}>
           <div className="min-w-0">
             <div className="flex items-center gap-2">
               <span className="text-lg" aria-hidden>
@@ -85,31 +101,26 @@ export function ScoutReportCard({
             )}
             {showProfileLink && (
               <div className="mt-1.5 flex flex-wrap items-center justify-end gap-2">
-                <button
-                  type="button"
-                  disabled={downloading}
-                  onClick={handleFetchReplays}
-                  className="inline-flex items-center gap-1 rounded-md border border-border bg-secondary/60 px-2 py-1 text-xs font-medium text-foreground transition-colors hover:bg-secondary disabled:opacity-50"
-                  title="Скачать и разобрать все доступные реплеи и сводки"
-                >
-                  {downloading ? (
-                    <>
-                      <RefreshCw className="h-3 w-3 animate-spin" /> Загрузка…
-                    </>
-                  ) : (
-                    <>
-                      <Download className="h-3 w-3 text-primary" /> Скачать реплеи
-                    </>
-                  )}
-                </button>
+                {downloading ? (
+                  <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+                    <RefreshCw className="h-3 w-3 animate-spin text-primary" />
+                    {tt('Fetching player archive…')}
+                  </span>
+                ) : null}
                 <Link
                   to={`/profile/${report.profileId}`}
                   className="inline-flex items-center gap-1 rounded-md border border-primary/30 px-2 py-1 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
                 >
-                  {tt('View full profile')} <ArrowRight className="h-3 w-3" />
+                  {tt('Open player stats')} <ArrowRight className="h-3 w-3" />
                 </Link>
               </div>
             )}
+            {!showProfileLink && downloading ? (
+              <div className="mt-1.5 inline-flex items-center gap-1 text-xs text-muted-foreground">
+                <RefreshCw className="h-3 w-3 animate-spin text-primary" />
+                {tt('Fetching player archive…')}
+              </div>
+            ) : null}
             {downloadResult && (
               <div className="mt-1 text-[11px] text-emerald-400">{downloadResult}</div>
             )}
@@ -134,7 +145,7 @@ export function ScoutReportCard({
           )}
         </section>
 
-        {report.topCivs.length > 0 && (
+        {!insightsOnly && report.topCivs.length > 0 && (
           <section>
             <h3 className="rts-ledger-head mb-2 flex items-center gap-1.5">
               <Swords className="h-3.5 w-3.5" />
@@ -184,7 +195,7 @@ export function ScoutReportCard({
           </section>
         )}
 
-        {report.topMaps.length > 0 && (
+        {!insightsOnly && report.topMaps.length > 0 && (
           <section>
             <h3 className="rts-ledger-head mb-2 flex items-center gap-1.5">
               <MapIcon className="h-3.5 w-3.5" />
@@ -193,7 +204,7 @@ export function ScoutReportCard({
             <div className="flex flex-wrap gap-1.5">
               {report.topMaps.map((m) => (
                 <span key={m.map} className="rounded-md bg-secondary px-2 py-0.5 text-xs">
-                  {m.map} <span className="text-muted-foreground">{m.games}</span>
+                  {gameName(m.map)} <span className="text-muted-foreground">{m.games}</span>
                 </span>
               ))}
             </div>

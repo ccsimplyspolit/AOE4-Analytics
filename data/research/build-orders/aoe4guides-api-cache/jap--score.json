@@ -361,746 +361,6 @@
   {
     "description": "",
     "civilization": "Japanese",
-    "name": "Vortix Fast Castle",
-    "author": "Morgui",
-    "source": "https://aoe4guides.com/builds/UW51zg9AZHGvJ5Ngn5Ky",
-    "build_order": [
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "0",
-        "villager_count": 6,
-        "resources": {
-          "food": 5,
-          "wood": 0,
-          "gold": 0,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "Construir una casa en la bayas"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "0:25",
-        "villager_count": 7,
-        "resources": {
-          "food": 5,
-          "wood": 0,
-          "gold": 2,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Primer aldeano a oro y movemos un aldeano de ovejas a oro. Mejora @technology_japanese/towara-1.webp@. Proximos aldeanos a ovejas"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "1:00",
-        "villager_count": 9,
-        "resources": {
-          "food": 6,
-          "wood": 0,
-          "gold": 3,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Aldeanos a bayas"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "2:24",
-        "villager_count": 13,
-        "resources": {
-          "food": 6,
-          "wood": 0,
-          "gold": 3,
-          "stone": 0,
-          "builder": 4
-        },
-        "notes": [
-          "Con 4 aldeanos contruyes el edificio de subir a Feudal pegado a la madera si se puede@landmark_japanese/kura-storehouse-1.webp@. Proximos aldeanos a madera"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "4:03",
-        "villager_count": 17,
-        "resources": {
-          "food": 7,
-          "wood": 3,
-          "gold": 3,
-          "stone": 0,
-          "builder": 4
-        },
-        "notes": [
-          "Al subir tenemos esto y 19/30 pop"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "4:03",
-        "villager_count": 18,
-        "resources": {
-          "food": 10,
-          "wood": 3,
-          "gold": 5,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Reorganizamos la economia"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "4:25",
-        "villager_count": 19,
-        "resources": {
-          "food": 11,
-          "wood": 3,
-          "gold": 4,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "Torre en el oro. Nuevos aldeanos granjas/ovejas"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "5:00",
-        "villager_count": 21,
-        "resources": {
-          "food": 10,
-          "wood": 3,
-          "gold": 4,
-          "stone": 3,
-          "builder": 1
-        },
-        "notes": [
-          "Pillamos 30 de piedra y volvemos a comida"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "5:32",
-        "villager_count": 22,
-        "resources": {
-          "food": 14,
-          "wood": 3,
-          "gold": 5,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": []
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "5:55",
-        "villager_count": 23,
-        "resources": {
-          "food": 15,
-          "wood": 3,
-          "gold": 5,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Mejora Flechas @technology_military/steeled-arrow.webp@ y mejorar la mansion damio @technology_japanese/daimyo-manor-1.webp@"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "6:27",
-        "villager_count": 25,
-        "resources": {
-          "food": 16,
-          "wood": 3,
-          "gold": 5,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "Vamos a construir un establo / arqueria"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "7:05",
-        "villager_count": 26,
-        "resources": {
-          "food": 8,
-          "wood": 3,
-          "gold": 5,
-          "stone": 0,
-          "builder": 10
-        },
-        "notes": [
-          "Empezamos a construir @landmark_japanese/floating-gate-2.webp@ y reorganizamos la economia. Nuevos aldeanos a oro."
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "7:30",
-        "villager_count": 27,
-        "resources": {
-          "food": 9,
-          "wood": 2,
-          "gold": 6,
-          "stone": 0,
-          "builder": 10
-        },
-        "notes": [
-          "Pasa un aldeano de madera a construir una casa y luego granja. Creamos un portaestandarte"
-        ]
-      },
-      {
-        "age": 3,
-        "population_count": -1,
-        "time": "8:00",
-        "villager_count": 30,
-        "resources": {
-          "food": 13,
-          "wood": 5,
-          "gold": 12,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Reorganizar economia, produccion de unidades militares"
-        ]
-      },
-      {
-        "age": 3,
-        "population_count": -1,
-        "time": "8:30",
-        "villager_count": 31,
-        "resources": {
-          "food": 13,
-          "wood": 5,
-          "gold": 12,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "Construye el templo, casa y vuelve a madera"
-        ]
-      }
-    ],
-    "video": "https://www.youtube.com/embed/VU5YV38JRGA",
-    "season": "Season 13",
-    "map": null,
-    "strategy": "Fast Castle"
-  },
-  {
-    "description": "",
-    "civilization": "Japanese",
-    "name": "Vortix Spear + Fast Castle",
-    "author": "Morgui",
-    "source": "https://aoe4guides.com/builds/AZHQNfujZfjeScgOSf4G",
-    "build_order": [
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "0",
-        "villager_count": 6,
-        "resources": {
-          "food": 3,
-          "wood": 2,
-          "gold": 0,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "Construir un @building_military/barracks.webp@Cuartel, los aldeanos que nacen a comida"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "0:40",
-        "villager_count": 8,
-        "resources": {
-          "food": 5,
-          "wood": 2,
-          "gold": 0,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "El aldeano del cuartel hace una casa en la bayas. Produces Lanceros"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "1:11",
-        "villager_count": 9,
-        "resources": {
-          "food": 7,
-          "wood": 2,
-          "gold": 0,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "1 aldeano en bayas, 6 en ovejas, 2 madera"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "1:43",
-        "villager_count": 11,
-        "resources": {
-          "food": 7,
-          "wood": 1,
-          "gold": 3,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "@technology_japanese/towara-1.webp@Mejora de Recoleccion del molino",
-          "Hacemos la mina y pasamos 3 aldeanos a oro, (2 de comida y 1 de madera)"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "3:00",
-        "villager_count": 15,
-        "resources": {
-          "food": 11,
-          "wood": 0,
-          "gold": 3,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "Hacemos la segunda casa @building_japanese/farmhouse-1.webp@ en las bayas"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "3:25",
-        "villager_count": 15,
-        "resources": {
-          "food": 10,
-          "wood": 0,
-          "gold": 3,
-          "stone": 0,
-          "builder": 2
-        },
-        "notes": [
-          "Con dos aldeanos contruyes el edificio de subir a Feudal"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "3:45",
-        "villager_count": 17,
-        "resources": {
-          "food": 10,
-          "wood": 0,
-          "gold": 5,
-          "stone": 0,
-          "builder": 2
-        },
-        "notes": [
-          "Pasamos 1 aldeano de oro a comida para tener 5 con el que sale recien."
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "5:50",
-        "villager_count": 23,
-        "resources": {
-          "food": 16,
-          "wood": 0,
-          "gold": 7,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Los dos aldeanos que construyen el edificio para feudal pasan a Oro"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "6:35",
-        "villager_count": 25,
-        "resources": {
-          "food": 5,
-          "wood": 5,
-          "gold": 7,
-          "stone": 0,
-          "builder": 8
-        },
-        "notes": [
-          "Empezamos a construir @landmark_japanese/floating-gate-2.webp@ y reorganizamos la economia. Nuevos aldeanos a comida. Y hacemos la mejora de la mansion damio @technology_japanese/daimyo-manor-1.webp@"
-        ]
-      },
-      {
-        "age": 3,
-        "population_count": -1,
-        "time": "7:50",
-        "villager_count": 29,
-        "resources": {
-          "food": 12,
-          "wood": 5,
-          "gold": 8,
-          "stone": 0,
-          "builder": 4
-        },
-        "notes": [
-          "Con 4 aldeanos una vez subimos construimos establo o arqueria"
-        ]
-      },
-      {
-        "age": 3,
-        "population_count": -1,
-        "time": "9:45",
-        "villager_count": 33,
-        "resources": {
-          "food": 13,
-          "wood": 8,
-          "gold": 12,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Empezamos a Sacar tropas y segunda mejora @technology_japanese/takezaiku-2.webp@, mejoras herreria y crear el banner. Aldeanos a Madera"
-        ]
-      }
-    ],
-    "video": "https://www.youtube.com/embed/VU5YV38JRGA",
-    "season": "Season 13",
-    "map": null,
-    "strategy": "Fast Castle"
-  },
-  {
-    "description": "",
-    "civilization": "Japanese",
-    "name": "Japanese Fast Castle",
-    "author": "linutux",
-    "source": "https://aoe4guides.com/builds/h3Kh06oBipT0swJEmDz0",
-    "build_order": [
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "0",
-        "villager_count": 6,
-        "resources": {
-          "food": 5,
-          "wood": 0,
-          "gold": 0,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "Send 1 @unit_worker/villager-japanese.webp@to @resource/berrybush.webp@to build @building_japanese/farmhouse-1.webp@ and 5 @building_japanese/farmhouse-1.webp@to @resource/sheep.webp@"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 6,
-        "resources": {
-          "food": 5,
-          "wood": 0,
-          "gold": 0,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "Set @resource/rally.webp@ to @resource/resource_gold.webp@ until 3"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 7,
-        "resources": {
-          "food": 6,
-          "wood": 0,
-          "gold": 0,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "Send 1st @unit_worker/villager-japanese.webp@to build @building_japanese/forge-1.webp@at @resource/resource_gold.webp@"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 7,
-        "resources": {
-          "food": 6,
-          "wood": 0,
-          "gold": 1,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Research @technology_japanese/towara-1.webp@"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 9,
-        "resources": {
-          "food": 6,
-          "wood": 0,
-          "gold": 3,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "When @technology_japanese/towara-1.webp@is finished, send @resource/sheep.webp@ @unit_worker/villager-japanese.webp@to @resource/berrybush.webp@"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": -1,
-        "resources": {
-          "food": 0,
-          "wood": 0,
-          "gold": 0,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Set @resource/rally.webp@to @resource/sheep.webp@"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 13,
-        "resources": {
-          "food": 10,
-          "wood": 0,
-          "gold": 3,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Use 2 @unit_worker/villager-japanese.webp@from @resource/sheep.webp@ to build @landmark_japanese/kura-storehouse-1.webp@"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 13,
-        "resources": {
-          "food": 7,
-          "wood": 1,
-          "gold": 3,
-          "stone": 0,
-          "builder": 2
-        },
-        "notes": [
-          "Set @resource/rally.webp@to @resource/gaiatreeprototypetree.webp@ until 8 and move 1 @resource/sheep.webp@@unit_worker/villager-japanese.webp@ to @resource/gaiatreeprototypetree.webp@"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 20,
-        "resources": {
-          "food": 7,
-          "wood": 8,
-          "gold": 3,
-          "stone": 0,
-          "builder": 2
-        },
-        "notes": [
-          "Move @resource/gaiatreeprototypetree.webp@@unit_worker/villager-japanese.webp@to @resource/resource_stone.webp@ for 1 shipment"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 20,
-        "resources": {
-          "food": 7,
-          "wood": 8,
-          "gold": 3,
-          "stone": 0,
-          "builder": 2
-        },
-        "notes": [
-          "Set @resource/rally.webp@ to @resource/resource_wood.webp@"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 20,
-        "resources": {
-          "food": 7,
-          "wood": 0,
-          "gold": 3,
-          "stone": 8,
-          "builder": 2
-        },
-        "notes": [
-          "Move @resource/resource_stone.webp@@unit_worker/villager-japanese.webp@to @resource/resource_food.webp@"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 20,
-        "resources": {
-          "food": 15,
-          "wood": 0,
-          "gold": 3,
-          "stone": 0,
-          "builder": 2
-        },
-        "notes": [
-          "Research @technology_japanese/daimyo-manor-1.webp@"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "villager_count": 22,
-        "resources": {
-          "food": 15,
-          "wood": 2,
-          "gold": 5,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Move @abilities/repair.webp@@unit_worker/villager-japanese.webp@ to @resource/resource_gold.webp@"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "villager_count": 25,
-        "resources": {
-          "food": 17,
-          "wood": 3,
-          "gold": 5,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Set @resource/rally.webp@to @resource/resource_gold.webp@ until 10"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "villager_count": 25,
-        "resources": {
-          "food": 11,
-          "wood": 3,
-          "gold": 5,
-          "stone": 0,
-          "builder": 6
-        },
-        "notes": [
-          "Build @landmark_japanese/floating-gate-2.webp@ with 6 @unit_worker/villager-japanese.webp@"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "villager_count": -1,
-        "resources": {
-          "food": 0,
-          "wood": 0,
-          "gold": 0,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Set @resource/rally.webp@to @resource/resource_food.webp@"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "villager_count": 26,
-        "resources": {
-          "food": 7,
-          "wood": 3,
-          "gold": 10,
-          "stone": 0,
-          "builder": 6
-        },
-        "notes": [
-          "Build @building_military/stable.webp@"
-        ]
-      },
-      {
-        "age": 3,
-        "population_count": -1,
-        "villager_count": 28,
-        "resources": {
-          "food": 15,
-          "wood": 3,
-          "gold": 10,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Queue @unit_japanese/uma-bannerman-2.webp@"
-        ]
-      },
-      {
-        "age": 3,
-        "population_count": -1,
-        "villager_count": 29,
-        "resources": {
-          "food": 16,
-          "wood": 3,
-          "gold": 10,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Queue @unit_japanese/mounted-samurai-3.webp@"
-        ]
-      }
-    ],
-    "video": "https://www.youtube.com/embed/OoMl64P_pnM",
-    "season": "Season 13",
-    "map": null,
-    "strategy": "Fast Castle"
-  },
-  {
-    "description": "",
-    "civilization": "Japanese",
     "name": "Agressivo era Feudal",
     "author": "Richarddurodo",
     "source": "https://aoe4guides.com/builds/Lx0gVBvOpvAWG3lbLP2V",
@@ -1828,274 +1088,6 @@
     "strategy": null
   },
   {
-    "description": "",
-    "civilization": "Japanese",
-    "name": "Vortix Feudal Rush",
-    "author": "Morgui",
-    "source": "https://aoe4guides.com/builds/2RDGN79xkXTTOEOg60UN",
-    "build_order": [
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "0",
-        "villager_count": 6,
-        "resources": {
-          "food": 3,
-          "wood": 2,
-          "gold": 0,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "Construir un @building_military/barracks.webp@Cuartel, los aldeanos que nacen a comida"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "0:40",
-        "villager_count": 8,
-        "resources": {
-          "food": 5,
-          "wood": 2,
-          "gold": 0,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "El aldeano del cuartel hace una casa en la bayas. Produces Lanceros  2/3."
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "1:11",
-        "villager_count": 9,
-        "resources": {
-          "food": 6,
-          "wood": 1,
-          "gold": 2,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "1 aldeano en bayas, 6 en ovejas, cuando llegas a 50 de madera pasas 1 de madera a oro y 1 de comida a oro. Aldeanos a comida"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "3:10",
-        "villager_count": 14,
-        "resources": {
-          "food": 6,
-          "wood": 1,
-          "gold": 3,
-          "stone": 0,
-          "builder": 4
-        },
-        "notes": [
-          "Con 4 aldeanos contruyes el edificio de subir a Feudal. Reorganizamos economia. hacemos 1 casa"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "3:25",
-        "villager_count": 16,
-        "resources": {
-          "food": 4,
-          "wood": 5,
-          "gold": 3,
-          "stone": 0,
-          "builder": 4
-        },
-        "notes": [
-          "termina la casa. Aldeanos a Madera"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "3:48",
-        "villager_count": 17,
-        "resources": {
-          "food": 4,
-          "wood": 6,
-          "gold": 3,
-          "stone": 0,
-          "builder": 4
-        },
-        "notes": [
-          "Mejora bayas @technology_japanese/towara-1.webp@"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "4:00",
-        "villager_count": 17,
-        "resources": {
-          "food": 4,
-          "wood": 6,
-          "gold": 3,
-          "stone": 0,
-          "builder": 4
-        },
-        "notes": [
-          "Construye campamento madera"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "time": "4:30",
-        "villager_count": 19,
-        "resources": {
-          "food": 6,
-          "wood": 6,
-          "gold": 3,
-          "stone": 0,
-          "builder": 4
-        },
-        "notes": []
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "4:48",
-        "villager_count": 20,
-        "resources": {
-          "food": 7,
-          "wood": 10,
-          "gold": 3,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Reorganizamos Economia"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "5:05",
-        "villager_count": 21,
-        "resources": {
-          "food": 8,
-          "wood": 8,
-          "gold": 3,
-          "stone": 0,
-          "builder": 2
-        },
-        "notes": [
-          "Empezamos galeria de tiro@building_military/archery-range.webp@ / establo @building_military/stable.webp@ Mejora @technology_japanese/takezaiku-2.webp@ bayas y mejora"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "5:30",
-        "villager_count": 24,
-        "resources": {
-          "food": 9,
-          "wood": 10,
-          "gold": 3,
-          "stone": 0,
-          "builder": 2
-        },
-        "notes": [
-          "Aldeanos todos a bayas"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "6:00",
-        "villager_count": 23,
-        "resources": {
-          "food": 9,
-          "wood": 9,
-          "gold": 3,
-          "stone": 0,
-          "builder": 2
-        },
-        "notes": [
-          "1 aldeano casa + 1 aldeano galeria de tiro"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "6:14",
-        "villager_count": 24,
-        "resources": {
-          "food": 6,
-          "wood": 9,
-          "gold": 3,
-          "stone": 5,
-          "builder": 1
-        },
-        "notes": [
-          "solo queremos 50 de piedra no construye nada. Creamos caballos + arqueros"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "6:36",
-        "villager_count": 26,
-        "resources": {
-          "food": 7,
-          "wood": 10,
-          "gold": 3,
-          "stone": 5,
-          "builder": 1
-        },
-        "notes": [
-          "Mejora de ataque flechas"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "6:53",
-        "villager_count": 26,
-        "resources": {
-          "food": 13,
-          "wood": 10,
-          "gold": 3,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Mejora Damyo . Nuevos aldeanos a comida"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "7:19",
-        "villager_count": 27,
-        "resources": {
-          "food": 14,
-          "wood": 10,
-          "gold": 3,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Mejora defensa flechas @technology_military/iron-undermesh.webp@",
-          "Tiene: 2 lanzas 4 caballos y 4 arqueros"
-        ]
-      }
-    ],
-    "video": "https://www.youtube.com/embed/VU5YV38JRGA",
-    "season": "Season 13",
-    "map": null,
-    "strategy": "Fast Castle"
-  },
-  {
     "description": "Build from Swaggy Professor",
     "civilization": "Japanese",
     "name": "FC-nodefense-SwaggyProfessor - copy",
@@ -2417,10 +1409,101 @@
   {
     "description": "",
     "civilization": "Japanese",
-    "name": "Japonais berry",
-    "author": "siberian_wolf",
-    "source": "https://aoe4guides.com/builds/kl2xijJHN7s7HJgaNAig",
+    "name": "Japanese Fast Castle",
+    "author": "linutux",
+    "source": "https://aoe4guides.com/builds/h3Kh06oBipT0swJEmDz0",
     "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0",
+        "villager_count": 6,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Send 1 @unit_worker/villager-japanese.webp@to @resource/berrybush.webp@to build @building_japanese/farmhouse-1.webp@ and 5 @building_japanese/farmhouse-1.webp@to @resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 6,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Set @resource/rally.webp@ to @resource/resource_gold.webp@ until 3"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 7,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Send 1st @unit_worker/villager-japanese.webp@to build @building_japanese/forge-1.webp@at @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 7,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 1,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Research @technology_japanese/towara-1.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 9,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "When @technology_japanese/towara-1.webp@is finished, send @resource/sheep.webp@ @unit_worker/villager-japanese.webp@to @resource/berrybush.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Set @resource/rally.webp@to @resource/sheep.webp@"
+        ]
+      },
       {
         "age": 1,
         "population_count": -1,
@@ -2433,86 +1516,670 @@
           "builder": -1
         },
         "notes": [
-          "4@unit_worker/villager-japanese.webp@>@resource/berrybush.webp@",
-          "2@unit_worker/villager-japanese.webp@&gt;@building_japanese/farmhouse-1.webp@&gt;@technology_japanese/towara-1.webp@&gt;@resource/berrybush.webp@",
-          "3@resource/rally.webp@&gt;@building_japanese/forge-1.webp@&gt;@resource/resource_gold.webp@",
-          "3@resource/rally.webp@&gt;@resource/berrybush.webp@",
-          "1@resource/rally.webp@&gt;@resource/sheep.webp@"
+          "Use 2 @unit_worker/villager-japanese.webp@from @resource/sheep.webp@ to build @landmark_japanese/kura-storehouse-1.webp@"
         ]
       },
       {
         "age": 1,
         "population_count": -1,
-        "villager_count": 22,
+        "villager_count": 13,
         "resources": {
-          "food": 16,
+          "food": 7,
           "wood": 1,
-          "gold": 4,
+          "gold": 3,
           "stone": 0,
-          "builder": 1
+          "builder": 2
         },
         "notes": [
-          "1 @resource/sheep.webp@@unit_worker/villager-japanese.webp@>@landmark_japanese/kura-storehouse-1.webp@",
-          "1@resource/berrybush.webp@@unit_worker/villager-japanese.webp@&gt;@resource/resource_gold.webp@",
-          "1@resource/rally.webp@&gt;@resource/resource_wood.webp@",
-          "7@resource/rally.webp@&gt;@resource/sheep.webp@"
+          "Set @resource/rally.webp@to @resource/gaiatreeprototypetree.webp@ until 8 and move 1 @resource/sheep.webp@@unit_worker/villager-japanese.webp@ to @resource/gaiatreeprototypetree.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 20,
+        "resources": {
+          "food": 7,
+          "wood": 8,
+          "gold": 3,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "Move @resource/gaiatreeprototypetree.webp@@unit_worker/villager-japanese.webp@to @resource/resource_stone.webp@ for 1 shipment"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 20,
+        "resources": {
+          "food": 7,
+          "wood": 8,
+          "gold": 3,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "Set @resource/rally.webp@ to @resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 20,
+        "resources": {
+          "food": 7,
+          "wood": 0,
+          "gold": 3,
+          "stone": 8,
+          "builder": 2
+        },
+        "notes": [
+          "Move @resource/resource_stone.webp@@unit_worker/villager-japanese.webp@to @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "villager_count": 20,
+        "resources": {
+          "food": 15,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "Research @technology_japanese/daimyo-manor-1.webp@"
         ]
       },
       {
         "age": 2,
         "population_count": -1,
-        "villager_count": 24,
+        "villager_count": 22,
         "resources": {
-          "food": 19,
-          "wood": 1,
-          "gold": 4,
+          "food": 15,
+          "wood": 2,
+          "gold": 5,
           "stone": 0,
           "builder": -1
         },
         "notes": [
-          "2@resource/rally.webp@>@resource/sheep.webp@",
-          "1@landmark_japanese/kura-storehouse-1.webp@@unit_worker/villager-japanese.webp@&gt;@building_economy/farm.webp@"
+          "Move @abilities/repair.webp@@unit_worker/villager-japanese.webp@ to @resource/resource_gold.webp@"
         ]
       },
       {
         "age": 2,
         "population_count": -1,
-        "villager_count": 33,
+        "villager_count": 25,
         "resources": {
-          "food": 6,
-          "wood": 8,
-          "gold": 10,
+          "food": 17,
+          "wood": 3,
+          "gold": 5,
           "stone": 0,
-          "builder": 9
+          "builder": -1
         },
         "notes": [
-          "9@resource/sheep.webp@@unit_worker/villager-japanese.webp@>@landmark_japanese/floating-gate-2.webp@",
-          "7@resource/sheep.webp@@unit_worker/villager-japanese.webp@&gt;@resource/resource_wood.webp@",
-          "6@resource/rally.webp@&gt;@resource/resource_gold.webp@",
-          "3@resource/rally.webp@&gt;@resource/sheep.webp@"
+          "Set @resource/rally.webp@to @resource/resource_gold.webp@ until 10"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 25,
+        "resources": {
+          "food": 11,
+          "wood": 3,
+          "gold": 5,
+          "stone": 0,
+          "builder": 6
+        },
+        "notes": [
+          "Build @landmark_japanese/floating-gate-2.webp@ with 6 @unit_worker/villager-japanese.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Set @resource/rally.webp@to @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "villager_count": 26,
+        "resources": {
+          "food": 7,
+          "wood": 3,
+          "gold": 10,
+          "stone": 0,
+          "builder": 6
+        },
+        "notes": [
+          "Build @building_military/stable.webp@"
         ]
       },
       {
         "age": 3,
         "population_count": -1,
-        "villager_count": 33,
+        "villager_count": 28,
         "resources": {
           "food": 15,
-          "wood": 8,
+          "wood": 3,
           "gold": 10,
           "stone": 0,
           "builder": -1
         },
         "notes": [
-          "@technology_japanese/daimyo-manor-1.webp@",
-          "9@landmark_japanese/floating-gate-2.webp@@unit_worker/villager-japanese.webp@>@resource/resource_food.webp@"
+          "Queue @unit_japanese/uma-bannerman-2.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "villager_count": 29,
+        "resources": {
+          "food": 16,
+          "wood": 3,
+          "gold": 10,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Queue @unit_japanese/mounted-samurai-3.webp@"
         ]
       }
     ],
-    "video": "",
+    "video": "https://www.youtube.com/embed/OoMl64P_pnM",
     "season": "Season 13",
     "map": null,
-    "strategy": null
+    "strategy": "Fast Castle"
+  },
+  {
+    "description": "Good in every matchup except english/house of lancaster (villagers with bow), Rus (don't need gold but can maybe burn hunting cabins) and mongols (can outproduce spearmen)",
+    "civilization": "Japanese",
+    "name": "Agro into mounted samurai",
+    "author": "Piepet",
+    "source": "https://aoe4guides.com/builds/4s1KfKflyC2N235tISp2",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:04",
+        "villager_count": 6,
+        "resources": {
+          "food": 3,
+          "wood": 2,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "@abilities/repair.webp@ @building_military/barracks.webp@ + @building_japanese/farmhouse-1.webp@. Try not to block @landmark_japanese/kura-storehouse-1.webp@ by @abilities/repair.webp@ near @resource/gaiatreeprototypetree.webp@.",
+          "@unit_cavalry/scout.webp@ goes straight to ennemy base."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:50",
+        "villager_count": 8,
+        "resources": {
+          "food": 5,
+          "wood": 2,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Produce 2 @unit_infantry/spearman-1.webp@ to harass ennemy gold without overcomitting"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:00",
+        "villager_count": 8,
+        "resources": {
+          "food": 6,
+          "wood": 2,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "When finished @abilities/repair.webp@@building_japanese/farmhouse-1.webp@, do @technology_japanese/towara-1.webp@."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:50",
+        "villager_count": 11,
+        "resources": {
+          "food": 5,
+          "wood": 2,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Send 4 @resource/sheep.webp@@unit_worker/villager-japanese.webp@ to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:30",
+        "villager_count": 13,
+        "resources": {
+          "food": 8,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Send @resource/resource_wood.webp@@unit_worker/villager-japanese.webp@ to @resource/sheep.webp@.",
+          "Send 1 @resource/sheep.webp@@unit_worker/villager-japanese.webp@ to build @building_japanese/farmhouse-1.webp@ near @resource/berrybush.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:40",
+        "villager_count": 14,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 4,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Send 9 @resource/sheep.webp@@unit_worker/villager-japanese.webp@ to @resource/berrybush.webp@. The goal is to be greedy and save @resource/sheep.webp@ for safe later food source."
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:30",
+        "villager_count": 16,
+        "resources": {
+          "food": 9,
+          "wood": 2,
+          "gold": 4,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "@abilities/repair.webp@@landmark_japanese/kura-storehouse-1.webp@ with only 1 @unit_worker/villager-japanese.webp@, send @resource/sheep.webp@@unit_worker/villager-japanese.webp@ to @resource/resource_wood.webp@ and @resource/rally.webp@ on @resource/resource_wood.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:40",
+        "villager_count": 17,
+        "resources": {
+          "food": 9,
+          "wood": 3,
+          "gold": 4,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "When 3 @unit_worker/villager-japanese.webp@ on @resource/resource_wood.webp@, @resource/rally.webp@ on @resource/sheep.webp@ and shift click @resource/resource_wood.webp@@unit_worker/villager-japanese.webp@ on @resource/sheep.webp@ (they just need to cut 1 tree to then @abilities/repair.webp@@building_defensive/outpost.webp@ on @resource/resource_gold.webp@)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "4:50",
+        "villager_count": 20,
+        "resources": {
+          "food": 11,
+          "wood": 3,
+          "gold": 4,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "1 @resource/resource_gold.webp@@unit_worker/villager-japanese.webp@@abilities/repair.webp@@building_defensive/outpost.webp@and next @unit_worker/villager-japanese.webp@ goes on @resource/resource_gold.webp@."
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:40",
+        "villager_count": 25,
+        "resources": {
+          "food": 19,
+          "wood": 0,
+          "gold": 6,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Instantly @technology_defensive/arrow-slits.webp@ the @resource/resource_gold.webp@@building_defensive/outpost.webp@.",
+          "@unit_cavalry/scout.webp@ ennemy and if danger is high then @technology_defensive/fortify-outpost.webp@. If not, save @resource/resource_stone.webp@ to get @technology_japanese/daimyo-manor-1.webp@ later.",
+          "Send the @age/age_2.webp@@unit_worker/villager-japanese.webp@ to use first @landmark_japanese/kura-storehouse-1.webp@@building_economy/farm.webp@ but pay attention to ennemy raids."
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:45",
+        "villager_count": 26,
+        "resources": {
+          "food": 10,
+          "wood": 3,
+          "gold": 6,
+          "stone": 0,
+          "builder": 7
+        },
+        "notes": [
+          "@abilities/repair.webp@@landmark_japanese/floating-gate-2.webp@ witth 7 @resource/resource_food.webp@@unit_worker/villager-japanese.webp@ and start collecting @resource/resource_wood.webp@ next to @landmark_japanese/kura-storehouse-1.webp@to @abilities/repair.webp@@building_military/stable.webp@."
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "7:50",
+        "villager_count": 29,
+        "resources": {
+          "food": 12,
+          "wood": 4,
+          "gold": 6,
+          "stone": 0,
+          "builder": 7
+        },
+        "notes": [
+          "The 7 @age/age_3.webp@ @unit_worker/villager-japanese.webp@ go @abilities/repair.webp@ the @building_military/stable.webp@",
+          "Try to get a 2:1 ration on @resource/resource_food.webp@ / @resource/resource_gold.webp@ to constantly produce @unit_worker/villager-japanese.webp@ + @unit_japanese/mounted-samurai-3.webp@",
+          "First @unit_japanese/shinto-priest-3.webp@ place @ability_japanese/ability-place-yorishiro.webp@ in the @building_military/stable.webp@ and then go grab @resource/relics.webp@. If can easily grab @resource/relics.webp@, put 3 more @unit_worker/villager-japanese.webp@ on @resource/resource_wood.webp@ to @abilities/repair.webp@@building_japanese/shinto-shrine-3.webp@."
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/LIOCyXMpqZU",
+    "season": "Season 13",
+    "map": null,
+    "strategy": "Fast Castle"
+  },
+  {
+    "description": "",
+    "civilization": "Japanese",
+    "name": "Vortix Fast Castle",
+    "author": "Morgui",
+    "source": "https://aoe4guides.com/builds/UW51zg9AZHGvJ5Ngn5Ky",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0",
+        "villager_count": 6,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Construir una casa en la bayas"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:25",
+        "villager_count": 7,
+        "resources": {
+          "food": 5,
+          "wood": 0,
+          "gold": 2,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Primer aldeano a oro y movemos un aldeano de ovejas a oro. Mejora @technology_japanese/towara-1.webp@. Proximos aldeanos a ovejas"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:00",
+        "villager_count": 9,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Aldeanos a bayas"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:24",
+        "villager_count": 13,
+        "resources": {
+          "food": 6,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Con 4 aldeanos contruyes el edificio de subir a Feudal pegado a la madera si se puede@landmark_japanese/kura-storehouse-1.webp@. Proximos aldeanos a madera"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "4:03",
+        "villager_count": 17,
+        "resources": {
+          "food": 7,
+          "wood": 3,
+          "gold": 3,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Al subir tenemos esto y 19/30 pop"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:03",
+        "villager_count": 18,
+        "resources": {
+          "food": 10,
+          "wood": 3,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Reorganizamos la economia"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "4:25",
+        "villager_count": 19,
+        "resources": {
+          "food": 11,
+          "wood": 3,
+          "gold": 4,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Torre en el oro. Nuevos aldeanos granjas/ovejas"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:00",
+        "villager_count": 21,
+        "resources": {
+          "food": 10,
+          "wood": 3,
+          "gold": 4,
+          "stone": 3,
+          "builder": 1
+        },
+        "notes": [
+          "Pillamos 30 de piedra y volvemos a comida"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:32",
+        "villager_count": 22,
+        "resources": {
+          "food": 14,
+          "wood": 3,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:55",
+        "villager_count": 23,
+        "resources": {
+          "food": 15,
+          "wood": 3,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Mejora Flechas @technology_military/steeled-arrow.webp@ y mejorar la mansion damio @technology_japanese/daimyo-manor-1.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:27",
+        "villager_count": 25,
+        "resources": {
+          "food": 16,
+          "wood": 3,
+          "gold": 5,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Vamos a construir un establo / arqueria"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "7:05",
+        "villager_count": 26,
+        "resources": {
+          "food": 8,
+          "wood": 3,
+          "gold": 5,
+          "stone": 0,
+          "builder": 10
+        },
+        "notes": [
+          "Empezamos a construir @landmark_japanese/floating-gate-2.webp@ y reorganizamos la economia. Nuevos aldeanos a oro."
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "7:30",
+        "villager_count": 27,
+        "resources": {
+          "food": 9,
+          "wood": 2,
+          "gold": 6,
+          "stone": 0,
+          "builder": 10
+        },
+        "notes": [
+          "Pasa un aldeano de madera a construir una casa y luego granja. Creamos un portaestandarte"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "8:00",
+        "villager_count": 30,
+        "resources": {
+          "food": 13,
+          "wood": 5,
+          "gold": 12,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Reorganizar economia, produccion de unidades militares"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "8:30",
+        "villager_count": 31,
+        "resources": {
+          "food": 13,
+          "wood": 5,
+          "gold": 12,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Construye el templo, casa y vuelve a madera"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/VU5YV38JRGA",
+    "season": "Season 13",
+    "map": null,
+    "strategy": "Fast Castle"
   },
   {
     "description": "",
@@ -2881,6 +2548,462 @@
       }
     ],
     "video": "",
+    "season": "Season 13",
+    "map": null,
+    "strategy": "Fast Castle"
+  },
+  {
+    "description": "This build order inspired by Vortix's Rush+Fast Castle Build Order but it has been changed to make it easier for beginners (therfore it is easier to follow but most likely worse than the original build). \nThe main difference is that we go on barry as soon as Tawara upgrade is done, we do this to preserve sheep for a safe food source vs raiding civs. \n\nHeads up: The timings might be off in the game based on walking distances of the Vills (Villagers) to the resources and etc.",
+    "civilization": "Japanese",
+    "name": "Beginner Friendly Vortix Spear + Fast Castle ",
+    "author": "taktaktab",
+    "source": "https://aoe4guides.com/builds/U5G4mEQHLzUfXBQp7dB9",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:00",
+        "villager_count": 6,
+        "resources": {
+          "food": 3,
+          "wood": 2,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "1 Vill builds @building_military/barracks.webp@ , 2 Vills to @resource/sheep.webp@, 2 Vills to @resource/resource_wood.webp@",
+          "@resource/rally.webp@ to @resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:44",
+        "villager_count": 8,
+        "resources": {
+          "food": 5,
+          "wood": 2,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Builld a @building_japanese/farmhouse-1.webp@ next to the @resource/berrybush.webp@ with the @building_military/barracks.webp@ Builder vill once @building_military/barracks.webp@ is done.",
+          "Produce 2@unit_infantry/spearman-1.webp@ from @building_military/barracks.webp@ (could go for 3@unit_infantry/spearman-1.webp@ if needed*)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:38",
+        "villager_count": 10,
+        "resources": {
+          "food": 8,
+          "wood": 1,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "once we have 75 @resource/resource_wood.webp@ we get @technology_japanese/towara-1.webp@ and move one @resource/resource_wood.webp@ vill to build @building_japanese/forge-1.webp@ by the @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:58",
+        "villager_count": 11,
+        "resources": {
+          "food": 7,
+          "wood": 1,
+          "gold": 2,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "once @building_japanese/forge-1.webp@ is done send the builder Vill to@resource/resource_gold.webp@  and move 2 vills from @resource/sheep.webp@ to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "2:08",
+        "villager_count": 12,
+        "resources": {
+          "food": 8,
+          "wood": 1,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "once @technology_japanese/towara-1.webp@ is done send all all sheep vills to @resource/berrybush.webp@",
+          "Keep @resource/rally.webp@ to @resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:01",
+        "villager_count": 14,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Once we have 50 move @resource/resource_wood.webp@ move the @resource/resource_wood.webp@ Vill to build another @building_japanese/farmhouse-1.webp@ next to @resource/berrybush.webp@",
+          "after finishiing the @building_japanese/farmhouse-1.webp@ the vill will go onto @resource/berrybush.webp@"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:30",
+        "villager_count": 16,
+        "resources": {
+          "food": 11,
+          "wood": 3,
+          "gold": 0,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "Use 2 @resource/sheep.webp@ Vills to age up with @landmark_japanese/kura-storehouse-1.webp@ on the woodline"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:45",
+        "villager_count": 17,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 5,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "Movev 2 @resource/sheep.webp@ Vills to @resource/resource_gold.webp@ for a totall of 5",
+          "Note: Try to save your 2-3 @unit_infantry/spearman-1.webp@ to defend vs any cav that tries to harras your @resource/resource_gold.webp@. if this is not possible then invest 1-2 @resource/resource_gold.webp@ Vills into @resource/resource_wood.webp@ to make either a @building_defensive/outpost.webp@ or more @unit_infantry/spearman-1.webp@ based on what the opponent is building.",
+          "(The rest of this guide assumes that we did not need to move any Vills to @resource/resource_wood.webp@)*"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "4:50",
+        "villager_count": 18,
+        "resources": {
+          "food": 13,
+          "wood": 0,
+          "gold": 5,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Once @resource/berrybush.webp@ is done, move the @resource/berrybush.webp@ Vills to @resource/sheep.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:55",
+        "villager_count": 23,
+        "resources": {
+          "food": 16,
+          "wood": 0,
+          "gold": 7,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Once @landmark_japanese/kura-storehouse-1.webp@ is done, move the 2 builder Vills to @resource/resource_gold.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:30",
+        "villager_count": 25,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 7,
+          "stone": 0,
+          "builder": 8
+        },
+        "notes": [
+          "Age up with 8 @resource/sheep.webp@ Vills and build @landmark_japanese/floating-gate-2.webp@"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:40",
+        "villager_count": 30,
+        "resources": {
+          "food": 5,
+          "wood": 5,
+          "gold": 7,
+          "stone": 0,
+          "builder": 13
+        },
+        "notes": [
+          "Move 5 @resource/sheep.webp@Vills to @resource/gaiatreeprototypetree.webp@",
+          "(We Need 200  @resource/resource_wood.webp@ for a @building_japanese/farmhouse-1.webp@ and then a @building_military/stable.webp@)"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "7:05",
+        "villager_count": 19,
+        "resources": {
+          "food": 6,
+          "wood": 5,
+          "gold": 7,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "1 @resource/sheep.webp@ Vill Builds @building_japanese/farmhouse-1.webp@ asap",
+          "Queue up @technology_japanese/daimyo-manor-1.webp@ in @building_economy/town-center.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "8:10",
+        "villager_count": 28,
+        "resources": {
+          "food": 12,
+          "wood": 5,
+          "gold": 7,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Once aged up,  5 @landmark_japanese/floating-gate-2.webp@ builder vills builld @building_military/stable.webp@ and then they go to @resource/resource_gold.webp@.",
+          "Move the remaining 3 @landmark_japanese/floating-gate-2.webp@builder vills to @landmark_japanese/kura-storehouse-1.webp@@building_economy/farm.webp@ .",
+          "Note: Continue to move @resource/sheep.webp@Vills to @landmark_japanese/kura-storehouse-1.webp@@building_economy/farm.webp@ when they become available"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "8:40",
+        "villager_count": 30,
+        "resources": {
+          "food": 13,
+          "wood": 5,
+          "gold": 12,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Once @building_military/stable.webp@ is done, put @ability_japanese/ability-place-yorishiro.webp@ in @building_military/stable.webp@ and make @unit_japanese/uma-bannerman-2.webp@/@unit_japanese/mounted-samurai-3.webp@",
+          "Grab @resource/relics.webp@ and if opponent is passive (you have map controll) get @technology_military/iron-undermesh.webp@ and raid with @unit_japanese/uma-bannerman-2.webp@/@unit_japanese/mounted-samurai-3.webp@",
+          "Continue the rest of the game and make sure to macro based on your needs:",
+          "(eg: for @unit_japanese/yumi-ashigaru-2.webp@ go more on wood)"
+        ]
+      }
+    ],
+    "video": "",
+    "season": "Season 13",
+    "map": null,
+    "strategy": "Fast Castle"
+  },
+  {
+    "description": "",
+    "civilization": "Japanese",
+    "name": "Vortix Spear + Fast Castle",
+    "author": "Morgui",
+    "source": "https://aoe4guides.com/builds/AZHQNfujZfjeScgOSf4G",
+    "build_order": [
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0",
+        "villager_count": 6,
+        "resources": {
+          "food": 3,
+          "wood": 2,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Construir un @building_military/barracks.webp@Cuartel, los aldeanos que nacen a comida"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "0:40",
+        "villager_count": 8,
+        "resources": {
+          "food": 5,
+          "wood": 2,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "El aldeano del cuartel hace una casa en la bayas. Produces Lanceros"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:11",
+        "villager_count": 9,
+        "resources": {
+          "food": 7,
+          "wood": 2,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "1 aldeano en bayas, 6 en ovejas, 2 madera"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "1:43",
+        "villager_count": 11,
+        "resources": {
+          "food": 7,
+          "wood": 1,
+          "gold": 3,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "@technology_japanese/towara-1.webp@Mejora de Recoleccion del molino",
+          "Hacemos la mina y pasamos 3 aldeanos a oro, (2 de comida y 1 de madera)"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:00",
+        "villager_count": 15,
+        "resources": {
+          "food": 11,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "Hacemos la segunda casa @building_japanese/farmhouse-1.webp@ en las bayas"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:25",
+        "villager_count": 15,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 3,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "Con dos aldeanos contruyes el edificio de subir a Feudal"
+        ]
+      },
+      {
+        "age": 1,
+        "population_count": -1,
+        "time": "3:45",
+        "villager_count": 17,
+        "resources": {
+          "food": 10,
+          "wood": 0,
+          "gold": 5,
+          "stone": 0,
+          "builder": 2
+        },
+        "notes": [
+          "Pasamos 1 aldeano de oro a comida para tener 5 con el que sale recien."
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "5:50",
+        "villager_count": 23,
+        "resources": {
+          "food": 16,
+          "wood": 0,
+          "gold": 7,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Los dos aldeanos que construyen el edificio para feudal pasan a Oro"
+        ]
+      },
+      {
+        "age": 2,
+        "population_count": -1,
+        "time": "6:35",
+        "villager_count": 25,
+        "resources": {
+          "food": 5,
+          "wood": 5,
+          "gold": 7,
+          "stone": 0,
+          "builder": 8
+        },
+        "notes": [
+          "Empezamos a construir @landmark_japanese/floating-gate-2.webp@ y reorganizamos la economia. Nuevos aldeanos a comida. Y hacemos la mejora de la mansion damio @technology_japanese/daimyo-manor-1.webp@"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "7:50",
+        "villager_count": 29,
+        "resources": {
+          "food": 12,
+          "wood": 5,
+          "gold": 8,
+          "stone": 0,
+          "builder": 4
+        },
+        "notes": [
+          "Con 4 aldeanos una vez subimos construimos establo o arqueria"
+        ]
+      },
+      {
+        "age": 3,
+        "population_count": -1,
+        "time": "9:45",
+        "villager_count": 33,
+        "resources": {
+          "food": 13,
+          "wood": 8,
+          "gold": 12,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": [
+          "Empezamos a Sacar tropas y segunda mejora @technology_japanese/takezaiku-2.webp@, mejoras herreria y crear el banner. Aldeanos a Madera"
+        ]
+      }
+    ],
+    "video": "https://www.youtube.com/embed/VU5YV38JRGA",
     "season": "Season 13",
     "map": null,
     "strategy": "Fast Castle"

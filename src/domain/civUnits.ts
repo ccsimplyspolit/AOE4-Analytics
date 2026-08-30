@@ -263,6 +263,81 @@ export function matchupTroopsForTeam(
   return { mine: mineSorted, theirs: theirsSorted, priority }
 }
 
+/** Generic unit you can actually produce when a counter role is not in the civ's identity roster. */
+const ROLE_FALLBACK_UNIT: Record<UnitRole, CivKeyUnit> = {
+  spearman: { name: 'Spearman', role: 'spearman', icon: 'spearman', age: 2 },
+  horseman: { name: 'Horseman', role: 'horseman', icon: 'horseman', age: 2 },
+  knight: { name: 'Knight', role: 'knight', icon: 'knight', age: 2 },
+  archer: { name: 'Archer', role: 'archer', icon: 'archer', age: 2 },
+  crossbow: { name: 'Crossbowman', role: 'crossbow', icon: 'crossbowman', age: 3 },
+  handcannon: { name: 'Handcannoneer', role: 'handcannon', icon: 'handcannoneer', age: 3 },
+  manatarms: { name: 'Man-at-Arms', role: 'manatarms', icon: 'man-at-arms', age: 2 },
+  siege_ram: { name: 'Battering Ram', role: 'siege_ram', icon: 'battering-ram', age: 2 },
+  springald: { name: 'Springald', role: 'springald', icon: 'springald', age: 3 },
+  mangonel: { name: 'Mangonel', role: 'mangonel', icon: 'mangonel', age: 3 },
+  camel: { name: 'Camel Rider', role: 'camel', icon: 'camel-rider', age: 2 },
+  elephant: { name: 'War Elephant', role: 'elephant', icon: 'war-elephant', age: 3 },
+  scout: { name: 'Scout', role: 'scout', icon: 'scout', age: 2 },
+}
+
+function unitForCounterRole(
+  myCiv: string | null | undefined,
+  role: UnitRole,
+): CivKeyUnit {
+  return unitsForCiv(myCiv)?.find((unit) => unit.role === role) ?? ROLE_FALLBACK_UNIT[role]
+}
+
+/**
+ * Overlay "your army": units that beat the opponent's key threats, mapped onto
+ * your civ's names when you have that role, otherwise the generic counter unit.
+ * This is not your identity roster (Byzantine Spearman / Cataphract / Varangian).
+ */
+export function overlayMatchupTroops(
+  myCiv: string | null | undefined,
+  oppCivs: (string | null | undefined)[],
+): MatchupTroops | null {
+  const theirs = dedupeUnits(oppCivs.flatMap((c) => unitsForCiv(c) ?? []))
+  const plans = oppCivs
+    .map((civ) => counterPlanForCiv(civ, 3))
+    .filter((plan): plan is CivCounterPlan => plan != null)
+  if (theirs.length === 0 && plans.length === 0 && !unitsForCiv(myCiv)) return null
+
+  const mine: CivKeyUnit[] = []
+  const seen = new Set<string>()
+  for (const plan of plans) {
+    for (const counter of plan.counters) {
+      const unit = unitForCounterRole(myCiv, counter.role)
+      if (seen.has(unit.name)) continue
+      seen.add(unit.name)
+      mine.push(unit)
+    }
+  }
+  const mineSorted = [...mine].sort((a, b) => a.age - b.age || a.name.localeCompare(b.name))
+  const theirsSorted = [...theirs].sort((a, b) => a.age - b.age || a.name.localeCompare(b.name))
+  return {
+    mine: mineSorted,
+    theirs: theirsSorted,
+    priority: new Set(mineSorted.map((unit) => unit.name)),
+  }
+}
+
+/** Same greedy counters as `counterPlanForCiv`, with labels from your civ when possible. */
+export function counterPlanForMatchup(
+  myCiv: string | null | undefined,
+  oppCiv: string | null | undefined,
+  maxCounters = 4,
+): CivCounterPlan | null {
+  const enemy = counterPlanForCiv(oppCiv, maxCounters)
+  if (!enemy) return null
+  return {
+    ...enemy,
+    counters: enemy.counters.map((entry) => {
+      const unit = unitForCounterRole(myCiv, entry.role)
+      return { ...entry, label: unit.name }
+    }),
+  }
+}
+
 function dedupeUnits(units: CivKeyUnit[]): CivKeyUnit[] {
   const byName = new Map<string, CivKeyUnit>()
   for (const u of units) if (!byName.has(u.name)) byName.set(u.name, u)

@@ -1,15 +1,17 @@
 import { useMemo } from 'react'
-import { useSearchParams } from 'react-router-dom'
-import { ArrowRight, ExternalLink, Map as MapIcon, RefreshCw, Swords, Users } from 'lucide-react'
+import { Link, useSearchParams } from 'react-router-dom'
+import { ArrowRight, ExternalLink, RefreshCw, Swords, Users } from 'lucide-react'
 import type { PlayerSearchHit } from '@ipc/contract'
 import { BUILD_CATALOG } from '@data/buildCatalog'
-import { CIV_PROFILES, matchupTipForCiv } from '@data/civProfiles'
 import { recommendBuildsForCoach } from '@domain/coachRecommendations'
 import { civDisplayName } from '@domain/civ'
 import { formatDuration } from '@domain/format'
 import type { LastMatchCoachContext } from '@domain/coachContext'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
+import { MatchDiagnosticsPanel } from './MatchDiagnosticsPanel'
+import { MatchBriefingPanel } from './MatchBriefingPanel'
+import { briefingFromCoachContext } from '@domain/matchBriefing'
 import { PlayerSearch } from './PlayerSearch'
 import { ErrorBox, EmptyBox, Spinner } from './feedback'
 import { useLastMatchCoach } from '../queries/useCoach'
@@ -26,20 +28,6 @@ function resultTone(result: LastMatchCoachContext['player']['result']): string {
   if (result === 'win') return 'bg-win/15 text-win'
   if (result === 'loss') return 'bg-loss/15 text-loss'
   return 'bg-secondary text-muted-foreground'
-}
-
-function mapAdvice(map: string, tt: (value: string) => string): string {
-  const key = map.toLocaleLowerCase()
-  if (key.includes('arabia') || key.includes('altai')) {
-    return tt('Open sightlines reward early scouting and map control. Keep the first pressure connected to a safe retreat path.')
-  }
-  if (key.includes('lipany') || key.includes('hill')) {
-    return tt('Use the central terrain and food pockets as checkpoints. Do not let the opponent take the safe side of the map for free.')
-  }
-  if (key.includes('water') || key.includes('archipelago') || key.includes('canal')) {
-    return tt('Treat the shoreline as a second front: scout docks early and decide whether the game is decided by water control or a fast land timing.')
-  }
-  return tt('Scout the resource layout before committing to the opening. Let the map determine whether your first investment is pressure, defense, or expansion.')
 }
 
 function ParticipantList({
@@ -61,7 +49,16 @@ function ParticipantList({
             key={player.profileId}
             className="flex items-center justify-between gap-3 rounded-md border border-border/60 bg-background/40 px-3 py-2"
           >
-            <span className="min-w-0 truncate text-sm">{player.name}</span>
+            {player.profileId > 0 ? (
+              <Link
+                to={`/profile/${player.profileId}`}
+                className="min-w-0 truncate text-sm hover:text-primary hover:underline"
+              >
+                {player.name}
+              </Link>
+            ) : (
+              <span className="min-w-0 truncate text-sm">{player.name}</span>
+            )}
             <span className="shrink-0 text-xs text-muted-foreground">
               {gameName(civDisplayName(player.civilization))}
             </span>
@@ -73,11 +70,11 @@ function ParticipantList({
 }
 
 function CoachMatchHeader({ context }: { context: LastMatchCoachContext }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   return (
     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
       <CoachStat label={tt('Mode')} value={context.game.format} />
-      <CoachStat label={tt('Map')} value={context.game.map} />
+      <CoachStat label={tt('Map')} value={context.game.map ? gameName(context.game.map) : '—'} />
       <CoachStat
         label={tt('Duration')}
         value={context.game.durationSec == null ? '—' : formatDuration(context.game.durationSec)}
@@ -107,9 +104,6 @@ export function LastMatchCoach() {
     () => (context ? recommendBuildsForCoach(context, BUILD_CATALOG) : []),
     [context],
   )
-  const ownProfile = context ? CIV_PROFILES[context.player.civilization] : null
-  const primaryOpponent = context?.opponents[0]
-  const matchupTip = matchupTipForCiv(primaryOpponent?.civilization)
 
   const selectProfile = (hit: PlayerSearchHit) => {
     setSearchParams(
@@ -220,18 +214,17 @@ export function LastMatchCoach() {
             </CardContent>
           </Card>
 
-          <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(320px,0.8fr)]">
-            <Card>
-              <CardContent className="space-y-4 p-4">
-                <div className="flex items-center gap-2">
-                  <Swords className="h-4 w-4 text-primary" />
-                  <div>
-                    <div className="rts-section-title">{tt('Build recommendations')}</div>
-                    <p className="text-xs text-muted-foreground">
-                      {tt("Ranked from the local Cellar for the civ in this match; this is guidance, not a claim that AoE4World detected the player's build.")}
-                    </p>
-                  </div>
+          <Card>
+            <CardContent className="space-y-4 p-4">
+              <div className="flex items-center gap-2">
+                <Swords className="h-4 w-4 text-primary" />
+                <div>
+                  <div className="rts-section-title">{tt('Build recommendations')}</div>
+                  <p className="text-xs text-muted-foreground">
+                    {tt("Ranked from the local Cellar for the civ in this match; this is guidance, not a claim that AoE4World detected the player's build.")}
+                  </p>
                 </div>
+              </div>
                 {recommendations.length === 0 ? (
                   <EmptyBox>{tt('No local Cellar build matches this civilization yet.')}</EmptyBox>
                 ) : (
@@ -264,6 +257,16 @@ export function LastMatchCoach() {
                           >
                             {tt('Open build')} <ArrowRight className="h-3 w-3" />
                           </button>
+                          {recommendation.entry.videoUrl && (
+                            <a
+                              href={recommendation.entry.videoUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
+                            >
+                              {tt('Watch build video')} <ExternalLink className="h-3 w-3" />
+                            </a>
+                          )}
                           <button
                             type="button"
                             onClick={() => openBuild(recommendation.entry.id, 'production')}
@@ -278,47 +281,8 @@ export function LastMatchCoach() {
                 )}
               </CardContent>
             </Card>
-
-            <div className="space-y-4">
-              <Card>
-                <CardContent className="space-y-3 p-4">
-                  <div className="flex items-center gap-2">
-                    <MapIcon className="h-4 w-4 text-primary" />
-                    <div className="rts-section-title">{tt('Map read')}</div>
-                  </div>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {mapAdvice(context.game.map, tt)}
-                  </p>
-                </CardContent>
-              </Card>
-              {ownProfile && (
-                <Card>
-                  <CardContent className="space-y-3 p-4">
-                    <div className="rts-section-title">{gameName(ownProfile.name)} {tt('game plan')}</div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      {ownProfile.gamePlan}
-                    </p>
-                    <div className="text-xs text-muted-foreground">
-                      {tt('Watch for')}: {ownProfile.watchFor.slice(0, 2).join(' · ')}
-                    </div>
-                  </CardContent>
-                </Card>
-              )}
-              {matchupTip && (
-                <Card>
-                  <CardContent className="space-y-3 p-4">
-                    <div className="rts-section-title">{tt('First matchup read')}</div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      {tt('Expect')} {matchupTip.focus.toLocaleLowerCase()}. {tt('Watch for')}{' '}
-                      {matchupTip.watch?.toLocaleLowerCase() ?? 'their first military commitment'};{' '}
-                      look to exploit{' '}
-                      {matchupTip.exploit?.toLocaleLowerCase() ?? 'their exposed economy'}.
-                    </p>
-                  </CardContent>
-                </Card>
-              )}
-            </div>
-          </div>
+          <MatchBriefingPanel briefing={briefingFromCoachContext(context, 'historical')} />
+          <MatchDiagnosticsPanel context={context} embedded />
           <div className="flex items-center gap-2 text-[11px] text-muted-foreground">
             <RefreshCw className="h-3 w-3" />
             {tt('Data is cached in the main process and refreshes on the AoE4World last-game TTL.')}

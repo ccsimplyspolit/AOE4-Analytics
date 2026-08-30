@@ -248,9 +248,50 @@ function MatchRow({ match, profileId }: { match: ScoutMatchRow; profileId: numbe
         </span>
       </div>
       <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-muted-foreground">
-        <span className="break-words">{match.map ?? tt('Map unavailable')}</span>
-        <span>{match.format ? tt(formatLeaderboard(match.format)) : tt('Format unavailable')}</span>
+        <span className="break-words">{match.map ? gameName(match.map) : tt('Map unavailable')}</span>
+        <span>
+          {match.kind
+            ? tt(formatLeaderboard(match.kind))
+            : match.format
+              ? tt(formatLeaderboard(match.format))
+              : tt('Format unavailable')}
+        </span>
         <span>{formatDurationShort(match.durationSec)}</span>
+        {match.rating != null && <span className="tabular-nums">{match.rating}</span>}
+        {match.ratingDiff != null && (
+          <span className={match.ratingDiff >= 0 ? 'text-win' : 'text-loss'}>
+            {match.ratingDiff >= 0 ? '+' : ''}
+            {match.ratingDiff}
+          </span>
+        )}
+        {match.ratingDiff == null && match.mmrDiff != null && (
+          <span className={match.mmrDiff >= 0 ? 'text-win' : 'text-loss'}>
+            MMR {match.mmrDiff >= 0 ? '+' : ''}
+            {match.mmrDiff}
+          </span>
+        )}
+        {match.opponentNames.length > 0 && (
+          <span>
+            {tt('vs')} {match.opponentNames.join(', ')}
+          </span>
+        )}
+        {match.teammateNames && match.teammateNames.length > 0 && (
+          <span>
+            {tt('played with')} {match.teammateNames.join(', ')}
+          </span>
+        )}
+        {match.averageRating != null && (
+          <span>
+            {tt('Lobby')} {match.averageRating}
+          </span>
+        )}
+        {match.patch != null && (
+          <span>
+            {tt('Patch')} {match.patch}
+          </span>
+        )}
+        {match.inputType === 'controller' && <span>{tt('Controller')}</span>}
+        {match.server && <span>{match.server}</span>}
         <time dateTime={match.startedAt} title={absoluteDate(match.startedAt)}>
           {when}
         </time>

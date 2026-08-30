@@ -180,7 +180,7 @@ export const CIV_PROFILES: Record<string, CivProfile> = {
     difficulty: 'easy',
     focus: 'Longbows + defensive networks, farms, and reliable infantry',
     summary:
-      'A straightforward defensive civ built around longbow range and the Network of Castles defensive buff. Easy to learn with a strong farm economy and forgiving, value-oriented fights.',
+      'August 2026 map pool (closed woods, fake-water West Lake) rewards English turtle and 2TC, which is why they are the most-picked 1v1 civ. Ladder win rate is still only ~47% — popular, not Z-tier. Longbows plus Network of Castles remain the identity.',
     strengths: [
       'Longbows out-range most early ranged units',
       'Network of Castles buffs units defending near towers',
@@ -248,9 +248,9 @@ export const CIV_PROFILES: Record<string, CivProfile> = {
       'Overcommitting away from home leaves you exposed',
     ],
     opening:
-      'Use the Khan and early production to take map control before the opponent can fully wall.',
+      'Use the Khan and early production to take map control before the opponent can fully wall. On August maps, this is the answer to greedy English 2TC.',
     gamePlan:
-      'Batch strong cavalry and infantry from boosted production while forcing the opponent to defend. Transition into mass cavalry, improved upgrades, and siege once the economy is secured.',
+      'Batch cavalry from boosted production, raid farms and pilgrim routes, then add siege. 53.9% 1v1 WR this patch window — underpicked relative to Templar.',
     watchFor: [
       'Early cavalry pressure across the map',
       'The Khan leading aggressive pushes',
@@ -415,9 +415,9 @@ export const CIV_PROFILES: Record<string, CivProfile> = {
       'Complex setup punishes unprotected commitments',
     ],
     opening:
-      'Scout sacred sites early and plan the Town Center age-up around the safest commandery choice.',
+      'Scout sacred sites early and plan the Town Center age-up around the safest commandery choice. Highest-volume strong civ this window (~10% pick, 53.9% WR).',
     gamePlan:
-      'Use commandery bonuses and pilgrim income to hit a strong armored timing. Transition through commandery power spikes into heavy cavalry, infantry support, and siege.',
+      'Protect pilgrims, hit the armored Commanderie timing, then siege. On Relic River overlap relics with sacred-site income.',
     watchFor: [
       'Pilgrim and sacred-site gold worth contesting',
       'Exposed pilgrim routes and age-up TCs to raid',
@@ -429,9 +429,9 @@ export const CIV_PROFILES: Record<string, CivProfile> = {
     slug: 'macedonian_dynasty',
     name: 'Macedonian Dynasty',
     difficulty: 'hard',
-    focus: 'Byzantine variant with a Silver economy and conquest timings',
+    focus: 'Silver income, Warcamp horsemen, Hippodrome, and Riddari',
     summary:
-      'A Byzantine variant that builds a Silver economy to accelerate production and technology, converting that lead into faster army spikes and aggressive conquest timings.',
+      'Current 1v1 WR leader (~55%) in patch 16.2–16.3. Silver from gold and stone speeds production; the Beasty 1v1 line is Varangian Warcamp → Imperial Hippodrome → horsemen → Scale Barding → Golden Horn → Riddari and relics. Still underpicked at ~4.6%.',
     strengths: [
       'Silver income speeds up production and technology',
       'Faster army spikes than slower civilizations',
@@ -440,11 +440,12 @@ export const CIV_PROFILES: Record<string, CivProfile> = {
     ],
     weaknesses: [
       'Silver infrastructure is a raid target if left exposed',
-      'Inherits the Byzantine civ’s decision complexity',
+      'High decision load: Silver routing plus Varangian production choices',
     ],
-    opening: 'Set up Silver income early and use it to accelerate production or technology.',
+    opening:
+      'Five on sheep, one repairs Warcamp, rally gold then food. Age with Imperial Hippodrome; queue horsemen around 4:00; 50 stone for arrow slits; Scale Barding off the arsenal; Castle with Golden Horn.',
     gamePlan:
-      'Turn the Silver economy into a faster army spike and force fights before slower civs stabilize. Transition into Varangian-led infantry, cavalry support, and siege for fortified positions.',
+      'Turn Silver into a Riddari spike and take relics. In team RM the same civ is still top-three WR, but do not copy the 1v1 Hippodrome all-in into a 90-minute 3v3 — play the pocket/flank role and share Castle.',
     watchFor: [
       'A tech or production lead from Silver income',
       'Silver infrastructure worth raiding',

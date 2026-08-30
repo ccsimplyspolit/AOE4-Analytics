@@ -113,7 +113,23 @@ export const DATA_SOURCE_REGISTRY: readonly DataSourceDescriptor[] = [
     snapshotSchemaVersion: 1,
     capturedAt: '2026-08-07T20:31:53+02:00',
     integration:
-      'safe REST import plus normalized overlay-compatible schema, age timings, rich-text time parsing and economy/age insights',
+      'public Cloud Run list API plus proxied /api/builds/:id import, normalized overlay-compatible schema, age timings and economy/age insights',
+  },
+  {
+    id: 'aoe4-club',
+    label: 'AoE4 Club',
+    url: 'https://www.aoe4.club/en',
+    mode: 'adapter',
+    status: 'active',
+    patchAware: true,
+    coverage: 'unit compare, DPS/TTK and army cost from aoe4world/data; live HTML tools are linked, not scraped',
+    records: UNITS.length,
+    version: GAME_DATA_VERSION,
+    revision: GAME_DATA_COMMIT,
+    snapshotSchemaVersion: 1,
+    capturedAt: GAME_DATA_CAPTURED_AT,
+    integration:
+      'Tools → AoE4 Club lab recreates compare/DPS/cost locally; civilization pages remain on aoe4.club',
   },
   {
     id: 'aoe4world-explorer',

@@ -1,0 +1,143 @@
+{
+  "name": "BO based on \"Observing the Number 1 Jin Dynasty Player in AOE4\"",
+  "civilization": "Jin Dynasty",
+  "author": "Mxswat",
+  "source": "https://aoe4guides.com/builds/BVWPo4vb45Ap4Xqn9xZf",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 3,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_jin/mounted-villager.webp@ to rein@resource/deer.webp@",
+        "2 @unit_jin/mounted-villager.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:37",
+      "villager_count": 4,
+      "resources": {
+        "food": 1,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_jin/mounted-villager.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:39",
+      "villager_count": 4,
+      "resources": {
+        "food": 1,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move the reindeer @unit_jin/mounted-villager.webp@ to @resource/deer.webp@pack and builds @building_economy/mill.webp@  (If you find it early, doesn't work against spear rushes)"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 1,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_jin/mounted-villager.webp@ to @resource/resource_gold.webp@ (to unlock @technology_jin/mohe-ancestry.webp@)"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 2,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/deer.webp@pack"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/house.webp@ with @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/wheelbarrow.webp@ makes @unit_jin/mounted-villager.webp@go vroooom!"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 2,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "2 to build @landmark_jin/flower-pagoda.webp@or @landmark_jin/great-pasture.webp@"
+      ]
+    }
+  ],
+  "description": "My attempt to make a build order based on the video, but I'm happy if someone else does a better job!",
+  "video": "https://www.youtube.com/embed/-UqrQEdV_Hg",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-22T21:13:45Z",
+  "updatedAt": "2026-08-22T21:13:45Z",
+  "patch": "16.3.11308"
+}

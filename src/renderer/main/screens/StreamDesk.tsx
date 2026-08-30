@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
-import { ExternalLink, Radio, RotateCcw, Square, Trophy } from 'lucide-react'
+import { useSearchParams } from 'react-router-dom'
+import { ExternalLink, Radio, RotateCcw, Square, Trophy, Tv } from 'lucide-react'
 import type {
   StreamLiveOverride,
   StreamManagerState,
@@ -10,8 +11,11 @@ import { ipc } from '@shared/ipc'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
 import { PageHead } from '../components/PageHead'
+import { ScreenTabs } from '../components/ScreenTabs'
 import { useI18n } from '../../i18n'
 import { useSettings } from '../queries/useProfile'
+import { TwitchFinder } from './TwitchFinder'
+import { cn } from '@shared/lib/utils'
 
 const DEFAULT_STATE: StreamManagerState = {
   visible: true,
@@ -44,9 +48,21 @@ const DEFAULT_STATE: StreamManagerState = {
   updatedAt: 0,
 }
 
-export function StreamDesk() {
+export function StreamDesk({ embedded = false }: { embedded?: boolean } = {}) {
   const { tt } = useI18n()
   const { data: appSettings } = useSettings()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const view = searchParams.get('view') === 'twitch' ? 'twitch' : 'overlay'
+  const setView = (next: 'overlay' | 'twitch') =>
+    setSearchParams(
+      (previous) => {
+        const copy = new URLSearchParams(previous)
+        if (next === 'overlay') copy.delete('view')
+        else copy.set('view', next)
+        return copy
+      },
+      { replace: true },
+    )
   const [status, setStatus] = useState<StreamManagerStatus | null>(null)
   const [state, setState] = useState<StreamManagerState>(DEFAULT_STATE)
   const [copied, setCopied] = useState(false)
@@ -169,18 +185,35 @@ export function StreamDesk() {
     void update({ countdownEndsAt: Date.now() + seconds * 1000 })
 
   return (
-    <div className="animate-fade-in space-y-5">
+    <div className={cn(embedded ? 'space-y-6' : 'animate-fade-in space-y-6')}>
       <PageHead
+        embedded={embedded}
         kicker="Broadcast toolkit"
         title="Stream Desk"
         sub="Local tournament graphics, score controls, countdowns, and a browser-source URL for OBS or Streamlabs."
         aside={
-          <Badge variant={status?.running ? 'success' : 'outline'}>
-            {status?.running ? tt('Running') : tt('Stopped')}
-          </Badge>
+          view === 'overlay' ? (
+            <Badge variant={status?.running ? 'success' : 'outline'}>
+              {status?.running ? tt('Running') : tt('Stopped')}
+            </Badge>
+          ) : undefined
         }
       />
 
+      <ScreenTabs
+        items={[
+          { id: 'overlay', label: 'Overlay', icon: Radio },
+          { id: 'twitch', label: 'Twitch Finder', icon: Tv },
+        ]}
+        value={view}
+        onChange={setView}
+        ariaLabel={tt('Stream Desk sections')}
+      />
+
+      {view === 'twitch' ? (
+        <TwitchFinder embedded />
+      ) : (
+        <>
       <Card>
         <CardContent className="flex flex-wrap items-center justify-between gap-3 p-4">
           <div>
@@ -492,6 +525,8 @@ export function StreamDesk() {
           </CardContent>
         </Card>
       </div>
+        </>
+      )}
     </div>
   )
 }

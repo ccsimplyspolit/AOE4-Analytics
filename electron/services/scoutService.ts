@@ -36,6 +36,9 @@ const STATS_LEADERBOARDS = new Set<StatsLeaderboard>([
   'rm_2v2',
   'rm_3v3',
   'rm_4v4',
+  'qm_2v2',
+  'qm_3v3',
+  'qm_4v4',
 ])
 
 function isProfileId(value: unknown): value is number {
@@ -58,7 +61,7 @@ function ratingBucket(value: number | null, leaderboard: StatsLeaderboard): stri
   if (value == null || !Number.isFinite(value)) return null
   const rating = Math.round(value)
   const options = ratingFiltersForLeaderboard(leaderboard)
-  const preferred = leaderboard === 'qm_1v1'
+  const preferred = leaderboard.startsWith('qm_')
     ? rating < 900
       ? '<899'
       : rating < 1000
@@ -426,6 +429,10 @@ function matchRow(game: Game, perspectiveProfileId: number): ScoutMatchRow {
     teamIndex >= 0
       ? teams[teamIndex]?.find((candidate) => candidate.profile_id === perspectiveProfileId)
       : undefined
+  const teammates =
+    teamIndex >= 0
+      ? (teams[teamIndex] ?? []).filter((candidate) => candidate.profile_id !== perspectiveProfileId)
+      : []
   const opponents = teamIndex >= 0 ? teams.filter((_, index) => index !== teamIndex).flat() : []
 
   return {
@@ -442,6 +449,16 @@ function matchRow(game: Game, perspectiveProfileId: number): ScoutMatchRow {
     opponentNames: opponents
       .map((opponent) => opponent.name)
       .filter((name): name is string => Boolean(name)),
+    teammateNames: teammates.map((mate) => mate.name).filter(Boolean),
+    teammateProfileIds: teammates.map((mate) => mate.profile_id),
+    rating: player?.rating ?? null,
+    ratingDiff: player?.rating_diff ?? null,
+    mmrDiff: player?.mmr_diff ?? null,
+    server: game.server ?? null,
+    kind: game.kind || game.mmr_leaderboard || null,
+    patch: game.patch ?? null,
+    averageRating: game.average_rating ?? null,
+    inputType: player?.input_type ?? null,
   }
 }
 

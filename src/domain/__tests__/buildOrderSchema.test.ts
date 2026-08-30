@@ -4,6 +4,7 @@ import {
   validateBuildOrder,
   normalizeBuildOrder,
   parseNote,
+  flattenNote,
   stepIndexForElapsed,
   buildIndexForCiv,
   condenseBuildOrder,
@@ -115,6 +116,21 @@ describe('parseNote', () => {
       { type: 'text', text: ' > ' },
       { type: 'image', path: 'resource/resource_wood.webp' },
     ])
+  })
+
+  it('substitutes icon tokens so imported notes stay readable', () => {
+    expect(
+      flattenNote(
+        'Build first  @building_economy/house.webp@ with @resource/resource_food.webp@@unit_worker/villager.webp@ near supply cap, later build @building_economy/house.webp@ with  @resource/resource_wood.webp@@unit_worker/villager.webp@',
+      ),
+    ).toBe('Build first House with Food Villager near supply cap, later build House with Wood Villager')
+    expect(
+      flattenNote(
+        'Make  @building_macedonian/varangian_arsenal.webp@ with @resource/resource_gold.webp@@unit_worker/villager.webp@once enough wood and get @technology_macedonian/scale-barding-2.webp@, then upgrade whatever you need',
+      ),
+    ).toBe(
+      'Make Varangian Arsenal with Gold Villager once enough wood and get Scale Barding, then upgrade whatever you need',
+    )
   })
 })
 

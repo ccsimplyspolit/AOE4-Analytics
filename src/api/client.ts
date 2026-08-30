@@ -8,10 +8,12 @@ import {
 import type { AgeupStatsResponse } from '@domain/landmarkStats'
 import type {
   SearchResponse,
+  AutocompleteResponse,
   Player,
   GamesResponse,
   Game,
   LeaderboardResponse,
+  EsportsLeaderboardResponse,
   CivStatsResponse,
   MatchupStatsResponse,
   MapStatsResponse,
@@ -71,8 +73,33 @@ export interface GamesQuery {
   opponentProfileId?: number
   /** Incremental sync cursor (filters by `started_at`). */
   since?: string
+  /** Include games from accounts linked on AoE4World (`include_alts`). */
+  includeAlts?: boolean
+  /** Overlay/private-game key (`api_key`); never log this. */
+  apiKey?: string
+  /** Allow custom/lobby games when an overlay key is present (`include_custom`). */
+  includeCustom?: boolean
   /** Bypass the cache — for folding results, which change after a game ends. */
   fresh?: boolean
+}
+
+export interface PlayerSearchQuery {
+  page?: number
+  /** Exact name match as documented by AoE4World (`exact=true`). */
+  exact?: boolean
+}
+
+export interface LeaderboardListQuery {
+  page?: number
+  country?: string
+  limit?: number
+  fresh?: boolean
+  /** Name search on the ladder (`?query=`). */
+  search?: string
+  /** Look up specific profiles on this ladder (`?profile_id=`). */
+  profileIds?: number[]
+  /** Historical ladder snapshot (`?time=`). */
+  time?: string
 }
 
 export interface StatsQuery {
@@ -92,6 +119,8 @@ export interface GlobalGamesQuery {
   perPage?: number
   profileIds?: number[]
   since?: string
+  /** Incremental cursor for `order=updated_at` (`updated_since`). */
+  updatedSince?: string
   order?: 'started_at' | 'updated_at'
   fresh?: boolean
 }
@@ -104,6 +133,8 @@ export interface LastGameQuery {
   includeCustom?: boolean
   /** Optional AoE4World overlay key, kept out of the renderer. */
   apiKey?: string
+  /** Embed per-player `modes` on the last-game payload (`include_stats=true`). */
+  includeStats?: boolean
   fresh?: boolean
 }
 
@@ -184,8 +215,24 @@ export class Aoe4WorldClient {
     }
   }
 
-  searchPlayers(query: string): Promise<SearchResponse> {
-    return this.getJson(`/players/search?query=${encodeURIComponent(query)}`, TTL.profile)
+  searchPlayers(query: string, options: PlayerSearchQuery = {}): Promise<SearchResponse> {
+    const params = new URLSearchParams({ query })
+    if (options.page) params.set('page', String(options.page))
+    if (options.exact) params.set('exact', 'true')
+    return this.getJson(`/players/search?${params.toString()}`, TTL.profile)
+  }
+
+  /** Ladder-scoped name typeahead documented as `/players/autocomplete`. */
+  autocompletePlayers(
+    query: string,
+    leaderboard: Leaderboard,
+    options: { limit?: number } = {},
+  ): Promise<AutocompleteResponse> {
+    const params = new URLSearchParams({ query, leaderboard })
+    if (options.limit != null) {
+      params.set('limit', String(Math.max(1, Math.min(50, Math.floor(options.limit)))))
+    }
+    return this.getJson(`/players/autocomplete?${params.toString()}`, TTL.profile)
   }
 
   getPlayer(profileId: number): Promise<Player> {
@@ -203,6 +250,9 @@ export class Aoe4WorldClient {
       params.set('opponent_profile_id', String(query.opponentProfileId))
     }
     if (query.since) params.set('since', query.since)
+    if (query.includeAlts != null) params.set('include_alts', String(query.includeAlts))
+    if (query.includeCustom != null) params.set('include_custom', String(query.includeCustom))
+    if (query.apiKey) params.set('api_key', query.apiKey)
     // ttl 0 = always a cache miss → fresh fetch (results change after a game ends).
     return this.getJson(
       `/players/${profileId}/games?${params.toString()}`,
@@ -217,7 +267,14 @@ export class Aoe4WorldClient {
    */
   async getAllPlayerGames(
     profileId: number,
-    options: { fresh?: boolean; pageSize?: number; maxGames?: number } = {},
+    options: {
+      fresh?: boolean
+      pageSize?: number
+      maxGames?: number
+      includeAlts?: boolean
+      includeCustom?: boolean
+      apiKey?: string
+    } = {},
   ): Promise<Game[]> {
     const pageSize = Math.max(1, Math.min(100, Math.floor(options.pageSize ?? 100)))
     const maxGames = Math.max(pageSize, Math.min(50_000, Math.floor(options.maxGames ?? 50_000)))
@@ -225,6 +282,9 @@ export class Aoe4WorldClient {
       limit: pageSize,
       page: 1,
       fresh: options.fresh,
+      includeAlts: options.includeAlts,
+      includeCustom: options.includeCustom,
+      apiKey: options.apiKey,
     })
     const games = [...first.games]
     const total = Number.isSafeInteger(first.total_count) ? first.total_count : games.length
@@ -234,10 +294,14 @@ export class Aoe4WorldClient {
     const firstPageSize = Math.max(1, first.per_page ?? first.count ?? first.games.length)
     const pageCount = Math.min(Math.ceil(total / firstPageSize), Math.ceil(maxGames / firstPageSize))
     for (let page = 2; page <= pageCount && games.length < maxGames; page++) {
+      await new Promise<void>((resolve) => setImmediate(resolve))
       const response = await this.getPlayerGames(profileId, {
         limit: pageSize,
         page,
         fresh: options.fresh,
+        includeAlts: options.includeAlts,
+        includeCustom: options.includeCustom,
+        apiKey: options.apiKey,
       })
       if (response.games.length === 0) break
       games.push(...response.games)
@@ -253,6 +317,7 @@ export class Aoe4WorldClient {
     const params = new URLSearchParams()
     if (query.includeAlts != null) params.set('include_alts', String(query.includeAlts))
     if (query.includeCustom != null) params.set('include_custom', String(query.includeCustom))
+    if (query.includeStats != null) params.set('include_stats', String(query.includeStats))
     if (query.apiKey) params.set('api_key', query.apiKey)
     const suffix = params.toString() ? `?${params.toString()}` : ''
     return this.getJson(
@@ -261,8 +326,17 @@ export class Aoe4WorldClient {
     )
   }
 
-  getGame(profileId: number, gameId: number): Promise<Game> {
-    return this.getJson(`/players/${profileId}/games/${gameId}`, TTL.game)
+  getGame(
+    profileId: number,
+    gameId: number,
+    query: { includeAlts?: boolean; includeCustom?: boolean; apiKey?: string } = {},
+  ): Promise<Game> {
+    const params = new URLSearchParams()
+    if (query.includeAlts != null) params.set('include_alts', String(query.includeAlts))
+    if (query.includeCustom != null) params.set('include_custom', String(query.includeCustom))
+    if (query.apiKey) params.set('api_key', query.apiKey)
+    const suffix = params.toString() ? `?${params.toString()}` : ''
+    return this.getJson(`/players/${profileId}/games/${gameId}${suffix}`, TTL.game)
   }
 
   /**
@@ -278,20 +352,47 @@ export class Aoe4WorldClient {
     if (query.leaderboard) params.set('leaderboard', query.leaderboard)
     if (query.profileIds?.length) params.set('profile_ids', query.profileIds.join(','))
     if (query.since) params.set('since', query.since)
+    if (query.updatedSince) params.set('updated_since', query.updatedSince)
     if (query.order) params.set('order', query.order)
     return this.getJson(`/games?${params.toString()}`, query.fresh ? 0 : TTL.games)
   }
 
   getLeaderboard(
     leaderboard: Leaderboard,
-    query: { page?: number; country?: string; limit?: number; fresh?: boolean } = {},
+    query: LeaderboardListQuery = {},
   ): Promise<LeaderboardResponse> {
     const params = new URLSearchParams({ page: String(query.page ?? 1) })
     if (query.country) params.set('country', query.country)
     if (query.limit != null)
       params.set('limit', String(Math.max(1, Math.min(100, Math.floor(query.limit)))))
+    if (query.search) params.set('query', query.search)
+    if (query.profileIds?.length) params.set('profile_id', query.profileIds.join(','))
+    if (query.time) params.set('time', query.time)
     return this.getJson(
       `/leaderboards/${leaderboard}?${params.toString()}`,
+      query.fresh ? 0 : TTL.leaderboard,
+    )
+  }
+
+  /** Tournament Elo table documented as `/esports/leaderboards/:id`. */
+  getEsportsLeaderboard(
+    boardId = 1,
+    query: {
+      page?: number
+      search?: string
+      profileIds?: number[]
+      showInactive?: boolean
+      country?: string
+      fresh?: boolean
+    } = {},
+  ): Promise<EsportsLeaderboardResponse> {
+    const params = new URLSearchParams({ page: String(query.page ?? 1) })
+    if (query.search) params.set('query', query.search)
+    if (query.profileIds?.length) params.set('profile_id', query.profileIds.join(','))
+    if (query.showInactive) params.set('show_inactive', 'true')
+    if (query.country) params.set('country', query.country)
+    return this.getJson(
+      `/esports/leaderboards/${boardId}?${params.toString()}`,
       query.fresh ? 0 : TTL.leaderboard,
     )
   }

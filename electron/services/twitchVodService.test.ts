@@ -77,6 +77,6 @@ describe('twitch VOD service', () => {
         },
       },
     })
-    expect(getGame).toHaveBeenCalledWith(5452192, 237594260)
+    expect(getGame).toHaveBeenCalledWith(5452192, 237594260, { includeAlts: true })
   })
 })

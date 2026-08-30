@@ -82,6 +82,7 @@ export const UNIT_NAMES_RU: Record<string, string> = {
   Hobelar: 'Хобилар',
   'Horse Archer': 'Конный лучник',
   Horseman: 'Всадник',
+  Horsemen: 'Всадники',
   'Hospitaller Knight': 'Рыцарь-госпитальер',
   'Huihui Pao': 'Хуэйхуэйпао',
   Hulk: 'Халк',

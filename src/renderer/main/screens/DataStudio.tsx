@@ -1,6 +1,6 @@
 import { useMemo, useState, type ReactNode } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { Database, ImageIcon, MoreHorizontal, RefreshCw, RotateCcw } from 'lucide-react'
+import { Database, RefreshCw, RotateCcw } from 'lucide-react'
 import {
   aggregateDataStudioGames,
   DATA_STUDIO_LEGACY_UNKNOWN,
@@ -19,7 +19,6 @@ import {
   type DataStudioGame,
   type DataStudioMetric,
 } from '@domain/dataStudio'
-import { civDisplayName } from '@domain/civ'
 import { snapshotFreshness } from '@domain/sourceSnapshot'
 import { DATA_SOURCE_REGISTRY } from '@data/dataSources'
 import { filterPersonalHistory } from '@domain/historyFilters'
@@ -34,10 +33,11 @@ import { useI18n } from '../../i18n'
 import { ipc } from '@shared/ipc'
 import type { EssenceSyncStatus } from '@domain/sourceSync'
 import { compareEssenceAttributes } from '@data/essenceAttributes'
+import { useAutoAction } from '../hooks/useAutoAction'
 
 type FilterKey = keyof DataStudioFilters
 
-export function DataStudio() {
+export function DataStudio({ embedded = false }: { embedded?: boolean } = {}) {
   const { tt } = useI18n()
   const { data, isLoading, refetch } = useFullHistory()
   const { data: settings } = useSettings()
@@ -71,14 +71,18 @@ export function DataStudio() {
   }
 
   function resetFilters() {
-    setSearchParams(new URLSearchParams(), { replace: true })
+    const next = new URLSearchParams()
+    const section = searchParams.get('section')
+    if (section) next.set('section', section)
+    setSearchParams(next, { replace: true })
   }
 
-  const hasFilters = searchParams.size > 0
+  const hasFilters = Object.values(DATA_STUDIO_SEARCH_PARAMS).some((key) => searchParams.has(key))
 
   return (
-    <div className="animate-fade-in space-y-6">
+    <div className={embedded ? 'space-y-6' : 'animate-fade-in space-y-6'}>
       <PageHead
+        embedded={embedded}
         kicker="Personal match lab"
         title="Data Studio"
         sub="Filter your own synced history and inspect the sample behind every average."
@@ -105,7 +109,7 @@ export function DataStudio() {
         <EmptyBox>
           <div className="space-y-1">
             <p>{tt('No synced matches to explore yet.')}</p>
-            <p className="text-xs">{tt('Sync recent games from My Stats, then return here.')}</p>
+            <p className="text-xs">{tt('Account games sync automatically from the public API.')}</p>
           </div>
         </EmptyBox>
       )}
@@ -248,6 +252,15 @@ function DataSourcePanel() {
     setSyncing(false)
   }
 
+  useAutoAction(
+    'data-studio-source-sync',
+    () =>
+      runSourceSync(false, {
+        essenceDecodeRgd: true,
+        essenceDecodeNativeIcons: true,
+      }),
+  )
+
   return (
     <div className="rounded-sm border border-border bg-card/50">
       <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3">
@@ -259,65 +272,12 @@ function DataSourcePanel() {
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() =>
-              runSourceSync(false, {
-                essenceDecodeRgd: true,
-                essenceDecodeNativeIcons: true,
-              })
-            }
-            disabled={syncing}
-            className="inline-flex items-center gap-1.5 rounded-sm bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:cursor-wait disabled:opacity-50"
-          >
-            <RefreshCw className={cn('h-3.5 w-3.5', syncing && 'animate-spin')} />
-            {tt('Refresh all')}
-          </button>
-          <details className="relative">
-            <summary className="flex h-8 cursor-pointer list-none items-center justify-center rounded-sm border border-border px-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground [&::-webkit-details-marker]:hidden">
-              <MoreHorizontal className="h-4 w-4" />
-              <span className="sr-only">{tt('Advanced actions')}</span>
-            </summary>
-            <div className="absolute right-0 top-9 z-20 w-56 space-y-1 rounded-sm border border-border bg-card p-1.5 shadow-xl">
-              <button
-                type="button"
-                onClick={() => runSourceSync(true)}
-                disabled={syncing}
-                className="flex w-full items-center gap-2 rounded-sm px-2.5 py-2 text-left text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground disabled:cursor-wait disabled:opacity-50"
-              >
-                <RefreshCw className="h-3.5 w-3.5" />
-                {tt('Check sources')}
-              </button>
-              <button
-                type="button"
-                onClick={() =>
-                  runSourceSync(false, {
-                    essenceDecodeRgd: true,
-                    essenceOnly: true,
-                  })
-                }
-                disabled={syncing}
-                className="flex w-full items-center gap-2 rounded-sm px-2.5 py-2 text-left text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground disabled:cursor-wait disabled:opacity-50"
-              >
-                <Database className="h-3.5 w-3.5" />
-                {tt('Decode local attributes')}
-              </button>
-              <button
-                type="button"
-                onClick={() =>
-                  runSourceSync(false, {
-                    essenceDecodeNativeIcons: true,
-                    essenceOnly: true,
-                  })
-                }
-                disabled={syncing}
-                className="flex w-full items-center gap-2 rounded-sm px-2.5 py-2 text-left text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground disabled:cursor-wait disabled:opacity-50"
-              >
-                <ImageIcon className="h-3.5 w-3.5" />
-                {tt('Refresh native icons')}
-              </button>
-            </div>
-          </details>
+          {syncing ? (
+            <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+              <RefreshCw className="h-3.5 w-3.5 animate-spin text-primary" />
+              {tt('Refreshing data sources…')}
+            </span>
+          ) : null}
         </div>
       </div>
       {(syncStatus || syncOutput) && (
@@ -495,7 +455,7 @@ function FilterPanel({
   options: DataStudioFilterOptions
   onChange: (key: FilterKey, value: string) => void
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   return (
     <Card>
       <CardContent className="space-y-3 p-4">
@@ -512,7 +472,7 @@ function FilterPanel({
             value={filters.civilization}
             onChange={(value) => onChange('civilization', value)}
           >
-            {categoryOptions(options.civilizations, filters.civilization, (value) => civOptionLabel(value, tt))}
+            {categoryOptions(options.civilizations, filters.civilization, (value) => civOptionLabel(value, tt, gameName))}
           </FilterSelect>
           <FilterSelect
             label={tt('Opponent civilization')}
@@ -522,7 +482,7 @@ function FilterPanel({
             {categoryOptions(
               options.opponentCivilizations,
               filters.opponentCivilization,
-              (value) => civOptionLabel(value, tt),
+              (value) => civOptionLabel(value, tt, gameName),
             )}
           </FilterSelect>
           <FilterSelect
@@ -530,7 +490,7 @@ function FilterPanel({
             value={filters.map}
             onChange={(value) => onChange('map', value)}
           >
-            {categoryOptions(options.maps, filters.map, (value) => plainOptionLabel(value, tt))}
+            {categoryOptions(options.maps, filters.map, (value) => plainOptionLabel(value, tt, gameName))}
           </FilterSelect>
           <FilterSelect
             label={tt('Format')}
@@ -639,12 +599,17 @@ function categoryOptions(
   )
 }
 
-function civOptionLabel(value: string, tt: (value: string) => string): string {
-  return value === DATA_STUDIO_UNKNOWN ? tt('Unknown') : civDisplayName(value)
+function civOptionLabel(value: string, tt: (value: string) => string, gameName: (value: string) => string): string {
+  return value === DATA_STUDIO_UNKNOWN ? tt('Unknown') : gameName(value)
 }
 
-function plainOptionLabel(value: string, tt: (value: string) => string): string {
-  return value === DATA_STUDIO_UNKNOWN ? tt('Unknown') : value
+function plainOptionLabel(
+  value: string,
+  tt: (value: string) => string,
+  gameName?: (value: string) => string,
+): string {
+  if (value === DATA_STUDIO_UNKNOWN) return tt('Unknown')
+  return gameName ? gameName(value) : value
 }
 
 function patchOptionLabel(value: string, tt: (value: string) => string): string {
@@ -686,7 +651,7 @@ function MetricCard({
 }
 
 function MatchTable({ games }: { games: DataStudioGame[] }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   return (
     <section className="space-y-3">
       <h2 className="text-lg font-semibold tracking-tight">{tt('Matching games')}</h2>
@@ -725,17 +690,17 @@ function MatchTable({ games }: { games: DataStudioGame[] }) {
                       <ResultLabel result={game.result} />
                     </TableCell>
                     <TableCell>
-                      {civDisplayName(game.civilization)}
+                      {gameName(game.civilization)}
                       <span className="text-muted-foreground">
                         {' '}
                         vs{' '}
                         {game.opponentCivilizations.length > 0
-                          ? game.opponentCivilizations.map(civDisplayName).join(' + ')
+                          ? game.opponentCivilizations.map((civ) => gameName(civ)).join(' + ')
                           : 'Unknown'}
                       </span>
                     </TableCell>
                     <TableCell>
-                      {game.map || tt('Unknown')}
+                      {game.map ? gameName(game.map) : tt('Unknown')}
                         <span className="text-muted-foreground"> · {game.format ?? tt('Unknown')}</span>
                     </TableCell>
                     <TableCell>

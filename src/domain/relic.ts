@@ -14,12 +14,13 @@ import type {
 } from '../api/relicTypes'
 import type { PerPlayerMatchStats } from './analysis'
 import type { CivUsage, MapUsage, RankInfo, RecentForm, ScoutReport } from './types'
+import { EMPTY_PLAYER_SOCIAL } from './playerWorldOverview'
 import { civDisplayName } from './civ'
 import { round1 } from './form'
 import { buildCounterNote } from './scouting'
 import {
   isCompetitiveLeaderboard,
-  leaderboardLabel,
+  leaderboardKey,
   PREFERRED_LEADERBOARD_ORDER,
   raceIdToCiv,
   relicRankLevelToSlug,
@@ -108,7 +109,7 @@ export function perPlayerStatsFromMatch(match: RelicMatch): PerPlayerMatchStats[
 export function relicLeaderboardStatToRankInfo(stat: RelicLeaderboardStat): RankInfo {
   const games = stat.wins + stat.losses
   return {
-    leaderboard: leaderboardLabel(stat.leaderboard_id),
+    leaderboard: leaderboardKey(stat.leaderboard_id),
     rankLevel: relicRankLevelToSlug(stat.ranklevel),
     rating: stat.rating ?? null,
     maxRating: stat.highestrating ?? null,
@@ -247,6 +248,18 @@ export function buildScoutReportFromRelic({
     recentForm,
     topCivs,
     topMaps,
+    modeCivs: [],
+    modeCivGroups: [],
+    ratingHistory: [],
+    ratingHistories: [],
+    teammates: [],
+    opponents: [],
+    previousSeasons: [],
+    avatarUrl: null,
+    steamId: null,
+    social: EMPTY_PLAYER_SOCIAL,
+    lastGameAt: null,
+    siteUrl: null,
     note: buildCounterNote(topCivs, recentForm),
     hasData: recentForm.games > 0 || modes.length > 0,
   }

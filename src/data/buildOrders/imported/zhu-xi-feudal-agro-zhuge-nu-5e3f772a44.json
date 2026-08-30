@@ -1,0 +1,241 @@
+{
+  "name": "Zhu XI Feudal Agro (Zhuge Nu)",
+  "civilization": "Zhu Xi's Legacy",
+  "author": "Jipushi",
+  "source": "https://aoe4guides.com/builds/sjW1VHwAxZyl4VE7uBly",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New @unit_worker/villager-china.webp@ builds @building_chinese/village.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_chinese/imperial-official.webp@ collects gold from the mill"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Produce 2nd @unit_chinese/imperial-official.webp@ for @building_economy/lumber-camp.webp@",
+        "Produce 3rd @unit_chinese/imperial-official.webp@ to collect Taxes"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1. @resource/resource_food.webp@",
+        "2. @resource/resource_gold.webp@",
+        "Build @building_military/archery-range.webp@",
+        "For the first 5x @unit_chinese/zhuge-nu-2.webp@ put the tax collector @unit_chinese/imperial-official.webp@",
+        "Build 2nd @building_military/archery-range.webp@",
+        "Constant production of 2x @unit_chinese/zhuge-nu-2.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 9,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_chinese/village.webp@",
+        "@building_technology/blacksmith.webp@ @technology_military/steeled-arrow.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "SAVE THE GAME"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 9,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If I want to end",
+        "@resource/resource_wood.webp@ @technology_military/siege-engineering.webp@ + @unit_siege/battering-ram.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": 33,
+      "resources": {
+        "food": 21,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "VOIR LA REPARTITION DES VILLAGEOIS + calculer les besoins en ressource",
+        "If I want to castle",
+        "First @building_economy/farm.webp@ on @building_economy/mill.webp@ but can be easilly switch to @building_chinese/granary.webp@",
+        "@age/age_3.webp@ with @landmark_zhuxi/mount-lu-academy-1.webp@",
+        "Build @landmark_zhuxi/meditation-gardens-1.webp@  @technology_economy/wheelbarrow.webp@ + eco upgrades"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1. @unit_cavalry/horseman-1.webp@ (100F + 250G)  upgrade + @building_technology/blacksmith.webp@ upgrades",
+        "2. @building_religious/monastery.webp@ with @unit_religious/monk-3.webp@",
+        "3. @building_military/stable.webp@ with @unit_cavalry/lancer-3.webp@",
+        "4. @landmark_zhuxi/meditation-gardens-1.webp@ + @building_chinese/granary.webp@x3 + @unit_chinese/imperial-official.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_4.webp@ + eco upgrades"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Need a LOT of gold for age 4 upgrades",
+        "1. @technology_zhuxi/10000-bolts-4.webp@@technology_military/platecutter-point.webp@ @unit_chinese/zhuge-nu-2.webp@ upgrades @technology_military/incendiary-arrows.webp@",
+        "2.",
+        "Only eco upgrades when 200 pop"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 4,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-22T21:13:45Z",
+  "updatedAt": "2026-08-22T21:13:45Z",
+  "patch": "16.3.11308"
+}

@@ -1,0 +1,327 @@
+{
+  "description": "Контр spear opener: mill → Imperial Hippodrome, Castle ~12:24. Ставить vs любого, кто может открыть казармами-копьями или Sipahi+spear (English, Ottomans, HRE, Japanese, Abbasid, Ayyubids, OOTD, Templars, mirror Byz…). Не mill vs French, Golden Horde, Jeanne, Malians, Rus, Sengoku, Delhi — там 3-stone Winery. Feudal 4:00. VOD 0pkvLN16f4o с 10:19.",
+  "civilization": "Byzantines",
+  "opponentCivilization": [
+    "English",
+    "Ottomans",
+    "Holy Roman Empire",
+    "Japanese",
+    "Abbasid Dynasty",
+    "Ayyubids",
+    "Order of the Dragon",
+    "Knights Templar",
+    "Byzantines",
+    "Mongols",
+    "House of Lancaster",
+    "Macedonian Dynasty"
+  ],
+  "name": "[1x1][OPEN][BYZ][TEMPO] Valdemar: Hippodrome Mill → Castle 12 мин",
+  "author": "Valdemar1902 / Valdy",
+  "source": "https://aoe4guides.com/builds/D7Jsk12Fl2FCyiJf7q9L, https://www.youtube.com/watch?v=0pkvLN16f4o&t=619s",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "timeProvenance": "stated",
+      "villager_count": 6,
+      "resources": { "food": 6, "wood": 0, "gold": 0, "stone": 0, "builder": 1 },
+      "notes": [
+        "6 на @resource/berrybush.webp@: @building_economy/mill.webp@ + @building_economy/house.webp@ + @building_byzantines/cistern-1.webp@.",
+        "Снимать ВНЕШНИЕ ягоды. Если spear rush — уйти на внутренние, longbows всё равно выйдут.",
+        "Spear opener = казармы-копья в тёмной/раннем феодале. Не mill vs French / Golden Horde / Jeanne / Malians / Rus / Sengoku / Delhi."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "timeProvenance": "stated",
+      "villager_count": 7,
+      "resources": { "food": 6, "wood": 0, "gold": 1, "stone": 0, "builder": -1 },
+      "notes": [
+        "Следующие 2 на @resource/resource_gold.webp@. Если spear rush уже виден — сразу 3 на золото."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:00",
+      "timeProvenance": "stated",
+      "villager_count": 9,
+      "resources": { "food": 7, "wood": 0, "gold": 2, "stone": 0, "builder": -1 },
+      "notes": ["@resource/rally.webp@ на @resource/sheep.webp@ под ТЦ до феодала."]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:37",
+      "timeProvenance": "stated",
+      "villager_count": 13,
+      "resources": { "food": 11, "wood": 0, "gold": 2, "stone": 0, "builder": 5 },
+      "notes": [
+        "5 с овец на @landmark_byzantines/imperial-hippodrome-1.webp@ в 2 тайлах от ТЦ. В гайде 5, в видео из-за скорости longbow иногда 6."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:40",
+      "timeProvenance": "stated",
+      "villager_count": 14,
+      "resources": { "food": 6, "wood": 3, "gold": 0, "stone": 0, "builder": 5 },
+      "notes": [
+        "@resource/rally.webp@ страглеры. Золото снять после 35g на ап копий. 6 на ягодах — масло на longbows к ~3:40."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:00",
+      "timeProvenance": "stated",
+      "villager_count": 18,
+      "resources": { "food": 11, "wood": 7, "gold": 0, "stone": 0, "builder": -1 },
+      "notes": [
+        "Feudal 4:00. @unit_cavalry/horseman-1.webp@, @building_byzantines/mercenary-house-2.webp@, @building_economy/lumber-camp.webp@, @building_economy/house.webp@.",
+        "Longbow + horseman + limitanei. Сидеть дома, рейдить конями."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:50",
+      "timeProvenance": "stated",
+      "villager_count": 20,
+      "resources": { "food": 12, "wood": 8, "gold": 0, "stone": 0, "builder": -1 },
+      "notes": [
+        "8 дерева → ралли овцы до 12–14, потом 4 золото. Типично ~13/13. Не на камне — это не 2TC."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "05:25",
+      "timeProvenance": "stated",
+      "villager_count": 21,
+      "resources": { "food": 13, "wood": 7, "gold": 1, "stone": 0, "builder": 1 },
+      "notes": ["@building_military/barracks.webp@. Longbow spear дома, кони в рейд."]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:00",
+      "timeProvenance": "stated",
+      "villager_count": 23,
+      "resources": { "food": 13, "wood": 8, "gold": 2, "stone": 0, "builder": -1 },
+      "notes": ["2-я @building_byzantines/cistern-1.webp@."]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:30",
+      "timeProvenance": "stated",
+      "villager_count": 27,
+      "resources": { "food": 15, "wood": 8, "gold": 4, "stone": 0, "builder": -1 },
+      "notes": [
+        "@building_military/blacksmith.webp@: @technology_military/steeled-arrow.webp@ и @technology_military/iron-undermesh.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "08:00",
+      "timeProvenance": "stated",
+      "villager_count": 29,
+      "resources": { "food": 17, "wood": 8, "gold": 4, "stone": 0, "builder": -1 },
+      "notes": [
+        "2-я пачка @unit_english/longbowman-2.webp@. 5 жителей на 2-е ягоды, @building_military/outpost.webp@ + @building_economy/mill.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "09:30",
+      "timeProvenance": "stated",
+      "villager_count": 31,
+      "resources": { "food": 19, "wood": 8, "gold": 4, "stone": 0, "builder": -1 },
+      "notes": ["3-и ягоды и @technology_economy/wheelbarrow.webp@."]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:00",
+      "timeProvenance": "stated",
+      "villager_count": 38,
+      "resources": { "food": 23, "wood": 3, "gold": 12, "stone": 0, "builder": -1 },
+      "notes": [
+        "Стоп юнитов. Castle: 2–3 дерево, остальное еда/золото. 12 золота мало — золото нужно на переход."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:24",
+      "timeProvenance": "derived",
+      "villager_count": 41,
+      "resources": { "food": 23, "wood": 3, "gold": 15, "stone": 0, "builder": 10 },
+      "notes": [
+        "8–12 на @landmark_byzantines/golden-horn-tower-2.webp@, два @building_military/stable.webp@ в Castle, @unit_byzantines/cataphract-3.webp@.",
+        "Монастырь только после Hippodrome. Апы кроме horseman, если коней мало. Удар за ~минуту до апов оппонента."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/watch?v=0pkvLN16f4o&t=619s",
+  "season": 13,
+  "map": "Открытые и гибридные карты против spear-civs",
+  "strategy": "Mill Hippodrome, oil longbows, sit at home, Castle 12:24",
+  "provider": "aoe4guides",
+  "providerId": "D7Jsk12Fl2FCyiJf7q9L",
+  "score": 4.57,
+  "views": 172,
+  "likes": 1,
+  "upvotes": 1,
+  "timeCreated": "2026-08-20T00:00:00Z",
+  "timeUpdated": "2026-08-20T00:00:00Z",
+  "mode": ["1x1"],
+  "map_type": ["open", "hybrid"],
+  "role": "tempo",
+  "status": "active",
+  "queue": "rm_solo",
+  "team_size": 1,
+  "strategy_key": "tempo",
+  "meta_tier": "meta_core",
+  "build_group": "byzantines_hippodrome",
+  "rank_fit": "all+conqueror",
+  "verified_patch": "10604,10884,11214,11308",
+  "last_verified": "2026-08-23",
+  "game_build": "16.3.11308",
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-23T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-23T00:00:00Z",
+  "archetype": "Timing attack",
+  "difficulty": "medium",
+  "reasoning": "Valdemar: mill контрит spear openers (казарма Spearmen / Ottoman Sipahi+spear на твой камень). Не mill vs French, Golden Horde, Jeanne, Malians, Rus, Sengoku, Delhi — у них другой early (рыцари, конница, eco). Feudal 4:00, Castle ~12:24, VOD с 10:19.",
+  "ageTimings": [
+    { "age": 2, "seconds": 240, "derived": false, "stepIndex": 5 },
+    { "age": 3, "seconds": 744, "derived": true, "stepIndex": 13 }
+  ],
+  "tactics": [
+    {
+      "id": "mill-when-spears",
+      "category": "opening",
+      "title": "Mill vs spear openers only",
+      "detail": "Spear opener = Dark/early Feudal barracks Spearmen (or Ottoman Sipahi+spear) onto your stone/gold. Mill vs English, Ottomans, HRE, Japanese, Abbasid, Ayyubids, OOTD, Templars, Byz mirror, Mongols-if-spears. Never mill vs French, Golden Horde, Jeanne, Malians, Rus, Sengoku, Delhi — those are 3-stone Winery.",
+      "timeSec": 635,
+      "confidence": 0.96
+    },
+    {
+      "id": "mill-outer-berries",
+      "category": "economy",
+      "title": "Outer berries first, inner if rushed",
+      "detail": "Place vills on the outer bush so a spear rush can fall back inside and still hit the longbow oil timing.",
+      "timeSec": 692,
+      "confidence": 0.93
+    },
+    {
+      "id": "mill-gold-count",
+      "category": "economy",
+      "title": "2 gold, or 3 if spears already coming",
+      "detail": "Bank 35 extra gold for the spear upgrade, then pull gold to wood.",
+      "timeSec": 648,
+      "confidence": 0.92
+    },
+    {
+      "id": "mill-oil-340",
+      "category": "economy",
+      "title": "Enough oil for longbows at 3:40",
+      "detail": "Leave ~6 on berries during the Hippodrome. At 3:40 game time you can already afford mercenary longbows.",
+      "timeSec": 845,
+      "confidence": 0.9
+    },
+    {
+      "id": "mill-home-raid",
+      "category": "military",
+      "title": "Longbow spear at home, horsemen raid",
+      "detail": "Do not wander. Shivs lose to longbows. No stone = not a 2TC — stable into aggression, then Castle.",
+      "timeSec": 924,
+      "confidence": 0.9
+    },
+    {
+      "id": "mill-12min-castle",
+      "category": "transition",
+      "title": "Must Castle around 12 minutes",
+      "detail": "Hippodrome has no monastery — drop it in Castle. Two stables, cataphracts, upgrades, hit ~1 min before their upgrades.",
+      "timeSec": 1279,
+      "confidence": 0.91
+    }
+  ],
+  "transcriptText": "[10:19] Winery triple-stone is the default. Mill opener when Sipahi-spear / spear rush is possible.\n[10:48] Spear rush already coming → 3 on gold now; otherwise 2 on gold.\n[11:02] Mill up. Two on gold, rally sheep until Feudal.\n[11:32] Outer berries so you can fall inside if speared and still get longbows.\n[12:23] Then Hippodrome, longbow + horseman + limitanei. Extra 35 gold for spear upgrade.\n[12:44] Age up with ~6 (video) / 5 (written BO) because longbows come out so fast.\n[13:06] Hippodrome two tiles from TC, rally wood, 8 wood like the Winery opener, keep 6 on berries for oil.\n[14:05] At 3:40 you have enough oil for longbows.\n[14:33] Market. No stone = new stable opener, not 2TC.\n[15:24] Sit at home with longbow spear, raid with horsemen. ~13 gold / 13 food.\n[21:17] Age up around 12 minutes or you get punished.\n[23:35] No monastery on Hippodrome — drop it in Castle.\n[25:07] Timing attack ~1 minute before their upgrades land.\n[25:46] Meta: Castle ~12, upgrade, hit. Mill BO is in the description.",
+  "video_evidence": {
+    "schemaVersion": 1,
+    "windowStart": "2026-08-20",
+    "windowEnd": "2026-08-23",
+    "sampleSize": 1,
+    "requestedSampleSize": 1,
+    "coverageNote": "Same Valdy video, second game from 10:19. Captions timed to ~0.1s. Game clock and YouTube clock are offset by ~10:19 — overlay steps use game clock; checkpoints use video seconds.",
+    "commonActions": ["Mill opener", "Imperial Hippodrome", "Longbow spear", "Horseman raid", "12-min Castle"],
+    "commonResources": ["berries", "gold", "olive oil", "wood"],
+    "commonTopics": ["Opening military", "Age-up", "Counterplay"],
+    "commonOpponents": ["Ottomans", "English", "Holy Roman Empire", "Japanese"],
+    "commonMilitaryMentions": ["Longbowman", "Spearman", "Horseman", "Cataphract"],
+    "timingSignals": [
+      { "label": "Mill opener starts in VOD", "timeSec": 619, "mentions": 1 },
+      { "label": "Hippodrome click ~2:37 game", "timeSec": 784, "mentions": 1 },
+      { "label": "Oil for longbows 3:40 game", "timeSec": 845, "mentions": 1 },
+      { "label": "Feudal 4:00", "timeSec": 858, "mentions": 1 },
+      { "label": "Castle ~12 min", "timeSec": 1279, "mentions": 2 }
+    ],
+    "sources": [
+      {
+        "id": "0pkvLN16f4o",
+        "title": "Easily Achieve Conqueror 3 With These Byz Strats | AoE4 Valdy",
+        "url": "https://www.youtube.com/watch?v=0pkvLN16f4o&t=619s",
+        "channel": "Valdy",
+        "publishedAt": "2026-08-20T00:00:00Z",
+        "viewCount": null,
+        "transcriptLanguage": "en",
+        "transcriptSource": "auto",
+        "transcriptProvider": "local",
+        "transcriptStatus": "available",
+        "transcriptWordCount": 4200,
+        "transcriptExcerpt": "Now I'm going to show you how to do the mill opener whenever you see a Sipahi spear rush or spear rush potential.",
+        "sourceKind": "guide",
+        "frameCheckpoints": [
+          { "timeSec": 619, "label": "Mill section starts", "quote": "I just showed you the Vinarii opener with the triple stone" },
+          { "timeSec": 635, "label": "When to mill", "quote": "whenever you see your opponent is going to go for a Sipahi spear rush" },
+          { "timeSec": 648, "label": "Gold 2 vs 3", "quote": "If you see the spear rush coming early, then you send three to gold now" },
+          { "timeSec": 662, "label": "Mill up", "quote": "now we got the mill up and running" },
+          { "timeSec": 692, "label": "Outer berries", "quote": "we put the bills outside right here because if he's spear rushing us, we can go inside berries" },
+          { "timeSec": 743, "label": "Hippodrome plan", "quote": "build the hippodrome, and then get into playing longbow" },
+          { "timeSec": 784, "label": "Age-up click", "quote": "Hippodrome right there, two tiles away from the TC" },
+          { "timeSec": 845, "label": "Oil 3:40", "quote": "at 3:40 you will have enough oil to go for longbows" },
+          { "timeSec": 902, "label": "Not 2TC", "quote": "he's not on stone so we can confirm this is going to be one of those new stable opener" },
+          { "timeSec": 924, "label": "Home army + raid", "quote": "sit in our base with long bow spear and raid him with horsemen" },
+          { "timeSec": 1279, "label": "12-min Castle gate", "quote": "age up around 12 minutes. If you don't, you're going to be in a bit of a rough spot" },
+          { "timeSec": 1415, "label": "Monastery in Castle", "quote": "Let's bring in monastery. We don't have a monastery when we play hippodrome" },
+          { "timeSec": 1507, "label": "Damage window", "quote": "timing attack. We have about a minute before those upgrades are going to come in for him" },
+          { "timeSec": 1546, "label": "Close", "quote": "Just age up to castle around 12 minutes, upgrade your units" }
+        ],
+        "signals": {
+          "archetype": "Timing attack",
+          "actions": ["Mill opener", "Imperial Hippodrome", "Horseman raid"],
+          "resources": ["berries", "gold", "olive oil"],
+          "topics": ["Opening military", "Counterplay", "Age-up"],
+          "opponentCivs": [],
+          "militaryMentions": ["Longbowman", "Spearman", "Horseman", "Cataphract"],
+          "timings": [
+            { "label": "Mill VOD start", "timeSec": 619, "mentions": 1 },
+            { "label": "Castle ~12 min", "timeSec": 1279, "mentions": 1 }
+          ],
+          "confidence": 0.94
+        }
+      }
+    ]
+  }
+}

@@ -64,7 +64,9 @@ async function lookupDirectGame(
 ): Promise<TwitchVodLookupResult['vod']> {
   if (input.profileId == null) return null
   try {
-    const game = await getClient().getGame(input.profileId, Number(input.gameId))
+    const game = await getClient().getGame(input.profileId, Number(input.gameId), {
+      includeAlts: true,
+    })
     if (game.game_id !== Number(input.gameId)) return null
     const players = normalizeTeams(game).flat()
     const preferred = players.find(

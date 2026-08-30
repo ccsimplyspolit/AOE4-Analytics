@@ -6,6 +6,8 @@ import {
   buildLiveMatchInfo,
   buildLiveMatchup,
   buildLocalLiveMatchup,
+  attachLocalLiveMatchup,
+  liveOpponentCivilizations,
   type LiveEval,
 } from '../liveMatch'
 import type { RankInfo } from '../types'
@@ -305,7 +307,60 @@ describe('buildLiveMatchup', () => {
   })
 })
 
+describe('liveOpponentCivilizations', () => {
+  it('returns the 1v1 opponent civ and ignores the fallback once the roster exists', () => {
+    const matchup = buildLiveMatchup(twoPlayerGame(), 1, new Map())
+    expect(liveOpponentCivilizations(matchup, 'mongols')).toEqual(['english'])
+  })
+
+  it('returns every enemy civ in a team game, not allies', () => {
+    const matchup = buildLiveMatchup(fourPlayerGame(), 1, new Map())
+    expect(liveOpponentCivilizations(matchup)).toEqual(['english', 'mongols'])
+  })
+
+  it('uses the live oppCiv fallback when the roster has no civs yet', () => {
+    expect(liveOpponentCivilizations(null, 'french')).toEqual(['french'])
+    expect(liveOpponentCivilizations({ teams: [] })).toEqual([])
+  })
+})
+
 describe('buildLocalLiveMatchup', () => {
+  it('attaches the current local roster to dashboard live info without using stale history', () => {
+    const info = buildLiveMatchInfo(
+      null,
+      { isLive: true, isStale: false, source: 'local' },
+      true,
+      22223074,
+    )
+    const matchup = buildLocalLiveMatchup(
+      [
+        {
+          slot: 0,
+          name: 'Me',
+          id: 22223074,
+          team: 0,
+          civToken: 'byzantine',
+          ai: false,
+        },
+        {
+          slot: 1,
+          name: 'AI',
+          id: -1,
+          team: 1,
+          civToken: 'abbasid',
+          ai: true,
+        },
+      ],
+      22223074,
+    )
+
+    expect(attachLocalLiveMatchup(info, matchup)).toMatchObject({
+      custom: true,
+      myCiv: 'byzantines',
+      opponent: { civ: 'abbasid_dynasty' },
+    })
+  })
+
   it('groups a custom 2v2 roster by team and marks the configured player as me', () => {
     const m = buildLocalLiveMatchup(
       [

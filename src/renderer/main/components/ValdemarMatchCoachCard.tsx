@@ -4,24 +4,33 @@ import {
   VALDEMAR_VIDEOS,
   type ValdemarVideoEntry,
 } from '@data/valdemarCatalog.generated'
-import { civDisplayName } from '@domain/civ'
+import {
+  getBeastyVideosForCiv,
+  type BeastyVideoEntry,
+} from '@data/beastyCatalog.generated'
 import { formatDurationShort } from '@shared/format'
 import { Badge } from '@shared/components/ui/badge'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { VideoPlayer } from './VideoPlayer'
 import { VisualMilestoneCoachCard } from './VisualMilestoneCoachCard'
+import { ProTipsMiniPanel } from './ProTipsMiniPanel'
 import { useI18n } from '../../i18n'
 
 export function ValdemarMatchCoachCard({
   myCiv,
   opponentCiv,
+  showGenericTips = true,
 }: {
   myCiv: string | null
   opponentCiv: string | null
+  showGenericTips?: boolean
 }) {
-  const { locale } = useI18n()
+  const { locale, gameName } = useI18n()
   const isRu = locale === 'ru'
   const [activeVideo, setActiveVideo] = useState<ValdemarVideoEntry | null>(null)
+  const [activeBeasty, setActiveBeasty] = useState<BeastyVideoEntry | null>(null)
+
+  const beastyVideos = useMemo(() => getBeastyVideosForCiv(myCiv).slice(0, 2), [myCiv])
 
   const relevantVideos = useMemo(() => {
     if (!myCiv) return []
@@ -55,7 +64,7 @@ export function ValdemarMatchCoachCard({
     return [...exactMatchup, ...myCivAnalyses, ...myCivGuides].slice(0, 4)
   }, [myCiv, opponentCiv])
 
-  if (!myCiv || relevantVideos.length === 0) {
+  if (!myCiv || (relevantVideos.length === 0 && beastyVideos.length === 0)) {
     return null
   }
 
@@ -75,8 +84,8 @@ export function ValdemarMatchCoachCard({
                     : 'Valdemar1902 Matchup & Pro Video Analysis'}
                 </h3>
                 <Badge variant="outline" className="text-[9px]">
-                  {civDisplayName(myCiv)}
-                  {opponentCiv ? ` vs ${civDisplayName(opponentCiv)}` : ''}
+                  {gameName(myCiv)}
+                  {opponentCiv ? ` vs ${gameName(opponentCiv)}` : ''}
                 </Badge>
               </div>
               <p className="mt-0.5 text-xs text-muted-foreground">
@@ -115,6 +124,7 @@ export function ValdemarMatchCoachCard({
         )}
 
         {/* Video Cards List */}
+        {relevantVideos.length > 0 && (
         <div className="grid gap-2.5 md:grid-cols-2">
           {relevantVideos.map((video) => (
             <div
@@ -193,6 +203,56 @@ export function ValdemarMatchCoachCard({
             </div>
           ))}
         </div>
+        )}
+
+        {beastyVideos.length > 0 && (
+          <div className="space-y-2">
+            <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              {isRu ? 'Beastyqt — макро и микро' : 'Beastyqt — macro & micro'}
+            </div>
+            {activeBeasty && (
+              <div className="space-y-2 rounded-md border border-primary/40 bg-background/80 p-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-semibold">{activeBeasty.title}</span>
+                  <button
+                    type="button"
+                    onClick={() => setActiveBeasty(null)}
+                    className="text-xs text-muted-foreground hover:text-foreground"
+                  >
+                    ✕
+                  </button>
+                </div>
+                <VideoPlayer url={activeBeasty.url} title={activeBeasty.title} className="max-w-2xl" />
+              </div>
+            )}
+            <div className="grid gap-2 md:grid-cols-2">
+              {beastyVideos.map((video) => (
+                <div
+                  key={video.id}
+                  className="rounded-md border border-border/80 bg-background/50 p-3"
+                >
+                  <h4 className="line-clamp-2 text-xs font-semibold">{video.title}</h4>
+                  <p className="mt-1 line-clamp-2 text-[11px] text-muted-foreground">{video.summary}</p>
+                  <button
+                    type="button"
+                    onClick={() => setActiveBeasty(video)}
+                    className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
+                  >
+                    <Play className="h-3 w-3" />
+                    {isRu ? 'Смотреть' : 'Watch in App'}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {showGenericTips && (
+          <ProTipsMiniPanel
+            civ={myCiv}
+            title={isRu ? 'Ключевые советы Beastyqt' : 'Key Beastyqt tips'}
+          />
+        )}
 
         {/* Frame Milestone Blueprint */}
         <VisualMilestoneCoachCard civ={myCiv} />

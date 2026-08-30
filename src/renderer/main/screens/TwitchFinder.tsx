@@ -23,7 +23,7 @@ const DEFAULT_GAME: TwitchVodFinderInput = {
   durationSec: null,
 }
 
-export function TwitchFinder() {
+export function TwitchFinder({ embedded = false }: { embedded?: boolean } = {}) {
   const { tt, locale } = useI18n()
   const [query, setQuery] = useState('aoe4')
   const [provider, setProvider] = useState<Provider>('all')
@@ -99,13 +99,12 @@ export function TwitchFinder() {
   }, [game, tt])
 
   return (
-    <div className="animate-fade-in space-y-5">
+    <div className={embedded ? 'space-y-6' : 'animate-fade-in space-y-6'}>
       <PageHead
-        kicker={tt('Live video tools')}
-        title={tt('Twitch Finder')}
-        sub={tt(
-          'Search current Age of Empires IV videos and channels, or verify the exact VOD associated with one AoE4World game.',
-        )}
+        embedded={embedded}
+        kicker="Live video tools"
+        title="Twitch Finder"
+        sub="Search current Age of Empires IV videos and channels, or verify the exact VOD associated with one AoE4World game."
       />
 
       <Card>

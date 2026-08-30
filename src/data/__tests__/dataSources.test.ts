@@ -16,6 +16,7 @@ describe('data source registry', () => {
         'aoe4world-curated',
         'aoe4world-docker-ruby-node',
         'aoe4guides',
+        'aoe4-club',
         'war-room',
         'attrib',
         'essence',

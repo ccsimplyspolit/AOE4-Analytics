@@ -7,7 +7,7 @@ import { isDev } from './env'
  */
 const PROD_CSP = [
   "default-src 'self'",
-  "img-src 'self' data: https://data.aoe4world.com https://aoe4world.com https://i.ytimg.com https://static-cdn.jtvnw.net",
+  "img-src 'self' data: https://data.aoe4world.com https://aoe4world.com https://i.ytimg.com https://static-cdn.jtvnw.net https://avatars.akamai.steamstatic.com https://avatars.steamstatic.com https://cdn.cloudflare.steamstatic.com https://avatars.cloudflare.steamstatic.com",
   "style-src 'self' 'unsafe-inline'",
   "script-src 'self'",
   "connect-src 'self'",

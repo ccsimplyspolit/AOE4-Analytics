@@ -1,11 +1,14 @@
 import { ExternalLink, Radio, Search } from 'lucide-react'
+import { useQueryClient } from '@tanstack/react-query'
 import type { TwitchVodFinderInput } from '@domain/twitchVodFinder'
 import { twitchVideoFinderUrl } from '@domain/twitchVodFinder'
 import type { StoredMatch } from '@store/historyStore'
 import { formatDurationShort } from '@shared/format'
 import { Card, CardContent } from '@shared/components/ui/card'
+import { ipc } from '@shared/ipc'
 import { useI18n } from '../../i18n'
 import { useTwitchVod } from '../queries/useTwitchVod'
+import { useAutoAction } from '../hooks/useAutoAction'
 
 /**
  * Shows a Twitch link only after AoE4World's exact game API/Finder association
@@ -26,6 +29,7 @@ export function TwitchVodCard({
   input?: TwitchVodFinderInput | null
 }) {
   const { tt } = useI18n()
+  const queryClient = useQueryClient()
   const input: TwitchVodFinderInput | null =
     providedInput ??
     (match
@@ -52,6 +56,19 @@ export function TwitchVodCard({
 
   const result = lookup.data?.ok ? lookup.data.data : null
   const found = result?.vod ?? null
+
+  useAutoAction(
+    found ? `vod-extract:${input.gameId}:${found.url}` : null,
+    () =>
+      ipc
+        .extractVideoAnalysis({
+          url: found!.url,
+          civilization: input.civilization,
+          gameId: input.gameId,
+        })
+        .then(() => queryClient.invalidateQueries({ queryKey: ['videoAnalyses'] })),
+    { enabled: Boolean(found) },
+  )
 
   return (
     <section className="space-y-2">
@@ -102,12 +119,6 @@ export function TwitchVodCard({
 
             {found ? (
               <div className="flex flex-wrap justify-end gap-2">
-                <a
-                  href={`#/tincture?tab=cellar&video=${encodeURIComponent(found.url)}&gameId=${encodeURIComponent(input.gameId)}&civilization=${encodeURIComponent(input.civilization)}`}
-                  className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-primary/35 px-3 py-2 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
-                >
-                  {tt('Analyze VOD')}
-                </a>
                 <a
                   href={found.url}
                   target="_blank"

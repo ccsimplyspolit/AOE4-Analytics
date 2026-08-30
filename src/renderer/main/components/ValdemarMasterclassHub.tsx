@@ -26,6 +26,8 @@ import { Badge } from '@shared/components/ui/badge'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { VideoPlayer } from './VideoPlayer'
 import { VisualMilestoneCoachCard } from './VisualMilestoneCoachCard'
+import { CreatorVideoLessonPanel } from './CreatorVideoLessonPanel'
+import { CREATOR_VIDEO_LESSONS, CREATOR_VIDEO_LESSON_STATS } from '@data/creatorVideoLessons.generated'
 import { useI18n } from '../../i18n'
 
 type CategoryFilter = 'all' | 'visual_blueprints' | ValdemarVideoCategory
@@ -41,7 +43,7 @@ const CATEGORIES: { id: CategoryFilter; labelEn: string; labelRu: string; icon: 
 ]
 
 export function ValdemarMasterclassHub() {
-  const { locale } = useI18n()
+  const { locale, gameName } = useI18n()
   const isRu = locale === 'ru'
 
   const [query, setQuery] = useState('')
@@ -171,6 +173,22 @@ export function ValdemarMasterclassHub() {
         </CardContent>
       </Card>
 
+      <CreatorVideoLessonPanel
+        picks={CREATOR_VIDEO_LESSONS.filter((lesson) => lesson.creator === 'valdemar').map((lesson) => ({
+          lesson,
+          catalogTitle: lesson.title,
+          catalogUrl: lesson.url,
+          creator: lesson.creator,
+          reason: isRu ? 'Цитаты из сохранённых субтитров' : 'Quotes from on-disk captions',
+          side: 'shared' as const,
+        }))}
+        title={
+          isRu
+            ? `Разбор видео с транскриптом (${CREATOR_VIDEO_LESSON_STATS.valdemarWithTranscripts})`
+            : `Per-video transcript breakdown (${CREATOR_VIDEO_LESSON_STATS.valdemarWithTranscripts})`
+        }
+      />
+
       {/* Active Video Player Modal / Box */}
       {activeVideo && (
         <Card className="border-primary/50 bg-background/90 shadow-lg">
@@ -275,7 +293,7 @@ export function ValdemarMasterclassHub() {
             <option value="all">{isRu ? 'Все цивилизации' : 'All Civilizations'}</option>
             {CIV_SLUGS.map((slug) => (
               <option key={slug} value={slug}>
-                {civDisplayName(slug)}
+                {gameName(civDisplayName(slug))}
               </option>
             ))}
           </select>

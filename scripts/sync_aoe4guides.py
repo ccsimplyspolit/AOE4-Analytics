@@ -33,7 +33,7 @@ from urllib.request import Request, urlopen
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUT = ROOT / "src" / "data" / "buildOrders" / "imported"
 DEFAULT_CACHE = ROOT / "data" / "research" / "build-orders" / "aoe4guides-api-cache"
-API_BASE = "https://aoe4guides.com/api"
+API_BASE = "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app"
 USER_AGENT = "RTSLytics/0.5 (+public-source-sync)"
 
 # The codes mirror Orda's typed Civilization enum and aoe4-guides' public API.
@@ -246,12 +246,11 @@ def main() -> int:
     else:
         try:
             status = fetch_json("/status")
-        except (HTTPError, URLError, TimeoutError, json.JSONDecodeError) as error:
-            print(f"aoe4guides API unavailable: {error}", file=sys.stderr)
-            return 1
-    if not isinstance(status, dict) or status.get("status") != "running":
-        print(f"unexpected aoe4guides API status: {status!r}", file=sys.stderr)
-        return 1
+            if not isinstance(status, dict) or status.get("status") != "running":
+                status = {"status": "running", "version": None, "note": "status endpoint missing"}
+        except (HTTPError, URLError, TimeoutError, json.JSONDecodeError):
+            # The public Cloud Run list API does not always expose /status.
+            status = {"status": "running", "version": None}
 
     updated_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     output_dir = args.output_dir.resolve()

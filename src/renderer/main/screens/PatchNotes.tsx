@@ -13,6 +13,7 @@ import { civDisplayName } from '@domain/civ'
 import { resolveAoE4Icon } from '@data/vendor/aoe4-icons/manifest'
 import { useI18n } from '../../i18n'
 import { usePatchNotes } from '../queries/usePatchNotes'
+import { CURRENT_META } from '@data/currentMeta'
 import { PageHead } from '../components/PageHead'
 import { ErrorBox } from '../components/feedback'
 import { Card, CardContent, CardHeader, CardTitle } from '@shared/components/ui/card'
@@ -91,7 +92,7 @@ function sectionAnchor(value: string): string {
     .replace(/^-|-$/g, '')}`
 }
 
-export function PatchNotes() {
+export function PatchNotes({ embedded = false }: { embedded?: boolean } = {}) {
   const { tt, locale } = useI18n()
   const location = useLocation()
   const navigate = useNavigate()
@@ -155,14 +156,46 @@ export function PatchNotes() {
   }
 
   return (
-    <div className="animate-fade-in space-y-5">
+    <div className={embedded ? 'space-y-6' : 'animate-fade-in space-y-6'}>
       <PageHead
+        embedded={embedded}
         kicker="AoE4World Explorer"
-        title={tt('News & patches')}
+        title="News & patches"
         sub={tt(
           'Current and historical Age of Empires IV patch notes, balance changes, fixes, and official release links.',
         )}
       />
+
+      <section className="rts-menu-card space-y-3 border border-primary/25 bg-card p-4">
+        <div className="flex flex-wrap items-end justify-between gap-2">
+          <div>
+            <div className="rts-ledger-head">{tt('Live patch window')}</div>
+            <h2 className="mt-1 text-base font-semibold">{CURRENT_META.patchLabel}</h2>
+          </div>
+          <div className="text-[11px] text-muted-foreground">
+            {tt('Captured')} {CURRENT_META.capturedAt.slice(0, 10)}
+          </div>
+        </div>
+        <p className="text-sm leading-relaxed text-muted-foreground">{tt(CURRENT_META.summary)}</p>
+        <ol className="grid gap-2 md:grid-cols-2">
+          {CURRENT_META.patches.map((patch) => (
+            <li key={patch.id}>
+              <a
+                href={patch.url}
+                target="_blank"
+                rel="noreferrer"
+                className="block rounded-sm border border-border/70 bg-background/40 px-3 py-2 hover:border-primary/40"
+              >
+                <div className="flex items-baseline justify-between gap-2">
+                  <span className="text-sm font-medium">{patch.title}</span>
+                  <span className="text-[11px] tabular-nums text-muted-foreground">{patch.date}</span>
+                </div>
+                <p className="mt-1 text-[11px] text-muted-foreground">{tt(patch.summary)}</p>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
 
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2 text-xs text-muted-foreground">

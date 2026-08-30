@@ -6,6 +6,16 @@ to follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- Windows always starts RTSLytics as administrator. If a shortcut, unpacked copy, or updater relaunch skipped the executable manifest, the app requests UAC and relaunches before taking the single-instance lock. The NSIS installer is now per-machine. Smoke, verify, and CI runs stay unelevated.
+- In-game overlay is a quiet mini-HUD by default: thinner plates, smaller type, no drop shadows or cyan frames, and less chrome on the matchup bar, build order, coach, and post-game card. Existing installs are migrated once; the Mini-HUD setting can still turn the denser layout back on.
+
+### Fixed
+
+- Overlay no longer opens the Age of Empires IV process, no longer covers exclusive fullscreen, and no longer steals focus — those patterns could make anti-cheat / Relic close the game. Live APM's global input hook is off by default (existing installs are migrated off once).
+- Overlay build titles, response forks, counters, coach tips, and post-game notes follow the Russian UI. Recommended troops are counters to the opponent (mapped onto your civ), not your identity roster. A live match no longer keeps a Macedonian Dynasty build pinned over Byzantines.
+
 ## [0.5.0] - 2026-07-14
 
 ### Added

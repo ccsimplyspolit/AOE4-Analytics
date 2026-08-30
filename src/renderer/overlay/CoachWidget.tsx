@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef } from 'react'
 import { Bell, Eye, Landmark as LandmarkIcon, Users, Compass, ShieldAlert, Sparkles } from 'lucide-react'
 import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
 import { buildIndexForCiv, type BuildOrder } from '@domain/buildOrderSchema'
+import { getOpeningProTips } from '@domain/proTips'
 import {
   type MacroCheckpoint,
   resolveActiveCheckpoints,
@@ -10,6 +11,7 @@ import {
 import { playAudioCue } from '@domain/overlayAudio'
 import { cn } from '@shared/lib/utils'
 import { useI18n } from '../i18n'
+import { localizeOverlayCopy } from '../localizeOverlayCopy'
 
 export function CoachWidget({
   elapsedSec,
@@ -38,7 +40,13 @@ export function CoachWidget({
   /** Placement mode renders a static preview. */
   placement?: boolean
 }) {
-  const { tt } = useI18n()
+  const { tt, locale, gameName } = useI18n()
+  const ox = (value: string) => {
+    if (locale !== 'ru') return tt(value)
+    const via = tt(value)
+    if (via !== value) return via
+    return localizeOverlayCopy(value, { gameName, terms: true })
+  }
   const soundPlayedRef = useRef<Set<string>>(new Set())
 
   // Reset played sounds when match restarts
@@ -64,18 +72,18 @@ export function CoachWidget({
       <Shell miniHud={miniHud}>
         <Chip
           icon={<Eye className="h-3.5 w-3.5" />}
-          title={`${tt('Scout Enemy Gold & Wood')} — 2:30`}
+          title={`${ox('Scout Enemy Gold & Wood')} — 2:30`}
           urgent
           miniHud={miniHud}
         >
-          {tt('Check opponent gold mining: Fast Castle, 2TC or Feudal aggression')}
+          {ox('Check opponent gold mining: Fast Castle, 2TC or Feudal aggression')}
         </Chip>
         <Chip
           icon={<LandmarkIcon className="h-3.5 w-3.5" />}
-          title={`${tt('Feudal Transition Check')} — 4:15`}
+          title={`${ox('Feudal Transition Check')} — 4:15`}
           miniHud={miniHud}
         >
-          {tt('Landmark should begin or finish; scout military production buildings')}
+          {ox('Landmark should begin or finish; scout military production buildings')}
         </Chip>
       </Shell>
     )
@@ -83,16 +91,28 @@ export function CoachWidget({
 
   if (elapsedSec == null) return null
 
-  const upcoming = getUpcomingCheckpoint(allCheckpoints, elapsedSec, 90)
-  if (!upcoming) return null
+  const openingTip =
+    elapsedSec < 300 && civ
+      ? getOpeningProTips(civ, 1)[0]
+      : null
 
-  const { checkpoint, remainingSec } = upcoming
+  const upcoming = getUpcomingCheckpoint(allCheckpoints, elapsedSec, 90)
+  if (!upcoming && !openingTip) return null
+
+  const checkpoint = upcoming?.checkpoint
+  const remainingSec = upcoming?.remainingSec ?? 0
   const isUrgent = remainingSec <= 15
 
   // Trigger audio cue when 10 seconds remain
-  if (audioCues && isUrgent && remainingSec <= 10 && !soundPlayedRef.current.has(checkpoint.id)) {
-    soundPlayedRef.current.add(checkpoint.id)
-    playAudioCue(audioCueVolume, checkpoint.priority === 'high' ? 'urgent' : 'checkpoint')
+  if (
+    upcoming &&
+    audioCues &&
+    isUrgent &&
+    remainingSec <= 10 &&
+    !soundPlayedRef.current.has(checkpoint!.id)
+  ) {
+    soundPlayedRef.current.add(checkpoint!.id)
+    playAudioCue(audioCueVolume, checkpoint!.priority === 'high' ? 'urgent' : 'checkpoint')
   }
 
   const getCategoryIcon = (category: MacroCheckpoint['category']) => {
@@ -114,19 +134,26 @@ export function CoachWidget({
 
   return (
     <Shell miniHud={miniHud}>
+      {openingTip && (
+        <Chip icon={<Sparkles className="h-3.5 w-3.5" />} title={`${tt('Opening')} — ${openingTip.timeFormatted}`} miniHud={miniHud}>
+          {locale === 'ru' ? openingTip.shortTextRu : openingTip.shortText}
+        </Chip>
+      )}
+      {upcoming && checkpoint && (
       <Chip
         icon={getCategoryIcon(checkpoint.category)}
-        title={`${tt(checkpoint.title)} — ${formatSec(checkpoint.timeSec)}`}
+        title={`${ox(checkpoint.title)} — ${formatSec(checkpoint.timeSec)}`}
         urgent={isUrgent}
         miniHud={miniHud}
       >
         <div className="flex items-center justify-between gap-2">
-          <span className="truncate">{tt(checkpoint.detail)}</span>
+          <span className="truncate">{ox(checkpoint.detail)}</span>
           <span className="shrink-0 font-mono font-bold text-amber-300">
             {countdown(remainingSec, tt)}
           </span>
         </div>
       </Chip>
+      )}
     </Shell>
   )
 }
@@ -138,9 +165,11 @@ function Shell({ children, miniHud }: { children: React.ReactNode; miniHud?: boo
       className={cn('flex select-none flex-col gap-1.5 font-sans', miniHud ? 'w-56' : 'w-72')}
       style={{ textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}
     >
-      <span className="flex items-center gap-1 font-display text-[9px] font-bold uppercase tracking-[0.2em] text-white/55">
-        <Bell className="h-3 w-3" /> {tt('Macro Coach')}
-      </span>
+      {miniHud ? null : (
+        <span className="flex items-center gap-1 font-display text-[9px] font-bold uppercase tracking-[0.2em] text-white/55">
+          <Bell className="h-3 w-3" /> {tt('Macro Coach')}
+        </span>
+      )}
       {children}
     </div>
   )
@@ -162,13 +191,13 @@ function Chip({
   return (
     <div
       className={cn(
-        'rounded-md bg-[#0a0e1a]/95 transition-all duration-300 ring-1',
-        urgent ? 'rts-coach-pulse ring-amber-400/90 shadow-[0_0_15px_rgba(251,191,36,0.35)]' : 'ring-white/15 shadow-md',
+        'overlay-panel bg-[#0a0e1a]/80',
+        urgent ? 'border-l-2 border-amber-400' : '',
         miniHud ? 'px-2 py-1 text-[11px]' : 'px-2.5 py-1.5 text-xs',
       )}
     >
       <div className="flex items-center gap-1.5 font-bold text-white">
-        <span className={urgent ? 'text-amber-300' : 'text-cyan-400'}>{icon}</span>
+        <span className={urgent ? 'text-amber-300' : 'text-white/70'}>{icon}</span>
         <span className="truncate">{title}</span>
       </div>
       <div className="mt-0.5 text-white/80">{children}</div>

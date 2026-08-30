@@ -7,14 +7,17 @@
  *    archetypes (Beasty / Valdemar / MarineLord-derived where possible) made it.
  *  • HOUSE — RTSLytics-written beginner builds with full step timings.
  *
- * ORDER MATTERS: `buildIndexForCiv` picks the FIRST build matching a civ, and
- * Match Prep / the build trainer take their key timings from it — so for each
- * civ the best-TIMED build is listed first (curated when it carries timings,
- * the house build otherwise). aoe4guides has no Knights Templar or Golden
- * Horde category yet, so those civs keep house/absent coverage for now.
+ * ORDER MATTERS for untagged civ defaults: `buildIndexForCiv` / auto overlay
+ * without an opponent civ pick the FIRST build matching a civ. Matchup-tagged
+ * builds (`opponentCivilization`) override that default when the live opponent
+ * is known. Keep the best-TIMED generic first per civ. August 2026: Macedonian
+ * default remains Beasty Hippodrome; Templar and Golden Horde now also have
+ * timed aoe4guides lines (VortiX 2TC / 6-minute Horde 2TC) next to the house
+ * pressure BOs.
  */
 import { normalizeBuildOrder, type BuildOrder } from '@domain/buildOrderSchema'
-import { VIDEO_EVIDENCE_BY_CIV } from '@data/videoEvidence.generated'
+import { videoEvidenceForCiv } from '@data/videoEvidenceMap'
+import { sanitizeBuildOrderVideos } from '@data/buildOrderVideos'
 import BUILD_ORDER_ARCHIVE from '@data/buildOrderArchive.json'
 
 /**
@@ -67,10 +70,6 @@ function isBuildOrder(value: unknown): value is BuildOrder {
   )
 }
 
-function evidenceKey(civilization: string | string[] | null | undefined): string {
-  const label = Array.isArray(civilization) ? (civilization[0] ?? '') : (civilization ?? '')
-  return label.toLocaleLowerCase().replace(/[^a-z0-9]+/g, '')
-}
 
 const ACTIVE_BUILD_ORDERS = Object.entries(ACTIVE_BUILD_MODULES)
   .sort(([left], [right]) => {
@@ -107,6 +106,7 @@ function buildQuality(build: BuildOrder): number {
     (build.reasoning ? 20 : 0) +
     (build.archetype ? 5 : 0) +
     (build.difficulty ? 2 : 0) +
+    (build.video ? 8 : 0) +
     (build.source ? 1 : 0)
   )
 }
@@ -132,7 +132,9 @@ for (const rawBuild of RAW_BUNDLED_BUILD_ORDERS) {
 }
 
 /** Attach generated video observations without changing the upstream JSON files. */
-export const BUNDLED_BUILD_ORDERS = NORMALIZED_BUILD_ORDERS.map((build) => {
-  const evidence = VIDEO_EVIDENCE_BY_CIV[evidenceKey(build.civilization)]
-  return evidence ? { ...build, video_evidence: evidence } : build
-})
+export const BUNDLED_BUILD_ORDERS = NORMALIZED_BUILD_ORDERS.map((build) =>
+  sanitizeBuildOrderVideos({
+    ...build,
+    video_evidence: build.video_evidence ?? videoEvidenceForCiv(build.civilization),
+  }),
+)

@@ -938,6 +938,7 @@ const SUFFIX_JUNK = new Set([
   'ott',
   'rus',
   'tem',
+  'mac',
 ])
 
 /** "unit_villager_1_tem" → "Villager"; "building_town_center_capital_tem" → "Town Center". */
@@ -951,6 +952,15 @@ export function prettyName(blueprint: string): string {
     else break
   }
   return parts.map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+}
+
+/** Drops trailing civ/variant codes from an already pretty-printed event label. */
+export function tidyEventName(name: string): string {
+  const parts = name.split(/\s+/).filter(Boolean)
+  while (parts.length > 1 && SUFFIX_JUNK.has(parts[parts.length - 1]!.toLowerCase())) {
+    parts.pop()
+  }
+  return parts.join(' ')
 }
 
 /** Blueprint-suffix civ tokens → AoE4World civ slugs (fallback identification). */

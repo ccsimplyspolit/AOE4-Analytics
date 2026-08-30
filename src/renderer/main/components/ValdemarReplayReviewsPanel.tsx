@@ -13,7 +13,7 @@ import { VideoPlayer } from './VideoPlayer'
 import { useI18n } from '../../i18n'
 
 export function ValdemarReplayReviewsPanel() {
-  const { locale } = useI18n()
+  const { locale, gameName } = useI18n()
   const isRu = locale === 'ru'
 
   const [query, setQuery] = useState('')
@@ -150,7 +150,7 @@ export function ValdemarReplayReviewsPanel() {
           <option value="all">{isRu ? 'Все цивилизации' : 'All Civilizations'}</option>
           {CIV_SLUGS.map((slug) => (
             <option key={slug} value={slug}>
-              {civDisplayName(slug)}
+              {gameName(civDisplayName(slug))}
             </option>
           ))}
         </select>

@@ -4,7 +4,7 @@
   "sourceUrl": "https://aoe4guides.com/",
   "sourceRevision": null,
   "patch": null,
-  "capturedAt": "2026-08-09T18:25:04Z",
+  "capturedAt": "2026-08-24T12:31:42Z",
   "coverage": {
     "civilizations": [
       "ABB",
@@ -50,11 +50,11 @@
   },
   "records": {
     "fetched": 1150,
-    "imported": 187,
-    "duplicates": 963,
+    "imported": 0,
+    "duplicates": 1150,
     "invalid": 0,
     "rawRecords": 1150,
-    "reachableUnique": 792
+    "reachableUnique": 789
   },
   "requests": [
     {
@@ -63,11 +63,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=ABB&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=ABB&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=ABB&overlay=true",
       "cacheFile": "abb--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "ABB",
@@ -75,11 +75,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=ABB&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=ABB&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=ABB&overlay=true&orderBy=score",
       "cacheFile": "abb--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "ABB",
@@ -87,11 +87,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=ABB&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=ABB&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=ABB&overlay=true&orderBy=timeCreated",
       "cacheFile": "abb--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "ABB",
@@ -99,11 +99,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=ABB&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=ABB&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=ABB&overlay=true&orderBy=views",
       "cacheFile": "abb--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "ABB",
@@ -111,11 +111,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=ABB&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=ABB&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=ABB&overlay=true&orderBy=likes",
       "cacheFile": "abb--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "AYY",
@@ -123,11 +123,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=AYY&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=AYY&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=AYY&overlay=true",
       "cacheFile": "ayy--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "AYY",
@@ -135,11 +135,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=AYY&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=AYY&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=AYY&overlay=true&orderBy=score",
       "cacheFile": "ayy--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "AYY",
@@ -147,11 +147,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=AYY&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=AYY&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=AYY&overlay=true&orderBy=timeCreated",
       "cacheFile": "ayy--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "AYY",
@@ -159,11 +159,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=AYY&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=AYY&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=AYY&overlay=true&orderBy=views",
       "cacheFile": "ayy--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "AYY",
@@ -171,11 +171,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=AYY&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=AYY&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=AYY&overlay=true&orderBy=likes",
       "cacheFile": "ayy--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "BYZ",
@@ -183,11 +183,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=BYZ&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=BYZ&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=BYZ&overlay=true",
       "cacheFile": "byz--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "BYZ",
@@ -195,11 +195,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=BYZ&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=BYZ&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=BYZ&overlay=true&orderBy=score",
       "cacheFile": "byz--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "BYZ",
@@ -207,11 +207,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=BYZ&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=BYZ&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=BYZ&overlay=true&orderBy=timeCreated",
       "cacheFile": "byz--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "BYZ",
@@ -219,11 +219,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=BYZ&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=BYZ&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=BYZ&overlay=true&orderBy=views",
       "cacheFile": "byz--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "BYZ",
@@ -231,11 +231,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=BYZ&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=BYZ&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=BYZ&overlay=true&orderBy=likes",
       "cacheFile": "byz--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "CHI",
@@ -243,11 +243,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=CHI&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=CHI&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=CHI&overlay=true",
       "cacheFile": "chi--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "CHI",
@@ -255,11 +255,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=CHI&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=CHI&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=CHI&overlay=true&orderBy=score",
       "cacheFile": "chi--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "CHI",
@@ -267,11 +267,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=CHI&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=CHI&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=CHI&overlay=true&orderBy=timeCreated",
       "cacheFile": "chi--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "CHI",
@@ -279,11 +279,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=CHI&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=CHI&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=CHI&overlay=true&orderBy=views",
       "cacheFile": "chi--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "CHI",
@@ -291,11 +291,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=CHI&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=CHI&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=CHI&overlay=true&orderBy=likes",
       "cacheFile": "chi--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "DEL",
@@ -303,11 +303,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=DEL&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=DEL&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=DEL&overlay=true",
       "cacheFile": "del--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "DEL",
@@ -315,11 +315,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=DEL&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=DEL&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=DEL&overlay=true&orderBy=score",
       "cacheFile": "del--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "DEL",
@@ -327,11 +327,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=DEL&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=DEL&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=DEL&overlay=true&orderBy=timeCreated",
       "cacheFile": "del--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "DEL",
@@ -339,11 +339,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=DEL&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=DEL&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=DEL&overlay=true&orderBy=views",
       "cacheFile": "del--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "DEL",
@@ -351,11 +351,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=DEL&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=DEL&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=DEL&overlay=true&orderBy=likes",
       "cacheFile": "del--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "ENG",
@@ -363,11 +363,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=ENG&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=ENG&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=ENG&overlay=true",
       "cacheFile": "eng--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "ENG",
@@ -375,11 +375,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=ENG&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=ENG&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=ENG&overlay=true&orderBy=score",
       "cacheFile": "eng--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "ENG",
@@ -387,11 +387,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=ENG&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=ENG&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=ENG&overlay=true&orderBy=timeCreated",
       "cacheFile": "eng--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "ENG",
@@ -399,11 +399,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=ENG&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=ENG&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=ENG&overlay=true&orderBy=views",
       "cacheFile": "eng--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "ENG",
@@ -411,11 +411,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=ENG&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=ENG&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=ENG&overlay=true&orderBy=likes",
       "cacheFile": "eng--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "FRE",
@@ -423,11 +423,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=FRE&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=FRE&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=FRE&overlay=true",
       "cacheFile": "fre--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "FRE",
@@ -435,11 +435,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=FRE&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=FRE&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=FRE&overlay=true&orderBy=score",
       "cacheFile": "fre--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "FRE",
@@ -447,11 +447,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=FRE&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=FRE&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=FRE&overlay=true&orderBy=timeCreated",
       "cacheFile": "fre--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "FRE",
@@ -459,11 +459,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=FRE&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=FRE&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=FRE&overlay=true&orderBy=views",
       "cacheFile": "fre--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "FRE",
@@ -471,11 +471,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=FRE&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=FRE&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=FRE&overlay=true&orderBy=likes",
       "cacheFile": "fre--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "HRE",
@@ -483,11 +483,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=HRE&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=HRE&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=HRE&overlay=true",
       "cacheFile": "hre--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "HRE",
@@ -495,11 +495,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=HRE&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=HRE&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=HRE&overlay=true&orderBy=score",
       "cacheFile": "hre--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "HRE",
@@ -507,11 +507,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=HRE&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=HRE&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=HRE&overlay=true&orderBy=timeCreated",
       "cacheFile": "hre--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "HRE",
@@ -519,11 +519,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=HRE&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=HRE&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=HRE&overlay=true&orderBy=views",
       "cacheFile": "hre--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "HRE",
@@ -531,11 +531,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=HRE&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=HRE&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=HRE&overlay=true&orderBy=likes",
       "cacheFile": "hre--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "JAP",
@@ -543,11 +543,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=JAP&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=JAP&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=JAP&overlay=true",
       "cacheFile": "jap--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "JAP",
@@ -555,11 +555,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=JAP&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=JAP&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=JAP&overlay=true&orderBy=score",
       "cacheFile": "jap--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "JAP",
@@ -567,11 +567,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=JAP&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=JAP&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=JAP&overlay=true&orderBy=timeCreated",
       "cacheFile": "jap--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "JAP",
@@ -579,11 +579,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=JAP&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=JAP&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=JAP&overlay=true&orderBy=views",
       "cacheFile": "jap--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "JAP",
@@ -591,11 +591,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=JAP&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=JAP&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=JAP&overlay=true&orderBy=likes",
       "cacheFile": "jap--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "JDA",
@@ -603,11 +603,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=JDA&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=JDA&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=JDA&overlay=true",
       "cacheFile": "jda--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "JDA",
@@ -615,11 +615,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=JDA&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=JDA&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=JDA&overlay=true&orderBy=score",
       "cacheFile": "jda--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "JDA",
@@ -627,11 +627,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=JDA&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=JDA&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=JDA&overlay=true&orderBy=timeCreated",
       "cacheFile": "jda--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "JDA",
@@ -639,11 +639,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=JDA&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=JDA&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=JDA&overlay=true&orderBy=views",
       "cacheFile": "jda--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "JDA",
@@ -651,11 +651,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=JDA&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=JDA&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=JDA&overlay=true&orderBy=likes",
       "cacheFile": "jda--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "MAL",
@@ -663,11 +663,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=MAL&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=MAL&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=MAL&overlay=true",
       "cacheFile": "mal--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "MAL",
@@ -675,11 +675,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=MAL&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=MAL&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=MAL&overlay=true&orderBy=score",
       "cacheFile": "mal--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "MAL",
@@ -687,11 +687,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=MAL&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=MAL&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=MAL&overlay=true&orderBy=timeCreated",
       "cacheFile": "mal--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "MAL",
@@ -699,11 +699,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=MAL&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=MAL&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=MAL&overlay=true&orderBy=views",
       "cacheFile": "mal--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "MAL",
@@ -711,11 +711,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=MAL&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=MAL&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=MAL&overlay=true&orderBy=likes",
       "cacheFile": "mal--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "MON",
@@ -723,11 +723,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=MON&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=MON&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=MON&overlay=true",
       "cacheFile": "mon--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "MON",
@@ -735,11 +735,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=MON&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=MON&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=MON&overlay=true&orderBy=score",
       "cacheFile": "mon--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "MON",
@@ -747,11 +747,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=MON&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=MON&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=MON&overlay=true&orderBy=timeCreated",
       "cacheFile": "mon--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "MON",
@@ -759,11 +759,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=MON&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=MON&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=MON&overlay=true&orderBy=views",
       "cacheFile": "mon--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "MON",
@@ -771,11 +771,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=MON&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=MON&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=MON&overlay=true&orderBy=likes",
       "cacheFile": "mon--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "DRA",
@@ -783,11 +783,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=DRA&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=DRA&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=DRA&overlay=true",
       "cacheFile": "dra--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "DRA",
@@ -795,11 +795,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=DRA&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=DRA&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=DRA&overlay=true&orderBy=score",
       "cacheFile": "dra--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "DRA",
@@ -807,11 +807,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=DRA&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=DRA&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=DRA&overlay=true&orderBy=timeCreated",
       "cacheFile": "dra--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "DRA",
@@ -819,11 +819,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=DRA&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=DRA&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=DRA&overlay=true&orderBy=views",
       "cacheFile": "dra--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "DRA",
@@ -831,11 +831,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=DRA&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=DRA&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=DRA&overlay=true&orderBy=likes",
       "cacheFile": "dra--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "OTT",
@@ -843,11 +843,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=OTT&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=OTT&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=OTT&overlay=true",
       "cacheFile": "ott--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "OTT",
@@ -855,11 +855,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=OTT&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=OTT&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=OTT&overlay=true&orderBy=score",
       "cacheFile": "ott--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "OTT",
@@ -867,11 +867,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=OTT&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=OTT&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=OTT&overlay=true&orderBy=timeCreated",
       "cacheFile": "ott--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "OTT",
@@ -879,11 +879,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=OTT&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=OTT&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=OTT&overlay=true&orderBy=views",
       "cacheFile": "ott--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "OTT",
@@ -891,11 +891,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=OTT&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=OTT&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=OTT&overlay=true&orderBy=likes",
       "cacheFile": "ott--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "RUS",
@@ -903,11 +903,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=RUS&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=RUS&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=RUS&overlay=true",
       "cacheFile": "rus--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "RUS",
@@ -915,11 +915,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=RUS&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=RUS&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=RUS&overlay=true&orderBy=score",
       "cacheFile": "rus--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "RUS",
@@ -927,11 +927,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=RUS&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=RUS&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=RUS&overlay=true&orderBy=timeCreated",
       "cacheFile": "rus--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "RUS",
@@ -939,11 +939,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=RUS&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=RUS&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=RUS&overlay=true&orderBy=views",
       "cacheFile": "rus--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "RUS",
@@ -951,11 +951,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=RUS&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=RUS&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=RUS&overlay=true&orderBy=likes",
       "cacheFile": "rus--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "ZXL",
@@ -963,11 +963,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=ZXL&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=ZXL&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=ZXL&overlay=true",
       "cacheFile": "zxl--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "ZXL",
@@ -975,11 +975,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=ZXL&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=ZXL&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=ZXL&overlay=true&orderBy=score",
       "cacheFile": "zxl--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "ZXL",
@@ -987,11 +987,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=ZXL&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=ZXL&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=ZXL&overlay=true&orderBy=timeCreated",
       "cacheFile": "zxl--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "ZXL",
@@ -999,11 +999,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=ZXL&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=ZXL&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=ZXL&overlay=true&orderBy=views",
       "cacheFile": "zxl--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "ZXL",
@@ -1011,11 +1011,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=ZXL&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=ZXL&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=ZXL&overlay=true&orderBy=likes",
       "cacheFile": "zxl--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "HOL",
@@ -1023,11 +1023,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=HOL&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=HOL&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=HOL&overlay=true",
       "cacheFile": "hol--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "HOL",
@@ -1035,11 +1035,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=HOL&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=HOL&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=HOL&overlay=true&orderBy=score",
       "cacheFile": "hol--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "HOL",
@@ -1047,11 +1047,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=HOL&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=HOL&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=HOL&overlay=true&orderBy=timeCreated",
       "cacheFile": "hol--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "HOL",
@@ -1059,11 +1059,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=HOL&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=HOL&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=HOL&overlay=true&orderBy=views",
       "cacheFile": "hol--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "HOL",
@@ -1071,11 +1071,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=HOL&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=HOL&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=HOL&overlay=true&orderBy=likes",
       "cacheFile": "hol--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "KTE",
@@ -1083,11 +1083,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=KTE&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=KTE&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=KTE&overlay=true",
       "cacheFile": "kte--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "KTE",
@@ -1095,11 +1095,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=KTE&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=KTE&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=KTE&overlay=true&orderBy=score",
       "cacheFile": "kte--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "KTE",
@@ -1107,11 +1107,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=KTE&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=KTE&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=KTE&overlay=true&orderBy=timeCreated",
       "cacheFile": "kte--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "KTE",
@@ -1119,11 +1119,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=KTE&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=KTE&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=KTE&overlay=true&orderBy=views",
       "cacheFile": "kte--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "KTE",
@@ -1131,11 +1131,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=KTE&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=KTE&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=KTE&overlay=true&orderBy=likes",
       "cacheFile": "kte--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "GOH",
@@ -1143,11 +1143,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=GOH&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=GOH&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=GOH&overlay=true",
       "cacheFile": "goh--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "GOH",
@@ -1155,11 +1155,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=GOH&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=GOH&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=GOH&overlay=true&orderBy=score",
       "cacheFile": "goh--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "GOH",
@@ -1167,11 +1167,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=GOH&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=GOH&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=GOH&overlay=true&orderBy=timeCreated",
       "cacheFile": "goh--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "GOH",
@@ -1179,11 +1179,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=GOH&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=GOH&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=GOH&overlay=true&orderBy=views",
       "cacheFile": "goh--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "GOH",
@@ -1191,11 +1191,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=GOH&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=GOH&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=GOH&overlay=true&orderBy=likes",
       "cacheFile": "goh--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "MAC",
@@ -1203,11 +1203,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=MAC&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=MAC&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=MAC&overlay=true",
       "cacheFile": "mac--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "MAC",
@@ -1215,11 +1215,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=MAC&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=MAC&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=MAC&overlay=true&orderBy=score",
       "cacheFile": "mac--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "MAC",
@@ -1227,11 +1227,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=MAC&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=MAC&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=MAC&overlay=true&orderBy=timeCreated",
       "cacheFile": "mac--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "MAC",
@@ -1239,11 +1239,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=MAC&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=MAC&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=MAC&overlay=true&orderBy=views",
       "cacheFile": "mac--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "MAC",
@@ -1251,11 +1251,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=MAC&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=MAC&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=MAC&overlay=true&orderBy=likes",
       "cacheFile": "mac--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "SEN",
@@ -1263,11 +1263,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=SEN&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=SEN&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=SEN&overlay=true",
       "cacheFile": "sen--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "SEN",
@@ -1275,11 +1275,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=SEN&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=SEN&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=SEN&overlay=true&orderBy=score",
       "cacheFile": "sen--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "SEN",
@@ -1287,11 +1287,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=SEN&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=SEN&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=SEN&overlay=true&orderBy=timeCreated",
       "cacheFile": "sen--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "SEN",
@@ -1299,11 +1299,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=SEN&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=SEN&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=SEN&overlay=true&orderBy=views",
       "cacheFile": "sen--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "SEN",
@@ -1311,11 +1311,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=SEN&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=SEN&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=SEN&overlay=true&orderBy=likes",
       "cacheFile": "sen--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "TUG",
@@ -1323,11 +1323,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=TUG&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=TUG&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=TUG&overlay=true",
       "cacheFile": "tug--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "TUG",
@@ -1335,11 +1335,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=TUG&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=TUG&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=TUG&overlay=true&orderBy=score",
       "cacheFile": "tug--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "TUG",
@@ -1347,11 +1347,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=TUG&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=TUG&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=TUG&overlay=true&orderBy=timeCreated",
       "cacheFile": "tug--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "TUG",
@@ -1359,11 +1359,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=TUG&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=TUG&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=TUG&overlay=true&orderBy=views",
       "cacheFile": "tug--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "TUG",
@@ -1371,11 +1371,11 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=TUG&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=TUG&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=TUG&overlay=true&orderBy=likes",
       "cacheFile": "tug--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "JIN",
@@ -1383,11 +1383,11 @@
       "orderBy": null,
       "path": "/builds",
       "query": "?civ=JIN&overlay=true",
-      "url": "https://aoe4guides.com/api/builds?civ=JIN&overlay=true",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=JIN&overlay=true",
       "cacheFile": "jin--default.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "JIN",
@@ -1395,11 +1395,11 @@
       "orderBy": "score",
       "path": "/builds",
       "query": "?civ=JIN&overlay=true&orderBy=score",
-      "url": "https://aoe4guides.com/api/builds?civ=JIN&overlay=true&orderBy=score",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=JIN&overlay=true&orderBy=score",
       "cacheFile": "jin--score.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "JIN",
@@ -1407,11 +1407,11 @@
       "orderBy": "timeCreated",
       "path": "/builds",
       "query": "?civ=JIN&overlay=true&orderBy=timeCreated",
-      "url": "https://aoe4guides.com/api/builds?civ=JIN&overlay=true&orderBy=timeCreated",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=JIN&overlay=true&orderBy=timeCreated",
       "cacheFile": "jin--timecreated.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "JIN",
@@ -1419,11 +1419,11 @@
       "orderBy": "views",
       "path": "/builds",
       "query": "?civ=JIN&overlay=true&orderBy=views",
-      "url": "https://aoe4guides.com/api/builds?civ=JIN&overlay=true&orderBy=views",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=JIN&overlay=true&orderBy=views",
       "cacheFile": "jin--views.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     },
     {
       "civilization": "JIN",
@@ -1431,18 +1431,18 @@
       "orderBy": "likes",
       "path": "/builds",
       "query": "?civ=JIN&overlay=true&orderBy=likes",
-      "url": "https://aoe4guides.com/api/builds?civ=JIN&overlay=true&orderBy=likes",
+      "url": "https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds?civ=JIN&overlay=true&orderBy=likes",
       "cacheFile": "jin--likes.json",
-      "source": "network",
+      "source": "cache",
       "records": 10,
-      "capturedAt": "2026-08-09T18:25:04Z"
+      "capturedAt": "2026-08-24T12:31:42Z"
     }
   ],
   "requestFailures": [],
   "cache": {
     "directory": "data\\research\\build-orders\\aoe4guides-api-cache",
-    "hits": 0,
-    "misses": 115,
+    "hits": 115,
+    "misses": 0,
     "files": 115
   }
 }

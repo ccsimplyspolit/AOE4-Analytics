@@ -48,6 +48,7 @@ const api: RtslyticsApi = {
   getMatchupLab: (query) => ipcRenderer.invoke(IpcChannels.matchupLabGet, query),
   getCivDetailStats: (civ) => ipcRenderer.invoke(IpcChannels.civDetailGet, civ),
   getLeaderboard: (query) => ipcRenderer.invoke(IpcChannels.leaderboardGet, query),
+  getEsportsLeaderboard: (query) => ipcRenderer.invoke(IpcChannels.esportsLeaderboardGet, query),
 
   analyzeRecentGames: (count) => ipcRenderer.invoke(IpcChannels.analysisAnalyzeRecent, count),
   getHistory: (limit) => ipcRenderer.invoke(IpcChannels.analysisHistory, limit),

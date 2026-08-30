@@ -63,6 +63,27 @@ export function useGameSummary(matchId: string | undefined, options?: { enabled?
   })
 }
 
+const SUMMARY_BATCH = 24
+
+/** Newest match summaries for the coach dossier (My Stats / own profile). */
+export function useMatchSummaries(matchIds: string[]) {
+  const capped = matchIds.slice(0, SUMMARY_BATCH)
+  return useQuery({
+    queryKey: ['gameSummaries', ...capped],
+    queryFn: async () => {
+      const pairs = await Promise.all(
+        capped.map(async (id) => {
+          const res = await ipc.getGameSummary(id)
+          return [id, res.ok ? res.data : null] as const
+        }),
+      )
+      return Object.fromEntries(pairs)
+    },
+    enabled: capped.length > 0,
+    staleTime: 5 * 60_000,
+  })
+}
+
 export function useAnalyzeRecent() {
   const qc = useQueryClient()
   return useMutation({

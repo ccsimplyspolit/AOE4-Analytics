@@ -17,7 +17,6 @@ import {
   ArrowUp,
   Zap,
   Activity,
-  Play,
   ExternalLink,
   Volume2,
 } from 'lucide-react'
@@ -27,8 +26,14 @@ import {
   DEFAULT_HOTKEYS,
   DEFAULT_OVERLAY_WIDGET_POSITIONS,
   type AppSettings,
+  type HotkeySettings,
   type OverlayWidgetAnchor,
 } from '@store/settings'
+import {
+  acceleratorFromKeyboardEvent,
+  acceleratorsEqual,
+  formatAccelerator,
+} from '@domain/hotkeyAccel'
 import { matchSteamAccount, type SteamAccount } from '@domain/steamAccounts'
 import { playAudioCue } from '@domain/overlayAudio'
 import { ipc } from '@shared/ipc'
@@ -38,10 +43,14 @@ import { ACCENT_PRESETS, currentAccentHex } from '@shared/accent'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
 import { buildOrderCivLabel, type BuildOrder } from '@domain/buildOrderSchema'
+import { selectLiveOverlayBuild } from '@domain/buildOrderComparison'
 import { useSettings, useUpdateSettings, useRemoveAccount } from '../queries/useProfile'
+import { useLiveMatch } from '../queries/useLiveMatch'
 import { PageHead } from '../components/PageHead'
+import { ScreenTabs } from '../components/ScreenTabs'
 import { SteamConnectCard } from '../components/SteamConnectCard'
 import { useI18n } from '../../i18n'
+import { useAutoAction } from '../hooks/useAutoAction'
 
 const LEADERBOARDS: { value: Leaderboard; label: string }[] = [
   { value: 'rm_solo', label: 'Ranked 1v1 (Solo)' },
@@ -54,6 +63,14 @@ const LEADERBOARDS: { value: Leaderboard; label: string }[] = [
   { value: 'qm_2v2', label: 'Quick Match 2v2' },
   { value: 'qm_3v3', label: 'Quick Match 3v3' },
   { value: 'qm_4v4', label: 'Quick Match 4v4' },
+  { value: 'qm_ffa', label: 'Quick Match FFA' },
+  { value: 'rm_solo_console', label: 'Console Solo Ranked' },
+  { value: 'rm_team_console', label: 'Console Team Ranked' },
+  { value: 'qm_1v1_console', label: 'Console QM 1v1' },
+  { value: 'qm_2v2_console', label: 'Console QM 2v2' },
+  { value: 'qm_3v3_console', label: 'Console QM 3v3' },
+  { value: 'qm_4v4_console', label: 'Console QM 4v4' },
+  { value: 'qm_ffa_console', label: 'Console QM FFA' },
 ]
 const POLL_OPTIONS = [
   { value: 4_000, label: '4s' },
@@ -69,6 +86,12 @@ function pollOptionsWithCurrent(current: number | undefined) {
     return POLL_OPTIONS
   }
   return [{ value: current, label: `${Math.round(current / 100) / 10}s (custom)` }, ...POLL_OPTIONS]
+}
+
+function formatPollLabel(label: string, tt: (input: string) => string): string {
+  const custom = /^([\d.]+)s \(custom\)$/.exec(label)
+  if (custom?.[1]) return tt('{n}s (custom)').replace('{n}', custom[1])
+  return tt(label)
 }
 
 const AUTOMATION_TASK_LABELS: Record<AutomationTaskId, string> = {
@@ -98,33 +121,40 @@ const SETTINGS_SECTIONS = [
   ['settings-hotkeys', 'Hotkeys'],
 ] as const
 
+const HOTKEY_ROWS: { field: keyof HotkeySettings; label: string }[] = [
+  { field: 'toggleOverlay', label: 'Show / hide overlay hotkey' },
+  { field: 'placementMode', label: 'Move overlay widgets hotkey' },
+  { field: 'nextBuildStep', label: 'Next build step hotkey' },
+  { field: 'previousBuildStep', label: 'Previous build step hotkey' },
+  { field: 'resetBuildStep', label: 'Reset build step hotkey' },
+  { field: 'nextCounter', label: 'Cycle counter target hotkey' },
+  { field: 'nextBuildOrder', label: 'Next build order hotkey' },
+  { field: 'previousBuildOrder', label: 'Previous build order hotkey' },
+  { field: 'toggleBuildOrder', label: 'Show / hide build order hotkey' },
+  { field: 'switchTimerMode', label: 'Switch timer mode hotkey' },
+  { field: 'startTimer', label: 'Start timer hotkey' },
+  { field: 'stopTimer', label: 'Stop timer hotkey' },
+  { field: 'resetTimer', label: 'Reset timer hotkey' },
+]
+
 export function Settings() {
   const { tt, refreshTranslationStatus } = useI18n()
   const { data: settings } = useSettings()
+  const { data: liveMatch } = useLiveMatch()
   const update = useUpdateSettings()
   const removeAccount = useRemoveAccount()
 
-  const toggleHotkey = settings?.hotkeys.toggleOverlay ?? DEFAULT_HOTKEYS.toggleOverlay
-  const placementHotkey = settings?.hotkeys.placementMode ?? DEFAULT_HOTKEYS.placementMode
-  const nextBuildStepHotkey = settings?.hotkeys.nextBuildStep ?? DEFAULT_HOTKEYS.nextBuildStep
-  const previousBuildStepHotkey =
-    settings?.hotkeys.previousBuildStep ?? DEFAULT_HOTKEYS.previousBuildStep
-  const resetBuildStepHotkey = settings?.hotkeys.resetBuildStep ?? DEFAULT_HOTKEYS.resetBuildStep
-  const nextCounterHotkey = settings?.hotkeys.nextCounter ?? DEFAULT_HOTKEYS.nextCounter
-  const nextBuildOrderHotkey = settings?.hotkeys.nextBuildOrder ?? DEFAULT_HOTKEYS.nextBuildOrder
-  const previousBuildOrderHotkey =
-    settings?.hotkeys.previousBuildOrder ?? DEFAULT_HOTKEYS.previousBuildOrder
-  const toggleBuildOrderHotkey =
-    settings?.hotkeys.toggleBuildOrder ?? DEFAULT_HOTKEYS.toggleBuildOrder
-  const switchTimerModeHotkey = settings?.hotkeys.switchTimerMode ?? DEFAULT_HOTKEYS.switchTimerMode
-  const startTimerHotkey = settings?.hotkeys.startTimer ?? DEFAULT_HOTKEYS.startTimer
-  const stopTimerHotkey = settings?.hotkeys.stopTimer ?? DEFAULT_HOTKEYS.stopTimer
-  const resetTimerHotkey = settings?.hotkeys.resetTimer ?? DEFAULT_HOTKEYS.resetTimer
+  const hotkeys: HotkeySettings = { ...DEFAULT_HOTKEYS, ...settings?.hotkeys }
+  const toggleHotkey = hotkeys.toggleOverlay
+  const placementHotkey = hotkeys.placementMode
   const [arrangingWidgets, setArrangingWidgets] = useState(false)
   const [customCssDraft, setCustomCssDraft] = useState('')
   const [buildSearch, setBuildSearch] = useState('')
   const [buildCivFilter, setBuildCivFilter] = useState('all')
   const [automationStatus, setAutomationStatus] = useState<AutomationStatus | null>(null)
+  const [activeSection, setActiveSection] = useState<(typeof SETTINGS_SECTIONS)[number][0]>(
+    SETTINGS_SECTIONS[0][0],
+  )
 
   // Placement mode persists its locked state in settings, so the button stays
   // accurate when this screen is revisited after using the global hotkey.
@@ -137,6 +167,26 @@ export function Settings() {
   }, [customCss])
 
   useEffect(() => {
+    const nodes = SETTINGS_SECTIONS.map(([id]) => document.getElementById(id)).filter(
+      (node): node is HTMLElement => node != null,
+    )
+    if (nodes.length === 0) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((left, right) => right.intersectionRatio - left.intersectionRatio)[0]
+        if (visible?.target.id) {
+          setActiveSection(visible.target.id as (typeof SETTINGS_SECTIONS)[number][0])
+        }
+      },
+      { rootMargin: '-15% 0px -70% 0px', threshold: [0, 0.2, 0.5, 1] },
+    )
+    for (const node of nodes) observer.observe(node)
+    return () => observer.disconnect()
+  }, [settings])
+
+  useEffect(() => {
     let active = true
     void ipc.getAutomationStatus().then((value) => {
       if (active) setAutomationStatus(value)
@@ -147,6 +197,10 @@ export function Settings() {
       unsubscribe()
     }
   }, [])
+
+  useAutoAction('automation-now', () => ipc.runAutomationNow().then(setAutomationStatus), {
+    enabled: settings?.profileId != null,
+  })
 
   // The sliders track a local value and commit it debounced — one settings
   // write + overlay IPC after the drag settles instead of one per tick.
@@ -165,10 +219,28 @@ export function Settings() {
     })
   })()
   const cycleNames = settings?.overlay.buildOrderCycle ?? []
-  const activeBuildNames = cycleNames.filter((name) => overlayBuilds.some((build) => build.name === name))
+  const activeBuildNames = cycleNames.filter((name) =>
+    overlayBuilds.some((build) => build.name === name),
+  )
   const activeBuilds = activeBuildNames
     .map((name) => overlayBuilds.find((build) => build.name === name))
     .filter((build): build is BuildOrder => build != null)
+  const liveOpponentCivs = liveMatch?.teams
+    ? liveMatch.teams.flatMap((team, index) =>
+        index === 0
+          ? []
+          : team.map((player) => player.civ).filter((civ): civ is string => civ != null),
+      )
+    : liveMatch?.opponent?.civ
+      ? [liveMatch.opponent.civ]
+      : []
+  const autoSelectedBuild =
+    settings?.overlay.buildOrderMode === 'auto' && liveMatch?.isLive && liveMatch.myCiv
+      ? selectLiveOverlayBuild(activeBuilds.length > 0 ? activeBuilds : overlayBuilds, {
+          civ: liveMatch.myCiv,
+          opponentCivilizations: liveOpponentCivs,
+        })
+      : null
   const buildCivilizations = Array.from(
     new Set(
       overlayBuilds.flatMap((build) =>
@@ -179,10 +251,14 @@ export function Settings() {
   const normalizedBuildSearch = buildSearch.trim().toLocaleLowerCase()
   const availableBuilds = overlayBuilds.filter((build) => {
     if (activeBuildNames.includes(build.name)) return false
-    const civilizations = Array.isArray(build.civilization) ? build.civilization : [build.civilization]
+    const civilizations = Array.isArray(build.civilization)
+      ? build.civilization
+      : [build.civilization]
     if (buildCivFilter !== 'all' && !civilizations.includes(buildCivFilter)) return false
     if (!normalizedBuildSearch) return true
-    return `${build.name} ${buildOrderCivLabel(build)}`.toLocaleLowerCase().includes(normalizedBuildSearch)
+    return `${build.name} ${buildOrderCivLabel(build)}`
+      .toLocaleLowerCase()
+      .includes(normalizedBuildSearch)
   })
   useEffect(() => {
     if (debouncedOpacity == null) return
@@ -231,37 +307,39 @@ export function Settings() {
       <PageHead
         kicker="Preferences"
         title="Settings"
-        sub="Profile, appearance, integrations, overlay, and data."
+        sub="Profile, appearance, overlay, and data."
       />
 
-      <nav className="sticky top-0 z-20 -mx-1 flex flex-wrap items-center gap-1 rounded-md border border-border bg-background/95 p-1 shadow-lg backdrop-blur">
-        {SETTINGS_SECTIONS.map(([id, label]) => (
-          <button
-            key={id}
-            type="button"
-            onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })}
-            className="rounded px-2.5 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-          >
-            {tt(label)}
-          </button>
-        ))}
-        <span
-          className={cn(
-            'ml-auto flex items-center gap-1.5 px-2 text-[11px]',
-            update.isError ? 'text-loss' : 'text-muted-foreground',
-          )}
-        >
-          {update.isPending ? (
-            <Loader2 className="h-3 w-3 animate-spin" />
-          ) : (
-            <Check className="h-3 w-3" />
-          )}
-          {update.isPending
-            ? tt('Saving…')
-            : update.isError
-              ? tt('Save failed')
-              : tt('Changes save automatically')}
-        </span>
+      <nav className="sticky top-0 z-20 -mx-1 border-b border-border bg-background/95 px-1 pt-1 backdrop-blur">
+        <ScreenTabs
+          items={SETTINGS_SECTIONS.map(([id, label]) => ({ id, label }))}
+          value={activeSection}
+          onChange={(id) => {
+            setActiveSection(id)
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+          }}
+          ariaLabel={tt('Settings sections')}
+          size="sm"
+          trailing={
+            <span
+              className={cn(
+                'flex items-center gap-1.5 px-2 text-[11px]',
+                update.isError ? 'text-loss' : 'text-muted-foreground',
+              )}
+            >
+              {update.isPending ? (
+                <Loader2 className="h-3 w-3 animate-spin" />
+              ) : (
+                <Check className="h-3 w-3" />
+              )}
+              {update.isPending
+                ? tt('Saving…')
+                : update.isError
+                  ? tt('Save failed')
+                  : tt('Changes save automatically')}
+            </span>
+          }
+        />
       </nav>
 
       <Card id="settings-appearance" className="scroll-mt-14">
@@ -362,7 +440,9 @@ export function Settings() {
               </div>
               <h2 className="text-lg font-semibold tracking-tight">{tt('Overlay control room')}</h2>
               <p className="mt-1 max-w-2xl text-xs leading-relaxed text-muted-foreground">
-                {tt('Tune the in-game view, choose what appears, then place it exactly where you want.')}
+                {tt(
+                  'Tune the in-game view, choose what appears, then place it exactly where you want.',
+                )}
               </p>
             </div>
             <button
@@ -370,7 +450,8 @@ export function Settings() {
               onClick={() => void ipc.toggleOverlay()}
               className="inline-flex shrink-0 items-center justify-center rounded-md border border-primary/45 bg-primary/10 px-3 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/18"
             >
-              {tt('Show / hide overlay')} <span className="ml-2 text-primary/70">{toggleHotkey}</span>
+              {tt('Show / hide overlay')}{' '}
+              <span className="ml-2 text-primary/70">{toggleHotkey}</span>
             </button>
           </div>
 
@@ -391,7 +472,9 @@ export function Settings() {
                 <label className="space-y-1.5">
                   <span className="flex items-center justify-between text-sm">
                     <span>{tt('Opacity')}</span>
-                    <span className="tabular-nums text-muted-foreground">{Math.round(opacity * 100)}%</span>
+                    <span className="tabular-nums text-muted-foreground">
+                      {Math.round(opacity * 100)}%
+                    </span>
                   </span>
                   <input
                     type="range"
@@ -406,7 +489,9 @@ export function Settings() {
                 <label className="space-y-1.5">
                   <span className="flex items-center justify-between text-sm">
                     <span>{tt('Widget size')}</span>
-                    <span className="tabular-nums text-muted-foreground">{Math.round(scale * 100)}%</span>
+                    <span className="tabular-nums text-muted-foreground">
+                      {Math.round(scale * 100)}%
+                    </span>
                   </span>
                   <input
                     type="range"
@@ -462,121 +547,137 @@ export function Settings() {
                 <span className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary)/0.7)]" />
               </div>
               <div className="divide-y divide-border/70 px-4">
-            <OverlayToggle
-              label={tt('Matchup bar')}
-              description={tt('Teams, civilizations, rank, and matchup troops.')}
-              checked={settings?.overlay.showMatchup ?? true}
-              onChange={(checked) =>
-                update.mutate(
-                  { overlay: { showMatchup: checked } },
-                  { onSuccess: () => void ipc.applyOverlaySettings() },
-                )
-              }
-            />
-            <OverlayToggle
-              label={tt('Post-game card')}
-              description={tt('Show the result and coaching card after the match.')}
-              checked={settings?.overlay.showPostGame ?? true}
-              onChange={(checked) =>
-                update.mutate(
-                  { overlay: { showPostGame: checked } },
-                  { onSuccess: () => void ipc.applyOverlaySettings() },
-                )
-              }
-            />
-            <OverlayToggle
-              label={tt('Status pill')}
-              description={tt('Show waiting, matchup, and analysis status.')}
-              checked={settings?.overlay.showStatus ?? true}
-              onChange={(checked) =>
-                update.mutate(
-                  { overlay: { showStatus: checked } },
-                  { onSuccess: () => void ipc.applyOverlaySettings() },
-                )
-              }
-            />
-            <OverlayToggle
-              label={tt('Eco Target Split HUD')}
-              description={tt('Show active villager distribution balance (Food, Wood, Gold, Stone) on the overlay.')}
-              checked={settings?.overlay.showEcoSplit ?? true}
-              onChange={(checked) =>
-                update.mutate(
-                  { overlay: { showEcoSplit: checked } },
-                  { onSuccess: () => void ipc.applyOverlaySettings() },
-                )
-              }
-            />
-            <OverlayToggle
-              label={tt('Mini-HUD ultra-compact mode')}
-              description={tt('Minimalist padding and compressed layout optimized for 1080p and smaller screens.')}
-              checked={settings?.overlay.miniHud ?? false}
-              onChange={(checked) =>
-                update.mutate(
-                  { overlay: { miniHud: checked } },
-                  { onSuccess: () => void ipc.applyOverlaySettings() },
-                )
-              }
-            />
-            <OverlayToggle
-              label={tt('Timing Checkpoints & Reminders')}
-              description={tt('Macro match checkpoints (2:30 gold scout, 4:15 Feudal, 7:00 relics/sacred sites).')}
-              checked={settings?.overlay.timingCheckpoints ?? true}
-              onChange={(checked) =>
-                update.mutate(
-                  { overlay: { timingCheckpoints: checked } },
-                  { onSuccess: () => void ipc.applyOverlaySettings() },
-                )
-              }
-            />
-            <div className="py-2.5">
-              <OverlayToggle
-                label={tt('Synthetic Audio Cues')}
-                description={tt('Play subtle harmonic chimes when approaching key match timings.')}
-                checked={settings?.overlay.audioCues ?? true}
-                onChange={(checked) =>
-                  update.mutate(
-                    { overlay: { audioCues: checked } },
-                    { onSuccess: () => void ipc.applyOverlaySettings() },
-                  )
-                }
-              />
-              {(settings?.overlay.audioCues ?? true) && (
-                <div className="mt-2 flex items-center gap-3 pl-1">
-                  <Volume2 className="h-4 w-4 text-primary shrink-0" />
-                  <input
-                    type="range"
-                    min={0.05}
-                    max={1}
-                    step={0.05}
-                    value={settings?.overlay.audioCueVolume ?? 0.3}
-                    onChange={(e) => {
-                      const vol = Number(e.target.value)
+                <OverlayToggle
+                  label={tt('Matchup bar')}
+                  description={tt('Teams, civilizations, rank, and matchup troops.')}
+                  checked={settings?.overlay.showMatchup ?? true}
+                  onChange={(checked) =>
+                    update.mutate(
+                      { overlay: { showMatchup: checked } },
+                      { onSuccess: () => void ipc.applyOverlaySettings() },
+                    )
+                  }
+                />
+                <OverlayToggle
+                  label={tt('Post-game card')}
+                  description={tt('Show the result and coaching card after the match.')}
+                  checked={settings?.overlay.showPostGame ?? true}
+                  onChange={(checked) =>
+                    update.mutate(
+                      { overlay: { showPostGame: checked } },
+                      { onSuccess: () => void ipc.applyOverlaySettings() },
+                    )
+                  }
+                />
+                <OverlayToggle
+                  label={tt('Status pill')}
+                  description={tt('Show waiting, matchup, and analysis status.')}
+                  checked={settings?.overlay.showStatus ?? true}
+                  onChange={(checked) =>
+                    update.mutate(
+                      { overlay: { showStatus: checked } },
+                      { onSuccess: () => void ipc.applyOverlaySettings() },
+                    )
+                  }
+                />
+                <OverlayToggle
+                  label={tt('Eco Target Split HUD')}
+                  description={tt(
+                    'Show active villager distribution balance (Food, Wood, Gold, Stone) on the overlay.',
+                  )}
+                  checked={settings?.overlay.showEcoSplit ?? true}
+                  onChange={(checked) =>
+                    update.mutate(
+                      { overlay: { showEcoSplit: checked } },
+                      { onSuccess: () => void ipc.applyOverlaySettings() },
+                    )
+                  }
+                />
+                <OverlayToggle
+                  label={tt('Mini-HUD compact overlay')}
+                  description={tt(
+                    'Quiet in-game HUD: less chrome, smaller type, more of the game visible. On by default.',
+                  )}
+                  checked={settings?.overlay.miniHud ?? true}
+                  onChange={(checked) =>
+                    update.mutate(
+                      { overlay: { miniHud: checked } },
+                      { onSuccess: () => void ipc.applyOverlaySettings() },
+                    )
+                  }
+                />
+                <OverlayToggle
+                  label={tt('Timing Checkpoints & Reminders')}
+                  description={tt(
+                    'Macro match checkpoints (2:30 gold scout, 4:15 Feudal, 7:00 relics/sacred sites).',
+                  )}
+                  checked={settings?.overlay.timingCheckpoints ?? true}
+                  onChange={(checked) =>
+                    update.mutate(
+                      { overlay: { timingCheckpoints: checked } },
+                      { onSuccess: () => void ipc.applyOverlaySettings() },
+                    )
+                  }
+                />
+                <div className="py-2.5">
+                  <OverlayToggle
+                    label={tt('Synthetic Audio Cues')}
+                    description={tt(
+                      'Play subtle harmonic chimes when approaching key match timings.',
+                    )}
+                    checked={settings?.overlay.audioCues ?? true}
+                    onChange={(checked) =>
                       update.mutate(
-                        { overlay: { audioCueVolume: vol } },
+                        { overlay: { audioCues: checked } },
                         { onSuccess: () => void ipc.applyOverlaySettings() },
                       )
-                    }}
-                    className="w-40 accent-[hsl(var(--primary))]"
+                    }
                   />
-                  <span className="text-xs text-muted-foreground tabular-nums">
-                    {Math.round((settings?.overlay.audioCueVolume ?? 0.3) * 100)}%
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => playAudioCue(settings?.overlay.audioCueVolume ?? 0.3, 'checkpoint')}
-                    className="rounded border border-border px-2 py-0.5 text-xs text-primary hover:bg-primary/10 transition-colors"
-                  >
-                    {tt('Test Sound')}
-                  </button>
+                  {(settings?.overlay.audioCues ?? true) && (
+                    <div className="mt-2 flex items-center gap-3 pl-1">
+                      <Volume2 className="h-4 w-4 text-primary shrink-0" />
+                      <input
+                        type="range"
+                        min={0.05}
+                        max={1}
+                        step={0.05}
+                        value={settings?.overlay.audioCueVolume ?? 0.3}
+                        onChange={(e) => {
+                          const vol = Number(e.target.value)
+                          update.mutate(
+                            { overlay: { audioCueVolume: vol } },
+                            { onSuccess: () => void ipc.applyOverlaySettings() },
+                          )
+                        }}
+                        className="w-40 accent-[hsl(var(--primary))]"
+                      />
+                      <span className="text-xs text-muted-foreground tabular-nums">
+                        {Math.round((settings?.overlay.audioCueVolume ?? 0.3) * 100)}%
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          playAudioCue(settings?.overlay.audioCueVolume ?? 0.3, 'checkpoint')
+                        }
+                        className="rounded border border-border px-2 py-0.5 text-xs text-primary hover:bg-primary/10 transition-colors"
+                      >
+                        {tt('Test Sound')}
+                      </button>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
               </div>
             </section>
           </div>
 
           <p className="rounded-md border border-border/60 bg-muted/20 px-3 py-2 text-[11px] leading-relaxed text-muted-foreground">
-            {tt('The overlay shows the matchup across the top, a live APM counter, and a results card after each game. Arrange widgets with the button below or')} {placementHotkey}; {tt('it opens a draggable preview even before a match.')}
+            {tt(
+              'The overlay shows the matchup across the top, a live APM counter, and a results card after each game. Arrange widgets with the button below or',
+            )}{' '}
+            {placementHotkey}; {tt('it opens a draggable preview even before a match.')}{' '}
+            {tt(
+              'Run Age of Empires IV in Borderless or Windowed Fullscreen — exclusive fullscreen plus an overlay can close the game.',
+            )}
           </p>
 
           <label className="block space-y-1.5">
@@ -678,14 +779,19 @@ export function Settings() {
             </label>
             <label className="flex cursor-pointer items-center justify-between gap-3 text-sm">
               <span>
-                Live APM counter
+                {tt('Live APM counter')}
                 <span className="block text-[11px] text-muted-foreground">
-                  Counts your key/mouse actions while in a match (counts only, never which keys).
+                  {tt(
+                    'Counts your key/mouse actions while in a match (counts only, never which keys).',
+                  )}{' '}
+                  {tt(
+                    'Off by default: the global input hook can conflict with anti-cheat and close the game. Enable only in borderless/windowed fullscreen, preferably before launching AoE4.',
+                  )}
                 </span>
               </span>
               <input
                 type="checkbox"
-                checked={settings?.overlay.apm ?? true}
+                checked={settings?.overlay.apm ?? false}
                 onChange={(e) => {
                   if (!settings) return
                   update.mutate(
@@ -730,9 +836,11 @@ export function Settings() {
             </label>
             <label className="flex items-center justify-between gap-3 text-sm">
               <span>
-                Matchup troops panel
+                {tt('Matchup troops panel')}
                 <span className="block text-[11px] text-muted-foreground">
-                  Under the matchup bar: your build order (counters flagged) vs their key units.
+                  {tt(
+                    'Under the matchup bar: your build order (counters flagged) vs their key units.',
+                  )}
                 </span>
               </span>
               <select
@@ -757,10 +865,11 @@ export function Settings() {
             </label>
             <label className="flex cursor-pointer items-center justify-between gap-3 text-sm">
               <span>
-                Age-up pace targets
+                {tt('Age-up pace targets')}
                 <span className="block text-[11px] text-muted-foreground">
-                  A small chip with target Feudal/Castle/Imperial times for your rank next to the
-                  live match clock. Pace targets, never a live reading.
+                  {tt(
+                    'A small chip with target Feudal/Castle/Imperial times for your rank next to the live match clock. Pace targets, never a live reading.',
+                  )}
                 </span>
               </span>
               <input
@@ -778,10 +887,11 @@ export function Settings() {
             </label>
             <label className="flex cursor-pointer items-center justify-between gap-3 text-sm">
               <span>
-                Session tracker
+                {tt('Session tracker')}
                 <span className="block text-[11px] text-muted-foreground">
-                  Today&apos;s record at a glance — &quot;3W – 1L +42&quot; — so a losing streak is
-                  visible without leaving the game.
+                  {tt(
+                    'Today\'s record at a glance — "3W – 1L +42" — so a losing streak is visible without leaving the game.',
+                  )}
                 </span>
               </span>
               <input
@@ -799,10 +909,11 @@ export function Settings() {
             </label>
             <label className="flex cursor-pointer items-center justify-between gap-3 text-sm">
               <span>
-                Matchup counter plan
+                {tt('Matchup counter plan')}
                 <span className="block text-[11px] text-muted-foreground">
-                  Shows the best counter roles for the opponent&apos;s detected civilization in a
-                  movable overlay card.
+                  {tt(
+                    "Shows the best counter roles for the opponent's detected civilization in a movable overlay card.",
+                  )}
                 </span>
               </span>
               <input
@@ -820,10 +931,11 @@ export function Settings() {
             </label>
             <label className="flex cursor-pointer items-center justify-between gap-3 text-sm">
               <span>
-                Live build coach
+                {tt('Live build coach')}
                 <span className="block text-[11px] text-muted-foreground">
-                  Timed age-up, villager and scouting checkpoints from the pinned civilization
-                  build.
+                  {tt(
+                    'Timed age-up, villager and scouting checkpoints from the pinned civilization build.',
+                  )}
                 </span>
               </span>
               <input
@@ -844,7 +956,7 @@ export function Settings() {
                 <div className="text-sm font-medium">{tt('Build order overlay')}</div>
                 <p className="mt-0.5 text-[11px] text-muted-foreground">
                   {tt(
-                    'Choose a build here, or let the overlay pick the first matching build from your active pool.',
+                    'In auto mode the overlay uses your civ and the opponent civ. Matchup-tagged builds beat the generic civ default.',
                   )}
                 </p>
               </div>
@@ -864,14 +976,24 @@ export function Settings() {
                     className="h-9 w-full rounded-md border border-border bg-background px-2 text-xs"
                   >
                     <option value="manual">{tt('Use selected build')}</option>
-                    <option value="auto">{tt('Auto-select by civilization')}</option>
+                    <option value="auto">{tt('Auto-select by matchup')}</option>
                     <option value="hidden">{tt('Hide build order')}</option>
                   </select>
                 </label>
                 <label className="space-y-1.5 text-sm">
-                  <span className="text-muted-foreground">{tt('Selected build')}</span>
+                  <span className="text-muted-foreground">
+                    {tt(
+                      settings?.overlay.buildOrderMode === 'auto'
+                        ? 'Auto-selected build'
+                        : 'Selected build',
+                    )}
+                  </span>
                   <select
-                    value={settings?.overlay.buildOrderId ?? ''}
+                    value={
+                      settings?.overlay.buildOrderMode === 'auto'
+                        ? (autoSelectedBuild?.name ?? '')
+                        : (settings?.overlay.buildOrderId ?? '')
+                    }
                     disabled={!settings || settings.overlay.buildOrderMode !== 'manual'}
                     onChange={(event) => {
                       if (!settings) return
@@ -888,14 +1010,30 @@ export function Settings() {
                     }}
                     className="h-9 w-full rounded-md border border-border bg-background px-2 text-xs disabled:opacity-50"
                   >
-                    <option value="">{tt('No build selected')}</option>
-                    {(settings?.overlay.buildOrderId &&
-                    !activeBuilds.some((build) => build.name === settings.overlay.buildOrderId)
-                      ? [
-                          overlayBuilds.find((build) => build.name === settings.overlay.buildOrderId),
-                          ...activeBuilds,
-                        ].filter((build): build is BuildOrder => build != null)
-                      : activeBuilds
+                    <option value="">
+                      {tt(
+                        settings?.overlay.buildOrderMode === 'auto'
+                          ? liveMatch?.isLive
+                            ? 'No compatible build for the current civilization'
+                            : 'A build will be selected when a match starts'
+                          : 'No build selected',
+                      )}
+                    </option>
+                    {(settings?.overlay.buildOrderMode === 'auto'
+                      ? autoSelectedBuild
+                        ? [autoSelectedBuild]
+                        : []
+                      : settings?.overlay.buildOrderId &&
+                          !activeBuilds.some(
+                            (build) => build.name === settings.overlay.buildOrderId,
+                          )
+                        ? [
+                            overlayBuilds.find(
+                              (build) => build.name === settings.overlay.buildOrderId,
+                            ),
+                            ...activeBuilds,
+                          ].filter((build): build is BuildOrder => build != null)
+                        : activeBuilds
                     ).map((build) => (
                       <option key={build.name} value={build.name}>
                         {build.name} · {buildOrderCivLabel(build)}
@@ -1023,7 +1161,9 @@ export function Settings() {
                   </span>
                 </div>
                 <p className="mt-0.5 text-[11px] text-muted-foreground">
-                  {tt('Only builds in this pool can appear in the overlay cycle. Imported builds stay available in the catalogue until you add them here.')}
+                  {tt(
+                    'Only builds in this pool can appear in the overlay cycle. Imported builds stay available in the catalogue until you add them here.',
+                  )}
                 </p>
               </div>
               <div className="grid gap-3 xl:grid-cols-[minmax(0,1fr)_minmax(300px,0.9fr)]">
@@ -1063,8 +1203,11 @@ export function Settings() {
                       </div>
                     ) : (
                       activeBuilds.map((build, index) => {
-                        const disabled = settings?.overlay.buildOrderDisabled.includes(build.name) ?? false
-                        const custom = settings?.overlay.customBuildOrders.some((item) => item.name === build.name)
+                        const disabled =
+                          settings?.overlay.buildOrderDisabled.includes(build.name) ?? false
+                        const custom = settings?.overlay.customBuildOrders.some(
+                          (item) => item.name === build.name,
+                        )
                         const move = (direction: -1 | 1) => {
                           if (!settings) return
                           const next = [...activeBuildNames]
@@ -1077,7 +1220,10 @@ export function Settings() {
                           )
                         }
                         return (
-                          <div key={build.name} className="flex items-center gap-2 rounded border border-border/60 bg-background/45 px-2 py-1.5 text-xs">
+                          <div
+                            key={build.name}
+                            className="flex items-center gap-2 rounded border border-border/60 bg-background/45 px-2 py-1.5 text-xs"
+                          >
                             <button
                               type="button"
                               onClick={() => {
@@ -1085,8 +1231,13 @@ export function Settings() {
                                 update.mutate(
                                   {
                                     overlay: {
-                                      buildOrderCycle: activeBuildNames.filter((name) => name !== build.name),
-                                      buildOrderDisabled: settings.overlay.buildOrderDisabled.filter((name) => name !== build.name),
+                                      buildOrderCycle: activeBuildNames.filter(
+                                        (name) => name !== build.name,
+                                      ),
+                                      buildOrderDisabled:
+                                        settings.overlay.buildOrderDisabled.filter(
+                                          (name) => name !== build.name,
+                                        ),
                                     },
                                   },
                                   { onSuccess: () => void ipc.applyOverlaySettings() },
@@ -1097,9 +1248,17 @@ export function Settings() {
                             >
                               <X className="h-3 w-3" />
                             </button>
-                            <span className={cn('min-w-0 flex-1 truncate', disabled && 'text-muted-foreground line-through')}>
+                            <span
+                              className={cn(
+                                'min-w-0 flex-1 truncate',
+                                disabled && 'text-muted-foreground line-through',
+                              )}
+                            >
                               <span className="block truncate">{build.name}</span>
-                              <span className="block truncate text-[10px] text-muted-foreground">{buildOrderCivLabel(build)} · {custom ? tt('custom') : tt('bundled')}</span>
+                              <span className="block truncate text-[10px] text-muted-foreground">
+                                {buildOrderCivLabel(build)} ·{' '}
+                                {custom ? tt('custom') : tt('bundled')}
+                              </span>
                             </span>
                             <input
                               type="checkbox"
@@ -1117,10 +1276,22 @@ export function Settings() {
                               className="h-4 w-4 shrink-0 accent-[hsl(var(--primary))]"
                               aria-label={`${tt('Cycle')} ${build.name}`}
                             />
-                            <button type="button" disabled={index === 0} onClick={() => move(-1)} className="rounded border border-border p-1 text-muted-foreground hover:bg-secondary disabled:opacity-30" title={tt('Move up')}>
+                            <button
+                              type="button"
+                              disabled={index === 0}
+                              onClick={() => move(-1)}
+                              className="rounded border border-border p-1 text-muted-foreground hover:bg-secondary disabled:opacity-30"
+                              title={tt('Move up')}
+                            >
                               <ArrowUp className="h-3 w-3" />
                             </button>
-                            <button type="button" disabled={index === activeBuilds.length - 1} onClick={() => move(1)} className="rounded border border-border p-1 text-muted-foreground hover:bg-secondary disabled:opacity-30" title={tt('Move down')}>
+                            <button
+                              type="button"
+                              disabled={index === activeBuilds.length - 1}
+                              onClick={() => move(1)}
+                              className="rounded border border-border p-1 text-muted-foreground hover:bg-secondary disabled:opacity-30"
+                              title={tt('Move down')}
+                            >
                               <ArrowDown className="h-3 w-3" />
                             </button>
                           </div>
@@ -1141,14 +1312,24 @@ export function Settings() {
                       placeholder={tt('Search build library…')}
                       className="h-8 rounded border border-border bg-background px-2 text-xs outline-none focus:border-primary"
                     />
-                    <select value={buildCivFilter} onChange={(event) => setBuildCivFilter(event.target.value)} className="h-8 rounded border border-border bg-background px-2 text-xs">
+                    <select
+                      value={buildCivFilter}
+                      onChange={(event) => setBuildCivFilter(event.target.value)}
+                      className="h-8 rounded border border-border bg-background px-2 text-xs"
+                    >
                       <option value="all">{tt('All civilizations')}</option>
-                      {buildCivilizations.map((civilization) => <option key={civilization} value={civilization}>{civilization}</option>)}
+                      {buildCivilizations.map((civilization) => (
+                        <option key={civilization} value={civilization}>
+                          {civilization}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   <div className="max-h-64 space-y-1 overflow-y-auto">
                     {availableBuilds.length === 0 ? (
-                      <div className="px-2 py-6 text-center text-xs text-muted-foreground">{tt('No builds match this filter.')}</div>
+                      <div className="px-2 py-6 text-center text-xs text-muted-foreground">
+                        {tt('No builds match this filter.')}
+                      </div>
                     ) : (
                       availableBuilds.map((build) => (
                         <button
@@ -1163,8 +1344,15 @@ export function Settings() {
                           }}
                           className="flex w-full items-center gap-2 rounded border border-transparent px-2 py-1.5 text-left text-xs transition-colors hover:border-primary/30 hover:bg-primary/5"
                         >
-                          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded border border-border text-sm text-primary">+</span>
-                          <span className="min-w-0 flex-1 truncate"><span className="block truncate">{build.name}</span><span className="block truncate text-[10px] text-muted-foreground">{buildOrderCivLabel(build)}</span></span>
+                          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded border border-border text-sm text-primary">
+                            +
+                          </span>
+                          <span className="min-w-0 flex-1 truncate">
+                            <span className="block truncate">{build.name}</span>
+                            <span className="block truncate text-[10px] text-muted-foreground">
+                              {buildOrderCivLabel(build)}
+                            </span>
+                          </span>
                         </button>
                       ))
                     )}
@@ -1172,96 +1360,24 @@ export function Settings() {
                 </div>
               </div>
             </div>
-            <HotkeyInput
-              label={tt('Show / hide overlay hotkey')}
-              value={toggleHotkey}
-              defaultValue={DEFAULT_HOTKEYS.toggleOverlay}
-              onCommit={(accelerator) => update.mutate({ hotkeys: { toggleOverlay: accelerator } })}
-            />
-            <HotkeyInput
-              label={tt('Move overlay widgets hotkey')}
-              value={placementHotkey}
-              defaultValue={DEFAULT_HOTKEYS.placementMode}
-              onCommit={(accelerator) => update.mutate({ hotkeys: { placementMode: accelerator } })}
-            />
-            <HotkeyInput
-              label={tt('Next build step hotkey')}
-              value={nextBuildStepHotkey}
-              defaultValue={DEFAULT_HOTKEYS.nextBuildStep}
-              onCommit={(accelerator) => update.mutate({ hotkeys: { nextBuildStep: accelerator } })}
-            />
-            <HotkeyInput
-              label={tt('Previous build step hotkey')}
-              value={previousBuildStepHotkey}
-              defaultValue={DEFAULT_HOTKEYS.previousBuildStep}
-              onCommit={(accelerator) =>
-                update.mutate({ hotkeys: { previousBuildStep: accelerator } })
-              }
-            />
-            <HotkeyInput
-              label={tt('Reset build step hotkey')}
-              value={resetBuildStepHotkey}
-              defaultValue={DEFAULT_HOTKEYS.resetBuildStep}
-              onCommit={(accelerator) =>
-                update.mutate({ hotkeys: { resetBuildStep: accelerator } })
-              }
-            />
-            <HotkeyInput
-              label={tt('Cycle counter target hotkey')}
-              value={nextCounterHotkey}
-              defaultValue={DEFAULT_HOTKEYS.nextCounter}
-              onCommit={(accelerator) => update.mutate({ hotkeys: { nextCounter: accelerator } })}
-            />
-            <HotkeyInput
-              label={tt('Next build order hotkey')}
-              value={nextBuildOrderHotkey}
-              defaultValue={DEFAULT_HOTKEYS.nextBuildOrder}
-              onCommit={(accelerator) =>
-                update.mutate({ hotkeys: { nextBuildOrder: accelerator } })
-              }
-            />
-            <HotkeyInput
-              label={tt('Previous build order hotkey')}
-              value={previousBuildOrderHotkey}
-              defaultValue={DEFAULT_HOTKEYS.previousBuildOrder}
-              onCommit={(accelerator) =>
-                update.mutate({ hotkeys: { previousBuildOrder: accelerator } })
-              }
-            />
-            <HotkeyInput
-              label={tt('Show / hide build order hotkey')}
-              value={toggleBuildOrderHotkey}
-              defaultValue={DEFAULT_HOTKEYS.toggleBuildOrder}
-              onCommit={(accelerator) =>
-                update.mutate({ hotkeys: { toggleBuildOrder: accelerator } })
-              }
-            />
-            <HotkeyInput
-              label={tt('Switch timer mode hotkey')}
-              value={switchTimerModeHotkey}
-              defaultValue={DEFAULT_HOTKEYS.switchTimerMode}
-              onCommit={(accelerator) =>
-                update.mutate({ hotkeys: { switchTimerMode: accelerator } })
-              }
-            />
-            <HotkeyInput
-              label={tt('Start timer hotkey')}
-              value={startTimerHotkey}
-              defaultValue={DEFAULT_HOTKEYS.startTimer}
-              onCommit={(accelerator) => update.mutate({ hotkeys: { startTimer: accelerator } })}
-            />
-            <HotkeyInput
-              label={tt('Stop timer hotkey')}
-              value={stopTimerHotkey}
-              defaultValue={DEFAULT_HOTKEYS.stopTimer}
-              onCommit={(accelerator) => update.mutate({ hotkeys: { stopTimer: accelerator } })}
-            />
-            <HotkeyInput
-              label={tt('Reset timer hotkey')}
-              value={resetTimerHotkey}
-              defaultValue={DEFAULT_HOTKEYS.resetTimer}
-              onCommit={(accelerator) => update.mutate({ hotkeys: { resetTimer: accelerator } })}
-            />
+            <div className="flex flex-wrap items-center justify-between gap-3 rounded-md border border-border/70 bg-muted/20 px-3 py-2.5">
+              <p className="max-w-xl text-xs text-muted-foreground">
+                {tt(
+                  'Overlay hotkeys are configured in the Hotkeys section — click a binding, then press the keys.',
+                )}
+              </p>
+              <button
+                type="button"
+                onClick={() =>
+                  document
+                    .getElementById('settings-hotkeys')
+                    ?.scrollIntoView({ behavior: 'smooth' })
+                }
+                className="inline-flex h-8 shrink-0 items-center rounded-md border border-border px-3 text-xs hover:bg-secondary"
+              >
+                {tt('Edit overlay hotkeys')}
+              </button>
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -1273,19 +1389,12 @@ export function Settings() {
               <Zap className="h-4 w-4 text-primary" />
               {tt('Background automation')}
             </h2>
-            <button
-              type="button"
-              disabled={automationStatus?.running || settings?.profileId == null}
-              onClick={() => void ipc.runAutomationNow().then(setAutomationStatus)}
-              className="inline-flex items-center gap-1.5 rounded-md border border-primary/50 px-3 py-1.5 text-sm text-primary transition-colors hover:bg-primary/10 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              {automationStatus?.running ? (
+            {automationStatus?.running ? (
+              <span className="inline-flex items-center gap-1.5 text-sm text-primary">
                 <Loader2 className="h-3.5 w-3.5 animate-spin" />
-              ) : (
-                <Play className="h-3.5 w-3.5" />
-              )}
-              {tt('Run now')}
-            </button>
+                {tt('Automation is running…')}
+              </span>
+            ) : null}
           </div>
           <div className="flex flex-wrap items-center justify-between gap-2 rounded-md border border-border/60 bg-muted/20 px-3 py-2 text-xs">
             <span className="text-muted-foreground">
@@ -1464,29 +1573,48 @@ export function Settings() {
                 <Activity className="h-3.5 w-3.5" />
                 {automationStatus?.running ? tt('Running') : tt('Idle')}
               </span>
-              <span>{tt('Last run')}: {automationTime(automationStatus?.finishedAt ?? null)}</span>
-              <span>{tt('Next run')}: {automationTime(automationStatus?.nextRunAt ?? null)}</span>
+              <span>
+                {tt('Last run')}: {automationTime(automationStatus?.finishedAt ?? null)}
+              </span>
+              <span>
+                {tt('Next run')}: {automationTime(automationStatus?.nextRunAt ?? null)}
+              </span>
             </div>
             <div className="grid gap-1.5 sm:grid-cols-2 lg:grid-cols-3">
               {(automationStatus?.tasks ?? []).map((task) => (
-                <div key={task.id} className="rounded-md border border-border/70 bg-background/20 px-2.5 py-2 text-xs">
+                <div
+                  key={task.id}
+                  className="rounded-md border border-border/70 bg-background/20 px-2.5 py-2 text-xs"
+                >
                   <div className="flex items-center gap-1.5 font-medium">
-                    <span className={cn(
-                      'h-1.5 w-1.5 rounded-full',
-                      task.state === 'running' && 'animate-pulse bg-primary',
-                      task.state === 'success' && 'bg-emerald-400',
-                      task.state === 'error' && 'bg-destructive',
-                      task.state === 'skipped' && 'bg-muted-foreground',
-                      task.state === 'idle' && 'bg-border',
-                    )} />
+                    <span
+                      className={cn(
+                        'h-1.5 w-1.5 rounded-full',
+                        task.state === 'running' && 'animate-pulse bg-primary',
+                        task.state === 'success' && 'bg-emerald-400',
+                        task.state === 'error' && 'bg-destructive',
+                        task.state === 'skipped' && 'bg-muted-foreground',
+                        task.state === 'idle' && 'bg-border',
+                      )}
+                    />
                     <span>{tt(AUTOMATION_TASK_LABELS[task.id])}</span>
-                    {task.processed > 0 ? <span className="ml-auto tabular-nums text-muted-foreground">{task.processed}</span> : null}
+                    {task.processed > 0 ? (
+                      <span className="ml-auto tabular-nums text-muted-foreground">
+                        {task.processed}
+                      </span>
+                    ) : null}
                   </div>
-                  {task.message ? <div className="mt-1 line-clamp-2 text-[10px] leading-relaxed text-muted-foreground">{task.message}</div> : null}
+                  {task.message ? (
+                    <div className="mt-1 line-clamp-2 text-[10px] leading-relaxed text-muted-foreground">
+                      {task.message}
+                    </div>
+                  ) : null}
                 </div>
               ))}
             </div>
-            {automationStatus?.lastError ? <p className="text-xs text-destructive">{automationStatus.lastError}</p> : null}
+            {automationStatus?.lastError ? (
+              <p className="text-xs text-destructive">{automationStatus.lastError}</p>
+            ) : null}
           </div>
         </CardContent>
       </Card>
@@ -1496,7 +1624,7 @@ export function Settings() {
           <CardContent className="space-y-3 p-5">
             <h2 className="flex items-center gap-2 text-base font-semibold">
               <Gauge className="h-4 w-4 text-primary" />
-              Match polling
+              {tt('Match polling')}
             </h2>
             <label className="block space-y-1 text-sm">
               <span className="text-muted-foreground">{tt('When no game is open')}</span>
@@ -1511,7 +1639,7 @@ export function Settings() {
               >
                 {pollOptionsWithCurrent(settings?.polling.idleIntervalMs).map((o) => (
                   <option key={o.value} value={o.value}>
-                    {o.label}
+                    {formatPollLabel(o.label, tt)}
                   </option>
                 ))}
               </select>
@@ -1528,7 +1656,7 @@ export function Settings() {
               >
                 {pollOptionsWithCurrent(settings?.polling.activeIntervalMs).map((o) => (
                   <option key={o.value} value={o.value}>
-                    {o.label}
+                    {formatPollLabel(o.label, tt)}
                   </option>
                 ))}
               </select>
@@ -1551,7 +1679,7 @@ export function Settings() {
             >
               {LEADERBOARDS.map((l) => (
                 <option key={l.value} value={l.value}>
-                  {l.label}
+                  {tt(l.label)}
                 </option>
               ))}
             </select>
@@ -1619,10 +1747,11 @@ export function Settings() {
           </label>
           <label className="flex cursor-pointer items-center justify-between gap-3 text-sm">
             <span>
-              Open the game summary after each match
+              {tt('Open the game summary after each match')}
               <span className="block text-[11px] text-muted-foreground">
-                When a match ends (win or loss), bring RTSLytics to the front on that game&apos;s
-                full post-game breakdown.
+                {tt(
+                  "When a match ends (win or loss), bring RTSLytics to the front on that game's full post-game breakdown.",
+                )}
               </span>
             </span>
             <input
@@ -1637,36 +1766,31 @@ export function Settings() {
       </Card>
 
       <Card id="settings-hotkeys" className="scroll-mt-14">
-        <CardContent className="space-y-3 p-5">
-          <h2 className="flex items-center gap-2 text-base font-semibold">
-            <Keyboard className="h-4 w-4 text-primary" />
-            Hotkeys
-          </h2>
-          <div className="divide-y divide-border text-sm">
-            {[
-              [toggleHotkey, 'Show / hide overlay'],
-              [placementHotkey, 'Move overlay widgets'],
-              [nextBuildStepHotkey, 'Next build step'],
-              [previousBuildStepHotkey, 'Previous build step'],
-              [resetBuildStepHotkey, 'Reset build step'],
-              [nextBuildOrderHotkey, 'Next build order'],
-              [previousBuildOrderHotkey, 'Previous build order'],
-              [toggleBuildOrderHotkey, 'Show / hide build order'],
-              [nextCounterHotkey, 'Cycle counter target'],
-              [switchTimerModeHotkey, 'Switch timer mode'],
-              [startTimerHotkey, 'Start timer'],
-              [stopTimerHotkey, 'Stop timer'],
-              [resetTimerHotkey, 'Reset timer'],
-            ].map(([key, desc]) => (
-              <div key={desc} className="flex items-center justify-between py-1.5">
-                <span className="text-muted-foreground">{desc}</span>
-                <kbd className="rounded bg-secondary px-2 py-0.5 font-mono text-xs">{key}</kbd>
-              </div>
-            ))}
+        <CardContent className="space-y-4 p-5">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <h2 className="flex items-center gap-2 text-base font-semibold">
+                <Keyboard className="h-4 w-4 text-primary" />
+                {tt('Hotkeys')}
+              </h2>
+              <p className="mt-1 max-w-xl text-xs text-muted-foreground">
+                {tt(
+                  'Click a binding, then press the new shortcut. Esc cancels. Each combo needs Ctrl, Alt, or Shift.',
+                )}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => update.mutate({ hotkeys: { ...DEFAULT_HOTKEYS } })}
+              className="h-8 rounded-md border border-border px-3 text-xs hover:bg-secondary"
+            >
+              {tt('Reset all hotkeys')}
+            </button>
           </div>
-          <p className="text-xs text-muted-foreground">
-            Change the bindings from the Overlay section above.
-          </p>
+          <HotkeyEditor
+            hotkeys={hotkeys}
+            onChange={(field, accelerator) => update.mutate({ hotkeys: { [field]: accelerator } })}
+          />
         </CardContent>
       </Card>
     </div>
@@ -1796,6 +1920,7 @@ function ExternalApisCard() {
   const [twitchClientId, setTwitchClientId] = useState('')
   const [twitchClientSecret, setTwitchClientSecret] = useState('')
   const [youtubeApiKey, setYoutubeApiKey] = useState('')
+  const [aoe4WorldApiKey, setAoe4WorldApiKey] = useState('')
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
 
@@ -1823,11 +1948,13 @@ function ExternalApisCard() {
         twitchClientId: twitchClientId.trim() || undefined,
         twitchClientSecret: twitchClientSecret.trim() || undefined,
         youtubeApiKey: youtubeApiKey.trim() || undefined,
+        aoe4WorldApiKey: aoe4WorldApiKey.trim() || undefined,
       })
       setStatus(next)
       setTwitchClientId('')
       setTwitchClientSecret('')
       setYoutubeApiKey('')
+      setAoe4WorldApiKey('')
       setMessage(tt('External API settings saved.'))
     } catch (error) {
       setMessage(error instanceof Error ? error.message : tt('External API settings failed.'))
@@ -1858,7 +1985,7 @@ function ExternalApisCard() {
             </h2>
             <p className="mt-1 max-w-2xl text-xs text-muted-foreground">
               {tt(
-                'Optional official Twitch and YouTube APIs add current VODs, dates, durations, and view counts to the video explorer.',
+                'Optional official Twitch and YouTube APIs add current VODs, dates, durations, and view counts to the video explorer. An AoE4World overlay key unlocks custom and lobby games for your signed-in account.',
               )}
             </p>
           </div>
@@ -1867,7 +1994,9 @@ function ExternalApisCard() {
               ? tt('Checking…')
               : statusError
                 ? tt('Unavailable')
-                : status?.twitch.configured || status?.youtube.configured
+                : status?.twitch.configured ||
+                    status?.youtube.configured ||
+                    status?.aoe4World.configured
                   ? tt('At least one provider ready')
                   : tt('Optional')}
           </span>
@@ -1945,6 +2074,40 @@ function ExternalApisCard() {
               )}
             </p>
           </div>
+        </div>
+
+        <div className="space-y-2 rounded-md border border-border/60 bg-secondary/20 p-3">
+          <div className="flex items-center justify-between text-sm font-medium">
+            <span>{tt('AoE4World overlay API key')}</span>
+            <span className="text-[11px] text-muted-foreground">
+              {status?.aoe4World.configured
+                ? tt('Overlay key configured')
+                : tt('Overlay key not configured')}
+            </span>
+          </div>
+          <a
+            href="https://aoe4world.com/account"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1 text-[11px] text-primary hover:underline"
+          >
+            {tt('Open AoE4World account')}
+            <ExternalLink className="h-3 w-3" />
+          </a>
+          <input
+            type="password"
+            value={aoe4WorldApiKey}
+            onChange={(event) => setAoe4WorldApiKey(event.target.value)}
+            placeholder={tt('AoE4World overlay API key')}
+            className="h-9 w-full rounded-md border border-border bg-background px-2 text-sm text-foreground"
+            autoComplete="new-password"
+            spellCheck={false}
+          />
+          <p className="text-[11px] text-muted-foreground">
+            {tt(
+              'Unlocks custom and lobby games for the overlay on this AoE4World account. Do not share this key.',
+            )}
+          </p>
         </div>
 
         <p className="text-[11px] text-muted-foreground">
@@ -2379,50 +2542,92 @@ function TranslationApiCard({ onSaved }: { onSaved: () => Promise<void> }) {
 }
 
 /**
- * A global hotkey binding row: a text input in Electron accelerator format
- * (e.g. "Alt+O", "Ctrl+Shift+F1"), committed on blur/Enter. The main process
- * validates it (at least one modifier required) and re-registers immediately;
- * an invalid or rejected value simply snaps back to the current binding.
+ * Click-to-record global hotkeys. Duplicate combos across actions are rejected
+ * so two overlay commands cannot silently share one shortcut.
  */
-function HotkeyInput({
-  label,
-  value,
-  defaultValue,
-  onCommit,
+function HotkeyEditor({
+  hotkeys,
+  onChange,
 }: {
-  label: string
-  value: string
-  defaultValue: string
-  onCommit: (accelerator: string) => void
+  hotkeys: HotkeySettings
+  onChange: (field: keyof HotkeySettings, accelerator: string) => void
 }) {
-  const [draft, setDraft] = useState(value)
-  useEffect(() => setDraft(value), [value])
-  const commit = () => {
-    const next = draft.trim()
-    if (next && next !== value) onCommit(next)
-    // Snap back to the committed binding; the settings refresh brings the new one.
-    setDraft(value)
-  }
+  const { tt } = useI18n()
+  const [listening, setListening] = useState<keyof HotkeySettings | null>(null)
+  const [conflict, setConflict] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (listening == null) return
+    const onKeyDown = (event: KeyboardEvent) => {
+      event.preventDefault()
+      event.stopPropagation()
+      if (event.key === 'Escape') {
+        setListening(null)
+        setConflict(null)
+        return
+      }
+      const accelerator = acceleratorFromKeyboardEvent(event)
+      if (!accelerator) return
+      const clash = HOTKEY_ROWS.find(
+        (row) => row.field !== listening && acceleratorsEqual(hotkeys[row.field], accelerator),
+      )
+      if (clash) {
+        setConflict(tt('Already used by {action}').replace('{action}', tt(clash.label)))
+        return
+      }
+      onChange(listening, accelerator)
+      setListening(null)
+      setConflict(null)
+    }
+    window.addEventListener('keydown', onKeyDown, true)
+    return () => window.removeEventListener('keydown', onKeyDown, true)
+  }, [hotkeys, listening, onChange, tt])
+
   return (
-    <label className="flex items-center justify-between gap-3 text-sm">
-      <span>
-        {label}
-        <span className="block text-[11px] text-muted-foreground">
-          Electron accelerator format with at least one modifier, e.g. {defaultValue}.
-        </span>
-      </span>
-      <input
-        type="text"
-        value={draft}
-        spellCheck={false}
-        onChange={(e) => setDraft(e.target.value)}
-        onBlur={commit}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') e.currentTarget.blur()
-        }}
-        className="h-8 w-36 shrink-0 rounded-md border border-border bg-background px-2 text-center font-mono text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-      />
-    </label>
+    <div className="divide-y divide-border">
+      {HOTKEY_ROWS.map((row) => {
+        const value = hotkeys[row.field]
+        const active = listening === row.field
+        const isDefault = acceleratorsEqual(value, DEFAULT_HOTKEYS[row.field])
+        return (
+          <div key={row.field} className="flex flex-wrap items-center justify-between gap-2 py-2">
+            <span className="text-sm">{tt(row.label)}</span>
+            <div className="flex items-center gap-2">
+              {!isDefault && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    onChange(row.field, DEFAULT_HOTKEYS[row.field])
+                    if (listening === row.field) setListening(null)
+                    setConflict(null)
+                  }}
+                  className="text-[11px] text-muted-foreground hover:text-foreground"
+                >
+                  {tt('Reset to default')}
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={() => {
+                  setConflict(null)
+                  setListening((current) => (current === row.field ? null : row.field))
+                }}
+                aria-pressed={active}
+                className={cn(
+                  'h-8 min-w-[9.5rem] rounded-md border px-2 text-center font-mono text-xs transition-colors',
+                  active
+                    ? 'border-primary bg-primary/10 text-primary'
+                    : 'border-border bg-background hover:bg-secondary',
+                )}
+              >
+                {active ? tt('Press a shortcut…') : formatAccelerator(value)}
+              </button>
+            </div>
+            {active && conflict ? <p className="w-full text-[11px] text-loss">{conflict}</p> : null}
+          </div>
+        )
+      })}
+    </div>
   )
 }
 

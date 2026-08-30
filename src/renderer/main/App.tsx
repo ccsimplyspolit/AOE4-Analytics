@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useState, type ReactNode } from 'react'
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom'
 import { Loader2 } from 'lucide-react'
 import { useQueryClient } from '@tanstack/react-query'
-import { CommandBar } from './components/CommandBar'
+import { TitleBar, AppSidebar } from './components/CommandBar'
 import { navItems } from './nav'
 import { useSettings } from './queries/useProfile'
 import { Onboarding } from './screens/Onboarding'
@@ -74,7 +74,7 @@ export function App() {
   } else {
     content = (
       <main className="chronicle-main relative z-10 flex-1 overflow-y-auto">
-        <div className="mx-auto max-w-6xl px-10 py-7">
+        <div className="mx-auto w-full max-w-[90rem] px-5 py-5 lg:px-7">
           {/* Keyed by path so navigating away resets a crashed screen. */}
           <LocalizedErrorBoundary key={location.pathname}>
             <Suspense
@@ -103,14 +103,17 @@ export function App() {
 
   return (
     <div className="relative flex h-screen flex-col overflow-hidden bg-background text-foreground">
-      {/* App-wide backdrop, behind everything (incl. the command bar). */}
+      {/* App-wide backdrop, behind the title bar and sidebar. */}
       <div
         className="rts-app-backdrop pointer-events-none fixed -inset-5 z-0 opacity-50"
         style={{ backgroundImage: `url(${menuBackdrop})` }}
       />
       <div className="rts-app-atmosphere pointer-events-none fixed inset-0 z-0" />
-      <CommandBar />
-      <div className="relative z-10 flex min-h-0 flex-1 overflow-hidden">{content}</div>
+      <TitleBar />
+      <div className="relative z-10 flex min-h-0 flex-1 overflow-hidden">
+        {settings?.profileId != null ? <AppSidebar /> : null}
+        {content}
+      </div>
     </div>
   )
 }

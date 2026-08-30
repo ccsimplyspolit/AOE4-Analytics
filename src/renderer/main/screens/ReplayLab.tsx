@@ -2,17 +2,14 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   Activity,
   AlertTriangle,
-  ClipboardCheck,
   ChevronLeft,
   ChevronRight,
   CloudDownload,
   Database,
   FileVideo,
-  HardDriveDownload,
   History,
   ListChecks,
   Map as MapIcon,
-  MoreHorizontal,
   RefreshCw,
   ScanLine,
   Users,
@@ -40,6 +37,7 @@ import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
 import { formatCount } from '@shared/format'
 import { PageHead } from '../components/PageHead'
+import { ScreenTabs } from '../components/ScreenTabs'
 import { EmptyBox, ErrorBox, Spinner } from '../components/feedback'
 import { GameSummaryPanel } from '../components/GameSummaryPanel'
 import { BuildOrderComparisonCard } from '../components/BuildOrderComparisonCard'
@@ -54,13 +52,14 @@ import {
   useReplayAnalysis,
   useReplays,
 } from '../queries/useReplays'
-import { useSettings, useUpdateSettings } from '../queries/useProfile'
+import { useSettings } from '../queries/useProfile'
 import { useGameSummary } from '../queries/useHistory'
 import { useSteamAuthStatus } from '../queries/useSteam'
 import { useTwitchVod } from '../queries/useTwitchVod'
 import { useVideoAnalyses } from '../queries/useVideoAnalyses'
 import { ValdemarReplayReviewsPanel } from '../components/ValdemarReplayReviewsPanel'
 import { useI18n } from '../../i18n'
+import { useAutoAction } from '../hooks/useAutoAction'
 
 const LOCAL_PAGE_SIZE = 25
 const ACCOUNT_PAGE_SIZE = 20
@@ -114,10 +113,17 @@ function replayDate(timestamp: number): string {
   return new Date(timestamp).toLocaleString()
 }
 
-function rosterLabel(item: ReplayArchiveItem, tt: (value: string) => string): string {
+function rosterLabel(
+  item: ReplayArchiveItem,
+  tt: (value: string) => string,
+  gameName: (value: string) => string,
+): string {
   if (item.info?.players.length) {
     return item.info.players
-      .map((player) => `${player.name || tt('Unknown')} · ${civDisplayName(player.civSlug ?? '')}`)
+      .map(
+        (player) =>
+          `${player.name || tt('Unknown')} · ${gameName(player.civSlug ?? '')}`,
+      )
       .join('  vs  ')
   }
   if (item.localMatch?.players.length) {
@@ -131,12 +137,18 @@ function rosterLabel(item: ReplayArchiveItem, tt: (value: string) => string): st
   return tt('Player roster unavailable')
 }
 
-function accountRoster(item: AccountReplayItem, tt: (value: string) => string): string {
+function accountRoster(
+  item: AccountReplayItem,
+  tt: (value: string) => string,
+  gameName: (value: string) => string,
+): string {
   const teams = normalizeTeams(item.game)
   if (teams.length === 0) return tt('Player roster unavailable')
   return teams
     .map((team) =>
-      team.map((player) => `${player.name} · ${civDisplayName(player.civilization)}`).join(' + '),
+      team
+        .map((player) => `${player.name} · ${gameName(player.civilization)}`)
+        .join(' + '),
     )
     .join('  vs  ')
 }
@@ -187,15 +199,13 @@ function Pager({
   )
 }
 
-export function ReplayLab() {
-  const { tt, locale } = useI18n()
+export function ReplayLab({ embedded = false }: { embedded?: boolean } = {}) {
+  const { tt } = useI18n()
   const settings = useSettings()
-  const updateSettings = useUpdateSettings()
   const steam = useSteamAuthStatus()
   const [source, setSource] = useState<'local' | 'account' | 'valdemar'>('local')
   const [localPage, setLocalPage] = useState(1)
   const [accountPage, setAccountPage] = useState(1)
-  const [accountRefreshVersion, setAccountRefreshVersion] = useState(0)
   const [cacheMessage, setCacheMessage] = useState<string | null>(null)
   const [bulkCacheMode, setBulkCacheMode] = useState<BulkCacheMode | null>(null)
   const [bulkCacheProgress, setBulkCacheProgress] = useState<BulkCacheProgress | null>(null)
@@ -219,11 +229,11 @@ export function ReplayLab() {
   const fullAnalysisRun = useRef(0)
   const archiveAuditRun = useRef(0)
   const consent = settings.data?.localData.consentGranted ?? false
-  const autoCache = settings.data?.automation.cacheReplays ?? true
-  const autoSummaryCache = settings.data?.automation.cacheSummaries ?? true
-  const autoAnalyze = settings.data?.automation.analyzeReplays ?? true
+  const autoCache = true
+  const autoSummaryCache = true
+  const autoAnalyze = true
   const local = useReplays(localPage, LOCAL_PAGE_SIZE)
-  const account = useAccountReplays(accountPage, ACCOUNT_PAGE_SIZE, accountRefreshVersion > 0)
+  const account = useAccountReplays(accountPage, ACCOUNT_PAGE_SIZE, source === 'account')
   const cacheOne = useCacheReplay()
   const cacheMany = useCacheReplays()
   const cacheSummaries = useCacheSummaries()
@@ -516,7 +526,6 @@ export function ReplayLab() {
 
   const refreshEverything = useCallback(async () => {
     if (bulkCacheMode != null || fullAnalysisRunning || archiveAuditRunning) return
-    setAccountRefreshVersion((value) => value + 1)
     await cacheWholeAccount('replays')
     await cacheWholeAccount('summaries')
     await analyzeWholeAccount()
@@ -529,6 +538,18 @@ export function ReplayLab() {
     cacheWholeAccount,
     fullAnalysisRunning,
   ])
+
+  useAutoAction(
+    'replay-lab-full-archive',
+    () => refreshEverything(),
+    {
+      enabled:
+        source === 'account' &&
+        Boolean(steam.data?.connected) &&
+        Boolean(accountData) &&
+        (accountData?.totalCount ?? 0) > 0,
+    },
+  )
 
   useEffect(() => {
     if (
@@ -642,61 +663,39 @@ export function ReplayLab() {
   }, [autoAnalyze, autoAnalysisTargetKey])
 
   return (
-    <div className="animate-fade-in space-y-5">
+    <div className={embedded ? 'space-y-6' : 'animate-fade-in space-y-6'}>
       <PageHead
+        embedded={embedded}
         kicker="Replay intelligence"
         title="Replay Lab"
         sub="Browse every local match-history record, inspect public account history, and cache available online replays for offline review."
       />
 
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex gap-1" role="tablist" aria-label={tt('Replay sources')}>
-          <SourceTab active={source === 'local'} onClick={() => setSource('local')}>
-            <Database className="h-3.5 w-3.5" /> {tt('Local archive')}
-          </SourceTab>
-          <SourceTab active={source === 'account'} onClick={() => setSource('account')}>
-            <CloudDownload className="h-3.5 w-3.5" /> {tt('Account history')}
-          </SourceTab>
-          <SourceTab active={source === 'valdemar'} onClick={() => setSource('valdemar')}>
-            <FileVideo className="h-3.5 w-3.5" />{' '}
-            {locale === 'ru' ? 'Разборы про-матчей (Valdemar)' : 'Pro Match Reviews'}
-          </SourceTab>
-        </div>
-        <div className="flex flex-wrap items-center gap-3">
-          {source === 'account' && (
-            <label className="inline-flex items-center gap-2 text-xs text-muted-foreground">
-              <input
-                type="checkbox"
-                checked={autoCache}
-                onChange={(event) =>
-                  updateSettings.mutate({ automation: { cacheReplays: event.target.checked } })
-                }
-              />
-              {tt('Auto-cache available page replays')}
-            </label>
-          )}
-          {source !== 'valdemar' && (
-            <label className="inline-flex items-center gap-2 text-xs text-muted-foreground">
-              <input
-                type="checkbox"
-                checked={autoAnalyze}
-                onChange={(event) =>
-                  updateSettings.mutate({ automation: { analyzeReplays: event.target.checked } })
-                }
-              />
-              {tt(
-                source === 'account' ? 'Auto-analyze cached replays' : 'Auto-analyze local replays',
-              )}
-            </label>
-          )}
+      <ScreenTabs
+        items={[
+          { id: 'local', label: 'Local archive', icon: Database },
+          { id: 'account', label: 'Account history', icon: CloudDownload },
+          { id: 'valdemar', label: 'Pro Match Reviews', icon: FileVideo },
+        ]}
+        value={source}
+        onChange={setSource}
+        ariaLabel={tt('Replay sources')}
+        trailing={
+          <div className="flex flex-wrap items-center gap-3">
           {autoAnalysis && source !== 'valdemar' && (
             <Badge variant="outline" className="border-primary/40 text-primary">
               {tt('Auto-analysis')} {autoAnalysis.done}/{autoAnalysis.total}
               {autoAnalysis.errors > 0 ? ` · ${autoAnalysis.errors} ${tt('errors')}` : ''}
             </Badge>
           )}
-        </div>
-      </div>
+          {fullAnalysisRunning && (
+            <Badge variant="outline" className="border-primary/40 text-primary">
+              {tt('Updating full archive…')}
+            </Badge>
+          )}
+          </div>
+        }
+      />
 
       {source === 'local' ? (
         <LocalArchive
@@ -719,8 +718,6 @@ export function ReplayLab() {
           isError={account.isError}
           cacheMessage={cacheMessage}
           cacheOne={cacheOne}
-          cacheMany={cacheMany}
-          cacheSummaries={cacheSummaries}
           bulkCacheMode={bulkCacheMode}
           bulkCacheProgress={bulkCacheProgress}
           fullAnalysis={fullAnalysis}
@@ -728,12 +725,7 @@ export function ReplayLab() {
           archiveAuditRows={archiveAuditRows}
           archiveAuditProgress={archiveAuditProgress}
           archiveAuditRunning={archiveAuditRunning}
-          onRetry={() => setAccountRefreshVersion((value) => value + 1)}
-          onRefreshAll={() => void refreshEverything()}
-          onCacheAll={() => void cacheWholeAccount('replays')}
-          onCacheSummaries={() => void cacheWholeAccount('summaries')}
-          onAnalyzeAll={() => void analyzeWholeAccount()}
-          onAuditAll={() => void auditWholeAccount()}
+          onRetry={() => void account.refetch()}
           autoAnalysis={autoAnalysis}
           autoAnalysisResults={autoAnalysisResults}
           page={accountPage}
@@ -743,28 +735,6 @@ export function ReplayLab() {
         <ValdemarReplayReviewsPanel />
       )}
     </div>
-  )
-}
-
-function SourceTab({
-  active,
-  onClick,
-  children,
-}: {
-  active: boolean
-  onClick: () => void
-  children: React.ReactNode
-}) {
-  return (
-    <button
-      type="button"
-      role="tab"
-      aria-selected={active}
-      onClick={onClick}
-      className={`inline-flex h-9 items-center gap-1.5 rounded-md px-3 text-xs font-medium transition-colors ${active ? 'bg-secondary text-foreground' : 'text-muted-foreground hover:bg-secondary/60 hover:text-foreground'}`}
-    >
-      {children}
-    </button>
   )
 }
 
@@ -857,28 +827,18 @@ function LocalReplayRow({
   profileId: number | null
   autoResult?: ReplayAnalysisResult
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const [activeTab, setActiveTab] = useState<'match' | 'replay'>('match')
   const analysis = useReplayAnalysis()
-  const map = item.info?.mapName ?? item.localMatch?.map ?? item.info?.mapId ?? tt('Unknown map')
+  const map = gameName(item.info?.mapName ?? item.localMatch?.map ?? item.info?.mapId ?? tt('Unknown map'))
   const displayedAnalysis = analysis.data ?? autoResult
   const summaryQuery = useGameSummary(item.matchId ?? undefined, {
     enabled: item.matchId != null && item.hasStatsSummary && activeTab === 'match',
   })
   const summary = summaryQuery.data?.ok ? summaryQuery.data.data : null
-  const runAnalysis = async () => {
-    if (!item.hasReplay || analysis.isPending) return
-    if (autoResult) {
-      setActiveTab('replay')
-      return
-    }
-    try {
-      await analysis.mutateAsync({ localId: item.id })
-      setActiveTab('replay')
-    } catch {
-      // The mutation error is rendered below the row.
-    }
-  }
+  useEffect(() => {
+    if (displayedAnalysis) setActiveTab('replay')
+  }, [displayedAnalysis])
   return (
     <Card>
       <CardContent className="space-y-3 p-4">
@@ -892,10 +852,10 @@ function LocalReplayRow({
                   rel="noreferrer"
                   className="truncate font-medium hover:text-primary hover:underline"
                 >
-                  {map}
+                  {gameName(map)}
                 </Link>
               ) : (
-                <div className="truncate font-medium">{map}</div>
+                <div className="truncate font-medium">{gameName(map)}</div>
               )}
               <Badge variant="secondary" className="text-[10px]">
                 {item.source === 'matchhistory' ? tt('match history') : tt('playback')}
@@ -925,21 +885,12 @@ function LocalReplayRow({
             </div>
           </div>
           <div className="flex items-center gap-2">
-            {item.hasReplay && (
-              <button
-                type="button"
-                disabled={analysis.isPending}
-                onClick={() => void runAnalysis()}
-                className="inline-flex h-8 items-center gap-1.5 rounded-md border border-primary/40 px-2.5 text-xs text-primary hover:bg-primary/10 disabled:opacity-40"
-              >
-                <ScanLine className="h-3.5 w-3.5" />
-                {analysis.isPending
-                  ? tt('Analyzing…')
-                  : autoResult
-                    ? tt('Show analysis')
-                    : tt('Analyze replay')}
-              </button>
-            )}
+            {item.hasReplay && analysis.isPending ? (
+              <span className="inline-flex items-center gap-1.5 text-xs text-primary">
+                <ScanLine className="h-3.5 w-3.5 animate-pulse" />
+                {tt('Analyzing…')}
+              </span>
+            ) : null}
             {item.matchId && (
               <Link
                 to={`/game/${item.matchId}`}
@@ -961,7 +912,7 @@ function LocalReplayRow({
             <Users className="h-3.5 w-3.5" />{' '}
             {item.info?.players.length ?? item.localMatch?.players.length ?? 0} {tt('players')}
           </span>
-          <span className="truncate">{rosterLabel(item, tt)}</span>
+          <span className="truncate">{rosterLabel(item, tt, gameName)}</span>
         </div>
         <p className="border-t border-border/60 pt-2 text-[11px] text-muted-foreground">
           {item.hasReplay
@@ -1013,35 +964,17 @@ function ReplayViewTabs({
   tt: (value: string) => string
 }) {
   return (
-    <div className="flex gap-1 border-t border-border/60 pt-3" role="tablist">
-      <button
-        type="button"
-        role="tab"
-        aria-selected={active === 'match'}
-        onClick={() => onChange('match')}
-        className={cn(
-          'inline-flex items-center gap-1.5 rounded-md px-3 py-2 text-xs font-medium transition-colors',
-          active === 'match'
-            ? 'bg-secondary text-foreground'
-            : 'text-muted-foreground hover:bg-secondary/60 hover:text-foreground',
-        )}
-      >
-        <History className="h-3.5 w-3.5" /> {tt('Match')}
-      </button>
-      <button
-        type="button"
-        role="tab"
-        aria-selected={active === 'replay'}
-        onClick={() => onChange('replay')}
-        className={cn(
-          'inline-flex items-center gap-1.5 rounded-md px-3 py-2 text-xs font-medium transition-colors',
-          active === 'replay'
-            ? 'bg-secondary text-foreground'
-            : 'text-muted-foreground hover:bg-secondary/60 hover:text-foreground',
-        )}
-      >
-        <Activity className="h-3.5 w-3.5" /> {tt('Replay analysis')}
-      </button>
+    <div className="border-t border-border/60 pt-2">
+      <ScreenTabs
+        items={[
+          { id: 'match', label: 'Match', icon: History },
+          { id: 'replay', label: 'Replay analysis', icon: Activity },
+        ]}
+        value={active}
+        onChange={onChange}
+        ariaLabel={tt('Replay view')}
+        size="sm"
+      />
     </div>
   )
 }
@@ -1061,14 +994,14 @@ function LocalMatchOverview({
   summaryLoading: boolean
   fallbackDurationSec: number | null
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const players = item.info?.players ?? []
   const localPlayers = item.localMatch?.players ?? []
   const duration = summary?.gameLengthSec ?? fallbackDurationSec
   return (
     <div className="space-y-3 border-t border-border/60 pt-3">
       <div className="grid gap-2 sm:grid-cols-4">
-        <Metric label={tt('Map')} value={map} />
+        <Metric label={tt('Map')} value={gameName(map)} />
         <Metric
           label={tt('Duration')}
           value={duration == null ? tt('not available') : formatDuration(duration)}
@@ -1137,13 +1070,13 @@ function AccountMatchOverview({
   item: AccountReplayItem
   profileId: number | null
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const teams = normalizeTeams(item.game)
   const me = teams.flat().find((player) => player.profile_id === profileId)
   return (
     <div className="space-y-3 border-t border-border/60 pt-3">
       <div className="grid gap-2 sm:grid-cols-5">
-        <Metric label={tt('Map')} value={item.game.map || tt('Unknown map')} />
+        <Metric label={tt('Map')} value={item.game.map ? gameName(item.game.map) : tt('Unknown map')} />
         <Metric label={tt('Mode')} value={item.game.leaderboard || item.game.kind || '—'} />
         <Metric
           label={tt('Duration')}
@@ -1177,7 +1110,7 @@ function AccountMatchOverview({
                     {player.name}
                   </span>
                   <span className="text-muted-foreground">
-                    {civDisplayName(player.civilization)} ·{' '}
+                    {gameName(player.civilization)} ·{' '}
                     {player.result === 'win'
                       ? tt('Win')
                       : player.result === 'loss'
@@ -1210,8 +1143,6 @@ function AccountArchive({
   isError,
   cacheMessage,
   cacheOne,
-  cacheMany,
-  cacheSummaries,
   bulkCacheMode,
   bulkCacheProgress,
   fullAnalysis,
@@ -1222,11 +1153,6 @@ function AccountArchive({
   autoAnalysis,
   autoAnalysisResults,
   onRetry,
-  onRefreshAll,
-  onCacheAll,
-  onCacheSummaries,
-  onAnalyzeAll,
-  onAuditAll,
   page,
   onPage,
 }: {
@@ -1237,8 +1163,6 @@ function AccountArchive({
   isError: boolean
   cacheMessage: string | null
   cacheOne: ReturnType<typeof useCacheReplay>
-  cacheMany: ReturnType<typeof useCacheReplays>
-  cacheSummaries: ReturnType<typeof useCacheSummaries>
   bulkCacheMode: BulkCacheMode | null
   bulkCacheProgress: BulkCacheProgress | null
   fullAnalysis: AutoAnalysisState | null
@@ -1249,11 +1173,6 @@ function AccountArchive({
   autoAnalysis: AutoAnalysisState | null
   autoAnalysisResults: Record<string, ReplayAnalysisResult>
   onRetry: () => void
-  onRefreshAll: () => void
-  onCacheAll: () => void
-  onCacheSummaries: () => void
-  onAnalyzeAll: () => void
-  onAuditAll: () => void
   page: number
   onPage: (page: number) => void
 }) {
@@ -1288,84 +1207,12 @@ function AccountArchive({
               <Badge variant="outline" className={steamConnected ? 'border-win/40 text-win' : ''}>
                 Steam {steamConnected ? tt('connected') : tt('not connected')}
               </Badge>
-              <button
-                type="button"
-                disabled={data.totalCount === 0 || refreshAllRunning}
-                onClick={onRefreshAll}
-                className="inline-flex h-8 items-center gap-1.5 rounded-md bg-primary px-3 text-xs font-medium text-primary-foreground hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-40"
-              >
-                <RefreshCw className={cn('h-3.5 w-3.5', refreshAllRunning && 'animate-spin')} />
-                {refreshAllRunning ? tt('Updating full archive…') : tt('Refresh all')}
-              </button>
-              <details className="relative">
-                <summary className="flex h-8 cursor-pointer list-none items-center justify-center rounded-md border border-border px-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground [&::-webkit-details-marker]:hidden">
-                  <MoreHorizontal className="h-4 w-4" />
-                  <span className="sr-only">{tt('Advanced actions')}</span>
-                </summary>
-                <div className="absolute right-0 top-9 z-20 w-64 space-y-1 rounded-md border border-border bg-card p-1.5 shadow-xl">
-                  <button
-                    type="button"
-                    onClick={onRetry}
-                    className="flex w-full items-center gap-2 rounded-sm px-2.5 py-2 text-left text-xs text-muted-foreground hover:bg-secondary hover:text-foreground"
-                  >
-                    <RefreshCw className="h-3.5 w-3.5" /> {tt('Sync full history')}
-                  </button>
-                  <button
-                    type="button"
-                    disabled={
-                      !steamConnected ||
-                      data.totalCount === 0 ||
-                      cacheMany.isPending ||
-                      bulkCacheMode != null
-                    }
-                    onClick={onCacheAll}
-                    className="flex w-full items-center gap-2 rounded-sm px-2.5 py-2 text-left text-xs text-muted-foreground hover:bg-secondary hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40"
-                  >
-                    <HardDriveDownload className="h-3.5 w-3.5" />
-                    {bulkCacheMode === 'replays' || cacheMany.isPending
-                      ? tt('Caching full archive…')
-                      : tt('Cache all available')}
-                  </button>
-                  <button
-                    type="button"
-                    disabled={
-                      !steamConnected ||
-                      data.totalCount === 0 ||
-                      cacheSummaries.isPending ||
-                      bulkCacheMode != null
-                    }
-                    onClick={onCacheSummaries}
-                    className="flex w-full items-center gap-2 rounded-sm px-2.5 py-2 text-left text-xs text-muted-foreground hover:bg-secondary hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40"
-                  >
-                    <ListChecks className="h-3.5 w-3.5" />
-                    {bulkCacheMode === 'summaries' || cacheSummaries.isPending
-                      ? tt('Caching full archive…')
-                      : tt('Cache all summaries')}
-                  </button>
-                  <button
-                    type="button"
-                    disabled={data.totalCount === 0 || fullAnalysisRunning || bulkCacheMode != null}
-                    onClick={onAnalyzeAll}
-                    className="flex w-full items-center gap-2 rounded-sm px-2.5 py-2 text-left text-xs text-muted-foreground hover:bg-secondary hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40"
-                  >
-                    <ScanLine className="h-3.5 w-3.5" />
-                    {fullAnalysisRunning
-                      ? tt('Analyzing full archive…')
-                      : tt('Analyze full cached archive')}
-                  </button>
-                  <button
-                    type="button"
-                    disabled={data.totalCount === 0 || archiveAuditRunning || bulkCacheMode != null}
-                    onClick={onAuditAll}
-                    className="flex w-full items-center gap-2 rounded-sm px-2.5 py-2 text-left text-xs text-muted-foreground hover:bg-secondary hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40"
-                  >
-                    <ClipboardCheck className="h-3.5 w-3.5" />
-                    {archiveAuditRunning
-                      ? tt('Auditing full archive…')
-                      : tt('Audit all cached summaries')}
-                  </button>
-                </div>
-              </details>
+              {refreshAllRunning ? (
+                <span className="inline-flex items-center gap-1.5 text-xs text-primary">
+                  <RefreshCw className="h-3.5 w-3.5 animate-spin" />
+                  {tt('Updating full archive…')}
+                </span>
+              ) : null}
             </div>
           </div>
           {!steamConnected && (
@@ -1497,7 +1344,7 @@ function ArchiveAuditCard({ rows }: { rows: ArchiveAuditRow[] }) {
                     {new Date(row.startedAt).toLocaleDateString()}
                   </td>
                   <td className="px-3 py-2">
-                    <div>{row.map || tt('Unknown map')}</div>
+                    <div>{row.map ? gameName(row.map) : tt('Unknown map')}</div>
                     <div className="text-[10px] text-muted-foreground">
                       {row.civ == null
                         ? tt('Unknown civilization')
@@ -1552,10 +1399,10 @@ function AccountReplayRow({
   cacheOne: ReturnType<typeof useCacheReplay>
   autoResult?: ReplayAnalysisResult
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const [activeTab, setActiveTab] = useState<'match' | 'replay'>('match')
-  const [showAnalysis, setShowAnalysis] = useState(false)
-  const [showSummary, setShowSummary] = useState(false)
+  const [showAnalysis, setShowAnalysis] = useState(true)
+  const [showSummary, setShowSummary] = useState(true)
   const [fullResult, setFullResult] = useState<FullReplayAnalysis | null>(null)
   const analysis = useReplayAnalysis()
   const fullAnalysis = useDownloadAndAnalyzeReplay()
@@ -1565,7 +1412,7 @@ function AccountReplayRow({
     item.historySource === 'relic'
       ? `/public-game/${profileId ?? normalizeTeams(game).flat()[0]?.profile_id ?? 0}/${game.game_id}`
       : `/game/${game.game_id}`
-  const summaryQuery = useGameSummary(String(game.game_id), { enabled: showSummary })
+  const summaryQuery = useGameSummary(String(game.game_id), { enabled: true })
   const summary = summaryQuery.data?.ok ? summaryQuery.data.data : null
   const summaryError =
     summaryQuery.data && !summaryQuery.data.ok ? summaryQuery.data.error.message : null
@@ -1585,7 +1432,7 @@ function AccountReplayRow({
     map: game.map,
     durationSec: game.duration,
   }
-  const twitchVodLookup = useTwitchVod(twitchVodInput, showSummary && myPlayer != null)
+  const twitchVodLookup = useTwitchVod(twitchVodInput, myPlayer != null)
   const verifiedVod = twitchVodLookup.data?.ok ? twitchVodLookup.data.data.vod : null
   const linkedVideoAnalysis = videoAnalyses.data?.ok
     ? videoAnalyses.data.data.find((record) => record.gameId === String(game.game_id))
@@ -1610,7 +1457,7 @@ function AccountReplayRow({
                 rel="noreferrer"
                 className="font-medium hover:text-primary hover:underline"
               >
-                {game.map || tt('Unknown map')}
+                {game.map ? gameName(game.map) : tt('Unknown map')}
               </Link>
               <Badge variant="secondary" className="text-[10px]">
                 {game.leaderboard || game.kind || tt('match')}
@@ -1643,85 +1490,15 @@ function AccountReplayRow({
             </div>
           </div>
           <div className="flex items-center gap-2">
-            {(item.replayAvailable || item.cacheStatus === 'cached') && (
-              <button
-                type="button"
-                disabled={fullAnalysis.isPending}
-                onClick={() => {
-                  void fullAnalysis
-                    .mutateAsync(game.game_id)
-                    .then((result) => {
-                      setFullResult(result)
-                      setShowAnalysis(result.replay != null)
-                      setShowSummary(result.summary != null)
-                      setActiveTab(result.replay != null ? 'replay' : 'match')
-                    })
-                    .catch(() => undefined)
-                }}
-                className="inline-flex h-8 items-center gap-1.5 rounded-md border border-primary/40 px-2.5 text-xs text-primary hover:bg-primary/10 disabled:opacity-40"
-              >
-                <ScanLine className="h-3.5 w-3.5" />
+            {(fullAnalysis.isPending || analysis.isPending || cacheOne.isPending) && (
+              <span className="inline-flex items-center gap-1.5 text-xs text-primary">
+                <ScanLine className="h-3.5 w-3.5 animate-pulse" />
                 {fullAnalysis.isPending
                   ? tt('Downloading and analyzing…')
-                  : tt('Download + full analysis')}
-              </button>
-            )}
-            {item.replayAvailable && item.cacheStatus !== 'cached' && (
-              <button
-                type="button"
-                disabled={cacheOne.isPending}
-                onClick={() => void cacheOne.mutateAsync(game.game_id)}
-                className="inline-flex h-8 items-center gap-1.5 rounded-md border border-primary/40 px-2.5 text-xs text-primary hover:bg-primary/10 disabled:opacity-40"
-              >
-                <HardDriveDownload className="h-3.5 w-3.5" />
-                {cacheOne.isPending ? tt('Caching…') : tt('Cache replay')}
-              </button>
-            )}
-            {item.cacheStatus === 'cached' && (
-              <button
-                type="button"
-                disabled={analysis.isPending}
-                onClick={() => {
-                  if (autoResult) {
-                    setShowAnalysis(true)
-                    setActiveTab('replay')
-                    return
-                  }
-                  void analysis
-                    .mutateAsync({ gameId: game.game_id })
-                    .then(() => {
-                      setShowAnalysis(true)
-                      setActiveTab('replay')
-                    })
-                    .catch(() => undefined)
-                }}
-                className="inline-flex h-8 items-center gap-1.5 rounded-md border border-primary/40 px-2.5 text-xs text-primary hover:bg-primary/10 disabled:opacity-40"
-              >
-                <ScanLine className="h-3.5 w-3.5" />
-                {analysis.isPending
-                  ? tt('Analyzing…')
-                  : autoResult
-                    ? tt('Show analysis')
-                    : tt('Analyze replay')}
-              </button>
-            )}
-            {item.summaryAvailable && (
-              <button
-                type="button"
-                disabled={summaryQuery.isFetching}
-                onClick={() => {
-                  setActiveTab('match')
-                  setShowSummary((value) => !value)
-                }}
-                className="inline-flex h-8 items-center gap-1.5 rounded-md border border-border px-2.5 text-xs hover:bg-secondary disabled:opacity-40"
-              >
-                <ListChecks className="h-3.5 w-3.5" />
-                {summaryQuery.isFetching
-                  ? tt('Loading summary…')
-                  : showSummary
-                    ? tt('Hide summary')
-                    : tt('Open summary')}
-              </button>
+                  : cacheOne.isPending
+                    ? tt('Caching…')
+                    : tt('Analyzing…')}
+              </span>
             )}
             {item.historySource === 'relic' ? (
               <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
@@ -1743,7 +1520,7 @@ function AccountReplayRow({
           <span className="inline-flex items-center gap-1.5">
             <Users className="h-3.5 w-3.5" /> {normalizeTeams(game).flat().length} {tt('players')}
           </span>
-          <span className="truncate">{accountRoster(item, tt)}</span>
+          <span className="truncate">{accountRoster(item, tt, gameName)}</span>
         </div>
         <p className="border-t border-border/60 pt-2 text-[11px] text-muted-foreground">
           {tt(
@@ -1836,7 +1613,7 @@ export function ReplayAnalysisPanel({
   /** Player rows decoded from the Relic summary, when it is available. */
   knownPlayers?: MatchSummary['players']
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const stream = result.commandStream
   const [eventLimit, setEventLimit] = useState(24)
   const [playerFilter, setPlayerFilter] = useState<number | null>(null)
@@ -1873,7 +1650,7 @@ export function ReplayAnalysisPanel({
   const playerCommands = stream.players.reduce((total, player) => total + player.commandCount, 0)
   const decodedPercent =
     playerCommands > 0 ? Math.round((knownCommands / playerCommands) * 100) : null
-  const playerNames = replayPlayerLabels(result, knownPlayers)
+  const playerNames = replayPlayerLabels(result, knownPlayers, gameName)
   return (
     <div className="border-t border-border/60 pt-3">
       <button
@@ -1930,7 +1707,7 @@ export function ReplayAnalysisPanel({
                     <div className="font-medium">
                       {player.name || `P${player.playerId}`}{' '}
                       <span className="text-muted-foreground">
-                        · {civDisplayName(civFromToken(player.civToken) ?? player.civToken)}
+                        · {gameName(civFromToken(player.civToken) ?? player.civToken)}
                       </span>
                     </div>
                     <div className="text-[10px] text-muted-foreground">
@@ -2165,9 +1942,13 @@ function isMeaningfulReplayAction(event: ReplayEvent): boolean {
   )
 }
 
-function replayPlayerLabel(player: ReplaySetupPlayer): string {
+function replayPlayerLabel(
+  player: ReplaySetupPlayer,
+  gameName: (value: string) => string,
+): string {
   const name = player.name.trim() || `P${player.playerId}`
-  const civ = civDisplayName(civFromToken(player.civToken) ?? player.civToken)
+  const civSlug = civFromToken(player.civToken) ?? player.civToken
+  const civ = civSlug ? gameName(civSlug) : ''
   return civ ? `${name} · ${civ}` : name
 }
 
@@ -2181,15 +1962,16 @@ function replayPlayerLabel(player: ReplaySetupPlayer): string {
 function replayPlayerLabels(
   result: ReplayAnalysisResult,
   knownPlayers: MatchSummary['players'] | undefined,
+  gameName: (value: string) => string,
 ): Map<number, string> {
   const labels = new Map<number, string>()
   for (const player of knownPlayers ?? []) {
     if (player.name?.trim()) {
-      labels.set(player.playerId, replaySummaryPlayerLabel(player))
+      labels.set(player.playerId, replaySummaryPlayerLabel(player, gameName))
     }
   }
   for (const player of result.commandStream.setup?.players ?? []) {
-    const label = replayPlayerLabel(player)
+    const label = replayPlayerLabel(player, gameName)
     if (!labels.has(player.playerId) || label !== `P${player.playerId}`) {
       labels.set(player.playerId, label)
     }
@@ -2205,22 +1987,30 @@ function replayPlayerLabels(
       if (labels.has(playerId)) continue
       const slot = playerId - 1000
       const headerPlayer = slot >= 0 && slot < headerPlayers.length ? headerPlayers[slot] : null
-      if (headerPlayer?.name.trim()) labels.set(playerId, replayHeaderPlayerLabel(headerPlayer))
+      if (headerPlayer?.name.trim()) {
+        labels.set(playerId, replayHeaderPlayerLabel(headerPlayer, gameName))
+      }
     }
   }
   return labels
 }
 
-function replaySummaryPlayerLabel(player: MatchSummary['players'][number]): string {
+function replaySummaryPlayerLabel(
+  player: MatchSummary['players'][number],
+  gameName: (value: string) => string,
+): string {
   const name = player.name?.trim() || `P${player.playerId}`
-  const civ = civDisplayName(civFromToken(player.civToken) ?? player.civToken ?? '')
+  const civSlug = civFromToken(player.civToken) ?? player.civToken ?? ''
+  const civ = civSlug ? gameName(civSlug) : ''
   return civ ? `${name} · ${civ}` : name
 }
 
 function replayHeaderPlayerLabel(
   player: NonNullable<ReplayAnalysisResult['info']>['players'][number],
+  gameName: (value: string) => string,
 ): string {
-  return player.civName ? `${player.name.trim()} · ${player.civName}` : player.name.trim()
+  const civ = player.civName ? gameName(player.civName) : ''
+  return civ ? `${player.name.trim()} · ${civ}` : player.name.trim()
 }
 
 function replayActionLabel(commandName: string): string {

@@ -56,4 +56,13 @@ describe('Valdemar visual milestones and frame analysis', () => {
       expect(harassGate.second).toBe(360) // 06:00 milestone
     }
   })
+
+  it('keeps Conqueror 3 Byz Winery and mill checkpoints off the 3:30 gate', () => {
+    const vodMilestones = VALDEMAR_VISUAL_MILESTONES.filter((m) => m.videoId === '0pkvLN16f4o')
+    expect(vodMilestones.length).toBeGreaterThanOrEqual(6)
+    expect(vodMilestones.some((m) => m.second === 43)).toBe(true)
+    expect(vodMilestones.some((m) => m.second === 619)).toBe(true)
+    const byzAt200 = getClosestMilestoneForCiv('byzantines', 200)
+    expect(byzAt200?.second).toBe(210)
+  })
 })

@@ -8,7 +8,7 @@ import {
 } from 'lucide-react'
 import { useMemo } from 'react'
 import type { PerPlayerMatchStats } from '@domain/analysis'
-import type { MatchSummary, PlayerSummary } from '@domain/statsSummary'
+import { tidyEventName, type MatchSummary, type PlayerSummary } from '@domain/statsSummary'
 import type { VideoAnalysisRecord } from '@domain/videoAnalysis'
 import type { TwitchVodReference } from '@domain/twitchVodFinder'
 import {
@@ -23,7 +23,7 @@ import { formatDurationShort } from '@shared/format'
 import { cn } from '@shared/lib/utils'
 import { Badge } from '@shared/components/ui/badge'
 import { Card, CardContent } from '@shared/components/ui/card'
-import { useI18n } from '../../i18n'
+import { localizeCatalogTitle, useI18n } from '../../i18n'
 
 const EMPTY_PLAYERS: PlayerSummary[] = []
 
@@ -244,18 +244,15 @@ export function BuildOrderComparisonCard({
 
 function ExactVodEvidence({
   vod,
-  civilization,
   extracted,
 }: {
   vod: TwitchVodReference
-  civilization: string | null
+  civilization?: string | null
   extracted: boolean
 }) {
   const { tt } = useI18n()
   const url = safeExternalUrl(vod.url)
   if (!url) return null
-  const civParam = civilization ? `&civilization=${encodeURIComponent(civilization)}` : ''
-  const analyzeUrl = `#/tincture?tab=cellar&video=${encodeURIComponent(url)}&gameId=${encodeURIComponent(vod.gameId)}${civParam}`
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 rounded-md border border-violet-400/25 bg-violet-500/[0.06] px-3 py-2">
       <div className="min-w-0">
@@ -269,12 +266,6 @@ function ExactVodEvidence({
         </p>
       </div>
       <div className="flex shrink-0 flex-wrap gap-2">
-        <a
-          href={analyzeUrl}
-          className="inline-flex items-center gap-1.5 rounded-md border border-primary/35 px-2.5 py-1.5 text-[11px] font-medium text-primary hover:bg-primary/10"
-        >
-          {tt('Analyze exact VOD')}
-        </a>
         <a
           href={url}
           target="_blank"
@@ -308,7 +299,7 @@ function AuditSummaryRow({
   allPlayers: PlayerSummary[]
   showSubjectBadge: boolean
 }) {
-  const { tt, gameName } = useI18n()
+  const { tt, gameName, locale } = useI18n()
   const me = isPlayerSubject(audit.player, myProfileId, myCiv, myName, allPlayers, myPlayerId)
   const name = audit.player.name || `Player ${audit.player.playerId}`
   const score = audit.report?.score
@@ -326,7 +317,9 @@ function AuditSummaryRow({
         {audit.civ ? gameName(civDisplayName(audit.civ)) : tt('Unknown')}
       </td>
       <td className="max-w-[250px] truncate px-2 py-2 text-muted-foreground">
-        {audit.reference?.name ?? tt('No compatible build')}
+        {audit.reference
+          ? localizeCatalogTitle(audit.reference.name, locale, gameName)
+          : tt('No compatible build')}
       </td>
       <td className="px-2 py-2 text-right">
         <div className="flex flex-col items-end gap-0.5">
@@ -357,7 +350,7 @@ function AuditDetail({
   gameName: (value: string) => string
   open?: boolean
 }) {
-  const { tt } = useI18n()
+  const { tt, locale } = useI18n()
   const name = audit.player.name || `Player ${audit.player.playerId}`
   const title = audit.civ ? `${name} · ${gameName(civDisplayName(audit.civ))}` : name
   return (
@@ -376,7 +369,10 @@ function AuditDetail({
           <>
             <p className="text-xs text-muted-foreground">
               {tt('Compared with')}{' '}
-              <span className="font-medium text-foreground">{audit.reference.name}</span>.{' '}
+              <span className="font-medium text-foreground">
+                {localizeCatalogTitle(audit.reference.name, locale, gameName)}
+              </span>
+              .{' '}
               {referenceSelectionText(audit, tt)}{' '}
               {audit.hasTimeline
                 ? tt('The replay timeline is available.')
@@ -546,7 +542,7 @@ function safeExternalUrl(value: string): string | null {
 }
 
 function TimingTable({ audit }: { audit: PlayerBuildAudit }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const checkpoints = audit.report?.checkpoints ?? []
   if (checkpoints.length === 0) return null
   return (
@@ -590,7 +586,7 @@ function TimingTable({ audit }: { audit: PlayerBuildAudit }) {
                   key={`${checkpoint.kind}-${index}`}
                   className="border-b border-border/50 last:border-b-0"
                 >
-                  <td className="px-2 py-1.5">{tt(checkpoint.label)}</td>
+                  <td className="px-2 py-1.5">{gameName(checkpoint.label)}</td>
                   <td className="px-2 py-1.5 text-right tabular-nums">
                     {checkpoint.kind === 'villagers' ? target : formatDurationShort(target)}
                   </td>
@@ -622,7 +618,7 @@ function TimingTable({ audit }: { audit: PlayerBuildAudit }) {
 }
 
 function ActionTable({ audit }: { audit: PlayerBuildAudit }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   return (
     <div>
       <h3 className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-primary">
@@ -639,7 +635,7 @@ function ActionTable({ audit }: { audit: PlayerBuildAudit }) {
             </span>
             <span>
               {action.actual
-                ? `${tt(action.actual.name)} @ ${formatDurationShort(action.actual.timeSec)}`
+                ? `${gameName(tidyEventName(action.actual.name))} @ ${formatDurationShort(action.actual.timeSec)}`
                 : tt('Not found in replay timeline')}
             </span>
             <Status status={action.status} />

@@ -51,15 +51,18 @@ import {
 } from '@shared/format'
 import { cn } from '@shared/lib/utils'
 import { PageHead } from '../components/PageHead'
+import { MetaBriefingCard } from '../components/MetaBriefingCard'
+import { ScreenTabs } from '../components/ScreenTabs'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Skeleton } from '@shared/components/ui/skeleton'
 import { useCivMeta, useMatchupLab } from '../queries/useCivMeta'
 import { useFullHistory } from '../queries/useHistory'
 import { useSettings } from '../queries/useProfile'
 import { TierBadge } from '../components/TierBadge'
-import { EmptyBox, ErrorBox } from '../components/feedback'
+import { EmptyBox, ErrorBox, Spinner } from '../components/feedback'
 import { useI18n } from '../../i18n'
 import { essenceValidationForUnit } from '@data/essenceAttributes'
+import { recallHub, rememberHub } from '../hubMemory'
 
 const LADDERS: { label: string; value: StatsLeaderboard }[] = [
   { label: 'Ranked 1v1', value: 'rm_solo' },
@@ -67,6 +70,9 @@ const LADDERS: { label: string; value: StatsLeaderboard }[] = [
   { label: 'Ranked 2v2', value: 'rm_2v2' },
   { label: 'Ranked 3v3', value: 'rm_3v3' },
   { label: 'Ranked 4v4', value: 'rm_4v4' },
+  { label: 'Quick Match 2v2', value: 'qm_2v2' },
+  { label: 'Quick Match 3v3', value: 'qm_3v3' },
+  { label: 'Quick Match 4v4', value: 'qm_4v4' },
 ]
 
 const PATCHES = [
@@ -96,7 +102,10 @@ export function CivMeta() {
   // Tab lives in the URL so a refresh or deep link restores it.
   const [searchParams, setSearchParams] = useSearchParams()
   const tabParam = searchParams.get('tab')
-  const tab: TabKey = TABS.some((t) => t.key === tabParam) ? (tabParam as TabKey) : 'tier'
+  const tabIds = TABS.map((item) => item.key)
+  const tab: TabKey = TABS.some((t) => t.key === tabParam)
+    ? (tabParam as TabKey)
+    : recallHub('civ-meta', tabIds, 'tier')
   const setTab = (key: TabKey) =>
     setSearchParams(
       (prev) => {
@@ -106,6 +115,9 @@ export function CivMeta() {
       },
       { replace: true },
     )
+  useEffect(() => {
+    rememberHub('civ-meta', tab)
+  }, [tab])
   const ladderParam = searchParams.get('ladder')
   const configuredLeaderboard = settings?.leaderboard
   const defaultLeaderboard: StatsLeaderboard = LADDERS.some(
@@ -191,7 +203,7 @@ export function CivMeta() {
     dir: 'desc',
   })
 
-  const { data, isLoading, isFetching, refetch } = useCivMeta({
+  const { data, isLoading, isFetching, isPooling, isError, error, refetch } = useCivMeta({
     leaderboard,
     rankLevel,
     rating,
@@ -246,112 +258,102 @@ export function CivMeta() {
     )
 
   return (
-    <div className="animate-fade-in space-y-5">
+    <div className="animate-fade-in space-y-6">
       <PageHead
         kicker="The living meta"
-        title="Civ Meta"
-        sub="Live tier list, win/pick rates, matchups, and maps from AoE4World."
+        title={tab === 'matchups' ? 'Matchups' : 'Civ Meta'}
+        sub={
+          tab === 'matchups'
+            ? 'Counter lab, matchup matrix, and how the live ladder punishes each pairing.'
+            : 'Live tier list, win/pick rates, matchups, and maps from AoE4World.'
+        }
       />
 
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap gap-1" role="tablist">
-          {TABS.map((t) => (
-            <button
-              key={t.key}
-              type="button"
-              role="tab"
-              aria-selected={tab === t.key}
-              onClick={() => setTab(t.key)}
-              className={cn(
-                'inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm transition-colors',
-                tab === t.key
-                  ? 'bg-secondary text-foreground'
-                  : 'text-muted-foreground hover:bg-secondary/60 hover:text-foreground',
-              )}
+      <ScreenTabs
+        items={TABS.map((t) => ({ id: t.key, label: t.label, icon: t.icon }))}
+        value={tab}
+        onChange={setTab}
+        ariaLabel={tt('Civ meta sections')}
+        trailing={
+          <div className="flex flex-wrap gap-2">
+            <select
+              value={leaderboard}
+              onChange={(e) => setLeaderboard(e.target.value as StatsLeaderboard)}
+              aria-label={tt('Leaderboard')}
+              className="h-9 rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-              <t.icon className="h-3.5 w-3.5" />
-              {tt(t.label)}
-            </button>
-          ))}
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <select
-            value={leaderboard}
-            onChange={(e) => setLeaderboard(e.target.value as StatsLeaderboard)}
-            aria-label={tt('Leaderboard')}
-            className="h-9 rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            {LADDERS.map((l) => (
-              <option key={l.value} value={l.value}>
-                {tt(l.label)}
-              </option>
-            ))}
-          </select>
-          <select
-            value={rankLevel ?? ''}
-            disabled={!rankLevelFilterable(leaderboard)}
-            onChange={(e) => setRankLevel((e.target.value || undefined) as RankLevel | undefined)}
-            aria-label={tt('Rank bracket')}
-            className="h-9 rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
-          >
-            {RANK_FILTERS.map((b) => (
-              <option key={b.label} value={b.value ?? ''}>
-                {tt(b.label)}
-              </option>
-            ))}
-          </select>
-          <select
-            value={rating ?? ''}
-            onChange={(e) => setRating(e.target.value || undefined)}
-            aria-label={tt('Rating range')}
-            className="h-9 rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            {ratingOptions.map((entry) => (
-              <option key={entry.label} value={entry.value ?? ''}>
-                {entry.label === 'All ratings' ? tt(entry.label) : entry.label}
-              </option>
-            ))}
-          </select>
-          <select
-            value={patch ?? ''}
-            onChange={(e) => setPatch(e.target.value || undefined)}
-            aria-label={tt('Patch')}
-            className="h-9 rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            {PATCHES.map((entry) => (
-              <option key={entry.label} value={entry.value ?? ''}>
-                {entry.label === 'Current patch' ? tt(entry.label) : entry.label}
-              </option>
-            ))}
-          </select>
-          {rankedMapPoolFilterable(leaderboard) && (
+              {LADDERS.map((l) => (
+                <option key={l.value} value={l.value}>
+                  {tt(l.label)}
+                </option>
+              ))}
+            </select>
+            <select
+              value={rankLevel ?? ''}
+              disabled={!rankLevelFilterable(leaderboard)}
+              onChange={(e) => setRankLevel((e.target.value || undefined) as RankLevel | undefined)}
+              aria-label={tt('Rank bracket')}
+              className="h-9 rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+            >
+              {RANK_FILTERS.map((b) => (
+                <option key={b.label} value={b.value ?? ''}>
+                  {tt(b.label)}
+                </option>
+              ))}
+            </select>
+            <select
+              value={rating ?? ''}
+              onChange={(e) => setRating(e.target.value || undefined)}
+              aria-label={tt('Rating range')}
+              className="h-9 rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              {ratingOptions.map((entry) => (
+                <option key={entry.label} value={entry.value ?? ''}>
+                  {entry.label === 'All ratings' ? tt(entry.label) : entry.label}
+                </option>
+              ))}
+            </select>
+            <select
+              value={patch ?? ''}
+              onChange={(e) => setPatch(e.target.value || undefined)}
+              aria-label={tt('Patch')}
+              className="h-9 rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              {PATCHES.map((entry) => (
+                <option key={entry.label} value={entry.value ?? ''}>
+                  {entry.label === 'Current patch' ? tt(entry.label) : entry.label}
+                </option>
+              ))}
+            </select>
+            {rankedMapPoolFilterable(leaderboard) && (
+              <button
+                type="button"
+                onClick={() => setMapPoolOnly(!mapPoolOnly)}
+                aria-pressed={mapPoolOnly}
+                className={cn(
+                  'inline-flex h-9 items-center rounded-md border px-3 text-sm transition-colors',
+                  mapPoolOnly
+                    ? 'border-primary/50 bg-primary/10 text-primary'
+                    : 'border-border text-muted-foreground hover:bg-secondary hover:text-foreground',
+                )}
+                title={tt('Show only maps in the active ranked rotation')}
+              >
+                {mapPoolOnly ? tt('Current map pool') : tt('All patch maps')}
+              </button>
+            )}
             <button
               type="button"
-              onClick={() => setMapPoolOnly(!mapPoolOnly)}
-              aria-pressed={mapPoolOnly}
-              className={cn(
-                'inline-flex h-9 items-center rounded-md border px-3 text-sm transition-colors',
-                mapPoolOnly
-                  ? 'border-primary/50 bg-primary/10 text-primary'
-                  : 'border-border text-muted-foreground hover:bg-secondary hover:text-foreground',
-              )}
-              title={tt('Show only maps in the active ranked rotation')}
+              onClick={() => void refetch()}
+              disabled={isFetching}
+              className="inline-flex h-9 items-center gap-1.5 rounded-md border border-border px-3 text-sm transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-50"
+              title={tt('Refresh')}
             >
-              {mapPoolOnly ? tt('Current map pool') : tt('All patch maps')}
+              <RefreshCw className={cn('h-3.5 w-3.5', isFetching && 'animate-spin')} />
+              {tt('Refresh')}
             </button>
-          )}
-          <button
-            type="button"
-            onClick={() => void refetch()}
-            disabled={isFetching}
-            className="inline-flex h-9 items-center gap-1.5 rounded-md border border-border px-3 text-sm transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-50"
-            title={tt('Refresh')}
-          >
-            <RefreshCw className={cn('h-3.5 w-3.5', isFetching && 'animate-spin')} />
-            {tt('Refresh')}
-          </button>
-        </div>
-      </div>
+          </div>
+        }
+      />
 
       {!rankLevelFilterable(leaderboard) && (
         <p className="text-xs text-muted-foreground">
@@ -370,11 +372,25 @@ export function CivMeta() {
             mapPool={mapPool}
           />
         ) : isLoading ? (
-          <Skeleton className="h-96" />
+          <Spinner label={tt('Loading live civ meta…')} />
+        ) : isError ? (
+          <ErrorBox
+            message={
+              error instanceof Error
+                ? error.message
+                : tt('No civ meta loaded yet. Refresh or check the connection.')
+            }
+            onRetry={() => refetch()}
+          />
         ) : data && !data.ok ? (
           <ErrorBox message={data.error.message} onRetry={() => refetch()} />
         ) : data?.ok ? (
-          <div className={cn('space-y-5', isFetching && 'opacity-60')}>
+          <div className={cn('space-y-5', isFetching && !isPooling && 'opacity-60')}>
+            {isPooling && (
+              <p className="text-xs text-muted-foreground">
+                {tt('Weighting civs by the current map pool…')}
+              </p>
+            )}
             {rankedMapPoolFilterable(leaderboard) && mapPool && (
               <MapPoolNotice mapPool={mapPool} filtered={mapPoolOnly} />
             )}
@@ -386,7 +402,10 @@ export function CivMeta() {
                 )}
               </div>
             )}
-            {mapPoolOnly && data.data.metaScope === 'all-maps' && mapPool?.status === 'current' && (
+            {mapPoolOnly &&
+              !isPooling &&
+              data.data.metaScope === 'all-maps' &&
+              mapPool?.status === 'current' && (
               <div className="rounded-lg border border-warn/30 bg-warn/5 p-3 text-xs text-warn">
                 {tt(
                   'The active map list is filtered, but per-map civ slices were unavailable; win and pick rates use the full current-patch dataset.',
@@ -432,8 +451,12 @@ export function CivMeta() {
               </p>
             </div>
           </div>
-        ) : null}
+        ) : (
+          <EmptyBox>{tt('No civ meta loaded yet. Refresh or check the connection.')}</EmptyBox>
+        )}
       </div>
+
+      {tab !== 'matchups' && <MetaBriefingCard />}
     </div>
   )
 }
@@ -847,7 +870,7 @@ function CounterCalculator({
           </div>
           <div className="flex flex-wrap items-center justify-between gap-2 rounded-md border border-primary/20 bg-primary/5 px-3 py-2 text-xs">
             <span className="text-muted-foreground">
-              {tt('Exact source filters')}: {selected?.map ?? '—'} · {civDisplayName(opponentCiv)} ·{' '}
+              {tt('Exact source filters')}: {selected?.map ? gameName(selected.map) : '—'} · {gameName(opponentCiv)} ·{' '}
               {rating ?? tt('All ratings')} · {patch ?? tt('Current patch')}
             </span>
             {officialUrl && (
@@ -904,8 +927,8 @@ function CounterCalculator({
             <div className="rounded-md border border-border bg-background/40 p-3 text-xs">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className="font-medium">
-                  {tt('Directional matchup for the current leader')}: {civDisplayName(leadingCiv)}{' '}
-                  vs {civDisplayName(opponentCiv)}
+                  {tt('Directional matchup for the current leader')}: {gameName(leadingCiv)}{' '}
+                  vs {gameName(opponentCiv)}
                 </span>
                 {matchupQuery.isFetching && (
                   <span className="text-muted-foreground">{tt('Loading…')}</span>
@@ -1403,7 +1426,7 @@ function PersonalMatchupSection({
             <option value="">{tt('All local maps')}</option>
             {personal.availableMaps.map((map) => (
               <option key={map} value={map}>
-                {map}
+                {gameName(map)}
               </option>
             ))}
           </select>
@@ -1473,7 +1496,7 @@ function PersonalMatchupSection({
                 >
                   {match.result === 'win' ? 'W' : match.result === 'loss' ? 'L' : '-'}
                 </span>
-                <span className="min-w-36 flex-1 font-medium">{match.map}</span>
+                <span className="min-w-36 flex-1 font-medium">{match.map ? gameName(match.map) : '—'}</span>
                 <span className="text-xs text-muted-foreground">
                   {match.format ?? 'Unknown format'} / {formatDurationShort(match.durationSec)} /{' '}
                   {relativeTime(match.playedAt) || 'Date unavailable'}

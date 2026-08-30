@@ -45,6 +45,7 @@ import {
 } from '@domain/productionCalculator'
 import { productionModifiersForCiv } from '@domain/productionModifiers'
 import { PageHead } from '../components/PageHead'
+import { ScreenTabs } from '../components/ScreenTabs'
 import { BuildOrderViewer } from '../components/BuildOrderViewer'
 import { BuildEditor } from '../components/BuildEditor'
 import { VideoAnalysisImporter } from '../components/VideoAnalysisImporter'
@@ -134,7 +135,7 @@ function buildCivSlug(build: { civilization: string | string[] }): string | null
   )
 }
 
-export function Tincture() {
+export function Tincture({ embedded = false }: { embedded?: boolean } = {}) {
   const { tt } = useI18n()
   const { data: settings } = useSettings()
   const [searchParams, setSearchParams] = useSearchParams()
@@ -170,8 +171,9 @@ export function Tincture() {
     )
 
   return (
-    <div className="animate-fade-in space-y-5">
+    <div className={embedded ? 'space-y-6' : 'animate-fade-in space-y-6'}>
       <PageHead
+        embedded={embedded}
         kicker="AoE4 decision ledger"
         title="Tincture"
         sub="Distilled meta, build coverage, and production demand on top of RTSLytics data layers."
@@ -183,40 +185,35 @@ export function Tincture() {
         }
       />
 
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex gap-1" role="tablist" aria-label={tt('Tincture sections')}>
-          <TabButton active={tab === 'ledger'} onClick={() => setTab('ledger')}>
-            {tt('Decision Summary')}
-          </TabButton>
-          <TabButton active={tab === 'production'} onClick={() => setTab('production')}>
-            {tt('Production Calculator')}
-          </TabButton>
-          <TabButton active={tab === 'cellar'} onClick={() => setTab('cellar')}>
-            {tt('Cellar')}
-          </TabButton>
-          <TabButton active={tab === 'editor'} onClick={() => setTab('editor')}>
-            {tt('Build Builder')}
-          </TabButton>
-          <TabButton active={tab === 'coach'} onClick={() => setTab('coach')}>
-            {tt('Match Coach')}
-          </TabButton>
-        </div>
-        <label className="flex items-center gap-2 text-xs text-muted-foreground">
-          <span>{tt('Mode')}</span>
-          <select
-            value={leaderboard}
-            onChange={(event) => setLeaderboard(event.target.value as StatsLeaderboard)}
-            aria-label={tt('Tincture mode')}
-            className="h-9 rounded-md border border-border bg-background px-3 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            {TINCTURE_LADDERS.map((entry) => (
-              <option key={entry.value} value={entry.value}>
-                {tt(formatLeaderboard(entry.value))}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
+      <ScreenTabs
+        items={[
+          { id: 'ledger', label: 'Decision Summary' },
+          { id: 'production', label: 'Production Calculator' },
+          { id: 'cellar', label: 'Cellar' },
+          { id: 'editor', label: 'Build Builder' },
+          { id: 'coach', label: 'Match Coach' },
+        ]}
+        value={tab}
+        onChange={setTab}
+        ariaLabel={tt('Tincture sections')}
+        trailing={
+          <label className="flex items-center gap-2 text-xs text-muted-foreground">
+            <span>{tt('Mode')}</span>
+            <select
+              value={leaderboard}
+              onChange={(event) => setLeaderboard(event.target.value as StatsLeaderboard)}
+              aria-label={tt('Tincture mode')}
+              className="h-9 rounded-md border border-border bg-background px-3 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              {TINCTURE_LADDERS.map((entry) => (
+                <option key={entry.value} value={entry.value}>
+                  {tt(formatLeaderboard(entry.value))}
+                </option>
+              ))}
+            </select>
+          </label>
+        }
+      />
 
       {tab === 'ledger' ? (
         <DecisionSummary leaderboard={leaderboard} />
@@ -230,33 +227,6 @@ export function Tincture() {
         <ProductionCalculator />
       )}
     </div>
-  )
-}
-
-function TabButton({
-  active,
-  onClick,
-  children,
-}: {
-  active: boolean
-  onClick: () => void
-  children: string
-}) {
-  return (
-    <button
-      type="button"
-      role="tab"
-      aria-selected={active}
-      onClick={onClick}
-      className={cn(
-        'rounded-md px-3 py-1.5 text-sm transition-colors',
-        active
-          ? 'bg-secondary text-foreground'
-          : 'text-muted-foreground hover:bg-secondary/60 hover:text-foreground',
-      )}
-    >
-      {children}
-    </button>
   )
 }
 

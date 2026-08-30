@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { civFromToken, parseStatsSummary, prettyName } from '../statsSummary'
+import { civFromToken, parseStatsSummary, prettyName, tidyEventName } from '../statsSummary'
 import {
   chunk,
   chunkyFile,
@@ -230,6 +230,12 @@ describe('prettyName', () => {
     expect(prettyName('building_town_center_capital_tem')).toBe('Town Center')
     expect(prettyName('building_house_control_eng')).toBe('House')
     expect(prettyName('upgrade_wood_gather_1')).toBe('Wood Gather')
+    expect(prettyName('upgrade_cavalry_damage_byz_ha_mac')).toBe('Cavalry Damage')
+  })
+
+  it('drops trailing civ codes from already pretty-printed labels', () => {
+    expect(tidyEventName('Arsenal Cavalry Damage Byz Ha Mac')).toBe('Arsenal Cavalry Damage')
+    expect(tidyEventName('Cavalry Damage')).toBe('Cavalry Damage')
   })
 })
 

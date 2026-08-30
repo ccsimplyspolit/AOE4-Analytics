@@ -2,6 +2,7 @@ import type { IpcResult } from '@ipc/contract'
 import { buildLastMatchCoachContext } from '@domain/coachContext'
 import type { LastMatchCoachContext } from '@domain/coachContext'
 import { getClient } from './appContext'
+import { aoe4WorldOwnQuery } from './aoe4WorldAccess'
 import { err, errFrom, ok } from './result'
 
 function validProfileId(value: unknown): value is number {
@@ -20,7 +21,11 @@ export async function getLastMatchCoach(
     const client = getClient()
     const [player, game] = await Promise.all([
       client.getPlayer(profileId),
-      client.getLastGame(profileId),
+      client.getLastGame(profileId, {
+        includeStats: true,
+        includeAlts: true,
+        ...aoe4WorldOwnQuery(profileId),
+      }),
     ])
     return ok(buildLastMatchCoachContext(player, game))
   } catch (error) {

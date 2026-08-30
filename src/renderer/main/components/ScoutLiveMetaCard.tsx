@@ -51,12 +51,12 @@ export function ScoutLiveMetaCard({ context }: { context: ScoutMetaContext }) {
             <ScopeChip value={context.scope.rankLevel ?? tt('All ranks')} />
             <ScopeChip value={context.scope.rating ?? tt('All ratings')} />
             <ScopeChip value={context.scope.patch ? `P${context.scope.patch}` : tt('Current patch')} />
-            {context.scope.map && <ScopeChip value={context.scope.map} />}
+            {context.scope.map && <ScopeChip value={gameName(context.scope.map)} />}
           </div>
         </header>
 
         <section className="grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
-          <MatchFact icon={<MapIcon className="h-3.5 w-3.5" />} label={tt('Map')} value={context.match.map ?? tt('Unknown')} />
+          <MatchFact icon={<MapIcon className="h-3.5 w-3.5" />} label={tt('Map')} value={context.match.map ? gameName(context.match.map) : tt('Unknown')} />
           <MatchFact icon={<Swords className="h-3.5 w-3.5" />} label={tt('Mode')} value={tt(formatLeaderboard(context.match.leaderboard))} />
           <MatchFact icon={<Gauge className="h-3.5 w-3.5" />} label={tt('Average MMR')} value={formatRating(context.match.averageMmr)} />
           <MatchFact icon={<Clock3 className="h-3.5 w-3.5" />} label={tt('Game time')} value={formatDurationShort(elapsedSec)} />

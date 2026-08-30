@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { autoplayEmbedUrl, embeddedVideoFromUrl } from '../videoEmbed'
+import { autoplayEmbedUrl, embeddedVideoFromUrl, videoUrlsFromBuild } from '../videoEmbed'
 
 describe('embeddedVideoFromUrl', () => {
   it.each([
@@ -50,5 +50,13 @@ describe('embeddedVideoFromUrl', () => {
     expect(autoplayEmbedUrl(video)).toBe(
       'https://www.youtube-nocookie.com/embed/d_FEca71_Xo?autoplay=1&modestbranding=1&playsinline=1&rel=0',
     )
+  })
+
+  it('reads guide links from source as well as video and description', () => {
+    expect(
+      videoUrlsFromBuild({
+        source: 'https://aoe4guides.com/x, https://www.youtube.com/watch?v=GIErhV3Eeys',
+      }),
+    ).toEqual(['https://www.youtube.com/watch?v=GIErhV3Eeys'])
   })
 })

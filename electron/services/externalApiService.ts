@@ -1,5 +1,5 @@
 import { app, safeStorage } from 'electron'
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { REQUEST_TIMEOUT_MS, USER_AGENT } from '@api/client'
 import { fetchWithTimeout } from '@api/fetchWithTimeout'
@@ -22,20 +22,26 @@ export interface ExternalApiStatus {
   youtube: ExternalApiProviderStatus & {
     apiKey: boolean
   }
+  aoe4World: ExternalApiProviderStatus & {
+    apiKey: boolean
+  }
 }
 
 export interface ExternalApiConfigInput {
   twitchClientId?: string
   twitchClientSecret?: string
   youtubeApiKey?: string
+  aoe4WorldApiKey?: string
   clearTwitch?: boolean
   clearYoutube?: boolean
+  clearAoe4World?: boolean
 }
 
 interface PersistedConfig {
   encryptedTwitchClientId: string | null
   encryptedTwitchClientSecret: string | null
   encryptedYoutubeApiKey: string | null
+  encryptedAoe4WorldApiKey: string | null
 }
 
 interface TwitchToken {
@@ -44,12 +50,14 @@ interface TwitchToken {
 }
 
 const CONFIG_FILE = 'external-api-config.json'
+const AOE4WORLD_BOOTSTRAP_FILE = 'aoe4world-overlay.key'
 const TWITCH_TOKEN_URL = 'https://id.twitch.tv/oauth2/token'
 const TWITCH_API_BASE = 'https://api.twitch.tv/helix'
 const DEFAULT_CONFIG: PersistedConfig = {
   encryptedTwitchClientId: null,
   encryptedTwitchClientSecret: null,
   encryptedYoutubeApiKey: null,
+  encryptedAoe4WorldApiKey: null,
 }
 
 let twitchToken: TwitchToken | null = null
@@ -73,6 +81,8 @@ function readConfig(): PersistedConfig {
           : null,
       encryptedYoutubeApiKey:
         typeof value.encryptedYoutubeApiKey === 'string' ? value.encryptedYoutubeApiKey : null,
+      encryptedAoe4WorldApiKey:
+        typeof value.encryptedAoe4WorldApiKey === 'string' ? value.encryptedAoe4WorldApiKey : null,
     }
   } catch {
     return DEFAULT_CONFIG
@@ -125,6 +135,7 @@ function credentials(): {
   twitchClientId: ReturnType<typeof storedOrEnvironment>
   twitchClientSecret: ReturnType<typeof storedOrEnvironment>
   youtubeApiKey: ReturnType<typeof storedOrEnvironment>
+  aoe4WorldApiKey: ReturnType<typeof storedOrEnvironment>
 } {
   const config = readConfig()
   return {
@@ -143,10 +154,47 @@ function credentials(): {
       'RTSLYTICS_YOUTUBE_API_KEY',
       'YOUTUBE_API_KEY',
     ),
+    aoe4WorldApiKey: storedOrEnvironment(
+      config.encryptedAoe4WorldApiKey,
+      'RTSLYTICS_AOE4WORLD_API_KEY',
+      'AOE4WORLD_API_KEY',
+    ),
+  }
+}
+
+let ingestingAoe4WorldBootstrap = false
+
+function ingestAoe4WorldBootstrapKey(): void {
+  if (ingestingAoe4WorldBootstrap) return
+  const file = join(app.getPath('userData'), AOE4WORLD_BOOTSTRAP_FILE)
+  if (!existsSync(file)) return
+  let raw = ''
+  try {
+    raw = readFileSync(file, 'utf8').trim()
+  } catch {
+    return
+  }
+  if (!raw) {
+    try {
+      unlinkSync(file)
+    } catch {
+      /* ignore */
+    }
+    return
+  }
+  ingestingAoe4WorldBootstrap = true
+  try {
+    configureExternalApis({ aoe4WorldApiKey: raw })
+    unlinkSync(file)
+  } catch {
+    /* keep the file so the next launch can retry encryption */
+  } finally {
+    ingestingAoe4WorldBootstrap = false
   }
 }
 
 export function getExternalApiStatus(): ExternalApiStatus {
+  ingestAoe4WorldBootstrapKey()
   const current = credentials()
   const legacyAccessToken = environmentValue('RTSLYTICS_TWITCH_ACCESS_TOKEN', 'TWITCH_ACCESS_TOKEN')
   const twitchConfigured = Boolean(
@@ -159,6 +207,7 @@ export function getExternalApiStatus(): ExternalApiStatus {
       : 'environment'
     : 'none'
   const youtubeConfigured = Boolean(current.youtubeApiKey.value)
+  const aoe4WorldConfigured = Boolean(current.aoe4WorldApiKey.value)
   return {
     twitch: {
       configured: twitchConfigured,
@@ -177,6 +226,12 @@ export function getExternalApiStatus(): ExternalApiStatus {
       source: youtubeConfigured ? current.youtubeApiKey.source : 'none',
       detail: youtubeConfigured ? 'API key configured' : 'API key is required',
       apiKey: youtubeConfigured,
+    },
+    aoe4World: {
+      configured: aoe4WorldConfigured,
+      source: aoe4WorldConfigured ? current.aoe4WorldApiKey.source : 'none',
+      detail: aoe4WorldConfigured ? 'Overlay API key configured' : 'Overlay API key is optional',
+      apiKey: aoe4WorldConfigured,
     },
   }
 }
@@ -209,6 +264,14 @@ export function configureExternalApis(input: ExternalApiConfigInput): ExternalAp
   } else if (input.youtubeApiKey !== undefined) {
     next.encryptedYoutubeApiKey = input.youtubeApiKey.trim()
       ? encrypt(input.youtubeApiKey.trim())
+      : null
+  }
+
+  if (input.clearAoe4World) {
+    next.encryptedAoe4WorldApiKey = null
+  } else if (input.aoe4WorldApiKey !== undefined) {
+    next.encryptedAoe4WorldApiKey = input.aoe4WorldApiKey.trim()
+      ? encrypt(input.aoe4WorldApiKey.trim())
       : null
   }
 
@@ -264,6 +327,18 @@ export async function getTwitchApiHeaders(): Promise<Record<string, string> | nu
 
 export function getYouTubeApiKey(): string | null {
   return credentials().youtubeApiKey.value
+}
+
+/** Overlay key for custom/lobby games on the signed-in AoE4World account. Never log this. */
+export function getAoe4WorldApiKey(): string | null {
+  ingestAoe4WorldBootstrapKey()
+  return credentials().aoe4WorldApiKey.value
+}
+
+/** Query extras for `games/last` when an overlay key is present. */
+export function getAoe4WorldLastGameOptions(): { apiKey: string; includeCustom: true } | Record<string, never> {
+  const apiKey = getAoe4WorldApiKey()
+  return apiKey ? { apiKey, includeCustom: true } : {}
 }
 
 export const EXTERNAL_API_ENDPOINTS = {

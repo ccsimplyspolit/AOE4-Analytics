@@ -117,6 +117,26 @@ describe('SettingsService', () => {
     const all = new SettingsService(store).getAll()
     expect(all.accounts).toEqual([{ profileId: 42, name: 'Legacy' }])
   })
+
+  it('turns off the live APM input hook once for existing overlay settings', () => {
+    const store = new MemoryStore()
+    store.set('settings', { overlay: { apm: true, opacity: 0.9 } })
+    const svc = new SettingsService(store)
+    expect(svc.getAll().overlay.apm).toBe(false)
+    expect(svc.getAll().overlay.inputHookMigrated).toBe(true)
+    svc.update({ overlay: { apm: true } })
+    expect(svc.getAll().overlay.apm).toBe(true)
+  })
+
+  it('turns on the compact overlay HUD once for existing overlay settings', () => {
+    const store = new MemoryStore()
+    store.set('settings', { overlay: { miniHud: false, opacity: 0.9 } })
+    const svc = new SettingsService(store)
+    expect(svc.getAll().overlay.miniHud).toBe(true)
+    expect(svc.getAll().overlay.minimalHudMigrated).toBe(true)
+    svc.update({ overlay: { miniHud: false } })
+    expect(svc.getAll().overlay.miniHud).toBe(false)
+  })
 })
 
 describe('sanitizePatch', () => {
@@ -166,11 +186,11 @@ describe('sanitizePatch', () => {
 
   it('validates hotkeys as accelerators with at least one modifier', () => {
     expect(sanitizePatch({ hotkeys: { toggleOverlay: 'Ctrl+Shift+O' } })).toEqual({
-      hotkeys: { toggleOverlay: 'Ctrl+Shift+O' },
+      hotkeys: { toggleOverlay: 'Control+Shift+O' },
     })
-    // whitespace around "+" is normalized away
+    // whitespace around "+" is stripped; Ctrl is folded to Control
     expect(sanitizePatch({ hotkeys: { placementMode: 'Ctrl + Alt + O' } })).toEqual({
-      hotkeys: { placementMode: 'Ctrl+Alt+O' },
+      hotkeys: { placementMode: 'Control+Alt+O' },
     })
     // no modifier / unknown modifier / trailing "+" / modifier-only are all dropped
     expect(sanitizePatch({ hotkeys: { toggleOverlay: 'O' } })).toEqual({ hotkeys: {} })

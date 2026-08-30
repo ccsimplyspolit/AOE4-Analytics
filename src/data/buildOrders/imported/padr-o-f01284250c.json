@@ -1,0 +1,227 @@
+{
+  "name": "Padrão",
+  "civilization": "Macedonian Dynasty",
+  "author": "Bigs",
+  "source": "https://aoe4guides.com/builds/lU4o8Dw9xWF1SrQejwIX",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Começa com todos em @resource/sheep.webp@ e @unit_cavalry/scout.webp@ busca @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Apenas 1 @unit_worker/villager.webp@ constrói o @building_macedonian/varangian_warcamp.webp@ e volta pras @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ novos @unit_worker/villager.webp@em @resource/resource_gold.webp@até somar 3. O primeiro constrói @building_economy/mining-camp.webp@, o segundo termina."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Assim que encontrar @resource/deer.webp@, encaminha 5 @unit_worker/villager.webp@ para construir @building_economy/mill.webp@nos @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:10",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Quando o @building_economy/mill.webp@ ficar pronto, pesquise @technology_economy/survival-techniques.webp@ imediatamente"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:50",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ volta para as @resource/sheep.webp@até somar 9"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@agora vai para @resource/gaiatreeprototypetree.webp@ ao redor do @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@ que estavam em @resource/resource_food.webp@ constroem o @landmark_byzantines/imperial-hippodrome-1.webp@ao lado do @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:10",
+      "villager_count": 11,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ que está em @resource/resource_food.webp@ vai para @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ que está em @resource/gaiatreeprototypetree.webp@ vai para @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Os 3 @unit_worker/villager.webp@ que construiram o @landmark_byzantines/imperial-hippodrome-1.webp@ constroem uma @building_economy/house.webp@ e voltam para @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Quando tiver 50 @resource/resource_wood.webp@extra, constrói um @building_economy/lumber-camp.webp@na madeira ao lado safe do @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Comece a usar o @resource/resource_gold.webp@ para pesquisar @technology_economy/double-broadaxe.webp@@technology_economy/wheelbarrow.webp@@technology_economy/specialized-pick.webp@ nessa ordem de prioridade"
+      ]
+    }
+  ],
+  "description": "Build padrão para quase todos jogos",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-22T21:13:45Z",
+  "updatedAt": "2026-08-22T21:13:45Z",
+  "patch": "16.3.11308"
+}

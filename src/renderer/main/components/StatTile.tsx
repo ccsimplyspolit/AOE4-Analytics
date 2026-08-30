@@ -29,10 +29,12 @@ export function StatTile({
   const a = accent ? ACCENT[accent] : null
   return (
     <div
-      className={cn('rts-menu-card rounded-sm border px-4 py-3', a ? a.border : 'border-border')}
+      className={cn('rts-menu-card rounded-sm border px-3 py-2.5', a ? a.border : 'border-border')}
     >
       <div className="rts-ledger-head">{label}</div>
-      <div className={cn('mt-1 text-xl font-semibold tabular-nums', a?.value)}>{value}</div>
+      <div className={cn('mt-1 text-lg font-semibold tabular-nums tracking-tight', a?.value)}>
+        {value}
+      </div>
       {delta != null && delta !== 0 && (
         <div
           className={cn(

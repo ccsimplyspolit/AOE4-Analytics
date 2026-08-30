@@ -8,7 +8,6 @@ import type { SimilarMatchCandidate, SimilarMatchQuery } from '@domain/similarMa
 import type { TwitchVodFinderInput } from '@domain/twitchVodFinder'
 import { twitchVideoFinderUrl } from '@domain/twitchVodFinder'
 import { VideoAnalysisPanel } from './VideoAnalysisPanel'
-import { civDisplayName } from '@domain/civ'
 import { formatDurationShort } from '@shared/format'
 import { cn } from '@shared/lib/utils'
 import { Card, CardContent } from '@shared/components/ui/card'
@@ -44,7 +43,7 @@ export function SimilarMatchCard({
   query,
   enabled = true,
 }: SimilarMatchCardProps) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const search = useSimilarMatches(query, enabled)
   // Defense in depth: the service excludes the current game, but a stale IPC
   // response must never turn the match currently on screen into its "reference".
@@ -249,17 +248,13 @@ export function SimilarMatchCard({
                     </div>
                   )}
                   <a
-                    href={
-                      verifiedVod
-                        ? `#/tincture?tab=cellar&video=${encodeURIComponent(verifiedVod.url)}&gameId=${selected.gameId}&civilization=${encodeURIComponent(selected.referenceCiv)}`
-                        : twitchVideoFinderUrl(vodInput)
-                    }
-                    target={verifiedVod ? undefined : '_blank'}
-                    rel={verifiedVod ? undefined : 'noreferrer'}
+                    href={verifiedVod ? verifiedVod.url : twitchVideoFinderUrl(vodInput)}
+                    target="_blank"
+                    rel="noreferrer"
                     className="inline-flex items-center gap-1.5 text-xs text-violet-200 hover:underline"
                   >
                     <Search className="h-3.5 w-3.5" />
-                    {verifiedVod ? tt('Analyze exact VOD') : tt('Find exact Twitch VOD')}
+                    {verifiedVod ? tt('Watch VOD') : tt('Find exact Twitch VOD')}
                   </a>
                   {verifiedVod && (
                     <a
@@ -305,7 +300,7 @@ function ReferenceGameButton({
   selected: boolean
   onClick: () => void
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   return (
     <button
       type="button"
@@ -326,7 +321,7 @@ function ReferenceGameButton({
             />
             <span className="truncate text-sm font-medium">
               {candidate.referenceCiv
-                ? civDisplayName(candidate.referenceCiv)
+                ? gameName(candidate.referenceCiv)
                 : tt('Reference player')}
             </span>
             <Badge variant="outline" className="text-[10px]">
@@ -371,7 +366,7 @@ function ReferenceGameButton({
 }
 
 function ReferenceHeader({ candidate }: { candidate: SimilarMatchCandidate }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   return (
     <div className="flex flex-wrap items-start justify-between gap-2">
       <div>
@@ -381,7 +376,7 @@ function ReferenceHeader({ candidate }: { candidate: SimilarMatchCandidate }) {
               candidate.targetTeamWon ? 'h-4 w-4 text-win' : 'h-4 w-4 text-muted-foreground'
             }
           />
-          {tt('Reference game')} · {civDisplayName(candidate.referenceCiv)}
+          {tt('Reference game')} · {gameName(candidate.referenceCiv)}
           {candidate.targetTeamWon && (
             <Badge className="border-win/30 bg-win/10 text-win">{tt('win')}</Badge>
           )}
@@ -412,7 +407,7 @@ function ReferenceHeader({ candidate }: { candidate: SimilarMatchCandidate }) {
 }
 
 function TeamLayout({ candidate }: { candidate: SimilarMatchCandidate }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   return (
     <div className="space-y-1 rounded border border-border/60 bg-background/30 p-2 text-xs">
       <div className="text-[11px] text-muted-foreground">
@@ -441,7 +436,7 @@ function TeamLayout({ candidate }: { candidate: SimilarMatchCandidate }) {
                   : tt('unknown')}
             </div>
             <div className="text-muted-foreground">
-              {team.players.map((player) => civDisplayName(player.civilization)).join(' + ')}
+              {team.players.map((player) => gameName(player.civilization)).join(' + ')}
             </div>
           </div>
         ))}
@@ -457,7 +452,7 @@ function ReferenceFit({
   candidate: SimilarMatchCandidate
   metrics: Metric[]
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const measured = metrics.filter(
     (metric) => metric.current != null && metric.reference != null && !metric.neutral,
   )
@@ -503,7 +498,7 @@ function ReferenceFit({
 }
 
 function ComparisonTable({ metrics }: { metrics: Metric[] }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   return (
     <div className="overflow-x-auto rounded border border-border/60">
       <table className="w-full min-w-[680px] text-xs">
@@ -594,7 +589,7 @@ function BuildOrderSnippet({
   current: PlayerSummary
   reference: PlayerSummary
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   return (
     <div className="grid gap-3 border-t border-border/60 pt-3 md:grid-cols-2">
       <OpeningColumn label={tt('Your opening')} player={current} />

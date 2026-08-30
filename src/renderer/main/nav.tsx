@@ -1,5 +1,6 @@
 /* eslint-disable react-refresh/only-export-components -- route table, not a component module */
 import { lazy, type ReactNode } from 'react'
+import { Navigate, useLocation, useSearchParams } from 'react-router-dom'
 import {
   LayoutDashboard,
   Search,
@@ -12,6 +13,8 @@ import {
   FileVideo,
   Radio,
   Trophy,
+  Medal,
+  Tv,
   Wrench,
   Swords,
   Settings as SettingsIcon,
@@ -20,38 +23,17 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 
-// Screens are lazy so each route (and its heavy deps, e.g. recharts + static
-// game data) loads on first visit instead of in the entry bundle.
 const Dashboard = lazy(() => import('./screens/Dashboard').then((m) => ({ default: m.Dashboard })))
 const Scout = lazy(() => import('./screens/Scout').then((m) => ({ default: m.Scout })))
 const Stats = lazy(() => import('./screens/Stats').then((m) => ({ default: m.Stats })))
-const DataStudio = lazy(() =>
-  import('./screens/DataStudio').then((m) => ({ default: m.DataStudio })),
-)
 const Explorer = lazy(() => import('./screens/Explorer').then((m) => ({ default: m.Explorer })))
 const CivMeta = lazy(() => import('./screens/CivMeta').then((m) => ({ default: m.CivMeta })))
-const PatchNotes = lazy(() =>
-  import('./screens/PatchNotes').then((m) => ({ default: m.PatchNotes })),
-)
 const Guides = lazy(() => import('./screens/Guides').then((m) => ({ default: m.Guides })))
-const Tincture = lazy(() => import('./screens/Tincture').then((m) => ({ default: m.Tincture })))
-const ReplayLab = lazy(() => import('./screens/ReplayLab').then((m) => ({ default: m.ReplayLab })))
-const StreamDesk = lazy(() =>
-  import('./screens/StreamDesk').then((m) => ({ default: m.StreamDesk })),
-)
-const Leaderboards = lazy(() =>
-  import('./screens/Leaderboards').then((m) => ({ default: m.LeaderboardsScreen })),
-)
-const Tools = lazy(() => import('./screens/Tools').then((m) => ({ default: m.Tools })))
-const Tournaments = lazy(() =>
-  import('./screens/Tournaments').then((m) => ({ default: m.Tournaments })),
-)
-const TwitchFinder = lazy(() =>
-  import('./screens/TwitchFinder').then((m) => ({ default: m.TwitchFinder })),
-)
-const Matchups = lazy(() => import('./screens/Matchups').then((m) => ({ default: m.Matchups })))
+const Lab = lazy(() => import('./screens/Lab').then((m) => ({ default: m.Lab })))
 const Settings = lazy(() => import('./screens/Settings').then((m) => ({ default: m.Settings })))
 const About = lazy(() => import('./screens/About').then((m) => ({ default: m.About })))
+
+export type NavCluster = 'root' | 'stats' | 'explore' | 'lab' | 'tools'
 
 export interface NavItem {
   path: string
@@ -59,9 +41,36 @@ export interface NavItem {
   icon: LucideIcon
   element: ReactNode
   group: 'main' | 'secondary'
+  /** Header cluster. `root` items stay as top-level links. */
+  cluster: NavCluster
 }
 
-/** Single source of truth for routes and the command-bar menu. */
+/** Keep extra query params (Tincture tabs, Data Studio filters, Club Lab tools). */
+function RouteAlias({
+  to,
+  set,
+  defaults,
+}: {
+  to: string
+  set?: Record<string, string>
+  defaults?: Record<string, string>
+}) {
+  const [params] = useSearchParams()
+  const { hash } = useLocation()
+  const next = new URLSearchParams(params)
+  if (set) {
+    for (const [key, value] of Object.entries(set)) next.set(key, value)
+  }
+  if (defaults) {
+    for (const [key, value] of Object.entries(defaults)) {
+      if (!next.get(key)) next.set(key, value)
+    }
+  }
+  const search = next.toString()
+  return <Navigate to={`${to}${search ? `?${search}` : ''}${hash}`} replace />
+}
+
+/** Single source of truth for routes and the sidebar. */
 export const navItems: NavItem[] = [
   {
     path: '/',
@@ -69,27 +78,7 @@ export const navItems: NavItem[] = [
     icon: LayoutDashboard,
     element: <Dashboard />,
     group: 'main',
-  },
-  {
-    path: '/stats',
-    label: 'My Stats',
-    icon: BarChart3,
-    element: <Stats />,
-    group: 'main',
-  },
-  {
-    path: '/data-studio',
-    label: 'Data Studio',
-    icon: Database,
-    element: <DataStudio />,
-    group: 'main',
-  },
-  {
-    path: '/explorer',
-    label: 'Explorer',
-    icon: Compass,
-    element: <Explorer />,
-    group: 'main',
+    cluster: 'root',
   },
   {
     path: '/scout',
@@ -97,13 +86,23 @@ export const navItems: NavItem[] = [
     icon: Search,
     element: <Scout />,
     group: 'main',
+    cluster: 'root',
   },
   {
     path: '/leaderboards',
     label: 'Leaderboards',
     icon: Trophy,
-    element: <Leaderboards />,
+    element: <RouteAlias to="/scout" set={{ section: 'ladders' }} />,
     group: 'main',
+    cluster: 'root',
+  },
+  {
+    path: '/stats',
+    label: 'My Stats',
+    icon: BarChart3,
+    element: <Stats />,
+    group: 'main',
+    cluster: 'stats',
   },
   {
     path: '/civ-meta',
@@ -111,20 +110,39 @@ export const navItems: NavItem[] = [
     icon: Globe2,
     element: <CivMeta />,
     group: 'main',
+    cluster: 'stats',
   },
   {
     path: '/matchups',
     label: 'Matchups',
     icon: Swords,
-    element: <Matchups />,
+    element: <RouteAlias to="/civ-meta" set={{ tab: 'matchups' }} defaults={{ ladder: 'rm_solo' }} />,
     group: 'main',
+    cluster: 'stats',
+  },
+  {
+    path: '/tournaments',
+    label: 'Tournaments',
+    icon: Medal,
+    element: <RouteAlias to="/scout" set={{ section: 'events' }} />,
+    group: 'main',
+    cluster: 'stats',
+  },
+  {
+    path: '/explorer',
+    label: 'Explorer',
+    icon: Compass,
+    element: <Explorer />,
+    group: 'main',
+    cluster: 'explore',
   },
   {
     path: '/patches',
     label: 'News & patches',
     icon: Newspaper,
-    element: <PatchNotes />,
+    element: <RouteAlias to="/explorer" set={{ tab: 'patches' }} />,
     group: 'main',
+    cluster: 'explore',
   },
   {
     path: '/guides',
@@ -132,48 +150,63 @@ export const navItems: NavItem[] = [
     icon: BookOpen,
     element: <Guides />,
     group: 'main',
+    cluster: 'root',
+  },
+  {
+    path: '/lab',
+    label: 'Lab',
+    icon: FlaskConical,
+    element: <Lab />,
+    group: 'main',
+    cluster: 'lab',
   },
   {
     path: '/tincture',
     label: 'Tincture',
     icon: FlaskConical,
-    element: <Tincture />,
+    element: <RouteAlias to="/lab" set={{ section: 'tincture' }} />,
     group: 'main',
+    cluster: 'lab',
   },
   {
     path: '/replays',
     label: 'Replay Lab',
     icon: FileVideo,
-    element: <ReplayLab />,
+    element: <RouteAlias to="/lab" set={{ section: 'replays' }} />,
     group: 'main',
+    cluster: 'lab',
+  },
+  {
+    path: '/data-studio',
+    label: 'Data Studio',
+    icon: Database,
+    element: <RouteAlias to="/lab" set={{ section: 'studio' }} />,
+    group: 'main',
+    cluster: 'lab',
   },
   {
     path: '/stream',
     label: 'Stream Desk',
     icon: Radio,
-    element: <StreamDesk />,
+    element: <RouteAlias to="/lab" set={{ section: 'stream' }} />,
     group: 'main',
+    cluster: 'lab',
   },
   {
-    path: '/tournaments',
-    label: 'Tournaments',
-    icon: Trophy,
-    element: <Tournaments />,
+    path: '/tools',
+    label: 'Club Lab',
+    icon: Wrench,
+    element: <RouteAlias to="/lab" set={{ section: 'club' }} />,
     group: 'main',
+    cluster: 'tools',
   },
   {
     path: '/twitch-finder',
     label: 'Twitch Finder',
-    icon: Radio,
-    element: <TwitchFinder />,
+    icon: Tv,
+    element: <RouteAlias to="/lab" set={{ section: 'stream', view: 'twitch' }} />,
     group: 'main',
-  },
-  {
-    path: '/tools',
-    label: 'Tools',
-    icon: Wrench,
-    element: <Tools />,
-    group: 'main',
+    cluster: 'tools',
   },
   {
     path: '/settings',
@@ -181,6 +214,57 @@ export const navItems: NavItem[] = [
     icon: SettingsIcon,
     element: <Settings />,
     group: 'secondary',
+    cluster: 'root',
   },
-  { path: '/about', label: 'About', icon: Info, element: <About />, group: 'secondary' },
+  {
+    path: '/about',
+    label: 'About',
+    icon: Info,
+    element: <About />,
+    group: 'secondary',
+    cluster: 'root',
+  },
 ]
+
+export const SIDEBAR_SECTIONS: { id: string; label: string; paths: readonly string[] }[] = [
+  { id: 'play', label: 'Play', paths: ['/', '/scout', '/guides', '/explorer'] },
+  { id: 'stats', label: 'Ranked', paths: ['/stats', '/civ-meta'] },
+  { id: 'lab', label: 'Lab', paths: ['/lab'] },
+]
+
+/** Old bookmarks still resolve; they are not listed in the sidebar. */
+export const SIDEBAR_HIDDEN_ALIASES = [
+  '/matchups',
+  '/leaderboards',
+  '/tournaments',
+  '/patches',
+  '/tincture',
+  '/replays',
+  '/data-studio',
+  '/stream',
+  '/tools',
+  '/twitch-finder',
+] as const
+
+export function isNavPathActive(pathname: string, path: string): boolean {
+  if (path === '/') return pathname === '/'
+  if (path === '/stats') return pathname === '/stats' || pathname.startsWith('/profile/')
+  if (path === '/civ-meta')
+    return pathname === '/civ-meta' || pathname.startsWith('/civ-meta/') || pathname.startsWith('/matchups')
+  if (path === '/scout')
+    return pathname === '/scout' || pathname.startsWith('/scout') || pathname === '/leaderboards' || pathname === '/tournaments'
+  if (path === '/explorer')
+    return pathname === '/explorer' || pathname.startsWith('/explorer') || pathname === '/patches'
+  if (path === '/lab')
+    return (
+      pathname === '/lab' ||
+      pathname.startsWith('/lab') ||
+      pathname === '/tincture' ||
+      pathname === '/replays' ||
+      pathname === '/data-studio' ||
+      pathname === '/stream' ||
+      pathname === '/tools' ||
+      pathname === '/twitch-finder'
+    )
+  return pathname === path || pathname.startsWith(`${path}/`)
+}

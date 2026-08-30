@@ -5,7 +5,6 @@ import {
   ExternalLink,
   FileVideo,
   LoaderCircle,
-  Search,
   XCircle,
 } from 'lucide-react'
 import type { GameplayAutoInput, GameplayAutoStage } from '@domain/gameplayAuto'
@@ -115,19 +114,12 @@ export function AutoGameplayCard({
     <section className="space-y-2">
       <div className="flex items-center justify-between gap-2">
         <h2 className="text-lg font-semibold tracking-tight">{tt('Automatic gameplay source')}</h2>
-        <button
-          type="button"
-          onClick={() => run(true)}
-          disabled={pending}
-          className="inline-flex h-8 items-center gap-1.5 rounded-md border border-primary/40 px-2.5 text-xs text-primary hover:bg-primary/10 disabled:pointer-events-none disabled:opacity-50"
-        >
-          {pending ? (
+        {pending ? (
+          <span className="inline-flex items-center gap-1.5 text-xs text-primary">
             <LoaderCircle className="h-3.5 w-3.5 animate-spin" />
-          ) : (
-            <Search className="h-3.5 w-3.5" />
-          )}
-          {pending ? tt('Working…') : tt('Find and analyze again')}
-        </button>
+            {tt('Working…')}
+          </span>
+        ) : null}
       </div>
       <Card>
         <CardContent className="space-y-3 p-4">

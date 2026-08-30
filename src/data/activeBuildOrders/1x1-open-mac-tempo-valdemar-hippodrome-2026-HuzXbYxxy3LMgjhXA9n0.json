@@ -1,0 +1,313 @@
+{
+  "description": "Valdemar 2026: Hippodrome aggro (~4:20) в Castle timing. 3 на золото, олени, Survival Techniques, всадник + wheelbarrow, Stronghold на оленях. Видео LKH4uwXd24E.",
+  "civilization": "Macedonian Dynasty",
+  "name": "[1x1][OPEN][MAC][TEMPO] Valdemar: Hippodrome 2026",
+  "author": "Valdemar1902 / Valdy",
+  "source": "https://aoe4guides.com/builds/HuzXbYxxy3LMgjhXA9n0, https://www.youtube.com/watch?v=LKH4uwXd24E",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager.webp@ на @resource/sheep.webp@. @unit_cavalry/scout.webp@ вокруг базы ищет @resource/deer.webp@."
+      ],
+      "time": "00:00",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 3 @unit_worker/villager.webp@ на @resource/resource_gold.webp@."
+      ],
+      "time": "00:20",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 с @resource/sheep.webp@ на @resource/deer.webp@, как только найдёшь оленей."
+      ],
+      "time": "00:30",
+      "timeProvenance": "derived"
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/survival-techniques.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ обратно на @resource/sheep.webp@ до @age/age_2.webp@."
+      ],
+      "time": "01:20",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Ап с @landmark_byzantines/imperial-hippodrome-1.webp@ около 2:45 четырьмя @unit_worker/villager.webp@."
+      ],
+      "time": "02:45",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Макро: 8 на @resource/resource_wood.webp@."
+      ],
+      "time": "02:50",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Аперы снова на @resource/sheep.webp@. Очередь @technology_economy/wheelbarrow.webp@ и @unit_cavalry/horseman-1.webp@."
+      ],
+      "time": "04:20",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/double-broadaxe.webp@. @building_macedonian/varangian_stronghold.webp@ крестьянами с оленей и @building_defensive/outpost.webp@."
+      ],
+      "time": "05:10",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Производи нужные юниты, забирай кабана и второго оленя, харассь оппонента."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 13,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_macedonian/varangian_arsenal.webp@ на золоте. Приоритет: броня кавалерии и урон лучников (если есть лучники)."
+      ],
+      "time": "06:00",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Около 9–10 мин тяни дерево на золото и готовь Castle. Дальше — по видео."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/watch?v=LKH4uwXd24E",
+  "season": 13,
+  "map": null,
+  "strategy": "Hippodrome aggro into Castle timing (2026)",
+  "provider": "aoe4guides",
+  "providerId": "HuzXbYxxy3LMgjhXA9n0",
+  "score": 1.8125923187304457e-08,
+  "views": 5996,
+  "likes": 12,
+  "upvotes": 5,
+  "timeCreated": "2026-02-13T02:06:19Z",
+  "timeUpdated": "2026-02-13T02:17:51Z",
+  "modes": [
+    "1x1"
+  ],
+  "mapTypes": [
+    "open",
+    "hybrid"
+  ],
+  "role": "tempo",
+  "status": "active",
+  "queue": "rm_solo",
+  "teamSize": 1,
+  "strategyKey": "tempo",
+  "metaTier": "meta_core",
+  "buildGroup": "mac_valdemar_hippodrome",
+  "rankFit": "all+conqueror",
+  "verifiedPatch": "10604,10884,11214,11308",
+  "lastVerified": "2026-08-23",
+  "gameBuild": "16.3.11308",
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-23T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-23T00:00:00Z",
+  "archetype": "Timing attack",
+  "difficulty": "medium",
+  "reasoning": "Valdemar 2026 Hippodrome — актуальный MAC гайд (LKH4uwXd24E): олени, Survival Techniques, feudal 4:20, Castle окно 9–10 мин.",
+  "ageTimings": [
+    {
+      "age": 2,
+      "seconds": 260,
+      "derived": false,
+      "stepIndex": 7
+    }
+  ],
+  "tactics": [
+    {
+      "id": "valdy-deer-st",
+      "category": "economy",
+      "title": "Three gold, deer, Survival Techniques",
+      "detail": "Rally three gold, pull five to deer, Survival Techniques, then sheep until Hippodrome at 2:45.",
+      "timeSec": 30,
+      "confidence": 0.92
+    },
+    {
+      "id": "valdy-castle-window",
+      "category": "transition",
+      "title": "Wood to gold at 9–10 min for Castle",
+      "detail": "After Arsenal and cav armor, collapse the woodline onto gold for the Castle timing.",
+      "timeSec": 540,
+      "confidence": 0.85
+    }
+  ],
+  "video_evidence": {
+    "schemaVersion": 1,
+    "windowStart": "2025-11-01",
+    "windowEnd": "2026-08-23",
+    "sampleSize": 1,
+    "requestedSampleSize": 1,
+    "coverageNote": "YouTube oEmbed title/channel plus aoe4guides overlay timings. Captions were empty on the public timedtext endpoint.",
+    "commonActions": [],
+    "commonResources": [],
+    "commonTopics": [],
+    "commonOpponents": [],
+    "commonMilitaryMentions": [],
+    "timingSignals": [],
+    "sources": [
+      {
+        "id": "LKH4uwXd24E",
+        "title": "How To Play Macedonian Dynasty In 2026 | AoE4",
+        "url": "https://www.youtube.com/watch?v=LKH4uwXd24E",
+        "channel": "Valdy",
+        "publishedAt": "2026-02-13T16:00:36Z",
+        "viewCount": 17946,
+        "transcriptLanguage": null,
+        "transcriptSource": "none",
+        "transcriptProvider": "none",
+        "transcriptStatus": "missing",
+        "transcriptWordCount": 0,
+        "transcriptExcerpt": "How To Play Macedonian Dynasty In 2026 | AoE4",
+        "sourceKind": "guide",
+        "frameCheckpoints": [],
+        "signals": {
+          "archetype": null,
+          "actions": [],
+          "resources": [],
+          "topics": [],
+          "opponentCivs": [],
+          "militaryMentions": [],
+          "timings": [],
+          "confidence": 0.7
+        }
+      }
+    ]
+  }
+}

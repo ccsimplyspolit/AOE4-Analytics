@@ -3,8 +3,12 @@ import { deriveBuildAgeTimings } from '@domain/buildOrderInsights'
 import type { Aoe4GuidesBuildSummary, CommunityBuildSummary, IpcResult } from '@ipc/contract'
 import { err, ok } from './result'
 
+import { USER_AGENT } from '@api/client'
+
 const AOE4_BUILDS_HOST = 'aoeivbuilds.com'
 const AOE4_GUIDES_HOST = 'aoe4guides.com'
+/** Public list host documented by aoe4guides.com when `/api/builds` is not proxied. */
+const AOE4_GUIDES_LIST_API = 'https://aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds'
 const AGE4_BUILDER_HOST = 'age4builder.com'
 const BUILD_PATH = /\/build_orders\/(\d+)(?:\/|$)/i
 const GUIDES_BUILD_PATH = /\/builds\/([A-Za-z0-9_-]+)(?:\/|$)/i
@@ -128,8 +132,8 @@ async function fetchAllAoe4GuidesBuilds(): Promise<IpcResult<Aoe4GuidesBuildSumm
         requests.slice(index, index + 4).map(async ({ sort, civilization }) => {
           const params = new URLSearchParams({ orderBy: sort, overlay: 'true' })
           if (civilization) params.set('civ', civilization)
-          const response = await fetch(`https://${AOE4_GUIDES_HOST}/api/builds?${params}`, {
-            headers: { Accept: 'application/json', 'User-Agent': 'RTSLytics/1.0' },
+          const response = await fetch(`${AOE4_GUIDES_LIST_API}?${params}`, {
+            headers: { Accept: 'application/json', 'User-Agent': USER_AGENT },
             signal: controller.signal,
           })
           if (!response.ok) throw new Error(`AoE4Guides returned HTTP ${response.status}.`)

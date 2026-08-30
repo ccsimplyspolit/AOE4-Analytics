@@ -1,0 +1,204 @@
+{
+  "title": "Hippodrome FC",
+  "comments": 0,
+  "id": "EqzVSwdt9SzXZI5yMe1b",
+  "downvotes": 0,
+  "author": "Jitterbug",
+  "map": "",
+  "description": "BeastyQT FC build order ",
+  "strategy": "Fast Castle",
+  "creatorName": "BeastyqtSC2",
+  "authorUid": "4mfaW7DgdRgQMS5ZyGHislRh9tK2",
+  "season": "Season 13",
+  "civ": "MAC",
+  "creatorId": "UCo4EukJcKyZL6oXoLfsWxfA",
+  "video": "https://www.youtube.com/embed/GIErhV3Eeys",
+  "sortTitle": "hippodrome fcdb7a2fb7-74d5-448d-81b4-5d7fa85dfb58",
+  "steps": [
+    {
+      "steps": [
+        {
+          "food": "5",
+          "_id": 1784381054919,
+          "description": "5 <img src=\"/assets/pictures/unit_worker/villager.webp\" class=\"icon-default\" /> to <img src=\"/assets/pictures/resource/sheep.webp\" class=\"icon-none\" /><br />1 <img src=\"/assets/pictures/unit_worker/villager.webp\" class=\"icon-default\" /> <img src=\"/assets/pictures/abilities/repair.webp\" class=\"icon-none\" /> <img src=\"/assets/pictures/building_macedonian/varangian_warcamp.webp\" class=\"icon-military\" /><br /><img src=\"https://aoe4guides.com/assets/pictures/resource/rally.webp\" class=\"icon-none\" /><img src=\"https://aoe4guides.com/assets/pictures/resource/resource_gold.webp\" class=\"icon-none\" /> until 2 then  <img src=\"https://aoe4guides.com/assets/pictures/resource/resource_food.webp\" class=\"icon-none\" /> until <img src=\"https://aoe4guides.com/assets/pictures/age/age_2.webp\" class=\"icon-none\" />",
+          "time": "0:00",
+          "gold": "",
+          "wood": "",
+          "builders": "1",
+          "stone": ""
+        },
+        {
+          "food": "11",
+          "wood": "",
+          "builders": "",
+          "gold": "2",
+          "villagers": "",
+          "time": "",
+          "description": "4 <img src=\"/assets/pictures/resource/sheep.webp\" class=\"icon-none\" /><img src=\"/assets/pictures/unit_worker/villager.webp\" class=\"icon-default\" /><img src=\"https://aoe4guides.com/assets/pictures/abilities/repair.webp\" class=\"icon-none\" /><img src=\"https://aoe4guides.com/assets/pictures/landmark_byzantines/imperial-hippodrome-1.webp\" class=\"icon-landmark\" />",
+          "_id": 1784381054920,
+          "stone": ""
+        }
+      ],
+      "age": 1,
+      "type": "age",
+      "gameplan": ""
+    },
+    {
+      "steps": [
+        {
+          "time": "2:25",
+          "description": "2 <img src=\"https://aoe4guides.com/assets/pictures/resource/sheep.webp\" class=\"icon-none\" /><img src=\"https://aoe4guides.com/assets/pictures/unit_worker/villager.webp\" class=\"icon-default\" /> to <img src=\"/assets/pictures/resource/resource_wood.webp\" class=\"icon-none\" title=\"Wood\" /> --&gt; <img src=\"/assets/pictures/resource/rally.webp\" class=\"icon-none\" title=\"Rally\" /><img src=\"/assets/pictures/resource/resource_wood.webp\" class=\"icon-none\" title=\"Wood\" /> until 6",
+          "_id": 1784381332102,
+          "food": "5",
+          "gold": "2",
+          "wood": "2",
+          "builders": "4"
+        },
+        {
+          "description": "<img src=\"/assets/pictures/resource/rally.webp\" class=\"icon-none\" /><img src=\"/assets/pictures/resource/resource_food.webp\" class=\"icon-none\" /><br /><img src=\"https://aoe4guides.com/assets/pictures/abilities/repair.webp\" class=\"icon-none\" /><img src=\"/assets/pictures/building_economy/house.webp\" class=\"icon-default\" /> then <img src=\"/assets/pictures/building_defensive/outpost.webp\" class=\"icon-default\" /> on <img src=\"/assets/pictures/resource/resource_gold.webp\" class=\"icon-none\" />",
+          "villagers": "",
+          "time": "3:45",
+          "_id": 1784381332103,
+          "gold": "2",
+          "stone": "",
+          "food": "5",
+          "wood": "6",
+          "builders": "4"
+        }
+      ],
+      "type": "ageUp",
+      "age": 1,
+      "gameplan": "<img src=\"/assets/pictures/age/age_2.webp\" class=\"icon-none\" title=\"Feudal Age\"><img src=\"/assets/pictures/unit_worker/villager.webp\" class=\"icon-default\" title=\"Villager\"> back to <img src=\"/assets/pictures/resource/resource_food.webp\" class=\"icon-none\" title=\"Food\"> "
+    },
+    {
+      "age": 2,
+      "type": "age",
+      "gameplan": "Use 2 <img src=\"/assets/pictures/unit_cavalry/horseman-1.webp\" class=\"icon-military\" title=\"Horseman\"> + free <img src=\"/assets/pictures/unit_macedonian/hippodrome_scout.webp\" class=\"icon-military\" title=\"Hippodrome Scout\"> to harass, <img src=\"/assets/pictures/unit_cavalry/scout.webp\" class=\"icon-military\"> to patrol pocket resources",
+      "steps": [
+        {
+          "description": "Queue 2 <img src=\"/assets/pictures/unit_cavalry/horseman-1.webp\" class=\"icon-military\" /> immediately",
+          "time": "4:00",
+          "food": "9",
+          "_id": 1784383958451,
+          "gold": "1",
+          "builders": "1",
+          "wood": "6"
+        },
+        {
+          "builders": "1",
+          "wood": "6",
+          "food": "6",
+          "stone": "5",
+          "gold": "1",
+          "villagers": "",
+          "time": "",
+          "description": "Once 2nd <img src=\"https://aoe4guides.com/assets/pictures/unit_cavalry/horseman-1.webp\" class=\"icon-military\" /> is training -&gt; <br />5 <img src=\"/assets/pictures/resource/sheep.webp\" class=\"icon-none\" /><img src=\"/assets/pictures/unit_worker/villager.webp\" class=\"icon-default\" /> to <img src=\"/assets/pictures/resource/resource_stone.webp\" class=\"icon-none\" /> for 1 DO (<img src=\"/assets/pictures/technology_defensive/arrow-slits.webp\" class=\"icon-tech\" />)<br />",
+          "_id": 1784383958452
+        },
+        {
+          "food": "13",
+          "wood": "0",
+          "builders": "2",
+          "_id": 1784383958453,
+          "time": "",
+          "description": "<img src=\"https://aoe4guides.com/assets/pictures/building_macedonian/varangian_arsenal.webp\" class=\"icon-military\" /> -&gt; <img src=\"https://aoe4guides.com/assets/pictures/building_economy/house.webp\" class=\"icon-default\" /> when able -&gt;<br />3 <img src=\"https://aoe4guides.com/assets/pictures/resource/resource_wood.webp\" class=\"icon-none\" /><img src=\"https://aoe4guides.com/assets/pictures/unit_worker/villager.webp\" class=\"icon-default\" /> to <img src=\"https://aoe4guides.com/assets/pictures/resource/resource_food.webp\" class=\"icon-none\" /> and 3 <img src=\"https://aoe4guides.com/assets/pictures/resource/resource_wood.webp\" class=\"icon-none\" /><img src=\"https://aoe4guides.com/assets/pictures/unit_worker/villager.webp\" class=\"icon-default\" /> to <img src=\"/assets/pictures/resource/resource_gold.webp\" class=\"icon-none\" title=\"Gold\" /> ",
+          "villagers": "",
+          "gold": "4",
+          "stone": ""
+        },
+        {
+          "gold": "5",
+          "time": "",
+          "description": "<img src=\"/assets/pictures/technology_macedonian/scale-barding-2.webp\" class=\"icon-tech\" title=\"Scale Barding\" /> when able -&gt; keep <img src=\"https://aoe4guides.com/assets/pictures/resource/rally.webp\" class=\"icon-none\" /><img src=\"https://aoe4guides.com/assets/pictures/resource/resource_food.webp\" class=\"icon-none\" /> until <img src=\"https://aoe4guides.com/assets/pictures/age/age_3.webp\" class=\"icon-none\" />",
+          "villagers": "",
+          "_id": 1784383958454,
+          "stone": "",
+          "food": "17",
+          "builders": "",
+          "wood": "0"
+        },
+        {
+          "food": "15",
+          "builders": "",
+          "wood": "0",
+          "description": "5 <img src=\"/assets/pictures/resource/resource_food.webp\" class=\"icon-none\" /><img src=\"/assets/pictures/unit_worker/villager.webp\" class=\"icon-default\" title=\"Villager\" /> to <img src=\"/assets/pictures/resource/resource_gold.webp\" class=\"icon-none\" title=\"Gold\" /> (~450 <img src=\"/assets/pictures/resource/resource_gold.webp\" class=\"icon-none\" title=\"Gold\" />)",
+          "time": "",
+          "villagers": "",
+          "_id": 1784383958455,
+          "gold": "10",
+          "stone": ""
+        },
+        {
+          "gold": "10",
+          "time": "",
+          "villagers": "",
+          "description": "8 <img src=\"/assets/pictures/unit_worker/villager.webp\" class=\"icon-default\" /><img src=\"https://aoe4guides.com/assets/pictures/abilities/repair.webp\" class=\"icon-none\" /><img src=\"/assets/pictures/landmark_byzantines/golden-horn-tower-2.webp\" class=\"icon-landmark\" /> on <img src=\"/assets/pictures/resource/deer.webp\" class=\"icon-none\" />/<img src=\"/assets/pictures/resource/resource_gold.webp\" class=\"icon-none\" title=\"Gold\" />/<img src=\"/assets/pictures/resource/berrybush.webp\" class=\"icon-none\" /><br />",
+          "_id": 1784383958456,
+          "stone": "",
+          "food": "17",
+          "builders": "",
+          "wood": "0"
+        }
+      ]
+    },
+    {
+      "age": 2,
+      "gameplan": "<img src=\"https://aoe4guides.com/assets/pictures/technology_macedonian/blade-inlaying-2.webp\" class=\"icon-tech\"> when able",
+      "type": "ageUp",
+      "steps": [
+        {
+          "gold": "10",
+          "description": "Continue <img src=\"/assets/pictures/resource/rally.webp\" class=\"icon-none\" title=\"Rally\" /><img src=\"/assets/pictures/resource/resource_food.webp\" class=\"icon-none\" title=\"Food\" />",
+          "_id": 1784383785235,
+          "food": "9",
+          "wood": "0"
+        }
+      ]
+    },
+    {
+      "age": 3,
+      "type": "age",
+      "gameplan": "",
+      "steps": [
+        {
+          "gold": "12",
+          "description": "Remacro -&gt; Continue <img src=\"/assets/pictures/resource/rally.webp\" class=\"icon-none\" /><img src=\"/assets/pictures/resource/resource_food.webp\" class=\"icon-none\" />",
+          "_id": 1784383894503,
+          "food": "9",
+          "wood": "10"
+        },
+        {
+          "food": "14",
+          "builders": "",
+          "wood": "10",
+          "gold": "12",
+          "time": "",
+          "villagers": "",
+          "description": "<img src=\"/assets/pictures/technology_economy/double-broadaxe.webp\" class=\"icon-tech\" /> / <img src=\"/assets/pictures/technology_economy/specialized-pick.webp\" class=\"icon-tech\" /> -&gt; <img src=\"/assets/pictures/technology_economy/survival-techniques.webp\" class=\"icon-tech\" /> / <img src=\"/assets/pictures/technology_economy/horticulture.webp\" class=\"icon-tech\" /> once <img src=\"https://aoe4guides.com/assets/pictures/abilities/repair.webp\" class=\"icon-none\" /><img src=\"/assets/pictures/building_economy/mill.webp\" class=\"icon-default\" /> <br /><img src=\"/assets/pictures/building_religious/monastery.webp\" class=\"icon-default\" /> -&gt; <img src=\"/assets/pictures/resource/relics.webp\" class=\"icon-none\" /><br />Add <img src=\"https://aoe4guides.com/assets/pictures/building_military/stable.webp\" class=\"icon-military\" title=\"Stable\" /> / <img src=\"https://aoe4guides.com/assets/pictures/building_macedonian/varangian_stronghold.webp\" class=\"icon-military\" title=\"Varangian Stronghold\" /> to produce more units",
+          "_id": 1784383894504,
+          "stone": ""
+        }
+      ]
+    }
+  ],
+  "timeUpdated": {
+    "_seconds": 1784384009,
+    "_nanoseconds": 331000000
+  },
+  "isDraft": false,
+  "timeCreated": {
+    "_seconds": 1784384009,
+    "_nanoseconds": 331000000
+  },
+  "likes": 2,
+  "upvotes": 2,
+  "scoreAllTime": 5.176149732573829,
+  "ageTimings": {
+    "feudal": {
+      "t": 240,
+      "e": false
+    }
+  },
+  "score": 6.678342114654332,
+  "views": 787
+}

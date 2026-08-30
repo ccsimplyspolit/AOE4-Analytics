@@ -95,7 +95,7 @@ describe('relic decoders', () => {
       highestrank: 0,
       highestranklevel: 0,
     })
-    expect(rank.leaderboard).toBe('Quick Match 1v1')
+    expect(rank.leaderboard).toBe('qm_1v1')
     expect(rank.gamesCount).toBe(4)
     expect(rank.winRate).toBe(25)
     expect(rank.rank).toBeNull() // -1 → null
@@ -141,7 +141,7 @@ describe('relic decoders', () => {
     expect(report.recentForm.wins + report.recentForm.losses).toBe(15)
     // competitive modes only (QM ladders present in the fixture); no Art of War / Custom
     expect(report.modes.length).toBeGreaterThan(0)
-    expect(report.modes.every((m) => m.leaderboard.startsWith('Quick Match'))).toBe(true)
+    expect(report.modes.every((m) => m.leaderboard.startsWith('qm_'))).toBe(true)
     expect(report.topCivs.length).toBeGreaterThan(0)
   })
 })

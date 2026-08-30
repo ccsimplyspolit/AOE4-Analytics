@@ -25,6 +25,7 @@ export class SqliteHistoryStore implements HistoryStore {
   private readonly listAllStmt: Stmt
   private readonly listVisibleStmt: Stmt
   private readonly listAllVisibleStmt: Stmt
+  private readonly countStmt: Stmt
 
   constructor(filePath: string) {
     this.db = new Database(filePath)
@@ -51,6 +52,7 @@ export class SqliteHistoryStore implements HistoryStore {
     this.listAllVisibleStmt = this.db.prepare(
       "SELECT data FROM matches WHERE json_extract(data, '$.hidden') IS NOT 1 ORDER BY played_at DESC",
     )
+    this.countStmt = this.db.prepare('SELECT COUNT(*) AS n FROM matches')
   }
 
   saveMatch(match: StoredMatch): void {
@@ -80,6 +82,11 @@ export class SqliteHistoryStore implements HistoryStore {
       limit != null ? this.listVisibleStmt.all(limit) : this.listAllVisibleStmt.all()
     ) as Row[]
     return rows.map((r) => JSON.parse(r.data) as StoredMatch)
+  }
+
+  countMatches(): number {
+    const row = this.countStmt.get() as { n: number }
+    return Number(row?.n) || 0
   }
 
   activeGoals(): StoredMatch['goals'] {

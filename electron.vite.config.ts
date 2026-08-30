@@ -44,7 +44,15 @@ export default defineConfig({
     resolve: { alias },
     build: {
       minify: 'esbuild',
-      rollupOptions: { input: { index: resolve('electron/main.ts') } },
+      rollupOptions: {
+        input: {
+          index: resolve('electron/main.ts'),
+          cpuWorker: resolve('electron/workers/cpuWorker.ts'),
+        },
+        output: {
+          entryFileNames: '[name].js',
+        },
+      },
     },
   },
   preload: {

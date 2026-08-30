@@ -1,14 +1,24 @@
 import { spawn, type ChildProcessWithoutNullStreams } from 'node:child_process'
+import { basename } from 'node:path'
+import {
+  classifyForegroundWindow,
+  parseForegroundWatcherLine,
+} from '@domain/gameWindow'
 
 /**
- * Watches the Windows foreground window and reports its process name + window
- * rect whenever either changes, so the overlay can hide itself when the user
- * alt-tabs away from the game and follow the game across monitors.
+ * Watches the Windows foreground window and reports a friendly process token +
+ * window rect whenever either changes, so the overlay can hide itself when the
+ * user alt-tabs away from the game and follow the game across monitors.
  *
  * Implemented as ONE long-lived hidden PowerShell process that polls
- * `GetForegroundWindow` in a light loop and prints `name<TAB>x,y,w,h` on change —
- * far cheaper than spawning a process per check, and needs no native module.
- * Windows-only; a no-op elsewhere (callers then leave gating effectively off).
+ * `GetForegroundWindow` in a light loop and prints `pid<TAB>title<TAB>class<TAB>x,y,w,h`
+ * on change — far cheaper than spawning a process per check, and needs no native
+ * module. Windows-only; a no-op elsewhere (callers then leave gating effectively off).
+ *
+ * The child never OpenProcess / Get-Process the game. Easy Anti-Cheat protects
+ * RelicCardinal handles; an unexpected PROCESS_VM_READ from PowerShell can
+ * terminate the match. AoE4 is recognized from user32 title/class only.
+ * Get-Process is used solely against *this* (parent) PID for liveness.
  *
  * Hardened: the child auto-respawns with exponential backoff if it dies, its
  * stderr is drained so the pipe can never stall it, and the script exits on its
@@ -37,13 +47,32 @@ function buildScript(parentPid: number): string {
 Add-Type @"
 using System;
 using System.Runtime.InteropServices;
+using System.Text;
 public struct _RtsRect { public int Left; public int Top; public int Right; public int Bottom; }
 public class _RtsFg {
   [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
   [DllImport("user32.dll")] public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint pid);
   [DllImport("user32.dll")] public static extern bool GetWindowRect(IntPtr hWnd, out _RtsRect rect);
+  [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+  public static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
+  [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+  public static extern int GetClassName(IntPtr hWnd, StringBuilder lpClassName, int nMaxCount);
+  public static string Title(IntPtr h) {
+    var sb = new StringBuilder(512);
+    GetWindowText(h, sb, sb.Capacity);
+    return sb.ToString();
+  }
+  public static string WinClass(IntPtr h) {
+    var sb = new StringBuilder(256);
+    GetClassName(h, sb, sb.Capacity);
+    return sb.ToString();
+  }
 }
 "@
+function Sanitize([string]$s) {
+  if ($null -eq $s) { return '' }
+  return (($s -replace [char]9, ' ') -replace [char]13, '' -replace [char]10, ' ')
+}
 $parent = ${parentPid}
 $last = '__init__'
 $i = 0
@@ -53,18 +82,22 @@ while ($true) {
   $h = [_RtsFg]::GetForegroundWindow()
   $procId = 0
   [void][_RtsFg]::GetWindowThreadProcessId($h, [ref]$procId)
-  $name = ''
-  try { $name = (Get-Process -Id $procId -ErrorAction Stop).ProcessName } catch { $name = '' }
+  $title = Sanitize ([_RtsFg]::Title($h))
+  $cls = Sanitize ([_RtsFg]::WinClass($h))
   $r = New-Object _RtsRect
   $rect = ''
   if ([_RtsFg]::GetWindowRect($h, [ref]$r)) {
     $rect = ($r.Left, $r.Top, ($r.Right - $r.Left), ($r.Bottom - $r.Top)) -join ','
   }
-  $line = $name + [char]9 + $rect
+  $line = ([string]$procId) + [char]9 + $title + [char]9 + $cls + [char]9 + $rect
   if ($line -ne $last) { $last = $line; Write-Output $line }
   Start-Sleep -Milliseconds ${POLL_MS}
 }
 `.trim()
+}
+
+function ourProcessName(): string {
+  return basename(process.execPath).replace(/\.exe$/i, '')
 }
 
 export class ForegroundWatcher {
@@ -174,21 +207,18 @@ export class ForegroundWatcher {
     }, delay)
   }
 
-  /** Parses a `name<TAB>x,y,w,h` line and delivers it (empty name = unreadable). */
+  /** Parses a `pid<TAB>title<TAB>class<TAB>x,y,w,h` line and maps it to a token. */
   private emit(line: string): void {
     if (!this.onChange) return
-    const tab = line.indexOf('\t')
-    if (tab < 0) return // not a watcher line (stray banner/noise)
-    const name = line.slice(0, tab).trim()
-    const nums = line
-      .slice(tab + 1)
-      .trim()
-      .split(',')
-      .map(Number)
-    const rect: ForegroundRect | null =
-      nums.length === 4 && nums.every((n) => Number.isFinite(n))
-        ? { x: nums[0]!, y: nums[1]!, width: nums[2]!, height: nums[3]! }
-        : null
-    this.onChange(name, rect)
+    const parsed = parseForegroundWatcherLine(line)
+    if (!parsed) return
+    const name = classifyForegroundWindow({
+      pid: parsed.pid,
+      title: parsed.title,
+      className: parsed.className,
+      ourPid: process.pid,
+      ourProcessName: ourProcessName(),
+    })
+    this.onChange(name, parsed.rect)
   }
 }

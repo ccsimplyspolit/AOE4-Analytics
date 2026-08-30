@@ -2,6 +2,62 @@
   {
     "description": "",
     "civilization": "Golden Horde",
+    "name": "Beasty",
+    "author": "RatJacuzzi",
+    "source": "https://aoe4guides.com/builds/1k8pSVsaQAT1WclFbBmN",
+    "build_order": [
+      {
+        "age": -1,
+        "population_count": -1,
+        "time": "1:00",
+        "villager_count": 5,
+        "resources": {
+          "food": 4,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": 1
+        },
+        "notes": [
+          "First 5 @unit_worker/villager-mongols.webp@ on food and move 1 to build @building_mongols/ovoo.webp@ then Golden Tent@landmark_golden_horde/golden_tent.webp@then a Ger @building_mongols/ger.webp@on @resource/resource_gold.webp@",
+          "Rally to @resource/resource_food.webp@"
+        ]
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      },
+      {
+        "age": -1,
+        "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      }
+    ],
+    "video": "",
+    "season": "Season 13",
+    "map": null,
+    "strategy": null
+  },
+  {
+    "description": "",
+    "civilization": "Golden Horde",
     "name": "Basic Horde Rush",
     "author": "ImpulseGold",
     "source": "https://aoe4guides.com/builds/3fmmesjFRCcufuUn1ldP",
@@ -1161,6 +1217,19 @@
       {
         "age": 1,
         "population_count": -1,
+        "villager_count": -1,
+        "resources": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0,
+          "builder": -1
+        },
+        "notes": []
+      },
+      {
+        "age": 1,
+        "population_count": -1,
         "time": "3:10",
         "villager_count": 15,
         "resources": {
@@ -1171,7 +1240,8 @@
           "builder": -1
         },
         "notes": [
-          "Split @unit_worker/villager-mongols.webp@ when next @unit_worker/villager-mongols.webp@ (32 Sec. left) & @resource/rally.webp@@resource/resource_food.webp@"
+          "Split @unit_worker/villager-mongols.webp@ when next @unit_worker/villager-mongols.webp@ (32 Sec. left) & @resource/rally.webp@@resource/resource_food.webp@ or",
+          "when 13 @unit_worker/villager-mongols.webp@on @resource/resource_food.webp@ then 8 @unit_worker/villager-mongols.webp@ on @resource/resource_wood.webp@"
         ]
       },
       {
@@ -1494,289 +1564,5 @@
     "season": "Season 12",
     "map": null,
     "strategy": "Rush"
-  },
-  {
-    "description": "More a def style, until you get a lot of unnits stronger with all the buffs at age 3",
-    "civilization": "Golden Horde",
-    "name": "Jeando GH chariot",
-    "author": "Dinosenko",
-    "source": "https://aoe4guides.com/builds/9oLRulrRd3nWlqoEn9wU",
-    "build_order": [
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 5,
-        "resources": {
-          "food": 4,
-          "wood": 0,
-          "gold": 0,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "4@unit_worker/villager-mongols.webp@ --> @resource/sheep.webp@ // 1 @unit_worker/villager-mongols.webp@ --&gt; @building_mongols/ovoo.webp@ --&gt; @landmark_golden_horde/golden_tent.webp@ --&gt; @building_mongols/ger.webp@ at @resource/resource_gold.webp@"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 5,
-        "resources": {
-          "food": 4,
-          "wood": 0,
-          "gold": 0,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "@resource/rally.webp@ --> @resource/sheep.webp@ until 8@resource/resource_food.webp@"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 9,
-        "resources": {
-          "food": 8,
-          "wood": 0,
-          "gold": 0,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "@resource/rally.webp@ --> @resource/resource_gold.webp@"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 11,
-        "resources": {
-          "food": 8,
-          "wood": 0,
-          "gold": 3,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "@resource/rally.webp@ --> @resource/resource_wood.webp@"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 15,
-        "resources": {
-          "food": 8,
-          "wood": 4,
-          "gold": 3,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Launch age @technology_golden_horde/golden_tent_building_carts_age2.webp@"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 17,
-        "resources": {
-          "food": 7,
-          "wood": 6,
-          "gold": 3,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "1 from @resource/resource_food.webp@  --> @abilities/repair.webp@ @building_golden_horde/fortified_outpost.webp@ near @resource/resource_gold.webp@//@resource/resource_food.webp@"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 19,
-        "resources": {
-          "food": 7,
-          "wood": 8,
-          "gold": 3,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "@technology_economy/wheelbarrow.webp@ ASAP"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 19,
-        "resources": {
-          "food": 7,
-          "wood": 8,
-          "gold": 3,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "@landmark_golden_horde/golden_tent.webp@@resource/rally.webp@ --> @building_golden_horde/fortified_outpost.webp@ for @building_military/barracks.webp@@building_military/stable.webp@ with@technology_golden_horde/golden_tent_building_carts_age2.webp@"
-        ]
-      },
-      {
-        "age": 1,
-        "population_count": -1,
-        "villager_count": 19,
-        "resources": {
-          "food": 7,
-          "wood": 7,
-          "gold": 3,
-          "stone": 0,
-          "builder": 2
-        },
-        "notes": [
-          "build @building_mongols/ger.webp@ for @resource/resource_wood.webp@"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "time": "5:10",
-        "villager_count": 19,
-        "resources": {
-          "food": 7,
-          "wood": 9,
-          "gold": 3,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "Build @building_military/stable.webp@ and @building_military/barracks.webp@//@building_military/archery-range.webp@"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "villager_count": 21,
-        "resources": {
-          "food": 7,
-          "wood": 10,
-          "gold": 3,
-          "stone": 0,
-          "builder": 1
-        },
-        "notes": [
-          "@unit_golden_horde/khan.webp@ ASAP and  2nd @building_mongols/ovoo.webp@"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "villager_count": 23,
-        "resources": {
-          "food": 6,
-          "wood": 12,
-          "gold": 5,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "@unit_mongols/keshik-2.webp@ and @unit_infantry/archer-2.webp@or@unit_infantry/spearman-1.webp@"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "villager_count": 23,
-        "resources": {
-          "food": 6,
-          "wood": 12,
-          "gold": 5,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "add @unit_golden_horde/torguud.webp@ and @unit_golden_horde/kharash.webp@"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "villager_count": 25,
-        "resources": {
-          "food": 6,
-          "wood": 11,
-          "gold": 5,
-          "stone": 0,
-          "builder": 3
-        },
-        "notes": [
-          "3 @unit_worker/villager-mongols.webp@from @resource/resource_wood.webp@ go build @building_mongols/ger.webp@@building_golden_horde/fortified_outpost.webp@@building_defensive/palisade-wall.webp@ for @resource/deer.webp@ // @technology_economy/survival-techniques.webp@@technology_economy/double-broadaxe.webp@"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "villager_count": 29,
-        "resources": {
-          "food": 11,
-          "wood": 9,
-          "gold": 5,
-          "stone": 0,
-          "builder": 4
-        },
-        "notes": [
-          "Too much @resource/resource_wood.webp@ --> 4@unit_worker/villager-mongols.webp@ --&gt; @abilities/repair.webp@ @building_golden_horde/stockyard.webp@"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "villager_count": -1,
-        "resources": {
-          "food": 0,
-          "wood": 0,
-          "gold": 0,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "@building_technology/blacksmith.webp@ --> @technology_military/steeled-arrow.webp@@technology_military/iron-undermesh.webp@"
-        ]
-      },
-      {
-        "age": 2,
-        "population_count": -1,
-        "villager_count": 36,
-        "resources": {
-          "food": 13,
-          "wood": 13,
-          "gold": 10,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "@technology_golden_horde/golden_tent_lumber_shields_age3.webp@"
-        ]
-      },
-      {
-        "age": 3,
-        "population_count": -1,
-        "villager_count": -1,
-        "resources": {
-          "food": 0,
-          "wood": 0,
-          "gold": 0,
-          "stone": 0,
-          "builder": -1
-        },
-        "notes": [
-          "@technology_golden_horde/golden_tent_building_carts_age2.webp@ --> @building_mongols/prayer-tent.webp@ for @resource/relics.webp@  // @building_mongols/ger.webp@"
-        ]
-      }
-    ],
-    "video": "https://www.youtube.com/embed/JJfF3cxtFDs",
-    "season": "Season 13",
-    "map": null,
-    "strategy": null
   }
 ]

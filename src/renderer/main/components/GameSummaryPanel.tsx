@@ -67,9 +67,9 @@ const RESOURCE_KEYS = ['food', 'wood', 'gold', 'stone'] as const
 
 type ResourceKey = (typeof RESOURCE_KEYS)[number]
 
-function playerLabel(p: PlayerSummary): string {
+function playerLabel(p: PlayerSummary, gameName: (value: string) => string): string {
   const slug = civFromToken(p.civToken)
-  const civ = slug ? civDisplayName(slug) : (p.civToken ?? 'Unknown')
+  const civ = slug ? gameName(slug) : gameName(p.civToken ?? 'Unknown')
   if (p.name && !/^\d[\d.]*$/.test(p.name)) return `${p.name} - ${civ}`
   return civ
 }
@@ -102,7 +102,7 @@ export function GameSummaryPanel({
   /** Stable summary row id used when the selected player has no profile id. */
   myPlayerId?: number | null
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const meFirst = (a: PlayerSummary, b: PlayerSummary) =>
     Number(isMe(b, myProfileId ?? null, myCiv, myPlayerId ?? null)) -
     Number(isMe(a, myProfileId ?? null, myCiv, myPlayerId ?? null))
@@ -349,7 +349,7 @@ function InsightCard({
 }
 
 function DecisionMetricsCard({ review }: { review: MatchReview }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const me = review.me
   const opponent = review.opponent
   return (
@@ -613,7 +613,7 @@ function TeamReviewComparison({
 }: {
   comparison: NonNullable<MatchReview['teamComparison']>
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   return (
     <div className="rounded-md border border-border/70 bg-secondary/10 p-3">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -726,7 +726,7 @@ function DataTable<T>({
   rowClassName?: (row: T) => string | undefined
   empty?: string
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const best = new Map<string, number>()
   for (const col of columns) {
     if (!col.better) continue
@@ -800,7 +800,7 @@ function DataTable<T>({
 }
 
 function ScoreTable({ players }: { players: PlayerSummary[] }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const rows = players
     .map((player) => ({ player, score: finalScore(player) }))
     .filter((r): r is { player: PlayerSummary; score: ScorePoint } => r.score != null)
@@ -814,8 +814,8 @@ function ScoreTable({ players }: { players: PlayerSummary[] }) {
         {
           key: 'player',
           label: tt('Player'),
-          value: (r) => tt(playerLabel(r.player)),
-          display: (_, r) => tt(playerLabel(r.player)),
+          value: (r) => tt(playerLabel(r.player, gameName)),
+          display: (_, r) => tt(playerLabel(r.player, gameName)),
         },
         {
           key: 'total',
@@ -858,7 +858,7 @@ function ScoreTable({ players }: { players: PlayerSummary[] }) {
 }
 
 function ResourceTable({ players }: { players: PlayerSummary[] }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const rows = players
     .map((player) => ({ player, resources: finalResources(player) }))
     .filter((r): r is { player: PlayerSummary; resources: ResourceAmounts } => r.resources != null)
@@ -872,8 +872,8 @@ function ResourceTable({ players }: { players: PlayerSummary[] }) {
         {
           key: 'player',
           label: tt('Player'),
-          value: (r) => tt(playerLabel(r.player)),
-          display: (_, r) => tt(playerLabel(r.player)),
+          value: (r) => tt(playerLabel(r.player, gameName)),
+          display: (_, r) => tt(playerLabel(r.player, gameName)),
         },
         // Whole numbers, like the game's own screen (raw values are floats).
         {
@@ -941,7 +941,7 @@ function AgeTable({
   myPlayerId: number | null
   myCiv: string | null
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const rows = players.map((player) => ({
     player,
     timings: ageTimings(
@@ -959,8 +959,8 @@ function AgeTable({
         {
           key: 'player',
           label: tt('Player'),
-          value: (r) => tt(playerLabel(r.player)),
-          display: (_, r) => tt(playerLabel(r.player)),
+          value: (r) => tt(playerLabel(r.player, gameName)),
+          display: (_, r) => tt(playerLabel(r.player, gameName)),
         },
         {
           key: 'age2',
@@ -1009,8 +1009,8 @@ function CombatTable({
   players: PlayerSummary[]
   myProfileId: number | null
 }) {
-  const { tt } = useI18n()
-  const labelByCiv = labelsByCiv(players)
+  const { tt, gameName } = useI18n()
+  const labelByCiv = labelsByCiv(players, gameName)
   const rows = [...perPlayer].sort(
     (a, b) => Number(b.profileId === myProfileId) - Number(a.profileId === myProfileId),
   )
@@ -1032,8 +1032,8 @@ function CombatTable({
         {
           key: 'player',
           label: tt('Player'),
-          value: (r) => tt(combatPlayerLabel(r, labelByCiv, myProfileId)),
-          display: (_, r) => tt(combatPlayerLabel(r, labelByCiv, myProfileId)),
+          value: (r) => tt(combatPlayerLabel(r, labelByCiv, myProfileId, gameName)),
+          display: (_, r) => tt(combatPlayerLabel(r, labelByCiv, myProfileId, gameName)),
         },
         {
           key: 'units',
@@ -1105,7 +1105,7 @@ function CombatTable({
  * Relic report-result counters were never attached to the match.
  */
 function SummaryTotalsTable({ players }: { players: PlayerSummary[] }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const rows = players.flatMap((player) =>
     player.totals ? [{ player, totals: player.totals }] : [],
   )
@@ -1120,8 +1120,8 @@ function SummaryTotalsTable({ players }: { players: PlayerSummary[] }) {
         {
           key: 'player',
           label: tt('Player'),
-          value: (r) => tt(playerLabel(r.player)),
-          display: (_, r) => tt(playerLabel(r.player)),
+          value: (r) => tt(playerLabel(r.player, gameName)),
+          display: (_, r) => tt(playerLabel(r.player, gameName)),
         },
         {
           key: 'gathered',
@@ -1226,7 +1226,7 @@ function TeamContributionCard({
   breakdown: TeamContributionBreakdown
   summaryPlayers: PlayerSummary[]
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const showPressure = breakdown.coverage.pressure.reported > 0
   return (
     <Card>
@@ -1282,7 +1282,7 @@ function TeamContributionCard({
                   )}
                 >
                   <td className="px-3 py-2 font-medium">
-                    {contributionPlayerLabel(row, summaryPlayers, tt)}
+                    {contributionPlayerLabel(row, summaryPlayers, tt, gameName)}
                   </td>
                   <MetricCell
                     raw={
@@ -1347,11 +1347,12 @@ function contributionPlayerLabel(
   row: TeamContributionPlayer,
   summaryPlayers: PlayerSummary[],
   tt: (value: string) => string,
+  gameName: (value: string) => string,
 ): string {
   const summary = summaryPlayers.find((player) => player.profileId === row.profileId)
-  const civ = row.civ ? tt(civDisplayName(row.civ)) : null
+  const civ = row.civ ? gameName(row.civ) : null
   if (row.isMe) return civ ? `${tt('You')} — ${civ}` : tt('You')
-  if (summary) return tt(playerLabel(summary))
+  if (summary) return tt(playerLabel(summary, gameName))
   return civ ?? `${tt('Profile')} ${row.profileId}`
 }
 
@@ -1426,7 +1427,7 @@ function TimelineReadCard({
   economy: TimelineRead | null
   score: TimelineRead | null
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   return (
     <Card>
       <CardContent className="p-4">
@@ -1465,7 +1466,7 @@ function TimelineReadItem({
   read: TimelineRead | null
   measure: string
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   if (!read || read.mine == null || !read.leader || read.leaderValue == null) {
     return (
       <div className="rounded-md border border-border/60 bg-secondary/10 p-3">
@@ -1485,8 +1486,8 @@ function TimelineReadItem({
       <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">
         {other && gap != null
           ? iLead
-            ? `${tt('You lead')} ${tt(playerLabel(other))} ${tt('by')} ${fmtInt(gap)} ${measure}.`
-            : `${tt('You trail')} ${tt(playerLabel(other))} ${tt('by')} ${fmtInt(gap)} ${measure}.`
+            ? `${tt('You lead')} ${tt(playerLabel(other, gameName))} ${tt('by')} ${fmtInt(gap)} ${measure}.`
+            : `${tt('You trail')} ${tt(playerLabel(other, gameName))} ${tt('by')} ${fmtInt(gap)} ${measure}.`
           : `${tt('Only one recorded player has this')} ${measure}.`}
       </p>
     </div>
@@ -1552,7 +1553,7 @@ function TimeChart({
   colorOf: Map<number, string>
   meId: number | null
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   return (
     <div className="space-y-2">
       <div className="flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-muted-foreground">
@@ -1562,7 +1563,7 @@ function TimeChart({
               className="h-2 w-2 rounded-full"
               style={{ backgroundColor: colorOf.get(player.playerId) }}
             />
-            {tt(playerLabel(player))}
+            {tt(playerLabel(player, gameName))}
             {player.playerId === meId && <span className="text-primary">({tt('You')})</span>}
           </span>
         ))}
@@ -1600,7 +1601,7 @@ function TimeChart({
               formatter={(v, key) => {
                 const pid = Number(String(key).slice(1))
                 const p = players.find((x) => x.playerId === pid)
-                return [formatCount(Number(v)), p ? tt(playerLabel(p)) : String(key)]
+                return [formatCount(Number(v)), p ? tt(playerLabel(p, gameName)) : String(key)]
               }}
             />
             {players.map((p) => (
@@ -1631,7 +1632,7 @@ function BuildOrderColumn({
   me: boolean
   color: string
 }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const rows = collapseRuns(player.buildOrder)
   const rhythm = villagerGaps(player)
   return (
@@ -1643,7 +1644,7 @@ function BuildOrderColumn({
     >
       <div className="flex items-center gap-2 border-b border-border px-3 py-2">
         <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: color }} />
-        <span className="truncate text-sm font-medium">{tt(playerLabel(player))}</span>
+        <span className="truncate text-sm font-medium">{tt(playerLabel(player, gameName))}</span>
         {me && (
           <span className="rounded bg-primary/15 px-1 text-[9px] font-semibold uppercase text-primary">
             {tt('You')}
@@ -1817,12 +1818,15 @@ function resourceLine(r: ResourceAmounts): string {
   return `F ${fmtK(r.food)} / W ${fmtK(r.wood)} / G ${fmtK(r.gold)} / S ${fmtK(r.stone)}`
 }
 
-function labelsByCiv(players: PlayerSummary[]): Map<string, string> {
+function labelsByCiv(
+  players: PlayerSummary[],
+  gameName: (value: string) => string,
+): Map<string, string> {
   const seen = new Map<string, string | null>()
   for (const p of players) {
     const civ = civFromToken(p.civToken)
     if (!civ) continue
-    seen.set(civ, seen.has(civ) ? null : playerLabel(p))
+    seen.set(civ, seen.has(civ) ? null : playerLabel(p, gameName))
   }
   const out = new Map<string, string>()
   for (const [civ, label] of seen) if (label) out.set(civ, label)
@@ -1833,9 +1837,10 @@ function combatPlayerLabel(
   row: PerPlayerMatchStats,
   labelByCiv: Map<string, string>,
   myProfileId: number | null,
+  gameName: (value: string) => string,
 ): string {
   if (row.profileId === myProfileId) return 'You'
-  if (row.civ) return labelByCiv.get(row.civ) ?? civDisplayName(row.civ)
+  if (row.civ) return labelByCiv.get(row.civ) ?? gameName(row.civ)
   return String(row.profileId)
 }
 

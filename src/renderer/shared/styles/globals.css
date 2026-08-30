@@ -52,7 +52,8 @@
     --input: 220 13% 86%;
     --ring: 199 89% 48%;
     /* Squared, plate-like corners — the game's panels are near-square, not pills. */
-    --radius: 0.25rem;
+    --radius: 0.1875rem;
+    --page-gap: 1.5rem;
 
     --tier-s: 280 86% 66%;
     --tier-a: 142 71% 45%;
@@ -70,28 +71,29 @@
   }
 
   .dark {
-    /* Dark, game-native — deep slate with a parchment-gold accent (the game's
-       own header colour). The accent (--primary / --accent / --ring) can be
-       overridden at runtime from Settings (see shared/accent.ts). */
-    --background: 222 13% 8%;
-    --foreground: 220 18% 90%;
-    --card: 222 12% 11%;
-    --card-foreground: 220 18% 90%;
-    --popover: 222 13% 10%;
-    --popover-foreground: 220 18% 90%;
-    --primary: 42 45% 61%;
+    /* Dark, game-native — ink navy with a quiet parchment-gold accent (the
+       game's own header colour). Primary is reserved for kickers, active nav,
+       and actions — not every label. Accent tokens can be overridden at runtime
+       from Settings (see shared/accent.ts). */
+    --background: 222 16% 7%;
+    --foreground: 38 16% 90%;
+    --card: 222 14% 10%;
+    --card-foreground: 38 16% 90%;
+    --popover: 222 16% 9%;
+    --popover-foreground: 38 16% 90%;
+    --primary: 40 36% 58%;
     --primary-foreground: 224 18% 10%;
-    --secondary: 220 10% 16%;
-    --secondary-foreground: 220 18% 90%;
-    --muted: 220 10% 15%;
-    --muted-foreground: 220 8% 60%;
-    --accent: 42 45% 61%;
+    --secondary: 222 12% 14%;
+    --secondary-foreground: 38 16% 90%;
+    --muted: 222 12% 13%;
+    --muted-foreground: 36 9% 66%;
+    --accent: 40 36% 58%;
     --accent-foreground: 224 18% 10%;
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-    --border: 220 9% 21%;
-    --input: 220 9% 21%;
-    --ring: 42 45% 61%;
+    --border: 36 8% 20%;
+    --input: 36 8% 20%;
+    --ring: 40 36% 58%;
 
     --tier-s: 280 90% 70%;
     --tier-a: 142 69% 49%;
@@ -112,6 +114,10 @@
 @layer base {
   * {
     @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
   }
 
   html,
@@ -176,18 +182,20 @@
   .rts-menu-card {
     border-color: hsl(var(--border));
     background: hsl(var(--card));
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.035),
+      0 0 0 1px hsl(var(--background) / 0.4);
   }
 
-  /* Small-caps gold column headers — the exact treatment of the game's own
-     post-match tables (TEAM · PLAYER · TOTAL SCORE …). */
+  /* Small-caps column headers — post-match ledger voice, ink rather than
+     shouting gold so numbers stay the loudest thing on the row. */
   .rts-ledger-head {
     font-family: theme('fontFamily.display');
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: hsl(var(--primary) / 0.75);
+    color: hsl(var(--muted-foreground) / 0.92);
   }
 
   /* Section label above/inside panels, same voice as the ledger heads. */
@@ -200,14 +208,19 @@
   }
 
   /* Dark, readable native selects. Keeping this as a shared control prevents
-     Chromium from falling back to the bright platform-default dropdown. */
-  .control-select {
-    @apply flex h-9 w-full rounded-md border px-3 py-1 text-sm shadow-sm transition-colors;
+     Chromium from falling back to the bright platform-default dropdown.
+     Chronicle screens also inherit the look for any <select> that forgot the
+     class, so Stats / Valdemar / Timing Matrix stay in-theme. */
+  .control-select,
+  .chronicle-main select:not([multiple]),
+  .drag-region select:not([multiple]) {
+    @apply flex h-9 rounded-sm border px-3 py-1 text-sm transition-colors;
     border-color: hsl(var(--border));
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     color-scheme: dark;
     appearance: none;
+    box-shadow: none;
     background-image: linear-gradient(45deg, transparent 50%, hsl(var(--muted-foreground)) 50%),
       linear-gradient(135deg, hsl(var(--muted-foreground)) 50%, transparent 50%);
     background-position:
@@ -220,17 +233,25 @@
     padding-right: 2.25rem;
   }
 
-  .control-select:hover {
-    border-color: hsl(var(--primary) / 0.55);
+  .control-select:hover,
+  .chronicle-main select:not([multiple]):hover,
+  .drag-region select:not([multiple]):hover {
+    border-color: hsl(var(--primary) / 0.45);
   }
 
-  .control-select:focus-visible {
+  .control-select:focus-visible,
+  .chronicle-main select:not([multiple]):focus-visible,
+  .drag-region select:not([multiple]):focus-visible,
+  .chronicle-main select:not([multiple]):focus,
+  .drag-region select:not([multiple]):focus {
     outline: none;
     border-color: hsl(var(--ring));
     box-shadow: 0 0 0 2px hsl(var(--ring) / 0.22);
   }
 
-  .control-select option {
+  .control-select option,
+  .chronicle-main select:not([multiple]) option,
+  .drag-region select:not([multiple]) option {
     background: hsl(var(--popover));
     color: hsl(var(--foreground));
   }
@@ -250,16 +271,18 @@
     }
   }
 
-  /* The war-table art, permanently behind the app as DESATURATED texture — it
-     adds engraved-map detail without colour, keeping the UI sleek black/blue. */
+  /* War-table art as quiet parchment texture — keep colour low so plates and
+     numbers stay readable (aoe4world density, Relic HUD restraint). */
   .rts-app-backdrop {
     background-position: center;
     background-size: cover;
-    filter: grayscale(1) blur(0.5px) brightness(0.42) contrast(1.05);
+    filter: grayscale(0.82) sepia(0.22) blur(0.4px) brightness(0.36) contrast(1.08);
   }
 
   .rts-app-atmosphere {
-    background: linear-gradient(180deg, rgba(12, 15, 20, 0.72), rgba(12, 15, 20, 0.82));
+    background:
+      linear-gradient(90deg, rgba(8, 10, 14, 0.55) 0%, transparent 14rem),
+      linear-gradient(180deg, rgba(18, 16, 12, 0.5), rgba(10, 12, 16, 0.9));
   }
 
   .chronicle-main h1 {
@@ -269,7 +292,7 @@
 
   .chronicle-main header p,
   .chronicle-main .text-muted-foreground {
-    color: hsl(var(--muted-foreground) / 0.92);
+    color: hsl(var(--muted-foreground));
   }
 
   /* The reference UI uses closely fitted, engraved plates rather than floating
@@ -277,6 +300,55 @@
      so every existing screen adopts the treatment without changing its data UI. */
   .chronicle-main .rts-menu-card {
     border-radius: var(--radius);
+  }
+
+  /* Military-briefing tables: hairline rows, quiet heads, dense numbers. */
+  .chronicle-main table {
+    border-collapse: collapse;
+  }
+
+  .chronicle-main table tbody tr:hover {
+    background: hsl(var(--secondary) / 0.45);
+  }
+
+  .chronicle-main input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']),
+  .chronicle-main textarea {
+    border-radius: var(--radius);
+    box-shadow: none;
+    color-scheme: dark;
+  }
+
+  .chronicle-main input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']):focus,
+  .chronicle-main input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']):focus-visible,
+  .chronicle-main textarea:focus,
+  .chronicle-main textarea:focus-visible {
+    outline: none;
+    border-color: hsl(var(--ring));
+    box-shadow: 0 0 0 2px hsl(var(--ring) / 0.22);
+  }
+
+  .rts-chip {
+    @apply inline-flex items-center rounded-sm border border-border bg-secondary/60 px-2 py-0.5 text-xs text-muted-foreground;
+  }
+
+  .rts-btn {
+    @apply inline-flex items-center gap-1.5 rounded-sm border border-border px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:border-primary/40 hover:bg-secondary hover:text-foreground disabled:opacity-50;
+  }
+
+  .rts-btn-primary {
+    @apply inline-flex items-center gap-1.5 rounded-sm bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-60;
+  }
+
+  /* Overlay: share the same ink/gold tokens, keep high-contrast HUD geometry. */
+  .rtslytics-overlay-root .rounded-lg,
+  .rtslytics-overlay-root .rounded-xl {
+    border-radius: 2px;
+  }
+
+  .overlay-panel {
+    border-radius: 2px;
+    box-shadow: none;
+    outline: 1px solid rgba(255, 255, 255, 0.08);
   }
 }
 
@@ -287,5 +359,13 @@
 
   .no-drag {
     -webkit-app-region: no-drag;
+  }
+
+  /* Beat Tailwind radius utilities so plates stay squared. Pills stay round. */
+  .chronicle-main .rounded-lg,
+  .chronicle-main .rounded-xl,
+  .chronicle-main .rounded-2xl,
+  .chronicle-main .rounded-md {
+    border-radius: var(--radius);
   }
 }

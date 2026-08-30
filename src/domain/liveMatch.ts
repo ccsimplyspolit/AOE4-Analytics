@@ -113,6 +113,25 @@ export interface LiveMatchup {
   teams: MatchupPlayer[][]
 }
 
+/** Enemy civ slugs from the live roster; allies are excluded. */
+export function liveOpponentCivilizations(
+  matchup: LiveMatchup | null | undefined,
+  fallbackOppCiv?: string | null,
+): string[] {
+  const teams = matchup?.teams
+  if (teams && teams.length > 0) {
+    const myIndex = teams.findIndex((team) => team.some((player) => player.isMe))
+    const skip = myIndex >= 0 ? myIndex : 0
+    const civs = teams.flatMap((team, index) =>
+      index === skip
+        ? []
+        : team.map((player) => player.civ).filter((civ): civ is string => Boolean(civ)),
+    )
+    if (civs.length > 0) return civs
+  }
+  return fallbackOppCiv ? [fallbackOppCiv] : []
+}
+
 /**
  * Builds the full matchup (every player on both teams) for the overlay bar.
  * Civ + rating come straight from the ongoing game; rank/rankLevel come from a
@@ -252,6 +271,45 @@ export interface LiveMatchInfo {
   teams?: LiveTeamRosterPlayer[][] | null
   map: string | null
   startedAt: string | null
+}
+
+/**
+ * Adds the ToS-safe warnings.log roster to a locally detected custom/AI match.
+ * `buildLiveMatchInfo` intentionally ignores the stale AoE4World game on this
+ * path; this helper fills only identities observed in the current local roster.
+ */
+export function attachLocalLiveMatchup(
+  info: LiveMatchInfo,
+  matchup: LiveMatchup | null,
+): LiveMatchInfo {
+  if (!info.isLive || info.source !== 'local' || !matchup || matchup.teams.length === 0) {
+    return info
+  }
+
+  const myTeamIndex = matchup.teams.findIndex((team) => team.some((player) => player.isMe))
+  const resolvedMyTeamIndex = myTeamIndex >= 0 ? myTeamIndex : 0
+  const myTeam = matchup.teams[resolvedMyTeamIndex] ?? []
+  const me = myTeam.find((player) => player.isMe) ?? myTeam[0] ?? null
+  const opponent = matchup.teams
+    .filter((_, index) => index !== resolvedMyTeamIndex)
+    .flat()
+    .find((player) => player.civ != null)
+
+  return {
+    ...info,
+    myCiv: me?.civ ?? null,
+    opponent:
+      opponent?.civ != null
+        ? {
+            profileId: opponent.profileId,
+            name: opponent.name,
+            civ: opponent.civ,
+            rankLevel: opponent.rankLevel,
+            rating: opponent.rating,
+          }
+        : null,
+    teams: matchup.teams,
+  }
 }
 
 /**

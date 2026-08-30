@@ -1,0 +1,248 @@
+{
+  "name": "Fast Castle Burgrave",
+  "civilization": "Order of the Dragon",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/ZySPMMfuY0dAJKFk6X05",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start by sending 5 @unit_dragon/gilded-villager.webp@ to @resource/deer.webp@& get @technology_economy/survival-techniques.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:23",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 3 @unit_dragon/gilded-villager.webp@ to @resource/resource_gold.webp@  and build @building_economy/house.webp@ + @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:33",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ on @resource/sheep.webp@ until age 2 click"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:22",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Go feudal with @landmark_hre/meinwerk-palace.webp@ with 3 @resource/sheep.webp@ @unit_dragon/gilded-villager.webp@ and @resource/rally.webp@ 3 new @unit_dragon/gilded-villager.webp@ to @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 4,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "Send the 3 age-up @unit_dragon/gilded-villager.webp@ to long distance gather 40 @resource/resource_stone.webp@ (1 run) and then back to @resource/sheep.webp@",
+        "You also send 1 @unit_dragon/gilded-villager.webp@ to @resource/resource_gold.webp@ and build a @building_defensive/outpost.webp@ with @technology_defensive/arrow-slits.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 15,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "For the rest of @age/age_2.webp@ just @resource/rally.webp@ @resource/sheep.webp@ to go @age/age_3.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:25",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@landmark_hre/burgrave-palace.webp@ with 5 @resource/sheep.webp@ @unit_dragon/gilded-villager.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Send 5-7 @unit_dragon/gilded-villager.webp@ to @resource/resource_wood.webp@ and 1-2 more to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "7:45",
+      "villager_count": 20,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_religious/monastery.webp@ and infantry production. Ideally @unit_dragon/gilded-spearman-1.webp@ + @unit_dragon/gilded-archer-2.webp@(against xbow comps), @unit_dragon/gilded-man-at-arms-2.webp@ + @unit_dragon/gilded-crossbowman-3.webp@ (against knight archer)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:23",
+      "villager_count": 27,
+      "resources": {
+        "food": 13,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/wheelbarrow.webp@ + @technology_economy/double-broadaxe.webp@ and @unit_hre/prelate.webp@ spam. Start making production buildings at this point. Archery ranges are usually the go to."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:00",
+      "villager_count": 36,
+      "resources": {
+        "food": 11,
+        "wood": 16,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_hre/inspired-warriors.webp@ research and then mass army up. Eventually might be worth to add cav to composition as well. Good luck!"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-22T21:13:45Z",
+  "updatedAt": "2026-08-22T21:13:45Z",
+  "patch": "16.3.11308"
+}

@@ -138,6 +138,50 @@ export function parseNote(note: string): NotePart[] {
   return parts
 }
 
+const ICON_LABEL_ALIASES: Record<string, string> = {
+  villager: 'Villager',
+  rally: 'Rally',
+  sheep: 'Sheep',
+  deer: 'Deer',
+  food: 'Food',
+  wood: 'Wood',
+  gold: 'Gold',
+  stone: 'Stone',
+  house: 'House',
+  'resource food': 'Food',
+  'resource wood': 'Wood',
+  'resource gold': 'Gold',
+  'resource stone': 'Stone',
+}
+
+/** English label for an overlay icon path such as `unit_worker/villager.webp`. */
+export function iconPathLabel(path: string): string {
+  const file = path.split('/').pop() ?? path
+  const stem = file
+    .replace(/\.[^.]+$/, '')
+    .replace(/-\d+$/, '')
+    .replace(/[_-]+/g, ' ')
+    .trim()
+  const aliased = ICON_LABEL_ALIASES[stem.toLowerCase()]
+  if (aliased) return aliased
+  return stem.replace(/\b\w/g, (ch) => ch.toUpperCase())
+}
+
+/**
+ * Turns a provider note into readable text by substituting icon tokens with
+ * their names. Stripping icons instead produced broken English such as
+ * "Build first with near supply cap, later build with".
+ */
+export function flattenNote(note: string): string {
+  return parseNote(note)
+    .map((part) => (part.type === 'text' ? part.text : ` ${iconPathLabel(part.path)} `))
+    .join('')
+    .replace(/\s+,/g, ',')
+    .replace(/\s+\./g, '.')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
 /** Validates an unknown value as an RTS_Overlay build order, collecting errors. */
 export function validateBuildOrder(input: unknown): ValidationResult {
   const errors: string[] = []

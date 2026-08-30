@@ -147,7 +147,7 @@ export class OverlayController {
 
   show(): void {
     this.desiredVisible = true
-    // Re-assert topmost on every show (match start): other screen-saver-level
+    // Re-assert topmost on every show (match start): other always-on-top
     // windows (Game Bar, Discord) may have stacked above us since last time.
     this.assertAlwaysOnTop()
     this.reconcile()
@@ -181,7 +181,7 @@ export class OverlayController {
   }
 
   private assertAlwaysOnTop(): void {
-    if (this.alive()) this.win!.setAlwaysOnTop(true, 'screen-saver')
+    if (this.alive()) this.win!.setAlwaysOnTop(true, 'floating')
   }
 
   private reconcile(): void {
@@ -331,8 +331,10 @@ export class OverlayController {
       this.win!.setFocusable(false)
     } else {
       this.win!.setIgnoreMouseEvents(false)
+      // Accept clicks for placement, but never steal foreground — focusing a
+      // full-display overlay over exclusive fullscreen commonly minimizes or
+      // closes Age of Empires IV.
       this.win!.setFocusable(true)
-      this.win!.focus()
     }
   }
 

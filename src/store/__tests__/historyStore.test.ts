@@ -116,6 +116,7 @@ describe.each(backends)('%s', (_name, make) => {
     store.saveMatch(makeMatch('c', '2026-06-26T11:00:00.000Z'))
     const all = store.listMatches()
     expect(all.map((m) => m.id)).toEqual(['b', 'c', 'a'])
+    expect(store.countMatches()).toBe(3)
     expect(store.listMatches(2).map((m) => m.id)).toEqual(['b', 'c'])
     store.close()
   })

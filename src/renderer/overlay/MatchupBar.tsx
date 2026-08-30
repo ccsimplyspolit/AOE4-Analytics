@@ -29,11 +29,13 @@ export function MatchupBar({
   opponent,
   matchup,
   troops,
+  compact = false,
 }: {
   me: MatchupSide
   opponent: MatchupSide
   matchup?: LiveMatchup | null
   troops?: MatchupTroops | null
+  compact?: boolean
 }) {
   const { tt } = useI18n()
   const teams = matchup?.teams ?? []
@@ -62,16 +64,18 @@ export function MatchupBar({
         <div className="flex flex-col items-center">
           <div className="flex items-start">
             <TeamColumn
-              label={maxTeamSize > 1 ? tt('Your Team') : null}
+              label={compact ? null : maxTeamSize > 1 ? tt('Your Team') : null}
               players={teams[0] ?? []}
               align="left"
-              winOdds={winOdds}
+              winOdds={compact ? null : winOdds}
+              compact={compact}
             />
-            <div className="w-[220px] shrink-0" aria-hidden />
+            <div className={compact ? 'w-[200px] shrink-0' : 'w-[220px] shrink-0'} aria-hidden />
             <TeamColumn
-              label={maxTeamSize > 1 ? tt('Enemy Team') : null}
+              label={compact ? null : maxTeamSize > 1 ? tt('Enemy Team') : null}
               players={teams.slice(1).flat()}
               align="right"
+              compact={compact}
             />
           </div>
           {hasTroops && (
@@ -83,19 +87,25 @@ export function MatchupBar({
                 units={troops!.mine}
                 priority={troops!.priority}
                 align="left"
-                label={tt('Your army')}
+                label={compact ? null : tt('Your army')}
+                compact={compact}
               />
-              <div className="w-[430px] shrink-0" aria-hidden />
-              <TroopsCol units={troops!.theirs} align="right" label={tt('They make')} />
+              <div className={compact ? 'w-[360px] shrink-0' : 'w-[430px] shrink-0'} aria-hidden />
+              <TroopsCol
+                units={troops!.theirs}
+                align="right"
+                label={compact ? null : tt('They make')}
+                compact={compact}
+              />
             </div>
           )}
         </div>
       ) : (
         <div className="flex flex-col items-center">
           <div className="flex items-start">
-            <LegacySide side={me} align="left" winOdds={winOdds} />
-            <div className="w-[280px] shrink-0" aria-hidden />
-            <LegacySide side={opponent} align="right" />
+            <LegacySide side={me} align="left" winOdds={compact ? null : winOdds} compact={compact} />
+            <div className={compact ? 'w-[240px] shrink-0' : 'w-[280px] shrink-0'} aria-hidden />
+            <LegacySide side={opponent} align="right" compact={compact} />
           </div>
           {hasTroops && (
             <div className="mt-1 flex items-start">
@@ -103,10 +113,16 @@ export function MatchupBar({
                 units={troops!.mine}
                 priority={troops!.priority}
                 align="left"
-                label={tt('Your army')}
+                label={compact ? null : tt('Your army')}
+                compact={compact}
               />
-              <div className="w-[460px] shrink-0" aria-hidden />
-              <TroopsCol units={troops!.theirs} align="right" label={tt('They make')} />
+              <div className={compact ? 'w-[380px] shrink-0' : 'w-[460px] shrink-0'} aria-hidden />
+              <TroopsCol
+                units={troops!.theirs}
+                align="right"
+                label={compact ? null : tt('They make')}
+                compact={compact}
+              />
             </div>
           )}
         </div>
@@ -120,20 +136,17 @@ function TeamColumn({
   players,
   align,
   winOdds,
+  compact = false,
 }: {
   label: string | null
   players: MatchupPlayer[]
   align: 'left' | 'right'
   /** Pre-game win odds (%) shown on the primary line; my column in a 1v1 only. */
   winOdds?: number | null
+  compact?: boolean
 }) {
   const isRight = align === 'right'
   const color = isRight ? 'hsl(var(--loss))' : 'hsl(var(--win))'
-  // One player gets today's full-size row; the rest render compact underneath, so
-  // a 2v2+ bar doesn't take up nearly as much screen. Primary = me on my column,
-  // else the first player (matches the "first opponent" convention used
-  // elsewhere — liveMatch.ts, OverlayApp's enemyCivs — there's no existing
-  // "most relevant opponent" heuristic beyond that).
   const primaryIdx = Math.max(
     0,
     players.findIndex((p) => p.isMe),
@@ -143,25 +156,25 @@ function TeamColumn({
   return (
     <div
       className={cn(
-        'min-w-[330px] max-w-[430px] overflow-hidden shadow-xl ring-1 ring-white/10',
-        isRight ? 'rounded-l-xl' : 'rounded-r-xl',
+        'overlay-panel overflow-hidden',
+        compact ? 'min-w-[220px] max-w-[300px]' : 'min-w-[280px] max-w-[380px]',
       )}
       style={{
-        background: `linear-gradient(to right, ${panelBg(0.97)}, ${panelBg(0.9)}, ${panelBg(0.61)})`,
-        boxShadow: `inset ${isRight ? '-' : ''}3px 0 0 0 ${color}`,
+        background: panelBg(compact ? 0.55 : 0.72),
+        boxShadow: `inset ${isRight ? '-' : ''}2px 0 0 0 ${color}`,
       }}
     >
       {label && (
         <div
           className={cn(
-            'border-b border-white/10 px-3 py-1 text-[10px] font-semibold uppercase text-white/45',
+            'border-b border-white/10 px-2 py-0.5 text-[9px] font-medium uppercase tracking-wide text-white/40',
             isRight && 'text-right',
           )}
         >
           {label}
         </div>
       )}
-      {primary && <PlayerLine player={primary} align={align} winOdds={winOdds} />}
+      {primary && <PlayerLine player={primary} align={align} winOdds={winOdds} compact={compact} />}
       {rest.length > 0 && (
         <div className="divide-y divide-white/10 border-t border-white/10">
           {rest.map((p, i) => (
@@ -181,10 +194,12 @@ function PlayerLine({
   player,
   align,
   winOdds,
+  compact = false,
 }: {
   player: MatchupPlayer
   align: 'left' | 'right'
   winOdds?: number | null
+  compact?: boolean
 }) {
   const { tt, gameName } = useI18n()
   const isRight = align === 'right'
@@ -195,23 +210,38 @@ function PlayerLine({
       : 'hsl(var(--win))'
   const rank =
     player.rankLevel && /[a-z]/i.test(player.rankLevel) ? tt(formatRankLevel(player.rankLevel)) : null
+  const showMeta =
+    !compact &&
+    (rank ||
+      player.rating != null ||
+      player.winRate != null ||
+      player.favoriteCivs.length > 0 ||
+      winOdds != null)
   return (
     <div
-      className={cn('flex items-center gap-2 px-3 py-2', isRight && 'flex-row-reverse text-right')}
+      className={cn(
+        'flex items-center gap-2',
+        compact ? 'px-2 py-1' : 'px-3 py-2',
+        isRight && 'flex-row-reverse text-right',
+      )}
     >
-      <CivFlag civ={player.civ} compact={false} />
+      <CivFlag civ={player.civ} compact={compact} />
       <div className={cn('min-w-0 flex-1', isRight && 'items-end')}>
         <div className={cn('flex items-baseline gap-2', isRight && 'flex-row-reverse')}>
-          <span className="whitespace-nowrap text-[15px] font-bold" style={{ color }}>
+          <span
+            className={cn('whitespace-nowrap font-semibold', compact ? 'text-[13px]' : 'text-[15px] font-bold')}
+            style={{ color }}
+          >
             {player.civ ? gameName(civDisplayName(player.civ)) : tt('Unknown')}
           </span>
           <span
             className={cn(
-              'flex min-w-0 items-center gap-1 text-[12px] text-white/85',
+              'flex min-w-0 items-center gap-1 text-white/80',
+              compact ? 'text-[11px]' : 'text-[12px]',
               isRight && 'flex-row-reverse',
             )}
           >
-            {player.isMe && (
+            {player.isMe && !compact && (
               <span className="rounded bg-primary/20 px-1 py-px text-[8px] font-semibold uppercase text-primary">
                 {tt('You')}
               </span>
@@ -221,14 +251,15 @@ function PlayerLine({
                 {tt('AI')}
               </span>
             )}
-            <span className="max-w-[150px] truncate">{player.name}</span>
+            <span className={compact ? 'max-w-[110px] truncate' : 'max-w-[150px] truncate'}>
+              {player.name}
+            </span>
+            {compact && player.rating != null && (
+              <span className="font-medium tabular-nums text-white/70">{formatRating(player.rating)}</span>
+            )}
           </span>
         </div>
-        {(rank ||
-          player.rating != null ||
-          player.winRate != null ||
-          player.favoriteCivs.length > 0 ||
-          winOdds != null) && (
+        {showMeta && (
           <div
             className={cn(
               'mt-1 flex items-center gap-2 text-[11px] text-white/65',
@@ -335,31 +366,45 @@ function TroopsCol({
   priority,
   align,
   label,
+  compact = false,
 }: {
   units: CivKeyUnit[]
   priority?: Set<string>
   align: 'left' | 'right'
-  label: string
+  label: string | null
+  compact?: boolean
 }) {
   if (units.length === 0) return <div className="max-w-[380px]" aria-hidden />
   const isRight = align === 'right'
   return (
-    <div className={cn('flex max-w-[430px] flex-col gap-1', isRight && 'items-end')}>
-      <span
-        className={cn('text-[10px] font-bold uppercase', isRight ? 'text-loss/85' : 'text-win/85')}
-      >
-        {label}
-      </span>
-      <div className={cn('flex items-start gap-1.5', isRight && 'flex-row-reverse')}>
+    <div className={cn('flex max-w-[430px] flex-col gap-0.5', isRight && 'items-end')}>
+      {label && (
+        <span
+          className={cn('text-[9px] font-medium uppercase tracking-wide', isRight ? 'text-loss/70' : 'text-win/70')}
+        >
+          {label}
+        </span>
+      )}
+      <div className={cn('flex items-start gap-1', isRight && 'flex-row-reverse')}>
         {units.map((u) => (
-          <UnitIcon key={u.name} unit={u} priority={priority?.has(u.name)} />
+          <UnitIcon key={u.name} unit={u} priority={priority?.has(u.name)} compact={compact} />
         ))}
       </div>
     </div>
   )
 }
 
-function UnitIcon({ unit, priority }: { unit: CivKeyUnit; priority?: boolean }) {
+function UnitIcon({
+  unit,
+  priority,
+  compact = false,
+}: {
+  unit: CivKeyUnit
+  priority?: boolean
+  compact?: boolean
+}) {
+  const { tt, gameName } = useI18n()
+  const label = gameName(unit.name)
   // Vendored icon first (bundled — instant, offline); the CDN self-heal chain
   // stays as the fallback for units added before the next vendoring run.
   const candidates = useMemo(() => {
@@ -371,34 +416,40 @@ function UnitIcon({ unit, priority }: { unit: CivKeyUnit; priority?: boolean }) 
   }, [unit.age, unit.icon])
   const [idx, setIdx] = useState(0)
   const broken = idx >= candidates.length
-  const ring = priority ? 'ring-2 ring-win' : 'ring-1 ring-white/15'
-  // The green ring means "hard-counters something they make" — NOT "build only
-  // this". Un-ringed units are still your civ's core army.
-  const title = priority ? `${unit.name} — counters one of their key units` : unit.name
+  const size = compact ? 'h-8 w-8' : 'h-10 w-10'
+  const ring = priority ? 'ring-1 ring-win' : 'ring-1 ring-white/10'
+  const title = priority
+    ? tt('{unit} — counters one of their key units').replace('{unit}', label)
+    : label
   return (
-    <div className="flex w-[62px] flex-col items-center gap-0.5" title={title}>
+    <div className={cn('flex flex-col items-center gap-0.5', compact ? 'w-9' : 'w-[56px]')} title={title}>
       {broken ? (
         <span
           className={cn(
-            'flex h-11 w-11 items-center justify-center rounded bg-white/10 px-0.5 text-center text-[8px] font-semibold leading-tight text-white/90',
+            'flex items-center justify-center rounded bg-white/10 px-0.5 text-center text-[7px] font-semibold leading-tight text-white/90',
+            size,
             ring,
           )}
         >
-          {unit.name}
+          {label}
         </span>
       ) : (
         <img
           key={candidates[idx]}
           src={candidates[idx]}
-          alt={unit.name}
+          alt={label}
           onError={() => setIdx((i) => i + 1)}
-          className={cn('h-11 w-11 rounded bg-black/40 object-contain', ring)}
+          className={cn('rounded bg-black/40 object-contain', size, ring)}
         />
       )}
-      <span className="h-[22px] w-full overflow-hidden text-center text-[9px] font-medium leading-[11px] text-white/80">
-        {unit.name}
-      </span>
-      <span className="text-[8px] font-bold leading-none text-white/55">{AGE_ROMAN[unit.age]}</span>
+      {!compact && (
+        <>
+          <span className="h-[18px] w-full overflow-hidden text-center text-[8px] font-medium leading-[9px] text-white/75">
+            {label}
+          </span>
+          <span className="text-[7px] font-semibold leading-none text-white/45">{AGE_ROMAN[unit.age]}</span>
+        </>
+      )}
     </div>
   )
 }
@@ -407,10 +458,12 @@ function LegacySide({
   side,
   align,
   winOdds,
+  compact = false,
 }: {
   side: MatchupSide
   align: 'left' | 'right'
   winOdds?: number | null
+  compact?: boolean
 }) {
   const { tt, gameName } = useI18n()
   const isRight = align === 'right'
@@ -418,6 +471,7 @@ function LegacySide({
   const rank =
     side.rankLevel && /[a-z]/i.test(side.rankLevel) ? tt(formatRankLevel(side.rankLevel)) : null
   const hasRow2 =
+    !compact &&
     !side.isAI &&
     (rank != null ||
       side.rating != null ||
@@ -427,25 +481,30 @@ function LegacySide({
   return (
     <div
       className={cn(
-        'flex items-center gap-3 px-4 py-2',
-        isRight ? 'flex-row-reverse rounded-l-xl' : 'rounded-r-xl',
+        'overlay-panel flex items-center',
+        compact ? 'gap-2 px-2 py-1' : 'gap-3 px-3 py-1.5',
+        isRight && 'flex-row-reverse',
       )}
       style={{
-        background: `linear-gradient(to ${isRight ? 'left' : 'right'}, ${panelBg(0.97)}, ${panelBg(0.82)}, ${panelBg(0.15)})`,
-        boxShadow: `inset ${isRight ? '-' : ''}3px 0 0 0 ${color}`,
+        background: panelBg(compact ? 0.5 : 0.7),
+        boxShadow: `inset ${isRight ? '-' : ''}2px 0 0 0 ${color}`,
       }}
     >
-      <CivFlag civ={side.civ} compact={false} />
-      <div className={cn('flex min-w-0 flex-col gap-1', isRight && 'items-end')}>
+      <CivFlag civ={side.civ} compact={compact} />
+      <div className={cn('flex min-w-0 flex-col gap-0.5', isRight && 'items-end')}>
         <div
-          className={cn('flex items-baseline gap-2 leading-none', isRight && 'flex-row-reverse')}
+          className={cn('flex items-baseline gap-1.5 leading-none', isRight && 'flex-row-reverse')}
         >
-          <span className="whitespace-nowrap text-[17px] font-bold" style={{ color }}>
+          <span
+            className={cn('whitespace-nowrap font-semibold', compact ? 'text-[13px]' : 'text-[15px] font-bold')}
+            style={{ color }}
+          >
             {side.civ ? gameName(civDisplayName(side.civ)) : tt('Unknown')}
           </span>
           <span
             className={cn(
-              'flex items-center gap-1 text-[12px] font-medium text-white/85',
+              'flex items-center gap-1 font-medium text-white/80',
+              compact ? 'text-[11px]' : 'text-[12px]',
               isRight && 'flex-row-reverse',
             )}
           >
@@ -454,21 +513,24 @@ function LegacySide({
                 {tt('AI')}
               </span>
             )}
-            <span className="max-w-[170px] truncate">
+            <span className={compact ? 'max-w-[120px] truncate' : 'max-w-[170px] truncate'}>
               {side.name ?? (isRight ? tt('Opponent') : tt('You'))}
             </span>
+            {compact && side.rating != null && (
+              <span className="tabular-nums text-white/70">{formatRating(side.rating)}</span>
+            )}
           </span>
         </div>
         {hasRow2 && (
           <div
             className={cn(
-              'flex items-center gap-2.5 text-[11px] leading-none text-white/75',
+              'flex items-center gap-2 text-[11px] leading-none text-white/70',
               isRight && 'flex-row-reverse',
             )}
           >
             {rank && <span className="whitespace-nowrap">{rank}</span>}
             {side.rating != null && (
-              <span className="whitespace-nowrap font-semibold tabular-nums text-white/90">
+              <span className="whitespace-nowrap font-semibold tabular-nums text-white/85">
                 {formatRating(side.rating)}
               </span>
             )}

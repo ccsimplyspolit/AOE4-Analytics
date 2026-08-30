@@ -24,7 +24,7 @@ export function PlayerSearch({ onSelect, placeholder, autoFocus }: PlayerSearchP
 
   const hits = data?.ok ? data.data : []
   const error = data && !data.ok ? data.error.message : null
-  const showResults = debounced.trim().length >= 3
+  const showResults = debounced.trim().length >= 2
 
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Escape') {

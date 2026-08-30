@@ -2,8 +2,10 @@ import { Notification } from 'electron'
 import { allPlayers, normalizeTeams, type Game } from '@api/types'
 import {
   evaluateLiveMatch,
+  attachLocalLiveMatchup,
   buildLiveMatchInfo,
   buildLiveMatchup,
+  type LiveMatchup,
   type LivePlayerSnapshot,
   type LiveMatchInfo,
 } from '@domain/liveMatch'
@@ -12,6 +14,7 @@ import { sessionSummary, type SessionSummary } from '@domain/session'
 import type { RankInfo } from '@domain/types'
 import type { GameClock } from '@domain/localStats'
 import { getClient, getHistoryStore, getMainWindow, getSettings } from './appContext'
+import { aoe4WorldOwnQuery } from './aoe4WorldAccess'
 import { analyzeRecentGames, listHistory } from './analysisService'
 import { IpcChannels, type PostGameSummary } from '../ipc/contract'
 import { getGameClock, getLiveTeamMatchup, getSessionState } from './localDataService'
@@ -128,6 +131,8 @@ export class PollManager {
    * custom match — stops re-reading the log on every tick of that same match.
    */
   private customMatchupResolved = false
+  /** Last warnings.log roster for the active custom/AI match, reused by the dashboard query. */
+  private liveCustomMatchup: LiveMatchup | null = null
   /** Cached LiveMatchInfo for the dashboard's getLiveMatch query (A3). */
   private currentLiveInfo: LiveMatchInfo = EMPTY_LIVE
   /** Cached session-today summary pushed with every overlay update. */
@@ -191,7 +196,11 @@ export class PollManager {
     let upstreamGame: Game | null = null
     if (profileId != null) {
       try {
-        upstreamGame = await getClient().getLastGame(profileId)
+        upstreamGame = await getClient().getLastGame(profileId, {
+          includeStats: true,
+          includeAlts: true,
+          ...aoe4WorldOwnQuery(profileId),
+        })
       } catch {
         upstreamGame = null
       }
@@ -200,8 +209,7 @@ export class PollManager {
     // 2. Local process check + session detector (local-data)
     const processRunning = await isGameRunning().catch(() => null)
     const sessionState = getSessionState(Boolean(processRunning))
-    const localInMatch =
-      sessionState === 'in-match' ? true : sessionState === 'menu' ? false : null
+    const localInMatch = sessionState === 'in-match' ? true : sessionState === 'menu' ? false : null
 
     // 3. Fused evaluation
     const evaluation = evaluateLiveMatch({
@@ -212,7 +220,8 @@ export class PollManager {
     })
 
     // 4. Update the cached query value for the dashboard
-    this.currentLiveInfo = buildLiveMatchInfo(upstreamGame, evaluation, processRunning, profileId)
+    const nextLiveInfo = buildLiveMatchInfo(upstreamGame, evaluation, processRunning, profileId)
+    this.currentLiveInfo = attachLocalLiveMatchup(nextLiveInfo, this.liveCustomMatchup)
 
     // 5. Update APM tracker match context
     if (this.apm) {
@@ -250,6 +259,7 @@ export class PollManager {
           this.shownGameId = gameId
           this.shownOppId = oppId
           this.liveCustomMatchId = null
+          this.liveCustomMatchup = null
           await this.onStarted({
             matchId: String(gameId ?? 'live'),
             opponentProfileId: oppId,
@@ -270,6 +280,7 @@ export class PollManager {
           this.liveCustomMatchId = `custom-live-${this.customMatchSeq}`
           this.lastCustomCivSig = null
           this.customMatchupResolved = false
+          this.liveCustomMatchup = null
           await this.onStarted({
             matchId: this.liveCustomMatchId,
             opponentProfileId: null,
@@ -292,6 +303,7 @@ export class PollManager {
       this.liveCustomMatchId = null
       this.lastCustomCivSig = null
       this.customMatchupResolved = false
+      this.liveCustomMatchup = null
       await this.onEnded(game)
     }
   }
@@ -329,13 +341,17 @@ export class PollManager {
       this.hideTimer = null
     }
     await this.refreshSession()
-    const kind = ctx.game ? kindLabel(ctx.game) : (ctx.custom ? 'Custom / AI' : null)
+    const kind = ctx.game ? kindLabel(ctx.game) : ctx.custom ? 'Custom / AI' : null
 
     // Native Windows Notification on new match found
     try {
       if (Notification.isSupported()) {
         const myCivStr = ctx.myCiv ? ctx.myCiv.toUpperCase() : 'Вы'
-        const oppCivStr = ctx.oppCiv ? ctx.oppCiv.toUpperCase() : (ctx.custom ? 'AI / Соперник' : 'Соперник')
+        const oppCivStr = ctx.oppCiv
+          ? ctx.oppCiv.toUpperCase()
+          : ctx.custom
+            ? 'AI / Соперник'
+            : 'Соперник'
         const mapStr = ctx.map ? ` (${ctx.map})` : ''
         const notif = new Notification({
           title: '⚔️ RTSLytics: Новый матч начался!',
@@ -454,13 +470,13 @@ export class PollManager {
     const myCiv = me?.civ ?? null
     const oppCiv = opp?.civ ?? null
     if (!matchup) return
+    this.liveCustomMatchup = matchup
+    this.currentLiveInfo = attachLocalLiveMatchup(this.currentLiveInfo, matchup)
     if (myCiv == null && oppCiv == null) return
     if (matchup.teams.length >= 2 && matchup.teams.flat().every((p) => p.civ != null)) {
       this.customMatchupResolved = true
     }
-    const sig = matchup.teams
-      .map((team) => team.map((p) => p.civ ?? '?').join(','))
-      .join('|')
+    const sig = matchup.teams.map((team) => team.map((p) => p.civ ?? '?').join(',')).join('|')
     if (sig === this.lastCustomCivSig) return
     this.lastCustomCivSig = sig
     this.overlay.sendUpdate({
@@ -536,9 +552,12 @@ export class PollManager {
     // Alt+O'd (or Settings-toggled) the overlay after the match ended, the
     // timed auto-hide backs off instead of clobbering their choice.
     const toggleSeqAtEnd = this.overlay.getManualToggleSeq()
-    this.hideTimer = setTimeout(() => {
-      if (this.overlay.getManualToggleSeq() === toggleSeqAtEnd) this.overlay.hide()
-    }, postGame ? POSTGAME_HIDE_MS : HIDE_AFTER_MS)
+    this.hideTimer = setTimeout(
+      () => {
+        if (this.overlay.getManualToggleSeq() === toggleSeqAtEnd) this.overlay.hide()
+      },
+      postGame ? POSTGAME_HIDE_MS : HIDE_AFTER_MS,
+    )
   }
 
   /** Bring the dashboard to the front, opened on the finished game's summary. */

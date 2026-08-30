@@ -64,6 +64,8 @@ export interface HistoryStore {
   listMatches(limit?: number): StoredMatch[]
   /** Newest non-hidden matches, limiting only after tombstones are excluded. */
   listVisibleMatches(limit?: number): StoredMatch[]
+  /** Row count without parsing JSON blobs. */
+  countMatches(): number
   /** Goals from the most recent match (the current targets), or []. */
   activeGoals(): Goal[]
   close(): void

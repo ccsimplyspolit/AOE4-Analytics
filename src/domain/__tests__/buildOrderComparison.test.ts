@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest'
-import { compareMatchPlayers, comparePlayerToBuild, selectReferenceBuild } from '../buildOrderComparison'
+import {
+  compareMatchPlayers,
+  comparePlayerToBuild,
+  overlayBuildForCiv,
+  selectLiveOverlayBuild,
+  selectReferenceBuild,
+} from '../buildOrderComparison'
 import type { BuildOrder } from '../buildOrderSchema'
 import type { PlayerSummary } from '../statsSummary'
 
@@ -198,6 +204,83 @@ describe('selectReferenceBuild', () => {
 
     expect(selection.reference?.name).toBe('VOD extracted opener')
     expect(selection.reason).toBe('video')
+  })
+})
+
+describe('selectLiveOverlayBuild', () => {
+  const mill: BuildOrder = {
+    ...reference,
+    name: 'Mill Hippodrome',
+    civilization: 'Byzantines',
+    opponentCivilization: ['English', 'Holy Roman Empire'],
+  }
+  const winery: BuildOrder = {
+    ...reference,
+    name: '3-stone Winery',
+    civilization: 'Byzantines',
+    opponentCivilization: ['French', "Jeanne d'Arc", 'Malians', 'Chinese'],
+  }
+  const generic: BuildOrder = {
+    ...reference,
+    name: '5 Cistern default',
+    civilization: 'Byzantines',
+    opponentCivilization: null,
+  }
+
+  it('keeps pool order when the opponent civ is still unknown', () => {
+    expect(
+      selectLiveOverlayBuild([generic, mill, winery], { civ: 'byzantines' })?.name,
+    ).toBe('5 Cistern default')
+  })
+
+  it('selects the mill build against spear-opener civs and Winery against French', () => {
+    expect(
+      selectLiveOverlayBuild([generic, mill, winery], {
+        civ: 'byzantines',
+        opponentCivilizations: ['english'],
+      })?.name,
+    ).toBe('Mill Hippodrome')
+    expect(
+      selectLiveOverlayBuild([generic, mill, winery], {
+        civ: 'byzantines',
+        opponentCivilizations: ['french'],
+      })?.name,
+    ).toBe('3-stone Winery')
+  })
+
+  it('matches display-name tags against live slugs', () => {
+    expect(
+      selectLiveOverlayBuild([generic, mill, winery], {
+        civ: 'byzantines',
+        opponentCivilizations: ['jeanne_darc'],
+      })?.name,
+    ).toBe('3-stone Winery')
+  })
+
+  it('falls back to an untagged civ default when no matchup tag lists the opponent', () => {
+    expect(
+      selectLiveOverlayBuild([mill, winery, generic], {
+        civ: 'byzantines',
+        opponentCivilizations: ['zhu_xis_legacy'],
+      })?.name,
+    ).toBe('5 Cistern default')
+  })
+
+  it('does not keep a Macedonian Dynasty pin when the live civ is Byzantines', () => {
+    const macedonian: BuildOrder = {
+      ...reference,
+      name: 'Makedonische Dynastie - Marinelord (FC)',
+      civilization: 'Macedonian Dynasty',
+    }
+    expect(
+      overlayBuildForCiv([macedonian, generic], [macedonian, generic], {
+        civ: 'byzantines',
+        selectedName: macedonian.name,
+      })?.name,
+    ).toBe('5 Cistern default')
+    expect(
+      selectLiveOverlayBuild([macedonian, generic], { civ: 'byzantines' })?.name,
+    ).toBe('5 Cistern default')
   })
 })
 

@@ -2,6 +2,7 @@ import type { Leaderboard } from '../api/types'
 import type { OverlayPosition } from '../domain/overlayBounds'
 import type { BuildOrder } from '../domain/buildOrderSchema'
 import { normalizeBuildOrder } from '../domain/buildOrderSchema'
+import { normalizeAccelerator } from '../domain/hotkeyAccel'
 import type { BuildPlaylist } from '../domain/buildPlaylists'
 import type { Store } from './Store'
 
@@ -37,9 +38,21 @@ export interface OverlaySettings {
   /**
    * Live on-screen APM counter. Uses a global input hook to count your key
    * presses + mouse clicks (counts only, never which keys) while you're in a
-   * match. Opt-out via this toggle.
+   * match. Off by default: unsigned low-level hooks can conflict with
+   * Easy Anti-Cheat and close the game. Opt in from Settings, ideally before
+   * launching AoE4.
    */
   apm: boolean
+  /**
+   * One-shot: older installs had live APM on by default. After this is true
+   * the user's APM choice is kept.
+   */
+  inputHookMigrated: boolean
+  /**
+   * One-shot: the overlay is now a quiet mini-HUD by default. After this is
+   * true the user's Mini-HUD choice is kept.
+   */
+  minimalHudMigrated: boolean
   /** Which screen corner the APM counter sits in. */
   apmCorner: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
   /**
@@ -380,7 +393,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
   buildPlaylists: [],
   activeBuildPlaylistId: null,
   overlay: {
-    opacity: 0.92,
+    opacity: 0.72,
     position: 'top-center',
     locked: true,
     showMatchup: true,
@@ -388,7 +401,9 @@ export const DEFAULT_SETTINGS: AppSettings = {
     showStatus: true,
     defaultBuildCiv: null,
     widgets: DEFAULT_OVERLAY_WIDGETS,
-    apm: true,
+    apm: false,
+    inputHookMigrated: true,
+    minimalHudMigrated: true,
     apmCorner: 'bottom-left',
     gateToGame: true,
     troopsPos: 'bar',
@@ -410,7 +425,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
     buildOrderPanelWidth: 340,
     buildOrderShowTitle: true,
     showEcoSplit: true,
-    miniHud: false,
+    miniHud: true,
     audioCues: true,
     audioCueVolume: 0.3,
     timingCheckpoints: true,
@@ -461,6 +476,14 @@ const LEADERBOARDS: readonly Leaderboard[] = [
   'qm_2v2',
   'qm_3v3',
   'qm_4v4',
+  'qm_ffa',
+  'rm_solo_console',
+  'rm_team_console',
+  'qm_1v1_console',
+  'qm_2v2_console',
+  'qm_3v3_console',
+  'qm_4v4_console',
+  'qm_ffa_console',
 ]
 const OVERLAY_POSITIONS = ['top-left', 'top-center', 'top-right', 'custom'] as const
 const APM_CORNERS = ['top-left', 'top-right', 'bottom-left', 'bottom-right'] as const
@@ -680,6 +703,8 @@ function sanitizeOverlay(v: unknown): Partial<OverlaySettings> | undefined {
     if (w) out.widgets = w as OverlayWidgets
   }
   if ('apm' in v) out.apm = Boolean(v.apm)
+  if ('inputHookMigrated' in v) out.inputHookMigrated = Boolean(v.inputHookMigrated)
+  if ('minimalHudMigrated' in v) out.minimalHudMigrated = Boolean(v.minimalHudMigrated)
   if ('apmCorner' in v) {
     const s = oneOf(v.apmCorner, APM_CORNERS)
     if (s) out.apmCorner = s
@@ -769,23 +794,13 @@ function sanitizeOverlay(v: unknown): Partial<OverlaySettings> | undefined {
   return out
 }
 
-/** Electron accelerator modifier tokens (the key part is not strictly validated). */
-const ACCEL_MODIFIER =
-  /^(commandorcontrol|cmdorctrl|command|cmd|control|ctrl|alt|option|altgr|shift|super|meta)$/i
-
 /**
- * Validates a hotkey as "Modifier+...+Key": at least one modifier (so a global
+ * Validates a hotkey as "Modifier+…+Key": at least one modifier (so a global
  * shortcut can't hijack a bare letter system-wide) and a non-modifier final key.
- * Whitespace around `+` is tolerated and normalized away. undefined = invalid.
+ * Aliases such as Ctrl/Control are folded to a canonical Electron accelerator.
  */
 function sanitizeHotkey(v: unknown): string | undefined {
-  if (typeof v !== 'string') return undefined
-  const parts = v.split('+').map((p) => p.trim())
-  if (parts.length < 2 || parts.some((p) => p === '')) return undefined
-  const key = parts[parts.length - 1]!
-  if (ACCEL_MODIFIER.test(key)) return undefined
-  if (!parts.slice(0, -1).every((m) => ACCEL_MODIFIER.test(m))) return undefined
-  return parts.join('+')
+  return normalizeAccelerator(v)
 }
 
 function sanitizeHotkeys(v: unknown): Partial<HotkeySettings> | undefined {
@@ -1022,6 +1037,31 @@ export class SettingsService {
     if (merged.accounts.length === 0 && merged.profileId != null) {
       merged.accounts = [{ profileId: merged.profileId, name: merged.playerName ?? 'Player' }]
     }
+    // Existing overlay settings had live APM (global WH_KEYBOARD_LL hook) on
+    // by default. Turn it off once; later opt-in is kept via the flag.
+    const storedOverlay = stored.overlay
+    let overlayDirty = false
+    if (
+      storedOverlay != null &&
+      typeof storedOverlay === 'object' &&
+      (storedOverlay as { inputHookMigrated?: unknown }).inputHookMigrated !== true
+    ) {
+      merged.overlay.apm = false
+      merged.overlay.inputHookMigrated = true
+      overlayDirty = true
+    }
+    // Existing installs used a dense dashboard overlay. Flip them to the quiet
+    // mini-HUD once; later opt-out is kept via the flag.
+    if (
+      storedOverlay != null &&
+      typeof storedOverlay === 'object' &&
+      (storedOverlay as { minimalHudMigrated?: unknown }).minimalHudMigrated !== true
+    ) {
+      merged.overlay.miniHud = true
+      merged.overlay.minimalHudMigrated = true
+      overlayDirty = true
+    }
+    if (overlayDirty) this.store.set(KEY, merged)
     return merged
   }
 

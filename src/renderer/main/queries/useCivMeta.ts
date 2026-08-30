@@ -3,20 +3,48 @@ import { ipc } from '@shared/ipc'
 import type { CivMetaQuery, MatchupLabQuery } from '@ipc/contract'
 import { isGlobalMatchupLeaderboard } from '@domain/matchupLab'
 
+function civMetaKey(query: CivMetaQuery, phase: 'overview' | 'pool') {
+  return [
+    'civMeta',
+    phase,
+    query.leaderboard ?? 'rm_solo',
+    query.rankLevel ?? 'all',
+    query.rating ?? 'all-ratings',
+    query.patch ?? 'current',
+    query.mapId ?? 'all-maps',
+    query.mapPoolOnly ?? false,
+  ] as const
+}
+
 export function useCivMeta(query: CivMetaQuery) {
-  return useQuery({
-    queryKey: [
-      'civMeta',
-      query.leaderboard ?? 'rm_solo',
-      query.rankLevel ?? 'all',
-      query.rating ?? 'all-ratings',
-      query.patch ?? 'current',
-      query.mapId ?? 'all-maps',
-      query.mapPoolOnly ?? false,
-    ],
-    queryFn: () => ipc.getCivMeta(query),
+  const overview = useQuery({
+    queryKey: civMetaKey(query, 'overview'),
+    queryFn: () => ipc.getCivMeta({ ...query, includePoolRankings: false }),
     staleTime: 6 * 60 * 60_000,
   })
+  const pooled = useQuery({
+    queryKey: civMetaKey(query, 'pool'),
+    queryFn: () => ipc.getCivMeta({ ...query, includePoolRankings: true }),
+    enabled: query.mapPoolOnly === true && query.mapId == null,
+    staleTime: 6 * 60 * 60_000,
+  })
+
+  return {
+    data: pooled.data?.ok ? pooled.data : overview.data,
+    isLoading: overview.isLoading,
+    isFetching: overview.isFetching || pooled.isFetching,
+    isPooling:
+      query.mapPoolOnly === true &&
+      query.mapId == null &&
+      pooled.isFetching &&
+      overview.data?.ok === true,
+    isError: overview.isError,
+    error: overview.error,
+    refetch: () => {
+      void overview.refetch()
+      if (query.mapPoolOnly === true && query.mapId == null) void pooled.refetch()
+    },
+  }
 }
 
 export function useRankedMapPool() {

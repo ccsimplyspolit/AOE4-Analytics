@@ -27,6 +27,14 @@ export type Leaderboard =
   | 'qm_2v2'
   | 'qm_3v3'
   | 'qm_4v4'
+  | 'qm_ffa'
+  | 'rm_solo_console'
+  | 'rm_team_console'
+  | 'qm_1v1_console'
+  | 'qm_2v2_console'
+  | 'qm_3v3_console'
+  | 'qm_4v4_console'
+  | 'qm_ffa_console'
 
 export type StatsLeaderboard =
   'rm_solo' | 'qm_1v1' | 'rm_2v2' | 'rm_3v3' | 'rm_4v4' | 'qm_2v2' | 'qm_3v3' | 'qm_4v4'
@@ -76,6 +84,23 @@ export interface ModeStats {
   season?: number | null
   civilizations?: ModeCivStat[]
   rating_history?: Record<string, unknown> | unknown[]
+  previous_seasons?: PreviousSeasonStats[]
+}
+
+/** A finished season row nested under a current-mode payload. */
+export interface PreviousSeasonStats {
+  rating?: number | null
+  rank?: number | null
+  rank_level?: RankLevel | null
+  streak?: number | null
+  games_count?: number
+  wins_count?: number
+  losses_count?: number
+  disputes_count?: number
+  drops_count?: number
+  last_game_at?: string | null
+  win_rate?: number | null
+  season?: number | null
 }
 
 export type Modes = Partial<Record<string, ModeStats>>
@@ -124,6 +149,58 @@ export interface Paginated {
 
 export interface SearchResponse extends Paginated {
   players: SearchPlayer[]
+}
+
+export interface AutocompletePlayer {
+  name: string
+  profile_id: number
+  steam_id?: string | null
+  country?: string | null
+  avatars?: Avatars
+  rating?: number | null
+  rank?: number | null
+  rank_level?: RankLevel | null
+  streak?: number | null
+  games_count?: number
+  wins_count?: number
+  losses_count?: number
+  win_rate?: number | null
+  last_game_at?: string | null
+  site_url?: string
+}
+
+export interface AutocompleteResponse {
+  query: string
+  leaderboard: string
+  count: number
+  players: AutocompletePlayer[]
+}
+
+export interface EsportsLeaderboardPlayer {
+  name: string
+  profile_id: number
+  tournament_player_id?: number
+  liquipedia_name?: string | null
+  country?: string | null
+  social?: Social
+  rating: number
+  max_rating?: number | null
+  rank: number
+  active_rank?: number | null
+  is_active?: boolean
+  games_count?: number
+  wins_count?: number
+  losses_count?: number
+  win_rate?: number | null
+  last_game_at?: string | null
+  site_url?: string
+}
+
+export interface EsportsLeaderboardResponse extends Paginated {
+  key?: number | string
+  name?: string
+  site_url?: string
+  players: EsportsLeaderboardPlayer[]
 }
 
 /** A participant in a game. On `games/last` it also carries the embedded profile. */

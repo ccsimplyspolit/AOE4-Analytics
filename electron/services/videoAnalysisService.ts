@@ -21,6 +21,7 @@ import type { IpcResult } from '@ipc/contract'
 import { err, ok } from './result'
 import { saveVideoAnalysis } from './videoAnalysisStore'
 import { getTwitchApiHeaders, getYouTubeApiKey } from './externalApiService'
+import { ensureNeoDlpPotServer, getNeoDlpToolchain, ytdlpCommandQueue } from './neoDlpToolchain'
 
 type CaptionTrack = {
   baseUrl: string
@@ -485,7 +486,8 @@ function parseVtt(raw: string): VideoTranscriptSegment[] {
 async function ytdlpCaptions(url: string): Promise<CaptionResult> {
   const dir = await mkdtemp(join(tmpdir(), 'rtslytics-video-'))
   const output = join(dir, '%(id)s.%(ext)s')
-  const executable = process.platform === 'win32' ? 'yt-dlp.exe' : 'yt-dlp'
+  const toolchain = getNeoDlpToolchain()
+  if (toolchain) await ensureNeoDlpPotServer(toolchain)
   try {
     const args = [
       '--skip-download',
@@ -500,18 +502,12 @@ async function ytdlpCaptions(url: string): Promise<CaptionResult> {
       output,
       url,
     ]
-    const commands: Array<{ command: string; prefix: string[] }> = [
-      { command: executable, prefix: [] },
-      {
-        command: process.platform === 'win32' ? 'python.exe' : 'python3',
-        prefix: ['-m', 'yt_dlp'],
-      },
-    ]
-    for (const candidate of commands) {
+    for (const candidate of ytdlpCommandQueue(toolchain)) {
       await new Promise<void>((resolve) => {
-        const child = spawn(candidate.command, [...candidate.prefix, ...args], {
+        const child = spawn(candidate.command, [...candidate.prefix, ...candidate.extraArgs, ...args], {
           windowsHide: true,
           stdio: 'ignore',
+          env: candidate.env,
         })
         const timer = setTimeout(() => {
           child.kill()

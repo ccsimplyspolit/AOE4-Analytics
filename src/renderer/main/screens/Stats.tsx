@@ -1,12 +1,11 @@
 import { useMemo, useState, type ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import {
   BarChart3,
   Clock,
   Map as MapIcon,
   Swords,
   Hourglass,
-  RefreshCw,
   Download,
   ChevronRight,
   Filter,
@@ -17,8 +16,11 @@ import { filterPersonalHistory } from '@domain/historyFilters'
 import { resourcesPerMinute, resultFromPerPlayer, villagersPerMinute } from '@domain/analysis'
 import type { BenchmarkGame } from '@domain/benchmarkLens'
 import { computePlayerStats, type Breakdown, type StatGame } from '@domain/playerStats'
+import { buildPlayerDossier } from '@domain/playerDossier'
+import { buildSelfCoachReport } from '@domain/selfCoachReport'
+import { buildTeamCoachReport } from '@domain/teamCoachReport'
+import { selectCreatorMatchCoach } from '@domain/creatorVideoCoach'
 import { computeStatsCoverage, type StatsCoverage } from '@domain/statsCoverage'
-import { computePlaystyle, type PlaystyleGame } from '@domain/playstyle'
 import {
   computeProfileOverview,
   type PerformanceTiles,
@@ -36,20 +38,25 @@ import {
   useFullHistory,
   useAnalyzeRecent,
   useMatchCorpusReport,
+  useMatchSummaries,
 } from '../queries/useHistory'
 import { useDashboard, useSettings, useUpdateSettings } from '../queries/useProfile'
 import { WinRateBar } from '../components/WinRateBar'
 import { RatingChart } from '../components/RatingChart'
-import { PlaystyleRadar } from '../components/PlaystyleRadar'
 import { StatTile } from '../components/StatTile'
-import { CivOverviewTable, ProfileIdentityCard } from '../components/ProfileOverview'
+import { PlayerAnalyticsCard } from '../components/PlayerAnalyticsCard'
+import { CoachDossierPanel } from '../components/CoachDossierPanel'
+import { CreatorVideoLessonPanel } from '../components/CreatorVideoLessonPanel'
+import { PlayerWorldOverview } from '../components/PlayerWorldOverview'
 import { PageHead } from '../components/PageHead'
 import { BenchmarkLens } from '../components/BenchmarkLens'
-import { EmptyBox, Spinner, ErrorBox } from '../components/feedback'
+import { EmptyBox, Spinner, ErrorBox, AutoBusy } from '../components/feedback'
 import { CorpusAnalysisCard } from '../components/CorpusAnalysisCard'
 import { useI18n } from '../../i18n'
+import { useAutoAction } from '../hooks/useAutoAction'
 
-export function Stats() {
+/** Full local-history analytics. Also rendered when `/profile/:id` is the signed-in account. */
+export function OwnPlayerStats() {
   const { tt, gameName } = useI18n()
   const { data, isLoading, refetch } = useFullHistory()
   const { data: settings } = useSettings()
@@ -57,6 +64,9 @@ export function Stats() {
   const { data: buildAudit } = useBuildAuditHistory()
   const analyze = useAnalyzeRecent()
   const corpus = useMatchCorpusReport()
+  useAutoAction('sync-history', () => analyze.mutateAsync(undefined), {
+    enabled: settings?.profileId != null,
+  })
   const updateSettings = useUpdateSettings()
   const [range, setRange] = useState<StatsRange>('all')
   const [civFilter, setCivFilter] = useState('all')
@@ -134,15 +144,7 @@ export function Stats() {
               <Filter className="h-3.5 w-3.5" />
               {excludeAi ? tt('Practice games hidden') : tt('Hide AI / custom')}
             </button>
-            <button
-              type="button"
-              onClick={() => analyze.mutate(undefined)}
-              disabled={analyze.isPending}
-              className="inline-flex items-center gap-2 rounded-sm bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-60"
-            >
-              <RefreshCw className={cn('h-3.5 w-3.5', analyze.isPending && 'animate-spin')} />
-              {analyze.isPending ? tt('Analyzing…') : tt('Sync all account games')}
-            </button>
+            {analyze.isPending ? <AutoBusy label="Syncing account games…" /> : null}
             <button
               type="button"
               disabled={matches.length === 0}
@@ -182,19 +184,6 @@ export function Stats() {
         civLabel={(value) => gameName(civDisplayName(value))}
       />
 
-      <CorpusAnalysisCard
-        report={corpus.data?.ok ? corpus.data.data : null}
-        isPending={corpus.isPending}
-        error={
-          corpus.data && !corpus.data.ok
-            ? corpus.data.error.message
-            : corpus.error instanceof Error
-              ? corpus.error.message
-              : null
-        }
-        onRun={() => corpus.mutate(undefined)}
-      />
-
       {isLoading && <Spinner />}
       {!isLoading && data && !data.ok && (
         <ErrorBox message={data.error.message} onRetry={() => refetch()} />
@@ -211,10 +200,23 @@ export function Stats() {
             <p className="text-xs">
               {historyMatches.length > 0
                 ? tt('Broaden the view or reset the filters.')
-                : tt('Click “Sync all account games” to pull and analyze your matches.')}
+                : tt('Account games are syncing automatically.')}
             </p>
           </div>
         </EmptyBox>
+      )}
+
+      {!isLoading && matches.length > 0 && settings?.profileId != null && (
+        <PlayerAnalyticsCard
+          identity={{
+            profileId: settings.profileId,
+            name: dash?.ok ? dash.data.name : (settings.playerName ?? 'You'),
+            country: dash?.ok ? dash.data.country : null,
+            primary: dash?.ok ? dash.data.primary : null,
+          }}
+          localMatches={matches}
+          activeProfileId={settings.profileId}
+        />
       )}
 
       {!isLoading && matches.length > 0 && (
@@ -225,12 +227,57 @@ export function Stats() {
           identity={
             dash?.ok
               ? { name: dash.data.name, country: dash.data.country, primary: dash.data.primary }
-              : null
+              : settings?.playerName
+                ? { name: settings.playerName, country: null, primary: null }
+                : null
           }
         />
       )}
+
+      {!isLoading && dash?.ok && (
+        <PlayerWorldOverview
+          profileId={dash.data.profileId}
+          name={dash.data.name}
+          country={dash.data.country}
+          avatarUrl={dash.data.avatarUrl}
+          steamId={dash.data.steamId}
+          social={dash.data.social}
+          lastGameAt={dash.data.lastGameAt}
+          siteUrl={dash.data.siteUrl}
+          modes={dash.data.modes}
+          modeCivGroups={dash.data.modeCivGroups}
+          ratingHistories={dash.data.ratingHistories}
+          teammates={dash.data.teammates}
+          opponents={dash.data.opponents}
+          maps={dash.data.maps}
+          previousSeasons={dash.data.previousSeasons}
+        />
+      )}
+
+      <CorpusAnalysisCard
+        report={corpus.data?.ok ? corpus.data.data : null}
+        isPending={corpus.isPending}
+        error={
+          corpus.data && !corpus.data.ok
+            ? corpus.data.error.message
+            : corpus.error instanceof Error
+              ? corpus.error.message
+              : null
+        }
+        onRun={() => corpus.mutate(undefined)}
+        auto={false}
+      />
     </div>
   )
+}
+
+/** Nav `/stats` is an alias of the unified player-stats endpoint. */
+export function Stats() {
+  const { data: settings } = useSettings()
+  if (settings?.profileId != null) {
+    return <Navigate to={`/profile/${settings.profileId}`} replace />
+  }
+  return <OwnPlayerStats />
 }
 
 type StatsRange = 'all' | '30d' | '90d' | 'year'
@@ -399,6 +446,9 @@ function Content({
   identity: { name: string; country: string | null; primary: RankInfo | null } | null
 }) {
   const { tt } = useI18n()
+  const summaryIds = useMemo(() => matches.slice(0, 24).map((m) => m.id), [matches])
+  const summariesQuery = useMatchSummaries(summaryIds)
+  const summariesByMatchId = summariesQuery.data
   const s = useMemo(() => {
     const games: StatGame[] = matches.map((m) => ({
       result: displayedResult(m, profileId),
@@ -411,26 +461,6 @@ function Content({
       playedAt: m.playedAt,
     }))
     return computePlayerStats(games, { civLabel: civDisplayName })
-  }, [matches, profileId])
-
-  const playstyle = useMemo(() => {
-    const playstyleGames: PlaystyleGame[] = matches.map((m) => {
-      const mine = m.perPlayer?.find((p) => p.profileId === profileId)
-      return {
-        result: displayedResult(m, profileId),
-        civ: m.civ,
-        durationSec: m.durationSec,
-        apm: mine?.apm ?? m.analysis.apm,
-        // A grade from a 0-villager parse-miss game is bogus — don't feed it to the radar.
-        grade: (m.local?.villagersProduced ?? 0) > 0 ? m.analysis.grade : null,
-        local: m.local,
-        kd: mine?.kd ?? null,
-        deaths: mine?.deaths ?? null,
-        unitsProduced: mine?.unitsProduced ?? null,
-        techsResearched: mine?.techsResearched ?? null,
-      }
-    })
-    return computePlaystyle(playstyleGames)
   }, [matches, profileId])
 
   const overview = useMemo(() => {
@@ -456,6 +486,47 @@ function Content({
     return computeTrends(trendGames)
   }, [matches, profileId])
 
+  const dossier = useMemo(() => {
+    if (profileId == null) return null
+    const games: StatGame[] = matches.map((m) => ({
+      result: displayedResult(m, profileId),
+      civ: m.civ,
+      oppCiv: m.oppCiv,
+      map: m.map,
+      durationSec: m.durationSec,
+      ratingDiff: m.ratingDiff,
+      format: m.format,
+      playedAt: m.playedAt,
+    }))
+    return buildPlayerDossier(games, profileId)
+  }, [matches, profileId])
+
+  const selfCoach = useMemo(() => {
+    if (profileId == null) return null
+    return buildSelfCoachReport({
+      profileId,
+      playerName: identity?.name ?? 'You',
+      voice: 'you',
+      localMatches: matches,
+      summariesByMatchId,
+    })
+  }, [identity?.name, matches, profileId, summariesByMatchId])
+
+  const teamCoach = useMemo(() => {
+    if (profileId == null) return null
+    return buildTeamCoachReport({
+      subjectProfileId: profileId,
+      subjectName: identity?.name ?? 'You',
+      localMatches: matches,
+      summariesByMatchId,
+    })
+  }, [identity?.name, matches, profileId, summariesByMatchId])
+  const videoCoach = useMemo(() => {
+    const civ = dossier?.civPool[0]?.key ?? matches[0]?.civ ?? null
+    const opp = matches[0]?.oppCiv ?? null
+    return selectCreatorMatchCoach(civ, opp)
+  }, [dossier, matches])
+
   const r = s.recent2w
   const recentWr = r.wins + r.losses > 0 ? Math.round((r.wins / (r.wins + r.losses)) * 100) : null
   const coverage = useMemo(() => computeStatsCoverage(matches, profileId), [matches, profileId])
@@ -479,19 +550,13 @@ function Content({
 
   return (
     <>
-      <div className="grid gap-4 lg:grid-cols-[300px_minmax(0,1fr)]">
-        <ProfileIdentityCard
-          identity={identity}
-          totalGames={s.totalGames}
-          wins={s.wins}
-          losses={s.losses}
-          winRate={s.winRate}
-          longestWinStreak={s.longestWinStreak}
-          longestLossStreak={s.longestLossStreak}
-          tags={playstyle.tags}
-        />
-        <PlaystyleRadar profile={playstyle} showTags={false} />
-      </div>
+      {selfCoach && (
+        <CoachDossierPanel self={selfCoach} team={teamCoach} foldable foldId="stats-coach-dossier" />
+      )}
+      <CreatorVideoLessonPanel
+        picks={[...videoCoach.forPlayer, ...videoCoach.sharedFundamentals]}
+        title={tt('Valdemar & Beastyqt lessons for your civ')}
+      />
 
       {/* One performance panel: averages, the rating curve, and the recent-
           fortnight record — instead of three stacked cards. */}
@@ -522,8 +587,6 @@ function Content({
       <StatsCoverageCard coverage={coverage} />
 
       <BuildAuditHistoryCard rows={buildAuditRows} />
-
-      <CivOverviewTable rows={overview.civs} />
 
       <details className="group rounded-lg border border-border/70 bg-background/30">
         <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm font-semibold [&::-webkit-details-marker]:hidden">
@@ -694,7 +757,7 @@ function BuildAuditHistoryCard({ rows }: { rows: BuildAuditHistoryRow[] }) {
                       {relativeTime(row.playedAt)}
                     </td>
                     <td className="px-2 py-2">{gameName(civDisplayName(row.civ))}</td>
-                    <td className="px-2 py-2 text-muted-foreground">{row.map || '—'}</td>
+                    <td className="px-2 py-2 text-muted-foreground">{row.map ? gameName(row.map) : '—'}</td>
                     <td className="max-w-[220px] truncate px-2 py-2 text-muted-foreground">
                       {row.referenceBuild ?? tt('No compatible build')}
                     </td>
@@ -857,10 +920,11 @@ function BreakdownCard({
 }
 
 function WinRateRow({ b }: { b: Breakdown }) {
+  const { gameName } = useI18n()
   return (
     <div className="space-y-1">
       <div className="flex items-baseline justify-between gap-2 text-sm">
-        <span className="truncate">{b.label}</span>
+        <span className="truncate">{gameName(b.label)}</span>
         <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
           {b.games}g · {b.wins}–{b.losses}
         </span>
@@ -930,7 +994,7 @@ function MatchCard({ match, profileId }: { match: StoredMatch; profileId: number
             </div>
             <div className="truncate text-xs text-muted-foreground">
               {match.format ? `${match.format} · ` : ''}
-              {match.map} · {formatDurationShort(match.durationSec)} ·{' '}
+              {match.map ? gameName(match.map) : '—'} · {formatDurationShort(match.durationSec)} ·{' '}
               {tt(relativeTime(match.playedAt))}
             </div>
           </div>

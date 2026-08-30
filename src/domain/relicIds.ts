@@ -59,6 +59,22 @@ export function leaderboardLabel(id: number): string {
   return RELIC_LEADERBOARD_LABEL[id] ?? `Leaderboard ${id}`
 }
 
+/** Relic leaderboard_id → AoE4World-style key so Relic rows merge with `rm_*` / `qm_*`. */
+export const RELIC_LEADERBOARD_KEY: Record<number, string> = {
+  1: 'rm_solo',
+  2: 'rm_2v2',
+  3: 'rm_3v3',
+  4: 'rm_4v4',
+  17: 'qm_1v1',
+  18: 'qm_2v2',
+  19: 'qm_3v3',
+  20: 'qm_4v4',
+}
+
+export function leaderboardKey(id: number): string {
+  return RELIC_LEADERBOARD_KEY[id] ?? leaderboardLabel(id)
+}
+
 /** Competitive ladders worth showing as a player's "modes" (ranked + QM). */
 const COMPETITIVE_LEADERBOARDS = new Set([1, 2, 3, 4, 17, 18, 19, 20])
 export function isCompetitiveLeaderboard(id: number): boolean {

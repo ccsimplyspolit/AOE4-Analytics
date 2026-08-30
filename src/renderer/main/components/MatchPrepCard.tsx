@@ -4,7 +4,8 @@ import { ChevronRight, Swords } from 'lucide-react'
 import type { StoredMatch } from '@store/historyStore'
 import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
 import { resultFromPerPlayer } from '@domain/analysis'
-import { buildIndexForCiv, condenseBuildOrder, type BuildKeyTiming } from '@domain/buildOrderSchema'
+import { condenseBuildOrder, type BuildKeyTiming } from '@domain/buildOrderSchema'
+import { selectLiveOverlayBuild } from '@domain/buildOrderComparison'
 import { matchupTroops, type CivKeyUnit } from '@domain/civUnits'
 import { landmarksForCiv } from '@domain/landmarks'
 import { civDisplayName } from '@domain/civ'
@@ -43,13 +44,15 @@ export function MatchPrepCard({ matches }: { matches: StoredMatch[] }) {
   }, [matches, profileId])
 
   const liveOppCiv = live?.isLive && !live.custom ? (live.opponent?.civ ?? null) : null
-  const myCiv = (live?.isLive ? live.myCiv : null) ?? stats.byCiv[0]?.key ?? null
+  const myCiv = live?.isLive ? (live.myCiv ?? null) : (stats.byCiv[0]?.key ?? null)
   const oppCiv = liveOppCiv ?? stats.byOppCiv[0]?.key ?? null
 
   if (!myCiv) return null
 
-  const buildIdx = buildIndexForCiv(BUNDLED_BUILD_ORDERS, myCiv)
-  const build = buildIdx != null ? BUNDLED_BUILD_ORDERS[buildIdx]! : null
+  const build = selectLiveOverlayBuild(BUNDLED_BUILD_ORDERS, {
+    civ: myCiv,
+    opponentCivilizations: oppCiv ? [oppCiv] : [],
+  })
   const timings = build ? condenseBuildOrder(build) : []
   const landmarks = landmarksForCiv(myCiv)
   const troops = matchupTroops(myCiv, oppCiv)

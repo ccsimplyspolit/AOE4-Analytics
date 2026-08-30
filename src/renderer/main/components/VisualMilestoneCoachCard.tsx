@@ -14,7 +14,6 @@ import {
 import {
   VALDEMAR_MILESTONES_BY_CIV,
 } from '@data/valdemarVisualMilestones.generated'
-import { civDisplayName } from '@domain/civ'
 import { Badge } from '@shared/components/ui/badge'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { useI18n } from '../../i18n'
@@ -28,7 +27,7 @@ export function VisualMilestoneCoachCard({
   targetSecond?: number
   className?: string
 }) {
-  const { locale } = useI18n()
+  const { locale, gameName } = useI18n()
   const isRu = locale === 'ru'
 
   const milestones = useMemo(() => {
@@ -83,7 +82,7 @@ export function VisualMilestoneCoachCard({
                     : 'Valdemar Visual Milestone & Base Blueprint'}
                 </h3>
                 <Badge variant="outline" className="text-[10px] font-mono">
-                  {civDisplayName(civ)}
+                  {gameName(civ)}
                 </Badge>
               </div>
               <p className="mt-0.5 text-xs text-muted-foreground">

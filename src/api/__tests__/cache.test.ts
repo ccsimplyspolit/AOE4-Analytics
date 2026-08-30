@@ -43,7 +43,15 @@ describe('DiskCache', () => {
     const cache = makeCache()
     cache.set('key1', { n: 1 })
     writeFileSync(cache.pathFor('key1'), '{ this is not json', 'utf8')
-    expect(cache.get('key1', 5000)).toBeNull()
+    const cold = makeCache()
+    expect(cold.get('key1', 5000)).toBeNull()
+  })
+
+  it('serves a second get from memory without depending on a later disk rewrite', () => {
+    const cache = makeCache()
+    cache.set('hot', { n: 7 })
+    expect(cache.get<{ n: number }>('hot', 5000)).toEqual({ n: 7 })
+    expect(cache.get<{ n: number }>('hot', 5000)).toEqual({ n: 7 })
   })
 
   it('different keys do not collide', () => {

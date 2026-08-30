@@ -1,0 +1,141 @@
+{
+  "name": "Golden Horde best 2TC in 6min",
+  "civilization": "Golden Horde",
+  "author": "Skimsh",
+  "source": "https://aoe4guides.com/builds/HVKBR95daLKot8GKK5Hz",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 2,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@resource/rally.webp@ to@resource/resource_food.webp@ then 2@unit_worker/villager-mongols.webp@on@resource/sheep.webp@, 1 build @building_mongols/ovoo.webp@, 1 build@building_mongols/ger.webp@, 1 build@landmark_golden_horde/golden_tent.webp@ then all 3 builders go to@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you have 200@resource/resource_gold.webp@ transfer @resource/resource_gold.webp@@unit_worker/villager-mongols.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you have 11 on @resource/resource_food.webp@, @resource/rally.webp@ on @resource/gaiatreeprototypetree.webp@ (Send villagers on different trees)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with either @technology_golden_horde/khan-and-torguuds.webp@ or @technology_golden_horde/golden_tent_building_carts_age2.webp@ (Transfer 6 @resource/resource_food.webp@@unit_worker/villager-mongols.webp@ to @resource/resource_wood.webp@ only after queueing next batch)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 21,
+      "resources": {
+        "food": 5,
+        "wood": 16,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After age up queue @unit_golden_horde/khan.webp@and @unit_golden_horde/torguud.webp@",
+        "Age up will finish before you have enough@resource/resource_wood.webp@ keep gathering and",
+        "use @unit_golden_horde/khan.webp@ and @unit_golden_horde/torguud.webp@ to defend or harass"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 23,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 16
+      },
+      "notes": [
+        "Once you have enough @resource/resource_wood.webp@ power build 2nd@building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 13,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Re-macro then adapt to your game."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "This is the fastest golden horde 2nd TC with Khan and Torguuds to start harassing or defend.",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Boom",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-22T21:13:45Z",
+  "updatedAt": "2026-08-22T21:13:45Z",
+  "patch": "16.3.11308"
+}

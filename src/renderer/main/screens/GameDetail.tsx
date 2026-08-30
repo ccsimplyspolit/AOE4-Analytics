@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { ArrowLeft, CheckCircle2, Download, ExternalLink, RefreshCw, ScanLine, Share2, Trash2 } from 'lucide-react'
+import { ArrowLeft, CheckCircle2, ExternalLink, RefreshCw, ScanLine, Share2, Trash2 } from 'lucide-react'
 import type { StoredMatch } from '@store/historyStore'
 import type { AppSettings } from '@store/settings'
 import type { FullReplayAnalysis } from '@ipc/contract'
@@ -24,16 +24,15 @@ import { formatDurationShort, relativeTime } from '@shared/format'
 import { cn } from '@shared/lib/utils'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
-import { ipc } from '@shared/ipc'
 import { useDeleteMatch, useGameSummary, useHistory } from '../queries/useHistory'
 import { useDownloadAndAnalyzeReplay, useReplayAnalysis } from '../queries/useReplays'
 import { useSettings } from '../queries/useProfile'
+import { cachePlayerArchiveOnce } from '../hooks/useAutoAction'
 import { GameSummaryPanel } from '../components/GameSummaryPanel'
 import { BuildOrderComparisonCard } from '../components/BuildOrderComparisonCard'
 import { BuildTrainerCard } from '../components/BuildTrainerCard'
 import { ReplayAnalysisPanel } from './ReplayLab'
-import { TurningPointStory } from '../components/TurningPointStory'
-import { FirstCauseReviewCard } from '../components/FirstCauseReviewCard'
+import { MatchNarrativeCard } from '../components/MatchNarrativeCard'
 import { TwitchVodCard } from '../components/TwitchVodCard'
 import { VideoAnalysisPanel } from '../components/VideoAnalysisPanel'
 import { AutoGameplayCard } from '../components/AutoGameplayCard'
@@ -45,17 +44,17 @@ import { useTwitchVod } from '../queries/useTwitchVod'
 import { SimilarMatchCard } from '../components/SimilarMatchCard'
 import { TeamMateReviewCard } from '../components/TeamMateReviewCard'
 import { ValdemarMatchCoachCard } from '../components/ValdemarMatchCoachCard'
+import { buildCoachContextFromStoredMatch } from '@domain/coachContext'
+import { buildSelfCoachReport } from '@domain/selfCoachReport'
+import { buildOpponentCoachReport } from '@domain/opponentCoachReport'
+import { buildTeamCoachReport } from '@domain/teamCoachReport'
+import { CoachDossierPanel } from '../components/CoachDossierPanel'
 import { inferGameKind, type SimilarMatchQuery } from '@domain/similarMatch'
 import { playerEvidenceCoverage } from '@domain/statsCoverage'
 import { EmptyBox, ErrorBox, Spinner } from '../components/feedback'
+import { PageHead } from '../components/PageHead'
 import { useI18n } from '../../i18n'
 
-const SEVERITY_STYLE: Record<Severity, string> = {
-  major: 'bg-destructive/15 text-destructive',
-  minor: 'bg-warn/15 text-warn',
-  info: 'bg-secondary text-muted-foreground',
-  good: 'bg-win/15 text-win',
-}
 const SEVERITY_ORDER: Record<Severity, number> = { major: 0, minor: 1, info: 2, good: 3 }
 
 /**
@@ -185,6 +184,55 @@ function Detail({
   const rows = orderRows(match.perPlayer ?? [], myProfileId)
   const { data: summaryRes, isLoading: summaryLoading } = useGameSummary(match.id)
   const summary = summaryRes?.ok ? summaryRes.data : null
+
+  useEffect(() => {
+    const profileIds = new Set<number>()
+    for (const player of summary?.players ?? []) {
+      if (player.profileId != null && player.profileId > 0) profileIds.add(player.profileId)
+    }
+    for (const player of match.perPlayer ?? []) {
+      if (player.profileId != null && player.profileId > 0) profileIds.add(player.profileId)
+    }
+    if (profileIds.size === 0) return
+    let cancelled = false
+    setDownloadingParticipants(true)
+    void (async () => {
+      let totalCached = 0
+      let totalSummaries = 0
+      let totalAnalyzed = 0
+      let fetched = 0
+      try {
+        for (const profileId of profileIds) {
+          const res = await cachePlayerArchiveOnce(profileId)
+          if (res?.ok) {
+            fetched += 1
+            totalCached += res.data.cachedReplays
+            totalSummaries += res.data.cachedSummaries
+            totalAnalyzed += res.data.analyzedReplays
+          }
+        }
+        if (cancelled) return
+        if (fetched > 0) {
+          setParticipantsDownloadMsg(
+            tt('Loaded archives for {players} players: {replays} replays, {summaries} summaries ({analyzed} analyzed)')
+              .replace('{players}', String(profileIds.size))
+              .replace('{replays}', String(totalCached))
+              .replace('{summaries}', String(totalSummaries))
+              .replace('{analyzed}', String(totalAnalyzed)),
+          )
+        }
+      } catch (error) {
+        if (!cancelled) {
+          setParticipantsDownloadMsg(error instanceof Error ? error.message : tt('Could not load participant archives.'))
+        }
+      } finally {
+        if (!cancelled) setDownloadingParticipants(false)
+      }
+    })()
+    return () => {
+      cancelled = true
+    }
+  }, [match.id, match.perPlayer, summary, tt])
   const openBuildAudit = () => {
     document.getElementById('build-order-audit')?.scrollIntoView({
       behavior: 'smooth',
@@ -264,6 +312,62 @@ function Detail({
           ?.time?.trim() ?? null)
       : null
 
+  const matchCoachContext = useMemo(() => {
+    if (subjectProfileId == null || !subjectName) return null
+    return buildCoachContextFromStoredMatch(match, subjectProfileId, subjectName, null)
+  }, [match, subjectProfileId, subjectName])
+
+  const { data: historyForCoach } = useHistory()
+  const coachPack = useMemo(() => {
+    if (subjectProfileId == null) return null
+    const isYou = subjectProfileId === myProfileId
+    const localMatches = isYou && historyForCoach?.ok ? historyForCoach.data : [match]
+    const summariesByMatchId = summary ? { [match.id]: summary } : undefined
+    const self = buildSelfCoachReport({
+      profileId: subjectProfileId,
+      playerName: subjectName ?? 'Player',
+      voice: isYou ? 'you' : 'third',
+      localMatches,
+      summariesByMatchId,
+      currentCiv: match.civ,
+      inMatch: true,
+    })
+    const oppRows = match.oppTeam ?? (match.oppCiv ? [{ civ: match.oppCiv, name: match.oppName }] : [])
+    const oppPlayers =
+      match.perPlayer?.filter((p) => {
+        if (p.profileId === subjectProfileId) return false
+        const myTeam = match.perPlayer?.find((row) => row.profileId === subjectProfileId)?.teamId
+        return myTeam == null || p.teamId == null || p.teamId !== myTeam
+      }) ?? []
+    const opponents =
+      oppPlayers.length > 0
+        ? oppPlayers.map((p) =>
+            buildOpponentCoachReport({
+              profileId: p.profileId,
+              playerName:
+                match.oppTeam?.find((row) => row.civ === p.civ)?.name ??
+                match.myTeam?.find((row) => row.civ === p.civ)?.name ??
+                p.civ ??
+                'Opponent',
+              knownCiv: p.civ,
+            }),
+          )
+        : oppRows.map((p, i) =>
+            buildOpponentCoachReport({
+              profileId: -(i + 1),
+              playerName: p.name ?? 'Opponent',
+              knownCiv: p.civ,
+            }),
+          )
+    const team = buildTeamCoachReport({
+      subjectProfileId,
+      subjectName: subjectName ?? 'Player',
+      localMatches,
+      summariesByMatchId,
+    })
+    return { self, opponents, team }
+  }, [historyForCoach, match, myProfileId, subjectName, subjectProfileId, summary])
+
   const coaching = dedupeSignals([
     ...(summary
       ? summarySignals({
@@ -289,93 +393,56 @@ function Detail({
   return (
     <div className="space-y-6">
       <header id="match-overview" className="scroll-mt-4 space-y-3">
-        <div className="flex flex-wrap items-center gap-3">
-          <span
-            className={cn(
-              'inline-flex h-9 items-center rounded-md px-3 text-sm font-bold uppercase tracking-wide',
-              win
-                ? 'bg-win/20 text-win'
-                : loss
-                  ? 'bg-destructive/20 text-destructive'
-                  : 'bg-secondary text-muted-foreground',
-            )}
-          >
-            {resultWord}
-          </span>
-          <h1 className="text-2xl font-semibold tracking-tight">{matchTitle(match, gameName)}</h1>
-          {match.custom && (
-            <Badge variant="secondary" className="text-[10px]">
-              {match.vsAI ? tt('vs AI') : tt('Custom')}
-            </Badge>
-          )}
-          {isOwnFocus && match.ratingDiff != null && (
-            <span
-              className={cn(
-                'tabular-nums text-sm font-semibold',
-                match.ratingDiff >= 0 ? 'text-win' : 'text-destructive',
+        <PageHead
+          kicker="After-action"
+          title={matchTitle(match, gameName)}
+          sub={`${match.format ? `${match.format} · ` : ''}${match.map ? gameName(match.map) : tt('Map unavailable')} · ${formatDurationShort(match.durationSec)} · ${relativeTime(match.playedAt)}`}
+          raw
+          aside={
+            <div className="flex flex-wrap items-center justify-end gap-2">
+              <span
+                className={cn(
+                  'inline-flex h-8 items-center rounded-sm px-3 text-xs font-bold uppercase tracking-wide',
+                  win
+                    ? 'bg-win/20 text-win'
+                    : loss
+                      ? 'bg-destructive/20 text-destructive'
+                      : 'bg-secondary text-muted-foreground',
+                )}
+              >
+                {resultWord}
+              </span>
+              {match.custom && (
+                <Badge variant="secondary" className="text-[10px]">
+                  {match.vsAI ? tt('vs AI') : tt('Custom')}
+                </Badge>
               )}
-            >
-              {match.ratingDiff >= 0 ? '+' : ''}
-              {match.ratingDiff}
+              {isOwnFocus && match.ratingDiff != null && (
+                <span
+                  className={cn(
+                    'tabular-nums text-sm font-semibold',
+                    match.ratingDiff >= 0 ? 'text-win' : 'text-destructive',
+                  )}
+                >
+                  {match.ratingDiff >= 0 ? '+' : ''}
+                  {match.ratingDiff}
+                </span>
+              )}
+              {isOwnFocus && match.analysis.grade != null && (
+                <span className="inline-flex items-center gap-1 rounded-sm border border-border bg-secondary/50 px-2 py-1 text-xs font-semibold tabular-nums">
+                  {tt('Economy grade')} {match.analysis.grade}
+                </span>
+              )}
+            </div>
+          }
+        />
+        <div className="flex flex-wrap items-center gap-2">
+          {downloadingParticipants ? (
+            <span className="ml-auto inline-flex items-center gap-1.5 text-xs text-emerald-400">
+              <RefreshCw className="h-3.5 w-3.5 animate-spin" />
+              {tt('Downloading participant replays…')}
             </span>
-          )}
-          {isOwnFocus && match.analysis.grade != null && (
-            <span className="inline-flex items-center gap-1 rounded-md border border-primary/30 bg-primary/5 px-2 py-1 text-xs font-semibold tabular-nums text-primary">
-              {tt('Economy grade')} {match.analysis.grade}
-            </span>
-          )}
-          <button
-            type="button"
-            disabled={downloadingParticipants}
-            onClick={async () => {
-              setDownloadingParticipants(true)
-              setParticipantsDownloadMsg(null)
-              const profileIds = new Set<number>()
-              for (const p of summary?.players ?? []) {
-                if (p.profileId != null && p.profileId > 0) profileIds.add(p.profileId)
-              }
-              for (const p of match.perPlayer ?? []) {
-                if (p.profileId != null && p.profileId > 0) profileIds.add(p.profileId)
-              }
-              if (profileIds.size === 0) {
-                setParticipantsDownloadMsg('Нет участников с открытыми профилями')
-                setDownloadingParticipants(false)
-                return
-              }
-              let totalCached = 0
-              let totalSummaries = 0
-              let totalAnalyzed = 0
-              try {
-                for (const pId of profileIds) {
-                  const res = await ipc.cachePlayerArchive(pId, { maxReplays: 25, maxSummaries: 50 })
-                  if (res.ok) {
-                    totalCached += res.data.cachedReplays
-                    totalSummaries += res.data.cachedSummaries
-                    totalAnalyzed += res.data.analyzedReplays
-                  }
-                }
-                setParticipantsDownloadMsg(
-                  `Успешно загружено для ${profileIds.size} игроков: ${totalCached} реплеев и ${totalSummaries} сводок (${totalAnalyzed} проанализировано)`,
-                )
-              } catch (e) {
-                setParticipantsDownloadMsg(e instanceof Error ? e.message : 'Ошибка загрузки')
-              } finally {
-                setDownloadingParticipants(false)
-              }
-            }}
-            title="Скачать и проанализировать все доступные демки и сводки всех участников этого матча"
-            className="ml-auto inline-flex items-center gap-1.5 rounded-sm border border-emerald-500/40 bg-emerald-500/10 px-2.5 py-1.5 text-xs font-medium text-emerald-400 transition-colors hover:bg-emerald-500/20 disabled:opacity-50"
-          >
-            {downloadingParticipants ? (
-              <>
-                <RefreshCw className="h-3.5 w-3.5 animate-spin" /> Скачивание демок участников…
-              </>
-            ) : (
-              <>
-                <Download className="h-3.5 w-3.5" /> Скачать демки участников
-              </>
-            )}
-          </button>
+          ) : null}
           <button
             type="button"
             onClick={() => setShowShareModal(true)}
@@ -397,23 +464,19 @@ function Detail({
             <Trash2 className="h-3.5 w-3.5" />
             {tt('Remove')}
           </button>
+          <button
+            type="button"
+            onClick={openBuildAudit}
+            className="inline-flex w-fit items-center rounded-sm border border-border px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
+          >
+            {tt('Open build audit')}
+          </button>
         </div>
         {participantsDownloadMsg && (
-          <div className="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 text-xs text-emerald-300">
+          <div className="rounded-sm border border-border bg-secondary/40 px-3 py-1.5 text-xs text-muted-foreground">
             {participantsDownloadMsg}
           </div>
         )}
-        <p className="text-sm text-muted-foreground">
-          {match.format ? `${match.format} · ` : ''}
-          {match.map} · {formatDurationShort(match.durationSec)} · {relativeTime(match.playedAt)}
-        </p>
-        <button
-          type="button"
-          onClick={openBuildAudit}
-          className="inline-flex w-fit items-center rounded-sm border border-primary/30 bg-primary/5 px-2.5 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
-        >
-          {tt('Open build audit')}
-        </button>
       </header>
 
       <MatchSectionNav
@@ -458,6 +521,17 @@ function Detail({
         />
       )}
 
+      {coachPack && (
+        <CoachDossierPanel
+          self={coachPack.self}
+          opponents={coachPack.opponents}
+          team={coachPack.team}
+          compact
+          foldable
+          foldId="game-match-coach-dossier"
+        />
+      )}
+
       {isOwnFocus && (
         <SimilarMatchCard
           match={match}
@@ -487,22 +561,12 @@ function Detail({
       ) : (
         <Card>
           <CardContent className="p-4 text-sm text-muted-foreground">
-            {tt('No per-player breakdown for this game yet. Click')}{' '}
-            <span className="font-medium text-foreground">{tt('Sync recent games')}</span>{' '}
-            {tt('on My Stats to pull the production, combat and tech numbers from Relic.')}
+            {tt('No per-player breakdown for this game yet. Account games sync automatically in the background.')}
           </CardContent>
         </Card>
       )}
 
-      <TurningPointStory
-        summary={summary}
-        loading={summaryLoading}
-        myProfileId={subjectProfileId}
-        myPlayerId={subjectPlayerId}
-        myCiv={subjectCiv}
-      />
-
-      <FirstCauseReviewCard
+      <MatchNarrativeCard
         summary={summary}
         loading={summaryLoading}
         myProfileId={subjectProfileId}
@@ -510,42 +574,15 @@ function Detail({
         myCiv={subjectCiv}
         perPlayer={match.perPlayer}
         feudalTargetSec={feudalTargetSec ? parseDuration(feudalTargetSec) : null}
+        signals={coaching}
+        summaryText={summaryText}
+        coachContext={matchCoachContext}
       />
 
       <TwitchVodCard match={match} profileId={myProfileId} />
       {curatedReview && <CuratedMatchReviewCard review={curatedReview} />}
       {linkedVideoAnalysis && <VideoAnalysisPanel record={linkedVideoAnalysis} />}
-      <ValdemarMatchCoachCard myCiv={subjectCiv} opponentCiv={opponentCiv} />
-
-      <section className="space-y-2">
-        <h2 className="text-lg font-semibold tracking-tight">{tt('What to improve')}</h2>
-        <Card>
-          <CardContent className="space-y-3 p-4">
-            <p className="text-sm text-muted-foreground">{tt(summaryText)}</p>
-            {coaching.length === 0 && (
-              <p className="text-xs text-muted-foreground">
-                {tt('No standout issues this game — a clean, balanced performance.')}
-              </p>
-            )}
-            {coaching.map((sig) => (
-              <div key={sig.id} className="flex items-start gap-2">
-                <span
-                  className={cn(
-                    'mt-0.5 rounded px-1.5 py-0.5 text-[10px] font-medium uppercase',
-                    SEVERITY_STYLE[sig.severity],
-                  )}
-                >
-                  {sig.severity}
-                </span>
-                <div>
-                  <div className="text-sm font-medium">{tt(sig.title)}</div>
-                  <div className="text-xs text-muted-foreground">{tt(sig.detail)}</div>
-                </div>
-              </div>
-            ))}
-          </CardContent>
-        </Card>
-      </section>
+      <ValdemarMatchCoachCard myCiv={subjectCiv} opponentCiv={opponentCiv} showGenericTips={false} />
 
       <BuildOrderComparisonCard
         summary={summary}
@@ -634,8 +671,9 @@ function Detail({
           result: ownResult,
           myCiv: subjectCiv,
           oppCiv: match.oppCiv ?? null,
-          myPlayerName: isOwnFocus ? myName || 'You' : subjectCiv ? civDisplayName(subjectCiv) : 'Player',
-          oppPlayerName: match.oppName || (match.oppCiv ? civDisplayName(match.oppCiv) : 'Opponent'),
+          myPlayerName:
+            isOwnFocus ? myName || 'You' : subjectCiv ? gameName(subjectCiv) : 'Player',
+          oppPlayerName: match.oppName || (match.oppCiv ? gameName(match.oppCiv) : 'Opponent'),
           myRating: match.rating ?? null,
           oppRating: null,
           mapName: match.map,
@@ -704,8 +742,7 @@ function MatchSectionNav({
   const { tt } = useI18n()
   const links = [
     ...(hasTeamReview ? [{ id: 'team-mate-review', label: tt('Team review') }] : []),
-    { id: 'turning-point-story', label: tt('Turning points') },
-    { id: 'first-cause-review', label: tt('First cause') },
+    { id: 'match-review', label: tt('Match review') },
     { id: 'build-order-audit', label: tt('Build audit') },
     { id: 'game-summary-evidence', label: tt('Economy & build order') },
   ]
@@ -815,21 +852,12 @@ function ReplayCommandAnalysis({
     <section id="replay-command-analysis" className="scroll-mt-4 space-y-2">
       <div className="flex items-center justify-between gap-2">
         <h2 className="text-lg font-semibold tracking-tight">{tt('Replay evidence')}</h2>
-        <button
-          type="button"
-          onClick={run}
-          disabled={analysis.isPending || fullAnalysis.isPending}
-          className="inline-flex h-8 items-center gap-1.5 rounded-md border border-primary/40 px-2.5 text-xs text-primary hover:bg-primary/10 disabled:opacity-40"
-        >
-          <ScanLine className="h-3.5 w-3.5" />
-          {fullAnalysis.isPending
-            ? tt('Downloading and analyzing…')
-            : analysis.isPending
-              ? tt('Analyzing…')
-              : isOnlineGame
-                ? tt('Download + analyze replay')
-                : tt('Analyze replay')}
-        </button>
+        {(analysis.isPending || fullAnalysis.isPending) && (
+          <span className="inline-flex items-center gap-1.5 text-xs text-primary">
+            <ScanLine className="h-3.5 w-3.5 animate-pulse" />
+            {fullAnalysis.isPending ? tt('Downloading and analyzing…') : tt('Analyzing…')}
+          </span>
+        )}
       </div>
       {analysis.error && !isOnlineGame && (
         <p className="text-xs text-loss">{analysis.error.message}</p>
@@ -1011,10 +1039,10 @@ function MatchPlayerFocus({
                   {profileId != null ? (
                     <Link
                       to={`/profile/${profileId}`}
-                      title={tt('Open this player’s scout profile')}
+                      title={tt('Open this player’s stats')}
                       className="inline-flex items-center gap-1 text-primary hover:underline"
                     >
-                      <ExternalLink className="h-3 w-3" /> {tt('Scout profile')}
+                      <ExternalLink className="h-3 w-3" /> {tt('Player stats')}
                     </Link>
                   ) : (
                     <span className="text-[10px] text-muted-foreground">{tt('Local / AI')}</span>
@@ -1121,7 +1149,7 @@ function ComparisonTable({
                             </button>
                             <Link
                               to={`/profile/${r.profileId}`}
-                              title={tt('Open this player’s scout profile')}
+                              title={tt('Open this player’s stats')}
                               className="shrink-0 text-primary hover:text-primary/80"
                             >
                               <ExternalLink className="h-3 w-3" />

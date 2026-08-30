@@ -18,7 +18,7 @@ import { getCivMeta, getMatchupLab } from '../services/civMetaService'
 import { getRankedMapPool } from '../services/rankedMapPoolService'
 import { getPatchNotes } from '../services/patchNotesService'
 import { getCivDetailStats, getLandmarkStats } from '../services/civDetailService'
-import { getLeaderboardPage } from '../services/leaderboardService'
+import { getEsportsLeaderboardPage, getLeaderboardPage } from '../services/leaderboardService'
 import {
   analyzeRecentGames,
   getBuildAuditHistory,
@@ -58,7 +58,7 @@ import {
 } from '../services/relicAuthService'
 import { err, errFrom, ok } from '../services/result'
 import { replayMatchup } from '@domain/replay'
-import type { CivMetaQuery, LatestReplay, LeaderboardQuery } from './contract'
+import type { CivMetaQuery, EsportsLeaderboardQuery, LatestReplay, LeaderboardQuery } from './contract'
 import {
   getStreamManagerStatus,
   resetStreamManagerState,
@@ -145,6 +145,9 @@ export function registerIpcHandlers(): void {
   ipcMain.handle(IpcChannels.civDetailGet, (_e, civ: string) => getCivDetailStats(civ))
   ipcMain.handle(IpcChannels.leaderboardGet, (_e, query: LeaderboardQuery) =>
     getLeaderboardPage(query),
+  )
+  ipcMain.handle(IpcChannels.esportsLeaderboardGet, (_e, query: EsportsLeaderboardQuery) =>
+    getEsportsLeaderboardPage(query),
   )
 
   // analyzeRecentGames folds local custom/AI games itself — one coordinator.
@@ -406,7 +409,7 @@ export function registerIpcHandlers(): void {
     return configureExternalApis(input as Parameters<typeof configureExternalApis>[0])
   })
   ipcMain.handle(IpcChannels.externalApiClear, () =>
-    configureExternalApis({ clearTwitch: true, clearYoutube: true }),
+    configureExternalApis({ clearTwitch: true, clearYoutube: true, clearAoe4World: true }),
   )
   ipcMain.handle(IpcChannels.onlineSearch, (_e, query: unknown) => searchOnline(query))
   ipcMain.handle(IpcChannels.dumpCatalogGet, () => getPublicDumpCatalog())

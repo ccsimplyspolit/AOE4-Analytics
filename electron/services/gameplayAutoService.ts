@@ -10,6 +10,7 @@ import { err, errFrom, ok } from './result'
 import { findTwitchVod } from './twitchVodService'
 import { searchOnline } from './onlineSearchService'
 import { extractVideoAnalysis } from './videoAnalysisService'
+import { ensureNeoDlpPotServer, getNeoDlpToolchain, ytdlpCommandQueue } from './neoDlpToolchain'
 
 const DOWNLOAD_TIMEOUT_MS = 10 * 60_000
 const MAX_DOWNLOAD_BYTES = 2 * 1024 * 1024 * 1024
@@ -187,11 +188,17 @@ async function existingDownload(directory: string): Promise<DownloadResult> {
   }
 }
 
-function runDownloader(command: string, prefix: string[], args: string[]): Promise<number | null> {
+function runDownloader(
+  command: string,
+  prefix: string[],
+  args: string[],
+  env?: NodeJS.ProcessEnv,
+): Promise<number | null> {
   return new Promise((resolve) => {
     const child = spawn(command, [...prefix, ...args], {
       windowsHide: true,
       stdio: 'ignore',
+      env,
     })
     const timer = setTimeout(() => {
       child.kill()
@@ -218,6 +225,8 @@ async function downloadGameplay(
   const cached = await existingDownload(directory)
   if (cached) return cached
   const output = join(directory, '%(id)s.%(ext)s')
+  const toolchain = getNeoDlpToolchain()
+  if (toolchain) await ensureNeoDlpPotServer(toolchain)
   const args = [
     '--no-playlist',
     '--no-part',
@@ -229,12 +238,8 @@ async function downloadGameplay(
     output,
     candidate.url,
   ]
-  const commands = [
-    { command: process.platform === 'win32' ? 'yt-dlp.exe' : 'yt-dlp', prefix: [] },
-    { command: process.platform === 'win32' ? 'python.exe' : 'python3', prefix: ['-m', 'yt_dlp'] },
-  ]
-  for (const item of commands) {
-    const code = await runDownloader(item.command, item.prefix, args)
+  for (const item of ytdlpCommandQueue(toolchain)) {
+    const code = await runDownloader(item.command, item.prefix, [...item.extraArgs, ...args], item.env)
     if (code !== 0) continue
     const downloaded = await existingDownload(directory)
     if (downloaded) return downloaded
@@ -265,7 +270,7 @@ async function workflow(input: GameplayAutoInput): Promise<GameplayAutoResult> {
       result.stage = 'downloaded'
     } else {
       result.warnings.push(
-        'Не удалось скачать файл автоматически. Установите yt-dlp или Python-модуль yt_dlp; разбор публичных субтитров всё равно будет выполнен по ссылке.',
+        'Не удалось скачать файл автоматически. Проверьте NeoDLP (`%LOCALAPPDATA%\\NeoDLP`) или установите yt-dlp; разбор публичных субтитров всё равно будет выполнен по ссылке.',
       )
     }
   } else {

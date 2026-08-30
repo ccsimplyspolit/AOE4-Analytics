@@ -1,9 +1,17 @@
-import { Gamepad2, Radio, Play, Swords, Loader2, Users } from 'lucide-react'
+import { Gamepad2, Lightbulb, Radio, Play, Swords, Loader2, Users } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { civDisplayName } from '@domain/civ'
+import { getOpeningProTips, buildTipVideoUrl } from '@domain/proTips'
 import { buildAdvisoryTeamPlan } from '@domain/teamInsights'
+import { buildMatchBriefing } from '@domain/matchBriefing'
+import { buildSelfCoachReport } from '@domain/selfCoachReport'
+import { buildOpponentCoachReport } from '@domain/opponentCoachReport'
 import { formatRankLevel, formatRating, rankColor } from '@shared/format'
+import { useHistory } from '../queries/useHistory'
 import { useLiveMatch, useLaunchGame } from '../queries/useLiveMatch'
-import { useSettings } from '../queries/useProfile'
+import { useScoutHistory, useSettings } from '../queries/useProfile'
+import { MatchBriefingPanel } from './MatchBriefingPanel'
+import { CoachLiveChecklists } from './CoachDossierPanel'
 import { useI18n } from '../../i18n'
 
 /** Top-of-dashboard card: shows the CURRENT live matchup, or a Start AoE4 button. */
@@ -11,7 +19,16 @@ export function LiveMatchCard() {
   const { tt, gameName } = useI18n()
   const { data: live } = useLiveMatch()
   const { data: settings } = useSettings()
+  const { data: history } = useHistory()
   const launch = useLaunchGame()
+  const localMatches = history?.ok ? history.data : []
+  const liveOppId =
+    live?.isLive && live.opponent && live.opponent.profileId > 0
+      ? live.opponent.profileId
+      : live?.isLive && live.teams?.[1]?.[0] && live.teams[1][0]!.profileId > 0
+        ? live.teams[1][0]!.profileId
+        : null
+  const oppHistory = useScoutHistory(liveOppId)
 
   if (!live) return null
 
@@ -19,12 +36,47 @@ export function LiveMatchCard() {
     const teamPlan = live.teams ? buildAdvisoryTeamPlan(live.teams) : null
     const myTeam = live.teams?.[0] ?? []
     const enemyTeam = live.teams?.[1] ?? []
+    const me = myTeam.find((player) => player.isMe)
+    const upcomingBriefing =
+      me || live.myCiv
+        ? buildMatchBriefing({
+            phase: 'upcoming',
+            format: live.kind ?? live.leaderboard ?? 'live',
+            map: live.map,
+            subject: {
+              profileId: me?.profileId ?? settings?.profileId ?? 0,
+              name: me?.name ?? settings?.playerName ?? 'You',
+              civ: me?.civ ?? live.myCiv,
+            },
+            teammates: myTeam
+              .filter((player) => !player.isMe)
+              .map((player) => ({
+                profileId: player.profileId,
+                name: player.name,
+                civ: player.civ,
+              })),
+            opponents: (enemyTeam.length > 0
+              ? enemyTeam
+              : live.opponent
+                ? [
+                    {
+                      profileId: live.opponent.profileId,
+                      name: live.opponent.name,
+                      civ: live.opponent.civ,
+                    },
+                  ]
+                : []
+            ).map((player) => ({ ...player, isOpponent: true })),
+          })
+        : null
     return (
       <div className="rounded-lg border border-primary/40 bg-primary/5 p-4">
         <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-primary">
           <Radio className="h-3.5 w-3.5 animate-pulse" />
           {tt('Live match')}
-          {live.map && <span className="font-normal text-muted-foreground">· {live.map}</span>}
+          {live.map && (
+            <span className="font-normal text-muted-foreground">· {gameName(live.map)}</span>
+          )}
           {live.patch && (
             <span className="font-normal text-muted-foreground">· patch {live.patch}</span>
           )}
@@ -43,17 +95,43 @@ export function LiveMatchCard() {
               </span>
             </div>
             <div className="mt-1 grid gap-x-4 text-[11px] text-muted-foreground sm:grid-cols-2">
-            <span>
+              <span>
                 {tt('Your side')}:{' '}
-                {myTeam
-                  .map((player) => `${player.name} (${gameName(civDisplayName(player.civ ?? ''))})`)
-                  .join(' · ')}
+                {myTeam.map((player, index) => (
+                  <span key={player.profileId}>
+                    {index > 0 ? ' · ' : null}
+                    {player.profileId > 0 ? (
+                      <Link
+                        to={`/profile/${player.profileId}`}
+                        className="hover:text-primary hover:underline"
+                      >
+                        {player.name}
+                      </Link>
+                    ) : (
+                      player.name
+                    )}
+                    {` (${gameName(civDisplayName(player.civ ?? ''))})`}
+                  </span>
+                ))}
               </span>
               <span>
                 {tt('Opponents')}:{' '}
-                {enemyTeam
-                  .map((player) => `${player.name} (${gameName(civDisplayName(player.civ ?? ''))})`)
-                  .join(' · ')}
+                {enemyTeam.map((player, index) => (
+                  <span key={player.profileId}>
+                    {index > 0 ? ' · ' : null}
+                    {player.profileId > 0 ? (
+                      <Link
+                        to={`/profile/${player.profileId}`}
+                        className="hover:text-primary hover:underline"
+                      >
+                        {player.name}
+                      </Link>
+                    ) : (
+                      player.name
+                    )}
+                    {` (${gameName(civDisplayName(player.civ ?? ''))})`}
+                  </span>
+                ))}
               </span>
             </div>
             <div className="mt-3 rounded-md border border-border/70 bg-card/70 p-3">
@@ -95,7 +173,16 @@ export function LiveMatchCard() {
             </div>
             <div className="flex items-center gap-2 text-sm">
               <span className="text-muted-foreground">{tt('vs')}</span>
-              <span className="font-medium">{live.opponent.name}</span>
+              {live.opponent.profileId > 0 ? (
+                <Link
+                  to={`/profile/${live.opponent.profileId}`}
+                  className="font-medium hover:text-primary hover:underline"
+                >
+                  {live.opponent.name}
+                </Link>
+              ) : (
+                <span className="font-medium">{live.opponent.name}</span>
+              )}
               <span style={{ color: rankColor(live.opponent.rankLevel) }}>
                 {tt(formatRankLevel(live.opponent.rankLevel))}
               </span>
@@ -105,7 +192,15 @@ export function LiveMatchCard() {
             </div>
           </div>
         ) : live.custom ? (
-          <div className="mt-2 text-sm text-muted-foreground">{tt('Custom / AI game in progress.')}</div>
+          <div className="mt-2 text-sm text-muted-foreground">
+            {tt('Custom / AI game in progress.')}
+            {(me?.civ ?? live.myCiv) ? (
+              <span>
+                {' '}
+                · {tt('You')}: {gameName(civDisplayName((me?.civ ?? live.myCiv)!))}
+              </span>
+            ) : null}
+          </div>
         ) : (
           <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
             <Loader2 className="h-4 w-4 animate-spin" />
@@ -113,8 +208,67 @@ export function LiveMatchCard() {
           </div>
         )}
 
+        {live.myCiv && (
+          <div className="mt-3 rounded-md border border-primary/30 bg-primary/[0.04] p-3">
+            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-primary">
+              <Lightbulb className="h-3.5 w-3.5" />
+              {tt('Pre-game checklist')} · {gameName(civDisplayName(live.myCiv))}
+            </div>
+            <ul className="mt-2 space-y-1.5">
+              {getOpeningProTips(live.myCiv, 3).map((tip) => (
+                <li key={tip.id} className="text-[11px] leading-snug text-muted-foreground">
+                  <a
+                    href={buildTipVideoUrl(tip)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-medium text-foreground hover:text-primary"
+                  >
+                    {tip.shortText}
+                  </a>
+                  <span className="ml-1 font-mono text-[10px] text-primary/80">
+                    @ {tip.timeFormatted}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {upcomingBriefing && (
+          <div className="mt-3">
+            <MatchBriefingPanel briefing={upcomingBriefing} hideRoles={Boolean(teamPlan)} />
+          </div>
+        )}
+
+        {settings?.profileId != null && !upcomingBriefing && (
+          <CoachLiveChecklists
+            self={buildSelfCoachReport({
+              profileId: settings.profileId,
+              playerName: settings.playerName ?? 'You',
+              voice: 'you',
+              localMatches,
+              currentCiv: me?.civ ?? live.myCiv ?? null,
+              inMatch: true,
+            })}
+            opponent={
+              live.opponent || enemyTeam[0]
+                ? buildOpponentCoachReport({
+                    profileId: (live.opponent?.profileId ?? enemyTeam[0]?.profileId) as number,
+                    playerName: live.opponent?.name ?? enemyTeam[0]?.name ?? 'Opponent',
+                    knownCiv: live.opponent?.civ ?? enemyTeam[0]?.civ ?? null,
+                    scoutGames: (oppHistory.data?.pages ?? []).flatMap((p) =>
+                      p.ok && p.data.recent.ok ? (p.data.recent.data.matches ?? []) : [],
+                    ),
+                  })
+                : null
+            }
+          />
+        )}
+
         <p className="mt-2 text-xs text-muted-foreground">
-          {tt('Detection')}: {live.source === 'ongoing' ? tt('AoE4World live roster') : tt('local AoE4 log')} · {tt('The overlay shows your matchup — press')}{' '}
+          {tt('Detection')}:{' '}
+          {live.source === 'ongoing' ? tt('AoE4World live roster') : tt('local AoE4 log')} ·{' '}
+          {tt('The overlay shows your matchup — press')}{' '}
           <kbd className="rounded bg-secondary px-1 py-0.5 font-mono text-[10px]">
             {settings?.hotkeys.toggleOverlay ?? 'Alt+O'}
           </kbd>{' '}

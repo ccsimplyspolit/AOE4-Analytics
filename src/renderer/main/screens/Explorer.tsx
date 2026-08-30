@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useQueryClient } from '@tanstack/react-query'
 import {
   Building2,
@@ -8,8 +8,8 @@ import {
   ExternalLink,
   FlaskConical,
   Globe,
-  History,
   RefreshCw,
+  Newspaper,
   Search,
   Shield,
   Sparkles,
@@ -25,7 +25,7 @@ import {
 import tinctureMetaJson from '@data/tinctureMeta.json'
 import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
 import { buildPatchAudit } from '@domain/patchAudit'
-import { VIDEO_EVIDENCE_BY_CIV } from '@data/videoEvidence.generated'
+import { VIDEO_EVIDENCE_BY_CIV } from '@data/videoEvidenceMap'
 import {
   CURATED_CONTENT_COUNTS,
   searchCuratedContent,
@@ -33,20 +33,24 @@ import {
 } from '@data/curatedContent'
 import { civDisplayName } from '@domain/civ'
 import { PageHead } from '../components/PageHead'
+import { GroupedScreenTabs } from '../components/ScreenTabs'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
 import { cn } from '@shared/lib/utils'
 import { formatCount, formatDurationShort } from '@shared/format'
 import { useI18n } from '../../i18n'
 import { ExplorerQuiz } from '../components/tools/ExplorerQuiz'
+import { PatchNotes } from './PatchNotes'
 import { VideoPlayer } from '../components/VideoPlayer'
 import { CuratedMatchPack } from '../components/CuratedMatchReviewCard'
 import { MapPoolAdvisorCard } from '../components/MapPoolAdvisorCard'
 import { ipc } from '@shared/ipc'
+import { runAutoActionOnce } from '../hooks/useAutoAction'
 import type { OnlineSearchData, OnlineSearchResult, PublicDumpCategory } from '@ipc/contract'
 import { usePublicDumpCatalog } from '../queries/usePublicDumpCatalog'
+import { recallHub, rememberHub } from '../hubMemory'
 
-type Tab = 'units' | ExplorerRecordKind | 'patches' | 'dumps' | 'videos' | 'quiz' | 'mappool'
+type Tab = 'units' | ExplorerRecordKind | 'dumps' | 'videos' | 'mappool' | 'patches' | 'quiz'
 
 const TABS: { id: Tab; label: string; icon: typeof Search }[] = [
   { id: 'units', label: 'Unit Explorer', icon: Search },
@@ -54,11 +58,16 @@ const TABS: { id: Tab; label: string; icon: typeof Search }[] = [
   { id: 'building', label: 'Buildings', icon: Building2 },
   { id: 'technology', label: 'Technologies', icon: FlaskConical },
   { id: 'upgrade', label: 'Upgrades', icon: Shield },
-  { id: 'patches', label: 'Patches', icon: History },
   { id: 'dumps', label: 'Dumps', icon: Database },
   { id: 'videos', label: 'Video Finder', icon: Video },
+  { id: 'patches', label: 'News & patches', icon: Newspaper },
   { id: 'quiz', label: 'Explorer Quiz', icon: Sparkles },
 ]
+
+const TAB_GROUPS = [
+  { id: 'encyclopedia', label: 'Encyclopedia', tabIds: ['units', 'building', 'technology', 'upgrade'] },
+  { id: 'evidence', label: 'Sources', tabIds: ['mappool', 'dumps', 'videos', 'patches', 'quiz'] },
+] as const
 
 type TinctureMetaSnapshot = {
   generatedAt: string
@@ -67,56 +76,60 @@ type TinctureMetaSnapshot = {
 
 const TINCTURE_META = tinctureMetaJson as TinctureMetaSnapshot
 
+const TAB_IDS = TABS.map((item) => item.id)
+
 export function Explorer() {
   const { tt } = useI18n()
   const [searchParams, setSearchParams] = useSearchParams()
   const rawTab = searchParams.get('tab')
-  const tab: Tab = TABS.some((item) => item.id === rawTab) ? (rawTab as Tab) : 'units'
+  const tab: Tab = TABS.some((item) => item.id === rawTab)
+    ? (rawTab as Tab)
+    : recallHub('explorer', TAB_IDS, 'units')
   const setTab = (nextTab: Tab) =>
     setSearchParams(
       (previous) => {
         const next = new URLSearchParams(previous)
         if (nextTab === 'units') next.delete('tab')
         else next.set('tab', nextTab)
+        if (nextTab !== 'patches') next.delete('patch')
         return next
       },
       { replace: true },
     )
 
+  useEffect(() => {
+    rememberHub('explorer', tab)
+  }, [tab])
+
   return (
     <div className="animate-fade-in space-y-6">
       <PageHead
-        kicker={tt('Explorer')}
-        title={tt('Dumps & Evidence')}
-        sub={tt(
-          'Search the bundled AoE4World data snapshot, patch coverage, and video evidence extracted from public matches.',
-        )}
+        kicker="Explorer"
+        title="Explorer"
+        sub="Units, buildings, patch notes, dumps, videos, and the Explorer quiz from the bundled AoE4World snapshot."
         aside={<Badge variant="outline">{tt('Local-first')}</Badge>}
       />
 
-      <div className="flex flex-wrap gap-1" role="tablist">
-        {TABS.map((t) => {
-          const Icon = t.icon
-          return (
-            <button
-              key={t.id}
-              type="button"
-              role="tab"
-              aria-selected={tab === t.id}
-              onClick={() => setTab(t.id)}
-              className={cn(
-                'inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm transition-colors',
-                tab === t.id
-                  ? 'bg-secondary text-foreground'
-                  : 'text-muted-foreground hover:bg-secondary/60 hover:text-foreground',
-              )}
-            >
-              <Icon className="h-3.5 w-3.5" />
-              {tt(t.label)}
-            </button>
-          )
-        })}
-      </div>
+      <p className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground">
+        <a className="inline-flex items-center gap-1 hover:text-foreground" href="https://aoe4world.com/explorer" target="_blank" rel="noreferrer">
+          {tt('Civilizations')} <ExternalLink className="h-3 w-3" />
+        </a>
+        <a className="inline-flex items-center gap-1 hover:text-foreground" href="https://aoe4world.com/explorer/content" target="_blank" rel="noreferrer">
+          {tt('Content')} <ExternalLink className="h-3 w-3" />
+        </a>
+        <a className="inline-flex items-center gap-1 hover:text-foreground" href="https://aoe4world.com/explorer/about" target="_blank" rel="noreferrer">
+          {tt('About Explorer')} <ExternalLink className="h-3 w-3" />
+        </a>
+      </p>
+
+      <GroupedScreenTabs
+        groups={TAB_GROUPS}
+        items={TABS}
+        value={tab}
+        onChange={setTab}
+        groupAriaLabel={tt('Explorer groups')}
+        tabAriaLabel={tt('Explorer sections')}
+      />
 
       {tab === 'units' ? (
         <UnitExplorer />
@@ -124,12 +137,12 @@ export function Explorer() {
         <MapPoolAdvisorCard />
       ) : tab === 'videos' ? (
         <VideoExplorer />
-      ) : tab === 'quiz' ? (
-        <ExplorerQuiz />
-      ) : tab === 'patches' ? (
-        <PatchExplorer />
       ) : tab === 'dumps' ? (
         <DumpExplorer />
+      ) : tab === 'patches' ? (
+        <PatchNotes embedded />
+      ) : tab === 'quiz' ? (
+        <ExplorerQuiz />
       ) : (
         <RecordExplorer kind={tab} />
       )}
@@ -1035,7 +1048,7 @@ function VideoExplorer() {
 
   const analyzeOnlineVideo = useCallback(
     async (result: OnlineSearchResult) => {
-      if (result.kind !== 'video' || onlineAnalysisId != null) return
+      if (result.kind !== 'video') return
       setOnlineAnalysisId(`${result.provider}:${result.id}`)
       setOnlineAnalysisMessage(null)
       const extracted = await ipc.extractVideoAnalysis({ url: result.url })
@@ -1049,8 +1062,21 @@ function VideoExplorer() {
       }
       setOnlineAnalysisId(null)
     },
-    [onlineAnalysisId, queryClient, tt],
+    [queryClient, tt],
   )
+
+  useEffect(() => {
+    const videos = (onlineData?.results ?? []).filter((item) => item.kind === 'video').slice(0, 8)
+    if (videos.length === 0) return
+    const batchKey = videos.map((item) => `${item.provider}:${item.id}`).join(',')
+    void runAutoActionOnce(`online-videos:${batchKey}`, async () => {
+      for (const result of videos) {
+        await runAutoActionOnce(`online-video:${result.provider}:${result.id}`, () =>
+          analyzeOnlineVideo(result),
+        )
+      }
+    })
+  }, [analyzeOnlineVideo, onlineData])
 
   // Search is intentionally automatic after a short pause so the live finder
   // behaves like the linked AoE4World tool: typing a player/channel is enough,
@@ -1073,14 +1099,22 @@ function VideoExplorer() {
                 'Browse the local public-video evidence corpus or search current AoE4World VODs and linked streamers online. Optional provider keys add direct Twitch and YouTube results.',
               )}
             </p>
-            <a
-              href="https://aoe4world.com/tools/twitch-video-finder"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-primary/30 px-3 py-2 text-xs text-primary hover:bg-primary/10"
-            >
-              {tt('Open live finder')} <ExternalLink className="h-3.5 w-3.5" />
-            </a>
+            <div className="flex shrink-0 flex-wrap gap-2">
+              <Link
+                to="/lab?section=stream&view=twitch"
+                className="inline-flex items-center gap-1.5 rounded-md border border-primary/30 px-3 py-2 text-xs text-primary hover:bg-primary/10"
+              >
+                {tt('Exact-game VOD')}
+              </Link>
+              <a
+                href="https://aoe4world.com/tools/twitch-video-finder"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-md border border-primary/30 px-3 py-2 text-xs text-primary hover:bg-primary/10"
+              >
+                {tt('Open live finder')} <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            </div>
           </div>
           <div className="rounded-md border border-primary/20 bg-primary/5 p-3">
             <div className="flex flex-wrap items-end gap-2">
@@ -1221,17 +1255,10 @@ function VideoExplorer() {
                             </div>
                           </div>
                         </a>
-                        {result.kind === 'video' && (
-                          <button
-                            type="button"
-                            disabled={onlineAnalysisId != null}
-                            onClick={() => void analyzeOnlineVideo(result)}
-                            className="self-center rounded-md border border-primary/40 px-2 py-1.5 text-[10px] text-primary hover:bg-primary/10 disabled:cursor-wait disabled:opacity-50"
-                          >
-                            {onlineAnalysisId === `${result.provider}:${result.id}`
-                              ? tt('Extracting…')
-                              : tt('Analyze')}
-                          </button>
+                        {result.kind === 'video' && onlineAnalysisId === `${result.provider}:${result.id}` && (
+                          <span className="self-center text-[10px] text-primary">
+                            {tt('Extracting…')}
+                          </span>
                         )}
                       </div>
                     ))}

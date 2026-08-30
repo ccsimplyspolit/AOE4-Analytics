@@ -2,6 +2,7 @@ import type { IpcResult, PublicGameDetail, PublicGameQuery } from '@ipc/contract
 import { perPlayerStatsFromMatch } from '@domain/relic'
 import { err, errFrom, ok } from './result'
 import { getClient, getRelicClient } from './appContext'
+import { aoe4WorldOwnQuery } from './aoe4WorldAccess'
 import { fetchRankedSummary } from './relicAuthService'
 
 class PublicGameValidationError extends Error {}
@@ -30,7 +31,10 @@ function parseQuery(input: unknown): PublicGameQuery {
 export async function getPublicGame(input: unknown): Promise<IpcResult<PublicGameDetail>> {
   try {
     const { profileId, gameId } = parseQuery(input)
-    const game = await getClient().getGame(profileId, gameId)
+    const game = await getClient().getGame(profileId, gameId, {
+      includeAlts: true,
+      ...aoe4WorldOwnQuery(profileId),
+    })
     const recentHistory = await getRelicClient()
       .getRecentMatchHistory(profileId)
       .catch(() => null)

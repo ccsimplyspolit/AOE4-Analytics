@@ -10,12 +10,7 @@ import type {
   PerPlayerMatchStats,
   ResourceTotals,
 } from '@domain/analysis'
-import {
-  analyzeMatch,
-  extractAnalyzedGame,
-  opponentName,
-  resultFromPerPlayer,
-} from '@domain/analysis'
+import { extractAnalyzedGame, opponentName, resultFromPerPlayer } from '@domain/analysis'
 import { bracketFromRankLevel, getBenchmarks } from '@domain/benchmarks'
 import { checkGoals, generateGoals } from '@domain/goals'
 import { pickPrimaryMode } from '@domain/scouting'
@@ -25,6 +20,8 @@ import { normalizePublicMatchIdentifiers } from '@domain/dataStudio'
 import { replayMatchup, type ReplayInfo, type ReplayMatchup } from '@domain/replay'
 import { perPlayerStatsFromMatch } from '@domain/relic'
 import { getClient, getHistory, getHistoryStore, getRelicClient, getSettings } from './appContext'
+import { aoe4WorldOwnQuery } from './aoe4WorldAccess'
+import { yieldToEventLoop } from './eventLoop'
 import {
   getLatestLocalGameResult,
   getLatestLocalStats,
@@ -53,6 +50,9 @@ import { getSteamAccounts } from './steamService'
 import { err, errFrom, ok } from './result'
 import type { CreatedHistoryStore } from '@store/historyStoreFactory'
 import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
+import { analyzeMatchAsync } from '../workers/cpuPool'
+import type { Aoe4WorldClient } from '@api/client'
+import type { HistoryStore } from '@store/historyStore'
 
 /**
  * A stored team-format game (2v2+) that predates team-roster capture — it has a
@@ -63,6 +63,68 @@ import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
 function needsRosterBackfill(m: StoredMatch): boolean {
   const isTeamFormat = m.format != null && m.format !== '1v1' && /\dv\d|FFA/.test(m.format)
   return isTeamFormat && (m.oppTeam?.length ?? 0) === 0
+}
+
+/** Stop paging once this many newest stored games are already final. */
+const CATCH_UP_STREAK = 40
+
+function gameIsSettled(store: HistoryStore, gameId: number): boolean {
+  const existing = store.getMatch(String(gameId))
+  return (
+    existing != null &&
+    !existing.hidden &&
+    existing.result != null &&
+    !needsRosterBackfill(existing)
+  )
+}
+
+/**
+ * Bounded recent window, or newest-first pages until history is caught up.
+ * Yields between pages so overlay/IPC keep running.
+ */
+async function loadGamesForSync(
+  client: Aoe4WorldClient,
+  profileId: number,
+  count: number | undefined,
+  store: HistoryStore,
+): Promise<Game[]> {
+  const access = aoe4WorldOwnQuery(profileId)
+  if (count != null) {
+    const response = await client.getPlayerGames(profileId, {
+      limit: count,
+      fresh: true,
+      ...access,
+    })
+    return response.games
+  }
+
+  const games: Game[] = []
+  const pageSize = 100
+  let page = 1
+  let settledStreak = 0
+  const maxPages = 500
+  while (page <= maxPages) {
+    const response = await client.getPlayerGames(profileId, {
+      limit: pageSize,
+      page,
+      fresh: page === 1,
+      includeAlts: true,
+      ...access,
+    })
+    if (response.games.length === 0) break
+    for (const game of response.games) {
+      games.push(game)
+      settledStreak = gameIsSettled(store, game.game_id) ? settledStreak + 1 : 0
+    }
+    await yieldToEventLoop()
+    if (page > 1 && settledStreak >= CATCH_UP_STREAK) break
+    const total = Number.isSafeInteger(response.total_count) ? response.total_count : games.length
+    const effectivePage = Math.max(1, response.per_page ?? response.count ?? response.games.length)
+    if (response.games.length < effectivePage) break
+    if (games.length >= total) break
+    page += 1
+  }
+  return games
 }
 
 type PublicGameMetadata = Pick<StoredMatch, 'patch' | 'season'>
@@ -415,18 +477,10 @@ async function analyzeRankedGames(
 
   try {
     const client = getClient()
-    const [player, games] = await Promise.all([
-      client.getPlayer(profileId),
-      count == null
-        ? // Follow total_count pagination instead of silently stopping at the
-          // first 20/100 records. No leaderboard filter keeps ranked, QM and
-          // team games together.
-          client.getAllPlayerGames(profileId, { pageSize: 100, fresh: true })
-        : // Polling and post-game auto-folds intentionally stay bounded.
-          client
-            .getPlayerGames(profileId, { limit: count, fresh: true })
-            .then((response) => response.games),
-    ])
+    const player = await client.getPlayer(profileId)
+    const history = await historyPromise
+    const { store } = history
+    const games = await loadGamesForSync(client, profileId, count, store)
     const bracket = bracketFromRankLevel(pickPrimaryMode(player.modes)?.rankLevel)
     const bench = getBenchmarks(bracket)
 
@@ -447,8 +501,6 @@ async function analyzeRankedGames(
     const relicRecent = await getRecentRelicMatchHistory(profileId)
     const perPlayerByGame = relicPerPlayerStatsByGameId(relicRecent)
 
-    const history = await historyPromise
-    const { store } = history
     const oldestFirst = [...games].filter((g) => !g.ongoing).reverse()
     let analyzed = 0
     const summaryBudget: SummaryBudget = {
@@ -456,7 +508,18 @@ async function analyzeRankedGames(
       recentHistory: relicRecent,
     }
 
+    let processed = 0
+    const jobs: Array<{
+      id: string
+      game: Game
+      analyzedGame: AnalyzedGame
+      result: 'win' | 'loss' | null
+      local: ReturnType<typeof mergeLocalStats>
+      perPlayer: PerPlayerMatchStats[] | undefined
+    }> = []
     for (const game of oldestFirst) {
+      processed++
+      if (processed % 4 === 0) await yieldToEventLoop()
       const id = String(game.game_id)
       // Skip games already stored WITH a final result. A game folded the instant it
       // ended (onEnded) can be saved before AoE4World finalizes it — result/duration
@@ -492,40 +555,56 @@ async function analyzeRankedGames(
         warningStats,
         localStatsFromSummary(summary, profileId, analyzedGame.civ, game.duration),
       )
+      jobs.push({ id, game, analyzedGame, result, local, perPlayer })
+    }
 
-      const analysis = analyzeMatch({
-        game: analyzedGame,
-        bracket,
-        matchupWinRate: lookupMatchup(analyzedGame.civ, analyzedGame.oppCiv ?? null),
-        local,
-      })
-      const prev = store.listMatches(1)[0]
-      const priorGoalChecks = prev ? checkGoals(prev.goals, { result }) : []
-      const goals = generateGoals(analysis, bench, { nowIso: game.started_at, matchId: id })
-
-      store.saveMatch({
-        id,
-        playedAt: game.started_at,
-        result,
-        civ: analyzedGame.civ,
-        oppCiv: analyzedGame.oppCiv ?? null,
-        oppName: opponentName(game, profileId),
-        map: analyzedGame.map,
-        durationSec: analyzedGame.durationSec,
-        rating: analyzedGame.myRating ?? null,
-        ratingDiff: analyzedGame.ratingDiff ?? null,
-        analysis,
-        goals,
-        priorGoalChecks,
-        local,
-        createdAt: game.started_at,
-        format: teamFormat(game.teams.map((t) => t.length)),
-        ...publicGameMetadata(game),
-        myTeam: analyzedGame.myTeam,
-        oppTeam: analyzedGame.oppTeam,
-        perPlayer,
-      })
-      analyzed++
+    const analysisConcurrency = 3
+    for (let i = 0; i < jobs.length; i += analysisConcurrency) {
+      const chunk = jobs.slice(i, i + analysisConcurrency)
+      const analyses = await Promise.all(
+        chunk.map((job) =>
+          analyzeMatchAsync({
+            game: job.analyzedGame,
+            bracket,
+            matchupWinRate: lookupMatchup(job.analyzedGame.civ, job.analyzedGame.oppCiv ?? null),
+            local: job.local,
+          }),
+        ),
+      )
+      for (let k = 0; k < chunk.length; k++) {
+        const job = chunk[k]!
+        const analysis = analyses[k]!
+        const prev = store.listMatches(1)[0]
+        const priorGoalChecks = prev ? checkGoals(prev.goals, { result: job.result }) : []
+        const goals = generateGoals(analysis, bench, {
+          nowIso: job.game.started_at,
+          matchId: job.id,
+        })
+        store.saveMatch({
+          id: job.id,
+          playedAt: job.game.started_at,
+          result: job.result,
+          civ: job.analyzedGame.civ,
+          oppCiv: job.analyzedGame.oppCiv ?? null,
+          oppName: opponentName(job.game, profileId),
+          map: job.analyzedGame.map,
+          durationSec: job.analyzedGame.durationSec,
+          rating: job.analyzedGame.myRating ?? null,
+          ratingDiff: job.analyzedGame.ratingDiff ?? null,
+          analysis,
+          goals,
+          priorGoalChecks,
+          local: job.local,
+          createdAt: job.game.started_at,
+          format: teamFormat(job.game.teams.map((t) => t.length)),
+          ...publicGameMetadata(job.game),
+          myTeam: job.analyzedGame.myTeam,
+          oppTeam: job.analyzedGame.oppTeam,
+          perPlayer: job.perPlayer,
+        })
+        analyzed++
+      }
+      await yieldToEventLoop()
     }
 
     // Non-destructive per-player backfill: attach the Relic counters to ANY stored
@@ -555,18 +634,19 @@ async function analyzeRankedGames(
       const local = mergeLocalStats(m.local, fromSummary)
       if (sameLocalStats(m.local, local)) continue
       // Recompute the analysis so the grade/economy signals reflect the new data.
-      const analysis = analyzeMatch({
+      const analysis = await analyzeMatchAsync({
         game: storedMatchToAnalyzedGame(m),
         bracket,
         matchupWinRate: lookupMatchup(m.civ, m.oppCiv ?? null),
         local,
       })
       store.saveMatch({ ...m, local, analysis })
+      await yieldToEventLoop()
     }
 
     return ok({
       analyzed,
-      total: store.listMatches().length,
+      total: store.countMatches(),
       backend: history.backend,
     })
   } catch (e) {
@@ -627,7 +707,7 @@ async function analyzeLocalGames(context: SyncContext): Promise<number> {
       const durationSec = local?.gameTimeSec ?? built.game.durationSec
       const game = { ...built.game, durationSec }
 
-      const analysis = analyzeMatch({ game, bracket, matchupWinRate: null, local })
+      const analysis = await analyzeMatchAsync({ game, bracket, matchupWinRate: null, local })
       const playedAt = g.match.completedAtMs
         ? new Date(g.match.completedAtMs).toISOString()
         : new Date(g.mtimeMs).toISOString()
@@ -659,6 +739,7 @@ async function analyzeLocalGames(context: SyncContext): Promise<number> {
         perPlayer: perPlayerByGame.get(g.id),
       })
       added++
+      await yieldToEventLoop()
     }
 
     // Human custom games can leave only playback/temp.rec + a warnings.log
@@ -712,7 +793,7 @@ async function analyzeLocalGames(context: SyncContext): Promise<number> {
           myTeam: teammates.length > 0 ? teammates : undefined,
           oppTeam: enemies.length > 1 ? enemies : undefined,
         }
-        const analysis = analyzeMatch({ game, bracket, matchupWinRate: null, local })
+        const analysis = await analyzeMatchAsync({ game, bracket, matchupWinRate: null, local })
         const playedAt = new Date(tempReplay.recordedAtMs).toISOString()
         const prev = store.listMatches(1)[0]
         const priorGoalChecks = prev ? checkGoals(prev.goals, { result }) : []
@@ -820,7 +901,11 @@ export async function getLandmarkRecord(civ: string): Promise<IpcResult<Landmark
     const store = await getHistoryStore()
     const profileId = getSettings().getAll().profileId
     const games: { result: 'win' | 'loss'; built: LandmarkBuilt[] }[] = []
+    let scanned = 0
     for (const m of store.listMatches()) {
+      scanned++
+      if (scanned % 8 === 0) await yieldToEventLoop()
+      if (m.hidden || m.civ !== civ) continue
       if (m.hidden || m.civ !== civ) continue
       const result = m.result ?? resultFromPerPlayer(m.perPlayer, profileId)
       if (result == null) continue
@@ -845,13 +930,21 @@ export async function listHistory(limit?: number): Promise<IpcResult<StoredMatch
   try {
     const store = await getHistoryStore()
     const profileId = getSettings().getAll().profileId
-    const matches = await Promise.all(
-      store.listVisibleMatches(limit).map(async (match) => {
-        const enriched = await enrichStoredMatchWithSummary(match, profileId)
-        if (enriched !== match) store.saveMatch(enriched)
-        return enriched
-      }),
-    )
+    const source = store.listVisibleMatches(limit)
+    const matches: StoredMatch[] = []
+    const batchSize = 6
+    for (let i = 0; i < source.length; i += batchSize) {
+      const chunk = source.slice(i, i + batchSize)
+      const enrichedChunk = await Promise.all(
+        chunk.map(async (match) => {
+          const enriched = await enrichStoredMatchWithSummary(match, profileId)
+          if (enriched !== match) store.saveMatch(enriched)
+          return enriched
+        }),
+      )
+      matches.push(...enrichedChunk)
+      await yieldToEventLoop()
+    }
     return ok(matches)
   } catch (e) {
     return errFrom(e)
@@ -873,9 +966,12 @@ export async function getBuildAuditHistory(
     const store = await getHistoryStore()
     const settings = getSettings().getAll()
     const matches = store.listVisibleMatches(limit)
-    return ok(
-      await Promise.all(
-        matches.map(async (match) =>
+    const rows: BuildAuditHistoryRow[] = []
+    const batchSize = 6
+    for (let i = 0; i < matches.length; i += batchSize) {
+      const chunk = matches.slice(i, i + batchSize)
+      const part = await Promise.all(
+        chunk.map(async (match) =>
           buildAuditHistoryRow({
             match,
             summary: await loadSummaryFromLocalOrCache(match.id, settings.profileId),
@@ -884,8 +980,11 @@ export async function getBuildAuditHistory(
             pinnedBuildName: settings.overlay.buildOrderId,
           }),
         ),
-      ),
-    )
+      )
+      rows.push(...part)
+      await yieldToEventLoop()
+    }
+    return ok(rows)
   } catch (e) {
     return errFrom(e)
   }
@@ -907,6 +1006,7 @@ export async function getMatchCorpusReport(limit = 5_000): Promise<IpcResult<Mat
     const matches = store.listVisibleMatches(limit)
     const summaries = new Map<string, MatchSummary | null>()
     const auditRows: BuildAuditHistoryRow[] = []
+    let scanned = 0
     for (const match of matches) {
       const summary = await loadSummaryFromLocalOrCache(match.id, settings.profileId)
       summaries.set(match.id, summary)
@@ -919,6 +1019,8 @@ export async function getMatchCorpusReport(limit = 5_000): Promise<IpcResult<Mat
           pinnedBuildName: settings.overlay.buildOrderId,
         }),
       )
+      scanned++
+      if (scanned % 8 === 0) await yieldToEventLoop()
     }
     return ok(
       analyzeMatchCorpus({

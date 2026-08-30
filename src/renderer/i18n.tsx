@@ -11,6 +11,15 @@ import {
 } from 'react'
 import { ipc } from './shared/ipc'
 import { UNIT_NAMES_RU } from '@data/unitNames'
+import {
+  CIV_AND_MAP_NAMES,
+  expandGameNameKeys,
+  lookupCivOrMapName,
+} from '@domain/gameNameDictionary'
+import { resolveGameNameKey } from '@domain/gameNameResolve'
+import { tidyEventName } from '@domain/statsSummary'
+import { localizeGeneratedRu } from './localizeGeneratedCopy'
+import { localizeOverlayCopy, localizeOverlayTitleRemainder } from './localizeOverlayCopy'
 
 export type Locale = 'ru' | 'en' | 'uk' | 'de'
 
@@ -248,6 +257,56 @@ const UI: Record<Locale, Record<string, string>> = {
   ru: {
     ...PRODUCTION_MODIFIER_TRANSLATIONS.ru,
     Dashboard: 'Главная',
+    Statistics: 'Статистика',
+    Explore: 'Обзор',
+    Lab: 'Лаборатория',
+    Workbench: 'Верстак',
+    Learn: 'Обучение',
+    Practice: 'Практика',
+    Helpers: 'Помощники',
+    Encyclopedia: 'Энциклопедия',
+    Sources: 'Источники',
+    Training: 'Тренировка',
+    'Guides groups': 'Группы гайдов',
+    'Explorer groups': 'Группы обозревателя',
+    'Lab groups': 'Группы лаборатории',
+    'Lab tools': 'Инструменты лаборатории',
+    Workshop: 'Мастерская',
+    Capture: 'Захват',
+    Recon: 'Разведка',
+    'Scout sections': 'Разделы разведки',
+    'Stream Desk sections': 'Разделы стрим-стола',
+    'Counter Helper': 'Помощник по контрам',
+    'Look up any opponent, browse the live ladder, or open the tournament Elo desk.':
+      'Найдите соперника, откройте лестницу или турнирный Elo.',
+    'Tincture, replay analysis, Data Studio, stream overlay, and Club Lab — one place, each tool on its own tab.':
+      'Tincture, разбор реплеев, Data Studio, стрим-оверлей и Club Lab — в одном месте, каждый инструмент на своей вкладке.',
+    'Club lab sections': 'Разделы лаборатории Club',
+    'Replay view': 'Вид реплея',
+    'Settings sections': 'Разделы настроек',
+    'Leaderboard platform': 'Платформа таблицы',
+    'Pro Match Reviews': 'Разборы про-матчей',
+    'Syncing account games…': 'Синхронизация матчей аккаунта…',
+    'Account games are syncing automatically.': 'Матчи аккаунта подтягиваются автоматически.',
+    'Updated automatically': 'Обновлено автоматически',
+    'Fetching player archive…': 'Загрузка архива игрока…',
+    'Found {games} matches: saved {replays} replays and {summaries} summaries ({analyzed} analyzed)':
+      'Найдено {games} матчей: сохранено {replays} реплеев и {summaries} сводок ({analyzed} проанализировано)',
+    'Loaded {replays} replays · {summaries} summaries · {analyzed} analyzed':
+      'Загружено {replays} реплеев · {summaries} сводок · {analyzed} проанализировано',
+    'Could not load the player archive.': 'Не удалось загрузить архив игрока.',
+    'Downloading and analyzing replay…': 'Скачивание и разбор демки…',
+    'Public combat counters are available above. Build order, economy timeline, and TC idle metrics fill in automatically from the replay archive.':
+      'Публичные боевые счётчики уже выше. Билд, экономика и простой ТЦ подтянутся сами из архива реплеев.',
+    'Downloading participant replays…': 'Скачивание демок участников…',
+    'Loaded archives for {players} players: {replays} replays, {summaries} summaries ({analyzed} analyzed)':
+      'Архивы {players} игроков: {replays} реплеев, {summaries} сводок ({analyzed} проанализировано)',
+    'Could not load participant archives.': 'Не удалось загрузить архивы участников.',
+    'No per-player breakdown for this game yet. Account games sync automatically in the background.':
+      'Поигроковой разбивки пока нет. Матчи аккаунта синхронизируются в фоне.',
+    'Refreshing data sources…': 'Обновление источников данных…',
+    'Account games sync automatically from the public API.':
+      'Матчи аккаунта синхронизируются с публичного API сами.',
     'War room': 'Командный центр',
     'Your ranks, rating, and recent form.': 'Ваши ранги, рейтинг и текущая форма.',
     Chronicle: 'Хроника',
@@ -267,12 +326,110 @@ const UI: Record<Locale, Record<string, string>> = {
     'Look up any opponent: rank, recent form, favourite civs and maps, and how to counter them.':
       'Найдите соперника: ранг, форма, любимые цивилизации и карты, а также способы контрить его.',
     'Search any player to scout...': 'Найти игрока для разведки…',
+    'Search a name, or pick a player from the ladder and tournament tables on the other tabs.':
+      'Введите имя или выберите игрока на вкладках лестницы и турниров.',
+    'Browse leaderboards': 'Открыть лестницы',
+    'Ranked and Quick Match ladders stay here in Scout — open a name from the table to scout them.':
+      'Рейтинг и Quick Match остаются в Scout — откройте имя из таблицы, чтобы разведать игрока.',
+    'Open tournaments': 'Открыть турниры',
+    'Tournament Elo and event directories, plus a jump to Stream Desk if you are broadcasting.':
+      'Турнирный Elo, каталоги событий и переход к Stream Desk, если вы ведёте трансляцию.',
+    'Five tools, one place: Tincture, Replay Lab, Data Studio, Stream Desk, and Club Lab.':
+      'Пять инструментов в одном месте: Tincture, Replay Lab, Data Studio, Stream Desk и Club Lab.',
+    'Unit Counters': 'Контры юнитов',
+    'These are unit-vs-unit counters from bundled game data.':
+      'Это контры юнит-на-юнит по встроенным игровым данным.',
+    'Civ vs civ ladder matchups are in Civ Meta → Counter Lab.':
+      'Матчапы цивилизаций на лестнице — в Civ Meta → Counter Lab.',
+    'Learn, Practice, and Helpers: written guides, creator hubs, build orders, civ quiz, and unit counters.':
+      'Learn, Practice и Helpers: гайды, хабы авторов, билды, квиз цивилизаций и контры юнитов.',
+    Calculators: 'Калькуляторы',
     Colophon: 'Сведения',
     'About RTSLytics': 'О RTSLytics',
     'Version unknown': 'Версия неизвестна',
     'My Stats': 'Моя статистика',
+    'Player stats': 'Статистика игрока',
+    'Open player stats': 'Открыть статистику игрока',
+    'Open this player’s stats': 'Открыть статистику этого игрока',
+    'Coaching dossier': 'Тренерский разбор',
+    'Coach dossier': 'Тренерский разбор',
+    'Decision tree': 'Дерево решений',
+    'In-game checklist': 'Чеклист во время игры',
+    'This match': 'Этот матч',
+    'Match sample': 'Выборка матчей',
+    'Playstyle fingerprint': 'Стиль игры',
+    'Build order consistency': 'Стабильность билдов',
+    'Typical timings': 'Типичные тайминги',
+    'Idle production': 'Простой производства',
+    'Unit composition': 'Состав армии',
+    Scouting: 'Разведка',
+    Raids: 'Рейды',
+    'Map control': 'Контроль карты',
+    Fights: 'Бои',
+    'TOP-5 errors': 'ТОП-5 ошибок',
+    'Unused opportunities': 'Неиспользуемые возможности',
+    'Stop doing': 'Перестать делать',
+    'Start doing': 'Начать делать',
+    'Main bottleneck': 'Главное узкое место',
+    'Training plan': 'План тренировки',
+    'Progress metrics': 'Метрики прогресса',
+    'Same analytics surface as My Stats — public history, dossier, and video coaching.':
+      'Та же аналитика, что «Моя статистика»: публичная история, разбор и видеокоучинг.',
+    'Same analytics surface as My Stats — open this URL for any player from scout, a match roster, or live overlay.':
+      'Тот же экран, что «Моя статистика»: откройте этот адрес на любого игрока из разведки, состава матча или оверлея.',
+    '{name} — coaching dossier': '{name} — тренерский разбор',
+    'Do this instead': 'Что делать вместо этого',
+    confirmed: 'подтверждено',
+    likely: 'вероятно',
+    probable: 'вероятно',
+    anecdote: 'единичный случай',
+    single: 'единичный случай',
+    'Insufficient data': 'Недостаточно данных',
+    'Most important change': 'Самое важное изменение',
+    'What you should do differently': 'Что менять в следующей игре',
+    'What they should do differently': 'Что игроку менять в следующей игре',
+    'TOP-5 strengths': 'ТОП-5 сильных сторон',
+    'How to play this opponent': 'Как играть против этого соперника',
+    '1v1 / team format split': '1 на 1 и командные режимы',
+    'Full section map (70-point)': 'Все разделы разбора (70 пунктов)',
+    'Evidence attached in structured fields.': 'Доказательства в структурированных полях.',
+    'Allies & team plan': 'Союзники и план команды',
+    'Self checklist': 'Чеклист для себя',
+    'Enemy checklist': 'Чеклист противника',
+    Strengths: 'Сильные стороны',
+    Weaknesses: 'Слабые стороны',
+    '20-second pre-match block': 'Блок на 20 секунд до матча',
+    Role: 'Роль',
+    'First priority': 'Первый приоритет',
+    'First timing': 'Первый тайминг',
+    'Match rule': 'Правило матча',
+    'Upcoming match briefing': 'Брифинг предстоящего матча',
+    'Match briefing': 'Брифинг матча',
+    Focus: 'Фокус',
+    Deny: 'Что отрезать',
+    'Attack window': 'Окно атаки',
+    Composition: 'Состав',
+    'Lose condition': 'Условие поражения',
+    'If Plan A fails': 'Если план A не сработал',
+    'Win condition': 'Условие победы',
+    'If you see…': 'Если видишь…',
+    'Per-video coaching': 'Разбор по видео',
+    'Builds from transcript': 'Билды из транскрипта',
+    'Mechanics from transcript': 'Механики из транскрипта',
+    'Quotes are taken only from downloaded captions or video chapters.':
+      'Цитаты только из скачанных субтитров или глав видео.',
+    'No on-disk transcript for this video — title and catalog only.':
+      'Транскрипта на диске нет — только название и каталог.',
+    'Valdemar & Beastyqt videos for this match': 'Видео Valdemar и Beastyqt для этого матча',
+    'Valdemar & Beastyqt lessons for your civ': 'Уроки Valdemar и Beastyqt для вашей цивилизации',
+    'Valdemar & Beastyqt lessons for this player': 'Уроки Valdemar и Beastyqt для этого игрока',
+    'Opponent video': 'Видео противника',
+    'Shared fundamentals': 'Общие основы',
+    'Your video': 'Ваше видео',
     'Data Studio': 'Студия данных',
     Scout: 'Разведка',
+    'Downloading and analyzing opponent replays / summaries…':
+      'Скачиваем и анализируем реплеи / сводки противника…',
     Guides: 'Гайды',
     Tincture: 'Tincture',
     'Replay Lab': 'Лаборатория реплеев',
@@ -376,9 +533,9 @@ const UI: Record<Locale, Record<string, string>> = {
     'Eco Target Split': 'Баланс рабочих',
     'Show active villager distribution balance (Food, Wood, Gold, Stone) on the overlay.':
       'Отображение распределения крестьян (еда, дерево, золото, камень) на оверлее.',
-    'Mini-HUD ultra-compact mode': 'Компактный режим (Mini-HUD)',
-    'Minimalist padding and compressed layout optimized for 1080p and smaller screens.':
-      'Ультра-минималистичные отступы и компактная верстка для экранов 1080p и ноутбуков.',
+    'Mini-HUD compact overlay': 'Компактный оверлей',
+    'Quiet in-game HUD: less chrome, smaller type, more of the game visible. On by default.':
+      'Спокойный HUD в игре: меньше рамок, мельче текст, больше видно поле. Включён по умолчанию.',
     'Timing Checkpoints & Reminders': 'Макро-таймеры и напоминания',
     'Macro match checkpoints (2:30 gold scout, 4:15 Feudal, 7:00 relics/sacred sites).':
       'Внутриигровые подсказки по таймингам (2:30 золото соперника, 4:15 Feudal, 7:00 святыни/реликвии).',
@@ -432,6 +589,9 @@ const UI: Record<Locale, Record<string, string>> = {
     'Sacred Sites Activated': 'Священные места открыты',
     'Sacred sites are now capturable! Contest or secure victory timer':
       'Святыни доступны для захвата! Боритесь за контроль или запускайте таймер победы',
+    'Build Target: Feudal Age': 'Цель билда: феодальная эпоха',
+    'Build Target: Castle Age': 'Цель билда: замковая эпоха',
+    'Build Target: Imperial Age': 'Цель билда: имперская эпоха',
     'Delhi Sanctity & Sacred Sites': 'Дели Sanctity: захват святынь',
     'Capture sacred sites now with Scholars for +300 gold/min and vision':
       'Захватывайте святыни учеными для +300 зол/мин и обзора карты',
@@ -447,10 +607,27 @@ const UI: Record<Locale, Record<string, string>> = {
     Maximize: 'Развернуть',
     Close: 'Закрыть',
     'Main navigation': 'Основная навигация',
+    Play: 'Игра',
+    Ladder: 'Лестница',
+    Ranked: 'Рейтинг',
+    Intel: 'Разведка',
+    'Club Lab': 'Клубная лаборатория',
+    Collapse: 'Свернуть',
+    'Collapse sidebar': 'Свернуть боковую панель',
+    'Expand sidebar': 'Развернуть боковую панель',
+    'Collapse section': 'Свернуть блок',
+    'Expand section': 'Развернуть блок',
+    'New scout': 'Новый скаут',
+    'Open leaderboards': 'Открыть таблицы лидеров',
+    'Browse ranked and Quick Match ladders, then scout any name from the table.':
+      'Рейтинг и Quick Match — откройте любого игрока из таблицы для скаута.',
+    'Live win rates, map pool, and the August briefing before you queue.':
+      'Живые винрейты, пул карт и августовский брифинг перед очередью.',
+    'Counter lab, matchup matrix, and how the live ladder punishes each pairing.':
+      'Лаборатория контров, матрица матчапов и как лестница наказывает каждую пару.',
     'Workspace navigation': 'Разделы рабочего пространства',
     Home: 'Главная',
     Analysis: 'Анализ',
-    Intel: 'Разведка',
     Stream: 'Стрим',
     Preferences: 'Параметры',
     'Profile, appearance, overlay, and data.': 'Профиль, оформление, оверлей и данные.',
@@ -508,14 +685,37 @@ const UI: Record<Locale, Record<string, string>> = {
     'Conqueror and above': 'Завоеватель и выше',
     'Conqueror IV and above': 'Завоеватель IV и выше',
     'Live tier list': 'Актуальный тир-лист',
+    'Live meta': 'Живая мета',
+    'Map pool until': 'Пул карт до',
+    'Meta by mode and map type': 'Мета по режиму и типу карты',
+    'Meta by season, mode and map type': 'Мета по сезону, режиму и типу карты',
+    'Ranked season': 'Рейтинговый сезон',
+    'Ranked mode': 'Рейтинговый режим',
+    'This briefing is Season {n} only. Older ranked seasons are not in the live snapshot.':
+      'Сводка только по сезону {n}. Прошлые рейтинговые сезоны в живом снимке не показаны.',
+    'Open maps': 'Открытые карты',
+    'Closed maps': 'Закрытые карты',
+    'Hybrid maps': 'Гибридные карты',
+    'Naval maps': 'Водные карты',
+    'Team queues share this map pool. Civilization win rates use the 2v2 sample.':
+      'Командные режимы играют на одном пуле карт. Винрейты цивилизаций — выборка 2v2.',
+    'Open civ meta': 'Открыть мету цивилизаций',
     'Civ stats': 'Статистика цивилизаций',
     'Counter Lab': 'Лаборатория контров',
+    'Counter Calculator': 'Калькулятор контров',
+    'Civ meta sections': 'Разделы меты цивилизаций',
+    'Loading live civ meta…': 'Загрузка живой меты цивилизаций…',
+    'No civ meta loaded yet. Refresh or check the connection.':
+      'Мета цивилизаций ещё не загрузилась. Обновите или проверьте соединение.',
+    'Weighting civs by the current map pool…': 'Взвешиваю цивилизации по текущему пулу карт…',
     Maps: 'Карты',
     'Tier list': 'Тир-лист',
     'Ranked 1v1': 'Рейтинг 1×1',
     'Quick Match 1v1': 'Быстрый матч 1×1',
     'Ranked Team': 'Рейтинговая команда',
     'Ranked 3v3 (Elo)': 'Рейтинг 3×3 (Elo)',
+    'Ranked 2v2 (Elo)': 'Рейтинг 2×2 (Elo)',
+    'Ranked 4v4 (Elo)': 'Рейтинг 4×4 (Elo)',
     'Ranked 3v3': 'Рейтинг 3×3',
     'Ranked 4v4': 'Рейтинг 4×4',
     'Quick Match 3v3': 'Быстрый матч 3×3',
@@ -528,8 +728,8 @@ const UI: Record<Locale, Record<string, string>> = {
     Conqueror: 'Завоеватель',
     'Rank bracket': 'Ранговый диапазон',
     Leaderboard: 'Рейтинг',
-    'Landmark pick & win rates': 'Пик и винрейт landmark',
-    Landmark: 'Лендмарк',
+    'Landmark pick & win rates': 'Пик и винрейт ориентиров',
+    Landmark: 'Ориентир',
     Age: 'Эпоха',
     'Pick rate': 'Пикрейт',
     'Win rate': 'Винрейт',
@@ -544,8 +744,6 @@ const UI: Record<Locale, Record<string, string>> = {
     'Strongest on these maps': 'Сильнейшие карты',
     'Recommended opening': 'Рекомендуемое начало',
     'Game plan': 'План игры',
-    Strengths: 'Сильные стороны',
-    Weaknesses: 'Слабые стороны',
     'Recommended build orders': 'Рекомендуемые билды',
     'Key units': 'Ключевые юниты',
     'Facing {civ}? Watch for': 'Играете против {civ}? Следите за',
@@ -693,6 +891,71 @@ const UI: Record<Locale, Record<string, string>> = {
     'of your games': 'ваших игр',
     'Maps where {civ} has the highest win rate of any civ.':
       'Карты, где {civ} имеет самый высокий винрейт среди цивилизаций.',
+    'Highest win rate for {civ} in ranked samples.':
+      'Самый высокий винрейт {civ} в рейтинговой выборке.',
+    'Lowest win rate for {civ} in ranked samples.':
+      'Самый низкий винрейт {civ} в рейтинговой выборке.',
+    'Still winning overall — these are the closest games for {civ}, not losing matchups.':
+      'Пара всё ещё в плюсе — это самые близкие игры {civ}, а не проигрышные матчапы.',
+    'Each build and its video are for this civilization only.':
+      'Каждый билд и его видео относятся только к этой цивилизации.',
+    'From your synced games with {civ} — a small but real sample.':
+      'Из синхронизированных игр за {civ} — небольшая, но реальная выборка.',
+    'Macedonian Dynasty uses Silver from gold and stone mining to speed up production and upgrades, then converts that lead into Varangian infantry and early conquest timings.':
+      'Македонская династия получает серебро с добычи золота и камня, ускоряет производство и апгрейды, затем конвертирует преимущество в варяжскую пехоту и ранние тайминги завоевания.',
+    'Current 1v1 WR leader (~55%) in patch 16.2–16.3. Silver from gold and stone speeds production; the Beasty 1v1 line is Varangian Warcamp → Imperial Hippodrome → horsemen → Scale Barding → Golden Horn → Riddari and relics. Still underpicked at ~4.6%.':
+      'Лидер 1v1 по винрейту (~55%) на патчах 16.2–16.3. Серебро ускоряет производство; линия Beasty: варкеп → ипподром → всадники → Scale Barding → Golden Horn → риддари и реликвии. Пик всё ещё низкий (~4.6%).',
+    'Silver income, Warcamp horsemen, Hippodrome, and Riddari':
+      'Серебро, варкеп, ипподром и риддари',
+    'August 2026: Macedonian, Templar, and Golden Horde set the 1v1 pace':
+      'Август 2026: македонцы, тамплиеры и Золотая Орда задают темп 1v1',
+    'Since June 1 the live patch window is 16.2 through 16.3.11308. July 2 started automatic monthly ranked map rotation; the August pool (West Lake, Flankwoods, Hidden Valley, Ocean Gateway, Relic River) rewards scouting and safer openings more than all-in Feudal. Ladder win rate still crowns Macedonian Dynasty, Knights Templar, and Golden Horde. English remains the most-picked civ, not the highest win rate — turtle and 2TC are strong on this month’s maps, not because English is Z-tier.':
+      'С 1 июня живое окно патчей — 16.2–16.3.11308. 2 июля включили ежемесячную ротацию рейтинговых карт; августовский пул (West Lake, Flankwoods, Hidden Valley, Ocean Gateway, Relic River) награждает разведку и более безопасные опенинги, а не all-in в феодале. По винрейту лидируют македонцы, тамплиеры и Золотая Орда. Англичане — самый популярный пик, не самый сильный: 2TC и черепаха сильны на картах месяца, а не потому что англичане Z-тир.',
+    'Play this': 'Играй это',
+    'Do not': 'Не делай',
+    'Live patch window': 'Живое окно патчей',
+    'Open build orders': 'Открыть билд-ордеры',
+    'Matches the August anti-2TC / pilgrim meta':
+      'Подходит под августовскую мету против 2TC / пилигримов',
+    'Macedonian Warcamp → Imperial Hippodrome → Riddari (Beasty 1v1 reference).':
+      'Македонцы: варкеп → имперский ипподром → риддари (референс Beasty 1v1).',
+    'Vs greedy 2TC: VortiX Hippodrome horsemen into Varangian Guard spam (AoE4Guides, timed).':
+      'Против жадного 2TC: VortiX — кони с ипподрома в спам варягов (AoE4Guides, с таймингами).',
+    'Knights Templar: VortiX pilgrim → 2TC Serjeant + Genitour on sacred-site maps.':
+      'Тамплиеры: VortiX — пилигрим → 2TC сержанты + хенитуры на картах со священными местами.',
+    'Golden Horde: Keshik/Torguud pressure, or the 6-minute 2TC with Khan if they turtle.':
+      'Золотая Орда: давление кешиков/торгуудов или 2TC за ~6 минут с ханом, если соперник черепашит.',
+    'Do not treat English 12.7% pick rate as a strength ranking — 47.1% WR is C-tier on the ladder.':
+      'Не путай пикрейт англичан 12.7% с силой — 47.1% винрейта на лестнице это C-тир.',
+    'West Lake looks like water but ranked docks are disabled — do not walk vils to a shoreline dock. Skip KT water-hybrid BOs on that map.':
+      'West Lake выглядит как вода, но в рейтинге доки выключены — не гони жителей на береговой док. Водные билды тамплиеров на этой карте пропускай.',
+    'Chinese is last in 1v1 WR this window; defaulting into Song boom is a losing default.':
+      'Китайцы последние по винрейту 1v1 в этом окне; дефолтный Song-бум — проигрышный дефолт.',
+    'Highest WR. Silver + Warcamp tempo into Riddari; still underpicked.':
+      'Высший винрейт. Серебро + темп варкепа в риддари; всё ещё недопик.',
+    'Most popular high-WR civ. Pilgrim gold and armored timings.':
+      'Самая популярная сильная цив. Золото пилигримов и тяжёлые тайминги.',
+    'Khan cavalry. Punishes slow English/HRE on open and hybrid maps.':
+      'Конница хана. Наказывает медленных англичан/HRE на открытых и гибридных картах.',
+    'VortiX Feudal Varangian Guard rush': 'VortiX: феодальный раш варяжской стражи',
+    'VortiX 2TC Serjeant & Genitour + Pilgrim': 'VortiX: 2TC сержанты, хенитуры и пилигрим',
+    'Golden Horde 2TC in 6 minutes': 'Золотая Орда: 2TC за 6 минут',
+    'Hippodrome horses then VG vs 2TC.': 'Кони с ипподрома, затем варяги против 2TC.',
+    'Antioch + Castile; pilgrim then second TC.': 'Антиохия + Кастилия; пилигрим, затем второй ТЦ.',
+    'Khan + Torguuds hold while the second TC finishes.':
+      'Хан и торгууды держат, пока достраивается второй ТЦ.',
+    'Balance pass with Jin Dynasty focus, controller UI on PC/handheld, and a long civ bugfix list. This is still the start of the live stats window.':
+      'Баланс с акцентом на Цзинь, UI геймпада на ПК/handheld и длинный список багфиксов. Это всё ещё начало живого окна статистики.',
+    'Controller vs KBM UI toggle on handheld. Golden Horde tech-repeat bugs (Armored Caravans / Medical Centers / City Planning). Announced Raiders of the North.':
+      'Переключение UI геймпад/клавиатура на handheld. Баги повторных технологий Золотой Орды. Анонс Raiders of the North.',
+    'Ranked map pool now rotates on the 1st of each month with a mix of open, closed, hybrid, and naval maps. This is the mechanical meta shift of the last six weeks.':
+      'Рейтинговый пул карт теперь крутится 1-го числа каждого месяца (открытые, закрытые, гибрид, вода). Это главный механический сдвиг меты за последние недели.',
+    'Console launch crash fix. Current match payloads (including team RM) report this build.':
+      'Фикс краша запуска на консолях. Текущие матчи (включая командный рейтинг) отдают этот билд.',
+    'Silver income, Varangian infantry, and early conquest timings':
+      'Серебро, варяжская пехота и ранние тайминги завоевания',
+    'High decision load: Silver routing plus Varangian production choices':
+      'Высокая нагрузка на решения: маршруты серебра и выбор варяжского производства',
     'Win rates firm up as you play more games with this civ — under ~5 games per landmark is a hint, not a verdict.':
       'Винрейт становится надёжнее с количеством игр — менее пяти игр за landmark недостаточно для вывода.',
     'A low-pick landmark with a high win rate is often a hidden gem for specific matchups — pick rate measures popularity, not strength.':
@@ -801,6 +1064,7 @@ const UI: Record<Locale, Record<string, string>> = {
     'Economy & build order': 'Экономика и порядок строительства',
     'Match evidence navigation': 'Навигация по доказательствам матча',
     'Turning points': 'Переломные моменты',
+    'Match review': 'Разбор матча',
     'Build audit': 'Сверка билда',
     'Command stream': 'Поток команд',
     'Team review': 'Разбор команды',
@@ -818,9 +1082,6 @@ const UI: Record<Locale, Record<string, string>> = {
     'Summary timeline': 'Таймлайн сводки',
     'Kills / losses': 'Убийства / потери',
     'TC gaps': 'Паузы ГЦ',
-    Major: 'Критично',
-    Minor: 'Важно',
-    Info: 'Наблюдение',
     'Summary ready': 'Сводка готова',
     'Summary pending': 'Сводка ожидается',
     'VOD linked': 'VOD привязан',
@@ -1047,7 +1308,6 @@ const UI: Record<Locale, Record<string, string>> = {
     'Observed timing signals:': 'Замеченные тайминги:',
     'Per-source analysis': 'Анализ по источникам',
     showing: 'показано',
-    Focus: 'Фокус',
     Timings: 'Тайминги',
     confidence: 'уверенность',
     'captions available': 'субтитры доступны',
@@ -1197,6 +1457,8 @@ const UI: Record<Locale, Record<string, string>> = {
       'Оверлей показывает матчап сверху, живой счётчик APM и карточку результата после каждой игры. Расставьте виджеты кнопкой ниже или',
     'it opens a draggable preview even before a match.':
       '— так откроется перетаскиваемый предпросмотр ещё до матча.',
+    'Run Age of Empires IV in Borderless or Windowed Fullscreen — exclusive fullscreen plus an overlay can close the game.':
+      'Запускайте Age of Empires IV в режиме Borderless или Windowed Fullscreen — эксклюзивный полноэкранный режим вместе с оверлеем может закрыть игру.',
     'Reset widget positions': 'Сбросить позиции виджетов',
     Layout: 'Расположение',
     'Matchup bar': 'Панель матчапа',
@@ -1210,6 +1472,8 @@ const UI: Record<Locale, Record<string, string>> = {
     'Build order overlay': 'Билд в оверлее',
     'Choose a build here, or let the overlay pick the first matching build from your active pool.':
       'Выберите билд здесь или включите автоматический выбор первого подходящего билда из активного пула.',
+    'In auto mode the overlay uses your civ and the opponent civ. Matchup-tagged builds beat the generic civ default.':
+      'В авто-режиме оверлей берёт вашу цивилизацию и цивилизацию противника. Билды с тегом матчапа важнее общего билда нации.',
     'My active builds': 'Мои активные билды',
     'Only builds in this pool can appear in the overlay cycle. Imported builds stay available in the catalogue until you add them here.':
       'Только билды из этого пула могут участвовать в цикле оверлея. Импортированные билды остаются в каталоге, пока вы не добавите их сюда.',
@@ -1225,9 +1489,14 @@ const UI: Record<Locale, Record<string, string>> = {
     'Build selection': 'Выбор билда',
     'Use selected build': 'Использовать выбранный билд',
     'Auto-select by civilization': 'Выбирать по цивилизации',
+    'Auto-select by matchup': 'Выбирать по матчапу',
     'Hide build order': 'Скрыть билд',
     'Selected build': 'Выбранный билд',
+    'Auto-selected build': 'Билд для текущего матча',
     'No build selected': 'Билд не выбран',
+    'No compatible build for the current civilization':
+      'Нет активного билда для текущей цивилизации',
+    'A build will be selected when a match starts': 'Билд будет выбран после начала матча',
     'Build panel width': 'Ширина панели билда',
     'Next-step preview': 'Превью следующего шага',
     'Show the next build step below the current step.': 'Показывать следующий шаг под текущим.',
@@ -1247,12 +1516,64 @@ const UI: Record<Locale, Record<string, string>> = {
     'Bottom-right': 'Справа снизу',
     'Under the matchup bar': 'Под панелью матчапа',
     Hidden: 'Скрыто',
+    Account: 'Аккаунт',
+    Integrations: 'Интеграции',
+    Translation: 'Перевод',
+    Polling: 'Опрос',
+    'Match polling': 'Опрос матчей',
+    'Live APM counter': 'Счётчик APM',
+    'Counts your key/mouse actions while in a match (counts only, never which keys).':
+      'Считает нажатия клавиш и мыши в матче (только число, без самих клавиш).',
+    'Off by default: the global input hook can conflict with anti-cheat and close the game. Enable only in borderless/windowed fullscreen, preferably before launching AoE4.':
+      'По умолчанию выключен: глобальный хук ввода может конфликтовать с античитом и закрыть игру. Включайте только в borderless/windowed fullscreen, лучше до запуска AoE4.',
+    'Matchup troops panel': 'Панель войск матчапа',
+    'Under the matchup bar: your build order (counters flagged) vs their key units.':
+      'Под панелью матчапа: ваш билд (контры отмечены) против ключевых юнитов соперника.',
+    'Age-up pace targets': 'Целевые тайминги эпох',
+    'A small chip with target Feudal/Castle/Imperial times for your rank next to the live match clock. Pace targets, never a live reading.':
+      'Чип с целевым временем феодала/замка/империи для вашего ранга рядом с часами матча. Это ориентиры, не живое измерение.',
+    'Session tracker': 'Трекер сессии',
+    'Today\'s record at a glance — "3W – 1L +42" — so a losing streak is visible without leaving the game.':
+      'Счёт сессии одной строкой — «3П – 1Пр +42», чтобы серия поражений была видна, не выходя из игры.',
+    'Matchup counter plan': 'План контров матчапа',
+    "Shows the best counter roles for the opponent's detected civilization in a movable overlay card.":
+      'Показывает лучшие контр-роли против обнаруженной цивилизации соперника на передвижной карточке оверлея.',
+    'Live build coach': 'Живой тренер билда',
+    'Timed age-up, villager and scouting checkpoints from the pinned civilization build.':
+      'Контрольные точки по эпохе, крестьянам и разведке из закреплённого билда цивилизации.',
+    'Open the game summary after each match': 'Открывать сводку после каждого матча',
+    "When a match ends (win or loss), bring RTSLytics to the front on that game's full post-game breakdown.":
+      'Когда матч заканчивается (победа или поражение), выводить RTSLytics на передний план с полным разбором этой игры.',
+    '4s': '4 с',
+    '8s': '8 с',
+    '10s': '10 с',
+    '15s (recommended)': '15 с (рекомендуется)',
+    '30s': '30 с',
+    '60s': '60 с',
+    '{n}s (custom)': '{n} с (своё)',
+    'Ranked 1v1 (Solo)': 'Рейтинг 1×1 (соло)',
+    'Ranked 1v1 (API)': 'Рейтинг 1×1 (API)',
+    'Console QM 1v1': 'Консольный быстрый 1×1',
+    'Console QM 2v2': 'Консольный быстрый 2×2',
+    'Console QM 3v3': 'Консольный быстрый 3×3',
+    'Console QM 4v4': 'Консольный быстрый 4×4',
+    'Console QM FFA': 'Консольный QM FFA',
     'Show / hide overlay hotkey': 'Горячая клавиша показать / скрыть оверлей',
     'Move overlay widgets hotkey': 'Горячая клавиша перемещения виджетов',
     'Next build step hotkey': 'Следующий шаг билда',
     'Previous build step hotkey': 'Предыдущий шаг билда',
     'Reset build step hotkey': 'Сбросить шаг билда',
     'Cycle counter target hotkey': 'Переключить цель контра',
+    'Show / hide build order hotkey': 'Показать / скрыть порядок сборки',
+    'Edit overlay hotkeys': 'Настроить хоткеи оверлея',
+    'Overlay hotkeys are configured in the Hotkeys section — click a binding, then press the keys.':
+      'Хоткеи оверлея настраиваются в разделе «Горячие клавиши»: нажмите на сочетание, затем клавиши.',
+    'Click a binding, then press the new shortcut. Esc cancels. Each combo needs Ctrl, Alt, or Shift.':
+      'Нажмите на сочетание и задайте новое. Esc отменяет. В комбинации нужны Ctrl, Alt или Shift.',
+    'Reset all hotkeys': 'Сбросить все хоткеи',
+    'Reset to default': 'Сбросить',
+    'Press a shortcut…': 'Нажмите сочетание…',
+    'Already used by {action}': 'Уже занято: {action}',
     'Casting / replay override': 'Переопределение для кастинга / реплея',
     'Replace the first player shown on each side of the local live browser source. This is a structured override for casting and replays; the native in-game roster is unchanged.':
       'Заменяет первого игрока на каждой стороне локального live-источника. Это структурированное переопределение для кастинга и реплеев; внутриигровой состав не меняется.',
@@ -1436,6 +1757,39 @@ const UI: Record<Locale, Record<string, string>> = {
     'Villagers needed to sustain every queue continuously.':
       'Крестьяне, необходимые для непрерывной работы всех очередей.',
     'All rated modes': 'Все рейтинговые режимы',
+    'Rated modes': 'Рейтинговые режимы',
+    'Ranked Matchmaking Elo': 'Elo рейтингового матчмейкинга',
+    'Matchmaking Elo': 'Elo матчмейкинга',
+    'Ranked Team is the combined team ladder. 2v2 / 3v3 / 4v4 are the same ranked games split by size. (Elo) is hidden matchmaking rating — not a second rank.':
+      '«Рейтинговая команда» — общая командная лестница. 2×2 / 3×3 / 4×4 — те же рейтинговые игры, разбитые по размеру. Elo — скрытый рейтинг матчмейкинга, не второй ранг.',
+    'Ranked Team is the combined team ladder. 2v2 / 3v3 / 4v4 are the same ranked games split by size. Hidden matchmaking Elo is folded into each row — not a second rank.':
+      '«Рейтинговая команда» — общая командная лестница. 2×2 / 3×3 / 4×4 — те же рейтинговые игры, разбитые по размеру. Скрытый Elo матчмейкинга свёрнут в строку режима — это не второй ранг.',
+    'Quick Match': 'Быстрый матч',
+    'Rating History': 'История рейтинга',
+    'Top teammates': 'Частые союзники',
+    drops: 'вылеты',
+    Overview: 'Обзор',
+    Challenges: 'Испытания',
+    'played with': 'с',
+    'Art of War, Historic Battles and The Crucible times are not in the public API. Open the live Challenges page on AoE4World.':
+      'Результаты Art of War, исторических битв и The Crucible публичный API не отдаёт. Откройте живую страницу испытаний на AoE4World.',
+    "{name}'s Challenges": 'Испытания {name}',
+    'Not enough rated games yet to chart a trend.':
+      'Пока мало рейтинговых игр, чтобы построить график.',
+    'Search player on this ladder': 'Найти игрока на этой лестнице',
+    'Show inactive': 'Показать неактивных',
+    Inactive: 'Неактивен',
+    'Public /esports/leaderboards/1 table. Event calendars stay on the live site.':
+      'Таблица публичного /esports/leaderboards/1. Календари событий остаются на живом сайте.',
+    'Console Solo Ranked': 'Консольный рейтинг 1×1',
+    'Console Team Ranked': 'Консольный командный рейтинг',
+    disputes: 'споры',
+    '7d': '7 дн.',
+    '30d': '30 дн.',
+    'Frequent opponents': 'Частые соперники',
+    'Previous seasons': 'Прошлые сезоны',
+    Lobby: 'Лобби',
+    Controller: 'Геймпад',
     'Top players on the AoE4World ladder.': 'Лучшие игроки рейтинга AoE4World.',
     'Your rank': 'Ваш ранг',
     Prev: 'Назад',
@@ -1509,6 +1863,10 @@ const UI: Record<Locale, Record<string, string>> = {
     'Show in overlay': 'Показывать в оверлее',
     steps: 'шагов',
     'Video evidence': 'Видео-подтверждение',
+    'Frame checkpoints': 'Кадры по шагам',
+    'Ranked demos': 'Ранкед-демки',
+    'Build step': 'Шаг билда',
+    'Watch build video': 'Смотреть видео билда',
     Captions: 'Субтитры',
     available: 'доступны',
     'Replay sources': 'Источники реплеев',
@@ -1768,6 +2126,9 @@ const UI: Record<Locale, Record<string, string>> = {
     'Reading the game’s stat file…': 'Чтение файла статистики игры…',
     Explorer: 'Обозреватель',
     'Dumps & Evidence': 'Дампы и доказательства',
+    'Units, buildings, patch notes, dumps, videos, and the Explorer quiz from the bundled AoE4World snapshot.':
+      'Юниты, здания, патчи, дампы, видео и квиз обозревателя из снимка AoE4World.',
+    'Exact-game VOD': 'VOD конкретной игры',
     'Search the bundled AoE4World data snapshot, patch coverage, and video evidence extracted from public matches.':
       'Поиск по встроенному снимку данных AoE4World, покрытию патчей и видео-доказательствам из публичных матчей.',
     'Local-first': 'Сначала локальные данные',
@@ -1986,7 +2347,6 @@ const UI: Record<Locale, Record<string, string>> = {
     'Visible results': 'Видимых результатов',
     'Civs represented': 'Представлено цивилизаций',
     'Name, class, producer...': 'Название, класс или производитель…',
-    Role: 'Роль',
     'No matching records.': 'Подходящие записи не найдены.',
     'Record details': 'Детали записи',
     'The first result is shown with its compact data snapshot, cost, timing, availability, and producer information.':
@@ -2454,6 +2814,11 @@ const UI: Record<Locale, Record<string, string>> = {
     'Data is cached in the main process and refreshes on the AoE4World last-game TTL.':
       'Данные кэшируются в основном процессе и обновляются по TTL последнего матча AoE4World.',
     'Turning-point story': 'История переломных моментов',
+    'What happened, the earliest cause, and one next-game goal — in a single story, without repeating the same facts.':
+      'Что произошло, самая ранняя причина и одна цель на следующую игру — в одной истории, без повторения одних и тех же фактов.',
+    'How the game unfolded': 'Как развивалась игра',
+    'Additional findings': 'Дополнительные находки',
+    'Other notes': 'Другие заметки',
     'Recorded facts are separated from possible takeaways. These cards use post-game summary data only.':
       'Зафиксированные факты отделены от возможных выводов. Карточки используют только послематчевую сводку.',
     "Reading the game's stat summary…": 'Чтение статистической сводки матча…',
@@ -2469,6 +2834,58 @@ const UI: Record<Locale, Record<string, string>> = {
       'доступно; отсутствующие моменты не оценивались.',
     Observed: 'Наблюдение',
     'Possible takeaway': 'Возможный вывод',
+    'First-cause review': 'Разбор первой причины',
+    'Checks the earliest actionable evidence across opening health, information, reaction, spending, and conversion. It separates recorded facts from replay questions.':
+      'Проверяет самые ранние рабочие улики: старт, информацию, реакцию, расход и закрепление. Отделяет записанные факты от вопросов к реплею.',
+    'Extended guide checks': 'Расширенные проверки гайда',
+    'These checks cover bottlenecks, investments, first-fight readiness, post-fight reset, and team timing. They remain replay questions when the summary lacks intent or position.':
+      'Эти проверки закрывают узкие места, вложения, готовность к первому бою, сброс после боя и командный тайминг. Остаются вопросами к реплею, если сводка не знает намерения или позиции.',
+    'Earliest point to test': 'С чего начать проверку',
+    'One next-game goal': 'Одна цель на следующую игру',
+    Trigger: 'Условие',
+    Action: 'Действие',
+    'Start at': 'Начните с',
+    'Open the replay-review guide': 'Открыть гайд по разбору реплея',
+    'Related guide': 'Связанный гайд',
+    'confirmed fact': 'подтверждённый факт',
+    'replay check': 'проверка реплея',
+    'no flag found': 'флаг не найден',
+    'not recorded': 'не записано',
+    'Opening health': 'Старт игры',
+    Information: 'Информация',
+    Mechanics: 'Механика',
+    Decision: 'Решение',
+    'Execution under pressure': 'Исполнение под давлением',
+    Major: 'Серьёзно',
+    Minor: 'Заметка',
+    Info: 'Инфо',
+    Good: 'Хорошо',
+    Macro: 'Макро',
+    Micro: 'Микроконтроль',
+    Reaction: 'Реакция',
+    Spending: 'Расход ресурсов',
+    Conversion: 'Закрепление преимущества',
+    'Resource bottleneck': 'Узкое место по ресурсу',
+    'Greedy investment': 'Рискованное вложение',
+    'First-fight readiness': 'Готовность к первому бою',
+    'Post-fight reset': 'Сброс после боя',
+    'Team plan': 'План команды',
+    'Longest villager-production gap': 'Самый длинный простой производства крестьян',
+    'First non-villager unit': 'Первый некрестьянин',
+    'Largest recorded resource bank': 'Крупнейший зафиксированный запас ресурсов',
+    'Largest recorded score shift in your favor':
+      'Крупнейший зафиксированный сдвиг счёта в вашу пользу',
+    'Largest recorded score shift against you': 'Крупнейший зафиксированный сдвиг счёта против вас',
+    'Largest recorded economy shift in your favor':
+      'Крупнейший зафиксированный сдвиг экономики в вашу пользу',
+    'Largest recorded economy shift against you':
+      'Крупнейший зафиксированный сдвиг экономики против вас',
+    'This review needs the post-game summary. It will not guess scouting, queues, or decisions without decoded evidence.':
+      'Этому разбору нужна послематчевая сводка. Он не будет угадывать разведку, очереди и решения без распознанных улик.',
+    'Your player row could not be identified in this summary, so the review stays unavailable.':
+      'Строку вашего игрока в этой сводке определить не удалось, поэтому разбор недоступен.',
+    'No early causal claim is supported by this summary. Start with the information check in the replay instead of blaming the final fight.':
+      'Эта сводка не поддерживает ранний причинный вывод. Начните с проверки информации в реплее, а не с обвинения финального боя.',
     'View summary evidence': 'Открыть данные сводки',
     'View resource evidence': 'Открыть данные ресурсов',
     'View score evidence': 'Открыть данные счёта',
@@ -2627,6 +3044,21 @@ const UI: Record<Locale, Record<string, string>> = {
     manual: 'вручную',
     'reference build — no bundled build for': 'эталонный билд — нет встроенного билда для',
     'Response forks · scout first': 'Варианты ответа · сначала разведка',
+    'Counter plan': 'План контры',
+    'Live coach': 'Живой тренер',
+    and: 'и',
+    'If you scout {units}:': 'Если разведка показывает {units}:',
+    'Keep {build} as the baseline; prioritize {counters}.':
+      'Оставьте {build} как основу; в приоритете {counters}.',
+    'Opponent civilization unavailable — no matchup branch inferred.':
+      'Цивилизация соперника неизвестна — ветка матчапа не выведена.',
+    'No static counter guidance is available for the known opponent civilization.':
+      'Нет статической контры для известной цивилизации соперника.',
+    '1 opponent civilization unknown — matchup guidance covers known civilizations only.':
+      '1 цивилизация соперника неизвестна — подсказки матчапа только по известным цивилизациям.',
+    '{unit} — counters one of their key units': '{unit} — контрит один из их ключевых юнитов',
+    'Kept villager production steady': 'Держали производство крестьян стабильным',
+    'Spend resources before the next fight': 'Тратьте ресурсы перед следующим боем',
     'Drag any outlined widget to place it · use the same shortcut when done':
       'Перетащите выделенный виджет, чтобы разместить его · повторите сочетание клавиш после завершения',
     'finding matchup...': 'поиск матчапа…',
@@ -2653,7 +3085,6 @@ const UI: Record<Locale, Record<string, string>> = {
     'recent games': 'последних матчей',
     'Focus on this first: fix the same leak in several games before changing civilization or build.':
       'Сначала исправьте это: устраните одну и ту же проблему в нескольких матчах, прежде чем менять цивилизацию или билд.',
-    Good: 'Хорошо',
     Improve: 'Улучшить',
     improvements: 'улучшений',
     'Build-order audit · all players': 'Сверка билд-ордеров · все игроки',
@@ -2850,7 +3281,7 @@ const UI: Record<Locale, Record<string, string>> = {
     'Men-at-Arms (heavy infantry)': 'Мечники (тяжёлая пехота)',
     'Battering Rams': 'Тараны',
     Springalds: 'Спрингалды',
-    Mangonels: 'Манголи',
+    Mangonels: 'Мангонели',
     'Camel Riders': 'Верблюжьи всадники',
     'War Elephants': 'Боевые слоны',
     Scouts: 'Разведчики',
@@ -2907,7 +3338,6 @@ const UI: Record<Locale, Record<string, string>> = {
     'Open field': 'Открытое поле',
     Choke: 'Узкий проход',
     Forest: 'Лес',
-    Micro: 'Микроконтроль',
     'A-move': 'А-мув',
     Solid: 'Уверенный',
     Strong: 'Сильный',
@@ -2945,6 +3375,8 @@ const UI: Record<Locale, Record<string, string>> = {
     'All players': 'Все игроки',
     'AoE4World live data works without keys; configured Twitch/YouTube API keys add direct provider results.':
       'Актуальные данные AoE4World работают без ключей; настроенные API Twitch/YouTube добавляют прямые результаты провайдеров.',
+    'Optional official Twitch and YouTube APIs add current VODs, dates, durations, and view counts to the video explorer. An AoE4World overlay key unlocks custom and lobby games for your signed-in account.':
+      'Официальные API Twitch и YouTube добавляют актуальные VOD, даты, длительности и просмотры в проводник видео. Ключ оверлея AoE4World открывает кастомные и лобби-игры для вашего аккаунта.',
     'Apply offset': 'Применить смещение',
     'Average gap': 'Средний интервал',
     'Background end': 'Конец фона',
@@ -3215,18 +3647,121 @@ const UI: Record<Locale, Record<string, string>> = {
     'Get a LibreTranslate key': 'Получить ключ LibreTranslate',
     'Create Twitch credentials': 'Создать данные Twitch',
     'Create a YouTube API key': 'Создать API-ключ YouTube',
+    'AoE4World overlay API key': 'API-ключ оверлея AoE4World',
+    'Open AoE4World account': 'Открыть аккаунт AoE4World',
+    'Unlocks custom and lobby games for the overlay on this AoE4World account. Do not share this key.':
+      'Открывает кастомные и лобби-игры оверлея для этого аккаунта AoE4World. Не передавайте ключ другим.',
+    'Overlay key configured': 'Ключ оверлея настроен',
+    'Overlay key not configured': 'Ключ оверлея не настроен',
+    'Credentials are encrypted by the operating system and never exposed to the renderer, overlay, or OBS source.':
+      'Учётные данные шифрует операционная система; они не попадают в интерфейс, оверлей и источник OBS.',
     'Shorter reference game': 'Эталонный матч короче',
     'Similar game length': 'Похожая длительность игры',
     'Longer reference game': 'Эталонный матч дольше',
     'Game length unavailable': 'Длительность неизвестна',
     'The reference produced more military units — add production before floating resources and queue units continuously.':
       'Эталон создал больше военных юнитов — раньше добавляйте производство, не копите ресурсы и поддерживайте очереди непрерывно.',
+    'Ranked map pool advisor': 'Советник по пулу рейтинговых карт',
+    'Best civilizations, counter-picks, and a win plan for each map in the season pool':
+      'Сильные цивилизации, контрпики и план на победу для каждой карты сезона',
+    'Top civilizations on this map': 'Лучшие цивилизации на этой карте',
+    'Counter-picks and tactical tips': 'Контрпики и тактические советы',
+    '{dominant} is vulnerable to {answer}: {tip}': '{dominant} слабо против {answer}: {tip}',
+    'Recommended builds': 'Рекомендуемые билды',
+    'Hybrid with a central lake (Hybrid / Water)': 'Гибрид: озеро в центре',
+    'The central water body gives a huge fishing eco boost. Early water control and a dock by minute 3 often decide the match.':
+      'Центральное озеро даёт огромный прирост экономики с рыбы. Контроль воды и док к 3-й минуте часто решают матч.',
+    'Dromons and cheap mercenary militia': 'Дромоны и дешёвое наёмное ополчение',
+    'Very fast tempo and cheap junks with supervision':
+      'Очень быстрый темп и дешёвые джонки с надзором',
+    'Improved fishing boats and floating gates': 'Улучшенные рыбацкие лодки и плавучие врата',
+    'Rus horse archers and dock snipes with early siege':
+      'Конные лучники Руси и снос доков ранней осадой',
+    'Early tower rush on the shoreline and burn the dock':
+      'Ранний раш башней на берег и поджог дока',
+    'Open steppe (Open Land / Mobility)': 'Открытая степь',
+    'Large open spaces with hidden high grass. Needs mobile cavalry for constant patrol and early outposts on gold.':
+      'Большие открытые пространства со скрытой высокой травой. Нужна мобильная конница для патруля и ранние аванпосты на золоте.',
+    'Double cavalry production and mobile pastures':
+      'Двойное производство конницы и мобильные пастбища',
+    'Early knights with healing and cheap economic buildings':
+      'Ранние рыцари с лечением и дешёвые экономические здания',
+    'Hunting gold bonus and horse archers': 'Золото за охоту и конные лучники',
+    'Longbows with palisades and spearmen on key resources':
+      'Длинные луки, частокол и копейщики на ключевых ресурсах',
+    'Garrisoned towers and a fast landsknecht timing':
+      'Башни с гарнизоном и быстрый выход в ландскнехтов',
+    'Dense forest and chokepoints (Dense Forest / Chokepoints)': 'Густой лес и узкие проходы',
+    'Dense trees create narrow approaches. Ideal for palisade walls, a fast second TC, and relic collection.':
+      'Деревья сужают подходы. Удобно ставить частокол, быстро поднимать второй ТЦ и собирать реликвии.',
+    'Tight walls and a lightning Fast Castle with Aachen':
+      'Плотные стены и молниеносный быстрый замок с Ахеном',
+    'Elite landsknechts in narrow chokes': 'Элитные ландскнехты в узких проходах',
+    'Castle defense nets and a farm boom': 'Оборона замками и набор ферм',
+    'Early sacred-site takes and ram pressure on the walls':
+      'Ранний захват святынь и давление таранами по стенам',
+    'Hill with a gold center (Gold Centric / King of Hill)': 'Холм с золотом в центре',
+    'Key gold veins and sacred sites sit on the central plateau. The fight for the middle starts in early Feudal.':
+      'Ключевые золотые жилы и святыни на центральном плато. Борьба за центр начинается в начале 2-й эпохи.',
+    'Passive gold from pits and donso': 'Пассивное золото из карьеров и донсо',
+    'Free siege and sipahi': 'Бесплатная осада и сипахи',
+    'Scholars taking sacred sites in Feudal': 'Учёные захватывают святыни во 2-й эпохе',
+    'Delete the gold pits with heavy lancers': 'Сноси золотые карьеры тяжёлыми лансерами',
+    'Dry Arabia (Standard Open Land)': 'Сухая Аравия — открытая эталонная карта',
+    'The benchmark competitive map with no natural obstacles. Scouting and an adaptive build order decide the game.':
+      'Эталонная рейтинговая карта без естественных препятствий. Решают разведка и адаптивный билд.',
+    'Economy wing and versatile camels': 'Крыло экономики и универсальные верблюды',
+    'Early cavalry pressure': 'Раннее давление конницей',
+    'Mercenary flexibility against the opponent’s composition':
+      'Гибкость наёмников под состав врага',
+    'Camels reduce enemy cavalry damage by 20%': 'Верблюды снижают урон вражеской конницы на 20%',
+    'Open competitive map': 'Открытая рейтинговая карта',
+    'A balanced map with open resource nodes. An early gold outpost and active scouting are recommended.':
+      'Сбалансированная карта с открытыми ресурсами. Имеет смысл ранний аванпост на золоте и активная разведка.',
+    'Flexible House of Wisdom tempo': 'Гибкий темп через Дом мудрости',
+    'Reliable defense and early archers': 'Надёжная оборона и ранние лучники',
+    'Olive oil economy': 'Экономика на оливковом масле',
+    'Cavalry civilizations': 'Конные цивилизации',
+    'Spearmen and archers': 'Копейщики и лучники',
+    'Protect the perimeter with palisades': 'Закрой периметр частоколом',
+    'Dock Opening (1 TC Fish Boom)': 'Открытие с доком (1 ТЦ, рыбный бум)',
+    'Fast Feudal Warship Rush': 'Быстрый раш военными кораблями во 2-й эпохе',
+    'Water-to-Castle Transition': 'Переход с воды в замок',
+    'Feudal Cavalry Harass': 'Харасс конницей во 2-й эпохе',
+    '2 TC Fast Wall': '2 ТЦ и быстрая стена',
+    'Knight & Archer Aggression': 'Агрессия рыцарями и лучниками',
+    'Fast Castle Relic Rush': 'Быстрый замок и раш реликвий',
+    '2 TC Greedy Economy': 'Жадная экономика на 2 ТЦ',
+    'Defensive Chokepoint Wall': 'Стена на узком проходе',
+    'Central Outpost Rush': 'Раш аванпостом в центр',
+    'Fast Feudal All-in': 'Олл-ин во 2-й эпохе',
+    'Sanctity Gold Control': 'Контроль золота святынями',
+    'Adaptive Feudal Aggression': 'Адаптивная агрессия во 2-й эпохе',
+    '2 TC Economy': 'Экономика на 2 ТЦ',
+    'Fast Castle Lancer Swing': 'Быстрый замок, переход в лансеров',
+    'Standard Feudal Age-Up': 'Обычный выход во 2-ю эпоху',
+    '2 TC Defense': 'Оборона на 2 ТЦ',
+    'Fast Castle Tech': 'Быстрый замок и технологии',
   },
   en: {},
   uk: {
     ...PRODUCTION_MODIFIER_TRANSLATIONS.uk,
     Dashboard: 'Головна',
+    Statistics: 'Статистика',
+    Explore: 'Огляд',
+    Lab: 'Лабораторія',
+    Workbench: 'Верстак',
+    Learn: 'Навчання',
+    Practice: 'Практика',
+    Helpers: 'Помічники',
+    Encyclopedia: 'Енциклопедія',
+    Sources: 'Джерела',
+    Training: 'Тренування',
+    'Pro Match Reviews': 'Розбори про-матчів',
     'My Stats': 'Моя статистика',
+    'Coach dossier': 'Досьє тренера',
+    'Decision tree': 'Дерево рішень',
+    'This match': 'Цей матч',
     Scout: 'Розвідка',
     'Civ Meta': 'Мета цивілізацій',
     Guides: 'Гайди',
@@ -3238,6 +3773,29 @@ const UI: Record<Locale, Record<string, string>> = {
     'Pick rate': 'Пікрейт',
     'Win rate': 'Вінрейт',
     Games: 'Ігри',
+    Overview: 'Огляд',
+    Challenges: 'Випробування',
+    'Rated modes': 'Рейтингові режими',
+    'Ranked Matchmaking Elo': 'Elo рейтингового матчмейкінгу',
+    'Rating History': 'Історія рейтингу',
+    'Top teammates': 'Часті союзники',
+    streak: 'серія',
+    drops: 'вильоти',
+    'played with': 'з',
+    'Art of War, Historic Battles and The Crucible times are not in the public API. Open the live Challenges page on AoE4World.':
+      'Результати Art of War, історичних битв і The Crucible публічний API не віддає. Відкрийте живу сторінку випробувань на AoE4World.',
+    "{name}'s Challenges": 'Випробування {name}',
+    'Not enough rated games yet to chart a trend.':
+      'Поки мало рейтингових ігор, щоб побудувати графік.',
+    'Last game': 'Остання гра',
+    disputes: 'спори',
+    '7d': '7 дн.',
+    '30d': '30 дн.',
+    'Frequent opponents': 'Часті суперники',
+    'Previous seasons': 'Минулі сезони',
+    Lobby: 'Лобі',
+    Patch: 'Патч',
+    Controller: 'Геймпад',
     'Avg age-up': 'Середній ап епохи',
     'Key units': 'Ключові юніти',
     Strengths: 'Сильні сторони',
@@ -3259,10 +3817,34 @@ const UI: Record<Locale, Record<string, string>> = {
     farm: 'ферми',
     cattle: 'худоба',
     stockyard: 'загін',
+    'Ranked map pool advisor': 'Радник рейтингового пулу карт',
+    'Best civilizations, counter-picks, and a win plan for each map in the season pool':
+      'Найкращі цивілізації, контрпіки та план перемоги для кожної карти сезону',
+    'Top civilizations on this map': 'Топ цивілізацій на карті',
+    'Counter-picks and tactical tips': 'Контрпіки та тактичні поради',
+    '{dominant} is vulnerable to {answer}: {tip}': '{dominant} вразливі проти {answer}: {tip}',
+    'Recommended builds': 'Рекомендовані білди',
+    'Dock Opening (1 TC Fish Boom)': 'Відкриття з доком (1 ТЦ, рибний бум)',
+    'Fast Feudal Warship Rush': 'Швидкий феодальний раш військовими кораблями',
+    'Water-to-Castle Transition': 'Перехід вода → замок',
   },
   de: {
     Dashboard: 'Übersicht',
+    Statistics: 'Statistik',
+    Explore: 'Entdecken',
+    Lab: 'Labor',
+    Workbench: 'Werkbank',
+    Learn: 'Lernen',
+    Practice: 'Übung',
+    Helpers: 'Helfer',
+    Encyclopedia: 'Enzyklopädie',
+    Sources: 'Quellen',
+    Training: 'Training',
+    'Pro Match Reviews': 'Pro-Match-Reviews',
     'My Stats': 'Meine Statistik',
+    'Coach dossier': 'Coach-Dossier',
+    'Decision tree': 'Entscheidungsbaum',
+    'This match': 'Dieses Match',
     Scout: 'Aufklärung',
     'Civ Meta': 'Zivilisationsmeta',
     Guides: 'Guides',
@@ -3274,6 +3856,29 @@ const UI: Record<Locale, Record<string, string>> = {
     'Pick rate': 'Pickrate',
     'Win rate': 'Siegrate',
     Games: 'Spiele',
+    Overview: 'Übersicht',
+    Challenges: 'Herausforderungen',
+    'Rated modes': 'Gewertete Modi',
+    'Ranked Matchmaking Elo': 'Ranked-Matchmaking-Elo',
+    'Rating History': 'Rating-Verlauf',
+    'Top teammates': 'Häufige Teamkameraden',
+    streak: 'Serie',
+    drops: 'Drops',
+    'played with': 'mit',
+    'Art of War, Historic Battles and The Crucible times are not in the public API. Open the live Challenges page on AoE4World.':
+      'Art of War, Historic Battles und The Crucible liegen nicht in der öffentlichen API. Öffne die Challenges-Seite auf AoE4World.',
+    "{name}'s Challenges": 'Challenges von {name}',
+    'Not enough rated games yet to chart a trend.':
+      'Noch nicht genug gewertete Spiele für einen Verlauf.',
+    'Last game': 'Letztes Spiel',
+    disputes: 'Disputes',
+    '7d': '7 T',
+    '30d': '30 T',
+    'Frequent opponents': 'Häufige Gegner',
+    'Previous seasons': 'Vorherige Seasons',
+    Lobby: 'Lobby',
+    Patch: 'Patch',
+    Controller: 'Controller',
     'Avg age-up': 'Ø Zeitalteraufstieg',
     'Key units': 'Schlüsseleinheiten',
     Strengths: 'Stärken',
@@ -3295,35 +3900,23 @@ const UI: Record<Locale, Record<string, string>> = {
     farm: 'Farmen',
     cattle: 'Rinder',
     stockyard: 'Viehhof',
+    'Ranked map pool advisor': 'Berater für den Ranglisten-Kartenpool',
+    'Best civilizations, counter-picks, and a win plan for each map in the season pool':
+      'Beste Zivilisationen, Gegenpicks und ein Siegplan für jede Karte der Saison',
+    'Top civilizations on this map': 'Top-Zivilisationen auf dieser Karte',
+    'Counter-picks and tactical tips': 'Gegenpicks und Taktiktipps',
+    '{dominant} is vulnerable to {answer}: {tip}': '{dominant} ist anfällig gegen {answer}: {tip}',
+    'Recommended builds': 'Empfohlene Builds',
+    'Dock Opening (1 TC Fish Boom)': 'Dock-Eröffnung (1 TC Fischboom)',
+    'Fast Feudal Warship Rush': 'Schneller Feudal-Kriegsschiff-Rush',
+    'Water-to-Castle Transition': 'Übergang Wasser → Burg',
   },
 }
 
 const GAME_NAMES: Record<Locale, Record<string, string>> = {
   ru: {
     ...UNIT_NAMES_RU,
-    'Abbasid Dynasty': 'Династия Аббасидов',
-    Ayyubids: 'Айюбиды',
-    Byzantines: 'Византийцы',
-    Chinese: 'Китайцы',
-    'Delhi Sultanate': 'Делийский султанат',
-    English: 'Англичане',
-    French: 'Французы',
-    'Golden Horde': 'Золотая Орда',
-    'Holy Roman Empire': 'Священная Римская империя',
-    'House of Lancaster': 'Дом Ланкастеров',
-    Japanese: 'Японцы',
-    "Jeanne d'Arc": 'Жанна д’Арк',
-    'Jin Dynasty': 'Династия Цзинь',
-    'Knights Templar': 'Тамплиеры',
-    'Macedonian Dynasty': 'Македонская династия',
-    Malians: 'Мали',
-    Mongols: 'Монголы',
-    'Order of the Dragon': 'Орден Дракона',
-    Ottomans: 'Османы',
-    Rus: 'Русь',
-    'Sengoku Daimyo': 'Сэнгоку-даймё',
-    'Tughlaq Dynasty': 'Династия Туглаков',
-    "Zhu Xi's Legacy": 'Наследие Чжу Си',
+    ...expandGameNameKeys(CIV_AND_MAP_NAMES.ru),
     'Imperial Hippodrome': 'Императорский ипподром',
     'Grand Winery': 'Большая винодельня',
     'Golden Horn Tower': 'Башня Золотого рога',
@@ -3336,39 +3929,64 @@ const GAME_NAMES: Record<Locale, Record<string, string>> = {
     'Shaolin Monastery': 'Монастырь Шаолинь',
     "Zhu Xi's Library": 'Библиотека Чжу Си',
     'Temple of the Sun': 'Храм Солнца',
-    'Ancient Spires': 'Древние шпили',
-    'Boulder Bay': 'Бухта валунов',
-    Cliffside: 'Утёс',
-    'Dry Arabia': 'Сухая Аравия',
-    Flankwoods: 'Фланковые леса',
-    Gorge: 'Ущелье',
-    'Golden Heights': 'Золотые высоты',
-    'High View': 'Высокий обзор',
-    Highwoods: 'Хайвудс',
-    'Hidden Valley': 'Скрытая долина',
-    Nagari: 'Нагари',
-    'Ocean Gateway': 'Океанские ворота',
-    Prairie: 'Прерия',
-    'Relic River': 'Река реликвий',
-    'The Pit': 'Яма',
-    'West Lake': 'Западное озеро',
     Feudal: 'Феодальная эпоха',
     Castle: 'Замковая эпоха',
     Imperial: 'Имперская эпоха',
+    'Feudal landmark': 'Лендмарк феодальной эпохи',
+    'Castle landmark': 'Лендмарк замковой эпохи',
+    'Imperial landmark': 'Лендмарк имперской эпохи',
+    House: 'Дом',
+    Villager: 'Крестьянин',
+    Villagers: 'Крестьяне',
+    Food: 'еда',
+    Wood: 'дерево',
+    Gold: 'золото',
+    Stone: 'камень',
+    Arsenal: 'Арсенал',
+    'Cavalry Damage': 'Урон кавалерии',
+    'Arsenal Cavalry Damage': 'Урон кавалерии арсенала',
+    'Varangian Arsenal': 'Варяжский арсенал',
+    'Varangian Warcamp': 'Варяжский военный лагерь',
+    'Varangian Stronghold': 'Варяжская крепость',
+    'Scale Barding': 'Чешуйчатый доспех коня',
+    'Palisade Wall': 'Частокол',
+    'Survival Techniques': 'Техники выживания',
+    Wheelbarrow: 'Тачка',
+    Rally: 'Точка сбора',
   },
   en: {},
   uk: {
+    ...expandGameNameKeys(CIV_AND_MAP_NAMES.uk),
     'Imperial Hippodrome': 'Імператорський іподром',
     'Grand Winery': 'Велика виноробня',
     'Golden Horn Tower': 'Вежа Золотого Рогу',
+    'Cistern of the First Hill': 'Цистерна Першого пагорба',
+    'Palatine School': 'Палатинська школа',
+    'Foreign Engineering Company': 'Іноземна інженерна компанія',
+    'Meditation Gardens': 'Сади медитації',
+    'Jiangnan Tower': 'Вежа Цзяннань',
+    'Mount Lu Academy': 'Академія гори Лу',
+    'Shaolin Monastery': 'Монастир Шаолінь',
+    "Zhu Xi's Library": 'Бібліотека Чжу Сі',
+    'Temple of the Sun': 'Храм Сонця',
     Feudal: 'Феодальна епоха',
     Castle: 'Замкова епоха',
     Imperial: 'Імперська епоха',
   },
   de: {
+    ...expandGameNameKeys(CIV_AND_MAP_NAMES.de),
     'Imperial Hippodrome': 'Kaiserliches Hippodrom',
     'Grand Winery': 'Große Kellerei',
     'Golden Horn Tower': 'Turm des Goldenen Horns',
+    'Cistern of the First Hill': 'Zisterne des Ersten Hügels',
+    'Palatine School': 'Palatinische Schule',
+    'Foreign Engineering Company': 'Ausländisches Ingenieurkorps',
+    'Meditation Gardens': 'Meditationsgärten',
+    'Jiangnan Tower': 'Jiangnan-Turm',
+    'Mount Lu Academy': 'Akademie des Lu-Berges',
+    'Shaolin Monastery': 'Shaolin-Kloster',
+    "Zhu Xi's Library": 'Bibliothek des Zhu Xi',
+    'Temple of the Sun': 'Sonnentempel',
     Feudal: 'Feudalzeit',
     Castle: 'Burgenzeit',
     Imperial: 'Imperialzeit',
@@ -3383,10 +4001,114 @@ type I18nValue = {
   refreshTranslationStatus: () => Promise<void>
 }
 
+function lookupLocalizedGameName(locale: Locale, input: string): string | null {
+  const key = resolveGameNameKey(input)
+  const table = GAME_NAMES[locale]
+  const fromNames = lookupCivOrMapName(table, key) ?? lookupCivOrMapName(table, input)
+  const direct = fromNames ?? table[key] ?? UI[locale][key]
+  if (direct) return direct
+
+  const lower = key.toLowerCase()
+  for (const [english, translated] of Object.entries(table)) {
+    if (english.toLowerCase() === lower) return translated
+  }
+  return null
+}
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+function localizeRuLabel(label: string): string {
+  const trimmed = label.trim()
+  if (!trimmed) return trimmed
+  const fromNames = lookupLocalizedGameName('ru', trimmed) ?? GAME_NAMES.ru[trimmed]
+  if (fromNames) return fromNames
+  const villagersAt = /^Villagers @ (\d+:\d+)$/.exec(trimmed)
+  if (villagersAt) return `Крестьяне на ${villagersAt[1]}`
+  return russianizeGameEnglish(trimmed)
+}
+
+function looksLikeEnglishProse(input: string): boolean {
+  return (
+    input.trim().split(/\s+/).length >= 8 &&
+    /\b(the|was|were|your|this|that|from|during|before|after|recorded|completion|reached|review|assign|then)\b/i.test(
+      input,
+    )
+  )
+}
+
+function russianizeGameEnglish(input: string): string {
+  if (looksLikeEnglishProse(input)) return input
+  const tidied = tidyEventName(input)
+  const exactNote = russianBuildNote(tidied)
+  if (exactNote) return exactNote
+  const exactName = lookupLocalizedGameName('ru', tidied) ?? GAME_NAMES.ru[tidied]
+  if (exactName) return exactName
+  let text = tidied
+  const phrases: Array<[RegExp, string]> = [
+    [/\bnear supply cap\b/gi, 'около лимита населения'],
+    [/\bBuild first\b/g, 'Сначала постройте'],
+    [/\blater build\b/gi, 'позже постройте'],
+    [/\bonce enough wood\b/gi, 'когда накопится дерево'],
+    [/\bthen upgrade whatever you need\b/gi, 'затем улучшайте то, что нужно'],
+    [/\bKeep CONSTANTLY producing military\b/gi, 'постоянно производите войска'],
+    [/\bwith Food Villager\b/g, 'крестьянином на еде'],
+    [/\bwith Wood Villager\b/g, 'крестьянином на дереве'],
+    [/\bwith Gold Villager\b/g, 'крестьянином на золоте'],
+    [/\bwith Stone Villager\b/g, 'крестьянином на камне'],
+    [/\bMake\b/g, 'Сделайте'],
+    [/\band get\b/gi, 'и изучите'],
+    [/\bget\b/gi, 'изучите'],
+  ]
+  for (const [pattern, replacement] of phrases) text = text.replace(pattern, replacement)
+  const terms = Object.entries(GAME_NAMES.ru)
+    .filter(([english]) => english.length >= 4)
+    .sort((a, b) => b[0].length - a[0].length)
+  for (const [english, russian] of terms) {
+    text = text.replace(new RegExp(`\\b${escapeRegExp(english)}\\b`, 'gi'), russian)
+  }
+  return text.replace(/\s+,/g, ',').replace(/\s+/g, ' ').trim()
+}
+
+/** Translate a civ prefix in imported catalog titles (DE/EN/UK → current locale). */
+export function localizeCatalogTitle(
+  name: string,
+  locale: Locale,
+  gameName: (value: string) => string,
+): string {
+  const civEnd = Object.keys(CIV_AND_MAP_NAMES.ru).indexOf('Unknown Map')
+  const civKeys = Object.keys(CIV_AND_MAP_NAMES.ru).slice(0, civEnd < 0 ? 24 : civEnd)
+  const needles: Array<{ needle: string; english: string }> = []
+  for (const english of civKeys) {
+    needles.push({ needle: english, english })
+    for (const loc of ['ru', 'uk', 'de'] as const) {
+      const localized = (CIV_AND_MAP_NAMES[loc] as Record<string, string>)[english]
+      if (localized) needles.push({ needle: localized, english })
+    }
+  }
+  needles.sort((a, b) => b.needle.length - a.needle.length)
+  for (const { needle, english } of needles) {
+    if (name === needle) return gameName(english)
+    if (name.startsWith(`${needle} -`) || name.startsWith(`${needle} –`)) {
+      const remainder = name.slice(needle.length)
+      return `${gameName(english)}${locale === 'ru' ? localizeOverlayTitleRemainder(remainder) : remainder}`
+    }
+  }
+  return locale === 'ru' ? localizeOverlayTitleRemainder(name) : name
+}
+
 /** Translate persisted/generated English analysis copy without changing the
  * domain records that are also used by tests, exports, and the English UI. */
 function russianDynamic(input: string): string | null {
-  const gameName = GAME_NAMES.ru[input]
+  const generated = localizeGeneratedRu(input)
+  if (generated) return generated
+
+  const overlay = localizeOverlayCopy(input)
+  if (overlay !== input) return overlay
+
+  const resolved = resolveGameNameKey(input)
+  const gameName = GAME_NAMES.ru[resolved] ?? GAME_NAMES.ru[input]
   if (gameName) return gameName
 
   // Landmark plans are persisted as English domain copy so the same records
@@ -3732,19 +4454,32 @@ function russianDynamic(input: string): string | null {
   if (villagerPace) return `Крестьяне на ${villagerPace[1]}: темп крестьян выдержан.`
   const villagerPaceRu = /^Villagers @ (.+): темп крестьян выдержан\.$/.exec(input)
   if (villagerPaceRu) return `Крестьяне на ${villagerPaceRu[1]}: темп крестьян выдержан.`
+  const paceHeldAny = /^(.+): темп крестьян выдержан\.$/.exec(input)
+  if (paceHeldAny) return `${localizeRuLabel(paceHeldAny[1]!)}: темп крестьян выдержан.`
   const timingOnPlan = /^(.+): timing is on plan\.$/.exec(input)
-  if (timingOnPlan) return `${timingOnPlan[1]}: тайминг в норме.`
+  if (timingOnPlan) return `${localizeRuLabel(timingOnPlan[1]!)}: тайминг в норме.`
   const timingOnPlanRu = /^(.+): тайминг в норме\.$/.exec(input)
-  if (timingOnPlanRu) return `${timingOnPlanRu[1]}: тайминг в норме.`
-  const confirmed = /^Confirmed: (.+?)(?:\.)?$/.exec(input)
-  if (confirmed) {
-    const action = russianBuildNote(confirmed[1]!) ?? confirmed[1]!
-    return `Подтверждено: ${action}.`
-  }
+  if (timingOnPlanRu) return `${localizeRuLabel(timingOnPlanRu[1]!)}: тайминг в норме.`
+  const lateLandmark = /^(.+) выполнен поздно\.$/.exec(input)
+  if (lateLandmark) return `${localizeRuLabel(lateLandmark[1]!)} выполнен поздно.`
+  const villagerShortfall = /^Недобор крестьян к (.+): (.+)$/.exec(input)
+  if (villagerShortfall)
+    return `Недобор крестьян к ${localizeRuLabel(villagerShortfall[1]!)}: ${villagerShortfall[2]}`
+  const villagerAhead = /^Темп крестьян опережает план к (.+)\.$/.exec(input)
+  if (villagerAhead) return `Темп крестьян опережает план к ${localizeRuLabel(villagerAhead[1]!)}.`
+  const confirmed = /^(?:Confirmed|Подтверждено): (.+?)(?:\.)?$/.exec(input)
+  if (confirmed) return `Подтверждено: ${russianizeGameEnglish(confirmed[1]!)}.`
   const actionReview = /^(Раннее|Позднее) действие около (.+): (.+)\.$/.exec(input)
   if (actionReview) {
-    const action = russianBuildNote(actionReview[3]!) ?? actionReview[3]!
-    return `${actionReview[1]} действие около ${actionReview[2]}: ${action}.`
+    return `${actionReview[1]} действие около ${actionReview[2]}: ${russianizeGameEnglish(actionReview[3]!)}.`
+  }
+  const actionCheck = /^Нужно проверить действие около (.+): (.+)\.$/.exec(input)
+  if (actionCheck) {
+    return `Нужно проверить действие около ${actionCheck[1]}: ${russianizeGameEnglish(actionCheck[2]!)}.`
+  }
+  const eventEvidence = /^Событие «(.+)» выполнено в (.+) при плане (.+)\.$/.exec(input)
+  if (eventEvidence) {
+    return `Событие «${russianizeGameEnglish(eventEvidence[1]!)}» выполнено в ${eventEvidence[2]} при плане ${eventEvidence[3]}.`
   }
   if (input === 'Feudal landmark') return 'Лендмарк феодальной эпохи'
   if (
@@ -3758,6 +4493,11 @@ function russianDynamic(input: string): string | null {
     "Villager counts assume the reference's opening villagers plus your production (the stat file doesn't record losses); age-ups use the authoritative match summary when available, with landmark events as a fallback."
   ) {
     return 'Количество крестьян учитывает стартовых крестьян эталонного билда и ваше производство (файл статистики не записывает потери); эпохи берутся из авторитетной сводки матча, а при её отсутствии — из событий строительства лендмарка.'
+  }
+
+  if (/[A-Za-z]/.test(input)) {
+    const rewritten = russianizeGameEnglish(input)
+    if (rewritten !== input) return rewritten
   }
 
   return null
@@ -3777,6 +4517,10 @@ function russianBuildNote(input: string): string | null {
     'Use your larger economy to out-produce the enemy and grind forward with siege.':
       'Используйте более сильную экономику, чтобы обойти соперника по производству и продвигаться с осадой',
     'Keep making villagers nonstop.': 'Не прекращайте производство крестьян',
+    'Build first House with Food Villager near supply cap, later build House with Wood Villager':
+      'Сначала постройте дом крестьянином на еде около лимита населения, позже постройте дом крестьянином на дереве',
+    'Make Varangian Arsenal with Gold Villager once enough wood and get Scale Barding, then upgrade whatever you need':
+      'Сделайте Варяжский арсенал крестьянином на золоте, когда накопится дерево, и изучите Чешуйчатый доспех коня, затем улучшайте то, что нужно',
   }
   const exactTranslation = exact[input] ?? exact[`${input}.`]
   if (typeof exactTranslation === 'string') return exactTranslation
@@ -3915,14 +4659,17 @@ export function I18nProvider({ children }: { children: ReactNode }) {
         return input
       },
       gameName: (input) => {
-        const local = GAME_NAMES[locale][input] ?? UI[locale][input]
+        if (!input) return input
+        const key = resolveGameNameKey(input)
+        const local = lookupLocalizedGameName(locale, input)
         if (local) return local
         if (locale === 'ru') {
-          const generated = russianDynamic(input)
+          const generated = russianDynamic(key)
           if (generated) return generated
         }
-        requestTranslation(locale, input)
-        return input
+        requestTranslation(locale, key)
+        // English identity, or already-localized API strings, after slug/id normalization.
+        return key
       },
       refreshTranslationStatus,
     }),

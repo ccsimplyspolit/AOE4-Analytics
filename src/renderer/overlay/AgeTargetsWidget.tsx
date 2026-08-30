@@ -18,10 +18,12 @@ export function AgeTargetsWidget({
   benchmarks,
   bracket,
   elapsedSec,
+  compact = false,
 }: {
   benchmarks: Benchmarks
   bracket: Bracket
   elapsedSec: number | null
+  compact?: boolean
 }) {
   const { tt } = useI18n()
   const ages = [
@@ -32,13 +34,15 @@ export function AgeTargetsWidget({
   const nextIdx = elapsedSec == null ? -1 : ages.findIndex((a) => elapsedSec < a.sec)
 
   return (
-    <div className="flex h-full flex-col justify-center px-3 py-2">
-      <div className="mb-1 flex items-center justify-between text-[10px] uppercase tracking-wide text-white/40">
-        <span>{tt('Age targets')} · {bracket}</span>
-        {elapsedSec != null && (
-          <span className="tabular-nums text-white/60">{mmss(elapsedSec)}</span>
-        )}
-      </div>
+    <div className={cn('flex h-full flex-col justify-center', compact ? 'px-2 py-1' : 'px-3 py-2')}>
+      {!compact && (
+        <div className="mb-1 flex items-center justify-between text-[10px] uppercase tracking-wide text-white/40">
+          <span>{tt('Age targets')} · {bracket}</span>
+          {elapsedSec != null && (
+            <span className="tabular-nums text-white/60">{mmss(elapsedSec)}</span>
+          )}
+        </div>
+      )}
       <div className="flex gap-1">
         {ages.map((a, i) => {
           const passed = elapsedSec != null && elapsedSec >= a.sec
@@ -47,16 +51,12 @@ export function AgeTargetsWidget({
             <div
               key={a.name}
               className={cn(
-                'flex-1 rounded border px-1 py-0.5 text-center',
-                isNext
-                  ? 'border-cyan-400/60 bg-cyan-500/10'
-                  : passed
-                    ? 'border-white/10 bg-white/5 opacity-60'
-                    : 'border-white/10',
+                'flex-1 px-1 py-0.5 text-center',
+                isNext ? 'text-white' : passed ? 'text-white/40' : 'text-white/70',
               )}
             >
-              <div className="text-[9px] text-white/50">{a.name}</div>
-              <div className="text-[11px] font-semibold tabular-nums">{mmss(a.sec)}</div>
+              <div className="text-[9px] text-white/45">{a.name}</div>
+              <div className="text-[11px] font-medium tabular-nums">{mmss(a.sec)}</div>
             </div>
           )
         })}

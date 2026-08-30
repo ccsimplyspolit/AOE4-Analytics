@@ -12,10 +12,10 @@ import {
 import { CIV_SLUGS } from '../civs'
 
 describe('Valdemar1902 video catalog', () => {
-  it('loads the full 3-year video collection', () => {
-    expect(VALDEMAR_VIDEOS.length).toBe(370)
-    expect(VALDEMAR_CATALOG_STATS.totalVideos).toBe(370)
-    expect(VALDEMAR_VIDEOS_BY_ID.size).toBe(370)
+  it('loads the 3-year channel collection from yt-dlp tabs', () => {
+    expect(VALDEMAR_VIDEOS.length).toBe(VALDEMAR_CATALOG_STATS.totalVideos)
+    expect(VALDEMAR_CATALOG_STATS.totalVideos).toBeGreaterThanOrEqual(400)
+    expect(VALDEMAR_VIDEOS_BY_ID.size).toBe(VALDEMAR_VIDEOS.length)
   })
 
   it('classifies videos into distinct categories', () => {
@@ -30,7 +30,7 @@ describe('Valdemar1902 video catalog', () => {
       VALDEMAR_CATALOG_STATS.categories.civ_guide +
       VALDEMAR_CATALOG_STATS.categories.tier_list_meta +
       VALDEMAR_CATALOG_STATS.categories.mechanics_fundamentals
-    expect(sumCategories).toBe(370)
+    expect(sumCategories).toBe(VALDEMAR_VIDEOS.length)
   })
 
   it('indexes videos by canonical civilization slugs', () => {

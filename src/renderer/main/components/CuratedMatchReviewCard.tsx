@@ -44,7 +44,7 @@ export function CuratedMatchReviewCard({ review }: { review: CuratedMatchReview 
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-1.5">
             <h3 className="text-sm font-semibold">
-              {review.map} · Game #{review.gameId}
+              {gameName(review.map)} · Game #{review.gameId}
             </h3>
             <Badge variant="secondary" className="text-[9px]">
               {tt('Patch')} {review.patch}

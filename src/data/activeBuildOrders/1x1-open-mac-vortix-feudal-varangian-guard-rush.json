@@ -1,0 +1,350 @@
+{
+  "description": "VortiX: Hippodrome (~4:03) → 3–4 всадника → Varangian Guard spam. Ответ на жадный 2TC (English, Chinese, Abbasid, Lancaster, Ayyubids, Zhu Xi). Видео OezixLpYQEw.",
+  "civilization": "Macedonian Dynasty",
+  "opponentCivilization": [
+    "English",
+    "Chinese",
+    "Abbasid Dynasty",
+    "House of Lancaster",
+    "Ayyubids",
+    "Zhu Xi's Legacy"
+  ],
+  "name": "[1x1][OPEN][MAC][PRESSURE] VortiX Feudal Varangian Guard rush",
+  "author": "VortiX / murtuk (AoE4Guides)",
+  "source": "https://aoe4guides.com/builds/RgHNHa5jDWnCw7pY67UL, https://www.youtube.com/watch?v=OezixLpYQEw",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 на @resource/resource_food.webp@. @resource/rally.webp@ на @resource/resource_gold.webp@ до 2, с @abilities/repair.webp@ @building_macedonian/varangian_warcamp.webp@."
+      ],
+      "time": "00:00",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Дальше @resource/rally.webp@ на @resource/resource_food.webp@ до апа."
+      ],
+      "time": "01:00",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Ап в @age/age_2.webp@ четырьмя с @resource/resource_food.webp@ (перед этим 1 @abilities/repair.webp@ @building_economy/house.webp@), потом обратно на еду.",
+        "Ралли на @resource/resource_wood.webp@: 1 с еды + 2 с золота на дерево."
+      ],
+      "time": "02:22",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_byzantines/imperial-hippodrome-1.webp@ готов в 4:03. Аперы обратно на @resource/resource_food.webp@ (дом по дороге).",
+        "Делай @unit_cavalry/horseman-1.webp@ до 3–4 и дави."
+      ],
+      "time": "04:03",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 15,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 с @resource/resource_wood.webp@ на @resource/deer.webp@; один из них чинит @building_macedonian/varangian_stronghold.webp@ (оборона)."
+      ],
+      "time": "04:30",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 15,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 с @resource/resource_wood.webp@ на @resource/resource_gold.webp@."
+      ],
+      "time": "05:10",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 22,
+      "resources": {
+        "food": 15,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Второй @building_macedonian/varangian_stronghold.webp@."
+      ],
+      "time": "05:30",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 с @resource/resource_food.webp@ на @resource/resource_gold.webp@, @building_economy/house.webp@.",
+        "@technology_economy/survival-techniques.webp@, когда хватит золота."
+      ],
+      "time": "05:50",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@ @building_macedonian/varangian_arsenal.webp@ у золота.",
+        "Спамь @unit_byzantines/varangian-guard-3.webp@."
+      ],
+      "time": "06:20",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 28,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "При 200 дерева: 5 с дерева на @resource/resource_gold.webp@.",
+        "Третий @building_macedonian/varangian_stronghold.webp@. Сначала @technology_macedonian/butted-chainmail-2.webp@, затем @technology_macedonian/pattern-welding-2.webp@."
+      ],
+      "time": "07:20",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 30,
+      "resources": {
+        "food": 17,
+        "wood": 3,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 с @resource/resource_wood.webp@ на @resource/berrybush.webp@ с @building_economy/mill.webp@."
+      ],
+      "time": "08:10",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 33,
+      "resources": {
+        "food": 17,
+        "wood": 6,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Экономические и военные апгрейды (еда / дерево / золото)."
+      ],
+      "time": "09:00",
+      "timeProvenance": "stated"
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Ориентир армии: 17 @unit_byzantines/varangian-guard-3.webp@ + 4 @unit_cavalry/horseman-1.webp@ + чемпионы.",
+        "@technology_military/siege-engineering.webp@, если нужен пуш @unit_byzantines/cheirosiphon-3.webp@."
+      ],
+      "time": "09:50",
+      "timeProvenance": "stated"
+    }
+  ],
+  "video": "https://www.youtube.com/watch?v=OezixLpYQEw",
+  "season": 13,
+  "map": null,
+  "strategy": "Hippodrome horsemen into Varangian Guard vs 2TC",
+  "provider": "aoe4guides",
+  "providerId": "RgHNHa5jDWnCw7pY67UL",
+  "score": 4.248495242049359,
+  "views": 120,
+  "likes": 0,
+  "upvotes": 1,
+  "timeCreated": "2026-08-19T08:45:19Z",
+  "timeUpdated": "2026-08-19T08:45:19Z",
+  "modes": [
+    "1x1"
+  ],
+  "mapTypes": [
+    "open",
+    "hybrid"
+  ],
+  "role": "pressure",
+  "status": "active",
+  "queue": "rm_solo",
+  "teamSize": 1,
+  "strategyKey": "pressure",
+  "metaTier": "meta_core",
+  "buildGroup": "mac_vortix_vg",
+  "rankFit": "all+conqueror",
+  "verifiedPatch": "10604,10884,11214,11308",
+  "lastVerified": "2026-08-23",
+  "gameBuild": "16.3.11308",
+  "schemaVersion": 1,
+  "origin": "curated",
+  "capturedAt": "2026-08-23T00:00:00Z",
+  "patch": "16.3.11308",
+  "updatedAt": "2026-08-23T00:00:00Z",
+  "archetype": "Feudal aggression",
+  "difficulty": "hard",
+  "reasoning": "Август 2026: ответ MAC на жадный 2TC. Hippodrome-всадники в VG; timed aoe4guides S13 (patch 16.3.11308).",
+  "ageTimings": [
+    {
+      "age": 2,
+      "seconds": 243,
+      "derived": false,
+      "stepIndex": 3
+    }
+  ],
+  "tactics": [
+    {
+      "id": "vortix-2tc-punish",
+      "category": "opening",
+      "title": "Vs 2TC: horses then Varangian Guard",
+      "detail": "Hippodrome at 4:03, 3–4 horsemen, Stronghold on deer, then VG from Arsenal.",
+      "timeSec": 243,
+      "confidence": 0.93
+    },
+    {
+      "id": "vortix-third-stronghold",
+      "category": "military",
+      "title": "Third Stronghold + mail/welding at 7:20",
+      "detail": "At 200 wood pull five to gold, drop the third Stronghold, Butted Chainmail then Pattern Welding.",
+      "timeSec": 440,
+      "confidence": 0.9
+    }
+  ],
+  "video_evidence": {
+    "schemaVersion": 1,
+    "windowStart": "2025-11-01",
+    "windowEnd": "2026-08-23",
+    "sampleSize": 1,
+    "requestedSampleSize": 1,
+    "coverageNote": "YouTube oEmbed title/channel plus aoe4guides overlay timings. Captions were empty on the public timedtext endpoint.",
+    "commonActions": [],
+    "commonResources": [],
+    "commonTopics": [],
+    "commonOpponents": [],
+    "commonMilitaryMentions": [],
+    "timingSignals": [],
+    "sources": [
+      {
+        "id": "OezixLpYQEw",
+        "title": "TUTORIAL Macedonios AOE4 | Así se juega MACEDONIAN DYNASTY",
+        "url": "https://www.youtube.com/watch?v=OezixLpYQEw",
+        "channel": "VortiX",
+        "publishedAt": "2026-08-19T08:45:19Z",
+        "viewCount": null,
+        "transcriptLanguage": null,
+        "transcriptSource": "none",
+        "transcriptProvider": "none",
+        "transcriptStatus": "missing",
+        "transcriptWordCount": 0,
+        "transcriptExcerpt": "TUTORIAL Macedonios AOE4 | Así se juega MACEDONIAN DYNASTY",
+        "sourceKind": "guide",
+        "frameCheckpoints": [],
+        "signals": {
+          "archetype": null,
+          "actions": [],
+          "resources": [],
+          "topics": [],
+          "opponentCivs": [],
+          "militaryMentions": [],
+          "timings": [],
+          "confidence": 0.7
+        }
+      }
+    ]
+  }
+}

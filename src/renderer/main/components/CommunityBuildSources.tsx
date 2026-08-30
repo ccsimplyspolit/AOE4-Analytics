@@ -32,6 +32,13 @@ const BUILD_SOURCES: BuildSource[] = [
     description: 'Compressed build.html/view.html links and compatible Overlay JSON exports are accepted.',
     synced: true,
   },
+  {
+    name: 'AoE4 Club',
+    url: 'https://www.aoe4.club/en/tools',
+    status: 'Local lab + live site',
+    description: 'No public API. Compare, DPS and cost calculators run on bundled aoe4world/data; the live site stays one click away.',
+    synced: false,
+  },
 ]
 
 export function CommunityBuildSources() {
@@ -54,7 +61,7 @@ export function CommunityBuildSources() {
           </div>
         </div>
 
-        <div className="grid gap-2 md:grid-cols-3">
+        <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-4">
           {BUILD_SOURCES.map((source) => (
             <a
               key={source.name}

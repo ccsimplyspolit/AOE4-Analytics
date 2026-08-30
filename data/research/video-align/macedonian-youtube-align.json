@@ -1,0 +1,49 @@
+{
+  "fetchedAt": "2026-08-22T20:56:00.000Z",
+  "youtubeDataApi": {
+    "keySource": "rtslytics external-api-config.json (Electron safeStorage)",
+    "status": "200",
+    "detail": "videos.list, channels.list, captions.list succeed. Caption bodies still need OAuth (captions.download). Macedonian BO videos have no chapter timestamps in the description.",
+    "probeFile": "youtube-api-probe.json",
+    "payloadFile": "youtube-api-videos.json"
+  },
+  "publicOembed": [
+    {
+      "id": "GIErhV3Eeys",
+      "title": "BEST Macedonian Dynasty Build Order Guide",
+      "author": "BeastyqtSC2",
+      "url": "https://www.youtube.com/watch?v=GIErhV3Eeys",
+      "role": "reference video for macedonian-beasty.json"
+    },
+    {
+      "id": "PeZYWFhGr3w",
+      "title": "How to Play Macedonian Dynasty - Simple AOE4 Build Order Guide",
+      "author": "BeastyqtSC2",
+      "url": "https://www.youtube.com/watch?v=PeZYWFhGr3w",
+      "role": "simpler same-civ companion"
+    }
+  ],
+  "buildAlignment": {
+    "buildId": "macedonian-beasty",
+    "caveat": "Step times come from aoe4guides / bundled JSON, not from a Data API transcript. Auto-captions were 429 via yt-dlp.",
+    "steps": [
+      { "buildTime": "00:00", "watchUrl": "https://www.youtube.com/watch?v=GIErhV3Eeys&t=0s", "notes": "5 on sheep, 1 repair Varangian Warcamp, rally gold then food" },
+      { "buildTime": "04:00", "watchUrl": "https://www.youtube.com/watch?v=GIErhV3Eeys&t=240s", "notes": "Feudal / Imperial Hippodrome; 2 horsemen queued; outpost to gold" },
+      { "buildTime": "04:30", "watchUrl": "https://www.youtube.com/watch?v=GIErhV3Eeys&t=270s", "notes": "50 stone, arrow slits, 5 to stone then food; 290 wood checkpoint" },
+      { "buildTime": "05:30", "watchUrl": "https://www.youtube.com/watch?v=GIErhV3Eeys&t=330s", "notes": "Varangian Arsenal done → Scale Barding ASAP" },
+      { "buildTime": "06:30", "watchUrl": "https://www.youtube.com/watch?v=GIErhV3Eeys&t=390s", "notes": "Move 5 food→gold near Castle gold; Golden Horn; Riddari + relics" }
+    ]
+  },
+  "latestGamesVsBuild": {
+    "profileId": 25610739,
+    "point": "Last 12 games are team RM, almost all Macedonian. Beasty BO is a 1v1 Hippodrome/Warcamp opening — do not grade team games as failed 1v1 execution without replay timings.",
+    "latest": {
+      "gameId": 248487150,
+      "kind": "rm_3v3",
+      "map": "Prairie",
+      "durationSec": 5627,
+      "result": "loss",
+      "civ": "macedonian_dynasty"
+    }
+  }
+}

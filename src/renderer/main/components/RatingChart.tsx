@@ -8,22 +8,33 @@ import {
   YAxis,
 } from 'recharts'
 import type { StoredMatch } from '@store/historyStore'
+import { useI18n } from '../../i18n'
 
 const ACCENT = 'hsl(var(--primary))'
 const GRID = 'hsl(var(--border))'
 const MUTED = 'hsl(var(--muted-foreground))'
 
 /** Rating over time, oldest → newest. */
-export function RatingChart({ matches }: { matches: StoredMatch[] }) {
-  const data = [...matches]
-    .filter((m) => m.rating != null)
-    .reverse()
-    .map((m, i) => ({ i: i + 1, rating: m.rating as number, result: m.result }))
+export function RatingChart({
+  matches,
+  points,
+}: {
+  matches?: StoredMatch[]
+  points?: { rating: number }[]
+}) {
+  const { tt } = useI18n()
+  const data =
+    points && points.length > 0
+      ? points.map((point, i) => ({ i: i + 1, rating: point.rating, result: null as string | null }))
+      : [...(matches ?? [])]
+          .filter((m) => m.rating != null)
+          .reverse()
+          .map((m, i) => ({ i: i + 1, rating: m.rating as number, result: m.result }))
 
   if (data.length < 2) {
     return (
       <div className="flex h-48 items-center justify-center text-sm text-muted-foreground">
-        Not enough rated games yet to chart a trend.
+        {tt('Not enough rated games yet to chart a trend.')}
       </div>
     )
   }

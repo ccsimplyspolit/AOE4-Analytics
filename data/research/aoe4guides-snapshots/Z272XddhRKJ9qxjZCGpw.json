@@ -1,0 +1,155 @@
+{
+  "author": "Valdemar1902",
+  "authorUid": "WIn1mNvYXGap5UlRvJXYeHahdYl1",
+  "description": "Standard aggro. Play horsemen archer spear (tricomp) aggressively and age up to castle after your opponent and look for a lot of damage in feudal. In castle play riddari and archer. ",
+  "title": "Feudal Aggression Macedonians (DLC RELEASE VERSION)",
+  "steps": [
+    {
+      "type": "age",
+      "age": 1,
+      "gameplan": "",
+      "steps": [
+        {
+          "time": "0:00",
+          "builders": "1",
+          "food": "5",
+          "wood": "",
+          "gold": "",
+          "stone": "",
+          "description": "Send 5 <img src=\"/assets/pictures/unit_worker/villager.webp\" class=\"icon-default\" /> to <img src=\"/assets/pictures/resource/sheep.webp\" class=\"icon-none\" /> and 1 to build <img src=\"/assets/pictures/building_macedonian/varangian_warcamp.webp\" class=\"icon-military\" />"
+        },
+        {
+          "time": "0:20",
+          "villagers": "",
+          "builders": "",
+          "food": "6",
+          "wood": "",
+          "gold": "1",
+          "stone": "",
+          "description": "<img src=\"/assets/pictures/resource/rally.webp\" class=\"icon-none\" title=\"Rally\" /> 2 <img src=\"/assets/pictures/unit_worker/villager.webp\" class=\"icon-default\" title=\"Villager\" /> to <img src=\"/assets/pictures/resource/resource_gold.webp\" class=\"icon-none\" title=\"Gold\" />"
+        },
+        {
+          "time": "1:00",
+          "villagers": "",
+          "builders": "",
+          "food": "7",
+          "wood": "<br>",
+          "gold": "2",
+          "stone": "",
+          "description": "<img src=\"/assets/pictures/resource/rally.webp\" class=\"icon-none\" /><img src=\"/assets/pictures/resource/resource_food.webp\" class=\"icon-none\" /> until <img src=\"/assets/pictures/age/age_2.webp\" class=\"icon-none\" />"
+        },
+        {
+          "time": "2:13",
+          "villagers": "",
+          "builders": "",
+          "food": "10",
+          "wood": "",
+          "gold": "2",
+          "stone": "",
+          "description": "3 <img src=\"/assets/pictures/unit_worker/villager.webp\" class=\"icon-default\" title=\"Villager\" /> to build <img src=\"/assets/pictures/landmark_byzantines/grand-winery-1.webp\" class=\"icon-landmark\" title=\"Grand Winery\" /> on <img src=\"/assets/pictures/resource/berrybush.webp\" class=\"icon-none\" title=\"Berries\" />"
+        }
+      ]
+    },
+    {
+      "type": "ageUp",
+      "age": 1,
+      "gameplan": "",
+      "steps": [
+        {
+          "description": "Macro 3 <img src=\"/assets/pictures/resource/sheep.webp\" class=\"icon-none\" /><img src=\"/assets/pictures/unit_worker/villager.webp\" class=\"icon-default\" /> to <img src=\"/assets/pictures/resource/resource_wood.webp\" class=\"icon-none\" /> and <img src=\"/assets/pictures/resource/rally.webp\" class=\"icon-none\" /> until 8",
+          "time": "2.20",
+          "food": "4",
+          "gold": "2",
+          "builders": "3"
+        }
+      ]
+    },
+    {
+      "type": "age",
+      "age": 2,
+      "gameplan": "Slowly add in farms when u start floating wood. ",
+      "steps": [
+        {
+          "description": "<img src=\"/assets/pictures/building_military/stable.webp\" class=\"icon-military\" /> -&gt; <img src=\"/assets/pictures/building_macedonian/varangian_arsenal.webp\" class=\"icon-military\" />/<img src=\"/assets/pictures/building_macedonian/varangian_stronghold.webp\" class=\"icon-military\" /> (arsenal if opp isn't feudal or isn't opening units)",
+          "time": "4:10",
+          "builders": "",
+          "food": "7",
+          "wood": "8",
+          "gold": "2",
+          "stone": ""
+        },
+        {
+          "time": "4:15",
+          "villagers": "",
+          "builders": "",
+          "food": "7",
+          "wood": "8",
+          "gold": "2",
+          "stone": "",
+          "description": "<img src=\"/assets/pictures/technology_economy/wheelbarrow.webp\" class=\"icon-tech\" title=\"Wheelbarrow\" /> "
+        },
+        {
+          "time": "4:45",
+          "villagers": "",
+          "builders": "",
+          "food": "10",
+          "wood": "8",
+          "gold": "2",
+          "stone": "",
+          "description": "<img src=\"/assets/pictures/technology_macedonian/blade-inlaying-2.webp\" class=\"icon-tech\" /> or <img src=\"/assets/pictures/technology_macedonian/sharpening-stones-2.webp\" class=\"icon-tech\" title=\"Sharpening Stones\" /> (if archers)"
+        },
+        {
+          "time": "5:15",
+          "villagers": "",
+          "builders": "",
+          "food": "11",
+          "wood": "8",
+          "gold": "2",
+          "stone": "",
+          "description": "2nd <img src=\"https://aoe4guides.com/assets/pictures/building_macedonian/varangian_stronghold.webp\" class=\"icon-military\" /> (<img src=\"/assets/pictures/building_macedonian/varangian_arsenal.webp\" class=\"icon-military\" /> if u went stronghold first)"
+        },
+        {
+          "time": "7:00",
+          "villagers": "",
+          "builders": "",
+          "food": "13",
+          "wood": "10",
+          "gold": "2",
+          "stone": "",
+          "description": "Start adding in a few <img src=\"/assets/pictures/building_economy/farm.webp\" class=\"icon-default\" title=\"Farm\" /> around <img src=\"/assets/pictures/landmark_byzantines/grand-winery-1.webp\" class=\"icon-landmark\" title=\"Grand Winery\" /> now. Potentially tower your berries or gold if they are in the front as well."
+        }
+      ]
+    }
+  ],
+  "civ": "MAC",
+  "map": "",
+  "season": "Season 12",
+  "strategy": "",
+  "downvotes": 0,
+  "comments": 0,
+  "isDraft": false,
+  "timeCreated": {
+    "_seconds": 1762460633,
+    "_nanoseconds": 890000000
+  },
+  "id": "Z272XddhRKJ9qxjZCGpw",
+  "sortTitle": "feudal aggression macedonians (dlc release version)395ffe70-9ee5-4534-a649-d26c43147069",
+  "timeUpdated": {
+    "_seconds": 1762460683,
+    "_nanoseconds": 483000000
+  },
+  "creatorId": "UCyzgM7IMV8AXN8suRSyNhiQ",
+  "creatorName": "Valdemar",
+  "video": "https://www.youtube.com/embed/zoA922O-HQM",
+  "upvotes": 3,
+  "scoreAllTime": 8.603187384583098,
+  "likes": 14,
+  "ageTimings": {
+    "feudal": {
+      "t": 250,
+      "e": false
+    }
+  },
+  "score": 2.162281073273311e-26,
+  "views": 4822
+}

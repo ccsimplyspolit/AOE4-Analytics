@@ -7,14 +7,15 @@ import {
   Keyboard,
   ListOrdered,
   Search,
-  Shield,
   Sparkles,
   Network,
   ExternalLink,
   Loader2,
   PlayCircle,
   Layers,
+  Swords,
   Timer,
+  Trophy,
 } from 'lucide-react'
 import { GUIDE_RESOURCES, GUIDES, type Guide } from '@data/guides'
 import {
@@ -50,28 +51,32 @@ import { Markdown } from '@shared/components/Markdown'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
 import { PageHead } from '../components/PageHead'
+import { GroupedScreenTabs } from '../components/ScreenTabs'
 import { BuildOrderViewer } from '../components/BuildOrderViewer'
 import { BuildPlaylistManager } from '../components/BuildPlaylistManager'
 import { VideoPlayer } from '../components/VideoPlayer'
 import { CommunityBuildSources } from '../components/CommunityBuildSources'
-import { CounterHelper } from '../components/tools/CounterHelper'
 import { CivQuiz } from '../components/tools/CivQuiz'
 import { ShortcutTrainer } from '../components/tools/ShortcutTrainer'
 import { BeastyNumber } from '../components/tools/BeastyNumber'
+import { CounterHelper } from '../components/tools/CounterHelper'
 import { useI18n } from '../../i18n'
 import { useRankedMapPool } from '../queries/useCivMeta'
 
 import { ValdemarMasterclassHub } from '../components/ValdemarMasterclassHub'
+import { BeastyMasterclassHub } from '../components/BeastyMasterclassHub'
 import { TimingMatrixExplorer } from '../components/tools/TimingMatrixExplorer'
+import { recallHub, rememberHub } from '../hubMemory'
 
 type Tab =
   | 'guides'
   | 'builds'
   | 'valdemar'
+  | 'beasty_hub'
   | 'timings'
   | 'playlists'
-  | 'counters'
   | 'quiz'
+  | 'counters'
   | 'trainer'
   | 'beasty'
 
@@ -106,12 +111,19 @@ const TABS = [
   { id: 'guides', label: 'Guides', icon: BookOpen },
   { id: 'builds', label: 'Build Orders', icon: ListOrdered },
   { id: 'valdemar', label: 'Valdemar Hub', icon: PlayCircle },
+  { id: 'beasty_hub', label: 'Beasty Hub', icon: Trophy },
   { id: 'timings', label: 'Timing Matrix', icon: Timer },
   { id: 'playlists', label: 'Practice Playlists', icon: Layers },
-  { id: 'counters', label: 'Counter Helper', icon: Shield },
   { id: 'quiz', label: 'Civ Quiz', icon: Sparkles },
+  { id: 'counters', label: 'Unit Counters', icon: Swords },
   { id: 'trainer', label: 'Shortcut Trainer', icon: Keyboard },
   { id: 'beasty', label: 'Beasty Number', icon: Network },
+] as const
+
+const TAB_GROUPS = [
+  { id: 'learn', label: 'Learn', tabIds: ['guides', 'valdemar', 'beasty_hub'] },
+  { id: 'practice', label: 'Practice', tabIds: ['builds', 'playlists', 'timings', 'trainer'] },
+  { id: 'helpers', label: 'Helpers', tabIds: ['quiz', 'counters', 'beasty'] },
 ] as const
 
 /** Keep the written guide focused while surfacing the closest existing videos. */
@@ -147,10 +159,12 @@ const GUIDE_VIDEO_IDS: Readonly<Record<string, readonly string[]>> = {
 
 export function Guides() {
   const { tt } = useI18n()
-  // Tab lives in the URL so a refresh or deep link restores it.
   const [searchParams, setSearchParams] = useSearchParams()
   const tabParam = searchParams.get('tab')
-  const tab: Tab = TABS.some((t) => t.id === tabParam) ? (tabParam as Tab) : 'guides'
+  const tabIds = TABS.map((item) => item.id)
+  const tab: Tab = TABS.some((t) => t.id === tabParam)
+    ? (tabParam as Tab)
+    : recallHub('guides', tabIds, 'guides')
   const setTab = (id: Tab) =>
     setSearchParams(
       (prev) => {
@@ -161,47 +175,38 @@ export function Guides() {
       { replace: true },
     )
 
+  useEffect(() => {
+    rememberHub('guides', tab)
+  }, [tab])
+
   return (
     <div className="animate-fade-in space-y-6">
       <PageHead
         kicker="Library"
         title="Guides & Tools"
-        sub="Beginner tactics, build orders, a counter helper, and a civ-picker quiz."
+        sub="Learn, Practice, and Helpers: written guides, creator hubs, build orders, civ quiz, and unit counters."
       />
 
-      <div className="flex gap-1 border-b border-border" role="tablist">
-        {TABS.map((t) => {
-          const Icon = t.icon
-          return (
-            <button
-              key={t.id}
-              type="button"
-              role="tab"
-              aria-selected={tab === t.id}
-              onClick={() => setTab(t.id)}
-              className={`-mb-px flex items-center gap-1.5 border-b-2 px-3 py-2 text-sm transition-colors ${
-                tab === t.id
-                  ? 'border-primary text-primary'
-                  : 'border-transparent text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              <Icon className="h-4 w-4" />
-              {tt(t.label)}
-            </button>
-          )
-        })}
-      </div>
+      <GroupedScreenTabs
+        groups={TAB_GROUPS}
+        items={TABS}
+        value={tab}
+        onChange={setTab}
+        groupAriaLabel={tt('Guides groups')}
+        tabAriaLabel={tt('Guides sections')}
+      />
 
       <div role="tabpanel">
         {tab === 'guides' && <GuideLibrary />}
         {tab === 'builds' && <BuildLibrary />}
         {tab === 'valdemar' && <ValdemarMasterclassHub />}
+        {tab === 'beasty_hub' && <BeastyMasterclassHub />}
         {tab === 'timings' && <TimingMatrixExplorer />}
         {tab === 'playlists' && (
           <BuildPlaylistManager allBuilds={BUILD_CATALOG.map((e) => e.build)} />
         )}
-        {tab === 'counters' && <CounterHelper />}
         {tab === 'quiz' && <CivQuiz />}
+        {tab === 'counters' && <CounterHelper />}
         {tab === 'trainer' && <ShortcutTrainer />}
         {tab === 'beasty' && <BeastyNumber />}
       </div>
@@ -998,7 +1003,7 @@ function BuildLibrary() {
               <option value="solo">{tt('All current solo maps')}</option>
               {mapPoolSnapshot.solo.map((map) => (
                 <option key={`solo-${map}`} value={`map:${map}`}>
-                  {map}
+                  {gameName(map)}
                 </option>
               ))}
             </optgroup>
@@ -1006,7 +1011,7 @@ function BuildLibrary() {
               <option value="team">{tt('All current team maps')}</option>
               {mapPoolSnapshot.team.map((map) => (
                 <option key={`team-${map}`} value={`map:${map}`}>
-                  {map}
+                  {gameName(map)}
                 </option>
               ))}
             </optgroup>

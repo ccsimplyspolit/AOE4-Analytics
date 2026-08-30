@@ -13,6 +13,7 @@ import { CIV_PROFILES } from '@data/civProfiles'
 import { AGE_ICON, RES_ICON } from '@/overlay/resourceGlyphs'
 import { resolveAoE4Icon } from '@data/vendor/aoe4-icons/manifest'
 import { videoUrlsFromBuild } from '@domain/videoEmbed'
+import { alignBuildWithVideo, demoSourcesForBuild } from '@domain/buildVideoAlignment'
 import { ipc } from '@shared/ipc'
 import { useSettings, useUpdateSettings } from '../queries/useProfile'
 import { useI18n } from '../../i18n'
@@ -168,6 +169,8 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
   const { tt, gameName } = useI18n()
   const focus = focusForBuild(bo)
   const guideVideo = guideVideoUrl(bo)
+  const videoCheckpoints = alignBuildWithVideo(bo)
+  const demoSources = demoSourcesForBuild(bo)
   const transcriptAvailable =
     bo.video_evidence?.sources.filter(
       (source) => source.transcriptStatus === 'available' || source.transcriptSource !== 'none',
@@ -313,6 +316,54 @@ export function BuildOrderViewer({ bo }: { bo: BuildOrder }) {
       {guideVideo && (
         <div className="border-b border-border bg-secondary/20 px-4 py-3">
           <VideoPlayer url={guideVideo} title={bo.name} className="max-w-2xl" />
+          {videoCheckpoints.length > 0 && (
+            <div className="mt-3 space-y-1">
+              <div className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                {tt('Frame checkpoints')}
+              </div>
+              <ul className="grid gap-1 sm:grid-cols-2">
+                {videoCheckpoints.slice(0, 8).map((checkpoint) => (
+                  <li key={`${checkpoint.stepIndex}-${checkpoint.timeSec}`}>
+                    <a
+                      href={checkpoint.watchUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="block rounded-sm border border-border/60 px-2 py-1.5 text-[11px] hover:border-primary/40"
+                    >
+                      <span className="font-mono text-primary">{checkpoint.buildTime}</span>
+                      <span className="ml-2 text-muted-foreground">
+                        {checkpoint.note.slice(0, 90) || tt('Build step')}
+                      </span>
+                      {checkpoint.quote ? (
+                        <p className="mt-0.5 italic text-muted-foreground">“{checkpoint.quote}”</p>
+                      ) : null}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {demoSources.length > 0 && (
+            <div className="mt-3">
+              <div className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                {tt('Ranked demos')}
+              </div>
+              <ul className="mt-1 space-y-1">
+                {demoSources.slice(0, 4).map((source) => (
+                  <li key={source.id}>
+                    <a
+                      href={source.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-[11px] text-primary hover:underline"
+                    >
+                      {source.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       )}
       {bo.video_evidence && (

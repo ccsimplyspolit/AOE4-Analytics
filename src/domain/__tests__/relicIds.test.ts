@@ -3,6 +3,7 @@ import {
   RELIC_RACE_ID_TO_CIV,
   raceIdToCiv,
   leaderboardLabel,
+  leaderboardKey,
   isCompetitiveLeaderboard,
   matchTypeLabel,
   relicRankLevelToSlug,
@@ -26,6 +27,8 @@ describe('relicIds', () => {
   it('labels leaderboards and flags the competitive ones', () => {
     expect(leaderboardLabel(1)).toBe('Ranked 1v1')
     expect(leaderboardLabel(17)).toBe('Quick Match 1v1')
+    expect(leaderboardKey(17)).toBe('qm_1v1')
+    expect(leaderboardKey(3)).toBe('rm_3v3')
     expect(leaderboardLabel(99999)).toBe('Leaderboard 99999')
     expect(isCompetitiveLeaderboard(17)).toBe(true)
     expect(isCompetitiveLeaderboard(51)).toBe(false) // Art of War

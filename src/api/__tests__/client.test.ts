@@ -273,6 +273,54 @@ describe('Aoe4WorldClient', () => {
     expect(url.searchParams.get('include_custom')).toBe('true')
   })
 
+  it('passes the overlay api_key on last-game and player-games requests', async () => {
+    const fake = fakeFetch(loadFixture('games-last-10240693.json'))
+    const client = makeClient(fake.fetch)
+    await client.getLastGame(10240693, { apiKey: 'overlay-test-key', includeCustom: true })
+    await client.getPlayerGames(10240693, { apiKey: 'overlay-test-key', includeCustom: true, limit: 5 })
+    expect(new URL(fake.calls[0]!.url).searchParams.get('api_key')).toBe('overlay-test-key')
+    expect(new URL(fake.calls[1]!.url).searchParams.get('api_key')).toBe('overlay-test-key')
+    expect(new URL(fake.calls[1]!.url).searchParams.get('include_custom')).toBe('true')
+  })
+
+  it('passes documented search, autocomplete, stats and esports query params', async () => {
+    const fake = fakeFetch({ players: [], total_count: 0, count: 0 })
+    const client = makeClient(fake.fetch)
+    await client.searchPlayers('beasty', { exact: true, page: 2 })
+    await client.autocompletePlayers('bar', 'qm_1v1', { limit: 10 })
+    await client.getLeaderboard('rm_solo', {
+      search: 'barbecue',
+      profileIds: [6943917, 1270139],
+      time: '2022-04-19T08:36:35.000Z',
+    })
+    await client.getEsportsLeaderboard(1, {
+      search: 'marinelord',
+      showInactive: true,
+      country: 'fr',
+    })
+    await client.getLastGame(10240693, { includeStats: true, fresh: true })
+    await client.getPlayerGames(10240693, { includeAlts: true, limit: 5 })
+    await client.getGame(6943917, 123893928, { includeAlts: true })
+    await client.getGames({ order: 'updated_at', updatedSince: '2022-04-19T08:36:35.000Z' })
+
+    expect(new URL(fake.calls[0]!.url).searchParams.get('exact')).toBe('true')
+    expect(new URL(fake.calls[1]!.url).pathname).toBe('/api/v0/players/autocomplete')
+    expect(new URL(fake.calls[1]!.url).searchParams.get('limit')).toBe('10')
+    expect(new URL(fake.calls[2]!.url).searchParams.get('query')).toBe('barbecue')
+    expect(new URL(fake.calls[2]!.url).searchParams.get('profile_id')).toBe('6943917,1270139')
+    expect(new URL(fake.calls[3]!.url).pathname).toBe('/api/v0/esports/leaderboards/1')
+    expect(new URL(fake.calls[3]!.url).searchParams.get('show_inactive')).toBe('true')
+    expect(new URL(fake.calls[3]!.url).searchParams.get('country')).toBe('fr')
+    expect(new URL(fake.calls[4]!.url).searchParams.get('include_stats')).toBe('true')
+    expect(new URL(fake.calls[5]!.url).searchParams.get('include_alts')).toBe('true')
+    expect(new URL(fake.calls[6]!.url).pathname).toBe('/api/v0/players/6943917/games/123893928')
+    expect(new URL(fake.calls[6]!.url).searchParams.get('include_alts')).toBe('true')
+    expect(new URL(fake.calls[7]!.url).searchParams.get('updated_since')).toBe(
+      '2022-04-19T08:36:35.000Z',
+    )
+    expect(new URL(fake.calls[7]!.url).searchParams.get('order')).toBe('updated_at')
+  })
+
   it('throws ApiError on a non-2xx response', async () => {
     const client = makeClient(fakeFetch({ error: 'not found' }, 404).fetch)
     await expect(client.getPlayer(123)).rejects.toBeInstanceOf(ApiError)

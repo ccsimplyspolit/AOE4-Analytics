@@ -9,15 +9,26 @@ import { useI18n } from '../i18n'
  * only when there is at least one finished game today; the MMR figure is
  * omitted when no game carried a rating change (custom/vs-AI only sessions).
  */
-export function SessionWidget({ session }: { session: SessionSummary }) {
+export function SessionWidget({
+  session,
+  compact = false,
+}: {
+  session: SessionSummary
+  compact?: boolean
+}) {
   const { tt } = useI18n()
   const delta = session.ratingDelta
   return (
     <div
-      className="pointer-events-none flex select-none items-center gap-2 rounded-md px-2.5 py-1.5 font-sans text-white shadow-xl ring-1 ring-white/10"
-      style={{ background: panelBg(0.92), textShadow: '0 1px 3px rgba(0,0,0,0.95)' }}
+      className={cn(
+        'overlay-panel pointer-events-none flex select-none items-center gap-1.5 font-sans text-white',
+        compact ? 'px-1.5 py-0.5' : 'px-2 py-1',
+      )}
+      style={{ background: panelBg(compact ? 0.5 : 0.7), textShadow: '0 1px 2px rgba(0,0,0,0.9)' }}
     >
-      <span className="text-[9px] font-bold uppercase tracking-wider text-white/50">{tt('Today')}</span>
+      {!compact && (
+        <span className="text-[9px] font-medium uppercase tracking-wider text-white/45">{tt('Today')}</span>
+      )}
       <span className="text-[13px] font-semibold tabular-nums leading-none">
         <span className="text-win">{session.wins}W</span>
         <span className="text-white/45"> – </span>

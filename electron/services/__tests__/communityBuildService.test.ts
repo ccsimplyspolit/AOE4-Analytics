@@ -131,6 +131,9 @@ describe('AoE4Guides importer', () => {
     })
     expect(result.data.items).toHaveLength(11)
     expect(result.data.items[0]?.build.source).toBe('https://aoe4guides.com/builds/eng-1')
+    expect(String(vi.mocked(fetch).mock.calls[0]?.[0])).toContain(
+      'aoe4-guides-api-7h2vti5ckq-ey.a.run.app/builds',
+    )
   })
 
   it('rejects unknown typed civilization filters before fetching', async () => {

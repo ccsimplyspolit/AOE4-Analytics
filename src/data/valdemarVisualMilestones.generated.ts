@@ -166,6 +166,192 @@ export const VALDEMAR_VISUAL_MILESTONES: readonly VisualMilestoneEntry[] = [
     "mistakeRu": "Одновременная трата всего запаса дерева на 8 ферм, останавливающая производство стрелков и копейщиков."
   },
   {
+    "id": "byzantines-0pkvLN16f4o-t43s",
+    "civ": "byzantines",
+    "videoId": "0pkvLN16f4o",
+    "videoTitle": "Easily Achieve Conqueror 3 With These Byz Strats | AoE4 Valdy",
+    "videoUrl": "https://www.youtube.com/watch?v=0pkvLN16f4o&t=43s",
+    "category": "build_order",
+    "second": 43,
+    "formattedTime": "00:43",
+    "age": 1,
+    "workers": { "food": 1, "wood": 0, "gold": 1, "stone": 3, "total": 6, "idle": 0 },
+    "landmark": null,
+    "directiveEn": "3-stone Winery opener vs China: 3 stone, 1 gold, house+cistern then sheep. Skip this if spears can show.",
+    "directiveRu": "3-stone Winery vs China: 3 камня, 1 золото, дом+цистерна, затем овцы. Не так, если возможны копья.",
+    "layout": {
+      "type": "landmark_hub",
+      "titleEn": "Safe back stone / gold, Winery on berries",
+      "titleRu": "Камень и золото сзади, винодельня на ягодах",
+      "ascii": "[Stone] [Gold] (behind TC)\n   \\      /\n    [TC] -- [Cistern] -- [House]\n      |\n [Sheep]     [Berries] -> Winery later",
+      "tipsEn": [
+        "Flankwoods with rear stone/gold is why 3-stone is comfortable here.",
+        "Winery drops on home berries after Feudal, not in Dark Age."
+      ],
+      "tipsRu": [
+        "На Flankwoods камень и золото сзади — поэтому 3-stone комфортен.",
+        "Винодельню ставят на свои ягоды после феодала, не в тёмной."
+      ]
+    },
+    "mistakeEn": "Opening 3-stone into a spear civ and dying before Feudal production.",
+    "mistakeRu": "3-stone в копейный цив и смерть до феодального продакшена."
+  },
+  {
+    "id": "byzantines-0pkvLN16f4o-t128s",
+    "civ": "byzantines",
+    "videoId": "0pkvLN16f4o",
+    "videoTitle": "Easily Achieve Conqueror 3 With These Byz Strats | AoE4 Valdy",
+    "videoUrl": "https://www.youtube.com/watch?v=0pkvLN16f4o&t=128s",
+    "category": "build_order",
+    "second": 128,
+    "formattedTime": "02:08",
+    "age": 1,
+    "workers": { "food": 9, "wood": 0, "gold": 1, "stone": 3, "total": 14, "idle": 0 },
+    "landmark": { "name": "Grand Winery", "builderCount": 4, "completionSec": 278 },
+    "directiveEn": "Age up with 4 vs China (3 default, 2 if spears vs French/JD). One gold villager covers the whole Dark Age.",
+    "directiveRu": "Ап с 4 vs China (обычно 3, 2 если копья vs French/JD). Один золото всю тёмную эпоху.",
+    "layout": {
+      "type": "landmark_hub",
+      "titleEn": "Winery click + four cisterns of stone",
+      "titleRu": "Клик винодельни и камень на 4 цистерны",
+      "ascii": "[Grand Winery] (4 vills)\n      |\n[Cistern]--[Aqueduct]--[Cistern]\n      |\n     [TC]  (1 gold stays)",
+      "tipsEn": [
+        "Pull stone at 100 and place the fourth cistern, then stragglers to 8 wood.",
+        "Do not keep gathering stone after four cisterns — it just floats."
+      ],
+      "tipsRu": [
+        "На 100 камня — 4-я цистерна, затем страглеры до 8 дерева.",
+        "Не копать камень после четырёх цистерн — он флоутит."
+      ]
+    },
+    "mistakeEn": "Aging with too few vills vs China, or floating stone by mining a fifth cistern you will not place in Dark Age.",
+    "mistakeRu": "Ап слишком малым числом vs China или флот камня на пятую цистерну, которую не ставят в тёмной."
+  },
+  {
+    "id": "byzantines-0pkvLN16f4o-t278s",
+    "civ": "byzantines",
+    "videoId": "0pkvLN16f4o",
+    "videoTitle": "Easily Achieve Conqueror 3 With These Byz Strats | AoE4 Valdy",
+    "videoUrl": "https://www.youtube.com/watch?v=0pkvLN16f4o&t=278s",
+    "category": "build_order",
+    "second": 278,
+    "formattedTime": "04:38",
+    "age": 2,
+    "workers": { "food": 9, "wood": 8, "gold": 0, "stone": 0, "total": 17, "idle": 0 },
+    "landmark": { "name": "Grand Winery", "builderCount": 0, "completionSec": 278 },
+    "directiveEn": "Feudal 4:38. Food onto Winery berries. Merc house: javelins vs knights, longbows default. 4 cheaper longbows.",
+    "directiveRu": "Feudal 4:38. Еда на ягоды винодельни. Контракт: джавелины vs рыцари, иначе longbow. Пачка 4.",
+    "layout": {
+      "type": "forward_barracks",
+      "titleEn": "Barracks + merc house, cistern research/prod split",
+      "titleRu": "Казармы + наёмники, цистерны research/production",
+      "ascii": "[Winery berries]\n[Barracks] [Merc House]\n     \\\n    [Cistern research]  [Cistern prod] [Cistern prod]\n     /\n   [TC]  8 wood stragglers",
+      "tipsEn": [
+        "Middle cistern on research, others on production speed before military queues.",
+        "Do not dive a Chinese barbican — harass wood like English."
+      ],
+      "tipsRu": [
+        "Центральная цистерна research, остальные production до очередей.",
+        "Не нырять в barbican — харрастить дерево как English."
+      ]
+    },
+    "mistakeEn": "Queueing a fifth longbow instead of the cheaper 4, or crashing the barbican.",
+    "mistakeRu": "Пятый longbow вместо дешёвой пачки 4 или удар в barbican."
+  },
+  {
+    "id": "byzantines-0pkvLN16f4o-t619s",
+    "civ": "byzantines",
+    "videoId": "0pkvLN16f4o",
+    "videoTitle": "Easily Achieve Conqueror 3 With These Byz Strats | AoE4 Valdy",
+    "videoUrl": "https://www.youtube.com/watch?v=0pkvLN16f4o&t=619s",
+    "category": "build_order",
+    "second": 619,
+    "formattedTime": "10:19",
+    "age": 1,
+    "workers": { "food": 6, "wood": 0, "gold": 0, "stone": 0, "total": 6, "idle": 0 },
+    "landmark": null,
+    "directiveEn": "Mill opener when spears/Sipahi-spear can happen. Outer berries, mill+house+cistern. Not vs French/Horde/JD/Malians/Rus/Sengoku/Delhi.",
+    "directiveRu": "Mill opener если возможны копья/Sipahi-spear. Внешние ягоды, mill+дом+цистерна. Не vs French/Horde/Jeanne/Malians/Rus/Sengoku/Delhi.",
+    "layout": {
+      "type": "farm_ring",
+      "titleEn": "Outer mill, inner berries as spear shelter",
+      "titleRu": "Внешняя мельница, внутренние ягоды как укрытие",
+      "ascii": "  [Outer berries + Mill]\n           |\n [Cistern] [House] [TC]\n           |\n    [Inner berries] <- fall back if spears",
+      "tipsEn": [
+        "2 gold default; 3 gold immediately if the spear rush is already on the way.",
+        "Outer gather first so a rush can hide on inner bushes and still hit longbow oil."
+      ],
+      "tipsRu": [
+        "2 золота по умолчанию; 3 сразу, если копья уже идут.",
+        "Сначала внешние ягоды — при раше уйти внутрь и всё равно успеть масло на longbow."
+      ]
+    },
+    "mistakeEn": "Mill-opening vs French/Jeanne knights or keeping vills on the outer ring into spears.",
+    "mistakeRu": "Mill vs French/Jeanne или оставлять жителей на внешнем кольце под копья."
+  },
+  {
+    "id": "byzantines-0pkvLN16f4o-t784s",
+    "civ": "byzantines",
+    "videoId": "0pkvLN16f4o",
+    "videoTitle": "Easily Achieve Conqueror 3 With These Byz Strats | AoE4 Valdy",
+    "videoUrl": "https://www.youtube.com/watch?v=0pkvLN16f4o&t=784s",
+    "category": "build_order",
+    "second": 784,
+    "formattedTime": "13:04",
+    "age": 1,
+    "workers": { "food": 6, "wood": 3, "gold": 0, "stone": 0, "total": 14, "idle": 0 },
+    "landmark": { "name": "Imperial Hippodrome", "builderCount": 5, "completionSec": 858 },
+    "directiveEn": "Hippodrome two tiles from TC with 5–6 vills. Rally stragglers to 8 wood. Leave 6 on berries; oil for longbows at 3:40 game time.",
+    "directiveRu": "Ипподром в 2 тайлах от ТЦ 5–6 жителями. Страглеры до 8 дерева. 6 на ягодах; масло на longbow к 3:40 игрового времени.",
+    "layout": {
+      "type": "landmark_hub",
+      "titleEn": "Hippodrome two tiles off the TC",
+      "titleRu": "Ипподром в двух тайлах от ТЦ",
+      "ascii": " [Hippodrome] ==2 tiles== [TC]\n       |                    |\n [6 berries/oil]      [stragglers -> 8 wood]",
+      "tipsEn": [
+        "Written BO ages with 5; the VOD uses 6 because longbows come out so fast.",
+        "Bank 35 extra gold for spear upgrade, then gold vills to wood."
+      ],
+      "tipsRu": [
+        "В гайде ап с 5, в VOD 6 — longbows выходят очень быстро.",
+        "35 лишнего золота на ап копий, затем золото на дерево."
+      ]
+    },
+    "mistakeEn": "Parking the Hippodrome far from the TC or draining berries so oil misses the 3:40 longbow window.",
+    "mistakeRu": "Ипподром далеко от ТЦ или снять ягоды так, что масло не успевает к 3:40."
+  },
+  {
+    "id": "byzantines-0pkvLN16f4o-t1279s",
+    "civ": "byzantines",
+    "videoId": "0pkvLN16f4o",
+    "videoTitle": "Easily Achieve Conqueror 3 With These Byz Strats | AoE4 Valdy",
+    "videoUrl": "https://www.youtube.com/watch?v=0pkvLN16f4o&t=1279s",
+    "category": "build_order",
+    "second": 1279,
+    "formattedTime": "21:19",
+    "age": 3,
+    "workers": { "food": 23, "wood": 3, "gold": 15, "stone": 0, "total": 41, "idle": 0 },
+    "landmark": { "name": "Golden Horn Tower", "builderCount": 10, "completionSec": 1320 },
+    "directiveEn": "Castle ~12 min is mandatory. Two stables, cataphracts, monastery (Hippodrome has none). Hit ~1 min before their upgrades.",
+    "directiveRu": "Castle ~12 мин обязателен. Два конюшни, катафракты, монастырь (на ипподроме его нет). Удар за ~минуту до их апов.",
+    "layout": {
+      "type": "forward_barracks",
+      "titleEn": "Double stable Castle timing",
+      "titleRu": "Двойная конюшня и тайминг Castle",
+      "ascii": "[Golden Horn]\n[Stable] [Stable] -> Cataphracts\n[Monastery] relics\n[Longbow + spear] screen",
+      "tipsEn": [
+        "Stop unit production at 11:00 and dump into food/gold with 2–3 wood.",
+        "Skip horseman upgrade if you only have a few; plus-one and veteran longbows matter more."
+      ],
+      "tipsRu": [
+        "Стоп юнитов в 11:00, еда/золото, 2–3 дерева.",
+        "Ап коней не нужен при штучном числе; +1 и veteran longbow важнее."
+      ]
+    },
+    "mistakeEn": "Staying Feudal past 12 minutes, or looking for a monastery in Feudal on Hippodrome.",
+    "mistakeRu": "Сидеть в феодале после 12 минут или искать монастырь в феодале на ипподроме."
+  },
+  {
     "id": "english-33YwM_i-x5g-t180s",
     "civ": "english",
     "videoId": "33YwM_i-x5g",
@@ -728,6 +914,192 @@ export const VALDEMAR_MILESTONES_BY_CIV: Readonly<Record<string, readonly Visual
       },
       "mistakeEn": "Dropping 8 farms simultaneously at 0 wood, halting archer and spearmen production.",
       "mistakeRu": "Одновременная трата всего запаса дерева на 8 ферм, останавливающая производство стрелков и копейщиков."
+    },
+    {
+      "id": "byzantines-0pkvLN16f4o-t43s",
+      "civ": "byzantines",
+      "videoId": "0pkvLN16f4o",
+      "videoTitle": "Easily Achieve Conqueror 3 With These Byz Strats | AoE4 Valdy",
+      "videoUrl": "https://www.youtube.com/watch?v=0pkvLN16f4o&t=43s",
+      "category": "build_order",
+      "second": 43,
+      "formattedTime": "00:43",
+      "age": 1,
+      "workers": { "food": 1, "wood": 0, "gold": 1, "stone": 3, "total": 6, "idle": 0 },
+      "landmark": null,
+      "directiveEn": "3-stone Winery opener vs China: 3 stone, 1 gold, house+cistern then sheep. Skip this if spears can show.",
+      "directiveRu": "3-stone Winery vs China: 3 камня, 1 золото, дом+цистерна, затем овцы. Не так, если возможны копья.",
+      "layout": {
+        "type": "landmark_hub",
+        "titleEn": "Safe back stone / gold, Winery on berries",
+        "titleRu": "Камень и золото сзади, винодельня на ягодах",
+        "ascii": "[Stone] [Gold] (behind TC)\n   \\      /\n    [TC] -- [Cistern] -- [House]\n      |\n [Sheep]     [Berries] -> Winery later",
+        "tipsEn": [
+          "Flankwoods with rear stone/gold is why 3-stone is comfortable here.",
+          "Winery drops on home berries after Feudal, not in Dark Age."
+        ],
+        "tipsRu": [
+          "На Flankwoods камень и золото сзади — поэтому 3-stone комфортен.",
+          "Винодельню ставят на свои ягоды после феодала, не в тёмной."
+        ]
+      },
+      "mistakeEn": "Opening 3-stone into a spear civ and dying before Feudal production.",
+      "mistakeRu": "3-stone в копейный цив и смерть до феодального продакшена."
+    },
+    {
+      "id": "byzantines-0pkvLN16f4o-t128s",
+      "civ": "byzantines",
+      "videoId": "0pkvLN16f4o",
+      "videoTitle": "Easily Achieve Conqueror 3 With These Byz Strats | AoE4 Valdy",
+      "videoUrl": "https://www.youtube.com/watch?v=0pkvLN16f4o&t=128s",
+      "category": "build_order",
+      "second": 128,
+      "formattedTime": "02:08",
+      "age": 1,
+      "workers": { "food": 9, "wood": 0, "gold": 1, "stone": 3, "total": 14, "idle": 0 },
+      "landmark": { "name": "Grand Winery", "builderCount": 4, "completionSec": 278 },
+      "directiveEn": "Age up with 4 vs China (3 default, 2 if spears vs French/JD). One gold villager covers the whole Dark Age.",
+      "directiveRu": "Ап с 4 vs China (обычно 3, 2 если копья vs French/JD). Один золото всю тёмную эпоху.",
+      "layout": {
+        "type": "landmark_hub",
+        "titleEn": "Winery click + four cisterns of stone",
+        "titleRu": "Клик винодельни и камень на 4 цистерны",
+        "ascii": "[Grand Winery] (4 vills)\n      |\n[Cistern]--[Aqueduct]--[Cistern]\n      |\n     [TC]  (1 gold stays)",
+        "tipsEn": [
+          "Pull stone at 100 and place the fourth cistern, then stragglers to 8 wood.",
+          "Do not keep gathering stone after four cisterns — it just floats."
+        ],
+        "tipsRu": [
+          "На 100 камня — 4-я цистерна, затем страглеры до 8 дерева.",
+          "Не копать камень после четырёх цистерн — он флоутит."
+        ]
+      },
+      "mistakeEn": "Aging with too few vills vs China, or floating stone by mining a fifth cistern you will not place in Dark Age.",
+      "mistakeRu": "Ап слишком малым числом vs China или флот камня на пятую цистерну, которую не ставят в тёмной."
+    },
+    {
+      "id": "byzantines-0pkvLN16f4o-t278s",
+      "civ": "byzantines",
+      "videoId": "0pkvLN16f4o",
+      "videoTitle": "Easily Achieve Conqueror 3 With These Byz Strats | AoE4 Valdy",
+      "videoUrl": "https://www.youtube.com/watch?v=0pkvLN16f4o&t=278s",
+      "category": "build_order",
+      "second": 278,
+      "formattedTime": "04:38",
+      "age": 2,
+      "workers": { "food": 9, "wood": 8, "gold": 0, "stone": 0, "total": 17, "idle": 0 },
+      "landmark": { "name": "Grand Winery", "builderCount": 0, "completionSec": 278 },
+      "directiveEn": "Feudal 4:38. Food onto Winery berries. Merc house: javelins vs knights, longbows default. 4 cheaper longbows.",
+      "directiveRu": "Feudal 4:38. Еда на ягоды винодельни. Контракт: джавелины vs рыцари, иначе longbow. Пачка 4.",
+      "layout": {
+        "type": "forward_barracks",
+        "titleEn": "Barracks + merc house, cistern research/prod split",
+        "titleRu": "Казармы + наёмники, цистерны research/production",
+        "ascii": "[Winery berries]\n[Barracks] [Merc House]\n     \\\n    [Cistern research]  [Cistern prod] [Cistern prod]\n     /\n   [TC]  8 wood stragglers",
+        "tipsEn": [
+          "Middle cistern on research, others on production speed before military queues.",
+          "Do not dive a Chinese barbican — harass wood like English."
+        ],
+        "tipsRu": [
+          "Центральная цистерна research, остальные production до очередей.",
+          "Не нырять в barbican — харрастить дерево как English."
+        ]
+      },
+      "mistakeEn": "Queueing a fifth longbow instead of the cheaper 4, or crashing the barbican.",
+      "mistakeRu": "Пятый longbow вместо дешёвой пачки 4 или удар в barbican."
+    },
+    {
+      "id": "byzantines-0pkvLN16f4o-t619s",
+      "civ": "byzantines",
+      "videoId": "0pkvLN16f4o",
+      "videoTitle": "Easily Achieve Conqueror 3 With These Byz Strats | AoE4 Valdy",
+      "videoUrl": "https://www.youtube.com/watch?v=0pkvLN16f4o&t=619s",
+      "category": "build_order",
+      "second": 619,
+      "formattedTime": "10:19",
+      "age": 1,
+      "workers": { "food": 6, "wood": 0, "gold": 0, "stone": 0, "total": 6, "idle": 0 },
+      "landmark": null,
+      "directiveEn": "Mill opener when spears/Sipahi-spear can happen. Outer berries, mill+house+cistern. Not vs French/Horde/JD/Malians/Rus/Sengoku/Delhi.",
+      "directiveRu": "Mill opener если возможны копья/Sipahi-spear. Внешние ягоды, mill+дом+цистерна. Не vs French/Horde/Jeanne/Malians/Rus/Sengoku/Delhi.",
+      "layout": {
+        "type": "farm_ring",
+        "titleEn": "Outer mill, inner berries as spear shelter",
+        "titleRu": "Внешняя мельница, внутренние ягоды как укрытие",
+        "ascii": "  [Outer berries + Mill]\n           |\n [Cistern] [House] [TC]\n           |\n    [Inner berries] <- fall back if spears",
+        "tipsEn": [
+          "2 gold default; 3 gold immediately if the spear rush is already on the way.",
+          "Outer gather first so a rush can hide on inner bushes and still hit longbow oil."
+        ],
+        "tipsRu": [
+          "2 золота по умолчанию; 3 сразу, если копья уже идут.",
+          "Сначала внешние ягоды — при раше уйти внутрь и всё равно успеть масло на longbow."
+        ]
+      },
+      "mistakeEn": "Mill-opening vs French/Jeanne knights or keeping vills on the outer ring into spears.",
+      "mistakeRu": "Mill vs French/Jeanne или оставлять жителей на внешнем кольце под копья."
+    },
+    {
+      "id": "byzantines-0pkvLN16f4o-t784s",
+      "civ": "byzantines",
+      "videoId": "0pkvLN16f4o",
+      "videoTitle": "Easily Achieve Conqueror 3 With These Byz Strats | AoE4 Valdy",
+      "videoUrl": "https://www.youtube.com/watch?v=0pkvLN16f4o&t=784s",
+      "category": "build_order",
+      "second": 784,
+      "formattedTime": "13:04",
+      "age": 1,
+      "workers": { "food": 6, "wood": 3, "gold": 0, "stone": 0, "total": 14, "idle": 0 },
+      "landmark": { "name": "Imperial Hippodrome", "builderCount": 5, "completionSec": 858 },
+      "directiveEn": "Hippodrome two tiles from TC with 5–6 vills. Rally stragglers to 8 wood. Leave 6 on berries; oil for longbows at 3:40 game time.",
+      "directiveRu": "Ипподром в 2 тайлах от ТЦ 5–6 жителями. Страглеры до 8 дерева. 6 на ягодах; масло на longbow к 3:40 игрового времени.",
+      "layout": {
+        "type": "landmark_hub",
+        "titleEn": "Hippodrome two tiles off the TC",
+        "titleRu": "Ипподром в двух тайлах от ТЦ",
+        "ascii": " [Hippodrome] ==2 tiles== [TC]\n       |                    |\n [6 berries/oil]      [stragglers -> 8 wood]",
+        "tipsEn": [
+          "Written BO ages with 5; the VOD uses 6 because longbows come out so fast.",
+          "Bank 35 extra gold for spear upgrade, then gold vills to wood."
+        ],
+        "tipsRu": [
+          "В гайде ап с 5, в VOD 6 — longbows выходят очень быстро.",
+          "35 лишнего золота на ап копий, затем золото на дерево."
+        ]
+      },
+      "mistakeEn": "Parking the Hippodrome far from the TC or draining berries so oil misses the 3:40 longbow window.",
+      "mistakeRu": "Ипподром далеко от ТЦ или снять ягоды так, что масло не успевает к 3:40."
+    },
+    {
+      "id": "byzantines-0pkvLN16f4o-t1279s",
+      "civ": "byzantines",
+      "videoId": "0pkvLN16f4o",
+      "videoTitle": "Easily Achieve Conqueror 3 With These Byz Strats | AoE4 Valdy",
+      "videoUrl": "https://www.youtube.com/watch?v=0pkvLN16f4o&t=1279s",
+      "category": "build_order",
+      "second": 1279,
+      "formattedTime": "21:19",
+      "age": 3,
+      "workers": { "food": 23, "wood": 3, "gold": 15, "stone": 0, "total": 41, "idle": 0 },
+      "landmark": { "name": "Golden Horn Tower", "builderCount": 10, "completionSec": 1320 },
+      "directiveEn": "Castle ~12 min is mandatory. Two stables, cataphracts, monastery (Hippodrome has none). Hit ~1 min before their upgrades.",
+      "directiveRu": "Castle ~12 мин обязателен. Два конюшни, катафракты, монастырь (на ипподроме его нет). Удар за ~минуту до их апов.",
+      "layout": {
+        "type": "forward_barracks",
+        "titleEn": "Double stable Castle timing",
+        "titleRu": "Двойная конюшня и тайминг Castle",
+        "ascii": "[Golden Horn]\n[Stable] [Stable] -> Cataphracts\n[Monastery] relics\n[Longbow + spear] screen",
+        "tipsEn": [
+          "Stop unit production at 11:00 and dump into food/gold with 2–3 wood.",
+          "Skip horseman upgrade if you only have a few; plus-one and veteran longbows matter more."
+        ],
+        "tipsRu": [
+          "Стоп юнитов в 11:00, еда/золото, 2–3 дерева.",
+          "Ап коней не нужен при штучном числе; +1 и veteran longbow важнее."
+        ]
+      },
+      "mistakeEn": "Staying Feudal past 12 minutes, or looking for a monastery in Feudal on Hippodrome.",
+      "mistakeRu": "Сидеть в феодале после 12 минут или искать монастырь в феодале на ипподроме."
     }
   ],
   "english": [

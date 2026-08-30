@@ -1234,7 +1234,7 @@ Do not build your plan around an exploit, UI failure, desync, or a pathing bug. 
 1. Выберите ценную или уязвимую цель.
 2. Во время перезарядки отведите дальнюю группу назад или в сторону.
 3. Вернитесь к атаке к следующему выстрелу; по возможности прикрывайте дальних мили-линией.
-4. Прекратите кайт, если враг быстрее, подходят подкрепления или движение открывает армию для окружения.
+4. Прекратите кайт, если враг быстрее, подходят подкрепления. When microing army, tap Spacebar → press **Q** to queue villagers without moving the screen. Your eyes never leave the frontline.
 
 Сначала добавьте формации, контрольные группы и переднюю линию, а уже потом усложняйте микро. Путь отхода, точка сбора и армия, которая остаётся вместе, обычно важнее одного лишнего выстрела.
 
@@ -1683,7 +1683,107 @@ At minute 6, your strategy must deliberately commit to one of three paths:
 - **Grade S (Conqueror):** Феодал ≤ 3:30, Замок ≤ 8:00.
 - **Grade A (Diamond):** Феодал 3:31 – 4:05, Замок 8:01 – 9:30.
 - **Grade B (Platinum):** Феодал 4:06 – 4:35, Замок 9:31 – 11:00.
-- **Grade C / D (Задержка):** Феодал > 4:35. Свидетельствует о значительном простое ТЦ или ошибке в билд-ордере.`,
+- **Grade C / D (Критическая задержка):** Феодал > 4:35. Значительный простой ТЦ или неправильный порядок строительства.`,
+  },
+  {
+    slug: 'beasty-pro-macro-masterclass',
+    title: 'World Champion Macro & Army Screen Masterclass by Beastyqt',
+    titleRu: 'Мастер-класс по макро-циклам и контролю армии от Beastyqt',
+    category: 'fundamentals',
+    summary:
+      'Core pro principles from World Champion Beastyqt: camera hotkey independence, 8-villager boar micro, frontline screening ratios, and stutter-stepping mechanics.',
+    summaryRu:
+      'Ключевые соревновательные принципы от чемпиона мира Beastyqt: независимость горячих клавиш от камеры, сбор кабана 8 рабочими, соотношение скрининга и микроконтроль шагами.',
+    readMinutes: 7,
+    body: `## The Pro Mechanical Standard by Beastyqt
+
+As a multi-season world champion and professional RTS player, **Beastyqt** emphasizes that 90% of tactical victories stem from flawless mechanical fundamentals executed under pressure.
+
+---
+
+## 1. Zero Camera-Jump Town Center Queuing
+The single most damaging habit in lower leagues is double-clicking the Town Center hotkey, which pulls the camera away from ongoing battles.
+- **The Pro Setup:** Bind "Select all Town Centers" to **Spacebar** or **Tab**.
+- When microing army, tap Spacebar $\\to$ press **Q** to queue villagers without moving the screen. Your eyes never leave the frontline.
+
+---
+
+## 2. The 8-Villager Boar Harvest at 5:30
+Harvesting the neutral Boar gives **+0.90 food/sec** (the highest food gather rate in Age of Empires IV):
+- Send exactly **8 villagers** with 1 Scout.
+- Have the Scout hit the boar first to absorb the initial charge attack.
+- Immediately drop a **Wooden Fortress / Outpost** directly over the boar carcass. This guarantees 100% safety from raiding cavalry while harvesting 2,000 food.
+
+---
+
+## 3. Frontline Screening & Unit Ratios
+Archers without spearmen or men-at-arms in front will be wiped in seconds by horsemen or knight flanks.
+- **Golden Composition Ratio:** Maintain **1 frontline tank (Spearman/Man-at-Arms/Knight) for every 2–3 ranged damage dealers (Archers/Crossbows/Zhuge Nu)**.
+- Stutter-step backward with archers between firing animations while the frontline absorbs cavalry charges.`,
+    bodyRu: `## Соревновательный стандарт механик от Beastyqt
+
+Как многократный чемпион мира и профессиональный игрок в RTS, **Beastyqt** подчеркивает: 90% тактических побед закладываются безупречными базовыми механиками, выполняемыми в пылу боя.
+
+---
+
+## 1. Заказ крестьян в ТЦ без прыжка камеры
+Главная губительная привычка начинающих игроков — двойной клик по хоткею ратуши, отрывающий камеру от идущего боя.
+- **Профессиональная настройка:** Назначьте «Выбрать все Городские центры» на **Пробел** или **Tab**.
+- Во время сражения нажимайте Пробел $\\to$ клавишу **Q**, заказывая крестьян вслепую. Камера остается на линии фронта.
+
+---
+
+## 2. Тайминг сбора кабана на 5:30 (8 рабочих)
+Сбор с нейтрального кабана дает **+0.90 ед. пищи/сек** (быстрейший приток еды в игре):
+- Отправляйте ровно **8 крестьян** вместе со скаутом.
+- Скаут наносит первый удар по кабану, принимая урон чарджа.
+- Сразу ставьте **Деревянную крепость / Аванпост** над тушей кабана. Это дает 100% безопасность от конных набегов и обеспечивает 2 000 пищи.
+
+---
+
+## 3. Защитный скрининг и правильные пропорции армии
+Стрелки без плотного прикрытия копейщиков или латников уничтожаются за секунды любым фланговым чарджем кавалерии.
+- **Золотое правило состава:** Держите **1 танкующего юнита передней линии на каждые 2–3 стрелка (лучники, арбалетчики, чжугэ-ну)**.
+- Отступайте стрелками шагами (stutter-step) между анимациями выстрелов, пока первая линия принимает урон.`,
+  },
+  {
+    slug: 'beasty-tier-list-meta',
+    title: 'Season Meta, Matchup Tier Lists & Win Conditions',
+    titleRu: 'Соревновательная мета, тир-листы цивилизаций и условия победы',
+    category: 'strategy',
+    summary:
+      "Beastyqt's structured tier list breakdown of current civilizational archetypes, Imperial Landmark power spikes, and strategic counter-play.",
+    summaryRu:
+      'Структурированный разбор тир-листов от Beastyqt: архетипы цивилизаций, пики силы имперских достопримечательностей и контр-стратегии.',
+    readMinutes: 6,
+    body: `## Civilization Archetypes & Strategic Win Conditions
+
+According to Beastyqt's competitive analysis, civilizations in AoE4 fall into three primary strategic archetypes:
+
+### 1. High-Tempo Feudal Aggressors (English, French, Delhi, Ottomans)
+- **Win Condition:** Dominate map control, deny outer gold/stone, and force the opponent to bleed resources under their Town Center.
+- **Critical Spike:** Minutes 4:30 – 8:00. If an aggressor allows a booming opponent to reach Castle Age for free, their advantage evaporates.
+
+### 2. Fast-Castle & Relic Monopolies (Holy Roman Empire, Rus, Byzantines, Ayyubids)
+- **Win Condition:** Accelerate to Age 3 by 7:00–8:00, secure 3–5 Holy Relics (+400 gold/min), and crush Feudal armies with Armored Knights / Heavy Cavalry and Siege.
+- **Defense:** Wall outer edges and position Town Centers to protect food/gold veins.
+
+### 3. Asymmetric Boomers & Dynamic Scalers (Chinese, Zhu Xi, Malians, Mongols)
+- **Win Condition:** Scale double-TC or passive gold engines (Pit Mines, Pastures, Imperial Officials) and overrun the map with overwhelming economic momentum.`,
+    bodyRu: `## Архетипы цивилизаций и условия победы
+
+Согласно аналитике Beastyqt, все цивилизации AoE4 делятся на три основных стратегических архетипа:
+
+### 1. Агрессоры высокого темпа в Феодале (Англия, Франция, Дели, Османы)
+- **Условие победы:** Полный контроль карты, перекрытие внешнего золота и удушение противника под его ратушей.
+- **Пик силы:** 4:30 – 8:00 минуты. Если агрессор позволяет экономическому оппоненту выйти в Замок без урона, преимущество теряется.
+
+### 2. Быстрый Замок и монополия на реликвии (СРИ, Русь, Византия, Айюбиды)
+- **Условие победы:** Выход в 3-ю эпоху к 7:00–8:00, сбор 3–5 реликвий (+400 золота/мин) и сокрушение феодальной армии тяжелой кавалерией и осадой.
+- **Оборона:** Стенки по флангам и постановка зданий для защиты золотых жил.
+
+### 3. Экономические бумеры (Китай, Zhu Xi, Малийцы, Монголы)
+- **Условие победы:** Раскрутка 2 ТЦ или пассивных источников золота (открытые копи, пастбища, сбор налогов чиновниками) с последующим перевесом по ресурсам.`,
   },
 ]
 
@@ -1734,6 +1834,50 @@ export const GUIDE_RESOURCES: readonly GuideResource[] = [
     source: 'BeastyqtSC2 · YouTube',
     url: 'https://www.youtube.com/watch?v=RSUYg3jQ3gg',
     publishedAt: '2026-02-01',
+  },
+  {
+    id: 'beasty-macedonian-bo',
+    kind: 'video',
+    title: 'BEST Macedonian Dynasty Build Order Guide',
+    titleRu: 'Лучший билд-ордер Македонской династии',
+    description: 'Beastyqt’s timed Hippodrome → Riddari reference for Macedonian Dynasty.',
+    descriptionRu: 'Эталон Beastyqt: Hippodrome → Riddari для Македонской династии, с таймингами.',
+    source: 'BeastyqtSC2 · YouTube',
+    url: 'https://www.youtube.com/watch?v=GIErhV3Eeys',
+    publishedAt: '2026-03-13',
+  },
+  {
+    id: 'vortix-macedonian-vg',
+    kind: 'video',
+    title: 'Macedonian Varangian Guard tutorial (Plat–Diamond)',
+    titleRu: 'Туториал Македонии: Varangian Guard (Plat–Diamond)',
+    description: 'VortiX Hippodrome horsemen into Varangian Guard spam versus greedy 2TC.',
+    descriptionRu: 'VortiX: всадники с Hippodrome в спам Varangian Guard против жадного 2TC.',
+    source: 'VortiX · YouTube',
+    url: 'https://www.youtube.com/watch?v=OezixLpYQEw',
+    publishedAt: '2026-08-01',
+  },
+  {
+    id: 'valdemar-macedonian-2026',
+    kind: 'video',
+    title: 'How To Play Macedonian Dynasty In 2026',
+    titleRu: 'Как играть Македонской династией в 2026',
+    description: 'Valdy’s 2026 Hippodrome aggression into a Castle timing.',
+    descriptionRu: 'Valdy 2026: агрессия через Hippodrome с выходом в Castle timing.',
+    source: 'Valdy · YouTube',
+    url: 'https://www.youtube.com/watch?v=LKH4uwXd24E',
+    publishedAt: '2026-02-13',
+  },
+  {
+    id: 'valdemar-macedonian-feudal',
+    kind: 'video',
+    title: 'How To Play Macedonians Feudal Aggression',
+    titleRu: 'Македонцы: феодальная агрессия',
+    description: 'Valdy Grand Winery feudal tricomp (horseman / spear / archer) into Riddari.',
+    descriptionRu: 'Valdy: феодальный tricomp с Grand Winery (всадник / копьё / лучник) в Riddari.',
+    source: 'Valdy · YouTube',
+    url: 'https://www.youtube.com/watch?v=zoA922O-HQM',
+    publishedAt: '2025-11-23',
   },
   {
     id: 'yellowish-macedonian-guide',
@@ -2009,9 +2153,9 @@ export const GUIDE_RESOURCES: readonly GuideResource[] = [
     title: 'Easily Achieve Conqueror 3 With These Byz Strats | AoE4 Valdy',
     titleRu: 'Легко берите Conqueror 3 с этими стратегиями за Византию',
     description:
-      'Deep walkthrough of Winery placement, berry scaling, mercenary adaptation, and matchup timing against China and others.',
+      'S13 Byz: 3-stone Winery vs French/Jeanne/Malians (and Horde/Rus/Sengoku/Delhi). Mill Hippodrome vs spear openers (English, Ottomans Sipahi-spear, HRE, Japanese…). Same VOD; mill from 10:19.',
     descriptionRu:
-      'Глубокий разбор Винодельни, сбора ягод, наемников и таймингов матчапа против Китая и других цивилизаций.',
+      'S13 Византия: 3-stone Winery vs French/Jeanne/Malians (и Horde/Rus/Sengoku/Delhi). Mill Hippodrome vs spear opener (English, Ottomans Sipahi-spear, HRE, Japanese…). Один VOD; mill с 10:19.',
     source: 'Valdy · YouTube',
     url: 'https://www.youtube.com/watch?v=0pkvLN16f4o',
     publishedAt: '2026-08-14',

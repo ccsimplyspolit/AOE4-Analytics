@@ -1,0 +1,83 @@
+{
+  "name": "Water Hybrid Starter for KT",
+  "civilization": "Knights Templar",
+  "author": "Asmitha",
+  "source": "https://aoe4guides.com/builds/OCsf1XRU5zcidQ7jIzld",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @resource/gaiatreeprototypetree.webp@ 1@building_templar/harbor.webp@",
+        "@resource/rally.webp@@resource/resource_wood.webp@@resource/resource_wood.webp@@resource/resource_food.webp@",
+        "@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @resource/resource_wood.webp@ + 1@resource/rally.webp@ -> @building_economy/mining-camp.webp@ @resource/resource_gold.webp@  @building_economy/house.webp@",
+        "@resource/rally.webp@@resource/resource_wood.webp@/@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/sheep.webp@-> @resource/resource_wood.webp@",
+        "Age up (@civilization_flag/kof.webp@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 8,
+        "wood": 13,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @building_military/stable.webp@ + @building_economy/house.webp@ ->  @unit_templar/chevalier_confrere_age_2.webp@"
+      ]
+    }
+  ],
+  "description": "",
+  "video": "",
+  "season": 13,
+  "map": "Hybrid",
+  "strategy": null,
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-22T21:13:45Z",
+  "updatedAt": "2026-08-22T21:13:45Z",
+  "patch": "16.3.11308"
+}

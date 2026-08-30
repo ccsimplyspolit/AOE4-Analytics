@@ -10,7 +10,6 @@ import {
   type BenchmarkMetricValue,
   type BenchmarkSelection,
 } from '@domain/benchmarkLens'
-import { civDisplayName } from '@domain/civ'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { cn } from '@shared/lib/utils'
 import { useI18n } from '../../i18n'
@@ -23,7 +22,7 @@ const SCOPES: { kind: BenchmarkDimension; label: string }[] = [
 ]
 
 export function BenchmarkLens({ games }: { games: BenchmarkGame[] }) {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const options = useMemo(() => benchmarkOptions(games), [games])
   const [selection, setSelection] = useState<BenchmarkSelection>({ kind: 'recent' })
   const effectiveSelection = useMemo<BenchmarkSelection>(() => {
@@ -35,9 +34,9 @@ export function BenchmarkLens({ games }: { games: BenchmarkGame[] }) {
     return {
       kind: selection.kind,
       value: selected,
-      label: optionLabel(selection.kind, selected),
+      label: optionLabel(selection.kind, selected, gameName),
     }
-  }, [options, selection])
+  }, [gameName, options, selection])
   const comparison = useMemo(
     () => computeBenchmarkLens(games, effectiveSelection),
     [effectiveSelection, games],
@@ -109,7 +108,7 @@ export function BenchmarkLens({ games }: { games: BenchmarkGame[] }) {
               >
                 {options[effectiveSelection.kind].map((option) => (
                   <option key={option.value} value={option.value}>
-                    {optionLabel(effectiveSelection.kind, option.value)} ({option.games}g)
+                    {optionLabel(effectiveSelection.kind, option.value, gameName)} ({option.games}g)
                   </option>
                 ))}
               </select>
@@ -214,6 +213,10 @@ function formatDelta(metric: BenchmarkMetric): string {
   return metric.key === 'winRate' ? `${formatted} pp` : formatted
 }
 
-function optionLabel(kind: Exclude<BenchmarkDimension, 'recent'>, value: string): string {
-  return kind === 'civ' ? civDisplayName(value) : value
+function optionLabel(
+  kind: Exclude<BenchmarkDimension, 'recent'>,
+  value: string,
+  gameName: (value: string) => string,
+): string {
+  return kind === 'civ' ? gameName(value) : gameName(value)
 }

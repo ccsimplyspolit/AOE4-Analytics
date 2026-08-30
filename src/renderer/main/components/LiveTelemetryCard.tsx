@@ -7,7 +7,7 @@ import { useI18n } from '../../i18n'
 
 /** Main-window live telemetry: the same clock/APM stream that powers the overlay. */
 export function LiveTelemetryCard() {
-  const { tt } = useI18n()
+  const { tt, gameName } = useI18n()
   const { data: live, clock, apm } = useLiveTelemetry()
 
   if (!live?.isLive) return null
@@ -48,7 +48,9 @@ export function LiveTelemetryCard() {
           icon={<Database className="h-4 w-4" />}
           label={tt('Map / patch')}
           value={
-            [live.map, live.patch ? `P${live.patch}` : null].filter(Boolean).join(' · ') || '—'
+            [live.map ? gameName(live.map) : null, live.patch ? `P${live.patch}` : null]
+              .filter(Boolean)
+              .join(' · ') || '—'
           }
         />
       </div>

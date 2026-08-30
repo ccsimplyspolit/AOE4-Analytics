@@ -1,0 +1,184 @@
+{
+  "name": "Zhuge Nu-Timing-Attack(10-14)",
+  "civilization": "Zhu Xi's Legacy",
+  "author": "siberian_wolf",
+  "source": "https://aoe4guides.com/builds/znX3QJWa8K1GHtj2zPiu",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5@unit_worker/villager-china.webp@>@building_economy/mill.webp@&gt;@technology_economy/wheelbarrow.webp@&gt;@resource/sheep.webp@",
+        "@unit_chinese/imperial-official.webp@ + 4@unit_worker/villager-china.webp@&gt;@building_economy/house.webp@&gt;@building_economy/mining-camp.webp@&gt;@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 9,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@resource/rally.webp@>@resource/sheep.webp@",
+        "@unit_chinese/imperial-official.webp@ + 3@resource/resource_gold.webp@@unit_worker/villager-china.webp@&gt;@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_chinese/imperial-official.webp@@abilities/ability-detonate.webp@@building_economy/mill.webp@>@building_economy/mill.webp@",
+        "2 @resource/rally.webp@&gt;@resource/resource_gold.webp@",
+        "2 @resource/rally.webp@&gt;@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_chinese/imperial-official.webp@@abilities/ability-detonate.webp@@building_economy/mining-camp.webp@>@building_economy/mill.webp@",
+        "1 @resource/sheep.webp@@unit_worker/villager-china.webp@&gt;@landmark_zhuxi/jiangnan-tower-2.webp@",
+        "2@resource/sheep.webp@@unit_worker/villager-china.webp@&gt;@resource/resource_wood.webp@",
+        "3 @resource/rally.webp@&gt;@resource/resource_wood.webp@",
+        "@resource/rally.webp@@unit_chinese/imperial-official.webp@&gt;@building_economy/lumber-camp.webp@",
+        "@resource/rally.webp@&gt;@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 17,
+      "resources": {
+        "food": 5,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@landmark_zhuxi/jiangnan-tower-2.webp@@unit_worker/villager-china.webp@>@resource/resource_wood.webp@",
+        "@technology_economy/double-broadaxe.webp@@technology_economy/horticulture.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 9,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@resource/resource_wood.webp@@unit_worker/villager-china.webp@>@building_military/archery-range.webp@&gt;@building_military/archery-range.webp@&gt;@building_technology/blacksmith.webp@&gt;@building_military/barracks.webp@&gt;@building_military/archery-range.webp@&gt;@building_military/barracks.webp@&gt;@building_military/archery-range.webp@",
+        "2@resource/rally.webp@&gt;@resource/sheep.webp@",
+        "@resource/rally.webp@@unit_chinese/imperial-official.webp@@abilities/ability-detonate.webp@",
+        "2@resource/rally.webp@&gt;@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:35",
+      "villager_count": 27,
+      "resources": {
+        "food": 9,
+        "wood": 12,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "∞@resource/rally.webp@>@resource/resource_wood.webp@",
+        "@unit_chinese/zhuge-nu-2.webp@",
+        "5@resource/resource_wood.webp@&gt;@building_defensive/outpost.webp@&gt;@building_economy/mill.webp@&gt;@resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "description": "10-19 timing",
+  "video": "",
+  "season": 13,
+  "map": null,
+  "strategy": "Timing Attack",
+  "origin": "imported",
+  "schemaVersion": 1,
+  "provider": "aoe4guides",
+  "capturedAt": "2026-08-22T21:13:45Z",
+  "updatedAt": "2026-08-22T21:13:45Z",
+  "patch": "16.3.11308"
+}

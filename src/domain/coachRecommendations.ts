@@ -64,6 +64,21 @@ export function recommendBuildsForCoach(
         score += 8
         reasons.push('Recent video evidence')
       }
+      if (entry.videoUrl) {
+        score += 6
+        reasons.push('Linked teaching video')
+      }
+      if (entry.build.video_evidence?.sources.some((source) => source.sourceKind === 'demo')) {
+        score += 4
+        reasons.push('Ranked demo VODs found')
+      }
+      if (
+        /varangian|vortix|2tc|keshik|torguud|pilgrim|hippodrome/i.test(searchable) &&
+        /2tc|turtle|english|longbow|greedy/i.test(opponentText)
+      ) {
+        score += 5
+        reasons.push('Matches the August anti-2TC / pilgrim meta')
+      }
       const videoEvidence = entry.build.video_evidence
       const coveredOpponent = context.opponents.find((opponent) =>
         videoEvidence?.commonOpponents.some(

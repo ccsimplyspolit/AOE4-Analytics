@@ -8,6 +8,7 @@ import { cn } from '@shared/lib/utils'
 import { CivFlag } from './CivFlag'
 import { panelBg } from './panelBg'
 import { useI18n } from '../i18n'
+import { localizeOverlayCopy } from '../localizeOverlayCopy'
 
 /** Extra hit-slop around the ✕ so the click-through toggle isn't pixel-perfect twitchy. */
 const CLOSE_HIT_PAD = 8
@@ -24,9 +25,11 @@ const CLOSE_HIT_PAD = 8
 export function PostGameCard({
   summary,
   onDismiss,
+  compact = false,
 }: {
   summary: PostGameSummary
   onDismiss?: () => void
+  compact?: boolean
 }) {
   const { tt, gameName } = useI18n()
   const win = summary.result === 'win'
@@ -67,7 +70,10 @@ export function PostGameCard({
       style={{ textShadow: '0 1px 3px rgba(0,0,0,0.95)' }}
     >
       <div
-        className="relative w-[460px] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10"
+        className={cn(
+          'overlay-panel relative overflow-hidden',
+          compact ? 'w-[320px]' : 'w-[400px]',
+        )}
         style={{ background: `linear-gradient(to bottom, ${panelBg(0.97)}, ${panelBg(0.93)})` }}
       >
         {onDismiss && (
@@ -81,7 +87,7 @@ export function PostGameCard({
           </button>
         )}
         <div className="flex flex-col items-center gap-1.5 px-5 pb-3 pt-4">
-          <span className="text-3xl font-black tracking-[0.08em]" style={{ color: titleColor }}>
+          <span className={compact ? 'text-lg font-semibold tracking-wide' : 'text-3xl font-black tracking-[0.08em]'} style={{ color: titleColor }}>
             {title}
           </span>
           <div className="flex items-center gap-2 text-[13px] text-white/90">
@@ -96,7 +102,7 @@ export function PostGameCard({
             <CivFlag civ={summary.oppCiv} compact />
           </div>
           <div className="mt-0.5 flex items-center gap-3 text-[12px] text-white/65">
-            {summary.map && <span>{summary.map}</span>}
+            {summary.map && <span>{gameName(summary.map)}</span>}
             {summary.durationSec != null && (
               <span className="tabular-nums">{formatDuration(summary.durationSec)}</span>
             )}
@@ -134,7 +140,10 @@ function Column({
   items: string[]
   empty: string
 }) {
+  const { tt, locale, gameName } = useI18n()
   const accent = tone === 'win' ? 'text-win' : 'text-warn'
+  const ox = (value: string) =>
+    locale === 'ru' ? localizeOverlayCopy(tt(value), { gameName, terms: true }) : tt(value)
   return (
     <div className="px-4 py-3" style={{ background: panelBg(1) }}>
       <div className={cn('mb-1.5 text-[11px] font-semibold uppercase tracking-wide', accent)}>
@@ -145,7 +154,7 @@ function Column({
           {items.map((t, i) => (
             <li key={i} className="flex gap-1.5">
               <span className={accent}>{tone === 'win' ? '✓' : '➤'}</span>
-              <span>{t}</span>
+              <span>{ox(t)}</span>
             </li>
           ))}
         </ul>

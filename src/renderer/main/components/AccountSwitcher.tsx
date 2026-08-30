@@ -189,7 +189,7 @@ function AddAccount({ onDone }: { onDone: () => void }) {
           className="h-8 flex-1 bg-transparent text-sm focus:outline-none"
         />
       </div>
-      {query.trim().length >= 3 && (
+      {query.trim().length >= 2 && (
         <div className="max-h-48 overflow-y-auto">
           {isFetching && hits.length === 0 && (
             <div className="px-2 py-1.5 text-xs text-muted-foreground">{tt('Searching...')}</div>

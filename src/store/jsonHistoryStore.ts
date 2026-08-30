@@ -5,6 +5,7 @@ import type { HistoryStore, StoredMatch } from './historyStore'
 /** JSON-file HistoryStore (default, v1 — D5). Holds matches in memory, newest first. */
 export class JsonHistoryStore implements HistoryStore {
   private matches: StoredMatch[]
+  private persistQueued = false
 
   constructor(private readonly filePath: string) {
     this.matches = this.load()
@@ -27,12 +28,22 @@ export class JsonHistoryStore implements HistoryStore {
     renameSync(tmp, this.filePath)
   }
 
+  /** One disk write per event-loop turn so a history fold cannot rewrite the file thousands of times. */
+  private schedulePersist(): void {
+    if (this.persistQueued) return
+    this.persistQueued = true
+    setImmediate(() => {
+      this.persistQueued = false
+      this.persist()
+    })
+  }
+
   saveMatch(match: StoredMatch): void {
     const idx = this.matches.findIndex((m) => m.id === match.id)
     if (idx >= 0) this.matches[idx] = match
     else this.matches.push(match)
     this.matches.sort((a, b) => Date.parse(b.playedAt) - Date.parse(a.playedAt))
-    this.persist()
+    this.schedulePersist()
   }
 
   getMatch(id: string): StoredMatch | null {
@@ -46,7 +57,7 @@ export class JsonHistoryStore implements HistoryStore {
   deleteMatch(id: string): void {
     const before = this.matches.length
     this.matches = this.matches.filter((m) => m.id !== id)
-    if (this.matches.length !== before) this.persist()
+    if (this.matches.length !== before) this.schedulePersist()
   }
 
   listMatches(limit?: number): StoredMatch[] {
@@ -58,11 +69,15 @@ export class JsonHistoryStore implements HistoryStore {
     return limit != null ? visible.slice(0, limit) : visible
   }
 
+  countMatches(): number {
+    return this.matches.length
+  }
+
   activeGoals(): StoredMatch['goals'] {
     return this.matches[0]?.goals ?? []
   }
 
   close(): void {
-    /* no-op for JSON */
+    this.persist()
   }
 }

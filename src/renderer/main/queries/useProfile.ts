@@ -93,7 +93,7 @@ export function usePlayerSearch(query: string) {
   return useQuery({
     queryKey: ['search', q],
     queryFn: () => ipc.searchPlayers(q),
-    enabled: q.length >= 3,
+    enabled: q.length >= 2,
     staleTime: 5 * 60_000,
   })
 }

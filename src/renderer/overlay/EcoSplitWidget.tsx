@@ -40,24 +40,24 @@ export function EcoSplitWidget({
   return (
     <div
       className={cn(
-        'select-none rounded-lg font-sans text-white shadow-xl transition-all duration-300 ring-1',
-        flash
-          ? 'bg-amber-950/90 ring-amber-400 shadow-[0_0_20px_rgba(251,191,36,0.5)] scale-[1.03]'
-          : 'bg-[#091122]/90 ring-cyan-500/30',
-        miniHud ? 'px-2.5 py-1 text-xs' : 'px-3.5 py-1.5 text-sm',
+        'overlay-panel select-none font-sans text-white transition-colors duration-200',
+        flash ? 'outline-amber-400/50' : '',
+        miniHud ? 'px-2 py-0.5 text-[11px]' : 'px-2.5 py-1 text-xs',
       )}
-      style={{ textShadow: '0 1px 3px rgba(0,0,0,0.95)' }}
+      style={{ textShadow: '0 1px 2px rgba(0,0,0,0.9)' }}
     >
       <div className="flex items-center gap-3">
         {/* Header / Step Tracker */}
-        <div className="flex items-center gap-1.5 border-r border-white/15 pr-2.5 font-mono text-[11px] text-cyan-300">
-          <span className="font-semibold">{tt('Eco Split')}</span>
-          {totalSteps > 0 && (
-            <span className="text-white/45 text-[10px]">
-              {stepIndex + 1}/{totalSteps}
-            </span>
-          )}
-        </div>
+        {!miniHud && (
+          <div className="flex items-center gap-1.5 border-r border-white/15 pr-2.5 font-mono text-[11px] text-white/55">
+            <span className="font-medium">{tt('Eco Split')}</span>
+            {totalSteps > 0 && (
+              <span className="text-white/45 text-[10px]">
+                {stepIndex + 1}/{totalSteps}
+              </span>
+            )}
+          </div>
+        )}
 
         {/* Resources Grid */}
         <div className="flex items-center gap-2.5 tabular-nums font-semibold">

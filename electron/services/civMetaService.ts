@@ -84,59 +84,47 @@ export async function getCivMeta(query: CivMetaQuery): Promise<IpcResult<CivMeta
     const rating =
       query.rating && isAllowedRating(leaderboard, query.rating) ? query.rating : undefined
     const patch = safePatch(query.patch)
-    const civStats = await getClient().getCivStats({
-      leaderboard,
-      rankLevel,
-      rating,
-      patch,
-    })
-    const mapPool = await getRankedMapPoolResolution(leaderboard)
-    let maps: MapStat[] = []
+    const client = getClient()
+    const statsQuery = { leaderboard, rankLevel, rating, patch }
+    const [civStats, mapPool, mapStats] = await Promise.all([
+      client.getCivStats(statsQuery),
+      getRankedMapPoolResolution(leaderboard),
+      client.getMapStats(statsQuery).catch(() => null),
+    ])
+    const allMaps = mapStats ? buildMapStats(mapStats) : []
+    const maps = query.mapPoolOnly === true ? filterMapStatsByPool(allMaps, mapPool) : allMaps
     let metaStats = civStats
     let metaScope: CivMetaResult['metaScope'] = 'all-maps'
     let metaPoolMapCount: number | null = null
     let poolMapRankings: PoolMapCivRanking[] | undefined
-    try {
-      const mapStats = await getClient().getMapStats({
-        leaderboard,
-        rankLevel,
-        rating,
-        patch,
-      })
-      const allMaps = buildMapStats(mapStats)
-      maps = query.mapPoolOnly === true ? filterMapStatsByPool(allMaps, mapPool) : allMaps
 
-      if (query.mapPoolOnly === true && mapPool?.status === 'current') {
-        const poolMaps = filterMapStatsByPool(allMaps, mapPool)
-        try {
-          const poolSlices = await Promise.all(
-            poolMaps.map(async (map) => ({
-              map,
-              stats: await getClient().getMapCivStats(map.mapId, {
-                leaderboard,
-                rankLevel,
-                rating,
-                patch,
-              }),
-            })),
-          )
-          const poolStats = aggregateCivStatsByMapPool(poolSlices.map((slice) => slice.stats))
-          if (poolStats && poolStats.data.length > 0 && poolMaps.length === mapPool.maps.length) {
-            metaStats = poolStats
-            metaScope = 'ranked-map-pool'
-            metaPoolMapCount = poolMaps.length
-            poolMapRankings = poolSlices.map((slice) => ({
-              mapId: slice.map.mapId,
-              map: slice.map.map,
-              civs: buildTierList(slice.stats).civs,
-            }))
-          }
-        } catch {
-          // Keep the map table and global civ meta usable if one map slice is unavailable.
+    if (
+      query.includePoolRankings === true &&
+      query.mapPoolOnly === true &&
+      mapPool?.status === 'current'
+    ) {
+      const poolMaps = filterMapStatsByPool(allMaps, mapPool)
+      try {
+        const poolSlices = await Promise.all(
+          poolMaps.map(async (map) => ({
+            map,
+            stats: await client.getMapCivStats(map.mapId, statsQuery),
+          })),
+        )
+        const poolStats = aggregateCivStatsByMapPool(poolSlices.map((slice) => slice.stats))
+        if (poolStats && poolStats.data.length > 0 && poolMaps.length === mapPool.maps.length) {
+          metaStats = poolStats
+          metaScope = 'ranked-map-pool'
+          metaPoolMapCount = poolMaps.length
+          poolMapRankings = poolSlices.map((slice) => ({
+            mapId: slice.map.mapId,
+            map: slice.map.map,
+            civs: buildTierList(slice.stats).civs,
+          }))
         }
+      } catch {
+        // Keep the map table and global civ meta usable if one map slice is unavailable.
       }
-    } catch {
-      maps = []
     }
 
     const tier = buildTierList(metaStats)
@@ -150,7 +138,7 @@ export async function getCivMeta(query: CivMetaQuery): Promise<IpcResult<CivMeta
       (!query.mapPoolOnly || selectedMapIsVisible)
     ) {
       try {
-        const mapResponse = await getClient().getMapCivStats(query.mapId!, {
+        const mapResponse = await client.getMapCivStats(query.mapId!, {
           leaderboard,
           rankLevel,
           rating,

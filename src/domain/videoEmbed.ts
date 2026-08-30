@@ -42,14 +42,29 @@ export function videoUrlsFromText(value: string | null | undefined): string[] {
     .filter((url): url is string => url != null)
 }
 
-/** Returns direct build video metadata plus links embedded in its description. */
+/** Rewrite or drop each YouTube/Twitch URL in free text. */
+export function mapVideoUrlsInText(
+  text: string,
+  map: (url: string, video: EmbeddedVideo) => string | null,
+): string {
+  return text.replace(VIDEO_URL_PATTERN, (raw) => {
+    const cleaned = cleanVideoUrl(raw)
+    const video = embeddedVideoFromUrl(cleaned)
+    if (!video) return raw
+    return map(cleaned, video) ?? ''
+  })
+}
+
+/** Returns direct build video metadata plus links embedded in description or source. */
 export function videoUrlsFromBuild(input: {
   video?: string | null
   description?: string | null
+  source?: string | null
 }): string[] {
   const candidates = [
     ...(input.video ? [input.video.trim()] : []),
     ...videoUrlsFromText(input.description),
+    ...videoUrlsFromText(input.source),
   ]
   const seen = new Set<string>()
   return candidates

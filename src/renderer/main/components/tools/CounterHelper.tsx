@@ -25,6 +25,7 @@ import { useI18n } from '../../../i18n'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
 import { formatCount, formatDurationShort } from '@shared/format'
+import { Link } from 'react-router-dom'
 
 function MapCounterCalculator() {
   const { tt, gameName } = useI18n()
@@ -186,6 +187,12 @@ export function CounterHelper() {
 
   return (
     <div className="space-y-5">
+      <p className="rounded-sm border border-border/70 bg-background/40 px-3 py-2 text-xs text-muted-foreground">
+        {tt('These are unit-vs-unit counters from bundled game data.')}{' '}
+        <Link to="/civ-meta?tab=matchups" className="text-primary hover:underline">
+          {tt('Civ vs civ ladder matchups are in Civ Meta → Counter Lab.')}
+        </Link>
+      </p>
       <MapCounterCalculator />
       <Card>
         <CardContent className="space-y-4 p-4">
